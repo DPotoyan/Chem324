@@ -1,13 +1,13 @@
 ---
 redirect_from:
   - "/lec5-chem324"
-title: '2.2 Solving wave equations'
+title: '2.1 Mathematics of Waves'
 prev_page:
   url: /LEC4-Chem324
-  title: '2.1 Mathematics of Waves'
+  title: '2.0 Waves'
 next_page:
-  url: /LEC1-Chem324
-  title: '2.3 Visualizing and animating waves.'
+  url: /features/markdown
+  title: '2.2 Visualizing and animating waves.'
 title: |
 
     | Lecture 5, Chem-324, Fall2019
@@ -26,8 +26,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 ## Outline for Lecture 5: 
-
-
 
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
 - **An equation, partially differential equation known as a wave completely describes wave's spatial and temporal evolution**

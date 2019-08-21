@@ -4,7 +4,7 @@ redirect_from:
 title: '1.1 Photoelectric effect.'
 prev_page:
   url: /LEC1-Chem324
-  title: '1. Intro to QM thinking.'
+  title: '1.0 Intro to QM thinking.'
 next_page:
   url: /LEC3-Chem324
   title: '1.2 Wave particle duality'

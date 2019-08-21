@@ -1,20 +1,20 @@
 ---
 redirect_from:
   - "/lec4-chem324"
-title: '2.1 Mathematics of Waves'
+title: '2.0 Waves'
 prev_page:
-  url: /LEC1-Chem324
-  title: '2. Waves'
+  url: /features/markdown
+  title: '1.3 Crash course of Python and interactive plotting.'
 next_page:
   url: /LEC5-Chem324
-  title: '2.2 Solving wave equations'
+  title: '2.1 Mathematics of Waves'
 title: |
 
     | Lecture 4, Chem-324, Fall2019
 
 	|
 
-    | Introducing to waves and wave equation.
+    | Waves.
 
 author: 'Davit Potoyan'
 
@@ -27,11 +27,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## Outline for Lecture 4: 
 
-<iframe src="https://giphy.com/embed/7YCYZ4ItKG8F2" width="335" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/90s-alternative-aesthetic-7YCYZ4ItKG8F2"></a></p>
-
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
-- **An equation, partially differential equation known as a wave completely describes wave's spatial and temporal evolution**
-
+- **An equation, a partially differential equation (PDE) known as a wave equation completely describes wave's spatial and temporal evolution.**
+- **Waves can be standing or traveling. Transverse or longitudinal.**
 
 
 ## Waves, waves and more waves
@@ -43,9 +41,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 - Electromagnetic waves (light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
 - Finally there are also gravitational waves traveling through spacetime. See this [video](https://www.youtube.com/watch?v=xj6vV3T4ok8).
 
-## Classification of waves
+## Classification of waves: Transverse vs Longitudinal
 
 <iframe src="https://giphy.com/embed/og52So0BUmZVe" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/waves-longitudinal-transverse-og52So0BUmZVe">via GIPHY</a></p>
+
+## Classification of waves: Standing vs Traveling
+
 
 
 ## Describing waves mathematically part 1: functional form for a generic wave.  
@@ -83,23 +84,36 @@ Just as in classical mechanics we need to take second derivative in order to get
 
 We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
-## Wave interference part 1
+## Wave interference: definition
 
 
- Interference – a phenomenon of combining waves. 
+ Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
  
-  <iframe src="https://giphy.com/embed/F3RijSq6e8fi8" width="280" height="280" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/physics-exchange-interference-F3RijSq6e8fi8">via GIPHY</a></p>
+ ![](https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif)
+ 
  
  This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if wave A and B are both solutions of a wave equation than so is a wave C which is a sum of A and B.
 
 
-## Wave interference part 2.
+## Wave interference: derivation.
 
  Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase: phi (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
  
- $$ $$
+ $$y_1(x,t)=Asin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A(kx-\omega t+\phi)$$
+ 
+ If we sum up the two phase shifted waves and make use of trigonometric relation $cos \alpha+cos \beta=2 cos\frac{1}{2}\big(\alpha+\beta\big)cos\frac{1}{2}\big(\alpha-\beta\big)$ we get:
+ 
+ $$y(x,t)=y_1(x,t)+y_2(x,t)= Acos(\phi/2)cos(kx-\omega t+\phi/2)$$
 
-## Wave interference part 3.
+## Wave interference: demonstration. 
+
+When two waves interfere there amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:
+
+- $\phi=0$ Fully constructive interference $y(x,t)=2A cos(kx-\omega t)$
+- $\phi=\pi$ Fully destructive interference. $y(x,t)=0$
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif)
+
 
 
 

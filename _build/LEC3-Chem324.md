@@ -6,7 +6,7 @@ prev_page:
   url: /LEC2-Chem324
   title: '1.1 Photoelectric effect.'
 next_page:
-  url: /LEC1-Chem324
+  url: /features/markdown
   title: '1.3 Crash course of Python and interactive plotting.'
 
 

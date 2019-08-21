@@ -1,13 +1,13 @@
 ---
 redirect_from:
   - "/lec1-chem324"
-title: '1. The down of QM'
+title: '1.0 Intro to QM thinking.'
 prev_page:
-  url: https://github.com/jupyter/jupyter-book
+  url: https://github.com/DPotoyan/Chem324
   title: 'GitHub repository'
 next_page:
-  url: /LEC1-Chem324
-  title: '1.1 Intro to QM thinking.'
+  url: /LEC2-Chem324
+  title: '1.1 Photoelectric effect.'
 
 
 title: |
