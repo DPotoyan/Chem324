@@ -3,7 +3,7 @@ redirect_from:
   - "/lec4-chem324"
 title: '2.0 Waves'
 prev_page:
-  url: /features/markdown
+  url: /python-intro
   title: '1.3 Crash course of Python and interactive plotting.'
 next_page:
   url: /LEC5-Chem324
@@ -41,13 +41,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 - Electromagnetic waves (light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
 - Finally there are also gravitational waves traveling through spacetime. See this [video](https://www.youtube.com/watch?v=xj6vV3T4ok8).
 
-## Classification of waves: Transverse vs Longitudinal
+## Classification of waves by orientation: Transverse vs Longitudinal
 
 ![](https://media.giphy.com/media/og52So0BUmZVe/giphy.gif)
 
-## Classification of waves: Standing vs Traveling
+## Classification of waves by appearance: Standing vs Traveling
 
+- Traveling waves move with respect to fixed reference frame.  
 
+- Standing waves move in place. 
 
 ## Describing waves mathematically part 1: functional form for a generic wave.  
 
