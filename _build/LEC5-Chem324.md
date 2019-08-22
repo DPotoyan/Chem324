@@ -10,7 +10,7 @@ next_page:
   title: '2.2 Visualizing and animating waves.'
 title: |
 
-    | Lecture 5, Chem-324, Fall2019
+    | Lecture 2.1, Chem-324, Fall2019
 
 	|
 
@@ -25,7 +25,7 @@ toc: false
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-## Outline for Lecture 5: 
+## Outline for Lecture 2.1: 
 
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
 - **An equation, partially differential equation known as a wave completely describes wave's spatial and temporal evolution**

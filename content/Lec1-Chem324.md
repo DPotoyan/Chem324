@@ -1,7 +1,7 @@
 ---
 
 title: |
-    | Lecture 1, Chem-324, Fall2019
+    | Lecture 1.0, Chem-324, Fall2019
     | ***	
     | Birth of QM and discovery of energy quantization
 author: 'Davit Potoyan'
@@ -10,7 +10,7 @@ institute: 'Iowa State University, Ames IA 50011'
 ---
 
 
-## Outline for Lecture 1: 
+## Outline for Lecture 1.0: 
 
 - **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
 

@@ -11,7 +11,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 # Introduction to Quantum Mechanics
 ## Chem324, Fall 2019 @ Iowa State University
 ### Instructor: Prof. Davit Potoyan
-### TA: Mr. Zachary Crandall
+### TA: Mr. Zachery Crandall
 <br>
 
 ## About 

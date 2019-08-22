@@ -12,7 +12,7 @@ next_page:
 
 title: |
 
-    | Lecture 1, Chem-324, Fall2019
+    | Lecture 1.0, Chem-324, Fall2019
 
     | ***	
 
@@ -28,7 +28,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 
-## Outline for Lecture 1: 
+## Outline for Lecture 1.0: 
 
 - **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
 

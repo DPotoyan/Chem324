@@ -1,6 +1,6 @@
 ---
 title: |
-    | Lecture 4, Chem-324, Fall2019
+    | Lecture 2.0, Chem-324, Fall2019
 	|
     | Waves.
 author: 'Davit Potoyan'
@@ -8,7 +8,7 @@ institute: ' Iowa State University, Ames IA 50011'
 toc: false
 ---
 
-## Outline for Lecture 4: 
+## Outline for Lecture 2.0: 
 
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
 - **An equation, a partially differential equation (PDE) known as a wave equation completely describes wave's spatial and temporal evolution.**

@@ -1,6 +1,6 @@
 ---
 title: |
-    | Lecture 5, Chem-324, Fall2019
+    | Lecture 2.1, Chem-324, Fall2019
 	|
     | Solving wave equations. PDEs and ODEs.
 author: 'Davit Potoyan'
@@ -8,7 +8,7 @@ institute: ' Iowa State University, Ames IA 50011'
 toc: false
 ---
 
-## Outline for Lecture 5: 
+## Outline for Lecture 2.1: 
 
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
 - **An equation, partially differential equation known as a wave completely describes wave's spatial and temporal evolution**

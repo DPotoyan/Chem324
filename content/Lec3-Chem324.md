@@ -1,7 +1,7 @@
 ---
 
 title: |
-    | Lecture 3, Chem-324, Fall2019
+    | Lecture 1.2, Chem-324, Fall2019
 	|
     | Electron diffraction and wave particle duality.
 author: 'Davit Potoyan'
@@ -10,7 +10,7 @@ toc: false
 
 ---
 
-## Outline for Lecture 3: 
+## Outline for Lecture 1.2: 
 
 - **A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics.**
 - **Compton scattering, electron diffraction show that concepts of particle and wave are mutually not exclusive and characteristics of all objects!**
@@ -45,13 +45,17 @@ Maxima and minima in interference patters is dictated by simple geometric  argum
  
 ## Davisson & Germer show that electrons scatter just like X-rays!
 
-- This is the first experiment which showed that elctrons can behave like waves and show interference patterns. The basic experimental arrangement is shown along with the nickel crystal structure. 
+- This is the first experiment which showed that electrons can behave like waves and show interference patterns. The basic experimental arrangement is shown along with the nickel crystal structure. 
 
 - In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons, and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
-## Diffraction patterns
+## Diffraction patterns.
 
-Computing wavelength from de Broglie relation confirmed that thinking of electrons as having dual wave-particle properties was correct with impressive agreement between experimental prediction and theory. 
+Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with impressive agreement between experimental predictions and theory. 
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+
+
 
 ## Compton scattering
 
@@ -68,7 +72,13 @@ Arthur Compton showed that X-rays get scattered off free electrons like elastic 
 
 ## De Broglie comes up with a simple equation which establishes the duality of matter. 
 
+$$\lambda= \frac{h}{p}$$
 
+- h: Plank's constant
+- $p$: momentum of the object (electron, photon, molecule, chair, etc)
+- $\lambda$: wavelength associated with the object. 
+
+The relation implies that heavy object have small wavelength and light objects have large wavelength. Hence the smaller the object the more pronounced wave-like qualities it will have. And vice versa the bigger the object the more particle like qualities it will have. 
 
 ## Summary
 
