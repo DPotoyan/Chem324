@@ -45,7 +45,7 @@ Our objective in the next few pages is to describe motion of guitar string mathe
 
 - Wave equation is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement u(x,t) in time and space.
 
-$$\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial x^2 }$$ 
+$$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$ 
 
 - In order to solve this equation we need to specify two boundary conditions to obtain solution that is specific to our physical situation: a guitar string attached to two ends. Mathematically we specify boundary conditions by 
 
@@ -57,26 +57,26 @@ $$u(x,t)=X(x)T(t)$$
 
 ## Step one: plug product of univariate functions into wave equation.
  
- $$\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial x^2 }$$
+ $$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$
 
  Plugging $u(x,t)=X(x)T(t)$ in the above wave equation leads to separation of variables into two independent equations:
  
-  $$\frac{\partial^2 X(x)T(t)}{\partial t^2} =\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial x^2 }$$
+  $$\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial t^2} =\frac{\partial^2 X(x)T(t)}{\partial x^2 }$$
   
   Some rearrangement first
   
-  $$X(x)\frac{\partial^2 T(t)}{\partial t^2} =\frac{T(t)}{v^2}\frac{\partial^2 X(x)}{\partial x^2 }$$
+  $$\frac{X(x)}{v^2}\frac{\partial^2 T(t)}{\partial t^2} =T(t)\frac{\partial^2 X(x)}{\partial x^2 }$$
   
   And voila, the final product we have two ordinary differential equation (ODEs) as opposed to much harder partial differential equation (PDE). 
 
-$$\frac{1}{T(t)}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) v^2}\frac{\partial^2 X(x)}{\partial x^2 }=K=const$$
+$$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K=const$$
 
 
 ## Step two: After decomposing PDE into ODEs we begin solving each ODE one by one. 
 
-$$\frac{1}{T(t)}\frac{\partial^2 T(t)}{\partial t^2} =K \,\,\,\,and\,\,\,\,\,\,\,\, \frac{1}{X(x) v^2}\frac{\partial^2 X(x)}{\partial x^2 }=K$$
+$$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =K \,\,\,\,and\,\,\,\,\,\,\,\, \frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K$$
 
-$$\frac{\partial^2 T(t)}{\partial t^2} -KT(t)=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial x^2 }-K X(x)v^2=0$$
+$$\frac{\partial^2 T(t)}{\partial t^2} -KT(t)v^2=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial}-K X(x)=0$$
 
 ## Intermezzo: solve the ODE by considering all cases for the separating constant. Case K>0 
 
@@ -109,7 +109,7 @@ $$\beta L=n\pi \,\, \rightarrow \,\, \beta=\frac{n\pi}{L} \,\,  \rightarrow \,\,
 
 We have found solution for $X(x)=Bsin\Big(\frac{n\pi}{L}x\Big)$. <br>Now it is time to do the same for $T(t)$ by repeating the same steps:
 
-$$\frac{\partial^2 X(x)}{\partial x^2 }-K X(x)v^2=0 \,\,\rightarrow \,\, \frac{\partial^2 X(x)}{\partial x^2 }-\beta^2 X(x)v^2=0$$
+$$\frac{\partial^2 T(t)}{\partial t^2 }-K T(t)v^2=0 \,\,\rightarrow \,\, \frac{\partial^2 T(t)}{\partial t^2 }-\beta^2 T(t)v^2=0$$
 
 $$T(t)=D_n cos(\omega_n t)+E_nsin(\omega_n t)$$
 
@@ -152,7 +152,7 @@ $$\nu_n=\omega_n/2\pi=vn/2L$$
 
 ## 2D membrane vibrations.
 
-<iframe src="https://giphy.com/embed/10qqg7K1HIv2OQ" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/10qqg7K1HIv2OQ">via GIPHY</a></p>
+![](http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif)
 
 Wave function of 2D membrane with fixed edges has two independent variables x and y. 
 
