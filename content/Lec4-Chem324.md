@@ -24,13 +24,15 @@ toc: false
 - Electromagnetic waves (light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
 - Finally there are also gravitational waves traveling through spacetime. See this [video](https://www.youtube.com/watch?v=xj6vV3T4ok8).
 
-## Classification of waves: Transverse vs Longitudinal
+## Classification of waves by orientation: Transverse vs Longitudinal
 
-<iframe src="https://giphy.com/embed/og52So0BUmZVe" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/waves-longitudinal-transverse-og52So0BUmZVe">via GIPHY</a></p>
+![](https://media.giphy.com/media/og52So0BUmZVe/giphy.gif)
 
-## Classification of waves: Standing vs Traveling
+## Classification of waves by appearance: Standing vs Traveling
 
+- Traveling waves move with respect to fixed reference frame.  
 
+- Standing waves move in place. 
 
 ## Describing waves mathematically part 1: functional form for a generic wave.  
 

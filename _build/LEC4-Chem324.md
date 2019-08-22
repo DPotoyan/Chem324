@@ -43,7 +43,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## Classification of waves: Transverse vs Longitudinal
 
-<iframe src="https://giphy.com/embed/og52So0BUmZVe" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/waves-longitudinal-transverse-og52So0BUmZVe">via GIPHY</a></p>
+![](https://media.giphy.com/media/og52So0BUmZVe/giphy.gif)
 
 ## Classification of waves: Standing vs Traveling
 
