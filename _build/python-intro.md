@@ -11,10 +11,6 @@ next_page:
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-[](https://mybinder.org/v2/gh/DPotoyan/Chem324/content/master)
-
-
-
 ### Chem324 Python Tutorial
 
 
@@ -2475,7 +2471,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_171_1.png)
+![png](images/python-intro_170_1.png)
 
 </div>
 </div>
@@ -2520,7 +2516,7 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_173_1.png)
+![png](images/python-intro_172_1.png)
 
 </div>
 </div>
@@ -2576,7 +2572,7 @@ Text(0.5,1,'Cosine')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_176_1.png)
+![png](images/python-intro_175_1.png)
 
 </div>
 </div>
