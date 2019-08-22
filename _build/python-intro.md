@@ -19,7 +19,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-These python tutorial notes are dopted from notes originally made by [Volodymyr Kuleshov](http://web.stanford.edu/~kuleshov/) and [Isaac Caswell](https://symsys.stanford.edu/viewing/symsysaffiliate/21335) which in turn were adopted from the `CS231n` Python tutorial by Justin Johnson (http://cs231n.github.io/python-numpy-tutorial/). So happy adopting :) 
+These notebok introduces the basics of python, data types and plotting. The notes assume you are new to python or have used it lightly.   
 
 
 
