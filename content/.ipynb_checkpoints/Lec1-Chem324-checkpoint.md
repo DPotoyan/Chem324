@@ -55,7 +55,7 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 - Think of frequency as a 
   distance traveled in 1 second (hz). 
 
-- Speed of light in vacuum, c is a constant (3 10^6 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
+- Speed of light in vacuum c is a constant (3 10^6 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
 
 
 
@@ -160,7 +160,7 @@ In the limit $h \rightarrow 0$, $E$ becomes continuous and an arbitrary real val
 
 Measurements of atomic emission/absorption spectra were another key experimental evidence showing that energy levels of individual atoms are quantized.
 
-![Atomic Spectrum](./images/lec1_AtomicSpectrum.png)
+![Atomic Spectrum](/images/lec1_AtomicSpectrum.png)
 
 Notice the existence of discrete frequencies in the spectrum consistent with Planck’s assumption. 
 

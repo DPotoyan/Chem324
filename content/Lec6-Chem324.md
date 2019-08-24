@@ -52,3 +52,11 @@ $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\p
 ## Time independent Schrodinger equation. 
 
 $$\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x)=E\psi(x)$$
+
+## How on earth did Schodinger arrived at wave equation???
+
+Lets try and trace the original thought of Schrodinger. Let us remember again that arriving at Schrodinger equation is not the same as deriving it. Fundamental laws can only be inferred from experiments.
+
+In 1925/1926 Schrodinger who was an expert on waves thought he can put all of the weird experiments showing discreteness of energies and waviness of small particles under one sound theoretical roof! He guessed that the equation of motion for quantum mechanics should be a wave equation.
+
+So he started from the only wave equation he knew the classical wave equation. Combined with the  Planck's equation (implying energy quantization) and De Brogile equation (implying particle-wave duality).

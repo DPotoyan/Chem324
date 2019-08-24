@@ -11,25 +11,28 @@ next_page:
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-### Chem324 Python Tutorial
+## Python crash course for Chem324.
 
 
 
-These notebok introduces the basics of python, data types and plotting. The notes assume you are new to python or have used it lightly.   
+The objective of these notes it to provide a quick introduction to python language. No background in programming or previous knolwedge of python is assumed. These notes will only cover the bare essentials of python which will be used throughout the course. 
 
 
 
-### Some  other excellent places to learn python oriented for scientists and engineers.
-List is ordered in the increasing depth of coverage. 
-#### (i) Tutorials by software carpentry for scientists.
-http://swcarpentry.github.io/python-novice-gapminder/ <br>
-http://swcarpentry.github.io/python-novice-inflammation/  
+Since our coverage will necessarily be brief belwo listed you can find some more pointers to excellent resources for learning python.    
+ 
+**1. Tutorials by software carpentry for scientists.**
+   - [Programming Python](http://swcarpentry.github.io/python-novice-inflammation/)
+   - [Plotting and programming in Python ](http://swcarpentry.github.io/python-novice-gapminder/)
 
-#### (ii) Beautiful lecture notes "Introduction to Python for Computational Science and Engineering"
-https://github.com/fangohr/introduction-to-python-for-computational-science-and-engineering
 
-#### (iii) Exploratory computing tutorial.
-http://mbakker7.github.io/exploratory_computing_with_python/
+**2. Condensed coverage of scientific applicaitons can be found in the following online notes:**
+   - [Introduction to Python for Computational Science and Engineering](https://fangohr.github.io/introduction-to-python-for-computational-science-and-engineering/)
+    
+
+**3. Finally there are the official Python documentaiton and SciPy tutorials. These provide much more in depth and thorough coverage.**
+   - [SciPy lectures](http://scipy-lectures.org/index.html)
+   - [Official python tutorial](https://docs.python.org/3/tutorial/)
 
 
 
@@ -45,10 +48,17 @@ You may already know some python and that's great!; for the rest of you, this se
 
 In this tutorial, we will cover:
 
-* Basic Python: Basic data types (Containers, Lists, Dictionaries, Sets, Tuples), Functions, Classes
-* Numpy: Arrays, Array indexing, Datatypes, Array math, Broadcasting
-* Matplotlib: Plotting, Subplots, Images
-* IPython: Creating notebooks, Typical workflows
+Basics of Python3 language:
+
+- **Data types: numbers, booleans, strings, lists**
+- **Functions**
+- **Control flow**
+
+Doing computaitons and visualiziations in Jupyter notebook using:
+
+- **Numpy arrays**
+- **Scipy functions**
+- **Matplotlib plotting**   
 
 
 
@@ -75,10 +85,6 @@ You can check your Python version at the command line by running `python --versi
 
 
 #### Numbers
-
-
-
-Integers and floats work as you would expect from other languages:
 
 
 
@@ -654,417 +660,6 @@ even_squares
 
 
 
-#### Dictionaries
-
-
-
-A dictionary stores (key, value) pairs, similar to a `Map` in Java or an object in Javascript. You can use it like this:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-d = {'cat': 'cute', 'dog': 'furry'}  # Create a new dictionary with some data
-print(d['cat'])       # Get an entry from a dictionary; prints "cute"
-print('cat' in d)     # Check if a dictionary has a given key; prints "True"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-cute
-True
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-d['fish'] = 'wet'    # Set an entry in a dictionary
-print(d['fish'])      # Prints "wet"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-wet
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-print(d['monkey'])  # KeyError: 'monkey' not a key of d
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_traceback_line}
-```
-
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-59-78fc9745d9cf> in <module>()
-    ----> 1 print(d['monkey'])  # KeyError: 'monkey' not a key of d
-    
-
-    KeyError: 'monkey'
-
-
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-print(d.get('monkey', 'N/A'))  # Get an element with a default; prints "N/A"
-print(d.get('fish', 'N/A'))    # Get an element with a default; prints "wet"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-N/A
-wet
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-del d['fish']        # Remove an element from a dictionary
-print(d.get('fish', 'N/A')) # "fish" is no longer a key; prints "N/A"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-N/A
-```
-</div>
-</div>
-</div>
-
-
-
-You can find all you need to know about dictionaries in the [documentation](https://docs.python.org/2/library/stdtypes.html#dict).
-
-
-
-It is easy to iterate over the keys in a dictionary:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-d = {'person': 2, 'cat': 4, 'spider': 8}
-for animal in d:
-    legs = d[animal]
-    print('A %s has %d legs' % (animal, legs))
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-A person has 2 legs
-A cat has 4 legs
-A spider has 8 legs
-```
-</div>
-</div>
-</div>
-
-
-
-If you want access to keys and their corresponding values, use the iteritems method:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-d = {'person': 2, 'cat': 4, 'spider': 8}
-for animal, legs in d.items():
-    print('A %s has %d legs' % (animal, legs))
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-A person has 2 legs
-A cat has 4 legs
-A spider has 8 legs
-```
-</div>
-</div>
-</div>
-
-
-
-Dictionary comprehensions: These are similar to list comprehensions, but allow you to easily construct dictionaries. For example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-nums = [0, 1, 2, 3, 4]
-even_num_to_square = {x: x ** 2 for x in nums if x % 2 == 0}
-print(even_num_to_square)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-{0: 0, 2: 4, 4: 16}
-```
-</div>
-</div>
-</div>
-
-
-
-#### Sets
-
-
-
-A set is an unordered collection of distinct elements. As a simple example, consider the following:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-animals = {'cat', 'dog'}
-print('cat' in animals)  # Check if an element is in a set; prints "True"
-print('fish' in animals)  # prints "False"
-
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-True
-False
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-animals.add('fish')      # Add an element to a set
-print('fish' in animals) 
-print(len(animals))        # Number of elements in a set;
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-True
-3
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-animals.add('cat')       # Adding an element that is already in the set does nothing
-print(len(animals))        
-animals.remove('cat')    # Remove an element from a set
-print(len(animals) )       
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-3
-2
-```
-</div>
-</div>
-</div>
-
-
-
-_Loops_: Iterating over a set has the same syntax as iterating over a list; however since sets are unordered, you cannot make assumptions about the order in which you visit the elements of the set:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-animals = {'cat', 'dog', 'fish'}
-for idx, animal in enumerate(animals):
-    print('#%d: %s' % (idx + 1, animal)) 
-# Prints "#1: fish", "#2: dog", "#3: cat"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-#1: cat
-#2: fish
-#3: dog
-```
-</div>
-</div>
-</div>
-
-
-
-Set comprehensions: Like lists and dictionaries, we can easily construct sets using set comprehensions:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-from math import sqrt
-print({int(sqrt(x)) for x in range(30)}) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-{0, 1, 2, 3, 4, 5}
-```
-</div>
-</div>
-</div>
-
-
-
-#### Tuples
-
-
-
-A tuple is an (immutable) ordered list of values. A tuple is in many ways similar to a list; one of the most important differences is that tuples can be used as keys in dictionaries and as elements of sets, while lists cannot. Here is a trivial example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-d = {(x, x + 1): x for x in range(10)}  # Create a dictionary with tuple keys
-t = (5, 6)       # Create a tuple
-print(type(t)) 
-print(d[t] )       
-print(d[(1, 2)]) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-<class 'tuple'>
-5
-1
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-t[0] = 1
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_traceback_line}
-```
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    <ipython-input-73-c8aeb8cd20ae> in <module>()
-    ----> 1 t[0] = 1
-    
-
-    TypeError: 'tuple' object does not support item assignment
-
-
-```
-</div>
-</div>
-</div>
-
-
-
 ### Functions
 
 
@@ -1129,50 +724,6 @@ hello('Fred', loud=True)
 ```
 Hello, Bob!
 HELLO, FRED
-```
-</div>
-</div>
-</div>
-
-
-
-### Classes
-
-
-
-The syntax for defining classes in Python is straightforward:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-class Greeter:
-
-    # Constructor
-    def __init__(self, name):
-        self.name = name  # Create an instance variable
-
-    # Instance method
-    def greet(self, loud=False):
-        if loud:
-            print('HELLO, %s!' % self.name.upper()) 
-        else:
-            print('Hello, %s' % self.name) 
-
-g = Greeter('Fred')  # Construct an instance of the Greeter class
-g.greet()            # Call an instance method; prints "Hello, Fred"
-g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-Hello, Fred
-HELLO, FRED!
 ```
 </div>
 </div>
@@ -2471,7 +2022,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_170_1.png)
+![png](images/python-intro_139_1.png)
 
 </div>
 </div>
@@ -2516,7 +2067,7 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_172_1.png)
+![png](images/python-intro_141_1.png)
 
 </div>
 </div>
@@ -2572,7 +2123,7 @@ Text(0.5,1,'Cosine')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_175_1.png)
+![png](images/python-intro_144_1.png)
 
 </div>
 </div>
