@@ -1,18 +1,18 @@
 ---
 redirect_from:
   - "/lec3-chem324"
-title: '1.2 Wave particle duality'
+title: '1.3 Wave particle duality'
 prev_page:
   url: /LEC2-Chem324
-  title: '1.1 Photoelectric effect.'
+  title: '1.2 Photoelectric effect.'
 next_page:
   url: /python-intro
-  title: '1.3 Crash course of Python and interactive plotting.'
+  title: '1.4 Crash course of Python and interactive plotting.'
 
 
 title: |
 
-    | Lecture 1.2, Chem-324, Fall2019
+    | Lecture 1.3, Chem-324, Fall2019
 
 	|
 
@@ -29,7 +29,7 @@ toc: false
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-## Outline for Lecture 1.2: 
+## Outline for Lecture 1.3: 
 
 - **A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics.**
 - **Compton scattering, electron diffraction show that concepts of particle and wave are mutually not exclusive and characteristics of all objects!**
@@ -64,7 +64,7 @@ One expect waves like X-rays to show interference patterns according to this for
 ## Both X-rays and electrons show same diffraction patterns. 
 
 ![Typical diffraction patterns observed when scattering either electrons or X-rays!](./images/lec3_Xscatter2.png)
- 
+
 ## Davisson & Germer show that electrons scatter just like X-rays!
 
 - In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons, and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 

@@ -1,7 +1,7 @@
 ---
 
 title: |
-    | Lecture 1.0, Chem-324, Fall2019
+    | Lecture 1.1, Chem-324, Fall2019
     | ***	
     | Birth of QM and discovery of energy quantization
 author: 'Davit Potoyan'
@@ -10,7 +10,7 @@ institute: 'Iowa State University, Ames IA 50011'
 ---
 
 
-## Outline for Lecture 1.0: 
+## Outline for Lecture 1.1: 
 
 - **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
 
@@ -22,10 +22,9 @@ institute: 'Iowa State University, Ames IA 50011'
 
 ## What makes QM a fundamentally different theory with respect to CM?: <br>
 
-  ![](./images/lec1_ladder.jpg)
-
 - **Classical mechanics (CM) assumes:** Energies can take any value! Just like climbing a continuous ramp.
 - **Quantum mechanics asserts:** Energy can only take certain discrete values! More like stairs on a staircase (e.g, 1*E, 2*E 3*E... but not 2.5*E or 1.1*E). Energy is quantized! The reason energy may appear continous in CM is becasue differences are small or measuring aparatus does not have sufficient resolution.
+![](./images/lec1_ladder.jpg)
 
 
 
@@ -43,7 +42,7 @@ This illustration shows the key properties associated with different frequency r
 
 ## Relationship between frequency, wavelength and speed of light. 
 
-![Definitions of wavelength & frequency.](/images/lec1_wavelen_freq_c.jpg)
+![Definitions of wavelength & frequency.](./images/lec1_wavelen_freq_c.jpg)
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
 <div style="background-color: #fefbd8">

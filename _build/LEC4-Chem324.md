@@ -3,8 +3,8 @@ redirect_from:
   - "/lec4-chem324"
 title: '2.0 Waves'
 prev_page:
-  url: /python-intro
-  title: '1.3 Crash course of Python and interactive plotting.'
+  url: /LEC0-Chem324
+  title: '1.0 Intro to QM thinking.'
 next_page:
   url: /LEC5-Chem324
   title: '2.1 Mathematics of Waves'
@@ -90,21 +90,21 @@ We just obtained a 1D classical wave equation. Solutions of this equation are fu
 
 
  Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
- 
+
  ![](https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif)
- 
- 
+
+
  This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if wave A and B are both solutions of a wave equation than so is a wave C which is a sum of A and B.
 
 
 ## Wave interference: derivation.
 
  Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase: phi (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
- 
+
  $$y_1(x,t)=Asin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A(kx-\omega t+\phi)$$
- 
+
  If we sum up the two phase shifted waves and make use of trigonometric relation $cos \alpha+cos \beta=2 cos\frac{1}{2}\big(\alpha+\beta\big)cos\frac{1}{2}\big(\alpha-\beta\big)$ we get:
- 
+
  $$y(x,t)=y_1(x,t)+y_2(x,t)= Acos(\phi/2)cos(kx-\omega t+\phi/2)$$
 
 ## Wave interference: demonstration. 

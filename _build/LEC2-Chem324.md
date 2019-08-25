@@ -1,18 +1,18 @@
 ---
 redirect_from:
   - "/lec2-chem324"
-title: '1.1 Photoelectric effect.'
+title: '1.2 Photoelectric effect.'
 prev_page:
   url: /LEC1-Chem324
-  title: '1.0 Intro to QM thinking.'
+  title: '1.1 Black Body Radiation.'
 next_page:
   url: /LEC3-Chem324
-  title: '1.2 Wave particle duality'
+  title: '1.3 Wave particle duality'
 
 
 title: |
 
-    | Lecture 1.1, Chem-324, Fall2019
+    | Lecture 1.2, Chem-324, Fall2019
 
 	|
 
@@ -29,7 +29,7 @@ toc: false
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-## Outline for Lecture 1.1: 
+## Outline for Lecture 1.2: 
 
 **Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.**
 
@@ -89,9 +89,9 @@ But this energy has to exceed $h\nu_0$, the energy difference between free and b
 <div style="background-color: #fefbd8">
 $$(E_{photon}-E_{photon})=KE$$
 </div>
- 
+
 If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
- 
+
  
 
 

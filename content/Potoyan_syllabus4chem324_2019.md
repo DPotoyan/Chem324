@@ -1,4 +1,4 @@
-### Syllabus for Chem324, Secion I  (Fall 2019)
+### Syllabus for Chem324, Section I  (Fall 2019)
 
 -----------
 

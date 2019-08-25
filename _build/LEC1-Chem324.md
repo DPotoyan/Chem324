@@ -1,18 +1,18 @@
 ---
 redirect_from:
   - "/lec1-chem324"
-title: '1.0 Intro to QM thinking.'
+title: '1.1 Black Body Radiation.'
 prev_page:
-  url: https://github.com/DPotoyan/Chem324
-  title: 'GitHub repository'
+  url: /LEC0-Chem324
+  title: '1.0 Intro to QM thinking.'
 next_page:
   url: /LEC2-Chem324
-  title: '1.1 Photoelectric effect.'
+  title: '1.2 Photoelectric effect.'
 
 
 title: |
 
-    | Lecture 1.0, Chem-324, Fall2019
+    | Lecture 1.1, Chem-324, Fall2019
 
     | ***	
 
@@ -28,7 +28,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 
-## Outline for Lecture 1.0: 
+## Outline for Lecture 1.1: 
 
 - **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
 
@@ -40,10 +40,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## What makes QM a fundamentally different theory with respect to CM?: <br>
 
-  ![](./images/lec1_ladder.jpg)
-
 - **Classical mechanics (CM) assumes:** Energies can take any value! Just like climbing a continuous ramp.
 - **Quantum mechanics asserts:** Energy can only take certain discrete values! More like stairs on a staircase (e.g, 1*E, 2*E 3*E... but not 2.5*E or 1.1*E). Energy is quantized! The reason energy may appear continous in CM is becasue differences are small or measuring aparatus does not have sufficient resolution.
+![](./images/lec1_ladder.jpg)
 
 
 
@@ -61,7 +60,7 @@ This illustration shows the key properties associated with different frequency r
 
 ## Relationship between frequency, wavelength and speed of light. 
 
-![Definitions of wavelength & frequency.](/images/lec1_wavelen_freq_c.jpg)
+![Definitions of wavelength & frequency.](./images/lec1_wavelen_freq_c.jpg)
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
 <div style="background-color: #fefbd8">
