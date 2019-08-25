@@ -51,28 +51,33 @@ An electron can be scattered by different layers of a crystal lattice and interf
 
 ## Bragg's formula for diffraction. 
 
-One expect waves like X-rays to show interference patterns according to this formula. Interference was traditionally thought of purely a wave like phenomena. 
+X-rays interact with the atoms in a crystal. The phase shift upon scattering off of atoms causes constructive (left figure) or destructive (right figure) interferences.
 
-- X-rays interact with the atoms in a crystal.
+![](./images/lec3_Xscatter.png)
 
-- According to the $2\theta$ deviation, the phase shift causes constructive (left figure) or destructive (right figure) interferences.
-
+Maxima and minima in interference patters is dictated by simple geometric  argument captured in Bragg’s formula: 
 <div style="background-color: #fefbd8">
 $$2d sin\theta = n\lambda$$
 </div>
-Maxima and minima in interference patters is dictated by simple geometric  argument captured in Bragg’s formula: 
+One expect waves like X-rays to show interference patterns according to this formula. Interference was thought to be a purely a wave like phenomena. 
+
+## Both X-rays and electrons show same diffraction patterns. 
+
+![Typical diffraction patterns observed when scattering either electrons or X-rays!](./images/lec3_Xscatter2.png)
  
 ## Davisson & Germer show that electrons scatter just like X-rays!
 
-- This is the first experiment which showed that electrons can behave like waves and show interference patterns. The basic experimental arrangement is shown along with the nickel crystal structure. 
-
 - In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons, and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
-## Diffraction patterns.
+![](./images/lec3_DavisonGermer.png)
+
+
+
+## Particles can and do behave like waves in appropriate circumstances.  
 
 Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with impressive agreement between experimental predictions and theory. 
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+![Another striking wave behavior of electrons emerges in the double slit experiment where electrons all line up as bands on the detector screen after passing throw a double slit wall. We are going to have a more in depth look into this incredible experiment later on.](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
 
 
 

@@ -80,7 +80,7 @@ Since black body is in equilibrium it emits as much energy as it absorbs. The re
 
 The black body is used as a standard with which the absorption of real bodies is compared. Roughly, we can say that the stars radiate like blackbody radiators. This is important because it means that we can use the theory for blackbody radiation to infer temperature of the stars from their colors!
 
-![](../images/lec1_planets.jpg)
+![](./images/lec1_planets.jpg)
 
 - Fun informative video [The Fingerprint of Stars](https://www.youtube.com/watch?v=uG4xe9cNpP0) 
 
@@ -105,7 +105,7 @@ Notice that as temperature T goes up, two things happen:
 ## What is classical mechanics & thermodynamics perspective on black body radiation?
 
 - What is “temperature”? A measure for kinetic energy per particle associated with translational, rotation, vibrational degrees of freedom. 
-- What is light? Think of an oscillating spring with frequency $\nu $
+- What is light? Think of an oscillating spring with frequency $\nu$
 - Thermodynamics: Heat can only flow from high to low temperature. In equilibrium, each degree of freedom in our case each spring/oscillator gets the same thermal energy $k_B T$.
 
 
@@ -130,25 +130,42 @@ In 1900 Planck found that the theoretical curve can very closely match the the e
 
 
 
-## How Plancks postulate explains black body radiation
+## How Plank's quantization postulate explains black body radiation
 
-Classical mechanics was saying that on average each degree of freedom of oscillator has kT of energy. In Quantum Mechanics, however, that is not the case. Because of quantization of energies on average each degree of freedom has: 
+According to classical mechanics on average each degree of freedom of an oscillator gets $kT$ of thermal energy. 
 
-- At low frequencies we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy KT populates lots of quantum levels with low enough frequencies
+$$\langle E \rangle=kT$$ 
 
+In Quantum Mechanics, however, because energy levels are quantized on average each degree of freedom of oscillator ends up getting: 
 
+$$\langle E \rangle=k_B T\Big[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Big ]$$ 
+
+These expression are obtained by taking averages over energy values of oscillators weighted by Boltzman distribution which governs the thermal equilibrium: 
+
+> - For classical case average is over continuum of energies $$\langle E \rangle = \int  p(x) E(x) dx$$ with $E(x)=kx^2/2$ and $P(E)\sim e^{-E(x)/kT}$ 
+> - For quantum case average is a sum over discrete values $$\langle E \rangle = \sum_n p_n E_n$$ with $E_n=nh\nu$ for quantum oscillators $P(E_n)\sim e^{-E_n/k_B T}$.   
+
+## Extreme quantum and classical limits.
+
+- At very low frequencies we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy $k_BT$ populates lots of quantum levels with low enough frequencies.
+
+$$h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}$$  $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT$$
 
 - At high frequencies we see that the exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:
 
+$$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0$$
 
 
 ## Planck equation and Planck’s constant
 
 
-<div style="background-color: #fefbd8"> $$E= h\nu$$
+<div style="background-color: #fefbd8"> 
+
+$$E= h\nu$$
 
 - Unit of planck constant, $h = 6.63 10^{–34} J s$
-- Unit of frequency $\nu$, $s^{-1}$.</div>
+- Unit of frequency $\nu$, $s^{-1}$.
+</div>
 
 <br>
 Often also writen as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that  discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
@@ -156,14 +173,13 @@ Often also writen as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds
 Note how small h is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous and an arbitrary real value of E is allowed. This is the classical limit.
 
-## Quantization in atomic spectra
+## Quantization in atomic spectra.
 
 Measurements of atomic emission/absorption spectra were another key experimental evidence showing that energy levels of individual atoms are quantized.
 
 ![Atomic Spectrum](./images/lec1_AtomicSpectrum.png)
 
 Notice the existence of discrete frequencies in the spectrum consistent with Planck’s assumption. 
-
 Different colors originate from different frequencies being emitted or absorbed by matter.
 
 

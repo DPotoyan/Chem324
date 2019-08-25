@@ -11,6 +11,8 @@ next_page:
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+
 ## Python crash course for Chem324.
 
 
@@ -19,15 +21,18 @@ The objective of these notes it to provide a quick introduction to python langua
 
 
 
-Since our coverage will necessarily be brief belwo listed you can find some more pointers to excellent resources for learning python.    
+Since our coverage will necessarily be brief belwo listed you can find some more pointers to excellent resources for learning python. Links under 1 are short and very basic. Links under 2 short but smehwat more advanced and Links under 3 are long and comprehensive.    
  
-**1. Tutorials by software carpentry for scientists.**
+**1. Short tutorials by software carpentry for scientists**
    - [Programming Python](http://swcarpentry.github.io/python-novice-inflammation/)
    - [Plotting and programming in Python ](http://swcarpentry.github.io/python-novice-gapminder/)
 
 
 **2. Condensed coverage of scientific applicaitons can be found in the following online notes:**
+   - [Python programming for Scientists](http://wwwstaff.ari.uni-heidelberg.de/mitarbeiter/rschmidt/pycourse/index.html)
    - [Introduction to Python for Computational Science and Engineering](https://fangohr.github.io/introduction-to-python-for-computational-science-and-engineering/)
+   - [Scientific Python lectures by Robert Johanssen](https://nbviewer.jupyter.org/github/jrjohansson/scientific-python-lectures/tree/master/)
+   
     
 
 **3. Finally there are the official Python documentaiton and SciPy tutorials. These provide much more in depth and thorough coverage.**
@@ -66,33 +71,19 @@ Doing computaitons and visualiziations in Jupyter notebook using:
 
 
 
-Python is a high-level, dynamically typed multiparadigm programming language. Python code is often said to be almost like pseudocode, since it allows you to express very powerful ideas in very few lines of code while being very readable. 
+Python is a high-level, dynamically typed multiparadigm programming language. 
 
-
-
-### Python versions
-
-
-
-There are older version of python (Python 2.7) and newer versions (Python 3.6+). We will always use the latest version.
-
-You can check your Python version at the command line by running `python --version`.
-
-
-
-### Basic data types
-
-
-
-#### Numbers
+Python code is often said to be almost like pseudocode, since it allows you to express very powerful ideas in very few lines of code while being very readable. A few examples without explanations are below:
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x = 3
-print(x, type(x))
+menu = ["pizza", "sushi", "taco"] 
+
+for item in menu:
+    print(item)
 
 ```
 </div>
@@ -101,7 +92,118 @@ print(x, type(x))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-3 <class 'int'>
+pizza
+sushi
+taco
+```
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+menu = ["sushi", "123", "taco", "frog"] 
+
+for item in menu:
+    
+    if item == "sushi":                     
+        print("yum!")
+        
+    elif item == "taco":                
+        print("maybe not today")
+        
+    else:
+        print("eww")
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+yum!
+eww
+maybe not today
+eww
+```
+</div>
+</div>
+</div>
+
+
+
+While these are silly exmples for illustration with same simplicity of code you can do fiarly sophisticated calculations.
+
+Do not worry if some of these commands seem unfamiliar we are going to explain them later on. 
+
+
+
+### Python versions
+
+
+
+There are older version of python (Python 2.7) and newer versions (Python 3.7+). We will always use the latest version.
+
+If you have installed python on your computer you can check your Python version at the command line by running `python --version`.
+
+
+
+### Basic data types
+
+Python has a variety of data types for managing different kinds of data. Examples are:
+- numbers.
+- strings.
+- lists. 
+- dictionaries.
+- sets.
+- tupes, etc. 
+
+Some of these are _point types_ such as simple numbers often used for basic arithmetic operations. Others are of _container kind_ which contain sequences of numbers often used as vectors and matrices.  
+
+
+
+## Numbers
+
+
+
+Numbers are an important data type for us which we use to do all sorts of computations. It is imporatnt to know that the numbers in python can be:
+- Integers: -1, -2, 0,
+- Floats: 0.001, 4.56, 3.14
+- Complex numbers: 1.2+2.5j, 2j, 3+1j
+
+Let us begin creating some numeric data and assining variable names:
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = 3    # variable called x
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print(x) # print contents of x
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+3
 ```
 </div>
 </div>
@@ -138,23 +240,39 @@ print(x ** 2)  # Exponentiation;
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x += 1
-print(x)  # Prints "4"
-x *= 2
-print(x)  # Prints "8"
+type(x) # lets find out what kind of number is this
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-4
-8
+int
 ```
+
+
 </div>
 </div>
+</div>
+
+
+
+**Exercise:** change the number type to float and complex number and execute the above cells again
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x,y,z=1,2,5 # mutliple assingmenets can be done with one line!
+
+```
+</div>
+
 </div>
 
 
@@ -162,92 +280,28 @@ print(x)  # Prints "8"
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-y = 2.5
-print(type(y)) # Prints "<type 'float'>"
-print(y, y + 1, y * 2, y ** 2) # Prints "2.5 3.5 5.0 6.25"
+x+y, x*z  # Mutliple opearations can be done with one line also!
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-<class 'float'>
-2.5 3.5 5.0 6.25
+(3, 5)
 ```
+
+
 </div>
 </div>
 </div>
 
 
 
-Note that unlike many languages, Python does not have unary increment (x++) or decrement (x--) operators.
-
-Python also has built-in types for long integers and complex numbers; you can find all of the details in the [documentation](https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex).
-
-
-
-#### Booleans
-
-
-
-Python implements all of the usual operators for Boolean logic, but uses English words rather than symbols (`&&`, `||`, etc.):
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-t, f = True, False
-print(type(t)) # Prints "<type 'bool'>"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-<class 'bool'>
-```
-</div>
-</div>
-</div>
-
-
-
-Now we let's look at the operations:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-print(t and f) # Logical AND;
-print(t or f)  # Logical OR;
-print(not t)   # Logical NOT;
-print(t != f)  # Logical XOR;
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-False
-True
-False
-True
-```
-</div>
-</div>
-</div>
-
-
-
-#### Strings
+## Strings
 
 
 
@@ -294,27 +348,6 @@ hello world
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-hw12 = '%s %s %d' % (hello, world, 12)  # sprintf style string formatting
-print(hw12)  # prints "hello world 12"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-hello world 12
-```
-</div>
-</div>
-</div>
-
-
-
 String objects have a bunch of useful methods; for example:
 
 
@@ -348,10 +381,6 @@ world
 </div>
 </div>
 </div>
-
-
-
-You can find a list of all string methods in the [documentation](https://docs.python.org/2/library/stdtypes.html#string-methods).
 
 
 
@@ -939,8 +968,8 @@ print(e)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[0.15665976 0.28540437]
- [0.84760128 0.48403869]]
+[[0.47091097 0.51705716]
+ [0.00795315 0.14501724]]
 ```
 </div>
 </div>
@@ -1314,7 +1343,7 @@ For brevity we have left out a lot of details about numpy array indexing; if you
 
 
 
-### Datatypes
+### Numpy Datatypes
 
 
 
@@ -1550,7 +1579,8 @@ print(np.dot(x, v))
 # [[19 22]
 #  [43 50]]
 print(x.dot(y)) 
-print(np.dot(x, y)) 
+print("")
+print(x@y) 
 
 ```
 </div>
@@ -1561,6 +1591,7 @@ print(np.dot(x, y))
 ```
 [[19 22]
  [43 50]]
+
 [[19 22]
  [43 50]]
 ```
@@ -2022,7 +2053,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_139_1.png)
+![png](images/python-intro_138_1.png)
 
 </div>
 </div>
@@ -2067,7 +2098,7 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_141_1.png)
+![png](images/python-intro_140_1.png)
 
 </div>
 </div>
@@ -2123,7 +2154,7 @@ Text(0.5,1,'Cosine')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_144_1.png)
+![png](images/python-intro_143_1.png)
 
 </div>
 </div>
