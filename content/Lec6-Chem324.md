@@ -1,11 +1,10 @@
 ---
 title: |
     | Lecture 3.0, Chem-324, Fall2019
-	|
+	| **
     | Solving wave equations. PDEs and ODEs.
 author: 'Davit Potoyan'
 institute: ' Iowa State University, Ames IA 50011'
-toc: false
 
 ---
 

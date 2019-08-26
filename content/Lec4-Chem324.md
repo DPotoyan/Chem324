@@ -1,11 +1,11 @@
 ---
 title: |
     | Lecture 2.0, Chem-324, Fall2019
-	|
+	| ***
     | Waves.
 author: 'Davit Potoyan'
 institute: ' Iowa State University, Ames IA 50011'
-toc: false
+
 ---
 
 ## Outline for Lecture 2.0: 

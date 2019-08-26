@@ -6,8 +6,8 @@ prev_page:
   url: https://github.com/DPotoyan/Chem324
   title: 'GitHub repository'
 next_page:
-  url: /LEC4-Chem324
-  title: '2.0 Waves'
+  url: /LEC1-Chem324
+  title: '1.1 Black Body Radiation.'
 
 
 title: |
@@ -32,7 +32,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 Quantum mechanics is the fundamental theory of nature which describes the  smallest scales and energy levels of atoms and subatomic particles. 
 
 ![](./images/qm.png)
- 
+
  - Quantum theories (including quantum mechanics and quantum field theory) are the most complete theories of our physical reality which have never failed since their discovery!  
 
  - Predictions of quantum mechanics have been verified experimentally to an extremely high degree of accuracy. 

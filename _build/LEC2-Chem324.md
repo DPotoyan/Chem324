@@ -14,7 +14,7 @@ title: |
 
     | Lecture 1.2, Chem-324, Fall2019
 
-	|
+	| ***
 
     | Photoelectric effect and photons.
 
@@ -22,7 +22,7 @@ author: 'Davit Potoyan'
 
 institute: ' Iowa State University, Ames IA 50011'
 
-toc: false
+
 
 
 

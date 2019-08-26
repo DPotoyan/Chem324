@@ -14,15 +14,13 @@ title: |
 
     | Lecture 1.3, Chem-324, Fall2019
 
-	|
+	| ***
 
     | Electron diffraction and wave particle duality.
 
 author: 'Davit Potoyan'
 
 institute: ' Iowa State University, Ames IA 50011'
-
-toc: false
 
 
 

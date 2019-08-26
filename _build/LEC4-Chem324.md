@@ -3,8 +3,8 @@ redirect_from:
   - "/lec4-chem324"
 title: '2.0 Waves'
 prev_page:
-  url: /LEC0-Chem324
-  title: '1.0 Intro to QM thinking.'
+  url: /python-intro
+  title: '1.4 Crash course of Python and interactive plotting.'
 next_page:
   url: /LEC5-Chem324
   title: '2.1 Mathematics of Waves'
@@ -12,7 +12,7 @@ title: |
 
     | Lecture 2.0, Chem-324, Fall2019
 
-	|
+	| ***
 
     | Waves.
 
@@ -20,7 +20,7 @@ author: 'Davit Potoyan'
 
 institute: ' Iowa State University, Ames IA 50011'
 
-toc: false
+
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

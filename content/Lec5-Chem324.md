@@ -1,11 +1,11 @@
 ---
 title: |
     | Lecture 2.1, Chem-324, Fall2019
-	|
+	| ***
     | Solving wave equations. PDEs and ODEs.
 author: 'Davit Potoyan'
 institute: ' Iowa State University, Ames IA 50011'
-toc: false
+
 ---
 
 ## Outline for Lecture 2.1: 
@@ -20,9 +20,8 @@ toc: false
 ![](./images/lec5_guitar.jpg)
 
  <iframe src="https://giphy.com/embed/x988dOESRoCeQ" width="480" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animation-physics-x988dOESRoCeQ">via GIPHY</a></p>
-
 Our objective in the next few pages is to describe motion of guitar string mathematically. That is given arbitrary initial conditions precisely predict the evolution of string in time and space. 
- 
+
 
 ## Solving wave equation by separation of variables. A technique worth remembering!
 
@@ -39,17 +38,17 @@ $$u(0,t)=0 \,\,\,\, | \,\,\,\, u(L,t)=0$$
 $$u(x,t)=X(x)T(t)$$
 
 ## Step one: plug product of univariate functions into wave equation.
- 
+
  $$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$
 
  Plugging $u(x,t)=X(x)T(t)$ in the above wave equation leads to separation of variables into two independent equations:
- 
+
   $$\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial t^2} =\frac{\partial^2 X(x)T(t)}{\partial x^2 }$$
-  
+
   Some rearrangement first
-  
+
   $$\frac{X(x)}{v^2}\frac{\partial^2 T(t)}{\partial t^2} =T(t)\frac{\partial^2 X(x)}{\partial x^2 }$$
-  
+
   And voila, the final product we have two ordinary differential equation (ODEs) as opposed to much harder partial differential equation (PDE). 
 
 $$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K=const$$
