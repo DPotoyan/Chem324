@@ -14,7 +14,7 @@ title: |
 
     | Lecture 1.3, Chem-324, Fall2019
 
-	| ***
+    | ***
 
     | Electron diffraction and wave particle duality.
 
@@ -43,7 +43,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## Diffraction and color. 
 
-Thin films of oil, soap bubbles, butterfly wings, sea shells, CD and DVD, etc. show a rainbow pattern. This is caused by the constructive and destructive interference of light traveling slightly different paths.
+Thin films of oil, soap bubbles, butterfly wings, seashells, CD and DVD, etc. show a rainbow pattern. This is caused by the constructive and destructive interference of light traveling slightly different paths.
 
 An electron can be scattered by different layers of a crystal lattice and interfere constructively or destructively, giving rise to alternating intensity patterns. 
 
@@ -65,7 +65,7 @@ One expect waves like X-rays to show interference patterns according to this for
 
 ## Davisson & Germer show that electrons scatter just like X-rays!
 
-- In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons, and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
+- In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
 ![](./images/lec3_DavisonGermer.png)
 
@@ -73,9 +73,9 @@ One expect waves like X-rays to show interference patterns according to this for
 
 ## Particles can and do behave like waves in appropriate circumstances.  
 
-Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with impressive agreement between experimental predictions and theory. 
+Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
 
-![Another striking wave behavior of electrons emerges in the double slit experiment where electrons all line up as bands on the detector screen after passing throw a double slit wall. We are going to have a more in depth look into this incredible experiment later on.](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+![Another striking wave behavior of electrons emerges in the double-slit experiment where electrons all line up as bands on the detector screen after passing throw a double-slit wall. We are going to have a more in-depth look into this incredible experiment later on.](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
 
 
 
@@ -83,12 +83,12 @@ Observing diffraction patterns and computing wavelength from de Broglie relation
 
 ![](./images/lec3_compton.jpeg)
 
-Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle like objects) it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Not that this experimental result makes sense only if you think of photon as a particle with linear momentum which gets bounced off the electron.
+Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Not that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
 
 
 ## Wave particle duality as universal feature of nature. 
 
-- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions either wave or particle characteristics are more pronounced. 
+- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
 
 - The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
 
@@ -97,10 +97,10 @@ Arthur Compton showed that X-rays get scattered off free electrons like elastic 
 $$\lambda= \frac{h}{p}$$
 
 - h: Plank's constant
-- $p$: momentum of the object (electron, photon, molecule, chair, etc)
+- $p$: the momentum of the object (electron, photon, molecule, chair, etc)
 - $\lambda$: wavelength associated with the object. 
 
-The relation implies that heavy object have small wavelength and light objects have large wavelength. Hence the smaller the object the more pronounced wave-like qualities it will have. And vice versa the bigger the object the more particle like qualities it will have. 
+The relation implies that heavy object has a small wavelength, and light objects have a large wavelength. Hence the smaller the object, the more pronounced wave-like qualities it will have. And vice versa, the bigger the object, the more particle-like qualities it will have. 
 
 ## Summary
 
@@ -108,5 +108,4 @@ The relation implies that heavy object have small wavelength and light objects h
 
 - Wave-like and particle-like characteristics are inversely proportional to each other and are quantified by de Broglie relation: $\lambda=\frac{h}{p}$
 
-- An electron has a wavelength; a photon has a momentum. Welcome to the reality where everything can behave both as wave and a particle!
-
+- An electron has a wavelength; a photon has momentum. Welcome to the reality where everything can behave both as a wave and a particle!
