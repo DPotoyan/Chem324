@@ -33,7 +33,7 @@ This course will make heavy use of Jupyter notebooks for visualization, interact
 * Option-1: You can run Jupyter notebooks in the cloud in your browser. This option requires no installation.
 * Option-2: You can download anaconda3 which contains everything that you need including python3, scientific and plotting libraries of python. Any extra package can be readily installed using anaconda package manager.
 
-* **[Download Anaconda](https://www.anaconda.com/distribution/)** Download Anaconda
+* **[Download Anaconda](https://www.anaconda.com/distribution/)** 
 
 * **[The Jupyter Intro Guide](https://realpython.com/jupyter-notebook-introduction/)** 
 
