@@ -88,9 +88,9 @@ This is not such a trivial question. In fact, this very question arose in connec
 
 ![Black body radiation guide from PhD comics](./images/Black_body_rad.jpg){width=50%}
 
-## Thermodynamically speaking 
+## Thermodynamically speaking.
 
-**A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation.**
+_A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation_
 
  Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature. 
 
@@ -166,8 +166,8 @@ $$\langle E \rangle=k_B T\Big[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Big ]$$
 
 These expression are obtained by taking averages over energy values of oscillators weighted by Boltzman distribution which governs the thermal equilibrium: 
 
-> - For classical case average is over continuum of energies $$\langle E \rangle = \int  p(x) E(x) dx$$ with $E(x)=kx^2/2$ and $P(E)\sim e^{-E(x)/kT}$ 
-> - For quantum case average is a sum over discrete values $$\langle E \rangle = \sum_n p_n E_n$$ with $E_n=nh\nu$ for quantum oscillators $P(E_n)\sim e^{-E_n/k_B T}$.   
+- For classical case average is over continuum of energies $$\langle E \rangle = \int  p(x) E(x) dx$$ with $E(x)=kx^2/2$ and $P(E)\sim e^{-E(x)/kT}$ 
+- For quantum case average is a sum over discrete values $$\langle E \rangle = \sum_n p_n E_n$$ with $E_n=nh\nu$ for quantum oscillators $P(E_n)\sim e^{-E_n/k_B T}$.   
 
 ---
 
