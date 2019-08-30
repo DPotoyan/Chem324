@@ -2,17 +2,15 @@
 interact_link: content/python-intro.ipynb
 kernel_name: python3
 has_widgets: false
-title: '1.3 Crash course of Python and interactive plotting.'
+title: '1.4 Crash course of Python and interactive plotting.'
 prev_page:
   url: /LEC3-Chem324
-  title: '1.2 Wave particle duality'
+  title: '1.3 Wave particle duality'
 next_page:
   url: /LEC4-Chem324
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 ## Python crash course for Chem324.
 
 
@@ -214,6 +212,30 @@ print(x) # print contents of x
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
+x        # Works the same for single line but for multiple lines you need print. See below
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+3
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 print(x + 1)   # Addition;
 print(x - 1)   # Subtraction;
 print(x * 2)   # Multiplication;
@@ -261,6 +283,30 @@ int
 
 
 
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+id(x) # Show the adress of the variable in memory of computer
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+4332385680
+```
+
+
+</div>
+</div>
+</div>
+
+
+
 **Exercise:** change the number type to float and complex number and execute the above cells again
 
 
@@ -292,6 +338,84 @@ x+y, x*z  # Mutliple opearations can be done with one line also!
 {:.output_data_text}
 ```
 (3, 5)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+#### Complex numberes handled just as easily
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z1=10+2j
+z2=3-1j
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# extract real imaginery parts, conjugate
+z1.real, z1.imag, z1.conjugate()
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(10.0, 2.0, (10-2j))
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z1_abs = z1 * z1.conjugate()
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z1_abs**0.5
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(10.198039027185569+0j)
 ```
 
 
@@ -396,7 +520,7 @@ Python includes several built-in container types: lists, dictionaries, sets, and
 
 
 
-A list is the Python equivalent of an array, but is resizeable and can contain elements of different types:
+A list is a generic container for holding any python type be it a string, numbers other lists or a mix of everything. 
 
 
 
@@ -501,7 +625,7 @@ In addition to accessing list elements one at a time, Python provides concise sy
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-nums = range(0,5,1)    # xrange(i,j,k) is a built-in function that creates a list of integers from i to j with a stride k
+nums = range(0,5,1) # xrange(i,j,k) is a built-in function that creates a list of integers from i to j with a stride k
 nums=list(nums)     # make a list
 print(nums)         # Prints "[0, 1, 2, 3, 4]"
 print(nums[2:4])    # Get a slice from index 2 to 4 (exclusive); prints "[2, 3]"
@@ -565,34 +689,6 @@ monkey
 
 
 
-If you want access to the index of each element within the body of a loop, use the built-in `enumerate` function:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-animals = ['cat', 'dog', 'monkey']
-for idx, animal in enumerate(animals):
-    print('#%d: %s' % (idx + 1, animal))
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-#1: cat
-#2: dog
-#3: monkey
-```
-</div>
-</div>
-</div>
-
-
-
 #### List comprehensions:
 
 
@@ -629,7 +725,7 @@ squares
 
 
 
-You can make this code simpler using a list comprehension:
+You can make this code simpler using a special trick of lists called list comprehension:
 
 
 
@@ -637,7 +733,7 @@ You can make this code simpler using a list comprehension:
 <div class="input_area" markdown="1">
 ```python
 nums = [0, 1, 2, 3, 4]
-squares = [x ** 2 for x in nums]
+squares = [x ** 2 for x in nums]  # This is a list comprehension
 squares
 
 ```
@@ -708,6 +804,16 @@ def sign(x):
     else:
         return 'zero'
 
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 for x in [-1, 0, 1]:
     print(sign(x))
 
@@ -728,32 +834,37 @@ positive
 
 
 
-We will often define functions to take optional keyword arguments, like this:
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+def sq_func(x):
+    return x**2
+
+```
+</div>
+
+</div>
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-def hello(name, loud=False):
-    if loud:
-        print('HELLO, %s' % name.upper())
-    else:
-        print('Hello, %s!' % name) 
-
-hello('Bob')
-hello('Fred', loud=True)
+sq_func(4.0)
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-Hello, Bob!
-HELLO, FRED
+16.0
 ```
+
+
 </div>
 </div>
 </div>
@@ -764,23 +875,11 @@ HELLO, FRED
 
 
 
-Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays. If you are already familiar with MATLAB, you might find this [tutorial](http://wiki.scipy.org/NumPy_for_Matlab_Users) useful to get started with Numpy.
+Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays. 
 
 
 
 To use Numpy, we first need to import the `numpy` package:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-import numpy as np
-
-```
-</div>
-
-</div>
 
 
 
@@ -799,7 +898,18 @@ We can initialize numpy arrays from nested Python lists, and access elements usi
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-a = np.array([1, 2, 3])  # Create a rank 1 array
+a = np.array([1, 2, 3])  # Create 1D array
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 print(type(a), a.shape, a[0], a[1], a[2]) 
 a[0] = 5                 # Change an element of the array
 print(a)                   
@@ -1343,42 +1453,6 @@ For brevity we have left out a lot of details about numpy array indexing; if you
 
 
 
-### Numpy Datatypes
-
-
-
-Every numpy array is a grid of elements of the same type. Numpy provides a large set of numeric datatypes that you can use to construct arrays. Numpy tries to guess a datatype when you create an array, but functions that construct arrays usually also include an optional argument to explicitly specify the datatype. Here is an example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-x = np.array([1, 2])  # Let numpy choose the datatype
-y = np.array([1.0, 2.0])  # Let numpy choose the datatype
-z = np.array([1, 2], dtype=np.int64)  # Force a particular datatype
-
-print(x.dtype, y.dtype, z.dtype) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-int64 float64 int64
-```
-</div>
-</div>
-</div>
-
-
-
-You can read all about numpy datatypes in the [documentation](http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html).
-
-
-
 ### Array math
 
 
@@ -1393,9 +1467,18 @@ Basic mathematical functions operate elementwise on arrays, and are available bo
 x = np.array([[1,2],[3,4]], dtype=np.float64)
 y = np.array([[5,6],[7,8]], dtype=np.float64)
 
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 # Elementwise sum; both produce the array
 print(x + y) 
-print(np.add(x, y)) 
 
 ```
 </div>
@@ -1404,8 +1487,6 @@ print(np.add(x, y))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[ 6.  8.]
- [10. 12.]]
 [[ 6.  8.]
  [10. 12.]]
 ```
@@ -2053,7 +2134,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_138_1.png)
+![png](images/python-intro_141_1.png)
 
 </div>
 </div>
@@ -2098,7 +2179,7 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_140_1.png)
+![png](images/python-intro_143_1.png)
 
 </div>
 </div>
@@ -2154,7 +2235,7 @@ Text(0.5,1,'Cosine')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_143_1.png)
+![png](images/python-intro_146_1.png)
 
 </div>
 </div>
