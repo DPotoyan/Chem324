@@ -129,17 +129,17 @@ As temperature T goes up we notice three things:
 
 ![](./images/lec1_UVcat.jpg){width=50%}
 
-Classical mechanics leads to the Rayleigh-Jeans law (dashed curve) which only in low frequency region. 
+Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region. 
 
 ---
 
-The classical reasoning about black body radiation profiles is derived by the following natural line of reasoning:
+The classical reasoning  about black body radiation is following:
 
-- Number of waves fitting inside an idealized cubic shaped black body is: $\nu$ is $\nu^2$  E.g can fit more of short wavelengths or compressed springs than long and loose ones. 
+- Number of waves fitting inside an idealized cubic black body is $N_{\nu }=\nu^3$.  For small frequency region  $d\nu$ there would be $dN=3\nu^2 d\nu$ waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequeny ones. 
 
- - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is **$$I \sim k_B T \nu^2$$**. Intensity increases to infinity at high $\nu$ (or low $\lambda$). 
+ - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is **$$I \sim k_B T \nu^2$$**. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
-This is known as the ultraviolet catastrophe!
+
 
 
 
@@ -197,7 +197,7 @@ $$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  $$\langle E \rangle=k_B 
 
 ## Quantization of atomic spectra.
 
-![](./images/lec1_AtomicSpectrum.png)
+![](./images/lec1_AtomicSpectrum.png){width=80%}
 
 ---
 
