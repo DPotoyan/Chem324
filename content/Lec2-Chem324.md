@@ -66,14 +66,6 @@ $$(E_{photon}-E_{photon})=KE$$
 
 - If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
 
----
-
-::: {.block}
-### Test
-$$(E_{photon}-E_{photon})=KE$$
-:::
-
-outside
 
 
 
