@@ -23,6 +23,7 @@ institute: ' Iowa State University, Ames IA 50011'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
+
 ## Outline for Lecture 1.2: 
 
 ![](./images/lec2_intro.png){width=40%}
@@ -72,28 +73,23 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - Furthermore, the kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity.  
 
+
 ---
 
 - The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
 
-<div style="background-color: #fefbd8">
 $$(E_{photon}-E_{photon})=KE$$
-</div>
 
 - If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
 
-
-
 ---
 
+::: {.block}
+### Test
+$$(E_{photon}-E_{photon})=KE$$
+:::
 
-<img src="./images/lec2_KE.png" alt="My caption text" title="fig:" />
-
-
-
-
-
-
+outside
 
 
 

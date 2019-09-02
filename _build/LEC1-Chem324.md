@@ -141,8 +141,6 @@ The classical reasoning  about black body radiation is following:
 
 
 
-
-
 ## Max Planck finds the right explanation for black body radiation 
 
 In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
@@ -158,10 +156,11 @@ In 1900 Planck found that the theoretical curve can very closely match the exper
 
 $$E= h\nu$$
 
+</div>
 - Unit of planck constant, $h = 6.63 10^{–34} J s$
 
 - Unit of frequency $\nu$, $s^{-1}$.
-  </div>
+  
 Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
 
 Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
