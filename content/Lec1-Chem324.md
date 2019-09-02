@@ -143,10 +143,9 @@ In 1900 Planck found that the theoretical curve can very closely match the exper
 $$E= h\nu$$
 
 - Unit of planck constant, $h = 6.63 10^{–34} J s$
+
 - Unit of frequency $\nu$, $s^{-1}$.
   </div>
-
-<br>
 Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
 
 Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.

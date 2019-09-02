@@ -8,8 +8,6 @@ prev_page:
 next_page:
   url: /LEC3-Chem324
   title: '1.3 Wave particle duality'
-
-
 title: |
 
     | Lecture 1.2, Chem-324, Fall2019
@@ -22,42 +20,42 @@ author: 'Davit Potoyan'
 
 institute: ' Iowa State University, Ames IA 50011'
 
-
-
-
-
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 ## Outline for Lecture 1.2: 
 
-**Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.**
+![](./images/lec2_intro.png){width=40%}
 
-![](./images/lec2_intro.png)
+**Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.**
 
 **Only by abandoning classical thinking and accepting the reality of quantized energy reconciles experiments with theory.**
 
-## Photoelectric effect and why it contradicts classical mechanics.
+## Photoelectric effect contradicts classical mechanics.
 
-- Previously we saw that in trying to reconcile experiment with theory Planck had to assume that blackbody absorbs and emits right with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$. It was thought to be nothing more than a neat mathematical trick that fixes theory. 
+- To reconcile experiment with theory Planck had to assume that a heated material absorbs and emits light with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$.  At a time this discreteness was thought to be nothing more than a temporary mathematical trick to fix theory. 
 
-- Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles some discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
+- Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
 
-- Eventually, it became clear that not only light can show particle-like behavior, but particles too can show wave-like behavior! This was demonstrated in the electron diffraction experiments. This universal duality of particles and waves is captured by De Broglie relation, which is one of the central equations of quantum mechanics. About this in the next lecture.  
+-  Thus experiments showed that energies of both matter and light are quantized!
 
 
 
 ## Photoelectric effect
 
+![](./images/lect2_Eflying.png)
+
 When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interest with the matter.
 
-![](./images/lec2_applic.jpg)
+
+## Applications of photoelectric effect
 
 Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. 
 
+![](./images/lec2_applic.jpg){width=40%}
 
 
-## Photoelectric effect challenges classical mechanics
+## Failure of classical way of thinking about light. 
 
 Early experiments of photoelectric effect appeared truly puzzling to scientists of the 20th century for the following reasons:
 
@@ -66,31 +64,27 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - That was not at all what experiments showed. Unless radiation had a frequency above a certain threshold $\nu_0$ not a single electron would escape regardless of the intensity of radiation. That was really weird. 
 
-![](./images/lect2_Eflying.png)
 
+---
 
+![](./images/lec2_KE.png){width=90%}
 
-## Energy is quantized! Any classical resistance is futile.
+- In striking contradicton with classical mechanics electrons  get ejected immediately once the frequency threshold is crossed even if the intensity of the radiation is minimal. 
 
-![](./images/lec2_KE.png)
+- Furthermore, the kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity.  
 
-- What buries CM completely and implies quantization of energy is the fact that electrons would get ejected immediately once the frequency threshold is crossed even if the intensity of radiation ia minimal. 
+--- 
 
-- Furthermore, the kinetic energy of an ejected electron was observed to be a linearly increasing function of the frequency of light with no dependence on the intensity.  
+- The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
 
-- The photoelectric effect becomes clear when we think of light consisting of packets of energy with particle-like qualities called photons. Once one photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal.
-
-
-## Understanding photoelectric part.
-
-Electrons are bound in metals and to eject them some energy needs to be supplied by a photon: $E_{photon}$.
-But this energy has to exceed $h\nu_0$, the energy difference between free and bound states.  
-![](./images/lec2_KE.png)
 <div style="background-color: #fefbd8">
 $$(E_{photon}-E_{photon})=KE$$
 </div>
 
-If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
+- If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
+
+
+
 
 
 
