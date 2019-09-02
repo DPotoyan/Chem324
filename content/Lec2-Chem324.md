@@ -48,7 +48,6 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - That was not at all what experiments showed. Unless radiation had a frequency above a certain threshold $\nu_0$ not a single electron would escape regardless of the intensity of radiation. That was really weird. 
 
-
 ---
 
 ![](./images/lec2_KE.png){width=90%}
@@ -57,7 +56,7 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - Furthermore, the kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity.  
 
---- 
+---
 
 - The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
 
@@ -69,10 +68,16 @@ $$(E_{photon}-E_{photon})=KE$$
 
 
 
+---
+
+
+<img src="./images/lec2_KE.png" alt="My caption text" title="fig:" />
 
 
 
- 
+
+
+
 
 
 

@@ -89,4 +89,12 @@ Well if the above-given reasons were not enough for you... let me sweeten the de
 
 ![](./images/qm_meme.jpeg)
 
+---
 
+## Test
+::: {.block}
+### New equation
+$$A=\pi x^2 $$
+:::
+
+test test
