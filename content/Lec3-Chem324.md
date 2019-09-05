@@ -1,24 +1,22 @@
 ---
-
 title: |
     | Lecture 1.3, Chem-324, Fall2019
     | ***
-    | Electron diffraction and wave particle duality.
+    | Electron diffraction and wave-particle duality.
 author: 'Davit Potoyan'
 institute: ' Iowa State University, Ames IA 50011'
-
 ---
 
 ## Outline for Lecture 1.3: 
 
 - **A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics.**
-- **Compton scattering, electron diffraction show that concepts of particle and wave are mutually not exclusive and characteristics of all objects!**
+- **Compton scattering, electron diffraction show that concepts of particle and wave are mutually not exclusive and apply to all matter!**
 
 
 
 ## Electron diffraction
 
-- Davisson and Germer at Bell Labs showed that electrons exhibit diffraction, a phenomenon characteristic of a wave.
+- Davisson and Germer at Bell Labs showed that electrons exhibit diffraction. Diffraction was previously thought to be classical wave pheonomena
 
 - Electron diffraction and neutron diffraction are widely used experimental techniques today, complementing X-ray diffraction.
 
@@ -43,27 +41,27 @@ One expect waves like X-rays to show interference patterns according to this for
 
 ## Both X-rays and electrons show same diffraction patterns. 
 
-![Typical diffraction patterns observed when scattering either electrons or X-rays!](./images/lec3_Xscatter2.png)
+![Typical diffraction patterns observed when scattering either electrons or X-rays!](./images/lec3_Xscatter2.png){width=90%}
 
-## Davisson & Germer show that electrons scatter just like X-rays!
+## Davisson & Germer show: electron's  scatter like waves.
 
 - In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons and could be interpreted by the Bragg law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
-![](./images/lec3_DavisonGermer.png)
+![](./images/lec3_DavisonGermer.png){width=90%}
 
 
 
-## Particles can and do behave like waves in appropriate circumstances.  
+## Particles can behave like waves in appropriate circumstances.  
 
 Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
 
-![Another striking wave behavior of electrons emerges in the double-slit experiment where electrons all line up as bands on the detector screen after passing throw a double-slit wall. We are going to have a more in-depth look into this incredible experiment later on.](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+![Another striking wave behavior of electrons emerges in the double-slit experiment where electrons all line up as bands on the detector screen after passing throw a double-slit wall. We are going to have a more in-depth look into this incredible experiment later on.](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif){width=70%}
 
 
 
 ## Compton scattering
 
-![](./images/lec3_compton.jpeg)
+![](./images/lec3_compton.jpeg){width=50%}
 
 Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Not that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
 
