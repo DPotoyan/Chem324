@@ -54,7 +54,7 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 - Think of frequency as a 
   distance traveled in 1 second (hz). 
 
-- Speed of light in vacuum, c is a constant (3 10^6 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
+- Speed of light in vacuum, c is a constant (3 10^8 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
 
 
 
