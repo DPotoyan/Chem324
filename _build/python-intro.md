@@ -261,9 +261,9 @@ Some of these are _point types_ such as simple numbers often used for basic arit
 
 
 Numbers are an important data type for us which we use to do all sorts of computations. It is important to know that the numbers in Python can be:
-- Integers: -2, -1, 0, 1, 2
-- Floats: -0.001, 4.56, 3.14
-- Complex numbers: 1.2+2.5j, 2j, 3+1j
+- **Integers:** -2, -1, 0, 1, 2
+- **Floats:** -0.001, 4.56, 3.14
+- **Complex numbers:** 1.2+2.5j, 2j, 3+1j
 
 Let us begin creating some numeric data and assigning variable names:
 
@@ -502,6 +502,149 @@ z1_abs**0.5
 
 
 
+## Booleans
+
+
+
+Booleans are key type in any computer language they allow determining true or false statements and constructing logical set of operations
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x=True
+y=False
+z=True
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x==z  # ==, !=, >, < comparison operators and return True or False.
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+True
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y=2.3
+y>2
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+True
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y<2
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+False
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y==2.3
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+True
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y!=-234
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+True
+```
+
+
+</div>
+</div>
+</div>
+
+
+
 ## Strings
 
 
@@ -585,15 +728,15 @@ world
 
 
 
-### Containers
+## Containers
 
 
 
-Python includes several built-in container types: lists, dictionaries, sets, and tuples.
+Python includes several built-in container types: **lists, dictionaries, sets, and tuples.** Lists will be the most useful for our objectives in this course so we only cover lists.
 
 
 
-#### Lists
+### Lists
 
 
 
@@ -693,7 +836,7 @@ As usual, you can find all the gory details about lists in the [documentation](h
 
 
 
-#### Slicing
+### Slicing
 
 
 
@@ -736,7 +879,7 @@ print(nums)         # Prints "[0, 1, 8, 9, 4]"
 
 
 
-#### Loops
+### Loops
 
 
 
@@ -768,7 +911,7 @@ monkey
 
 
 
-#### List comprehensions:
+### List comprehensions:
 
 
 
@@ -2225,7 +2368,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_150_1.png)
+![png](images/python-intro_158_1.png)
 
 </div>
 </div>
@@ -2272,7 +2415,7 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_152_1.png)
+![png](images/python-intro_160_1.png)
 
 </div>
 </div>
