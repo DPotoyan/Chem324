@@ -40,8 +40,8 @@ $$
 \bar z = r e^{-i \theta} = r (\cos{\theta} - i \sin{\theta} )
 $$
 
-The value $ x $ is the **real** part of $ z $ and $ y $ is the
-**imaginary** part of $ z $.
+The value $x$ is the **real** part of $z$ and $y$ is the
+**imaginary** part of $z$.
 
 The symbol $ | z | $ = $ \bar z z = r $ represents the **modulus** of $ z $.
 
