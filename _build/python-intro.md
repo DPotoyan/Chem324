@@ -533,7 +533,7 @@ z=True
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x==z  # ==, !=, >, < comparison operators and return True or False.
+x==z  # == (equals), != (not equal), > (greater than), < (less than) comparison operators and return True or False.
 
 ```
 </div>
@@ -1019,6 +1019,118 @@ even_squares
 ```
 
 
+</div>
+</div>
+</div>
+
+
+
+## The if statement
+
+The `if statement` allows you to execute a block of code optionally, if
+certain conditions are met. This is called *conditional execution*. To
+write an `if statement` in Python, begin the first line with the word
+`if`. Following the word `if`, an expression which evaluates to True or
+False must be put in parentheses (), called the *conditional statement*.
+This can be a conditional expression, an expression involving boolean
+operators, or anything else that evaluates to True or False. End this
+first line with a colon. Follow the first line with the code block you
+want executed if your expression evaluates to True. This code block must
+be indented from the first line of the if statement.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = 9
+
+if( x + 3 > 11):
+    print("I entered the conditional block!")
+    print("I am also part of the conditional block.")
+    
+print('''Since I am not indented, I am not in the 
+    conditional block and execute every time.''')
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+I entered the conditional block!
+I am also part of the conditional block.
+Since I am not indented, I am not in the 
+    conditional block and execute every time.
+```
+</div>
+</div>
+</div>
+
+
+
+An if statement can also be extended with a default block of code that
+will be executed if none of the conditions of the if statement are met.
+This optional, default code block is an `else statement`, which must
+come after an `if statement`. Change the value of x below to see
+what happens as the conditional statement changes from True to False.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = 9
+
+if( x == 9):
+    print("x equals 9")
+else:
+    print("x does not equal 9")
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+x equals 9
+```
+</div>
+</div>
+</div>
+
+
+
+There is one more extension to the `if statement`. Each if statement can be followed by zero or more `elif statements`. “elif” stands for “else-if”, and these are used to chain together `if statements` with different conditions. Each `elif` line must have a
+conditional statement after the `elif`, followed by a colon to end the line, just like for an `if statement`. Again, change x to trigger the different conditions below.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = 9
+
+if( x == 9):
+    print("x equals 9")
+elif(x < 9):
+    print("x is less than 9")
+elif(x > 9 and x < 20):
+    print("x is between 9 and 20")
+else:
+    print("x is greater than 20")
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+x equals 9
+```
 </div>
 </div>
 </div>
@@ -2394,7 +2506,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_165_1.png)
+![png](images/python-intro_171_1.png)
 
 </div>
 </div>
@@ -2443,7 +2555,7 @@ ax.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_167_1.png)
+![png](images/python-intro_173_1.png)
 
 </div>
 </div>

@@ -22,65 +22,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-x=np.linspace(-10,10,100)
-y=np.linspace(-10,10,100)
-plt.plot(x,x**2+1,'--o')
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-{:.output_png}
-![png](images/AppendixA_complex_numbers_2_0.png)
-
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-X,Y=np.meshgrid(x,y)
-Z=X+1j*Y
-func=Z**2+1
-
-plt.contour(X,Y,Z)
-plt.colorbar()
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-<matplotlib.colorbar.Colorbar at 0x126c3c400>
-```
-
-
-</div>
-</div>
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-{:.output_png}
-![png](images/AppendixA_complex_numbers_3_1.png)
-
-</div>
-</div>
-</div>
-
-
-
 ### Complex Numbers
 
 A complex number has a **real part** $ x $ and a purely **imaginary part** $ y $.
@@ -184,7 +125,7 @@ plt.grid('on')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_7_0.png)
+![png](images/AppendixA_complex_numbers_5_0.png)
 
 </div>
 </div>
@@ -237,7 +178,7 @@ ax.plot(θ,r, 'o', ms=10)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_9_1.png)
+![png](images/AppendixA_complex_numbers_7_1.png)
 
 </div>
 </div>
@@ -292,7 +233,7 @@ ax.grid('--')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_11_0.png)
+![png](images/AppendixA_complex_numbers_9_0.png)
 
 </div>
 </div>
