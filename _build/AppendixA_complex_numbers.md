@@ -150,24 +150,96 @@ $ z = 1 + \sqrt{3} i $.
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Abbreviate useful values and functions
-π = np.pi
+# Set parameters
+r = 2                        # multiply by *np.ones(10)
+θ = np.pi/3 # multiplying by *np.random.rand(10)
 
+
+# Plot
+  fig = plt.figure(figsize=(8, 8))
+ax = plt.subplot(projection='polar')
+
+ax.plot(θ,r, 'o', ms=10)             
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_traceback_line}
+```
+
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    <ipython-input-102-253b3e6a3f55> in <module>
+          5 
+          6 # Plot
+    ----> 7 fig, ax = plt.subplots(projection='polar')
+          8 
+          9 
+
+
+    /anaconda/lib/python3.6/site-packages/matplotlib/pyplot.py in subplots(nrows, ncols, sharex, sharey, squeeze, subplot_kw, gridspec_kw, **fig_kw)
+       1207 
+       1208     """
+    -> 1209     fig = figure(**fig_kw)
+       1210     axs = fig.subplots(nrows=nrows, ncols=ncols, sharex=sharex, sharey=sharey,
+       1211                        squeeze=squeeze, subplot_kw=subplot_kw,
+
+
+    /anaconda/lib/python3.6/site-packages/matplotlib/pyplot.py in figure(num, figsize, dpi, facecolor, edgecolor, frameon, FigureClass, clear, **kwargs)
+        543                                         frameon=frameon,
+        544                                         FigureClass=FigureClass,
+    --> 545                                         **kwargs)
+        546 
+        547         if figLabel:
+
+
+    /anaconda/lib/python3.6/site-packages/matplotlib/backend_bases.py in new_figure_manager(cls, num, *args, **kwargs)
+       3249         from matplotlib.figure import Figure
+       3250         fig_cls = kwargs.pop('FigureClass', Figure)
+    -> 3251         fig = fig_cls(*args, **kwargs)
+       3252         return cls.new_figure_manager_given_figure(num, fig)
+       3253 
+
+
+    TypeError: __init__() got an unexpected keyword argument 'projection'
+
+
+```
+</div>
+</div>
+</div>
+
+
+
+With a few more options we can annote the plot and connect with cartesian representation.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 # Set parameters
 r = 2
-θ = π/3
+θ = np.pi/3
 x = r * np.cos(θ)
-x_range = np.linspace(0, x, 1000)
-θ_range = np.linspace(0, θ, 1000)
 
 # Plot
 fig = plt.figure(figsize=(8, 8))
 ax = plt.subplot(111, projection='polar')
 
-ax.plot((0, θ), (0, r), marker='o', color='b')             # plot r
+ax.plot((0, θ),(0, r), '--o', color='red',ms=10)             # plot r
 
-ax.plot(np.zeros(x_range.shape), x_range, color='b')       # plot x
-ax.plot(θ_range, x / np.cos(θ_range), color='b')           # plot y
+
+### Plot lines and annotate
+x_range = np.linspace(0, x, 1000)
+θ_range = np.linspace(0, θ, 1000)
+
+ax.plot(np.zeros(x_range.shape), x_range, color='green')       # plot x
+ax.plot(θ_range, x / np.cos(θ_range), color='blue')           # plot y
 ax.plot(θ_range, np.ones(θ_range.shape) * 0.1, color='r')  # plot θ
 
 ax.set_title("Trigonometry of complex numbers", va='bottom', fontsize='x-large')
@@ -190,7 +262,7 @@ ax.grid('--')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_7_0.png)
+![png](images/AppendixA_complex_numbers_9_0.png)
 
 </div>
 </div>
