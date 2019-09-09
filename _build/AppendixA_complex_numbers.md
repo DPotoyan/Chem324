@@ -19,6 +19,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
+**Reccomended:** Watch the  following YouTube video 
+["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
+
+
+
 ### Complex Numbers
 
 A complex number has a **real part** $ x $ and a purely **imaginary part** $ y $.
@@ -122,7 +127,7 @@ plt.grid('on')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_4_0.png)
+![png](images/AppendixA_complex_numbers_5_0.png)
 
 </div>
 </div>
@@ -185,7 +190,7 @@ ax.grid('--')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_6_0.png)
+![png](images/AppendixA_complex_numbers_7_0.png)
 
 </div>
 </div>
