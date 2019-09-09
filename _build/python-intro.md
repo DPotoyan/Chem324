@@ -17,12 +17,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-The objective of these notes it to provide a quick introduction to python language. No background in programming or previous knolwedge of python is assumed. These notes will only cover the bare essentials of python which will be used throughout the course. 
+The objective of these notes it to provide a quick introduction to Python language. No background in programming or previous knolwedge of Python is assumed. These notes will only cover the bare essentials of Python which will be used throughout the course. <br>
+Since our coverage will necessarily be brief, you can find some more pointers to excellent resources for learning Python listed below. Links under 1 are short and very basic. Links under 2 short but somewhat more advanced and Links under 3 are long and comprehensive. 
 
 
 
-Since our coverage will necessarily be brief belwo listed you can find some more pointers to excellent resources for learning python. Links under 1 are short and very basic. Links under 2 short but smehwat more advanced and Links under 3 are long and comprehensive.    
- 
 **1. Short tutorials by software carpentry for scientists**
    - [Programming Python](http://swcarpentry.github.io/python-novice-inflammation/)
    - [Plotting and programming in Python ](http://swcarpentry.github.io/python-novice-gapminder/)
@@ -47,19 +46,21 @@ Since our coverage will necessarily be brief belwo listed you can find some more
 
 Python is a fantastic general-purpose programming language on its own, but with the help of a few popular libraries (numpy, scipy, matplotlib) it becomes a powerful environment for scientific computing.
 
-You may already know some python and that's great!; for the rest of you, this section will serve as a quick crash course both on the Python programming language and on the use of Python for scientific computing.
+You may already know some Python and that's great! For the rest of you, this section will serve as a quick crash course both on the Python programming language and on the use of Python for scientific computing. 
 
 
 
-In this tutorial, we will cover:
+## Material covered in this tutorial:
 
-Basics of Python3 language:
+
+
+Basics of python language:
 
 - **Data types: numbers, booleans, strings, lists**
 - **Functions**
 - **Control flow**
 
-Doing computaitons and visualiziations in Jupyter notebook using:
+Interactive computing with Jupyter and scientific libraries. 
 
 - **Numpy arrays**
 - **Scipy functions**
@@ -71,7 +72,7 @@ Doing computaitons and visualiziations in Jupyter notebook using:
 
 
 
-Python is a high-level, dynamically typed multiparadigm programming language. 
+Python is a high-level, dynamically-typed, multiparadigm programming language. 
 
 Python code is often said to be almost like pseudocode, since it allows you to express very powerful ideas in very few lines of code while being very readable. A few examples without explanations are below:
 
@@ -136,9 +137,7 @@ eww
 
 
 
-While these are silly exmples for illustration with same simplicity of code you can do fiarly sophisticated calculations.
-
-Do not worry if some of these commands seem unfamiliar we are going to explain them later on. 
+While these are silly examples for illustration, with the same simplicity of code you can do fairly sophisticated calculations. Do not worry if some of these commands seem unfamiliar, we are going to explain them later on. 
 
 
 
@@ -146,21 +145,112 @@ Do not worry if some of these commands seem unfamiliar we are going to explain t
 
 
 
-There are older version of python (Python 2.7) and newer versions (Python 3.7+). We will always use the latest version.
+There are older version of Python (Python 2.7) and newer versions (Python 3.7+). We will always use the latest version. If you have installed Python on your computer you can check your Python version at the command line by running `python --version`.
 
-If you have installed python on your computer you can check your Python version at the command line by running `python --version`.
+
+
+### Comments
+A “comment” is a part of code that is not run. It is a way to
+write notes about what your code is doing at certain points. This is helpful
+when you, or someone else, looks at the code later, so they know what it is
+doing. To make a comment in Python, precede the comment with a #.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Comments can be on their own line like this
+print("Hello")
+
+print("World") # A comment can also be at the end of a line
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+Hello
+World
+```
+</div>
+</div>
+</div>
+
+
+
+### Whitespace
+In programming, white space refers to all of the space in your document that is not filled with code.  Examples of whitespace are spaces, tabs (indents), and newlines (when you press enter and go to the next line). Python is very particular about white space and how you use it, specifically the use of indentations and newlines.
+- **Newlines:** Python uses newline characters to separate logical lines of code. A logical line of code consists of a "command" in code. It is considered good Python style, or _Pythonic_ , to separate logical lines with newlines, although other methods exist.
+- **Indentation:** Tab characters, or indentation, are used to indicate code blocks in Python. These will be seen later in the tutorial with for loops, while loops, if statements, and other structures. For now, the take-home message is to follow the indentation pattern of the example and avoid unnecessary indentation.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print("Hello") # This is a logical line that assigns the value 16 to x
+print("World") # This is another logical line, on the next line, that prints the value of x
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+Hello
+World
+```
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print("Hello")     # This line is not indented, so it is fine
+    print("World") # Unnecessary indentation, this code will not work
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_traceback_line}
+```
+
+      File "<ipython-input-2-3c37af9014f9>", line 2
+        print("World") # Unnecessary indentation, this code will not work
+        ^
+    IndentationError: unexpected indent
+
+
+
+```
+</div>
+</div>
+</div>
+
+
+
+**Exercise:** Remove unnecessary indentation in the broken code above and execute it again.
 
 
 
 ### Basic data types
 
 Python has a variety of data types for managing different kinds of data. Examples are:
-- numbers.
-- strings.
-- lists. 
-- dictionaries.
-- sets.
-- tupes, etc. 
+- numbers
+- strings
+- lists
+- dictionaries
+- sets
+- tuples 
 
 Some of these are _point types_ such as simple numbers often used for basic arithmetic operations. Others are of _container kind_ which contain sequences of numbers often used as vectors and matrices.  
 
@@ -170,12 +260,12 @@ Some of these are _point types_ such as simple numbers often used for basic arit
 
 
 
-Numbers are an important data type for us which we use to do all sorts of computations. It is imporatnt to know that the numbers in python can be:
-- Integers: -1, -2, 0,
-- Floats: 0.001, 4.56, 3.14
+Numbers are an important data type for us which we use to do all sorts of computations. It is important to know that the numbers in Python can be:
+- Integers: -2, -1, 0, 1, 2
+- Floats: -0.001, 4.56, 3.14
 - Complex numbers: 1.2+2.5j, 2j, 3+1j
 
-Let us begin creating some numeric data and assining variable names:
+Let us begin creating some numeric data and assigning variable names:
 
 
 
@@ -238,10 +328,10 @@ x        # Works the same for single line but for multiple lines you need print.
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print(x + 1)   # Addition;
-print(x - 1)   # Subtraction;
-print(x * 2)   # Multiplication;
-print(x ** 2)  # Exponentiation;
+print(x + 1)   # Addition
+print(x - 1)   # Subtraction
+print(x * 2)   # Multiplication
+print(x ** 2)  # Exponentiation
 
 ```
 </div>
@@ -264,7 +354,7 @@ print(x ** 2)  # Exponentiation;
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-type(x) # lets find out what kind of number is this
+type(x) # let's find out what kind of number is this
 
 ```
 </div>
@@ -285,30 +375,6 @@ int
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-id(x) # Show the adress of the variable in memory of computer
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-4332385680
-```
-
-
-</div>
-</div>
-</div>
-
-
-
 **Exercise:** change the number type to float and complex number and execute the above cells again
 
 
@@ -316,7 +382,7 @@ id(x) # Show the adress of the variable in memory of computer
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x,y,z=1,2,5 # mutliple assingmenets can be done with one line!
+x, y, z = 1, 2, 5 # multiple assignments can be done with one line!
 
 ```
 </div>
@@ -328,7 +394,7 @@ x,y,z=1,2,5 # mutliple assingmenets can be done with one line!
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x+y, x*z  # Mutliple opearations can be done with one line also!
+x + y, x * z  # Multiple operations can be done with one line also, separated by a comma!
 
 ```
 </div>
@@ -349,15 +415,15 @@ x+y, x*z  # Mutliple opearations can be done with one line also!
 
 
 
-#### Complex numberes handled just as easily
+#### Complex numbers are handled just as easily
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-z1=10+2j
-z2=3-1j
+z1 = 10+2j
+z2 = 3-1j
 
 ```
 </div>
@@ -369,7 +435,7 @@ z2=3-1j
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# extract real imaginery parts, conjugate
+# extract real and imaginary parts as well as the conjugate
 z1.real, z1.imag, z1.conjugate()
 
 ```
@@ -395,10 +461,19 @@ z1.real, z1.imag, z1.conjugate()
 <div class="input_area" markdown="1">
 ```python
 z1_abs = z1 * z1.conjugate()
+print(z1_abs)
 
 ```
 </div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+(104+0j)
+```
+</div>
+</div>
 </div>
 
 
@@ -456,7 +531,7 @@ hello 5
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-hw = hello + ' ' + world  # String concatenation
+hw = hello + ' ' + world  # String concatenation with the + operator
 print(hw)  # prints "hello world"
 
 ```
@@ -522,7 +597,7 @@ Python includes several built-in container types: lists, dictionaries, sets, and
 
 
 
-A list is a generic container for holding any python type be it a string, numbers other lists or a mix of everything. 
+A list is a generic container for holding any Python type, be it a string, numbers, other lists, or a mix of everything.
 
 
 
@@ -530,7 +605,8 @@ A list is a generic container for holding any python type be it a string, number
 <div class="input_area" markdown="1">
 ```python
 xs = [3, 1, 2]   # Create a list
-print(xs, xs[2])
+print(xs)        # Print the entire list
+print(xs[2])     # Index the list with square brackets; indices start at 0 for the first element, so index 2 is the third element
 print(xs[-1])    # Negative indices count from the end of the list; prints "2"
 
 ```
@@ -540,7 +616,8 @@ print(xs[-1])    # Negative indices count from the end of the list; prints "2"
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[3, 1, 2] 2
+[3, 1, 2]
+2
 2
 ```
 </div>
@@ -627,7 +704,7 @@ In addition to accessing list elements one at a time, Python provides concise sy
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-nums = range(0,5,1) # xrange(i,j,k) is a built-in function that creates a list of integers from i to j with a stride k
+nums = range(0,5,1) # range(i,j,k) is a built-in function that creates a list of integers from i to j with a stride k
 nums=list(nums)     # make a list
 print(nums)         # Prints "[0, 1, 2, 3, 4]"
 print(nums[2:4])    # Get a slice from index 2 to 4 (exclusive); prints "[2, 3]"
@@ -791,7 +868,7 @@ even_squares
 
 
 
-Python functions are defined using the `def` keyword. For example:
+Python functions are defined using the `def` keyword. For example let us write a function that maps numbers into description of postivie, negative and zero. 
 
 
 
@@ -836,11 +913,15 @@ positive
 
 
 
+Let us write a polynomial function $$f(x)=3.0x^3 + x^2 + 10x+1.0 $$
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-def sq_func(x):
-    return x**2
+def sq_func(x):  # A more conventional function
+    return 3.0*x**3 + x**2 + 10*x+1.0
 
 ```
 </div>
@@ -863,7 +944,7 @@ sq_func(4.0)
 
 {:.output_data_text}
 ```
-16.0
+249.0
 ```
 
 
@@ -873,34 +954,22 @@ sq_func(4.0)
 
 
 
-## Numpy
+## NumPy
 
 
 
-Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays. 
+NumPy is the core library for numerical and scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays. 
 
 
 
-To use Numpy, we first need to import the `numpy` package:
-
-
-
-### Arrays
-
-
-
-A numpy array is a grid of values, all of the same type, and is indexed by a tuple of nonnegative integers. The number of dimensions is the rank of the array; the shape of an array is a tuple of integers giving the size of the array along each dimension.
-
-
-
-We can initialize numpy arrays from nested Python lists, and access elements using square brackets:
+To use NumPy, we first need to import the `numpy` package:
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-a = np.array([1, 2, 3])  # Create 1D array
+import numpy as np
 
 ```
 </div>
@@ -909,12 +978,81 @@ a = np.array([1, 2, 3])  # Create 1D array
 
 
 
+### Numpy Arrays: overview
+
+
+
+- A numpy array is a grid of values, all of the same type, and is indexed by nonnegative integers. 
+- The array can have any number of dimensions 1D, 2D, 3D, ...
+- The shape of an array is a tuple of integers giving the size of the array along each dimension. For example a 1D vector of size 4 is (4,). a mtrix of size 2 is (2,2), a matrix with size 2x5 is (2,5) 
+
+- Numpy arrays can be generates either by feeding lists to numpy or on the fly using numpy special methods
+
+
+
+### Generating arrays from lists
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print(type(a), a.shape, a[0], a[1], a[2]) 
-a[0] = 5                 # Change an element of the array
-print(a)                   
+data=np.array([1,2,3])
+data
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([1, 2, 3])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+data.shape
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(3,)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+![](./images/numpy1.png)
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print(data[0], data[1], data[2]) 
+data[0] = 10                 # Change an element of the array
+print(data)                   
 
 ```
 </div>
@@ -923,8 +1061,8 @@ print(a)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-<class 'numpy.ndarray'> (3,) 1 2 3
-[5 2 3]
+10 2 3
+[10  2  3]
 ```
 </div>
 </div>
@@ -935,7 +1073,7 @@ print(a)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-b = np.array([[1,2,3],[4,5,6]])   # Create a rank 2 array
+b = np.array([[1,2,3],[4,5,6]])   # Create a 2D array
 print(b)
 
 ```
@@ -976,7 +1114,11 @@ print(b[0, 0], b[0, 1], b[1, 0])
 
 
 
-Numpy also provides many functions to create arrays:
+### Generating arrays using special methods
+
+
+
+![](./images/numpy2.png)
 
 
 
@@ -1005,7 +1147,7 @@ print(a)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-b = np.ones((1,2))   # Create an array of all ones
+b = np.ones((1,5))   # Create an array of all ones
 print(b) 
 
 ```
@@ -1015,7 +1157,72 @@ print(b)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[1. 1.]]
+[[1. 1. 1. 1. 1.]]
+```
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+e = np.random.random((3,3)) # Create an array filled with random values
+print(e)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+[[0.11980927 0.18463882 0.52049483]
+ [0.29866457 0.9259604  0.76969261]
+ [0.52907565 0.4915988  0.00371352]]
+```
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = np.linspace(1,100,10) # create an array between 1 and 100 divided by 10 segments
+print(x)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+[  1.  12.  23.  34.  45.  56.  67.  78.  89. 100.]
+```
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y = np.arange(1,100,10) # create an array strting from 1 to 100 in 10 incremenets
+print(y)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+[ 1 11 21 31 41 51 61 71 81 91]
 ```
 </div>
 </div>
@@ -1048,7 +1255,7 @@ print(c)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-d = np.eye(2)        # Create a 2x2 identity matrix
+d = np.eye(3)        # Create a 3x3 identity matrix
 print(d) 
 
 ```
@@ -1058,8 +1265,9 @@ print(d)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[1. 0.]
- [0. 1.]]
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
 ```
 </div>
 </div>
@@ -1070,154 +1278,119 @@ print(d)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-e = np.random.random((2,2)) # Create an array filled with random values
-print(e)
+k = np.tile(d,3)  # repeat the array d 3 times
+k
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[[0.47091097 0.51705716]
- [0.00795315 0.14501724]]
+array([[1., 0., 0., 1., 0., 0., 1., 0., 0.],
+       [0., 1., 0., 0., 1., 0., 0., 1., 0.],
+       [0., 0., 1., 0., 0., 1., 0., 0., 1.]])
 ```
+
+
 </div>
 </div>
 </div>
 
 
 
-### Array indexing
+### Indexing, slicing and dicing arrays
 
 
 
-Numpy offers several ways to index into arrays.
-
-
-
-Slicing: Similar to Python lists, numpy arrays can be sliced. Since arrays may be multidimensional, you must specify a slice for each dimension of the array:
+**Slicing:** Similar to Python lists, numpy arrays can be sliced. Since arrays may be multidimensional, you must specify a slice for each dimension of the array:
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-import numpy as np
+data=np.array([1,2,3])
+data[0:3]
 
-# Create the following rank 2 array with shape (3, 4)
-# [[ 1  2  3  4]
-#  [ 5  6  7  8]
-#  [ 9 10 11 12]]
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([1, 2, 3])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+![](./images/numpy_index.png)
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+data=np.array([[1,3,5], [2,4,6]])
+data.T
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+![](./images/numpy-matrix-indexing.png)
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
-
-# Use slicing to pull out the subarray consisting of the first 2 rows
-# and columns 1 and 2; b is the following array of shape (2, 2):
-# [[2 3]
-#  [6 7]]
-b = a[:2, 1:3]
-print(b) 
+a
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[[2 3]
- [6 7]]
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12]])
 ```
-</div>
-</div>
-</div>
 
 
-
-A slice of an array is a view into the same data, so modifying it will modify the original array.
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-print(a[0, 1] )  
-b[0, 0] = 77    # b[0, 0] is the same piece of data as a[0, 1]
-print(a[0, 1])  
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-2
-77
-```
-</div>
-</div>
-</div>
-
-
-
-You can also mix integer indexing with slice indexing. However, doing so will yield an array of lower rank than the original array. Note that this is quite different from the way that MATLAB handles array slicing:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Create the following rank 2 array with shape (3, 4)
-a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
-print(a) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 1  2  3  4]
- [ 5  6  7  8]
- [ 9 10 11 12]]
-```
-</div>
-</div>
-</div>
-
-
-
-Two ways of accessing the data in the middle row of the array.
-Mixing integer indexing with slices yields an array of lower rank,
-while using only slices yields an array of the same rank as the
-original array:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-row_r1 = a[1, :]    # Rank 1 view of the second row of a  
-row_r2 = a[1:2, :]  # Rank 2 view of the second row of a
-row_r3 = a[[1], :]  # Rank 2 view of the second row of a
-print(row_r1, row_r1.shape ) 
-print(row_r2, row_r2.shape) 
-print(row_r3, row_r3.shape) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[5 6 7 8] (4,)
-[[5 6 7 8]] (1, 4)
-[[5 6 7 8]] (1, 4)
-```
 </div>
 </div>
 </div>
@@ -1227,58 +1400,21 @@ print(row_r3, row_r3.shape)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# We can make the same distinction when accessing columns of an array:
-col_r1 = a[:, 1]
-col_r2 = a[:, 1:2]
-print(col_r1, col_r1.shape) 
-print(" ")
-print(col_r2, col_r2.shape) 
+a.shape
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[ 2  6 10] (3,)
- 
-[[ 2]
- [ 6]
- [10]] (3, 1)
+(3, 4)
 ```
-</div>
-</div>
-</div>
 
 
-
-Integer array indexing: When you index into numpy arrays using slicing, the resulting array view will always be a subarray of the original array. In contrast, integer array indexing allows you to construct arbitrary arrays using the data from another array. Here is an example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-a = np.array([[1,2], [3, 4], [5, 6]])
-
-# An example of integer array indexing.
-# The returned array will have shape (3,) and 
-print(a[[0, 1, 2], [0, 1, 0]]) 
-
-# The above example of integer array indexing is equivalent to this:
-print(np.array([a[0, 0], a[1, 1], a[2, 0]])) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[1 4 5]
-[1 4 5]
-```
 </div>
 </div>
 </div>
@@ -1288,52 +1424,21 @@ print(np.array([a[0, 0], a[1, 1], a[2, 0]]))
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# When using integer array indexing, you can reuse the same
-# element from the source array:
-print(a[[0, 0], [1, 1]]) 
-
-# Equivalent to the previous integer array indexing example
-print(np.array([a[0, 1], a[0, 1]])) 
+a[1,:]  #
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[2 2]
-[2 2]
+array([5, 6, 7, 8])
 ```
-</div>
-</div>
-</div>
 
 
-
-One useful trick with integer array indexing is selecting or mutating one element from each row of a matrix:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Create a new array from which we will select elements
-a = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
-print(a)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 1  2  3]
- [ 4  5  6]
- [ 7  8  9]
- [10 11 12]]
-```
 </div>
 </div>
 </div>
@@ -1343,21 +1448,21 @@ print(a)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Create an array of indices
-b = np.array([0, 2, 0, 1])
-
-# Select one element from each row of a using the indices in b
-print(a[np.arange(4), b])   # Prints "[ 1  6  7 11]"
+a[1,3]
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[ 1  6  7 11]
+8
 ```
+
+
 </div>
 </div>
 </div>
@@ -1367,57 +1472,21 @@ print(a[np.arange(4), b])   # Prints "[ 1  6  7 11]"
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Mutate one element from each row of a using the indices in b
-a[np.arange(4), b] += 10
-print(a)
+a[:,-1] # last column
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[[11  2  3]
- [ 4  5 16]
- [17  8  9]
- [10 21 12]]
+array([ 4,  8, 12])
 ```
-</div>
-</div>
-</div>
 
 
-
-Boolean array indexing: Boolean array indexing lets you pick out arbitrary elements of an array. Frequently this type of indexing is used to select the elements of an array that satisfy some condition. Here is an example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-import numpy as np
-
-a = np.array([[1,2], [3, 4], [5, 6]])
-
-bool_idx = (a > 2)  # Find the elements of a that are bigger than 2;
-                    # this returns a numpy array of Booleans of the same
-                    # shape as a, where each slot of bool_idx tells
-                    # whether that element of a is > 2.
-
-print(bool_idx)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[False False]
- [ True  True]
- [ True  True]]
-```
 </div>
 </div>
 </div>
@@ -1427,31 +1496,24 @@ print(bool_idx)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# We use boolean array indexing to construct a rank 1 array
-# consisting of the elements of a corresponding to the True values
-# of bool_idx
-print(a[bool_idx]) 
-
-# We can do all of the above in a single concise statement:
-print(a[a > 2]) 
+a[-1,:] # last row
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[3 4 5 6]
-[3 4 5 6]
+array([ 9, 10, 11, 12])
 ```
+
+
 </div>
 </div>
 </div>
-
-
-
-For brevity we have left out a lot of details about numpy array indexing; if you want to know more you should read the documentation.
 
 
 
@@ -1459,15 +1521,15 @@ For brevity we have left out a lot of details about numpy array indexing; if you
 
 
 
-Basic mathematical functions operate elementwise on arrays, and are available both as operator overloads and as functions in the numpy module:
+Basic mathematical functions operate **elementwise on arrays**, and are available both as operator overloads and as functions in the numpy module:
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x = np.array([[1,2],[3,4]], dtype=np.float64)
-y = np.array([[5,6],[7,8]], dtype=np.float64)
+x = np.array([1,2,3,4])
+y = np.array([5,6,7,8])
 
 ```
 </div>
@@ -1489,8 +1551,7 @@ print(x + y)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[ 6.  8.]
- [10. 12.]]
+[ 6  8 10 12]
 ```
 </div>
 </div>
@@ -1502,8 +1563,7 @@ print(x + y)
 <div class="input_area" markdown="1">
 ```python
 # Elementwise difference; both produce the array
-print(x - y) 
-print(np.subtract(x, y)) 
+print(x - y)  
 
 ```
 </div>
@@ -1512,10 +1572,7 @@ print(np.subtract(x, y))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[-4. -4.]
- [-4. -4.]]
-[[-4. -4.]
- [-4. -4.]]
+[-4 -4 -4 -4]
 ```
 </div>
 </div>
@@ -1528,7 +1585,6 @@ print(np.subtract(x, y))
 ```python
 # Elementwise product; both produce the array
 print(x * y) 
-print(np.multiply(x, y)) 
 
 ```
 </div>
@@ -1537,10 +1593,7 @@ print(np.multiply(x, y))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[ 5. 12.]
- [21. 32.]]
-[[ 5. 12.]
- [21. 32.]]
+[ 5 12 21 32]
 ```
 </div>
 </div>
@@ -1551,11 +1604,7 @@ print(np.multiply(x, y))
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Elementwise division; both produce the array
-# [[ 0.2         0.33333333]
-#  [ 0.42857143  0.5       ]]
 print(x / y) 
-print(np.divide(x, y)) 
 
 ```
 </div>
@@ -1564,10 +1613,7 @@ print(np.divide(x, y))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[0.2        0.33333333]
- [0.42857143 0.5       ]]
-[[0.2        0.33333333]
- [0.42857143 0.5       ]]
+[0.2        0.33333333 0.42857143 0.5       ]
 ```
 </div>
 </div>
@@ -1578,9 +1624,6 @@ print(np.divide(x, y))
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Elementwise square root; produces the array
-# [[ 1.          1.41421356]
-#  [ 1.73205081  2.        ]]
 print(np.sqrt(x)) 
 
 ```
@@ -1590,8 +1633,7 @@ print(np.sqrt(x))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[1.         1.41421356]
- [1.73205081 2.        ]]
+[1.         1.41421356 1.73205081 2.        ]
 ```
 </div>
 </div>
@@ -1599,7 +1641,59 @@ print(np.sqrt(x))
 
 
 
-Note that unlike MATLAB, `*` is elementwise multiplication, not matrix multiplication. We instead use the dot function to compute inner products of vectors, to multiply a vector by a matrix, and to multiply matrices. dot is available both as a function in the numpy module and as an instance method of array objects:
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+1.5*x  # elementwise multiplication!
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([1.5, 3. , 4.5, 6. ])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+y+3    # elementwise addition. 
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([ 8,  9, 10, 11])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+As last two examples show can also do operations on arrays with unequal shapes! These are powerful operations which follow set of rules called **broadcasting.** See the end for these rules and examples
+
+
+
+**To use vector,matrix dot product between A and B use A@B**
 
 
 
@@ -1613,8 +1707,7 @@ v = np.array([9,10])
 w = np.array([11, 12])
 
 # Inner product of vectors; both produce 219
-print(v.dot(w)) 
-print(np.dot(v, w)) 
+print(v@w) 
 
 ```
 </div>
@@ -1623,7 +1716,6 @@ print(np.dot(v, w))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-219
 219
 ```
 </div>
@@ -1636,8 +1728,7 @@ print(np.dot(v, w))
 <div class="input_area" markdown="1">
 ```python
 # Matrix / vector product; both produce the rank 1 array [29 67]
-print(x.dot(v)) 
-print(np.dot(x, v)) 
+print(x@v) 
 
 ```
 </div>
@@ -1646,7 +1737,6 @@ print(np.dot(x, v))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[29 67]
 [29 67]
 ```
 </div>
@@ -1659,10 +1749,6 @@ print(np.dot(x, v))
 <div class="input_area" markdown="1">
 ```python
 # Matrix / matrix product; both produce the rank 2 array
-# [[19 22]
-#  [43 50]]
-print(x.dot(y)) 
-print("")
 print(x@y) 
 
 ```
@@ -1672,15 +1758,15 @@ print(x@y)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[19 22]
- [43 50]]
-
-[[19 22]
- [43 50]]
+20
 ```
 </div>
 </div>
 </div>
+
+
+
+### Aggregation
 
 
 
@@ -1692,7 +1778,31 @@ Numpy provides many useful functions for performing computations on arrays; one 
 <div class="input_area" markdown="1">
 ```python
 x = np.array([[1,2],[3,4]])
+x
 
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[1, 2],
+       [3, 4]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 print(np.sum(x))   # Compute sum of all elements; prints "10"
 print(np.sum(x, axis=0) )  # Compute sum of each column; prints "[4 6]"
 print(np.sum(x, axis=1))   # Compute sum of each row; prints "[3 7]"
@@ -1714,17 +1824,203 @@ print(np.sum(x, axis=1))   # Compute sum of each row; prints "[3 7]"
 
 
 
-You can find the full list of mathematical functions provided by numpy in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.math.html).
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print(x.max())
+print(x.min())
 
-Apart from computing mathematical functions using arrays, we frequently need to reshape or otherwise manipulate data in arrays. The simplest example of this type of operation is transposing a matrix; to transpose a matrix, simply use the T attribute of an array object:
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+4
+1
+```
+</div>
+</div>
+</div>
+
+
+
+### Reshaping arrays
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print(x) 
-print(x.T) 
+x=np.array([1,2,3,4,5,6,7,8,9,10])
+x
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x=x.reshape(2,5)
+x
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[ 1,  2,  3,  4,  5],
+       [ 6,  7,  8,  9, 10]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x=x.reshape(5,2)
+x
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[ 1,  2],
+       [ 3,  4],
+       [ 5,  6],
+       [ 7,  8],
+       [ 9, 10]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x.T # transpose matrix
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[ 1,  3,  5,  7,  9],
+       [ 2,  4,  6,  8, 10]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+### Broadcasting rules of numpy arrays
+
+
+
+Broadcasting is a powerful mechanism that allows numpy to work with arrays of different shapes when performing arithmetic operations. Frequently we have a smaller array and a larger array, and we want to use the smaller array multiple times to perform some operation on the larger array. 
+
+
+
+The rules of broadcasting are:
+
+- **Rule 1:** If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is padded with ones on its leading (left) side.
+- **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.
+- **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an error is raised.
+
+
+
+![](./images/numpy-matrix-broadcast.png)
+
+
+
+**example of broadcasting**
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+data = np.array([[1,3,5],[2,4,6]]).T
+ones_row = np.array([1,1])
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+data.shape, ones_row.shape
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+((3, 2), (2,))
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+print(data)
+print(ones_row)
 
 ```
 </div>
@@ -1734,9 +2030,9 @@ print(x.T)
 {:.output_stream}
 ```
 [[1 2]
- [3 4]]
-[[1 3]
- [2 4]]
+ [3 4]
+ [5 6]]
+[1 1]
 ```
 </div>
 </div>
@@ -1747,52 +2043,40 @@ print(x.T)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-v = np.array([[1,2,3]])
-print(v)  
-print(v.T) 
+data+ones_row
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[[1 2 3]]
-[[1]
- [2]
- [3]]
+array([[2, 3],
+       [4, 5],
+       [6, 7]])
 ```
+
+
 </div>
 </div>
 </div>
 
 
 
-### Broadcasting
-
-
-
-Broadcasting is a powerful mechanism that allows numpy to work with arrays of different shapes when performing arithmetic operations. Frequently we have a smaller array and a larger array, and we want to use the smaller array multiple times to perform some operation on the larger array.
-
-For example, suppose that we want to add a constant vector to each row of a matrix. We could do it like this:
+**Let us see both rules in action on another example**
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# We will add the vector v to each row of the matrix x,
-# storing the result in the matrix y
-x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
-v = np.array([1, 0, 1])
-y = np.empty_like(x)   # Create an empty matrix with the same shape as x
 
-# Add the vector v to each row of the matrix x with an explicit loop
-for i in range(4):
-    y[i, :] = x[i, :] + v
-
-print(y) 
+a = np.arange(3).reshape((3, 1))
+print(a)
+print(a.shape)
 
 ```
 </div>
@@ -1801,41 +2085,10 @@ print(y)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[ 2  2  4]
- [ 5  5  7]
- [ 8  8 10]
- [11 11 13]]
-```
-</div>
-</div>
-</div>
-
-
-
-This works; however when the matrix `x` is very large, computing an explicit loop in Python could be slow. Note that adding the vector v to each row of the matrix `x` is equivalent to forming a matrix `vv` by stacking multiple copies of `v` vertically, then performing elementwise summation of `x` and `vv`. We could implement this approach like this:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-vv = np.tile(v, (4, 1))  # Stack 4 copies of v on top of each other
-print(vv)                 # Prints "[[1 0 1]
-                         #          [1 0 1]
-                         #          [1 0 1]
-                         #          [1 0 1]]"
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[1 0 1]
- [1 0 1]
- [1 0 1]
- [1 0 1]]
+[[0]
+ [1]
+ [2]]
+(3, 1)
 ```
 </div>
 </div>
@@ -1846,8 +2099,9 @@ print(vv)                 # Prints "[[1 0 1]
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-y = x + vv  # Add x and vv elementwise
-print(y)
+b = np.arange(3)
+print(b)
+print(b.shape)
 
 ```
 </div>
@@ -1856,10 +2110,8 @@ print(y)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[[ 2  2  4]
- [ 5  5  7]
- [ 8  8 10]
- [11 11 13]]
+[0 1 2]
+(3,)
 ```
 </div>
 </div>
@@ -1867,203 +2119,41 @@ print(y)
 
 
 
-Numpy broadcasting allows us to perform this computation without actually creating multiple copies of v. Consider this version, using broadcasting:
+Lets predict a+b sum. By first rule the sum of arrays with shapes **(3,1)+(3,)** are broadcast to **(3,1)+(1,3)** then by second rule dimensions one are padded to match the shape **(3,3)+(3,3)**
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-import numpy as np
-
-# We will add the vector v to each row of the matrix x,
-# storing the result in the matrix y
-x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
-v = np.array([1, 0, 1])
-y = x + v  # Add v to each row of x using broadcasting
-print(y)
+a+b 
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[[ 2  2  4]
- [ 5  5  7]
- [ 8  8 10]
- [11 11 13]]
+array([[0, 1, 2],
+       [1, 2, 3],
+       [2, 3, 4]])
 ```
+
+
 </div>
 </div>
 </div>
 
 
 
-The line `y = x + v` works even though `x` has shape `(4, 3)` and `v` has shape `(3,)` due to broadcasting; this line works as if v actually had shape `(4, 3)`, where each row was a copy of `v`, and the sum was performed elementwise.
-
-Broadcasting two arrays together follows these rules:
-
-1. If the arrays do not have the same rank, prepend the shape of the lower rank array with 1s until both shapes have the same length.
-2. The two arrays are said to be compatible in a dimension if they have the same size in the dimension, or if one of the arrays has size 1 in that dimension.
-3. The arrays can be broadcast together if they are compatible in all dimensions.
-4. After broadcasting, each array behaves as if it had shape equal to the elementwise maximum of shapes of the two input arrays.
-5. In any dimension where one array had size 1 and the other array had size greater than 1, the first array behaves as if it were copied along that dimension
-
-If this explanation does not make sense, try reading the explanation from the [documentation](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html) or this [explanation](http://wiki.scipy.org/EricsBroadcastingDoc).
-
-Functions that support broadcasting are known as universal functions. You can find the list of all universal functions in the [documentation](http://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs).
-
-Here are some applications of broadcasting:
+## Plotting with Matplotlib
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Compute outer product of vectors
-v = np.array([1,2,3])  # v has shape (3,)
-w = np.array([4,5])    # w has shape (2,)
-# To compute an outer product, we first reshape v to be a column
-# vector of shape (3, 1); we can then broadcast it against w to yield
-# an output of shape (3, 2), which is the outer product of v and w:
-
-print(np.reshape(v, (3, 1)) * w) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 4  5]
- [ 8 10]
- [12 15]]
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Add a vector to each row of a matrix
-x = np.array([[1,2,3], [4,5,6]])
-# x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),
-# giving the following matrix:
-
-print(x + v) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[2 4 6]
- [5 7 9]]
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Add a vector to each column of a matrix
-# x has shape (2, 3) and w has shape (2,).
-# If we transpose x then it has shape (3, 2) and can be broadcast
-# against w to yield a result of shape (3, 2); transposing this result
-# yields the final result of shape (2, 3) which is the matrix x with
-# the vector w added to each column. Gives the following matrix:
-
-print((x.T + w).T) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 5  6  7]
- [ 9 10 11]]
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Another solution is to reshape w to be a row vector of shape (2, 1);
-# we can then broadcast it directly against x to produce the same
-# output.
-print(x + np.reshape(w, (2, 1))) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 5  6  7]
- [ 9 10 11]]
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Multiply a matrix by a constant:
-# x has shape (2, 3). Numpy treats scalars as arrays of shape ();
-# these can be broadcast together to shape (2, 3), producing the
-# following array:
-print(x * 2) 
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[ 2  4  6]
- [ 8 10 12]]
-```
-</div>
-</div>
-</div>
-
-
-
-Broadcasting typically makes your code more concise and faster, so you should strive to use it where possible.
-
-
-
-This brief overview has touched on many of the important things that you need to know about numpy, but is far from complete. Check out the [numpy reference](http://docs.scipy.org/doc/numpy/reference/) to find out much more about numpy.
-
-
-
-## Matplotlib
-
-
-
-Matplotlib is a standard plotting library of python. In this section give we give a brief introduction to the `matplotlib.pyplot` module, which provides a plotting system that is similar to that of MATLAB. But of course much more fleixbile and powerful :)
+Matplotlib is a standard plotting library of python. We begin by importing it first.
 
 
 
@@ -2086,8 +2176,11 @@ By running these special commands known as magic commands (start with %), we wil
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-#To keep plots inside notebook we add
+#To keep plots inside notebook we add thee magic comand starting with %
 %matplotlib inline
+
+#For interactivity try this:
+#%matplotlib notebook
 
 #If your screen has retina display this will increase resolution of plots
 %config InlineBackend.figure_format = 'retina'
@@ -2096,10 +2189,6 @@ By running these special commands known as magic commands (start with %), we wil
 </div>
 
 </div>
-
-
-
-### Plotting
 
 
 
@@ -2126,7 +2215,7 @@ plt.plot(x, y)
 
 {:.output_data_text}
 ```
-[<matplotlib.lines.Line2D at 0x111e47278>]
+[<matplotlib.lines.Line2D at 0x10c29cf28>]
 ```
 
 
@@ -2136,7 +2225,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_141_1.png)
+![png](images/python-intro_150_1.png)
 
 </div>
 </div>
@@ -2144,21 +2233,23 @@ plt.plot(x, y)
 
 
 
-With just a little bit of extra work we can easily plot multiple lines at once, and add a title, legend, and axis labels:
+if we want to customize plots it is better to plot by first defining fig and ax objecs which have manuy methods for customizing figure resolution and plot related aspects respecticely. 
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
+fig, ax = plt.subplots()
+
 y_sin = np.sin(x)
 y_cos = np.cos(x)
 
 # Plot the points using matplotlib
-plt.plot(x, y_sin)
-plt.plot(x, y_cos)
-plt.xlabel('x axis label')
-plt.ylabel('y axis label')
+ax.plot(x, y_sin)
+ax.plot(x, y_cos)
+ax.set_xlabel('x axis label')
+ax.set_ylabel('y axis label')
 plt.title('Sine and Cosine')
 plt.legend(['Sine', 'Cosine'])
 
@@ -2171,7 +2262,7 @@ plt.legend(['Sine', 'Cosine'])
 
 {:.output_data_text}
 ```
-<matplotlib.legend.Legend at 0x111eb8400>
+<matplotlib.legend.Legend at 0x10cd014e0>
 ```
 
 
@@ -2181,69 +2272,9 @@ plt.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_143_1.png)
+![png](images/python-intro_152_1.png)
 
 </div>
 </div>
 </div>
-
-
-
-### Subplots
-
-
-
-You can plot different things in the same figure using the subplot function. Here is an example:
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Compute the x and y coordinates for points on sine and cosine curves
-x = np.arange(0, 3 * np.pi, 0.1)
-y_sin = np.sin(x)
-y_cos = np.cos(x)
-
-# Set up a subplot grid that has height 2 and width 1,
-# and set the first such subplot as active.
-plt.subplot(2, 1, 1)
-
-# Make the first plot
-plt.plot(x, y_sin)
-plt.title('Sine')
-
-# Set the second subplot as active, and make the second plot.
-plt.subplot(2, 1, 2)
-plt.plot(x, y_cos)
-plt.title('Cosine')
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-Text(0.5,1,'Cosine')
-```
-
-
-</div>
-</div>
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-{:.output_png}
-![png](images/python-intro_146_1.png)
-
-</div>
-</div>
-</div>
-
-
-
-You can read much more about the `subplot` function in the [documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot).
 
