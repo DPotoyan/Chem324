@@ -11,8 +11,6 @@ next_page:
   title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 ## Python crash course for Chem324.
 
 
@@ -40,6 +38,10 @@ Since our coverage will necessarily be brief, you can find some more pointers to
 
 
 
+![](./images/whyPy.png)
+
+
+
 ## Introduction
 
 
@@ -47,6 +49,10 @@ Since our coverage will necessarily be brief, you can find some more pointers to
 Python is a fantastic general-purpose programming language on its own, but with the help of a few popular libraries (numpy, scipy, matplotlib) it becomes a powerful environment for scientific computing.
 
 You may already know some Python and that's great! For the rest of you, this section will serve as a quick crash course both on the Python programming language and on the use of Python for scientific computing. 
+
+
+
+![](./images/py-popular2.png)
 
 
 
@@ -740,6 +746,10 @@ Python includes several built-in container types: **lists, dictionaries, sets, a
 
 
 
+![](./images/list.png)
+
+
+
 A list is a generic container for holding any Python type, be it a string, numbers, other lists, or a mix of everything.
 
 
@@ -844,6 +854,10 @@ In addition to accessing list elements one at a time, Python provides concise sy
 
 
 
+![](./images/sliceList.jpg)
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
@@ -876,6 +890,10 @@ print(nums)         # Prints "[0, 1, 8, 9, 4]"
 </div>
 </div>
 </div>
+
+
+
+![](./images/list_slice.png)
 
 
 
@@ -1660,6 +1678,14 @@ array([ 9, 10, 11, 12])
 
 
 
+**Same principles of slicing and shapes applies to the N-dimensional arrays.**
+
+
+
+![](./images/numpy_3d.png)
+
+
+
 ### Array math
 
 
@@ -2368,7 +2394,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_158_1.png)
+![png](images/python-intro_165_1.png)
 
 </div>
 </div>
@@ -2417,7 +2443,7 @@ ax.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_160_1.png)
+![png](images/python-intro_167_1.png)
 
 </div>
 </div>
