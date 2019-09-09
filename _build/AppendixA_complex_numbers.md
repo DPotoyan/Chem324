@@ -156,7 +156,7 @@ r = 2                        # multiply by *np.ones(10)
 
 
 # Plot
-  fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 ax = plt.subplot(projection='polar')
 
 ax.plot(θ,r, 'o', ms=10)             
@@ -166,49 +166,22 @@ ax.plot(θ,r, 'o', ms=10)
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_traceback_line}
+
+
+{:.output_data_text}
+```
+[<matplotlib.lines.Line2D at 0x126a97358>]
 ```
 
-    ---------------------------------------------------------------------------
 
-    TypeError                                 Traceback (most recent call last)
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
-    <ipython-input-102-253b3e6a3f55> in <module>
-          5 
-          6 # Plot
-    ----> 7 fig, ax = plt.subplots(projection='polar')
-          8 
-          9 
+{:.output_png}
+![png](images/AppendixA_complex_numbers_7_1.png)
 
-
-    /anaconda/lib/python3.6/site-packages/matplotlib/pyplot.py in subplots(nrows, ncols, sharex, sharey, squeeze, subplot_kw, gridspec_kw, **fig_kw)
-       1207 
-       1208     """
-    -> 1209     fig = figure(**fig_kw)
-       1210     axs = fig.subplots(nrows=nrows, ncols=ncols, sharex=sharex, sharey=sharey,
-       1211                        squeeze=squeeze, subplot_kw=subplot_kw,
-
-
-    /anaconda/lib/python3.6/site-packages/matplotlib/pyplot.py in figure(num, figsize, dpi, facecolor, edgecolor, frameon, FigureClass, clear, **kwargs)
-        543                                         frameon=frameon,
-        544                                         FigureClass=FigureClass,
-    --> 545                                         **kwargs)
-        546 
-        547         if figLabel:
-
-
-    /anaconda/lib/python3.6/site-packages/matplotlib/backend_bases.py in new_figure_manager(cls, num, *args, **kwargs)
-       3249         from matplotlib.figure import Figure
-       3250         fig_cls = kwargs.pop('FigureClass', Figure)
-    -> 3251         fig = fig_cls(*args, **kwargs)
-       3252         return cls.new_figure_manager_given_figure(num, fig)
-       3253 
-
-
-    TypeError: __init__() got an unexpected keyword argument 'projection'
-
-
-```
 </div>
 </div>
 </div>
