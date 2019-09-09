@@ -7,8 +7,8 @@ prev_page:
   url: /LEC3-Chem324
   title: '1.3 Wave particle duality'
 next_page:
-  url: /LEC4-Chem324
-  title: '2.0 Waves'
+  url: /AppendixA_complex_numbers
+  title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -1007,7 +1007,7 @@ even_squares
 
 
 
-### Functions
+## Functions
 
 
 
@@ -2358,7 +2358,7 @@ plt.plot(x, y)
 
 {:.output_data_text}
 ```
-[<matplotlib.lines.Line2D at 0x10c29cf28>]
+[<matplotlib.lines.Line2D at 0x10f906780>]
 ```
 
 
@@ -2393,8 +2393,10 @@ ax.plot(x, y_sin)
 ax.plot(x, y_cos)
 ax.set_xlabel('x axis label')
 ax.set_ylabel('y axis label')
-plt.title('Sine and Cosine')
-plt.legend(['Sine', 'Cosine'])
+ax.set_title('Sine and Cosine')
+ax.legend(['Sine', 'Cosine'])
+
+#fig.savefig("myfig.pdf")
 
 ```
 </div>
@@ -2405,7 +2407,7 @@ plt.legend(['Sine', 'Cosine'])
 
 {:.output_data_text}
 ```
-<matplotlib.legend.Legend at 0x10cd014e0>
+<matplotlib.legend.Legend at 0x111061cc0>
 ```
 
 
