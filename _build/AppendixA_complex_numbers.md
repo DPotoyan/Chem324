@@ -39,13 +39,9 @@ $$
 $$
 
 The value $x$ is the **real** part of $z$ and $y$ is the
-**imaginary** part of $z$. The symbol 
+**imaginary** part of $z$. The symbol $|z|  = \bar z z = r$ represents the **modulus** of $z$.
 
-$ | z |  = \bar z z = r $ 
-
-represents the **modulus** of $ z $.
-
-The value $ r $ is the Euclidean distance of vector $ (x,y) $ from the
+The value $r$ is the Euclidean distance of vector $(x,y)$ from the
 origin:
 
 $$
@@ -54,9 +50,7 @@ $$
 
 The value $ \theta $ is the angle of $ (x,y) $ with respect to the real axis.
 
-Evidently, the tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $.
-
-Therefore,
+Evidently, the tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $. Therefore,
 
 $$
 \theta = \tan^{-1} \Big( \frac{y}{x} \Big)
@@ -70,13 +64,12 @@ $$
 \tan{\theta} = \frac{x}{y}
 $$
 
-We’ll need the following imports
-
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
+# We’ll need the following imports to plot complex numbers
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
