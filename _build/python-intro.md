@@ -11,6 +11,8 @@ next_page:
   title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+
 ## Python crash course for Chem324.
 
 
@@ -167,8 +169,8 @@ doing. To make a comment in Python, precede the comment with a #.
 <div class="input_area" markdown="1">
 ```python
 # Comments can be on their own line like this
-print("Hello")
-
+print("Hi")
+print("Big")
 print("World") # A comment can also be at the end of a line
 
 ```
@@ -178,7 +180,8 @@ print("World") # A comment can also be at the end of a line
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-Hello
+Hi
+Big
 World
 ```
 </div>
@@ -220,23 +223,17 @@ World
 <div class="input_area" markdown="1">
 ```python
 print("Hello")     # This line is not indented, so it is fine
-    print("World") # Unnecessary indentation, this code will not work
+print("World") # Unnecessary indentation, this code will not work
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_traceback_line}
+{:.output_stream}
 ```
-
-      File "<ipython-input-2-3c37af9014f9>", line 2
-        print("World") # Unnecessary indentation, this code will not work
-        ^
-    IndentationError: unexpected indent
-
-
-
+Hello
+World
 ```
 </div>
 </div>
@@ -297,9 +294,20 @@ print(x) # print contents of x
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+{:.output_traceback_line}
 ```
-3
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-2-7594cb87eb66> in <module>
+    ----> 1 print(x) # print contents of x
+    
+
+    NameError: name 'x' is not defined
+
+
 ```
 </div>
 </div>
@@ -321,7 +329,7 @@ x        # Works the same for single line but for multiple lines you need print.
 
 {:.output_data_text}
 ```
-3
+5
 ```
 
 
@@ -334,7 +342,7 @@ x        # Works the same for single line but for multiple lines you need print.
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print(x + 1)   # Addition
+print(x + 18)   # Addition
 print(x - 1)   # Subtraction
 print(x * 2)   # Multiplication
 print(x ** 2)  # Exponentiation
@@ -346,10 +354,10 @@ print(x ** 2)  # Exponentiation
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
+23
 4
-2
-6
-9
+10
+25
 ```
 </div>
 </div>
@@ -360,7 +368,8 @@ print(x ** 2)  # Exponentiation
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-type(x) # let's find out what kind of number is this
+x=2.3
+type(x) #let's find out what kind of number is this
 
 ```
 </div>
@@ -371,7 +380,7 @@ type(x) # let's find out what kind of number is this
 
 {:.output_data_text}
 ```
-int
+float
 ```
 
 
@@ -389,10 +398,23 @@ int
 <div class="input_area" markdown="1">
 ```python
 x, y, z = 1, 2, 5 # multiple assignments can be done with one line!
+print(x)
+print(y)
+print(z)
 
 ```
 </div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+1
+2
+5
+```
+</div>
+</div>
 </div>
 
 
@@ -544,7 +566,7 @@ x==z  # == (equals), != (not equal), > (greater than), < (less than) comparison 
 
 {:.output_data_text}
 ```
-True
+False
 ```
 
 
@@ -659,18 +681,22 @@ True
 <div class="input_area" markdown="1">
 ```python
 hello = 'hello'   # String literals can use single quotes
-world = "world"   # or double quotes; it does not matter.
-print(hello, len(hello))
+x = "world blah blah"   # or double quotes; it does not matter.
+type(x)
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-hello 5
+str
 ```
+
+
 </div>
 </div>
 </div>
@@ -690,7 +716,7 @@ print(hw)  # prints "hello world"
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-hello world
+hello world blah blah
 ```
 </div>
 </div>
@@ -757,10 +783,8 @@ A list is a generic container for holding any Python type, be it a string, numbe
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-xs = [3, 1, 2]   # Create a list
-print(xs)        # Print the entire list
-print(xs[2])     # Index the list with square brackets; indices start at 0 for the first element, so index 2 is the third element
-print(xs[-1])    # Negative indices count from the end of the list; prints "2"
+xs = [3, 1, 2,5,6,'blah']   # Create a list
+print(xs[4])
 
 ```
 </div>
@@ -769,9 +793,7 @@ print(xs[-1])    # Negative indices count from the end of the list; prints "2"
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[3, 1, 2]
-2
-2
+6
 ```
 </div>
 </div>
@@ -792,7 +814,7 @@ print(xs)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[3, 1, 'foo']
+[3, 1, 'foo', 5, 6, 'blah']
 ```
 </div>
 </div>
@@ -803,7 +825,7 @@ print(xs)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-xs.append('bar') # Add a new element to the end of the list
+xs.append(145) # Add a new element to the end of the list
 print(xs)  
 
 ```
@@ -813,7 +835,7 @@ print(xs)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-[3, 1, 'foo', 'bar']
+[3, 1, 'foo', 5, 6, 'blah', 'bar', 145]
 ```
 </div>
 </div>
@@ -834,7 +856,7 @@ print(x, xs)
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-bar [3, 1, 'foo']
+1 [3]
 ```
 </div>
 </div>
@@ -863,30 +885,21 @@ In addition to accessing list elements one at a time, Python provides concise sy
 ```python
 nums = range(0,5,1) # range(i,j,k) is a built-in function that creates a list of integers from i to j with a stride k
 nums=list(nums)     # make a list
-print(nums)         # Prints "[0, 1, 2, 3, 4]"
-print(nums[2:4])    # Get a slice from index 2 to 4 (exclusive); prints "[2, 3]"
-print(nums[2:])     # Get a slice from index 2 to the end; prints "[2, 3, 4]"
-print(nums[:2])     # Get a slice from the start to index 2 (exclusive); prints "[0, 1]"
-print(nums[:])      # Get a slice of the whole list; prints ["0, 1, 2, 3, 4]"
-print(nums[:-1])    # Slice indices can be negative; prints ["0, 1, 2, 3]"
-nums[2:4] = [8, 9] # Assign a new sublist to a slice
-print(nums)         # Prints "[0, 1, 8, 9, 4]"
+nums[0:3]
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+
+
+{:.output_data_text}
 ```
-[0, 1, 2, 3, 4]
-[2, 3]
-[2, 3, 4]
-[0, 1]
-[0, 1, 2, 3, 4]
-[0, 1, 2, 3]
-[0, 1, 8, 9, 4]
+[0, 1, 2]
 ```
+
+
 </div>
 </div>
 </div>
@@ -908,7 +921,9 @@ You can loop over the elements of a list like this:
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-animals = ['cat', 'dog', 'monkey']
+animals = ['cat', 'dog', 'monkey', 'lion']
+
+
 for animal in animals:
     print(animal)
 
@@ -922,6 +937,7 @@ for animal in animals:
 cat
 dog
 monkey
+lion
 ```
 </div>
 </div>
@@ -940,10 +956,11 @@ When programming, frequently we want to transform one type of data into another.
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-nums = [0, 1, 2, 3, 4]
+nums = [0, 1, 2, 3, 4,5]
 squares = []
+
 for x in nums:
-    squares.append(x ** 2)
+    squares.append(x ** 3)
 squares
 
 ```
@@ -955,7 +972,7 @@ squares
 
 {:.output_data_text}
 ```
-[0, 1, 4, 9, 16]
+[0, 1, 8, 27, 64, 125]
 ```
 
 
@@ -972,8 +989,10 @@ You can make this code simpler using a special trick of lists called list compre
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-nums = [0, 1, 2, 3, 4]
+nums = [0, 1, 2, 3, 4, 5]
+
 squares = [x ** 2 for x in nums]  # This is a list comprehension
+
 squares
 
 ```
@@ -985,7 +1004,7 @@ squares
 
 {:.output_data_text}
 ```
-[0, 1, 4, 9, 16]
+[0, 1, 4, 9, 16, 25]
 ```
 
 
@@ -1264,6 +1283,30 @@ import numpy as np
 
 
 ### Generating arrays from lists
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z.
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(2-9.797174393178826e-16j)
+```
+
+
+</div>
+</div>
+</div>
 
 
 
@@ -2506,7 +2549,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_171_1.png)
+![png](images/python-intro_172_1.png)
 
 </div>
 </div>
@@ -2555,7 +2598,55 @@ ax.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_173_1.png)
+![png](images/python-intro_174_1.png)
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0,2*np.pi,100)
+
+om1 = 1
+
+om2 = 1
+
+y1 = np.sin(om1*t)
+
+y2 = 2*np.cos(om1*t)
+
+
+plt.plot(y1)
+plt.plot(y2)
+plt.plot(y1+y2)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+[<matplotlib.lines.Line2D at 0x115be9320>]
+```
+
+
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+{:.output_png}
+![png](images/python-intro_175_1.png)
 
 </div>
 </div>

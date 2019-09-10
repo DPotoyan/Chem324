@@ -13,6 +13,8 @@ next_page:
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+
 # Complex numbers
 
 
@@ -24,29 +26,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ### Complex Numbers
 
-A complex number has a **real part** $ x $ and a purely **imaginary part** $ y $.
-
+A complex number has a **real part** $ x $ and a purely **imaginary part** $ y $.<br>
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are:
 
-$$
-z = x + iy = re^{i\theta} = r(\cos{\theta} + i \sin{\theta})
-$$
 
-The second equality above is known as **Euler’s formula**
+$$z = x + iy = re^{i\theta} = r(\cos{\theta} + i \sin{\theta})$$
 
-- [Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) contributed many other formulas too!  
-
-
-The complex conjugate $ \bar z $ of $ z $ is defined as
+The second equality above is known as **Euler’s formula**. [Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) contributed many other formulas too! The complex conjugate $ \bar z $ of $ z $ is defined as
 
 $$
 \bar z = r e^{-i \theta} = r (\cos{\theta} - i \sin{\theta} )
 $$
 
 The value $x$ is the **real** part of $z$ and $y$ is the
-**imaginary** part of $z$.
+**imaginary** part of $z$. The symbol 
 
-The symbol $ | z | $ = $ \bar z z = r $ represents the **modulus** of $ z $.
+$ | z |  = \bar z z = r $ 
+
+represents the **modulus** of $ z $.
 
 The value $ r $ is the Euclidean distance of vector $ (x,y) $ from the
 origin:
