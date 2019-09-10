@@ -24,22 +24,33 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-### Complex Numbers
+### "Complex numbers are every bit as real as every other number. "
 
-A complex number has a **real part** $ x $ and a purely **imaginary part** $ y $.<br>
-The Euclidean, polar, and trigonometric forms of a complex number $ z $ are:
+A complex number $z$ is a kind of 2D number that lives in 2D spae and requires two components for its full specification:
 
+![](./images/cnum_intro.png)
+
+- **Real part** $ x $ 
+- **Imaginary part** $ y $.
+
+Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics equations in the same way other numbers do. In fact we will see that central equation for quantum mechanics, the Schrodinger equstion, contains complex numbers and is generlly producing functions of complex variable. Why? because apparently thats how nature works. Can we learn to use complex numbers with easy and devcelop intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
+
+### Eculidead vs polar representation of complex numbers
+
+The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
 $$z = x + iy = re^{i\theta} = r(\cos{\theta} + i \sin{\theta})$$
 
-The second equality above is known as **Euler’s formula**. [Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) contributed many other formulas too! The complex conjugate $ \bar z $ of $ z $ is defined as
+The second equality above is known as [**Euler’s formula**](https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity.) 
+An equally widely regarded as one of the most beautiful and mysterious in mathematics.
+
+The complex conjugate $\bar z$ of $ z $ is defined as
 
 $$
 \bar z = r e^{-i \theta} = r (\cos{\theta} - i \sin{\theta} )
 $$
 
-The value $x$ is the **real** part of $z$ and $y$ is the
-**imaginary** part of $z$. The symbol $|z|  = \bar z z = r$ represents the **modulus** of $z$.
+The symbol $|z|  = \bar z z = r$ represents the **modulus** of $z$.
 
 The value $r$ is the Euclidean distance of vector $(x,y)$ from the
 origin:
