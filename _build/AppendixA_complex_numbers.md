@@ -50,14 +50,10 @@ $$
 \bar z = r e^{-i \theta} = r (\cos{\theta} - i \sin{\theta} )
 $$
 
-The symbol $|z|  = \bar z z = r$ represents the **modulus** of $z$.
-
 The value $r$ is the Euclidean distance of vector $(x,y)$ from the
-origin:
+origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
-$$
-r = |z| = \sqrt{x^2 + y^2}
-$$
+$$r = |z| = \sqrt{x^2 + y^2}$$
 
 The value $ \theta $ is the angle of $ (x,y) $ with respect to the real axis.
 
@@ -74,6 +70,10 @@ $$
 \sin{\theta} = \frac{y}{r} = \frac{e^{i\theta} - e^{-i\theta}}{2i} , \quad
 \tan{\theta} = \frac{x}{y}
 $$
+
+
+
+## Visualizing complex numbers using python
 
 
 
@@ -126,7 +126,7 @@ plt.grid('on')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_5_0.png)
+![png](images/AppendixA_complex_numbers_6_0.png)
 
 </div>
 </div>
@@ -179,7 +179,7 @@ ax.plot(θ,r, 'o', ms=10)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_7_1.png)
+![png](images/AppendixA_complex_numbers_8_1.png)
 
 </div>
 </div>
@@ -234,7 +234,7 @@ ax.grid('--')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_9_0.png)
+![png](images/AppendixA_complex_numbers_10_0.png)
 
 </div>
 </div>
