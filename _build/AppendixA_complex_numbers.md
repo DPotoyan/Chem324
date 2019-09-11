@@ -39,38 +39,41 @@ Complex numbers are every bit as real as  negative numbers. Sure, you do not cou
 
 ### Eculidead vs polar representation of complex numbers
 
+![](./images/cnum_2.png)
+
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
-$$z = x + iy = r(\cos{\theta} + i \sin{\theta}) = re^{i\theta} $$
+$$z = x + iy = r(\cos{\phi} + i \sin{\phi}) = re^{i\phi} $$
 
 The second equality above is known as [**Euler’s formula**](https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity.) 
 An equally widely regarded as one of the most beautiful and mysterious in mathematics.
 
 
 
-The complex conjugate $\bar z$ of $ z $ is defined as
+The complex conjugate $\bar{z}$ of $z$ is defined as
 
-$$
-\bar z = x-iy =  r (\cos{\theta} - i \sin{\theta} ) = re^{i\theta} 
-$$
+$$\bar z = x-iy =  r (\cos{\phi} - i \sin{\phi} ) = re^{i\phi}$$
 
 The value $r$ is the Euclidean distance of vector $(x,y)$ from the
 origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
 $$r = |z| = \sqrt{x^2 + y^2}$$
 
-The value $\theta$ is the angle of $(x,y)$ with respect to the real axis. The tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $. Therefore,
+The value $\phi$ is the angle of (0,0)-(x,y) line with respect to the real axis. 
+The tangent of $\phi$ is $\left(\frac{y}{x}\right) $. Therefore,
 
 $$
-\theta = \tan^{-1} \Big(\frac{y}{x} \Big)
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
 $$
+
+
 
 Three elementary trigonometric functions are
 
 $$
-\cos{\theta} = \frac{x}{r} = \frac{e^{i\theta} + e^{-i\theta}}{2} , \quad
-\sin{\theta} = \frac{y}{r} = \frac{e^{i\theta} - e^{-i\theta}}{2i} , \quad
-\tan{\theta} = \frac{x}{y}
+\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
+\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
+\tan{\phi} = \frac{x}{y}
 $$
 
 
@@ -351,7 +354,7 @@ Text(0,0.5,'Im(z)')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_19_1.png)
+![png](images/AppendixA_complex_numbers_20_1.png)
 
 </div>
 </div>
@@ -362,10 +365,10 @@ Text(0,0.5,'Im(z)')
 Let’s use Python to convert the trigonometric form of the complex number
 $z$ to polar form and that visualize on a polar plot 
 
-For $ z = 1 + \sqrt{3} i $, $ x = 1 $, $ y = \sqrt{3} $.
+For  $z = 1 + \sqrt{3} i $, $ x = 1 $, $ y = \sqrt{3}$.
 
-It follows that $ r = 2 $ and
-$ \theta = \tan^{-1}(\sqrt{3}) = \frac{\pi}{3} = 60^o $.
+It follows that $r = 2$ and
+$\theta = \tan^{-1}(\sqrt{3}) = \frac{\pi}{3} = 60^o$.
 
 
 
@@ -481,15 +484,7 @@ cmath.rect(1.9999999999999998, 1.0471975511965976)
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-c
-
-```
-</div>
-
-</div>
+### Polar plot of complex numbers
 
 
 
@@ -531,7 +526,7 @@ ax.plot( 0,r, 'o', ms=10, color='grey')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_27_1.png)
+![png](images/AppendixA_complex_numbers_28_1.png)
 
 </div>
 </div>
@@ -591,7 +586,7 @@ ax.legend(["z = " + str(z)[1:10],  "r = " + str(r), "θ = " + str(θ)[:10] ])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_29_1.png)
+![png](images/AppendixA_complex_numbers_30_1.png)
 
 </div>
 </div>
@@ -662,23 +657,17 @@ appropriately manipulating polar forms of complex numbers.
 
 We’ll get many of them by deducing implications of the equality
 
-$$
-e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}
-$$
+$$e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}$$
 
-For example, we’ll calculate identities for
-
-$ \cos{(\omega + \theta)} $ and $ \sin{(\omega + \theta)} $.
+For example, we’ll calculate identities for $\cos{(\omega + \theta)} $ and $ \sin{(\omega + \theta)}$.
 
 Using the sine and cosine formulas presented at the beginning of this
 lecture, we have:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \cos{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} + e^{-i(\omega + \theta)}}{2} \\
 \sin{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} - e^{-i(\omega + \theta)}}{2i}
-\end{aligned}
-$$
+\end{aligned}$$
 
 We can also obtain the trigonometric identities as follows:
 
@@ -716,14 +705,11 @@ complex numbers.
 
 For example, we want to solve the following integral:
 
-$$
-\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega
-$$
+$$\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega$$
 
 Using Euler’s formula, we have:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \int \cos(\omega) \sin(\omega) \, d\omega
 &=
 \int
@@ -746,8 +732,7 @@ e^{2i\omega} - e^{-2i\omega}
 &=
 \frac{1}{2} \bigg( \frac{e^{i\omega} - e^{-i\omega}}{2i} \bigg)^2 + C_2 \\
 &= \frac{1}{2} \sin^2(\omega) + C_2
-\end{aligned}
-$$
+\end{aligned}$$
 
 and thus:
 
