@@ -11,8 +11,6 @@ next_page:
   title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 ## Python crash course for Chem324.
 
 
@@ -118,13 +116,12 @@ menu = ["sushi", "123", "taco", "frog"]
 
 for item in menu:
     
-    if item == "sushi":                     
+    if item == "taco":   
+        
         print("yum!")
         
-    elif item == "taco":                
-        print("maybe not today")
-        
     else:
+        
         print("eww")
 
 ```
@@ -134,9 +131,9 @@ for item in menu:
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-yum!
 eww
-maybe not today
+eww
+yum!
 eww
 ```
 </div>
@@ -170,7 +167,6 @@ doing. To make a comment in Python, precede the comment with a #.
 ```python
 # Comments can be on their own line like this
 print("Hi")
-print("Big")
 print("World") # A comment can also be at the end of a line
 
 ```
@@ -181,7 +177,6 @@ print("World") # A comment can also be at the end of a line
 {:.output_stream}
 ```
 Hi
-Big
 World
 ```
 </div>
@@ -223,17 +218,23 @@ World
 <div class="input_area" markdown="1">
 ```python
 print("Hello")     # This line is not indented, so it is fine
-print("World") # Unnecessary indentation, this code will not work
+      print("World") # Unnecessary indentation, this code will not work
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
+{:.output_traceback_line}
 ```
-Hello
-World
+
+      File "<ipython-input-2-a2ff7fc750bc>", line 2
+        print("World") # Unnecessary indentation, this code will not work
+        ^
+    IndentationError: unexpected indent
+
+
+
 ```
 </div>
 </div>
@@ -294,20 +295,9 @@ print(x) # print contents of x
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_traceback_line}
+{:.output_stream}
 ```
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-2-7594cb87eb66> in <module>
-    ----> 1 print(x) # print contents of x
-    
-
-    NameError: name 'x' is not defined
-
-
+3
 ```
 </div>
 </div>
@@ -914,7 +904,7 @@ nums[0:3]
 
 
 
-You can loop over the elements of a list like this:
+Loops alow you to go over the elements of containers and act on them given specific instructions. You can loop over the elements of a list like this:
 
 
 
@@ -1160,52 +1150,7 @@ x equals 9
 
 
 
-Python functions are defined using the `def` keyword. For example let us write a function that maps numbers into description of postivie, negative and zero. 
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-def sign(x):
-    if x > 0:
-        return 'positive'
-    elif x < 0:
-        return 'negative'
-    else:
-        return 'zero'
-
-```
-</div>
-
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-for x in [-1, 0, 1]:
-    print(sign(x))
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-negative
-zero
-positive
-```
-</div>
-</div>
-</div>
-
-
-
-Let us write a polynomial function $$f(x)=3.0x^3 + x^2 + 10x+1.0 $$
+Python functions are defined using the `def` keyword. For example let us write a polynomial function $$f(x)=3.0x^3 + x^2 + 10x+1.0 $$
 
 
 
@@ -1276,7 +1221,7 @@ import numpy as np
 
 - A numpy array is a grid of values, all of the same type, and is indexed by nonnegative integers. 
 - The array can have any number of dimensions 1D, 2D, 3D, ...
-- The shape of an array is a tuple of integers giving the size of the array along each dimension. For example a 1D vector of size 4 is (4,). a mtrix of size 2 is (2,2), a matrix with size 2x5 is (2,5) 
+- The shape of an array is a tuple of integers giving the size of the array along each dimension. For example a 1D vector of size 4 is (4,). a matrix of size 2 is (2,2), a matrix with size 2x5 is (2,5) 
 
 - Numpy arrays can be generates either by feeding lists to numpy or on the fly using numpy special methods
 
@@ -2306,12 +2251,62 @@ The rules of broadcasting are:
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-data = np.array([[1,3,5],[2,4,6]]).T
+data = np.array([[1,2],[3,4],[5,6]])
 ones_row = np.array([1,1])
 
 ```
 </div>
 
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+data
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+ones_row
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+array([1, 1])
+```
+
+
+</div>
+</div>
 </div>
 
 
@@ -2343,30 +2338,6 @@ data.shape, ones_row.shape
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print(data)
-print(ones_row)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-[[1 2]
- [3 4]
- [5 6]]
-[1 1]
-```
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
 data+ones_row
 
 ```
@@ -2378,8 +2349,8 @@ data+ones_row
 
 {:.output_data_text}
 ```
-array([[2, 3],
-       [4, 5],
+array([[2, 4],
+       [3, 5],
        [6, 7]])
 ```
 
@@ -2397,7 +2368,6 @@ array([[2, 3],
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-
 a = np.arange(3).reshape((3, 1))
 print(a)
 print(a.shape)
@@ -2549,7 +2519,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_172_1.png)
+![png](images/python-intro_170_1.png)
 
 </div>
 </div>
@@ -2598,7 +2568,7 @@ ax.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_174_1.png)
+![png](images/python-intro_172_1.png)
 
 </div>
 </div>
@@ -2611,16 +2581,6 @@ ax.legend(['Sine', 'Cosine'])
 ```python
 from scipy.constants import h, k, c 
 
-```
-</div>
-
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
 h, k, c # Plank constant, Boltzmann constant and speed of light
 
 ```
@@ -2650,7 +2610,7 @@ Let us know use our knoledge of numpy, functions and matplotlib to plot $\rho(\l
 <div class="input_area" markdown="1">
 ```python
 # Define range of wavelengths (micrometers)
-lambas = np.arange(1, 3e3, 1) 
+lambdas = np.arange(1, 3e3, 1) 
 
 # Define convenient function for computing intensity as a function of T
 def planck(wav, T):
@@ -2674,9 +2634,9 @@ def planck(wav, T):
 <div class="input_area" markdown="1">
 ```python
 # Plot intensities, vary T
-plt.plot(lambas, planck(lambas,7000), color='red')  
-plt.plot(lambas, planck(lambas,6000), color='orange')
-plt.plot(lambas, planck(lambas,5000), color='grey')
+plt.plot(lambdas, planck(lambdas,7000), color='red')  
+plt.plot(lambdas, planck(lambdas,6000), color='orange')
+plt.plot(lambdas, planck(lambdas,5000), color='grey')
 
 # Annotate plots
 plt.xlabel('$\lambda$', fontsize=15)
@@ -2701,7 +2661,7 @@ Text(0, 0.5, 'Intensity')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_179_1.png)
+![png](images/python-intro_176_1.png)
 
 </div>
 </div>
