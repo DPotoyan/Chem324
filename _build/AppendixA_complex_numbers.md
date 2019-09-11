@@ -33,7 +33,7 @@ A complex number $z$ is a kind of 2D number that lives in 2D space and requires 
 - **Real part** $ x $ 
 - **Imaginary part** $ y $.
 
-Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that central equation for quantum mechanics, the Schrodinger equstion, contains complex numbers. As a result solutions to Schroidnger equation are functions of complex variable. Why? because apparently thats how nature works. Can we learn to use complex numbers with easy and devcelop intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
+Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that central equation for quantum mechanics, the Schrodinger equstion, contains an imaginary number. As a result solutions to Schroidnger equation are functions of complex variable. Why? Because apparently thats how nature works. Nature operates on complex plane which includes real numbers as subset. Can we learn to use complex numbers with ease and devcelop intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
 
 
 
@@ -44,9 +44,9 @@ Some facts from mathematics are in order here:
 
 - **What is the definition of i?** The imaginary number i is defined solely by the property that its square is −1 that is: $i\cdot i=-1$. 
 
-- **Where does i appear in math?** Most notably imaginary number (i) provide solutions to quadratic equation $x^2 + 1 = 0.$ Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i. 
-
 - **How does i change what i know about math of real variables?** Imaginary numbers are an important mathematical concept, which extend the real number system ℝ to the complex number system ℂ, which in turn provides at least one root for every nonconstant polynomial P(x). (See Fundamental theorem of algebra.) The term "imaginary" is used because there is no real number having a negative square.
+
+- **Where does i appear in math?** Most notably imaginary number (i) provide solutions to quadratic equation $x^2 + 1 = 0.$ Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i. 
 
 - **What do you call a number that contains i?** A complex number z=1+2i. A function of complex variable is a function if it operates on complex variables z. 
 
