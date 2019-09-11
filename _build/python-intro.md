@@ -2516,7 +2516,7 @@ By running these special commands known as magic commands (start with %), we wil
 
 
 
-The most important function in `matplotlib` is plot, which allows you to plot 2D data. Here is a simple example:
+The most important function in `matplotlib` is plot, which allows you to plot 1D and 2D data. Here is a simple example:
 
 
 
@@ -2599,6 +2599,109 @@ ax.legend(['Sine', 'Cosine'])
 
 {:.output_png}
 ![png](images/python-intro_174_1.png)
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+from scipy.constants import h, k, c 
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+h, k, c # Plank constant, Boltzmann constant and speed of light
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(6.62607004e-34, 1.38064852e-23, 299792458.0)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+Let us know use our knoledge of numpy, functions and matplotlib to plot $\rho(\lambda,T)$ vs $\lambda$.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Define range of wavelengths (micrometers)
+lambas = np.arange(1, 3e3, 1) 
+
+# Define convenient function for computing intensity as a function of T
+def planck(wav, T):
+    
+    wav=wav*1e-9  # convert to meters
+    a = 2.0*h*c**2
+    b = h*c/(wav*k*T)
+    
+    intensity = a/( (wav**5) * (np.e**b - 1.0) )
+    
+    return intensity
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Plot intensities, vary T
+plt.plot(lambas, planck(lambas,7000), color='red')  
+plt.plot(lambas, planck(lambas,6000), color='orange')
+plt.plot(lambas, planck(lambas,5000), color='grey')
+
+# Annotate plots
+plt.xlabel('$\lambda$', fontsize=15)
+plt.ylabel('Intensity',fontsize=15)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+Text(0, 0.5, 'Intensity')
+```
+
+
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+{:.output_png}
+![png](images/python-intro_179_1.png)
 
 </div>
 </div>
