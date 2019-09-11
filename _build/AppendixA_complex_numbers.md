@@ -55,12 +55,12 @@ origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
 $$r = |z| = \sqrt{x^2 + y^2}$$
 
-The value $ \theta $ is the angle of $ (x,y) $ with respect to the real axis.
+The value $\theta$ is the angle of $(x,y)$ with respect to the real axis.
 
 Evidently, the tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $. Therefore,
 
 $$
-\theta = \tan^{-1} \Big( \frac{y}{x} \Big)
+\theta = \tan^{-1} \Big(\frac{y}{x} \Big)
 $$
 
 Three elementary trigonometric functions are
@@ -73,7 +73,7 @@ $$
 
 
 
-## Visualizing complex numbers using python
+## Manipulating and visualizing complex numbers using python
 
 
 
@@ -84,6 +84,9 @@ $$
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
+
+#If your screen has retina display this will increase resolution of plots
+%config InlineBackend.figure_format = 'retina'
 
 ```
 </div>
@@ -102,22 +105,7 @@ Consider the complex number $ z = 1 + \sqrt{3} i $.
 <div class="input_area" markdown="1">
 ```python
 z=1+np.sqrt(3)*1j
-
-zeros=np.zeros(5)  # plot zero line
-
-plt.plot(zeros)
-
-plt.plot(z.real,z.imag, 'o',ms=10) # plot z
-
-zc=z.conjugate()
-
-plt.plot(zc.real,zc.imag, 'o',ms=10) # plot z conjugate
-
-z_abs=z*zc
-
-plt.plot(z_abs.real,z_abs.imag, 'o',ms=10) # plot z absolute
-
-plt.grid('on')
+z
 
 ```
 </div>
@@ -125,8 +113,242 @@ plt.grid('on')
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
+
+{:.output_data_text}
+```
+(1+1.7320508075688772j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z.real, z.imag
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1.0, 1.7320508075688772)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+zc=z.conj()
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+np.sqrt(z*zc)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1.9999999999999998+0j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+abs(z)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+1.9999999999999998
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z.conj
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1-1.7320508075688772j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+### Adding, subtracting and multiplying comple numbers
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z1 = 2-1j
+z2 = 1+7j
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z1+z2   # Try adding, multiplying, dividing z1 and z2
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(3+6j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+np.sqrt(z1+z2)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(2.2032026611843234+1.3616541287161306j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+### Cartesian representation
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Specify your complex number here. Feel free to modify
+z = 1j/(3+7j)-1j
+
+# Compute conjugate, absolute values
+zc = z.conjugate()
+z_abs  = abs(z)
+
+
+### Plot
+
+plt.plot(z.real,z.imag, 'o',ms=12,color='blue') 
+
+plt.plot(zc.real,zc.imag, 'o',ms=12, color='green') 
+
+plt.plot(z_abs.real,z_abs.imag, 'o',ms=12,color='grey') 
+
+
+#Plot grid and specify a legend
+plt.grid('on')
+plt.legend(["z: " + str(z)[1:10], "zc: " + str(zc)[1:10], "z_abs: " + str(z_abs)[:10]],fontsize=12)
+plt.xlabel("Re(z)",fontsize=12)
+plt.ylabel("Im(z)",fontsize=12)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+Text(0, 0.5, 'Im(z)')
+```
+
+
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
 {:.output_png}
-![png](images/AppendixA_complex_numbers_6_0.png)
+![png](images/AppendixA_complex_numbers_17_1.png)
 
 </div>
 </div>
@@ -149,16 +371,20 @@ $ z = 1 + \sqrt{3} i $.
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Set parameters
-r = 2                        # multiply by *np.ones(10)
-θ = np.pi/3 # multiplying by *np.random.rand(10)
+import cmath  # python provides special methods to convert between representtions 
+
+```
+</div>
+
+</div>
 
 
-# Plot
-fig = plt.figure(figsize=(8, 8))
-ax = plt.subplot(projection='polar')
 
-ax.plot(θ,r, 'o', ms=10)             
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+z=1+np.sqrt(3)*1j 
+z
 
 ```
 </div>
@@ -169,7 +395,132 @@ ax.plot(θ,r, 'o', ms=10)
 
 {:.output_data_text}
 ```
-[<matplotlib.lines.Line2D at 0x126a97358>]
+(1+1.7320508075688772j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+cmath.polar(z) # get the polar form
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1.9999999999999998, 1.0471975511965976)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+r=cmath.polar(z)[0] 
+theta=cmath.polar(z)[1]
+
+r, theta
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1.9999999999999998, 1.0471975511965976)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+cmath.rect(1.9999999999999998, 1.0471975511965976)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(1+1.732050807568877j)
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+c
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Specify complex number either by z or directly pecify r and theta
+
+#z = 1+np.sqrt(3)*1j
+
+r =  1         # cmath.polar(z)[0]                         
+θ =  np.pi/3   # cmath.polar(z)[1] 
+
+
+# Plot
+fig = plt.figure()
+ax = plt.subplot(projection='polar')
+
+ax.plot( θ,r, 'o', ms=10,color='blue')     # complex number    z     
+ax.plot(-θ,r, 'o', ms=10,color='green')    # complex conjugate z
+ax.plot( 0,r, 'o', ms=10, color='grey')
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+[<matplotlib.lines.Line2D at 0x1159f2898>]
 ```
 
 
@@ -179,7 +530,7 @@ ax.plot(θ,r, 'o', ms=10)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_8_1.png)
+![png](images/AppendixA_complex_numbers_25_1.png)
 
 </div>
 </div>
@@ -187,7 +538,7 @@ ax.plot(θ,r, 'o', ms=10)
 
 
 
-With a few more options we can annote the plot and connect with cartesian representation.
+**With a few more options we can annote the plot to show connection with cartesian representation**
 
 
 
@@ -195,15 +546,15 @@ With a few more options we can annote the plot and connect with cartesian repres
 <div class="input_area" markdown="1">
 ```python
 # Set parameters
-r = 2
+r = 1
 θ = np.pi/3
 x = r * np.cos(θ)
 
 # Plot
-fig = plt.figure(figsize=(8, 8))
-ax = plt.subplot(111, projection='polar')
+fig = plt.figure(figsize=(6,6))
+ax = plt.subplot(projection='polar')
 
-ax.plot((0, θ),(0, r), '--o', color='red',ms=10)             # plot r
+ax.plot((0, θ),(0, r), '--o', color='red',ms=10)               # plot r
 
 
 ### Plot lines and annotate
@@ -211,21 +562,14 @@ x_range = np.linspace(0, x, 1000)
 θ_range = np.linspace(0, θ, 1000)
 
 ax.plot(np.zeros(x_range.shape), x_range, color='green')       # plot x
-ax.plot(θ_range, x / np.cos(θ_range), color='blue')           # plot y
-ax.plot(θ_range, np.ones(θ_range.shape) * 0.1, color='r')  # plot θ
+ax.plot(θ_range, x / np.cos(θ_range), color='blue')            # plot y
+ax.plot(θ_range, np.ones(θ_range.shape) * 0.1, color='r')      # plot θ
 
 ax.set_title("Trigonometry of complex numbers", va='bottom', fontsize='x-large')
 
-ax.set_rmax(2)
-ax.set_rticks((0.5, 1, 1.5, 2))  # less radial ticks
-ax.set_rlabel_position(-88.5)    # get radial labels away from plotted line
+ax.set_rmax(r)
 
-ax.text(θ, r+0.01 , r'$z = x + iy = 1 + \sqrt{3}\, i$')   # label z
-ax.text(θ+0.2, 1 , '$r = 2$')                             # label r
-ax.text(0-0.2, 0.5, '$x = 1$')                            # label x
-ax.text(0.5, 1.2, r'$y = \sqrt{3}$')                      # label y
-ax.text(0.25, 0.15, r'$\theta = 60^o$')                   # label θ
-ax.grid('--')
+ax.legend(["z = " + str(z)[1:10],  "r = " + str(r), "θ = " + str(θ)[:10] ])
 
 ```
 </div>
@@ -233,8 +577,20 @@ ax.grid('--')
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
+
+{:.output_data_text}
+```
+<matplotlib.legend.Legend at 0x118aabef0>
+```
+
+
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
 {:.output_png}
-![png](images/AppendixA_complex_numbers_10_0.png)
+![png](images/AppendixA_complex_numbers_27_1.png)
 
 </div>
 </div>
@@ -390,6 +746,127 @@ $$
 \frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
 $$
 
-We can verify the analytical as well as numerical results using
-`integrate` in the `sympy` package:
+
+
+### Sympy and complex numbers
+
+
+
+Below we will use symbolic python to derive Euler's relation and to evaluate a few integrals. 
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+from sympy import *
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+x = Symbol('x',real=True)
+y = Symbol('y',real=True)
+z = Symbol('z',complex=True)
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+exp(x).series(x,0,4)                        # Taylor expand to power 4
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+
+$\displaystyle 1 + x + \frac{x^{2}}{2} + \frac{x^{3}}{6} + O\left(x^{4}\right)$
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+a=cos(x).series(x,0,4)
+a
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+
+$\displaystyle 1 - \frac{x^{2}}{2} + O\left(x^{4}\right)$
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+b=I*sin(y).series(y,0,4) # Taylor expand to power 4
+b
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+
+$\displaystyle i \left(y - \frac{y^{3}}{6} + O\left(y^{4}\right)\right)$
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+(a+b).simplify()
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+
+$\displaystyle 1 + i y - \frac{i y^{3}}{6} - \frac{x^{2}}{2} + O\left(y^{4}\right) + O\left(x^{4}\right)$
+
+
+</div>
+</div>
+</div>
 
