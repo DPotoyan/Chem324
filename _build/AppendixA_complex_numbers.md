@@ -13,14 +13,14 @@ next_page:
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 # Complex numbers
 
 
 
 **Reccomended:** Watch the  following YouTube video 
 ["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
+
+**Also Reccomended:** [A Visual, Intuitive Guide to Imaginary Numbers](https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/)
 
 
 
@@ -35,19 +35,23 @@ A complex number $z$ is a kind of 2D number that lives in 2D spae and requires t
 
 Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics equations in the same way other numbers do. In fact we will see that central equation for quantum mechanics, the Schrodinger equstion, contains complex numbers and is generlly producing functions of complex variable. Why? because apparently thats how nature works. Can we learn to use complex numbers with easy and devcelop intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
 
+
+
 ### Eculidead vs polar representation of complex numbers
 
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
-$$z = x + iy = re^{i\theta} = r(\cos{\theta} + i \sin{\theta})$$
+$$z = x + iy = r(\cos{\theta} + i \sin{\theta}) = re^{i\theta} $$
 
 The second equality above is known as [**Euler’s formula**](https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity.) 
 An equally widely regarded as one of the most beautiful and mysterious in mathematics.
 
+
+
 The complex conjugate $\bar z$ of $ z $ is defined as
 
 $$
-\bar z = r e^{-i \theta} = r (\cos{\theta} - i \sin{\theta} )
+\bar z = x-iy =  r (\cos{\theta} - i \sin{\theta} ) = re^{i\theta} 
 $$
 
 The value $r$ is the Euclidean distance of vector $(x,y)$ from the
@@ -55,9 +59,7 @@ origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
 $$r = |z| = \sqrt{x^2 + y^2}$$
 
-The value $\theta$ is the angle of $(x,y)$ with respect to the real axis.
-
-Evidently, the tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $. Therefore,
+The value $\theta$ is the angle of $(x,y)$ with respect to the real axis. The tangent of $ \theta $ is $ \left(\frac{y}{x}\right) $. Therefore,
 
 $$
 \theta = \tan^{-1} \Big(\frac{y}{x} \Big)
@@ -324,6 +326,7 @@ plt.plot(z_abs.real,z_abs.imag, 'o',ms=12,color='grey')
 
 
 #Plot grid and specify a legend
+
 plt.grid('on')
 plt.legend(["z: " + str(z)[1:10], "zc: " + str(zc)[1:10], "z_abs: " + str(z_abs)[:10]],fontsize=12)
 plt.xlabel("Re(z)",fontsize=12)
@@ -338,7 +341,7 @@ plt.ylabel("Im(z)",fontsize=12)
 
 {:.output_data_text}
 ```
-Text(0, 0.5, 'Im(z)')
+Text(0,0.5,'Im(z)')
 ```
 
 
@@ -348,7 +351,7 @@ Text(0, 0.5, 'Im(z)')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_17_1.png)
+![png](images/AppendixA_complex_numbers_19_1.png)
 
 </div>
 </div>
@@ -356,15 +359,13 @@ Text(0, 0.5, 'Im(z)')
 
 
 
-Now let us make a polar plot
+Let’s use Python to convert the trigonometric form of the complex number
+$z$ to polar form and that visualize on a polar plot 
 
 For $ z = 1 + \sqrt{3} i $, $ x = 1 $, $ y = \sqrt{3} $.
 
 It follows that $ r = 2 $ and
 $ \theta = \tan^{-1}(\sqrt{3}) = \frac{\pi}{3} = 60^o $.
-
-Let’s use Python to plot the trigonometric form of the complex number
-$ z = 1 + \sqrt{3} i $.
 
 
 
@@ -530,7 +531,7 @@ ax.plot( 0,r, 'o', ms=10, color='grey')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_25_1.png)
+![png](images/AppendixA_complex_numbers_27_1.png)
 
 </div>
 </div>
@@ -590,7 +591,7 @@ ax.legend(["z = " + str(z)[1:10],  "r = " + str(r), "θ = " + str(θ)[:10] ])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/AppendixA_complex_numbers_27_1.png)
+![png](images/AppendixA_complex_numbers_29_1.png)
 
 </div>
 </div>
@@ -600,21 +601,30 @@ ax.legend(["z = " + str(z)[1:10],  "r = " + str(r), "θ = " + str(θ)[:10] ])
 
 ## De Moivre’s Theorem
 
-de Moivre’s theorem states that:
+[de Moivre’s theorem](https://en.wikipedia.org/wiki/De_Moivre%27s_formula) states that:
 
 $$
-(r(\cos{\theta} + i \sin{\theta}))^n =
+z^n=(r(\cos{\theta} + i \sin{\theta}))^n =
 r^n e^{in\theta} =
 r^n(\cos{n\theta} + i \sin{n\theta})
 $$
 
-To prove de Moivre’s theorem, note that
+We raised complex number to power n, used polar representation and realized that exponent raised to power n simply multiplies polar angle by n. 
+Note that e Moivre’s theorem allows relating igonometirc functions of angle $\theta$ raised to power $n$ to trignomoteric functions of of angle $n\theta$ of power one:
 
 $$
-(r(\cos{\theta} + i \sin{\theta}))^n = \big( re^{i\theta} \big)^n
+r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
 $$
 
-and compute.
+$$
+(\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
+$$
+
+The proof of De Moivre's Theorem is done via [induction](https://en.wikipedia.org/wiki/De_Moivre%27s_formula), e.g one can expand the parenthesis ans assert the equality for cases n=2, n=3, ..
+
+
+
+**Exercise:** set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine. 
 
 
 
@@ -748,11 +758,11 @@ $$
 
 
 
-### Sympy and complex numbers
+## Sympy and complex numbers
 
 
 
-Below we will use symbolic python to derive Euler's relation and to evaluate a few integrals. 
+Below we will use symbolic python to derive Euler's relation by expanding sines, conse and exp in taylor series. If you have used Mathematica, WolfraALpha, or another math software that uses symbols than Sympy is essetnially python version of that. The central objects in Sympy are variables which we define and than do symbolic operations such as expand in series, differnetiate, simplify expression, integrate etc. 
 
 
 
@@ -774,6 +784,7 @@ from sympy import *
 x = Symbol('x',real=True)
 y = Symbol('y',real=True)
 z = Symbol('z',complex=True)
+n = Symbol('n',real=True)
 
 ```
 </div>
@@ -830,7 +841,7 @@ $\displaystyle 1 - \frac{x^{2}}{2} + O\left(x^{4}\right)$
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-b=I*sin(y).series(y,0,4) # Taylor expand to power 4
+b=I*sin(y).series(y,0,4) 
 b
 
 ```
@@ -853,7 +864,7 @@ $\displaystyle i \left(y - \frac{y^{3}}{6} + O\left(y^{4}\right)\right)$
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-(a+b).simplify()
+(a+b).simplify()         # simplify an expression
 
 ```
 </div>
@@ -868,5 +879,90 @@ $\displaystyle 1 + i y - \frac{i y^{3}}{6} - \frac{x^{2}}{2} + O\left(y^{4}\righ
 
 </div>
 </div>
+</div>
+
+
+
+Now let us use Sympy to evaluate 
+$\int_{-\pi}^{\pi} \cos(nx) \sin(nx) \, d\omega$
+
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+integrate(cos(n*x)*sin(n*x), (x,-pi,pi))  # evaluate integral of cos(nx)sin(nx)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+
+$\displaystyle 0$
+
+
+</div>
+</div>
+</div>
+
+
+
+## Complex numbers and Julia sets and fractals.
+
+- **Fractal** is a mathematically defined, self similar object which has similarity and symmetry on a variety of scales. The Julia Set Fractal is a type of fractal defined by the behavior of a function that operates on input complex numbers. More explicitly, upon iterative updating of input complex number, the Julia Set Fractal represents the set of inputs whose resulting outputs either tend towards infinity or remain bounded. <br><br>
+- **Julia set fractals** are normally generated by initializing a complex number  $z = x + yi$  where  $i^2 = -1$  and x and y are image pixel coordinates in the range of about -2 to 2. Then, z is repeatedly updated using:  $z = z^2 + c$  where c is another complex number that gives a specific Julia set. After numerous iterations, if the magnitude of z is less than 2 we say that pixel is in the Julia set and color it accordingly. Performing this calculation for a whole grid of pixels gives a fractal image.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+import matplotlib.cm as cm
+fig, ax = plt.subplots(figsize=(8,8))
+
+# Image width and height; parameters for the plot
+im_width, im_height = 500, 500
+
+c = complex(-0.1, 0.65)
+
+zabs_max = 10
+nit_max = 1000
+
+xmin, xmax = -1.5, 1.5
+xwidth = xmax - xmin
+
+ymin, ymax = -1.5, 1.5
+yheight = ymax - ymin
+
+julia = np.zeros((im_width, im_height))
+
+for ix in range(im_width):
+    for iy in range(im_height):
+        
+        nit = 0
+        
+        # Map pixel position to a point in the complex plane
+        z = complex(ix / im_width * xwidth + xmin,
+                    iy / im_height * yheight + ymin)
+
+        # Do the iterations
+        while abs(z) <= zabs_max and nit < nit_max:
+            z = z**2 + c
+            nit += 1
+            
+        shade = 1-np.sqrt(nit / nit_max)
+        ratio = nit / nit_max
+        julia[ix,iy] = ratio
+
+
+#ax.imshow(julia, interpolation='nearest', cmap=cm.hot)  #try cm.jet, cm.hot, cm.rainbow, etc
+
+```
+</div>
+
 </div>
 
