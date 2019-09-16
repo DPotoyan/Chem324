@@ -7,7 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Outline for Lecture 2:</title>
+  <title>| Lecture 1.2, Chem-324, Fall2019
+| ***
+| Photoelectric effect and photons.
+</title>
   <meta name="description" content="This is a Book for Chem324 taught at Iowa State. All the content has been build using Jupyter Books.">
 
   <link rel="canonical" href="http://0.0.0.0:4000//content/Lec2-Chem324.html">
@@ -15,7 +18,10 @@
 
   <meta property="og:url"         content="http://0.0.0.0:4000//content/Lec2-Chem324.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Outline for Lecture 2:" />
+<meta property="og:title"       content="| Lecture 1.2, Chem-324, Fall2019
+| ***
+| Photoelectric effect and photons.
+" />
 <meta property="og:description" content="This is a Book for Chem324 taught at Iowa State. All the content has been build using Jupyter Books." />
 <meta property="og:image"       content="" />
 
@@ -27,11 +33,14 @@
   "mainEntityOfPage":
     "http://0.0.0.0:4000//content/Lec2-Chem324.html",
   "headline":
-    "Outline for Lecture 2:",
+    "| Lecture 1.2, Chem-324, Fall2019
+| ***
+| Photoelectric effect and photons.
+",
   "datePublished":
-    "2019-08-21T08:55:25-05:00",
+    "2019-09-16T11:50:07-05:00",
   "dateModified":
-    "2019-08-21T08:55:25-05:00",
+    "2019-09-16T11:50:07-05:00",
   "description":
     "This is a Book for Chem324 taught at Iowa State. All the content has been build using Jupyter Books.",
   "author": {
@@ -178,8 +187,8 @@ initFunction(addThebelabButtonToCodeCells);
     {
       requestKernel: true,
       binderOptions: {
-        repo: 'YOUR-ORG/YOUR-REPO',
-        ref: 'gh-pages',
+        repo: 'dpotoyan/Chem324',
+        ref: 'master',
       },
       codeMirrorConfig: {
         theme: "abcdef"
@@ -455,6 +464,147 @@ initFunction(addCopyButtonToCodeCells);
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
 
   <!-- Lunr search code - will only be executed on the /search page -->
   <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
@@ -588,7 +738,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://github.com/jupyter/jupyter-book"
+          href="https://github.com/DPotoyan/Chem324"
         >
           
           GitHub repository
@@ -621,7 +771,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/LEC1-Chem324.html"
+          href="/Lec0-Chem324.html"
         >
           
           1.0 Intro to QM thinking.
@@ -643,10 +793,27 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/LEC2-Chem324.html"
+                  href="/Lec1-Chem324.html"
                 >
                   
-                  1.1 Photoelectric effect.
+                  1.1 Black Body Radiation.
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/Lec2-Chem324.html"
+                >
+                  
+                  1.2 Photoelectric effect.
                 </a>
 
                 
@@ -660,10 +827,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/LEC3-Chem324.html"
+                  href="/Lec3-Chem324.html"
                 >
                   
-                  1.2 Wave particle duality
+                  1.3 Wave particle duality
                 </a>
 
                 
@@ -677,10 +844,27 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/features/markdown.html"
+                  href="/python-intro.html"
                 >
                   
-                  1.3 Crash course of Python and interactive plotting.
+                  1.4 Crash course of Python and interactive plotting.
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/AppendixA_complex_numbers.html"
+                >
+                  
+                  1.5 Appendix A. Complex numbers.
                 </a>
 
                 
@@ -705,7 +889,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/LEC4-Chem324.html"
+          href="/Lec4-Chem324.html"
         >
           
           2.0 Waves
@@ -727,7 +911,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/LEC5-Chem324.html"
+                  href="/Lec5-Chem324.html"
                 >
                   
                   2.1 Mathematics of Waves
@@ -964,78 +1148,78 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <h2 id="outline-for-lecture-2">Outline for Lecture 2:</h2>
+              <h2 id="outline-for-lecture-12">Outline for Lecture 1.2:</h2>
+
+<p><img src="/content/images/lec2_intro.png" alt="" />{width=40%}</p>
 
 <p><strong>Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.</strong></p>
 
-<p><img src="/content/images/lec2_intro.png" alt="" /></p>
-
 <p><strong>Only by abandoning classical thinking and accepting the reality of quantized energy reconciles experiments with theory.</strong></p>
 
-<h2 id="photoelectric-effect-and-why-it-contradicts-classical-mechanics">Photoelectric effect and why it contradicts classical mechanics.</h2>
+<h2 id="photoelectric-effect-contradicts-classical-mechanics">Photoelectric effect contradicts classical mechanics.</h2>
 
 <ul>
   <li>
-    <p>Previously we saw that in trying to reconcile experiment with theory Planck had to assume that blackbody absorbs and emits right with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$. It was thought to be nothing more than a neat mathematical trick that fixes theory.</p>
+    <p>To reconcile experiment with theory Planck had to assume that a heated material absorbs and emits light with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$.  At a time this discreteness was thought to be nothing more than a temporary mathematical trick to fix theory.</p>
   </li>
   <li>
-    <p>Einstein on the other hand was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles some discrete countable energy packets which he called photons. This view was instrumental for making sense of the photoelectric experiment.</p>
+    <p>Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment.</p>
   </li>
   <li>
-    <p>Eventually it became clear that not only light can show particle like behavior but particles too can show wave like behavior! This was demonstrated in the electron diffraction experiments. This universal duality of particles and waves is captured by De Broglie relation which is one of the central equations of quantum mechanics. About this in the next lecture.</p>
+    <p>Thus experiments showed that energies of both matter and light are quantized!</p>
   </li>
 </ul>
 
 <h2 id="photoelectric-effect">Photoelectric effect</h2>
 
-<p>When you shine light with sufficient energy content (UV radiation) on a metal surface electrons start flying off the surface. This is the essence of photoelectric effect. Observation of photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interest with matter.</p>
+<p><img src="/content/images/lect2_Eflying.png" alt="" /></p>
 
-<p><img src="/content/images/lec2_applic.jpg" alt="" /></p>
+<p>When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interest with the matter.</p>
 
-<p>Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is  relevant for design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc.</p>
+<h2 id="applications-of-photoelectric-effect">Applications of photoelectric effect</h2>
 
-<h2 id="photoelectric-effect-challenges-classical-mechanics">Photoelectric effect challenges classical mechanics</h2>
+<p>Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc.</p>
 
-<p>Early experiments of photoelectric effect appeared truly puzzling to scientists of 20th century for the following reasons:</p>
+<p><img src="/content/images/lec2_applic.jpg" alt="" />{width=40%}</p>
+
+<h2 id="failure-of-classical-way-of-thinking-about-light">Failure of classical way of thinking about light.</h2>
+
+<p>Early experiments of photoelectric effect appeared truly puzzling to scientists of the 20th century for the following reasons:</p>
 
 <ul>
   <li>
-    <p>They expected to see more electrons being ejected when increasing the intensity or duration of radiation. According to CM if one shines the light long enough or increases intensity by pumping more energy then surely those pesky electrons will start flying. 
+    <p>They expected to see more electrons being ejected when increasing the intensity or duration of radiation. According to CM if one shines the light long enough or increases the intensity by pumping more energy then surely those pesky electrons will start flying. 
 (reminder: Intensity of light is a quantity measuring the amount of energy transferred per unit surface per unit time.)</p>
   </li>
   <li>
-    <p>That was not at all what experiments showed. Unless radiation had a frequency above certain threshold (v0) not a single electron would escape regardless of the intensity of radiation. That was really weird.</p>
+    <p>That was not at all what experiments showed. Unless radiation had a frequency above a certain threshold $\nu_0$ not a single electron would escape regardless of the intensity of radiation. That was really weird.</p>
   </li>
 </ul>
 
-<p><img src="/content/images/lect2_Eflying.png" alt="" /></p>
+<hr />
 
-<h2 id="energy-is-quantized-any-classical-resistance-is-futile">Energy is quantized! Any classical resistance is futile.</h2>
-
-<p><img src="/content/images/lec2_KE.png" alt="" /></p>
+<p><img src="/content/images/lec2_KE.png" alt="" />{width=90%}</p>
 
 <ul>
   <li>
-    <p>What buries CM completely and implies quantization of energy is the fact that electrons would get ejected immediately once the frequency threshold is crossed even if the intensity of radiation ia minimal.</p>
+    <p>In striking contradicton with classical mechanics electrons  get ejected immediately once the frequency threshold is crossed even if the intensity of the radiation is minimal.</p>
   </li>
   <li>
-    <p>Furthermore kinetic energy of an ejected electron was observed to be a linearly increasing function of frequency of light with no dependence on the intensity.</p>
-  </li>
-  <li>
-    <p>Photoelectric effect becomes clear when we think of light consisting of packets of energy with particle like qualities called photons. Once one photon transfers the necessary amount of energy to the material one electron gets ejected from the metal.</p>
+    <p>Furthermore, the kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity.</p>
   </li>
 </ul>
 
-<h2 id="understanding-photoelectric-part">Understanding photoelectric part.</h2>
+<hr />
 
-<p>Electrons are bound in metals and to eject them some energy needs to be supplied by a photon: $E_{photon}$.
-But this energy has to exceed $h\nu_0$, the energy difference between free and bound states.<br />
-<img src="/content/images/lec2_KE.png" alt="" /></p>
-<div style="background-color: #fefbd8">
-$$(E_{photon}-E_{photon})=KE$$
-</div>
+<ul>
+  <li>The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal.</li>
+</ul>
 
-<p>If energy of photon is smaller $E_{photon} &lt; h\nu_0$  than electron stays bound; if $E_{photon}&gt; h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).</p>
+<script type="math/tex; mode=display">(E_{photon}-E_{photon})=KE</script>
+
+<ul>
+  <li>If energy of photon is smaller $E_{photon} &lt; h\nu_0$  than electron stays bound; if $E_{photon}&gt; h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).</li>
+</ul>
 
 
               <nav class="c-page__nav">

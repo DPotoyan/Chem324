@@ -1,11 +1,11 @@
 ---
-title: '1.3 Crash course of Python and interactive plotting.'
+title: '2.2 Visualizing and animating waves.'
 prev_page:
-  url: /LEC3-Chem324
-  title: '1.2 Wave particle duality'
+  url: /Lec5-Chem324.html
+  title: '2.1 Mathematics of Waves'
 next_page:
-  url: /LEC4-Chem324
-  title: '2.0 Waves'
+  url: /features/markdown.html
+  title: '3.0 Schrodinger Equation.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Content in prepartion...  

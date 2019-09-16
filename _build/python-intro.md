@@ -4,10 +4,10 @@ kernel_name: python3
 has_widgets: false
 title: '1.4 Crash course of Python and interactive plotting.'
 prev_page:
-  url: /LEC3-Chem324
+  url: /Lec3-Chem324.html
   title: '1.3 Wave particle duality'
 next_page:
-  url: /AppendixA_complex_numbers
+  url: /AppendixA_complex_numbers.html
   title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -1036,16 +1036,9 @@ even_squares
 
 ## The if statement
 
-The `if statement` allows you to execute a block of code optionally, if
-certain conditions are met. This is called *conditional execution*. To
-write an `if statement` in Python, begin the first line with the word
-`if`. Following the word `if`, an expression which evaluates to True or
-False must be put in parentheses (), called the *conditional statement*.
-This can be a conditional expression, an expression involving boolean
-operators, or anything else that evaluates to True or False. End this
-first line with a colon. Follow the first line with the code block you
-want executed if your expression evaluates to True. This code block must
-be indented from the first line of the if statement.
+
+
+The `if statement` allows you to execute a block of code optionally, if certain conditions are met. An expression which evaluates to True or False, called the *conditional statement*, must be in the parentheses following the `if` keyword.
 
 
 
@@ -1079,41 +1072,7 @@ Since I am not indented, I am not in the
 
 
 
-An if statement can also be extended with a default block of code that
-will be executed if none of the conditions of the if statement are met.
-This optional, default code block is an `else statement`, which must
-come after an `if statement`. Change the value of x below to see
-what happens as the conditional statement changes from True to False.
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-x = 9
-
-if( x == 9):
-    print("x equals 9")
-else:
-    print("x does not equal 9")
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-x equals 9
-```
-</div>
-</div>
-</div>
-
-
-
-There is one more extension to the `if statement`. Each if statement can be followed by zero or more `elif statements`. “elif” stands for “else-if”, and these are used to chain together `if statements` with different conditions. Each `elif` line must have a
-conditional statement after the `elif`, followed by a colon to end the line, just like for an `if statement`. Again, change x to trigger the different conditions below.
+The `if statement` can be followed with optional blocks of code that will be executed if another condition, or no condition, is met. The default code block when no condition is met is an `else statement`. Each `if statement` can also be followed by zero or more `elif statements`. These are used to chain together `if statements` with different conditions. Try changing x to trigger the different conditions below.
 
 
 
@@ -2519,7 +2478,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_170_1.png)
+![png](images/python-intro_169_1.png)
 
 </div>
 </div>
@@ -2568,7 +2527,7 @@ ax.legend(['Sine', 'Cosine'])
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_172_1.png)
+![png](images/python-intro_171_1.png)
 
 </div>
 </div>
@@ -2661,7 +2620,7 @@ Text(0, 0.5, 'Intensity')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/python-intro_176_1.png)
+![png](images/python-intro_175_1.png)
 
 </div>
 </div>
