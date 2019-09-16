@@ -8,7 +8,8 @@ help:
 	@echo "  runall      to run all notebooks in-place, capturing outputs with the notebook"
 	@echo "  serve       to serve the repository locally with Jekyll"
 	@echo "  build       to build the site HTML locally with Jekyll and store in _site/"
-
+	@echo "  docker-pull to the docker repo is pulled and up to date"
+	@echo "  docker      to build the site HTML locally with Jekyll using docker and store in _site/, hosting it to http://0.0.0.0:4000"
 
 install:
 	gem install bundler
@@ -29,3 +30,13 @@ serve:
 build:
 	bundle exec jekyll build
 	touch _site/.nojekyll
+
+docker-pull:
+	docker pull emdupre/jupyter-book
+
+docker: docker-pull book
+	docker run --rm --security-opt label:disable  \
+	   -v $(CURDIR):/srv/jekyll \
+	   -p 4000:4000 \
+	   -it -u 1000:1000 \
+	   emdupre/jupyter-book bundle exec jekyll serve --host 0.0.0.0
