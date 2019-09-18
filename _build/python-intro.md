@@ -4,13 +4,15 @@ kernel_name: python3
 has_widgets: false
 title: '1.4 Crash course of Python and interactive plotting.'
 prev_page:
-  url: /Lec3-Chem324.html
+  url: /Lec3-Chem324
   title: '1.3 Wave particle duality'
 next_page:
-  url: /AppendixA_complex_numbers.html
+  url: /AppendixA_complex_numbers
   title: '1.5 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+
 ## Python crash course for Chem324.
 
 

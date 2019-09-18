@@ -6,13 +6,15 @@ kernel_name: python3
 has_widgets: false
 title: '1.5 Appendix A. Complex numbers.'
 prev_page:
-  url: /python-intro.html
+  url: /python-intro
   title: '1.4 Crash course of Python and interactive plotting.'
 next_page:
-  url: /Lec4-Chem324.html
+  url: /Lec4-Chem324
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+
 # Complex numbers
 
 
