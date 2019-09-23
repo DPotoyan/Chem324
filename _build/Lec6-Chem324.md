@@ -1,3 +1,15 @@
+---
+redirect_from:
+  - "/lec6-chem324"
+title: '3.0 Schrodinger Equation.'
+prev_page:
+  url: /waves_1d
+  title: '2.2 Visualizing and animating waves.'
+next_page:
+  url: /features/markdown
+  title: '3.1 Interpretation of Schrodinger equation.'
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
 ## Outline for Lecture 3.0: Schordinger Equartion
 
 - By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schoridnger's equation (SE).

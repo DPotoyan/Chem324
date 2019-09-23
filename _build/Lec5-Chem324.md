@@ -3,27 +3,14 @@ redirect_from:
   - "/lec5-chem324"
 title: '2.1 Mathematics of Waves'
 prev_page:
-  url: /Lec4-Chem324.html
+  url: /Lec4-Chem324
   title: '2.0 Waves'
 next_page:
-  url: /features/markdown.html
+  url: /waves_1d
   title: '2.2 Visualizing and animating waves.'
-title: |
-
-    | Lecture 2.1, Chem-324, Fall2019
-
-	| ***
-
-    | Solving wave equations. PDEs and ODEs.
-
-author: 'Davit Potoyan'
-
-institute: ' Iowa State University, Ames IA 50011'
-
-
-
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
 
 ## Outline for Lecture 2.1: 
 
