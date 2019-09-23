@@ -3,10 +3,10 @@ redirect_from:
   - "/lec2-chem324"
 title: '1.2 Photoelectric effect.'
 prev_page:
-  url: /Lec1-Chem324.html
+  url: /Lec1-Chem324
   title: '1.1 Black Body Radiation.'
 next_page:
-  url: /Lec3-Chem324.html
+  url: /Lec3-Chem324
   title: '1.3 Wave particle duality'
 title: |
 

@@ -3,10 +3,10 @@ redirect_from:
   - "/lec4-chem324"
 title: '2.0 Waves'
 prev_page:
-  url: /AppendixA_complex_numbers.html
-  title: '1.5 Appendix A. Complex numbers.'
+  url: /AppendixA_complex_numbers
+  title: '1.6 Appendix A. Complex numbers.'
 next_page:
-  url: /Lec5-Chem324.html
+  url: /Lec5-Chem324
   title: '2.1 Mathematics of Waves'
 title: |
 

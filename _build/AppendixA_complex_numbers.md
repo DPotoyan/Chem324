@@ -4,10 +4,10 @@ redirect_from:
 interact_link: content/AppendixA_complex_numbers.ipynb
 kernel_name: python3
 has_widgets: false
-title: '1.5 Appendix A. Complex numbers.'
+title: '1.6 Appendix A. Complex numbers.'
 prev_page:
-  url: /python-intro
-  title: '1.4 Crash course of Python and interactive plotting.'
+  url: /python-cookbook
+  title: '1.5 Python CookBook.'
 next_page:
   url: /Lec4-Chem324
   title: '2.0 Waves'

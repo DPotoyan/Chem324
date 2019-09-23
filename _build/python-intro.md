@@ -2,13 +2,13 @@
 interact_link: content/python-intro.ipynb
 kernel_name: python3
 has_widgets: false
-title: '1.4 Crash course of Python and interactive plotting.'
+title: '1.4 A Crash course of Python.'
 prev_page:
   url: /Lec3-Chem324
   title: '1.3 Wave particle duality'
 next_page:
-  url: /AppendixA_complex_numbers
-  title: '1.5 Appendix A. Complex numbers.'
+  url: /python-cookbook
+  title: '1.5 Python CookBook.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

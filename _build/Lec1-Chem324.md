@@ -3,10 +3,10 @@ redirect_from:
   - "/lec1-chem324"
 title: '1.1 Black Body Radiation.'
 prev_page:
-  url: /Lec0-Chem324.html
+  url: /Lec0-Chem324
   title: '1.0 Intro to QM thinking.'
 next_page:
-  url: /Lec2-Chem324.html
+  url: /Lec2-Chem324
   title: '1.2 Photoelectric effect.'
 title: |
 

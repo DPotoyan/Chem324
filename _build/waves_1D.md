@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/waves-1d"
-interact_link: content/waves_1D.ipynb
+interact_link: content/waves_1d.ipynb
 kernel_name: python3
 has_widgets: false
 title: '2.2 Visualizing and animating waves.'
@@ -9,7 +9,7 @@ prev_page:
   url: /Lec5-Chem324
   title: '2.1 Mathematics of Waves'
 next_page:
-  url: /features/markdown
+  url: /Lec6-Chem324
   title: '3.0 Schrodinger Equation.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -75,7 +75,7 @@ plt.plot(x, y)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/waves_1D_3_1.png)
+![png](images/waves_1d_3_1.png)
 
 </div>
 </div>
@@ -118,7 +118,7 @@ wave(0.4)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/waves_1D_6_0.png)
+![png](images/waves_1d_6_0.png)
 
 </div>
 </div>

@@ -6,7 +6,7 @@ prev_page:
   url: https://github.com/DPotoyan/Chem324
   title: 'GitHub repository'
 next_page:
-  url: /Lec1-Chem324.html
+  url: /Lec1-Chem324
   title: '1.1 Black Body Radiation.'
 
 

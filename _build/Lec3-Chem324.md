@@ -3,11 +3,11 @@ redirect_from:
   - "/lec3-chem324"
 title: '1.3 Wave particle duality'
 prev_page:
-  url: /Lec2-Chem324.html
+  url: /Lec2-Chem324
   title: '1.2 Photoelectric effect.'
 next_page:
-  url: /python-intro.html
-  title: '1.4 Crash course of Python and interactive plotting.'
+  url: /python-intro
+  title: '1.4 A Crash course of Python.'
 title: |
 
     | Lecture 1.3, Chem-324, Fall2019
