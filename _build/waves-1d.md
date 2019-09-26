@@ -37,7 +37,7 @@ from IPython.display import display
 
 ### Standing and traveling waves in 1D
 
-We beging by plotting a simple periodic function
+We beging by plotting a simple periodic function using numpy (np) and matplotlib.pyplot (plt) 
 $$y = sin(kx)=sin\Big(2\pi \cdot \frac{x}{\lambda}\Big)$$
 
 
@@ -62,7 +62,7 @@ plt.plot(x, y)
 
 {:.output_data_text}
 ```
-[<matplotlib.lines.Line2D at 0x113ac6550>]
+[<matplotlib.lines.Line2D at 0x118755630>]
 ```
 
 
@@ -80,7 +80,7 @@ plt.plot(x, y)
 
 
 
-**Using python function to make wavelength exploration simple**
+**By putting above example inside a python function will make wavelength exploration much easier.**
 
 
 
@@ -105,7 +105,7 @@ def wave(L):
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# comparing three different wavelength
+# Now try comparing three different wavelengths
 wave(0.5)
 wave(1.0)
 wave(2.0)
@@ -125,20 +125,24 @@ wave(2.0)
 
 
 
-### Adding an interactive widget to the plots
+### How to add an interactive widget to the plots
+
+
+
+By adding **@widgets.interact(parameters=(init,final))** to our functions we can interactively vary various parameters of the function using dash knobs. Below we illustrate this on the example of our newly created function **wavef(L)** where we vary the length of guitra string L as a parameter between values of 0.1 and 2. Try changing these numbers
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-@widgets.interact(L=(0.1,2))
+@widgets.interact(L=(0.1,1))
 
-def wavef(L):
+def wavef(L):        # By writing wavef(L=0.1) inside function you can specify initial value 
     
     x = np.linspace(0, +1., 1000)
     
-    y = np.sin(2*np.pi * x/L)
+    y = np.sin(np.pi * x/L)
     
     plt.plot(x, y)
 
@@ -149,7 +153,7 @@ def wavef(L):
 <div class="output_subarea" markdown="1">
 {:.output_data_text}
 ```
-interactive(children=(FloatSlider(value=1.05, description='L', max=2.0, min=0.1), Output()), _dom_classes=('wi…
+interactive(children=(FloatSlider(value=0.55, description='L', max=1.0, min=0.1), Output()), _dom_classes=('wi…
 ```
 
 </div>
@@ -158,7 +162,7 @@ interactive(children=(FloatSlider(value=1.05, description='L', max=2.0, min=0.1)
 
 
 
-### Traveling waves and wave interference
+## Traveling waves and wave interference
 
 
 
@@ -167,27 +171,24 @@ interactive(children=(FloatSlider(value=1.05, description='L', max=2.0, min=0.1)
 ```python
 @widgets.interact(k=(2,20),t=(0,50.0,0.1))
 
-def wavef2(k=2,t=0):
+def wavef2(k=10,t=0):
 
     v=1         #velocity of waves
-    
-    phi = 4*np.pi/4
+
+    phi = 0.5   # vary initial phase between -2*np.pi and 2*np.pi
     
     x = np.linspace(0, 1., 1000)
     
     wave1 = np.sin(k*(x-v*t)) 
     
-    wave2= np.sin(k*(x-v*t)+phi)    # try flipping the direction ofvelocity to get standing wave
-    
+    wave2= np.sin(k*(x-v*t)+phi)    #try flipping the direction ofvelocity to get standing wave
     
     plt.plot(x, wave1,'--', color='blue')
     plt.plot(x,wave2,'--',  color='green')
     plt.plot(x, wave1+wave2,color='red')
     
-    plt.ylim([-2,2])
-    
+    plt.ylim([-2.5,2.5])
     plt.legend(['Wave1','Wave2','Wave1+Wave2'])
-    
     plt.grid('on')
 
 ```
@@ -197,7 +198,7 @@ def wavef2(k=2,t=0):
 <div class="output_subarea" markdown="1">
 {:.output_data_text}
 ```
-interactive(children=(IntSlider(value=2, description='k', max=20, min=2), FloatSlider(value=0.0, description='…
+interactive(children=(IntSlider(value=10, description='k', max=20, min=2), FloatSlider(value=0.0, description=…
 ```
 
 </div>
@@ -243,7 +244,7 @@ interactive(children=(IntSlider(value=1, description='n', max=10, min=1), Output
 
 
 
-## 1D guitar string solution as linear combination of normal modes
+## 1D guitar vibrations as linear combination of normal modes
 
 
 
@@ -347,32 +348,30 @@ interactive(children=(IntSlider(value=1, description='n1', max=10, min=1), IntSl
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-%matplotlib inline
-
-@widgets.interact(n1=(1,10),m1=(1,10),n2=(1,10),m2=(1,10),phi=(0,2*np.pi),t=(0,20))
+@widgets.interact(n1=(1,10),m1=(1,10),n2=(1,10),m2=(1,10),phi=(0,2*np.pi),t=(0,100))
 
 def membrane(n1=1, m1=1, n2=1, m2=1, phi=0, t=0): 
     
-    t=0
     omega=1
     
-    Lx,Ly = 1,1                       # size of memrbante
-    N=40                              # number of grid points along X and Y
+    L=1                       # size of memrbante
+    N=40                      # number of grid points along X and Y
     
-    xs = np.linspace(0,Lx,N)
-    ys = np.linspace(0,Ly,N)
-    X,Y = np.meshgrid(xs,ys)          # create 2D mesh of points along X and Y
+    x = np.linspace(0,L,N)
+    y = np.linspace(0,L,N)
+    X,Y = np.meshgrid(x,y)   # create 2D mesh of points along X and Y
      
 
-    mode1 = np.cos(omega*t) * np.sin(n1*np.pi*X/Lx) * np.sin(m1*np.pi*Y/Ly) 
+    mode1 = np.cos(omega*t) * np.sin(n1*np.pi*X/L) * np.sin(m1*np.pi*Y/L) 
      
-    mode2 = np.cos(omega*t+phi) * np.sin(n2*np.pi*X/Lx) * np.sin(m2*np.pi*Y/Ly) 
+    mode2 = np.cos(omega*t+phi) * np.sin(n2*np.pi*X/L) * np.sin(m2*np.pi*Y/L) 
    
-    #plt.pcolor(X,Y,mode1+mode2,cmap='jet')
+
         
-    fig = plt.figure()            
-    ax  = plt.axes(projection='3d')   # Making a 3D plot     
+    fig, ax = plt.figure(figsize=(9,6))            
+    ax      = plt.axes(projection='3d')   # Making a 3D plot     
    
+    ax.set_zlim([-2.0,2.0])
     ax.plot_surface(X,Y,mode1+mode2,cmap='RdYlBu') #Do the Plot 
 
 ```
