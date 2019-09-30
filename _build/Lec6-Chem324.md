@@ -36,7 +36,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 - Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
 
-  <img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_intro.jpeg" style="zoom:33%;" />
+  <img src="images/SE_intro.jpeg" style="zoom:33%;" />
 
 ### Picking up where classical mechanics has failed
 
@@ -48,14 +48,14 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 - Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects. 
 
-  <img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_intro2.gif" style="zoom:70%;" />
+  <img src="images/SE_intro2.gif" style="zoom:70%;" />
 
 
 
 
 ### Schrdoinger Equation (time dependent)
 
-<img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_4.jpg" style="zoom:24%;" />
+<img src="images/SE_4.jpg" style="zoom:24%;" />
 
 - The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time dependent Schrodinger equation in 1D. Schrodinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
 
@@ -134,7 +134,7 @@ $$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^
 
 - We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
-  <img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_intro3.jpg" style="zoom: 20%; " />
+  <img src="images/SE_intro3.jpg" style="zoom: 20%; " />
 
 ### Linear operators. 
 
@@ -211,7 +211,7 @@ $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
 
 Using the oeprator notation we see that both classical wave equation and time-independent schrodinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
 
-<img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_intro6.jpg" style="zoom:24%;" />
+<img src="images/SE_intro6.jpg" style="zoom:24%;" />
 
 E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
@@ -221,7 +221,7 @@ The time independent Schrodinger equation can now be seen as an eigenfunction-ei
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
-<img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/SE_intro5.jpg" style="zoom:24%;" />
+<img src="images/SE_intro5.jpg" style="zoom:24%;" />
 
 
 
