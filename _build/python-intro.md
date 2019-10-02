@@ -11,8 +11,6 @@ next_page:
   title: '1.5 Python CookBook.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 ## Python crash course for Chem324.
 
 

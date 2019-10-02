@@ -50,4 +50,4 @@ This course will make heavy use of Jupyter notebooks for visualization, interact
 Content is originally created by [Davit Potoyan] with the support from X, XX and XXX.  
 
 [Davit Potoyan]: https://group.chem.iastate.edu/Potoyan/
-#
+

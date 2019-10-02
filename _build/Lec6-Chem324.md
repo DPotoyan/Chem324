@@ -30,7 +30,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
   
 
-### The exciting journey into the microscopic world.  
+## The exciting journey into the microscopic world.  
 
 - In the next few sections we are going to arrive at Schrodinger equation (SE) which is a fundamental law of nature. This implies that  SE can only be inferred or guessed from the experiments. It can not be derived. Its correctness is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations. 
 
@@ -53,7 +53,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 
 
-### Schrdoinger Equation (time dependent)
+## Schrdoinger Equation (time dependent)
 
 <img src="images/SE_4.jpg" style="zoom:24%;" />
 
