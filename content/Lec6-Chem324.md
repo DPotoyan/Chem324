@@ -24,7 +24,7 @@
 
 - Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
 
-  <img src="images/SE_intro.jpeg" style="zoom:53%;" />
+  <img src="images/SE_intro.jpeg" style="zoom:60%;" />
 
 ### Picking up where classical mechanics has failed
 
@@ -36,14 +36,14 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 - Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects. 
 
-  <img src="images/SE_intro2.gif" style="zoom:85%;" />
+  <img src="images/SE_intro2.gif" style="zoom:89%;" />
 
 
 
 
 ## Schrdoinger Equation (time dependent)
 
-<img src="images/SE_4.jpg" style="zoom:24%;" />
+<img src="images/SE_4.jpg" style="zoom:28%;" />
 
 - The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time dependent Schrodinger equation in 1D. Schrodinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
 
@@ -122,7 +122,7 @@ $$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^
 
 - We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
-  <img src="images/SE_intro3.jpg" style="zoom: 50%; " />
+  <img src="images/SE_intro3.jpg" style="zoom: 70%; " />
 
 ### Linear operators. 
 
@@ -199,7 +199,7 @@ $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
 
 Using the oeprator notation we see that both classical wave equation and time-independent schrodinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
 
-<img src="images/SE_intro6.jpg" style="zoom:60%;" />
+<img src="images/SE_intro6.jpg" style="zoom:80%;" />
 
 E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
@@ -209,7 +209,7 @@ The time independent Schrodinger equation can now be seen as an eigenfunction-ei
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
-<img src="images/SE_intro5.jpg" style="zoom:60%;" />
+<img src="images/SE_intro5.jpg" style="zoom:70%;" />
 
 
 
@@ -225,5 +225,5 @@ Thanks to universality of energy conservation law, for every observable in class
 |             Kinetic Energy              |               $K=\frac{p^2}{2m}$               |                $\hat{K}=\frac{\hat{p}^2}{2m}$                |
 |              Total Energy               |          $H(x,p)=\frac{p^2}{2m}+V(x)$          |                  $\hat{H}=\hat{K}+\hat{V}$                   |
 |           Equation of motion            | Newton's law $F=ma$ <br>or Hamiltons equations | $\hat{H}\psi=E\psi$ Or <br>$i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi$ |
-| Quantization and wave-particle duality? |                      N/A                       | Quantization results from solving SE <br>subject to boundary conditions. Solutions being wave functions <br>naturally describe wave phenomena. |
+| Quantization and wave-particle duality? |                      N/A                       | Energy quantization and duality are<br> naturally described by $E_n$ and $\psi_n$. |
 
