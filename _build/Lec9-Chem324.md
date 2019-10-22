@@ -17,7 +17,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 - The objective of this section to provide a gentle and mathematically friendly introduction  to the abstract mathematical formalism of quantum mechanics which include three topics of fundmental importance for quantum mechanics:
 
   1. **Linear vector spaces.**
+
   2. **Dirac notation.**
+
   3. **Functional spaces.**
 
 - Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
@@ -44,7 +46,7 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 - Vector is just an ordered collection of numbers, e.g:
 
-  -   $$a=(-2,8) \,\,\,$$ *A 2D vector*
+  -  $$a=(-2,8) \,\,\,$$ *A 2D vector*
 
   -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector* 
 
@@ -58,35 +60,21 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
-- Diract notation for vectors:
-  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ example: $$\mid a \rangle =(1, 2i)$$
-  
-  - **Bra:** $$\langle a \mid = \begin{pmatrix}
-    a_1\\
-  a_2\\  ...\\
-    \end{pmatrix} \,\,\,\,\,$$ example: $$\mid a \rangle =\begin{pmatrix}
-    1\\
-    -2i\\
-    \end{pmatrix}$$
+|                 Diract notation for vectors:                 |                 Dirac notation for functions                 |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ |  **Ket:** $$=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$  |
+| **Bra:**$$\langle a \mid = \begin{pmatrix}a_1\\a_2\\  ...\\\end{pmatrix}$$ <br>Example: $$\mid a \rangle =\begin{pmatrix}1\\-2i\\\end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br> Example: $$\langle \psi \mid-ix^2$$ |
+| **Dot product (Bra-Ket):**<br> $$\langle a \mid a \rangle = \sum_i a^2_i$$ | **Dot product (Bra-Ket):** <br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$ |
+| **Dot product (Bra-Ket):** <br>$$\langle a \mid b \rangle = \sum_i a_i b_i$$ | **Dot product (Bra-Ket):** <br>$$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
 
-  - **Dot product (Bra-Ket):** $$\langle a \mid a \rangle = \sum_i a^2_i$$
-  
-    
-  
-- Dirac notation for functions
 
-  - **Ket:** $$\psi=\mid \psi \rangle \,\,\,\,\,$$ Example: $\psi(x)=ix^2$
-
-  - **Bra:** $$\psi^* = \langle \psi \mid \,\,\,\,\,$$ Example: $\psi^*(x)=-ix^2$
-
-  - **Dot product (Bra-Ket):** $$\langle \psi \mid \psi \rangle = \int \mid \psi \mid^2 dx$$
 
 
 
 
 ### Representation of vectors
 
-- Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
+1. Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
   - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
   - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
@@ -96,11 +84,11 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
     3\\
     \end{pmatrix}$$ 
 
-- In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+2. In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
 $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
-- Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
+3. Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
 
   - $$Person = (22, 1.75, 80)$$   
 
@@ -116,7 +104,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
-- **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
+1. **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
   - $$ a+b=\begin{pmatrix}
     2\\
@@ -133,7 +121,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
     
 
-- **Mulitiplication** by a  scalar  $\alpha=10$
+2. **Mulitiplication** by a  scalar  $\alpha=10$
 
   - $$\alpha \cdot a=10\begin{pmatrix}
     2\\
@@ -147,7 +135,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
     
 
-- **Dot product** with another vector $\mid b\rangle$
+3. **Dot product** with another vector $\mid b\rangle$
 
   - $$a\cdot b=(2,3)\begin{pmatrix}
     1\\
@@ -177,14 +165,13 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 	
 	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
 	
-	  
-	
-- When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
-  
-  
+
+When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
+
+
 ### Basis set and linear independence. 
 
-- **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
+1. **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
 
   
 
@@ -214,16 +201,15 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
     
     
 
-- **Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
+2. **Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
 
   
   
   $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$ 
   
-  
-  
-  The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
-  
+
+The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
+
 ## Video "Linear combinations, span, and basis vectors"
 
 Now watch the second video from 1B3B on linear combinations and basis vectors. 
@@ -236,31 +222,15 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 
 ## Decomposition of functions into orthogonal components
 
-- Writing a vector in terms of its orthogonal unit vectors is a powerful idea which permeates much of quantum mechanics where the role of finite dimensional vectors we have infinite dimensional functions. First let us write the decomposition of a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  
+- Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions is in quantum mathematics is known as **Hilbert space.** Named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple vectors.   
 
+|                           Vectors                            |                          Functions                           |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| Orthonrmal units:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormal units: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
+| Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
+| Coefficients are projections: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are projections: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
 
-
-$$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ 
-
-$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$
-
-$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$
-
-$$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangle=A_y  $$
-
-
-
-- For functions one can carry out similiar decomposition where the dot product, due to iniften dimensions and continous variation is given by an integral! Below we write an example of function of x decomposed in terms of two orthognal functions:
-
-  
-
-  $$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$
-
-  $$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$
-
-  $$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$
-
-  $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2$$
+In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to iniften dimensions and continous variation is given by an integral!
 
 
 
