@@ -25,12 +25,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-## Vectors what are they?
+## Video "Vectors, what are they?"
+
+Lets remind ourselves of some basics first. 1B3B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching videos 1. 
 
 <html>
 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+</iframe>
 </html>
 
 
@@ -180,7 +182,15 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
   
   The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
   
-  
+## Video "Linear combinations, span, and basis vectors"
+
+Now watch the second video from 1B3B on linear combinations and basis vectors. 
+
+<html>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
+</iframe>
+</html>
 
 ## Decomposition of functions into orthogonal components
 
