@@ -25,6 +25,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
+## Vectors what are they?
+
+<html>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen></iframe>
+​     </iframe>
+</html>
+
+
+
+
+
+
 ## Vectors in 2D/3D
 
 - Vector is just an ordered collection of numbers, e.g:
