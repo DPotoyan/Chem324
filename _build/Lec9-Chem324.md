@@ -45,7 +45,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 - Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
   - $\vec{a}=2\vec{e_i}+3\vec{e_j} $  *Explicit representation in terms of **unit vectors.***
-  - $|a\rangle = 2|e_i\rangle+3|e_j\rangle$ *Same as before but **using Dirac notation.***
+  - $\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$ *Same as before but **using Dirac notation.***
   - $a=(2,3)$    *Column array representation*
   - $a= \begin{pmatrix}
     2\\
@@ -66,9 +66,9 @@ However let us note vectors are just an array of numbers and the components of v
 
 ## Vector operations 
 
-What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $|a\rangle=a_1|e_1\rangle+a_2|e_2\rangle$ 
+What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$ 
 
-- **Addition or subtraction** with another vector $|b\rangle=|e_1\rangle\pm|e_2\rangle$
+- **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
   - $ a+b=\begin{pmatrix}
     2\\
@@ -81,7 +81,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     4\\
     \end{pmatrix}$
 
-  - $|a\rangle \pm|b\rangle=(a_1\pm b_1)|e_1\rangle+(a_2 b_2)|e_2\rangle$
+  - $\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2 b_2)\mid e_2\rangle$
 
     
 
@@ -95,25 +95,25 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     30\\
     \end{pmatrix}$
 
-  - $\alpha |a\rangle=\alpha a_1|e_1\rangle+ \alpha a_2|e_2\rangle$
+  - $\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$
 
     
 
-- **Dot product** with another vector $|b\rangle$
+- **Dot product** with another vector $\mid b\rangle$
 
   - $a\cdot b=(2,3)\begin{pmatrix}
     1\\
     1\\
     \end{pmatrix}=2 \cdot 1+3\cdot 1=5$
-  - $\langle a|b\rangle=a_1b_1+a_2b_2$
+  - $\langle a \mid b\rangle=a_1b_1+a_2b_2$
 
 
 
 ##  Projection, orthogonality and norm
 
-- Dot product  $\langle a|b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
+- Dot product  $\langle a\mid b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
-  - $\langle e_i |e_j \rangle =\delta_{ij}$  where $\delta_{ij}=0$ when $i\neq j$ and 1 when $i=j$
+  - $\langle e_i \mid e_j \rangle =\delta_{ij}$  where $\delta_{ij}=0$ when $i\neq j$ and 1 when $i=j$
   - $(1,0)\begin{pmatrix}
     0\\
     1\\
@@ -121,17 +121,18 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
    In other words orthogonal vectors have nothing in common with each other and *live* in their own dimensions. 
 
-- Norm of a vector $|a|$ quantifies the length or magnitude of vector and is defined via square root of dot product of vectors with itself:
-	- $\langle a| a\rangle= a_1^2+a_2^2$
-- $ |a| =\sqrt{a_1^2+a_2^2}$
-- When the norm is on $|a|=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $|E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1|E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $|e_1\rangle=\frac{1}{4}|E_1\rangle=(1,0,0,0)$. And now $\langle e_1 | e_1\rangle=1$
+- Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector and is defined via square root of dot product of vectors with itself:
+	
+	- $\langle a \mid a\rangle= a_1^2+a_2^2$
+- $ \mid a \mid =\sqrt{a_1^2+a_2^2}$
+- When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
   
   
 ### Basis and linear independence. 
-  
+
 - **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
 
-  - $|v\rangle = \sum^{i=N}_{i=1} |e_i\rangle$
+  - $\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$
   - $a= \begin{pmatrix}
     2\\
     3\\
@@ -160,11 +161,11 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
   
   
-  $$\alpha_1 |e_1\rangle +\alpha_1 |e_2\rangle+\alpha_3 |e_3\rangle=0$$ 
+  $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$ 
   
   
   
-  The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $|e_i\rangle$ in terms of the others.
+  The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
   
   
 
@@ -174,13 +175,13 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 
 
-$$\langle x|y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ 
+$$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ 
 
-$$|A \rangle = A_x |x\rangle+A_y|y\rangle$$
+$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$
 
-$$\langle e_x|A\rangle=A_x \langle x|x \rangle +A_y \langle x|y \rangle=A_x  $$
+$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$
 
-$$\langle y|A\rangle=A_x \langle y|x \rangle +A_y \langle y|y \rangle=A_y  $$
+$$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangle=A_y  $$
 
 
 
@@ -188,13 +189,13 @@ $$\langle y|A\rangle=A_x \langle y|x \rangle +A_y \langle y|y \rangle=A_y  $$
 
   
 
-  $\langle \phi_i | \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$
+  $\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$
 
-  $|f\rangle = c_1 |\phi_1\rangle+c_2|\phi_2\rangle$
+  $\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$
 
-  $$\langle \phi_1|A\rangle=c_1 \langle \phi_1|\phi_1 \rangle +c_2 \langle \phi_1|\phi_2 \rangle=c_1  $$
+  $$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1  $$
 
-  $$\langle \phi_2|A\rangle=c_1 \langle \phi_2|\phi_1 \rangle +c_2 \langle \phi_2|\phi_2 \rangle=c_2  $$
+  $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2  $$
 
 
 
