@@ -223,7 +223,7 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormlity of eigenfunctions of hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
 | Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
-| Coefficients are expressed via projections: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
+| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onot basis functions: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
 
 In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to iniften dimensions and continous variation is given by an integral!
 
@@ -234,13 +234,19 @@ In the first column we decompose a vectors in terms of two orthogonal components
 
 The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
-- Eigenvalues of  are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$
+- Eigenvalues $\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$  are real: 
 
-- Eigenfunctions are orthogonal: $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
+  $$E_n=E^*_n$$
 
-- Eigenfunctions form complete basis set! $\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$
+- Eigenfunctions are orthogonal:
 
-The last two properties imply that eigenfunctions of Hermitian opeartors can play the same role for wavefunctions  as the unit vectors for  vectors.  That is a wave function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
+   $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
+
+- Eigenfunctions form a complete basis set! 
+
+  $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
+
+The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 
 
