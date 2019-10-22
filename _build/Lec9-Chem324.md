@@ -56,7 +56,7 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 ### Dirac notation
 
-Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions . At this point let us just get used to this new and fancy looking notation which denotes bra and ket vectos and functions.
+Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
 - Diract notation for vectors:
   - **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $\mid a \rangle =(1,2i)$
@@ -89,7 +89,7 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
 - Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
   - $\vec{a}=2\vec{e_i}+3\vec{e_j} $  *Explicit representation in terms of **unit vectors.***
-  - $\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$ *Same as before but **using Dirac notation.***
+  - $\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$  **Dirac notation.***
   - $a=(2,3)$    *Column array representation*
   - $a= \begin{pmatrix}
     2\\
@@ -102,19 +102,19 @@ In classical physics vectors are attached to a coordinate system with unit vecto
 
 However let us note vectors are just an array of numbers and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
 
-- Person = (22, 1.75, 80)   in years, kg, m, kg
-- Population  =(3.0, 40.0, 2.0 ...) popultions of countires listed alphabetically in millions.  
-- Stock = (1.4, 3.6, 8.5, ...) price tags of an item in $ over years. 
+- Person = (22, 1.75, 80)   
+- Population  =(3.0, 40.0, 2.0 ...) 
+- Stock = (1.4, 3.6, 8.5, ...)  
 
 
 
 ### Vector operations 
 
-What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$ 
+What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 - **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
-  - $ a+b=\begin{pmatrix}
+  - $$ a+b=\begin{pmatrix}
     2\\
     3\\
     \end{pmatrix}+\begin{pmatrix}
@@ -123,21 +123,21 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     \end{pmatrix}=\begin{pmatrix}
     3\\
     4\\
-    \end{pmatrix}$
+    \end{pmatrix}$$
 
-  - $\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2 b_2)\mid e_2\rangle$
+  - $$\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2 b_2)\mid e_2\rangle$$
 
     
 
 - **Mulitiplication** by a  scalar  $\alpha=10$
 
-  - $\alpha \cdot a=10\begin{pmatrix}
+  - $$\alpha \cdot a=10\begin{pmatrix}
     2\\
     3\\
     \end{pmatrix}=\begin{pmatrix}
     20\\
     30\\
-    \end{pmatrix}$
+    \end{pmatrix}$$
 
   - $\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$
 
@@ -145,10 +145,10 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 - **Dot product** with another vector $\mid b\rangle$
 
-  - $a\cdot b=(2,3)\begin{pmatrix}
+  - $$a\cdot b=(2,3)\begin{pmatrix}
     1\\
     1\\
-    \end{pmatrix}=2 \cdot 1+3\cdot 1=5$
+    \end{pmatrix}=2 \cdot 1+3\cdot 1=5$$
   - $\langle a \mid b\rangle=a_1b_1+a_2b_2$
 
 
@@ -176,8 +176,10 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 - **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
 
+  
+
   - $\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$
-  - $a= \begin{pmatrix}
+  - $$a= \begin{pmatrix}
     2\\
     3\\
     \end{pmatrix} = 2\begin{pmatrix}
@@ -186,8 +188,8 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     \end{pmatrix}+3 \begin{pmatrix}
     0\\
     1\\
-    \end{pmatrix}$
-  - $a= \begin{pmatrix}
+    \end{pmatrix}$$
+  - $$a= \begin{pmatrix}
     -1\\
     5\\ 8\\ \end{pmatrix} = -1\begin{pmatrix}
     1\\
@@ -198,8 +200,9 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     \end{pmatrix}+8 \begin{pmatrix}
     0\\
     0\\ 1\\
-    \end{pmatrix}$
-  - 
+    \end{pmatrix}$$
+    
+    
 
 - **Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
 
