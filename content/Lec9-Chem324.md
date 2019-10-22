@@ -7,6 +7,7 @@
   1. **Linear vector spaces.**
   2. **Dirac notation.**
   3. **Functional spaces**
+
 - Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! The metaphor of **Schrodinger's cat** is introduced to illustrate the stragneness of quantum phenomena on macroscopic scales. 
 
@@ -43,7 +44,7 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 ### Dirac notation
 
-Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vecotrs and functions . At this point let us just get used to this new and fancy looking notation which denotes bra and ket vectos and functions.
+Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions . At this point let us just get used to this new and fancy looking notation which denotes bra and ket vectos and functions.
 
 - Diract notation for vectors:
   - **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $\mid a \rangle =(1,2i)$
@@ -55,7 +56,7 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
     1\\
     -2i\\
     \end{pmatrix}$
-    
+
   - **Dot product (Bra-Ket):** $\langle a \mid a \rangle = \sum_i a^2_i $
   
     
@@ -65,6 +66,7 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
   - **Ket:** $\psi=\mid \psi \rangle \,\,\,\,\,$ Example: $\psi(x)=ix^2$
 
   - **Bra:** $\psi^* = \langle \psi \mid \,\,\,\,\,$ Example: $\psi^*(x)=-ix^2$
+
   - **Dot product (Bra-Ket):** $\langle \psi \mid \psi \rangle = \int \mid \psi \mid^2 dx $
 
 
