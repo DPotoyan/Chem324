@@ -6,7 +6,7 @@
 
   1. **Linear vector spaces.**
   2. **Dirac notation.**
-  3. **Functional spaces**
+  3. **Functional spaces.**
 
 - Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! The metaphor of **Schrodinger's cat** is introduced to illustrate the stragneness of quantum phenomena on macroscopic scales. 
@@ -47,15 +47,15 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
 - Diract notation for vectors:
-  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $$\mid a \rangle =(1,2i)$
+  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $$\mid a \rangle =(1, 2i)$
   
   - **Bra:** $$\langle a \mid = \begin{pmatrix}
     a_1\\
   a_2\\  ...\\
-    \end{pmatrix} \,\,\,\,\,$$ example: $\mid a \rangle =\begin{pmatrix}
+    \end{pmatrix} \,\,\,\,\,$$ example: $$\mid a \rangle =\begin{pmatrix}
     1\\
     -2i\\
-    \end{pmatrix}$
+    \end{pmatrix}$$
 
   - **Dot product (Bra-Ket):** $$\langle a \mid a \rangle = \sum_i a^2_i$$
   
@@ -76,23 +76,25 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
 
 - Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
-  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  *Explicit representation in terms of **unit vectors.***
-  - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  **Dirac notation.***
-  - $$a=(2,3)$$    *Column array representation*
+  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
+  - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
+  - $$a=(2,3)$$    
   - $$a= \begin{pmatrix}
     2\\
     3\\
-    \end{pmatrix}$$ *Row array representation*
+    \end{pmatrix}$$ 
 
-In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+- In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
-- $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
+$$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
-However let us note vectors are just an array of numbers and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
+- Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
 
-- $$Person = (22, 1.75, 80)$$   
-- $$Population  =(3.0, 40.0, 2.0 ...)$$ 
-- $$Stock = (1.4, 3.6, 8.5, ...)$$  
+  - $$Person = (22, 1.75, 80)$$   
+
+  - $$Population  =(3.0, 40.0, 2.0 ...)$$ 
+
+  - $$Stock = (1.4, 3.6, 8.5, ...)$$  
 
 
 
@@ -147,19 +149,24 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 - Dot product  $\langle a\mid b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
-  - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  where $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$
+  - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
   - $$(1,0)\begin{pmatrix}
     0\\
     1\\
     \end{pmatrix}=a\cdot 0+0\cdot 1=0$$
 
-   In other words orthogonal vectors have nothing in common with each other and *live* in their own dimensions. 
+   Where denote orthogonality and normalization with a convneient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$ 
+
+  
 
 - Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector and is defined via square root of dot product of vectors with itself:
 	
 	- $$\langle a \mid a\rangle= a_1^2+a_2^2$$
 	
 	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
+	
+	  
+	
 - When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
   
   

@@ -6,7 +6,7 @@ prev_page:
   url: /Lec7-Chem324
   title: '3.1 Probabilistic meaning of wave function.'
 next_page:
-  url: /features/markdown
+  url: /Lec9-Chem324
   title: '3.3 Mathematics of QM'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
