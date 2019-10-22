@@ -47,7 +47,7 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
 - Diract notation for vectors:
-  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $$\mid a \rangle =(1, 2i)$
+  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ example: $$\mid a \rangle =(1, 2i)$$
   
   - **Bra:** $$\langle a \mid = \begin{pmatrix}
     a_1\\
@@ -257,7 +257,7 @@ $$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangl
 
 The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
-- Eigenvalues of  are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
+- Eigenvalues of  are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$
 
 - Eigenfunctions are orthogonal: $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
