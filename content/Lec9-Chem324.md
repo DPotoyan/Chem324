@@ -238,21 +238,46 @@ $$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangl
   $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2  $$
 
 
-### Hermitian operators provide complete basis set
+
+### Eigenfunctions of Hermitian operators are complete basis set
 
 
-Hermitian property of operators  $\langle \phi \mid H \mid \psi \rangle = \langle \psi \mid H\mid \phi \rangle^*$ guarantees that 
+Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
 - Eigenvalues of opeartors are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$
 
-- Eigenfunctions are orthogonal: $\rangle \mid $
+- Eigenfunctions are orthogonal: $\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$
 
-- Eigenfunctions form complete basis set.
+- Eigenfunctions form complete basis set! $\mid f\rangle = \sum_i c_i | \psi_i \rangle$
 
 The last two properties imply that eigenfunctions of Hermitian opeartors can play the same role for wavefunctions  as the unit vectors for  vectors.  That is a wave function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 
 
+### Wave function as a linear superoposition of eigenfunctions
+
+This is where we see the power and beautfy of Dirac notation. That is, reagardless of how the function f looks like, weather we want to express it in terms of energy eigenfucntions or position eigenfunctions, the key expressions are going to be identical to the ones we have already seen on the example of vectors! 
 
 
- 
+
+- Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
+
+  - In Dirac notation: $$f=\sum_n c_n \mid n\rangle$$  
+  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
+
+  
+
+- What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
+
+  - In Dirac notation: $c_k = \langle k \mid f \rangle$
+
+  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
+
+    
+
+Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
+
+
+
+## Quantum states as linear superpositions of mutually exclusive states. 
+
