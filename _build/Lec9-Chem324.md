@@ -60,14 +60,12 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
-|                 Diract notation for vectors:                 |                 Dirac notation for functions                 |
+|                 Dirac notation for vectors:                  |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ |  **Ket:** $$=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$  |
 | **Bra:**$$\langle a \mid = \begin{pmatrix}a_1\\a_2\\  ...\\\end{pmatrix}$$ <br>Example: $$\mid a \rangle =\begin{pmatrix}1\\-2i\\\end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br> Example: $$\langle \psi \mid-ix^2$$ |
-| **Dot product (Bra-Ket):**<br> $$\langle a \mid a \rangle = \sum_i a^2_i$$ | **Dot product (Bra-Ket):** <br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$ |
-| **Dot product (Bra-Ket):** <br>$$\langle a \mid b \rangle = \sum_i a_i b_i$$ | **Dot product (Bra-Ket):** <br>$$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
-
-
+| $$\langle a \mid a \rangle = \sum_i a^2_i$$<br>Example: $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | $$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br>Example: $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
+|        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
 
 
 
