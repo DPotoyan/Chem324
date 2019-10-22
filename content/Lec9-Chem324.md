@@ -18,7 +18,7 @@
 <html>
 
       <iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen></iframe>
-​     </iframe>
+
 </html>
 
 
@@ -190,7 +190,7 @@ $$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangl
 
   
 
-  $\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$
+  $$ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$
 
   $\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$
 
