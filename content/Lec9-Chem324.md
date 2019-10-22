@@ -2,20 +2,19 @@
 
 ## Outline for Lecture 3.3: Matheamtical Foundations of Quantum Mechanics
 
-- The objective of this section to provide a gentle and mathematically friendly introduction  to the three pillars of the abstract mathematical formalism of quantum mechanics, namely
+- The objective of this section to provide a gentle and mathematically friendly introduction  to the abstract mathematical formalism of quantum mechanics which include three topics of fundmental importance for quantum mechanics:
 
   1. **Linear vector spaces.**
-
   2. **Dirac notation.**
-  3. **Fourier transforms.**
-- Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set** ** and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
+  3. **Functional spaces**
+- Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! The metaphor of **Schrodinger's cat** is introduced to illustrate the stragneness of quantum phenomena on macroscopic scales. 
 
 
 
 ## Video "Vectors, what are they?"
 
-Lets remind ourselves of some basics first. 1B3B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching videos 1. 
+Let's remind ourselves of some basics first. 1B3B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
 
 <html>
 
@@ -40,7 +39,35 @@ Lets remind ourselves of some basics first. 1B3B has an excellent lecture series
 
   - $f=(1,2,3,4,5,6 ...\infty)\,\,\,$ *A infinite dimensional vector with integers as components.* 
 
+
+
+### Dirac notation
+
+Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vecotrs and functions . At this point let us just get used to this new and fancy looking notation which denotes bra and ket vectos and functions.
+
+- Diract notation for vectors:
+  - **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $\mid a \rangle =(1,2i)$
+  
+  - **Bra:** $\langle a \mid = \begin{pmatrix}
+    a_1\\
+  a_2\\  ...\\
+    \end{pmatrix} \,\,\,\,\,$ example: $\mid a \rangle =\begin{pmatrix}
+    1\\
+    -2i\\
+    \end{pmatrix}$
     
+  - **Dot product (Bra-Ket):** $\langle a \mid a \rangle = \sum_i a^2_i $
+  
+    
+  
+- Dirac notation for functions
+
+  - **Ket:** $\psi=\mid \psi \rangle \,\,\,\,\,$ Example: $\psi(x)=ix^2$
+
+  - **Bra:** $\psi^* = \langle \psi \mid \,\,\,\,\,$ Example: $\psi^*(x)=-ix^2$
+  - **Dot product (Bra-Ket):** $\langle \psi \mid \psi \rangle = \int \mid \psi \mid^2 dx $
+
+
 
 
 ### Representation of vectors
@@ -67,7 +94,7 @@ However let us note vectors are just an array of numbers and the components of v
 
 
 
-## Vector operations 
+### Vector operations 
 
 What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$ 
 
@@ -112,7 +139,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 
 
-##  Projection, orthogonality and norm
+###  Projection, orthogonality and norm
 
 - Dot product  $\langle a\mid b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
@@ -131,7 +158,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 - When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
   
   
-### Basis and linear independence. 
+### Basis set and linear independence. 
 
 - **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
 
@@ -209,10 +236,18 @@ $$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangl
   $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2  $$
 
 
+### Hermitian operators provide complete basis set
 
-## Hermitian operators provide complete basis set
 
-Eigenfunctions of Hermitian opeartors serve the same role for general wavefunctions  as the unit vectors for general vectors. That is any wave function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.   
+Hermitian property of operators  $\langle \phi \mid H \mid \psi \rangle = \langle \psi \mid H\mid \phi \rangle^*$ guarantees that 
+
+- Eigenvalues of opeartors are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$
+
+- Eigenfunctions are orthogonal: $\rangle \mid $
+
+- Eigenfunctions form complete basis set.
+
+The last two properties imply that eigenfunctions of Hermitian opeartors can play the same role for wavefunctions  as the unit vectors for  vectors.  That is a wave function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 
 
