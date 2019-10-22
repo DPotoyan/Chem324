@@ -72,7 +72,7 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
 
 ### Representation of vectors
 
-1. Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
+Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
   - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
   - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
@@ -82,11 +82,11 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
     3\\
     \end{pmatrix}$$ 
 
-2. In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
 $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
-3. Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
+Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
 
   - $$Person = (22, 1.75, 80)$$   
 
@@ -102,7 +102,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
-1. **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
+**1. Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
   - $$ a+b=\begin{pmatrix}
     2\\
@@ -119,7 +119,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
     
 
-2. **Mulitiplication** by a  scalar  $\alpha=10$
+**2. Mulitiplication** by a  scalar  $\alpha=10$
 
   - $$\alpha \cdot a=10\begin{pmatrix}
     2\\
@@ -133,7 +133,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
     
 
-3. **Dot product** with another vector $\mid b\rangle$
+**3. Dot product** with another vector $\mid b\rangle$
 
   - $$a\cdot b=(2,3)\begin{pmatrix}
     1\\
@@ -169,7 +169,7 @@ When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a
 
 ### Basis set and linear independence. 
 
-1. **Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
+**1. Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
 
   
 
@@ -199,12 +199,9 @@ When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a
     
     
 
-2. **Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
+**2. Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
 
-  
-  
-  $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$ 
-  
+  $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$   
 
 The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
 
@@ -224,7 +221,7 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 
 |                           Vectors                            |                          Functions                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Orthonrmal units:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormal units: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
+| Orthonrmal units:<br> $\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$ | Orthonormal units: <br>$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$ |
 | Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
 | Coefficients are projections: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are projections: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
 
