@@ -207,7 +207,7 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 
 - Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions is in quantum mathematics is known as **Hilbert space.** Named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple vectors.   
 
-| ---------------------------Vectors--------------------------- | ---------------------------Functions--------------------------- |
+|     $$\,\,\,\,\,\,\,\,\,$$Vectors$$\,\,\,\,\,\,\,\,\,$$      |    $$\,\,\,\,\,\,\,\,\,$$Functions$$\,\,\,\,\,\,\,\,\,$$     |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | Orthonrmal units:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormal units: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
 | Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
