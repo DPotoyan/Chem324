@@ -32,13 +32,13 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 - Vector is just an ordered collection of numbers, e.g:
 
-  -   $a=(-2,8) \,\,\,$ *A 2D vector*
+  -   $$a=(-2,8) \,\,\,$$ *A 2D vector*
 
-  -  $b=(1.34,4.23,5.98) \,\,\,$  *A 3D vector* 
+  -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector* 
 
-  -  $c=(1,-2,4i,3+2i) \,\,\,$  *A 4D vector with complex components.* 
+  -  $$c=(1,-2,4i,3+2i) \,\,\,$$  *A 4D vector with complex components.* 
 
-  - $f=(1,2,3,4,5,6 ...\infty)\,\,\,$ *A infinite dimensional vector with integers as components.* 
+  - $$f=(1,2,3,4,5,6 ...\infty)\,\,\,$$ *A infinite dimensional vector with integers as components.* 
 
 
 
@@ -47,27 +47,27 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 Here, anticipating their immense usefulenss ,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
 
 - Diract notation for vectors:
-  - **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $\mid a \rangle =(1,2i)$
+  - **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ example: $$\mid a \rangle =(1,2i)$
   
-  - **Bra:** $\langle a \mid = \begin{pmatrix}
+  - **Bra:** $$\langle a \mid = \begin{pmatrix}
     a_1\\
   a_2\\  ...\\
-    \end{pmatrix} \,\,\,\,\,$ example: $\mid a \rangle =\begin{pmatrix}
+    \end{pmatrix} \,\,\,\,\,$$ example: $\mid a \rangle =\begin{pmatrix}
     1\\
     -2i\\
     \end{pmatrix}$
 
-  - **Dot product (Bra-Ket):** $\langle a \mid a \rangle = \sum_i a^2_i $
+  - **Dot product (Bra-Ket):** $$\langle a \mid a \rangle = \sum_i a^2_i$$
   
     
   
 - Dirac notation for functions
 
-  - **Ket:** $\psi=\mid \psi \rangle \,\,\,\,\,$ Example: $\psi(x)=ix^2$
+  - **Ket:** $$\psi=\mid \psi \rangle \,\,\,\,\,$$ Example: $\psi(x)=ix^2$
 
-  - **Bra:** $\psi^* = \langle \psi \mid \,\,\,\,\,$ Example: $\psi^*(x)=-ix^2$
+  - **Bra:** $$\psi^* = \langle \psi \mid \,\,\,\,\,$$ Example: $\psi^*(x)=-ix^2$
 
-  - **Dot product (Bra-Ket):** $\langle \psi \mid \psi \rangle = \int \mid \psi \mid^2 dx $
+  - **Dot product (Bra-Ket):** $$\langle \psi \mid \psi \rangle = \int \mid \psi \mid^2 dx$$
 
 
 
@@ -76,29 +76,31 @@ Here, anticipating their immense usefulenss ,  we introduce Dirac notation for v
 
 - Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
 
-  - $\vec{a}=2\vec{e_i}+3\vec{e_j} $  *Explicit representation in terms of **unit vectors.***
-  - $\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$  **Dirac notation.***
-  - $a=(2,3)$    *Column array representation*
-  - $a= \begin{pmatrix}
+  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  *Explicit representation in terms of **unit vectors.***
+  - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  **Dirac notation.***
+  - $$a=(2,3)$$    *Column array representation*
+  - $$a= \begin{pmatrix}
     2\\
     3\\
-    \end{pmatrix}$ *Row array representation*
+    \end{pmatrix}$$ *Row array representation*
 
 In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
-- $e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$
+- $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
 However let us note vectors are just an array of numbers and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
 
-- Person = (22, 1.75, 80)   
-- Population  =(3.0, 40.0, 2.0 ...) 
-- Stock = (1.4, 3.6, 8.5, ...)  
+- $$Person = (22, 1.75, 80)$$   
+- $$Population  =(3.0, 40.0, 2.0 ...)$$ 
+- $$Stock = (1.4, 3.6, 8.5, ...)$$  
 
 
 
 ### Vector operations 
 
-What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
+What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: 
+
+$$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 - **Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
@@ -127,7 +129,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     30\\
     \end{pmatrix}$$
 
-  - $\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$
+  - $$\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$$
 
     
 
@@ -137,7 +139,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
     1\\
     1\\
     \end{pmatrix}=2 \cdot 1+3\cdot 1=5$$
-  - $\langle a \mid b\rangle=a_1b_1+a_2b_2$
+  - $$\langle a \mid b\rangle=a_1b_1+a_2b_2$$
 
 
 
@@ -145,18 +147,19 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
 - Dot product  $\langle a\mid b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
-  - $\langle e_i \mid e_j \rangle =\delta_{ij}$  where $\delta_{ij}=0$ when $i\neq j$ and 1 when $i=j$
-  - $(1,0)\begin{pmatrix}
+  - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  where $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$
+  - $$(1,0)\begin{pmatrix}
     0\\
     1\\
-    \end{pmatrix}=a\cdot 0+0\cdot 1=0$
+    \end{pmatrix}=a\cdot 0+0\cdot 1=0$$
 
    In other words orthogonal vectors have nothing in common with each other and *live* in their own dimensions. 
 
 - Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector and is defined via square root of dot product of vectors with itself:
 	
-	- $\langle a \mid a\rangle= a_1^2+a_2^2$
-- $ \mid a \mid =\sqrt{a_1^2+a_2^2}$
+	- $$\langle a \mid a\rangle= a_1^2+a_2^2$$
+	
+	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
 - When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
   
   
@@ -166,7 +169,7 @@ What defines vectors is the opeartions on them. Let us take a simple 2D vector a
 
   
 
-  - $\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$
+  - $$\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$$
   - $$a= \begin{pmatrix}
     2\\
     3\\
@@ -232,26 +235,26 @@ $$\langle y\mid A\rangle=A_x \langle y\mid x \rangle +A_y \langle y\mid y \rangl
 
   
 
-  $$ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$
+  $$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$
 
-  $\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$
+  $$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$
 
-  $$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1  $$
+  $$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$
 
-  $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2  $$
+  $$\langle \phi_2\mid A\rangle=c_1 \langle \phi_2\mid\phi_1 \rangle +c_2 \langle \phi_2\mid\phi_2 \rangle=c_2$$
 
 
 
 ### Eigenfunctions of Hermitian operators are complete basis set
 
 
-Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
+The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
-- Eigenvalues of opeartors are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$
+- Eigenvalues of  are real: $E_n=E^*_n$ for $H \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
 
-- Eigenfunctions are orthogonal: $\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$
+- Eigenfunctions are orthogonal: $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
-- Eigenfunctions form complete basis set! $\mid f\rangle = \sum_i c_i | \psi_i \rangle$
+- Eigenfunctions form complete basis set! $\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$
 
 The last two properties imply that eigenfunctions of Hermitian opeartors can play the same role for wavefunctions  as the unit vectors for  vectors.  That is a wave function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
@@ -259,22 +262,22 @@ The last two properties imply that eigenfunctions of Hermitian opeartors can pla
 
 ### Wave function as a linear superoposition of eigenfunctions
 
-This is where we see the power and beautfy of Dirac notation. That is, reagardless of how the function f looks like, weather we want to express it in terms of energy eigenfucntions or position eigenfunctions, the key expressions are going to be identical to the ones we have already seen on the example of vectors! 
+This is where we see the power and beautfy of Dirac notation. That is, reagardless of how the function f looks like, weather we want to express it in terms of energy eigenfucntions or position eigenfunctions, the key expressions are identical to the vector case! 
 
 
 
 - Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
 
   - In Dirac notation: $$f=\sum_n c_n \mid n\rangle$$  
-  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
+  - In explicit notation: $$f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$$
 
   
 
 - What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
 
-  - In Dirac notation: $c_k = \langle k \mid f \rangle$
+  - In Dirac notation: $$c_k = \langle k \mid f \rangle$$
 
-  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
+  - In explicit notation: $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$$
 
     
 
