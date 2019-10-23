@@ -252,7 +252,7 @@ The last two properties imply that eigenfunctions of Hermitian opeartors  play t
 
 ### Wave function as a linear superoposition of eigenfunctions
 
-This is where we see the power and beautfy of Dirac notation. That is, reagardless of how the function f looks like, weather we want to express it in terms of energy eigenfucntions or position eigenfunctions, the key expressions are identical to the vector case! 
+This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same! 
 
 
 
@@ -275,5 +275,95 @@ Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for partic
 
 
 
-## Quantum states as linear superpositions of mutually exclusive states. 
+## Quantum states as linear superposition. 
 
+Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
+
+$$\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle$$
+
+$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
+
+
+
+- **Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.** 
+
+  $$p_n=\mid c_n \mid^2$$
+
+- **Probabilites sum to one **
+
+  **$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$.**  
+
+- **Averages are weghted sums of eigenvalues: **
+
+  **$$\langle A \rangle = \langle \psi \mid \hat{A}\mid \psi \rangle = \Big[\sum_k c_k \langle \phi_k \mid \Big]  \Big [ \sum_n c_n \hat{A} \mid \phi_n \rangle \Big]= \\ =\sum_n \sum_k c_k c_n A_n \langle \phi_k \mid \phi_n \rangle = \sum_n \sum_k c_k c_n A_k\delta_{nk}=\sum_n \mid c_n\mid^2 A_n$$ **
+
+  
+
+### Particle in a box example of a superoposition state
+
+Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian: 
+
+$$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{5\pi x}{L}$$ 
+
+This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. 
+
+The average of energy will be given by
+
+$$\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}$$
+
+
+
+### Quantum states as linear superposition of mutually exclusive states.
+
+It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition "collapses" to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics. 
+
+$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
+
+- Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability $\mid c_n \mid^2$
+
+  $$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
+
+- Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2 
+
+  $$\langle \phi_1 \mid \phi_2 \rangle=0$$
+
+ 
+
+### Copenhagen interpretation
+
+"The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.[[1\]](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)[[2\]](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
+
+According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
+
+
+
+### Video of quantum superopsition of atom. 
+
+<html>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+
+
+### Schordinger's cat
+
+<html>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+
+- Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
+
+- The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
+
+
+
+### Double slit Experiment
+
+<html>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
+</iframe>
+</html>
