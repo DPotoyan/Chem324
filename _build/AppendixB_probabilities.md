@@ -6,7 +6,7 @@ kernel_name: python3
 has_widgets: false
 title: '3.4 Appendix B. Probabilities with Python.'
 prev_page:
-  url: /features/markdown
+  url: /Lec9-Chem324
   title: '3.3 Mathematics of QM'
 next_page:
   url: /features/markdown

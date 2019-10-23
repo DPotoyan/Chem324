@@ -11,8 +11,6 @@ next_page:
   title: '1.6 Appendix A. Complex numbers.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 ## Import the libraries and configre plot styles
 
 

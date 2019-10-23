@@ -6,7 +6,7 @@ prev_page:
   url: /Lec4-Chem324
   title: '2.0 Waves'
 next_page:
-  url: /waves_1d
+  url: /waves-1d
   title: '2.2 Visualizing and animating waves.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

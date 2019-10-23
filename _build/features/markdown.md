@@ -1,11 +1,11 @@
 ---
-title: '3.1 Interpretation of Schrodinger equation.'
+title: '4.0 Applications of QM'
 prev_page:
-  url: /Lec6-Chem324
-  title: '3.0 Schrodinger Equation.'
+  url: /AppendixB_probabilities
+  title: '3.4 Appendix B. Probabilities with Python.'
 next_page:
   url: /features/markdown
-  title: '3.2 Postulates of QM'
+  title: '4.1 Particle in a Box.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Content in prepartion...  
