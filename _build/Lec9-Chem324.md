@@ -58,7 +58,7 @@ Let's remind ourselves of some basics first. 1B3B has an excellent lecture serie
 
 ### Dirac notation
 
-Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation:
+Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation.
 
 |                 Dirac notation for vectors:                  |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -117,7 +117,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
     4\\
     \end{pmatrix}$$
 
-  - $$\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2 b_2)\mid e_2\rangle$$
+  - $$\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2\pm b_2)\mid e_2\rangle$$
 
     
 
@@ -223,9 +223,9 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 
 |                $$\,\,\,\,\,\,\,\,\,$$Vectors                 |                          Functions                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormlity of eigenfunctions of hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
+| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormlity of eigenfunctions of Hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
 | Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
-| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onot basis functions: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
+| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onto basis functions: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
 
 In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to iniften dimensions and continous variation is given by an integral!
 
@@ -295,17 +295,27 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
   **$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$.**  
 
-- **Averages are weghted sums of eigenvalues:**
-
-  $$\langle A \rangle = \langle \psi \mid \hat{A}\mid \psi \rangle = \Big[\sum_k c_k \langle \phi_k \mid \Big]  \Big [ \sum_n c_n \hat{A} \mid \phi_n \rangle \Big]= \\ =\sum_n \sum_k c_k c_n A_n \langle \phi_k \mid \phi_n \rangle = \sum_n \sum_k A_k c_k c_n \delta_{nk}=\sum_n \mid c_n\mid^2 A_n$$ 
-
   
+
+### Averages are probability weighted sums of eigenvalues.
+
+- Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
+
+  $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle $$ 
+
+    $$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
+
+- The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment. 
+
+ $$\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2$$
+
+
 
 ### Particle in a box example of a superoposition state
 
 Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian: 
 
-$$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{5\pi x}{L}$$ 
+$$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}$$ 
 
 This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. 
 
@@ -333,7 +343,7 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
 ### Copenhagen interpretation
 
-"The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.[[1\]](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)[[2\]](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
+"The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
 
 According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
 
@@ -369,3 +379,6 @@ According to the Copenhagen interpretation, physical systems generally do not ha
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
 </iframe>
 </html>
+
+
+
