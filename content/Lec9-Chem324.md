@@ -388,11 +388,11 @@ Thus we see that the coefficients change over time. This means our state vector 
 
 $$  i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\psi(t)\rangle $$
 
-***Left hand side :***
+*Left hand side :*
 
 $$i\hbar \Big( -\frac{i}{\hbar}E_1 c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1\rangle-\frac{i}{\hbar}E_2 c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2\rangle \Big) = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle$$
 
-**Right hand side:**
+*Right hand side:*
 
 $$c_1 e^{-\frac{i}{\hbar}E_1 t}\hat{H}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\hat{H} \mid 2 \rangle = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle $$
 
@@ -408,7 +408,7 @@ $$\mid \psi(t)\rangle=\sum_n c_n e^{-\frac{i}{\hbar}E_n t}\mid n\rangle$$
 
 *Note how the bra-ket prodcut involves product of two independent sums indexed by n and k. We will be seeing expressions like this often later on.*
 
-$$\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)}\delta_{kn} =\sum_n \mid c_n \mid^2=1$$
+$$\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)t}\delta_{kn} =\sum_n \mid c_n \mid^2=1$$
 
 
 
