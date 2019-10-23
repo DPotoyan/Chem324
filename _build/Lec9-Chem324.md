@@ -147,7 +147,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 ###  Projection, orthogonality and norm
 
-- Dot product  $\langle a\mid b \rangle$ shows the projection of vector a on b, e.g how much a and b have in comon with each other in terms of direction in space.  If the projection is zero, vectors are called orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
+- Dot product  $\langle a\mid b \rangle$ quantifies the projection of vector $a$ on $b$. That is, how much $a$ and $b$ have in comon with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
   - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
   - $$(1,0)\begin{pmatrix}
@@ -155,11 +155,11 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
     1\\
     \end{pmatrix}=a\cdot 0+0\cdot 1=0$$
 
-   Where denote orthogonality and normalization with a convneient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$ 
+   Where we denote both orthogonality and normalization with one convneient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$ 
 
   
 
-- Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector and is defined via square root of dot product of vectors with itself:
+- Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:
 	
 	- $$\langle a \mid a\rangle= a_1^2+a_2^2$$
 	
