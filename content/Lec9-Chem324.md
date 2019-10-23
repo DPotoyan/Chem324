@@ -2,7 +2,7 @@
 
 ## Outline for Lecture 3.3: Matheamtical Foundations of Quantum Mechanics
 
-- The objective of this section to provide a gentle and mathematically friendly introduction  to the abstract mathematical formalism of quantum mechanics which include three topics of fundmental importance for quantum mechanics:
+- The objective of this section to provide a gentle and mathematically friendly introduction  to the abstract mathematical formalism of quantum mechanics. We are going to learn include three mathematical topics of fundmental importance for quantum mechanics:
 
   1. **Linear vector spaces.**
 
@@ -10,8 +10,8 @@
 
   3. **Functional spaces.**
 
-- Learning the abstract formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We then will show how **Dirac notation** can liberate  one from coordinate representations and explicit  intergrals which can often obscure  the underlying mathematical and physical facts. 
-- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! The metaphor of **Schrodinger's cat** is introduced to illustrate the stragneness of quantum phenomena on macroscopic scales. 
+- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematics and physical meaning. 
+- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! We will touch upon  **Schrodinger's cat** and **Double slit experiments** to illustrate the strange nature of superposition states. 
 
 
 
@@ -89,6 +89,8 @@ Vectors are just an array of numbers, however, and the components of vector can 
 What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: 
 
 $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
+
+
 
 **1. Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
 
@@ -277,13 +279,13 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
   $$p_n=\mid c_n \mid^2$$
 
-- **Probabilites sum to one **
+- **Probabilites sum to one.**
 
   **$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$.**  
 
-- **Averages are weghted sums of eigenvalues: **
+- **Averages are weghted sums of eigenvalues:**
 
-  **$$\langle A \rangle = \langle \psi \mid \hat{A}\mid \psi \rangle = \Big[\sum_k c_k \langle \phi_k \mid \Big]  \Big [ \sum_n c_n \hat{A} \mid \phi_n \rangle \Big]= \\ =\sum_n \sum_k c_k c_n A_n \langle \phi_k \mid \phi_n \rangle = \sum_n \sum_k c_k c_n A_k\delta_{nk}=\sum_n \mid c_n\mid^2 A_n$$ **
+  $$\langle A \rangle = \langle \psi \mid \hat{A}\mid \psi \rangle = \Big[\sum_k c_k \langle \phi_k \mid \Big]  \Big [ \sum_n c_n \hat{A} \mid \phi_n \rangle \Big]= \\ =\sum_n \sum_k c_k c_n A_n \langle \phi_k \mid \phi_n \rangle = \sum_n \sum_k A_k c_k c_n \delta_{nk}=\sum_n \mid c_n\mid^2 A_n$$ 
 
   
 

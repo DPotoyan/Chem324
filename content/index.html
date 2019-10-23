@@ -250,7 +250,7 @@
 <p>The last two properties imply that eigenfunctions of Hermitian opeartors play the same role for functions as the unit vectors for vectors. That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p>
 </section><section id="wave-function-as-a-linear-superoposition-of-eigenfunctions" class="slide level3">
 <h3>Wave function as a linear superoposition of eigenfunctions</h3>
-<p>This is where we see the power and beautfy of Dirac notation. That is, reagardless of how the function f looks like, weather we want to express it in terms of energy eigenfucntions or position eigenfunctions, the key expressions are identical to the vector case!</p>
+<p>This is where we see the power and beautfy of Dirac notation. Reagardless of how the function <span class="math inline">\(f\)</span> looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same!</p>
 <ul>
 <li><p>Express <span class="math inline">\(f(x)\)</span> function in terms of eigenfunctions of <span class="math inline">\(\hat{H} \mid n\rangle=E_n \mid n \rangle\)</span>.</p>
 <ul>
@@ -266,7 +266,60 @@
 </ul>
 <p>Thus any wave function in quantum mechanics say <span class="math inline">\(f(x)=x^2\)</span> on <span class="math inline">\([0,L]\)</span> for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion.</p>
 </section></section>
-<section id="quantum-states-as-linear-superpositions-of-mutually-exclusive-states." class="title-slide slide level2"><h2>Quantum states as linear superpositions of mutually exclusive states.</h2></section>
+<section><section id="quantum-states-as-linear-superposition." class="title-slide slide level2"><h2>Quantum states as linear superposition.</h2><p>Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ?</p>
+<p><span class="math display">\[\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle\]</span></p>
+<p><span class="math display">\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</span></p>
+<ul>
+<li><p><strong>Absolue values of coeficients <span class="math inline">\(\mid c_n \mid^2\)</span> are equal to probabilities <span class="math inline">\(p_n\)</span> of finding system in a state <span class="math inline">\(n\)</span> described by eigenvalue <span class="math inline">\(A_n\)</span> and eigenfunction <span class="math inline">\(\mid \phi_n \rangle\)</span> of the operator <span class="math inline">\(\hat{A}\)</span>.</strong></p>
+<p><span class="math display">\[p_n=\mid c_n \mid^2\]</span></p></li>
+<li><p><strong>Probabilites sum to one </strong></p>
+<p><strong><span class="math display">\[\sum_n \mid c_n \mid^2 =\sum_n p_n=1\]</span>.</strong></p></li>
+<li><p><strong>Averages are weghted sums of eigenvalues: </strong></p>
+<p><strong><span class="math display">\[\langle A \rangle = \langle \psi \mid \hat{A}\mid \psi \rangle = \Big[\sum_k c_k \langle \phi_k \mid \Big]  \Big [ \sum_n c_n \hat{A} \mid \phi_n \rangle \Big]= \\ =\sum_n \sum_k c_k c_n A_n \langle \phi_k \mid \phi_n \rangle = \sum_n \sum_k c_k c_n A_k\delta_{nk}=\sum_n \mid c_n\mid^2 A_n\]</span> </strong></p></li>
+</ul></section><section id="particle-in-a-box-example-of-a-superoposition-state" class="slide level3">
+<h3>Particle in a box example of a superoposition state</h3>
+<p>Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian:</p>
+<p><span class="math display">\[\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )sin\frac{5\pi x}{L}\]</span></p>
+<p>This means that when we measure energy we are going to obtain only two values <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_5\)</span> with equal probabilities <span class="math inline">\(p_1=p_2=(1/\sqrt{2})^2\)</span>.</p>
+<p>The average of energy will be given by</p>
+<p><span class="math display">\[\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}\]</span></p>
+</section><section id="quantum-states-as-linear-superposition-of-mutually-exclusive-states." class="slide level3">
+<h3>Quantum states as linear superposition of mutually exclusive states.</h3>
+<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics.</p>
+<p><span class="math display">\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</span></p>
+<ul>
+<li><p>Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability <span class="math inline">\(\mid c_n \mid^2\)</span></p>
+<p><span class="math display">\[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</span></p></li>
+<li><p>Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2</p>
+<p><span class="math display">\[\langle \phi_1 \mid \phi_2 \rangle=0\]</span></p></li>
+</ul>
+</section><section id="copenhagen-interpretation" class="slide level3">
+<h3>Copenhagen interpretation</h3>
+<p>"The <strong>Copenhagen interpretation</strong> is an expression of the meaning of <a href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.[<a href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">1]</a>[<a href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2">2]</a></p>
+<p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>."</p>
+</section><section id="video-of-quantum-superopsition-of-atom." class="slide level3">
+<h3>Video of quantum superopsition of atom.</h3>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section><section id="schordingers-cat" class="slide level3">
+<h3>Schordinger’s cat</h3>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+<ul>
+<li><p>Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes.</p></li>
+<li><p>The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states.</p></li>
+</ul>
+</section><section id="double-slit-experiment" class="slide level3">
+<h3>Double slit Experiment</h3>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section></section>
     </div>
   </div>
 
