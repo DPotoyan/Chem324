@@ -83,7 +83,11 @@ $$F_1=m_1 \ddot{x_1}=k(x_2-x_1-l_0)$$
 
 $$F_2=m_2 \ddot{x_2}=-k(x_2-x_1-l_0)$$
 
-Where $F_1=-F_2$ which is a reflection of Newtno's thrid law. By introducing a more convenient cooridnates in the from of relative distance $$x=x_2-x_1-l_0$$ and center of mass $x_{com}=\frac{m_1x_2+x_2 m_2}{m_1+m_2}$ we are now going to reduce the two body problem to one body problem.
+Where $F_1=-F_2$ which is a reflection of Newtno's thrid law. By introducing a more convenient cooridnates in the from of relative distance $x$ and center of mass $x_{com}$ we are now going to reduce the two body problem to one body problem.
+
+$$x=x_2-x_1-l_0$$
+
+$$x_{com}=\frac{m_1x_2+x_2 m_2}{m_1+m_2}$$
 
 
 
@@ -93,11 +97,26 @@ $$m_1\ddot{x_1}=kx \\  m_2\ddot{x_2}=-kx$$
 
 By expressing equations of motion in terms of the center of mass which, we find that center of mass moves freely without acceleration. 
 
-$$m_1\ddot{x_1}+ m_2\ddot{x_2}=0\,\,\,\, \rightarrow \frac{m_1\ddot{x_1}+ m_2\ddot{x_2}}{m_1+m_2}=(m_1+m_2)\ddot{x}_{com}=0$$
+$$m_1\ddot{x_1}+ m_2\ddot{x_2}=0\,\,\,\, \rightarrow \frac{m_1\ddot{x_1}+ m_2\ddot{x_2}}{m_1+m_2}=\ddot{x}_{com}=0$$
 
-Next by taking difference between coordinates we expres  the equations of motion in terms of relative distance
+Next by taking difference between coordinates $\ddot{x_2}=-\frac{k}{m_2}x_2$ and  $\ddot{x_1}=\frac{k}{m_1}x_1$we expres  the equations of motion in terms of relative distance
 
-$$\ddot{x_2} - \ddot{x_1} = -\Big(\frac{1}{m_1}+\frac{1}{m_2} \Big)kx=-\frac{k}{\mu}x$$
+$$\ddot{x}=\ddot{x_2} - \ddot{x_1} =-\Big(\frac{1}{m_1}+\frac{1}{m_2} \Big)kx=-\frac{k}{\mu}x$$
 
 This equation looks identical to the probel of bead anchored to wall with a spring. We have thus managed to reduce the two body probelm to a one modey problem by replacing masses of bodies with a reduced mass:  $\mu=\frac{1}{m_1}+\frac{1}{m_2}=\frac{m_1 m_2}{m_1+m_2}$
 
+
+
+## Beads and springs model of molecules
+
+Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down?
+
+For an aribtarry potential energy funciton of x we can carry out Taylor's expansion around equilibrium bond length $x_0$ obtaining infinitey series. 
+
+$$U(x) = U(x_0)+U'(x_0)(x-x_0)+\frac{1}{2!}U''(x_0)(x-x_0)^2+\frac{1}{3!}U'''(x_0)(x-x_0)^3+...$$
+
+Setting energy scale to be relative to  $U(x_0)=0$ and recongizing that first derivative vanishes at minima $x_0$ we have
+
+$$U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...$$
+
+Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as $\gamma$ are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion. 
