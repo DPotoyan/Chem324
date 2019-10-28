@@ -59,28 +59,57 @@ Where the two constnants  are: $A$ the amplitude of oscillations and $\phi$ is c
 In the simple harmonic oscillator problem $F$ is the only force acting on the system.  We way that the system is conservative becasue the kinetic and potential energies keep being interconverted with no amount of total energy being of the system being dissipated into the environment. This will be true in a vaccuum where there is no friction.  For a simple harmonic oscillatorthe oscillations go on forever with position $x(t)$ velocity $v=\dot{x}(t)$ and acceleration $a=\ddot{x(t)}$ with same constant frequency $\omega$ but with different amplitudes.  
 
 <iframe src='https://gfycat.com/ifr/CheapSelfishAlbacoretuna' frameborder='0' scrolling='no' allowfullscreen width='240' height='224'></iframe><p> <a href="https://gfycat.com/cheapselfishalbacoretuna"></a></p>
-
 ## Energy of the harmonic oscillator
 
 In classical mechanics the force and the potential energy of a conservative system are related via the formula:
 
 $$F = - \frac{\partial V(x)}{\partial x} $$
 
-THis means the steeper the potential the higher the force and minus sign indicates that force is restoring the equilibrium position. 
-
-The potential energy can be obtained by integrating:
+This means the steeper the potential the higher the force and minus sign indicates that force is restoring the equilibrium position. The potential energy can be obtained by integrating:
 
 $$ V(x)= - \int F dx = - \int (-kx) dx =\frac{kx^2}{2}+C$$
 
-Thus the potential energy for a simple harmonci oscillator is a parabola. Since potential energy is measured relative to constnat we set $C=0$ that is potential energy of equilibrium state is set to be the zero. 
+Thus the potential energy for a simple harmoncin oscillator is a parabolic function of displacement. It is  convenient  to set $C=0$ and measure potential energy relative to equilibrium state $V(x=0)=0$ 
 
 $$V(x)=\frac{kx^2}{2}$$
+
+
+
+## Conservation of total energy
 
 Kinetic energy is the familiar expression expressed either via momentum $p=mv$ or velocity $v=\dot{x}$
 
 $$K=\frac{p^2}{2m} = \frac{m \dot{x}^2}{2}$$
 
+Note that while both kinetic and potential energies oscilate over time, the total energy remains constant: 
+
 
 
 ## Diatomic molecule and two-body problem
+
+<img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/osc-2.jpeg" style="zoom:54%;" />
+
+Equations of motion for diatomic molecule modeled as beads bound by a spring are:
+
+$$F_1=m_1 \ddot{x_1}=k(x_2-x_1-l_0)$$
+
+$$F_2=m_2 \ddot{x_2}=-k(x_2-x_1-l_0)$$
+
+Where $F_1=-F_2$ which is a reflection of Newtno's thrid law. By introducing a more convenient cooridnates in the from of relative distance $$x=x_2-x_1-l_0$$ and center of mass $x_{com}=\frac{m_1x_2+x_2 m_2}{m_1+m_2}$ we are now going to reduce the two body problem to one body problem.
+
+
+
+## Effective mass of vibration
+
+$$m_1\ddot{x_1}=kx \\  m_2\ddot{x_2}=-kx$$
+
+By expressing equations of motion in terms of the center of mass which, we find that center of mass moves freely without acceleration. 
+
+$$m_1\ddot{x_1}+ m_2\ddot{x_2}=0\,\,\,\, \rightarrow \frac{m_1\ddot{x_1}+ m_2\ddot{x_2}}{m_1+m_2}=(m_1+m_2)\ddot{x}_{com}=0$$
+
+Next by taking difference between coordinates we expres  the equations of motion in terms of relative distance
+
+$$\ddot{x_2} - \ddot{x_1} = -\Big(\frac{1}{m_1}+\frac{1}{m_2} \Big)kx=-\frac{k}{\mu}x$$
+
+This equation looks identical to the probel of bead anchored to wall with a spring. We have thus managed to reduce the two body probelm to a one modey problem by replacing masses of bodies with a reduced mass:  $\mu=\frac{1}{m_1}+\frac{1}{m_2}=\frac{m_1 m_2}{m_1+m_2}$
 
