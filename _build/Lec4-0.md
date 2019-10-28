@@ -30,13 +30,13 @@ $$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
 
 
-![](/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/Levels1.gif)
+![](./images/Levels1.gif)
 
 
 
 ## 3N Nuclear degrees of freedom 
 
-![](/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/mol-DOF.jpg)
+![](./images/mol-DOF.jpg)
 
 
 

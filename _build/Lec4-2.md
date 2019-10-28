@@ -30,7 +30,7 @@ $$ F=-kx$$
 
 The above expression is also known as **Hooke's law**, where minus sign indicates that the direction of force is always towards restoring equilibrium location. The constant k characterizes stiffness of the spring and is called **spring constant.**
 
-![](/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/harm-osc1.png)
+![](/images/harm-osc1.png)
 
 ![](https://askeyphysics.files.wordpress.com/2011/08/solveharmonic.gif)
 
@@ -87,7 +87,7 @@ Note that while both kinetic and potential energies oscilate over time, the tota
 
 ## Diatomic molecule and two-body problem
 
-<img src="/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/osc-2.jpeg" style="zoom:54%;" />
+![](./images/osc-2.jpeg)
 
 Equations of motion for diatomic molecule modeled as beads bound by a spring are:
 
