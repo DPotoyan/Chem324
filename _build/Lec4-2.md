@@ -132,3 +132,37 @@ Setting energy scale to be relative to  $U(x_0)=0$ and recongizing that first de
 $$U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...$$
 
 Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as $\gamma$ are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion. 
+
+
+
+## Qunatum mechanical harmonic oscillator problem
+
+Quantum mechanical harmonic oscillator is defined by its Hamitlon operator
+
+$$\hat{H} = -\frac{\hbar^2}{2\mu }\frac{d^2}{dx^2}+\frac{1}{2}kx^2$$
+
+As with the particle in a box system our objective is to find eigenfunctions and eigenvalues which are the observable states and energy values in the experiment. 
+
+$$\hat{H}\psi(x)=E\psi(x)
+\\-\frac{\hbar^2}{2\mu }\psi^{''}+\frac{1}{2}kx^2\psi=E\psi \\ \psi''+\frac{2\mu}{\hbar^2}(E-kx^2/2)\psi=0$$
+
+What we have is ODE **but with non-constant coefficients**! What this means is we can not use our exponential trick to quickly solve the problem via an algebraic equation. We will, however be able to solve it via an elegant opeator technique. 
+
+## Vibrational energy is quantized
+
+Particle in a box syste, showed that translational energy is quantized becasue of the boundary conditions imposed by the box. 
+
+Similarly we find that that for harmonic oscillator system the virbational enegy is also quantized where the role of boundary is played by the potential keeping the system bound and wave functions decaying to zero. Similiar to particle in a box there is an infinitely high energy barrier appearing at large displacement $V(+\infty)=V(-\infty)=+\infty$!
+
+The eigenvalues of harmonic oscillator are:
+
+$$E_v = \hbar \omega (v+1/2)\,\,\, v=0,1,2,...$$
+
+Note also that quantum number starts from zero! **The zero point energy** is $E_0=\hbar\omega/2$ where angular frequency $\omega=2\pi \nu$ is defined in terms of spring constant $\omega=\Big(\frac{k}{\mu}\Big)^{1/2}$
+
+Harmonic oscillator model predics constant energy spacings! 
+
+$$E_{v+1}-E_v =\hbar \omega=h\nu $$
+
+The frequency of photon that takes harmonic oscillator from one to next level is equal to the frequency (classical) nuclear vibration!
+
