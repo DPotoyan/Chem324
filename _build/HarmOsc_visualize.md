@@ -37,20 +37,6 @@ from IPython.display import display
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-#Import hermite polynomials
-from scipy.special import hermite
-from math import factorial
-
-```
-</div>
-
-</div>
-
-
-
 ### Eigenfunctions and eigenvalues of Harmonic oscillator problem
 
 
@@ -79,30 +65,78 @@ $$E(v)= h\nu \Big (v+\frac{1}{2}\Big) $$
 
 ### Hermite polynomials
 
--Definition:
+- Definition:
 
 $$H_v(x) = (-1)^v (e^{x^2})\frac{d^v}{dx^v} (e^{-x^2})$$
 
--Recursion relation:
+- Recursion relation:
 
 $$x H_v(x) = v H_{v-1}+\frac{1}{2} H_{v+1}(x)$$
 
-![](./images/hermite2.gif)
+
+
+| Table of first eight of Hermite polynomials $H_v(x)$         |
+| ------------------------------------ |
+| $H_0=1$                              |
+| $H_1=2x$                             |
+| $H_2=4x^2-2$                         |
+| $H_3=8x^3-12$                        |
+| $H_4=16x^4-48x^2+12$                 |
+| $H_5=32x^5-160x^3+120 x$             |
+| $H_6=64x^6-480x^4+720 x^2-120$       |
+| $H_7=128x^7-1344 x^5+3360 x^3-1680x$ |
+
+
+
+### Plotting hermite polynomials using scipy and numpy and matplotlib
+
+The scipy.special has large collection of special functions inclduing hermite polynomials! While polynomials listed in the table are simple enough to hand type we are going to be lazy and use **scipy.special.hermite** wich provides us with polynomials of any degree to use in numerical calculations!
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-P1=hermite(2)
-P2=hermite(3)
+# Import hermite polynomials and factorial to use in normalization factor
+from scipy.special import hermite
+from math import factorial
 
+#Check to see if they match the table
+H=hermite(4)
+print(H)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+    4      2
+16 x - 48 x - 8.882e-16 x + 12
+```
+</div>
+</div>
+</div>
+
+
+
+Now let us plot hermite polynomials $H_v(x)$ on some range of values x, 
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 x=np.linspace(-2,2,1000)
 
-H1, H2 = P1(x), P2(x)
-
-plt.plot(x,H1)
-plt.plot(x,H2)
+for v in range(0,5):
+    
+    H=hermite(v)
+    
+    f=H(x)
+    
+    plt.plot(x,f)
 
 plt.xlabel('x')
 plt.ylabel(r'$H_n(x)$')
@@ -126,7 +160,7 @@ Text(0,0.5,'$H_n(x)$')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/HarmOsc_visualize_6_1.png)
+![png](images/HarmOsc_visualize_9_1.png)
 
 </div>
 </div>
@@ -134,62 +168,11 @@ Text(0,0.5,'$H_n(x)$')
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Check orthogonality
-psi4=ph4(x)*np.exp(-0.5*x**2)
-psi5=ph5(x)*np.exp(-0.5*x**2)
+### Harmonic Oscillator wave functions
 
-psi4 @ psi5
+Now we can write down harmonic oscillator wave functions which are product of Hermite polynomials with a gaussian function and normalization factor:
 
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
--1.7763568394002505e-14
-```
-
-
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Normalization? Integrate function with trapezoidal
-from scipy.integrate import trapz
-
-trapz(H1, x)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-23.094084816443157
-```
-
-
-</div>
-</div>
-</div>
-
-
-
-### Harmonic oscillator wave functions
+$$\psi_v(x) = N_v H_v(x) e^{-x^2/2} $$
 
 
 
@@ -201,13 +184,8 @@ def N(v):
     
     return 1./np.sqrt(np.sqrt(np.pi)*2**v*factorial(v))
 
-def E(v):
-    '''Energy'''
-    
-    return (v + 0.5)
-
 def psi(v, x):
-    """Return the harmonic oscillator wavefunction for level v on grid q."""
+    """Harmonic oscillator wavefunction for level v computed on grid of points x"""
     
     Hr=hermite(v)
     
@@ -215,14 +193,93 @@ def psi(v, x):
     
     return Psix
 
-def get_potential(x):
-    """Return potential energy on scaled oscillator displacement grid q."""
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Check orthogonality
+
+psi(1,x) @ psi(4,x)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+-4.440892098500626e-16
+```
+
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Normalization is computed by using numerical integration with trapezoidal method:
+from scipy.integrate import trapz
+
+# remember that x runs form -inf to +inf so lets use large xmin and xmax
+x=np.linspace(-10,10,1000)
+psi2=psi(5,x)**2
+
+Integral = trapz(psi2,x)
+
+print(Integral)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
+```
+1.0000000000000009
+```
+</div>
+</div>
+</div>
+
+
+
+### Plot Eigenvalues and eigenfunctions of harmonic oscillator
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+def E(v):
+    '''Eigenvalues in units of energy'''
+    
+    return (v + 0.5)
+
+def V(x):
+    """Potential energy function"""
+    
     return 0.5*x**2
 
 ```
 </div>
 
 </div>
+
+
+
+First we decide on how many levels to plot and what is the range for x. 
 
 
 
@@ -244,53 +301,7 @@ x = np.linspace(xmin, xmax, 1000)
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-#Orhtogonality
-psi(3,x) @ psi(4,x)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
--6.832425250569152e-15
-```
-
-
-</div>
-</div>
-</div>
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-# Normalization
-trapz(psi(2,x)**2,x)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-0.9999966228099587
-```
-
-
-</div>
-</div>
-</div>
+Next we plot classical potential and then plot eigenfunctions padded up by eigenvalues to have textbook like picture
 
 
 
@@ -300,10 +311,12 @@ trapz(psi(2,x)**2,x)
 fig, ax = plt.subplots(figsize=(8,8))
 
 for v in range(8):
+     
+    # plot potential V(x)
+    ax.plot(x,V(x),color='black')
     
-    ax.plot(x,get_potential(x),color='black')
-    
-    ax.plot(x,psi(v,x)**2+E(v),lw=2)
+    # plot psi squared which we shift up by values of energy
+    ax.plot(x,psi(v,x)**2 + E(v), lw=2)
     
     # add lines and labels
     ax.axhline(E(v), color='gray', linestyle='--') 
@@ -332,7 +345,7 @@ Text(0,0.5,'$\\psi^2_n(x)$')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/HarmOsc_visualize_14_1.png)
+![png](images/HarmOsc_visualize_19_1.png)
 
 </div>
 </div>
