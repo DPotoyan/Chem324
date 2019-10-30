@@ -41,14 +41,17 @@ from IPython.display import display
 
 
 
-The harmonic oscillator is often used as an approximate model for the behaviour of some quantum systems, for example the vibrations of a diatomic molecule. Potential energy is a simple quadratic function of dsiplacement: $V(x)=\frac{1}{2}kx^2$ 
+The harmonic oscillator is often used as an approximate model for the behaviour of some quantum systems, for example the vibrations of a diatomic molecule. Potential energy is a simple quadratic function of dsiplacement: 
+
+$$V(x)=\frac{1}{2}kx^2$$ 
 
 - The Schrödinger equation for a particle of mass m moving in one dimension in a potential 
+
 $$
 H = -\frac{\hbar^{2}}{2m} \frac{d^{2}}{d x^{2}} + \frac{1}{2} kx^{2}.
 $$
 
-- The eigenfunctions are expressed in terms of Hermite polynomials $H_v(x)$, special functions well known in mathematical physics. Where $N_v$ is a normalization factor.
+- The **eigenfunctions** are expressed in terms of Hermite polynomials $H_v(x)$, special functions well known in mathematical physics. Where $N_v$ is a normalization factor.
 
 $$\psi(x) = N_v \cdot H_v(x) \cdot e^{-x^2/2}$$
 
@@ -56,7 +59,7 @@ $$H_v(x) = (-1)^v (e^{x^2})\frac{d^v}{dx^v} (e^{-x^2})$$
 
 $$N_v = (\sqrt{\pi} 2^v v!)^{-1/2}$$
 
-- The eigenvalues are a simple function of quantum number v:
+- The **eigenvalues** are a simple function of quantum number v:
 
 $$E(v)= h\nu \Big (v+\frac{1}{2}\Big) $$
 
@@ -75,16 +78,16 @@ $$x H_v(x) = v H_{v-1}+\frac{1}{2} H_{v+1}(x)$$
 
 
 
-| Table of first eight of Hermite polynomials $H_v(x)$         |
-| ------------------------------------ |
-| $H_0=1$                              |
-| $H_1=2x$                             |
-| $H_2=4x^2-2$                         |
-| $H_3=8x^3-12$                        |
-| $H_4=16x^4-48x^2+12$                 |
-| $H_5=32x^5-160x^3+120 x$             |
-| $H_6=64x^6-480x^4+720 x^2-120$       |
-| $H_7=128x^7-1344 x^5+3360 x^3-1680x$ |
+| Table of first eight of Hermite polynomials $H_v(x)$ |
+| :--------------------------------------------------: |
+|                       $H_0=1$                        |
+|                       $H_1=2x$                       |
+|                     $H_2=4x^2-2$                     |
+|                    $H_3=8x^3-12$                     |
+|                 $H_4=16x^4-48x^2+12$                 |
+|               $H_5=32x^5-160x^3+120 x$               |
+|            $H_6=64x^6-480x^4+720 x^2-120$            |
+|         $H_7=128x^7-1344 x^5+3360 x^3-1680x$         |
 
 
 
@@ -263,7 +266,7 @@ print(Integral)
 <div class="input_area" markdown="1">
 ```python
 def E(v):
-    '''Eigenvalues in units of energy'''
+    '''Eigenvalues in units of h'''
     
     return (v + 0.5)
 
