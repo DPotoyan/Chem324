@@ -30,6 +30,9 @@ import matplotlib.pyplot as plt
 import ipywidgets as widgets
 from IPython.display import display
 
+#If your screen has retina display this will increase resolution of plots
+%config InlineBackend.figure_format = 'retina'
+
 ```
 </div>
 
@@ -61,7 +64,7 @@ $$N_v = (\sqrt{\pi} 2^v v!)^{-1/2}$$
 
 - The **eigenvalues** are a simple function of quantum number v:
 
-$$E(v)= h\nu \Big (v+\frac{1}{2}\Big) $$
+$$E(v)= h\nu \Big (v+\frac{1}{2}\Big)$$
 
 
 
@@ -131,7 +134,7 @@ Now let us plot hermite polynomials $H_v(x)$ on some range of values x,
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-x=np.linspace(-2,2,1000)
+x=np.linspace(-2,2,1000) # Range needs to be specified for plotting functions of x
 
 for v in range(0,5):
     
@@ -237,6 +240,7 @@ from scipy.integrate import trapz
 
 # remember that x runs form -inf to +inf so lets use large xmin and xmax
 x=np.linspace(-10,10,1000)
+
 psi2=psi(5,x)**2
 
 Integral = trapz(psi2,x)
@@ -252,6 +256,43 @@ print(Integral)
 ```
 1.0000000000000009
 ```
+</div>
+</div>
+</div>
+
+
+
+### Visualize eigenfunctions of harmonic oscillator $\psi_v(x)$
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+@widgets.interact(v=(0,50))
+
+def plot_psi(v=0):
+    
+    x=np.linspace(-10,10,1000)
+    
+    y= psi(v,x)**2
+    
+    plt.plot(x,y,lw=2)
+    
+    plt.grid('on')  
+    plt.xlabel('x',fontsize=16)
+    plt.ylabel('$\psi_n(x)$',fontsize=16)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_data_text}
+```
+interactive(children=(IntSlider(value=0, description='v', max=50), Output()), _dom_classes=('widget-interact',…
+```
+
 </div>
 </div>
 </div>
@@ -348,7 +389,7 @@ Text(0,0.5,'$\\psi^2_n(x)$')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/HarmOsc_visualize_19_1.png)
+![png](images/HarmOsc_visualize_21_1.png)
 
 </div>
 </div>

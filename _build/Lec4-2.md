@@ -166,3 +166,51 @@ $$E_{v+1}-E_v =\hbar \omega=h\nu $$
 
 The frequency of photon that takes harmonic oscillator from one to next level is equal to the frequency (classical) nuclear vibration!
 
+
+
+### Eigenfunctions of harmonic oscillator
+
+![](./images/sho-psi1-6.png)
+
+### Psi-squared of harmonic oscillator shows tunneling and quantum-classical transition.
+
+![](./images/sho-psi2-6.png)
+
+
+
+## Vibrational degrees of freedom
+
+- Any non-linear molecule with N atoms has 3N degrees of freedom out of which 3 are translation of center of mass 3 are rotationa around x,y,z axis and the remaining are 3N-6 corrrespdond to internal vobrational motions.  Below is an example of rotional and vibrational degrees of freedom for water molecule. 
+
+![](./images/watervib.gif)
+
+- For linear molecule we lose one roatational mode (rotation around molecular axis) and as a result have 3N-5 vibrational modes:
+
+![](./images/9lmT8.jpg)
+
+
+
+
+
+### IR spectrum vs Raman spectrum
+
+![](./images/Vibrational-modes-of-CO2-a-triatomic-linear-molecule-and-their-IR-Raman-activities.jpg)
+
+
+
+### Applications of IR to biochemistry-1
+
+![](./images/Amide_modes-1024x587.png)
+
+### Applications of IR to biochemistry-2
+
+![](./images/IR-sp.png)
+
+
+
+
+
+### Application of IR to biochemistry-3
+
+![](./images/18100819040042008.7.y.90.gif)
+
