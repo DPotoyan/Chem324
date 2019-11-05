@@ -136,7 +136,7 @@ Now let us plot hermite polynomials $H_v(x)$ on some range of values x,
 ```python
 x=np.linspace(-2,2,1000) # Range needs to be specified for plotting functions of x
 
-for v in range(0,5):
+for v in range(0,3):
     
     H=hermite(v)
     
@@ -156,7 +156,7 @@ plt.ylabel(r'$H_n(x)$')
 
 {:.output_data_text}
 ```
-Text(0,0.5,'$H_n(x)$')
+Text(0, 0.5, '$H_n(x)$')
 ```
 
 
@@ -379,7 +379,7 @@ ax.set_ylabel('$\psi^2_n(x)$')
 
 {:.output_data_text}
 ```
-Text(0,0.5,'$\\psi^2_n(x)$')
+Text(0, 0.5, '$\\psi^2_n(x)$')
 ```
 
 
