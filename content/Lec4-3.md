@@ -1,7 +1,6 @@
 ## Outline for Lecture 4.0:  
 
-- Rigid body system is introduced as a prototype for quantization of rotational degrees of freedom in molecules.
-- Spherica coordinate system is introduced out of necessity of taking advantage of spherical symmetry of the problem which leads to reduction of dimensionality.
+- Rigid body system is introduced as a prototype for quantization of rotational degrees of freedom in molecules. Spherical coordinate system is introduced out of necessity of taking advantage of spherical symmetry of the problem which leads to reduction of dimensionality.
 - Solving Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate with respect to one of the quantum numbers. 
 - Connection with microwave spectroscopy is shown where spectral lines are predicted to be occur in equal intervals. 
 - Selection rule is established via recursion relation of spherical harmonics.
@@ -11,7 +10,7 @@
 
 
 
-### Classical picture: Rotating dumbell
+## Classical picture: Rotating dumbell
 
 Rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential hence the only energy is the kinetic energy of rotation: 
 
@@ -30,7 +29,7 @@ Where $L=I \omega$ is the angular momentum and $I=\mu r^2$ moment of inertia.
 
 
 
-### Quantum rigid rotor and angular momentum operator 
+## Quantum rigid rotor and angular momentum operator 
 
 We can write down the hamiltonain for rigid rotor model which corresponds to operator of kinetic energy and which can also be written in terms of angular momentum operator to make correspondence with classical rigid rotor. 
 
@@ -80,7 +79,7 @@ $$
 
 -  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerged from  the solution of $\phi $ part. 
 
-### Spherical harmonics
+## Spherical harmonics
 
 The eigenfunctions of rigid rotor, $Y_{J,m}(\theta,\phi)$ are spherical harmonics which occur frequently in probelms with spehrical symmetry as the convenient bassis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of [atomic orbital](https://en.wikipedia.org/wiki/Atomic_orbital) [electron configurations](https://en.wikipedia.org/wiki/Electron_configuration), representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.
 
@@ -96,9 +95,13 @@ In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Sph
 
 ![](https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif)
 
-<img src="./images/sphhar2.png" style="zoom:50%;" />
+### Visual account of orthogonality of spherical harmonics 
 
-
+Mathematically, the spherical harmonics contain alternating odd and even pairs of legendre polynomials similiar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers a pattern that we have seen on the examples of particle in a box and harmonic oscillator. Using the symmetry argumentd one can already tell that product of any two different spherical harmonics integrated over sphere will be zero!
+$$
+\int^{2\pi}_0 d \theta \int^{\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
+$$
+<img src="./images/sphhar2.png" style="zoom:80%;" />
 
 
 
@@ -146,4 +149,48 @@ Thus be measring this spectrl line difference we can extract structural informat
 
 
 
+## Rotational-virbational transitions
 
+
+$$
+E_{v,J} = h\nu(n+1/2)+BJ(J+1)
+$$
+The selection rules for harmonicoscillator and rigid rotor are $\Delta v =\pm 1$ and $\Delta J \pm 1$ respectively. 
+
+Often times we are interested in transiions among rotational levels that accompany excitation from ground virbatonal state $v=0\rightarrow v=1$ . The tranisitons with $\Delta J=+1$ and $\Delta J=-1$ appear as two brances in the spectrum known as R and P   branch respectively. The Q-branch $\Delta J =0$ is predicted to be absent becasue it is forbidden by the selection rule of rigid rotor model. 
+$$
+\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+$$
+
+
+### Correction #1 rovibrational coupling
+
+One correction one can make to the rotational-vibrational model is to include the effect of coupling between rotational and virbational degrees of freedom. When exciting molecules to higher vibratinal states it is reasonable to expect that rotational parameters will be impacted as a result of changes in average intra-nuclear distance among aother things. This can be accounted by making rotaional constant dependent on virbational level v. $B\rightarrow B_v$. The v dependence is captued via the following expression showing that rotatioanl constnat is a linearly decreasing function of v!
+$$
+B_v = B_e-\alpha_e(v+1/2)
+$$
+The expression of energy with these correction would then be:
+$$
+E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
+$$
+
+$$
+\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
+
+$$
+\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
+
+
+
+### Correction #2 the unharmonicity/unrigdity term
+
+Similiar to the first order correction we introduced for harmonic oscillator in the form of unharmonicity term  we can now also improve rigid rotor model by accounting for the fact that chemical bonds are not trully rigid: 
+$$
+\tilde{E}_{v,J} =\Big[\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2\Big] + \Big[ BJ(J+1)-DJ^2 (J+1)^2 \Big ]
+$$
+Where constant D is called the **centrifual distortion constnant.** and is typically a small number $D<<1$
+$$
+E
+$$
