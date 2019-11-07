@@ -157,10 +157,19 @@ E_{v,J} = h\nu(n+1/2)+BJ(J+1)
 $$
 The selection rules for harmonicoscillator and rigid rotor are $\Delta v =\pm 1$ and $\Delta J \pm 1$ respectively. 
 
+![](./images/rovib1.png)
+
+
+
+### Ro-vibrational spectra, R, P and Q branches
+
 Often times we are interested in transiions among rotational levels that accompany excitation from ground virbatonal state $v=0\rightarrow v=1$ . The tranisitons with $\Delta J=+1$ and $\Delta J=-1$ appear as two brances in the spectrum known as R and P   branch respectively. The Q-branch $\Delta J =0$ is predicted to be absent becasue it is forbidden by the selection rule of rigid rotor model. 
 $$
 \tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
 $$
+
+![](./images/branch.jpg)
+
 
 
 ### Correction #1 rovibrational coupling
