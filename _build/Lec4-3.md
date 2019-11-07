@@ -92,6 +92,23 @@ $$
 
 -  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerged from  the solution of $\phi $ part. 
 
+### Spherical harmonics
+
+The eigenfunctions of rigid rotor, $Y_{J,m}(\theta,\phi)$ are spherical harmonics which occur frequently in probelms with spehrical symmetry as the convenient bassis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of [atomic orbital](https://en.wikipedia.org/wiki/Atomic_orbital) [electron configurations](https://en.wikipedia.org/wiki/Electron_configuration), representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.
+
+![](./images/sphhar.gif)
+
+Spherical harmonics consist of associated Legendre polynomials ($\theta$ part) and complex exponential ($\phi part$)
+
+
+
+### Visualization of spherical harmonics
+
+In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics) are  defined on the surface of a sphere. The spherical harmonics are a complete set of  on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). Like the sines and cosines in Fourier series, the spherical harmonics may be organized by (spatial) angular frequency, as seen in the rows of functions in the illustration on the right. 
+
+![](https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif)
+
+<img src="./images/sphhar2.png" style="zoom:50%;" />
 
 
 
@@ -99,24 +116,45 @@ $$
 
 
 
+### Rotational states of molecules are quantized
+
+Solving rigid rotor problem we find that eigenvalues depend only on quantum number $J$ this makes each energy level degenerate with respect to $2J+1$ values assumed by $m_J$ quantum number. 
+
+
+$$
+E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degeneracy
+$$
+
+
+Where we have defined $B=\frac{h^2}{8\pi^2 I}$ spectroscpic constnat with units of energy. 
 
 
 
 
 
+### Spectroscopic applications of Rigid rotor model
+
+
+$$
+\Delta E_{J+1,J} = E_{J+1}-E_{J} = B[(J+1)(J+2)-J(J+1)]=2B(J+1)
+$$
+Often in spectroscopy application one will use wavenumbers
+$$
+\tilde{\nu}_{J+1,J} =\frac{1}{\lambda} = \frac{\Delta E}{hc} = 2\tilde{B}(J+1)
+$$
+
+
+Where we have defined $\tilde{B}=\frac{h^2}{8\pi^2 I c}$
 
 
 
+### Spectral lines are predicted to be equidistant!
 
-
-
-
-
-
-
-
-
-
+Rigid rotor model makes a very specifci prediction about spectral lines: they are to be equally spaced. In other words difference between adjacent frequency of tranisitons is a constnat number:
+$$
+\tilde{\nu}_{J+2,J+1}-\tilde{\nu}_{J+1,J}=2\tilde{B}
+$$
+Thus be measring this spectrl line difference we can extract structural information about the molecule, e.g compute moment of intertia!
 
 
 
