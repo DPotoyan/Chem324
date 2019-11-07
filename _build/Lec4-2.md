@@ -172,9 +172,38 @@ The frequency of photon that takes harmonic oscillator from one to next level is
 
 ![](./images/sho-psi1-6.png)
 
-### Psi-squared of harmonic oscillator shows tunneling and quantum-classical transition.
+### Probability distribution shows tunneling and quantum-classical transition.
 
 ![](./images/sho-psi2-6.png)
+
+## Selection rule
+
+In physics and chemistry, a selection rule, or transition rule, formally constrains the possible transitions of a system from one quantum state to another. Selection rules have been derived for electromagnetic transitions in molecules, in atoms, in atomic nuclei, and so on. The selection rules may differ according to the technique used to observe the transition:
+
+$$
+P(v\rightarrow v') = \langle v' \mid \mu(x) \mid v \rangle
+$$
+
+This integral represents the  the probability of the transition between states; therefore if the value of this integral is zero the transition is forbidden. In practice, the integral itself does not need to be calculated to determine a selection rule. It is sufficient to determine the symmetry of transition moment function. 
+
+Using recusion relation of hermite polynomials one can establish that only transiitons which satsify 
+
+$$\Delta v =\pm1$$
+
+ can occur within harmonic oscillator approximation. Furthermore only those modes are observed in IR for which dipole moment changes with vibrational coordinates. 
+
+## Unharmonic correction ot harmonic oscillator
+
+Harmonic oscillator is an approximation valid when vibrations are confined to the vicinity of equilibrium bond. For larger vibrations unharonic effects (next terms in taylro expansion) become important. 
+$$
+\tilde{E}_{v,J} =\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2
+$$
+
+
+A correction accounting for unharmonic effects is introuced which softens the change in energy with increasing vibrational level v. That is harmonic oscillator is overestimating energy levels and predicts no bond breaking. The $\omega_e$ and $x_e$ are unharmonicity constants which are determiend empriically by fitting spectral data to the funcitonal form above. The $x_e<<<1$ indicating the relative contirbution of two terms.
+
+- In unharmonic socillator model the transitions between non-adjacent levels are possible, although given smallness of $x_e$ they occur with less intensity
+- Transion $0\rightarrow 1$ is called fundamental $0\rightarrow 2$ first overtone, $0\rightarrow 3$ second overtone and so on. 
 
 
 
@@ -189,28 +218,79 @@ The frequency of photon that takes harmonic oscillator from one to next level is
 ![](./images/9lmT8.jpg)
 
 
-
-
-
-### IR spectrum vs Raman spectrum
+## IR spectrum vs Raman spectrum
 
 ![](./images/Vibrational-modes-of-CO2-a-triatomic-linear-molecule-and-their-IR-Raman-activities.jpg)
 
-
-
-### Applications of IR to biochemistry-1
-
-![](./images/Amide_modes-1024x587.png)
-
-### Applications of IR to biochemistry-2
+### Applications: IR spectra
 
 ![](./images/IR-sp.png)
 
 
 
+### Applications: 2D IR spectroscopy
+
+![](./images/Amide_modes-1024x587.png)
 
 
-### Application of IR to biochemistry-3
+### Application of IR to biochemistry-3: Normal modes of proteins
+
+Normal modes of large biomolecules like proteins contain important information about functional dynamics. Oftentimes by looking at the slowest modes of proteins one may identify motions that faciltiate ligand binding, catalysis, allostery etc. These motions are often generated in classical molecular dynamics simulations
 
 ![](./images/18100819040042008.7.y.90.gif)
 
+
+
+
+
+## Solving harmonic oscillator porblem via ladder operators.
+
+Eigenfunctions and eigenvalues of harmonic oscillator can be found via a rather elegant operator technique. The basic idea is to factor the quadratic operator expressions in the  hamiltonian into product of two operators that we call $a^{+}$ and $\hat{a}^{-}$. These two operators turn out to have a neat property of kicking eigenfunctions up and down to the adjacent eigenfunctions. These are known as ladder operators or raising and lowering operators or sometimes also called more dramatic names like **creation and destruction operators.** The facotrization is shown below: 
+
+$$
+\hat{H} = \frac{1}{2m}\hat{P}^2+\frac{k}{2}\hat{X}^2 =\frac{\hbar \omega}{2}(\hat{p}^2+\hat{x}^2) =\frac{1}{2}\Big((\hat{x}+i\hat{p})(\hat{x}-i\hat{p}) +1\Big)
+$$
+
+$$
+\hat{H}=\hbar \omega \Big(\hat{a}^{+}\hat{a}+\frac{1}{2}\Big)=\hbar \omega \Big(\hat{n}+\frac{1}{2}\Big)
+$$
+
+Where we have introduced a convenient dimensionless momentum and position operators:
+
+- $\hat{p}=(\mu \hbar \omega)^{-1/2}\hat{P}$  
+- $\hat{x}=(\mu \omega/\hbar)^{1/2}\hat{X}$.  
+
+And expressed hamitlonain in terms of ladder operators: 
+
+- $$\hat{a}^{+}=\frac{1}{\sqrt{2}}(\hat{x}+i\hat{p})$$
+- $$\hat{a}^{-}=\frac{1}{\sqrt{2}}(\hat{x}-i\hat{p})$$
+- $$\hat{n}=\hat{a}^{+}\hat{a}$$
+
+The $\hat{n}$ is called a number operators and the fact that hamitlonain is defined via number operators we expect it to satisfy eigenfunction eigenvalue relation $\hat{n}\mid n\rangle=n\mid n\rangle$ with n being eigenvalues to be determined.
+
+Notice also that the ladder operators are complex conjugate of each other $\hat{a}^*= \hat{a}^{+}$! 
+
+
+
+### Raising and lowering of eignefunctions
+
+Knowing commutators of raising and lowering oeprators allows us to reveal their action on eigenfunctions:
+
+- $[a^{+},a] = -1$,   $[\hat{n},\hat{a}] = -a $,   $[\hat{n},\hat{a}^{+}] = a^{+}$
+
+Now let us prove to improtant properties of ladder oeprators. 
+
+-  $\hat{a}^{+} \mid n\rangle \sim \mid n+1\rangle$
+
+  
+  $$
+  \hat{n}a^{+}\mid n\rangle = (\hat{a}^{+}\hat{n}+\hat{a}^{+}) \mid n\rangle = (n+1)\hat{a}^{+}\mid n\rangle
+  $$
+  
+- $\hat{a} \mid n\rangle \sim \mid n-1\rangle$
+
+  ​	
+  $$
+  \hat{n}a\mid n\rangle = (\hat{a}\hat{n}-\hat{a}) \mid n\rangle = (n-1)\hat{a}\mid n\rangle
+  $$
+  
