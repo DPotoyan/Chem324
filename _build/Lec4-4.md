@@ -77,15 +77,25 @@ $$
 ### Comutative relationships 
 
 Angular momentum is a conserved quantity and naturally it commutes wih hamitlonian:
+
+
 $$
 [\hat{H},\hat{L}^2]=0
 $$
+
+
 Angular momentum commutes with its components. This means we can simultaneously determine precise values of $L$ and any one component:
+
+
 $$
 [\hat{L}^2,\hat{L_x}] = [\hat{L}^2,\hat{L_y}]=[\hat{L}^2,\hat{L_z}]=0
 $$
 
+
+
 Determining all three components however is impossible as the components do not commute among themselves:
+
+
 $$
 [\hat{L_x},\hat{L_y}]=i\hbar \hat{L}_z
 \\ 
@@ -98,15 +108,32 @@ $$
 
 ### Angular momentum in spherical coordinates
 
+
 $$
 \hat{L}_x = -i\hbar \Big (  -sin\phi \frac{\partial}{\partial \theta}-cot\theta \cos \phi\frac{\partial}{\partial \phi}     \Big) \\
 \hat{L}_y = -i\hbar \Big (  cos\phi \frac{\partial}{\partial \theta}-cot\theta \sin \phi\frac{\partial}{\partial \phi}     \Big) \\
 \hat{L}_z = -i\hbar\frac{\partial}{\partial \phi}
 $$
 
-
 $$
 \hat{L}^2= -\hbar^2\Big [  \frac{1}{\sin\theta} \frac{\partial}{\partial \theta}\Big( \sin\theta \frac{\partial}{\partial \theta}\Big)-\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial \phi^2}     \Big]=-\hbar^2\nabla_{\theta,\phi}
 $$
 
+
+
+
+## Eienfunctions and eigenvalues 
+
+Since $[\hat{L}^2,\hat{L}_z]$ we know that operators of angular momentum and its projection have common eigenfunctions which are the spherical harmonics. 
+
+
+$$
+\hat{L^2}Y(\theta,\phi) = \hbar^2 l(l+1)Y(\theta,\phi) \\
+\hat{L}_zY(\theta,\phi) = \hbar m_l Y(\theta,\phi)
+$$
+
+
+
+- Quantum number $l$ determines magnitude  $L =\hbar\sqrt{l(l+1)}$ where $l=0,1,..$
+- Quantum number m determines projection  $L_z=\hbar m_l$, where $m=0,\pm1,..\pm l$
 
