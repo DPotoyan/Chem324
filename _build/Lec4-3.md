@@ -37,6 +37,8 @@ Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocities of rot
 $$
 K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
 $$
+
+
 Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia and $\mu=\frac{m_1 m_2}{m_1+m_2}$
 
 
@@ -44,20 +46,31 @@ Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia
 ## Quantum rigid rotor and angular momentum operator 
 
 The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
+
+
 $$
 \nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
 $$
 
+
+
 In rigid rotor approximation laplacian is reduced to an operator acting on two variables $\theta$ and $\phi$
+
 
 $$
 \nabla^2_{\theta,\phi} =\frac{1}{r^2}\Big[\frac{1}{sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} \Big ]
 $$
 
+
+
 In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:
+
+
 $$
 \hat{H}=-\frac{\hbar^2}{2\mu}\nabla_{x,y,z}^2 = -\frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2=\frac{\hat{L}^2}{2I}
 $$
+
+
 
 Where $I=\mu r^2$ is the moment of inertia and where identified  the angular momentum operator as:
 $$
