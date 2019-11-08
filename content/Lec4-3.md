@@ -70,10 +70,16 @@ $$
 ### Quantum numbers $(J,m)$ for quantizing $(\theta,\phi)$ coordiante pair. 
 
 Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. The eigenfunctions turn out to be well known special functions called spherical harmonics $Y(\theta,\phi)$:
+
+
 $$
 \hat{H}Y(\theta, \phi)=E_{J,m}Y(\theta,\phi)
 $$
+
+
 We are once again able to separet two angular variables and solve thr esulting ODE exactly:
+
+
 $$
 \frac{sin \theta}{\theta}\frac{d}{d\theta} \Big(sin \theta\frac{d\Theta(\theta)}{d\theta}\Big)+\beta sin^2 \theta = m^2
 $$
@@ -82,8 +88,9 @@ $$
 \frac{d^2 \Phi(\phi)}{d \phi^2}=-m^2\Phi(\phi)
 $$
 
-- The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
 
+
+- The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
 -  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerges from  the solution of $\phi $ part. 
 
 ## Spherical harmonics
