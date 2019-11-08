@@ -1,4 +1,4 @@
-## Outline for Lecture 4.0:  
+## Outline for Lecture 4.3:  
 
 - The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.
 - Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers. 
@@ -18,44 +18,38 @@ $$
 K=\frac{m_1 v_1^2}{2}+\frac{m_2 v_2^2}{2}=\frac{m_1 r_1^2+m_2 r^2_2}{2}\omega^2
 $$
 
-Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocoities of rotation of two masses rotating with frequency $\omega$. The classical mechanical problem of two masses is once again reducible to a single reduced mass $\mu$ rotating around constant radius $r=r_1+r_2$ rotating around center of mass $m_1 r_1=m_2 r_2$.
+Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocities of rotation of two masses rotating with frequency $\omega$. The classical mechanical problem of two masses is once again reducible to a single reduced mass $\mu$ rotating around constant radius $r=r_1+r_2$ rotating around center of mass $m_1 r_1=m_2 r_2$.
 
 
 
 $$
 K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
 $$
-Where $L=I \omega$ is the angular momentum and $I=\mu r^2$ moment of inertia. 
+Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia and $\mu=\frac{m_1 m_2}{m_1+m_2}$
 
 
 
 ## Quantum rigid rotor and angular momentum operator 
 
-We can write down the hamiltonian for the rigid rotor model, which corresponds to the operator of kinetic energy and which can also be written in terms of angular momentum operator to make correspondence with the classical rigid rotor. 
-
+The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
 $$
-\hat{H}=-\frac{\hbar^2}{2\mu}\nabla^2=\frac{\hat{L}^2}{2I}
-$$
-
-Since internuclear distance is fixed in rigid rotor approximation $r=const$ it is convenient to use spherical coordinates which eliminates raidal coordinate from the problem. The laplacian in spherical coordinates is:
-
-$$
-\nabla^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
+\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
 $$
 
-And in rigid rotor approximation, it simplifies to an operator acting on two variables $\theta$ and $\phi$
+In rigid rotor approximation laplacian is reduced to an operator acting on two variables $\theta$ and $\phi$
 
 $$
 \nabla^2_{\theta,\phi} =\frac{1}{r^2}\Big[\frac{1}{sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} \Big ]
 $$
 
+In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:
 $$
-\hat{H} = -\frac{\hbar^2}{2\mu r^2}\nabla^2_{\theta,\phi}=-\frac{\hbar^2 \nabla_{\theta,\phi}^2}{2I}=\frac{\hat{L}^2}{2I}
+\hat{H}=-\frac{\hbar^2}{2\mu}\nabla_{x,y,z}^2 = -\frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2=\frac{\hat{L}^2}{2I}
 $$
 
-The angular momentum part of the hamiltonian expressed in spherical coordinates can now be clearly recognized as: 
+Where $I=\mu r^2$ is the moment of inertia and where identified  the angular momentum operator as:
 $$
-\hat{L}=i\hbar \nabla_{\theta,\phi}
+\hat{L}= -i\hbar \nabla_{\theta,\phi}
 $$
 
 
@@ -75,9 +69,9 @@ $$
 \frac{d^2 \Phi(\phi)}{d \phi^2}=-m^2\Phi(\phi)
 $$
 
-- The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ a quantum number which emerges from solution of $\theta$ part.
+- The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
 
--  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerged from  the solution of $\phi $ part. 
+-  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerges from  the solution of $\phi $ part. 
 
 ## Spherical harmonics
 
@@ -100,7 +94,7 @@ In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Sph
 Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
 
 $$
-\int^{2\pi}_0 d \theta \int^{\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
+\int^{\pi}_0 d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
 $$
 
 <img src="./images/sphhar2.png" style="zoom:80%;" />
