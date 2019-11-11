@@ -243,28 +243,30 @@ z = np.cos(phi) * abs(Ylm)
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Set up 3D plotting canvas
+'''Set up the 3D Canvas'''
+
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
 
-# Calculate the spherical harmonic Y(l,m) and normalize color to [0,1] scale
+''' Normalize color bar to [0,1] scale'''
+
 fcolors = (Ylm - Ylm.min())/(Ylm.max() - Ylm.min())
 
-
+'''Make 3D plot of real part of spherical harmonic'''
 
 ax.plot_surface(x, y, z, facecolors=cm.seismic(fcolors), alpha=0.3)
 
 
-# Project the plot onto planes
+''' Project 3D plot onto 2D planes'''
 
-#cset = ax.contourf(x, y, z, zdir='z',offset = -1)
-#cset = ax.contourf(x, y, z, zdir='y',offset = 1 )
-#cset = ax.contourf(x, y, z, zdir='x',offset = -1)
+cset = ax.contour(x, y, z,20, zdir='z',offset = -1, cmap='summer')
+cset = ax.contour(x, y, z,20, zdir='y',offset =  1, cmap='winter' )
+cset = ax.contour(x, y, z,20, zdir='x',offset = -1, cmap='autumn')
 
 
 #ax.set_axis_off()  # Turn off the axis planes
 
-#
+# Set axes limit to keep aspect ratio 1:1:1
 ax.set_xlim(-1, 1)
 ax.set_ylim(-1, 1)
 ax.set_zlim(-1, 1)
