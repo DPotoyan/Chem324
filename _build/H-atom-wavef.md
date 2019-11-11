@@ -13,6 +13,10 @@ next_page:
   title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+## Visualizing wave functions of H atom
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
@@ -109,7 +113,7 @@ Text(0,0.5,'$R_{nl}(r)$')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_7_1.png)
+![png](images/H-atom-wavef_8_1.png)
 
 </div>
 </div>
@@ -227,7 +231,7 @@ ax.set_axis_off()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_13_0.png)
+![png](images/H-atom-wavef_14_0.png)
 
 </div>
 </div>

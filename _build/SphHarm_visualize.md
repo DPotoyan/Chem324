@@ -13,7 +13,7 @@ next_page:
   title: '5.0 Hydrogen atom'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-## Visualizing the solutions of harmonic oscillator problem.
+## Visualizing Spherical harmonics
 
 
 
