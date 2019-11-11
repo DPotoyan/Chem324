@@ -133,7 +133,7 @@ def plot_radial(n,l):
     
     psi2 = psi_R(r,n,l)**2 * (4*np.pi*r**2)
     
-    plt.plot(r,psi2, lw=2)
+    plt.plot(r,psi2, lw=2,color='red')
     
 
     ''' Styling the plot'''
@@ -207,33 +207,27 @@ x = np.sin(phi) * np.cos(theta) * abs(Ylm)
 y = np.sin(phi) * np.sin(theta) * abs(Ylm)
 z = np.cos(phi) * abs(Ylm)
 
-
+# Set up 3D plotting canvas
 fig = plt.figure(figsize=(10,10))
-
 ax = fig.add_subplot(111, projection='3d')
 
-ax.plot_surface(x, y, z, facecolors=colormap.to_rgba(Ylm))
+# Calculate the spherical harmonic Y(l,m) and normalize to [0,1]
+
+fcolors = (Ylm - Ylm.min())/(Ylm.max() - Ylm.min())
+
+ax.plot_surface(x, y, z, facecolors=cm.seismic(fcolors))
+
+# Turn off the axis planes
+ax.set_axis_off()
 
 ```
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-<mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x12738d780>
-```
-
-
-</div>
-</div>
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_13_1.png)
+![png](images/H-atom-wavef_13_0.png)
 
 </div>
 </div>
