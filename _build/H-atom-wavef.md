@@ -170,6 +170,18 @@ interactive(children=(Dropdown(description='n', options=(1, 2, 3, 4, 5, 6, 7, 8,
 
 
 
+$$
+Y_{lm}(\theta,\phi) = \Theta_{lm}(\theta) \Phi_m (\phi) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!} } P_{lm}(cos \theta) \cdot e^{im\phi}
+$$
+
+
+
+#### Code up spherical function  $Y_{lm}(\phi,\theta)$.
+
+Using scipy special funcions makes this one trivial. 
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
@@ -186,15 +198,18 @@ def psi_ang(phi,theta,l=0,m=0):
 
 
 
+#### Compute spherican harmonics $Y_{lm}(\phi,\theta)$ on the grid of $(\phi,\theta)$
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-phi = np.linspace(0, np.pi, 100)
-theta = np.linspace(0, 2*np.pi, 100)
+phi, theta = np.linspace(0, np.pi, 100), np.linspace(0, 2*np.pi, 100)
 
 phi, theta = np.meshgrid(phi, theta)
 
-Ylm = psi_ang(theta,phi,l=3,m=0)
+Ylm = psi_ang(theta,phi,l=2,m=0)
 
 ```
 </div>
@@ -203,26 +218,56 @@ Ylm = psi_ang(theta,phi,l=3,m=0)
 
 
 
+#### Convert spherical coordinates to Cartesian coordinates of the unit sphere, $r=1$ in order to make the $XYZ$ plot
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-# Convert to Cartesian coordinates of the unit sphere, r=1
 x = np.sin(phi) * np.cos(theta) * abs(Ylm)
 y = np.sin(phi) * np.sin(theta) * abs(Ylm)
 z = np.cos(phi) * abs(Ylm)
 
+```
+</div>
+
+</div>
+
+
+
+#### Make 3D plot of spherical harmonics
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 # Set up 3D plotting canvas
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
 
-# Calculate the spherical harmonic Y(l,m) and normalize to [0,1]
-
+# Calculate the spherical harmonic Y(l,m) and normalize color to [0,1] scale
 fcolors = (Ylm - Ylm.min())/(Ylm.max() - Ylm.min())
 
-ax.plot_surface(x, y, z, facecolors=cm.seismic(fcolors))
 
-# Turn off the axis planes
-ax.set_axis_off()
+
+ax.plot_surface(x, y, z, facecolors=cm.seismic(fcolors), alpha=0.3)
+
+
+# Project the plot onto planes
+
+#cset = ax.contourf(x, y, z, zdir='z',offset = -1)
+#cset = ax.contourf(x, y, z, zdir='y',offset = 1 )
+#cset = ax.contourf(x, y, z, zdir='x',offset = -1)
+
+
+#ax.set_axis_off()  # Turn off the axis planes
+
+#
+ax.set_xlim(-1, 1)
+ax.set_ylim(-1, 1)
+ax.set_zlim(-1, 1)
 
 ```
 </div>
@@ -230,8 +275,20 @@ ax.set_axis_off()
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
+
+{:.output_data_text}
+```
+(-1, 1)
+```
+
+
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
 {:.output_png}
-![png](images/H-atom-wavef_14_0.png)
+![png](images/H-atom-wavef_20_1.png)
 
 </div>
 </div>
