@@ -27,7 +27,6 @@ from matplotlib import cm, colors
 from mpl_toolkits.mplot3d import Axes3D
 
 import numpy as np
-
 import scipy.integrate as integrate
 import scipy.special as spe
 
@@ -88,32 +87,26 @@ def psi_R(r,n=1,l=0):
 ```python
 r = np.linspace(0,100,1000)
 
-plt.plot(r,psi_R(r,3,2)**2 * 4*np.pi * r**2, lw=3)
+R = psi_R(r,8,1)
 
-plt.xlabel('$r [a_0]$')
+plt.plot(r, R, lw=3)
 
-plt.ylabel('$R_{nl}(r)$')
+
+
+plt.xlabel('$r [a_0]$',fontsize=20)
+
+plt.ylabel('$R_{nl}(r)$', fontsize=20)
+
+plt.grid('on')
 
 ```
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-
-{:.output_data_text}
-```
-Text(0,0.5,'$R_{nl}(r)$')
-```
-
-
-</div>
-</div>
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_8_1.png)
+![png](images/H-atom-wavef_8_0.png)
 
 </div>
 </div>
@@ -129,9 +122,9 @@ Text(0,0.5,'$R_{nl}(r)$')
 <div class="input_area" markdown="1">
 ```python
 
-@widgets.interact(n = np.arange(1,10,1),l = np.arange(0,9,1))
+@widgets.interact(n = np.arange(1,10,1),l = np.arange(0,n,1))
 
-def plot_radial(n,l):
+def plot_radial(n=1,l=0):
     
     r =    np.linspace(0,250,10000)
     
@@ -321,16 +314,57 @@ def HFunc(r,theta,phi,n,l,m):
         Value of wavefunction
     '''
 
-    coeff = np.sqrt((2.0/n)**3 * spe.factorial(n-l-1) /(2.0*n*spe.factorial(n+l)))
-    
-    laguerre = spe.assoc_laguerre(2.0*r/n,n-l-1,2*l+1)
-    
-    sphHarm = spe.sph_harm(m,l,phi,theta) 
 
-    return coeff * np.exp(-r/n) * (2.0*r/n)**l * laguerre * sphHarm
+    return psi_R(r,n,l) * psi_ang(phi,theta,l,m)
 
 ```
 </div>
 
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+@widgets.interact(n = np.arange(1,10,1),l = np.arange(0,n,1),m=np.arange(-l,l+1,1))
+
+def psi_xz_plot(n=1,l=0,m=0):
+
+    plt.figure(figsize=(8,8))
+    
+    
+    limit = 4*(n+l) 
+    
+    x_1d = np.linspace(-limit,limit,500)
+    z_1d = np.linspace(-limit,limit,500)
+    
+    x,z = np.meshgrid(x_1d,z_1d)
+    y   = 0
+    
+    r     = np.sqrt(x**2 + y**2 + z**2)
+    theta = np.arctan2(np.sqrt(x**2+y**2), z )
+    phi   = np.arctan2(y, x)
+
+    
+    psi_nlm = HFunc(r,theta,phi,n,l,m)
+    
+    plt.pcolormesh(x, z, psi_nlm, cmap='CMRmap')
+    
+    
+    plt.title(r"$\Psi_{%i%i%i}$" % (n,l,m),fontsize=20)
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_data_text}
+```
+interactive(children=(Dropdown(description='n', options=(1, 2, 3, 4, 5, 6, 7, 8, 9), value=1), Dropdown(descri…
+```
+
+</div>
+</div>
 </div>
 
