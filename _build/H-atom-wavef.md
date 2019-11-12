@@ -121,8 +121,9 @@ plt.grid('on')
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
+nmax=10
 
-@widgets.interact(n = np.arange(1,10,1),l = np.arange(0,n,1))
+@widgets.interact(n = np.arange(1,nmax,1),l = np.arange(0,nmax-1,1))
 
 def plot_radial(n=1,l=0):
     
@@ -327,7 +328,10 @@ def HFunc(r,theta,phi,n,l,m):
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-@widgets.interact(n = np.arange(1,10,1),l = np.arange(0,n,1),m=np.arange(-l,l+1,1))
+nmax = 10
+lmax = nmax-1
+
+@widgets.interact(n=np.arange(1,nmax,1), l = np.arange(0,nmax-1,1), m=np.arange(-lmax,lmax+1,1))
 
 def psi_xz_plot(n=1,l=0,m=0):
 
@@ -349,10 +353,14 @@ def psi_xz_plot(n=1,l=0,m=0):
     
     psi_nlm = HFunc(r,theta,phi,n,l,m)
     
-    plt.pcolormesh(x, z, psi_nlm, cmap='CMRmap')
+    #plt.pcolormesh(x, z, psi_nlm, cmap='jet')  # Try cmap = inferno, rainbow, autumn, summer, 
+    
+    plt.contourf(x, z,  psi_nlm, 20, cmap='seismic', alpha=0.6)  # Classic orbitals
     
     
-    plt.title(r"$\Psi_{%i%i%i}$" % (n,l,m),fontsize=20)
+    plt.title(f"$n,l,m={n,l,m}$",fontsize=20)
+    plt.xlabel('X',fontsize=20)
+    plt.ylabel('Z',fontsize=20)
 
 ```
 </div>
