@@ -176,3 +176,53 @@ interactive(children=(Dropdown(description='l', index=1, options=(0, 1, 2, 3, 4,
 </div>
 </div>
 
+
+
+### Making volume plot with ipyvolumes
+
+
+- [IPyvolume](https://ipyvolume.readthedocs.io/en/latest/index.html) is a Python library to visualize 3D volumes. 
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+import ipyvolume as ipv
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+ipv.figure()
+
+m, l =  0, 3
+
+Ylm  = sph_harm(m, l, theta, phi).real  
+
+fcolors = (Ylm - Ylm.min())/(Ylm.max() - Ylm.min())
+
+mesh = ipv.plot_surface(x, y, z, color=cm.seismic(fcolors))  # Feeding our x,y,z and colormap defined previously
+
+ipv.show()
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_data_text}
+```
+VBox(children=(Figure(camera=PerspectiveCamera(fov=46.0, position=(0.0, 0.0, 2.0), quaternion=(0.0, 0.0, 0.0, …
+```
+
+</div>
+</div>
+</div>
+

@@ -28,7 +28,6 @@ from mpl_toolkits.mplot3d import Axes3D
 
 import numpy as np
 import scipy.integrate as integrate
-import scipy.special as spe
 
 # Increase resolution for retina display
 from IPython.display import set_matplotlib_formats
@@ -37,6 +36,8 @@ set_matplotlib_formats('retina')
 # Load interactive widgets
 import ipywidgets as widgets
 
+import ipyvolume as ipv
+
 ```
 </div>
 
@@ -44,11 +45,24 @@ import ipywidgets as widgets
 
 
 
-## Hydrogen atom problem
+## Atomic orbitals: the visualizatin challanege.
 
 
 
-In what follows we will adopt atomic units $a_0=1, \hbar=1, m_e=1, e=1$
+### Note 1: Probability as a function of radial distance goes like $r^2 R(r)$
+ 
+ ![](./images/AO2.jpg)
+ 
+
+
+
+### Note 2 we use real part of the spherical harmonics which is physically identical to imaginary counterparts
+
+![](./images/Ao.png)
+
+
+
+### Note 3: In what follows we will adopt atomic units $a_0=1, \hbar=1, m_e=1, e=1$
 
 
 
@@ -61,6 +75,19 @@ $$ R_{nl}(r) = \sqrt{\Big(\frac{2}{n a_0}\Big)^3 \frac{(n-l-1)!}{2n (n+l)!}} e^{
 
 
 #### Step 1: Code up the function and do a basic plot
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+# Import special functions 
+import scipy.special as spe
+
+```
+</div>
+
+</div>
 
 
 
@@ -87,17 +114,16 @@ def psi_R(r,n=1,l=0):
 ```python
 r = np.linspace(0,100,1000)
 
-R = psi_R(r,8,1)
+R = psi_R(r,n=7,l=1)
 
 plt.plot(r, R, lw=3)
-
 
 
 plt.xlabel('$r [a_0]$',fontsize=20)
 
 plt.ylabel('$R_{nl}(r)$', fontsize=20)
 
-plt.grid('on')
+plt.grid('True')
 
 ```
 </div>
@@ -106,7 +132,7 @@ plt.grid('on')
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_8_0.png)
+![png](images/H-atom-wavef_11_0.png)
 
 </div>
 </div>
@@ -123,15 +149,15 @@ plt.grid('on')
 ```python
 nmax=10
 
-@widgets.interact(n = np.arange(1,nmax,1),l = np.arange(0,nmax-1,1))
+@widgets.interact(n = np.arange(1,nmax,1), l = np.arange(0,nmax-1,1))
 
 def plot_radial(n=1,l=0):
     
     r =    np.linspace(0,250,10000)
     
-    psi2 = psi_R(r,n,l)**2 * (4*np.pi*r**2)
+    psi2 = psi_R(r,n,l)**2 * (r**2)
     
-    plt.plot(r,psi2, lw=2,color='red')
+    plt.plot(r, psi2, lw=2, color='red')
     
 
     ''' Styling the plot'''
@@ -258,9 +284,8 @@ cset = ax.contour(x, y, z,20, zdir='y',offset =  1, cmap='winter' )
 cset = ax.contour(x, y, z,20, zdir='x',offset = -1, cmap='autumn')
 
 
-#ax.set_axis_off()  # Turn off the axis planes
+''' Set axes limit to keep aspect ratio 1:1:1 '''
 
-# Set axes limit to keep aspect ratio 1:1:1
 ax.set_xlim(-1, 1)
 ax.set_ylim(-1, 1)
 ax.set_zlim(-1, 1)
@@ -284,7 +309,7 @@ ax.set_zlim(-1, 1)
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](images/H-atom-wavef_20_1.png)
+![png](images/H-atom-wavef_23_1.png)
 
 </div>
 </div>
@@ -335,7 +360,7 @@ lmax = nmax-1
 
 def psi_xz_plot(n=1,l=0,m=0):
 
-    plt.figure(figsize=(8,8))
+    plt.figure(figsize=(10,8))
     
     
     limit = 4*(n+l) 
@@ -353,10 +378,11 @@ def psi_xz_plot(n=1,l=0,m=0):
     
     psi_nlm = HFunc(r,theta,phi,n,l,m)
     
-    #plt.pcolormesh(x, z, psi_nlm, cmap='jet')  # Try cmap = inferno, rainbow, autumn, summer, 
+    #plt.pcolormesh(x, z, psi_nlm, cmap='inferno')  # Try cmap = inferno, rainbow, autumn, summer, 
     
     plt.contourf(x, z,  psi_nlm, 20, cmap='seismic', alpha=0.6)  # Classic orbitals
     
+    plt.colorbar()
     
     plt.title(f"$n,l,m={n,l,m}$",fontsize=20)
     plt.xlabel('X',fontsize=20)
@@ -370,6 +396,73 @@ def psi_xz_plot(n=1,l=0,m=0):
 {:.output_data_text}
 ```
 interactive(children=(Dropdown(description='n', options=(1, 2, 3, 4, 5, 6, 7, 8, 9), value=1), Dropdown(descri…
+```
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+import ipyvolume as ipv
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+#Variables to adjust
+maxi = 60
+resolution = 160
+
+base = np.linspace(-maxi, maxi, resolution)[:,np.newaxis,np.newaxis]
+x2 = np.tile(base, (1,resolution,resolution))
+y2 = np.swapaxes(x2,0,1)
+z2 = np.swapaxes(x2,0,2)
+
+total = np.concatenate((x2[np.newaxis,:],y2[np.newaxis,:],z2[np.newaxis,:]), axis=0)
+
+r2 = np.linalg.norm(total, axis=0)
+#Alternative theta calculation
+#theta3 = np.abs(np.arctan2(np.linalg.norm(total[:2], axis=0),-total[2]))
+np.seterr(all='ignore')
+phi2 = np.arctan(np.divide(total[2],np.linalg.norm(total[:2], axis=0))) + np.pi/2
+theta2 = np.arctan2(total[1],total[0])
+
+```
+</div>
+
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+ipv.figure()
+
+psi = HFunc(r2,theta2,phi2,2,1,1)
+
+ipv.volshow(psi**2)
+
+ipv.show()
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_data_text}
+```
+VBox(children=(VBox(children=(HBox(children=(Label(value='levels:'), FloatSlider(value=0.1, max=1.0, step=0.00…
 ```
 
 </div>
