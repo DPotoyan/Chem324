@@ -111,7 +111,7 @@ z = np.cos(phi)
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
 
-m, l = 2, 4
+m, l = 4, 4
 Ylm  = sph_harm(m, l, theta, phi).real
 
 #normalize color to [0,1] corresponding to magnitude of spherical harmonic
@@ -202,7 +202,7 @@ import ipyvolume as ipv
 ```python
 ipv.figure()
 
-m, l =  0, 3
+m, l =  0, 1
 
 Ylm  = sph_harm(m, l, theta, phi).real  
 
@@ -210,6 +210,27 @@ fcolors = (Ylm - Ylm.min())/(Ylm.max() - Ylm.min())
 
 mesh = ipv.plot_surface(x, y, z, color=cm.seismic(fcolors))  # Feeding our x,y,z and colormap defined previously
 
+ipv.show()
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_data_text}
+```
+VBox(children=(Figure(camera=PerspectiveCamera(fov=46.0, position=(0.0, 0.0, 2.0), quaternion=(0.0, 0.0, 0.0, …
+```
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
 ipv.show()
 
 ```

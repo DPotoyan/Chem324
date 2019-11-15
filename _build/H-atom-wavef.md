@@ -45,7 +45,7 @@ import ipyvolume as ipv
 
 
 
-## Atomic orbitals: the visualizatin challanege.
+## Atomic orbitals: the visualization challanege.
 
 
 
@@ -114,10 +114,9 @@ def psi_R(r,n=1,l=0):
 ```python
 r = np.linspace(0,100,1000)
 
-R = psi_R(r,n=7,l=1)
+R = psi_R(r,n=5,l=1)
 
-plt.plot(r, R, lw=3)
-
+plt.plot(r, R**2, lw=3)
 
 plt.xlabel('$r [a_0]$',fontsize=20)
 
@@ -451,7 +450,7 @@ ipv.figure()
 
 psi = HFunc(r2,theta2,phi2,2,1,1)
 
-ipv.volshow(psi**2)
+ipv.volshow(r2**2 * np.sin(phi2)*psi**2)
 
 ipv.show()
 
@@ -464,6 +463,30 @@ ipv.show()
 ```
 VBox(children=(VBox(children=(HBox(children=(Label(value='levels:'), FloatSlider(value=0.1, max=1.0, step=0.00…
 ```
+
+</div>
+</div>
+</div>
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+psi.shape
+
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+
+{:.output_data_text}
+```
+(160, 160, 160)
+```
+
 
 </div>
 </div>
