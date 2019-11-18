@@ -50,7 +50,7 @@ $$
 
 ### Mangetic field modifies the hamiltonian
 
-In a constant magnetic field the hydrogen atom's Hamiltonian $\hat{H}_0$ willl be supplemetned with a new term  $\hat{H}_{mag}$  accounting for the interaction of electron's magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with l=0). Picking the mangetic field along direction z  we can write the hamiltonain as: 
+In a constant magnetic field the hydrogen atom's Hamiltonian willl be supplemetned with a new term    accounting for the interaction of electron's magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with l=0). Picking the mangetic field along direction z  we can write the hamiltonain as: 
 
 
 
@@ -145,12 +145,12 @@ While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equal
 
 Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!
 
-| *Property*     | Angular momentum                                             | Spin (Intrinsic angular momentum)                            |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Quantum number | $l=0,1,2,3,...\\ m_l=-l...0...l $                            | $s=1/2 \\ m_s=-s...s=-1/2,1/2$                               |
-| Operator       | $$\hat{L}=\hat{r}\times \hat{p} \\ \hat{L}_z = -i\hbar \Big (x\frac{\partial}{\partial y}-y\frac{\partial}{\partial x} \Big)$$ | $$\hat{S} \\ \hat{S}_z $$                                    |
+|   *Property*   |                       Angular momentum                       |              Spin (Intrinsic angular momentum)               |
+| :------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| Quantum number |              $l=0,1,2,3,...\\ m_l=-l...0...l $               |                $s=1/2 \\ m_s=-s...s=-1/2,1/2$                |
+|    Operator    | $\hat{L}=\hat{r}\times \hat{p} \\ \hat{L}_z = -i\hbar \Big (x\frac{\partial}{\partial y}-y\frac{\partial}{\partial x} \Big)$ |                  $$\hat{S} \\ \hat{S}_z $$                   |
 | Eigenfunctions | $\hat{L}\mid l,m\rangle =\hbar\sqrt{l(l+1)}\mid l,m\rangle \\ \hat{L}_z\mid l,m\rangle = \hbar m \mid l,m\rangle$ | $\hat{S} \mid s\rangle =\hbar\sqrt{s(s+1)} \\ \hat{S}_z\mid s\rangle = \hbar m_s \mid s\rangle$ |
-| Eigenvalues    | $L=\hbar\sqrt{l(l+1)} \\ L_z=\hbar m$                        | $S=\hbar\sqrt{s(s+1)}=\hbar\sqrt{3/4} \\ L_z=\hbar m_s= \pm \hbar/2 $ |
+|  Eigenvalues   |            $L=\hbar\sqrt{l(l+1)} \\ L_z=\hbar m$             | $S=\hbar\sqrt{s(s+1)}=\hbar\sqrt{3/4} \\ L_z=\hbar m_s= \pm \hbar/2 $ |
 
 
 
