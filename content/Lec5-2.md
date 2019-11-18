@@ -36,9 +36,10 @@ $$
 
 
 
-### Mangetic field modifies the hamiltonian:
+### Mangetic field modifies the hamiltonian
 
-In a constant magnetic field the hydrogen atom's Hamiltonian $\hat{H}_0$ willl be supplemetned with a new term  $\hat{H}_{mag}$  accounting for the interaction of electron's magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with $l=0$). Picking the mangetic field along direction $z$  we can write the hamiltonain as: 
+In a constant magnetic field the hydrogen atom's Hamiltonian $\hat{H}_0$ willl be supplemetned with a new term  $\hat{H}_{mag}$  accounting for the interaction of electron's magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with l=0). Picking the mangetic field along direction z  we can write the hamiltonain as: 
+
 
 
 $$
