@@ -145,7 +145,7 @@ While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equal
 
 Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!
 
-| Angular momentum                                             | Spin momentum                                                |
+| -------Angular momentum-------                               | -------Spin momentum-------                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $l=0,1,2,3,...$<br>$ m_l=-l...0...l $                        | $s=1/2$ <br> $m_s=-s...s=-1/2,1/2$                           |
 | $\hat{L}=\hat{r}\times \hat{p}$<br>$\hat{L}_z = -i\hbar \Big (x\frac{\partial}{\partial y}-y\frac{\partial}{\partial x} \Big)$ | $$\hat{S} \\ \hat{S}_z $$                                    |
