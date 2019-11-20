@@ -6,8 +6,8 @@ kernel_name: python3
 has_widgets: false
 title: '5.3 Visualizing H atom wavefunctions'
 prev_page:
-  url: /Lec5-1
-  title: '5.1 Schrodinger equation for Hydrogen atom'
+  url: /Lec5-2
+  title: '5.2 Spin'
 next_page:
   url: 
   title: ''

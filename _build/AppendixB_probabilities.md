@@ -9,7 +9,7 @@ prev_page:
   url: /Lec9-Chem324
   title: '3.3 Mathematics of QM'
 next_page:
-  url: /features/markdown
+  url: /Lec4-0
   title: '4.0 Applications of QM'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

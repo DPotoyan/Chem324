@@ -192,11 +192,11 @@ $$\Delta v =\pm1$$
 
  can occur within harmonic oscillator approximation. Furthermore only those modes are observed in IR for which dipole moment changes with vibrational coordinates. 
 
-## Unharmonic correction ot harmonic oscillator
+## Unharmonic correction of harmonic oscillator
 
 Harmonic oscillator is an approximation valid when vibrations are confined to the vicinity of equilibrium bond. For larger vibrations unharonic effects (next terms in taylro expansion) become important. 
 $$
-\tilde{E}_{v,J} =\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2
+\tilde{E}_{v} =\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2
 $$
 
 

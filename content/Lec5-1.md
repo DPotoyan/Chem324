@@ -42,7 +42,7 @@ $$
 Sperhcial nature of the problem prompts us to adopt spherical coordinates:
 
 $$
-  \nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} = \\ =\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2
+\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} = \\ =\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2
 $$
 
 

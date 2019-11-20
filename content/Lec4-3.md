@@ -114,7 +114,7 @@ In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Sph
 Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
 
 $$
-\int^{\pi}_0 d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
+\int^{\pi}_0 sin\theta d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
 $$
 
 <img src="./images/sphhar2.png" style="zoom:80%;" />

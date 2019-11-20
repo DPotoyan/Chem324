@@ -4,13 +4,13 @@ redirect_from:
 interact_link: content/HarmOsc_visualize.ipynb
 kernel_name: python3
 has_widgets: false
-title: '4.4 Visualziing Harmonic OScillator Solutions'
+title: '4.5 Visualziing Harmonic Oscillator Solutions'
 prev_page:
-  url: /Lec4-3
-  title: '4.3 Rotators.'
+  url: /Lec4-4
+  title: '4.4 Angular momentum in QM'
 next_page:
-  url: 
-  title: ''
+  url: /SphHarm_visualize
+  title: '4.6 Visualziing Spherical Harmonics'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 ## Visualizing the solutions of harmonic oscillator problem.

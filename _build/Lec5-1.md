@@ -6,8 +6,8 @@ prev_page:
   url: /Lec5-0
   title: '5.0 Hydrogen atom'
 next_page:
-  url: 
-  title: ''
+  url: /Lec5-2
+  title: '5.2 Spin'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 ## Outline for Lecture 5.1:  "Schrodinger equation for Hydrogen atom"
@@ -54,7 +54,7 @@ $$
 Sperhcial nature of the problem prompts us to adopt spherical coordinates:
 
 $$
-  \nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} = \\ =\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2
+\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} = \\ =\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2
 $$
 
 
