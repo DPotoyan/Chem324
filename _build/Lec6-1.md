@@ -27,6 +27,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 Suppose we have hamiltonian for some exactly solvable problem (particle in a box, harmonic oscilator, etc): $\hat{H}_0$. 
+
+
 $$
 \hat{H}^0 \mid n^0\rangle=E^0_n \mid n^0\rangle
 $$
@@ -35,12 +37,15 @@ $$
 
 *Note the placing of 0 index: It indicates exactly solvable hamitlonian along with eigenfunctions and eigenvalues. The  $\mid n\rangle $ is the eigenfunction corepsonding to the eigenvalue $E_n$.* <br>Suppse we modify the hamitlonian by adding a "small" pertrubation $\hat{H_1}$ how would the eigenvalues and iegenfunctions change? 
 
+
 $$
 \hat{H}=\hat{H}^0+\lambda \hat{H}^1 
 $$
 
 
+
 The  $\lambda$ is a covneinence constant factor which turns perturbation on $\lambda=1$ and off $\lambda=0$.  The objective of  perturbation theory is to find solutions of the following equation in terms of the exactly solvable problem plus a little pertrubation:
+
 
 $$
 \hat{H}\mid n\rangle =E_n \mid n\rangle
@@ -56,6 +61,8 @@ $$
 
 
 We assume that eigenvalues and eigenfunctions can be expanded in power series in the parameter $\lambda$ to be set to 1 in the end. 
+
+
 $$
 E_n =E^0_n+\lambda E^1_n+\lambda^2 E^2_n+...
 $$
@@ -108,6 +115,7 @@ $$
 
 If we have normalization the zero order eigenfunctions will be orthogonal to all higher order ones
 
+
 $$
 \langle n^0 \mid n^0 \rangle=1
 $$
@@ -136,6 +144,7 @@ $$
 Using this orthogonality we now multiplu  first order pertrubation equation by $\langle n^0 \mid$
 
 
+
 $$
 \langle n^0 \mid \hat{H}^0\mid n^1\rangle +\langle n^0 \mid  \hat{H^1}\mid n^0\rangle = E^0_n\langle n^0 \mid n^1 \rangle+E^1_n \langle n^0 \mid n^0 \rangle
 $$
@@ -152,14 +161,13 @@ $$
 
 
 
-The first terms on the right is zero becasue of rothogonality which results in the most important expression of pertrubation theory 1st order correction to energy: 
+The first terms on the right is zero becasue of rothogonality. We now have the most important expression of pertrubation theory 1st order correction to energy: 
+
 
 
 $$
 E^1_n =\langle n^0 \mid \hat{H}^1\mid n^0 \rangle
 $$
-
-
 
 
 
