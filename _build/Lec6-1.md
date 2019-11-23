@@ -16,13 +16,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 - Pertrubation theory is applicable when the given problem differs by some exacctly solvable model by a small amount. 
 
-  
+- First and second order corrections to energy suffice for solving wide range of problems in quantum mechanics.
 
   
 
   
 
-## Time independent perturbation theory
+  
+
+## Time independent perturbations
 
 
 
@@ -56,7 +58,7 @@ $$
 
 
 
-### Perturbation theory: It's just like Taylor expansions! 
+### It's just like Taylor expansions! 
 
 
 
@@ -80,6 +82,8 @@ Plugging in thepertrubative expansion of eigneufncitons and eignvalues into schr
 $$
 \Big(\hat{H}^0+\lambda \hat{H}^1 \Big)\Big(\mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle \Big)  = \\ =\Big(E^0_n+\lambda E^1_n+\lambda^2 E^2_n \Big) \Big(\mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle\Big)
 $$
+
+
 
 
 
@@ -111,6 +115,8 @@ $$
 
 
 
+
+
 ###  Fixing the normalization
 
 If we have normalization the zero order eigenfunctions will be orthogonal to all higher order ones
@@ -131,7 +137,9 @@ $$
 
 
 
-### 1st order correction to Eigenvalues/Eigenfunctions
+
+
+### 1st order correction 
 
 
 
@@ -141,7 +149,7 @@ $$
 
 
 
-Using this orthogonality we now multiplu  first order pertrubation equation by $\langle n^0 \mid$
+Using the orthogonality we now multiply  first order pertrubation equation by $\langle n^0 \mid$
 
 
 
@@ -179,11 +187,71 @@ $$
    
 
 
-### 2nd order correction to Eigenvalues/Eigenfunctions
+
+### 2nd order correction 
+
+Again we take advantage of orthogonality and now  multiply  second order pertrubation equation by $\langle n^0 \mid$ getting:
+
+
+$$
+E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle
+$$
+
+
+We express unknown first order eigenfunctions $\mid n^1 \rangle$ in terms of known eigenfunctions. This is done by by the virtue of  $\mid k^0\rangle $ forming complete basis set in terms of which one can express any function:
+
+
+
+$$
+\mid n^1 \rangle = \sum_{k \neq n} c_k \mid k^0 \rangle
+$$
+
+
+
+with $c_k =\langle k^0 \mid n^1 \rangle$ hence the $k\neq n$ in the sum indicating that $c_n=0$. Next we express coefficients in terms of exact eigenfunctions:
+
+$$
+c_k (E^0_n-E^0_k) = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle =H_{nk} \\ 
+
+\mid n^1\rangle = \sum_{k \neq n} \frac{H_{nk}}{(E^0_n-E^0_k)} \mid n^0 \rangle
+$$
+
+
+
+Where we have introduced a notation for matrix elements of perturbation hamitlonian $H_{nk}=H_{kn} = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle$. Plugging the above expansion into second order correction we obtain the key result for 2nd order pertrubation:
+
+
+
+$$
+E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
+$$
 
 
 
 
+- Note that this is the  *second order correction* to the energy $E_n=E^0_n+E^1_n+E^2_n$
+- The energy in the denominator is the difference between energy of a given state $E_n$ from all other states $E_k$ with k being the summation index.
+- For the ground state the second order correction thereofre will always be negative because $\Delta E_{0k}=E_0-E_k<0$. 
+- If the matrix elements of $ \hat{H}^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.
+
+
+
+## Putting everything together
+
+Using the convenient notaiton for matrix elements of pertrubation hamiltonian we have the qst and second roder perturbations to the energy level $E_n$
+
+
+$$
+E_n = E^0_n+ H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
+$$
+
+
+Writing the correction exlicitely for the ground state
+
+
+$$
+E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid^2}{E^0_0-E^0_2}+ ...
+$$
 
 
 ## Applications
