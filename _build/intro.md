@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - "/intro"
 title: 'Home'
 prev_page:
   url: 
@@ -16,38 +18,46 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## About 
 
-This is the official website for Chem324 course "Introduction to Quantum Mechanics" offered by Chemistry Department of Iowa State University.
-This pages describes the contents of the website.
-* All course content is written in Markdown and Jupyter Notebooks and is hosted on Github.
-All of the material is open source and freely available for download and personal use.  
-* All the code in notebooks is written using python3.7. We use primarily the standard standard scientific libraries of python which are included in anaconda3 distribution.
-* Notebooks can be read online or downloaded as pdf or html files from the Github.
-* Code in notebooks can be run either in the cloud (no installation required) or locally (after installing anaconda3)
-* Official syllabus of the course is available  on Canvas and can also be downloaded from here.  
+This is the official website for the Chem324 course **"Introduction to Quantum Mechanics"** offered by the Chemistry Department of Iowa State University.
+
+This page provides an overview of the website and its broad purpose. 
+
+
+
+- The cours eincorporates interactive numerical computing visualization, gifs and other media to aid in comprehension of complex concepts. 
+
+* All course content is written in Markdown and Jupyter Notebooks all of which is hosted on Github.
+
+* The entire course material is open source and freely available for download and personal use. We are happy to recieve any feedback on any aspect of this course. So feel free to reach us with cool ideas! 
+
+* All the code in the notebooks is written using **python3.7**. We  primarily use the standard standard scientific libraries of python **(numpy, spicy, matplotlib)** which are included in the **anaconda3** and **miniconda3** distributions.
+
+* Jupyter notebooks can be useufl in a number of ways:
+
+  * You can read their content online. 
+  * You can ownload notebooks as pdf or html files from the Github. 
+  * Most importantly you can runnotebooks in the cloud (via **myBinder or Google Collaboratery**)
+  * Finally if you install anaconda or minicodna distributions locally you can run them on your laptop, modify and save.
+
+  
 
 
 ## Installing and running Jupyter notebooks/python3.
 
-This course will make heavy use of Jupyter notebooks for visualization, interactive exploration of models and symbolic computations.
+This course will make heavy use of Jupyter notebooks for numerical computing visualization, interactive exploration. There are two options to run the notebooks:
 
-* Option-1: You can run Jupyter notebooks in the cloud in your browser. This option requires no installation.
-* Option-2: You can download anaconda3 which contains everything that you need including python3, scientific and plotting libraries of python. Any extra package can be readily installed using anaconda package manager.
+* **Option-1:** You can run the Jupyter notebooks in the cloud of your browser. This option requires no installation.
+* **Option-2:** You can download **anaconda3 or miniconda3** which contains everything  you need. Any other extra packages can be readily installed through anaconda package manager.
 
 * **[Download Anaconda](https://www.anaconda.com/distribution/)** 
 
 * **[The Jupyter Intro Guide](https://realpython.com/jupyter-notebook-introduction/)** 
 
-## FAQ  
 
-* Will grades be curved, shifted, calibration etc?: Yes, this is done after midterms and final exams.
-* How does grading work: 20% HW, 20% midterm-1, 20% midterm-2, 20% midterm-3, 20% final.  
-* What are average values of exam grades? Averages always sit somehwere in 60-70% range. Either naturally or as a result of post-exam grade calibration.
-* Materials for the course? This website contains the lecture notes but they are only meant to assit you with learning the material and are NOT subsititute for reading the required book!
-* Tips for sucess?: Read the book! Do homework thoroughly. Focus on concepts and ideas and not on meorizing patterns of solving problems. Make use of Jupyter notebook to interactively explore the concepts.  
 
 ## Acknowledgements
 
-Content is originally created by [Davit Potoyan] with the support from X, XX and XXX.  
+This content is originally designed and launched by [Davit Potoyan] with the support from Zachery Crandall.     Feel free to direct all and any questions to Davit. 
 
 [Davit Potoyan]: https://group.chem.iastate.edu/Potoyan/
 
