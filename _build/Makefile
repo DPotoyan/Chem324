@@ -1,2 +1,2 @@
 make revealjs:
-	pandoc Lec9-Chem324.md -t revealjs -s --mathjax -o index.html -V revealjs-url=https://revealjs.com --css ../assets/custom/custom.css  -V theme=simple --slide-level 3
+	pandoc Lec6-1.md -t revealjs -s --mathjax -o index.html -V revealjs-url=https://revealjs.com --css /Users/potoyan/Dropbox/TALKS/css/custom.css  -V theme=simple --slide-level 2

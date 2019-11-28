@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Lec6-1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://revealjs.com/css/reset.css">
+  <link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="https://revealjs.com/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="/Users/potoyan/Dropbox/TALKS/css/custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://revealjs.com/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="outline-for-lecture-6.0-perturbation-method" class="slide level2">
+<h2>Outline for Lecture 6.0: “Perturbation Method”</h2>
+<ul>
+<li><p>Pertrubation theory is applicable when the given problem differs by some exacctly solvable model by a small amount.</p></li>
+<li><p>First and second order corrections to energy suffice for solving wide range of problems in quantum mechanics.</p></li>
+</ul>
+</section>
+<section id="time-independent-perturbations" class="slide level2">
+<h2>Time independent perturbations</h2>
+<p>Suppose we have hamiltonian for some exactly solvable problem (particle in a box, harmonic oscilator, etc): <span class="math inline">\(\hat{H}_0\)</span>.</p>
+<p><span class="math display">\[
+\hat{H}^0 \mid n^0\rangle=E^0_n \mid n^0\rangle
+\]</span></p>
+<ul>
+<li>Note the placing of 0 index: It indicates exactly solvable hamitlonian along with eigenfunctions and eigenvalues. The <span class="math inline">\(\mid n\rangle\)</span> is the eigenfunction corepsonding to the eigenvalue <span class="math inline">\(E_n\)</span>.<br> Suppse we modify the hamitlonian by adding a “small” pertrubation <span class="math inline">\(\hat{H_1}\)</span> how would the eigenvalues and iegenfunctions change?</li>
+</ul>
+<p><span class="math display">\[
+\hat{H}=\hat{H}^0+\lambda \hat{H}^1 
+\]</span></p>
+<p>The <span class="math inline">\(\lambda\)</span> is a covneinence constant factor which turns perturbation on <span class="math inline">\(\lambda=1\)</span> and off <span class="math inline">\(\lambda=0\)</span>. The objective of perturbation theory is to find solutions of the following equation in terms of the exactly solvable problem plus a little pertrubation:</p>
+<p><span class="math display">\[
+\hat{H}\mid n\rangle =E_n \mid n\rangle
+\]</span></p>
+<h3 id="its-just-like-taylor-expansions">It’s just like Taylor expansions!</h3>
+<p>We assume that eigenvalues and eigenfunctions can be expanded in power series in the parameter <span class="math inline">\(\lambda\)</span> to be set to 1 in the end.</p>
+<p><span class="math display">\[
+E_n =E^0_n+\lambda E^1_n+\lambda^2 E^2_n+...
+\]</span></p>
+<p><span class="math display">\[
+\mid n\rangle = \mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle+...
+\]</span></p>
+<p>Plugging in thepertrubative expansion of eigneufncitons and eignvalues into schrodinger equation we get:</p>
+<p><span class="math display">\[
+\Big(\hat{H}^0+\lambda \hat{H}^1 \Big)\Big(\mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle \Big)  = \\ =\Big(E^0_n+\lambda E^1_n+\lambda^2 E^2_n \Big) \Big(\mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle\Big)
+\]</span></p>
+<h3 id="petrubation-equations-of-order-0-1-and-2">Petrubation equations of order 0, 1 and 2</h3>
+<p>Now if we opent he brackets and collecting different orders of <span class="math inline">\(\lambda\)</span> we obtain equations determining 0, 1st and 2nd order perturbations to eigenfunctions/eigenvalues:</p>
+<p><span class="math display">\[
+\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle
+\]</span></p>
+<p><span class="math display">\[
+\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle
+\]</span></p>
+<p><span class="math display">\[
+\hat{H}^0\mid n^2\rangle +\hat{H^1}\mid n^1\rangle = E^0_n\mid n^2 \rangle+E^1_n\mid n^1+E^2_n\mid n^0 \rangle
+\]</span></p>
+<ul>
+<li>Note how the sum of upstairs index determines the order of perturbation expansion<br />
+</li>
+<li>Note that 0 order is just the exact solution.</li>
+<li>Note that hamitonian only has first order expansion while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems.</li>
+</ul>
+<h3 id="fixing-the-normalization">Fixing the normalization</h3>
+<p>If we have normalization the zero order eigenfunctions will be orthogonal to all higher order ones</p>
+<p><span class="math display">\[
+\langle n^0 \mid n^0 \rangle=1
+\]</span></p>
+<p><span class="math display">\[
+\langle n^0\mid n\rangle = \langle n^0\mid n^0\rangle + \lambda\langle n^0\mid n^1\rangle+\lambda^2\langle n^0\mid n^2\rangle=1+0+0+...
+\]</span></p>
+<p><span class="math display">\[
+\langle n^0 \mid n^{k} \rangle=0\,\,\, k=1,2,..
+\]</span></p>
+<h3 id="st-order-correction">1st order correction</h3>
+<p><span class="math display">\[
+\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle
+\]</span></p>
+<p>Using the orthogonality we now multiply first order pertrubation equation by <span class="math inline">\(\langle n^0 \mid\)</span></p>
+<p><span class="math display">\[
+\langle n^0 \mid \hat{H}^0\mid n^1\rangle +\langle n^0 \mid  \hat{H^1}\mid n^0\rangle = E^0_n\langle n^0 \mid n^1 \rangle+E^1_n \langle n^0 \mid n^0 \rangle
+\]</span></p>
+<p>First term on left is zero by using hermitian property of the hamiltonian and orthogonality</p>
+<p><span class="math display">\[
+\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0
+\]</span></p>
+<p>The first terms on the right is zero becasue of rothogonality. We now have the most important expression of pertrubation theory 1st order correction to energy:</p>
+<p><span class="math display">\[
+E^1_n =\langle n^0 \mid \hat{H}^1\mid n^0 \rangle
+\]</span></p>
+<ul>
+<li><p>Note that this give <em>first order correction</em> to the energy <span class="math inline">\(E_n=E^0_n+E^1_n\)</span></p></li>
+<li><p>Note that this is different from expectation expression. Here eigenfunctions of <span class="math inline">\(\hat{H}^0\)</span> sandwich the the pertrubation hamitlonian <span class="math inline">\(\hat{H}^1\)</span> . The two hamitlonians in general do not have to share eigenfunctions!</p></li>
+</ul>
+<h3 id="nd-order-correction">2nd order correction</h3>
+<p>Again we take advantage of orthogonality and now multiply second order pertrubation equation by <span class="math inline">\(\langle n^0 \mid\)</span> getting:</p>
+<p><span class="math display">\[
+E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle
+\]</span></p>
+<p>We express unknown first order eigenfunctions <span class="math inline">\(\mid n^1 \rangle\)</span> in terms of known eigenfunctions. This is done by by the virtue of $k^0$ forming complete basis set in terms of which one can express any function:</p>
+<p><span class="math display">\[
+\mid n^1 \rangle = \sum_{k \neq n} c_k \mid k^0 \rangle
+\]</span></p>
+<p>with <span class="math inline">\(c_k =\langle k^0 \mid n^1 \rangle\)</span> hence the <span class="math inline">\(k\neq n\)</span> in the sum indicating that <span class="math inline">\(c_n=0\)</span>. Next we express coefficients in terms of exact eigenfunctions:</p>
+<p><span class="math display">\[
+c_k (E^0_n-E^0_k) = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle =H_{nk} 
+\]</span></p>
+<p><span class="math display">\[
+\mid n^1\rangle = \sum_{k \neq n} \frac{H_{nk}}{(E^0_n-E^0_k)} \mid n^0 \rangle
+\]</span></p>
+<p>Where we have introduced a notation for matrix elements of perturbation hamitlonian <span class="math inline">\(H_{nk}=H_{kn} = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle\)</span>. Plugging the above expansion into second order correction we obtain the key result for 2nd order pertrubation:</p>
+<p><span class="math display">\[
+E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
+\]</span></p>
+<ul>
+<li>Note that this is the <em>second order correction</em> to the energy <span class="math inline">\(E_n=E^0_n+E^1_n+E^2_n\)</span></li>
+<li>The energy in the denominator is the difference between energy of a given state <span class="math inline">\(E_n\)</span> from all other states <span class="math inline">\(E_k\)</span> with k being the summation index.</li>
+<li>For the ground state the second order correction thereofre will always be negative because <span class="math inline">\(\Delta E_{0k}=E_0-E_k&lt;0\)</span>.</li>
+<li>If the matrix elements of $ ^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.</li>
+</ul>
+</section>
+<section id="putting-everything-together" class="slide level2">
+<h2>Putting everything together</h2>
+<p>Using the convenient notaiton for matrix elements of pertrubation hamiltonian we have the qst and second roder perturbations to the energy level <span class="math inline">\(E_n\)</span></p>
+<p><span class="math display">\[
+E_n = E^0_n+ H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
+\]</span></p>
+<p>Writing the correction exlicitely for the ground state</p>
+<p><span class="math display">\[
+E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid^2}{E^0_0-E^0_2}+ ...
+\]</span></p>
+</section>
+<section id="applications" class="slide level2">
+<h2>Applications</h2>
+<h3 id="example-1-magnetic-field">Example-1: magnetic field</h3>
+<h3 id="example-2-electric-field">Example-2: electric field</h3>
+<h3 id="exaple-3-unharmonic-oscillator">Exaple-3 unharmonic oscillator</h3>
+</section>
+    </div>
+  </div>
+
+  <script src="https://revealjs.com/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://revealjs.com/plugin/math/math.js', async: true },
+          { src: 'https://revealjs.com/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
