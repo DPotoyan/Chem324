@@ -4,7 +4,7 @@ kernel_name: python3
 has_widgets: false
 title: '1.4 A Crash course of Python.'
 prev_page:
-  url: /Lec3-Chem324
+  url: /Lec1-3
   title: '1.3 Wave particle duality'
 next_page:
   url: /python-cookbook

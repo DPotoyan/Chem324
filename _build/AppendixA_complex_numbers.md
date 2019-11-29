@@ -9,7 +9,7 @@ prev_page:
   url: /python-cookbook
   title: '1.5 Python CookBook.'
 next_page:
-  url: /Lec4-Chem324
+  url: /Lec2-0
   title: '2.0 Waves'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

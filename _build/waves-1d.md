@@ -4,10 +4,10 @@ kernel_name: python3
 has_widgets: false
 title: '2.2 Visualizing and animating waves.'
 prev_page:
-  url: /Lec5-Chem324
+  url: /Lec2-1
   title: '2.1 Mathematics of Waves'
 next_page:
-  url: /Lec6-Chem324
+  url: /Lec3-0
   title: '3.0 Schrodinger Equation.'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

@@ -6,7 +6,7 @@ prev_page:
   url: /Lec6-1
   title: '6.1 Perturbation Theory'
 next_page:
-  url: /6-3
+  url: /Lec6-3
   title: '6.3 Linear Algebra and QM'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

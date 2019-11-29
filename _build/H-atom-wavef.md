@@ -9,8 +9,8 @@ prev_page:
   url: /Lec5-2
   title: '5.2 Spin'
 next_page:
-  url: 
-  title: ''
+  url: /Lec6-0
+  title: '6.0 Approximation methods of QM'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 ## Visualizing wave functions of H atom
