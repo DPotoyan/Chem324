@@ -6,7 +6,7 @@
 
 - Application of pertrubation theory proceeds in two steps. Step one identify solvable part and perturbation. Part two expand energy and eigenfunctions as series of corrections of increasing order. In particle first and second order corrections to energy suffice. 
 
-  ![](/Users/potoyan/Dropbox/LECTURES/QM_chem324/Chem324/content/images/perturb1.png)
+  ![](./images/perturb1.png)
 
   
 
@@ -25,16 +25,18 @@ $$
 
 
 
-- Note the 0 superscript: It indicates exactly solvable hamitlonian, eigenfunctions and eigenvalues. The  $\mid n^0\rangle$ is the eigenfunction corepsonding to the nth eigenvalue $E^0_n$.Now we perturb the hamitlonian by adding a "small" pertrubation $\hat{H_1}$.  
+- Note the 0 superscript: It indicates exactly solvable hamitlonian, eigenfunctions and eigenvalues. The  $\mid n^0\rangle$ is the eigenfunction corepsonding to the nth eigenvalue $E^0_n$. Now we perturb the hamitlonian by adding a "small" pertrubation $\hat{H_1}$. Where  $\lambda$ turns perturbation on $\lambda=1$ and off $\lambda=0$. 
 
 
 $$
 \hat{H}=\hat{H}^0+\lambda {\hat{H}^1}
 $$
 
+---
 
 
-The  $\lambda$ turns perturbation on $\lambda=1$ and off $\lambda=0$.  The objective of  perturbation theory is to solve the following problem with new hamiltonian expressed entirely in terms of eigenvalues and eigenfunctions of exactly solvable problems. 
+
+ The objective of  perturbation theory is to solve the following problem with new hamiltonian expressed entirely in terms of eigenvalues and eigenfunctions of exactly solvable problems. 
 
 
 $$
@@ -60,6 +62,8 @@ $$
 $$
 \mid n\rangle = \mid n^0\rangle+\lambda\mid n^1\rangle...
 $$
+
+---
 
 
 
@@ -141,19 +145,13 @@ $$
 \color{black}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
 
-
-
- We now multiply  first order pertrubation equation by $\langle n^0 \mid$
-
-
-
 $$
 \color{black}{\langle n^0 \mid \hat{H}^0\mid n^1\rangle +\langle n^0 \mid  \hat{H^1}\mid n^0\rangle = E^0_n\langle n^0 \mid n^1 \rangle+E^1_n \langle n^0 \mid n^0 \rangle}
 $$
 
 
 
-The first terms on the right is zero becasue of rothogonality. T first term on left is alos zero because of orhtogonality and hermitian property :  $\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0$<br>We now have the central result of pertrubation theory: **The 1st order correction to energy:** 
+We multiply  first order pertrubation equation by $\langle n^0 \mid$.  The first terms on the right is zero becasue of rothogonality. The first term on left is alos zero because of orhtogonality and hermitian property :  $\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0$<br>We now have the central result of pertrubation theory: **The 1st order correction to energy:** 
 
 
 
@@ -177,9 +175,11 @@ $$
 Again we take advantage of orthogonality and now  multiply  second order pertrubation equation by $\langle n^0 \mid$ getting:
 
 
+
 $$
 E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle
 $$
+
 
 
 We express unknown first order eigenfunctions $\mid n^1 \rangle$ in terms of known eigenfunctions. This is done by by the virtue of  $\mid k^0\rangle $ forming complete basis set in terms of which one can express any function:
@@ -190,33 +190,28 @@ $$
 \mid n^1 \rangle = \sum_{k \neq n} c_k \mid k^0 \rangle
 $$
 
-
-
-with $c_k =\langle k^0 \mid n^1 \rangle$ hence the $k\neq n$ in the sum indicating that $c_n=0$. Next we express coefficients in terms of exact eigenfunctions:
-
 $$
-c_k (E^0_n-E^0_k) = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle =H_{nk} 
-$$
-
-
-$$
-\mid n^1\rangle = \sum_{k \neq n} \frac{H_{nk}}{(E^0_n-E^0_k)} \mid n^0 \rangle
+E^2_n = \sum_{k \neq n} c_k \langle n^0 \mid \hat{H}^1 \mid k^0 \rangle = \sum_{k \neq n} c_k H_{nk}
 $$
 
 
 
+with $c_k =\langle k^0 \mid n^1 \rangle$ hence the $k\neq n$ in the sum indicating that $c_n=0$ due to orthogonality established earlier. We have introduced a notation for matrix elements of perturbation hamitlonian $H_{nk}=H_{kn} = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle$.  Finally we express the coefficients in terms of the known eigenfunctions/eigenvalues:
 
-
-
-Where we have introduced a notation for matrix elements of perturbation hamitlonian $H_{nk}=H_{kn} = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle$. Plugging the above expansion into second order correction we obtain the key result for 2nd order pertrubation:
-
+$$
+c_k (E^0_n-E^0_k) = \langle k^0 \mid \hat{H}^1 \mid n^0 \rangle =H_{nk}
+$$
 
 
 $$
 \color{blue}{E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
 $$
 
+---
 
+$$
+E = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
+$$
 
 
 - Note that this is the  *second order correction* to the energy $E_n=\color{green}{E^0_n}+\color{red}{E^1_n}+\color{blue}{E^2_n}$
@@ -245,6 +240,8 @@ Let us write second order correction explicitely for the ground state:
 $$
 E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid^2}{E^0_0-E^0_2}+ \frac{\mid H_{03}\mid^2}{E^0_0-E^0_3}+ ...
 $$
+
+- Notice the contributions from excited states and the fact that largest contribution comes from the nearest states! 
 
 
 
@@ -351,10 +348,6 @@ $$
 
 
 Where matrix elements need to be evaluated explicitly by using Hermite polynomials from table. 
-
-
-
-### Example-4  Interacting energy levels
 
 
 
