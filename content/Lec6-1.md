@@ -18,27 +18,19 @@
 
 We have hamiltonian $\hat{H}_0$ for some exactly solvable problem think particle in a box, harmonic oscilator, etc:  
 
-
-
 $$
 \hat{H}^0 \mid n^0\rangle=E^0_n \mid n^0\rangle
 $$
 
-
-
 - Note the 0 superscript: It indicates exactly solvable hamitlonian, eigenfunctions and eigenvalues. The  $\mid n^0\rangle$ is the eigenfunction corepsonding to the nth eigenvalue $E^0_n$. Now we perturb the hamitlonian by adding a "small" pertrubation $\hat{H_1}$. Where  $\lambda$ turns perturbation on $\lambda=1$ and off $\lambda=0$. 
-
-  
-
 
 $$
 \hat{H}=\hat{H}^0+\lambda {\hat{H}^1}
 $$
 
-
+---
 
 -  The objective of  perturbation theory is to solve the following problem with new hamiltonian expressed entirely in terms of eigenvalues and eigenfunctions of exactly solvable problems. 
-
 
 $$
 \hat{H}\mid n\rangle =E_n \mid n\rangle
@@ -60,16 +52,15 @@ $$
 E_n =E^0_n+\lambda E^1_n+\lambda^2 E^2_n+...
 $$
 
+
 $$
 \mid n\rangle = \mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle ...
 $$
 
 
-
 $$
 \Big(\hat{H}^0+\lambda \hat{H}^1 \Big)\Big(\mid n^0\rangle+\lambda\mid n^1\rangle \Big)  = \Big(E^0_n+\lambda E^1_n+\lambda^2 E^2_n \Big) \Big(\mid n^0\rangle+\lambda\mid n^1\rangle\Big)
 $$
-
 
 
 $$
@@ -84,7 +75,6 @@ $$
 
 Opening the brackets and collecting different orders of $\lambda$ we have  0, 1 and 2nd order perturbation equations:
 
- 
 
 $$
 \color{green}{\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle}
@@ -125,6 +115,7 @@ $$
 \langle n^0\mid n\rangle = \langle n^0\mid n^0\rangle + \lambda\langle n^0\mid n^1\rangle=1+0+...
 $$
 
+
 $$
 \langle n^0 \mid n^{k} \rangle=0\,\,\, k=1,2,..
 $$
@@ -135,24 +126,26 @@ $$
 
 ### 1st order correction to energy $E^1_n$
 
-
-
 We multiply  first order pertrubation equation by $\langle n^0 \mid$.  The first terms on the right is zero becasue of rothogonality. The first term on left is alos zero because of orhtogonality and hermitian property :  $\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0$
-
 
 
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
 
+
 $$
 \color{red}{ \color{black}{\langle n^0} \mid \hat{H}^0\mid n^1\rangle +\color{black}{\langle n^0} \mid  \hat{H^1}\mid n^0\rangle = E^0_n\color{black}{\langle n^0} \mid n^1 \rangle+E^1_n \color{black}{\langle n^0} \mid n^0 \rangle}
 $$
 
 
+$$
+\color{red}{E_n^1 = \langle n^0 \mid \hat{H}^1\mid n^0 \rangle}
+$$
+
+---
 
 - We have obtained the central result of pertrubation theory: *The 1st order correction to energy* $E^1_n$ 
-
 
 
 $$
@@ -188,12 +181,13 @@ $$
 
 
 
-Inserting the expanstion of $\mid n^1\rangle $ and this taking dot product with bra $\langle k^0 \mid$ we find the coefficients of expansion:
+Inserting the expanstion of $\mid n^1\rangle$ and this taking dot product with bra $\langle k^0 \mid$ we find the coefficients of expansion:
 
 
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
+
 
 $$
 \color{red}{  \hat{H}^0 \color{black}{\sum_{k \neq n} c_k\mid k^0\rangle} +  \hat{H^1}\mid n^0\rangle = E^0_n  \color{black} {\sum_{k \neq n} c_k \mid k^0 \rangle} +E^1_n  \mid n^0 \rangle}
@@ -204,15 +198,17 @@ $$
 c_k E^0_k + \langle k^0 \mid \hat{H}^1 \mid n^0\rangle  = c_k E^0_n
 $$
 
+
 $$
 c_k = \frac{ \langle k^0 \mid \hat{H}^1 \mid n^0\rangle}{E^0_n-E^0_k}=\frac{H_{nk}}{E^0_n-E^0_k}
 $$
 
+---
+
+
 $$
 \mid n^1 \rangle = \sum_{k \neq n} c_{k} \mid k^0 \rangle = \sum_{k \neq n} \frac{H_{nk}}{E^0_n-E^0_k} \mid k^0 \rangle
 $$
-
-
 
 - We we have intduced convenient notaation for matrix elements of pertrubed hamitlonian:
 
@@ -222,11 +218,10 @@ $$
 
 ### 2nd order correction. Obtaining expression for $E^2_n$
 
-
-
 $$
 \color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E_n^0\mid n^2\rangle+ E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 $$
+
 
 $$
 \color{blue}{\color{black}{\langle n^0 \mid }\hat{H^0} \mid n^2\rangle+\color{black}{\langle n^0 \mid }\hat{H^1}\mid n^1\rangle = E^0\color{black}{\langle n^0}\mid n^2\rangle+ E^1_n\color{black}{\langle n^0 \mid } n^1 \rangle+E^2_n \color{black}{\langle n^0}\mid n^0 \rangle}
@@ -238,7 +233,6 @@ $$
 $$
 
 
-
 - Once again wetook dot product with bra $\langle n^0 \mid$.  First term on the left. is zero (hermitian+orthogonality). The firs two terms on the right are zero due to orthogonality.
 - We are not done yet, the expression contains eigenfunction $\mid n^1 \rangle$ which we need to expres in terms of known solutions $\mid n^0 \rangle$  
 
@@ -247,26 +241,23 @@ $$
 ### 2nd order correction. Obtaining expression for $\mid n^1 \rangle$
 
 
-
 $$
 \color{black}{E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle}= \sum_{k \neq n} c_k \langle n^0 \mid \hat{H}^1 \mid k^0 \rangle = \sum_{k \neq n} c_k H_{nk}
 $$
-
 
 
 $$
 \color{blue}{E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
 $$
 
+
 $$
 E = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
 $$
 
 
-
-
 - The energy in the denominator is the difference between energy of a given state $E_n$ from all other states $E_k$ with k being the summation index. 
-- If the matrix elements of $ \hat{H}^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.
+- If the matrix elements of $\hat{H}^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.
 
 
 
@@ -275,16 +266,15 @@ $$
 Let us write second order correction explicitely for the ground state for some exactly solvable hamiltonian $\hat{H^0}$ pertrubed by $\hat{H^1}$
 
 
-
 $$
 E_n = E^0_n+ H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
 $$
 
 
-
 $$
 E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid^2}{E^0_0-E^0_2}+ \frac{\mid H_{03}\mid^2}{E^0_0-E^0_3}+ ...
 $$
+
 
 - Notice that for the ground state the second order correction thereofre will always be negative because $\Delta E_{0k}=E_0-E_k<0$
 
@@ -293,8 +283,6 @@ $$
 
 
 ## Applications
-
-
 
 
 ### Example-1: Magnetic field
@@ -307,7 +295,6 @@ $$
 $$
 
 
-
 - Using 1st order pertrubation expression we can calculate for instance how ground state energy will be perturbed. Where on right hand side we define $R_H$ as Rydberg's and $\beta_B$ as Bohr's magneton, both constants.
 
   
@@ -316,12 +303,15 @@ $$
 E_0=E^0_0 + \langle 0\mid \hat{H}^1 \mid 0\rangle = -\frac{R_H}{n^2}+m_l \beta_B B
 $$
 
-
+---
 
 - In a similiar way the effect of spin orbit coupling ($LS$) 
 
 $$
-\hat{H} = \hat{H}_0 + A_{SO}\hat{L}\hat{S}\\
+\hat{H} = \hat{H}_0 + A_{SO}\hat{L}\hat{S}
+$$
+
+$$
 E=E_0+ A_{SO} \langle 0 \mid \hat{L} \hat{S}\mid 0 \rangle
 $$
 
@@ -335,12 +325,16 @@ $$
 
 Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:
 
+
 $$
-V(x) = V_0\,\,\,\, 0 \leq x \leq \infty \\
+V(x) = V_0\,\,\,\, 0 \leq x \leq \infty 
+$$
+
+$$
 V(x) = +\infty  \,\,\, x \leq -\infty,\,\,\,\ x \geq \infty
 $$
 
-
+---
 
 This problem can be seen as a particle in a box pertrubed by the presence of a potential energy $V_0$
 
@@ -352,6 +346,7 @@ $$
 
 
 Thus we find that energy level of PIB are pertrubed by a constant shift up term:
+
 $$
 E_n = E^0_n+E^1_n \approx \frac{n^2 h^2}{8mL^2}+V_0
 $$
