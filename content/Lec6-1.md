@@ -50,6 +50,7 @@ We assume that eigenvalues and eigenfunctions can be expanded in power series in
 $$
 E_n =E^0_n+\lambda E^1_n+\lambda^2 E^2_n+...
 $$
+
 $$
 \mid n\rangle = \mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle ...
 $$
@@ -73,9 +74,11 @@ Opening the brackets and collecting different orders of $\lambda$ we have  0, 1 
 $$
 \color{green}{\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle}
 $$
+
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
+
 $$
 \color{blue}{\hat{H^1}\mid n^1\rangle = E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 $$
@@ -120,9 +123,11 @@ We multiply  first order pertrubation equation by $\langle n^0 \mid$.  The first
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
+
 $$
 \color{red}{ \color{black}{\langle n^0} \mid \hat{H}^0\mid n^1\rangle +\color{black}{\langle n^0} \mid  \hat{H^1}\mid n^0\rangle = E^0_n\color{black}{\langle n^0} \mid n^1 \rangle+E^1_n \color{black}{\langle n^0} \mid n^0 \rangle}
 $$
+
 $$
 \color{red}{E_n^1 = \langle n^0 \mid \hat{H}^1\mid n^0 \rangle}
 $$
@@ -171,12 +176,15 @@ Inserting the expanstion of $\mid n^1\rangle$ and this taking dot product with b
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
+
 $$
 \color{red}{  \hat{H}^0 \color{black}{\sum_{k \neq n} c_k\mid k^0\rangle} +  \hat{H^1}\mid n^0\rangle = E^0_n  \color{black} {\sum_{k \neq n} c_k \mid k^0 \rangle} +E^1_n  \mid n^0 \rangle}
 $$
+
 $$
 c_k E^0_k + \langle k^0 \mid \hat{H}^1 \mid n^0\rangle  = c_k E^0_n
 $$
+
 $$
 c_k = \frac{ \langle k^0 \mid \hat{H}^1 \mid n^0\rangle}{E^0_n-E^0_k}=\frac{H_{nk}}{E^0_n-E^0_k}
 $$
@@ -198,9 +206,11 @@ $$
 $$
 \color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E_n^0\mid n^2\rangle+ E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 $$
+
 $$
 \color{blue}{\color{black}{\langle n^0 \mid }\hat{H^0} \mid n^2\rangle+\color{black}{\langle n^0 \mid }\hat{H^1}\mid n^1\rangle = E^0\color{black}{\langle n^0}\mid n^2\rangle+ E^1_n\color{black}{\langle n^0 \mid } n^1 \rangle+E^2_n \color{black}{\langle n^0}\mid n^0 \rangle}
 $$
+
 $$
 \color{blue}{E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle}
 $$
@@ -220,6 +230,7 @@ $$
 $$
 \color{blue}{E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
 $$
+
 $$
 E = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
 $$
@@ -253,8 +264,6 @@ $$
 ## Applications
 
 
-
-
 ### Example-1: Magnetic field
 
 Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom to which we have added a small pertrubation in the form of interation with magnetic field. 
@@ -263,7 +272,6 @@ Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom
 $$
 \hat{H}=\hat{H}_0 + \frac{e}{2m_e} B \hat{L}_z =  \hat{H}_0 + \hat{H}^1
 $$
-
 
 
 - Using 1st order pertrubation expression we can calculate for instance how ground state energy will be perturbed. Where on right hand side we define $R_H$ as Rydberg's and $\beta_B$ as Bohr's magneton, both constants.
@@ -317,6 +325,7 @@ $$
 
 
 Thus we find that energy level of PIB are pertrubed by a constant shift up term:
+
 $$
 E_n = E^0_n+E^1_n \approx \frac{n^2 h^2}{8mL^2}+V_0
 $$
