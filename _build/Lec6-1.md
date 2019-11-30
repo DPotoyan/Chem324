@@ -152,6 +152,7 @@ $$
 We multiply  first order pertrubation equation by $\langle n^0 \mid$.  The first terms on the right is zero becasue of rothogonality. The first term on left is alos zero because of orhtogonality and hermitian property :  $\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0$
 
 
+
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
@@ -200,6 +201,8 @@ $$
 
 
 Inserting the expanstion of $\mid n^1\rangle $ and this taking dot product with bra $\langle k^0 \mid$ we find the coefficients of expansion:
+
+
 $$
 \color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
 $$
@@ -220,6 +223,8 @@ $$
 $$
 \mid n^1 \rangle = \sum_{k \neq n} c_{k} \mid k^0 \rangle = \sum_{k \neq n} \frac{H_{nk}}{E^0_n-E^0_k} \mid k^0 \rangle
 $$
+
+
 
 - We we have intduced convenient notaation for matrix elements of pertrubed hamitlonian:
 
@@ -270,6 +275,8 @@ E = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \co
 $$
 
 
+
+
 - The energy in the denominator is the difference between energy of a given state $E_n$ from all other states $E_k$ with k being the summation index. 
 - If the matrix elements of $ \hat{H}^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.
 
@@ -305,15 +312,23 @@ $$
 ### Example-1: Magnetic field
 
 Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom to which we have added a small pertrubation in the form of interation with magnetic field. 
+
+
 $$
 \hat{H}=\hat{H}_0 + \frac{e}{2m_e} B \hat{L}_z =  \hat{H}_0 + \hat{H}^1
 $$
 
+
+
 - Using 1st order pertrubation expression we can calculate for instance how ground state energy will be perturbed. Where on right hand side we define $R_H$ as Rydberg's and $\beta_B$ as Bohr's magneton, both constants.
+
+  
 
 $$
 E_0=E^0_0 + \langle 0\mid \hat{H}^1 \mid 0\rangle = -\frac{R_H}{n^2}+m_l \beta_B B
 $$
+
+
 
 - In a similiar way the effect of spin orbit coupling ($LS$) 
 
@@ -328,8 +343,9 @@ $$
 
 ### Example-2: Particle in a box
 
-Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:
 
+
+Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:
 
 $$
 V(x) = V_0\,\,\,\, 0 \leq x \leq \infty \\
@@ -357,8 +373,9 @@ $$
 
 ### Exaple-3 Unharmonic oscillator
 
-Unharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:
 
+
+Unharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:
 
 $$
 \hat{H} = \hat{K}+ \frac{kx^2}{2} +\gamma x^3 = \hat{H}_0+\gamma x^3
