@@ -2,31 +2,27 @@
 
 
 
-- Variational method provides a powerful tool tool to (a) Make systematic and straightforward approximations to analytically intractable problems (b) Assess quality of approximation by measuring how fast approximations are briniging us to the truth. 
-- In pertrubation theory one needs to identify an exectly solvable problem then make subsequent corrections.  In variational method we first take an "educated" guess at a problem by picking trial functions. Then we minimize parameters of the function to bring solutions closer to the truth. 
-- Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors 
+- Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values. 
+- In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth. 
+- Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.
 
 
-
+<!-- slide -->
 ## Variational method
 
 Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy. 
+
+
 $$
 E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
 $$
+
 
 1. Ground state energy is the lowest possible energy for the system. 
 
 2. By minimizing the energy functions we can make most accurate prediction for a given trail function. 
 
 3. More parameters give us more handles to vary and get more acurate solutions. 
-
-
-
-
-### Proof of the variational theorem
-
-
 
 
 
@@ -91,16 +87,6 @@ $$
 
 ### 
 
-
-
-
-
-
-
-
-
-
-
 ## Variational method as applied to linear combinations of trial functions
 
 
@@ -114,5 +100,15 @@ $$
 
 
 
+
+
 ### It's a linear algebra problem
 
+
+$$
+\begin{vmatrix}
+H-ES & x_{0} & x_{0}^{2} & \dots & x_{0}^{n} \newline 
+H-ES & x_{1} & x_{1}^{2} & \dots & x_{1}^{n} \newline 
+1 & x_{n} & x_{n}^{2} & \dots & x_{n}^{n}
+\end{vmatrix} = 0
+$$
