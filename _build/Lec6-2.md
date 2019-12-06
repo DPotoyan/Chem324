@@ -8,21 +8,29 @@ prev_page:
 next_page:
   url: /Lec6-3
   title: '6.3 Linear Algebra and QM'
+presentation:
+
+  width: 1100
+
+  height: 1100
+
+  controls: true
+
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+<!-- slide -->
 ## Outline for Lecture 6.2:  "Variational Method"
 
-
-
-- Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values. 
-- In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth. 
+- Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values.
+- In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.
 - Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.
 
 
 <!-- slide -->
 ## Variational method
 
-Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy. 
+Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy.
 
 
 $$
@@ -30,21 +38,21 @@ E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \p
 $$
 
 
-1. Ground state energy is the lowest possible energy for the system. 
+1. Ground state energy is the lowest possible energy for the system.
 
-2. By minimizing the energy functions we can make most accurate prediction for a given trail function. 
+2. By minimizing the energy functions we can make most accurate prediction for a given trail function.
 
-3. More parameters give us more handles to vary and get more acurate solutions. 
+3. More parameters give us more handles to vary and get more acurate solutions.
 
 
-
+<!-- slide -->
 ### Example: H-atom trial function
 
 - Exact solution for ground state: $\psi(r)=\frac{1}{(\pi a^3_0)^{1/2}}e^{-r/a_0}$ and $E_1 = -0.5 h$
 
 - Let's test a trail function $\phi=e^{-\alpha r^2}$  and predict energy:
 
-  
+
 $$
 E_{trial} = \frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle}
 $$
@@ -60,7 +68,7 @@ E_{trial}(\alpha)=\frac{3\hbar^2 \alpha}{2m_e}-\frac{e^2 \alpha^{1/2}}{\sqrt{2}\
 $$
 
 
-
+<!-- slide -->
 ### Minimization gives the best values of paramaters in trial functions
 
 $$
@@ -78,7 +86,7 @@ $$
 - We need to plug this parameters back into energy function to get the  energy minimized with respect to $\alpha$, e.g $E(\alpha_{min})$
 
 
-
+<!-- slide -->
 ### Comparison of optimized vs true values
 
 
@@ -97,8 +105,8 @@ $$
 - Adding more parameters and functions will reduce the error.
 
 
-### 
 
+<!-- slide -->
 ## Variational method as applied to linear combinations of trial functions
 
 
@@ -110,17 +118,61 @@ $$
 - $f_i$ Trial functions
 - Example: $\phi(x) = c_1 sin (2x)+c_2 sin(2x)$
 
+<!-- slide -->
+### Minimizing energy by varying linear coefficients
+
+$$
+\mid \phi \rangle = \sum_i c_i \mid f_i \rangle
+$$
+
+$$
+E(c_1,c_2,...c_N) = \frac{\langle \phi \mid \hat{H} \mid \phi \rangle}{\langle\phi \mid \phi \rangle}
+$$
+
+$$
+E(c_1,c_2,...c_N) = \frac{\sum_i \sum_j c_i c_j\langle f_i \mid \hat{H} \mid f_j \rangle}{\sum_i \sum_j c_i c_j\langle f_i \mid f_j \rangle} = \frac{\sum_i \sum_j H_{ij}}{\sum_i \sum_j c_i c_jS_{ij}}
+$$
 
 
-
-
+<!-- slide -->
 ### It's a linear algebra problem
 
+$$\mid \phi\rangle = c_1\mid f_1\rangle+ c_1\mid f_2\rangle$$
+
+$$E(c_1,c_2) = \langle \phi \mid \hat{H} \mid \phi \rangle $$
+
+Minimizing $E(c_1,c_2)$ with respect to ($c_1$,$c_2$) gives rise 2 linear equations.
+
+$$
+c_1(H_{11}-ES_{11})+c_2(H_{11}-ES_{12}) = 0 \newline
+c_1(H_{21}-ES_{21})+c_2(H_{21}-ES_{22}) = 0
+$$
+
+The set of linear equations has nontrivial solution only when determinant of matrix elements is zero:
 
 $$
 \begin{vmatrix}
-H-ES & x_{0} & x_{0}^{2} & \dots & x_{0}^{n} \newline 
-H-ES & x_{1} & x_{1}^{2} & \dots & x_{1}^{n} \newline 
-1 & x_{n} & x_{n}^{2} & \dots & x_{n}^{n}
+H_{11}-ES_{11} & H_{12}-ES_{12}  \\
+H_{21}-ES_{21} & H_{22}-ES_{22}  \\
+\end{vmatrix} = 0
+$$
+
+
+<!-- slide -->
+### Determinant for  N trial functions
+
+Variational minimization of coeffients of  N trial functions $(c_1, c_2,...c_N)$ leads to an N by N determinant:
+
+$$
+\mid \phi \rangle = \sum_i c_i \mid f_i \rangle
+$$
+
+$$
+\begin{vmatrix}
+H_{11}-ES_{11} & H_{12}-ES_{12}  & \dots & H_{1N}-ES_{1N} \\
+H_{21}-ES_{21} & H_{22}-ES_{22}  & \dots & H_{2N}-ES_{2N} \\
+H_{31}-ES_{31} & H_{32}-ES_{32}  & \dots & H_{3N}-ES_{3N}  \\
+\dots & \dots & \dots & \dots \\
+H_{N1}-ES_{11} & H_{N2}-ES_{N2}  & \dots & H_{NN}-ES_{NN}
 \end{vmatrix} = 0
 $$
