@@ -74,7 +74,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 ## An attempt at deriving Schrödinger Equation
 
-Now let us combining the following two cornerstone quantum ideas into a free periodic wave function:
+Now let us combine the following two cornerstone quantum ideas into a free periodic wave function:
 
 - **De Brogile relation:** **$p=h/\lambda$** Matter has both particle and wave like qualities. 
 
