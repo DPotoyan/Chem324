@@ -130,7 +130,7 @@ Linear means that operator acting on sum of function does not change the power o
 
 $$\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)$$
 
-Schrödinger equation is a linear differnetial equation. Hence it can be written as a linear operator acting on a wave function.
+Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
 
 -Question: which of the following would be linear operator: $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$
 
