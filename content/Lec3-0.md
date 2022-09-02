@@ -189,7 +189,7 @@ As we recall from solving classical wave equation whenever there are bounary con
 
 $$\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x) $$
 
-In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by n where the multiplicatove factors are nothing but the discrete energy levels! The wave functions for each n are going to have special signficsnce as gateways to describing probability profile of finding electrons in different points in space. 
+In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels! The wave functions for each $n$ are going to have special signficance as gateways to describing the probability profile of finding electrons in different points in space. 
 
 $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
 
