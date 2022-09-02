@@ -173,7 +173,7 @@ The separation constant can be recognized as the total energy as is evident by r
 
 $$f(t)=e^{-iEt/\hbar} $$
 
-The sptial part is obtained by solving time-independent Schrödinger equation.
+The spatial part is obtained by solving time-independent Schrödinger equation.
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
