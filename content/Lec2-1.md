@@ -77,7 +77,7 @@ $$X(x)= A \cos(\beta x)+B \sin(\beta x)$$
 
 Applying boundary conditions leads to $X(0)=0$ hence $A \cdot 1+0=0$. <br>And $X(L)=0=\sin (\beta L)=0$ hence we have a non-trivial solution! 
 
-$$\beta L=n\pi \,\, \rightarrow \,\, \beta=\frac{n\pi}{L} \,\,  \rightarrow \,\,  X(x)=B\sin\left\frac{n\pi}{L}x\right)$$
+$$\beta L=n\pi \,\, \rightarrow \,\, \beta=\frac{n\pi}{L} \,\,  \rightarrow \,\,  X(x)=B\sin\left(\frac{n\pi}{L}x\right)$$
 
 
 ## Intermezzo: Solutions for wave equation are also called normal modes.
