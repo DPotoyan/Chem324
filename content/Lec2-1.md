@@ -93,7 +93,7 @@ $$T(t)=D_n \cos(\omega_n t)+E_n \sin(\omega_n t)$$
 
 ## Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE. 
 
-$$u(x,t)=X(x)T(t)=\left[D_n \cos(\omega_n t)+E_n \sin(\omega_n t) B \sin\left(\frac{n\pi}{L}x\right)\right]$$
+$$u(x,t)=X(x)T(t)=\left[D_n \cos(\omega_n t)+E_n \sin(\omega_n t)\right] B \sin\left(\frac{n\pi}{L}x\right)$$
 
 Using trigonometric relation for sum of $\sin$ and $\cos$ functions we arrive at infinite number of solutions for each $n$. 
 
