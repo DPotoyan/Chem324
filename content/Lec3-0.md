@@ -143,7 +143,7 @@ By writing the equation in operator notation we may begin to recognize certain t
 
 $$i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V]\Psi=\hat{H}\Psi$$
 
-The operator $\hat{H}$ is called a Hamilton opertor or hamiltonian. And is an analog of classical Hamiltonian $H(x,p)=\frac{p^2}{2m}+V$ which is an expression of total energy. 
+The operator $\hat{H}$ is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian $H(x,p)=\frac{p^2}{2m}+V$ which is an expression of total energy. 
 
 $$\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)$$
 
