@@ -81,7 +81,7 @@ _A black body is an idealized system which is in equilibrium, maintained at some
 
 ## Applications of black Body radiation
 
-The black body is used as a standard with which the absorption of real bodies is compared. Ton a good approximations stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors!
+The black body is used as a standard with which the absorption of real bodies is compared. To a good approximation, stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors!
 
 ![](./images/lec1_planets.jpg)
 
@@ -98,7 +98,7 @@ As temperature T goes up we notice three things:
 
 - Radiation intensity goes up, implying higher radiation energy.
 - Distribution of wavelengths shifts left to lower values (left panel) or we can say the distribution of frequency shifts right (right panel)
-- Color of the object changes from red ton yellow to blue. 
+- Color of the object changes from red to yellow to blue. 
 
 
 ## What is classical mechanics & thermodynamics perspective on black body radiation?
