@@ -67,7 +67,7 @@ Applying boundary conditions $X(0)=X(L)=0$ leads to $c_1=c_2=0$. There is simply
 
 $$X(x)= c_1 e^{i\beta x}+c_2 e^{-i\beta x}$$
 
-$$X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 \left[\cos(\beta x) - i \sin(\beta x)\ù$$
+$$X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 \left[\cos(\beta x) - i \sin(\beta x)\right]$$
 
 Above we have made use of Euler's relation to clarify things. Now one more rearrangement and we are done here:
 
