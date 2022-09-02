@@ -30,7 +30,7 @@ institute: ' Iowa State University, Ames IA 50011'
 
 ![](./images/lect2_Eflying.png)
 
-When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interest with the matter.
+When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interacts with the matter.
 
 
 ## Applications of photoelectric effect
@@ -61,7 +61,7 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
 
-$$(E_{photon}-E_{photon})=KE$$
+$$E_{photon}-E_{electron}=E_{kinetic}$$
 
 - If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
 
