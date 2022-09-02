@@ -30,7 +30,7 @@ institute: ' Iowa State University, Ames IA 50011'
 
 ![](./images/lect2_Eflying.png)
 
-When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interest with the matter.
+When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interacts with the matter.
 
 
 ## Applications of photoelectric effect
