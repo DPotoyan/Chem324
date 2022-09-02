@@ -167,7 +167,7 @@ Now collecting $x$ and $t$ terms we achieve separation of variables.
 
 $$\frac{1}{f(t)}i\hbar \frac{\partial }{\partial t} f(t)=\frac{1}{\psi(x) }\hat{H}\psi(x)=E$$
 
-Notice that the hamiltonian operator contains $x$ derivatives hence $f(t)$ can be taken out of the oeprator expression. In the expression $\frac{\hat{H}\psi(x)}{\psi(x)}$ however one can not cancel $\psi$ becasue what we have in the numerator is differtiation written with a help of operator and not just a simple product! 
+Notice that the hamiltonian operator contains $x$ derivatives hence $f(t)$ can be taken out of the oeprator expression. In the expression $\frac{\hat{H}\psi(x)}{\psi(x)}$ however one can not cancel $\psi$ becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product! 
 
 The separation constatn can be reognized as the total Energy as is evident by recalling that the hamiltonain operator is the analog of Hamilton function.  The temporal part is solved instantly:
 
