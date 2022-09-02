@@ -66,7 +66,7 @@ We obtain equation of motion by using the chain rule and taking partial derivati
 
 Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to $x$ and $t$ we obtain:
 
-$$\frac{d^2 u}{d t^2} = v^2 \frac{d^2 u}{dx^2}$$
+$$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$ 
 
 We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
