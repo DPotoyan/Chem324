@@ -1,14 +1,14 @@
 ## Outline for Lecture 3.0: Schrödinger Equation
 
 - By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schrödinger's equation (SE).
-- Schrödinger's equation in its most general form depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time dependent Schrödinger equation (TD-SE) into the time independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
+- Schrödinger's equation in its most general form depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
 
- **Time dependent Schrödinger equation (TD-SE) in 1D**
+ **Time-dependent Schrödinger equation (TD-SE) in 1D**
 
   $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)$$
 
 
-  **Time independent Schrödinger equation (TI-SE) in 1D**
+  **Time-independent Schrödinger equation (TI-SE) in 1D**
 
   $$E\psi(x)=\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x)$$
 
@@ -41,11 +41,11 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 
 
-## Schrödinger Equation (time dependent)
+## Schrödinger Equation (time-dependent)
 
 <img src="images/SE_4.jpg" style="zoom:28%;" />
 
-- The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
+- The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time-dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
 
   
 
@@ -80,7 +80,7 @@ Now let us combine the following two cornerstone quantum ideas into a free perio
 
 - **Planck equaton:** $E=h\nu$  Energy levels  are quantized.
 
-$$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{i2\pi(\frac{x}{\lambda}-\nu t)}= Ae^{i\hbar(px-E t)}$$
+$$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{i2\pi(\frac{x}{\lambda}-\nu t)}= Ae^{\frac{i}{\hbar}(px-E t)}$$
 
 Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ expressed in terms of momenum via de Broglie relation and angular frequency expressed in terms of energy via Planck equation $\omega=2\pi \nu=\frac{E}{\hbar}$
 
@@ -106,7 +106,7 @@ $$ \frac{\partial^2 \Psi(x,t)}{\partial x^2}=-\frac{p^2}{\hbar^2}\Psi(x,t)=-\fra
 
 Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  $E=\frac{p^2}{2m}+V$
 
-This last expression we will come to know as the time independent Schrödinger equation (TI-SE):
+This last expression we will come to know as the time-independent Schrödinger equation (TI-SE):
 
 $$-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V\Psi=E\Psi  $$
 
@@ -137,7 +137,7 @@ Schrödinger equation is a linear differnetial equation. Hence it can be written
 
 
 
-## Time dependent Schrödinger equation in operator notation.
+## Time-dependent Schrödinger equation in operator notation.
 
 By witing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
 
@@ -153,13 +153,13 @@ Whereas the  potential energy is has exactly the same appearance of a function o
 
 
 
-## From time dependent to time independent Schrodiner equation.
+## From time-dependent to time-independent Schrodiner equation.
 
 As we have learned from lectures on classical wave equation when the spatial and coordinates are independent of each other one can use separation of variables and decoupling time and space dependence. 
 
 $$\Psi(x,t)=f(t)\psi(x) $$
 
-Plugging this into time dependent wave equation we get
+Plugging this into time-dependent wave equation we get
 
 $$i\hbar \frac{\partial }{\partial t} f(t)\psi(x) =\hat{H}f(t)\psi(x)$$
 
@@ -173,7 +173,7 @@ The separation constatn can be reognized as the total Energy as is evident by re
 
 $$f(t)=e^{-iEt/\hbar} $$
 
-The sptial part is obtained by solving time independent Schroinger equation.
+The sptial part is obtained by solving time-independent Schroinger equation.
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
@@ -203,9 +203,9 @@ Using the oeprator notation we see that both classical wave equation and time-in
 
 E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
-### Time independent Schrödinger equation as an eigenvalue-eigenfunction problem.
+### Time-independent Schrödinger equation as an eigenvalue-eigenfunction problem.
 
-The time independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where our eigenfunctions are wave-functions and eigenvalues are energies.
+The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where our eigenfunctions are wave-functions and eigenvalues are energies.
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
