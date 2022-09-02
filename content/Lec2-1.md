@@ -67,7 +67,7 @@ Applying boundary conditions $X(0)=X(L)=0$ leads to $c_1=c_2=0$. There is simply
 
 $$X(x)= c_1 e^{i\beta x}+c_2 e^{-i\beta x}$$
 
-$$X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 \left[\cos(\beta x) - i \sin(\beta x)\right]$$
+$$X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 \left[\cos(\beta x) - i \sin(\beta x)\ù$$
 
 Above we have made use of Euler's relation to clarify things. Now one more rearrangement and we are done here:
 
@@ -93,7 +93,7 @@ $$T(t)=D_n \cos(\omega_n t)+E_n \sin(\omega_n t)$$
 
 ## Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE. 
 
-$$u(x,t)=X(x)T(t)=\left[D_n \cos(\omega_n t)+E_n \sin(\omega_n t)\right] B \sin\left(\frac{n\pi}{L}x\right)$$
+$$u(x,t)=X(x)T(t)=[D_n \cos(\omega_n t)+E_n \sin(\omega_n t)] B \sin\left(\frac{n\pi}{L}x\right)$$
 
 Using trigonometric relation for sum of $\sin$ and $\cos$ functions we arrive at infinite number of solutions for each $n$. 
 
