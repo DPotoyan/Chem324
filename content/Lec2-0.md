@@ -49,12 +49,12 @@ $$u(x,t) = f(x-vt)$$
 
 ![](./images/lec5_Introwave.jpg)
 
-We will be working a lot with periodic waves that have a shape of a sine or cosine, like this one: $$y(x,t)= Asin(kx)$$
+We will be working a lot with periodic waves that have a shape of a sine or cosine, like this one: $$y(x,t)= A \sin(kx)$$
 Let us now turn this sinusoidal form into a wave traveling along x axis:
 $$y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)$$
 
 - Amplitude $A$: specifies maximum disturbance. 
-- Wave vector $k$: specifies periodicity in space.
+- Wave number $k$: specifies periodicity in space.
 - Angular frequency $\omega$: specifies periodicity in time.
 
 > Flashback to first lecture when we had this relationship of wavelength to speed of wave and frequency via $\lambda \nu = v$ and $\nu=\frac{1}{T}$
