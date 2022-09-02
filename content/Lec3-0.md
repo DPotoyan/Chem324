@@ -153,7 +153,7 @@ Whereas the  potential energy is has exactly the same appearance of a function o
 
 
 
-## From time-dependent to time-independent Schrodiner equation.
+## From time-dependent to time-independent Schrödinger equation.
 
 As we have learned from lectures on classical wave equation when the spatial and coordinates are independent of each other one can use separation of variables and decoupling time and space dependence. 
 
