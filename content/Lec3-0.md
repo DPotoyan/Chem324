@@ -149,7 +149,7 @@ $$\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)
 
 As we  see the analog of classical kinetic operator is a second order partial differentiation. 
 
-Whereas the  potential energy is has exactly the same appearance of a function of spatial coordinates. 
+Whereas the  potential energy has exactly the same appearance of a function of spatial coordinates. 
 
 
 
