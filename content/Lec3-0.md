@@ -76,13 +76,13 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 Now let us combine the following two cornerstone quantum ideas into a free periodic wave function:
 
-- **De Brogile relation:** **$p=h/\lambda$** Matter has both particle and wave like qualities. 
+- **De Broglie relation:** **$p=h/\lambda$** Matter has both particle and wave like qualities. 
 
 - **Planck equaton:** $E=h\nu$  Energy levels  are quantized.
 
 $$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{i2\pi(\frac{x}{\lambda}-\nu t)}= Ae^{i\hbar(px-E t)}$$
 
-Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ expressed in terms of momenum via De Brogile relation and angular frequency expressed in terms of energy via Planck equation $\omega=2\pi \nu=\frac{E}{\hbar}$
+Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ expressed in terms of momenum via de Broglie relation and angular frequency expressed in terms of energy via Planck equation $\omega=2\pi \nu=\frac{E}{\hbar}$
 
 
 
