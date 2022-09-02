@@ -12,9 +12,9 @@ institute: 'Iowa State University, Ames IA 50011'
 
 - **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
 
-- **Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can is observed in all quantum experiments. Is fully explained by the theory of quantum mechanics.** <br>
+- **Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can be observed in all quantum experiments. Is fully explained by the theory of quantum mechanics.** <br>
   
-- **Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_ .**<br>
+- **Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_.**<br>
 
 
 
