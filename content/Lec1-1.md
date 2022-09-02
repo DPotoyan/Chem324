@@ -103,7 +103,7 @@ As temperature T goes up we notice three things:
 
 ## What is classical mechanics & thermodynamics perspective on black body radiation?
 
-- What is “temperature”? A measure for kinetic energy per particle associated with translational, rotation, vibrational degrees of freedom. 
+- What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
 - What is light? Think of an oscillating spring with frequency $\nu$
 - Thermodynamics: Heat can only flow from high to low temperature. In equilibrium, each degree of freedom in our case each spring/oscillator gets the same thermal energy $k_B T$.
 
@@ -119,7 +119,7 @@ Classical mechanics leads to the Rayleigh-Jeans law which works only in low freq
 
 The classical reasoning  about black body radiation is following:
 
-- Number of waves fitting inside an idealized cubic black body is $N_{\nu }=\nu^3$.  For small frequency region  $d\nu$ there would be $dN=3\nu^2 d\nu$ waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequeny ones. 
+- Number of waves fitting inside an idealized cubic black body is $N_{\nu }=\nu^3$.  For small frequency region  $d\nu$ there would be $dN=3\nu^2 d\nu$ waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. 
 
  - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is **$$I \sim k_B T \nu^2$$**. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
