@@ -8,7 +8,7 @@
   $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)$$
 
 
-  **Time independent Schrödinger equation (TI-SI) in 1D**
+  **Time independent Schrödinger equation (TI-SE) in 1D**
 
   $$E\psi(x)=\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x)$$
 
