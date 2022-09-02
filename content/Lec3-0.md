@@ -51,8 +51,8 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
    $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)$$
 
-- Left hand side describes change of wave function with time. The presence of an imaginary uni tells us that solutions of this equation are generally complex functions. 
-- Right hand side descirbes spatial varation of wave function. We will soon discover that  inside square bracekts we have operators of kinetic and potential energies: an analog of kinetic and potential energies in classical mechanics.  
+- Left hand side describes change of wave function with time. The presence of an imaginary unit tells us that solutions of this equation are generally complex functions. 
+- Right hand side describes spatial varation of wave function. We will soon discover that  inside square brackets we have operators of kinetic and potential energies: an analog of kinetic and potential energies in classical mechanics.  
 
 ## From classical to quantum wave equation
 
