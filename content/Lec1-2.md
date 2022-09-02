@@ -61,7 +61,7 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 - The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
 
-$$(E_{photon}-E_{photon})=KE$$
+$$E_{photon}-E_{electron}=E_{kinetic}$$
 
 - If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
 
