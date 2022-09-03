@@ -44,10 +44,7 @@ Notation for vectors can be different depending on the context. Below we list th
   - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
   - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
   - $$a=(2,3)$$    
-  - $$a= \begin{pmatrix}
-    2\\
-    3\\
-    \end{pmatrix}$$ 
+  - $$a= \begin{pmatrix} 2 \\ 3 \\ \end{pmatrix}$$ 
 
 In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
