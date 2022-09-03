@@ -1,6 +1,6 @@
 
 
-## Outline for Lecture 3.3: Matheamtical Foundations of Quantum Mechanics
+## Outline for Lecture 3.3: Mathematical Foundations of Quantum Mechanics
 
 - The objective of this section is to provide a gentle and mathematically friendly introduction to the abstract mathematical formalism of quantum mechanics. We are going to learn three mathematical topics of fundmental importance for quantum mechanics:
 
