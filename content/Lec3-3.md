@@ -228,7 +228,7 @@ This is where we see the power and beautfy of Dirac notation. Reagardless of how
 
 - What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
 
-  - In Dirac notation: $$c_k = \langle k \mid f \rangle$$
+  - In Dirac notation: $$c_k = \langle k \ket{f}$$
 
   - In explicit notation: $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$$
 
