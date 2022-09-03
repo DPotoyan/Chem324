@@ -39,19 +39,11 @@ $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} 
 
 - By defnitition probability distribution function $p(x) $ allows quantifying various probabilities that a quantum "particle" is located in an infinitesimal slice $[x, x+dx]$ around point $x$.  This then enables us to  find probabilities in any finite region $[a,b]$ simply by integrating:
 
-  
-
-  $$p(a<x<b)=\int^{b}_a |\psi(x)|^2dx$$
-
-  
+  $$p(a<x<b)=\int_a^b |\psi(x)|^2dx$$
 
 - In higher dimensions, e.g. 3D, we can locate particle around volume $dxdydz$ or any finite volume via a similar integration:
 
-  
-
   $$p(a_x<x<b_x,a_y<y<b_y, a_z<z<b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz$$
-
-
 
 ### Computing moments of probability distirbution function
 
