@@ -37,9 +37,6 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
 |        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
 | Example of Bra-Ket product for vectors in terms of components <br>$$\langle a \mid a \rangle = \sum_i a^2_i$$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components<br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br> $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
 
-
-
-
 ### Representation of vectors
 
 Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
@@ -64,17 +61,13 @@ However, a vector can be just an array of numbers, and the components of a vecto
 
   - $$Stock = (1.4, 3.6, 8.5, ...)$$  
 
-
-
 ### Vector operations 
 
 What defines vectors is the operations on them. Let us take a simple 2D vector as an example: 
 
 $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
-
-
-**1. Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$
+**1. Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$:
 
   - $$ a+b=\begin{pmatrix}
     2\\
@@ -89,9 +82,7 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
   - $$\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2\pm b_2)\mid e_2\rangle$$
 
-    
-
-**2. Mulitiplication** by a  scalar  $\alpha=10$
+**2. Mulitiplication** by a  scalar  $\alpha=10$:
 
   - $$\alpha \cdot a=10\begin{pmatrix}
     2\\
@@ -103,17 +94,10 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
   - $$\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$$
 
-    
+**3. Dot product** with another vector $\mid b\rangle$:
 
-**3. Dot product** with another vector $\mid b\rangle$
-
-  - $$a\cdot b=(2,3)\begin{pmatrix}
-    1\\
-    1\\
-    \end{pmatrix}=2 \cdot 1+3\cdot 1=5$$
+  - $$a\cdot b=(2,3)\begin{pmatrix} 1 \\ 1 \\ \end{pmatrix}=2 \cdot 1+3\cdot 1=5$$
   - $$\langle a \mid b\rangle=a_1b_1+a_2b_2$$
-
-
 
 ###  Projection, orthogonality and norm
 
@@ -126,8 +110,6 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
     \end{pmatrix}=1\cdot 0+0\cdot 1=0$$
 
    Where we denote both orthogonality and normalization with the convenient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and $1$ when $i=j$. 
-
-  
 
 - Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:
 	
