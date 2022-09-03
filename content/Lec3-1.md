@@ -13,11 +13,9 @@
 
 ## What is the meaning of a wave-function $\psi$ ? 
 
-- In classical wave equation, wave function has a simple mechanical  interpretation: its just the degree of distrurbance of the wave. E.g. elevation of guitar string from a  position of rest.  
+- In classical wave equation, wave function has a simple mechanical  interpretation: it's just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.  
 - In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments. 
-- As It turns out, the square value of wave function that is $p(x)=\psi(x) \cdot \psi^{*}(x)$ is a probability distribution function describing likeliehood of quantum objects being at different points $x$  in 1D space. For 3D space the analogus expression is $p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$ and so on. 
-
-
+- As It turns out, the square value of wave function that is $p(x)=\psi(x) \cdot \psi^{*}(x)$ is a probability distribution function describing likelihood of quantum objects being at different points $x$  in 1D space. For 3D space the analogous expression is $p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$ and so on. 
 
 ### The importance of normalization
 
@@ -32,8 +30,6 @@ Normalization of a wave function $\psi'$ is done by multiplying it by a constant
 Normalization In 3D is:
 
 $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1$$
-
-
 
 ### What can we do with probability distribution functions (PDF)? 
 
