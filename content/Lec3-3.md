@@ -33,7 +33,7 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
 |                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ | **Ket:** $$\mid \psi\rangle=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$ |
-| **Bra:**$$\langle a \mid = \begin{pmatrix}a_1\\a_2\\  ...\\ \end{pmatrix}$$ <br> $$\mid a \rangle =\begin{pmatrix}1\\-2i\\\end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid = -ix^2$$ |
+| **Bra:**$$\langle a \mid = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$$ <br> $$\mid a \rangle =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid = -ix^2$$ |
 |        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
 | Example of Bra-Ket product for vectors in terms of components <br>$$\langle a \mid a \rangle = \sum_i a^2_i$$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components<br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br> $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
 
