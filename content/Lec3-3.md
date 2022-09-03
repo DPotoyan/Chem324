@@ -1,57 +1,39 @@
-
-
 ## Outline for Lecture 3.3: Mathematical Foundations of Quantum Mechanics
 
 - The objective of this section is to provide a gentle and mathematically friendly introduction to the abstract mathematical formalism of quantum mechanics. We are going to learn three mathematical topics of fundmental importance for quantum mechanics:
 
   1. **Linear vector spaces.**
-
   2. **Dirac notation.**
-
   3. **Functional spaces.**
 
 - Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of superimposed states. 
 
-
-
 ## Video "Vectors, what are they?"
 
-Let's remind ourselves of some basics first. 1B3B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
+Let's remind ourselves of some basics first. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
 
 <html>
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
 </iframe>
 </html>
 
-
-
-
-
-
 ## Vectors in 2D/3D
 
-- Vector is just an ordered collection of numbers, e.g:
-
-  -  $$a=(-2,8) \,\,\,$$ *A 2D vector*
-
-  -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector* 
-
-  -  $$c=(1,-2,4i,3+2i) \,\,\,$$  *A 4D vector with complex components.* 
-
-  - $$f=(1,2,3,4,5,6 ...\infty)\,\,\,$$ *A infinite dimensional vector with integers as components.* 
-
-
+- An example of a vector is an ordered collection of numbers, e.g:
+  -  $$a=(-2,8) \,\,\,$$ *A 2D vector.*
+  -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector.*
+  -  $$c=(1,-2,4i,3+2i) \,\,\,$$  *A 4D vector with complex components.*
+  - $$f=(1,2,3,4,5,6 ...,\infty)\,\,\,$$ *An infinite-dimensional vector with integers as components.*
 
 ### Dirac notation
 
 Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation.
 
-|                 Dirac notation for vectors:                  |                 Dirac notation for functions                 |
+|                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ | **Ket:** $$\mid \psi\rangle=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$ |
-| **Bra:**$$\langle a \mid = \begin{pmatrix}a_1\\a_2\\  ...\\\end{pmatrix}$$ <br> $$\mid a \rangle =\begin{pmatrix}1\\-2i\\\end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid-ix^2$$ |
+| **Bra:**$$\langle a \mid = \begin{pmatrix}a_1\\a_2\\  ...\\\end{pmatrix}$$ <br> $$\mid a \rangle =\begin{pmatrix}1\\-2i\\\end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid = -ix^2$$ |
 |        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
 | Example of Bra-Ket product for vectors in terms of components <br>$$\langle a \mid a \rangle = \sum_i a^2_i$$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components<br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br> $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
 
@@ -70,15 +52,15 @@ Notation for vectors can be different depending on the context. Below we list th
     3\\
     \end{pmatrix}$$ 
 
-In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has directionality in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
 $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
-Vectors are just an array of numbers, however, and the components of vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, a populations of all countires listed in array, a stock prices over last teny years, etc. 
+However, a vector can be just an array of numbers, and the components of a vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, populations of some countries, stock prices over last ten years, etc. 
 
   - $$Person = (22, 1.75, 80)$$   
 
-  - $$Population  =(3.0, 40.0, 2.0 ...)$$ 
+  - $$Population  =(3.0, 40.0, 2.0, ...)$$ 
 
   - $$Stock = (1.4, 3.6, 8.5, ...)$$  
 
@@ -86,7 +68,7 @@ Vectors are just an array of numbers, however, and the components of vector can 
 
 ### Vector operations 
 
-What defines vectors is the opeartions on them. Let us take a simple 2D vector as an exmaple: 
+What defines vectors is the operations on them. Let us take a simple 2D vector as an example: 
 
 $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
@@ -135,15 +117,15 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 ###  Projection, orthogonality and norm
 
-- Dot product  $\langle a\mid b \rangle$ quantifies the projection of vector $a$ on $b$. That is, how much $a$ and $b$ have in comon with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
+- Dot product  $\langle a\mid b \rangle$ quantifies the projection of vector $a$ on $b$ and vice-versa. That is, how much $a$ and $b$ have in common with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
   - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
   - $$(1,0)\begin{pmatrix}
     0\\
     1\\
-    \end{pmatrix}=a\cdot 0+0\cdot 1=0$$
+    \end{pmatrix}=1\cdot 0+0\cdot 1=0$$
 
-   Where we denote both orthogonality and normalization with one convneient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and 1 when $i=j$ 
+   Where we denote both orthogonality and normalization with the convenient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and $1$ when $i=j$. 
 
   
 
@@ -154,14 +136,12 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
 	
 
-When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a vector is to dividethe vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we dividie by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$
+When the norm is $\mid a \mid=1$, vector is called normalized. To normalize a vector is to divide the vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we divide by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$.
 
 
 ### Basis set and linear independence. 
 
-**1. Every N dimensional vector can be uniquely represented as a linear combination of N orthogonal vectors.** And vice versa if a vector can be represented by N orthogonal vectors it means that the vector is N-dimensional. The set of unit vectors in terms of which an arbitrary N-dimensional vectords is expressed is called **basis set.** 
-
-  
+**1. Every $N$-dimensional vector can be uniquely represented as a linear combination of $N$ orthogonal vectors.** And vice-versa: if a vector can be represented by $N$ orthogonal vectors, it means that the vector is $N$-dimensional. A set of vectors in terms of which an arbitrary $N$-dimensional vector is expressed is called a **basis set.**
 
   - $$\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$$
   - $$a= \begin{pmatrix}
@@ -187,9 +167,7 @@ When the norm is on $\mid a \mid=1$, vector is called normalized. To normalize a
     0\\ 1\\
     \end{pmatrix}$$
     
-    
-
-**2. Orthognal unit vectors are linearly independent.** This means that no member of unit vectors can be expressed in terms of the others.  Linear indepence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
+**2. Orthogonal vectors are linearly independent.** This means that no member of a set of vectors can be expressed in terms of the others.  Linear independence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
 
   $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$   
 
@@ -197,7 +175,7 @@ The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely 
 
 ## Video "Linear combinations, span, and basis vectors"
 
-Now watch the second video from 1B3B on linear combinations and basis vectors. 
+Now watch the second video from 3B1B on linear combinations and basis vectors. 
 
 <html>
 
@@ -207,20 +185,17 @@ Now watch the second video from 1B3B on linear combinations and basis vectors.
 
 ## Decomposition of functions into orthogonal components
 
-- Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions is in quantum mathematics is known as **Hilbert space.** Named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple vectors.   
+- Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a **Hilbert space**, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.   
 
-|                $$\,\,\,\,\,\,\,\,\,$$Vectors                 |                          Functions                           |
+|                $$\,$$Sequence vectors                 |                          Functions                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormlity of eigenfunctions of Hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
+| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormality of eigenfunctions of Hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
 | Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
-| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onto basis functions: <br/>$$\langle \phi_1\mid A\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
+| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onto basis functions: <br/>$$\langle \phi_1\mid x\rangle=c_1 \langle \phi_1\mid\phi_1 \rangle +c_2 \langle \phi_1\mid\phi_2 \rangle=c_1$$ |
 
-In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to iniften dimensions and continous variation is given by an integral!
-
-
+In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!
 
 ### Eigenfunctions of Hermitian operators are complete basis set
-
 
 The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
@@ -237,8 +212,6 @@ The three crucial consequences of Hermitian property of operators  $\langle \phi
   $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
 The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
-
-
 
 ### Wave function as a linear superoposition of eigenfunctions
 
