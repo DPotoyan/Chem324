@@ -2,7 +2,7 @@
 
 ## Outline for Lecture 3.3: Matheamtical Foundations of Quantum Mechanics
 
-- The objective of this section to provide a gentle and mathematically friendly introduction  to the abstract mathematical formalism of quantum mechanics. We are going to learn include three mathematical topics of fundmental importance for quantum mechanics:
+- The objective of this section is to provide a gentle and mathematically friendly introduction to the abstract mathematical formalism of quantum mechanics. We are going to learn three mathematical topics of fundmental importance for quantum mechanics:
 
   1. **Linear vector spaces.**
 
@@ -10,8 +10,8 @@
 
   3. **Functional spaces.**
 
-- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions.**  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematics and physical meaning. 
-- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition state! We will touch upon  **Schrodinger's cat** and **Double slit experiments** to illustrate the strange nature of superposition states. 
+- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning. 
+- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of superimposed states. 
 
 
 
