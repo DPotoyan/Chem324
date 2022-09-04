@@ -2,8 +2,8 @@
 
 ## Outline for Lecture 3.2: Postulates of quantum mechanics.  
 
-- **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere application of Schrodinger equation. In practice theory is not so easy to apply. 
-- **Double slit experiment and quantum weirdness**. Microscopic world has an inherently probabilistic nature where in some sense the very act of observation creates the outcome! Uncertainty relation places rigid bound on the amount of information one can possess about microscopic objects.
+- **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere application of Schrödinger equation. In practice theory is not so easy to apply. 
+- **Double slit experiment and quantum weirdness**. Microscopic world has an inherently probabilistic nature where in some sense the very act of observation creates the outcome! Uncertainty relation places rigid boundaries on the amount of information one can possess about microscopic objects.
 
 
 
@@ -23,7 +23,7 @@ $$\int \psi^* (\hat{A}\phi) dx = \int \phi (\hat{A} \psi)^* dx$$
 
 
 
-- Eigenvalues of an operator are the only possible values of the correspnding observable that can be measured in the experiments. 
+- Eigenvalues of an operator are the only possible values of the corresponding observable that can be measured in the experiments. 
 
 $$\hat{A}\psi_n =a_n \psi_n $$
 
@@ -36,7 +36,7 @@ $$\hat{A}\psi_n =a_n \psi_n $$
   
   
   
-- Time evolution of wave function is governed by time-dependent Schrodinger equation.
+- Time evolution of wave function is governed by time-dependent Schrödinger equation.
 
   $$i\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi $$
 
@@ -55,17 +55,15 @@ Wave function that describes real physical objects should be well behaved in ord
 
 ## Postulate #2  Linear and Hermitian operators
 
-- Linearity of opeartors follows from the nature of Schrodinger equation which is a linear differnetiatial equation. Linearity implies a distirbutive property of opeartors when applied to any linear combination of functions. 
+- Linearity of opeartors follows from the nature of Schrödinger equation which is a linear differenetial equation. Linearity implies a distirbutive property of opeartors when applied to any linear combination of functions. 
 
 $$\hat{L} (c_1\psi_1+c_2\psi_2+...+c_n\psi_n)=c_1\hat{L} \psi_1+c_2\hat{L}\psi_2+...+c_n\hat{L}\psi_n $$
 
 
 
-- Beside being linear operators of observables in quantum mechanics are hermitian. Hermtian property guarantees that eigenvalues are strictly real. And since eigenvalues are the only values observed in experimental measruemnts it is sensible to expect that one would not be getting mixed complex and real numbers in the experiments. An hermitian property is defined by the following equality where an  operator can go into complex conjugate mode and act on complex conjugate pair of the function. 
+- Beside being linear operators of observables in quantum mechanics are Hermitian. Hermtian property guarantees that eigenvalues are strictly real. And since eigenvalues are the only values observed in experimental measurements it is sensible to expect that one would not be getting mixed complex and real numbers in the experiments. An Hermitian property is defined by the following equality where an  operator can go into complex conjugate mode and act on complex conjugate pair of the function. 
 
 $$\int \psi^* (\hat{H} \phi) dx = \int \phi (\hat{H} \psi)^* dx =\int \phi \hat{H}^* \psi^* dx $$
-
-
 
 ## Postulate #3 Eigenvalues are the only values seen in the experiments. 
 
@@ -73,22 +71,20 @@ Eigenvalues of an operator $\hat{A}$ exhaust the posisble values one can get in 
 
 $$\hat{A}\psi_n = a_n\psi_n $$
 
-
-
 ## Postualate #4 Expectation of an observable
 
-What is the expected value of an abservable obtained  on average as a result of large number of expeirments. The answer is given by plugging operator $\hat{A}$ correpsonding to observable A into an expression of average with wave function square acting as probabilty distirbution function.  
+What is the expected value of an abservable obtained  on average as a result of large number of experiments? The answer is given by plugging operator $\hat{A}$ corresponding to observable $A$ into an expression of average with wave function square acting as probabilty distribution function.  
 
 $$\langle A \rangle =\int \psi^* \hat{A}\psi dx $$
 
 
 
-## Posutalte #5 Time evoluation of quantum states
+## Posutalte #5 Time evolution of quantum states
 
- State of quantum mechanical system evolves in time according to Schroinger equation.
+ State of quantum mechanical system evolves in time according to Schrödinger equation.
 
 $$i\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi $$
 
-We are often interested in stationary states desribed by pure eigenfunctions where time dependnce does not figure explciitely. In mixed states described by superposiionts of eigenfunctions, however, leads to time depednce of observable quantities.  
+We are often interested in stationary states described by pure eigenfunctions where time dependnce does not figure explicitely. In mixed states described by superposition of eigenfunctions, however, leads to time dependece of observable quantities.  
 
  

@@ -20,8 +20,8 @@ institute: 'Iowa State University, Ames IA 50011'
 
 ## Quantum vs Classical view on Energy levels.
 
-- **In Classical mechanics (CM):** Energy can take any value! Think of climbing a continuous ramp.
-- **In Quantum mechanics:** Energy can only take certain discrete values! Think of a staircase (1*E, 2*E 3*E... is okay but 2.5*E, 0.E or 1.99*E not allowed). Energy is quantized!
+- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp.
+- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
 ![](./images/lec1_ladder.jpg)
 
 
