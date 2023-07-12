@@ -1,8 +1,11 @@
-About 
+# Quantum Mechanics for Chemistry
 ============================
 
+![](logo2.jpg)
 
-- This website hosts jupyter notebooks containing lectures notes and computational content for the “Chem 324: Quantum Mechanics for Chemistry” course, taught at the Department of Chemistry of Iowa State University. 
+``` {note}
+This website hosts jupyter notebooks containing computational content for the course “Chem 324: Quantum Mechanics for Chemistry”  taught at the Department of Chemistry of Iowa State University. 
+```
 
 - The only pre-requiestes are having taken a calculus and general chemistry courses.
 
