@@ -1,7 +1,7 @@
 Overview
 ============================
 
-![](meh.jpg)
+![](logo2.jpg)
 
 ``` {note}
 This website provides computational and media content for the course **Chem 324: Introductory Quantum Mechanics**  taught at the Iowa State University. A major goal of introducing computation is to demystify complex mathematical concepts of quantum mechanics. Thanks to numerical examples students get to go beyond pencil and paper examples and see the bigger picture of how quantum theory is used to solve all kinds of problems in chemistry, physics and material science. 
