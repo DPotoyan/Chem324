@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Outline for Lecture 1.1: &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Lec1-1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Outline for Lecture 1.2:" href="Lec1-2.html" />
+    <link rel="prev" title="What is Quantum mechanics?" href="Lec1-0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Quantum Mechanics for Chemistry</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Quantum Mechanics for Chemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Lec1-0.html">What is Quantum mechanics?</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Lec2-0.html">Outline for Lecture 2.0:</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/Lec1-1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Outline for Lecture 1.1:</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 1.1:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-vs-classical-view-on-energy-levels">Quantum vs Classical view on Energy levels.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">What do we mean by black body and black body radiation: a visual guide.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamically-speaking">Thermodynamically speaking.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-black-body-radiation">Applications of black Body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-essential-features-of-black-body-radiation">What are the essential features of black body radiation?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation">What is classical mechanics &amp; thermodynamics perspective on black body radiation?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="outline-for-lecture-1-1">
+<h1>Outline for Lecture 1.1:<a class="headerlink" href="#outline-for-lecture-1-1" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Energies of atoms and molecules are <em>quantized</em> existing in the form of discrete chunks called quanta.</strong><br></p></li>
+<li><p><strong>Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can be observed in all quantum experiments. Is fully explained by the theory of quantum mechanics.</strong> <br></p></li>
+<li><p><strong>Key historical developments leading to the birth of QM are <em>black body radiation</em>, <em>double slit experiment</em>, <em>photoelectric effect</em>.</strong><br></p></li>
+</ul>
+</section>
+<section id="quantum-vs-classical-view-on-energy-levels">
+<h1>Quantum vs Classical view on Energy levels.<a class="headerlink" href="#quantum-vs-classical-view-on-energy-levels" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>In Classical mechanics (CM)</strong>: Energy can take any value! Think of climbing a continuous ramp.</p></li>
+<li><p><strong>In Quantum mechanics (QM)</strong>: Energy can only take certain discrete values! Think of a staircase (<span class="math notranslate nohighlight">\(1 E\)</span>, <span class="math notranslate nohighlight">\(2 E\)</span>, <span class="math notranslate nohighlight">\(3 E\)</span>… are okay, but <span class="math notranslate nohighlight">\(2.5 E\)</span>, <span class="math notranslate nohighlight">\(0. E\)</span> or <span class="math notranslate nohighlight">\(1.99 E\)</span> are not allowed). Energy is quantized!
+<img alt="" src="../_images/lec1_ladder.jpg" /></p></li>
+</ul>
+</section>
+<section id="electromagnetic-spectrum-emitting-objects-and-associated-temperatures">
+<h1>Electromagnetic spectrum, emitting objects and associated Temperatures.<a class="headerlink" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../_images/lec1_EMspec.jpg" /></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>High-frequency waves carry much higher energy.</strong> This means X-ray or Gamma-rays can only be generated by heating “stuff” up at very high temperatures. This happens naturally at the core of the sun!</p></li>
+<li><p><strong>Low-frequency waves carry less energy.</strong> Can be generated in a “microwave” or by broadcasting antennas.</p></li>
+<li><p><strong>The visible light.</strong> occupies a narrow frequency region  in between.</p></li>
+</ul>
+</section>
+<section id="relationship-between-frequency-wavelength-and-speed-of-light">
+<h1>Relationship between frequency, wavelength and speed of light.<a class="headerlink" href="#relationship-between-frequency-wavelength-and-speed-of-light" title="Permalink to this heading">#</a></h1>
+<p><img alt="Definitions of wavelength  and frequency ." src="../_images/lec1_wavelen_freq_c.jpg" /></p>
+<hr class="docutils" />
+<p>Wavelength <strong><span class="math notranslate nohighlight">\(\lambda\)</span></strong> and frequency <strong><span class="math notranslate nohighlight">\(\nu\)</span></strong> of light are inversely proportional with constant of proportionality being the speed of light <strong>c</strong>:</p>
+<div style="background-color: #fefbd8">
+ $$\lambda \nu = c$$
+</div>
+<ul class="simple">
+<li><p>Think of wavelength as distance between wave peaks
+(nanometers, nm)</p></li>
+<li><p>Think of frequency as a
+distance traveled in 1 second (hz).</p></li>
+<li><p>Speed of light in vacuum, c is a constant (3 10^8 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.</p></li>
+</ul>
+</section>
+<section id="what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">
+<h1>What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?<a class="headerlink" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e" title="Permalink to this heading">#</a></h1>
+<p><img alt="EM spectrum and excitable energy states corresponding to each frequency region" src="../_images/lec1_EMspec2.png" /></p>
+<hr class="docutils" />
+<p>This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics!</p>
+</section>
+<section id="what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">
+<h1>What do we mean by black body and black body radiation: a visual guide.<a class="headerlink" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide" title="Permalink to this heading">#</a></h1>
+<p><img alt="Black body radiation guide from PhD comics" src="../_images/Black_body_rad.jpg" />{width=50%}</p>
+</section>
+<section id="thermodynamically-speaking">
+<h1>Thermodynamically speaking.<a class="headerlink" href="#thermodynamically-speaking" title="Permalink to this heading">#</a></h1>
+<p><em>A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation</em></p>
+<p>Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature.</p>
+</section>
+<section id="applications-of-black-body-radiation">
+<h1>Applications of black Body radiation<a class="headerlink" href="#applications-of-black-body-radiation" title="Permalink to this heading">#</a></h1>
+<p>The black body is used as a standard with which the absorption of real bodies is compared. To a good approximation, stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors!</p>
+<p><img alt="" src="../_images/lec1_planets.jpg" /></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=uG4xe9cNpP0">The Fingerprint of Stars</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=PMtC34pzKGc">Visible Light Waves</a></p></li>
+</ul>
+</section>
+<section id="what-are-the-essential-features-of-black-body-radiation">
+<h1>What are the essential features of black body radiation?<a class="headerlink" href="#what-are-the-essential-features-of-black-body-radiation" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../_images/lec1_bb.png" />{width=110%}</p>
+<p>As temperature T goes up we notice three things:</p>
+<ul class="simple">
+<li><p>Radiation intensity goes up, implying higher radiation energy.</p></li>
+<li><p>Distribution of wavelengths shifts left to lower values (left panel) or we can say the distribution of frequency shifts right (right panel)</p></li>
+<li><p>Color of the object changes from red to yellow to blue.</p></li>
+</ul>
+</section>
+<section id="what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation">
+<h1>What is classical mechanics &amp; thermodynamics perspective on black body radiation?<a class="headerlink" href="#what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom.</p></li>
+<li><p>What is light? Think of an oscillating spring with frequency <span class="math notranslate nohighlight">\(\nu\)</span></p></li>
+<li><p>Thermodynamics: Heat can only flow from high to low temperature. In equilibrium, each degree of freedom in our case each spring/oscillator gets the same thermal energy <span class="math notranslate nohighlight">\(k_B T\)</span>.</p></li>
+</ul>
+</section>
+<section id="implications-of-classical-mechanics-and-thermodynamics">
+<h1>Implications of classical mechanics and thermodynamics.<a class="headerlink" href="#implications-of-classical-mechanics-and-thermodynamics" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../_images/lec1_UVcat.jpg" />{width=50%}</p>
+<p>Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region.</p>
+<hr class="docutils" />
+<p>The classical reasoning  about black body radiation is following:</p>
+<ul class="simple">
+<li><p>Number of waves fitting inside an idealized cubic black body is <span class="math notranslate nohighlight">\(N_{\nu }=\nu^3\)</span>.  For small frequency region  <span class="math notranslate nohighlight">\(d\nu\)</span> there would be <span class="math notranslate nohighlight">\(dN=3\nu^2 d\nu\)</span> waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequency ones.</p></li>
+<li><p>From the equipartition principle of thermodynamics each oscillator has <span class="math notranslate nohighlight">\(k_BT\)</span> of energy. Thus the intensity of radiation, according to classical mechanics, is **$<span class="math notranslate nohighlight">\(I \sim k_B T \nu^2\)</span><span class="math notranslate nohighlight">\(**. Intensity increases to infinity at high \)</span>\nu<span class="math notranslate nohighlight">\( (or low \)</span>\lambda$). This is known as the ultraviolet catastrophe!</p></li>
+</ul>
+</section>
+<section id="max-planck-finds-the-right-explanation-for-black-body-radiation">
+<h1>Max Planck finds the right explanation for black body radiation<a class="headerlink" href="#max-planck-finds-the-right-explanation-for-black-body-radiation" title="Permalink to this heading">#</a></h1>
+<p>In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is <span class="math notranslate nohighlight">\(E= nh\nu\)</span> where n=0,1,2,3 are quantum numbers of energy levels.</p>
+<ul class="simple">
+<li><p>This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of <span class="math notranslate nohighlight">\(h\nu\)</span>, which are called quanta! <span class="math notranslate nohighlight">\(E_1, E_2,E_3 …\)</span></p></li>
+<li><p>When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference <span class="math notranslate nohighlight">\(h\nu = E_n - E_m\)</span> is either coming from light or is used to generate light.</p></li>
+</ul>
+</section>
+<section id="planck-equation-and-plancks-constant">
+<h1>Planck equation and Planck’s constant<a class="headerlink" href="#planck-equation-and-plancks-constant" title="Permalink to this heading">#</a></h1>
+<div style="background-color: #fefbd8"> 
+<div class="math notranslate nohighlight">
+\[E= h\nu\]</div>
+</div>
+- Unit of planck constant, $h = 6.63 10^{–34} J s$
+<ul class="simple">
+<li><p>Unit of frequency <span class="math notranslate nohighlight">\(\nu\)</span>, <span class="math notranslate nohighlight">\(s^{-1}\)</span>.</p></li>
+</ul>
+<p>Often also written as <span class="math notranslate nohighlight">\(E = nh\nu\)</span> (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!</p>
+<p>Note how small <span class="math notranslate nohighlight">\(h\)</span> is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
+In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(E\)</span> becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.</p>
+</section>
+<section id="how-planks-quantization-postulate-explains-black-body-radiation">
+<h1>How Plank’s quantization postulate explains black body radiation<a class="headerlink" href="#how-planks-quantization-postulate-explains-black-body-radiation" title="Permalink to this heading">#</a></h1>
+<p>According to classical mechanics, on average each degree of freedom of an oscillator gets <span class="math notranslate nohighlight">\(kT\)</span> of thermal energy.</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle=kT\]</div>
+<p>In Quantum Mechanics, however, because energy levels are quantized on average each degree of freedom of oscillator ends up getting:</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle=k_B T\Big[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Big ]\]</div>
+<p>These expression are obtained by taking averages over energy values of oscillators weighted by Boltzman distribution which governs the thermal equilibrium:</p>
+<ul class="simple">
+<li><p>For classical case average is over continuum of energies $<span class="math notranslate nohighlight">\(\langle E \rangle = \int  p(x) E(x) dx\)</span><span class="math notranslate nohighlight">\( with \)</span>E(x)=kx^2/2<span class="math notranslate nohighlight">\( and \)</span>P(E)\sim e^{-E(x)/kT}$</p></li>
+<li><p>For quantum case average is a sum over discrete values $<span class="math notranslate nohighlight">\(\langle E \rangle = \sum_n p_n E_n\)</span><span class="math notranslate nohighlight">\( with \)</span>E_n=nh\nu<span class="math notranslate nohighlight">\( for quantum oscillators \)</span>P(E_n)\sim e^{-E_n/k_B T}$.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy <span class="math notranslate nohighlight">\(k_BT\)</span> populates lots of quantum levels with low enough frequencies.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}$$  $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT\]</div>
+<ul class="simple">
+<li><p>At high frequencies we see that the exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0\]</div>
+</section>
+<section id="quantization-of-atomic-spectra">
+<h1>Quantization of atomic spectra.<a class="headerlink" href="#quantization-of-atomic-spectra" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../_images/lec1_AtomicSpectrum.png" />{width=80%}</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Measurements of atomic emission/absorption spectra were another key experimental evidence showing that energy levels of individual atoms are quantized.</p></li>
+<li><p>Notice the existence of discrete frequencies in the spectrum consistent with Planck’s assumption.</p></li>
+<li><p>Different colors originate from different frequencies being emitted or absorbed by matter.</p></li>
+</ul>
+</section>
+<section id="empirical-expressions-for-predicting-spectral-lines">
+<h1>Empirical expressions for predicting spectral lines.<a class="headerlink" href="#empirical-expressions-for-predicting-spectral-lines" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Spectral lines were rationalized by Rydberg who derived an empirical formula showing that differences in spectral lines of the Hydrogen atom are dictated by integer numbers. Integer numbers indeed will go on to play a special role in quantum theory.</p></li>
+<li><p>Blackbody radiation and atomic spectra showed very clearly that atoms exist in states that occupy discrete energy levels.</p></li>
+<li><p>Atoms and molecules exchange energy with the environment by jumping from one state <span class="math notranslate nohighlight">\(E_m\)</span> to another <span class="math notranslate nohighlight">\(E_n\)</span>. The energy difference between these levels  <span class="math notranslate nohighlight">\(E_m-E_n=h\nu\)</span> is either supplied by light (absorption) or used to generate light (emission).</p></li>
+</ul>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Energies of stable atoms, molecules, electromagnetic radiation are discrete (quantized) and are not continuous. Energies of macroscopic bodies are quantized as well, but we do not see it since energy levels are so closely spaced that they appear as continuous for all practical purposes.</p></li>
+<li><p>Classical mechanics works for macroscopic bodies but fails to describe the dynamics of microscopic particles.</p></li>
+<li><p>Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.</p></li>
+<li><p>Quantized nature of energy is learned in experiments and cannot be derived. We must simply accept it and move on to construct quantum theory consistent with the observations.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Lec1-0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">What is Quantum mechanics?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Lec1-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Outline for Lecture 1.2:</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 1.1:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-vs-classical-view-on-energy-levels">Quantum vs Classical view on Energy levels.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">What do we mean by black body and black body radiation: a visual guide.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamically-speaking">Thermodynamically speaking.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-black-body-radiation">Applications of black Body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-essential-features-of-black-body-radiation">What are the essential features of black body radiation?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation">What is classical mechanics &amp; thermodynamics perspective on black body radiation?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
