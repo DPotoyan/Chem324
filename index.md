@@ -4,7 +4,7 @@ Overview
 ![](logo2.jpg)
 
 ``` {note}
-This website provides computational and media content for the course “Chem 324: Quantum Mechanics for Chemistry”  taught at the Iowa State University. 
+This website provides computational and media content for the course “Chem 324: Introductory Quantum Mechanics”  taught at the Iowa State University. The the major goal of code examples and visualizations is to demystify complex mathematical concepts of quantum mechanics and reduce the barier for doing calculations. Thanks to numerical examples students get to go beyond pencil and paper examples and see the bigger picture of how quantum theory is used in solving all kinds of problems in chemisstry, physics and computing. 
 ```
 
 ### How to use the content
