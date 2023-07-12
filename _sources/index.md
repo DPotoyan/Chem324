@@ -1,4 +1,4 @@
-# Quantum Mechanics for Chemistry
+
 ============================
 
 ![](logo2.jpg)
