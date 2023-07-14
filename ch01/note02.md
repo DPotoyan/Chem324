@@ -1,33 +1,24 @@
----
-title: |
-    | Lecture 1.1, Chem-324, Fall2019
-    | ***    
-    | Birth of QM and discovery of energy quantization
-author: 'Davit Potoyan'
-institute: 'Iowa State University, Ames IA 50011'
----
+
+## The need for quantization
+
+```{admonition} Quantum Mechanics
+:class: note
+- Energies of atoms, molecules are _quantized_, that is assuming discrete values as opposed to having continuum range. 
+- Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can be observed in all quantum experiments. Is fully explained by the theory of quantum mechanics  
+- Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_
+```
 
 
-## Outline for Lecture 1.1: 
-
-- **Energies of atoms and molecules are _quantized_ existing in the form of discrete chunks called quanta.**<br>
-
-- **Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can be observed in all quantum experiments. Is fully explained by the theory of quantum mechanics.** <br>
-  
-- **Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_.**<br>
-
-
-
-## Quantum vs Classical view on Energy levels.
+### Quantum vs Classical view on Energy levels.
 
 - **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp.
 - **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
-![](./images/lec1_ladder.jpg)
+![](./figs/lec1_ladder.jpg)
 
 
 ## Electromagnetic spectrum, emitting objects and associated Temperatures.
 
-![](./images/lec1_EMspec.jpg)
+![](./figs/lec1_EMspec.jpg)
 
 ---
 
@@ -37,9 +28,9 @@ institute: 'Iowa State University, Ames IA 50011'
 
 
 
-## Relationship between frequency, wavelength and speed of light. 
+### Relationship between frequency, wavelength and speed of light. 
 
-![Definitions of wavelength $\lambda$ and frequency $\nu$.](./images/lec1_wavelen_freq_c.jpg)
+![Definitions of wavelength $\lambda$ and frequency $\nu$.](./figs/lec1_wavelen_freq_c.jpg)
 
 ---
 
@@ -58,9 +49,9 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 
 
 
-## What is the relationship between frequency of radiation $\nu$ and energy $E$?  
+### What is the relationship between frequency of radiation $\nu$ and energy $E$?  
 
-![EM spectrum and excitable energy states corresponding to each frequency region](./images/lec1_EMspec2.png)
+![EM spectrum and excitable energy states corresponding to each frequency region](./figs/lec1_EMspec2.png)
 
 ---
 
@@ -68,22 +59,22 @@ This is not such a trivial question. In fact, this very question arose in connec
 
 
 
-## What do we mean by black body and black body radiation: a visual guide. 
+### What do we mean by black body and black body radiation: a visual guide. 
 
-![Black body radiation guide from PhD comics](./images/Black_body_rad.jpg){width=50%}
+![Black body radiation guide from PhD comics](./figs/Black_body_rad.jpg){width=50%}
 
-## Thermodynamically speaking.
+### Thermodynamically speaking.
 
 _A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation_
 
  Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature. 
 
 
-## Applications of black Body radiation
+### Applications of black Body radiation
 
 The black body is used as a standard with which the absorption of real bodies is compared. To a good approximation, stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors!
 
-![](./images/lec1_planets.jpg)
+![](./figs/lec1_planets.jpg)
 
 - [The Fingerprint of Stars](https://www.youtube.com/watch?v=uG4xe9cNpP0) 
 
@@ -92,7 +83,7 @@ The black body is used as a standard with which the absorption of real bodies is
 
 ## What are the essential features of black body radiation?
 
-![](./images/lec1_bb.png){width=110%}
+![](./figs/lec1_bb.png){width=110%}
 
 As temperature T goes up we notice three things:
 
@@ -101,7 +92,7 @@ As temperature T goes up we notice three things:
 - Color of the object changes from red to yellow to blue. 
 
 
-## What is classical mechanics & thermodynamics perspective on black body radiation?
+### What is classical mechanics & thermodynamics perspective on black body radiation?
 
 - What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
 - What is light? Think of an oscillating spring with frequency $\nu$
@@ -109,9 +100,9 @@ As temperature T goes up we notice three things:
 
 
 
-## Implications of classical mechanics and thermodynamics.
+### Implications of classical mechanics and thermodynamics.
 
-![](./images/lec1_UVcat.jpg){width=50%}
+![](./figs/lec1_UVcat.jpg){width=50%}
 
 Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region. 
 
@@ -125,7 +116,7 @@ The classical reasoning  about black body radiation is following:
 
 
 
-## Max Planck finds the right explanation for black body radiation 
+### Max Planck finds the right explanation for black body radiation 
 
 In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
 
@@ -134,7 +125,7 @@ In 1900 Planck found that the theoretical curve can very closely match the exper
 
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
 
-## Planck equation and Planck’s constant
+### Planck equation and Planck’s constant
 
 <div style="background-color: #fefbd8"> 
 
@@ -150,7 +141,7 @@ Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy add
 Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
-## How Plank's quantization postulate explains black body radiation
+### How Plank's quantization postulate explains black body radiation
 
 According to classical mechanics, on average each degree of freedom of an oscillator gets $kT$ of thermal energy. 
 
@@ -177,9 +168,9 @@ $$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  $$\langle E \rangle=k_B 
 
 
 
-## Quantization of atomic spectra.
+### Quantization of atomic spectra.
 
-![](./images/lec1_AtomicSpectrum.png){width=80%}
+![](./figs/lec1_AtomicSpectrum.png){width=80%}
 
 ---
 
@@ -191,14 +182,14 @@ $$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  $$\langle E \rangle=k_B 
 
 
 
-## Empirical expressions for predicting spectral lines.
+### Empirical expressions for predicting spectral lines.
 
 - Spectral lines were rationalized by Rydberg who derived an empirical formula showing that differences in spectral lines of the Hydrogen atom are dictated by integer numbers. Integer numbers indeed will go on to play a special role in quantum theory. 
 
 - Blackbody radiation and atomic spectra showed very clearly that atoms exist in states that occupy discrete energy levels.
 - Atoms and molecules exchange energy with the environment by jumping from one state $E_m$ to another $E_n$. The energy difference between these levels  $E_m-E_n=h\nu$ is either supplied by light (absorption) or used to generate light (emission).
 
-## Summary
+### Summary
 
 
 - Energies of stable atoms, molecules, electromagnetic radiation are discrete (quantized) and are not continuous. Energies of macroscopic bodies are quantized as well, but we do not see it since energy levels are so closely spaced that they appear as continuous for all practical purposes. 
