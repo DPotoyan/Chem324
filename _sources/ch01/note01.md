@@ -8,16 +8,16 @@
   - Predictions of quantum mechanics have been verified experimentally to an extremely high degree of accuracy. 
 `````
 
-![](qm.png)
+![](./figs/qm.png)
 
 
 ### Beware, Quantum Mechanics is weird! 
 
-![](feynman.png)
+- This is, in fact, is an understatement. Don't take my word for it take Richard Feynman's word: 
+
+![](./figs/feynman.png)
 > Richard Feynman, an American physicist. Winner of 1965 Nobel prize in Physics for groundbreaking contributions to Quantum Electrodynamics.
-
-- This is, in fact, is an understatement. Don't take my word for it take Richard Feynman's word:  
-
+ 
 - Be prepared to suspend the often comforting feeling of "makes sense" because in quantum things most things do not! But, fortunately, that does not prevent us from mastering the logic of quantum mechanics and applying it everywhere with great success.
 
 > Bottom line is: If you do not understand quantum mechanics do not worry you are in good company... of "everyone else"! 
@@ -60,7 +60,7 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 
 - Well if the above-given reasons were not enough for you... let me sweeten the deal by saying you will also be able to get popular references and up your meme game to include "quantum" jokes like this one:
 
-![](qm_meme.jpeg)
+![](./figs/qm_meme.jpeg)
 
 
 
