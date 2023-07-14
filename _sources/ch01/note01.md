@@ -15,7 +15,11 @@
 
 - This is, in fact, is an understatement. Don't take my word for it take Richard Feynman's word: 
 
-![](./figs/feynman.png)
+
+```{image} ./figs/feynman.png
+:align: center
+```
+
 > Richard Feynman, an American physicist. Winner of 1965 Nobel prize in Physics for groundbreaking contributions to Quantum Electrodynamics.
  
 - Be prepared to suspend the often comforting feeling of "makes sense" because in quantum things most things do not! But, fortunately, that does not prevent us from mastering the logic of quantum mechanics and applying it everywhere with great success.
