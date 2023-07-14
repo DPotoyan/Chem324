@@ -1,9 +1,6 @@
 
 ## Why Quantum mechanics?
 
-![](qm.png)
-
-
 `````{admonition} Quantum Mechanics
 :class: note
 - Quantum mechanics is the fundamental theory of nature which describes the smallest scales and energy levels of atoms and subatomic particles. 
@@ -11,8 +8,10 @@
   - Predictions of quantum mechanics have been verified experimentally to an extremely high degree of accuracy. 
 `````
 
+![](qm.png)
 
-## Beware, Quantum Mechanics is weird! 
+
+### Beware, Quantum Mechanics is weird! 
 
 ![](feynman.png)
 > Richard Feynman, an American physicist. Winner of 1965 Nobel prize in Physics for groundbreaking contributions to Quantum Electrodynamics.
@@ -23,14 +22,14 @@
 
 > Bottom line is: If you do not understand quantum mechanics do not worry you are in good company... of "everyone else"! 
 
-## How does Quantum Mechanics compare to other physics theories?
+### How does Quantum Mechanics compare to other physics theories?
 
 Even though it was discovered by physicists, it’s not a physical theory in the same sense as electromagnetism or general relativity. In the usual “hierarchy of sciences” – with biology at the top, then chemistry, then physics, then math – quantum mechanics sits at a
  level between math and physics that I don’t know a good name for. Basically, quantum mechanics is the operating system that other physical theories run on as application software. There’s even a word for taking a physical theory and porting it to this OS: “to quantize.”
 
  > Scott Aaronson, Quantum Computing Since Democritus (2013)
 
-## Where is Quantum Mechanics applied
+### Where is Quantum Mechanics applied
 
 Ideas of quantum mechanics permeate and in many cases form the basis of understanding whole areas in chemistry, biology, physics and materials science. 
 
@@ -42,7 +41,7 @@ Some examples are:
 - Condensed matter 
 - Quantum computing
 
-## What new skills will I learn?
+### What new skills will I learn?
 
 Study of quantum mechanics will arm you with several powerful skills beyond quantum mechanics. 
 
@@ -57,7 +56,7 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 - Understanding and appreciating the complex world we live in. 
 
 
-## What else is QM good for?
+### What else is QM good for?
 
 - Well if the above-given reasons were not enough for you... let me sweeten the deal by saying you will also be able to get popular references and up your meme game to include "quantum" jokes like this one:
 
