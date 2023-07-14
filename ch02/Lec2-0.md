@@ -1,21 +1,12 @@
----
-title: |
-    | Lecture 2.0, Chem-324, Fall2019
-	| ***
-    | Waves.
-author: 'Davit Potoyan'
-institute: ' Iowa State University, Ames IA 50011'
 
----
-
-## Outline for Lecture 2.0: 
+## Waves
 
 - **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
 - **The wave equation, a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.**
 - **Waves can be standing or travelling. Transverse or longitudinal.**
 
 
-## Waves, waves and more waves
+### Waves, waves and more waves
 
 - Sound Waves. 
 - Waves on a guitar string.
@@ -24,17 +15,17 @@ institute: ' Iowa State University, Ames IA 50011'
 - Electromagnetic waves (e.g. light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
 - Finally there are also gravitational waves traveling through spacetime. See [this video](https://www.youtube.com/watch?v=xj6vV3T4ok8).
 
-## Classification of waves by orientation: Transverse vs Longitudinal
+### Classification of waves by orientation: Transverse vs Longitudinal
 
 ![](https://media.giphy.com/media/og52So0BUmZVe/giphy.gif)
 
-## Classification of waves by appearance: Standing vs Traveling
+### Classification of waves by appearance: Standing vs Traveling
 
 - Traveling waves move with respect to fixed reference frame.  
 
 - Standing waves move in place. 
 
-## Describing waves mathematically part 1: functional form for a generic wave.  
+### Describing waves mathematically part 1: functional form for a generic wave.  
 
 Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via: $u(x,t) = f(x, t)$.
 
@@ -45,7 +36,7 @@ Assuming that shape of the wave stays the same we can express the motion of wave
 $$u(x,t) = f(x-vt)$$
 
 
-## Traveling waves.
+### Traveling waves.
 
 ![](./images/lec5_Introwave.jpg)
 
@@ -60,7 +51,7 @@ $$y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)$$
 > Flashback to first lecture when we had this relationship of wavelength to speed of wave and frequency via $\lambda \nu = v$ and $\nu=\frac{1}{T}$
 
 
-## Describing waves mathematically part 2: wave equation. 
+### Describing waves mathematically part 2: wave equation. 
 
 We obtain equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
 
@@ -70,7 +61,7 @@ $$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{
 
 We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
-## Wave interference: definition
+### Wave interference: definition
 
 
  Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
@@ -81,7 +72,7 @@ We just obtained a 1D classical wave equation. Solutions of this equation are fu
  This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves $A$ and $B$ are both solutions of the wave equation, then so is a wave $C = A + B$.
 
 
-## Wave interference: derivation.
+### Wave interference: derivation.
 
  Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase $\phi$ (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
 
@@ -95,7 +86,7 @@ We just obtained a 1D classical wave equation. Solutions of this equation are fu
 
  $$y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)$$
 
-## Wave interference: demonstration. 
+### Wave interference: demonstration. 
 
 When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:
 

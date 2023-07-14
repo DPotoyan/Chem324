@@ -1,16 +1,7 @@
----
-title: |
-    | Lecture 1.2, Chem-324, Fall2019
-    | ***
-    | Photoelectric effect and photons.
-author: 'Davit Potoyan'
-institute: ' Iowa State University, Ames IA 50011'
----
 
+# Outline for Lecture 1.2: 
 
-## Outline for Lecture 1.2: 
-
-![](./images/lec2_intro.png){width=40%}
+![](./images/lec2_intro.png)
 
 **Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.**
 
