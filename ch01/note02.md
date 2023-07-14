@@ -60,7 +60,7 @@ This is not such a trivial question. In fact, this very question arose in connec
 
 ### What do we mean by black body and black body radiation: a visual guide. 
 
-![Black body radiation guide from PhD comics](./figs/Black_body_rad.jpg){width=50%}
+![Black body radiation guide from PhD comics](./figs/Black_body_rad.jpg)
 
 ### Thermodynamically speaking.
 
@@ -80,9 +80,9 @@ The black body is used as a standard with which the absorption of real bodies is
 - [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc)  
 
 
-## What are the essential features of black body radiation?
+### What are the essential features of black body radiation?
 
-![](./figs/lec1_bb.png){width=110%}
+![](./figs/lec1_bb.png)
 
 As temperature T goes up we notice three things:
 
@@ -144,7 +144,7 @@ According to classical mechanics, on average each degree of freedom of an oscill
 
 $$\langle E \rangle=kT$$ 
 
-In Quantum Mechanics, however, because energy levels are quantized on average each degree of freedom of oscillator ends up getting: 
+On average each degree of freedom of oscillator ends up getting: 
 
 $$\langle E \rangle=k_B T\Bigg[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Bigg ]$$ 
 
