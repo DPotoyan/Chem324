@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Mathematics of Quantum Mechanics &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/book_style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note04';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Postulates of quantum mechanics." href="note03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Wave-particle duality</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Schordinger Equation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Outline for Lecture 3.0: Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates of quantum mechanics.</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mathematics of Quantum Mechanics</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch03/note04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mathematics of Quantum Mechanics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematics of Quantum Mechanics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-2d-3d">Vectors in 2D/3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-linear-combinations-span-and-basis-vectors">Video “Linear combinations, span, and basis vectors”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-example-of-a-superoposition-state">Particle in a box example of a superoposition state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-of-quantum-superopsition-of-atom">Video of quantum superopsition of atom.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-in-quantum-mechanics">Time dependence in quantum mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="mathematics-of-quantum-mechanics">
+<h1>Mathematics of Quantum Mechanics<a class="headerlink" href="#mathematics-of-quantum-mechanics" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ol class="arabic simple">
+<li><p><strong>Linear vector spaces.</strong></p></li>
+<li><p><strong>Dirac notation.</strong></p></li>
+<li><p><strong>Functional spaces.</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of <strong>basis set</strong>  and  <strong>linear superpositions</strong>.  We will then show how <strong>Dirac notation</strong> can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning.</p></li>
+<li><p>With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  <strong>Schrödinger’s cat</strong> and the <strong>double slit experiments</strong> to illustrate the strange nature of superimposed states.</p></li>
+</ul>
+</div>
+<section id="vectors-what-are-they">
+<h2>Vectors, what are they?<a class="headerlink" href="#vectors-what-are-they" title="Permalink to this heading">#</a></h2>
+<p>Let’s remind ourselves of some basics first. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter.</p>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section>
+<section id="vectors-in-2d-3d">
+<h2>Vectors in 2D/3D<a class="headerlink" href="#vectors-in-2d-3d" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>An example of a vector is an ordered collection of numbers, e.g:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}a=(-2,8) \,\,\,$$ *A 2D vector.*
+  -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector.*
+  -  $$c=(1,-2,4i,3+2i) \,\,\,$$  *A 4D vector with complex components.*
+  - $$f=(1,2,3,4,5,6 ...,\infty)\,\,\,$$ *An infinite-dimensional vector with integers as components.*\\### Dirac notation\\Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation.\\\begin{split}|                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ &lt;br&gt;Example: $$\mid a \rangle =(1, 2i)$$ | **Ket:** $$\mid \psi\rangle=\psi$$&lt;br&gt; Example: $$\mid \psi \rangle=ix^2$$ |
+| **Bra:**$$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$$ &lt;br&gt; $$\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$&lt;br&gt;  $$\langle \psi \mid = -ix^2$$ |
+|        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
+| Example of Bra-Ket product for vectors in terms of components &lt;br&gt;$$\langle a \mid a \rangle = \sum_i a^2_i$$&lt;br&gt; $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components&lt;br&gt;$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$&lt;br&gt; $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |\end{split}\\### Representation of vectors\\Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.\\  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}\end{aligned}\end{align} \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[a=(2,3)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}a= \begin{pmatrix} 2 \\ 3 \\ \end{pmatrix}\end{split}\]</div>
+</li>
+</ul>
+</li>
+</ul>
+<p>In classical physics vectors are attached to a coordinate system with unit vectors (<span class="math notranslate nohighlight">\(\vec{e_i}\)</span>) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes.</p>
+<div class="math notranslate nohighlight">
+\[e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)\]</div>
+<p>However, a vector can be just an array of numbers, and the components of a vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, populations of some countries, stock prices over last ten years, etc.</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[Person = (22, 1.75, 80)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[Population  =(3.0, 40.0, 2.0, ...)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[Stock = (1.4, 3.6, 8.5, ...)\]</div>
+</li>
+</ul>
+</section>
+<section id="vector-operations">
+<h2>Vector operations<a class="headerlink" href="#vector-operations" title="Permalink to this heading">#</a></h2>
+<p>What defines vectors is the operations on them. Let us take a simple 2D vector as an example:</p>
+<div class="math notranslate nohighlight">
+\[\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle\]</div>
+<p><strong>1. Addition or subtraction</strong> with another vector <span class="math notranslate nohighlight">\(\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle\)</span>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\begin{split} a+b=\begin{pmatrix}
+    2\\
+    3\\
+    \end{pmatrix}+\begin{pmatrix}
+    1\\
+    1\\
+    \end{pmatrix}=\begin{pmatrix}
+    3\\
+    4\\
+    \end{pmatrix}\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2\pm b_2)\mid e_2\rangle\]</div>
+</li>
+</ul>
+<p><strong>2. Mulitiplication</strong> by a  scalar  <span class="math notranslate nohighlight">\(\alpha=10\)</span>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}\alpha \cdot a=10\begin{pmatrix}
+    2\\
+    3\\
+    \end{pmatrix}=\begin{pmatrix}
+    20\\
+    30\\
+    \end{pmatrix}\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle\]</div>
+</li>
+</ul>
+<p><strong>3. Dot product</strong> with another vector <span class="math notranslate nohighlight">\(\mid b\rangle\)</span>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}a\cdot b=(2,3)\begin{pmatrix} 1 \\ 1 \\ \end{pmatrix}=2 \cdot 1+3\cdot 1=5\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\langle a \mid b\rangle=a_1b_1+a_2b_2\]</div>
+</li>
+</ul>
+</section>
+<section id="projection-orthogonality-and-norm">
+<h2>Projection, orthogonality and norm<a class="headerlink" href="#projection-orthogonality-and-norm" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Dot product  <span class="math notranslate nohighlight">\(\langle a\mid b \rangle\)</span> quantifies the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> and vice-versa. That is, how much <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> have in common with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\langle e_i \mid e_j \rangle =\delta_{ij}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}(1,0)\begin{pmatrix}
+    0\\
+    1\\
+    \end{pmatrix}=1\cdot 0+0\cdot 1=0\end{split}\]</div>
+</li>
+</ul>
+<p>Where we denote both orthogonality and normalization with the convenient Kornecker symbol: <span class="math notranslate nohighlight">\(\delta_{ij}=0\)</span>  when <span class="math notranslate nohighlight">\(i\neq j\)</span> and <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(i=j\)</span>.</p>
+</li>
+<li><p>Norm of a vector <span class="math notranslate nohighlight">\(\mid a\mid\)</span> quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\langle a \mid a\rangle= a_1^2+a_2^2\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\mid a \mid =\sqrt{a_1^2+a_2^2}\]</div>
+</li>
+</ul>
+</li>
+</ul>
+<p>When the norm is <span class="math notranslate nohighlight">\(\mid a \mid=1\)</span>, vector is called normalized. To normalize a vector is to divide the vector by its norm. <span class="math notranslate nohighlight">\(\mid E_1\rangle = (4,0,0,0)\)</span> is not normalized since <span class="math notranslate nohighlight">\(\langle E_1\mid E_1\rangle = 4\)</span> hence we divide by norm and obtain a normalized vector <span class="math notranslate nohighlight">\(\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)\)</span>. And now <span class="math notranslate nohighlight">\(\langle e_1 \mid  e_1\rangle=1\)</span>.</p>
+</section>
+<section id="basis-set-and-linear-independence">
+<h2>Basis set and linear independence.<a class="headerlink" href="#basis-set-and-linear-independence" title="Permalink to this heading">#</a></h2>
+<p><strong>1. Every <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector can be uniquely represented as a linear combination of <span class="math notranslate nohighlight">\(N\)</span> orthogonal vectors.</strong> And vice-versa: if a vector can be represented by <span class="math notranslate nohighlight">\(N\)</span> orthogonal vectors, it means that the vector is <span class="math notranslate nohighlight">\(N\)</span>-dimensional. A set of vectors in terms of which an arbitrary <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector is expressed is called a <strong>basis set.</strong></p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}a= \begin{pmatrix}
+    2\\
+    3\\
+    \end{pmatrix} = 2\begin{pmatrix}
+    1\\
+    0\\
+    \end{pmatrix}+3 \begin{pmatrix}
+    0\\
+    1\\
+    \end{pmatrix}\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}a= \begin{pmatrix}
+    -1\\
+    5\\ 8\\ \end{pmatrix} = -1\begin{pmatrix}
+    1\\
+    0\\ 0\\
+    \end{pmatrix}+5 \begin{pmatrix}
+    0\\
+    1\\ 0\\
+    \end{pmatrix}+8 \begin{pmatrix}
+    0\\
+    0\\ 1\\
+    \end{pmatrix}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>2. Orthogonal vectors are linearly independent.</strong> This means that no member of a set of vectors can be expressed in terms of the others.  Linear independence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero <span class="math notranslate nohighlight">\(\alpha_1=\alpha_2=\alpha_3=0\)</span> as the only way to satify zero vector equality:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0\]</div>
+<p>The converse, when one of the coefificent <span class="math notranslate nohighlight">\(\alpha_i\)</span>can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient <span class="math notranslate nohighlight">\(\alpha_i\)</span> and express the unit vector <span class="math notranslate nohighlight">\(\mid e_i\rangle\)</span> in terms of the others.</p>
+</section>
+<section id="video-linear-combinations-span-and-basis-vectors">
+<h2>Video “Linear combinations, span, and basis vectors”<a class="headerlink" href="#video-linear-combinations-span-and-basis-vectors" title="Permalink to this heading">#</a></h2>
+<p>Now watch the second video from 3B1B on linear combinations and basis vectors.</p>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section>
+<section id="decomposition-of-functions-into-orthogonal-components">
+<h2>Decomposition of functions into orthogonal components<a class="headerlink" href="#decomposition-of-functions-into-orthogonal-components" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a <strong>Hilbert space</strong>, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>$<span class="math notranslate nohighlight">\(\,\)</span>$Sequence vectors</p></th>
+<th class="head text-center"><p>Functions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Orthonormality of basis unit vectors x and y:<br> $<span class="math notranslate nohighlight">\(\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}\)</span>$</p></td>
+<td class="text-center"><p>Orthonormality of eigenfunctions of Hermitian operator: <br>$<span class="math notranslate nohighlight">\(\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Linear superposition: <br>$<span class="math notranslate nohighlight">\(\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle\)</span>$</p></td>
+<td class="text-center"><p>Linear superposition: <br/>$<span class="math notranslate nohighlight">\(\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Coefficients are expressed via projections onto basis vectors: <br/>$<span class="math notranslate nohighlight">\(\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  \)</span>$</p></td>
+<td class="text-center"><p>Coefficients are expressed via projections onto basis functions: <br/>$<span class="math notranslate nohighlight">\(\langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1\)</span>$</p></td>
+</tr>
+</tbody>
+</table>
+<p>In the first column we decompose a vectors in terms of two orthogonal components <span class="math notranslate nohighlight">\(A_i\)</span> or projections of vector <span class="math notranslate nohighlight">\(A\)</span> along the orthonormal vectors <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!</p>
+</section>
+<section id="eigenfunctions-of-hermitian-operators-are-complete-basis-set">
+<h2>Eigenfunctions of Hermitian operators are complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set" title="Permalink to this heading">#</a></h2>
+<p>The three crucial consequences of Hermitian property of operators  <span class="math notranslate nohighlight">\(\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\)</span></p>
+<ul>
+<li><p>Eigenvalues <span class="math notranslate nohighlight">\(\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle\)</span>  are real:</p>
+<div class="math notranslate nohighlight">
+\[E_n=E^*_n\]</div>
+</li>
+<li><p>Eigenfunctions are orthogonal:</p>
+<div class="math notranslate nohighlight">
+\[\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}\]</div>
+</li>
+<li><p>Eigenfunctions form a complete basis set!</p>
+<div class="math notranslate nohighlight">
+\[\mid f\rangle = \sum_i c_i \mid \psi_i \rangle\]</div>
+</li>
+</ul>
+<p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p>
+</section>
+<section id="wave-function-as-a-linear-superoposition-of-eigenfunctions">
+<h2>Wave function as a linear superoposition of eigenfunctions<a class="headerlink" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<p>This is where we see the power and beautfy of Dirac notation. Reagardless of how the function <span class="math notranslate nohighlight">\(f\)</span> looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same!</p>
+<ul class="simple">
+<li><p>Express <span class="math notranslate nohighlight">\(f(x)\)</span> function in terms of eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H} \mid n\rangle=E_n \mid n \rangle\)</span>.</p>
+<ul>
+<li><p>In Dirac notation: $<span class="math notranslate nohighlight">\(f=\sum_n c_n \mid n\rangle\)</span>$</p></li>
+<li><p>In explicit notation: $<span class="math notranslate nohighlight">\(f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )\)</span>$</p></li>
+</ul>
+</li>
+<li><p>What about coefficients <span class="math notranslate nohighlight">\(c_n\)</span>? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient <span class="math notranslate nohighlight">\(k\)</span>, just like component of a vector can be found by projecting our function (vectors) on eigenfunction <span class="math notranslate nohighlight">\(k\)</span> (unit basis vector <span class="math notranslate nohighlight">\(k\)</span>).</p>
+<ul>
+<li><p>In Dirac notation: $<span class="math notranslate nohighlight">\(c_k = \braket{k \mid f}\)</span>$</p></li>
+<li><p>In explicit notation: $<span class="math notranslate nohighlight">\(c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx\)</span>$</p></li>
+</ul>
+</li>
+</ul>
+<p>Thus any wave function in quantum mechanics say <span class="math notranslate nohighlight">\(f(x)=x^2\)</span> on <span class="math notranslate nohighlight">\([0,L]\)</span> for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion.</p>
+</section>
+<section id="quantum-states-as-linear-superposition">
+<h2>Quantum states as linear superposition.<a class="headerlink" href="#quantum-states-as-linear-superposition" title="Permalink to this heading">#</a></h2>
+<p>Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ?</p>
+<div class="math notranslate nohighlight">
+\[\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
+<ul>
+<li><p><strong>Absolue values of coeficients <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span> are equal to probabilities <span class="math notranslate nohighlight">\(p_n\)</span> of finding system in a state <span class="math notranslate nohighlight">\(n\)</span> described by eigenvalue <span class="math notranslate nohighlight">\(A_n\)</span> and eigenfunction <span class="math notranslate nohighlight">\(\mid \phi_n \rangle\)</span> of the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>.</strong></p>
+<div class="math notranslate nohighlight">
+\[p_n=\mid c_n \mid^2\]</div>
+</li>
+<li><p><strong>Probabilites sum to one.</strong></p>
+<p><strong>$<span class="math notranslate nohighlight">\(\sum_n \mid c_n \mid^2 =\sum_n p_n=1\)</span>$.</strong></p>
+</li>
+</ul>
+</section>
+<section id="averages-are-probability-weighted-sums-of-eigenvalues">
+<h2>Averages are probability weighted sums of eigenvalues.<a class="headerlink" href="#averages-are-probability-weighted-sums-of-eigenvalues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket.</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1\end{split}\]</div>
+</li>
+<li><p>The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2\end{split}\]</div>
+</section>
+<section id="particle-in-a-box-example-of-a-superoposition-state">
+<h2>Particle in a box example of a superoposition state<a class="headerlink" href="#particle-in-a-box-example-of-a-superoposition-state" title="Permalink to this heading">#</a></h2>
+<p>Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian:</p>
+<div class="math notranslate nohighlight">
+\[\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}\]</div>
+<p>This means that when we measure  energy we are going to obtain only two values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_5\)</span> with equal probabilities <span class="math notranslate nohighlight">\(p_1=p_2=(1/\sqrt{2})^2\)</span>.</p>
+<p>The average of energy will be given by</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}\]</div>
+</section>
+<section id="quantum-states-as-linear-superposition-of-mutually-exclusive-states">
+<h2>Quantum states as linear superposition of mutually exclusive states.<a class="headerlink" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states" title="Permalink to this heading">#</a></h2>
+<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics.</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
+<ul>
+<li><p>Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</div>
+</li>
+<li><p>Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2</p>
+<div class="math notranslate nohighlight">
+\[\langle \phi_1 \mid \phi_2 \rangle=0\]</div>
+</li>
+</ul>
+</section>
+<section id="copenhagen-interpretation">
+<h2>Copenhagen interpretation<a class="headerlink" href="#copenhagen-interpretation" title="Permalink to this heading">#</a></h2>
+<p>“The <strong>Copenhagen interpretation</strong> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1</a>)(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2</a>)</p>
+<p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p>
+</section>
+<section id="video-of-quantum-superopsition-of-atom">
+<h2>Video of quantum superopsition of atom.<a class="headerlink" href="#video-of-quantum-superopsition-of-atom" title="Permalink to this heading">#</a></h2>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section>
+<section id="schordingers-cat">
+<h2>Schordinger’s cat<a class="headerlink" href="#schordingers-cat" title="Permalink to this heading">#</a></h2>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+<ul class="simple">
+<li><p>Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes.</p></li>
+<li><p>The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states.</p></li>
+</ul>
+</section>
+<section id="time-dependence-in-quantum-mechanics">
+<h2>Time dependence in quantum mechanics<a class="headerlink" href="#time-dependence-in-quantum-mechanics" title="Permalink to this heading">#</a></h2>
+<p>So far we have completely ignored time dependence in our discussions. This is becasuse we have mainly focused on pure eigenfunction states <span class="math notranslate nohighlight">\(\psi_n(x,t)\)</span> which show no time dependent behaviour for any quantity. It is easy to see why:</p>
+<div class="math notranslate nohighlight">
+\[\psi_n(x,t) =\psi_n(x) \psi_n(x) e^{-\frac{i}{\hbar}E_n t}\]</div>
+<p>When we do any kind of probabilistic calcualtion the time dependence dissapears because all the expressions involve square of wave functions and absolute value of complex temporal phase ends up as unity.</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x) e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t}=\mid \psi_n(x)\mid^2\]</div>
+<div class="math notranslate nohighlight">
+\[\langle A \rangle = \int \psi_n^*(x)e^{+\frac{i}{\hbar}E_n t} \hat{A} \psi_n(x)e^{-\frac{i}{\hbar}E_n t}dx = \int \psi_n^*(x) \hat{A} \psi_n(x)dx\]</div>
+<p>Will we always hae this lucky cancelation of time? The answer is no, when the states are described as linear superpositions time dependence does enter into picture.</p>
+</section>
+<section id="time-depenendece-in-superposition-states">
+<h2>Time depenendece in superposition states<a class="headerlink" href="#time-depenendece-in-superposition-states" title="Permalink to this heading">#</a></h2>
+<p>Let us start with a superposition state of two energy eigenfunctions  at time t=0:</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi(0) \rangle =c_1\mid 1 \rangle + c_2 \mid 2 \rangle\]</div>
+<p>What would the state be after some time t? By the virute of speration of variables we add the time dependence as a multiplicative factor for each eigenfunction:</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi(t) \rangle =c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2 \rangle= c_1(t)\mid 1\rangle+c_2(t) \mid 2 \rangle\]</div>
+<p>Thus we see that the coefficients change over time. This means our state vector moves in functional space spanned by fixed orthogonal eigenfunctions! We can verify that the expression satisfies time-dependent Schrodinger equation by plugging it and getting identity:</p>
+<div class="math notranslate nohighlight">
+\[  i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\psi(t)\rangle \]</div>
+<p><em>Left hand side :</em></p>
+<div class="math notranslate nohighlight">
+\[i\hbar \Big( -\frac{i}{\hbar}E_1 c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1\rangle-\frac{i}{\hbar}E_2 c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2\rangle \Big) = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle\]</div>
+<p><em>Right hand side:</em></p>
+<div class="math notranslate nohighlight">
+\[c_1 e^{-\frac{i}{\hbar}E_1 t}\hat{H}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\hat{H} \mid 2 \rangle = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle \]</div>
+</section>
+<section id="normalized-wave-function-stays-normalized-over-time">
+<h2>Normalized wave function stays normalized over time<a class="headerlink" href="#normalized-wave-function-stays-normalized-over-time" title="Permalink to this heading">#</a></h2>
+<p>Some quantities, however will be invariant to time evolution. For instance it is reasonable to expect that normalization will not depend on time e.g particle is bound to be somwhere inside box at any moment of time.</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi(t)\rangle=\sum_n c_n e^{-\frac{i}{\hbar}E_n t}\mid n\rangle\]</div>
+<p><em>Note how the bra-ket prodcut involves product of two independent sums indexed by n and k. We will be seeing expressions like this often later on.</em></p>
+<div class="math notranslate nohighlight">
+\[\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)t}\delta_{kn} =\sum_n \mid c_n \mid^2=1\]</div>
+<p>Where the last line used the fact that eigenfunctions <span class="math notranslate nohighlight">\(\langle n \mid k\rangle=0\)</span> are orthogonal hence cross terms in the sum where <span class="math notranslate nohighlight">\(k\neq n\)</span> are all zero and only diagonal terms <span class="math notranslate nohighlight">\(n=k\)</span> survie.</p>
+</section>
+</section>
+<section id="constants-of-motion">
+<h1>Constants of motion<a class="headerlink" href="#constants-of-motion" title="Permalink to this heading">#</a></h1>
+<p>Quantities which are conserved over time are called <strong>constants of motion</strong>. In  QM we generaly have expectations or averages instead of sharply defined values. The principle of conservation of energy, however, dictates that the average of total energy must be one of the conserved quantities. To find out weather a quantity of interest will depend on time we  take a time derivative of the expectation:</p>
+<div class="math notranslate nohighlight">
+\[\langle A \rangle =\langle \psi \mid A\mid \psi \rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial t}\langle A \rangle = \langle \frac{\partial \psi}{\partial t} \mid A\mid \psi \rangle + \langle \psi \mid A\mid  \frac{\partial \psi}{\partial t} \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle\]</div>
+<p>Now we making use of time dependent Schrodinger equation <span class="math notranslate nohighlight">\(i\hbar \frac{\partial }{\partial t}\mid \psi \rangle=\hat{H}\mid \psi\rangle\)</span> to express time derivatives of bras and kets:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\langle \frac{\partial \psi}{\partial t}\mid = -\frac{1}{i\hbar} \hat{H}\langle \psi \mid\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\mid \frac{\partial \psi}{\partial t}\rangle = \frac{1}{i\hbar} \hat{H}\mid \psi \rangle\]</div>
+</li>
+</ul>
+<p>Plugging this into time derivative of expectation we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial}{\partial t}\langle A \rangle =\frac{1}{i\hbar}\langle \psi \mid \hat{A}\hat{H}\mid \psi \rangle-\frac{1}{i\hbar}\langle \psi \mid \hat{H}\hat{A}\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle = \\ = \frac{1}{i\hbar}\langle \psi \mid [\hat{A},\hat{H}]\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle\end{split}\]</div>
+<p>This imporatat relationship shows that if an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> itself does not depend on time <span class="math notranslate nohighlight">\(\frac{\hat{A}}{t}=0\)</span> then the quantites which commute with hamiltonian <span class="math notranslate nohighlight">\([\hat{A},\hat{H}]=0\)</span> will be constants of motion and those that don’t <span class="math notranslate nohighlight">\([\hat{A},\hat{H}]\neq0\)</span> will evolve over time!</p>
+<ul class="simple">
+<li><p>Hamiltonian commutes with itself and does not depend on time <span class="math notranslate nohighlight">\(\frac{\partial}{\partial t}\langle E\rangle =0\)</span></p></li>
+</ul>
+<section id="double-slit-experiment">
+<h2>Double slit Experiment<a class="headerlink" href="#double-slit-experiment" title="Permalink to this heading">#</a></h2>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Postulates of quantum mechanics.</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematics of Quantum Mechanics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-2d-3d">Vectors in 2D/3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-linear-combinations-span-and-basis-vectors">Video “Linear combinations, span, and basis vectors”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-example-of-a-superoposition-state">Particle in a box example of a superoposition state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-of-quantum-superopsition-of-atom">Video of quantum superopsition of atom.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-in-quantum-mechanics">Time dependence in quantum mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

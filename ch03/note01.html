@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Outline for Lecture 3.0: Schrödinger Equation &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/book_style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note01';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics." href="note02.html" />
+    <link rel="prev" title="3. Schordinger Equation" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Wave-particle duality</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Schordinger Equation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Outline for Lecture 3.0: Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Mathematics of Quantum Mechanics</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch03/note01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Outline for Lecture 3.0: Schrödinger Equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 3.0: Schrödinger Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exciting-journey-into-the-microscopic-world">The exciting journey into the microscopic world.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-up-where-classical-mechanics-has-failed">Picking up where classical mechanics has failed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-time-dependent">Schrödinger Equation (time-dependent)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-attempt-at-deriving-schrodinger-equation">An attempt at deriving Schrödinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-quantum-wave-equation">Turning a quantum wave function into quantum wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-qm-operators">The mathematical language of QM: operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-time-dependent-to-time-independent-schrodinger-equation">From time-dependent to time-independent Schrödinger equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-schrodinger-equation-as-an-eigenvalue-eigenfunction-problem">Time-independent Schrödinger equation as an eigenvalue-eigenfunction problem.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="outline-for-lecture-3-0-schrodinger-equation">
+<h1>Outline for Lecture 3.0: Schrödinger Equation<a class="headerlink" href="#outline-for-lecture-3-0-schrodinger-equation" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ul class="simple">
+<li><p>By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schrödinger’s equation (SE).</p></li>
+<li><p>Schrödinger’s equation in its most general form depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course.</p></li>
+<li><p>We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. Furthermore with the help of operator notation will  frame the problem of solving such equations as a linear algebra problem of finding eigenvalues and eigenvectors.</p></li>
+<li><p>Classical equation of motion fails at small scales. Quantum works on all scales!  We will see how Schrödinger’s equation predicts classical behaviour under apprporiate conditions where quantum effects are negligible.</p></li>
+</ul>
+</div>
+</section>
+<section id="the-exciting-journey-into-the-microscopic-world">
+<h1>The exciting journey into the microscopic world.<a class="headerlink" href="#the-exciting-journey-into-the-microscopic-world" title="Permalink to this heading">#</a></h1>
+<ul>
+<li><p>In the next few sections we are going to arrive at Schrödinger equation (SE) which is a fundamental law of nature. This implies that  SE can only be inferred or guessed from the experiments. It can not be derived. Its correctness is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations.</p></li>
+<li><p>Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.</p>
+<img alt="ch03/images/SE_intro.jpeg" src="ch03/images/SE_intro.jpeg" />
+</li>
+</ul>
+<section id="picking-up-where-classical-mechanics-has-failed">
+<h2>Picking up where classical mechanics has failed<a class="headerlink" href="#picking-up-where-classical-mechanics-has-failed" title="Permalink to this heading">#</a></h2>
+<p>Let us recall that classical mechanics failed at describing motion at the atomic and molecular scales and it is only an approximate theory valid at large scales. A new, correct equation of motion is needed that can explain:</p>
+<ul>
+<li><p>Quantized nature of energy (remember experiments on blackbody radiation, atomic spectra…)</p></li>
+<li><p>Wave-particle duality (Electron diffraction, Compton scattering)</p></li>
+<li><p>Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects.</p>
+<img alt="ch03/images/SE_intro2.gif" src="ch03/images/SE_intro2.gif" />
+</li>
+</ul>
+</section>
+<section id="schrodinger-equation-time-dependent">
+<h2>Schrödinger Equation (time-dependent)<a class="headerlink" href="#schrodinger-equation-time-dependent" title="Permalink to this heading">#</a></h2>
+<img alt="ch03/images/SE_4.jpg" src="ch03/images/SE_4.jpg" />
+<ul>
+<li><p>The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time-dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time.</p>
+<div class="math notranslate nohighlight">
+\[i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)\]</div>
+</li>
+<li><p>Left hand side describes change of wave function with time. The presence of an imaginary unit tells us that solutions of this equation are generally complex functions.</p></li>
+<li><p>Right hand side describes spatial varation of wave function. We will soon discover that  inside square brackets we have operators of kinetic and potential energies: an analog of kinetic and potential energies in classical mechanics.</p></li>
+</ul>
+</section>
+<section id="from-classical-to-quantum-wave-equation">
+<h2>From classical to quantum wave equation<a class="headerlink" href="#from-classical-to-quantum-wave-equation" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>In 1925/1926 Erwin Schrödinger, who was an expert on waves, attempted to derive new equation of motion that could unify weird quantum facts of  energy quantization and wave-particle duality under one sound theoretical roof! He (correctly) guessed that the equation of motion for quantum mechanics should be a wave equation.</p></li>
+<li><p>This was the only wave equation known at that time so Schrödinger started his reasoning from here.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 \Psi(x,t)}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 \Psi(x,t)}{\partial t^2}\]</div>
+</li>
+<li><p>Taking a typical wave function which satisfies a wave equation we will now inject the above mentioned key quantum relationships and will try to figure out which equation governs such solutions.</p>
+<p>As an example let us take  a freely moving periodic wave which satisfies classical wave equation. Plug it in above equation to verify.</p>
+<div class="math notranslate nohighlight">
+\[\Psi(x,t)=Ae^{i(kx-\omega t)}\]</div>
+<p>We could have written a sin or cos functions with equation success. But the complex notation is more general and convenient to work with mathematically.</p>
+</li>
+</ul>
+</section>
+<section id="an-attempt-at-deriving-schrodinger-equation">
+<h2>An attempt at deriving Schrödinger Equation<a class="headerlink" href="#an-attempt-at-deriving-schrodinger-equation" title="Permalink to this heading">#</a></h2>
+<p>Now let us combine the following two cornerstone quantum ideas into a free periodic wave function:</p>
+<ul class="simple">
+<li><p><strong>De Broglie relation:</strong> <strong><span class="math notranslate nohighlight">\(p=h/\lambda\)</span></strong> Matter has both particle and wave like qualities.</p></li>
+<li><p><strong>Planck equaton:</strong> <span class="math notranslate nohighlight">\(E=h\nu\)</span>  Energy levels  are quantized.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{i2\pi(\frac{x}{\lambda}-\nu t)}= Ae^{\frac{i}{\hbar}(px-E t)}\]</div>
+<p>Where we have plugged in wave vector <span class="math notranslate nohighlight">\(k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}\)</span> expressed in terms of momenum via de Broglie relation and angular frequency expressed in terms of energy via Planck equation <span class="math notranslate nohighlight">\(\omega=2\pi \nu=\frac{E}{\hbar}\)</span></p>
+</section>
+<section id="turning-a-quantum-wave-function-into-quantum-wave-equation">
+<h2>Turning a quantum wave function into quantum wave equation.<a class="headerlink" href="#turning-a-quantum-wave-function-into-quantum-wave-equation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What we have achieved so far is design a wave function which reflects quantum reality by having the right momentum to wave length and energy to frequency relationships.</p></li>
+<li><p>Now the question is which equation is governing such wave functions?  To find out we will have to differentiatiate the wave function with respect to spatial and temporal components.</p></li>
+</ul>
+<p>Taking a time derivative once</p>
+<p><span class="math notranslate nohighlight">\( \frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)\)</span></p>
+<p>we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.</p>
+<p>Likewise we can recover total energy by taking  spatial derivatve twice</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial \Psi(x,t)}{\partial x}=\frac{i}{\hbar}p\Psi(x,t)\]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial^2 \Psi(x,t)}{\partial x^2}=-\frac{p^2}{\hbar^2}\Psi(x,t)=-\frac{2m(E-V)}{\hbar^2}\Psi(x,t)\]</div>
+<p>Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  <span class="math notranslate nohighlight">\(E=\frac{p^2}{2m}+V\)</span></p>
+<p>This last expression we will come to know as the time-independent Schrödinger equation (TI-SE):</p>
+<div class="math notranslate nohighlight">
+\[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V\Psi=E\Psi  \]</div>
+<p>By connecting spatial and temporal derivatives through total energy we obtain the time-dependent Schrödinger equation (TD-SE):</p>
+<div class="math notranslate nohighlight">
+\[ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V]\Psi\]</div>
+</section>
+<section id="the-mathematical-language-of-qm-operators">
+<h2>The mathematical language of QM: operators<a class="headerlink" href="#the-mathematical-language-of-qm-operators" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Let us introduce some jargon and notation which is going to help us make mathematics and analogies more concise.</p></li>
+<li><p>Operators make quantum mechanics more compact  transparent.</p></li>
+<li><p>We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc.</p>
+<img alt="ch03/images/SE_intro3.jpg" src="ch03/images/SE_intro3.jpg" />
+</li>
+</ul>
+</section>
+<section id="linear-operators">
+<h2>Linear operators.<a class="headerlink" href="#linear-operators" title="Permalink to this heading">#</a></h2>
+<p>Linear means that operator acting on sum of function does not change the power of any of functions.</p>
+<div class="math notranslate nohighlight">
+\[\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)\]</div>
+<p>Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.</p>
+<p>-Question: which of the following would be linear operator: <span class="math notranslate nohighlight">\(\hat{A}=\frac{d}{dx}\)</span>      <span class="math notranslate nohighlight">\(\hat{A}=\int dx\)</span>       <span class="math notranslate nohighlight">\(\hat{A}=\sqrt{}\)</span></p>
+</section>
+<section id="time-dependent-schrodinger-equation-in-operator-notation">
+<h2>Time-dependent Schrödinger equation in operator notation.<a class="headerlink" href="#time-dependent-schrodinger-equation-in-operator-notation" title="Permalink to this heading">#</a></h2>
+<p>By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation</p>
+<div class="math notranslate nohighlight">
+\[i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V]\Psi=\hat{H}\Psi\]</div>
+<p>The operator <span class="math notranslate nohighlight">\(\hat{H}\)</span> is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian <span class="math notranslate nohighlight">\(H(x,p)=\frac{p^2}{2m}+V\)</span> which is an expression of total energy.</p>
+<div class="math notranslate nohighlight">
+\[\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)\]</div>
+<p>As we  see the analog of classical kinetic operator is a second order partial differentiation.</p>
+<p>Whereas the  potential energy has exactly the same appearance of a function of spatial coordinates.</p>
+</section>
+<section id="from-time-dependent-to-time-independent-schrodinger-equation">
+<h2>From time-dependent to time-independent Schrödinger equation.<a class="headerlink" href="#from-time-dependent-to-time-independent-schrodinger-equation" title="Permalink to this heading">#</a></h2>
+<p>As we have learned from lectures on classical wave equation when the spatial and temporal coordinates are independent of each other one can use separation of variables and decouple time and space dependence.</p>
+<div class="math notranslate nohighlight">
+\[\Psi(x,t)=f(t)\psi(x) \]</div>
+<p>Plugging this into time-dependent wave equation we get</p>
+<div class="math notranslate nohighlight">
+\[i\hbar \frac{\partial }{\partial t} f(t)\psi(x) =\hat{H}f(t)\psi(x)\]</div>
+<p>Now collecting <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> terms we achieve separation of variables.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{f(t)}i\hbar \frac{\partial }{\partial t} f(t)=\frac{1}{\psi(x) }\hat{H}\psi(x)=E\]</div>
+<p>Notice that the hamiltonian operator contains <span class="math notranslate nohighlight">\(x\)</span> derivatives hence <span class="math notranslate nohighlight">\(f(t)\)</span> can be taken out of the oeprator expression. In the expression <span class="math notranslate nohighlight">\(\frac{\hat{H}\psi(x)}{\psi(x)}\)</span> however one can not cancel <span class="math notranslate nohighlight">\(\psi\)</span> becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product!</p>
+<p>The separation constant can be recognized as the total energy as is evident by recalling that the hamiltonain operator is the analog of Hamilton function.  The temporal part is solved instantly:</p>
+<div class="math notranslate nohighlight">
+\[f(t)=e^{-iEt/\hbar} \]</div>
+<p>The spatial part is obtained by solving time-independent Schrödinger equation.</p>
+<div class="math notranslate nohighlight">
+\[\hat{H}\psi(x)=E\psi(x)\]</div>
+<p>Once we have a solution to both spatial and temproal parts of the wave function we can write down the</p>
+<div class="math notranslate nohighlight">
+\[\psi(x,t)=\psi(x)f(t)=\psi(x) e^{-\frac{i}{\hbar}Et}\]</div>
+</section>
+<section id="what-about-the-boundary-conditions-and-normal-modes">
+<h2>What about the boundary conditions and normal modes?<a class="headerlink" href="#what-about-the-boundary-conditions-and-normal-modes" title="Permalink to this heading">#</a></h2>
+<p>As we recall from solving classical wave equation whenever there are bounary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions <span class="math notranslate nohighlight">\(u_n(x)\)</span> discretized by integers <span class="math notranslate nohighlight">\(n=1,2,...\)</span> for each spatial coordinate.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x) \]</div>
+<p>In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by <span class="math notranslate nohighlight">\(n\)</span> where the multiplicative factors are nothing but the discrete energy levels! The wave functions for each <span class="math notranslate nohighlight">\(n\)</span> are going to have special signficance as gateways to describing the probability profile of finding electrons in different points in space.</p>
+<div class="math notranslate nohighlight">
+\[\hat{H} \psi_n(x)=E_n \psi_n(x)\]</div>
+</section>
+<section id="eigenvalue-eigenfunction-problems">
+<h2>Eigenvalue eigenfunction problems<a class="headerlink" href="#eigenvalue-eigenfunction-problems" title="Permalink to this heading">#</a></h2>
+<p>Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators.</p>
+<img alt="ch03/images/SE_intro6.jpg" src="ch03/images/SE_intro6.jpg" />
+<p>E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.</p>
+</section>
+<section id="time-independent-schrodinger-equation-as-an-eigenvalue-eigenfunction-problem">
+<h2>Time-independent Schrödinger equation as an eigenvalue-eigenfunction problem.<a class="headerlink" href="#time-independent-schrodinger-equation-as-an-eigenvalue-eigenfunction-problem" title="Permalink to this heading">#</a></h2>
+<p>The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where our eigenfunctions are wave-functions and eigenvalues are energies.</p>
+<div class="math notranslate nohighlight">
+\[\hat{H}\psi(x)=E\psi(x)\]</div>
+<img alt="ch03/images/SE_intro5.jpg" src="ch03/images/SE_intro5.jpg" />
+</section>
+<section id="the-correspondence-principle-of-quantum-mechanics">
+<h2>The correspondence principle of Quantum Mechanics<a class="headerlink" href="#the-correspondence-principle-of-quantum-mechanics" title="Permalink to this heading">#</a></h2>
+<p>Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Observables</p></th>
+<th class="head text-center"><p>Classical</p></th>
+<th class="head text-center"><p>Quantum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Position</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{x}=x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Momentum</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p=mv\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{p}=-i\hbar \frac{\partial}{\partial x}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Potential Energy</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(V(X)\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{V}=V(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Kinetic Energy</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(K=\frac{p^2}{2m}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{K}=\frac{\hat{p}^2}{2m}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Total Energy</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H(x,p)=\frac{p^2}{2m}+V(x)\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{H}=\hat{K}+\hat{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Equation of motion</p></td>
+<td class="text-center"><p>Newton’s law <span class="math notranslate nohighlight">\(F=ma\)</span> <br>or Hamiltons equations</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{H}\psi=E\psi\)</span> Or <br><span class="math notranslate nohighlight">\(i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Quantization and wave-particle duality?</p></td>
+<td class="text-center"><p>N/A</p></td>
+<td class="text-center"><p>Energy quantization and duality are<br> naturally described by <span class="math notranslate nohighlight">\(E_n\)</span> and <span class="math notranslate nohighlight">\(\psi_n\)</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3. Schordinger Equation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 3.0: Schrödinger Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exciting-journey-into-the-microscopic-world">The exciting journey into the microscopic world.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-up-where-classical-mechanics-has-failed">Picking up where classical mechanics has failed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-time-dependent">Schrödinger Equation (time-dependent)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-attempt-at-deriving-schrodinger-equation">An attempt at deriving Schrödinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-quantum-wave-equation">Turning a quantum wave function into quantum wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-qm-operators">The mathematical language of QM: operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-time-dependent-to-time-independent-schrodinger-equation">From time-dependent to time-independent Schrödinger equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-schrodinger-equation-as-an-eigenvalue-eigenfunction-problem">Time-independent Schrödinger equation as an eigenvalue-eigenfunction problem.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
