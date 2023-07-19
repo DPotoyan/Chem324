@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Waves &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Wave equation &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/note02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Outline for Lecture 2.1:" href="note01.html" />
+    <link rel="prev" title="Waves" href="note01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,26 +162,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Wave-particle duality</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">2. Waves and wave equation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="note01.html">Outline for Lecture 2.1:</a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Waves</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wave equation</a></li>
 </ul>
 </li>
 </ul>
@@ -320,7 +309,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Waves</h1>
+    <h1>Wave equation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -330,15 +319,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#waves-waves-and-more-waves">Waves, waves and more waves</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal">Classification of waves by orientation: Transverse vs Longitudinal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-appearance-standing-vs-traveling">Classification of waves by appearance: Standing vs Traveling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-waves">Traveling waves.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-derivation">Wave interference: derivation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guitar-string-a-simple-toy-example-desired-by-wave-equation">Guitar string, a simple toy example desired by wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-by-separation-of-variables-a-technique-worth-remembering">Solving wave equation by separation of variables. A technique worth remembering!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-one-plug-product-of-univariate-functions-into-wave-equation">Step one: plug product of univariate functions into wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-two-after-decomposing-pde-into-odes-we-begin-solving-each-ode-one-by-one">Step two: After decomposing PDE into ODEs we begin solving each ODE one by one.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solve-the-ode-by-considering-all-cases-for-the-separating-constant-case-k-0">Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&gt;0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&lt;0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solutions-for-wave-equation-are-also-called-normal-modes">Intermezzo: Solutions for wave equation are also called normal modes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-wave-equation">Interpretation of solution to wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 </ul>
             </nav>
         </div>
@@ -350,95 +341,154 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="waves">
-<h1>Waves<a class="headerlink" href="#waves" title="Permalink to this heading">#</a></h1>
+  <section id="wave-equation">
+<h1>Wave equation<a class="headerlink" href="#wave-equation" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
 <li><p>A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!</p></li>
+<li><p>An equation, partially differential equation known as a wave completely describes wave’s spatial and temporal evolution</p></li>
 <li><p>The wave equation, a partial differential equation (PDE), completely describes waves’ spatial and temporal evolution.</p></li>
-<li><p>Waves can be standing or travelling. Transverse or longitudinal.</p></li>
+<li><p>1D wave equation for a guitar string is governed by the displacement of the string <span class="math notranslate nohighlight">\(u(x,t)\)</span> in time and space.</p></li>
 </ul>
 </div>
-<section id="waves-waves-and-more-waves">
-<h2>Waves, waves and more waves<a class="headerlink" href="#waves-waves-and-more-waves" title="Permalink to this heading">#</a></h2>
+<section id="guitar-string-a-simple-toy-example-desired-by-wave-equation">
+<h2>Guitar string, a simple toy example desired by wave equation.<a class="headerlink" href="#guitar-string-a-simple-toy-example-desired-by-wave-equation" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="ch02/images/lec5_guitar.jpg" /></p>
+ <iframe src="https://giphy.com/embed/x988dOESRoCeQ" width="480" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animation-physics-x988dOESRoCeQ">via GIPHY</a></p>
+Our objective in the next few pages is to describe motion of guitar string mathematically. That is given arbitrary initial conditions precisely predict the evolution of string in time and space. 
+</section>
+<section id="solving-wave-equation-by-separation-of-variables-a-technique-worth-remembering">
+<h2>Solving wave equation by separation of variables. A technique worth remembering!<a class="headerlink" href="#solving-wave-equation-by-separation-of-variables-a-technique-worth-remembering" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Sound Waves.</p></li>
-<li><p>Waves on a guitar string.</p></li>
-<li><p>Waves on the surface of the water.</p></li>
-<li><p>Quantum mechanical waves. E.g electron waves, neutron waves, hydrogen waves, etc.</p></li>
-<li><p>Electromagnetic waves (e.g. light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave “rolls out its own carpet” hence creating its own medium as it moves forward.</p></li>
-<li><p>Finally there are also gravitational waves traveling through spacetime. See <a class="reference external" href="https://www.youtube.com/watch?v=xj6vV3T4ok8">this video</a>.</p></li>
+<li><p>Wave equation is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement <span class="math notranslate nohighlight">\(u(x,t)\)</span> in time and space.</p></li>
 </ul>
-</section>
-<section id="classification-of-waves-by-orientation-transverse-vs-longitudinal">
-<h2>Classification of waves by orientation: Transverse vs Longitudinal<a class="headerlink" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif" /></p>
-</section>
-<section id="classification-of-waves-by-appearance-standing-vs-traveling">
-<h2>Classification of waves by appearance: Standing vs Traveling<a class="headerlink" href="#classification-of-waves-by-appearance-standing-vs-traveling" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Traveling waves move with respect to fixed reference frame.</p></li>
-<li><p>Standing waves move in place.</p></li>
-</ul>
-</section>
-<section id="defining-wave-mathematically">
-<h2>Defining wave mathematically<a class="headerlink" href="#defining-wave-mathematically" title="Permalink to this heading">#</a></h2>
-<p>Since wave is a moving disturbance <span class="math notranslate nohighlight">\(u\)</span>, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span> via: <span class="math notranslate nohighlight">\(u(x,t) = f(x, t)\)</span>.</p>
-<p>Imagine an ocean wave. For an observer standing on a wave (surfer) the wave stands still but for the observer standing on the shore the wave moves away with velocity: <span class="math notranslate nohighlight">\(x'=x-vt\)</span></p>
-<p>Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer: <span class="math notranslate nohighlight">\(f(x,t)=f(x')\)</span></p>
-<div class="math notranslate nohighlight">
-\[u(x,t) = f(x-vt)\]</div>
-</section>
-<section id="traveling-waves">
-<h2>Traveling waves.<a class="headerlink" href="#traveling-waves" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="ch02/images/lec5_Introwave.jpg" /></p>
-<p>We will be working a lot with periodic waves that have a shape of a sine or cosine, like this one: $<span class="math notranslate nohighlight">\(y(x,t)= A \sin(kx)\)</span><span class="math notranslate nohighlight">\(
-Let us now turn this sinusoidal form into a wave traveling along x axis:
-\)</span><span class="math notranslate nohighlight">\(y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)\)</span>$</p>
-<ul class="simple">
-<li><p>Amplitude <span class="math notranslate nohighlight">\(A\)</span>: specifies maximum disturbance.</p></li>
-<li><p>Wave number <span class="math notranslate nohighlight">\(k\)</span>: specifies periodicity in space.</p></li>
-<li><p>Angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>: specifies periodicity in time.</p></li>
-</ul>
-<blockquote>
-<div><p>Flashback to first lecture when we had this relationship of wavelength to speed of wave and frequency via <span class="math notranslate nohighlight">\(\lambda \nu = v\)</span> and <span class="math notranslate nohighlight">\(\nu=\frac{1}{T}\)</span></p>
-</div></blockquote>
-</section>
-<section id="wave-equation">
-<h2>Wave equation.<a class="headerlink" href="#wave-equation" title="Permalink to this heading">#</a></h2>
-<p>We obtain equation of motion by using the chain rule and taking partial derivatives of <span class="math notranslate nohighlight">\(u\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<p>Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> we obtain:</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }\]</div>
-<p>We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions.</p>
-</section>
-<section id="wave-interference-definition">
-<h2>Wave interference: definition<a class="headerlink" href="#wave-interference-definition" title="Permalink to this heading">#</a></h2>
-<p>Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.</p>
-<p><img alt="" src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" /></p>
-<p>This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are both solutions of the wave equation, then so is a wave <span class="math notranslate nohighlight">\(C = A + B\)</span>.</p>
-</section>
-<section id="wave-interference-derivation">
-<h2>Wave interference: derivation.<a class="headerlink" href="#wave-interference-derivation" title="Permalink to this heading">#</a></h2>
-<p>Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase <span class="math notranslate nohighlight">\(\phi\)</span> (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:</p>
-<div class="math notranslate nohighlight">
-\[y_1(x,t)=A \sin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A \sin(kx-\omega t+\phi)\]</div>
-<p>If we sum up the two phase-shifted waves and make use of trigonometric relation:</p>
-<div class="math notranslate nohighlight">
-\[\cos(\alpha) + \cos(\beta) = 2 \cos\left(\frac{\alpha + \beta}{2}\right) \cos\left(\frac{\alpha-\beta}{2}\right)\]</div>
-<p>we get:</p>
-<div class="math notranslate nohighlight">
-\[y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)\]</div>
-</section>
-<section id="wave-interference-demonstration">
-<h2>Wave interference: demonstration.<a class="headerlink" href="#wave-interference-demonstration" title="Permalink to this heading">#</a></h2>
-<p>When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\phi=0\)</span> Fully constructive interference <span class="math notranslate nohighlight">\(y(x,t)=2A \cos(kx-\omega t)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi=\pi\)</span> Fully destructive interference. <span class="math notranslate nohighlight">\(y(x,t)=0\)</span></p></li>
+<li><p>In order to solve this equation we need to specify two boundary conditions to obtain solution that is specific to our physical situation: a guitar string attached to two ends. Mathematically we specify boundary conditions by:</p></li>
 </ul>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" /></p>
+<div class="math notranslate nohighlight">
+\[u(0,t)=0 \,\,\,\, | \,\,\,\, u(L,t)=0\]</div>
+<ul class="simple">
+<li><p>A general way of solving such equations is by using the technique of separation of variables: assuming <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> vary independent of each other enables us to write <span class="math notranslate nohighlight">\(u\)</span> as a product of two single variable functions.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[u(x,t)=X(x)T(t)\]</div>
+</section>
+<section id="step-one-plug-product-of-univariate-functions-into-wave-equation">
+<h2>Step one: plug product of univariate functions into wave equation.<a class="headerlink" href="#step-one-plug-product-of-univariate-functions-into-wave-equation" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }\]</div>
+<p>Plugging <span class="math notranslate nohighlight">\(u(x,t)=X(x)T(t)\)</span> in the above wave equation leads to separation of variables into two independent equations:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial t^2} =\frac{\partial^2 X(x)T(t)}{\partial x^2 }\]</div>
+<p>Some rearrangement first</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(x)}{v^2}\frac{\partial^2 T(t)}{\partial t^2} =T(t)\frac{\partial^2 X(x)}{\partial x^2 }\]</div>
+<p>And voilà, the final product we have two ordinary differential equations (ODEs) as opposed to much harder partial differential equation (PDE).</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K=const\]</div>
+</section>
+<section id="step-two-after-decomposing-pde-into-odes-we-begin-solving-each-ode-one-by-one">
+<h2>Step two: After decomposing PDE into ODEs we begin solving each ODE one by one.<a class="headerlink" href="#step-two-after-decomposing-pde-into-odes-we-begin-solving-each-ode-one-by-one" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =K \,\,\,\,and\,\,\,\,\,\,\,\, \frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 T(t)}{\partial t^2} -KT(t)v^2=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial}-K X(x)=0\]</div>
+</section>
+<section id="intermezzo-solve-the-ode-by-considering-all-cases-for-the-separating-constant-case-k-0">
+<h2>Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&gt;0<a class="headerlink" href="#intermezzo-solve-the-ode-by-considering-all-cases-for-the-separating-constant-case-k-0" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(K \geq 0\)</span>: and we explicitly specify this <span class="math notranslate nohighlight">\(K=\beta^2\)</span> via a constant <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[X(x)= c_1 e^{\beta x}+c_2 e^{-\beta x}\]</div>
+<p>Applying boundary conditions <span class="math notranslate nohighlight">\(X(0)=X(L)=0\)</span> leads to <span class="math notranslate nohighlight">\(c_1=c_2=0\)</span>. There is simply no other way to make linear combination of two positive numbers equal to zero. We are left with a pretty boring solution <span class="math notranslate nohighlight">\(X(x)=0\)</span>  implying that string does not move. No music :(</p>
+</section>
+<section id="id1">
+<h2>Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&lt;0<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(K &lt; 0\)</span>: and we explicitly specify this <span class="math notranslate nohighlight">\(K=-\beta^2\)</span> via a constant <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[X(x)= c_1 e^{i\beta x}+c_2 e^{-i\beta x}\]</div>
+<div class="math notranslate nohighlight">
+\[X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 [\cos(\beta x) - i \sin(\beta x)]\]</div>
+<p>Above we have made use of Euler’s relation to clarify things. Now one more rearrangement and we are done here:</p>
+<div class="math notranslate nohighlight">
+\[X(x)= (c_1+ic_2)(\cos(\beta x)+(c_1-ic_2)\sin(\beta x)\]</div>
+<div class="math notranslate nohighlight">
+\[X(x)= A \cos(\beta x)+B \sin(\beta x)\]</div>
+<p>Applying boundary conditions leads to <span class="math notranslate nohighlight">\(X(0)=0\)</span> hence <span class="math notranslate nohighlight">\(A \cdot 1+0=0\)</span>. <br>And <span class="math notranslate nohighlight">\(X(L)=0=\sin (\beta L)=0\)</span> hence we have a non-trivial solution!</p>
+<div class="math notranslate nohighlight">
+\[\beta L=n\pi \,\, \rightarrow \,\, \beta=\frac{n\pi}{L} \,\,  \rightarrow \,\,  X(x)=B\sin\left(\frac{n\pi}{L}x\right)\]</div>
+</section>
+<section id="intermezzo-solutions-for-wave-equation-are-also-called-normal-modes">
+<h2>Intermezzo: Solutions for wave equation are also called normal modes.<a class="headerlink" href="#intermezzo-solutions-for-wave-equation-are-also-called-normal-modes" title="Permalink to this heading">#</a></h2>
+<p>We have found solution for <span class="math notranslate nohighlight">\(X(x)=B\sin\left(\frac{n\pi}{L}x\right)\)</span>. <br>Now it is time to do the same for <span class="math notranslate nohighlight">\(T(t)\)</span> by repeating the same steps:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 T(t)}{\partial t^2 }-K T(t)v^2=0 \,\,\rightarrow \,\, \frac{\partial^2 T(t)}{\partial t^2 }-\beta^2 T(t)v^2=0\]</div>
+<div class="math notranslate nohighlight">
+\[T(t)=D_n \cos(\omega_n t)+E_n \sin(\omega_n t)\]</div>
+<ul class="simple">
+<li><p>Since there are no boundary conditions for T(t), both <span class="math notranslate nohighlight">\(\sin\)</span> and <span class="math notranslate nohighlight">\(\cos\)</span> terms survived.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega_n=\beta \nu=\frac{n\pi}{L} \nu\)</span> are called normal modes.  Integer index <span class="math notranslate nohighlight">\(n = 0,1,2,...\)</span> lists normal modes which are simply solutions satisfying our wave equation.</p></li>
+</ul>
+</section>
+<section id="step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">
+<h2>Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE.<a class="headerlink" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[u(x,t)=X(x)T(t)=[D_n \cos(\omega_n t)+E_n \sin(\omega_n t)] B \sin\left(\frac{n\pi}{L}x\right)\]</div>
+<p>Using trigonometric relation for sum of <span class="math notranslate nohighlight">\(\sin\)</span> and <span class="math notranslate nohighlight">\(\cos\)</span> functions we arrive at infinite number of solutions for each <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[u(x,t)=X(x)T(t)=A \sin\left(\frac{n\pi}{L}x\right)\cos(\omega_n t+\phi_n)\]</div>
+<p>Since for any value of <span class="math notranslate nohighlight">\(n\)</span> the above normal mode expression satisfies the wave equation, the most general solution would be a linear combination of all the normal modes.</p>
+<div class="math notranslate nohighlight">
+\[u(x,t)=\sum_n X_n(x)T_n(t)=\sum_n A_n \sin\left(\frac{n\pi}{L}x\right)\cos(\omega_n t+\phi_n)\]</div>
+<p>This general solution describes a time evolution of any 1D guitar string, regardless of how you pluck it.</p>
+</section>
+<section id="interpretation-of-solution-to-wave-equation">
+<h2>Interpretation of solution to wave equation.<a class="headerlink" href="#interpretation-of-solution-to-wave-equation" title="Permalink to this heading">#</a></h2>
+<p>Complete information for describing any vibrational motion is contained in the sum of the normal modes: <span class="math notranslate nohighlight">\(X_n(x)\)</span>. Depending on where and how fast you pluck the guitar string the terms that contain time, <span class="math notranslate nohighlight">\(T_n(t)\)</span> will be different, but normal modes <span class="math notranslate nohighlight">\(X_n(x)\)</span> are always the same.</p>
+<div class="math notranslate nohighlight">
+\[\nu_n=\frac{\omega_n}{2\pi}=\frac{n \nu}{2L}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n = 1\)</span>; 0 nodes; fundamental or first harmonic:</p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 2\)</span>; 1 node; first overtone or second harmonic:</p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 3\)</span>; 2 nodes; second overtone or third harmonic:</p></li>
+</ul>
+</section>
+<section id="the-sound-of-music">
+<h2>The sound of music.<a class="headerlink" href="#the-sound-of-music" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../_images/lec4_music.jpg" /></p>
+<ul class="simple">
+<li><p>Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of normal modes (in music they call harmonics, overtones) of those musical instruments.</p></li>
+<li><p>The size of the musical instrument reflects the range of frequencies over which the instrument is designed to function. Smaller size implies higher frequencies, larger size implies lower frequencies.</p></li>
+</ul>
+<blockquote>
+<div><p>Learn more from <a class="reference external" href="https://www.youtube.com/watch?v=jveKIYyafaQ">this series</a>.</p>
+</div></blockquote>
+</section>
+<section id="d-membrane-vibrations">
+<h2>2D membrane vibrations.<a class="headerlink" href="#d-membrane-vibrations" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" /></p>
+<p>Wave function of 2D membrane with fixed edges has two independent variables x and y.</p>
+<div class="math notranslate nohighlight">
+\[u(x,y,t) =X(x)Y(y)T(t)\]</div>
+<ul class="simple">
+<li><p>Boundary on the <span class="math notranslate nohighlight">\(X\)</span> edge: <span class="math notranslate nohighlight">\(X(0)=X(L)=0\)</span>.</p></li>
+<li><p>Boundary on the <span class="math notranslate nohighlight">\(Y\)</span> edge: <span class="math notranslate nohighlight">\(Y(0)=Y(L)=0\)</span>.</p></li>
+</ul>
+<p>Now we will apply the same procedure as before:<br></p>
+<ol class="arabic simple">
+<li><p>Substitute into PDE to get ODEs. <br></p></li>
+<li><p>Solve for ODEs (applying boundary conditions). <br></p></li>
+<li><p>Put everything back together and obtain full solution.</p></li>
+</ol>
+<p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes.</p>
+<p>The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number <span class="math notranslate nohighlight">\(k_x\)</span> and <span class="math notranslate nohighlight">\(k_y\)</span>.</p>
+<p>Now can you guess what the solution would be fore the 3D case? :)</p>
 </section>
 </section>
 
@@ -479,7 +529,7 @@ Let us now turn this sinusoidal form into a wave traveling along x axis:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Outline for Lecture 2.1:</p>
+        <p class="prev-next-title">Waves</p>
       </div>
     </a>
 </div></div>
@@ -500,15 +550,17 @@ Let us now turn this sinusoidal form into a wave traveling along x axis:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#waves-waves-and-more-waves">Waves, waves and more waves</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal">Classification of waves by orientation: Transverse vs Longitudinal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-appearance-standing-vs-traveling">Classification of waves by appearance: Standing vs Traveling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-waves">Traveling waves.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-derivation">Wave interference: derivation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guitar-string-a-simple-toy-example-desired-by-wave-equation">Guitar string, a simple toy example desired by wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-by-separation-of-variables-a-technique-worth-remembering">Solving wave equation by separation of variables. A technique worth remembering!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-one-plug-product-of-univariate-functions-into-wave-equation">Step one: plug product of univariate functions into wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-two-after-decomposing-pde-into-odes-we-begin-solving-each-ode-one-by-one">Step two: After decomposing PDE into ODEs we begin solving each ODE one by one.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solve-the-ode-by-considering-all-cases-for-the-separating-constant-case-k-0">Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&gt;0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intermezzo: solve the ODE by considering all cases for the separating constant. Case K&lt;0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solutions-for-wave-equation-are-also-called-normal-modes">Intermezzo: Solutions for wave equation are also called normal modes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-wave-equation">Interpretation of solution to wave equation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 </ul>
   </nav></div>
 

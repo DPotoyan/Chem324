@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Photoelectric effect" href="note03.html" />
-    <link rel="prev" title="Why Quantum mechanics?" href="note01.html" />
+    <link rel="prev" title="Why Quantum mechanics" href="note01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -163,26 +163,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">1.  Intro to Quantum Mechanics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="note01.html">Why Quantum mechanics?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Why Quantum mechanics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The need for quantization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Photoelectric effect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Wave-particle duality</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Outline for Lecture 2.1:</a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
 </ul>
 </li>
 </ul>
@@ -331,7 +320,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-vs-classical-view-on-energy-levels">Quantum vs Classical view on Energy levels.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
@@ -343,7 +332,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-frequency-limit">Low frequency limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-frequency-limit">High frequency limit</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
@@ -368,13 +361,13 @@ document.write(`
 <li><p>Key historical developments leading to the birth of QM are <em>black body radiation</em>, <em>double slit experiment</em>, <em>photoelectric effect</em></p></li>
 </ul>
 </div>
-<section id="quantum-vs-classical-view-on-energy-levels">
-<h2>Quantum vs Classical view on Energy levels.<a class="headerlink" href="#quantum-vs-classical-view-on-energy-levels" title="Permalink to this heading">#</a></h2>
+<section id="quantization-of-energy">
+<h2>Quantization of energy<a class="headerlink" href="#quantization-of-energy" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>In Classical mechanics (CM)</strong>: Energy can take any value! Think of climbing a continuous ramp.</p></li>
-<li><p><strong>In Quantum mechanics (QM)</strong>: Energy can only take certain discrete values! Think of a staircase (<span class="math notranslate nohighlight">\(1 E\)</span>, <span class="math notranslate nohighlight">\(2 E\)</span>, <span class="math notranslate nohighlight">\(3 E\)</span>… are okay, but <span class="math notranslate nohighlight">\(2.5 E\)</span>, <span class="math notranslate nohighlight">\(0. E\)</span> or <span class="math notranslate nohighlight">\(1.99 E\)</span> are not allowed). Energy is quantized!
-<img alt="" src="../_images/lec1_ladder.jpg" /></p></li>
+<li><p><strong>In Classical mechanics (CM)</strong>: Energy can take any value! Think of climbing a continuous ramp</p></li>
+<li><p><strong>In Quantum mechanics (QM)</strong>: Energy can only take certain discrete values! Think of a staircase (<span class="math notranslate nohighlight">\(1 E\)</span>, <span class="math notranslate nohighlight">\(2 E\)</span>, <span class="math notranslate nohighlight">\(3 E\)</span>… are okay, but <span class="math notranslate nohighlight">\(2.5 E\)</span>, <span class="math notranslate nohighlight">\(0. E\)</span> or <span class="math notranslate nohighlight">\(1.99 E\)</span> are not allowed). Energy is quantized!</p></li>
 </ul>
+<img alt="../_images/lec1_ladder.jpg" class="align-center" src="../_images/lec1_ladder.jpg" />
 </section>
 <section id="electromagnetic-spectrum-emitting-objects-and-associated-temperatures">
 <h2>Electromagnetic spectrum, emitting objects and associated Temperatures.<a class="headerlink" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures" title="Permalink to this heading">#</a></h2>
@@ -390,9 +383,8 @@ document.write(`
 <p><img alt="Definitions of wavelength  and frequency ." src="../_images/lec1_wavelen_freq_c.jpg" /></p>
 <hr class="docutils" />
 <p>Wavelength <strong><span class="math notranslate nohighlight">\(\lambda\)</span></strong> and frequency <strong><span class="math notranslate nohighlight">\(\nu\)</span></strong> of light are inversely proportional with constant of proportionality being the speed of light <strong>c</strong>:</p>
-<div style="background-color: #fefbd8">
- $$\lambda \nu = c$$
-</div>
+<div class="math notranslate nohighlight">
+\[\lambda \nu = c\]</div>
 <ul class="simple">
 <li><p>Think of wavelength as distance between wave peaks
 (nanometers, nm)</p></li>
@@ -476,18 +468,11 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 </section>
 <section id="how-planks-quantization-postulate-explains-black-body-radiation">
 <h2>How Plank’s quantization postulate explains black body radiation<a class="headerlink" href="#how-planks-quantization-postulate-explains-black-body-radiation" title="Permalink to this heading">#</a></h2>
-<p>According to classical mechanics, on average each degree of freedom of an oscillator gets <span class="math notranslate nohighlight">\(kT\)</span> of thermal energy.</p>
-<div class="math notranslate nohighlight">
-\[\langle E \rangle=kT\]</div>
-<p>On average each degree of freedom of oscillator ends up getting:</p>
+<p>If we account for quantization of energy into <span class="math notranslate nohighlight">\(h\nu\)</span>, <span class="math notranslate nohighlight">\(2h\nu\)</span>, … units then average energy of oscillator is given via the following distribution</p>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle=k_B T\Bigg[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Bigg ]\]</div>
-<p>These expression are obtained by taking averages over energy values of oscillators weighted by Boltzman distribution which governs the thermal equilibrium:</p>
-<ul class="simple">
-<li><p>For classical case average is over continuum of energies $<span class="math notranslate nohighlight">\(\langle E \rangle = \int  p(x) E(x) dx\)</span><span class="math notranslate nohighlight">\( with \)</span>E(x)=kx^2/2<span class="math notranslate nohighlight">\( and \)</span>P(E)\sim e^{-E(x)/kT}$</p></li>
-<li><p>For quantum case average is a sum over discrete values $<span class="math notranslate nohighlight">\(\langle E \rangle = \sum_n p_n E_n\)</span><span class="math notranslate nohighlight">\( with \)</span>E_n=nh\nu<span class="math notranslate nohighlight">\( for quantum oscillators \)</span>P(E_n)\sim e^{-E_n/k_B T}$.</p></li>
-</ul>
-<hr class="docutils" />
+<section id="low-frequency-limit">
+<h3>Low frequency limit<a class="headerlink" href="#low-frequency-limit" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy <span class="math notranslate nohighlight">\(k_BT\)</span> populates lots of quantum levels with low enough frequencies.</p></li>
 </ul>
@@ -495,6 +480,9 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 \[h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}\]</div>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT\]</div>
+</section>
+<section id="high-frequency-limit">
+<h3>High frequency limit<a class="headerlink" href="#high-frequency-limit" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>At high frequencies we see that the exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:</p></li>
 </ul>
@@ -502,6 +490,7 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 \[h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty\]</div>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0\]</div>
+</section>
 </section>
 <section id="quantization-of-atomic-spectra">
 <h2>Quantization of atomic spectra.<a class="headerlink" href="#quantization-of-atomic-spectra" title="Permalink to this heading">#</a></h2>
@@ -569,7 +558,7 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Why Quantum mechanics?</p>
+        <p class="prev-next-title">Why Quantum mechanics</p>
       </div>
     </a>
     <a class="right-next"
@@ -599,7 +588,7 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-vs-classical-view-on-energy-levels">Quantum vs Classical view on Energy levels.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
@@ -611,7 +600,11 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-frequency-limit">Low frequency limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-frequency-limit">High frequency limit</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
