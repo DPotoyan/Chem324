@@ -7,7 +7,7 @@
 
 
 
-## Variational method
+### Variational theorem
 
 Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy.
 
