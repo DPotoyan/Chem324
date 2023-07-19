@@ -1,9 +1,13 @@
 
 ## Waves
 
-- **A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!**
-- **The wave equation, a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.**
-- **Waves can be standing or travelling. Transverse or longitudinal.**
+```{admonition} What you need to know
+:class: note
+- A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!
+- The wave equation, a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.
+- Waves can be standing or travelling. Transverse or longitudinal.
+```
+
 
 
 ### Waves, waves and more waves
@@ -25,7 +29,7 @@
 
 - Standing waves move in place. 
 
-### Describing waves mathematically part 1: functional form for a generic wave.  
+### Defining wave mathematically  
 
 Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via: $u(x,t) = f(x, t)$.
 
@@ -51,7 +55,7 @@ $$y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)$$
 > Flashback to first lecture when we had this relationship of wavelength to speed of wave and frequency via $\lambda \nu = v$ and $\nu=\frac{1}{T}$
 
 
-### Describing waves mathematically part 2: wave equation. 
+### Wave equation. 
 
 We obtain equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
 
