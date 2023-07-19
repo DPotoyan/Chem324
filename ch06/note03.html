@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch06/note03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Outline for Lecture 6.3: “Linear variational method: qucik dive into linear algebra world of QM”" href="note04.html" />
-    <link rel="prev" title="Outline for Lecture 6.0: “Perturbation Method”" href="note02.html" />
+    <link rel="next" title="Linear variational method: qucik dive into linear algebra world of QM" href="note04.html" />
+    <link rel="prev" title="Perturbation Method" href="note02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,15 +201,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Outline for Lecture 5.2:  “Spin”</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Approximations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="note01.html">Outline for Lecture 6.0:  “Approximation methods of QM”</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note02.html">Outline for Lecture 6.0:  “Perturbation Method”</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">6. Approximations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Approximation methods of QM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Perturbation Method</a></li>
 
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Variational Method</a></li>
 
-
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Outline for Lecture 6.3:  “Linear variational method: qucik dive into linear algebra world of QM”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Linear variational method: qucik dive into linear algebra world of QM</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multi-electron systems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -365,8 +364,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variational method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-theorem">Variational theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-h-atom-trial-function">Example: H-atom trial function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-gives-the-best-values-of-paramaters-in-trial-functions">Minimization gives the best values of paramaters in trial functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-optimized-vs-true-values">Comparison of optimized vs true values</a></li>
@@ -397,9 +396,8 @@ document.write(`
 <li><p>In variational method one first makes an “educated” guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.</p></li>
 <li><p>Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.</p></li>
 </ul>
-</section>
-<section id="id1">
-<h1>Variational method<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="variational-theorem">
+<h2>Variational theorem<a class="headerlink" href="#variational-theorem" title="Permalink to this heading">#</a></h2>
 <p>Any trial function <span class="math notranslate nohighlight">\(\mid \phi \rangle\)</span> we come up with the energy computed with it will always be greater or equal to exact or true energy.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -410,6 +408,7 @@ E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \p
 <li><p>By minimizing the energy functions we can make most accurate prediction for a given trail function.</p></li>
 <li><p>More parameters give us more handles to vary and get more acurate solutions.</p></li>
 </ol>
+</section>
 <section id="example-h-atom-trial-function">
 <h2>Example: H-atom trial function<a class="headerlink" href="#example-h-atom-trial-function" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -567,7 +566,7 @@ H_{N1}-ES_{11} &amp; H_{N2}-ES_{N2}  &amp; \dots &amp; H_{NN}-ES_{NN}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Outline for Lecture 6.0:  “Perturbation Method”</p>
+        <p class="prev-next-title">Perturbation Method</p>
       </div>
     </a>
     <a class="right-next"
@@ -575,7 +574,7 @@ H_{N1}-ES_{11} &amp; H_{N2}-ES_{N2}  &amp; \dots &amp; H_{NN}-ES_{NN}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Outline for Lecture 6.3:  “Linear variational method: qucik dive into linear algebra world of QM”</p>
+        <p class="prev-next-title">Linear variational method: qucik dive into linear algebra world of QM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -597,8 +596,8 @@ H_{N1}-ES_{11} &amp; H_{N2}-ES_{N2}  &amp; \dots &amp; H_{NN}-ES_{NN}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variational method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-theorem">Variational theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-h-atom-trial-function">Example: H-atom trial function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-gives-the-best-values-of-paramaters-in-trial-functions">Minimization gives the best values of paramaters in trial functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-optimized-vs-true-values">Comparison of optimized vs true values</a></li>
