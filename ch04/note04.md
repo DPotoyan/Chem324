@@ -1,16 +1,16 @@
-## Outline for Lecture 4.3:  
+## Rigid Rotor  
 
+```{admonition} What you need to know
+:class: note
 - The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.
 - Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers. 
 - Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals. 
 - The selection rule is established via the recursion relation of spherical harmonics.
 - Coupling of vibrational degrees leads to rovibronic transitions and necessitates the inclusion of vibrational quantum numbers for a more accurate account of transitions. 
+```
 
 
-
-
-
-## Classical picture: Rotating dumbbell
+### Classical picture: Rotating dumbbell
 
 The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation: 
 
@@ -31,7 +31,7 @@ Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia
 
 
 
-## Quantum rigid rotor and angular momentum operator 
+### Quantum rigid rotor and angular momentum operator 
 
 The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
 
@@ -93,7 +93,7 @@ $$
 - The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
 -  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerges from  the solution of $\phi $ part. 
 
-## Spherical harmonics
+### Spherical harmonics
 
 The eigenfunctions of the rigid rotor, $Y_{J,m}(\theta,\phi)$ are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of [atomic orbital](https://en.wikipedia.org/wiki/Atomic_orbital) [electron configurations](https://en.wikipedia.org/wiki/Electron_configuration), representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.
 
@@ -169,7 +169,7 @@ Thus be measuring this spectral line difference, we can extract structural infor
 
 
 
-## Rotational-virbational transitions
+### Rotational-virbational transitions
 
 Rotational transitions often accompany the transitions in vibrational levels. The simplest  model for joint vibrational and rotational transitions is a combination of a harmonic oscillator with rigid rotor models:
 

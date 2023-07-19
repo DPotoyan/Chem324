@@ -1,12 +1,14 @@
-## Outline for Lecture 4.4:  
+## Angular momentum  
 
+```{admonition} What you need to know
+:class: note
 - Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact reduces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more. 
 - Similarly, in quantum mechanics, angular momentum plays a central role in understanding the structure of atoms, as well as other quantum problems that involve rotational symmetry. Like other observable quantities, angular momentum is described in QM by an operator. This is in fact a vector operator, similar to momentum operator. However, contrary to the linear momentum operator, the three components of the angular momentum operator do not commute!
 - In QM, there are several angular momentum operators: the total angular momentum (usually denoted by $J$), the orbital angular momentum (usually denoted by $L$ ) and the intrinsic, or spin angular momentum (denoted by $S$). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.
+```
 
 
-
-## Angular momentum: classical
+### Angular momentum: classical
 
 Consider a particle of mass m, momentum $\vec{p}$ and position vector $\vec{r}$ with respect to a fixed origin, $r = 0$. In classical mechanics, the particle’s orbital angular momentum is given by a vector$\vec{L}$ , defined by
 
@@ -34,7 +36,7 @@ L_z = xp_y-yp_x
 $$
 
 
-## Angular momentum: quantum
+### Angular momentum: quantum
 
 
 
@@ -107,10 +109,7 @@ $$
 \hat{L}^2= -\hbar^2\Big [  \frac{1}{\sin\theta} \frac{\partial}{\partial \theta}\Big( \sin\theta \frac{\partial}{\partial \theta}\Big)-\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial \phi^2}     \Big]=-\hbar^2\nabla_{\theta,\phi}
 $$
 
-
-
-
-## Eienfunctions and eigenvalues 
+### Eienfunctions and eigenvalues 
 
 Since $[\hat{L}^2,\hat{L}_z]$ we know that operators of angular momentum and its projection have common eigenfunctions which are the spherical harmonics. 
 
@@ -119,7 +118,6 @@ $$
 \hat{L^2}Y(\theta,\phi) = \hbar^2 l(l+1)Y(\theta,\phi) \\
 \hat{L}_zY(\theta,\phi) = \hbar m_l Y(\theta,\phi)
 $$
-
 
 
 - Quantum number $l$ determines magnitude  $L =\hbar\sqrt{l(l+1)}$ where $l=0,1,..$

@@ -1,5 +1,7 @@
-## Outline for Lecture 4.2:  Quantum Oscillators 
+## Quantum Oscillators 
 
+```{admonition} What you need to know
+:class: note
 In this section we study quantum mechanical version of [harmonic oscillator](https://en.wikipedia.org/wiki/Harmonic_oscillator). Harmonic oscillators have ubqiutuous presence in everyday world: beads bound by a spring which vibrate around equilibirum positions. Turns out beads on a pring is remarkably common in microsocpic world as nuclie of atoms in solids or molecules are in some sense "quantum beads" vibrating around equilibriu position of "quantum springs". The distinction between quantum vs classical regimes will again be highly illuminating about the role of quantum effects on small scales. The key topics we will learn are:
 
 - **Quantization of vibrational degrees of freedom in molecules.** This has implication for Infrared and raman spectroscopies, molecular mechancis and condensed matter in general.  
@@ -7,10 +9,9 @@ In this section we study quantum mechanical version of [harmonic oscillator](htt
 - **Hermite Polynomials as orthogonal eigenfunctions.** This will be our first foray into the world od special functions. 
 - **Raising and lower operators as elegant way of solving problems.** This will be our first introduction to raising and lowering operators which provide highly elegant way of solving problems in quantum mechanics. 
 - **Effects of unharmonicity.** We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation. 
+```
 
-
-
-## Bead, spring and a wall. 
+### Bead, spring and a wall. 
 
 The classical **harmonic oscillator** is a system of bead attached to a wall with a spring. When bead is displaced from its equilibrium or resting position $r_0$ to some point $r$, experiences a restoring force $F$ proportional to the displacement $x=r-r_0$:
 
@@ -24,7 +25,7 @@ The above expression is also known as **Hooke's law**, where minus sign indicate
 
 
 
-## Solving harmonic oscillator problem
+### Solving harmonic oscillator problem
 
 The classical equation of motion for a one-dimensional simple harmonic oscillator with a particle of mass mm attached to a spring having spring constant kk is
 
@@ -42,7 +43,7 @@ $$x(t)= A sin(\omega t+\phi)$$
 
 Where the two constnants  are: $A$ the amplitude of oscillations and $\phi$ is constant specifying the initial position of the bead. 
 
-## Conservative system 
+### Conservative system 
 
 In the simple harmonic oscillator problem $F$ is the only force acting on the system.  We way that the system is conservative becasue the kinetic and potential energies keep being interconverted with no amount of total energy being of the system being dissipated into the environment. This will be true in a vaccuum where there is no friction.  For a simple harmonic oscillatorthe oscillations go on forever with position $x(t)$ velocity $v=\dot{x}(t)$ and acceleration $a=\ddot{x(t)}$ with same constant frequency $\omega$ but with different amplitudes.  
 
@@ -63,7 +64,7 @@ $$V(x)=\frac{kx^2}{2}$$
 
 
 
-## Conservation of total energy
+### Conservation of total energy
 
 Kinetic energy is the familiar expression expressed either via momentum $p=mv$ or velocity $v=\dot{x}$
 
@@ -73,7 +74,7 @@ Note that while both kinetic and potential energies oscilate over time, the tota
 
 
 
-## Diatomic molecule and two-body problem
+### Diatomic molecule and two-body problem
 
 ![](./images/osc-2.jpeg)
 
@@ -91,7 +92,7 @@ $$x_{com}=\frac{m_1x_2+x_2 m_2}{m_1+m_2}$$
 
 
 
-## Effective mass of vibration
+### Effective mass of vibration
 
 $$m_1\ddot{x_1}=kx \\  m_2\ddot{x_2}=-kx$$
 
@@ -107,7 +108,7 @@ This equation looks identical to the probel of bead anchored to wall with a spri
 
 
 
-## Beads and springs model of molecules
+### Beads and springs model of molecules
 
 Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down?
 
@@ -123,7 +124,7 @@ Hence we see that the Harmonic approximation is only the first non vanishing ter
 
 
 
-## Qunatum mechanical harmonic oscillator problem
+### Qunatum mechanical harmonic oscillator problem
 
 Quantum mechanical harmonic oscillator is defined by its Hamitlon operator
 
@@ -136,7 +137,7 @@ $$\hat{H}\psi(x)=E\psi(x)
 
 What we have is ODE **but with non-constant coefficients**! What this means is we can not use our exponential trick to quickly solve the problem via an algebraic equation. We will, however be able to solve it via an elegant opeator technique. 
 
-## Vibrational energy is quantized
+### Vibrational energy is quantized
 
 Particle in a box syste, showed that translational energy is quantized becasue of the boundary conditions imposed by the box. 
 
@@ -164,7 +165,7 @@ The frequency of photon that takes harmonic oscillator from one to next level is
 
 ![](./images/sho-psi2-6.png)
 
-## Selection rule
+### Selection rule
 
 In physics and chemistry, a selection rule, or transition rule, formally constrains the possible transitions of a system from one quantum state to another. Selection rules have been derived for electromagnetic transitions in molecules, in atoms, in atomic nuclei, and so on. The selection rules may differ according to the technique used to observe the transition:
 
@@ -180,7 +181,7 @@ $$\Delta v =\pm1$$
 
  can occur within harmonic oscillator approximation. Furthermore only those modes are observed in IR for which dipole moment changes with vibrational coordinates. 
 
-## Unharmonic correction of harmonic oscillator
+### Unharmonic correction of harmonic oscillator
 
 Harmonic oscillator is an approximation valid when vibrations are confined to the vicinity of equilibrium bond. For larger vibrations unharonic effects (next terms in taylro expansion) become important. 
 $$
@@ -195,7 +196,7 @@ A correction accounting for unharmonic effects is introuced which softens the ch
 
 
 
-## Vibrational degrees of freedom
+### Vibrational degrees of freedom
 
 - Any non-linear molecule with N atoms has 3N degrees of freedom out of which 3 are translation of center of mass 3 are rotationa around x,y,z axis and the remaining are 3N-6 corrrespdond to internal vobrational motions.  Below is an example of rotional and vibrational degrees of freedom for water molecule. 
 
@@ -206,7 +207,7 @@ A correction accounting for unharmonic effects is introuced which softens the ch
 ![](./images/9lmT8.jpg)
 
 
-## IR spectrum vs Raman spectrum
+### IR spectrum vs Raman spectrum
 
 ![](./images/Vibrational-modes-of-CO2-a-triatomic-linear-molecule-and-their-IR-Raman-activities.jpg)
 
@@ -231,7 +232,7 @@ Normal modes of large biomolecules like proteins contain important information a
 
 
 
-## Solving harmonic oscillator porblem via ladder operators.
+### Solving harmonic oscillator porblem via ladder operators.
 
 Eigenfunctions and eigenvalues of harmonic oscillator can be found via a rather elegant operator technique. The basic idea is to factor the quadratic operator expressions in the  hamiltonian into product of two operators that we call $a^{+}$ and $\hat{a}^{-}$. These two operators turn out to have a neat property of kicking eigenfunctions up and down to the adjacent eigenfunctions. These are known as ladder operators or raising and lowering operators or sometimes also called more dramatic names like **creation and destruction operators.** The facotrization is shown below: 
 

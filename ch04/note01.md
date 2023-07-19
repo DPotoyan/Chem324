@@ -1,16 +1,20 @@
 
 
-## Outline for Lecture 4.0:  
+## Breakdown of energy of a molecule
 
+```{admonition} What you need to know
+:class: note
 Having found that the energy of bound systems is quantized our next goal is to invesitaget differen tmanifestations of these quantization and ways of probing it in experiments via spectroscopy. On the example of exactly solvable simple toy systems  we will study the specifics of quantization of different **degrees of freedom (DOF)** found in molecules. Degrees of freedom of molecule fall into **translational, rotational, vibrational and electronic motion.** 
 
 - **Particle in a box.** (quantization of translational DOF)
 - **Harmonic oscillator** (quantization of vibrational DOF)
 - **Rigid rotor.**  (quantization of rotational DOF)
+```
 
 
 
-## Big picture: Energies of molecules
+
+###  Energies of molecules
 
 Molecules conssiting of N nuclei and n electrons are descibed by wave functions that depends on 3(n+N) variables in 3D space.  These coordinates or degrees of freedom (DOF)  are useful to break down into different kinds of motions classified as translational, rotational, vibrational and also electronic. Due to the fact that molecules are microscopic objects we expect these energies to all be quantized. The relative spacings, however, are going to be different to a signficant extent due to boundary conditions restricting the motions of these DOFs. This is why there exists different kinds of spectrosocopies for probing the specific degrees of freedom in molecules
 
@@ -22,13 +26,13 @@ $$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
 
 
-## 3N Nuclear degrees of freedom 
+### 3N Nuclear degrees of freedom 
 
 ![](./images/mol-DOF.jpg)
 
 
 
-## Separation of variables, assumption of independence
+### Separation of variables, assumption of independence
 
 Due to significant differnece between energy levels it is reasonable to assume that these degrees of freedom would be independent of each other. Mathematically this is the the separation of variables we have come to employ in differernt problems. 
 

@@ -1,12 +1,12 @@
 
-## Outline for Lecture 6.2:  "Variational Method"
+## Variational Method
 
 - Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values.
 - In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.
 - Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.
 
 
-<!-- slide -->
+
 ## Variational method
 
 Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy.
@@ -24,7 +24,7 @@ $$
 3. More parameters give us more handles to vary and get more acurate solutions.
 
 
-<!-- slide -->
+
 ### Example: H-atom trial function
 
 - Exact solution for ground state: $\psi(r)=\frac{1}{(\pi a^3_0)^{1/2}}e^{-r/a_0}$ and $E_1 = -0.5 h$
@@ -47,7 +47,7 @@ E_{trial}(\alpha)=\frac{3\hbar^2 \alpha}{2m_e}-\frac{e^2 \alpha^{1/2}}{\sqrt{2}\
 $$
 
 
-<!-- slide -->
+
 ### Minimization gives the best values of paramaters in trial functions
 
 $$
@@ -65,7 +65,7 @@ $$
 - We need to plug this parameters back into energy function to get the  energy minimized with respect to $\alpha$, e.g $E(\alpha_{min})$
 
 
-<!-- slide -->
+
 ### Comparison of optimized vs true values
 
 
@@ -85,7 +85,7 @@ $$
 
 
 
-<!-- slide -->
+
 ## Variational method as applied to linear combinations of trial functions
 
 
@@ -97,7 +97,7 @@ $$
 - $f_i$ Trial functions
 - Example: $\phi(x) = c_1 sin (2x)+c_2 sin(2x)$
 
-<!-- slide -->
+
 ### Minimizing energy by varying linear coefficients
 
 $$
@@ -113,7 +113,7 @@ E(c_1,c_2,...c_N) = \frac{\sum_i \sum_j c_i c_j\langle f_i \mid \hat{H} \mid f_j
 $$
 
 
-<!-- slide -->
+
 ### It's a linear algebra problem
 
 $$\mid \phi\rangle = c_1\mid f_1\rangle+ c_1\mid f_2\rangle$$
@@ -137,7 +137,7 @@ H_{21}-ES_{21} & H_{22}-ES_{22}  \\
 $$
 
 
-<!-- slide -->
+
 ### Determinant for  N trial functions
 
 Variational minimization of coeffients of  N trial functions $(c_1, c_2,...c_N)$ leads to an N by N determinant:
