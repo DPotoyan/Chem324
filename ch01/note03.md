@@ -1,13 +1,19 @@
 
-# Outline for Lecture 1.2: 
+## Photoelectric effect
 
 ![](./images/lec2_intro.png)
 
-**Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.**
+```{admonition} What you need to know
+:class: note
 
-**Only by abandoning classical thinking and accepting the reality of quantized energy reconciles experiments with theory.**
+- Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.
 
-## Photoelectric effect contradicts classical mechanics.
+- Only by abandoning classical thinking and accepting the reality of quantized energy reconciles experiments with theory.
+```
+
+
+
+### Photoelectric effect contradicts classical mechanics.
 
 - To reconcile experiment with theory Planck had to assume that a heated material absorbs and emits light with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$.  At a time this discreteness was thought to be nothing more than a temporary mathematical trick to fix theory. 
 
@@ -17,21 +23,21 @@
 
 
 
-## Photoelectric effect
+### Photoelectric effect
 
 ![](./images/lect2_Eflying.png)
 
 When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interacts with the matter.
 
 
-## Applications of photoelectric effect
+### Applications of photoelectric effect
 
 Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. 
 
 ![](./images/lec2_applic.jpg){width=40%}
 
 
-## Failure of classical way of thinking about light. 
+### Failure of classical way of thinking about light. 
 
 Early experiments of photoelectric effect appeared truly puzzling to scientists of the 20th century for the following reasons:
 

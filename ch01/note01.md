@@ -1,14 +1,14 @@
 
 ## Why Quantum mechanics?
 
-`````{admonition} Quantum Mechanics
+`````{admonition} What you need to know
 :class: note
 - Quantum mechanics is the fundamental theory of nature which describes the smallest scales and energy levels of atoms and subatomic particles. 
  - Quantum theories (including quantum mechanics and quantum field theory) are complete theories of our physical reality which have never failed since their discovery!  
   - Predictions of quantum mechanics have been verified experimentally to an extremely high degree of accuracy. 
 `````
 
-![](./figs/qm.png)
+![](./images/qm.png)
 
 
 ### Beware, Quantum Mechanics is weird! 
@@ -16,7 +16,7 @@
 - This is, in fact, is an understatement. Don't take my word for it take Richard Feynman's word: 
 
 
-```{image} ./figs/feynman.png
+```{image} ./images/feynman.png
 :align: center
 ```
 
@@ -64,7 +64,7 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 
 - Well if the above-given reasons were not enough for you... let me sweeten the deal by saying you will also be able to get popular references and up your meme game to include "quantum" jokes like this one:
 
-![](./figs/qm_meme.jpeg)
+![](./images/qm_meme.jpeg)
 
 
 
