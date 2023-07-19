@@ -1,5 +1,3 @@
-
-
 ## Postulates of quantum mechanics.  
 
 ```{admonition} What you need to know

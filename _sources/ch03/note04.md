@@ -9,13 +9,7 @@
 
 - Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of superimposed states. 
-
 ```
-
-
- 
-
-
 
 ### Vectors, what are they?
 

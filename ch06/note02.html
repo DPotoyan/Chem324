@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Outline for Lecture 6.0: “Perturbation Method” &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/book_style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch06/note02';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variational Method" href="note03.html" />
+    <link rel="prev" title="Outline for Lecture 6.0: “Approximation methods of QM”" href="note01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Wave-particle duality</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02.html">Probabilistic meaning of wave function and toy systems of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03.html">Postulates of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note04.html">Mathematics of Quantum Mechanics</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note01.html">Breakdown of energy of a molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note02.html">Particle in a Box (PIB):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03.html">Quantum Oscillators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note05.html">Angular momentum</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/note01.html">Outline for Lecture 5.0:  “Hydrogen atom”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/note02.html">Outline for Lecture 5.1:  “Schrodinger equation for Hydrogen atom”</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../ch05/note03.html">Outline for Lecture 5.2:  “Spin”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note01.html">Outline for Lecture 6.0:  “Approximation methods of QM”</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Outline for Lecture 6.0:  “Perturbation Method”</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="note03.html">Variational Method</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="note04.html">Outline for Lecture 6.3:  “Linear variational method: qucik dive into linear algebra world of QM”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/note01.html">Outline for Lecture 7.0:  “Multi-electron systems”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/note02.html">Outline for Lecture 7.1:  “Multi-electron atoms: Pauli exclusion, Hund rules”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/note03.html">Outline for Lecture 7.2:  “Born-Oppenheimer approximation and the nature of chemical bond”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/note04.html">Outline for Lecture 7.3:  “Molecular Orbitals”</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch06/note02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Outline for Lecture 6.0:  “Perturbation Method”</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 6.0:  “Perturbation Method”</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-perturbations">Time independent perturbations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-just-like-taylor-expansions">It’s just like Taylor expansions!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#petrubation-equations-of-order-0-1-and-2">Petrubation equations of order 0, 1 and 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-the-normalization">Fixing the normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-correction-to-energy-e-1-n">1st order correction to energy <span class="math notranslate nohighlight">\(E^1_n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-correction-to-eigenfunction-mid-n-1-rangle">1st order correction to eigenfunction <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-order-correction-obtaining-expression-for-e-2-n">2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(E^2_n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-order-correction-obtaining-expression-for-mid-n-1-rangle">2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-energy-perturbations">Ground state energy perturbations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-magnetic-field">Example-1: Magnetic field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-particle-in-a-box">Example-2: Particle in a box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exaple-3-unharmonic-oscillator">Exaple-3 Unharmonic oscillator</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="outline-for-lecture-6-0-perturbation-method">
+<h1>Outline for Lecture 6.0:  “Perturbation Method”<a class="headerlink" href="#outline-for-lecture-6-0-perturbation-method" title="Permalink to this heading">#</a></h1>
+<ul>
+<li><p><em>Perturbation theory</em>, attempts to solve analytically intractable problem by idintifying an exactly <em>sovable</em> part and a <em>“small”</em> pertrubation. The method is similair in spirit to taylor expansion of functions familiar from calculus and is the single most important method of solving problems in quantum mechanics.</p></li>
+<li><p>Application of pertrubation theory proceeds in two steps. Step one identify solvable part and perturbation. Part two expand energy and eigenfunctions as series of corrections of increasing order. In particle first and second order corrections to energy suffice.</p>
+<p><img alt="" src="ch06/images/perturb1.png" /></p>
+</li>
+</ul>
+</section>
+<section id="time-independent-perturbations">
+<h1>Time independent perturbations<a class="headerlink" href="#time-independent-perturbations" title="Permalink to this heading">#</a></h1>
+<p>We have hamiltonian <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> for some exactly solvable problem think particle in a box, harmonic oscilator, etc:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}^0 \mid n^0\rangle=E^0_n \mid n^0\rangle
+\]</div>
+<ul class="simple">
+<li><p>Note the 0 superscript: It indicates exactly solvable hamitlonian, eigenfunctions and eigenvalues. The  <span class="math notranslate nohighlight">\(\mid n^0\rangle\)</span> is the eigenfunction corepsonding to the nth eigenvalue <span class="math notranslate nohighlight">\(E^0_n\)</span>. Now we perturb the hamitlonian by adding a “small” pertrubation <span class="math notranslate nohighlight">\(\hat{H_1}\)</span>. Where  <span class="math notranslate nohighlight">\(\lambda\)</span> turns perturbation on <span class="math notranslate nohighlight">\(\lambda=1\)</span> and off <span class="math notranslate nohighlight">\(\lambda=0\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}=\hat{H}^0+\lambda {\hat{H}^1}
+\]</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>The objective of  perturbation theory is to solve the following problem with new hamiltonian expressed entirely in terms of eigenvalues and eigenfunctions of exactly solvable problems.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}\mid n\rangle =E_n \mid n\rangle
+\]</div>
+<section id="its-just-like-taylor-expansions">
+<h2>It’s just like Taylor expansions!<a class="headerlink" href="#its-just-like-taylor-expansions" title="Permalink to this heading">#</a></h2>
+<p>We assume that eigenvalues and eigenfunctions can be expanded in power series in the parameter <span class="math notranslate nohighlight">\(\lambda\)</span> to be set to 1 in the end.</p>
+<div class="math notranslate nohighlight">
+\[
+E_n =E^0_n+\lambda E^1_n+\lambda^2 E^2_n+...
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mid n\rangle = \mid n^0\rangle+\lambda\mid n^1\rangle+\lambda^2\mid n^2\rangle ...
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Big(\hat{H}^0+\lambda \hat{H}^1 \Big)\Big(\mid n^0\rangle+\lambda\mid n^1\rangle \Big)  = \Big(E^0_n+\lambda E^1_n+\lambda^2 E^2_n \Big) \Big(\mid n^0\rangle+\lambda\mid n^1\rangle\Big)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{split}\color{green}{\hat{H}^0 \mid n^0\rangle} + \lambda \color{red}{ \big (\hat{H}^1 \mid n^0\rangle + \hat{H}^0 \mid n^1\rangle \big)}+\lambda^2 \color{blue}{\hat{H}^1 \mid n^1\rangle }  = \\ = \color{green}{E^0_n \mid n^0\rangle} +\lambda \color{red}{ \big( E^1_n \mid n^0\rangle+ E^0_n \mid n^1\big )} +  \lambda^2\color{blue}{\big(E^1_n \mid n^1\rangle+E^2_n \mid n^0\rangle \big)}\end{split}
+\end{split}\]</div>
+</section>
+<section id="petrubation-equations-of-order-0-1-and-2">
+<h2>Petrubation equations of order 0, 1 and 2<a class="headerlink" href="#petrubation-equations-of-order-0-1-and-2" title="Permalink to this heading">#</a></h2>
+<p>Opening the brackets and collecting different orders of <span class="math notranslate nohighlight">\(\lambda\)</span> we have  0, 1 and 2nd order perturbation equations:</p>
+<div class="math notranslate nohighlight">
+\[
+\color{green}{\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\hat{H^1}\mid n^1\rangle = E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
+\]</div>
+<ul class="simple">
+<li><p>Note how the sum of  upstairs index determines the order of perturbation expansion</p></li>
+<li><p>Note that 0 order is just the exact solution.</p></li>
+<li><p>Note that hamitonian only has first order expansion while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems.</p></li>
+</ul>
+</section>
+<section id="fixing-the-normalization">
+<h2>Fixing the normalization<a class="headerlink" href="#fixing-the-normalization" title="Permalink to this heading">#</a></h2>
+<p>If we have normalization the zero order eigenfunctions, then unperturbed eigenfunctions will be orthogonal to all higher order eigenfunctions:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle n^0 \mid n^0 \rangle=1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\langle n^0\mid n\rangle = \langle n^0\mid n^0\rangle + \lambda\langle n^0\mid n^1\rangle=1+0+...
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\langle n^0 \mid n^{k} \rangle=0\,\,\, k=1,2,..
+\]</div>
+</section>
+<section id="st-order-correction-to-energy-e-1-n">
+<h2>1st order correction to energy <span class="math notranslate nohighlight">\(E^1_n\)</span><a class="headerlink" href="#st-order-correction-to-energy-e-1-n" title="Permalink to this heading">#</a></h2>
+<p>We multiply  first order pertrubation equation by <span class="math notranslate nohighlight">\(\langle n^0 \mid\)</span>.  The first terms on the right is zero becasue of rothogonality. The first term on left is alos zero because of orhtogonality and hermitian property :  <span class="math notranslate nohighlight">\(\langle n^0 \mid \hat{H}^0\mid n^1\rangle = \langle n^1 \mid \hat{H}^0\mid n^0\rangle^* = E^0_n \langle n^1 \mid n^0\rangle^* = 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{ \color{black}{\langle n^0} \mid \hat{H}^0\mid n^1\rangle +\color{black}{\langle n^0} \mid  \hat{H^1}\mid n^0\rangle = E^0_n\color{black}{\langle n^0} \mid n^1 \rangle+E^1_n \color{black}{\langle n^0} \mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{E_n^1 = \langle n^0 \mid \hat{H}^1\mid n^0 \rangle}
+\]</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>We have obtained the central result of pertrubation theory: <em>The 1st order correction to energy</em> <span class="math notranslate nohighlight">\(E^1_n\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E_n=\color{green}{E^0_n}+\color{red}{E^1_n}=\color{green}{E^0_n}+\color{red}{\langle n^0 \mid \hat{H}^1\mid n^0 \rangle}
+\]</div>
+<ul class="simple">
+<li><p>Note how this expression is different from expectation expressions we have seen before. Here the eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H}^0\)</span> sandwich the the pertrubation hamitlonian <span class="math notranslate nohighlight">\(\hat{H}^1\)</span> . The two hamitlonians in general do not share eigenfunctions!</p></li>
+</ul>
+</section>
+<section id="st-order-correction-to-eigenfunction-mid-n-1-rangle">
+<h2>1st order correction to eigenfunction <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span><a class="headerlink" href="#st-order-correction-to-eigenfunction-mid-n-1-rangle" title="Permalink to this heading">#</a></h2>
+<p>We express unknown first order eigenfunctions <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span> in terms of known eigenfunctions <span class="math notranslate nohighlight">\(\mid k^0 \rangle\)</span> which form complete basis set. Another conseuqence of hermitian operators.</p>
+<div class="math notranslate nohighlight">
+\[
+\mid n^1 \rangle = \sum_{k \neq n} c_{k} \mid k^0 \rangle
+\]</div>
+<ul class="simple">
+<li><p>The coefficients are <span class="math notranslate nohighlight">\(c_k =\langle k^0 \mid n^1 \rangle\)</span> .</p></li>
+<li><p>Becasue of orthogonality  <span class="math notranslate nohighlight">\(c_n=\langle n^0 \mid n^1 \rangle=0\)</span>   therefore we have indicates  <span class="math notranslate nohighlight">\(k\neq n\)</span> condition in the sum.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Inserting the expanstion of <span class="math notranslate nohighlight">\(\mid n^1\rangle\)</span> and this taking dot product with bra <span class="math notranslate nohighlight">\(\langle k^0 \mid\)</span> we find the coefficients of expansion:</p>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{\hat{H}^0\mid n^1\rangle +\hat{H^1}\mid n^0\rangle = E^0_n\mid n^1 \rangle+E^1_n\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{  \hat{H}^0 \color{black}{\sum_{k \neq n} c_k\mid k^0\rangle} +  \hat{H^1}\mid n^0\rangle = E^0_n  \color{black} {\sum_{k \neq n} c_k \mid k^0 \rangle} +E^1_n  \mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+c_k E^0_k + \langle k^0 \mid \hat{H}^1 \mid n^0\rangle  = c_k E^0_n
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+c_k = \frac{ \langle k^0 \mid \hat{H}^1 \mid n^0\rangle}{E^0_n-E^0_k}=\frac{H_{nk}}{E^0_n-E^0_k}
+\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[
+\mid n^1 \rangle = \sum_{k \neq n} c_{k} \mid k^0 \rangle = \sum_{k \neq n} \frac{H_{nk}}{E^0_n-E^0_k} \mid k^0 \rangle
+\]</div>
+<ul class="simple">
+<li><p>We we have intduced convenient notaation for matrix elements of pertrubed hamitlonian:</p></li>
+</ul>
+</section>
+<section id="nd-order-correction-obtaining-expression-for-e-2-n">
+<h2>2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(E^2_n\)</span><a class="headerlink" href="#nd-order-correction-obtaining-expression-for-e-2-n" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E_n^0\mid n^2\rangle+ E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\color{black}{\langle n^0 \mid }\hat{H^0} \mid n^2\rangle+\color{black}{\langle n^0 \mid }\hat{H^1}\mid n^1\rangle = E^0\color{black}{\langle n^0}\mid n^2\rangle+ E^1_n\color{black}{\langle n^0 \mid } n^1 \rangle+E^2_n \color{black}{\langle n^0}\mid n^0 \rangle}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle}
+\]</div>
+<ul class="simple">
+<li><p>Once again wetook dot product with bra <span class="math notranslate nohighlight">\(\langle n^0 \mid\)</span>.  First term on the left. is zero (hermitian+orthogonality). The firs two terms on the right are zero due to orthogonality.</p></li>
+<li><p>We are not done yet, the expression contains eigenfunction <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span> which we need to expres in terms of known solutions <span class="math notranslate nohighlight">\(\mid n^0 \rangle\)</span></p></li>
+</ul>
+</section>
+<section id="nd-order-correction-obtaining-expression-for-mid-n-1-rangle">
+<h2>2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span><a class="headerlink" href="#nd-order-correction-obtaining-expression-for-mid-n-1-rangle" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\color{black}{E^2_n = \langle n^0 \mid \hat{H}^1 \mid n^1 \rangle}= \sum_{k \neq n} c_k \langle n^0 \mid \hat{H}^1 \mid k^0 \rangle = \sum_{k \neq n} c_k H_{nk}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{E^2_n = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}
+\]</div>
+<ul class="simple">
+<li><p>The energy in the denominator is the difference between energy of a given state <span class="math notranslate nohighlight">\(E_n\)</span> from all other states <span class="math notranslate nohighlight">\(E_k\)</span> with k being the summation index.</p></li>
+<li><p>If the matrix elements of <span class="math notranslate nohighlight">\(\hat{H}^1\)</span> are of comparable magnitude the neighbouring levels make larger contributions that distance levels.</p></li>
+</ul>
+</section>
+<section id="ground-state-energy-perturbations">
+<h2>Ground state energy perturbations<a class="headerlink" href="#ground-state-energy-perturbations" title="Permalink to this heading">#</a></h2>
+<p>Let us write second order correction explicitely for the ground state for some exactly solvable hamiltonian <span class="math notranslate nohighlight">\(\hat{H^0}\)</span> pertrubed by <span class="math notranslate nohighlight">\(\hat{H^1}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+E_n = E^0_n+ H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid^2}{E^0_0-E^0_2}+ \frac{\mid H_{03}\mid^2}{E^0_0-E^0_3}+ ...
+\]</div>
+<ul class="simple">
+<li><p>Notice that for the ground state the second order correction thereofre will always be negative because <span class="math notranslate nohighlight">\(\Delta E_{0k}=E_0-E_k&lt;0\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="applications">
+<h1>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h1>
+<section id="example-1-magnetic-field">
+<h2>Example-1: Magnetic field<a class="headerlink" href="#example-1-magnetic-field" title="Permalink to this heading">#</a></h2>
+<p>Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom to which we have added a small pertrubation in the form of interation with magnetic field.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}=\hat{H}_0 + \frac{e}{2m_e} B \hat{L}_z =  \hat{H}_0 + \hat{H}^1
+\]</div>
+<ul class="simple">
+<li><p>Using 1st order pertrubation expression we can calculate for instance how ground state energy will be perturbed. Where on right hand side we define <span class="math notranslate nohighlight">\(R_H\)</span> as Rydberg’s and <span class="math notranslate nohighlight">\(\beta_B\)</span> as Bohr’s magneton, both constants.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E_0=E^0_0 + \langle 0\mid \hat{H}^1 \mid 0\rangle = -\frac{R_H}{n^2}+m_l \beta_B B
+\]</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>In a similiar way the effect of spin orbit coupling (<span class="math notranslate nohighlight">\(LS\)</span>)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} = \hat{H}_0 + A_{SO}\hat{L}\hat{S}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E=E_0+ A_{SO} \langle 0 \mid \hat{L} \hat{S}\mid 0 \rangle
+\]</div>
+</section>
+<section id="example-2-particle-in-a-box">
+<h2>Example-2: Particle in a box<a class="headerlink" href="#example-2-particle-in-a-box" title="Permalink to this heading">#</a></h2>
+<p>Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:</p>
+<div class="math notranslate nohighlight">
+\[
+V(x) = V_0\,\,\,\, 0 \leq x \leq \infty 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V(x) = +\infty  \,\,\, x \leq -\infty,\,\,\,\ x \geq \infty
+\]</div>
+<hr class="docutils" />
+<p>This problem can be seen as a particle in a box pertrubed by the presence of a potential energy <span class="math notranslate nohighlight">\(V_0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+E_n^1 = \langle n \mid V_0 \mid n \rangle = V_0 \cdot \frac{2}{L} \int^L_0 sin^2 \frac{n\pi x}{L}dx=V_0
+\]</div>
+<p>Thus we find that energy level of PIB are pertrubed by a constant shift up term:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = E^0_n+E^1_n \approx \frac{n^2 h^2}{8mL^2}+V_0
+\]</div>
+</section>
+<section id="exaple-3-unharmonic-oscillator">
+<h2>Exaple-3 Unharmonic oscillator<a class="headerlink" href="#exaple-3-unharmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<p>Unharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} = \hat{K}+ \frac{kx^2}{2} +\gamma x^3 = \hat{H}_0+\gamma x^3
+\]</div>
+<ul class="simple">
+<li><p>Using first order pertrubation  we find an interesting result after evaluating the integral to by using simple symmetry arguments.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E_n^1 = \langle 0\mid \gamma x^3 \mid n\rangle = \langle even/odd \mid odd \mid even /odd\rangle = 0
+\]</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>But energy levels surely must experience change since we added a new term to hamitlonian. To see the change we must therefore turn to second order and use ground state as an example</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E^2_0 =  \sum_{k \neq 0} \frac{\mid  \langle 0\mid \gamma x^3 \mid k\rangle \mid^2}{E^0_0-E^0_k} = \frac{\mid  \langle 0\mid \gamma x^3 \mid 1\rangle \mid^2}{E^0_0-E^0_1}+\frac{\mid  \langle n\mid \gamma x^3 \mid 3\rangle \mid^2}{E^0_0-E^0_3}+ ...
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E_0=E_0+E_1+E_2 = \frac{\hbar \omega}{2} + 0 + \frac{H^2_{01}}{\hbar \omega}+\frac{H^2_{03}}{2\hbar \omega}+ ...
+\]</div>
+<p>Thus we see that only terms odd terms of the sum contribute. The matrix elements need to be evaluated explicitly  using Hermite polynomials.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Outline for Lecture 6.0:  “Approximation methods of QM”</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variational Method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Outline for Lecture 6.0:  “Perturbation Method”</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-perturbations">Time independent perturbations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-just-like-taylor-expansions">It’s just like Taylor expansions!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#petrubation-equations-of-order-0-1-and-2">Petrubation equations of order 0, 1 and 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-the-normalization">Fixing the normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-correction-to-energy-e-1-n">1st order correction to energy <span class="math notranslate nohighlight">\(E^1_n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-correction-to-eigenfunction-mid-n-1-rangle">1st order correction to eigenfunction <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-order-correction-obtaining-expression-for-e-2-n">2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(E^2_n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-order-correction-obtaining-expression-for-mid-n-1-rangle">2nd order correction. Obtaining expression for <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-energy-perturbations">Ground state energy perturbations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-magnetic-field">Example-1: Magnetic field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-particle-in-a-box">Example-2: Particle in a box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exaple-3-unharmonic-oscillator">Exaple-3 Unharmonic oscillator</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
