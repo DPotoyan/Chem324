@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Rigid Rotor &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/book_style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Angular momentum" href="note05.html" />
+    <link rel="prev" title="Quantum Oscillators" href="note03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Wave-particle duality</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note01.html">Outline for Lecture 3.0: Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02.html">Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03.html">Postulates of quantum mechanics.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note04.html">Mathematics of Quantum Mechanics</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Model systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Breakdown of energy of a molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Particle in a Box (PIB):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Quantum Oscillators</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Angular momentum</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch04/note04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rigid Rotor</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-spherical-harmonics">Visualization of spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="rigid-rotor">
+<h1>Rigid Rotor<a class="headerlink" href="#rigid-rotor" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ul class="simple">
+<li><p>The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.</p></li>
+<li><p>Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers.</p></li>
+<li><p>Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals.</p></li>
+<li><p>The selection rule is established via the recursion relation of spherical harmonics.</p></li>
+<li><p>Coupling of vibrational degrees leads to rovibronic transitions and necessitates the inclusion of vibrational quantum numbers for a more accurate account of transitions.</p></li>
+</ul>
+</div>
+<section id="classical-picture-rotating-dumbbell">
+<h2>Classical picture: Rotating dumbbell<a class="headerlink" href="#classical-picture-rotating-dumbbell" title="Permalink to this heading">#</a></h2>
+<p>The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation:</p>
+<div class="math notranslate nohighlight">
+\[
+K=\frac{m_1 v_1^2}{2}+\frac{m_2 v_2^2}{2}=\frac{m_1 r_1^2+m_2 r^2_2}{2}\omega^2
+\]</div>
+<p>Where we have plugged in <span class="math notranslate nohighlight">\(v_1=\omega r_1\)</span> and <span class="math notranslate nohighlight">\(v_2=\omega_2 r\)</span> velocities of rotation of two masses rotating with frequency <span class="math notranslate nohighlight">\(\omega\)</span>. The classical mechanical problem of two masses is once again reducible to a single reduced mass <span class="math notranslate nohighlight">\(\mu\)</span> rotating around constant radius <span class="math notranslate nohighlight">\(r=r_1+r_2\)</span> rotating around center of mass <span class="math notranslate nohighlight">\(m_1 r_1=m_2 r_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(L=I \omega\)</span> is the angular momentum, the <span class="math notranslate nohighlight">\(I=\mu r^2\)</span> is moment of inertia and <span class="math notranslate nohighlight">\(\mu=\frac{m_1 m_2}{m_1+m_2}\)</span></p>
+</section>
+<section id="quantum-rigid-rotor-and-angular-momentum-operator">
+<h2>Quantum rigid rotor and angular momentum operator<a class="headerlink" href="#quantum-rigid-rotor-and-angular-momentum-operator" title="Permalink to this heading">#</a></h2>
+<p>The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass <span class="math notranslate nohighlight">\(\mu\)</span> wchih rotates around sphere of radius <span class="math notranslate nohighlight">\(r=const\)</span>. To incorporate constraint <span class="math notranslate nohighlight">\(r=const\)</span> it is more convenient to adopt spherical coordinates <span class="math notranslate nohighlight">\((x,y,z)\rightarrow (r,\theta,\phi)\)</span>. To the full laplacian in spherical coordinates is:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
+\]</div>
+<p>In rigid rotor approximation laplacian is reduced to an operator acting on two variables <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2_{\theta,\phi} =\frac{1}{r^2}\Big[\frac{1}{sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} \Big ]
+\]</div>
+<p>In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}=-\frac{\hbar^2}{2\mu}\nabla_{x,y,z}^2 = -\frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2=\frac{\hat{L}^2}{2I}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(I=\mu r^2\)</span> is the moment of inertia and where identified  the angular momentum operator as:
+$<span class="math notranslate nohighlight">\(
+\hat{L}= -i\hbar \nabla_{\theta,\phi}
+\)</span>$</p>
+</section>
+<section id="quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">
+<h2>Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.<a class="headerlink" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair" title="Permalink to this heading">#</a></h2>
+<p>Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. The eigenfunctions turn out to be well known special functions called spherical harmonics <span class="math notranslate nohighlight">\(Y(\theta,\phi)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}Y(\theta, \phi)=E_{J,m}Y(\theta,\phi)
+\]</div>
+<p>We are once again able to separet two angular variables and solve thr esulting ODE exactly:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{sin \theta}{\theta}\frac{d}{d\theta} \Big(sin \theta\frac{d\Theta(\theta)}{d\theta}\Big)+\beta sin^2 \theta = m^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 \Phi(\phi)}{d \phi^2}=-m^2\Phi(\phi)
+\]</div>
+<ul class="simple">
+<li><p>The constant <span class="math notranslate nohighlight">\(\beta = \frac{2IE}{\hbar^2}=J(J+1)\)</span> with <span class="math notranslate nohighlight">\(J=0,1,2,..\)</span> is a quantum number which emerges from solution of <span class="math notranslate nohighlight">\(\theta\)</span> part.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(m=0,\pm1,\pm2,...J\)</span> is the quantum number which emerges from  the solution of <span class="math notranslate nohighlight">\(\phi \)</span> part.</p></li>
+</ul>
+</section>
+<section id="spherical-harmonics">
+<h2>Spherical harmonics<a class="headerlink" href="#spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<p>The eigenfunctions of the rigid rotor, <span class="math notranslate nohighlight">\(Y_{J,m}(\theta,\phi)\)</span> are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of <a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_orbital">atomic orbital</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Electron_configuration">electron configurations</a>, representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.</p>
+<p><img alt="" src="ch04/images/sphhar.gif" /></p>
+<p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi part\)</span>)</p>
+</section>
+<section id="visualization-of-spherical-harmonics">
+<h2>Visualization of spherical harmonics<a class="headerlink" href="#visualization-of-spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<p>In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency, as seen in the rows of functions in the illustration on the right.</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif" /></p>
+</section>
+<section id="visual-account-of-orthogonality-of-spherical-harmonics">
+<h2>Visual account of orthogonality of spherical harmonics<a class="headerlink" href="#visual-account-of-orthogonality-of-spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p>
+<div class="math notranslate nohighlight">
+\[
+\int^{\pi}_0 sin\theta d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
+\]</div>
+<img alt="ch04/images/sphhar2.png" src="ch04/images/sphhar2.png" />
+</section>
+<section id="rotational-states-of-molecules-are-quantized">
+<h2>Rotational states of molecules are quantized<a class="headerlink" href="#rotational-states-of-molecules-are-quantized" title="Permalink to this heading">#</a></h2>
+<p>Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number <span class="math notranslate nohighlight">\(J\)</span>. This makes each energy level degenerate with respect to <span class="math notranslate nohighlight">\(2J+1\)</span> values assumed by <span class="math notranslate nohighlight">\(m_J\)</span> quantum number.</p>
+<div class="math notranslate nohighlight">
+\[
+E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degeneracy
+\]</div>
+<p>Where we have defined <span class="math notranslate nohighlight">\(B=\frac{h^2}{8\pi^2 I}\)</span> rotational constant with units of energy.</p>
+</section>
+<section id="spectroscopic-applications-of-rigid-rotor-model">
+<h2>Spectroscopic applications of Rigid rotor model<a class="headerlink" href="#spectroscopic-applications-of-rigid-rotor-model" title="Permalink to this heading">#</a></h2>
+<p>The energy spacing between rotational levels assume simple expression predicting integer multiples (J+1) of spectral lines for <span class="math notranslate nohighlight">\(J=0,1,2,...\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\Delta E_{J+1,J} = E_{J+1}-E_{J} = B[(J+1)(J+2)-J(J+1)]=2B(J+1)
+\]</div>
+<p>Often in spectroscopy application wavenumbers are adopted which we indicate by placing tilde on energy:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{J+1,J} =\frac{1}{\lambda} = \frac{\Delta E}{hc} = 2\tilde{B}(J+1)
+\]</div>
+<p>Where rotational constant has units of inverse wavelength [cm^{-1}]  <span class="math notranslate nohighlight">\(\tilde{B}=\frac{h^2}{8\pi^2 I c}\)</span></p>
+</section>
+<section id="spectral-lines-are-predicted-to-be-equidistant">
+<h2>Spectral lines are predicted to be equidistant!<a class="headerlink" href="#spectral-lines-are-predicted-to-be-equidistant" title="Permalink to this heading">#</a></h2>
+<p>Rigid rotor model makes a very specifci prediction about spectral lines: they are to be equally spaced. In other words difference between adjacent frequency of tranisitons is a constnat number:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{J+2,J+1}-\tilde{\nu}_{J+1,J}=2\tilde{B}
+\]</div>
+<p>Thus be measuring this spectral line difference, we can extract structural information about the molecule, e.g. compute the moment of inertia!</p>
+</section>
+<section id="rotational-virbational-transitions">
+<h2>Rotational-virbational transitions<a class="headerlink" href="#rotational-virbational-transitions" title="Permalink to this heading">#</a></h2>
+<p>Rotational transitions often accompany the transitions in vibrational levels. The simplest  model for joint vibrational and rotational transitions is a combination of a harmonic oscillator with rigid rotor models:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{v,J} = h\nu(n+1/2)+BJ(J+1)
+\]</div>
+<p>The selection rules for harmonic oscillator and rigid rotor are <span class="math notranslate nohighlight">\(\Delta v =\pm 1\)</span> and <span class="math notranslate nohighlight">\(\Delta J \pm 1\)</span>, respectively.</p>
+<p><img alt="" src="ch04/images/rovib1.png" /></p>
+</section>
+<section id="ro-vibrational-spectra-r-p-and-q-branches">
+<h2>Ro-vibrational spectra, R, P and Q branches<a class="headerlink" href="#ro-vibrational-spectra-r-p-and-q-branches" title="Permalink to this heading">#</a></h2>
+<p>Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state <span class="math notranslate nohighlight">\(v=0\rightarrow v=1 \)</span>. The transitions with <span class="math notranslate nohighlight">\(\Delta J=+1\)</span> and <span class="math notranslate nohighlight">\(\Delta J=-1\)</span> appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch <span class="math notranslate nohighlight">\(\Delta J =0\)</span> is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model.</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+\]</div>
+<p><img alt="" src="ch04/images/branch.jpg" /></p>
+</section>
+<section id="correction-1-rovibrational-coupling">
+<h2>Correction #1 rovibrational coupling<a class="headerlink" href="#correction-1-rovibrational-coupling" title="Permalink to this heading">#</a></h2>
+<p>One correction one can make to the rotational-vibrational model is to include the effect of coupling between rotational and vibrational degrees of freedom. When exciting molecules to higher vibrational states, it is reasonable to expect that rotational parameters will be impacted as a result of changes in the average intra-nuclear distance, among other things. This can be accounted for by making rotational constant dependent on vibrational level v. <span class="math notranslate nohighlight">\(B\rightarrow B_v\)</span>. The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!</p>
+<div class="math notranslate nohighlight">
+\[
+B_v = B_e-\alpha_e(v+1/2)
+\]</div>
+<p>The expression of energy with these correction would then be:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\]</div>
+</section>
+<section id="correction-2-the-unharmonicity-unrigdity-term">
+<h2>Correction #2 the unharmonicity/unrigdity term<a class="headerlink" href="#correction-2-the-unharmonicity-unrigdity-term" title="Permalink to this heading">#</a></h2>
+<p>Similiar to the first order correction we introduced for harmonic oscillator in the form of unharmonicity term  we can now also improve rigid rotor model by accounting for the fact that chemical bonds are not trully rigid:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{E}_{v,J} =\Big[\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2\Big] + \Big[ BJ(J+1)-DJ^2 (J+1)^2 \Big ]
+\]</div>
+<p>Where constant D is called the <strong>centrifugal distortion constant.</strong> and is typically a small number <span class="math notranslate nohighlight">\(D&lt;&lt;1\)</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantum Oscillators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Angular momentum</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-spherical-harmonics">Visualization of spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
