@@ -1,4 +1,4 @@
-## Outline for Lecture 3.0: Schrödinger Equation
+## Schrödinger Equation
 
 
 ```{admonition} What you need to know

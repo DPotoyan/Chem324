@@ -1,4 +1,4 @@
-## Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.  
+## Probabilistic meaning of wave function and toy systems of quantum mechanics.  
 
 ```{admonition} What you need to know
 :class: note
