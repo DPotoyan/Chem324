@@ -1,5 +1,7 @@
 ## Outline for Lecture 3.1: Probabilistic meaning of wave function and toy systems of quantum mechanics.  
 
+```{admonition} What you need to know
+:class: note
 - **We explore the meaning of a wave function which is a gateway into probabilsitc quantum-mechanical world of small systems. We learn that psi squared  is a probability distribution function.**
 - **We illustrate several key quantum mechanical principles on the example of a Particle in Box. A simple toy system useful for understanding behaviour of bound states of electrons in atoms or molecules such as** 
   - **Energetic quantization**. 
@@ -8,10 +10,10 @@
   - **Existence of zero point energy.** A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles. 
   - **Quantum-classical correspondence.** Smooth transition to classical behavior when going larger scales.   
   - **Degeneracy in energy levels.** How symmetries lead to different wave functions correpsonding to the same energy levels. 
+```
 
 
-
-## What is the meaning of a wave-function $\psi$ ? 
+### What is the meaning of a wave-function $\psi$ ? 
 
 - In classical wave equation, wave function has a simple mechanical  interpretation: it's just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.  
 - In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments. 
@@ -69,7 +71,7 @@ Probability distribution function contains lot of information. E.g probability o
 
 
 
-## Particle in a Box (PIB):
+### Particle in a Box (PIB):
 
 - Particle in a box is a toy model of electron/atom/molecule trapped in some region of space $[0,L]$. The positional information of a quantum "particle" is described by a quantum wave function $\psi(x)$ which is obtained by solving Schrödinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem. 
 -  Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a "wave".
@@ -150,5 +152,3 @@ $$B=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 Where we made use of $\sin^2(x)=\frac{1}{2}(1-\cos(2x))$ trig relation. 
 
 
-
-### Visualizing $\psi_n(x)$, $|\psi_n(x)|^2$ and energy levels $E_n$

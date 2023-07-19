@@ -1,11 +1,4 @@
----
-presentation:
-  width: 1100
-  height: 1100
-  controls: true
----
 
-<!-- slide -->
 ## Outline for Lecture 6.2:  "Variational Method"
 
 - Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values.

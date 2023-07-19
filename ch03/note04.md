@@ -1,15 +1,23 @@
-## Outline for Lecture 3.3: Mathematical Foundations of Quantum Mechanics
+## Mathematics of Quantum Mechanics
 
-- The objective of this section is to provide a gentle and mathematically friendly introduction to the abstract mathematical formalism of quantum mechanics. We are going to learn three mathematical topics of fundmental importance for quantum mechanics:
+```{admonition} What you need to know
+:class: note
 
-  1. **Linear vector spaces.**
-  2. **Dirac notation.**
-  3. **Functional spaces.**
+1. **Linear vector spaces.**
+2. **Dirac notation.**
+3. **Functional spaces.**
 
 - Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning. 
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of superimposed states. 
 
-## Video "Vectors, what are they?"
+```
+
+
+ 
+
+
+
+### Vectors, what are they?
 
 Let's remind ourselves of some basics first. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
 
@@ -18,7 +26,7 @@ Let's remind ourselves of some basics first. 3B1B has an excellent lecture serie
 </iframe>
 </html>
 
-## Vectors in 2D/3D
+### Vectors in 2D/3D
 
 - An example of a vector is an ordered collection of numbers, e.g:
   -  $$a=(-2,8) \,\,\,$$ *A 2D vector.*
@@ -152,7 +160,7 @@ When the norm is $\mid a \mid=1$, vector is called normalized. To normalize a ve
 
 The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
 
-## Video "Linear combinations, span, and basis vectors"
+### Video "Linear combinations, span, and basis vectors"
 
 Now watch the second video from 3B1B on linear combinations and basis vectors. 
 
@@ -162,7 +170,7 @@ Now watch the second video from 3B1B on linear combinations and basis vectors.
 </iframe>
 </html>
 
-## Decomposition of functions into orthogonal components
+### Decomposition of functions into orthogonal components
 
 - Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a **Hilbert space**, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.   
 
@@ -217,7 +225,7 @@ Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for partic
 
 
 
-## Quantum states as linear superposition. 
+### Quantum states as linear superposition. 
 
 Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
 
@@ -310,7 +318,7 @@ According to the Copenhagen interpretation, physical systems generally do not ha
 
 - The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
 
-## Time dependence in quantum mechanics
+### Time dependence in quantum mechanics
 
 So far we have completely ignored time dependence in our discussions. This is becasuse we have mainly focused on pure eigenfunction states $\psi_n(x,t)$ which show no time dependent behaviour for any quantity. It is easy to see why:
 
@@ -389,7 +397,6 @@ $$\frac{\partial}{\partial t}\langle A \rangle =\frac{1}{i\hbar}\langle \psi \mi
 This imporatat relationship shows that if an operator $\hat{A}$ itself does not depend on time $\frac{\hat{A}}{t}=0$ then the quantites which commute with hamiltonian $[\hat{A},\hat{H}]=0$ will be constants of motion and those that don't $[\hat{A},\hat{H}]\neq0$ will evolve over time!
 
 - Hamiltonian commutes with itself and does not depend on time $\frac{\partial}{\partial t}\langle E\rangle =0$
-
 
 
 ### Double slit Experiment

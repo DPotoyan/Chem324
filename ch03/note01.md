@@ -1,20 +1,14 @@
 ## Outline for Lecture 3.0: Schrödinger Equation
 
+
+```{admonition} What you need to know
+:class: note
 - By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schrödinger's equation (SE).
 - Schrödinger's equation in its most general form depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
-
- **Time-dependent Schrödinger equation (TD-SE) in 1D**
-
-  $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)$$
-
-
-  **Time-independent Schrödinger equation (TI-SE) in 1D**
-
-  $$E\psi(x)=\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x)$$
-
 - We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. Furthermore with the help of operator notation will  frame the problem of solving such equations as a linear algebra problem of finding eigenvalues and eigenvectors.
 
 - Classical equation of motion fails at small scales. Quantum works on all scales!  We will see how Schrödinger's equation predicts classical behaviour under apprporiate conditions where quantum effects are negligible.
+```
 
   
 
@@ -41,7 +35,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 
 
-## Schrödinger Equation (time-dependent)
+### Schrödinger Equation (time-dependent)
 
 <img src="images/SE_4.jpg" style="zoom:28%;" />
 
@@ -54,7 +48,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 - Left hand side describes change of wave function with time. The presence of an imaginary unit tells us that solutions of this equation are generally complex functions. 
 - Right hand side describes spatial varation of wave function. We will soon discover that  inside square brackets we have operators of kinetic and potential energies: an analog of kinetic and potential energies in classical mechanics.  
 
-## From classical to quantum wave equation
+### From classical to quantum wave equation
 
 - In 1925/1926 Erwin Schrödinger, who was an expert on waves, attempted to derive new equation of motion that could unify weird quantum facts of  energy quantization and wave-particle duality under one sound theoretical roof! He (correctly) guessed that the equation of motion for quantum mechanics should be a wave equation.
 
@@ -72,7 +66,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 
 
-## An attempt at deriving Schrödinger Equation
+### An attempt at deriving Schrödinger Equation
 
 Now let us combine the following two cornerstone quantum ideas into a free periodic wave function:
 
@@ -86,7 +80,7 @@ Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ ex
 
 
 
-## Turning a quantum wave function into quantum wave equation. 
+### Turning a quantum wave function into quantum wave equation. 
 
 - What we have achieved so far is design a wave function which reflects quantum reality by having the right momentum to wave length and energy to frequency relationships. 
 
@@ -137,7 +131,7 @@ Schrödinger equation is a linear differential equation. Hence it can be written
 
 
 
-## Time-dependent Schrödinger equation in operator notation.
+### Time-dependent Schrödinger equation in operator notation.
 
 By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
 
@@ -153,7 +147,7 @@ Whereas the  potential energy has exactly the same appearance of a function of s
 
 
 
-## From time-dependent to time-independent Schrödinger equation.
+### From time-dependent to time-independent Schrödinger equation.
 
 As we have learned from lectures on classical wave equation when the spatial and temporal coordinates are independent of each other one can use separation of variables and decouple time and space dependence. 
 
@@ -183,7 +177,7 @@ $$\psi(x,t)=\psi(x)f(t)=\psi(x) e^{-\frac{i}{\hbar}Et}$$
 
 
 
-## What about the boundary conditions and normal modes?
+### What about the boundary conditions and normal modes?
 
 As we recall from solving classical wave equation whenever there are bounary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
 
@@ -213,7 +207,7 @@ $$\hat{H}\psi(x)=E\psi(x)$$
 
 
 
-## The correspondence principle of Quantum Mechanics
+### The correspondence principle of Quantum Mechanics
 
 Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:
 
