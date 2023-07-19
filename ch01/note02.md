@@ -9,12 +9,16 @@
 ```
 
 
-### Quantum vs Classical view on Energy levels.
+### Quantization of energy
 
-- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp.
+- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
+
 - **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
-![](./images/lec1_ladder.jpg)
 
+
+```{image} ./images/lec1_ladder.jpg
+:align: center
+```
 
 ### Electromagnetic spectrum, emitting objects and associated Temperatures.
 
@@ -34,9 +38,10 @@
 ---
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
-<div style="background-color: #fefbd8">
+
+
  $$\lambda \nu = c$$
-</div>
+
 
 - Think of wavelength as distance between wave peaks 
   (nanometers, nm)
@@ -140,26 +145,21 @@ In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real va
 
 ### How Plank's quantization postulate explains black body radiation
 
-According to classical mechanics, on average each degree of freedom of an oscillator gets $kT$ of thermal energy. 
-
-$$\langle E \rangle=kT$$ 
-
-On average each degree of freedom of oscillator ends up getting: 
+If we account for quantization of energy into $h\nu$, $2h\nu$, ... units then average energy of oscillator is given via the following distribution 
 
 $$\langle E \rangle=k_B T\Bigg[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Bigg ]$$ 
 
-These expression are obtained by taking averages over energy values of oscillators weighted by Boltzman distribution which governs the thermal equilibrium: 
 
-- For classical case average is over continuum of energies $$\langle E \rangle = \int  p(x) E(x) dx$$ with $E(x)=kx^2/2$ and $P(E)\sim e^{-E(x)/kT}$ 
-- For quantum case average is a sum over discrete values $$\langle E \rangle = \sum_n p_n E_n$$ with $E_n=nh\nu$ for quantum oscillators $P(E_n)\sim e^{-E_n/k_B T}$.   
 
----
+#### Low frequency limit
 
 - At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy $k_BT$ populates lots of quantum levels with low enough frequencies.
 
 $$h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}$$  
 
 $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT$$
+
+#### High frequency limit
 
 - At high frequencies we see that the exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:
 

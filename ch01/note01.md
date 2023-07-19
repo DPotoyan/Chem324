@@ -1,5 +1,5 @@
 
-## Why Quantum mechanics?
+## Why Quantum mechanics
 
 ```{admonition} What you need to know
 :class: note
