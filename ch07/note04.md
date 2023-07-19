@@ -1,4 +1,4 @@
-## Outline for Lecture 7.3:  "Molecular Orbitals"
+## Molecular Orbitals
 
 
 
