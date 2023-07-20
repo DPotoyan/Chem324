@@ -1,1 +1,1 @@
-# 7. Multi-electron systems
+# 7. Multielectron atoms
