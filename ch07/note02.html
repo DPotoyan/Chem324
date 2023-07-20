@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Multi-electron atoms: Pauli exclusion, Hund rules &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Pauli exclusion principle &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -63,11 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch07/note02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Born-Oppenheimer approximation and the nature of chemical bond" href="note03.html" />
-    <link rel="prev" title="Multi-electron systems" href="note01.html" />
+    <link rel="prev" title="Helium atom" href="note01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,9 +206,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch06/note03.html">Application of linear variational method</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7. Multi-electron systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="note01.html">Multi-electron systems</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-electron atoms: Pauli exclusion, Hund rules</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7. Multielectron atoms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Helium atom</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pauli exclusion principle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Born-Oppenheimer approximation and the nature of chemical bond</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular Orbitals</a></li>
 </ul>
@@ -345,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Multi-electron atoms: Pauli exclusion, Hund rules</h1>
+    <h1>Pauli exclusion principle</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -359,8 +361,125 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="multi-electron-atoms-pauli-exclusion-hund-rules">
-<h1>Multi-electron atoms: Pauli exclusion, Hund rules<a class="headerlink" href="#multi-electron-atoms-pauli-exclusion-hund-rules" title="Permalink to this heading">#</a></h1>
+  <section id="pauli-exclusion-principle">
+<h1>Pauli exclusion principle<a class="headerlink" href="#pauli-exclusion-principle" title="Permalink to this heading">#</a></h1>
+<p>Our previous wavefunction for He atom did not include electron spin. For two electrons, the spin functions can be written as products:</p>
+<div class="math notranslate nohighlight">
+\[{\alpha(1)\alpha(2)\textnormal{, }\beta(1)\alpha(2)\textnormal{, }\alpha(1)\beta(2)\textnormal{ or  }\beta(1)\beta(2)}\]</div>
+<p>where, for example, <span class="math notranslate nohighlight">\(\alpha(1)\)</span> indicates that electron 1 has spin <span class="math notranslate nohighlight">\(\alpha\)</span>. Electrons are indistinguishable and therefore it makes no sense to try to use the two middle terms alone but combine them as:</p>
+<div class="math notranslate nohighlight">
+\[{\alpha(1)\alpha(2)\textnormal{ (symmetric if 1 and 2 are exchanged)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\beta(1)\beta(2)\textnormal{ (symmetric)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) + \alpha(2)\beta(1)\right)\textnormal{ (symmetric)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)\textnormal{ (antisymmetric)}}\]</div>
+<ul class="simple">
+<li><p>In 1926 Pauli showed that the wavefunction must be antisymmetric with respect to exchange of the electron indices. This applies also for systems with more than two electrons. An outcome of this principle is that no two electrons can have exactly the same quantum numbers: <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(m_l\)</span>, <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(m_s\)</span>. In non-relativistic quantum mechanics this is a postulate.</p></li>
+</ul>
+<p>In order to construct a complete wavefunction for He atom, we need to tag on the spin part to the wavefunction in Eq. (\ref{eq10.68}):</p>
+<div class="math notranslate nohighlight">
+\[{\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
+<p>A generalization of this result for many-electron systems was proposed by Slater in 1929:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\hspace*{-0.4cm}
+\psi(r_1,...,r_n) = \frac{1}{\sqrt{n!}}
+\begin{vmatrix}
+1s(1)\alpha(1) &amp; 1s(1)\beta(1) &amp; 2s(1)\alpha(1) &amp; ... \\
+1s(2)\alpha(2) &amp; 1s(2)\beta(2) &amp; 2s(2)\alpha(2) &amp; ... \\
+1s(3)\alpha(3) &amp; ... &amp; ... &amp; ...\\
+... &amp; ... &amp; ... &amp; ...\\
+\end{vmatrix}
+}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{
+\psi(r_1,r_2) = \frac{1}{\sqrt{2}}\begin{vmatrix}
+1s(1)\alpha(1) &amp; 1s(1)\beta(1)\\
+1s(2)\alpha(2) &amp; 1s(2)\beta(2)\\
+\end{vmatrix}
+}\end{split}\]</div>
+<ul class="simple">
+<li><p>The Slater determinant automatically ensures that the total wavefunction is antisymmetric. Note that from the mathematical point of view the antisymmetry requirement restricts the allowed solutions to the Schr”odinger equation. The lowest energy solutions are typically symmetric and the antisymmetric states correspond to higher energy.</p></li>
+<li><p>However, one must be careful with terminology here because only the antisymmetric states exist for electrons (Fermions) and as such they are the lowest energy (ground state) solutions for them. Particles that have symmetric wavefunctions are called Bosons (for example, <span class="math notranslate nohighlight">\(^4\)</span>He atoms).</p></li>
+</ul>
+<p>In general, particles with half-integral spin (<span class="math notranslate nohighlight">\(s = \frac{1}{2}, \frac{3}{2}, ...\)</span>) are Fermions (Fermi-Dirac statistics) and particles with integral spin (<span class="math notranslate nohighlight">\(s = 0, 1, 2, ...\)</span>) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when \underline{spin-orbit} interaction is included (will be discussed later).</p>
+<p><strong>example</strong> Show that the Slater determinant in Eq. (\ref{eq10.78}) for the ground state helium atom is an eigenfunction of the total spin operator <span class="math notranslate nohighlight">\(\hat{S}_{z,tot} = \hat{S}_{z_1} + \hat{S}_{z_2}\)</span>, where 1 and 2 refer to the two electrons.</p>
+<p><strong>solution</strong>  First we recall how <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> operates on electron spin as follows (Eqs. (\ref{eq10.48}) and (\ref{eq10.49})):</p>
+<div class="math notranslate nohighlight">
+\[\hat{S}_z|\alpha\rangle = +\frac{\hbar}{2}|\alpha\rangle\textnormal{ and }\hat{S}_z|\beta\rangle = -\frac{\hbar}{2}|\beta\rangle\]</div>
+<p>Next, we expand the Slater determinant in Eq. (\ref{eq10.78}):</p>
+<div class="math notranslate nohighlight">
+\[\psi = \overbrace{1s(1)1s(2)}^{\textnormal{symmetric}}\times\overbrace{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}^{\textnormal{antisymmetric}}\]</div>
+<p>Operate on this by <span class="math notranslate nohighlight">\(\hat{S}_{z_1}\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_{z_2}\)</span>. They operate only on the spin-part and on the corresponding electron only:</p>
+<div class="math notranslate nohighlight">
+\[\hat{S}_{z_1}|\psi\rangle = |1s(1)1s(2)\rangle\times\frac{1}{\sqrt{2}}\left(\frac{\hbar}{2}|\alpha(1)\beta(2)\rangle + \frac{\hbar}{2}|\beta(1)\alpha(2)\rangle\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{S}_{z_2}|\psi\rangle = |1s(1)1s(2)\rangle\times\frac{1}{\sqrt{2}}\left(-\frac{\hbar}{2}|\alpha(1)\beta(2)\rangle - \frac{\hbar}{2}|\beta(1)\alpha(2)\rangle\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow\textnormal{ }\hat{S}_{z,tot}|\psi\rangle = \left(\hat{S}_{z_1} + \hat{S}_{z_2}\right)|\psi\rangle = \hat{S}_{z_1}|\psi\rangle + \hat{S}_{z_2}|\psi\rangle = 0\]</div>
+<p>Note that the two terms are equal in magnitude but have opposite signs and they cancel. Thus the eigenvalue of the <span class="math notranslate nohighlight">\(z\)</span>-component of the total spin is zero. It can also be shown that <span class="math notranslate nohighlight">\(S^2 = 0\)</span>. This kind of electronic configuration is called a \textit{singlet state} (i.e. the two electrons have opposite spins).</p>
+<p>Previously we had both electrons on <span class="math notranslate nohighlight">\(1s\)</span> orbital with opposite spins. If the electrons reside on two different orbitals, for example, <span class="math notranslate nohighlight">\(1s\)</span> and <span class="math notranslate nohighlight">\(2s\)</span>, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.). The spatial part of the wavefunction is <span class="math notranslate nohighlight">\(\psi = 1s(1)2s(2)\)</span>. It could as well be <span class="math notranslate nohighlight">\(\psi = 2s(1)1s(2)\)</span> as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):</p>
+<div class="math notranslate nohighlight">
+\[{\psi_{sym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) + 1s(2)2s(1)\right)\textnormal{ (symmetric)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi_{asym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 1s(2)2s(1)\right)\textnormal{ (antisymmetric)}}\]</div>
+<blockquote>
+<div><p>Note that these two states may have different energies.</p>
+</div></blockquote>
+<p>Next, we consider adding the spin part to these wavefunctions. Because the electrons are on two different orbitals, we have the following four possibilities:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left.\begin{matrix}
+\phi_1 = \alpha(1)\alpha(2)\textnormal{ (symmetric)}\\
+\phi_2 = \beta(1)\beta(2)\textnormal{ (symmetric)}\\
+\phi_3 = \frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) + \beta(1)\alpha(2)\right)\textnormal{ (symmetric)}\\
+\end{matrix}\right\rbrace\textnormal{ Triplet state}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\left.\phi_4 = \frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \beta(1)\alpha(2)\right)\right\rbrace\textnormal{ Singlet state}
+\]</div>
+<p>Before we can combine the spatial and spin wavefunctions, we must consider the symmetries of these functions. Remember that the total wavefunction must be antisymmetric. Thus the allowed combinations are: symmetric (spatial) <span class="math notranslate nohighlight">\(\times\)</span> antisymmetric (spin) or antisymmetric (spatial) <span class="math notranslate nohighlight">\(\times\)</span> symmetric (spin). The total wavefunction for the triplet state is therefore:</p>
+<div class="math notranslate nohighlight">
+\[{\psi_1 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\alpha(1)\alpha(2)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi_2 = \frac{1}{2}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\left(\alpha(1)\beta(2) + \beta(1)\alpha(2)\right)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi_3 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\beta(1)\beta(2)}\]</div>
+<p>For the singlet state we have:</p>
+<div class="math notranslate nohighlight">
+\[{\psi_4 = \frac{1}{2}\left(1s(1)2s(2) + 2s(1)1s(2)\right)\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
+<ul class="simple">
+<li><p>Singlet and triplet states have been named after the number of spin degenerate levels they posses. The total spin <span class="math notranslate nohighlight">\(\hat{S}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> operators for these states yield:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}{
+\textnormal{Triplet: }\left\lbrace\begin{matrix}
+\hat{S}_z|\psi_1\rangle = +\hbar|\psi_1\rangle\textnormal{, }\hat{S}_z|\psi_2\rangle = 0|\psi_2\rangle\textnormal{, }\hat{S}_z|\psi_3\rangle = -\hbar|\psi_3\rangle\\
+\hat{S}^2|\psi_i\rangle = 2\hbar^2|\psi_i\rangle\textnormal{ where }i=1,2,3.\\
+\end{matrix}\right.
+}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{
+\textnormal{Singlet: }\left\lbrace\begin{matrix}
+\hat{S}_z|\psi_4\rangle = 0|\psi_4\rangle\\
+\hat{S}^2|\psi_4\rangle = 0|\psi_4\rangle\\
+\end{matrix}\right.
+}\end{split}\]</div>
+<p>For helium atom the singlet/triplet consideration is only relevant for the excited states but for atoms with more electrons this may have to be considered in order to determine the ground state.
+When more electrons are added, the wavefunction becomes more complicated. For example, the Slater determinant for Li can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\psi = \frac{1}{\sqrt{6}}
+\begin{vmatrix}
+1s(1)\alpha(1) &amp; 1s(1)\beta(1) &amp; 2s(1)\alpha(1)\\
+1s(2)\alpha(2) &amp; 1s(2)\beta(2) &amp; 2s(2)\alpha(2)\\
+1s(3)\alpha(3) &amp; 1s(3)\beta(3) &amp; 2s(3)\alpha(3)\\
+\end{vmatrix}
+}\end{split}\]</div>
+<blockquote>
+<div><p>Note that the last column could have been labeled as <span class="math notranslate nohighlight">\(\beta\)</span> as well (degeneracy).</p>
+</div></blockquote>
 </section>
 
     <script type="text/x-thebe-config">
@@ -400,7 +519,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Multi-electron systems</p>
+        <p class="prev-next-title">Helium atom</p>
       </div>
     </a>
     <a class="right-next"
