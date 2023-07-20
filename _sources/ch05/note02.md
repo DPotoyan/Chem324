@@ -253,7 +253,7 @@ where $L_{n+l}^{2l+1}(\rho)$ are \href{http://en.wikipedia.org/wiki/Laguerre_pol
 
 Some of the electronic energy levels of hydrogen atom are shown below.
 
-
+$$
 \begin{table}
 \begin{tabular}{l@{\extracolsep{1cm}}l@{\extracolsep{1cm}}l@{\extracolsep{1cm}}l}
 Orbital & $n$ & $l$ & $R_{nl}$\\
@@ -266,7 +266,7 @@ Orbital & $n$ & $l$ & $R_{nl}$\\
 3d & 3 & 2 & $\frac{1}{9\sqrt{30}}\left(\frac{Z}{a_0}\right)^{3/2}\rho^2 e^{-\rho/2}$\\
 \end{tabular}
 \end{table}
-
+$$
 
 
 
