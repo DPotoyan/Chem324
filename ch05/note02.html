@@ -381,7 +381,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-quantum-number-m">magnetic quantum number m</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-orbitals">Atomic orbitals</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Separation of variables</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -531,8 +534,65 @@ E_n = -\frac{\mu e^4}{8 \epsilon_0^2 h^2 n^2}
 <h2>magnetic quantum number m<a class="headerlink" href="#magnetic-quantum-number-m" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
-<section id="atomic-orbitals">
-<h1>Atomic orbitals<a class="headerlink" href="#atomic-orbitals" title="Permalink to this heading">#</a></h1>
+<section id="schrodinger-equation-for-hydrogenlike-atoms">
+<h1>Schrodinger equation for hydrogenlike atoms<a class="headerlink" href="#schrodinger-equation-for-hydrogenlike-atoms" title="Permalink to this heading">#</a></h1>
+<p>Consider one electron and one nucleus with charge <span class="math notranslate nohighlight">\(Ze\)</span> where <span class="math notranslate nohighlight">\(e\)</span> is the magnitude of the electron charge (1.6021773 <span class="math notranslate nohighlight">\(\times\)</span> <span class="math notranslate nohighlight">\(10^{-19}\)</span> C) and <span class="math notranslate nohighlight">\(Z\)</span> is the atomic number. Examples of such systems are: H, <span class="math notranslate nohighlight">\(He^+\)</span>, <span class="math notranslate nohighlight">\(Li^{2+}\)</span></p>
+<p>For these simple atomic systems, the Schrodinger equation can be solved analytically.  This can be generalized for systems having nuclei with charges other than <span class="math notranslate nohighlight">\(+1\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[{-\frac{\hbar^2}{2m_e}\Delta \psi_i(x,y,z) - \frac{Ze^2}{4\pi\epsilon_0\sqrt{x^2 + y^2 + z^2}}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m_e\)</span> is the electron mass, <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the \href{<a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permittivity">http://en.wikipedia.org/wiki/Vacuum_permittivity</a>}{\uline{vacuum permittivity}}, and subscripts for <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(E\)</span> signify the fact that there are multiple (<span class="math notranslate nohighlight">\(\psi_i\)</span>, <span class="math notranslate nohighlight">\(E_i\)</span>) combinations that satisfy Eq. (\ref{eq10.2}). Note that we should have used the reduced mass (<span class="math notranslate nohighlight">\(\mu\)</span>; see Eq. (\ref{eqX.25})) for the nucleus and electron above, but because the nucleus is much heavier then the electron, the reduced mass is very close to the electron mass.</p>
+<p>Because of the spherical symmetry of the \href{<a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb's_law">http://en.wikipedia.org/wiki/Coulomb’s_law</a>}{\uline{Coulomb potential}} it is convenient to work in spherical coordinates:</p>
+<div class="math notranslate nohighlight">
+\[{\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}\]</div>
+<p>where the <span class="math notranslate nohighlight">\(\Delta\)</span> is expressed in spherical coordinates:</p>
+<div class="math notranslate nohighlight">
+\[{\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\textnormal{sin}(\theta)}
+\frac{\partial}{\partial\theta}\left(\textnormal{sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\textnormal{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}\]</div>
+<p>Note that the Coulomb potential term above depends only on <span class="math notranslate nohighlight">\(r\)</span> (and not on <span class="math notranslate nohighlight">\(\theta\)</span> or <span class="math notranslate nohighlight">\(\phi\)</span>). By using Eq. (\ref{eq9.160}) the Laplacian can be written in terms of the angular momentum operator <span class="math notranslate nohighlight">\(\hat{L}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\Delta = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}
+= \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}}\]</div>
+<p>By substituting this into Eq. (\ref{eq10.4}) and multiplying both sides by <span class="math notranslate nohighlight">\(2m_er^2\)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[\left[-\hbar^2r^2\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{m_er^2Ze^2}{2\pi\epsilon_0r}+ \hat{L}^2\right]\psi_i(r,\theta,\phi) = (2m_er^2E_i)\psi_i(r,\theta,\phi)\]</div>
+<p>Since the operator can be split into <span class="math notranslate nohighlight">\(r\)</span> and angle dependent parts, the solution can be written as a product of the radial and angular parts</p>
+<section id="id1">
+<h2>Separation of variables<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[{\psi_i(r,\theta,\phi) = R_{nl}(r)Y_l^m(\theta,\phi)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_{nl}\)</span> is called the radial wavefunction and <span class="math notranslate nohighlight">\(Y_l^m\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> as discussed earlier. Eq. (\ref{eq10.7}) can now be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[{-\hbar^2Y_l^m(\theta,\phi)r^2\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) R_{nl}(r) - Y_l^m(\theta,\phi)
+\frac{m_er^2Ze^2}{2\pi\epsilon_0r}R_{nl}(r)}
+{+ Y_l^m(\theta, \phi)R_{nl}(r)\underbrace{l(l+1)\hbar^2}_{= \hat{L}^2} = (2m_er^2E_{nl})Y_l^m(\theta,\phi)R_{nl}(r)}\]</div>
+<p>Next we divide the above equation side by side by <span class="math notranslate nohighlight">\(Y_l^m\times (2m_er^2)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\left[ -\frac{\hbar^2}{2m_e}\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2}\right] R_{nl}(r) = E_{nl}R_{nl}(r)}\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(R_{nl}(r) = S_{nl}(r) / r\)</span> and multiplying both sides by <span class="math notranslate nohighlight">\(r\)</span> gives a slightly simpler form:</p>
+<div class="math notranslate nohighlight">
+\[{-\frac{\hbar^2}{2m_e}\frac{\partial^2S_{nl}(r)}{\partial r^2} + \underbrace{\left( -\frac{Ze^2}{4\pi\epsilon_0r} + \overbrace{\frac{l(l+1)\hbar^2}{2m_er^2}}^{\textnormal{``centrifugal potential''}}\right)}_{\equiv V_{eff}(r)} S_{nl}(r) = E_{nl}S_{nl}(r)}\]</div>
+<p>with <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span>.</p>
+<p>The eigenvalues <span class="math notranslate nohighlight">\(E_{nl}\)</span> and and the radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p>
+<div class="math notranslate nohighlight">
+\[{E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}\textnormal{ with }n = 1,2,3...\textnormal{ (independent of }l,l&lt;n\textnormal{)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho)\textnormal{exp}\left(-\frac{\rho}{2}\right)\textnormal{ with }\rho = \frac{2Zr}{na_0}\textnormal{ and }
+a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_{n+l}^{2l+1}(\rho)\)</span> are \href{<a class="reference external" href="http://en.wikipedia.org/wiki/Laguerre_polynomials">http://en.wikipedia.org/wiki/Laguerre_polynomials</a>}{\uline{associated Laguerre polynomials}}. Explicit expressions will be given later in the text. The constant <span class="math notranslate nohighlight">\(a_0\)</span> is called the \href{<a class="reference external" href="http://en.wikipedia.org/wiki/Bohr_radius">http://en.wikipedia.org/wiki/Bohr_radius</a>}{\uline{Bohr radius}}. Some of the first radial wavefunctions are listed on the next page.</p>
+<p>Some of the electronic energy levels of hydrogen atom are shown below.</p>
+<p>\begin{table}
+\begin{tabular}{l&#64;{\extracolsep{1cm}}l&#64;{\extracolsep{1cm}}l&#64;{\extracolsep{1cm}}l}
+Orbital &amp; <span class="math notranslate nohighlight">\(n\)</span> &amp; <span class="math notranslate nohighlight">\(l\)</span> &amp; <span class="math notranslate nohighlight">\(R_{nl}\)</span>\
+\hline
+1s &amp; 1 &amp; 0 &amp; <span class="math notranslate nohighlight">\(2\left(\frac{Z}{a_0}\right)^{3/2}e^{-\rho/2}\)</span>\
+2s &amp; 2 &amp; 0 &amp; <span class="math notranslate nohighlight">\(\frac{1}{2\sqrt{2}}\left(\frac{Z}{a_0}\right)^{3/2}(2 - \rho)e^{-\rho/2}\)</span>\
+2p &amp; 2 &amp; 1 &amp; <span class="math notranslate nohighlight">\(\frac{1}{2\sqrt{6}}\left(\frac{Z}{a_0}\right)^{3/2}\rho e^{-\rho/2}\)</span>\
+3s &amp; 3 &amp; 0 &amp; <span class="math notranslate nohighlight">\(\frac{1}{9\sqrt{3}}\left(\frac{Z}{a_0}\right)^{3/2}(6 - 6\rho - \rho^2)e^{-\rho/2}\)</span>\
+3p &amp; 3 &amp; 1 &amp; <span class="math notranslate nohighlight">\(\frac{1}{9\sqrt{6}}\left(\frac{Z}{a_0}\right)^{3/2}(4 - \rho)\rho e^{-\rho/2}\)</span>\
+3d &amp; 3 &amp; 2 &amp; <span class="math notranslate nohighlight">\(\frac{1}{9\sqrt{30}}\left(\frac{Z}{a_0}\right)^{3/2}\rho^2 e^{-\rho/2}\)</span>\
+\end{tabular}
+\end{table}</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -619,7 +679,10 @@ E_n = -\frac{\mu e^4}{8 \epsilon_0^2 h^2 n^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-quantum-number-m">magnetic quantum number m</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-orbitals">Atomic orbitals</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Separation of variables</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
