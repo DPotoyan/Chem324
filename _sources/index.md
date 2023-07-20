@@ -3,11 +3,13 @@
 Overview
 ============================
 
-``` {note}
-- This website is designed for the course **Chem 324: Introductory Quantum Mechanics**  taught at the Iowa State University.
-Here you will find brief outline of lecutres (not a substitute for a good textbook)  
-- The main objective, however is introducing computation whcih helps to demystify complex mathematical concepts of quantum mechanics and often eliminates the need for tedious analytical procedures. 
-- Thanks to numerical examples one gets to go beyond the pencil and paper examples and see the bigger picture of how quantum theory is used to solve all kinds of problems in chemistry, physics and material science. 
+
+``` {admonition} 
+:class: note
+- This website is designed as a supplementary material for the course **Chem 324: Introductory Quantum Mechanics**  taught at the Iowa State University. 
+- The main objective, is to introduce sceintific computation whcih lowers the barier for understanding complex mathematical concepts of quantum mechanics
+- Website contains lecture notes, jupyter notebooks written in python3 and other media content.
+- The website is not a subsitute for a good textbook.   
 ```
 
 ### How to use the website
