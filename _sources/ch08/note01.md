@@ -1,6 +1,6 @@
-## The Born-Oppenheimer approximation
+## BO approximation
 
-Because nuclei are much heavier than electrons, the Schr\"odinger equation can be approximately separated into the nuclear and the electron parts. Thus the electronic Schr\"odinger equation for a molecule can be solved separately at each fixed nuclear configuration. This is called the Born-Oppenheimer approximation.
+Because nuclei are much heavier than electrons, the Schrodinger equation can be approximately separated into the nuclear and the electron parts. Thus the electronic Schr\"odinger equation for a molecule can be solved separately at each fixed nuclear configuration. This is called the Born-Oppenheimer approximation.
 
 
 In the following, we will consider the simplest molecule $H_2^+$, which contains only one electron. This simple system will demonstrate the basic concepts in chemical bonding. The Schr\"odinger equation for H$_2^+$ is:

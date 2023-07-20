@@ -1,4 +1,4 @@
-## Application of linear variational method
+## Linear variational method
 
 
 $$

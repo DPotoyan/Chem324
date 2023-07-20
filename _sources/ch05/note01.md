@@ -1,4 +1,4 @@
-## Schrodinger equation for hydrogenlike atoms
+## Hydrogenlike atoms
 
 ```{admonition} What you need to know
 :class: note
