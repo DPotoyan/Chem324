@@ -1,23 +1,17 @@
-## Approximation methods of QM
-
-
 ## Perturbation Method
 
 
-
--  *Perturbation theory*, attempts to solve analytically intractable problem by idintifying an exactly *sovable* part and a *"small"* pertrubation. The method is similair in spirit to taylor expansion of functions familiar from calculus and is the single most important method of solving problems in quantum mechanics. 
+```{admonition} What you need to know
+:class: note
+-  *Perturbation method*, attempts to solve analytically intractable problem by idintifying an exactly *sovable* part and a *"small"* pertrubation. The method is similair in spirit to taylor expansion of functions familiar from calculus and is the single most important method of solving problems in quantum mechanics. 
 
 - Application of pertrubation theory proceeds in two steps. Step one identify solvable part and perturbation. Part two expand energy and eigenfunctions as series of corrections of increasing order. In particle first and second order corrections to energy suffice. 
+```
 
   ![](./images/perturb1.png)
 
-  
-
-  
 
 ## Time independent perturbations
-
-
 
 We have hamiltonian $\hat{H}_0$ for some exactly solvable problem think particle in a box, harmonic oscilator, etc:  
 
