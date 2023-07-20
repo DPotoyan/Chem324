@@ -1,197 +1,42 @@
-## Outline for Lecture 5.1:  "Schrodinger equation for Hydrogen atom"
+## Schrodinger equation for Hydrogen-like atoms
 
+```{admonition} What you need to know
+:class: note
 - Hydrogen atom is the simplest atom for which Schrodinge equation can be solved exactly. He atom which only has one more electron already proves to be impossible to solve exactly. 
 - The solution of the Schrödinger equation for H atom uses the fact that the Coulomb potential produced by the nucleus is isotropic: it is radially symmetric in space and only depends on the distance to the nucleus. This symmetry gives rise to degenercaies in energy levels. 
 - Although the resulting energy eigenfunctions (the orbitals) are not necessarily isotropic themselves, their dependence on the angular coordinates follows completely generally from this isotropy of the underlying potential.
 - The angular momentum is conserved, therefore, the energy eigenvalues may be classified by two angular momentum quantum numbers, ℓ and m (both are integers) and quantize mangitude and projection of angular momentum. 
 - Atomic orbitals are introduced which are used for also describing multi-electron atoms and molecules. 
+```
 
-
-
-## Atomic spectra of H
+### Atomic spectra of H
 
 Hydrogen atom spectra was the first real test that Schroidinger equation passed perfectly by predicitng all the lines with an energy expressed expressed in terms of dunemtnal constants. The Schroinger equation thereby opened the door for systmetic treatment of spectra and structures of atoms and moelcuels far more complex than H atom, which alas do not admit an exact solution. This is why we treasure the solution fo H atom so much. It provides a fundmental building block to understand more complex systems.
 
 
+ ### Schrodinger equation for hydrogenlike atoms
 
-### Setting  up the H atom porblm
-
-
-
-- H atom is a two body problm: one electron and one nucleus
+ - H atom is a two body problm: one electron and one nucleus
 
 - We can reduce the two body problem to one body problem of electron with reduced mass moving with respect to fixed nucleus. 
 
 - We have a porblem of one particle moving in a symmetric potential field in 3D. Expect to get 3 quantum numbers, anticipate some degenreacies due to this raidal symmetry. 
 
-- Potential energy consists of coulomb term encoding the electrostatic attraction between nucleus and electron.  
+- Potential energy consists of coulomb term encoding the electrostatic attraction between nucleus and electron. 
 
-  
+- Consider one electron and one nucleus with charge $Ze$ where $e$ is the magnitude of the electron charge (1.6021773 $\times$ $10^{-19}$ C) and $Z$ is the atomic number. Examples of such systems are: H, $He^+$, $Li^{2+}$ 
 
-## Hamitlonain of H atom
-
-- This is the hamitlonain for H atom
-
-
-$$
-\hat{H} = \hat{K}+\hat{V}(r)=-\frac{\hbar^2}{2\mu}\nabla^2 -\frac{e^2}{4\pi \epsilon_0r}
-$$
-
-
-
-Sperhcial nature of the problem prompts us to adopt spherical coordinates:
-
-$$
-\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} = \\ =\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2
-$$
-
-
-
-This time the radial part of laplacian operator is non-zero becasue $r$ coordinate which is the distance between electorn and nucleus is no longer a constant. Electron is not not a pointy object moving in consants orbits as was erroneously depicted in early quantum theores of Bohr and others. 
-
-- Having prepared hamitlonian in spherical coordinates we can write Schrodinger euqation in convneient for solving form
-
-  
-
-$$
--\frac{\hbar^2}{2\mu}\Big [\nabla^2_r +\frac{1}{r^2}\nabla_{\theta,\phi}^2 \Big ]\psi(r,\theta,\phi) -V(r)\psi(r,\theta,\phi)=E\psi(r,\theta,\phi)
-$$
-
-
-
-### Separation of variables
-
-Spherical coordinates allows splitting hamitlonian into radial and spherical parts.
-
-
-$$
-\Big [-\frac{\hbar^2}{2\mu}\nabla^2_r -V(r)-E\Big ]\psi(r,\theta,\phi) -\frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2 \psi(r,\theta,\phi) = 0
-$$
-
-
-
-
-$$
-\psi(r,\theta,\phi) =R(r)Y(\theta,\phi)
-$$
-
-
-
-
-$$
-Y(\theta,\phi)\Big [-\frac{\hbar^2}{2\mu}\nabla^2_r -V(r)-E\Big ]R(r) - R(r) \frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2 Y(\theta,\phi) = 0
-$$
-
-- Multiply by $2\mu r^2$ and devide by $R(r)Y(\theta,\phi)$ to cleanly separate radial and spherical variables:
-
-  
-
-$$
--\frac{1}{R(r)}\Big[ \hbar^2 r^2 \nabla^2_r + 2\mu r^2(V(r)+E)  \Big] R(r) - \\ - \frac{\hbar^2}{Y(\theta,\phi)}\nabla_{\theta,\phi}^2 Y(\theta,\phi) =0
-$$
-
-
-
-### $(\theta,\phi)$ part:  Sperhical harmonics!
-
-- Introducing separation constant $\beta$ we have an eignfunction-eigenvalue problem for PDE in $\theta,\phi$ variables.
-
-$$
--\frac{\hbar^2}{Y(\theta,\phi)}\nabla_{\theta,\phi}^2 Y(\theta,\phi) = \beta
-$$
-
-
-$$
--\hbar^2\nabla_{\theta,\phi}^2 Y(\theta,\phi) = \beta Y(\theta,\phi)
-$$
-
-- We recognize the last equation as an eigen-function/value problem for angular momentum operators. We can immeadiately write down eigenvlaues we have obteined from rigid-rotor problem with $beta=\hbar^2 l(l+1)$
-
-  
-
-$$
--\hat{L}^2 Y(\theta,\phi) = \beta Y(\theta,\phi) = \hbar^2 l(l+1)Y(\theta,\phi)
-$$
-
-
-
-- Quantum number m is associated with $\phi$ variable of spherical harmonics which is an eigenfuction of a z component of angular momentum:
-
-  
-
-  - $\Phi(\phi) = \frac{1}{\sqrt{2\pi}}e^{im\phi}$
-
-    
-
-  - $\hat{L_z}\Phi(\phi)=\hbar m\Phi(\phi)$
-
-    
-
-### R part of eigenfunctions of H
-
-
-$$
-\Big[ \hbar^2 r^2 \nabla^2_r + 2\mu r^2(V(r)+E)  \Big] R(r) =\beta R(r) = \hbar^2 l(l+1)R
-$$
-
-This equation is solved via series expansion method which introduces new auantum number n.
-
-- Eigenfunctions are expressed in terms of associated Laguerre polynomials. 
-
-  
-
-$$
-R_{nl}(r)= C_{nl} r^l e^{-r/na_0} L^{2l+1}_{n+1}(r)
-$$
-
-
-
-- Eigenvalues depend only on quantum number n thereby showing degeneracy with respect to other quantumn numbers
-
-$$
-E_n = -\frac{\mu e^4}{8 \epsilon_0^2 h^2 n^2}
-$$
-
-- $n=1,2,... \infty$
-- $l=0,1,2,...n-1$
-- $m_l =0,\pm1, \pm2,...\pm l$
-
-
-
-## Full eigenfunctions of H atom
-
-
-
-### Principlac quantum number n
-
-
-
-### Angular quantum number l 
-
-
-
-### magnetic quantum number m 
-
-
-
-
-
- ## Schrodinger equation for hydrogenlike atoms
-
-
-Consider one electron and one nucleus with charge $Ze$ where $e$ is the magnitude of the electron charge (1.6021773 $\times$ $10^{-19}$ C) and $Z$ is the atomic number. Examples of such systems are: H, $He^+$, $Li^{2+}$ 
-
-For these simple atomic systems, the Schrodinger equation can be solved analytically.  This can be generalized for systems having nuclei with charges other than $+1$ as follows:
+- For these simple atomic systems, the Schrodinger equation can be solved analytically.  This can be generalized for systems having nuclei with charges other than $+1$ as follows:
 
 $${-\frac{\hbar^2}{2m_e}\Delta \psi_i(x,y,z) - \frac{Ze^2}{4\pi\epsilon_0\sqrt{x^2 + y^2 + z^2}}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
 
 
-where $m_e$ is the electron mass, $\epsilon_0$ is the \href{http://en.wikipedia.org/wiki/Vacuum_permittivity}{\uline{vacuum permittivity}}, and subscripts for $\psi$ and $E$ signify the fact that there are multiple ($\psi_i$, $E_i$) combinations that satisfy Eq. (\ref{eq10.2}). Note that we should have used the reduced mass ($\mu$; see Eq. (\ref{eqX.25})) for the nucleus and electron above, but because the nucleus is much heavier then the electron, the reduced mass is very close to the electron mass.
+where $m_e$ is the electron mass, $\epsilon_0$ is the [vacuum permitivity](http://en.wikipedia.org/wiki/Vacuum_permittivity) and subscripts for $\psi$ and $E$ signify the fact that there are multiple ($\psi_i$, $E_i$) combinations. 
+
+> Note again that we should have used the reduced mass  for the nucleus and electron above, but because the nucleus is much heavier then the electron, the reduced mass is very close to the electron mass.
 
 
-Because of the spherical symmetry of the \href{http://en.wikipedia.org/wiki/Coulomb's_law}{\uline{Coulomb potential}} it is convenient to work in spherical coordinates:
-
-
+- Because of the spherical symmetry of the [Coulomb potential](http://en.wikipedia.org/wiki/Coulomb's_law)it is convenient to work in spherical coordinates:
 
 
 
@@ -204,7 +49,7 @@ $${\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\fra
 \frac{\partial}{\partial\theta}\left(\textnormal{sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\textnormal{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}$$
 
 
-Note that the Coulomb potential term above depends only on $r$ (and not on $\theta$ or $\phi$). By using Eq. (\ref{eq9.160}) the Laplacian can be written in terms of the angular momentum operator $\hat{L}$:
+Note that the Coulomb potential term above depends only on $r$ (and not on $\theta$ or $\phi$). The Laplacian can be written in terms of the angular momentum operator $\hat{L}$:
 
 $${\Delta = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}
 = \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}}$$
@@ -216,7 +61,7 @@ $$\left[-\hbar^2r^2\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\par
 
 Since the operator can be split into $r$ and angle dependent parts, the solution can be written as a product of the radial and angular parts 
 
-#### Separation of variables
+### Separation of variables
 
 
 
@@ -252,6 +97,11 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}$$
 where $L_{n+l}^{2l+1}(\rho)$ are [Laguerre polynomials](http://en.wikipedia.org/wiki/Laguerre_polynomials). Explicit expressions will be given later in the text. The constant $a_0$ is called the [Bohr radius](http://en.wikipedia.org/wiki/Bohr_radius) Some of the first radial wavefunctions are listed on the next page.
 
 Some of the electronic energy levels of hydrogen atom are shown below.
+
+
+
+#### Examples of the radial wavefunctions for hydrogenlike atoms
+
 
 | Orbital | $n$ | $l$ | $R_{nl}$                                                                             |
 |---------|-----|-----|--------------------------------------------------------------------------------------|
