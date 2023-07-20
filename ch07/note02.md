@@ -1,10 +1,6 @@
 ## Pauli exclusion principle
 
-
-
 Our previous wavefunction for He atom did not include electron spin. For two electrons, the spin functions can be written as products:
-
-
 
 $${\alpha(1)\alpha(2)\textnormal{, }\beta(1)\alpha(2)\textnormal{, }\alpha(1)\beta(2)\textnormal{ or  }\beta(1)\beta(2)}$$
 
@@ -25,7 +21,7 @@ $${\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)\textnorm
 - In 1926 Pauli showed that the wavefunction must be antisymmetric with respect to exchange of the electron indices. This applies also for systems with more than two electrons. An outcome of this principle is that no two electrons can have exactly the same quantum numbers: $n$, $l$, $m_l$, $s$, $m_s$. In non-relativistic quantum mechanics this is a postulate.
 
 
-In order to construct a complete wavefunction for He atom, we need to tag on the spin part to the wavefunction in Eq. (\ref{eq10.68}):
+In order to construct a complete wavefunction for He atom, we need to tag on the spin part to the wavefunction
 
 $${\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}$$
 
@@ -54,7 +50,7 @@ $${
 - However, one must be careful with terminology here because only the antisymmetric states exist for electrons (Fermions) and as such they are the lowest energy (ground state) solutions for them. Particles that have symmetric wavefunctions are called Bosons (for example, $^4$He atoms).
 
 
-In general, particles with half-integral spin ($s = \frac{1}{2}, \frac{3}{2}, ...$) are Fermions (Fermi-Dirac statistics) and particles with integral spin ($s = 0, 1, 2, ...$) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when \underline{spin-orbit} interaction is included (will be discussed later).
+- In general, particles with half-integral spin ($s = \frac{1}{2}, \frac{3}{2}, ...$) are Fermions (Fermi-Dirac statistics) and particles with integral spin ($s = 0, 1, 2, ...$) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when \underline{spin-orbit} interaction is included (will be discussed later).
 
 **example** Show that the Slater determinant in Eq. (\ref{eq10.78}) for the ground state helium atom is an eigenfunction of the total spin operator $\hat{S}_{z,tot} = \hat{S}_{z_1} + \hat{S}_{z_2}$, where 1 and 2 refer to the two electrons.
 
