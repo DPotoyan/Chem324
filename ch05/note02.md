@@ -1,4 +1,4 @@
- ## The spectrum of hydrogenlike atoms
+ ## Spectrum of hydrogenlike atoms
 
 
  Equation of hydroen atom energy can be expressed in units ($m^{-1}$; usually $cm^{-1}$ is used):
