@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Molecular Orbitals &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Atomic terms and selection rules &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -63,10 +63,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch07/note04';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Born-Oppenheimer approximation and the nature of chemical bond" href="note03.html" />
+    <link rel="prev" title="Angular momentum of many-electron atoms" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,8 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7. Multielectron atoms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Helium atom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Pauli exclusion principle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03.html">Born-Oppenheimer approximation and the nature of chemical bond</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Molecular Orbitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Atomic terms and selection rules</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -344,11 +348,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Molecular Orbitals</h1>
+    <h1>Atomic terms and selection rules</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-partly-empirical-rules-are">Hund’s (partly empirical) rules are:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-interaction">Spin-orbit interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-and-selection-rules">Atomic spectra and selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nature-of-light-matter-interaction">Nature of light matter interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -358,8 +374,102 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="molecular-orbitals">
-<h1>Molecular Orbitals<a class="headerlink" href="#molecular-orbitals" title="Permalink to this heading">#</a></h1>
+  <section id="atomic-terms-and-selection-rules">
+<h1>Atomic terms and selection rules<a class="headerlink" href="#atomic-terms-and-selection-rules" title="Permalink to this heading">#</a></h1>
+<p>In the previous table, column #7 (``level’’) denotes a term symbol for the given atom. This term symbol contains information about the total orbital and spin angular momenta
+as well as the total angular momentum (i.e., <span class="math notranslate nohighlight">\(J = L + S\)</span>). This is expressed as follows:</p>
+<div class="math notranslate nohighlight">
+\[{^{2S+1}L_J}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the total spin defined in Eq. (\ref{eq10.103}), <span class="math notranslate nohighlight">\(L\)</span> is the total angular momentum of Eq. (\ref{eq10.99}), and <span class="math notranslate nohighlight">\(J\)</span> is the total angular momentum Eq. (\ref{eq10.106}). Both <span class="math notranslate nohighlight">\(2S+1\)</span> and <span class="math notranslate nohighlight">\(J\)</span> are expressed as numbers and for <span class="math notranslate nohighlight">\(L\)</span> we use a letter: S for <span class="math notranslate nohighlight">\(L = 0\)</span>, P for <span class="math notranslate nohighlight">\(L = 1\)</span>, D for <span class="math notranslate nohighlight">\(L = 2\)</span>, etc. <span class="math notranslate nohighlight">\(2S+1\)</span> is referred to as spin
+multiplicity (1 = singlet, 2 = doublet, 3 = triplet, …). The term symbol specifies the ground state electronic
+configuration exactly. Note that column #6 (``electron configuration’’) in the table, is
+much longer and it ignores the exact configuration of electron spins. Note that only the valence
+electrons contribute to the term symbol.</p>
+<p><strong>EXample</strong> What is the atomic term symbol for He atom in its ground state?</p>
+<p><strong>Solution</strong> The electron configuration in He is 1s<span class="math notranslate nohighlight">\(^2\)</span> (i.e., two electrons on 1s orbital with opposite
+spins). First we use Eq. (\ref{eq10.103}) to obtain <span class="math notranslate nohighlight">\(S\)</span>. We have two possibilities: <span class="math notranslate nohighlight">\(S = 1\)</span> (triplet) or <span class="math notranslate nohighlight">\(S = 0\)</span>
+(singlet). However, since we are interested in the ground state, both electrons are on 1s
+orbital and hence they must have opposite spins giving a singlet state. Thus <span class="math notranslate nohighlight">\(S = 0\)</span>
+and <span class="math notranslate nohighlight">\(2S + 1 = 1\)</span>. Since both electrons reside on s-orbital, <span class="math notranslate nohighlight">\(l_1 = l_2 = 0\)</span> and <span class="math notranslate nohighlight">\(L = 0\)</span> by Eq. (\ref{eq10.99}).
+Eq. (\ref{eq10.104}) now gives <span class="math notranslate nohighlight">\(J = L + S = 0 + 0 = 0\)</span>. The term symbol is therefore <span class="math notranslate nohighlight">\(^1\)</span>S<span class="math notranslate nohighlight">\(_0\)</span>.</p>
+<p><strong>Example</strong> What are the lowest lying state term symbols for a carbon atom?\</p>
+<p><strong>Solution</strong> The electronic configuration for ground state C is 1s<span class="math notranslate nohighlight">\(^2\)</span>2s<span class="math notranslate nohighlight">\(^2\)</span>2p<span class="math notranslate nohighlight">\(^2\)</span>. To get the possible lowest
+lying states, we only consider the two <span class="math notranslate nohighlight">\(p\)</span>-electrons. From Eq. (\ref{eq10.103}) we get: <span class="math notranslate nohighlight">\(S = \frac{1}{2} + \frac{1}{2} = 1\)</span> or <span class="math notranslate nohighlight">\(S = 0\)</span>. The first case corresponds to triplet and the last singlet state. The total orbital angular momentum quantum numbers are given by Eq. (\ref{eq10.99}): <span class="math notranslate nohighlight">\(L = 2,1,0\)</span>, which correspond to D, P and S terms, respectively. Again, because the electrons must have opposite spins when the go on the same orbital, some <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(L\)</span> combinations are not possible. Consider the following scenarios:\</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(L = 2\)</span> (D term): One of the states (<span class="math notranslate nohighlight">\(M_L = -2\)</span>) must correspond to configuration, where both electrons occupy a <span class="math notranslate nohighlight">\(p\)</span>-orbital having <span class="math notranslate nohighlight">\(m_l = -1\)</span>. Note that the electrons must go on the above orbital with opposite spins and therefore
+the triplet state, where the electrons could be parallel, is not allowed:</p></li>
+</ol>
+<p>Thus we conclude that for <span class="math notranslate nohighlight">\(L = 2\)</span>, only the singlet state (i.e., <span class="math notranslate nohighlight">\(^1\)</span>D) is possible.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(L = 1\)</span> (P term): The three eigen states correspond to:</p></li>
+</ol>
+<p>In principle, all these configurations could also be written for the singlet state but it requires a more complicated consideration to see that this is \textit{not allowed} (see below).</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(L = 0\)</span> (S term): For this term we can only have <span class="math notranslate nohighlight">\(M_L = 0\)</span>, which corresponds to:</p></li>
+</ol>
+<p>Again, it is not possible to have triplet state because the spins would have to be parallel on the same orbital. Hence only <span class="math notranslate nohighlight">\(^1\)</span>S exists.</p>
+<p>We conclude that the following terms are possible: <span class="math notranslate nohighlight">\(^1\)</span>D, <span class="math notranslate nohighlight">\(^3\)</span>P and <span class="math notranslate nohighlight">\(^1\)</span>S. As we will see below, the Hund’s rules predict that the <span class="math notranslate nohighlight">\(^3\)</span>P term will be the ground state (i.e., the lowest energy). The total angular momentum quantum number <span class="math notranslate nohighlight">\(J\)</span> for this state may have the following values: <span class="math notranslate nohighlight">\(J = L + S = 2, 1\)</span>, or <span class="math notranslate nohighlight">\(0\)</span>. Due to spin-orbit coupling, these states have different energies and the Hund’s rules predict that the <span class="math notranslate nohighlight">\(J = 0\)</span> state lies lowest in energy. Therefore the <span class="math notranslate nohighlight">\(^3\)</span>P<span class="math notranslate nohighlight">\(_0\)</span> state is the ground state of C atom.</p>
+<p>The above method is fast and convenient but does not always work and is not able to show that <span class="math notranslate nohighlight">\(^1\)</span>P does not exist. In the following (for carbon) we will list each possible electron configuration (microstate), label them according to their <span class="math notranslate nohighlight">\(M_L\)</span> and <span class="math notranslate nohighlight">\(M_S\)</span> numbers, count how many times each (<span class="math notranslate nohighlight">\(M_L\)</span>,<span class="math notranslate nohighlight">\(M_S\)</span>) combination appears and decompose this information into term symbols. The total number of possible microstates <span class="math notranslate nohighlight">\(N\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[{N = \frac{(2(2l+1))!}{n!(2(2l+1) - n)!}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of electrons and <span class="math notranslate nohighlight">\(l\)</span> is the orbital angular momentum quantum number (e.g., 1 for <span class="math notranslate nohighlight">\(p\)</span> orbitals, 2 for <span class="math notranslate nohighlight">\(d\)</span>, etc.). Next we need to count how many states of each <span class="math notranslate nohighlight">\(M_L\)</span> and <span class="math notranslate nohighlight">\(M_S\)</span> we have:</p>
+<p>The total number of (<span class="math notranslate nohighlight">\(M_L\)</span>,<span class="math notranslate nohighlight">\(M_S\)</span>) combinations appearing above are counted in the following table and its decomposition into term symbols is demonstrated (note that <span class="math notranslate nohighlight">\(^1\)</span>P does not exist).</p>
+<p><strong>Exercise</strong> Carry out the above procedure for oxygen atom (4 electrons distributed on <span class="math notranslate nohighlight">\(2p\)</span> orbitals). What are resulting the atomic term symbols?</p>
+<section id="hunds-partly-empirical-rules-are">
+<h2>Hund’s (partly empirical) rules are:<a class="headerlink" href="#hunds-partly-empirical-rules-are" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The term arising from the ground configuration with the maximum multiplicity (<span class="math notranslate nohighlight">\(2S + 1\)</span>) lies lowest in energy.
+\item For levels with the same multiplicity, the one with the maximum value of <span class="math notranslate nohighlight">\(L\)</span> lies lowest in energy.</p></li>
+<li><p>For levels with the same <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(L\)</span> (but different <span class="math notranslate nohighlight">\(J\)</span>), the lowest energy state depends on the extent to which the subshell is filled:</p>
+<ul>
+<li><p>If the subshell is less than half-filled, the state with the smallest value of <span class="math notranslate nohighlight">\(J\)</span> is the lowest in energy.</p></li>
+<li><p>If the subshell is more than half-filled, the state with the largest value of <span class="math notranslate nohighlight">\(J\)</span> is the lowest in energy.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="spin-orbit-interaction">
+<h2>Spin-orbit interaction<a class="headerlink" href="#spin-orbit-interaction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>This relativistic effect can be incorporated into non-relativistic quantum mechanics by including the following term into the Hamiltonian:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{H}_{SO} = A\vec{\hat{L}}\cdot \vec{\hat{S}}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is the spin-orbit coupling constant and <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(S\)</span> are the orbital and spin angular momentum operators, respectively. The total angular momentum <span class="math notranslate nohighlight">\(J\)</span> commutes with both <span class="math notranslate nohighlight">\(\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{H}_{SO}\)</span> and therefore it can be specified simultaneously with energy. We say that the corresponding quantum number <span class="math notranslate nohighlight">\(J\)</span> remains good even when spin-orbit interaction is included whereas <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(S\)</span> do not. The operator dot product <span class="math notranslate nohighlight">\(\hat{L}\cdot \hat{S}\)</span> can be evaluated and expressed in terms of the corresponding quantum numbers:</p>
+<div class="math notranslate nohighlight">
+\[{\vec{\hat{L}}\cdot\vec{\hat{S}}\left|\psi_{L,S,J}\right&gt; = \frac{1}{2}\left[J(J+1)-L(L+1)-S(S+1)\right]\left|\psi_{L,S,J}\right&gt;}\]</div>
+<p>For example in alkali atoms (<span class="math notranslate nohighlight">\(S = 1/2, L = 1\)</span>), the spin-orbit interaction breaks the degeneracy of the excited <span class="math notranslate nohighlight">\(^2\)</span>P state (<span class="math notranslate nohighlight">\(^2\)</span>S<span class="math notranslate nohighlight">\(_{1/2}\)</span> is the ground state):</p>
+</section>
+<section id="atomic-spectra-and-selection-rules">
+<h2>Atomic spectra and selection rules<a class="headerlink" href="#atomic-spectra-and-selection-rules" title="Permalink to this heading">#</a></h2>
+<p>The following selection rules for photon absorption or emission in one-electron atoms can be derived by considering the symmetries of the initial and final state wavefunctions (orbitals):</p>
+<div class="math notranslate nohighlight">
+\[{\Delta n = \textnormal{unrestricted},\,\, \Delta l = \pm 1,\,\, \Delta m_l = +1, 0, -1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta n\)</span> is the change in the principal quantum number, <span class="math notranslate nohighlight">\(\Delta l\)</span> is the change in orbital angular momentum quantum number and <span class="math notranslate nohighlight">\(\Delta m_l\)</span> is the change in projection of <span class="math notranslate nohighlight">\(l\)</span>. Qualitatively, the selection rules can
+be understood by conservation of angular momentum. Photons are spin 1 particles with <span class="math notranslate nohighlight">\(m_l = +1\)</span> (left-circularly polarized light) or <span class="math notranslate nohighlight">\(m_l = -1\)</span> (right-circularly polarized light). When a photon interacts with an atom, the angular momentum in it may chance only by <span class="math notranslate nohighlight">\(+1\)</span> or <span class="math notranslate nohighlight">\(-1\)</span>; just like in the selection rules above.</p>
+</section>
+<section id="nature-of-light-matter-interaction">
+<h2>Nature of light matter interaction<a class="headerlink" href="#nature-of-light-matter-interaction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Note that light is electromagnetic radiation and, as such, it has both electric and magnetic components. The oscillating electric field component is used in driving transitions in optical
+spectroscopy (UV/VIS, fluorescence, IR) whereas the magnetic component is used in magnetic resonance spectroscopy (NMR, EPR/ESR).</p></li>
+<li><p>Photon emission from an atom (e.g., fluorescence) is rather difficult to understand with the quantum mechanical machinery that we have developed so far.</p></li>
+<li><p>The plain Schrodinger equation would predict that excited states in atoms would have infinite lifetime in vacuum. However, this is not observed in practice and atoms/molecules return to ground state by emitting a photon. This transition is caused by fluctuations of electric field in vacuum (see your physics lecture notes).</p></li>
+</ul>
+</section>
+<section id="selection-rules">
+<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+<p>In many-electron atoms the selection rules can be written as follows:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta L = 0, \pm 1\)</span> except that transition from <span class="math notranslate nohighlight">\(L = 0\)</span> to <span class="math notranslate nohighlight">\(L = 0\)</span> does not occur.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta l = \pm 1\)</span> for the electron that is being excited (or is responsible for fluorescence).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta J = 0, \pm 1\)</span> except that transition from <span class="math notranslate nohighlight">\(J = 0\)</span> to <span class="math notranslate nohighlight">\(J = 0\)</span> does not occur.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta S = 0\)</span>. The electron spin does not change in optical transition. The exact opposite holds for magnetic resonance spectroscopy, which deals with changes in spin states.</p></li>
+</ol>
+<blockquote>
+<div><p>In some exceptional cases, these rules may be violated but the resulting transitions will be extremely weak (``forbidden transitions’’). Because of the last rule, some excited triplet states may have very long lifetime because the transition to the ground singlet state is forbidden (metastable states).</p>
+</div></blockquote>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -399,7 +509,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Born-Oppenheimer approximation and the nature of chemical bond</p>
+        <p class="prev-next-title">Angular momentum of many-electron atoms</p>
       </div>
     </a>
 </div></div>
@@ -411,6 +521,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-partly-empirical-rules-are">Hund’s (partly empirical) rules are:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-interaction">Spin-orbit interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-and-selection-rules">Atomic spectra and selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nature-of-light-matter-interaction">Nature of light matter interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
