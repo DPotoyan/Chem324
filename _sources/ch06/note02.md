@@ -5,12 +5,9 @@
 - In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.
 - Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.
 
-
-
 ### Variational theorem
 
 Any trial function $\mid \phi \rangle$ we come up with the energy computed with it will always be greater or equal to exact or true energy.
-
 
 $$
 E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
@@ -22,8 +19,6 @@ $$
 2. By minimizing the energy functions we can make most accurate prediction for a given trail function.
 
 3. More parameters give us more handles to vary and get more acurate solutions.
-
-
 
 ### Example: H-atom trial function
 
@@ -64,10 +59,7 @@ $$
 
 - We need to plug this parameters back into energy function to get the  energy minimized with respect to $\alpha$, e.g $E(\alpha_{min})$
 
-
-
 ### Comparison of optimized vs true values
-
 
 $$
 E_0 = -0.5 h
@@ -78,12 +70,5 @@ $$
 E_{trial}(\alpha_{min}) = -0.424
 $$
 
-
-
 - About 15% error. But hey it is not too bad for a start!
 - Adding more parameters and functions will reduce the error.
-
-
-
-
-
