@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Variational Method &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Application of linear variational method &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch06/note03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear variational method: qucik dive into linear algebra world of QM" href="note04.html" />
-    <link rel="prev" title="Perturbation Method" href="note02.html" />
+    <link rel="next" title="7. Multi-electron systems" href="../ch07/index.html" />
+    <link rel="prev" title="Variational Method" href="note02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,17 +194,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch05/note01.html">Schrodinger equation for hydrogenlike atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch05/note02.html">The spectrum of hydrogenlike atoms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Outline for Lecture 5.2:  “Spin”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Spin</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">6. Approximations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Approximation methods of QM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note02.html">Perturbation Method</a></li>
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Variational Method</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Linear variational method: qucik dive into linear algebra world of QM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Variational Method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Application of linear variational method</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multi-electron systems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -350,7 +349,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variational Method</h1>
+    <h1>Application of linear variational method</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -360,21 +359,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-theorem">Variational theorem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-h-atom-trial-function">Example: H-atom trial function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-gives-the-best-values-of-paramaters-in-trial-functions">Minimization gives the best values of paramaters in trial functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-optimized-vs-true-values">Comparison of optimized vs true values</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-method-as-applied-to-linear-combinations-of-trial-functions">Variational method as applied to linear combinations of trial functions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-energy-by-varying-linear-coefficients">Minimizing energy by varying linear coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-a-linear-algebra-problem">It’s a linear algebra problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant-for-n-trial-functions">Determinant for  N trial functions</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -385,81 +373,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="variational-method">
-<h1>Variational Method<a class="headerlink" href="#variational-method" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Variational method provides a powerful tool tool to (a) Make systematic  approximations and quantiatively measure convergence of predictions towards true values.</p></li>
-<li><p>In variational method one first makes an “educated” guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.</p></li>
-<li><p>Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.</p></li>
-</ul>
-<section id="variational-theorem">
-<h2>Variational theorem<a class="headerlink" href="#variational-theorem" title="Permalink to this heading">#</a></h2>
-<p>Any trial function <span class="math notranslate nohighlight">\(\mid \phi \rangle\)</span> we come up with the energy computed with it will always be greater or equal to exact or true energy.</p>
-<div class="math notranslate nohighlight">
-\[
-E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
-\]</div>
-<ol class="arabic simple">
-<li><p>Ground state energy is the lowest possible energy for the system.</p></li>
-<li><p>By minimizing the energy functions we can make most accurate prediction for a given trail function.</p></li>
-<li><p>More parameters give us more handles to vary and get more acurate solutions.</p></li>
-</ol>
-</section>
-<section id="example-h-atom-trial-function">
-<h2>Example: H-atom trial function<a class="headerlink" href="#example-h-atom-trial-function" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Exact solution for ground state: <span class="math notranslate nohighlight">\(\psi(r)=\frac{1}{(\pi a^3_0)^{1/2}}e^{-r/a_0}\)</span> and <span class="math notranslate nohighlight">\(E_1 = -0.5 h\)</span></p></li>
-<li><p>Let’s test a trail function <span class="math notranslate nohighlight">\(\phi=e^{-\alpha r^2}\)</span>  and predict energy:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-E_{trial} = \frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-E_{trial}(\alpha) = \frac{4\pi \int^{\infty}_0 \hat{ e^{-\alpha r^2}[-\frac{\hbar^2}{2\mu}\nabla_r^2}-\frac{e^2}{4\pi \epsilon_0 r}] e^{-\alpha r^2} r^2 dr }{4\pi \int^{\infty}_0 e^{-2\alpha r^2} r^2 dr}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-E_{trial}(\alpha)=\frac{3\hbar^2 \alpha}{2m_e}-\frac{e^2 \alpha^{1/2}}{\sqrt{2}\epsilon_0 \pi^{3/2}}
-\]</div>
-</section>
-<section id="minimization-gives-the-best-values-of-paramaters-in-trial-functions">
-<h2>Minimization gives the best values of paramaters in trial functions<a class="headerlink" href="#minimization-gives-the-best-values-of-paramaters-in-trial-functions" title="Permalink to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[
-E_{trial}=\frac{3\hbar^2 \alpha}{2m_e}-\frac{e^2 \alpha^{1/2}}{\sqrt{2}\epsilon_0 \pi^{3/2}}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial E_{trial}(\alpha)}{\partial \alpha} = 0
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\alpha_{min} = \frac{m_e e^4}{18 \pi^3 \epsilon^2_0 \hbar^4}
-\]</div>
-<ul class="simple">
-<li><p>We need to plug this parameters back into energy function to get the  energy minimized with respect to <span class="math notranslate nohighlight">\(\alpha\)</span>, e.g <span class="math notranslate nohighlight">\(E(\alpha_{min})\)</span></p></li>
-</ul>
-</section>
-<section id="comparison-of-optimized-vs-true-values">
-<h2>Comparison of optimized vs true values<a class="headerlink" href="#comparison-of-optimized-vs-true-values" title="Permalink to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[
-E_0 = -0.5 h
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-E_{trial}(\alpha_{min}) = -0.424
-\]</div>
-<ul class="simple">
-<li><p>About 15% error. But hey it is not too bad for a start!</p></li>
-<li><p>Adding more parameters and functions will reduce the error.</p></li>
-</ul>
-</section>
-</section>
-<section id="variational-method-as-applied-to-linear-combinations-of-trial-functions">
-<h1>Variational method as applied to linear combinations of trial functions<a class="headerlink" href="#variational-method-as-applied-to-linear-combinations-of-trial-functions" title="Permalink to this heading">#</a></h1>
+  <section id="application-of-linear-variational-method">
+<h1>Application of linear variational method<a class="headerlink" href="#application-of-linear-variational-method" title="Permalink to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[
 \phi = \sum_i c_i f_i
@@ -562,15 +477,15 @@ H_{N1}-ES_{11} &amp; H_{N2}-ES_{N2}  &amp; \dots &amp; H_{NN}-ES_{NN}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Perturbation Method</p>
+        <p class="prev-next-title">Variational Method</p>
       </div>
     </a>
     <a class="right-next"
-       href="note04.html"
+       href="../ch07/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear variational method: qucik dive into linear algebra world of QM</p>
+        <p class="prev-next-title">7. Multi-electron systems</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -592,21 +507,10 @@ H_{N1}-ES_{11} &amp; H_{N2}-ES_{N2}  &amp; \dots &amp; H_{NN}-ES_{NN}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variational Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-theorem">Variational theorem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-h-atom-trial-function">Example: H-atom trial function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-gives-the-best-values-of-paramaters-in-trial-functions">Minimization gives the best values of paramaters in trial functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-optimized-vs-true-values">Comparison of optimized vs true values</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-method-as-applied-to-linear-combinations-of-trial-functions">Variational method as applied to linear combinations of trial functions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-energy-by-varying-linear-coefficients">Minimizing energy by varying linear coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-a-linear-algebra-problem">It’s a linear algebra problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant-for-n-trial-functions">Determinant for  N trial functions</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
