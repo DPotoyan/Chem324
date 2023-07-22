@@ -116,13 +116,13 @@ The classical reasoning  about black body radiation is following:
 
 - Number of waves fitting inside an idealized cubic black body is $N_{\nu }=\nu^3$.  For small frequency region  $d\nu$ there would be $dN=3\nu^2 d\nu$ waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. 
 
- - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is **$$I \sim k_B T \nu^2$$**. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
+ - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is $I \sim k_B T \nu^2$. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
 
 
 ### Max Planck finds the right explanation for black body radiation 
 
-In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
+- In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
 
 
 - This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
@@ -173,7 +173,7 @@ $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightar
 
 ![](./images/lec1_AtomicSpectrum.png)
 
----
+
 
 - Measurements of atomic emission/absorption spectra were another key experimental evidence showing that energy levels of individual atoms are quantized.
 
