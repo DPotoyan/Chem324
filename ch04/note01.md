@@ -1,6 +1,6 @@
 
 
-## Breakdown of energy of a molecule
+## Molecular degrees of freedom
 
 ```{admonition} What you need to know
 :class: note
