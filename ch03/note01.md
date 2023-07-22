@@ -4,7 +4,7 @@
 ```{admonition} What you need to know
 :class: note
 - By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schrödinger's equation (SE).
-- Schrödinger's equation in its most general form depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
+- Schrödinger's equation depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
 - We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. Furthermore with the help of operator notation will  frame the problem of solving such equations as a linear algebra problem of finding eigenvalues and eigenvectors.
 
 - Classical equation of motion fails at small scales. Quantum works on all scales!  We will see how Schrödinger's equation predicts classical behaviour under apprporiate conditions where quantum effects are negligible.
