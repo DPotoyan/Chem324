@@ -9,15 +9,15 @@
 ```
 
 
-
 ### Waves, waves and more waves
 
 - Sound Waves. 
 - Waves on a guitar string.
 - Waves on the surface of the water.
 - Quantum mechanical waves. E.g electron waves, neutron waves, hydrogen waves, etc. 
-- Electromagnetic waves (e.g. light) – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
-- Finally there are also gravitational waves traveling through spacetime. See [this video](https://www.youtube.com/watch?v=xj6vV3T4ok8).
+- Electromagnetic waves (e.g. light, UV, X-rays) 
+    – this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
+- [Gravitational waves traveling through spacetime]((https://www.youtube.com/watch?v=xj6vV3T4ok8)) 
 
 ### Classification of waves by orientation: Transverse vs Longitudinal
 

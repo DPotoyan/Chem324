@@ -171,7 +171,7 @@ $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightar
 
 ### Quantization of atomic spectra.
 
-![](./images/lec1_AtomicSpectrum.png){width=80%}
+![](./images/lec1_AtomicSpectrum.png)
 
 ---
 
