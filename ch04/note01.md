@@ -11,9 +11,6 @@ Having found that the energy of bound systems is quantized our next goal is to i
 - **Rigid rotor.**  (quantization of rotational DOF)
 ```
 
-
-
-
 ###  Energies of molecules
 
 Molecules conssiting of N nuclei and n electrons are descibed by wave functions that depends on 3(n+N) variables in 3D space.  These coordinates or degrees of freedom (DOF)  are useful to break down into different kinds of motions classified as translational, rotational, vibrational and also electronic. Due to the fact that molecules are microscopic objects we expect these energies to all be quantized. The relative spacings, however, are going to be different to a signficant extent due to boundary conditions restricting the motions of these DOFs. This is why there exists different kinds of spectrosocopies for probing the specific degrees of freedom in molecules

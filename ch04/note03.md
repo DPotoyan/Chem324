@@ -123,163 +123,155 @@ $$U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...$$
 Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as $\gamma$ are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion. 
 
 
+## Quantum mechanical harmonic oscillator}
 
-### Qunatum mechanical harmonic oscillator problem
 
-Quantum mechanical harmonic oscillator is defined by its Hamitlon operator
+In classical physics, the Hamiltonian for a [harmonic oscillator](http://en.wikipedia.org/wiki/Harmonic_oscillator) is given by:
 
-$$\hat{H} = -\frac{\hbar^2}{2\mu }\frac{d^2}{dx^2}+\frac{1}{2}kx^2$$
+$${H = \frac{1}{2\mu}p_x^2 + \frac{1}{2}\omega^2\mu x^2 = \frac{1}{2\mu}p_x^2 + \frac{1}{2}kx^2\textnormal{ with }\omega = \sqrt{k/\mu}}$$
 
-As with the particle in a box system our objective is to find eigenfunctions and eigenvalues which are the observable states and energy values in the experiment. 
+where $\mu$ denotes the mass. We have chosen $\mu$ instead of $m$ because later we will use this equation in such context where $\mu$ will refer to so called [reduced mass](http://en.wikipedia.org/wiki/Reduced_mass)
 
-$$\hat{H}\psi(x)=E\psi(x)
-\\-\frac{\hbar^2}{2\mu }\psi^{''}+\frac{1}{2}kx^2\psi=E\psi \\ \psi''+\frac{2\mu}{\hbar^2}(E-kx^2/2)\psi=0$$
+$${\mu = \frac{m_1m_2}{m_1 + m_2}\textnormal{ (in kg; }m_1\textnormal{ and }m_2\textnormal{ are masses for two particles)}}$$
 
-What we have is ODE **but with non-constant coefficients**! What this means is we can not use our exponential trick to quickly solve the problem via an algebraic equation. We will, however be able to solve it via an elegant opeator technique. 
+The [quantum mechanicalm harmonic oscillator](http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator) is obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators
 
-### Vibrational energy is quantized
+$${\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + 2\pi^2\nu^2\mu x^2 \,\,\, \textnormal{ where }\nu = \frac{1}{2\pi}\sqrt{\frac{k}{\mu}}}$$
 
-Particle in a box syste, showed that translational energy is quantized becasue of the boundary conditions imposed by the box. 
+Note that the potential term may be expressed in terms of three parameters:
 
-Similarly we find that that for harmonic oscillator system the virbational enegy is also quantized where the role of boundary is played by the potential keeping the system bound and wave functions decaying to zero. Similiar to particle in a box there is an infinitely high energy barrier appearing at large displacement $V(+\infty)=V(-\infty)=+\infty$!
+| $k$      | Force constant (kg s$^{-2}$)                                |
+|----------|-------------------------------------------------------------|
+| $\omega$ | Angular frequency ($\omega = 2\pi\nu$; Hz)                  |
+| $\nu$    | Frequency (Hz; do not confuse this with quantum number $v$) |
 
-The eigenvalues of harmonic oscillator are:
 
-$$E_v = \hbar \omega (v+1/2)\,\,\, v=0,1,2,...$$
 
-Note also that quantum number starts from zero! **The zero point energy** is $E_0=\hbar\omega/2$ where angular frequency $\omega=2\pi \nu$ is defined in terms of spring constant $\omega=\Big(\frac{k}{\mu}\Big)^{1/2}$
+Depending on the context any of these constants may be used to specify the harmonic potential.
 
-Harmonic oscillator model predics constant energy spacings! 
 
-$$E_{v+1}-E_v =\hbar \omega=h\nu $$
+The solutions to this equation are found to be (derivations not shown):
 
-The frequency of photon that takes harmonic oscillator from one to next level is equal to the frequency (classical) nuclear vibration!
+$${E_v = \left(v + \frac{1}{2}\right)h\nu = \left(v + \frac{1}{2}\right)\hbar\omega\textnormal{ where }v=0,1,2,3...}$$
 
+$${\psi_v = N_v\times\overbrace{H_v\left(\sqrt{\alpha}x\right)}^{\textnormal{Hermite polynomial}}\times e^{-\alpha x^2/2}\textnormal{ where }\alpha = \sqrt{\frac{k\mu}{\hbar^2}}}$$
 
+$${N_v = \frac{1}{\sqrt{2^vv!}}\left(\frac{\alpha}{\pi}\right)^{1/4}}$$
 
-### Eigenfunctions of harmonic oscillator
+$${H_0\left(\sqrt{\alpha}x\right) = 1, H_1\left(\sqrt{\alpha}x\right) = 2\sqrt{\alpha}x, H_2\left(\sqrt{\alpha}x\right) = 4\left(\sqrt{\alpha}x\right)^2 - 2\left(\sqrt{\alpha}x\right)}$$
 
-![](./images/sho-psi1-6.png)
+$${H_3\left(\sqrt{\alpha}x\right) = 8\left(\sqrt{\alpha}x\right)^3 - 12\left(\sqrt{\alpha}x\right)}$$
 
-### Probability distribution shows tunneling and quantum-classical transition.
+where $H_v$'s are called [Hermite polynomials](http://en.wikipedia.org/wiki/Hermite_polynomials).
 
-![](./images/sho-psi2-6.png)
+For example, the wavefunctions for the two lowest states are:
 
-### Selection rule
+$${\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}}$$
 
-In physics and chemistry, a selection rule, or transition rule, formally constrains the possible transitions of a system from one quantum state to another. Selection rules have been derived for electromagnetic transitions in molecules, in atoms, in atomic nuclei, and so on. The selection rules may differ according to the technique used to observe the transition:
+$${\psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4} x e^{-\alpha x^2/2}}$$
 
-$$
-P(v\rightarrow v') = \langle v' \mid \mu(x) \mid v \rangle
-$$
 
-This integral represents the  the probability of the transition between states; therefore if the value of this integral is zero the transition is forbidden. In practice, the integral itself does not need to be calculated to determine a selection rule. It is sufficient to determine the symmetry of transition moment function. 
+Some of the lowest state solutions to the harmonic oscillator (HO) problem are displayed below:
 
-Using recusion relation of hermite polynomials one can establish that only transiitons which satsify 
 
-$$\Delta v =\pm1$$
+- Solutions $\psi_v$ with $v = 0, 2, 4, ...$ are even: $\psi_v(x) = \psi_v(-x)$.
+-  Solutions $\psi_v$ with $v = 1, 3, 5, ...$ are odd: $\psi_v(x) = -\psi_v(-x)$.
+- Integral of an odd function from $-a$ to $a$ ($a$ may be $\infty$) is zero.
+- The tails of the wavefunctions penetrate into the potential barrier deeper than the classical physics would allow. This phenomenon is called quantum mechanical \textit{tunneling}.
 
- can occur within harmonic oscillator approximation. Furthermore only those modes are observed in IR for which dipole moment changes with vibrational coordinates. 
 
-### Unharmonic correction of harmonic oscillator
 
-Harmonic oscillator is an approximation valid when vibrations are confined to the vicinity of equilibrium bond. For larger vibrations unharonic effects (next terms in taylro expansion) become important. 
-$$
-\tilde{E}_{v} =\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2
-$$
 
+**Example**** Show that the lowest level of HO obeys the uncertainty principle.
 
-A correction accounting for unharmonic effects is introuced which softens the change in energy with increasing vibrational level v. That is harmonic oscillator is overestimating energy levels and predicts no bond breaking. The $\omega_e$ and $x_e$ are unharmonicity constants which are determiend empriically by fitting spectral data to the funcitonal form above. The $x_e<<<1$ indicating the relative contirbution of two terms.
+**Solution** 
 
-- In unharmonic socillator model the transitions between non-adjacent levels are possible, although given smallness of $x_e$ they occur with less intensity
-- Transion $0\rightarrow 1$ is called fundamental $0\rightarrow 2$ first overtone, $0\rightarrow 3$ second overtone and so on. 
+$$\Delta x = \sigma_x = \sqrt{\left<\hat{x}^2\right> - \left<\hat{x}\right>^2}\textnormal{ and }\Delta p_x = \sigma_{p_x} = \sqrt{\left<\hat{p}_x^2\right> - \left<\hat{p}_x\right>^2}$$
 
+First we calculate $\left<\hat{x}\right>$ ($\psi_0$ is an even function, $x$ is odd, the integrand is odd overall):
 
+$$\left<\hat{x}\right> = \int\limits_{-\infty}^{\infty} \psi_0(x)x\psi_0(x)dx = 0$$
 
-### Vibrational degrees of freedom
 
-- Any non-linear molecule with N atoms has 3N degrees of freedom out of which 3 are translation of center of mass 3 are rotationa around x,y,z axis and the remaining are 3N-6 corrrespdond to internal vobrational motions.  Below is an example of rotional and vibrational degrees of freedom for water molecule. 
+For $\left<\hat{x}^2\right>$ we have (integration by parts or tablebook):
 
-![](./images/watervib.gif)
+$$\left<\hat{x}^2\right> = \int\limits_{-\infty}^{\infty} \psi_0(x)x^2\psi_0(x)dx = \left(\frac{\alpha}{\pi}\right)^{1/2}\int\limits_{-\infty}^{\infty}x^2e^{-\alpha x^2}dx = \left(\frac{\alpha}{\pi}\right)^{1/2} \left[\frac{1}{2\alpha}\left(\frac{\pi}{\alpha}\right)^{1/2}\right]$$
 
-- For linear molecule we lose one roatational mode (rotation around molecular axis) and as a result have 3N-5 vibrational modes:
 
-![](./images/9lmT8.jpg)
+$$= \frac{1}{2\alpha} = \frac{1}{2}\frac{\hbar}{\sqrt{\mu k}} \Rightarrow \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}$$
 
+For $\left<\hat{p}_x\right>$ we have again by symmetry:
 
-### IR spectrum vs Raman spectrum
+$$\left<\hat{p}_x\right> = \int\limits_{-\infty}^{\infty} \underbrace{\psi_0(x)}_{\textnormal{even}} \underbrace{\left(-i\hbar\frac{d}{d x}\right) \underbrace{\psi_0(x)}_{\textnormal{even}}}_{\textnormal{odd}} dx = 0$$
 
-![](./images/Vibrational-modes-of-CO2-a-triatomic-linear-molecule-and-their-IR-Raman-activities.jpg)
+Note that derivative of an even function is an odd function. For $\left<\hat{p}_x^2\right>$ we have:
 
-### Applications: IR spectra
+$$\left<\hat{p}_x^2\right> = \int\limits_{-\infty}^{\infty} \psi_0(x)p_x^2\psi_0(x)dx = -\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\int\limits_{-\infty}^{\infty} e^{-\alpha x^2/2} \frac{d^2}{dx^2} e^{-\alpha x^2/2} dx$$
+$$= \hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2} \int\limits_{-\infty}^{\infty} (\alpha - \alpha^2 x^2)e^{-\alpha x^2}dx = \left[\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\right]$$
+$$\times\left(\alpha\int\limits_{-\infty}^{\infty} e^{-\alpha x^2}dx - \alpha^2\int\limits_{-\infty}^{\infty}x^2e^{-\alpha x^2}dx\right)$$
 
-![](./images/IR-sp.png)
 
 
+$$ = \underbrace{\left[\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\right]\times \left(\alpha\sqrt{\frac{\pi}{\alpha}} - \alpha^2 \frac{\sqrt{\pi}}{2\alpha^{3/2}}\right)}_{\textnormal{\href{http://en.wikipedia.org/wiki/Gaussian_integral}{\underline{tablebook}}}}$$
+$$ = \left[\hbar^2\sqrt{\frac{\alpha}{\pi}}\right]\times\left(\sqrt{\pi\alpha} - \frac{\sqrt{\pi\alpha}}{2}\right) = \frac{\hbar^2\alpha}{2} = \frac{\hbar\sqrt{\mu k}}{2} \Rightarrow \Delta p_x = \sqrt{\frac{\hbar\sqrt{\mu k}}{2}}$$
 
-### Applications: 2D IR spectroscopy
+Finally, we can calculate $\Delta x\Delta p_x$:
 
-![](./images/Amide_modes-1024x587.png)
+$$\Delta x\Delta p_x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\times \sqrt{\frac{\hbar\sqrt{\mu k}}{2}} = \sqrt{\frac{\hbar^2}{4}} = \frac{\hbar}{2}$$
 
+Recall that the uncertainty principle stated that: $\Delta x\Delta p_x \ge \frac{\hbar}{2}$
 
-### Application of IR to biochemistry-3: Normal modes of proteins
 
-Normal modes of large biomolecules like proteins contain important information about functional dynamics. Oftentimes by looking at the slowest modes of proteins one may identify motions that faciltiate ligand binding, catalysis, allostery etc. These motions are often generated in classical molecular dynamics simulations
+Thus we can conclude that $\psi_0$ fulfills the Heisenberg uncertainty principle.
 
-![](./images/18100819040042008.7.y.90.gif)
 
+**Example** Quantization of nuclear motion. [Molecular vibration](http://en.wikipedia.org/wiki/Molecular_vibration) in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There $\mu$ is the reduced mass as given previously and the variable $x$ is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length $R_e$).\\
 
 
+(a) Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\\
+(b) What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For $^{12}$C$^{16}$O, we have:
+$\tilde{v}$ = 2170 cm$^{-1}$ (vibrational frequency) and $R_e$ = 113 pm (equilibrium bond length).\\
+\vspace*{0.2cm}
 
+**Solution** The harmonic vibration frequency is given in wavenumber units (cm$^{-1}$). This must be converted according to: $\nu = c\tilde{v}$. The previous example gives expression for $\sigma_x$:
 
-### Solving harmonic oscillator porblem via ladder operators.
+$$\sigma_x = \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}$$
 
-Eigenfunctions and eigenvalues of harmonic oscillator can be found via a rather elegant operator technique. The basic idea is to factor the quadratic operator expressions in the  hamiltonian into product of two operators that we call $a^{+}$ and $\hat{a}^{-}$. These two operators turn out to have a neat property of kicking eigenfunctions up and down to the adjacent eigenfunctions. These are known as ladder operators or raising and lowering operators or sometimes also called more dramatic names like **creation and destruction operators.** The facotrization is shown below: 
+In considering spectroscopic data, it is convenient to express this in terms of $\tilde{v}$:
 
-$$
-\hat{H} = \frac{1}{2m}\hat{P}^2+\frac{k}{2}\hat{X}^2 =\frac{\hbar \omega}{2}(\hat{p}^2+\hat{x}^2) =\frac{1}{2}\Big((\hat{x}+i\hat{p})(\hat{x}-i\hat{p}) +1\Big)
-$$
+$$k = \left(2\pi c\tilde{v}\right)^2\mu\textnormal{ and }\Delta x = \sigma_x = \sqrt{\frac{\hbar}{4\pi c\tilde{v}\mu}}$$
 
-$$
-\hat{H}=\hbar \omega \Big(\hat{a}^{+}\hat{a}+\frac{1}{2}\Big)=\hbar \omega \Big(\hat{n}+\frac{1}{2}\Big)
-$$
 
-Where we have introduced a convenient dimensionless momentum and position operators:
+In part (b) we have to apply the above expression to find out the standard deviation for carbon monoxide bond length in its ground vibrational state. First we need the reduced mass:
 
-- $\hat{p}=(\mu \hbar \omega)^{-1/2}\hat{P}$  
-- $\hat{x}=(\mu \omega/\hbar)^{1/2}\hat{X}$.  
+$$\mu = \frac{m_1m_2}{m_1 + m_2} = \frac{(12\times 10^{-3}\textnormal{ kg mol}^{-1})(15.995\times 10^{-3}\textnormal{ kg mol}^{-1})}
+{((12 + 15.995)\times 10^{-3}\textnormal{ kg mol}^{-1})\underbrace{(6.022\times 10^{23}\textnormal{ mol}^{-1})}_{\textnormal{Avogadro's constant}}}$$
+$$ = 1.139\times 10^{-26}\textnormal{ kg}$$
 
-And expressed hamitlonain in terms of ladder operators: 
+The standard deviation is now:
 
-- $$\hat{a}^{+}=\frac{1}{\sqrt{2}}(\hat{x}+i\hat{p})$$
-- $$\hat{a}^{-}=\frac{1}{\sqrt{2}}(\hat{x}-i\hat{p})$$
-- $$\hat{n}=\hat{a}^{+}\hat{a}$$
+$$\Delta x = \sigma_x = \left[\frac{1.055\times 10^{-34}\textnormal{ Js}}{4\pi\underbrace{\left(2.998\times 10^{10}\textnormal{ cm s}^{-1}\right)}_{\textnormal{speed of light}}\left(2170\textnormal{ cm}^{-1}\right)\left(1.139\times 10^{-26}\textnormal{ kg}\right)}\right]^{1/2}$$
+$$ = 3.37\textnormal{ pm} \Rightarrow \textnormal{\% of deviation} = 100\%\times\frac{3.37\textnormal{ pm}}{113\textnormal{ pm}} = 2.98\%$$
 
-The $\hat{n}$ is called a number operators and the fact that hamitlonain is defined via number operators we expect it to satisfy eigenfunction eigenvalue relation $\hat{n}\mid n\rangle=n\mid n\rangle$ with n being eigenvalues to be determined.
 
-Notice also that the ladder operators are complex conjugate of each other $\hat{a}^*= \hat{a}^{+}$! 
+Finally, the following realtions are useful when working with Hermite polynomials:
 
+$${H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0\textnormal{ (characteristic equation)}}$$
 
+$${H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)\textnormal{ (recursion relation)}}$$
+$${\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{matrix}
+0, & \textnormal{ if }v' \ne v\\
+\sqrt{\pi}2^vv!, & \textnormal{ if }v' = v\\
+\end{matrix}\right.
+}$$
 
-### Raising and lowering of eignefunctions
+More results for Hermite polynomials can be found [here](http://en.wikipedia.org/wiki/Hermite_polynomials)
 
-Knowing commutators of raising and lowering oeprators allows us to reveal their action on eigenfunctions:
 
-- $[a^{+},a] = -1$,   $[\hat{n},\hat{a}] = -a $,   $[\hat{n},\hat{a}^{+}] = a^{+}$
+In a three-dimensional harmonic oscillator potential, $V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2$, the separation technique similar to the three-dimensional particle in a box problem can be used. The resulting eigenfunctions and eigenvalues are:
 
-Now let us prove to improtant properties of ladder oeprators. 
+$${E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}
+{\psi(x,y,z) = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
+{ \times N_{v_y}H_{v_y}\left(\sqrt{\alpha_y}y\right)e^{-\alpha_yy^2/2} \times N_{v_z}H_{v_z}\left(\sqrt{\alpha_z}z\right)e^{-\alpha_zz^2/2}}$$
 
--  $\hat{a}^{+} \mid n\rangle \sim \mid n+1\rangle$
-
-  
-  $$
-  \hat{n}a^{+}\mid n\rangle = (\hat{a}^{+}\hat{n}+\hat{a}^{+}) \mid n\rangle = (n+1)\hat{a}^{+}\mid n\rangle
-  $$
-  
-- $\hat{a} \mid n\rangle \sim \mid n-1\rangle$
-
-  ​	
-  $$
-  \hat{n}a\mid n\rangle = (\hat{a}\hat{n}-\hat{a}) \mid n\rangle = (n-1)\hat{a}\mid n\rangle
-  $$
-  
+where the $\alpha$, $N$, and $H$ are defined in above and the $v$'s are the quantum numbers along the Cartesian coordinates.
