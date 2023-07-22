@@ -18,7 +18,7 @@
 
 - Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
 
-  <img src="images/SE_intro.jpeg" style="zoom:60%;" />
+  <img src="images/SE_intro.jpeg" style="zoom:30%;" />
 
 ### Picking up where classical mechanics has failed
 
@@ -37,7 +37,7 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 ### Schrödinger Equation (time-dependent)
 
-<img src="images/SE_4.jpg" style="zoom:28%;" />
+<img src="images/SE_4.jpg" style="zoom:10%;" />
 
 - The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time-dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
 
@@ -116,7 +116,7 @@ $$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^
 
 - We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
-  <img src="images/SE_intro3.jpg" style="zoom: 70%; " />
+  <img src="images/SE_intro3.jpg" scale="zoom: 40%" />
 
 ### Linear operators. 
 

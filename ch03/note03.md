@@ -1,15 +1,11 @@
-## Postulates of quantum mechanics.  
+## Postulates of Quantum Mechanics
 
 ```{admonition} What you need to know
 :class: note
 - **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere application of Schrödinger equation. In practice theory is not so easy to apply. 
-- **Double slit experiment and quantum weirdness**. Microscopic world has an inherently probabilistic nature where in some sense the very act of observation creates the outcome! Uncertainty relation places rigid boundaries on the amount of information one can possess about microscopic objects.
 ```
 
-### The posutlates
-
-
-### Postulate 1
+### Postulate 1: Wave function
 
 ```{admonition}  Wave function 
 :class: important
@@ -23,7 +19,7 @@ $$P(x,t)=|\psi(x,t)|^2 \,\,\,   \,\,\, \int |\psi(x,t)|^2 dx=1 $$
 - Functions that do not satisfy these criteria are discarded as non-physical.  
 ```
 
-### Postulate 2
+### Postulate 2: Operators
 
 
 ```{admonition}  Operators
@@ -45,7 +41,7 @@ $$\int \psi^* (\hat{H} \phi) dx = \int \phi (\hat{H} \psi)^* dx =\int \phi \hat{
 ```
 
 
-### Postulate 3
+### Postulate 3: Eigenvalues
 
 
 ```{admonition}  Eigenvalues
@@ -63,10 +59,10 @@ $$\hat{A}\psi_n = a_n\psi_n $$
 
 
 
-### Postulate 4
+### Postulate 4: Expectations
 
 
-```{admonition}  Expectation
+```{admonition}  Expectations
 :class: important
 
 - Expectation or the average value of observable A in a state described by wave 
@@ -81,7 +77,7 @@ $$\langle A \rangle =\int \psi^* \hat{A}\psi dx $$
 ```
 
 
-### Postulate 5
+### Postulate 5: Time evolution
 
 
 ```{admonition}  Time evolution
