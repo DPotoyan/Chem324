@@ -1,12 +1,11 @@
- ## Particle in a Box (PIB):
+ ## Particle in a 1D box
 
 ```{admonition} What you need to know
 :class: note
 
-```
-
 - Particle in a box is a toy model of electron/atom/molecule trapped in some region of space $[0,L]$. The positional information of a quantum "particle" is described by a quantum wave function $\psi(x)$ which is obtained by solving Schrodinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem. 
 -  Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a "wave"
+```
 
 
 
