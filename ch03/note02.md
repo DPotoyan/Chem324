@@ -1,4 +1,4 @@
-## Probabilistic meaning of wave function and toy systems of quantum mechanics.  
+## The menaing of wave function  
 
 ```{admonition} What you need to know
 :class: note
@@ -84,7 +84,7 @@ Probability distribution function contains lot of information. E.g probability o
 
 The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  $\psi_n(x)$. The states (B,C,D) are the eigenfunctions of Hamiltonian $n=1,2,3$.  While E and F are not. 
 
-### Whatare some new ideas that we learn from PIB
+### What are some new ideas that we learn from PIB
 
 1. In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive **energy levels**.
 
@@ -114,15 +114,9 @@ $$\hat{H}= \hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$$
 
 We have all the necessary ingeredients to solve Schrödinger equation for 1D PIB $\hat{H}\psi(x)=E\psi(x)$: 
 
-
-
 $$-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x)=E\psi(x),\,\,\,\,or\,\,\, \psi''(x)=-k^2 \psi(x)$$
 
-
-
 Where we have defined $k^2=\frac{2mE}{\hbar^2}$  as a positive real number
-
-
 
 ### 1D PIB looks just like 1D guitar string problem. 
 
