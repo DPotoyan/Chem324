@@ -33,25 +33,9 @@ Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia
 
 ### Quantum rigid rotor and angular momentum operator 
 
-The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
+- The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
 
-
-$$
-\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
-$$
-
-
-
-In rigid rotor approximation laplacian is reduced to an operator acting on two variables $\theta$ and $\phi$
-
-
-$$
-\nabla^2_{\theta,\phi} =\frac{1}{r^2}\Big[\frac{1}{sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} \Big ]
-$$
-
-
-
-In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:
+- In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:
 
 
 $$
@@ -59,8 +43,7 @@ $$
 $$
 
 
-
-Where $I=\mu r^2$ is the moment of inertia and where identified  the angular momentum operator as:
+- Where $I=\mu r^2$ is the moment of inertia and where identified  the angular momentum operator as:
 $$
 \hat{L}= -i\hbar \nabla_{\theta,\phi}
 $$
@@ -77,23 +60,10 @@ $$
 $$
 
 
-We are once again able to separet two angular variables and solve thr esulting ODE exactly:
-
-
-$$
-\frac{sin \theta}{\theta}\frac{d}{d\theta} \Big(sin \theta\frac{d\Theta(\theta)}{d\theta}\Big)+\beta sin^2 \theta = m^2
-$$
-
-$$
-\frac{d^2 \Phi(\phi)}{d \phi^2}=-m^2\Phi(\phi)
-$$
-
-
+We are once again able to separet two angular variables and solve the esulting ODE exactly:
 
 - The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
 -  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerges from  the solution of $\phi $ part. 
-
-
 
 
 ### Rotational states of molecules are quantized
@@ -109,7 +79,37 @@ $$
 Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
 
 
+**Notes**
 
+- Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
+- There is no rotational zero-point energy ($J = 0$ is allowed). The ground state rotational wavefunction has equal probability amplitudes for each orientation.
+- The energies are independent of $m_J$. $m_J$ introduces the degeneracy of a given $J$ level.
+- For non-linear molecules Eq. (\ref{eq9.165}) becomes more complicated.
+
+
+**Example** What are the reduced mass and moment of inertia of $H^{35}Cl$? The equilibrium internuclear distance $R_e$ is 127.5 pm. What are the values of $L, L_z$ and $E$ for the state with $J = 1$? The atomic masses are: $m_{\textnormal{H}} = 1.673470 \times 10^{-27}$ kg and $m_{\textnormal{Cl}} = 5.806496 \times 10^{-26}$ kg.
+
+**Solution** First we calculate the reduced mass (Eq. (\ref{eqX.25})):
+
+$$\mu = \frac{m_{\textnormal{H}}m_{^{35}\textnormal{Cl}}}{m_{\textnormal{H}} + m_{^{35}\textnormal{Cl}}} = \frac{(1.673470\times 10^{-27}\textnormal{ kg})(5.806496\times 10^{-26}\textnormal{ kg})}{(1.673470\times 10^{-27}\textnormal{ kg}) + (5.806496\times 10^{-26}\textnormal{ kg})}$$
+$$= 1.62665\times 10^{-27}\textnormal{ kg}$$
+
+
+$$I = \mu R_e^2 = (1.626\times 10^{-27}\textnormal{ kg})(127.5\times 10^{-12}\textnormal{ m})^2 = 2.644\times 10^{-47}\textnormal{ kg m}^2$$
+
+$L$ is given by Eq. (\ref{eq9.166}):
+
+$$L = \sqrt{J(J+1)}\hbar = \sqrt{2}\left(1.054\times 10^{-34}\textnormal{ Js}\right) = 1.491\times 10^{-34}\textnormal{ Js}$$
+
+$L_z$ is given by Eq. (\ref{eq9.163}):
+
+$$L_z = -\hbar,0,\hbar\textnormal{ (three possible values)}$$
+
+Energy of the $J = 1$ level is given by 
+
+$$E = \frac{\hbar^2}{2I}J(J+1) = \frac{\hbar^2}{I} = 4.206\times 10^{-22}\textnormal{ J} = 21\textnormal{ cm}^{-1}$$
+
+This rotational spacing can be, for example, observed in gas phase infrared spectrum of HCl.
 
 
 ### Spectroscopic applications of Rigid rotor model
