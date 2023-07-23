@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04B';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Hydrogen Atom" href="../ch05/index.html" />
+    <link rel="next" title="Rotational spectra of diatomic molecules" href="note04C.html" />
     <link rel="prev" title="Angular momentum" href="note04A.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,6 +195,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03C.html">Beyond harmonic oscillator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Vibration-rotation spectra of diatomic molecules</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -373,12 +375,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
 </ul>
             </nav>
         </div>
@@ -480,78 +476,6 @@ E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degener
 \[E = \frac{\hbar^2}{2I}J(J+1) = \frac{\hbar^2}{I} = 4.206\times 10^{-22}\textnormal{ J} = 21\textnormal{ cm}^{-1}\]</div>
 <p>This rotational spacing can be, for example, observed in gas phase infrared spectrum of HCl.</p>
 </section>
-<section id="spectroscopic-applications-of-rigid-rotor-model">
-<h2>Spectroscopic applications of Rigid rotor model<a class="headerlink" href="#spectroscopic-applications-of-rigid-rotor-model" title="Permalink to this heading">#</a></h2>
-<p>The energy spacing between rotational levels assume simple expression predicting integer multiples (J+1) of spectral lines for <span class="math notranslate nohighlight">\(J=0,1,2,...\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-\Delta E_{J+1,J} = E_{J+1}-E_{J} = B[(J+1)(J+2)-J(J+1)]=2B(J+1)
-\]</div>
-<p>Often in spectroscopy application wavenumbers are adopted which we indicate by placing tilde on energy:</p>
-<div class="math notranslate nohighlight">
-\[
-\tilde{\nu}_{J+1,J} =\frac{1}{\lambda} = \frac{\Delta E}{hc} = 2\tilde{B}(J+1)
-\]</div>
-<p>Where rotational constant has units of inverse wavelength [cm^{-1}]  <span class="math notranslate nohighlight">\(\tilde{B}=\frac{h^2}{8\pi^2 I c}\)</span></p>
-</section>
-<section id="spectral-lines-are-predicted-to-be-equidistant">
-<h2>Spectral lines are predicted to be equidistant!<a class="headerlink" href="#spectral-lines-are-predicted-to-be-equidistant" title="Permalink to this heading">#</a></h2>
-<p>Rigid rotor model makes a very specifci prediction about spectral lines: they are to be equally spaced. In other words difference between adjacent frequency of tranisitons is a constnat number:</p>
-<div class="math notranslate nohighlight">
-\[
-\tilde{\nu}_{J+2,J+1}-\tilde{\nu}_{J+1,J}=2\tilde{B}
-\]</div>
-<p>Thus be measuring this spectral line difference, we can extract structural information about the molecule, e.g. compute the moment of inertia!</p>
-</section>
-<section id="rotational-virbational-transitions">
-<h2>Rotational-virbational transitions<a class="headerlink" href="#rotational-virbational-transitions" title="Permalink to this heading">#</a></h2>
-<p>Rotational transitions often accompany the transitions in vibrational levels. The simplest  model for joint vibrational and rotational transitions is a combination of a harmonic oscillator with rigid rotor models:</p>
-<div class="math notranslate nohighlight">
-\[
-E_{v,J} = h\nu(n+1/2)+BJ(J+1)
-\]</div>
-<p>The selection rules for harmonic oscillator and rigid rotor are <span class="math notranslate nohighlight">\(\Delta v =\pm 1\)</span> and <span class="math notranslate nohighlight">\(\Delta J \pm 1\)</span>, respectively.</p>
-<p><img alt="" src="ch04/images/rovib1.png" /></p>
-</section>
-<section id="ro-vibrational-spectra-r-p-and-q-branches">
-<h2>Ro-vibrational spectra, R, P and Q branches<a class="headerlink" href="#ro-vibrational-spectra-r-p-and-q-branches" title="Permalink to this heading">#</a></h2>
-<p>Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state <span class="math notranslate nohighlight">\(v=0\rightarrow v=1 \)</span>. The transitions with <span class="math notranslate nohighlight">\(\Delta J=+1\)</span> and <span class="math notranslate nohighlight">\(\Delta J=-1\)</span> appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch <span class="math notranslate nohighlight">\(\Delta J =0\)</span> is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model.</p>
-<div class="math notranslate nohighlight">
-\[
-\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
-\]</div>
-<p><img alt="" src="ch04/images/branch.jpg" /></p>
-</section>
-<section id="correction-1-rovibrational-coupling">
-<h2>Correction #1 rovibrational coupling<a class="headerlink" href="#correction-1-rovibrational-coupling" title="Permalink to this heading">#</a></h2>
-<p>One correction one can make to the rotational-vibrational model is to include the effect of coupling between rotational and vibrational degrees of freedom. When exciting molecules to higher vibrational states, it is reasonable to expect that rotational parameters will be impacted as a result of changes in the average intra-nuclear distance, among other things. This can be accounted for by making rotational constant dependent on vibrational level v. <span class="math notranslate nohighlight">\(B\rightarrow B_v\)</span>. The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!</p>
-<div class="math notranslate nohighlight">
-\[
-B_v = B_e-\alpha_e(v+1/2)
-\]</div>
-<p>The expression of energy with these correction would then be:</p>
-<div class="math notranslate nohighlight">
-\[
-E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
-\]</div>
-</section>
-<section id="correction-2-the-unharmonicity-unrigdity-term">
-<h2>Correction #2 the unharmonicity/unrigdity term<a class="headerlink" href="#correction-2-the-unharmonicity-unrigdity-term" title="Permalink to this heading">#</a></h2>
-<p>Similiar to the first order correction we introduced for harmonic oscillator in the form of unharmonicity term  we can now also improve rigid rotor model by accounting for the fact that chemical bonds are not trully rigid:</p>
-<div class="math notranslate nohighlight">
-\[
-\tilde{E}_{v,J} =\Big[\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2\Big] + \Big[ BJ(J+1)-DJ^2 (J+1)^2 \Big ]
-\]</div>
-<p>Where constant D is called the <strong>centrifugal distortion constant.</strong> and is typically a small number <span class="math notranslate nohighlight">\(D&lt;&lt;1\)</span></p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -595,11 +519,11 @@ E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
       </div>
     </a>
     <a class="right-next"
-       href="../ch05/index.html"
+       href="note04C.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5. Hydrogen Atom</p>
+        <p class="prev-next-title">Rotational spectra of diatomic molecules</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -625,12 +549,6 @@ E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
 </ul>
   </nav></div>
 

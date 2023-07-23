@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Vibrational spectra of diatomic molecules &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Vibration-rotation spectra of diatomic molecules &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note03B';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note05';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Beyond harmonic oscillator" href="note03C.html" />
-    <link rel="prev" title="Harmonic Oscillator" href="note03A.html" />
+    <link rel="next" title="5. Hydrogen Atom" href="../ch05/index.html" />
+    <link rel="prev" title="Rotational spectra of diatomic molecules" href="note04C.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,12 +191,12 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="note03A.html">Harmonic Oscillator</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vibrational spectra of diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03B.html">Vibrational spectra of diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03C.html">Beyond harmonic oscillator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Vibration-rotation spectra of diatomic molecules</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vibration-rotation spectra of diatomic molecules</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch04/note03B.md" target="_blank"
+      <li><a href="../_sources/ch04/note05.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vibrational spectra of diatomic molecules</h1>
+    <h1>Vibration-rotation spectra of diatomic molecules</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,7 +372,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-vibration-rotation-levels">Energies of vibration-rotation levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
 </ul>
             </nav>
         </div>
@@ -384,64 +391,138 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="vibrational-spectra-of-diatomic-molecules">
-<h1>Vibrational spectra of diatomic molecules<a class="headerlink" href="#vibrational-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Earlier when we have discussed the harmonic oscillator problem and we briefly mentioned that it can be used to approximate atom - atom interaction energy (<em>potential energy curve</em>) near the equilibrium bond length.</p></li>
-<li><p>Harmonic potential would not allow for molecular dissociation and therefore it is clear that it would not be a realistic model when we are far away from the equilibrium geometry. The harmonic potential is given by:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{E(R) = \frac{1}{2}k(R - R_e)^2}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(k\)</span> is called the <em>force constant</em>, <span class="math notranslate nohighlight">\(R_e\)</span> is the <em>equilibrium bond length</em>, and <span class="math notranslate nohighlight">\(R\)</span> is the distance between the two atoms. The actual potential energy curve can be obtained from theoretical calculations or to some degree from spectroscopic experiments.</p></li>
-<li><p>This curve has usually complicated form and hence it is difficult to solve the nuclear Schrodinger equation exactly for this potential. One way to see the emergence of the harmonic approximation is to look at <em>Taylor series expansion</em>:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{E(R) = E(R_e) + \left(\frac{dE}{dR}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{d^2E}{dR^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
-<p>Note that at the minimum we get <span class="math notranslate nohighlight">\(E(R) = E(R_e)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[{E_v = \left(v + \frac{1}{2}\right)h\nu\textnormal{ with }v = 0, 1, 2,...}\]</div>
-<ul class="simple">
-<li><p>The <span class="math notranslate nohighlight">\(v\)</span> is the vibrational quantum number, the vibrational frequency <span class="math notranslate nohighlight">\(\nu = \frac{1}{2\pi}\sqrt{k/\mu}\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass of the diatomic molecule. Note that <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> look very similar but have different meaning! This can be expressed in wavenumber units as:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}\]</div>
-<blockquote>
-<div><p>A typical value for vibrational frequency would be around 500 - 4000 <span class="math notranslate nohighlight">\(cm^{-1}\)</span>. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.</p>
-</div></blockquote>
+  <section id="vibration-rotation-spectra-of-diatomic-molecules">
+<h1>Vibration-rotation spectra of diatomic molecules<a class="headerlink" href="#vibration-rotation-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h1>
+<p>Rotational structure can often be observed to accompany vibronic transitions when using sufficiently high spectral resolution. Spectral lines in such spectrum correspond to simultaneous change in both vibrational and rotational quantum numbers. For example, for HCl molecule one can observe the vibrational quantum number to change <span class="math notranslate nohighlight">\(v' = v'' \pm 1\)</span> and <span class="math notranslate nohighlight">\(J' = J''\pm 1\)</span>. The vibration-rotation spectrum of HBr is shown below. Note that the rotational structure can usually only be observed in dilute gas phase samples as molecular rotations tend to be quenched in liquids and solids.</p>
 <section id="selection-rules">
 <h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
-<p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. Previously we found that the dipole moment depends on the internuclear distance. To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[{\mu_0^{(e)}(R) = \mu_e + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
-<p>Next we integrate over the vibrational degrees of freedom and obtain:</p>
-<div class="math notranslate nohighlight">
-\[{\hspace*{-1cm}\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v'}dR + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)\psi_{v'}dR\hspace*{0.1cm}}
-{ + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)^2\psi_{v'}dR + ...}\]</div>
-<ul class="simple">
-<li><p>The first term above is zero since the vibrational eigenfunctions are orthogonal. The second term is nonzero if the dipole moment depends on the internuclear distance <span class="math notranslate nohighlight">\(R\)</span>. Therefore we conclude that the selection rule for pure vibrational transition is that the dipole moment must change as a function of <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
-<li><p>All homonuclear diatomic molecules (e.g., <span class="math notranslate nohighlight">\(H_2\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, etc.) have zero dipole moment, which cannot change as a function of <span class="math notranslate nohighlight">\(R\)</span>. Hence these molecules do not show vibrational spectra.</p></li>
-<li><p>In general, all molecules that have dipole moment have vibrational spectra as change in <span class="math notranslate nohighlight">\(R\)</span> also results in change of dipole moment. We still have the integral present in the second term.</p></li>
-<li><p>For harmonic oscillator wavefunctions, this integral is zero unless <span class="math notranslate nohighlight">\(v'' = v'\pm 1\)</span> . This provides an additional selection rule, which says that the vibrational quantum number may either decrease or increase by one.</p></li>
-</ul>
+<p>Because the ground vibrational level (<span class="math notranslate nohighlight">\(v'' = 0\)</span>) is predominantly populated up to room temperatures, transitions from the excited vibrational states do not contribute to the spectrum at these temperatures. They can contribute when temperature is increased, however. For rotational states many states are thermally populated and therefore the excited rotational states contribute to the spectrum. Note that at close to 0 K one could only observe one rotational transition (<span class="math notranslate nohighlight">\(J'' = 0 \rightarrow J' = 1\)</span>). Transitions where the rotational quantum number increases by one (<span class="math notranslate nohighlight">\(\Delta J  = +1\)</span>) are said to belong to the <span class="math notranslate nohighlight">\(R\)</span> branch and transitions where the rotational quantum number decreases by belong to the <span class="math notranslate nohighlight">\(P\)</span> branch (<span class="math notranslate nohighlight">\(\Delta J = -1\)</span>). The intensities of the spectral lines reflect the thermal populations on the initial rotational states. The <span class="math notranslate nohighlight">\(Q\)</span> branch corresponds to <span class="math notranslate nohighlight">\(\Delta J = 0\)</span> but is only allowed in when the molecule has orbital angular momentum (e.g., NO).</p>
 </section>
-<section id="overtone-transitions">
-<h2>Overtone transitions<a class="headerlink" href="#overtone-transitions" title="Permalink to this heading">#</a></h2>
-<p>The higher order terms are small but they give rise to overtone transitions with <span class="math notranslate nohighlight">\(\Delta v = \pm 2, \pm 3, ...\)</span> with rapidly decreasing intensities.</p>
-<p>For harmonic oscillator, the Boltzmann distribution  gives the statistical weight for the <span class="math notranslate nohighlight">\(v\)</span> level:</p>
+<section id="energies-of-vibration-rotation-levels">
+<h2>Energies of vibration-rotation levels<a class="headerlink" href="#energies-of-vibration-rotation-levels" title="Permalink to this heading">#</a></h2>
+<p>The energies of the vibration-rotation levels are approximately given by:</p>
 <div class="math notranslate nohighlight">
-\[{f_v = \frac{e^{-(v + 1/2)h\nu/(k_BT)}}{\sum\limits_{v=0}^\infty e^{-(v+1/2)h\nu/(k_BT)}}}
-{= \frac{e^{-vh\nu/(k_BT)}}{\sum\limits_{v=0}^\infty e^{-vh\nu/(k_BT)}}}\]</div>
-<p>Note that the degeneracy factor is identically one because there is no degeneracy in one dimensional harmonic oscillator. To proceed, we recall geometric series:</p>
+\[{\tilde{E}_{vr}= \tilde{E}_v + \tilde{E}_r = \tilde{\nu}_e\left(v + 1\right) - \tilde{v}_ex_e\left(v + \frac{1}{2}\right)^2 + \tilde{B}_vJ(J+1)}\]</div>
+<p>where we have included separate rotational constant <span class="math notranslate nohighlight">\(B_v\)</span> for each vibrational level <span class="math notranslate nohighlight">\(v\)</span>. Usually <span class="math notranslate nohighlight">\(B_1 &lt; B_0\)</span> etc. The dependence of the rotational constant on the vibrational quantum number can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[{\sum\limits_{v=0}^\infty x^v = \frac{1}{1 - x}\textnormal{ with }x &lt; 1}\]</div>
-<p>The denominator now gives:</p>
+\[{\tilde{B}_v = \tilde{B}_e - \tilde{\alpha}_e\left(v + \frac{1}{2}\right)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{\alpha}_e\)</span> is the <em>vibration-rotation constant</em></p>
+<p>Next we consider a fairly common case where the vibrational transition occurs from <span class="math notranslate nohighlight">\(v = 0\)</span> to <span class="math notranslate nohighlight">\(v = 1\)</span> and consider only rotational transitions that fulfill the selection rule <span class="math notranslate nohighlight">\(\Delta J = \pm 1\)</span>. In the ground vibrational level the rotational level energies are given by:</p>
 <div class="math notranslate nohighlight">
-\[{\sum\limits_{v=0}^\infty e^{-vh\nu/(k_BT)} = \frac{1}{1 - e^{-h\nu/(k_BT)}}}\]</div>
-<p>Further simplifying we obtain:</p>
+\[{\tilde{E_{vr}}(v=0,J) = \tilde{\nu}_e/2 - \tilde{v}_ex_e/4 + \tilde{B}_0J(J+1)}\]</div>
+<p>When a molecule absorbs light, the vibrational quantum number increases by one. For the <span class="math notranslate nohighlight">\(R\)</span> branch the rotational quantum number <span class="math notranslate nohighlight">\(J\)</span> also increases by one. Thus we need the energy for this level:</p>
 <div class="math notranslate nohighlight">
-\[{f_v = \left(1 - e^{-h\nu/(k_BT)}\right)e^{-vh\nu/(k_BT)}}\]</div>
-<p>For example, for <span class="math notranslate nohighlight">\(H^{35}Cl\)</span> the thermal population of the first vibrational level <span class="math notranslate nohighlight">\(v = 1\)</span> is very small (<span class="math notranslate nohighlight">\(9\times\)</span> <span class="math notranslate nohighlight">\(10^{-7}\)</span>) and therefore the excited vibrational levels do not contribute to the (IR) spectrum.</p>
+\[{\tilde{E}_{vr}(v = 1, J+1) = \frac{3}{2}\tilde{\nu} - \tilde{\nu}_ex_e\left(\frac{3}{2}\right)^2 + \tilde{B}_1(J+1)(J+2)}\]</div>
+<p>The energy differences give the positions of the spectral lines for the <span class="math notranslate nohighlight">\(R\)</span> branch:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}_R = \tilde{E}_{vr}(v = 1, J+1) - \tilde{E}_{vr}(v=0,J)}
+{= \tilde{\nu}_0 + \tilde{B}_1(J+1)(J+2) - \tilde{B}_0J(J+1)}
+{= \tilde{\nu}_0 + 2\tilde{B}_1 + \left(3\tilde{B}_1 - \tilde{B}_0\right)J + \left(\tilde{B}_1 - \tilde{B}_0\right)J^2}
+{ = \tilde{\nu}_0 + \left(\tilde{B}_0 + \tilde{B}_1\right)\left(J + 1\right) + \left(\tilde{B}_1 - \tilde{B}_0\right)\left(J + 1\right)^2}\]</div>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}_0 = \tilde{\nu}_e - 2\tilde{\nu}_ex_e}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{\nu}_0\)</span> is the center of the vibration-rotation band. There will be no absorption at <span class="math notranslate nohighlight">\(\tilde{\nu}_0\)</span> unless the molecule has a <span class="math notranslate nohighlight">\(Q\)</span> branch. If <span class="math notranslate nohighlight">\(B_1 = B_0\)</span> these lines are equally spaced.</p>
+<p>For the <span class="math notranslate nohighlight">\(P\)</span> branch <span class="math notranslate nohighlight">\(J \rightarrow J - 1\)</span> and the excite state energy level is given by:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_{vr}(v = 1,J-1) = \frac{3}{2}\tilde{\nu}_e - \tilde{\nu}_ex_e\left(\frac{3}{2}\right)^2 + \tilde{B}_1(J-1)J}\]</div>
+<p>The corresponding transitions occur at:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}_P = \tilde{E}_{vr}(v=1,J-1) - \tilde{E}_{vr}(v=0,J)}
+{= \tilde{\nu}_0 + \tilde{B}_1(J - 1)J - \tilde{B}_0J(J+1)}
+{= \tilde{\nu}_0 - \left(\tilde{B}_1 + \tilde{B}_0\right)J + \left(\tilde{B}_1 - \tilde{B}_0\right)J^2}\]</div>
+<p>To extract <span class="math notranslate nohighlight">\(B_0\)</span> and <span class="math notranslate nohighlight">\(B_1\)</span> from an experimental spectrum, the following expressions are useful:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}_R(J-1) - \tilde{\nu}_P(J+1) = 4\tilde{B}_0\left(J + \frac{1}{2}\right)}
+{\tilde{\nu}_R(J) - \tilde{\nu}_P(J) = 4\tilde{B}_1\left(J + \frac{1}{2}\right)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the initial state rotational quantum number. To apply these equations one must label the rotational lines according to their <span class="math notranslate nohighlight">\(J\)</span> and record the peak positions in wavenumbers. This should be applied to many peak pairs and then obtain the averaged values for <span class="math notranslate nohighlight">\(\tilde{B}_0\)</span> and <span class="math notranslate nohighlight">\(\tilde{B}_1\)</span>.</p>
+<p><strong>Example</strong> Calculate the relative populations of the first five rotational levels of the ground vibrational state of <span class="math notranslate nohighlight">\(H^{35}\)</span>Cl at 300 K. The ground vibrational state rotational constant <span class="math notranslate nohighlight">\(B_0 = 10.44\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span>.\</p>
+<p><strong>Solution</strong> The level populations are given by the Boltzmann distribution:</p>
+<div class="math notranslate nohighlight">
+\[\frac{N_J}{N_0} = \left(2J + 1\right)e^{-hcJ(J+1)\tilde{B}_0/(k_BT)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N_0\)</span> is the number of molecules in the rotational ground state. First we calculate the factor appearing in the exponent:</p>
+<div class="math notranslate nohighlight">
+\[\frac{hc\tilde{B}_0}{k_BT} = \frac{(6.626\times 10^{-34}\textnormal{ Js})(2.998\times 10^8\textnormal{ m/s})(10.44\textnormal{ cm}^{-1})(10^2\textnormal{ cm/m})}{(1.3806\times 10^{-23}\textnormal{ J K}^{-1})(300\textnormal{ K})}\]</div>
+<div class="math notranslate nohighlight">
+\[ = 5.007\times 10^{-2}\]</div>
+<p>Then, for example, for <span class="math notranslate nohighlight">\(J = 1\)</span> we get:</p>
+<div class="math notranslate nohighlight">
+\[\frac{N_1}{N_0} = 3e^{-2(5.007\times 10^{-2})} = 2.71\]</div>
+<p>The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.31, and 2.45 for <span class="math notranslate nohighlight">\(J = 0, 1, 2, 3, 4, 5\)</span>. Note that these are relative populations since we did not calculate the partition function <span class="math notranslate nohighlight">\(q\)</span>.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="spectroscopic-applications-of-rigid-rotor-model">
+<h2>Spectroscopic applications of Rigid rotor model<a class="headerlink" href="#spectroscopic-applications-of-rigid-rotor-model" title="Permalink to this heading">#</a></h2>
+<p>The energy spacing between rotational levels assume simple expression predicting integer multiples (J+1) of spectral lines for <span class="math notranslate nohighlight">\(J=0,1,2,...\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\Delta E_{J+1,J} = E_{J+1}-E_{J} = B[(J+1)(J+2)-J(J+1)]=2B(J+1)
+\]</div>
+<p>Often in spectroscopy application wavenumbers are adopted which we indicate by placing tilde on energy:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{J+1,J} =\frac{1}{\lambda} = \frac{\Delta E}{hc} = 2\tilde{B}(J+1)
+\]</div>
+<p>Where rotational constant has units of inverse wavelength [cm^{-1}]  <span class="math notranslate nohighlight">\(\tilde{B}=\frac{h^2}{8\pi^2 I c}\)</span></p>
+</section>
+<section id="spectral-lines-are-predicted-to-be-equidistant">
+<h2>Spectral lines are predicted to be equidistant!<a class="headerlink" href="#spectral-lines-are-predicted-to-be-equidistant" title="Permalink to this heading">#</a></h2>
+<p>Rigid rotor model makes a very specifci prediction about spectral lines: they are to be equally spaced. In other words difference between adjacent frequency of tranisitons is a constnat number:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{J+2,J+1}-\tilde{\nu}_{J+1,J}=2\tilde{B}
+\]</div>
+<p>Thus be measuring this spectral line difference, we can extract structural information about the molecule, e.g. compute the moment of inertia!</p>
+</section>
+<section id="rotational-virbational-transitions">
+<h2>Rotational-virbational transitions<a class="headerlink" href="#rotational-virbational-transitions" title="Permalink to this heading">#</a></h2>
+<p>Rotational transitions often accompany the transitions in vibrational levels. The simplest  model for joint vibrational and rotational transitions is a combination of a harmonic oscillator with rigid rotor models:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{v,J} = h\nu(n+1/2)+BJ(J+1)
+\]</div>
+<p>The selection rules for harmonic oscillator and rigid rotor are <span class="math notranslate nohighlight">\(\Delta v =\pm 1\)</span> and <span class="math notranslate nohighlight">\(\Delta J \pm 1\)</span>, respectively.</p>
+<p><img alt="" src="ch04/images/rovib1.png" /></p>
+</section>
+<section id="ro-vibrational-spectra-r-p-and-q-branches">
+<h2>Ro-vibrational spectra, R, P and Q branches<a class="headerlink" href="#ro-vibrational-spectra-r-p-and-q-branches" title="Permalink to this heading">#</a></h2>
+<p>Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state <span class="math notranslate nohighlight">\(v=0\rightarrow v=1 \)</span>. The transitions with <span class="math notranslate nohighlight">\(\Delta J=+1\)</span> and <span class="math notranslate nohighlight">\(\Delta J=-1\)</span> appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch <span class="math notranslate nohighlight">\(\Delta J =0\)</span> is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model.</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+\]</div>
+<p><img alt="" src="ch04/images/branch.jpg" /></p>
+</section>
+<section id="correction-1-rovibrational-coupling">
+<h2>Correction #1 rovibrational coupling<a class="headerlink" href="#correction-1-rovibrational-coupling" title="Permalink to this heading">#</a></h2>
+<p>One correction one can make to the rotational-vibrational model is to include the effect of coupling between rotational and vibrational degrees of freedom. When exciting molecules to higher vibrational states, it is reasonable to expect that rotational parameters will be impacted as a result of changes in the average intra-nuclear distance, among other things. This can be accounted for by making rotational constant dependent on vibrational level v. <span class="math notranslate nohighlight">\(B\rightarrow B_v\)</span>. The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!</p>
+<div class="math notranslate nohighlight">
+\[
+B_v = B_e-\alpha_e(v+1/2)
+\]</div>
+<p>The expression of energy with these correction would then be:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\]</div>
+</section>
+<section id="correction-2-the-unharmonicity-unrigdity-term">
+<h2>Correction #2 the unharmonicity/unrigdity term<a class="headerlink" href="#correction-2-the-unharmonicity-unrigdity-term" title="Permalink to this heading">#</a></h2>
+<p>Similiar to the first order correction we introduced for harmonic oscillator in the form of unharmonicity term  we can now also improve rigid rotor model by accounting for the fact that chemical bonds are not trully rigid:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{E}_{v,J} =\Big[\omega_e (v+1/2)- x_e\omega_e(v+1/2)^2\Big] + \Big[ BJ(J+1)-DJ^2 (J+1)^2 \Big ]
+\]</div>
+<p>Where constant D is called the <strong>centrifugal distortion constant.</strong> and is typically a small number <span class="math notranslate nohighlight">\(D&lt;&lt;1\)</span></p>
 </section>
 </section>
 
@@ -477,20 +558,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note03A.html"
+       href="note04C.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Harmonic Oscillator</p>
+        <p class="prev-next-title">Rotational spectra of diatomic molecules</p>
       </div>
     </a>
     <a class="right-next"
-       href="note03C.html"
+       href="../ch05/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Beyond harmonic oscillator</p>
+        <p class="prev-next-title">5. Hydrogen Atom</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -513,7 +594,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-vibration-rotation-levels">Energies of vibration-rotation levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-virbational-transitions">Rotational-virbational transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-1-rovibrational-coupling">Correction #1 rovibrational coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correction-2-the-unharmonicity-unrigdity-term">Correction #2 the unharmonicity/unrigdity term</a></li>
 </ul>
   </nav></div>
 
