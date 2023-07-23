@@ -1,4 +1,4 @@
-## Quantum Oscillators 
+## Harmonic Oscillator 
 
 ```{admonition} What you need to know
 :class: note
@@ -123,7 +123,7 @@ $$U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...$$
 Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as $\gamma$ are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion. 
 
 
-## Quantum mechanical harmonic oscillator}
+## Quantum harmonic oscillator
 
 
 In classical physics, the Hamiltonian for a [harmonic oscillator](http://en.wikipedia.org/wiki/Harmonic_oscillator) is given by:
