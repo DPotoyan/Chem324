@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04B';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Angular momentum" href="note05.html" />
-    <link rel="prev" title="Quantum Oscillators" href="note03.html" />
+    <link rel="next" title="5. Hydrogen Atom" href="../ch05/index.html" />
+    <link rel="prev" title="Angular momentum" href="note04A.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,12 +185,12 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4. Model systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Molecular degrees of freedom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note02.html">Particle in a 1D box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a 1D box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02B.html">Particle in a 3D box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Quantum Oscillators</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Rigid Rotor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Angular momentum</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -273,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch04/note04.md" target="_blank"
+      <li><a href="../_sources/ch04/note04B.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,9 +368,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-spherical-harmonics">Visualization of spherical harmonics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>
@@ -457,26 +454,6 @@ $<span class="math notranslate nohighlight">\(
 <li><p>The constant <span class="math notranslate nohighlight">\(\beta = \frac{2IE}{\hbar^2}=J(J+1)\)</span> with <span class="math notranslate nohighlight">\(J=0,1,2,..\)</span> is a quantum number which emerges from solution of <span class="math notranslate nohighlight">\(\theta\)</span> part.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(m=0,\pm1,\pm2,...J\)</span> is the quantum number which emerges from  the solution of <span class="math notranslate nohighlight">\(\phi \)</span> part.</p></li>
 </ul>
-</section>
-<section id="spherical-harmonics">
-<h2>Spherical harmonics<a class="headerlink" href="#spherical-harmonics" title="Permalink to this heading">#</a></h2>
-<p>The eigenfunctions of the rigid rotor, <span class="math notranslate nohighlight">\(Y_{J,m}(\theta,\phi)\)</span> are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of <a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_orbital">atomic orbital</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Electron_configuration">electron configurations</a>, representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.</p>
-<p><img alt="" src="ch04/images/sphhar.gif" /></p>
-<p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi part\)</span>)</p>
-</section>
-<section id="visualization-of-spherical-harmonics">
-<h2>Visualization of spherical harmonics<a class="headerlink" href="#visualization-of-spherical-harmonics" title="Permalink to this heading">#</a></h2>
-<p>In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency, as seen in the rows of functions in the illustration on the right.</p>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif" /></p>
-</section>
-<section id="visual-account-of-orthogonality-of-spherical-harmonics">
-<h2>Visual account of orthogonality of spherical harmonics<a class="headerlink" href="#visual-account-of-orthogonality-of-spherical-harmonics" title="Permalink to this heading">#</a></h2>
-<p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p>
-<div class="math notranslate nohighlight">
-\[
-\int^{\pi}_0 sin\theta d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
-\]</div>
-<img alt="ch04/images/sphhar2.png" src="ch04/images/sphhar2.png" />
 </section>
 <section id="rotational-states-of-molecules-are-quantized">
 <h2>Rotational states of molecules are quantized<a class="headerlink" href="#rotational-states-of-molecules-are-quantized" title="Permalink to this heading">#</a></h2>
@@ -593,20 +570,20 @@ E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note03.html"
+       href="note04A.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quantum Oscillators</p>
+        <p class="prev-next-title">Angular momentum</p>
       </div>
     </a>
     <a class="right-next"
-       href="note05.html"
+       href="../ch05/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Angular momentum</p>
+        <p class="prev-next-title">5. Hydrogen Atom</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -631,9 +608,6 @@ E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-spherical-harmonics">Visualization of spherical harmonics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-applications-of-rigid-rotor-model">Spectroscopic applications of Rigid rotor model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-are-predicted-to-be-equidistant">Spectral lines are predicted to be equidistant!</a></li>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Particle in a 1D box &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Angular momentum &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note02';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04A';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Particle in a 3D box" href="note02B.html" />
-    <link rel="prev" title="Molecular degrees of freedom" href="note01.html" />
+    <link rel="next" title="Rigid Rotor" href="note04B.html" />
+    <link rel="prev" title="Quantum Oscillators" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,12 +185,12 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4. Model systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Molecular degrees of freedom</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle in a 1D box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a 1D box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02B.html">Particle in a 3D box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Quantum Oscillators</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Rigid Rotor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Angular momentum</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -273,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch04/note02.md" target="_blank"
+      <li><a href="../_sources/ch04/note04A.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +355,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Particle in a 1D box</h1>
+    <h1>Angular momentum</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,11 +365,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whatare-some-new-ideas-that-we-learn-from-pib">Whatare some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schoridnger-quation-for-particle-in-a-box-pib">Solving Schoridnger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
 </ul>
             </nav>
         </div>
@@ -381,72 +380,115 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="particle-in-a-1d-box">
-<h1>Particle in a 1D box<a class="headerlink" href="#particle-in-a-1d-box" title="Permalink to this heading">#</a></h1>
+  <section id="angular-momentum">
+<h1>Angular momentum<a class="headerlink" href="#angular-momentum" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>Particle in a box is a toy model of electron/atom/molecule trapped in some region of space <span class="math notranslate nohighlight">\([0,L]\)</span>. The positional information of a quantum “particle” is described by a quantum wave function <span class="math notranslate nohighlight">\(\psi(x)\)</span> which is obtained by solving Schrodinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem.</p></li>
-<li><p>Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a “wave”</p></li>
+<li><p>Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact reduces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more.</p></li>
+<li><p>Similarly, in quantum mechanics, angular momentum plays a central role in understanding the structure of atoms, as well as other quantum problems that involve rotational symmetry. Like other observable quantities, angular momentum is described in QM by an operator. This is in fact a vector operator, similar to momentum operator. However, contrary to the linear momentum operator, the three components of the angular momentum operator do not commute!</p></li>
+<li><p>In QM, there are several angular momentum operators: the total angular momentum (usually denoted by <span class="math notranslate nohighlight">\(J\)</span>), the orbital angular momentum (usually denoted by <span class="math notranslate nohighlight">\(L\)</span> ) and the intrinsic, or spin angular momentum (denoted by <span class="math notranslate nohighlight">\(S\)</span>). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.</p></li>
 </ul>
 </div>
-<section id="classical-vs-quantum-particle-in-a-box">
-<h2>Classical vs Quantum particle in a box<a class="headerlink" href="#classical-vs-quantum-particle-in-a-box" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" /></p>
-<p>The Partile in a box(PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamitlonian n=1,2,3.  While E and F are not.</p>
+<section id="classical-angular-momentum">
+<h2>Classical angular momentum<a class="headerlink" href="#classical-angular-momentum" title="Permalink to this heading">#</a></h2>
+<p>In classical mechanics, the  <a class="reference external" href="http://en.wikipedia.org/wiki/Angular_momentum">angular momentum</a> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[{\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})\textnormal{ where }\vec{L} = (L_x,L_y,L_z)}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\vec{r}\)</span> is the position and <span class="math notranslate nohighlight">\(\vec{v}\)</span> the velocity of the mass <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>To evaluate the <a class="reference external" href="http://en.wikipedia.org/wiki/Cross_product">cross</a>, we write down the Cartesian components:</p>
+<div class="math notranslate nohighlight">
+\[{\vec{r} = (x,y,z)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\vec{p} = \left(p_x, p_y, p_z\right)}\]</div>
+<p>The cross product is convenient to write using a <a class="reference external" href="http://en.wikipedia.org/wiki/Determinant">determinant</a>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\vec{L} = \vec{r}\times\vec{p} =
+\begin{vmatrix}
+\vec{i} &amp; \vec{j} &amp; \vec{k}\\
+x &amp; y &amp; z\\
+p_x &amp; p_y &amp; p_z\\
+\end{vmatrix}= \left(yp_z - zp_y\right)\vec{i} + \left(zp_x - xp_z\right)\vec{j} + \left(xp_y - yp_x\right)\vec{k}}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span> denote <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_vector">unit vectors</a> along the <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> axes.</p>
+<p>The Cartesian components can be identified as:</p>
+<div class="math notranslate nohighlight">
+\[{L_x = yp_z - zp_y}\]</div>
+<div class="math notranslate nohighlight">
+\[{L_y = zp_x - xp_z}\]</div>
+<div class="math notranslate nohighlight">
+\[{L_z = xp_y - yp_x}\]</div>
+<p>The square of the angular momentum is given by:</p>
+<div class="math notranslate nohighlight">
+\[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
 </section>
-<section id="whatare-some-new-ideas-that-we-learn-from-pib">
-<h2>Whatare some new ideas that we learn from PIB<a class="headerlink" href="#whatare-some-new-ideas-that-we-learn-from-pib" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive <strong>energy levels</strong>.</p></li>
-<li><p>“Particle”  can never have <strong>zero energy</strong>, meaning that the particle can never “sit still”.</p></li>
-<li><p>“Particle” is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as <strong>spatial nodes.</strong></p></li>
-</ol>
+<section id="quantum-angular-momentum">
+<h2>Quantum angular momentum<a class="headerlink" href="#quantum-angular-momentum" title="Permalink to this heading">#</a></h2>
+<p>In quantum mechanics, the classical angular momentum is replaced by the corresponding
+quantum mechanical operator (see the previous ``classical - quantum’’ correspondence
+table). The Cartesian quantum mechanical angular momentum operators are:</p>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_x = -i\hbar\left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y}\right)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_y = -i\hbar\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z}\right)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_z = -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right)}\]</div>
+<p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math):</p>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_x = i\hbar\left(\sin(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\cos(\phi)\frac{\partial}{\partial\phi}\right)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_y = i\hbar\left(-\cos(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\sin(\phi)\frac{\partial}{\partial\phi}\right)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial\phi^2}\right]}_{\equiv \Lambda^2}}\]</div>
+<p>Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). The following commutation relations can be shown to hold:</p>
+<div class="math notranslate nohighlight">
+\[
+{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y}
+{\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
+\]</div>
+<p><strong>Exercise</strong> Prove that the above commutation relations hold.</p>
+<p>Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p>
+<p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p>
+<div class="math notranslate nohighlight">
+\[{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
+{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
+{\textnormal{Quantum numbers: }l = 0,1,2,3...\textnormal{ and }\left|m\right| = 0,1,2,3,...l}\]</div>
+<p>where <span class="math notranslate nohighlight">\(l\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Azimuthal_quantum_number">angular momentum quantum number</a>  and <span class="math notranslate nohighlight">\(m\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Magnetic_quantum_number">magnetic quantum number</a> . Note that here <span class="math notranslate nohighlight">\(m\)</span> has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. Functions <span class="math notranslate nohighlight">\(Y_l^m\)</span> are called <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. Examples of spherical harmonics with various values of <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are given below (with <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">Condon-Shortley</a>  <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">phase convention</a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{Y^0_0 = \frac{1}{2\sqrt{\pi}}\textnormal{, }\textnormal{, }Y^0_1 = \sqrt{\frac{3}{4\pi}}\cos(\theta)\textnormal{, }Y^1_1 = -\sqrt{\frac{3}{8\pi}}\sin(\theta)e^{i\phi}} \\
+{Y^{-1}_1 = \sqrt{\frac{3}{8\pi}}\sin(\theta)e^{-i\phi}\textnormal{, }Y^0_2 = \sqrt{\frac{5}{16\pi}}(3\cos^2(\theta) - 1)\textnormal{, }Y_2^1 = -\sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{i\phi}} \\
+{Y_2^{-1} = \sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{-i\phi}\textnormal{, }Y^2_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{2i\phi}\textnormal{, }Y^{-2}_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{-2i\phi}}\end{split}\]</div>
 </section>
-<section id="solving-schoridnger-quation-for-particle-in-a-box-pib">
-<h2>Solving Schoridnger quation for Particle in a Box (PIB):<a class="headerlink" href="#solving-schoridnger-quation-for-particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<p>The Schrodinger equation for PIB, as for any system is definited by a Hamitlonian operator which consists of potential energy with inifinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the “particle” stays inside the box where it has acess only the kinetic energy term.</p>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" /></p>
-<p>Mathematically, the potential energy is:</p>
+<section id="spherical-harmonics">
+<h2>Spherical harmonics<a class="headerlink" href="#spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<p>The functions <span class="math notranslate nohighlight">\(Y_{J,m}(\theta,\phi)\)</span> are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of <a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_orbital">atomic orbital</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Electron_configuration">electron configurations</a>, representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.</p>
+<p><img alt="" src="../_images/sphhar.gif" /></p>
+<p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi part\)</span>)</p>
+<p>In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency, as seen in the rows of functions in the illustration on the right.</p>
+<p>The following relations are useful when working with spherical harmonics:</p>
 <div class="math notranslate nohighlight">
-\[V(x=0)=V(x=L)=\infty \,\,\,\,V(0&lt;x&lt;L)=0 \]</div>
-<p>The boundary conditions are:</p>
+\[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}\]</div>
 <div class="math notranslate nohighlight">
-\[\psi(x=0)=\psi(x=L)=0\]</div>
-<p>Hamilotnian operator accounting for kinetic energy is:</p>
+\[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}\]</div>
 <div class="math notranslate nohighlight">
-\[\hat{H}= \hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
-<p>We have all the necessary ingeredients to solve Schrodinger equation for 1D PIB <span class="math notranslate nohighlight">\(\hat{H}\psi(x)=E\psi(x)\)</span>:</p>
+\[\begin{split}{\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l', l''\textnormal{ can be formed:}} \\
+{l''^2 = l^2 + l'^2 - 2ll'\cos(\alpha)\textnormal{ with some value of }\alpha\textnormal{ }(\left|\cos(\alpha)\right|\le 1)}\\
+{Y^{m*}_l = (-1)^mY^{-m}_l\textnormal{ (Condon-Shortley)}}\end{split}\]</div>
+<p>Operating on the eigenfunctions by <span class="math notranslate nohighlight">\(L_z\)</span> gives the following eigenvalues for <span class="math notranslate nohighlight">\(L_z\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x)=E\psi(x),\,\,\,\,or\,\,\, \psi''(x)=-k^2 \psi(x)\]</div>
-<p>Where we have defined <span class="math notranslate nohighlight">\(k^2=\frac{2mE}{\hbar^2}\)</span>  as a positive real number</p>
+\[{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)\textnormal{ where }\left| m\right| = 0, ..., l}\]</div>
+<p>These eigenvalues are often denoted by <span class="math notranslate nohighlight">\(L_z\)</span> (<span class="math notranslate nohighlight">\(= m\hbar\)</span>). Note that specification of both <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> provides all the information we can have about the system.</p>
 </section>
-<section id="d-pib-looks-just-like-1d-guitar-string-problem">
-<h2>1D PIB looks just like 1D guitar string problem.<a class="headerlink" href="#d-pib-looks-just-like-1d-guitar-string-problem" title="Permalink to this heading">#</a></h2>
-<p>Mathematically the form of 1D PIB is the same kind fo ODE as the 1D guitar string problem. The differences are in the constant coefficients and the interpartation of wave function!</p>
+<section id="visual-account-of-orthogonality-of-spherical-harmonics">
+<h2>Visual account of orthogonality of spherical harmonics<a class="headerlink" href="#visual-account-of-orthogonality-of-spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../_images/sphhar2.png" /></p>
+<p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p>
 <div class="math notranslate nohighlight">
-\[\psi''(x)=-k^2 \psi(x)\]</div>
-<div class="math notranslate nohighlight">
-\[\psi(x)=c_1e^{ikx}+c_2e^{-ikx}=Acos(kx)+Bsin(kx)\]</div>
-<ul class="simple">
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(0)=0\)</span> we get A=0 and <span class="math notranslate nohighlight">\(\psi(x)=Bsin(kx)\)</span></p></li>
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(L)=Bsin(kL)=0\)</span> we get <span class="math notranslate nohighlight">\(kL=n\pi\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[k=\frac{n\pi}{L}\,\,\, \rightarrow\,\,\, \psi(x)=B sin(n\pi \frac{x}{L})\]</div>
-<div class="math notranslate nohighlight">
-\[k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\frac{n^2 h^2}{8mL^2} \]</div>
-<p>Quantization results from trapping a wave function in space! This is why bound states have quantized energies.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.</p>
-</section>
-<section id="normalizing-wave-function-determines-the-constant-multiplicative-factor">
-<h2>Normalizing wave function determines the constant multiplicative factor<a class="headerlink" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor" title="Permalink to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[\int^L_0 \psi(x)^2 dx=1 \]</div>
-<div class="math notranslate nohighlight">
-\[B^2 \int^L_0 sin^2 \Big(\frac{n\pi x}{L}\Big)=\frac{B^2}{2} \int^L_0 [1-cos\Big(\frac{2n\pi x}{L}\Big) ]=\frac{B^2}{2}=1\]</div>
-<div class="math notranslate nohighlight">
-\[B=\Big (\frac{2}{L}\Big)^{1/2} \]</div>
-<p>Where we made use of <span class="math notranslate nohighlight">\(sin^2x=\frac{1}{2}(1-cos(2x))\)</span> trig relation.</p>
+\[
+\int^{\pi}_0 sin\theta d \theta \int^{2\pi}_0 d\phi Y^{*}_{J,m_J} \cdot Y^{*}_{J',m'_J} =\delta_{J,J'} \delta_{m_J, m'_J}
+\]</div>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif" /></p>
 </section>
 </section>
 
@@ -482,20 +524,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note01.html"
+       href="note03.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Molecular degrees of freedom</p>
+        <p class="prev-next-title">Quantum Oscillators</p>
       </div>
     </a>
     <a class="right-next"
-       href="note02B.html"
+       href="note04B.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Particle in a 3D box</p>
+        <p class="prev-next-title">Rigid Rotor</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -517,11 +559,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whatare-some-new-ideas-that-we-learn-from-pib">Whatare some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schoridnger-quation-for-particle-in-a-box-pib">Solving Schoridnger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-account-of-orthogonality-of-spherical-harmonics">Visual account of orthogonality of spherical harmonics</a></li>
 </ul>
   </nav></div>
 
