@@ -25,18 +25,39 @@ $$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
 ### 3N Nuclear degrees of freedom 
 
+- The *Born-Oppenheimer apprpximation* allows us to separate the nuclear and electronic degrees of freedom. The nuclear hamiltonian for $N$ nuclei can be now written in such a way that the electronic part appears as a potential term:
+
+$${\hat{H} = \sum\limits_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_{R_i}^2 + E(R_1, R_2, ..., R_N)}$$
+
 ![](./images/mol-DOF.jpg)
 
 
+- In the absence of external electric or magnetic fields, the potential term $E$ depends only on the relative positions of the nuclei, as shown above, and not on the overall position of the molecule or its orientation in space. The above hamiltonian $H$ can often be approximately written as a sum of the following terms:
 
-### Separation of variables, assumption of independence
+$${\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}}$$
 
-Due to significant differnece between energy levels it is reasonable to assume that these degrees of freedom would be independent of each other. Mathematically this is the the separation of variables we have come to employ in differernt problems. 
+where $H_{tr}$ is the translational, $H_{rot}$ the rotational, and $H_{vib}$ the vibrational hamiltonian. The translational and rotational terms have no potential part but the vibrational part contains the potential $E$, which depends on the distances between the nuclei. 
 
-If  coordinates are indepednent or assumed to be independent then the Hamitlonian becomes sum of differnet degrees of freedom and wave functions splits into product dependeing on each variable. Just like we have seen on the example of particle in 3D box. 
+> In some cases the different degrees of freedom  become coupled and one cannot use the following separation technique. Separation of $H$ means that we can write the wavefunction as a product:
 
-$$\hat{H}= \hat{H}_{trans}+ \hat{H}_{rot}+ \hat{H}_{vib}+\hat{H}_{elec}$$
+$${\psi = \psi_{tr}\psi_{rot}\psi_{vib}}$$
 
-$$\Psi(x_{tr},x_{rot},x_{vib},x_{el})= \psi(x_{tr}) \psi(x_{rot}) \psi(x_{vib})\psi(x_{el})$$ 
+### Separtion of degrees of freedom
 
-How good of an asusmption is this for molecules? We are going to see that it is a fairly safe assumption. However one needs to still keep in mind that under some circumstances this assumption can also break down and lead to dependence between degrees of freedom, e.g roational and vibrational. 
+The resulting three Schr\"odinger equations are then:
+
+$${\hat{H}_{tr}\psi_{tr} = E_{tr}\psi_{tr}}$$
+
+$${\hat{H}_{rot}\psi_{rot} = E_{rot}\psi_{rot}}$$
+
+$${\hat{H}_{vib}\psi_{vib} = E_{vib}\psi_{vib}}$$
+
+- The translational part is not interesting since there is no external potential or boundary conditions that could lead to quantization (i.e., it produces a continuous spectrum). 
+  
+- On the other hand, the rotational part is subject to cyclic boundary condition and the vibrational part to potential $E$, hence we expect these to produce quantization, which can be probed by spectroscopic methods.
+
+- The original number of variables in the hamiltonian is given by $3\times N$ (i.e. the $x,y,z$ coordinates for each nuclei). We can neglect the translational motion and we are left with $3N - 3$ coordinates. 
+  
+- To account for molecular rotation, three variables are required or if we have a linear molecule, only two variables. Therefore the vibration part must have either $3N - 6$ variables for a non-linear molecule or $3N - 5$ variables for a linear molecule. These are referred to as *vibrational degrees of freedom* or *internal coordinates*.
+
+
