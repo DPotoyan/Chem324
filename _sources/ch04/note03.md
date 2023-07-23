@@ -140,7 +140,7 @@ $${\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 = -\frac{\h
 
 Note that the potential term may be expressed in terms of three parameters:
 
-| $k$      | Force constant (kg s$^{-2}$)                                |
+| $k$      | Force constant (kg $s^{-2}$)                                |
 |----------|-------------------------------------------------------------|
 | $\omega$ | Angular frequency ($\omega = 2\pi\nu$; Hz)                  |
 | $\nu$    | Frequency (Hz; do not confuse this with quantum number $v$) |
@@ -182,7 +182,7 @@ Some of the lowest state solutions to the harmonic oscillator (HO) problem are d
 
 
 
-**Example**** Show that the lowest level of HO obeys the uncertainty principle.
+**Example** Show that the lowest level of HO obeys the uncertainty principle.
 
 **Solution** 
 
@@ -228,12 +228,12 @@ Thus we can conclude that $\psi_0$ fulfills the Heisenberg uncertainty principle
 **Example** Quantization of nuclear motion. [Molecular vibration](http://en.wikipedia.org/wiki/Molecular_vibration) in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There $\mu$ is the reduced mass as given previously and the variable $x$ is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length $R_e$).\\
 
 
-(a) Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\\
-(b) What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For $^{12}$C$^{16}$O, we have:
-$\tilde{v}$ = 2170 cm$^{-1}$ (vibrational frequency) and $R_e$ = 113 pm (equilibrium bond length).\\
-\vspace*{0.2cm}
+a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\\
+b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For $^{12}C^{16}O$, we have:
+$\tilde{v}$ = 2170 cm$^{-1}$ (vibrational frequency) and $R_e$ = 113 pm (equilibrium bond length)
 
-**Solution** The harmonic vibration frequency is given in wavenumber units (cm$^{-1}$). This must be converted according to: $\nu = c\tilde{v}$. The previous example gives expression for $\sigma_x$:
+
+**Solution** The harmonic vibration frequency is given in wavenumber units ($cm^{-1}$). This must be converted according to: $\nu = c\tilde{v}$. The previous example gives expression for $\sigma_x$:
 
 $$\sigma_x = \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}$$
 

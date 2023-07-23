@@ -186,6 +186,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4. Model systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Molecular degrees of freedom</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle in a 3D box</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Quantum Oscillators</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
@@ -341,7 +344,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -357,6 +362,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#whatare-some-new-ideas-that-we-learn-from-pib">Whatare some new ideas that we learn from PIB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -368,6 +385,30 @@ document.write(`
                   
   <section id="particle-in-a-3d-box">
 <h1>Particle in a 3D box<a class="headerlink" href="#particle-in-a-3d-box" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ul class="simple">
+<li><p>Particle in a box is a toy model of electron/atom/molecule trapped in some region of space <span class="math notranslate nohighlight">\([0,L]\)</span>. The positional information of a quantum “particle” is described by a quantum wave function <span class="math notranslate nohighlight">\(\psi(x)\)</span> which is obtained by solving Schrodinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem.</p></li>
+<li><p>Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a “wave”</p></li>
+</ul>
+</div>
+</section>
+<section id="classical-vs-quantum-particle-in-a-box">
+<h1>Classical vs Quantum particle in a box<a class="headerlink" href="#classical-vs-quantum-particle-in-a-box" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" /></p>
+<p>The Partile in a box(PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamitlonian n=1,2,3.  While E and F are not.</p>
+</section>
+<section id="whatare-some-new-ideas-that-we-learn-from-pib">
+<h1>Whatare some new ideas that we learn from PIB<a class="headerlink" href="#whatare-some-new-ideas-that-we-learn-from-pib" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive <strong>energy levels</strong>.</p></li>
+<li><p>“Particle”  can never have <strong>zero energy</strong>, meaning that the particle can never “sit still”.</p></li>
+<li><p>“Particle” is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as <strong>spatial nodes.</strong></p></li>
+</ol>
+</section>
+<section id="quantum-pib-in-3d">
+<h1>Quantum PIB in 3D<a class="headerlink" href="#quantum-pib-in-3d" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" /></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\,\,\,\,\, -\frac{\hbar^2}{2m}\Delta\psi(x,y,z) + V(x,y,z)\psi(x,y,z) = E\psi(x,y,z)} \\ 
 {\textnormal{OR}\,\,\,\,\,}{-\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2} + \frac{\partial^2\psi}{\partial y^2} + \frac{\partial^2\psi}{\partial z^2}\right) + V\psi = E\psi}\end{split}\]</div>
@@ -390,7 +431,6 @@ document.write(`
 \[\begin{split}{-\frac{\hbar^2}{2m}\left[\frac{1}{X(x)}\frac{d^2X(x)}{dx^2}\right] = E_x\textnormal{ with }X(0) = X(a) = 0}\\
 {-\frac{\hbar^2}{2m}\left[\frac{1}{Y(y)}\frac{d^2Y(y)}{dy^2}\right] = E_y\textnormal{ with }Y(0) = Y(b) = 0}\\
 {-\frac{\hbar^2}{2m}\left[\frac{1}{Z(z)}\frac{d^2Z(z)}{dz^2}\right] = E_z\textnormal{ with }Z(0) = Z(c) = 0}\end{split}\]</div>
-<p>where the boundary conditions were obtained from Eq. (\ref{eq9.76}).</p>
 <p>Each line in anbove equations corresponds to one-dimensional particle in a box problem:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{X(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n_x\pi x}{a}\right)}\\
@@ -509,6 +549,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#whatare-some-new-ideas-that-we-learn-from-pib">Whatare some new ideas that we learn from PIB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
