@@ -414,25 +414,20 @@ K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
 </section>
 <section id="quantum-rigid-rotor-and-angular-momentum-operator">
 <h2>Quantum rigid rotor and angular momentum operator<a class="headerlink" href="#quantum-rigid-rotor-and-angular-momentum-operator" title="Permalink to this heading">#</a></h2>
-<p>The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass <span class="math notranslate nohighlight">\(\mu\)</span> wchih rotates around sphere of radius <span class="math notranslate nohighlight">\(r=const\)</span>. To incorporate constraint <span class="math notranslate nohighlight">\(r=const\)</span> it is more convenient to adopt spherical coordinates <span class="math notranslate nohighlight">\((x,y,z)\rightarrow (r,\theta,\phi)\)</span>. To the full laplacian in spherical coordinates is:</p>
-<div class="math notranslate nohighlight">
-\[
-\nabla_{r,\theta,\phi}^2 = \frac{1}{r^2} \frac{\partial }{\partial r} \Big(r^2\frac{\partial}{\partial r}\Big)+\frac{1}{r^2 sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{r^2 sin^2 \theta}\frac{\partial^2 }{\partial \phi^2}
-\]</div>
-<p>In rigid rotor approximation laplacian is reduced to an operator acting on two variables <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-\nabla^2_{\theta,\phi} =\frac{1}{r^2}\Big[\frac{1}{sin \theta} \frac{\partial }{\partial \theta} \Big(sin \theta \frac{\partial}{\partial \theta}\Big)+\frac{1}{sin^2 \theta}\frac{\partial^2 }{\partial \phi^2} \Big ]
-\]</div>
-<p>In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:</p>
+<ul class="simple">
+<li><p>The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass <span class="math notranslate nohighlight">\(\mu\)</span> wchih rotates around sphere of radius <span class="math notranslate nohighlight">\(r=const\)</span>. To incorporate constraint <span class="math notranslate nohighlight">\(r=const\)</span> it is more convenient to adopt spherical coordinates <span class="math notranslate nohighlight">\((x,y,z)\rightarrow (r,\theta,\phi)\)</span>. To the full laplacian in spherical coordinates is:</p></li>
+<li><p>In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \hat{H}=-\frac{\hbar^2}{2\mu}\nabla_{x,y,z}^2 = -\frac{\hbar^2}{2\mu r^2}\nabla_{\theta,\phi}^2=\frac{\hat{L}^2}{2I}
 \]</div>
-<p>Where <span class="math notranslate nohighlight">\(I=\mu r^2\)</span> is the moment of inertia and where identified  the angular momentum operator as:
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(I=\mu r^2\)</span> is the moment of inertia and where identified  the angular momentum operator as:
 $<span class="math notranslate nohighlight">\(
 \hat{L}= -i\hbar \nabla_{\theta,\phi}
-\)</span>$</p>
+\)</span>$</p></li>
+</ul>
 </section>
 <section id="quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">
 <h2>Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.<a class="headerlink" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair" title="Permalink to this heading">#</a></h2>
@@ -441,15 +436,7 @@ $<span class="math notranslate nohighlight">\(
 \[
 \hat{H}Y(\theta, \phi)=E_{J,m}Y(\theta,\phi)
 \]</div>
-<p>We are once again able to separet two angular variables and solve thr esulting ODE exactly:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{sin \theta}{\theta}\frac{d}{d\theta} \Big(sin \theta\frac{d\Theta(\theta)}{d\theta}\Big)+\beta sin^2 \theta = m^2
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\frac{d^2 \Phi(\phi)}{d \phi^2}=-m^2\Phi(\phi)
-\]</div>
+<p>We are once again able to separet two angular variables and solve the esulting ODE exactly:</p>
 <ul class="simple">
 <li><p>The constant <span class="math notranslate nohighlight">\(\beta = \frac{2IE}{\hbar^2}=J(J+1)\)</span> with <span class="math notranslate nohighlight">\(J=0,1,2,..\)</span> is a quantum number which emerges from solution of <span class="math notranslate nohighlight">\(\theta\)</span> part.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(m=0,\pm1,\pm2,...J\)</span> is the quantum number which emerges from  the solution of <span class="math notranslate nohighlight">\(\phi \)</span> part.</p></li>
@@ -463,6 +450,31 @@ $<span class="math notranslate nohighlight">\(
 E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degeneracy
 \]</div>
 <p>Where we have defined <span class="math notranslate nohighlight">\(B=\frac{h^2}{8\pi^2 I}\)</span> rotational constant with units of energy.</p>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.</p></li>
+<li><p>There is no rotational zero-point energy (<span class="math notranslate nohighlight">\(J = 0\)</span> is allowed). The ground state rotational wavefunction has equal probability amplitudes for each orientation.</p></li>
+<li><p>The energies are independent of <span class="math notranslate nohighlight">\(m_J\)</span>. <span class="math notranslate nohighlight">\(m_J\)</span> introduces the degeneracy of a given <span class="math notranslate nohighlight">\(J\)</span> level.</p></li>
+<li><p>For non-linear molecules Eq. (\ref{eq9.165}) becomes more complicated.</p></li>
+</ul>
+<p><strong>Example</strong> What are the reduced mass and moment of inertia of <span class="math notranslate nohighlight">\(H^{35}Cl\)</span>? The equilibrium internuclear distance <span class="math notranslate nohighlight">\(R_e\)</span> is 127.5 pm. What are the values of <span class="math notranslate nohighlight">\(L, L_z\)</span> and <span class="math notranslate nohighlight">\(E\)</span> for the state with <span class="math notranslate nohighlight">\(J = 1\)</span>? The atomic masses are: <span class="math notranslate nohighlight">\(m_{\textnormal{H}} = 1.673470 \times 10^{-27}\)</span> kg and <span class="math notranslate nohighlight">\(m_{\textnormal{Cl}} = 5.806496 \times 10^{-26}\)</span> kg.</p>
+<p><strong>Solution</strong> First we calculate the reduced mass (Eq. (\ref{eqX.25})):</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{m_{\textnormal{H}}m_{^{35}\textnormal{Cl}}}{m_{\textnormal{H}} + m_{^{35}\textnormal{Cl}}} = \frac{(1.673470\times 10^{-27}\textnormal{ kg})(5.806496\times 10^{-26}\textnormal{ kg})}{(1.673470\times 10^{-27}\textnormal{ kg}) + (5.806496\times 10^{-26}\textnormal{ kg})}\]</div>
+<div class="math notranslate nohighlight">
+\[= 1.62665\times 10^{-27}\textnormal{ kg}\]</div>
+<div class="math notranslate nohighlight">
+\[I = \mu R_e^2 = (1.626\times 10^{-27}\textnormal{ kg})(127.5\times 10^{-12}\textnormal{ m})^2 = 2.644\times 10^{-47}\textnormal{ kg m}^2\]</div>
+<p><span class="math notranslate nohighlight">\(L\)</span> is given by Eq. (\ref{eq9.166}):</p>
+<div class="math notranslate nohighlight">
+\[L = \sqrt{J(J+1)}\hbar = \sqrt{2}\left(1.054\times 10^{-34}\textnormal{ Js}\right) = 1.491\times 10^{-34}\textnormal{ Js}\]</div>
+<p><span class="math notranslate nohighlight">\(L_z\)</span> is given by Eq. (\ref{eq9.163}):</p>
+<div class="math notranslate nohighlight">
+\[L_z = -\hbar,0,\hbar\textnormal{ (three possible values)}\]</div>
+<p>Energy of the <span class="math notranslate nohighlight">\(J = 1\)</span> level is given by</p>
+<div class="math notranslate nohighlight">
+\[E = \frac{\hbar^2}{2I}J(J+1) = \frac{\hbar^2}{I} = 4.206\times 10^{-22}\textnormal{ J} = 21\textnormal{ cm}^{-1}\]</div>
+<p>This rotational spacing can be, for example, observed in gas phase infrared spectrum of HCl.</p>
 </section>
 <section id="spectroscopic-applications-of-rigid-rotor-model">
 <h2>Spectroscopic applications of Rigid rotor model<a class="headerlink" href="#spectroscopic-applications-of-rigid-rotor-model" title="Permalink to this heading">#</a></h2>
