@@ -371,7 +371,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-molecules">Energies of molecules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-nuclear-degrees-of-freedom">3N Nuclear degrees of freedom</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables-assumption-of-independence">Separation of variables, assumption of independence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separtion-of-degrees-of-freedom">Separtion of degrees of freedom</a></li>
 </ul>
             </nav>
         </div>
@@ -399,21 +399,43 @@ document.write(`
 <p>Molecules conssiting of N nuclei and n electrons are descibed by wave functions that depends on 3(n+N) variables in 3D space.  These coordinates or degrees of freedom (DOF)  are useful to break down into different kinds of motions classified as translational, rotational, vibrational and also electronic. Due to the fact that molecules are microscopic objects we expect these energies to all be quantized. The relative spacings, however, are going to be different to a signficant extent due to boundary conditions restricting the motions of these DOFs. This is why there exists different kinds of spectrosocopies for probing the specific degrees of freedom in molecules</p>
 <div class="math notranslate nohighlight">
 \[E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}\]</div>
-<p><img alt="" src="ch04/images/Levels1.gif" /></p>
+<p><img alt="" src="../_images/Levels1.gif" /></p>
 </section>
 <section id="n-nuclear-degrees-of-freedom">
 <h2>3N Nuclear degrees of freedom<a class="headerlink" href="#n-nuclear-degrees-of-freedom" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="ch04/images/mol-DOF.jpg" /></p>
+<ul class="simple">
+<li><p>The <em>Born-Oppenheimer apprpximation</em> allows us to separate the nuclear and electronic degrees of freedom. The nuclear hamiltonian for <span class="math notranslate nohighlight">\(N\)</span> nuclei can be now written in such a way that the electronic part appears as a potential term:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{H} = \sum\limits_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_{R_i}^2 + E(R_1, R_2, ..., R_N)}\]</div>
+<p><img alt="" src="../_images/mol-DOF.jpg" /></p>
+<ul class="simple">
+<li><p>In the absence of external electric or magnetic fields, the potential term <span class="math notranslate nohighlight">\(E\)</span> depends only on the relative positions of the nuclei, as shown above, and not on the overall position of the molecule or its orientation in space. The above hamiltonian <span class="math notranslate nohighlight">\(H\)</span> can often be approximately written as a sum of the following terms:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_{tr}\)</span> is the translational, <span class="math notranslate nohighlight">\(H_{rot}\)</span> the rotational, and <span class="math notranslate nohighlight">\(H_{vib}\)</span> the vibrational hamiltonian. The translational and rotational terms have no potential part but the vibrational part contains the potential <span class="math notranslate nohighlight">\(E\)</span>, which depends on the distances between the nuclei.</p>
+<blockquote>
+<div><p>In some cases the different degrees of freedom  become coupled and one cannot use the following separation technique. Separation of <span class="math notranslate nohighlight">\(H\)</span> means that we can write the wavefunction as a product:</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[{\psi = \psi_{tr}\psi_{rot}\psi_{vib}}\]</div>
 </section>
-<section id="separation-of-variables-assumption-of-independence">
-<h2>Separation of variables, assumption of independence<a class="headerlink" href="#separation-of-variables-assumption-of-independence" title="Permalink to this heading">#</a></h2>
-<p>Due to significant differnece between energy levels it is reasonable to assume that these degrees of freedom would be independent of each other. Mathematically this is the the separation of variables we have come to employ in differernt problems.</p>
-<p>If  coordinates are indepednent or assumed to be independent then the Hamitlonian becomes sum of differnet degrees of freedom and wave functions splits into product dependeing on each variable. Just like we have seen on the example of particle in 3D box.</p>
+<section id="separtion-of-degrees-of-freedom">
+<h2>Separtion of degrees of freedom<a class="headerlink" href="#separtion-of-degrees-of-freedom" title="Permalink to this heading">#</a></h2>
+<p>The resulting three Schr”odinger equations are then:</p>
 <div class="math notranslate nohighlight">
-\[\hat{H}= \hat{H}_{trans}+ \hat{H}_{rot}+ \hat{H}_{vib}+\hat{H}_{elec}\]</div>
+\[{\hat{H}_{tr}\psi_{tr} = E_{tr}\psi_{tr}}\]</div>
 <div class="math notranslate nohighlight">
-\[\Psi(x_{tr},x_{rot},x_{vib},x_{el})= \psi(x_{tr}) \psi(x_{rot}) \psi(x_{vib})\psi(x_{el})\]</div>
-<p>How good of an asusmption is this for molecules? We are going to see that it is a fairly safe assumption. However one needs to still keep in mind that under some circumstances this assumption can also break down and lead to dependence between degrees of freedom, e.g roational and vibrational.</p>
+\[{\hat{H}_{rot}\psi_{rot} = E_{rot}\psi_{rot}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{H}_{vib}\psi_{vib} = E_{vib}\psi_{vib}}\]</div>
+<ul class="simple">
+<li><p>The translational part is not interesting since there is no external potential or boundary conditions that could lead to quantization (i.e., it produces a continuous spectrum).</p></li>
+<li><p>On the other hand, the rotational part is subject to cyclic boundary condition and the vibrational part to potential <span class="math notranslate nohighlight">\(E\)</span>, hence we expect these to produce quantization, which can be probed by spectroscopic methods.</p></li>
+<li><p>The original number of variables in the hamiltonian is given by <span class="math notranslate nohighlight">\(3\times N\)</span> (i.e. the <span class="math notranslate nohighlight">\(x,y,z\)</span> coordinates for each nuclei). We can neglect the translational motion and we are left with <span class="math notranslate nohighlight">\(3N - 3\)</span> coordinates.</p></li>
+<li><p>To account for molecular rotation, three variables are required or if we have a linear molecule, only two variables. Therefore the vibration part must have either <span class="math notranslate nohighlight">\(3N - 6\)</span> variables for a non-linear molecule or <span class="math notranslate nohighlight">\(3N - 5\)</span> variables for a linear molecule. These are referred to as <em>vibrational degrees of freedom</em> or <em>internal coordinates</em>.</p></li>
+</ul>
 </section>
 </section>
 
@@ -486,7 +508,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-molecules">Energies of molecules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-nuclear-degrees-of-freedom">3N Nuclear degrees of freedom</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables-assumption-of-independence">Separation of variables, assumption of independence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separtion-of-degrees-of-freedom">Separtion of degrees of freedom</a></li>
 </ul>
   </nav></div>
 
