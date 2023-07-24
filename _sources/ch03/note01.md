@@ -30,14 +30,14 @@ Let us recall that classical mechanics failed at describing motion at the atomic
 
 - Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects. 
 
-  <img src="images/SE_intro2.gif" style="zoom:89%;" />
+  <img src="images/SE_intro2.gif" width="200px" />
 
 
 
 
 ### Schrödinger Equation (time-dependent)
 
-<img src="images/SE_4.jpg" style="zoom:10%;" />
+<img src="images/SE_4.jpg" width="0.5" />
 
 - The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time-dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
 
@@ -116,7 +116,7 @@ $$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^
 
 - We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
-  <img src="images/SE_intro3.jpg" scale="zoom: 40%" />
+  <img src="images/SE_intro3.jpg" width="300px" />
 
 ### Linear operators. 
 
