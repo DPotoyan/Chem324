@@ -1,392 +1,148 @@
-## Mathematics of Quantum Mechanics
+## The menaing of wave function  
 
 ```{admonition} What you need to know
 :class: note
-
-1. **Linear vector spaces.**
-2. **Dirac notation.**
-3. **Functional spaces.**
-
-- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying mathematical and physical meaning. 
-- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of superimposed states. 
+- **We explore the meaning of a wave function which is a gateway into probabilsitc quantum-mechanical world of small systems. We learn that psi squared  is a probability distribution function.**
+- **We illustrate several key quantum mechanical principles on the example of a Particle in Box. A simple toy system useful for understanding behaviour of bound states of electrons in atoms or molecules such as** 
+  - **Energetic quantization**. 
+  - **Probabilistic nature of quantum particle.** Having non uniform distirbutions of position when occupying different energy levels. 
+  - **Uncertainy relation.** Inverse relationship between spread in position and momentum values. 
+  - **Existence of zero point energy.** A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles. 
+  - **Quantum-classical correspondence.** Smooth transition to classical behavior when going larger scales.   
+  - **Degeneracy in energy levels.** How symmetries lead to different wave functions correpsonding to the same energy levels. 
 ```
 
-### Vectors, what are they?
 
-Let's remind ourselves of some basics first. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
+### What is the meaning of a wave-function $\psi$ ? 
 
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
-</iframe>
-</html>
+- In classical wave equation, wave function has a simple mechanical  interpretation: it's just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.  
+- In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments. 
+- As It turns out, the square value of wave function that is $p(x)=\psi(x) \cdot \psi^{*}(x)$ is a probability distribution function describing likelihood of quantum objects being at different points $x$  in 1D space. For 3D space the analogous expression is $p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$ and so on. 
 
-### Vectors in 2D/3D
+### The importance of normalization
 
-- An example of a vector is an ordered collection of numbers, e.g:
-  -  $a=(-2,8) \,\,\,$ *A 2D vector.*
-  -  $b=(1.34,4.23,5.98) \,\,\,$  *A 3D vector.*
-  -  $c=(1,-2,4i,3+2i) \,\,\,$  *A 4D vector with complex components.*
-  - $f=(1,2,3,4,5,6 ...,\infty)\,\,\,$ *An infinite-dimensional vector with integers as components.*
+To be a proper probability distirbution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distirbution and not equal. Normalization of $\psi^2$  means that that there is absolute certainty that quantum object exisits somehwere in space. Hence in an experiment when you search for quantum particule in an entire space you are going to find it somehwere.
 
-### Dirac notation
+Tne normalization In 1D is:
 
-Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation.
+$$\int^{+\infty}_{-\infty} |\psi(x)|^2 dx= \int^{+\infty}_{-\infty} p(x)dx=1$$ 
 
-|                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ | **Ket:** $$\mid \psi\rangle=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$ |
-| **Bra:**$$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$$ <br> $$\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid = -ix^2$$ |
-|        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
-| Example of Bra-Ket product for vectors in terms of components <br>$$\langle a \mid a \rangle = \sum_i a^2_i$$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components<br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br> $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
+Normalization of a wave function $\psi'$ is done by multiplying it by a constant  $\psi=N\psi'$ and plugging in the above condition to find the value of $N$. In another words normalization allows determining the constant multiplicative factor in front of wave functions.
 
-### Representation of vectors
+Normalization In 3D is:
 
-Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
+$$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1$$
 
-  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
-  - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
-  - $$a=(2,3)$$    
-  - $$a= \begin{pmatrix} 2 \\ 3 \\ \end{pmatrix}$$ 
+### What can we do with probability distribution functions (PDF)? 
 
-In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+- By defnitition probability distribution function $p(x) $ allows quantifying various probabilities that a quantum "particle" is located in an infinitesimal slice $[x, x+dx]$ around point $x$.  This then enables us to  find probabilities in any finite region $[a,b]$ simply by integrating:
 
-$$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
+  $$p(a<x<b)=\int_a^b |\psi(x)|^2dx$$
 
-However, a vector can be just an array of numbers, and the components of a vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, populations of some countries, stock prices over last ten years, etc. 
+- In higher dimensions, e.g. 3D, we can locate particle around volume $dxdydz$ or any finite volume via a similar integration:
 
-  - $$Person = (22, 1.75, 80)$$   
+  $$p(a_x<x<b_x,a_y<y<b_y, a_z<z<b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz$$
 
-  - $$Population  =(3.0, 40.0, 2.0, ...)$$ 
+### Computing moments of probability distirbution function
 
-  - $$Stock = (1.4, 3.6, 8.5, ...)$$  
+Probability distribution function contains lot of information. E.g probability of observing every posisble value of $x$.  
 
-### Vector operations 
+- But often we are interested in more reduced descriptions in terms of moments such quantifying average value (first moment) or spread in the distribution (second moment). Below we re-list the definitions of various quantities one can extract from a PDF.
 
-What defines vectors is the operations on them. Let us take a simple 2D vector as an example: 
+|                      DEFINITION                      | NAME of moment  |
+| :--------------------------------------------------: | :-------------: |
+|         $$\langle x \rangle=\int p(x) x dx$$         | **1-st moment** |
+|       $$\langle x^2 \rangle=\int p(x)x^2 dx$$        | **2-nd moment** |
+|       $$\langle x^n \rangle=\int p(x)x^n dx$$        | **N-th moment** |
+| $\sigma^2=\langle x^2 \rangle-\langle x \rangle^2  $ | **Dispersion**  |
 
-$$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
-**1. Addition or subtraction** with another vector $\mid b\rangle=\mid  e_1\rangle\pm\mid e_2\rangle$:
 
-  - $$ a+b=\begin{pmatrix}
-    2\\
-    3\\
-    \end{pmatrix}+\begin{pmatrix}
-    1\\
-    1\\
-    \end{pmatrix}=\begin{pmatrix}
-    3\\
-    4\\
-    \end{pmatrix}$$
+### What about quantities which correspond to operators?
 
-  - $$\mid a\rangle \pm \mid b\rangle=(a_1\pm b_1)\mid e_1\rangle+(a_2\pm b_2)\mid e_2\rangle$$
+**For quantities like momentum or total energy which are no longer simple functions as in classical mechanics but operators, $\hat{p}$ and $\hat{H}$, we simply have to use operators in the defintion of moments!**
 
-**2. Mulitiplication** by a  scalar  $\alpha=10$:
+|                       Average quantity                       |               Corresponding operator               |
+| :----------------------------------------------------------: | :------------------------------------------------: |
+|   $\langle E \rangle=\int \psi^{*}(x) \hat{H} \psi(x)  dx$   | $\hat{H}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)$ |
+|  $\langle K \rangle=\int \psi^{*}(x) \hat{K}\psi(x)  dx  $   |   $\hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$    |
+|   $\langle p \rangle=\int \psi^{*}(x) \hat{p} \psi(x)  dx$   |           $\hat{p}=-i\hbar\frac{d}{dx}$            |
+| $\langle p^2 \rangle=\int \psi^{*}(x) \hat{p}^2 \psi(x)  dx$ |        $\hat{p}^2=-\hbar^2\frac{d^2}{dx^2}$        |
 
-  - $$\alpha \cdot a=10\begin{pmatrix}
-    2\\
-    3\\
-    \end{pmatrix}=\begin{pmatrix}
-    20\\
-    30\\
-    \end{pmatrix}$$
 
-  - $$\alpha \mid a\rangle=\alpha a_1\mid e_1\rangle+ \alpha a_2\mid e_2\rangle$$
 
-**3. Dot product** with another vector $\mid b\rangle$:
+### Particle in a Box (PIB):
 
-  - $$a\cdot b=(2,3)\begin{pmatrix} 1 \\ 1 \\ \end{pmatrix}=2 \cdot 1+3\cdot 1=5$$
-  - $$\langle a \mid b\rangle=a_1b_1+a_2b_2$$
+- Particle in a box is a toy model of electron/atom/molecule trapped in some region of space $[0,L]$. The positional information of a quantum "particle" is described by a quantum wave function $\psi(x)$ which is obtained by solving Schrödinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem. 
+-  Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a "wave".
 
-###  Projection, orthogonality and norm
 
-- Dot product  $\langle a\mid b \rangle$ quantifies the projection of vector $a$ on $b$ and vice-versa. That is, how much $a$ and $b$ have in common with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
 
-  - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
-  - $$(1,0)\begin{pmatrix}
-    0\\
-    1\\
-    \end{pmatrix}=1\cdot 0+0\cdot 1=0$$
+### Classical vs Quantum particle in a box
 
-   Where we denote both orthogonality and normalization with the convenient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and $1$ when $i=j$. 
+![](https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif)
 
-- Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:
-	
-	- $$\langle a \mid a\rangle= a_1^2+a_2^2$$
-	
-	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
-	
+The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  $\psi_n(x)$. The states (B,C,D) are the eigenfunctions of Hamiltonian $n=1,2,3$.  While E and F are not. 
 
-When the norm is $\mid a \mid=1$, vector is called normalized. To normalize a vector is to divide the vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we divide by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$.
+### What are some new ideas that we learn from PIB
 
+1. In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive **energy levels**.
 
-### Basis set and linear independence. 
+2. "Particle"  can never have **zero energy**, meaning that the particle can never "sit still". 
 
-**1. Every $N$-dimensional vector can be uniquely represented as a linear combination of $N$ orthogonal vectors.** And vice-versa: if a vector can be represented by $N$ orthogonal vectors, it means that the vector is $N$-dimensional. A set of vectors in terms of which an arbitrary $N$-dimensional vector is expressed is called a **basis set.**
+3. "Particle" is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as **spatial nodes.**
 
-  - $$\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle$$
-  - $$a= \begin{pmatrix}
-    2\\
-    3\\
-    \end{pmatrix} = 2\begin{pmatrix}
-    1\\
-    0\\
-    \end{pmatrix}+3 \begin{pmatrix}
-    0\\
-    1\\
-    \end{pmatrix}$$
-  - $$a= \begin{pmatrix}
-    -1\\
-    5\\ 8\\ \end{pmatrix} = -1\begin{pmatrix}
-    1\\
-    0\\ 0\\
-    \end{pmatrix}+5 \begin{pmatrix}
-    0\\
-    1\\ 0\\
-    \end{pmatrix}+8 \begin{pmatrix}
-    0\\
-    0\\ 1\\
-    \end{pmatrix}$$
-    
-**2. Orthogonal vectors are linearly independent.** This means that no member of a set of vectors can be expressed in terms of the others.  Linear independence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero $\alpha_1=\alpha_2=\alpha_3=0$ as the only way to satify zero vector equality: 
+   
 
-  $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$   
+### Solving Schrödinger quation for Particle in a Box (PIB):
 
-The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
+The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with inifinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the "particle" stays inside the box where it has acess only to the kinetic energy term.
 
-### Video "Linear combinations, span, and basis vectors"
+![](https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg)
 
-Now watch the second video from 3B1B on linear combinations and basis vectors. 
+Mathematically, the potential energy is: 
 
-<html>
+$$V(x=0)=V(x=L)=\infty \,\,\,\,V(0<x<L)=0 $$
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
-</iframe>
-</html>
+The boundary conditions are:
 
-### Decomposition of functions into orthogonal components
+$$\psi(x=0)=\psi(x=L)=0$$
 
-- Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a **Hilbert space**, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.   
+Hamiltonian operator accounting for kinetic energy is:
 
-|                $$\,$$Sequence vectors                 |                          Functions                           |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormality of eigenfunctions of Hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
-| Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
-| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onto basis functions: <br/>$$\langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1$$ |
+$$\hat{H}= \hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$$
 
-In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!
+We have all the necessary ingeredients to solve Schrödinger equation for 1D PIB $\hat{H}\psi(x)=E\psi(x)$: 
 
-### Eigenfunctions of Hermitian operators are complete basis set
+$$-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x)=E\psi(x),\,\,\,\,or\,\,\, \psi''(x)=-k^2 \psi(x)$$
 
-The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
+Where we have defined $k^2=\frac{2mE}{\hbar^2}$  as a positive real number
 
-- Eigenvalues $\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$  are real: 
+### 1D PIB looks just like 1D guitar string problem. 
 
-$$E_n=E^*_n$$
+Mathematically the form of 1D PIB is the same kind fo ODE as the 1D guitar string problem. The differences are in the constant coefficients and the interpretation of wave function!
 
-- Eigenfunctions are orthogonal:
+$$\psi''(x)=-k^2 \psi(x)$$
 
-$$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
+$$\psi(x)=c_1e^{ikx}+c_2e^{-ikx}=A\cos(kx)+B\sin(kx)$$
 
-- Eigenfunctions form a complete basis set! 
+- Applying boundary condition $\psi(0)=0$ we get $A=0$ and $\psi(x)=B\sin(kx)$
+- Applying boundary condition $\psi(L)=B\sin(kL)=0$ we get $kL=n\pi$ 
 
-$$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
+$$k=\frac{n\pi}{L}\,\,\, \rightarrow\,\,\, \psi(x)=B \sin(\frac{n\pi}{L}x)$$
 
-The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
+$$k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\frac{n^2 h^2}{8mL^2} $$
 
-### Wave function as a linear superoposition of eigenfunctions
+Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.
 
-This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same! 
+### Normalizing wave function determines the constant multiplicative factor 
 
+$$\int^L_0 \psi(x)^2 dx=1 $$
 
+$$B^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B^2}{2}=1$$
 
-- Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
+$$B=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
-  - In Dirac notation: $f=\sum_n c_n \mid n\rangle$ 
-  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
-
-  
-
-- What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
-
-  - In Dirac notation: $c_k = \braket{k \mid f}$
-
-  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
-
-    
-
-Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
-
-
-
-### Quantum states as linear superposition. 
-
-Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
-
-$$\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle$$
-
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
-
-
-
-- Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.
-
-$$p_n=\mid c_n \mid^2$$
-
-Probabilites sum to one.
-
-$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
-
-  
-
-### Averages are probability weighted sums of eigenvalues.
-
-- Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
-
-  $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
-
-    $$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
-
-- The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment. 
-
- $$\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2$$
-
-
-
-### Particle in a box example of a superoposition state
-
-Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian: 
-
-$$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}$$ 
-
-This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. 
-
-The average of energy will be given by
-
-$$\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}$$
-
-
-
-### Quantum states as linear superposition of mutually exclusive states.
-
-It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition "collapses" to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics. 
-
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
-
-- Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability $\mid c_n \mid^2$
-
-  $$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
-
-- Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2 
-
-  $$\langle \phi_1 \mid \phi_2 \rangle=0$$
-
-### Expectation values
-
-
-In most cases, we need to calculate expectation values for wavefunctions, which are not eigenfunctions of the given operator. It can be shown that for any given Hermitian operator and physically sensible [boundary conditions](http://en.wikipedia.org/wiki/Boundary_condition), the eigenfunctions form a [complete basis set](http://en.wikipedia.org/wiki/Basis_(linear_algebra)). This means that any well-behaved function $\psi$ can be written as a [linear combination](http://en.wikipedia.org/wiki/Linear_combination)  of the eigenfunctions $\phi_i$ [superposition state](http://en.wikipedia.org/wiki/Quantum_superposition); the upper limit in the summation may be finite:
-
-$${\psi(x) = \sum\limits_{i=1}^{\infty}c_i\phi_i(x)\textnormal{ where }\hat{A}\phi_i = a_i\phi_i}$$
-
-where $c_i$ are constants specific to the given $\psi$. Since the $\phi_i$ are orthonormal (Eq. (\ref{eq9.43})) and $\psi$is normalized to one, we have:
-
-
-
-$${1 = \int\psi^*\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*
-\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = \sum\limits_{i=1}^{\infty}c_i^*c_i\int\phi_i^*\phi_i d\tau = \sum\limits_{i=1}^{\infty}\left|c_i\right|^2}$$
-
-The expectation value of $\hat{A}$ is given (in terms of the eigenfunction basis; $\hat{A}$ linear):
-
-
-
-$${\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*\hat{A}\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau}
-{= \sum\limits_{i=1,k=1}^{\infty}c_i^*c_k\int\phi_i^*\hat{A}\phi_kd\tau = \sum\limits_{i=1,k=1}^{\infty}
-c_i^*c_k\left<\phi_i\left|\hat{A}\right|\phi_k\right>}$$
-
-Above $\left<\phi_i\left|\hat{A}\right|\phi_k\right>$ is often called a ``matrix element''. Since $\phi_i$'s are eigenfunctions of $\hat{A}$, we get:
-
-$${\left<\hat{A}\right> = \sum\limits_{i=1}^{\infty} \left|c_i\right|^2a_i}$$
-
-Note that above $\psi$ is not an eigenfunction of $\hat{A}$. The expectation value is a weighted average of the eigenvalues.
-
-
-The coefficients $\left|c_i\right|^2$ give the probability for a measurement to give an outcome corresponding to $a_i$. This is often taken as one of the postulates (``assumption'') for quantum mechanics (Bohr's probability interpretation). Note that the coefficients $c_i$ may be complex but $\left|c_i\right|^2$ is always real.
-
-
-Given a wavefunction $\psi$, it is possible to find out how much a certain eigenfunction $\phi_i$ contributes to it (using orthogonality of the eigenfunctions):
-
-$${\int\phi_i^*\psi d\tau = \int\phi_i^*\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = c_i}$$
-
-$${\textnormal{OR }\left|c_i\right|^2 = \left|\int\phi_i^*\psi d\tau\right|^2}$$
-
-Note that the discrete basis expansion does not work when the operator $\hat{A}$ has a continuous set of eigenvalues (continuous spectrum).
-
-
-The [variance](http://en.wikipedia.org/wiki/Variance)  $\sigma_A^2$ for operator $\hat{A}$ is defined as:
-
-$${\sigma_A^2 = \left<\left(\hat{A} - \left<\hat{A}\right>\right)^2\right> = \left<\psi\left|\left(\hat{A} - \left<\hat{A}\right>\right)^2\right|\psi\right> = \left<\psi\left|\hat{A}^2\right|\psi\right>}{ - \underbrace{\left<\psi\left|2\hat{A}\left<\psi\left|\hat{A}\right|\psi\right>\right|\psi\right>}_{= 2\left<\psi\left|\hat{A}\right|\psi\right>^2} + \left<\psi\left|\hat{A}\right|\psi\right>^2}
-{= \left<\psi\left|\hat{A}^2\right|\psi\right> - \left<\psi\left|\hat{A}\right|\psi\right>^2 = \left<\hat{A}^2\right> - \left<\hat{A}\right>^2}$$
-
-The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation)  is given by the square root of $\sigma_A^2$.
-
-**Example** Consider a particle in a quantum state $\psi$ that is a superposition of two eigenfunctions $\phi_1$ and $\phi_2$, with energy eigenvalues $E_1$ and $E_2$ of operator $\hat{H}$  ($E_1 \ne E_2$):
-
-$$\psi = c_1\phi_1 + c_2\phi_2$$
-
-If one attempts to measure energy of such state, what will be the outcome? What will be the average energy and the standard deviation in energy?
-
-
-
-**Solution** Since $\psi$ is normalized and $\phi_1$ and $\phi_2$ are orthogonal, we have $\left|c_1\right|^2 + \left|c_2\right|^2 = 1$. The probability of measuring $E_1$ is $\left|c_1\right|^2$ and $E_2$ is $\left|c_2\right|^2$. The average energy is given by:
-
-
-$$\left<\hat{H}\right> = \left<\psi\left|\hat{H}\right|\psi\right> = \left|c_1\right|^2\left<\phi_1\left|\hat{H}\right|\phi_1\right> + c_1^*c_2\left<\phi_1\left|\hat{H}\right|\phi_2\right> + c_2^*c_1\left<\phi_2\left|\hat{H}\right|\phi_1\right>$$
-$$ + \left|c_2\right|^2\left<\phi_2\left|\hat{H}\right|\phi_2\right> = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left<\phi_1\left|\phi_2\right.\right>}_{= 0} + c_2^*c_1E_1\underbrace{\left<\phi_2\left|\phi_1\right.\right>}_{= 0} + \left|c_2\right|^2E_2$$
-$$= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2$$
-
-**Exercise:** write the above equation without using the Dirac notation). The standard deviation is given by : $\sigma_{\hat{H}} = \sqrt{\left<\hat{H}^2\right> - \left<\hat{H}\right>^2}$. We have already calculated $\left<\hat{H}\right>$ above and need to calculate $\left<\hat{H}^2\right>$ (use the eigenvalue equation and orthogonality):
-
-$$\left<\hat{H}^2\right> = \left<\psi\left|\hat{H}^2\right|\psi\right> = \left<\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right> = \left<c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right>$$
-$$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}$$
-
-
-### Copenhagen interpretation
-
-"The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
-
-According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
-
-
-
-### Quantum superopsition of atom. 
-
-<html>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
-</iframe>
-</html>
-
-
-### Schordinger's cat
-
-<html>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
-</iframe>
-</html>
-
-- Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
-
-- The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
-
-
-### Double slit Experiment
-
-<html>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
-</iframe>
-</html>
-
+Where we made use of $\sin^2(x)=\frac{1}{2}(1-\cos(2x))$ trig relation. 
 
 
