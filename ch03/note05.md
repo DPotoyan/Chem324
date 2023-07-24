@@ -1,4 +1,4 @@
-## The meaning of eigenvalues
+## Eigenvalues
 
 ```{admonition} What you need to know
 :class: note
