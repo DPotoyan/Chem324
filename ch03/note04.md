@@ -23,10 +23,10 @@ Let's remind ourselves of some basics first. 3B1B has an excellent lecture serie
 ### Vectors in 2D/3D
 
 - An example of a vector is an ordered collection of numbers, e.g:
-  -  $$a=(-2,8) \,\,\,$$ *A 2D vector.*
-  -  $$b=(1.34,4.23,5.98) \,\,\,$$  *A 3D vector.*
-  -  $$c=(1,-2,4i,3+2i) \,\,\,$$  *A 4D vector with complex components.*
-  - $$f=(1,2,3,4,5,6 ...,\infty)\,\,\,$$ *An infinite-dimensional vector with integers as components.*
+  -  $a=(-2,8) \,\,\,$ *A 2D vector.*
+  -  $b=(1.34,4.23,5.98) \,\,\,$  *A 3D vector.*
+  -  $c=(1,-2,4i,3+2i) \,\,\,$  *A 4D vector with complex components.*
+  - $f=(1,2,3,4,5,6 ...,\infty)\,\,\,$ *An infinite-dimensional vector with integers as components.*
 
 ### Dirac notation
 
@@ -182,15 +182,15 @@ The three crucial consequences of Hermitian property of operators  $\langle \phi
 
 - Eigenvalues $\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$  are real: 
 
-  $$E_n=E^*_n$$
+$$E_n=E^*_n$$
 
 - Eigenfunctions are orthogonal:
 
-   $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
+$$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
 - Eigenfunctions form a complete basis set! 
 
-  $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
+$$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
 The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
@@ -202,16 +202,16 @@ This is where we see the power and beautfy of Dirac notation. Reagardless of how
 
 - Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
 
-  - In Dirac notation: $$f=\sum_n c_n \mid n\rangle$$  
-  - In explicit notation: $$f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$$
+  - In Dirac notation: $f=\sum_n c_n \mid n\rangle$ 
+  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
 
   
 
 - What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
 
-  - In Dirac notation: $$c_k = \braket{k \mid f}$$
+  - In Dirac notation: $c_k = \braket{k \mid f}$
 
-  - In explicit notation: $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$$
+  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
 
     
 
@@ -229,13 +229,13 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
 
 
-- **Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.** 
+- Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.
 
-  $$p_n=\mid c_n \mid^2$$
+$$p_n=\mid c_n \mid^2$$
 
-- **Probabilites sum to one.**
+Probabilites sum to one.
 
-  **$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$.**  
+$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
 
   
 
@@ -243,7 +243,7 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
 - Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
 
-  $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle $$ 
+  $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
 
     $$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
 
@@ -281,7 +281,74 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
   $$\langle \phi_1 \mid \phi_2 \rangle=0$$
 
- 
+### Expectation values
+
+
+In most cases, we need to calculate expectation values for wavefunctions, which are not eigenfunctions of the given operator. It can be shown that for any given Hermitian operator and physically sensible [boundary conditions](http://en.wikipedia.org/wiki/Boundary_condition), the eigenfunctions form a [complete basis set](http://en.wikipedia.org/wiki/Basis_(linear_algebra)). This means that any well-behaved function $\psi$ can be written as a [linear combination](http://en.wikipedia.org/wiki/Linear_combination)  of the eigenfunctions $\phi_i$ [superposition state](http://en.wikipedia.org/wiki/Quantum_superposition); the upper limit in the summation may be finite:
+
+$${\psi(x) = \sum\limits_{i=1}^{\infty}c_i\phi_i(x)\textnormal{ where }\hat{A}\phi_i = a_i\phi_i}$$
+
+where $c_i$ are constants specific to the given $\psi$. Since the $\phi_i$ are orthonormal (Eq. (\ref{eq9.43})) and $\psi$is normalized to one, we have:
+
+
+
+$${1 = \int\psi^*\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*
+\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = \sum\limits_{i=1}^{\infty}c_i^*c_i\int\phi_i^*\phi_i d\tau = \sum\limits_{i=1}^{\infty}\left|c_i\right|^2}$$
+
+The expectation value of $\hat{A}$ is given (in terms of the eigenfunction basis; $\hat{A}$ linear):
+
+
+
+$${\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*\hat{A}\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau}
+{= \sum\limits_{i=1,k=1}^{\infty}c_i^*c_k\int\phi_i^*\hat{A}\phi_kd\tau = \sum\limits_{i=1,k=1}^{\infty}
+c_i^*c_k\left<\phi_i\left|\hat{A}\right|\phi_k\right>}$$
+
+Above $\left<\phi_i\left|\hat{A}\right|\phi_k\right>$ is often called a ``matrix element''. Since $\phi_i$'s are eigenfunctions of $\hat{A}$, we get:
+
+$${\left<\hat{A}\right> = \sum\limits_{i=1}^{\infty} \left|c_i\right|^2a_i}$$
+
+Note that above $\psi$ is not an eigenfunction of $\hat{A}$. The expectation value is a weighted average of the eigenvalues.
+
+
+The coefficients $\left|c_i\right|^2$ give the probability for a measurement to give an outcome corresponding to $a_i$. This is often taken as one of the postulates (``assumption'') for quantum mechanics (Bohr's probability interpretation). Note that the coefficients $c_i$ may be complex but $\left|c_i\right|^2$ is always real.
+
+
+Given a wavefunction $\psi$, it is possible to find out how much a certain eigenfunction $\phi_i$ contributes to it (using orthogonality of the eigenfunctions):
+
+$${\int\phi_i^*\psi d\tau = \int\phi_i^*\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = c_i}$$
+
+$${\textnormal{OR }\left|c_i\right|^2 = \left|\int\phi_i^*\psi d\tau\right|^2}$$
+
+Note that the discrete basis expansion does not work when the operator $\hat{A}$ has a continuous set of eigenvalues (continuous spectrum).
+
+
+The [variance](http://en.wikipedia.org/wiki/Variance)  $\sigma_A^2$ for operator $\hat{A}$ is defined as:
+
+$${\sigma_A^2 = \left<\left(\hat{A} - \left<\hat{A}\right>\right)^2\right> = \left<\psi\left|\left(\hat{A} - \left<\hat{A}\right>\right)^2\right|\psi\right> = \left<\psi\left|\hat{A}^2\right|\psi\right>}{ - \underbrace{\left<\psi\left|2\hat{A}\left<\psi\left|\hat{A}\right|\psi\right>\right|\psi\right>}_{= 2\left<\psi\left|\hat{A}\right|\psi\right>^2} + \left<\psi\left|\hat{A}\right|\psi\right>^2}
+{= \left<\psi\left|\hat{A}^2\right|\psi\right> - \left<\psi\left|\hat{A}\right|\psi\right>^2 = \left<\hat{A}^2\right> - \left<\hat{A}\right>^2}$$
+
+The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation)  is given by the square root of $\sigma_A^2$.
+
+**Example** Consider a particle in a quantum state $\psi$ that is a superposition of two eigenfunctions $\phi_1$ and $\phi_2$, with energy eigenvalues $E_1$ and $E_2$ of operator $\hat{H}$  ($E_1 \ne E_2$):
+
+$$\psi = c_1\phi_1 + c_2\phi_2$$
+
+If one attempts to measure energy of such state, what will be the outcome? What will be the average energy and the standard deviation in energy?
+
+
+
+**Solution** Since $\psi$ is normalized and $\phi_1$ and $\phi_2$ are orthogonal, we have $\left|c_1\right|^2 + \left|c_2\right|^2 = 1$. The probability of measuring $E_1$ is $\left|c_1\right|^2$ and $E_2$ is $\left|c_2\right|^2$. The average energy is given by:
+
+
+$$\left<\hat{H}\right> = \left<\psi\left|\hat{H}\right|\psi\right> = \left|c_1\right|^2\left<\phi_1\left|\hat{H}\right|\phi_1\right> + c_1^*c_2\left<\phi_1\left|\hat{H}\right|\phi_2\right> + c_2^*c_1\left<\phi_2\left|\hat{H}\right|\phi_1\right>$$
+$$ + \left|c_2\right|^2\left<\phi_2\left|\hat{H}\right|\phi_2\right> = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left<\phi_1\left|\phi_2\right.\right>}_{= 0} + c_2^*c_1E_1\underbrace{\left<\phi_2\left|\phi_1\right.\right>}_{= 0} + \left|c_2\right|^2E_2$$
+$$= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2$$
+
+**Exercise:** write the above equation without using the Dirac notation). The standard deviation is given by : $\sigma_{\hat{H}} = \sqrt{\left<\hat{H}^2\right> - \left<\hat{H}\right>^2}$. We have already calculated $\left<\hat{H}\right>$ above and need to calculate $\left<\hat{H}^2\right>$ (use the eigenvalue equation and orthogonality):
+
+$$\left<\hat{H}^2\right> = \left<\psi\left|\hat{H}^2\right|\psi\right> = \left<\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right> = \left<c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right>$$
+$$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}$$
+
 
 ### Copenhagen interpretation
 
@@ -291,7 +358,7 @@ According to the Copenhagen interpretation, physical systems generally do not ha
 
 
 
-### Video of quantum superopsition of atom. 
+### Quantum superopsition of atom. 
 
 <html>
 
@@ -311,86 +378,6 @@ According to the Copenhagen interpretation, physical systems generally do not ha
 - Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
 
 - The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
-
-### Time dependence in quantum mechanics
-
-So far we have completely ignored time dependence in our discussions. This is becasuse we have mainly focused on pure eigenfunction states $\psi_n(x,t)$ which show no time dependent behaviour for any quantity. It is easy to see why:
-
-$$\psi_n(x,t) =\psi_n(x) \psi_n(x) e^{-\frac{i}{\hbar}E_n t}$$
-
-When we do any kind of probabilistic calcualtion the time dependence dissapears because all the expressions involve square of wave functions and absolute value of complex temporal phase ends up as unity. 
-
-$$\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x) e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t}=\mid \psi_n(x)\mid^2$$
-
-$$\langle A \rangle = \int \psi_n^*(x)e^{+\frac{i}{\hbar}E_n t} \hat{A} \psi_n(x)e^{-\frac{i}{\hbar}E_n t}dx = \int \psi_n^*(x) \hat{A} \psi_n(x)dx$$
-
-Will we always hae this lucky cancelation of time? The answer is no, when the states are described as linear superpositions time dependence does enter into picture. 
-
-
-
-### Time depenendece in superposition states
-
-Let us start with a superposition state of two energy eigenfunctions  at time t=0:
-
-$$\mid \psi(0) \rangle =c_1\mid 1 \rangle + c_2 \mid 2 \rangle$$
-
-What would the state be after some time t? By the virute of speration of variables we add the time dependence as a multiplicative factor for each eigenfunction:
-
-$$\mid \psi(t) \rangle =c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2 \rangle= c_1(t)\mid 1\rangle+c_2(t) \mid 2 \rangle$$
-
-Thus we see that the coefficients change over time. This means our state vector moves in functional space spanned by fixed orthogonal eigenfunctions! We can verify that the expression satisfies time-dependent Schrodinger equation by plugging it and getting identity:
-
-$$  i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\psi(t)\rangle $$
-
-*Left hand side :*
-
-$$i\hbar \Big( -\frac{i}{\hbar}E_1 c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1\rangle-\frac{i}{\hbar}E_2 c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2\rangle \Big) = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle$$
-
-*Right hand side:*
-
-$$c_1 e^{-\frac{i}{\hbar}E_1 t}\hat{H}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\hat{H} \mid 2 \rangle = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle $$
-
-
-
-### Normalized wave function stays normalized over time
-
-Some quantities, however will be invariant to time evolution. For instance it is reasonable to expect that normalization will not depend on time e.g particle is bound to be somwhere inside box at any moment of time. 
-
-$$\mid \psi(t)\rangle=\sum_n c_n e^{-\frac{i}{\hbar}E_n t}\mid n\rangle$$
-
-
-
-*Note how the bra-ket prodcut involves product of two independent sums indexed by n and k. We will be seeing expressions like this often later on.*
-
-$$\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)t}\delta_{kn} =\sum_n \mid c_n \mid^2=1$$
-
-
-
-Where the last line used the fact that eigenfunctions $\langle n \mid k\rangle=0$ are orthogonal hence cross terms in the sum where $k\neq n$ are all zero and only diagonal terms $n=k$ survie.
-
- 
-
-## Constants of motion
-
-Quantities which are conserved over time are called **constants of motion**. In  QM we generaly have expectations or averages instead of sharply defined values. The principle of conservation of energy, however, dictates that the average of total energy must be one of the conserved quantities. To find out weather a quantity of interest will depend on time we  take a time derivative of the expectation:
-
-$$\langle A \rangle =\langle \psi \mid A\mid \psi \rangle$$
-
-$$\frac{\partial}{\partial t}\langle A \rangle = \langle \frac{\partial \psi}{\partial t} \mid A\mid \psi \rangle + \langle \psi \mid A\mid  \frac{\partial \psi}{\partial t} \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle$$
-
-Now we making use of time dependent Schrodinger equation $i\hbar \frac{\partial }{\partial t}\mid \psi \rangle=\hat{H}\mid \psi\rangle$ to express time derivatives of bras and kets: 
-
-- $$\langle \frac{\partial \psi}{\partial t}\mid = -\frac{1}{i\hbar} \hat{H}\langle \psi \mid$$
-
-- $$\mid \frac{\partial \psi}{\partial t}\rangle = \frac{1}{i\hbar} \hat{H}\mid \psi \rangle$$
-
-Plugging this into time derivative of expectation we get:
-
-$$\frac{\partial}{\partial t}\langle A \rangle =\frac{1}{i\hbar}\langle \psi \mid \hat{A}\hat{H}\mid \psi \rangle-\frac{1}{i\hbar}\langle \psi \mid \hat{H}\hat{A}\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle = \\ = \frac{1}{i\hbar}\langle \psi \mid [\hat{A},\hat{H}]\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle$$
-
-This imporatat relationship shows that if an operator $\hat{A}$ itself does not depend on time $\frac{\hat{A}}{t}=0$ then the quantites which commute with hamiltonian $[\hat{A},\hat{H}]=0$ will be constants of motion and those that don't $[\hat{A},\hat{H}]\neq0$ will evolve over time!
-
-- Hamiltonian commutes with itself and does not depend on time $\frac{\partial}{\partial t}\langle E\rangle =0$
 
 
 ### Double slit Experiment
