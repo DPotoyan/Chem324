@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>The menaing of wave function &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Operators &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mathematics of Quantum Mechanics" href="note04.html" />
+    <link rel="next" title="The menaing of wave function" href="note04.html" />
     <link rel="prev" title="Postulates of Quantum Mechanics" href="note02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,11 +178,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Schrödinger Equation</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">The menaing of wave function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Mathematics of Quantum Mechanics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Commutability and precision of measurement</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">The menaing of wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">The meaning of eigenvalues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Time dependence</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="note07.html">Commutability and precision of measurement</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -363,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The menaing of wave function</h1>
+    <h1>Operators</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -373,17 +374,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-meaning-of-a-wave-function-psi">What is the meaning of a wave-function <span class="math notranslate nohighlight">\(\psi\)</span> ?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-normalization">The importance of normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-moments-of-probability-distirbution-function">Computing moments of probability distirbution function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-pib">Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation">Exepctation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property">Hermitian property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
             </nav>
         </div>
@@ -395,173 +390,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="the-menaing-of-wave-function">
-<h1>The menaing of wave function<a class="headerlink" href="#the-menaing-of-wave-function" title="Permalink to this heading">#</a></h1>
-<div class="note admonition">
-<p class="admonition-title">What you need to know</p>
-<ul class="simple">
-<li><p><strong>We explore the meaning of a wave function which is a gateway into probabilsitc quantum-mechanical world of small systems. We learn that psi squared  is a probability distribution function.</strong></p></li>
-<li><p><strong>We illustrate several key quantum mechanical principles on the example of a Particle in Box. A simple toy system useful for understanding behaviour of bound states of electrons in atoms or molecules such as</strong></p>
-<ul>
-<li><p><strong>Energetic quantization</strong>.</p></li>
-<li><p><strong>Probabilistic nature of quantum particle.</strong> Having non uniform distirbutions of position when occupying different energy levels.</p></li>
-<li><p><strong>Uncertainy relation.</strong> Inverse relationship between spread in position and momentum values.</p></li>
-<li><p><strong>Existence of zero point energy.</strong> A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles.</p></li>
-<li><p><strong>Quantum-classical correspondence.</strong> Smooth transition to classical behavior when going larger scales.</p></li>
-<li><p><strong>Degeneracy in energy levels.</strong> How symmetries lead to different wave functions correpsonding to the same energy levels.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<section id="what-is-the-meaning-of-a-wave-function-psi">
-<h2>What is the meaning of a wave-function <span class="math notranslate nohighlight">\(\psi\)</span> ?<a class="headerlink" href="#what-is-the-meaning-of-a-wave-function-psi" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>In classical wave equation, wave function has a simple mechanical  interpretation: it’s just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.</p></li>
-<li><p>In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments.</p></li>
-<li><p>As It turns out, the square value of wave function that is <span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</span> is a probability distribution function describing likelihood of quantum objects being at different points <span class="math notranslate nohighlight">\(x\)</span>  in 1D space. For 3D space the analogous expression is <span class="math notranslate nohighlight">\(p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)\)</span> and so on.</p></li>
-</ul>
-</section>
-<section id="the-importance-of-normalization">
-<h2>The importance of normalization<a class="headerlink" href="#the-importance-of-normalization" title="Permalink to this heading">#</a></h2>
-<p>To be a proper probability distirbution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distirbution and not equal. Normalization of <span class="math notranslate nohighlight">\(\psi^2\)</span>  means that that there is absolute certainty that quantum object exisits somehwere in space. Hence in an experiment when you search for quantum particule in an entire space you are going to find it somehwere.</p>
-<p>Tne normalization In 1D is:</p>
+  <section id="operators">
+<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h1>
+<p>We have already seen examples of operators. For short, they consist of mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:</p>
 <div class="math notranslate nohighlight">
-\[\int^{+\infty}_{-\infty} |\psi(x)|^2 dx= \int^{+\infty}_{-\infty} p(x)dx=1\]</div>
-<p>Normalization of a wave function <span class="math notranslate nohighlight">\(\psi'\)</span> is done by multiplying it by a constant  <span class="math notranslate nohighlight">\(\psi=N\psi'\)</span> and plugging in the above condition to find the value of <span class="math notranslate nohighlight">\(N\)</span>. In another words normalization allows determining the constant multiplicative factor in front of wave functions.</p>
-<p>Normalization In 3D is:</p>
-<div class="math notranslate nohighlight">
-\[ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1\]</div>
-</section>
-<section id="what-can-we-do-with-probability-distribution-functions-pdf">
-<h2>What can we do with probability distribution functions (PDF)?<a class="headerlink" href="#what-can-we-do-with-probability-distribution-functions-pdf" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>By defnitition probability distribution function <span class="math notranslate nohighlight">\(p(x) \)</span> allows quantifying various probabilities that a quantum “particle” is located in an infinitesimal slice <span class="math notranslate nohighlight">\([x, x+dx]\)</span> around point <span class="math notranslate nohighlight">\(x\)</span>.  This then enables us to  find probabilities in any finite region <span class="math notranslate nohighlight">\([a,b]\)</span> simply by integrating:</p>
-<div class="math notranslate nohighlight">
-\[p(a&lt;x&lt;b)=\int_a^b |\psi(x)|^2dx\]</div>
-</li>
-<li><p>In higher dimensions, e.g. 3D, we can locate particle around volume <span class="math notranslate nohighlight">\(dxdydz\)</span> or any finite volume via a similar integration:</p>
-<div class="math notranslate nohighlight">
-\[p(a_x&lt;x&lt;b_x,a_y&lt;y&lt;b_y, a_z&lt;z&lt;b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz\]</div>
-</li>
-</ul>
-</section>
-<section id="computing-moments-of-probability-distirbution-function">
-<h2>Computing moments of probability distirbution function<a class="headerlink" href="#computing-moments-of-probability-distirbution-function" title="Permalink to this heading">#</a></h2>
-<p>Probability distribution function contains lot of information. E.g probability of observing every posisble value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+\[{\hat{p}_x = -i\hbar\frac{d}{dx}}\]</div>
 <ul class="simple">
-<li><p>But often we are interested in more reduced descriptions in terms of moments such quantifying average value (first moment) or spread in the distribution (second moment). Below we re-list the definitions of various quantities one can extract from a PDF.</p></li>
+<li><p>When this operates on a function, it does the following: (1) differentiate the function with respect to <span class="math notranslate nohighlight">\(x\)</span> and then (2) multiply the result from (1) by <span class="math notranslate nohighlight">\(-i\hbar\)</span>.</p></li>
+<li><p>Another example of an operator is the position operator given just by coordinate <span class="math notranslate nohighlight">\(x\)</span>. This would operate on a given wavefunction just by multiplying it by <span class="math notranslate nohighlight">\(x\)</span>. We denote operators with ^{} sign (``hat’’) above them.</p></li>
 </ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>DEFINITION</p></th>
-<th class="head text-center"><p>NAME of moment</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x \rangle=\int p(x) x dx\)</span>$</p></td>
-<td class="text-center"><p><strong>1-st moment</strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x^2 \rangle=\int p(x)x^2 dx\)</span>$</p></td>
-<td class="text-center"><p><strong>2-nd moment</strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x^n \rangle=\int p(x)x^n dx\)</span>$</p></td>
-<td class="text-center"><p><strong>N-th moment</strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sigma^2=\langle x^2 \rangle-\langle x \rangle^2  \)</span></p></td>
-<td class="text-center"><p><strong>Dispersion</strong></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="what-about-quantities-which-correspond-to-operators">
-<h2>What about quantities which correspond to operators?<a class="headerlink" href="#what-about-quantities-which-correspond-to-operators" title="Permalink to this heading">#</a></h2>
-<p><strong>For quantities like momentum or total energy which are no longer simple functions as in classical mechanics but operators, <span class="math notranslate nohighlight">\(\hat{p}\)</span> and <span class="math notranslate nohighlight">\(\hat{H}\)</span>, we simply have to use operators in the defintion of moments!</strong></p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>Average quantity</p></th>
-<th class="head text-center"><p>Corresponding operator</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle E \rangle=\int \psi^{*}(x) \hat{H} \psi(x)  dx\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{H}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle K \rangle=\int \psi^{*}(x) \hat{K}\psi(x)  dx  \)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle p \rangle=\int \psi^{*}(x) \hat{p} \psi(x)  dx\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{p}=-i\hbar\frac{d}{dx}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle p^2 \rangle=\int \psi^{*}(x) \hat{p}^2 \psi(x)  dx\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat{p}^2=-\hbar^2\frac{d^2}{dx^2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="particle-in-a-box-pib">
-<h2>Particle in a Box (PIB):<a class="headerlink" href="#particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Particle in a box is a toy model of electron/atom/molecule trapped in some region of space <span class="math notranslate nohighlight">\([0,L]\)</span>. The positional information of a quantum “particle” is described by a quantum wave function <span class="math notranslate nohighlight">\(\psi(x)\)</span> which is obtained by solving Schrödinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem.</p></li>
-<li><p>Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a “wave”.</p></li>
-</ul>
-</section>
-<section id="classical-vs-quantum-particle-in-a-box">
-<h2>Classical vs Quantum particle in a box<a class="headerlink" href="#classical-vs-quantum-particle-in-a-box" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" /></p>
-<p>The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamiltonian <span class="math notranslate nohighlight">\(n=1,2,3\)</span>.  While E and F are not.</p>
-</section>
-<section id="what-are-some-new-ideas-that-we-learn-from-pib">
-<h2>What are some new ideas that we learn from PIB<a class="headerlink" href="#what-are-some-new-ideas-that-we-learn-from-pib" title="Permalink to this heading">#</a></h2>
+<section id="linearity-of-operators">
+<h2>Linearity of operators<a class="headerlink" href="#linearity-of-operators" title="Permalink to this heading">#</a></h2>
+<p>Operators in quantum mechanics are <em>linear</em>, which means that they fulfill the following rules:</p>
+<div class="math notranslate nohighlight">
+\[{\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{A}\left(c\psi\right) = c\hat{A}\psi\textnormal{ where \textit{c} is a constant}}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\hat{A}\)</span> is a <a class="reference external" href="http://en.wikipedia.org/wiki/Operator#Linear_operators">linear operator</a>. Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to <span class="math notranslate nohighlight">\(\hat{A}_1 + \hat{A}_2\)</span>. Multiplication corresponds to them operating one after another.</p>
+<p><strong>Example</strong> Apply the following operators on the given functions:</p>
 <ol class="arabic simple">
-<li><p>In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive <strong>energy levels</strong>.</p></li>
-<li><p>“Particle”  can never have <strong>zero energy</strong>, meaning that the particle can never “sit still”.</p></li>
-<li><p>“Particle” is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as <strong>spatial nodes.</strong></p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d/dx\)</span> and function <span class="math notranslate nohighlight">\(x^2\)</span>.\</p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(4x^2\)</span>.\</p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = \left(\partial / \partial y\right)_x\)</span> and function <span class="math notranslate nohighlight">\(xy^2\)</span>.</p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -i\hbar d/dx\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span>.</p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -\hbar^2 d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span>.</p></li>
 </ol>
-</section>
-<section id="solving-schrodinger-quation-for-particle-in-a-box-pib">
-<h2>Solving Schrödinger quation for Particle in a Box (PIB):<a class="headerlink" href="#solving-schrodinger-quation-for-particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<p>The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with inifinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the “particle” stays inside the box where it has acess only to the kinetic energy term.</p>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" /></p>
-<p>Mathematically, the potential energy is:</p>
-<div class="math notranslate nohighlight">
-\[V(x=0)=V(x=L)=\infty \,\,\,\,V(0&lt;x&lt;L)=0 \]</div>
-<p>The boundary conditions are:</p>
-<div class="math notranslate nohighlight">
-\[\psi(x=0)=\psi(x=L)=0\]</div>
-<p>Hamiltonian operator accounting for kinetic energy is:</p>
-<div class="math notranslate nohighlight">
-\[\hat{H}= \hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
-<p>We have all the necessary ingeredients to solve Schrödinger equation for 1D PIB <span class="math notranslate nohighlight">\(\hat{H}\psi(x)=E\psi(x)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x)=E\psi(x),\,\,\,\,or\,\,\, \psi''(x)=-k^2 \psi(x)\]</div>
-<p>Where we have defined <span class="math notranslate nohighlight">\(k^2=\frac{2mE}{\hbar^2}\)</span>  as a positive real number</p>
-</section>
-<section id="d-pib-looks-just-like-1d-guitar-string-problem">
-<h2>1D PIB looks just like 1D guitar string problem.<a class="headerlink" href="#d-pib-looks-just-like-1d-guitar-string-problem" title="Permalink to this heading">#</a></h2>
-<p>Mathematically the form of 1D PIB is the same kind fo ODE as the 1D guitar string problem. The differences are in the constant coefficients and the interpretation of wave function!</p>
-<div class="math notranslate nohighlight">
-\[\psi''(x)=-k^2 \psi(x)\]</div>
-<div class="math notranslate nohighlight">
-\[\psi(x)=c_1e^{ikx}+c_2e^{-ikx}=A\cos(kx)+B\sin(kx)\]</div>
+<p><strong>Solution</strong></p>
 <ul class="simple">
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(0)=0\)</span> we get <span class="math notranslate nohighlight">\(A=0\)</span> and <span class="math notranslate nohighlight">\(\psi(x)=B\sin(kx)\)</span></p></li>
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(L)=B\sin(kL)=0\)</span> we get <span class="math notranslate nohighlight">\(kL=n\pi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\left(x^2\right) = \frac{d}{dx}x^2 = 2x\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\left(4x^2\right) = \frac{d^2}{dx^2}\left(4x^2\right) = 8\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\left(xy^2\right) = \left(\frac{\partial}{\partial y}\left(xy^2\right)\right)_x = 2xy\)</span>. Note that <span class="math notranslate nohighlight">\(x\)</span> is a constant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\left(e^{-ikx}\right) = -i\hbar\frac{d}{dx}\left(e^{-ikx}\right) = -\hbar ke^{-ikx}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}\)</span>.</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[k=\frac{n\pi}{L}\,\,\, \rightarrow\,\,\, \psi(x)=B \sin(\frac{n\pi}{L}x)\]</div>
-<div class="math notranslate nohighlight">
-\[k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\frac{n^2 h^2}{8mL^2} \]</div>
-<p>Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.</p>
 </section>
-<section id="normalizing-wave-function-determines-the-constant-multiplicative-factor">
-<h2>Normalizing wave function determines the constant multiplicative factor<a class="headerlink" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor" title="Permalink to this heading">#</a></h2>
+<section id="eigenvalue-problem">
+<h2>Eigenvalue problem<a class="headerlink" href="#eigenvalue-problem" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\int^L_0 \psi(x)^2 dx=1 \]</div>
+\[{\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}\]</div>
+<ul class="simple">
+<li><p>This is an eigenvalue problem where one needs to determine the eigenfunctions <span class="math notranslate nohighlight">\(\psi_i\)</span> and the eigenvalues <span class="math notranslate nohighlight">\(E_i\)</span>. If <span class="math notranslate nohighlight">\(\psi_i\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{H}\)</span>, operating with <span class="math notranslate nohighlight">\(\hat{H}\)</span> on it must yield a constant times <span class="math notranslate nohighlight">\(\psi_i\)</span>.</p></li>
+</ul>
+<p><strong>Example</strong> What are the eigenfunctions and eigenvalues of operator <span class="math notranslate nohighlight">\(d/dx\)</span>?</p>
+<p><strong>Solution</strong> Start with the eigenvalue equation:</p>
 <div class="math notranslate nohighlight">
-\[B^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B^2}{2}=1\]</div>
+\[{\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}}
+{\Rightarrow \ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}}
+{\Rightarrow f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}\]</div>
+</section>
+<section id="exepctation">
+<h2>Exepctation<a class="headerlink" href="#exepctation" title="Permalink to this heading">#</a></h2>
+<p>The eigenfunctions are <span class="math notranslate nohighlight">\(f_k(x)\)</span> with the corresponding eigenvalue given by <span class="math notranslate nohighlight">\(k\)</span>. In general, for operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the expectation value (quantum mechanical average) is defined as:</p>
 <div class="math notranslate nohighlight">
-\[B=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} \]</div>
-<p>Where we made use of <span class="math notranslate nohighlight">\(\sin^2(x)=\frac{1}{2}(1-\cos(2x))\)</span> trig relation.</p>
+\[{\left&lt;\hat{A}\right&gt; = \int\psi^*\hat{A}\psi d\tau = \left&lt;\psi\left|\hat{A}\right|\psi\right&gt;}\]</div>
+<p>The last ``Bra - Ket’’ form is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Dirac_notation">dirac notation</a>. Note that the Bra part always contains the complex conjugation.</p>
+<p>If <span class="math notranslate nohighlight">\(\psi\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> then the expectation value is equal to the corresponding eigenvalue (<span class="math notranslate nohighlight">\(a\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[{\hat{A}\psi = a\psi \Rightarrow \left&lt;\hat{A}\right&gt;=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}\]</div>
+<p>Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’).</p>
+</section>
+<section id="hermitian-property">
+<h2>Hermitian property<a class="headerlink" href="#hermitian-property" title="Permalink to this heading">#</a></h2>
+<p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">hermitian</a> . Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}\]</div>
+<p>Note that this implies that the eigenvalues are real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Since Eq. (\ref{eq9.38}) applies to all functions, choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then <span class="math notranslate nohighlight">\(\int\psi^*\hat{A}\psi d\tau = a\)</span> and <span class="math notranslate nohighlight">\(\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\)</span>. Now Eq. (\ref{eq9.38}) implies that <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real.</p>
+<p><strong>Example</strong> Prove that the momentum operator (in one dimension) is Hermitian.</p>
+<p><strong>Solution</strong></p>
+<p><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}\)</span>
+<span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx}_{\textnormal{}} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
+<p>Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
+<p>The Hermitian property can also be used to show that the eigenfunctions (<span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>), which have different eigenvalues (i.e., <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> with <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>; ``non-degenerate’’), are orthogonal to each other:</p>
+<div class="math notranslate nohighlight">
+\[{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}\]</div>
+<div class="math notranslate nohighlight">
+\[{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}\]</div>
+<p>Here Hermiticity requires LHS = RHS. If <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>, the only way fulfill Eq. (\ref{eq9.38}) is to have:</p>
+<div class="math notranslate nohighlight">
+\[{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}\]</div>
+<p>Note that if <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning that the values are <a class="reference external" href="http://en.wikipedia.org/wiki/Degenerate_energy_level">degenerate</a>, this result does not hold.</p>
+<p>The product <span class="math notranslate nohighlight">\(\hat{A}\hat{B}\)</span> of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)\textnormal{ (\textit{f} is a function)}}\]</div>
+<p>In practice, this means that we first operate with <span class="math notranslate nohighlight">\(\hat{B}\)</span> and then with <span class="math notranslate nohighlight">\(\hat{A}\)</span>. Note that the order of multiplication is important because they may not commute (<span class="math notranslate nohighlight">\(\hat{A}\hat{B} \ne \hat{B}\hat{A}\)</span>; just like for matrices). The commutator of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[{\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}\]</div>
+<p>If the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. Operator multiplication is <a class="reference external" href="http://en.wikipedia.org/wiki/Associativity">associative</a>:</p>
+<div class="math notranslate nohighlight">
+\[{\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}\]</div>
+<p><strong>Example</strong> Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
+<p><strong>Solution</strong> Let <span class="math notranslate nohighlight">\(f\)</span> be an arbitrary well-behaved function. We need to calculate both <span class="math notranslate nohighlight">\(\hat{A}\hat{B}f\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\hat{A}f\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)\]</div>
+<div class="math notranslate nohighlight">
+\[\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}\]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}\]</div>
+</section>
+<section id="simple-rules-for-commutators">
+<h2>Simple rules for commutators<a class="headerlink" href="#simple-rules-for-commutators" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[{\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}\]</div>
+<div class="math notranslate nohighlight">
+\[{\left[A,B\right] = -\left[B,A\right]}\]</div>
+<div class="math notranslate nohighlight">
+\[{\left[B+C+...,A\right] = \left[B,A\right] + \left[C,A\right] + ...}\]</div>
+<div class="math notranslate nohighlight">
+\[{\left[A,B+C+...\right] = \left[A,B\right] + \left[A,C\right] + ...}\]</div>
+<div class="math notranslate nohighlight">
+\[{\left[A+B,C+D\right] = \left[A,C\right] + \left[A,D\right] + \left[B,C\right] + \left[B,D\right]}\]</div>
+<div class="math notranslate nohighlight">
+\[{\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}\]</div>
 </section>
 </section>
 
@@ -610,7 +549,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mathematics of Quantum Mechanics</p>
+        <p class="prev-next-title">The menaing of wave function</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -632,17 +571,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-meaning-of-a-wave-function-psi">What is the meaning of a wave-function <span class="math notranslate nohighlight">\(\psi\)</span> ?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-normalization">The importance of normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-moments-of-probability-distirbution-function">Computing moments of probability distirbution function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-pib">Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation">Exepctation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property">Hermitian property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
   </nav></div>
 
