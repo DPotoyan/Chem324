@@ -1,7 +1,7 @@
 ## Energy of the hydrogen molecule ion
 
 
-Using a linear combination of atomic orbitals, it is possible to calculate the best values, in terms of energy, for the coefficients $c_1$ and $c_2$. Remember that this linear combination can only provide an approximate solution to the H$_2^+$ Schr\"odinger equation. The variational principle (see Eq. (\ref{eq10.58})) provides a systematic way to calculate the energy when $R$ (the distance between the nuclei) is fixed:
+Using a linear combination of atomic orbitals, it is possible to calculate the best values, in terms of energy, for the coefficients $c_1$ and $c_2$. Remember that this linear combination can only provide an approximate solution to the $H_2^+$ Schr\"odinger equation. The variational principle (see Eq. (\ref{eq10.58})) provides a systematic way to calculate the energy when $R$ (the distance between the nuclei) is fixed:
 
 $${E = \frac{\int\psi_g^*\hat{H}_e\psi_gd\tau}{\int\psi_g^*\psi_gd\tau} = 
 \frac{\int (c_11s_A + c_21s_B)\hat{H}_e(c_11s_A + c_21s_B)d\tau}
@@ -110,5 +110,5 @@ the amount of angular momentum about the molecular axis (for $\sigma$, $\lambda 
 - $\pi$ orbitals. When two $p_{x,y}$ orbitals interact, a $\pi$ molecular orbital forms. $\pi$-orbitals are doubly degenerate: $\pi_{+1}$ and $\pi_{-1}$ (or alternatively $\pi_x$ and $\pi_y$), where the $+1/-1$ refer to the eigenvalue of the $L_z$ operator ($\lambda = \pm1$). In many-electron systems a bonding $\pi$-orbital can therefore hold a maximum of 4 electrons (i.e. both $\pi_{+1}$ and $\pi_{-1}$ each can hold two electrons). The same holds for the antibonding $\pi$ orbitals. Note that only the atomic orbitals of the same symmetry mix to form molecular orbitals (for example, $p_z - p_z$, $p_x -  p_x$ and $p_y - p_y$). When atomic $d$ orbitals mix to form molecular orbitals, $\sigma (\lambda = 0)$, $\pi (\lambda = \pm 1)$ and $\delta (\lambda = \pm 2)$ MOs form. 
 
 
-- Excited state energies of H$_2^+$ resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.
+- Excited state energies of $H_2^+$ resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.
 
