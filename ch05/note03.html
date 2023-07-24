@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Spin &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Probability densities for hydrogenlike atoms &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch05/note03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Approximations" href="../ch06/index.html" />
+    <link rel="next" title="Orbital angular momentum of the hydrogen atom" href="note04.html" />
     <link rel="prev" title="Spectrum of hydrogenlike atoms" href="note02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -205,7 +205,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">5. Hydrogen Atom</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Hydrogenlike atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Spectrum of hydrogenlike atoms</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Spin</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Probability densities for hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Orbital angular momentum of the hydrogen atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Spin</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -364,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Spin</h1>
+    <h1>Probability densities for hydrogenlike atoms</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,16 +376,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-charge-generates-mangetic-moment">Rotating charge generates mangetic moment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the hamiltonian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-herlach-experiment">Stern-Herlach experiment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term symbols</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-spin-in-non-relativistic-quantum-mechanics">Incorporating spin in non-relativistic quantum mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">Key takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
             </nav>
         </div>
@@ -395,117 +389,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="spin">
-<h1>Spin<a class="headerlink" href="#spin" title="Permalink to this heading">#</a></h1>
+  <section id="probability-densities-for-hydrogenlike-atoms">
+<h1>Probability densities for hydrogenlike atoms<a class="headerlink" href="#probability-densities-for-hydrogenlike-atoms" title="Permalink to this heading">#</a></h1>
+<p>A wavefunction for a one-electron system is called an orbital. For an atomic system such as H (hydrogen atom), it is called an <a class="reference external" href="http://en.wikipedia.org/wiki/Atomic_orbital">atomic</a>.</p>
+<p>The orbital plots demonstrated the shapes of the orbitals but this does not tell us anything about the radial extent (i.e., how far the orbital reaches).</p>
+<section id="key-takeaways">
+<h2>Key takeaways<a class="headerlink" href="#key-takeaways" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Experiment of Stern and Herlach provdies estblaishes the existance of spin for electrons. Contrary to the suggestive name, the spin is an intrinsic magnetic momentum which is permanently attached to a subatomic particle and has nothing to do with “spinning” or motion. Spins is an intrinsic property just like mass and charge.</p></li>
-<li><p>Particles with half-integer spins, such as 1/2, 3/2, 5/2, are known as fermions, while those particles with integer spins, such as 0, 1, 2, are known as bosons . The two families of particles obey different rules. Fermions obey the Pauli exclusion principle:  there cannot be two identical fermions simultaneously having the same quantum numbers, e.g, having the same position, velocity and spin direction. In contrast, bosons  have no such restriction, so they may “bunch together” even if in identical states.</p></li>
-<li><p><em>Normal Zeeman effect</em>: splitting of singlet states with spin zero in the magnetic field is due to electron’s angular momentum can be understood classically.</p></li>
-<li><p><em>Anomalous Zeeman effect</em>: Is a more general case of electron spin and angular mometnum both contributing to splitting of energy levels.</p></li>
+<li><p>As the value of <span class="math notranslate nohighlight">\(Z\)</span> is increased, the radial extent decreases. This indicates that for higher nuclear charge, the electrons will reside closer to the nucleus.</p></li>
+<li><p>The radial functions have <span class="math notranslate nohighlight">\(n - l - 1\)</span> zero values (``nodes’’) between distances from zero to infinity.</p></li>
+<li><p>The existence of the nodes makes the wavefunctions orthogonal. For example, <span class="math notranslate nohighlight">\(\psi_{1s}\)</span> and <span class="math notranslate nohighlight">\(\psi_{2s}\)</span> in hydrogenlike atoms are orthogonal.
+\end{itemize}</p></li>
 </ul>
-<section id="rotating-charge-generates-mangetic-moment">
-<h2>Rotating charge generates mangetic moment<a class="headerlink" href="#rotating-charge-generates-mangetic-moment" title="Permalink to this heading">#</a></h2>
-<p>Charged electron moving on a circle of radius has an angular momentum <span class="math notranslate nohighlight">\(\vec{L}=\vec{r} \times \vec{p}\)</span> which generates a magnetic moment given by:
-$<span class="math notranslate nohighlight">\(
-\mu_L = -\frac{e}{2m_e}\vec{L}
-\)</span>$</p>
-<p><img alt="" src="ch05/images/magnetic.jpg" /></p>
-<p>In an external magnetic field magnetic moment interacts with the field with a potential energy given as a scalar product of two vectors:
-$<span class="math notranslate nohighlight">\(
-U = -\vec{\mu_L}\cdot\vec{B} = \frac{e}{2m_e}\vec{L}\cdot \vec{B}
-\)</span>$</p>
 </section>
-<section id="effect-of-magnetic-field-on-atoms">
-<h2>Effect of magnetic field on atoms<a class="headerlink" href="#effect-of-magnetic-field-on-atoms" title="Permalink to this heading">#</a></h2>
-<p>The expressionof energy of mangeitc moment in the extenal magnetic field  <span class="math notranslate nohighlight">\(U = -\vec{\mu_L}\cdot\vec{B}\)</span> implies that the magnetic field has an ordering effect which ias acheived via an exertion of a force:</p>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<p>When visualizing the radial probabilities, it is possible to do directly plot the square of the radial wavefunction (<span class="math notranslate nohighlight">\(R_{nl}^2\)</span>) or the radial probability density (<span class="math notranslate nohighlight">\(P_{nl}\)</span>):</p>
 <div class="math notranslate nohighlight">
-\[
-F_z=-\frac{\partial U}{\partial z}
-\]</div>
-<p><img alt="" src="ch05/images/spin3.gif" /></p>
-</section>
-<section id="mangetic-field-modifies-the-hamiltonian">
-<h2>Mangetic field modifies the hamiltonian<a class="headerlink" href="#mangetic-field-modifies-the-hamiltonian" title="Permalink to this heading">#</a></h2>
-<p>In a constant magnetic field the hydrogen atom’s Hamiltonian willl be supplemetned with a new term    accounting for the interaction of electron’s magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with l=0). Picking the mangetic field along direction z  we can write the hamiltonain as:</p>
+\[{P_{nl}(r) = r^2N_{nl}^2R_{nl}^2(r)}\]</div>
+<p>According to this expression, the most probable radius for an electron on hydrogen atom <span class="math notranslate nohighlight">\(1s\)</span> orbital is <span class="math notranslate nohighlight">\(a_0\)</span> (the Bohr radius). Previous figures showed examples of <span class="math notranslate nohighlight">\(R_{nl}\)</span> and <span class="math notranslate nohighlight">\(P_{nl}\)</span>. Probability densities are useful, for example, in understanding charge distributions in atoms and molecules.</p>
+<p>As the principal quantum number <span class="math notranslate nohighlight">\(n\)</span> increases, the electron moves out to greater distances from the nucleus. The average distance for an electron in a given orbital (with quantum numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(l\)</span>) is given by (this is \textit{not} the expectation value):</p>
 <div class="math notranslate nohighlight">
-\[
-\hat{H} = \hat{H}_0 + \hat{H}_{mag}+ \frac{e}{2m_e} B \hat{L}_z
-\]</div>
-<p>Since <span class="math notranslate nohighlight">\([\hat{L}_z, \hat{H}_0]=0\)</span> we have</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat{L}_z\mid n,l, m_l\rangle = \hbar m_l \mid n,l, m_l\rangle\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{H}_0\mid n,l, m_l\rangle =E_n\mid n,l, m_l\rangle\)</span></p></li>
-</ul>
+\[{\langle r\rangle_{nl} = \int_0^\infty r\times P_{nl}(r)dr}{= \frac{n^2a_0}{Z}\lbrace 1 + \frac{1}{2}\lbrack  1 - \frac{l(l+1)}{n^2}\rbrack\rbrace}\]</div>
+<p>Note that the expectation value of <span class="math notranslate nohighlight">\(r\)</span> and the most probable value for <span class="math notranslate nohighlight">\(r\)</span> are not equal. The expectation value can be thought of like <em>an average</em> and the most probable value like a <em>maximum value</em>.</p>
+<p>The probability density (including the angular variables) for the electron in a hydrogenlike atom is given by:</p>
 <div class="math notranslate nohighlight">
-\[
-E=E_n +\hbar m \frac{e}{2m_e} B=E_n+m\beta_B B
-\]</div>
-<p>Where we have introduce the Boh’r magneton <span class="math notranslate nohighlight">\(\beta_B = \frac{\hbar e}{2 m_e}\)</span>. The energy expression predicts removal of degeneracy with respect to <span class="math notranslate nohighlight">\(m_l\)</span> generating splitting energy levels into <span class="math notranslate nohighlight">\(2l+1\)</span> lines. For instance the 2p level of hydrogen atom will split into 3 levels <span class="math notranslate nohighlight">\(-\beta_B B, 0,+\beta_B\)</span></p>
-</section>
-<section id="the-zeeman-effect">
-<h2>The  Zeeman effect<a class="headerlink" href="#the-zeeman-effect" title="Permalink to this heading">#</a></h2>
-<p>When an external magnetic field is applied, sharp spectral lines like the <span class="math notranslate nohighlight">\(n=3\rightarrow 2\)</span> transition of hydrogen split into multiple closely spaced lines. First observed by Pieter Zeeman, this splitting is attributed to the interaction between the magnetic field and the magnetic dipole moment associated with the orbital angular momentum. In the absence of the magnetic field, the hydrogen energies depend only upon the principal quantum number n , and the emissions occur at a single wavelength.</p>
-</section>
-<section id="stern-herlach-experiment">
-<h2>Stern-Herlach experiment<a class="headerlink" href="#stern-herlach-experiment" title="Permalink to this heading">#</a></h2>
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jDxUaBYINeQ" frameborder="0" allowfullscreen>
-</iframe>
-</html>
-</section>
-<section id="spin-as-a-tiny-magnet">
-<h2>Spin as a tiny magnet<a class="headerlink" href="#spin-as-a-tiny-magnet" title="Permalink to this heading">#</a></h2>
-<p>We come to view <em>spin</em> of subatomic particles in a same way as we view mass and charge. Spin is an intrinsic property of a particle manifested in having permanent magnetic moment. A particle with spin can interact with magnetic fields just like particles with charge can interact with electric fields. This is why spin is pictorially depcited as tiny manget.</p>
-<p><img alt="" src="ch05/images/Spin1.jpg" /></p>
-</section>
-<section id="spin-orbit-coupling">
-<h2>Spin-Orbit coupling<a class="headerlink" href="#spin-orbit-coupling" title="Permalink to this heading">#</a></h2>
-<p>Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling.</p>
-<p><img alt="" src="ch05/images/spin-orbit1.png" /></p>
-<p><img alt="" src="ch05/images/spin-orbit2.png" /></p>
-</section>
-<section id="term-symbols">
-<h2>Term symbols<a class="headerlink" href="#term-symbols" title="Permalink to this heading">#</a></h2>
-<p>Becsue of spint orbit coupling the energy levels are no longer diescribed by <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(s\)</span> separetely. This is why one introduces term sybols to describe new states with total spin multiplicity <span class="math notranslate nohighlight">\((2S+1)\)</span> and anuglar momentum <span class="math notranslate nohighlight">\(L\)</span> and total angular momentum <span class="math notranslate nohighlight">\(J=L+S\)</span>. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed.
-$<span class="math notranslate nohighlight">\(
-^{(2S+1)}L_J
-\)</span>$</p>
-</section>
-<section id="anomalous-zeeman-effect">
-<h2>“Anomalous” Zeeman Effect<a class="headerlink" href="#anomalous-zeeman-effect" title="Permalink to this heading">#</a></h2>
-<p>While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the “anomalous Zeeman effect” and were very puzzling to early researchers. The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the “anomalous” Zeeman effect is really the normal Zeeman effect when electron spin is included.</p>
-<p><img alt="" src="ch05/images/Zeeman.png" /></p>
-</section>
-<section id="incorporating-spin-in-non-relativistic-quantum-mechanics">
-<h2>Incorporating spin in non-relativistic quantum mechanics<a class="headerlink" href="#incorporating-spin-in-non-relativistic-quantum-mechanics" title="Permalink to this heading">#</a></h2>
-<p>Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-left"><p><em>Angular momentum</em> (eigenfunctions and eigenvalues)</p></th>
-<th class="head text-left"><p><em>Spin momentum</em> (eigenfunctions and eigenvalues)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{L}=\hat{r}\times \hat{p}\)</span><br><span class="math notranslate nohighlight">\(\hat{L}_z = -i\hbar \Big (x\frac{\partial}{\partial y}-y\frac{\partial}{\partial x} \Big)\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S}\)</span><br><span class="math notranslate nohighlight">\(\hat{S}_z\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(l=0,1,2,3,...\)</span><br><span class="math notranslate nohighlight">\(m_l=-l...0...l\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(s=1/2\)</span> <br> <span class="math notranslate nohighlight">\(m_s=-1/2,1/2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\mid l,m_l\rangle=Y_{l, m_l}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mid s,m_s\rangle=\alpha,\beta\)</span><br><span class="math notranslate nohighlight">\(\mid 1/2,+ 1/2\rangle=\alpha\)</span> <br><span class="math notranslate nohighlight">\(\mid 1/2,- 1/2\rangle=\beta\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(L=\hbar\sqrt{l(l+1)}\)</span><br><span class="math notranslate nohighlight">\(L_z=\hbar m\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(S=\hbar\sqrt{s(s+1)}=\hbar\sqrt{3/4}\)</span><br><span class="math notranslate nohighlight">\(S_z=\hbar m_s= \pm \hbar/2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\mu_L=- g_l \frac{e}{2m_e}L\)</span><br><span class="math notranslate nohighlight">\(g_l=1\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mu_S = g_s \frac{e}{2m_e}S\)</span> <br> <span class="math notranslate nohighlight">\(g_s \approx 2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p></p></td>
-<td class="text-left"><p></p></td>
-</tr>
-</tbody>
-</table>
+\[{\psi^*_{nlm}(r,\theta,\phi)\psi_{nlm}(r,\theta,\phi) = |N_{nl}R_{nl}(r)Y_l^m(\theta,\phi)|^2}\]</div>
+<p>This function depends on three variables and is difficult to plot directly. Previously, we have seen that it is convenient to plot contour levels, which contain the electron with, for example, 90% probability.</p>
+<p>For degenerate states with <span class="math notranslate nohighlight">\(l &gt; 0\)</span>, we have an additional degree of freedom in choosing how to represent the orbitals. In fact, any linear combination of given <span class="math notranslate nohighlight">\(3l\)</span> orthogonal eigenfunctions corresponding to a degenerate set with orbital angular momentum <span class="math notranslate nohighlight">\(l\)</span>, is also a solution to the Schr”odinger equation.</p>
+<p>Two commonly used representations are the Cartesian form, which are real valued functions and have been, in the case of <span class="math notranslate nohighlight">\(l = 1\)</span>, denoted by <span class="math notranslate nohighlight">\(p_x\)</span>, <span class="math notranslate nohighlight">\(p_y\)</span> and <span class="math notranslate nohighlight">\(p_z\)</span>, and the eigenfunctions of the angular momentum (<span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span>), which are complex valued and are denoted by <span class="math notranslate nohighlight">\(p_{-1}\)</span>, <span class="math notranslate nohighlight">\(p_0\)</span> and <span class="math notranslate nohighlight">\(p_{+1}\)</span>. The relation between the representations is:</p>
+<div class="math notranslate nohighlight">
+\[{p_x = -\frac{1}{\sqrt{2}}\left( p_{+1} - p_{-1}\right)\propto \textnormal{sin}(\theta)\textnormal{cos}(\phi)\propto x}
+{p_y = \frac{i}{\sqrt{2}}\left( p_{+1} + p_{-1}\right)\propto \textnormal{sin}(\theta)\textnormal{sin}(\phi)\propto y}
+{p_z = p_0}\]</div>
+<p>Note by combining <span class="math notranslate nohighlight">\(p_x\)</span>, <span class="math notranslate nohighlight">\(p_y\)</span> and <span class="math notranslate nohighlight">\(p_z\)</span>, the lobe of the orbital can be made to point at any direction. For <span class="math notranslate nohighlight">\(d\)</span>-orbitals, we have five degenerate levels:</p>
+<div class="math notranslate nohighlight">
+\[{d_{x^2 - y^2} = \frac{1}{\sqrt{2}} \left(d_{+2} + d_{-2}\right)\textnormal{, }d_{xy} = -\frac{i}{\sqrt{2}}\left( d_{+2} - d_{-2}\right)}
+{d_{xz} = -\frac{1}{\sqrt{2}}\left( d_{+1} - d_{-1}\right)\textnormal{, }d_{yz} = \frac{i}{\sqrt{2}}\left( d_{+1} + d_{-1}\right)}
+{d_{z^2} = d_0}\]</div>
 </section>
 </section>
 
@@ -550,11 +471,11 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </a>
     <a class="right-next"
-       href="../ch06/index.html"
+       href="note04.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">6. Approximations</p>
+        <p class="prev-next-title">Orbital angular momentum of the hydrogen atom</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -576,16 +497,8 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-charge-generates-mangetic-moment">Rotating charge generates mangetic moment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the hamiltonian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-herlach-experiment">Stern-Herlach experiment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term symbols</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-spin-in-non-relativistic-quantum-mechanics">Incorporating spin in non-relativistic quantum mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">Key takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
   </nav></div>
 
