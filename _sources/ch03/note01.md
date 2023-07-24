@@ -18,7 +18,7 @@
 
 - Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
 
-  <img src="images/SE_intro.jpeg" style="zoom:30%;" />
+  <img src="images/SE_intro.jpeg" stylewidth="100px" />
 
 ### Picking up where classical mechanics has failed
 
