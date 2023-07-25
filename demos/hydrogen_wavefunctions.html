@@ -548,12 +548,13 @@ Y_{lm}(\phi,\theta) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!} } P_{lm}(cos
 <p>$$\psi_{nlm} = R_{nl}®\cdot Y_{l}^{m}(\theta, \varphi)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ψnlm(r,θ,φ) normalized wavefunction</span>
-<span class="c1"># by definition of quantum numbers n, l, m and a bohr radius augmentation coefficient</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalized_wavefunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> 
+                            <span class="n">l</span><span class="p">,</span> 
+                            <span class="n">m</span><span class="p">,</span> 
+                            <span class="n">a0</span><span class="o">=</span><span class="mf">0.6</span><span class="p">):</span>
 
-<span class="k">def</span> <span class="nf">normalized_wavefunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a0</span><span class="p">):</span>
-
-    <span class="c1"># Bohr radius (a0) augmentation</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Ψnlm(r,θ,φ) normalized wavefunction</span>
+<span class="sd">    by definition of quantum numbers n, l, m and a bohr radius augmentation coefficient&#39;&#39;&#39;</span>
     <span class="n">a0</span> <span class="o">=</span> <span class="mf">5.29e-11</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1e+12</span> <span class="o">*</span> <span class="n">a0</span><span class="p">)</span>
 
     <span class="c1"># Set coordinates grid to assign a certain probability to each point (x, y) in the plane</span>
@@ -576,7 +577,7 @@ Y_{lm}(\phi,\theta) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!} } P_{lm}(cos
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_wavefunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> 
                       <span class="n">l</span><span class="p">,</span> 
                       <span class="n">m</span><span class="p">,</span> 
-                      <span class="n">a0</span> <span class="p">):</span>
+                      <span class="n">a0</span><span class="o">=</span><span class="mf">0.6</span><span class="p">):</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">normalized_wavefunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a0</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rocket&#39;</span><span class="p">)</span>
@@ -616,8 +617,7 @@ Y_{lm}(\phi,\theta) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!} } P_{lm}(cos
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_wavefunction</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
                   <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-                  <span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-                  <span class="n">ml</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  
+                  <span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
