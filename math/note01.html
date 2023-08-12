@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Cheat sheet &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Integrals &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/note01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sympy" href="sympy.html" />
+    <link rel="next" title="Differentiation" href="note02.html" />
     <link rel="prev" title="A. Math Appendix" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -242,11 +242,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">A. Math Appendix</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Cheat sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sympy.html">Sympy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Integrals</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Codes</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html">Sympy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../demos/complex_nums.html">Complex numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../demos/hydrogen_wavefunctions.html">Atomic orobitals - 2D plots</a></li>
 </ul>
@@ -387,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cheat sheet</h1>
+    <h1>Integrals</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,8 +400,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derviatives">Derviatives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Integrals</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indefinite-integrals">Indefinite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-indefinite-integrals">Table of indefinite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definite-integrals-as-riemann-sums">Definite integrals as Riemann sums</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-definite-integrals">Properties of definite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-theorem-of-calculus">Fundamental theorem of calculus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitution-rule">Substitution rule</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-integrals">Approximating integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improper-integrals">Improper integrals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -409,21 +430,359 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="cheat-sheet">
-<h1>Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this heading">#</a></h1>
-<section id="derviatives">
-<h2>Derviatives<a class="headerlink" href="#derviatives" title="Permalink to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[D_x e^x=e^x\]</div>
-<div class="math notranslate nohighlight">
-\[D_x \sin(x)=\cos(x)\]</div>
-<div class="math notranslate nohighlight">
-\[D_x \cos(x)=-\sin(x)\]</div>
-<div class="math notranslate nohighlight">
-\[D_x \tan(x)=\sec^2(x)\]</div>
-<div class="math notranslate nohighlight">
-\[D_x \ln(x) = \frac{1}{x}\]</div>
+  <section id="integrals">
+<h1>Integrals<a class="headerlink" href="#integrals" title="Permalink to this heading">#</a></h1>
+<section id="indefinite-integrals">
+<h2>Indefinite integrals<a class="headerlink" href="#indefinite-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Indefinite integral (antiderivative)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(F(x) = \displaystyle\int f(x) \ dx \newline F'(x) = f(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Antiderivative as a family of functions <br/> (Plus <span class="math notranslate nohighlight">\(C\)</span>!)</p></td>
+<td class="text-left"><p>If <span class="math notranslate nohighlight">\(F\)</span> is an antiderivative of <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(C\)</span> is a constant, <br/> then the most general antiderivative is <span class="math notranslate nohighlight">\(F(x) + C\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </section>
+<section id="table-of-indefinite-integrals">
+<h2>Table of indefinite integrals<a class="headerlink" href="#table-of-indefinite-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Function <span class="math notranslate nohighlight">\(f(x)\)</span></p></th>
+<th class="head text-left"><p>Antiderivative <span class="math notranslate nohighlight">\(F(x)\)</span></p></th>
+<th class="head text-right"><p>Function <span class="math notranslate nohighlight">\(f(x)\)</span></p></th>
+<th class="head text-left"><p>Antiderivative <span class="math notranslate nohighlight">\(F(x)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(x^n\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{x^{n+1}}{n+1}+C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\dfrac{1}{x}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\ln\lvert x \rvert + C\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(e^x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(e^x + C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(b^x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{b^x}{\ln b} + C\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\sin x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\cos x + C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\cos x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sin x + C\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\sec^2 x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\tan x + C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(csc^2 x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\cot x + C\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\sec x\tan x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sec x + C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\csc x\cot x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\csc x + C\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\dfrac{1}{x^2 + a^2}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{1}{a}\arctan \left(\dfrac{x}{a}\right) + C\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\dfrac{1}{\sqrt{a^2-x^2}}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\arcsin \left(\dfrac{x}{a}\right) + C\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="definite-integrals-as-riemann-sums">
+<h2>Definite integrals as Riemann sums<a class="headerlink" href="#definite-integrals-as-riemann-sums" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Area</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(A = \lim\limits_{n\to\infin} R_{n} = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i)\Delta x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Definite integral</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Operational definition of definite integral as Riemann sum</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^n f(x_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Sums of powers of positive integers</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{i=1}^{n}i = \frac{n(n+1)}{2} \newline \sum\limits_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6} \newline \sum\limits_{i=1}^{n}i^3 = \left[ \frac{n(n+1)}{2} \right]^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Properties of summation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{i=1}^{n}c = nc \newline \sum\limits_{i=1}^{n}ca_i = c\sum\limits_{i=1}^{n}a_i \newline \sum\limits_{i=1}^{n}(a_i \pm b_i) = \sum\limits_{i=1}^{n}a_i \pm \sum\limits_{i=1}^{n}b_i\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-of-definite-integrals">
+<h2>Properties of definite integrals<a class="headerlink" href="#properties-of-definite-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Reversing the bounds changes the sign of definite integrals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = -\int_b^a f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Definite integral is zero if upper and lower bounds are the same</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^a f(x) \ dx = 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Definite integrals of constant</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b c \ dx = c(b-a)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Addition and subtraction of definite integrals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b [f(x) \pm g(x)] \ dx \newline = \int_a^b f(x) \ dx \pm \int_a^b g(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Constant multiple of definite integrals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b cf(x) \ dx = c\int_a^b f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
+<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f(x) \ge 0\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \ge 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
+<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f(x) \ge g(x)\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \ge \int_a^b g(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
+<td class="text-left"><p>If <span class="math notranslate nohighlight">\(m \le f(x) \le M\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(m(b-a) \le \int_a^b f(x) \ dx \le M(b-a)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fundamental-theorem-of-calculus">
+<h2>Fundamental theorem of calculus<a class="headerlink" href="#fundamental-theorem-of-calculus" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><strong>Fundamental theorem of calculus I</strong> <br/> (<span class="math notranslate nohighlight">\(f\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(g(x) = \displaystyle\int_a^x f(t) \ dt \newline g'(x) = f(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><strong>Fundamental theorem of calculus II</strong> <br/> (<span class="math notranslate nohighlight">\(f\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int_a^b f(x) \ dx = F(b) - F(a)\)</span> <br/> where <span class="math notranslate nohighlight">\(F\)</span> is any antiderivative of <span class="math notranslate nohighlight">\(f\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Net change theorem <br/> The integral of a rate of change is the net change</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int_a^b F'(x) \ dx = F(b) - F(a)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="substitution-rule">
+<h2>Substitution rule<a class="headerlink" href="#substitution-rule" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Substitution rule (u-substitution) <br/> <span class="math notranslate nohighlight">\(u \equiv g(x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int f(g(x)) g'(x) \ dx = \int f(u) \ du\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Substitution rule for definite integrals <br/> <span class="math notranslate nohighlight">\(u \equiv g(x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int_a^b f(g(x))g'(x) \ dx = \int_{g(a)}^{g(b)} f(u) \ du\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Integrals of even functions</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{-a}^a f(x) \ dx = 2 \int_{0}^a f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Integrals of odd functions</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{-a}^a f(x) \ dx = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="techniques-of-integration">
+<h1>Techniques of Integration<a class="headerlink" href="#techniques-of-integration" title="Permalink to this heading">#</a></h1>
+<section id="integration-by-parts">
+<h2>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Integration by parts</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int f(x)g'(x) \ dx \newline =  f(x)g(x) - \int g(x)f'(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Integration by parts</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int u \ dv = uv - \int v \ du\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Integration by parts for definite integrals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b fg' \ dx = [fg]_a^b - \int_a^b f'g \ dx\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="approximating-integrals">
+<h2>Approximating integrals<a class="headerlink" href="#approximating-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Midpoint rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \sum\limits_{i=1}^n f(\bar{x}_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline \bar{x}_i = \frac{1}{2}(x_{i-1}+x_i)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Error bound for midpoint rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_M \rvert \le \dfrac{K(b-a)^3}{24n^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Trapezoidal rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \frac{1}{2}\Delta x [f(x_0) + 2f(x_1) + ... + 2f(x_{n-1}) + f(x_n)]\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a + i\Delta x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Error bound for trapezoidal rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_T \rvert \le \dfrac{K(b-a)^3}{12n^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Simpson’s rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \frac{1}{3}\Delta x [f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + ... + 2f(x_{n-2}) + 4f(x_{n-1}) + f(x_n)]\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n}\)</span>, n is even</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Error bound for Simpson’s rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_S \rvert \le \dfrac{K(b-a)^5}{180n^4}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trigonometric-integrals">
+<h2>Trigonometric integrals<a class="headerlink" href="#trigonometric-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Integral of odd power of cosine <br/> <span class="math notranslate nohighlight">\((u = \sin x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int \sin^m(x)\cos^{2k+1}(x) \ dx \newline = \int \sin^m(x) [\cos^2 (x)]^k \ dx \newline = \int \sin^m(x)[1-\sin^2(x)]^k \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Integral of odd power of sine <br/> <span class="math notranslate nohighlight">\((u = \cos x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int \sin^{2k+1}(x)\cos^{n}(x) \ dx \newline = \int [\sin^2 (x)]^k \cos^n(x) \sin(x) \ dx \newline = \int [1-\cos^2(x)]^k \cos^n(x) \sin(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Integral of even power of sine and cosine use trig identities</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sin^2(x) = \frac{1}{2}(1-\cos(2x)) \newline \cos^2(x) = \frac{1}{2}(1+\cos(2x)) \newline \sin(x)\cos(x) = \frac{1}{2}\sin(2x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Integral of even power of secant <br/> <span class="math notranslate nohighlight">\((u = \tan x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int \tan^m(x)\sec^{2k}(x) \ dx \newline = \int \tan^m(x)[\sec^2(x)]^{k-1}\sec^2(x) \ dx \newline = \int \tan^m(x)[1+\tan^2(x)]^{k-1}\sec^2(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Integral of odd power of tangent <br/> <span class="math notranslate nohighlight">\((u = \sec x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int tan^{2k+1}(x)\sec^n(x) \ dx \newline = \int[\tan^2(x)]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx \newline = \int [\sec^2(x)-1]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Trig identity for solving <br/> <span class="math notranslate nohighlight">\(\int \sin(mx)\cos(nx) \ dx\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sin A \cos B = \frac{1}{2}[\sin(A-B) + \sin(A+B)]\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Trig identity for solving <br/> <span class="math notranslate nohighlight">\(\int \sin(mx)\sin(nx) \ dx\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sin A \sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Trig identity for solving <br/> <span class="math notranslate nohighlight">\(\int \cos(mx)\cos(nx) \ dx\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trigonometric-substitution">
+<h2>Trigonometric substitution<a class="headerlink" href="#trigonometric-substitution" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Expression</p></th>
+<th class="head text-center"><p>Substitution</p></th>
+<th class="head text-center"><p>Trigonometric Identity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{a^2 - x^2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\sin\theta\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1 - \sin^2\theta = \cos^2\theta\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{a^2 + x^2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\tan\theta\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1+\tan^2\theta = \sec^2\theta\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{x^2 - a^2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\sec\theta\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sec^2\theta-1 = \tan^2\theta\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="improper-integrals">
+<h2>Improper integrals<a class="headerlink" href="#improper-integrals" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Improper integrals with single one-side infinite intervals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx = \lim\limits_{t\to\infin}\int_a^t f(x) \ dx \newline \int_{-\infin}^b f(x) \ dx = \lim\limits_{t\to-\infin}\int_t^b f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Improper integrals with single two-side infinite intervals</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{-\infin}^\infin f(x) \ dx \newline = \int_{-\infin}^a f(x) \ dx + \int_a^\infin f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Convergence and divergence of improper integrals of power functions</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int_1^\infin \dfrac{1}{x^p} \ dx\)</span> <br/> convergent if <span class="math notranslate nohighlight">\(p&gt;1\)</span> <br/> divergent if <span class="math notranslate nohighlight">\(p \le 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Improper integrals with discontinuous integrand on one side</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{t\to b^-}\int_a^t f(x) \ dx \newline \int_a^b f(x) \ dx = \lim\limits_{t\to a^+}\int_t^b f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Improper integrals with discontinuous integrand in the middle <span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \int_a^c f(x) \ dx + \int_c^b f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Comparison theorem <br/> <span class="math notranslate nohighlight">\((f(x) \ge g(x) \ge 0, x \ge a)\)</span></p></td>
+<td class="text-left"><p>(a) If <span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx\)</span> is convergent, <br/> then <span class="math notranslate nohighlight">\(\int_a^\infin g(x) \ dx\)</span> is convergent. <br/> (b) If <span class="math notranslate nohighlight">\(\int_a^\infin g(x) \ dx\)</span> is divergent, <br/> then <span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx\)</span> is divergent.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="applications-of-integration">
+<h1>Applications of Integration<a class="headerlink" href="#applications-of-integration" title="Permalink to this heading">#</a></h1>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Areas between curves</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(A = \int_a^b [f(x) - g(x)] \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Volume by method of disks and washers</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V = \int_a^b A(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Volume by method of cylindrical shells <br/> (rotating about y-axis)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V = \int_a^b 2\pi x f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Average value of a function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>The mean value theorem of integrals</p></td>
+<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>, <br/> then there exists <span class="math notranslate nohighlight">\(c\in[a,b]\)</span> such that <br/> <span class="math notranslate nohighlight">\(f(c) = \bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx\)</span>,<br/> <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = f(c)(b-a)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Arc length formula</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(L = \int_a^b \sqrt{1+[f'(x)]^2} \ dx\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Arc length function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(s(x) = \int_a^x \sqrt{1+[f'(t)]^2} \ dt\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Surface area of surface of resolution about x-axis</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(S = \int_a^b 2\pi f(x)\sqrt{1 + [f'(x)]^2} \ dx\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,11 +826,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="sympy.html"
+       href="note02.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sympy</p>
+        <p class="prev-next-title">Differentiation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -493,8 +852,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derviatives">Derviatives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Integrals</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indefinite-integrals">Indefinite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-indefinite-integrals">Table of indefinite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definite-integrals-as-riemann-sums">Definite integrals as Riemann sums</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-definite-integrals">Properties of definite integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-theorem-of-calculus">Fundamental theorem of calculus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitution-rule">Substitution rule</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-integrals">Approximating integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improper-integrals">Improper integrals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
