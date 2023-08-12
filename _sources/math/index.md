@@ -1,1 +1,1 @@
-## A. Math Appendix
+## Math Appendix
