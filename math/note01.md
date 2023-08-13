@@ -25,8 +25,7 @@
 |Area|$A = \lim\limits_{n\to\infin} R_{n} = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i)\Delta x$|
 |Definite integral|$\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x$|
 |Operational definition of definite integral as Riemann sum|$\int_a^b f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^n f(x_i)\Delta x$ <br/> $\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x$|
-|Sums of powers of positive integers|$\sum\limits_{i=1}^{n}i = \frac{n(n+1)}{2} \newline \sum\limits_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6} \newline \sum\limits_{i=1}^{n}i^3 = \left[ \frac{n(n+1)}{2} \right]^2$|
-|Properties of summation|$\sum\limits_{i=1}^{n}c = nc \newline \sum\limits_{i=1}^{n}ca_i = c\sum\limits_{i=1}^{n}a_i \newline \sum\limits_{i=1}^{n}(a_i \pm b_i) = \sum\limits_{i=1}^{n}a_i \pm \sum\limits_{i=1}^{n}b_i$|
+
 
 ### Properties of definite integrals
 
@@ -37,9 +36,6 @@
 |Definite integrals of constant|$\int_a^b c \ dx = c(b-a)$|
 |Addition and subtraction of definite integrals|$\int_a^b [f(x) \pm g(x)] \ dx \newline = \int_a^b f(x) \ dx \pm \int_a^b g(x) \ dx$|
 |Constant multiple of definite integrals|$\int_a^b cf(x) \ dx = c\int_a^b f(x) \ dx$|
-|Comparison properties of definite integrals|If $f(x) \ge 0$ for $x\in[a,b]$, <br/> then $\int_a^b f(x) \ dx \ge 0$|
-|Comparison properties of definite integrals|If $f(x) \ge g(x)$ for $x\in[a,b]$, <br/> then $\int_a^b f(x) \ dx \ge \int_a^b g(x) \ dx$|
-|Comparison properties of definite integrals|If $m \le f(x) \le M$ for $x\in[a,b]$, <br/> then $m(b-a) \le \int_a^b f(x) \ dx \le M(b-a)$|
 
 ### Fundamental theorem of calculus
 
@@ -68,16 +64,6 @@
 |Integration by parts|$\int u \ dv = uv - \int v \ du$|
 |Integration by parts for definite integrals|$\int_a^b fg' \ dx = [fg]_a^b - \int_a^b f'g \ dx$|
 
-### Approximating integrals
-
-|Description|Equations|
-|-:|:-|
-|Midpoint rule|$\int_a^b f(x) \ dx \approx \sum\limits_{i=1}^n f(\bar{x}_i)\Delta x$ <br/> $\Delta x = \frac{b-a}{n} \newline \bar{x}_i = \frac{1}{2}(x_{i-1}+x_i)$|
-|Error bound for midpoint rule|$\lvert E_M \rvert \le \dfrac{K(b-a)^3}{24n^2}$|
-|Trapezoidal rule|$\int_a^b f(x) \ dx \approx \frac{1}{2}\Delta x [f(x_0) + 2f(x_1) + ... + 2f(x_{n-1}) + f(x_n)]$ <br/> $\Delta x = \frac{b-a}{n} \newline x_i = a + i\Delta x$|
-|Error bound for trapezoidal rule|$\lvert E_T \rvert \le \dfrac{K(b-a)^3}{12n^2}$|
-|Simpson's rule|$\int_a^b f(x) \ dx \approx \frac{1}{3}\Delta x [f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + ... + 2f(x_{n-2}) + 4f(x_{n-1}) + f(x_n)]$ <br/> $\Delta x = \frac{b-a}{n}$, n is even|
-|Error bound for Simpson's rule|$\lvert E_S \rvert \le \dfrac{K(b-a)^5}{180n^4}$|
 
 ### Trigonometric integrals
 
@@ -100,16 +86,7 @@
 |$\sqrt{a^2 + x^2}$|$x = a\tan\theta$|$1+\tan^2\theta = \sec^2\theta$|
 |$\sqrt{x^2 - a^2}$|$x = a\sec\theta$|$\sec^2\theta-1 = \tan^2\theta$|
 
-### Improper integrals
 
-|Description|Equations|
-|-:|:-|
-|Improper integrals with single one-side infinite intervals|$\int_a^\infin f(x) \ dx = \lim\limits_{t\to\infin}\int_a^t f(x) \ dx \newline \int_{-\infin}^b f(x) \ dx = \lim\limits_{t\to-\infin}\int_t^b f(x) \ dx$|
-|Improper integrals with single two-side infinite intervals|$\int_{-\infin}^\infin f(x) \ dx \newline = \int_{-\infin}^a f(x) \ dx + \int_a^\infin f(x) \ dx$|
-|Convergence and divergence of improper integrals of power functions|$\displaystyle\int_1^\infin \dfrac{1}{x^p} \ dx$ <br/> convergent if $p>1$ <br/> divergent if $p \le 1$|
-|Improper integrals with discontinuous integrand on one side|$\int_a^b f(x) \ dx = \lim\limits_{t\to b^-}\int_a^t f(x) \ dx \newline \int_a^b f(x) \ dx = \lim\limits_{t\to a^+}\int_t^b f(x) \ dx$|
-|Improper integrals with discontinuous integrand in the middle $c$|$\int_a^b f(x) \ dx = \int_a^c f(x) \ dx + \int_c^b f(x) \ dx$|
-|Comparison theorem <br/> $(f(x) \ge g(x) \ge 0, x \ge a)$|(a) If $\int_a^\infin f(x) \ dx$ is convergent, <br/> then $\int_a^\infin g(x) \ dx$ is convergent. <br/> (b) If $\int_a^\infin g(x) \ dx$ is divergent, <br/> then $\int_a^\infin f(x) \ dx$ is divergent.|
 
 ## Applications of Integration
 
