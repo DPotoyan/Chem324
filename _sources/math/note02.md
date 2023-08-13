@@ -6,7 +6,6 @@
 
 |Description|Equations|
 |-:|:-|
-|Derivative of a function $f$ at number $a$|$f'(a) = \lim\limits_{h \to 0} \dfrac{f(a+h) - f(a)}{h}$: <br/> $f'(a) = \lim\limits_{x \to a} \dfrac{f(x) - f(a)}{x-a}$|
 |Derivative as a function|$f'(x) = \lim\limits_{h \to 0}\dfrac{f(x+h) - f(x)}{h}$|
 |Geometric interpretation of derivatives|The tangent line of $y = f(x)$ at $(a, f(a))$ has a slope of $f'(a)$ <br/> $m = \lim\limits_{x \to a} \dfrac{f(x) - f(a)}{x-a} = f'(a)$|
 |Derivatives and instantaneous rate of change|The derivative $f'(a)$ is the instantaneous rate of change of $y=f(x)$ with respect to $x$ when $x=a$: <br/> $v(a) = \lim\limits_{h \to 0} \dfrac{f(a+h) - f(a)}{h} = f'(a)$|

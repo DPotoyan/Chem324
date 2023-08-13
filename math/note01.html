@@ -246,9 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03.html">Integrals</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Quantum Mechanics equation sheet</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Codes</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -414,10 +412,8 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-integrals">Approximating integrals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improper-integrals">Improper integrals</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
@@ -515,12 +511,6 @@ document.write(`
 <tr class="row-even"><td class="text-right"><p>Operational definition of definite integral as Riemann sum</p></td>
 <td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^n f(x_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-right"><p>Sums of powers of positive integers</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{i=1}^{n}i = \frac{n(n+1)}{2} \newline \sum\limits_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6} \newline \sum\limits_{i=1}^{n}i^3 = \left[ \frac{n(n+1)}{2} \right]^2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Properties of summation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{i=1}^{n}c = nc \newline \sum\limits_{i=1}^{n}ca_i = c\sum\limits_{i=1}^{n}a_i \newline \sum\limits_{i=1}^{n}(a_i \pm b_i) = \sum\limits_{i=1}^{n}a_i \pm \sum\limits_{i=1}^{n}b_i\)</span></p></td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -547,15 +537,6 @@ document.write(`
 </tr>
 <tr class="row-even"><td class="text-right"><p>Constant multiple of definite integrals</p></td>
 <td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b cf(x) \ dx = c\int_a^b f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
-<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f(x) \ge 0\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \ge 0\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
-<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f(x) \ge g(x)\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \ge \int_a^b g(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Comparison properties of definite integrals</p></td>
-<td class="text-left"><p>If <span class="math notranslate nohighlight">\(m \le f(x) \le M\)</span> for <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>, <br/> then <span class="math notranslate nohighlight">\(m(b-a) \le \int_a^b f(x) \ dx \le M(b-a)\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -629,36 +610,6 @@ document.write(`
 </tbody>
 </table>
 </section>
-<section id="approximating-integrals">
-<h2>Approximating integrals<a class="headerlink" href="#approximating-integrals" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Midpoint rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \sum\limits_{i=1}^n f(\bar{x}_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline \bar{x}_i = \frac{1}{2}(x_{i-1}+x_i)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Error bound for midpoint rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_M \rvert \le \dfrac{K(b-a)^3}{24n^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Trapezoidal rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \frac{1}{2}\Delta x [f(x_0) + 2f(x_1) + ... + 2f(x_{n-1}) + f(x_n)]\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a + i\Delta x\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Error bound for trapezoidal rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_T \rvert \le \dfrac{K(b-a)^3}{12n^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Simpson’s rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx \approx \frac{1}{3}\Delta x [f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + ... + 2f(x_{n-2}) + 4f(x_{n-1}) + f(x_n)]\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n}\)</span>, n is even</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Error bound for Simpson’s rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\lvert E_S \rvert \le \dfrac{K(b-a)^5}{180n^4}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="trigonometric-integrals">
 <h2>Trigonometric integrals<a class="headerlink" href="#trigonometric-integrals" title="Permalink to this heading">#</a></h2>
 <table class="table">
@@ -716,36 +667,6 @@ document.write(`
 <tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{x^2 - a^2}\)</span></p></td>
 <td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\sec\theta\)</span></p></td>
 <td class="text-center"><p><span class="math notranslate nohighlight">\(\sec^2\theta-1 = \tan^2\theta\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="improper-integrals">
-<h2>Improper integrals<a class="headerlink" href="#improper-integrals" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Improper integrals with single one-side infinite intervals</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx = \lim\limits_{t\to\infin}\int_a^t f(x) \ dx \newline \int_{-\infin}^b f(x) \ dx = \lim\limits_{t\to-\infin}\int_t^b f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Improper integrals with single two-side infinite intervals</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{-\infin}^\infin f(x) \ dx \newline = \int_{-\infin}^a f(x) \ dx + \int_a^\infin f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Convergence and divergence of improper integrals of power functions</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\displaystyle\int_1^\infin \dfrac{1}{x^p} \ dx\)</span> <br/> convergent if <span class="math notranslate nohighlight">\(p&gt;1\)</span> <br/> divergent if <span class="math notranslate nohighlight">\(p \le 1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Improper integrals with discontinuous integrand on one side</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{t\to b^-}\int_a^t f(x) \ dx \newline \int_a^b f(x) \ dx = \lim\limits_{t\to a^+}\int_t^b f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Improper integrals with discontinuous integrand in the middle <span class="math notranslate nohighlight">\(c\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \int_a^c f(x) \ dx + \int_c^b f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Comparison theorem <br/> <span class="math notranslate nohighlight">\((f(x) \ge g(x) \ge 0, x \ge a)\)</span></p></td>
-<td class="text-left"><p>(a) If <span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx\)</span> is convergent, <br/> then <span class="math notranslate nohighlight">\(\int_a^\infin g(x) \ dx\)</span> is convergent. <br/> (b) If <span class="math notranslate nohighlight">\(\int_a^\infin g(x) \ dx\)</span> is divergent, <br/> then <span class="math notranslate nohighlight">\(\int_a^\infin f(x) \ dx\)</span> is divergent.</p></td>
 </tr>
 </tbody>
 </table>
@@ -866,10 +787,8 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-integrals">Approximating integrals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improper-integrals">Improper integrals</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
