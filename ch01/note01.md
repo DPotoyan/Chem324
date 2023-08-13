@@ -64,7 +64,10 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 
 - Well if the above-given reasons were not enough for you... let me sweeten the deal by saying you will also be able to get popular references and up your meme game to include "quantum" jokes like this one:
 
-![](./images/qm_meme.jpeg)
+
+:::{figure-md} markdown-fig
+<img src="./images/qm_meme.jpeg" alt="fishy" class="bg-primary mb-1" width="200px">
+:::
 
 
 

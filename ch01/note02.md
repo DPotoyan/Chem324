@@ -3,8 +3,8 @@
 
 ```{admonition} What you need to know
 :class: note
-- Energies of atoms, molecules are _quantized_, that is assuming discrete values as opposed to having continuum range. 
-- Quantization of energy is a fundamental aspect of our physical reality and cannot be derived but can be observed in all quantum experiments. Is fully explained by the theory of quantum mechanics  
+- Energies of atoms, molecules and light are _quantized_. Quantized means that energies assuming strictly defined discrete values as opposed to having continuum range. 
+- Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies through explanation and prediction of quantization.  
 - Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_
 ```
 
