@@ -1,4 +1,4 @@
-# Quantum Mechanics equation sheet
+# QM overview
 
 ## From classical to Quantum 
 
