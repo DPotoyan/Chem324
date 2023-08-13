@@ -106,7 +106,7 @@ As temperature T goes up we notice three things:
 
 ### Implications of classical mechanics and thermodynamics.
 
-![](./images/lec1_UVcat.jpg){width=50%}
+![](./images/lec1_UVcat.jpg)
 
 Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region. 
 
@@ -119,6 +119,14 @@ The classical reasoning  about black body radiation is following:
  - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is $I \sim k_B T \nu^2$. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
 
+```{admonition} Quiz
+:class: tip, dropdown
+What is the problem with classical mechanical explanation of black body radiation?
+1. It is not corectly applied. 
+2. CM makes some uncontrolled approximations about energy.  
+3. CM can not model waves. 
+4. Classical mechanics does not have a way to account for the quantization of energy.
+```
 
 ### Max Planck finds the right explanation for black body radiation 
 
