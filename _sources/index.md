@@ -7,16 +7,19 @@ Overview
 ``` {admonition} 
 :class: note
 - This website is designed as a supplementary material for the course **Chem 324: Introductory Quantum Mechanics**  taught at the Iowa State University. 
-- The main objective, is to introduce sceintific computation whcih lowers the barier for understanding complex mathematical concepts of quantum mechanics
+- The main objective, is to integreate sceintific computation and visualization whcih lowers the barier for understanding complex mathematical concepts of quantum mechanics
 - Website contains lecture notes, jupyter notebooks written in python3 and other media content.
-- The website is not a subsitute for a good textbook.   
+- The rapid rise of AI is creating new opportunities for learning STEM subjects where computational, data analysis and visualization play ever more important roles. This website is meant to fill the gap between existing textbooks and modern search engines (Chat GPT, etc).
+- Note, however that this website is not a subsitute for a textbook.   
 ```
 
 ### How to use the website
 
-- No programing expreience is assumed. Python3 and its ecosystem of scientific libraries will be introduced at the beginning of the course .
+- No programing expreience is assumed. You can just read the book chapters on website or download notes as pdf. 
 
-- You can read the book on website or download pdf. To get the most out of these notes, however, you should run the code blocks and explore the interactive content in the notebooks. 
+    - There are computational demos which will be used to illustrate concepts of quantum mechanics. You do not need to know any programming to understand those. 
+
+    - Python3 and its ecosystem of scientific libraries will be introduced at the beginning of the course to help you play with the itneractive content if you wish so. 
 
     - You can run all of the notebooks in the cloud using Google Collab. This option requires no installation and any notebook or tablet can be used!
 
