@@ -244,7 +244,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Math Appendix</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Integrals</a></li>
 
-
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">QM overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Units</a></li>
@@ -414,10 +413,8 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
 </ul>
 
             </nav>
@@ -504,13 +501,13 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-right"><p>Area</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(A = \lim\limits_{n\to\infin} R_{n} = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i)\Delta x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(A = \lim\limits_{n\to\infty} R_{n} = \lim\limits_{n\to\infty} \sum\limits_{i=1}^{n}f(x_i)\Delta x\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-right"><p>Definite integral</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infty} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x\)</span></p></td>
 </tr>
 <tr class="row-even"><td class="text-right"><p>Operational definition of definite integral as Riemann sum</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^n f(x_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = \lim\limits_{n\to\infty} \sum\limits_{i=1}^n f(x_i)\Delta x\)</span> <br/> <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -629,12 +626,6 @@ document.write(`
 <tr class="row-even"><td class="text-right"><p>Integral of even power of sine and cosine use trig identities</p></td>
 <td class="text-left"><p><span class="math notranslate nohighlight">\(\sin^2(x) = \frac{1}{2}(1-\cos(2x)) \newline \cos^2(x) = \frac{1}{2}(1+\cos(2x)) \newline \sin(x)\cos(x) = \frac{1}{2}\sin(2x)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-right"><p>Integral of even power of secant <br/> <span class="math notranslate nohighlight">\((u = \tan x)\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int \tan^m(x)\sec^{2k}(x) \ dx \newline = \int \tan^m(x)[\sec^2(x)]^{k-1}\sec^2(x) \ dx \newline = \int \tan^m(x)[1+\tan^2(x)]^{k-1}\sec^2(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Integral of odd power of tangent <br/> <span class="math notranslate nohighlight">\((u = \sec x)\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int tan^{2k+1}(x)\sec^n(x) \ dx \newline = \int[\tan^2(x)]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx \newline = \int [\sec^2(x)-1]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx\)</span></p></td>
-</tr>
 <tr class="row-odd"><td class="text-right"><p>Trig identity for solving <br/> <span class="math notranslate nohighlight">\(\int \sin(mx)\cos(nx) \ dx\)</span></p></td>
 <td class="text-left"><p><span class="math notranslate nohighlight">\(\sin A \cos B = \frac{1}{2}[\sin(A-B) + \sin(A+B)]\)</span></p></td>
 </tr>
@@ -647,67 +638,6 @@ document.write(`
 </tbody>
 </table>
 </section>
-<section id="trigonometric-substitution">
-<h2>Trigonometric substitution<a class="headerlink" href="#trigonometric-substitution" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>Expression</p></th>
-<th class="head text-center"><p>Substitution</p></th>
-<th class="head text-center"><p>Trigonometric Identity</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{a^2 - x^2}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\sin\theta\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(1 - \sin^2\theta = \cos^2\theta\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{a^2 + x^2}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\tan\theta\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(1+\tan^2\theta = \sec^2\theta\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{x^2 - a^2}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(x = a\sec\theta\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\sec^2\theta-1 = \tan^2\theta\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="applications-of-integration">
-<h1>Applications of Integration<a class="headerlink" href="#applications-of-integration" title="Permalink to this heading">#</a></h1>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Areas between curves</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(A = \int_a^b [f(x) - g(x)] \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Volume by method of disks and washers</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(V = \int_a^b A(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Volume by method of cylindrical shells <br/> (rotating about y-axis)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(V = \int_a^b 2\pi x f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Average value of a function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>The mean value theorem of integrals</p></td>
-<td class="text-left"><p>If <span class="math notranslate nohighlight">\(f\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>, <br/> then there exists <span class="math notranslate nohighlight">\(c\in[a,b]\)</span> such that <br/> <span class="math notranslate nohighlight">\(f(c) = \bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx\)</span>,<br/> <span class="math notranslate nohighlight">\(\int_a^b f(x) \ dx = f(c)(b-a)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Arc length formula</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(L = \int_a^b \sqrt{1+[f'(x)]^2} \ dx\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Arc length function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(s(x) = \int_a^x \sqrt{1+[f'(t)]^2} \ dt\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Surface area of surface of resolution about x-axis</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(S = \int_a^b 2\pi f(x)\sqrt{1 + [f'(x)]^2} \ dx\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </section>
 
     <script type="text/x-thebe-config">
@@ -789,10 +719,8 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-of-integration">Techniques of Integration</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">Integration by parts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-integrals">Trigonometric integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-substitution">Trigonometric substitution</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-integration">Applications of Integration</a></li>
 </ul>
 
   </nav></div>

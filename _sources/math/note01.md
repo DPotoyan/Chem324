@@ -22,9 +22,9 @@
 
 |Description|Equations|
 |-:|:-|
-|Area|$A = \lim\limits_{n\to\infin} R_{n} = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i)\Delta x$|
-|Definite integral|$\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x$|
-|Operational definition of definite integral as Riemann sum|$\int_a^b f(x) \ dx = \lim\limits_{n\to\infin} \sum\limits_{i=1}^n f(x_i)\Delta x$ <br/> $\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x$|
+|Area|$A = \lim\limits_{n\to\infty} R_{n} = \lim\limits_{n\to\infty} \sum\limits_{i=1}^{n}f(x_i)\Delta x$|
+|Definite integral|$\int_{a}^{b} f(x) \ dx = \lim\limits_{n\to\infty} \sum\limits_{i=1}^{n}f(x_i^*)\Delta x$|
+|Operational definition of definite integral as Riemann sum|$\int_a^b f(x) \ dx = \lim\limits_{n\to\infty} \sum\limits_{i=1}^n f(x_i)\Delta x$ <br/> $\Delta x = \frac{b-a}{n} \newline x_i = a+i\Delta x$|
 
 
 ### Properties of definite integrals
@@ -72,34 +72,9 @@
 |Integral of odd power of cosine <br/> $(u = \sin x)$|$\int \sin^m(x)\cos^{2k+1}(x) \ dx \newline = \int \sin^m(x) [\cos^2 (x)]^k \ dx \newline = \int \sin^m(x)[1-\sin^2(x)]^k \ dx$|
 |Integral of odd power of sine <br/> $(u = \cos x)$|$\int \sin^{2k+1}(x)\cos^{n}(x) \ dx \newline = \int [\sin^2 (x)]^k \cos^n(x) \sin(x) \ dx \newline = \int [1-\cos^2(x)]^k \cos^n(x) \sin(x) \ dx$|
 |Integral of even power of sine and cosine use trig identities|$\sin^2(x) = \frac{1}{2}(1-\cos(2x)) \newline \cos^2(x) = \frac{1}{2}(1+\cos(2x)) \newline \sin(x)\cos(x) = \frac{1}{2}\sin(2x)$|
-|Integral of even power of secant <br/> $(u = \tan x)$|$\int \tan^m(x)\sec^{2k}(x) \ dx \newline = \int \tan^m(x)[\sec^2(x)]^{k-1}\sec^2(x) \ dx \newline = \int \tan^m(x)[1+\tan^2(x)]^{k-1}\sec^2(x) \ dx$|
-|Integral of odd power of tangent <br/> $(u = \sec x)$|$\int tan^{2k+1}(x)\sec^n(x) \ dx \newline = \int[\tan^2(x)]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx \newline = \int [\sec^2(x)-1]^k\sec^{n-1}(x)\sec(x)\tan(x) \ dx$|
 |Trig identity for solving <br/> $\int \sin(mx)\cos(nx) \ dx$|$\sin A \cos B = \frac{1}{2}[\sin(A-B) + \sin(A+B)]$|
 |Trig identity for solving <br/> $\int \sin(mx)\sin(nx) \ dx$|$\sin A \sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]$|
 |Trig identity for solving <br/> $\int \cos(mx)\cos(nx) \ dx$|$\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$|
-
-### Trigonometric substitution
-
-|Expression|Substitution|Trigonometric Identity|
-|:-:|:-:|:-:|
-|$\sqrt{a^2 - x^2}$|$x = a\sin\theta$|$1 - \sin^2\theta = \cos^2\theta$|
-|$\sqrt{a^2 + x^2}$|$x = a\tan\theta$|$1+\tan^2\theta = \sec^2\theta$|
-|$\sqrt{x^2 - a^2}$|$x = a\sec\theta$|$\sec^2\theta-1 = \tan^2\theta$|
-
-
-
-## Applications of Integration
-
-|Description|Equations|
-|-:|:-|
-|Areas between curves|$A = \int_a^b [f(x) - g(x)] \ dx$|
-|Volume by method of disks and washers|$V = \int_a^b A(x) \ dx$|
-|Volume by method of cylindrical shells <br/> (rotating about y-axis)|$V = \int_a^b 2\pi x f(x) \ dx$|
-|Average value of a function|$\bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx$|
-|The mean value theorem of integrals|If $f$ is continuous on $[a,b]$, <br/> then there exists $c\in[a,b]$ such that <br/> $f(c) = \bar{f} = \frac{1}{b-a}\int_a^b f(x) \ dx$,<br/> $\int_a^b f(x) \ dx = f(c)(b-a)$|
-|Arc length formula|$L = \int_a^b \sqrt{1+[f'(x)]^2} \ dx$|
-|Arc length function|$s(x) = \int_a^x \sqrt{1+[f'(t)]^2} \ dt$|
-|Surface area of surface of resolution about x-axis|$S = \int_a^b 2\pi f(x)\sqrt{1 + [f'(x)]^2} \ dx$|
 
 
 
