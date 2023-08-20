@@ -13,24 +13,25 @@ Overview
 - Note, however that this website is not a subsitute for a textbook.   
 ```
 
-### How to use the website
+### How to use this website
 
-- No programing expreience is assumed. You can just read the book chapters on website or download notes as pdf. 
+- Large part of this website consist of lecture notes along with interactive content (plots, youtube videos, gifs and code blocks) which you can brows on your laptop or faovrite tablet. You can also download notes as pdf and print for offline reading. 
 
-    - There are computational demos which will be used to illustrate concepts of quantum mechanics. You do not need to know any programming to understand those. 
+- No programing expreience is assumed or needed to succeed in the class. However you might be tempted to learn some coding once you see some wicked cool demos :) 
 
-    - Python3 and its ecosystem of scientific libraries will be introduced at the beginning of the course to help you play with the itneractive content if you wish so. 
+- Speaking of which, the computational demos will be used to illustrate various esoteric concepts of quantum mechanics. This will eliminate the need for some time consuming and repetitive math exercises
 
-    - You can run all of the notebooks in the cloud using Google Collab. This option requires no installation and any notebook or tablet can be used!
+- Python3 and its ecosystem of scientific libraries will be introduced at the beginning of the course to help you follow the demos and give you skiils to play with the itneractive content in your free time. 
 
-    - You can also run notebooks locally in jupyter notebook/lab. This options Requires installing anaconda python distribution and all the required packages which can be found on github repository.
+- Computational demos can be run as notebooks in the cloud using Google Collab. This option requires no installation and any notebook or tablet can be used!
+
+- You can also download and run notebooks locally in your jupyter notebook/lab or vscode. This options requires having python distribution and installing a few packages
 
 ### Comments? Questions?
 
-For feedback or corrections please go to the Github page of the course, open an issue and leave your comments, questions and suggestions. I would highly appreciate any feedback and contributions. If you are interested in contributing to the developent of the course please get in touch. I would love to have more people engaged in improving the course and reaching out to wider scientific and engineering community.
+- For feedback or corrections please go to the Github page of the course, open an issue and leave your comments, questions and suggestions. I would highly appreciate any feedback and contributions. 
+- If you are interested in contributing to the developent of the course please get in touch. I would love to have more people engaged in improving the course and reaching out to wider scientific and engineering community.
 
 ### License for this book
 
-All content in this book (ie, any files and content in the `content/` folder)
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0) license.
+All content in this bookis licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) license.
