@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Complex numbers &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Visualizing complex numbers &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'demos/complex_nums';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Atomic orobitals - 2D plots" href="hydrogen_wavefunctions.html" />
+    <link rel="next" title="Visualizing and animating waves via python." href="waves.html" />
     <link rel="prev" title="Sympy" href="sympy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -248,11 +248,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/note03.html">QM overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/note04.html">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note05.html">Complex numbers</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Codes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sympy.html">Sympy</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Complex numbers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Visualizing complex numbers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="waves.html">Visualizing and animating waves via python.</a></li>
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="hydrogen_wavefunctions.html">Atomic orobitals - 2D plots</a></li>
 </ul>
 </li>
@@ -459,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complex numbers</h1>
+    <h1>Visualizing complex numbers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -469,25 +479,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-and-visualizing-complex-numbers-using-python">Manipulating and visualizing complex numbers using Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-and-complex-numbers">Sympy and complex numbers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-and-julia-sets-and-fractals">Complex numbers and Julia sets and fractals.</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-and-complex-numbers">Sympy and complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-and-julia-sets-and-fractals">Complex numbers and Julia sets and fractals.</a></li>
-</ul>
+
             </nav>
         </div>
     </div>
@@ -498,202 +500,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complex-numbers">
-<h1>Complex numbers<a class="headerlink" href="#complex-numbers" title="Permalink to this heading">#</a></h1>
-<p><strong>Recommended:</strong> Watch the  following YouTube video
-<a class="reference external" href="https://www.youtube.com/watch?v=T647CGsuOVU">“complex numbers are real, part-1”</a></p>
-<p><strong>Also recommended:</strong> <a class="reference external" href="https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">A Visual, Intuitive Guide to Imaginary Numbers</a></p>
-<section id="complex-numbers-are-every-bit-as-real-as-every-other-number">
-<h2>“Complex numbers are every bit as real as every other number. “<a class="headerlink" href="#complex-numbers-are-every-bit-as-real-as-every-other-number" title="Permalink to this heading">#</a></h2>
-<p>A complex number <span class="math notranslate nohighlight">\(z\)</span> is a kind of 2D number that lives in 2D space and requires two components for its full specification:</p>
-<p><img alt="" src="demos/images/cnum_intro.png" /></p>
-<ul class="simple">
-<li><p><strong>Real part</strong> <span class="math notranslate nohighlight">\( x \)</span>
-.- <strong>Imaginary part</strong> <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
-</ul>
-<p>Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that’s how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix.</p>
-</section>
-<section id="introducing-i">
-<h2>Introducing <span class="math notranslate nohighlight">\( i \)</span><a class="headerlink" href="#introducing-i" title="Permalink to this heading">#</a></h2>
-<p>When first confronted with complex numbers they seem unintuitive and hard to visualize. The imaginary unit <span class="math notranslate nohighlight">\( i \)</span> in particular mystifies as to what it is and where did it come from.
-Some facts from mathematics are in order here:</p>
-<ul class="simple">
-<li><p><strong>What is the definition of <span class="math notranslate nohighlight">\( i \)</span>?</strong> The imaginary number <span class="math notranslate nohighlight">\( i \)</span> is defined solely by the property that its square is <span class="math notranslate nohighlight">\(−1\)</span>, that is: <span class="math notranslate nohighlight">\(i\cdot i=-1\)</span>.</p></li>
-<li><p><strong>How does <span class="math notranslate nohighlight">\(i\)</span> change what I know about math of real variables?</strong> Imaginary numbers are an important mathematical concept, which extend the real number system <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to the complex number system <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>, which in turn provides at least one root for every nonconstant polynomial <span class="math notranslate nohighlight">\(P(x)\)</span>. (See the Fundamental theorem of algebra.) The term “imaginary” is used because there is no real number having a negative square.</p></li>
-<li><p><strong>Where does <span class="math notranslate nohighlight">\(i\)</span> appear in math?</strong> Most notably imaginary number (i) provide solutions to quadratic equation <span class="math notranslate nohighlight">\(x^2 + 1 = 0.\)</span> Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i.</p></li>
-<li><p><strong>What do you call a number that contains i?</strong> A complex number z=1+2i. A function of complex variable is a function if it operates on complex variables z.</p></li>
-</ul>
-</section>
-<section id="eculidean-vs-polar-representation-of-complex-numbers">
-<h2>Eculidean vs polar representation of complex numbers<a class="headerlink" href="#eculidean-vs-polar-representation-of-complex-numbers" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="demos/images/cnum_2.png" /></p>
-<p>The Euclidean, polar, and trigonometric forms of a complex number <span class="math notranslate nohighlight">\( z \)</span> are given by:</p>
-<div class="math notranslate nohighlight">
-\[z = x + iy = r(\cos{\phi} + i \sin{\phi}) = re^{i\phi} \]</div>
-<p>The second equality above is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&amp;targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity."><strong>Euler’s formula</strong></a>
-And equally widely regarded as one of the most beautiful and mysterious in mathematics.</p>
-<p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
-<div class="math notranslate nohighlight">
-\[\bar z = x-iy =  r (\cos{\phi} - i \sin{\phi} ) = re^{-i\phi}\]</div>
-<p>The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the
-origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p>
-<div class="math notranslate nohighlight">
-\[r = |z| = \sqrt{x^2 + y^2}\]</div>
-<p>The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of (0,0)-(x,y) line with respect to the real axis.
-The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore,</p>
-<div class="math notranslate nohighlight">
-\[
-\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
-\]</div>
-<p>Three elementary trigonometric functions are</p>
-<div class="math notranslate nohighlight">
-\[
-\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
-\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
-\tan{\phi} = \frac{y}{x}
-\]</div>
-</section>
-<section id="de-moivres-theorem">
-<h2>De Moivre’s Theorem<a class="headerlink" href="#de-moivres-theorem" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">De Moivre’s theorem</a> states that:</p>
-<div class="math notranslate nohighlight">
-\[
-z^n=(r(\cos{\theta} + i \sin{\theta}))^n =
-r^n e^{in\theta} =
-r^n(\cos{n\theta} + i \sin{n\theta})
-\]</div>
-<p>We raised complex number to power n, used polar representation and realized that exponent raised to power n simply multiplies polar angle by n.
-Note that de Moivre’s theorem allows relating trigonometric functions of angle <span class="math notranslate nohighlight">\(\theta\)</span> raised to power <span class="math notranslate nohighlight">\(n\)</span> to trignomoteric functions of of angle <span class="math notranslate nohighlight">\(n\theta\)</span> of power one:</p>
-<div class="math notranslate nohighlight">
-\[
-r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-(\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
-\]</div>
-<p>The proof of de Moivre’s theorem can be done via <a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">induction</a>, e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, …</p>
-<p><strong>Exercise:</strong> set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine.</p>
-<section id="example-1-pythagoras-theorem">
-<h3>Example-1: Pythagoras’ theorem<a class="headerlink" href="#example-1-pythagoras-theorem" title="Permalink to this heading">#</a></h3>
-<p>We can use de Moivre’s theorem to show that
-<span class="math notranslate nohighlight">\( r = \sqrt{x^2 + y^2} \)</span>.</p>
-<p>We have</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-1 &amp;= e^{i\theta} e^{-i\theta} \\
-&amp;= (\cos{\theta} + i \sin{\theta})(\cos{(\text{-}\theta)} + i \sin{(\text{-}\theta)}) \\
-&amp;= (\cos{\theta} + i \sin{\theta})(\cos{\theta} - i \sin{\theta}) \\
-&amp;= \cos^2{\theta} + \sin^2{\theta} \\
-&amp;= \frac{x^2}{r^2} + \frac{y^2}{r^2}
-\end{aligned}
-\end{split}\]</div>
-<p>and thus</p>
-<div class="math notranslate nohighlight">
-\[
-x^2 + y^2 = r^2
-\]</div>
-<p>We recognize this as a theorem of <strong>Pythagoras</strong>.</p>
-</section>
-<section id="example-2-trigonometric-identities">
-<h3>Example-2: Trigonometric Identities<a class="headerlink" href="#example-2-trigonometric-identities" title="Permalink to this heading">#</a></h3>
-<p>We can obtain a complete suite of trigonometric identities by
-appropriately manipulating polar forms of complex numbers.</p>
-<p>We’ll get many of them by deducing implications of the equality</p>
-<div class="math notranslate nohighlight">
-\[e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}\]</div>
-<p>For example, we’ll calculate identities for <span class="math notranslate nohighlight">\(\cos{(\omega + \theta)} \)</span> and <span class="math notranslate nohighlight">\( \sin{(\omega + \theta)}\)</span>.</p>
-<p>Using the sine and cosine formulas presented at the beginning of this
-lecture, we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-\cos{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} + e^{-i(\omega + \theta)}}{2} \\
-\sin{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} - e^{-i(\omega + \theta)}}{2i}
-\end{aligned}\end{split}\]</div>
-<p>We can also obtain the trigonometric identities as follows:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\cos{(\omega + \theta)} + i \sin{(\omega + \theta)}
-&amp;= e^{i(\omega + \theta)} \\
-&amp;= e^{i\omega} e^{i\theta} \\
-&amp;= (\cos{\omega} + i \sin{\omega})(\cos{\theta} + i \sin{\theta}) \\
-&amp;= (\cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta}) +
-i (\cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta})
-\end{aligned}
-\end{split}\]</div>
-<p>Since both real and imaginary parts of the above formula should be
-equal, we get:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\cos{(\omega + \theta)} = \cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta} \\
-\sin{(\omega + \theta)} = \cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta}
-\end{aligned}
-\end{split}\]</div>
-<p>The equations above are also known as the <strong>angle sum identities</strong>. We
-can verify the equations using the <code class="docutils literal notranslate"><span class="pre">simplify</span></code> function in the
-<code class="docutils literal notranslate"><span class="pre">sympy</span></code> package.</p>
-</section>
-<section id="example-3-trigonometric-integrals">
-<h3>Example-3: Trigonometric Integrals<a class="headerlink" href="#example-3-trigonometric-integrals" title="Permalink to this heading">#</a></h3>
-<p>We can also compute the trigonometric integrals using polar forms of
-complex numbers.</p>
-<p>For example, we want to solve the following integral:</p>
-<div class="math notranslate nohighlight">
-\[\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega\]</div>
-<p>Using Euler’s formula, we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-\int \cos(\omega) \sin(\omega) \, d\omega
-&amp;=
-\int
-\frac{(e^{i\omega} + e^{-i\omega})}{2}
-\frac{(e^{i\omega} - e^{-i\omega})}{2i}
-\, d\omega  \\
-&amp;=
-\frac{1}{4i}
-\int
-e^{2i\omega} - e^{-2i\omega}
-\, d\omega  \\
-&amp;=
-\frac{1}{4i}
-\bigg( \frac{-i}{2} e^{2i\omega} - \frac{i}{2} e^{-2i\omega} + C_1 \bigg) \\
-&amp;=
--\frac{1}{8}
-\bigg[ \bigg(e^{i\omega}\bigg)^2 + \bigg(e^{-i\omega}\bigg)^2 - 2 \bigg] + C_2 \\
-&amp;=
--\frac{1}{8}  (e^{i\omega} - e^{-i\omega})^2  + C_2 \\
-&amp;=
-\frac{1}{2} \bigg( \frac{e^{i\omega} - e^{-i\omega}}{2i} \bigg)^2 + C_2 \\
-&amp;= \frac{1}{2} \sin^2(\omega) + C_2
-\end{aligned}\end{split}\]</div>
-<p>and thus:</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega =
-\frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
-\]</div>
-</section>
-</section>
-<section id="manipulating-and-visualizing-complex-numbers-using-python">
-<h2>Manipulating and visualizing complex numbers using Python<a class="headerlink" href="#manipulating-and-visualizing-complex-numbers-using-python" title="Permalink to this heading">#</a></h2>
+  <section id="visualizing-complex-numbers">
+<h1>Visualizing complex numbers<a class="headerlink" href="#visualizing-complex-numbers" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We’ll need the following imports to plot complex numbers</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
 
-<span class="c1">#If your screen has retina display this will increase the resolution of plots</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="an-example">
-<h3>An Example<a class="headerlink" href="#an-example" title="Permalink to this heading">#</a></h3>
+<h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this heading">#</a></h2>
 <p>Consider the complex number <span class="math notranslate nohighlight">\( z = 1 + \sqrt{3} i \)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,7 +586,7 @@ e^{2i\omega} - e^{-2i\omega}
 </div>
 </section>
 <section id="adding-subtracting-and-multiplying-comple-numbers">
-<h3>Adding, subtracting and multiplying comple numbers<a class="headerlink" href="#adding-subtracting-and-multiplying-comple-numbers" title="Permalink to this heading">#</a></h3>
+<h2>Adding, subtracting and multiplying comple numbers<a class="headerlink" href="#adding-subtracting-and-multiplying-comple-numbers" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span>
@@ -800,7 +621,7 @@ e^{2i\omega} - e^{-2i\omega}
 </div>
 </section>
 <section id="cartesian-representation">
-<h3>Cartesian representation<a class="headerlink" href="#cartesian-representation" title="Permalink to this heading">#</a></h3>
+<h2>Cartesian representation<a class="headerlink" href="#cartesian-representation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify your complex number here. Feel free to modify</span>
@@ -902,7 +723,7 @@ e^{2i\omega} - e^{-2i\omega}
 </div>
 </section>
 <section id="polar-plot-of-complex-numbers">
-<h3>Polar plot of complex numbers<a class="headerlink" href="#polar-plot-of-complex-numbers" title="Permalink to this heading">#</a></h3>
+<h2>Polar plot of complex numbers<a class="headerlink" href="#polar-plot-of-complex-numbers" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify complex number either by z or directly pecify r and theta</span>
@@ -971,7 +792,7 @@ e^{2i\omega} - e^{-2i\omega}
 </section>
 </section>
 <section id="sympy-and-complex-numbers">
-<h2>Sympy and complex numbers<a class="headerlink" href="#sympy-and-complex-numbers" title="Permalink to this heading">#</a></h2>
+<h1>Sympy and complex numbers<a class="headerlink" href="#sympy-and-complex-numbers" title="Permalink to this heading">#</a></h1>
 <p>Below we will use symbolic python to derive Euler’s relation by expanding sines, conse and exp in Taylor series. If you have used Mathematica, WolframAlpha, or another math software that uses symbols, then Sympy is essentially a Python version of that. The central objects in Sympy are variables which we define and then do symbolic operations such as expand in series, differentiate, simplify expression, integrate etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1050,7 +871,7 @@ e^{2i\omega} - e^{-2i\omega}
 </div>
 </section>
 <section id="complex-numbers-and-julia-sets-and-fractals">
-<h2>Complex numbers and Julia sets and fractals.<a class="headerlink" href="#complex-numbers-and-julia-sets-and-fractals" title="Permalink to this heading">#</a></h2>
+<h1>Complex numbers and Julia sets and fractals.<a class="headerlink" href="#complex-numbers-and-julia-sets-and-fractals" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Fractal</strong> is a mathematically defined, self-similar object which has similarity and symmetry on a variety of scales. The Julia Set Fractal is a type of fractal defined by the behavior of a function that operates on input complex numbers. More explicitly, upon iterative updating of input complex number, the Julia Set Fractal represents the set of inputs whose resulting outputs either tend towards infinity or remain bounded. <br><br></p></li>
 <li><p><strong>Julia set fractals</strong> are normally generated by initializing a complex number  <span class="math notranslate nohighlight">\(z = x + yi\)</span>  where  <span class="math notranslate nohighlight">\(i^2 = -1\)</span>  and x and y are image pixel coordinates in the range of about -2 to 2. Then, z is repeatedly updated using:  <span class="math notranslate nohighlight">\(z = z^2 + c\)</span>  where c is another complex number that gives a specific Julia set. After numerous iterations, if the magnitude of z is less than 2 we say that pixel is in the Julia set and color it accordingly. Performing this calculation for a whole grid of pixels gives a fractal image.</p></li>
@@ -1101,7 +922,6 @@ e^{2i\omega} - e^{-2i\omega}
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1144,11 +964,11 @@ e^{2i\omega} - e^{-2i\omega}
       </div>
     </a>
     <a class="right-next"
-       href="hydrogen_wavefunctions.html"
+       href="waves.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Atomic orobitals - 2D plots</p>
+        <p class="prev-next-title">Visualizing and animating waves via python.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1170,25 +990,17 @@ e^{2i\omega} - e^{-2i\omega}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-and-visualizing-complex-numbers-using-python">Manipulating and visualizing complex numbers using Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-and-complex-numbers">Sympy and complex numbers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-and-julia-sets-and-fractals">Complex numbers and Julia sets and fractals.</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-and-complex-numbers">Sympy and complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-and-julia-sets-and-fractals">Complex numbers and Julia sets and fractals.</a></li>
-</ul>
+
   </nav></div>
 
 </div></div>
