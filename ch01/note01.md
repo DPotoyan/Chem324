@@ -66,7 +66,9 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 
 
 :::{figure-md} markdown-fig
-<img src="./images/qm_meme.jpeg" alt="fishy" class="bg-primary mb-1" width="200px">
+
+  <img src="./images/qm_meme.jpeg" alt="fishy" class="bg-primary mb-1" width="200px">
+  
 :::
 
 
