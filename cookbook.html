@@ -483,33 +483,22 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>Example Problem</strong></p>
-<ul class="simple">
-<li><p>Compute the de Broglie wavelength for electron moving with speed of <span class="math notranslate nohighlight">\(3\cdot 10^5 m/s\)</span></p></li>
-<li><p>Plot how de Broglie wavelength  depends on speed of electron</p></li>
-</ul>
+<p><strong>Example Problem:</strong> Plot how de Broglie wavelength  depends on speed of electron. Compte wavelngth at speed of <span class="math notranslate nohighlight">\(10^5 m/s\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v_e</span> <span class="o">=</span> <span class="mf">3e5</span>
-
-<span class="n">l</span> <span class="o">=</span> <span class="n">h</span><span class="o">/</span><span class="p">(</span><span class="n">m_e</span> <span class="o">*</span><span class="n">v_e</span><span class="p">)</span>
-
-<span class="n">l</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deb_wavl</span><span class="p">(</span><span class="n">vm</span> <span class="n">mass</span><span class="o">=</span> <span class="n">m_e</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deb_wavl</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">mass</span><span class="o">=</span> <span class="n">m_e</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;This functionrequires velocity input and returns de Broglie wavelength in SI units </span>
 <span class="sd">    Default mass is set to electron mass but you can also change&#39;&#39;&#39;</span>
 
     <span class="k">return</span> <span class="n">h</span><span class="o">/</span><span class="p">(</span><span class="n">mass</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
 
-<span class="n">v</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e10</span><span class="p">)</span>
+<span class="c1">#Compute</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">deb_wavl</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="mf">1e5</span><span class="p">)</span> <span class="p">)</span>
 
+<span class="c1"># Plot</span>
+<span class="n">v</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">deb_wavl</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;velocity (m/s)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;de Broglie wavelength (m)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;De Broglie wavelength vs velocity&#39;</span><span class="p">)</span>
