@@ -15,7 +15,7 @@ Overview
 
 ### How to use this website
 
-- Large part of this website consist of lecture notes along with interactive content (plots, youtube videos, gifs and code blocks) which you can brows on your laptop or faovrite tablet. You can also download notes as pdf and print for offline reading. 
+- The website consist of lecture notes along with interactive content (plots, youtube videos, gifs and code blocks) which you can browse on your laptop or faovrite tablet. You can also download notes as pdf and print for offline reading. 
 
 - No programing expreience is assumed or needed to succeed in the class. However you might be tempted to learn some coding once you see some wicked cool demos :) 
 
