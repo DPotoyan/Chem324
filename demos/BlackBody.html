@@ -483,7 +483,8 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intensity</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@interact</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">intensity</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&#39;&#39;&#39;Temperature in Kelvin, returns intensity of radiation&#39;&#39;&#39;</span>
 
   <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span>
@@ -508,20 +509,15 @@ document.write(`
   <span class="c1">#plt.show()</span>
 
 <span class="c1">####</span>
-<span class="n">intensity</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-<span class="n">intensity</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">6000</span><span class="p">)</span>
-<span class="n">intensity</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
+<span class="c1">#intensity(T=5000)</span>
+<span class="c1">#intensity(T=6000)</span>
+<span class="c1">#intensity(T=8000)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g4/3dkh7n1s0bjbl1tm3bgvvdsm0000gn/T/ipykernel_92710/2154839678.py:10: RuntimeWarning: overflow encountered in exp
-  intensity = (2 * h * c**2 / wavelengths**5) * (1 / (np.exp(h * c / (wavelengths * k * T)) - 1))
-</pre></div>
-</div>
-<img alt="../_images/b4d821008efdf147b3020038ff2ea59a3af9f10ecd0636a42fae6acb36126d63.png" src="../_images/b4d821008efdf147b3020038ff2ea59a3af9f10ecd0636a42fae6acb36126d63.png" />
-</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "da5aa34236584b50811aa0880b6df14d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 
