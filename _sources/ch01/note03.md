@@ -59,11 +59,20 @@ Early experiments of photoelectric effect appeared truly puzzling to scientists 
 
 
 
-- The puzzling (from CM point of view) behaviour of photoelectric effect becomes clear once we thinking of light as discrete packets of energy called photons. From quantum mechanics point of view once a photon transfers the necessary amount of energy to the material, one electron gets ejected from the metal. 
+### Photons explains photoelectric effect 
 
-$$E_{photon}-E_{electron}=E_{kinetic}$$
+- Light consists of photons: tiny packets of energy carrying $h\nu$ energy. 
+- Intensity of light is measure of number of photons. frequency is measure of energy of photons. 
+- 1 photon can collide with 1 electron and eject it if it has sufficient energy 
 
-- If energy of photon is smaller $E_{photon} < h\nu_0$  than electron stays bound; if $E_{photon}> h\nu_0$ electron gets ejected and any extra energy, gets converted into kinetic energy since the total energy is conserved. This explains why kinetic energy is a linear function of frequency (Fig a) and why there is no dependence on intensity (Fig b).
+$$\boxed{E_{photon} = h\nu}$$
+
+$$\boxed{E_{photon} = E_{bind} + KE}$$
+
+$$\boxed{h\nu = E_{bind} + \frac{mv^2}{2}}$$
+
+- Any extra energy gets converted into kinetic energy of ejected electron
+- If frequency is lower than threshold photon does not transfer any energy to electron! 
 
 
 
