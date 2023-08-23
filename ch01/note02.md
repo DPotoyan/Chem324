@@ -4,23 +4,19 @@
 ```{admonition} What you need to know
 :class: note
 - Energies of atoms, molecules and light are _quantized_. Quantized means that energies assuming strictly defined discrete values as opposed to having continuum range. 
-- Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies through explanation and prediction of quantization.  
+- Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies thorough explanation and prediction of quantization.  
 - Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_
+- Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.
 ```
 
+## What is the nature of light?
 
-### Quantization of energy
+<img src="images/EM-Wave.gif" width=70%>
 
-- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
+- According to the classical wave theory light is seen as a traveling wave consisting of electric and magnetic components. 
+- We will soon see that this picture of light as enelectromagnetic wave is not the whole story and radically new ideas are needed to understand wide variety of phenomena invlving interaction of light with atoms and molecules.
 
-- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
-
-
-```{image} ./images/lec1_ladder.jpg
-:align: center
-```
-
-### Electromagnetic spectrum, emitting objects and associated Temperatures.
+### Spectrum of electromagnetic waves
 
 ![](./images/lec1_EMspec.jpg)
 
@@ -49,7 +45,7 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 - Think of frequency as a 
   distance traveled in 1 second (hz). 
 
-- Speed of light in vacuum, c is a constant (3 10^8 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
+- Speed of light in vacuum, c is a constant ($3 \cdot 10^8 m/s$).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
 
 
 
@@ -59,11 +55,11 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 
 ---
 
-This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics! 
+- This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics! 
 
 
 
-### What do we mean by black body and black body radiation: a visual guide. 
+### Black body as a model for all radiating objects.
 
 ![Black body radiation guide from PhD comics](./images/Black_body_rad.jpg)
 
@@ -71,7 +67,9 @@ This is not such a trivial question. In fact, this very question arose in connec
 
 _A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation_
 
- Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature. 
+- Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. 
+- The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. 
+- If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature! 
 
 
 ### Applications of black Body radiation
@@ -85,7 +83,7 @@ The black body is used as a standard with which the absorption of real bodies is
 - [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc)  
 
 
-### What are the essential features of black body radiation?
+### Key features of black body radiation?
 
 ![](./images/lec1_bb.png)
 
@@ -104,9 +102,11 @@ As temperature T goes up we notice three things:
 
 
 
-### Implications of classical mechanics and thermodynamics.
+### Implications of classical mechanics.
 
-![](./images/lec1_UVcat.jpg)
+```{image} ./images/lec1_UVcat.jpg
+:align: center
+```
 
 Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region. 
 
@@ -139,6 +139,17 @@ The classical reasoning  about black body radiation is following:
 
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
 
+### Quantization of energy
+
+- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
+
+- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
+
+
+```{image} ./images/lec1_ladder.jpg
+:align: center
+```
+
 ### Planck equation and Planck’s constant
 
 $$\boxed{E= h\nu}$$
@@ -148,9 +159,9 @@ $$\boxed{E= h\nu}$$
 
 - Unit of frequency $\nu$, $s^{-1}$.
   
-Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
+- Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
 
-Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
+- Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
 ### How Plank's quantization postulate explains black body radiation
@@ -199,12 +210,5 @@ $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightar
 
 - Blackbody radiation and atomic spectra showed very clearly that atoms exist in states that occupy discrete energy levels.
 - Atoms and molecules exchange energy with the environment by jumping from one state $E_m$ to another $E_n$. The energy difference between these levels  $E_m-E_n=h\nu$ is either supplied by light (absorption) or used to generate light (emission).
-
-### Summary
-
-- Energies of stable atoms, molecules, electromagnetic radiation are discrete (quantized) and are not continuous. Energies of macroscopic bodies are quantized as well, but we do not see it since energy levels are so closely spaced that they appear as continuous for all practical purposes. 
-- Classical mechanics works for macroscopic bodies but fails to describe the dynamics of microscopic particles. 
-- Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.
-- Quantized nature of energy is learned in experiments and cannot be derived. We must simply accept it and move on to construct quantum theory consistent with the observations. 
 
 
