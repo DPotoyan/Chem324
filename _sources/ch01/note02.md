@@ -108,11 +108,7 @@ As temperature T goes up we notice three things:
 :align: center
 ```
 
-Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region. 
-
----
-
-The classical reasoning  about black body radiation is following:
+Classical mechanics reasoning about black body radiation goes like this:
 
 - One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves with small frequency region $[\nu, \nu+d\nu]$ is: 
 
@@ -124,7 +120,7 @@ $$dN_{\nu }= \frac{8\pi}{c^3}\nu^2 d\nu$$
 
  -  Thus the energy distribution of radiation is:
 
-$$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$. 
+$$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
 
 - Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
@@ -149,7 +145,7 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
 
 ```{admonition} Plack equation
-:class: tip
+:class: important
 
 $$\boxed{E= h\nu}$$
 
@@ -164,24 +160,27 @@ In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real va
 
 ### The black body radiation distribution function 
 
-- The black body radiation distribution function  describes the amount of spectral radiance at a given wavelength (or frequency) for a black body in thermal equilibrium. This distribution function is governed by Planck's law of black-body radiation.
+- assuming that the energy of an oscillator is quantized, Planck showed that the cor- rect thermodynamic relation for the average energy is
 
-$$\langle E\rangle  = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
+$$\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-Now the enerdy distribution of radiation becomes: 
+We see that in uniform value $kT$ given by classical mechanics energy of oscillators is distributed with distirbution function tending to zero in the high frequency limit. Planck's expression thus resolves ultraviolet catastrophe!
 
 $$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
 
-Both these functions describe the intensity distribution of black body radiation across the electromagnetic spectrum.
 
 You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
 
 $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
 
+- The expressions for $\rho_{lambda}(T)d\lambda$ havs units of energy per volume and is referred as energy density of radiation. By integrating over entire spectrum one can obtain total energy of radiation per volume!
+
+> In some books you may also find black body radiation characterized in terms of radiation flux which is a radiation measrued per unit wavelength and per unit solid angle $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
+
 
 ### Wien's displacement law
 
-This function peaks at a wavelength $\lambda_{max} $ that is inversely proportional to the temperature. This relationship is described by Wien's displacement law:
+The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law:
 
 $ \lambda_{max} = \frac{b}{T} $
 
