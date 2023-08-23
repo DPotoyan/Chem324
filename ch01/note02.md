@@ -139,7 +139,7 @@ The classical reasoning  about black body radiation is following:
 
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
 
-### Quantization of energy
+### Quantization of energy and Planck Equation
 
 - **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
 
@@ -150,72 +150,46 @@ The classical reasoning  about black body radiation is following:
 :align: center
 ```
 
-### Planck equation and Planck’s constant
+```{admonition} Plack equation
+:class: tip
 
 $$\boxed{E= h\nu}$$
 
-
 - Unit of planck constant, $h = 6.63 10^{–34} J s$
-
 - Unit of frequency $\nu$, $s^{-1}$.
+```
   
 - Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
 
 - Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
-### How Plank's quantization postulate explains black body radiation
+### Enegy quantization resolves ultraviolet catastrophe 
 
-If we account for quantization of energy into $h\nu$, $2h\nu$, ... units then average energy of oscillator is given via the following distribution 
+Once we account for quantization of energy of an oscillator in a black body $h\nu$, $2h\nu$, ... we get for the the average energy 
 
 $$\langle E \rangle=k_B T\Bigg[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Bigg ]$$ 
 
 
-
-#### Low frequency limit
-
-- At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy $k_BT$ populates lots of quantum levels with low enough frequencies.
+- **Low frequency limit.** At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy $k_BT$ populates lots of quantum levels with low enough frequencies.
 
 $$h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}$$  
 
 $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT$$
 
-#### High frequency limit
-
-- At high frequencies we see that the exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:
+- **High frequency limit.** At high frequencies exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:
 
 $$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  
 
 $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0$$
 
-### 
+
+### Explore black body radiation
 
 <iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_en.html"
         width="800"
         height="500"
         allowfullscreen>
 </iframe>
-
-
-### Quantization of atomic spectra.
-
-![](./images/lec1_AtomicSpectrum.png)
-
-
-
-- Measurements of atomic emission/absorption spectra were another key experimental evidence showing that energy levels of individual atoms are quantized.
-
-- Notice the existence of discrete frequencies in the spectrum consistent with Planck’s assumption. 
-
-- Different colors originate from different frequencies being emitted or absorbed by matter.
-
-
-
-### Empirical expressions for predicting spectral lines.
-
-- Spectral lines were rationalized by Rydberg who derived an empirical formula showing that differences in spectral lines of the Hydrogen atom are dictated by integer numbers. Integer numbers indeed will go on to play a special role in quantum theory. 
-
-- Blackbody radiation and atomic spectra showed very clearly that atoms exist in states that occupy discrete energy levels.
-- Atoms and molecules exchange energy with the environment by jumping from one state $E_m$ to another $E_n$. The energy difference between these levels  $E_m-E_n=h\nu$ is either supplied by light (absorption) or used to generate light (emission).
 
 
