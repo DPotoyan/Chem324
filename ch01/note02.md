@@ -188,6 +188,13 @@ $$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$
 
 $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0$$
 
+### 
+
+<iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_en.html"
+        width="800"
+        height="500"
+        allowfullscreen>
+</iframe>
 
 
 ### Quantization of atomic spectra.
