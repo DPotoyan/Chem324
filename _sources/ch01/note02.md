@@ -134,21 +134,9 @@ The classical reasoning  about black body radiation is following:
 
 - In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
 
-
 - This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
 
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
-
-### Quantization of energy and Planck Equation
-
-- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
-
-- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
-
-
-```{image} ./images/lec1_ladder.jpg
-:align: center
-```
 
 ```{admonition} Plack equation
 :class: tip
@@ -159,10 +147,19 @@ $$\boxed{E= h\nu}$$
 - Unit of frequency $\nu$, $s^{-1}$.
 ```
   
-- Often also written as $E = nh\nu$ (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!
-
 - Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
+
+### Energies in clssical vs quantum mechanics
+
+- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
+
+- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
+
+
+```{image} ./images/lec1_ladder.jpg
+:align: center
+```
 
 ### Enegy quantization resolves ultraviolet catastrophe 
 
