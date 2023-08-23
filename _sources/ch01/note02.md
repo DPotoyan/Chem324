@@ -136,13 +136,9 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 4. Classical mechanics does not have a way to account for the quantization of energy.
 ```
 
-### Max Planck finds the right explanation for black body radiation 
+### Max Planck and the trick of quantization 
 
-- In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only the discrete (quantized) values for electromagnetic oscillators are possible. The iconic formula resulting from this postulate which now bears his name is $E= nh\nu$ where n=0,1,2,3 are quantum numbers of energy levels.
-
-- This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
-
-- When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
+- In 1900 Planck found that the theoretical curve can very closely match the experimental curve if one postulates that only discrete (quantized) values of energy are possible. 
 
 ```{admonition} Plack equation
 :class: important
@@ -152,9 +148,12 @@ $$\boxed{E= h\nu}$$
 - Unit of planck constant, $h = 6.63 10^{–34} J s$
 - Unit of frequency $\nu$, $s^{-1}$.
 ```
-  
-- Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
-In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
+
+- This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
+
+- When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
+
+> Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale. In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
 
 
@@ -164,27 +163,26 @@ In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real va
 
 $$\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-We see that in uniform value $kT$ given by classical mechanics energy of oscillators is distributed with distirbution function tending to zero in the high frequency limit. Planck's expression thus resolves ultraviolet catastrophe!
+- Instead of uniform value $kT$ given by classical mechanics we end up with  distirbution of oscillator energies which tends to zero in the high frequency limit. Thus Planck's expression resolves ultraviolet catastrophe!
 
 $$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
-
 
 You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
 
 $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
 
-- The expressions for $\rho_{lambda}(T)d\lambda$ havs units of energy per volume and is referred as energy density of radiation. By integrating over entire spectrum one can obtain total energy of radiation per volume!
+- The expressions for $\rho_{\lambda}(T)d\lambda$ or $\rho_{\nu}(T)d\nu$ have units of energy per volume which is why they are often referred as **energy density** of radiation. By integrating over the entire spectrum (e.g all wavelengths) one can obtain the total energy of radiation per volume!
 
-> In some books you may also find black body radiation characterized in terms of radiation flux which is a radiation measrued per unit wavelength and per unit solid angle $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
+> In some books you may also find black body radiation characterized via the radiation flux which is a radiation measured per unit wavelength and per unit solid angle $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
 
 
 ### Wien's displacement law
 
 The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law:
 
-$ \lambda_{max} = \frac{b}{T} $
+$$\lambda_{max} = \frac{b}{T}$$
 
-Where $ b $ is Wien's displacement constant, approximately equal to $ 2.8977729 × 10^{-3} $ m·K.
+Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \cdot 10^{-3} $ m·K.
 
 ### Explore black body radiation
 
