@@ -114,9 +114,19 @@ Classical mechanics leads to the Rayleigh-Jeans law which works only in low freq
 
 The classical reasoning  about black body radiation is following:
 
-- Number of waves fitting inside an idealized cubic black body is $N_{\nu }=\nu^3$.  For small frequency region  $d\nu$ there would be $dN=3\nu^2 d\nu$ waves. This is simple geometric argument: One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. 
+- One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves with small frequency region $[\nu, \nu+d\nu]$ is: 
 
- - From the equipartition principle of thermodynamics each oscillator has $k_BT$ of energy. Thus the intensity of radiation, according to classical mechanics, is $I \sim k_B T \nu^2$. Intensity increases to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
+$$dN_{\nu }= \frac{8\pi}{c^3}\nu^2 d\nu$$   
+
+ - From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy.
+  
+  $$\langle E\rangle = kT$$
+
+ -  Thus the energy distribution of radiation is:
+
+$$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$. 
+
+- Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
 
 ```{admonition} Quiz
@@ -150,36 +160,32 @@ $$\boxed{E= h\nu}$$
 - Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
 In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
-### Energies in clssical vs quantum mechanics
-
-- **In Classical mechanics (CM)**: Energy can take any value! Think of climbing a continuous ramp
-
-- **In Quantum mechanics (QM)**: Energy can only take certain discrete values! Think of a staircase ($1 E$, $2 E$, $3 E$... are okay, but $2.5 E$, $0. E$ or $1.99 E$ are not allowed). Energy is quantized!
 
 
-```{image} ./images/lec1_ladder.jpg
-:align: center
-```
+### The black body radiation distribution function 
 
-### Enegy quantization resolves ultraviolet catastrophe 
+- The black body radiation distribution function  describes the amount of spectral radiance at a given wavelength (or frequency) for a black body in thermal equilibrium. This distribution function is governed by Planck's law of black-body radiation.
 
-Once we account for quantization of energy of an oscillator in a black body $h\nu$, $2h\nu$, ... we get for the the average energy 
+$$\langle E\rangle  = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-$$\langle E \rangle=k_B T\Bigg[ \frac{h\nu/kT}{e^{h\nu/kT}-1} \Bigg ]$$ 
+Now the enerdy distribution of radiation becomes: 
+
+$$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
+
+Both these functions describe the intensity distribution of black body radiation across the electromagnetic spectrum.
+
+You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
+
+$$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
 
 
-- **Low frequency limit.** At very low frequencies, we recover the classical result! This explains why classical mechanics was at least partially successful. Thermal energy $k_BT$ populates lots of quantum levels with low enough frequencies.
+### Wien's displacement law
 
-$$h\nu \ll k_BT,\,\,\,\, e^{h\nu/k_BT}\approx 1+\frac{h\nu}{k_BT}$$  
+This function peaks at a wavelength $\lambda_{max} $ that is inversely proportional to the temperature. This relationship is described by Wien's displacement law:
 
-$$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow k_BT$$
+$ \lambda_{max} = \frac{b}{T} $
 
-- **High frequency limit.** At high frequencies exponents kills the energy expression.  Thermal energy kT can no longer afford to occupy quantum levels with high frequencies, thus average oscillator energy goes down with increasing frequency:
-
-$$h\nu \gg k_BT,\,\,\,\, e^{h\nu/k_BT}\approx \infty$$  
-
-$$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightarrow 0$$
-
+Where $ b $ is Wien's displacement constant, approximately equal to $ 2.8977729 × 10^{-3} $ m·K.
 
 ### Explore black body radiation
 
@@ -188,5 +194,4 @@ $$\langle E \rangle=k_B T\Big[ \frac{h\nu/k_BT}{e^{h\nu/k_BT}-1} \Big ] \rightar
         height="500"
         allowfullscreen>
 </iframe>
-
 
