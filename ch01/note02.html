@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">1.  Intro to Quantum Mechanics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Why Quantum mechanics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The need for quantization</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Photoelectric effect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Wave-particle duality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="BlackBody.html">DEMO: Black Body radiation</a></li>
@@ -407,17 +408,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The need for quantization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-nature-of-light">What is the nature of light?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-electromagnetic-waves">Spectrum of electromagnetic waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">What do we mean by black body and black body radiation: a visual guide.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-body-as-a-model-for-all-radiating-objects">Black body as a model for all radiating objects.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamically-speaking">Thermodynamically speaking.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-black-body-radiation">Applications of black Body radiation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-essential-features-of-black-body-radiation">What are the essential features of black body radiation?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-black-body-radiation">Key features of black body radiation?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation">What is classical mechanics &amp; thermodynamics perspective on black body radiation?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics">Implications of classical mechanics.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-frequency-limit">Low frequency limit</a></li>
@@ -426,8 +429,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -444,20 +449,21 @@ document.write(`
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
 <li><p>Energies of atoms, molecules and light are <em>quantized</em>. Quantized means that energies assuming strictly defined discrete values as opposed to having continuum range.</p></li>
-<li><p>Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies through explanation and prediction of quantization.</p></li>
+<li><p>Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies thorough explanation and prediction of quantization.</p></li>
 <li><p>Key historical developments leading to the birth of QM are <em>black body radiation</em>, <em>double slit experiment</em>, <em>photoelectric effect</em></p></li>
+<li><p>Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.</p></li>
 </ul>
 </div>
-<section id="quantization-of-energy">
-<h2>Quantization of energy<a class="headerlink" href="#quantization-of-energy" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>In Classical mechanics (CM)</strong>: Energy can take any value! Think of climbing a continuous ramp</p></li>
-<li><p><strong>In Quantum mechanics (QM)</strong>: Energy can only take certain discrete values! Think of a staircase (<span class="math notranslate nohighlight">\(1 E\)</span>, <span class="math notranslate nohighlight">\(2 E\)</span>, <span class="math notranslate nohighlight">\(3 E\)</span>… are okay, but <span class="math notranslate nohighlight">\(2.5 E\)</span>, <span class="math notranslate nohighlight">\(0. E\)</span> or <span class="math notranslate nohighlight">\(1.99 E\)</span> are not allowed). Energy is quantized!</p></li>
-</ul>
-<img alt="../_images/lec1_ladder.jpg" class="align-center" src="../_images/lec1_ladder.jpg" />
 </section>
-<section id="electromagnetic-spectrum-emitting-objects-and-associated-temperatures">
-<h2>Electromagnetic spectrum, emitting objects and associated Temperatures.<a class="headerlink" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures" title="Permalink to this heading">#</a></h2>
+<section id="what-is-the-nature-of-light">
+<h1>What is the nature of light?<a class="headerlink" href="#what-is-the-nature-of-light" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../_images/EM-Wave.gif"><img alt="../_images/EM-Wave.gif" src="../_images/EM-Wave.gif" style="width: 70%;" /></a>
+<ul class="simple">
+<li><p>According to the classical wave theory light is seen as a traveling wave consisting of electric and magnetic components.</p></li>
+<li><p>We will soon see that this picture of light as enelectromagnetic wave is not the whole story and radically new ideas are needed to understand wide variety of phenomena invlving interaction of light with atoms and molecules.</p></li>
+</ul>
+<section id="spectrum-of-electromagnetic-waves">
+<h2>Spectrum of electromagnetic waves<a class="headerlink" href="#spectrum-of-electromagnetic-waves" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../_images/lec1_EMspec.jpg" /></p>
 <ul class="simple">
 <li><p><strong>High-frequency waves carry much higher energy.</strong> This means X-ray or Gamma-rays can only be generated by heating “stuff” up at very high temperatures. This happens naturally at the core of the sun!</p></li>
@@ -477,23 +483,29 @@ document.write(`
 (nanometers, nm)</p></li>
 <li><p>Think of frequency as a
 distance traveled in 1 second (hz).</p></li>
-<li><p>Speed of light in vacuum, c is a constant (3 10^8 m/s).  Thus knowing the wavelength allows you to compute the frequency and vice versa.</p></li>
+<li><p>Speed of light in vacuum, c is a constant (<span class="math notranslate nohighlight">\(3 \cdot 10^8 m/s\)</span>).  Thus knowing the wavelength allows you to compute the frequency and vice versa.</p></li>
 </ul>
 </section>
 <section id="what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">
 <h2>What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?<a class="headerlink" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e" title="Permalink to this heading">#</a></h2>
 <p><img alt="EM spectrum and excitable energy states corresponding to each frequency region" src="../_images/lec1_EMspec2.png" /></p>
 <hr class="docutils" />
-<p>This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics!</p>
+<ul class="simple">
+<li><p>This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics!</p></li>
+</ul>
 </section>
-<section id="what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">
-<h2>What do we mean by black body and black body radiation: a visual guide.<a class="headerlink" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide" title="Permalink to this heading">#</a></h2>
+<section id="black-body-as-a-model-for-all-radiating-objects">
+<h2>Black body as a model for all radiating objects.<a class="headerlink" href="#black-body-as-a-model-for-all-radiating-objects" title="Permalink to this heading">#</a></h2>
 <p><img alt="Black body radiation guide from PhD comics" src="../_images/Black_body_rad.jpg" /></p>
 </section>
 <section id="thermodynamically-speaking">
 <h2>Thermodynamically speaking.<a class="headerlink" href="#thermodynamically-speaking" title="Permalink to this heading">#</a></h2>
 <p><em>A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation</em></p>
-<p>Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature.</p>
+<ul class="simple">
+<li><p>Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx.</p></li>
+<li><p>The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object.</p></li>
+<li><p>If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature!</p></li>
+</ul>
 </section>
 <section id="applications-of-black-body-radiation">
 <h2>Applications of black Body radiation<a class="headerlink" href="#applications-of-black-body-radiation" title="Permalink to this heading">#</a></h2>
@@ -504,8 +516,8 @@ distance traveled in 1 second (hz).</p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=PMtC34pzKGc">Visible Light Waves</a></p></li>
 </ul>
 </section>
-<section id="what-are-the-essential-features-of-black-body-radiation">
-<h2>What are the essential features of black body radiation?<a class="headerlink" href="#what-are-the-essential-features-of-black-body-radiation" title="Permalink to this heading">#</a></h2>
+<section id="key-features-of-black-body-radiation">
+<h2>Key features of black body radiation?<a class="headerlink" href="#key-features-of-black-body-radiation" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../_images/lec1_bb.png" /></p>
 <p>As temperature T goes up we notice three things:</p>
 <ul class="simple">
@@ -522,9 +534,9 @@ distance traveled in 1 second (hz).</p></li>
 <li><p>Thermodynamics: Heat can only flow from high to low temperature. In equilibrium, each degree of freedom in our case each spring/oscillator gets the same thermal energy <span class="math notranslate nohighlight">\(k_B T\)</span>.</p></li>
 </ul>
 </section>
-<section id="implications-of-classical-mechanics-and-thermodynamics">
-<h2>Implications of classical mechanics and thermodynamics.<a class="headerlink" href="#implications-of-classical-mechanics-and-thermodynamics" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/lec1_UVcat.jpg" /></p>
+<section id="implications-of-classical-mechanics">
+<h2>Implications of classical mechanics.<a class="headerlink" href="#implications-of-classical-mechanics" title="Permalink to this heading">#</a></h2>
+<img alt="../_images/lec1_UVcat.jpg" class="align-center" src="../_images/lec1_UVcat.jpg" />
 <p>Classical mechanics leads to the Rayleigh-Jeans law which works only in low frequency region.</p>
 <hr class="docutils" />
 <p>The classical reasoning  about black body radiation is following:</p>
@@ -551,6 +563,14 @@ distance traveled in 1 second (hz).</p></li>
 <li><p>When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference <span class="math notranslate nohighlight">\(h\nu = E_n - E_m\)</span> is either coming from light or is used to generate light.</p></li>
 </ul>
 </section>
+<section id="quantization-of-energy">
+<h2>Quantization of energy<a class="headerlink" href="#quantization-of-energy" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>In Classical mechanics (CM)</strong>: Energy can take any value! Think of climbing a continuous ramp</p></li>
+<li><p><strong>In Quantum mechanics (QM)</strong>: Energy can only take certain discrete values! Think of a staircase (<span class="math notranslate nohighlight">\(1 E\)</span>, <span class="math notranslate nohighlight">\(2 E\)</span>, <span class="math notranslate nohighlight">\(3 E\)</span>… are okay, but <span class="math notranslate nohighlight">\(2.5 E\)</span>, <span class="math notranslate nohighlight">\(0. E\)</span> or <span class="math notranslate nohighlight">\(1.99 E\)</span> are not allowed). Energy is quantized!</p></li>
+</ul>
+<img alt="../_images/lec1_ladder.jpg" class="align-center" src="../_images/lec1_ladder.jpg" />
+</section>
 <section id="planck-equation-and-plancks-constant">
 <h2>Planck equation and Planck’s constant<a class="headerlink" href="#planck-equation-and-plancks-constant" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
@@ -558,10 +578,10 @@ distance traveled in 1 second (hz).</p></li>
 <ul class="simple">
 <li><p>Unit of planck constant, <span class="math notranslate nohighlight">\(h = 6.63 10^{–34} J s\)</span></p></li>
 <li><p>Unit of frequency <span class="math notranslate nohighlight">\(\nu\)</span>, <span class="math notranslate nohighlight">\(s^{-1}\)</span>.</p></li>
+<li><p>Often also written as <span class="math notranslate nohighlight">\(E = nh\nu\)</span> (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!</p></li>
+<li><p>Note how small <span class="math notranslate nohighlight">\(h\)</span> is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
+In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(E\)</span> becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.</p></li>
 </ul>
-<p>Often also written as <span class="math notranslate nohighlight">\(E = nh\nu\)</span> (n = 0,1,2,…) to specify that for energy adds up with number of photos n. We thus learn that discretized energy levels accessible by photons are the only allowable energy levels that atoms/molecules can have. All energies are quantized!</p>
-<p>Note how small <span class="math notranslate nohighlight">\(h\)</span> is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale.
-In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(E\)</span> becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.</p>
 </section>
 <section id="how-planks-quantization-postulate-explains-black-body-radiation">
 <h2>How Plank’s quantization postulate explains black body radiation<a class="headerlink" href="#how-planks-quantization-postulate-explains-black-body-radiation" title="Permalink to this heading">#</a></h2>
@@ -604,15 +624,6 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 <li><p>Spectral lines were rationalized by Rydberg who derived an empirical formula showing that differences in spectral lines of the Hydrogen atom are dictated by integer numbers. Integer numbers indeed will go on to play a special role in quantum theory.</p></li>
 <li><p>Blackbody radiation and atomic spectra showed very clearly that atoms exist in states that occupy discrete energy levels.</p></li>
 <li><p>Atoms and molecules exchange energy with the environment by jumping from one state <span class="math notranslate nohighlight">\(E_m\)</span> to another <span class="math notranslate nohighlight">\(E_n\)</span>. The energy difference between these levels  <span class="math notranslate nohighlight">\(E_m-E_n=h\nu\)</span> is either supplied by light (absorption) or used to generate light (emission).</p></li>
-</ul>
-</section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Energies of stable atoms, molecules, electromagnetic radiation are discrete (quantized) and are not continuous. Energies of macroscopic bodies are quantized as well, but we do not see it since energy levels are so closely spaced that they appear as continuous for all practical purposes.</p></li>
-<li><p>Classical mechanics works for macroscopic bodies but fails to describe the dynamics of microscopic particles.</p></li>
-<li><p>Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.</p></li>
-<li><p>Quantized nature of energy is learned in experiments and cannot be derived. We must simply accept it and move on to construct quantum theory consistent with the observations.</p></li>
 </ul>
 </section>
 </section>
@@ -684,17 +695,19 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electromagnetic-spectrum-emitting-objects-and-associated-temperatures">Electromagnetic spectrum, emitting objects and associated Temperatures.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The need for quantization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-nature-of-light">What is the nature of light?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-electromagnetic-waves">Spectrum of electromagnetic waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-frequency-wavelength-and-speed-of-light">Relationship between frequency, wavelength and speed of light.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-frequency-of-radiation-nu-and-energy-e">What is the relationship between frequency of radiation <span class="math notranslate nohighlight">\(\nu\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span>?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-black-body-and-black-body-radiation-a-visual-guide">What do we mean by black body and black body radiation: a visual guide.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-body-as-a-model-for-all-radiating-objects">Black body as a model for all radiating objects.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamically-speaking">Thermodynamically speaking.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-black-body-radiation">Applications of black Body radiation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-essential-features-of-black-body-radiation">What are the essential features of black body radiation?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-black-body-radiation">Key features of black body radiation?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classical-mechanics-thermodynamics-perspective-on-black-body-radiation">What is classical mechanics &amp; thermodynamics perspective on black body radiation?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics-and-thermodynamics">Implications of classical mechanics and thermodynamics.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-classical-mechanics">Implications of classical mechanics.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-planck-finds-the-right-explanation-for-black-body-radiation">Max Planck finds the right explanation for black body radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-energy">Quantization of energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planck-equation-and-plancks-constant">Planck equation and Planck’s constant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-planks-quantization-postulate-explains-black-body-radiation">How Plank’s quantization postulate explains black body radiation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-frequency-limit">Low frequency limit</a></li>
@@ -703,8 +716,10 @@ In the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</spa
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization-of-atomic-spectra">Quantization of atomic spectra.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-expressions-for-predicting-spectral-lines">Empirical expressions for predicting spectral lines.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
