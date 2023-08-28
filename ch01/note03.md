@@ -6,9 +6,13 @@
 ```{admonition} What you need to know
 :class: note
 
-- Photoelectric effect: Electrons are ejected when light is shone onto a material. This experiment puzzled 20th century scientists who thought of light as being a continuous stream of waves.
-
-- Only by abandoning classical thinking and accepting the reality of quantized energy reconciles experiments with theory.
+- **Photoelectric effect** Electrons are ejected when surface of a material is subjected to radiation exceeding a certain threshold frequency. 
+- Below the threshold fequency no electrons are ejected regardless of intensity of light (brightness)
+- Photoelectric effect is impossible to explain classically because energy in Classical Mechanics is thought to only grows with intensity of light. 
+- In QM radiation just like matter is quantized. Radiation can be viewed as a stream of photons: a tiny and discrete packets of energy.
+- One photon can eject one electron only if it has sufficient energy. Any extra energy gets converted into kinetic energy resulting in electrons flying faster.
+- Photons with insufficent energy scatters of the electron
+- High intensity light meaning lots of photons per unit area per unit time are unable to eject a single electron
 ```
 
 
@@ -16,46 +20,37 @@
 :align: center
 ```
 
-### Photoelectric effect contradicts classical mechanics.
-
-- To reconcile experiment with theory Planck had to assume that a heated material absorbs and emits light with discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$.  At a time this discreteness was thought to be nothing more than a temporary mathematical trick to fix theory. 
-
-- Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
-
--  Thus experiments showed that energies of both matter and light are quantized!
-
-
-
-### Photoelectric effect
+### Photoelectric effect challanges classical mechanical thinking.
 
 ![](./images/lect2_Eflying.png)
 
-When you shine a light with sufficient energy content (UV radiation) on a metal surface electrons, start flying off the surface. This is the essence of the photoelectric effect. Observation of the photoelectric effect was crucial for showing that only quantum mechanics can make sense of how light interacts with the matter.
+- When you shine a light on a metal surface exceeding certain threshold frequency electrons, start flying off the surface. But below this frequency no electrons are ejected regardless of the intensity of light. This experiment challanged classical way of thinking about light according to which energy of light is proportional to amplitude of wave or intensity. 
+
+- Recall that to reconcile experiment with theory Planck was already forced to introduce quantization of black bodies modlled as spings that can only assume discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$.  At a time this discreteness was thought to be nothing more than a temporary mathematical trick to fit experimental curve. 
+
+- Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
+
+### Kinetic energy: frequency vs intensity
+
+![](images/photoel1.png)
 
 
-### Applications of photoelectric effect
-
-Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. 
-
-![](./images/lec2_applic.jpg)
+1. Frequency $\nu$ determines weather electrons will be ejected: $\nu>\nu_0$ but does not affect the number of electrons (current)
 
 
-### Classical mechanics fails to explain photoelectric effect 
+2. Kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity: $KE\sim \nu$ 
+   
+3.  Contrary to wave theory of light increasing intensity (brighter) of light does not eject electrons when frequency is below the threshold $\nu < \nu_0$
 
-Early experiments of photoelectric effect appeared truly puzzling to scientists of the 20th century for the following reasons:
+   
 
-- They expected to see more electrons being ejected when increasing the intensity or duration of radiation. According to CM if one shines the light long enough or increases the intensity by pumping more energy then surely those pesky electrons will start flying. 
-  (reminder: Intensity of light is a quantity measuring the amount of energy transferred per unit surface per unit time.)
+### Electric current: frequency vs intensity
 
-- That was not at all what experiments showed. Unless radiation had a frequency above a certain threshold $\nu_0$ not a single electron would escape regardless of the intensity of radiation. That was really weird. 
+![](images/photoel2.png)
 
----
+1. Once threoshold is reached $\nu>\nu_0$  frequency has no effect on electron current (number of electrons)
 
-![](./images/lec2_KE.png)
-
-- In striking contradicton with classical mechanics electrons  get ejected immediately once the frequency threshold is crossed even if the intensity of the radiation is minimal. 
-
-- Furthermore, the kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity.  
+2. Once threoshold is reached $\nu>\nu_0$ Increasing intensity of light on the other hand increases the current linearly.
 
 
 
@@ -75,9 +70,9 @@ $$\boxed{h\nu = E_{bind} + \frac{mv^2}{2}}$$
 - If frequency is lower than threshold photon does not transfer any energy to electron! 
 
 
+### Applications of photoelectric effect
 
+- Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. 
 
-
-
-
+![](./images/lec2_applic.jpg)
 
