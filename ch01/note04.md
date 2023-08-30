@@ -157,7 +157,7 @@ R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
 
 The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
 
-```{dropdown} **Solution**
+```{dropdown} Solution
 
 **A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
 
@@ -180,7 +180,7 @@ $$
 
 and
 
-$$\lambda = 1.215 \times 10^{−7}\; m = 122\; nm \nonumber$$
+$$\lambda = 1.215 \times 10^{−7}\; m = 122 \,\,nm$$
 
 This emission line is called Lyman alpha and is the strongest atomic emission line from the sun and drives the chemistry of the upper atmosphere of all the planets producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules to O atoms which react with other O2 molecules to form stratospheric ozone
 
@@ -228,7 +228,7 @@ Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 
 #### Problem 6
 
-Calculate radii of Borh orbit for first few levels. Using python plot $r_n$ vs $n$
+Calculate radii of Bohr orbit for first few levels. Using python plot $r_n$ vs $n$
 
 ```{dropdown} Solution 
 
