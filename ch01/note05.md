@@ -141,12 +141,11 @@ R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
 
 ### Problems 
 
-````{tab-set}
-```{tab-item} Problem 1
- The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
-```
+#### Problem 1
 
-```{tab-item} Solution 1
+The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
+
+```{dropdown} **Solution**
 
 **A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
 
@@ -175,16 +174,15 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 
 **B** This wavelength is in the UV region of the spectrum.
 ```
-````
 
+#### Problem 2
 
-````{tab-set}
-```{tab-item} Problem 2
 - A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with  n=4 to and orbit with  $n=1$
 - B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
+
+
+```{dropdown} Solution 
+- A
+- B
 ```
 
-```{tab-item} Solution 2
-- A
-```
-````
