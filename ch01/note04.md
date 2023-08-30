@@ -194,8 +194,11 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 
 
 ```{dropdown} Solution 
-- A
-- B
+**A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^}$ to calculate energy of a photon. 
+
+$$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.9375 = 18.375\,\, ev$$
+
+**B.** Energy of a photon goes up as we excite electron to higher and higher level. As $n_2\rightarrow \infty$ we end up with a photon that has sufficient energy to ionize the atom. $E = 19.6 \cdot ( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 19.6 ev$
 ```
 
 #### Problem 3
