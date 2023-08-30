@@ -1,220 +1,89 @@
 
-## Atomic spectra
+
+## Wave-particle duality
+
 
 ```{admonition} What you need to know
 :class: note
+- Compton scattering and electron diffraction experimentshave demonstrated that concepts of a particle and wave are not mutually exclusive.
 
-- Atomic spectroscopy measures frequencies or wavelengths of radiation absorbed or emitted by atoms.
-- Spectra of atoms show discrete lines which indicate that atoms absorb or emit only very specific few frequencies
-- In other words energies of atoms are quantized.
-- Bohr tried to develop theory to explain spectra of atoms by combining classical mechanics with rules of quantization.
-- For the simplest H atom Bohr's theory worked perfectly giving a closed formula which explains all spectral lines of H atom.
-- Alas for atoms with more than one electron Bohr's theory fails to generalize which prompted scientist to develop a more rigorous theory fo quantum Mechanics
-```
+- A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics.
 
-```{image} images/spectra.png
-:align: center
-```
+- Wave-like and particle-like characteristics are inversely proportional to each other and are quantified by de Broglie relation: $\lambda = \frac{h}{p}$
 
-- When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique.  These discrete emitted frequencies comprise a stick spectrum such as the one shown above.  
-
-### H atom spectra
-
-```{image} images/lec1_AtomicSpectrum.png
-:align: center
-```
-
-- These stick spectra are clearly impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
-
-$$v = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
-
-where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
-
-$$\tilde{v} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
-
-where 
-- $R_H = 109677.581$ cm$^{-1}$ is the Rydberg constant
-- $n_1 = 1,2,3,...$, and $n_2 = n_1+1,n_1+2,...$.  
-
-- While these equations fit the hydrogen atom spectrum nicely, they do not prescribe any physics to the system.  They do not present a model of the hydrogen atom but rather a heuristic equation that fits the data.  Nonetheless, scientists were perplexed by the presence of the integers $n_1$ and $n_2$. 
-
-### Bohr model of H atom
-
-- In 1911, Niels Bohr proposed a model for the hydrogen atom that was able to recapitulate the hydrogen atom spectrum. 
-- The model consists of an electron orbiting a proton in circular orbits.  The proton is considered to be fixed in space because it is so much more massive than the electron.  
-- Most importantly Bohr had to introduce new ad-hoc requirements to keep the electron stable. Namely the electron demonstrates wavelike characteristics which has an integer number $n=1,2,3,...$ of modes around the circular orbit.  
-- Thanks to this quantization rule expression for the H atom energy is obtained which is a function of an integer number $n=1,2,3,...$
-
-### Quantizes states of electron
-
-Restricitng waves with wavelength $\lambda$ to sit around orbit separated by integer number yields
-
-$$\begin{equation}
-2\pi r = n\lambda_e \quad n=1,2,3,...
-\end{equation}$$
-
-where $\lambda_e$ is the deBroglie wavelength of an electron and can be written as
-
-$$\begin{equation}
-\lambda_e = \frac{h}{m_ev}.
-\end{equation}$$
-
-Plugging the deBroglie wavelength equation into the circular wave equation yields
-
-$$\begin{equation}
-m_evr = \frac{nh}{2\pi} = n\hbar,
-\end{equation}$$
-
-where we have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it comes up frequently in quantum mechanics. The term on the left-hand side of the last equation, $m_evr$, is the angular momentum of the electron.  Thus Bohr 's model demonstrates a quantization of the angular momentum of the electron.
-
-### Force balance
-
-After introducing ad-hoc quantization rule, Bohr's model then resorts to lclassical mechanics to obtain energy function. 
-
-Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron,
-
-$$\begin{equation}
-f = \frac{e^2}{4\pi\varepsilon_0r^2}
-\end{equation}$$
-
-where $4\pi\varepsilon_0$ is present to achieve SI units, must be equal to the centrifugal force,
-
-$$\begin{equation}
-f = \frac{m_ev^2}{r}
-\end{equation}$$
-
-where $m_e$ is the mass and $v$ is the velocity of the electron.  Equating these two forces yields
-
-$$\begin{equation}
-\frac{e^2}{4\pi\varepsilon_0r^2} = \frac{m_ev^2}{r}.
-\end{equation}$$
-
-
-The combination of the force balance equation and the quantized angular momentum equation quantizes the values of $r$, the radius of the electron's circular orbit, that can be taken.  To demonstrate this we solve the quantized angular momentum equation for $v$ and plug the result into the force balance equation and solve for $r$:
-
-$$\begin{align}
-\frac{e^2}{4\pi\varepsilon_0r^2} &= \frac{m_e\left( \frac{n\hbar}{m_er}\right)^2}{r} \\
-\Rightarrow \frac{e^2}{4\pi\varepsilon_0} &= \frac{(n\hbar)^2}{m_er} \\
-\Rightarrow e^2m_er &= 4\pi\varepsilon_0(n\hbar)^2 \\
-\Rightarrow r &= \frac{4\pi\varepsilon_0(n\hbar)^2}{e^2m_e} \quad n=1,2,3,...
-\end{align}$$
-
-The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  Allowed values of $r$ as a function of $n$ are plotted below.
-
-### Energy of H atom 
-
-The energy of the system can is a sum of the Coulomb attraction between the electron and the proton and the kinetic energy of the electron:
-
-$$\begin{equation}
-E(r) = \frac{1}{2}m_ev^2 - \frac{e^2}{4\pi\varepsilon_0r}
-\end{equation}$$
-
-To determine the energy of an electron that is limited to be in the circular wavelike orbits described above, we must use the force balance relationship.  We do that by substituting $m_ev^2 = \frac{e^2}{4\pi\varepsilon_0r}$ into the energy equation to yield
-
-$$\begin{align}
-E(r) &= \frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} - \frac{e^2}{4\pi\varepsilon_0r} \\
-    &= -\frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} \\
-    &= -\frac{1}{2}\frac{e^2}{4\pi\varepsilon_0}\frac{e^2m_e}{4\pi\varepsilon_0(n\hbar)^2} \\
-    &= -\frac{m_ee^4}{32\pi^2\varepsilon_0\hbar^2}\frac{1}{n^2} \\
-    &= -\frac{m_ee^4}{8\varepsilon_0^2h^2}\frac{1}{n^2} \quad n=1,2,3,...
-\end{align}$$
-
-where I plugged in the quantized values for $r$ derived from the for balance relationship.  
-
-Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
-
-$$\begin{equation}
-\Delta E = \frac{m_ee^4}{8\varepsilon_0^2h^2}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}$$
-
-Equating this to the frequency (use $E = h\nu$ and $\tilde{\nu} = \frac{\nu}{c}$) of emitted light yields
-
-$$\begin{equation}
-\tilde{v} = \frac{m_ee^4}{8\varepsilon_0^2ch^3}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}$$
-
-We see that this yields an expression for the Rydberg constant in terms of fundamental constants
-
-$$\begin{equation}
-R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
-\end{equation}$$
-
-### Problems 
-
-#### Problem 1
-
-The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
-
-```{dropdown} **Solution**
-
-**A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
-
-$$
-\dfrac{1}{\lambda }=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right )
-$$
-
-The lowest energy results from a transition from or to nearest energy level hence $n_2 = n_1+1$
-
-$$
-\begin{align*} \dfrac{1}{\lambda } &=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right ) \\[4pt] &=1.097 \times 10^{7}\, m^{-1}\left ( \dfrac{1}{1}-\dfrac{1}{4} \right )\\[4pt] &= 8.228 \times 10^{6}\; m^{-1} \end{align*}
-$$
-
-
-Spectroscopists often talk about energy and frequency as equivalent. The $cm^{-1}$ unit (wavenumbers) is particularly convenient. We can convert the answer in part A to $cm^{-1}$
-
-$$
-\begin{align*} \widetilde{\nu} &=\dfrac{1}{\lambda } \\[4pt] &= 8.228\times 10^{6}\cancel{m^{-1}}\left (\dfrac{\cancel{m}}{100\;cm} \right ) \\[4pt] &= 82,280\: cm^{-1} \end{align*}
-$$
-
-and
-
-$$\lambda = 1.215 \times 10^{−7}\; m = 122\; nm \nonumber$$
-
-This emission line is called Lyman alpha and is the strongest atomic emission line from the sun and drives the chemistry of the upper atmosphere of all the planets producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules to O atoms which react with other O2 molecules to form stratospheric ozone
-
-**B** This wavelength is in the UV region of the spectrum.
-```
-
-#### Problem 2
-
-- A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with  n=4 to and orbit with  $n=1$
-- B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
-
-
-```{dropdown} Solution 
-- A
-- B
-```
-
-#### Problem 3
-
-Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
-
-```{dropdown} Solution 
-
-```
-
-#### Problem 4
-
-A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
-
-```{dropdown} Solution 
-
+- An electron has a wavelength; a photon has momentum. Welcome to the reality where everything can behave both as a wave and a particle!
 ```
 
 
-#### Problem 5
 
-Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 
-```{dropdown} Solution 
+### Electron diffraction
 
-```
+- Davisson and Germer at Bell Labs showed that electrons exhibit diffraction. Diffraction was previously thought to be classical wave pheonomenon.
 
-#### Problem 6
+- Electron diffraction and neutron diffraction are widely used experimental techniques today, complementing X-ray diffraction.
 
-Calculate radii of Borh orbit for first few levels. Using python plot $r_n$ vs $n$
 
-```{dropdown} Solution 
+### Diffraction and color. 
 
-```
+- Thin films of oil, soap bubbles, butterfly wings, seashells, CD and DVD, etc. show a rainbow pattern. This is caused by the constructive and destructive interference of light traveling slightly different paths.
+
+- An electron can be scattered by different layers of a crystal lattice and interfere constructively or destructively, giving rise to alternating intensity patterns. 
+
+### Bragg's formula for diffraction. 
+
+- X-rays interact with the atoms in a crystal. The phase shift upon scattering off of atoms causes constructive (left figure) or destructive (right figure) interferences.
+
+![](./images/lec3_Xscatter.png)
+
+- Maxima and minima in interference patters are dictated by simple geometric  argument captured in Bragg’s formula: 
+
+$$\boxed{2d sin\theta = n\lambda}$$
+
+- One expects waves like X-rays to show interference patterns according to this formula. Interference was thought to be a purely a wave like phenomenon. 
+
+### Both X-rays and electrons show the same diffraction patterns. 
+
+![](./images/lec3_Xscatter2.png)
+
+### Davisson & Germer show: electrons scatter like waves.
+
+- In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. This peak indicated wave behavior for the electrons and could be interpreted by Bragg's law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
+
+![](./images/lec3_DavisonGermer.png)
+
+
+
+### Particles can behave like waves in appropriate circumstances.  
+
+- Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+
+- Another striking wave behavior of electrons emerges in the double-slit experiment where electrons all line up as bands on the detector screen after passing throw a double-slit wall. We are going to have a more in-depth look into this incredible experiment later on.
+
+### Compton scattering
+
+
+![](./images/lec3_compton.jpeg)
+
+Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Note that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
+
+
+### Wave particle duality as universal feature of nature. 
+
+- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
+
+- The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
+
+### De Broglie comes up with a simple equation which establishes the duality of matter. 
+
+$$\boxed{\lambda = \frac{h}{p}}$$
+
+- Where $h$: Planck's constant. $p$: the momentum of the object (electron, photon, molecule, chair, etc.). $\lambda$: wavelength associated with the object. 
+
+- The relation implies that heavy objects have a small wavelength, and light objects have a large wavelength. Hence the smaller the object, the more pronounced wave-like qualities it will have. And vice versa, the bigger the object, the more particle-like qualities it will have. 
+
+
+
+
