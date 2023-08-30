@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Units &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Complex numbers &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/note04';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Complex numbers" href="note05.html" />
+    <link rel="next" title="Python" href="../demos/index.html" />
     <link rel="prev" title="QM overview" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -241,7 +241,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch08/note09.html">Intermolecular forces</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../units.html">Units</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
 <ul class="current nav bd-sidenav">
@@ -250,8 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">QM overview</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Complex numbers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Complex numbers</a></li>
 
 </ul>
 </li>
@@ -399,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Units</h1>
+    <h1>Complex numbers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,8 +409,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-unit-converter">Energy unit converter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -421,109 +433,185 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="units">
-<h1>Units<a class="headerlink" href="#units" title="Permalink to this heading">#</a></h1>
-<section id="energy-unit-converter">
-<h2>Energy unit converter<a class="headerlink" href="#energy-unit-converter" title="Permalink to this heading">#</a></h2>
+  <section id="complex-numbers">
+<h1>Complex numbers<a class="headerlink" href="#complex-numbers" title="Permalink to this heading">#</a></h1>
+<p><strong>Recommended:</strong> Watch the  following YouTube video
+<a class="reference external" href="https://www.youtube.com/watch?v=T647CGsuOVU">“complex numbers are real, part-1”</a></p>
+<p><strong>Also recommended:</strong> <a class="reference external" href="https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">A Visual, Intuitive Guide to Imaginary Numbers</a></p>
+<section id="complex-numbers-are-every-bit-as-real-as-every-other-number">
+<h2>“Complex numbers are every bit as real as every other number. “<a class="headerlink" href="#complex-numbers-are-every-bit-as-real-as-every-other-number" title="Permalink to this heading">#</a></h2>
+<p>A complex number <span class="math notranslate nohighlight">\(z\)</span> is a kind of 2D number that lives in 2D space and requires two components for its full specification:</p>
+<p><img alt="" src="math/images/cnum_intro.png" /></p>
 <ul class="simple">
-<li><p>See <a class="reference external" href="https://www.weizmann.ac.il/oc/martin/tools/hartree.html">here</a> for interactive option</p></li>
+<li><p><strong>Real part</strong> <span class="math notranslate nohighlight">\( x \)</span>
+.</p></li>
+<li><p><strong>Imaginary part</strong> <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
 </ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(hartree\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(eV\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(cm^{-1}\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(kcal/mol\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(kJ/mol\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(K\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(J\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(Hz\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(hartree\)</span></p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>27.2107</p></td>
-<td class="text-center"><p>219474.63</p></td>
-<td class="text-center"><p>627.503</p></td>
-<td class="text-center"><p>2625.5</p></td>
-<td class="text-center"><p>315777.</p></td>
-<td class="text-center"><p>43.60 x 10-19</p></td>
-<td><p>6.57966 x 10+15</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(eV\)</span></p></td>
-<td class="text-center"><p>0.0367502</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>8 065.73</p></td>
-<td class="text-center"><p>23.060 9</p></td>
-<td class="text-center"><p>96.486 9</p></td>
-<td class="text-center"><p>11 604.9</p></td>
-<td class="text-center"><p>1.602 10 x 10-19</p></td>
-<td><p>2.418 04 x 10+14</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(cm^{-1}\)</span></p></td>
-<td class="text-center"><p>4.556 33 x 10-6</p></td>
-<td class="text-center"><p>1.239 81 x 10-4</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>0.002 859 11</p></td>
-<td class="text-center"><p>0.011 962 7</p></td>
-<td class="text-center"><p>1.428 79</p></td>
-<td class="text-center"><p>1.986 30 x 10-23</p></td>
-<td><p>2.997 93 x 10+10</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(kcal/mol\)</span></p></td>
-<td class="text-center"><p>0.001 593 62</p></td>
-<td class="text-center"><p>0.043 363 4</p></td>
-<td class="text-center"><p>349.757</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>4.18400</p></td>
-<td class="text-center"><p>503.228</p></td>
-<td class="text-center"><p>6.95 x 10-21</p></td>
-<td><p>1.048 54 x 10+13</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(kJ/mol\)</span></p></td>
-<td class="text-center"><p>0.000 380 88</p></td>
-<td class="text-center"><p>0.010 364 10</p></td>
-<td class="text-center"><p>83.593</p></td>
-<td class="text-center"><p>0.239001</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>120.274</p></td>
-<td class="text-center"><p>1.66 x 10-21</p></td>
-<td><p>2.506 07 x 10+12</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(K\)</span></p></td>
-<td class="text-center"><p>0.000 003 166 78</p></td>
-<td class="text-center"><p>0.000 086 170 5</p></td>
-<td class="text-center"><p>0.695 028</p></td>
-<td class="text-center"><p>0.001 987 17</p></td>
-<td class="text-center"><p>0.008 314 35</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>1.380 54 x 10-23</p></td>
-<td><p>2.083 64 x 10+10</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(J\)</span></p></td>
-<td class="text-center"><p>2.294 x 10+17</p></td>
-<td class="text-center"><p>6.241 81 x 10+18</p></td>
-<td class="text-center"><p>5.034 45 x 10+22</p></td>
-<td class="text-center"><p>1.44 x 10+20</p></td>
-<td class="text-center"><p>6.02 x 10+20</p></td>
-<td class="text-center"><p>7.243 54 x 10+22</p></td>
-<td class="text-center"><p>1</p></td>
-<td><p>1.509 30 x 10+33</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(Hz\)</span></p></td>
-<td class="text-center"><p>1.519 83 x 10-16</p></td>
-<td class="text-center"><p>4.135 58 x 10-15</p></td>
-<td class="text-center"><p>3.335 65 x 10-11</p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(9.537 02 \cdot 10^{-14}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(6.579 \cdot 10^{-3}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(4.799 30 \cdot 10^{-11}\)</span></p></td>
-<td class="text-center"><p>6.625 61 x 10-34</p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
+<p>Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that’s how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix.</p>
+</section>
+<section id="introducing-i">
+<h2>Introducing <span class="math notranslate nohighlight">\( i \)</span><a class="headerlink" href="#introducing-i" title="Permalink to this heading">#</a></h2>
+<p>When first confronted with complex numbers they seem unintuitive and hard to visualize. The imaginary unit <span class="math notranslate nohighlight">\( i \)</span> in particular mystifies as to what it is and where did it come from.
+Some facts from mathematics are in order here:</p>
+<ul class="simple">
+<li><p><strong>What is the definition of <span class="math notranslate nohighlight">\( i \)</span>?</strong> The imaginary number <span class="math notranslate nohighlight">\( i \)</span> is defined solely by the property that its square is <span class="math notranslate nohighlight">\(−1\)</span>, that is: <span class="math notranslate nohighlight">\(i\cdot i=-1\)</span>.</p></li>
+<li><p><strong>How does <span class="math notranslate nohighlight">\(i\)</span> change what I know about math of real variables?</strong> Imaginary numbers are an important mathematical concept, which extend the real number system <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to the complex number system <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>, which in turn provides at least one root for every nonconstant polynomial <span class="math notranslate nohighlight">\(P(x)\)</span>. (See the Fundamental theorem of algebra.) The term “imaginary” is used because there is no real number having a negative square.</p></li>
+<li><p><strong>Where does <span class="math notranslate nohighlight">\(i\)</span> appear in math?</strong> Most notably imaginary number (i) provide solutions to quadratic equation <span class="math notranslate nohighlight">\(x^2 + 1 = 0.\)</span> Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i.</p></li>
+<li><p><strong>What do you call a number that contains i?</strong> A complex number z=1+2i. A function of complex variable is a function if it operates on complex variables z.</p></li>
+</ul>
+</section>
+<section id="eculidean-vs-polar-representation-of-complex-numbers">
+<h2>Eculidean vs polar representation of complex numbers<a class="headerlink" href="#eculidean-vs-polar-representation-of-complex-numbers" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="math/images/cnum_2.png" /></p>
+<p>The Euclidean, polar, and trigonometric forms of a complex number <span class="math notranslate nohighlight">\( z \)</span> are given by:</p>
+<div class="math notranslate nohighlight">
+\[z = x + iy = r(\cos{\phi} + i \sin{\phi}) = re^{i\phi} \]</div>
+<p>The second equality above is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&amp;targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity."><strong>Euler’s formula</strong></a>
+And equally widely regarded as one of the most beautiful and mysterious in mathematics.</p>
+<p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\bar z = x-iy =  r (\cos{\phi} - i \sin{\phi} ) = re^{-i\phi}\]</div>
+<p>The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the
+origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p>
+<div class="math notranslate nohighlight">
+\[r = |z| = \sqrt{x^2 + y^2}\]</div>
+<p>The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of (0,0)-(x,y) line with respect to the real axis.
+The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
+\]</div>
+<p>Three elementary trigonometric functions are</p>
+<div class="math notranslate nohighlight">
+\[
+\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
+\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
+\tan{\phi} = \frac{y}{x}
+\]</div>
+</section>
+</section>
+<section id="de-moivres-theorem">
+<h1>De Moivre’s Theorem<a class="headerlink" href="#de-moivres-theorem" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">De Moivre’s theorem</a> states that:</p>
+<div class="math notranslate nohighlight">
+\[
+z^n=(r(\cos{\theta} + i \sin{\theta}))^n =
+r^n e^{in\theta} =
+r^n(\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<p>We raised complex number to power n, used polar representation and realized that exponent raised to power n simply multiplies polar angle by n.
+Note that de Moivre’s theorem allows relating trigonometric functions of angle <span class="math notranslate nohighlight">\(\theta\)</span> raised to power <span class="math notranslate nohighlight">\(n\)</span> to trignomoteric functions of of angle <span class="math notranslate nohighlight">\(n\theta\)</span> of power one:</p>
+<div class="math notranslate nohighlight">
+\[
+r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<p>The proof of de Moivre’s theorem can be done via <a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">induction</a>, e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, …</p>
+<p><strong>Exercise:</strong> set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine.</p>
+<section id="example-1-pythagoras-theorem">
+<h2>Example-1: Pythagoras’ theorem<a class="headerlink" href="#example-1-pythagoras-theorem" title="Permalink to this heading">#</a></h2>
+<p>We can use de Moivre’s theorem to show that
+<span class="math notranslate nohighlight">\( r = \sqrt{x^2 + y^2} \)</span>.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+1 &amp;= e^{i\theta} e^{-i\theta} \\
+&amp;= (\cos{\theta} + i \sin{\theta})(\cos{(\text{-}\theta)} + i \sin{(\text{-}\theta)}) \\
+&amp;= (\cos{\theta} + i \sin{\theta})(\cos{\theta} - i \sin{\theta}) \\
+&amp;= \cos^2{\theta} + \sin^2{\theta} \\
+&amp;= \frac{x^2}{r^2} + \frac{y^2}{r^2}
+\end{aligned}
+\end{split}\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 + y^2 = r^2
+\]</div>
+<p>We recognize this as a theorem of <strong>Pythagoras</strong>.</p>
+</section>
+<section id="example-2-trigonometric-identities">
+<h2>Example-2: Trigonometric Identities<a class="headerlink" href="#example-2-trigonometric-identities" title="Permalink to this heading">#</a></h2>
+<p>We can obtain a complete suite of trigonometric identities by
+appropriately manipulating polar forms of complex numbers.</p>
+<p>We’ll get many of them by deducing implications of the equality</p>
+<div class="math notranslate nohighlight">
+\[e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}\]</div>
+<p>For example, we’ll calculate identities for <span class="math notranslate nohighlight">\(\cos{(\omega + \theta)} \)</span> and <span class="math notranslate nohighlight">\( \sin{(\omega + \theta)}\)</span>.</p>
+<p>Using the sine and cosine formulas presented at the beginning of this
+lecture, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\cos{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} + e^{-i(\omega + \theta)}}{2} \\
+\sin{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} - e^{-i(\omega + \theta)}}{2i}
+\end{aligned}\end{split}\]</div>
+<p>We can also obtain the trigonometric identities as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cos{(\omega + \theta)} + i \sin{(\omega + \theta)}
+&amp;= e^{i(\omega + \theta)} \\
+&amp;= e^{i\omega} e^{i\theta} \\
+&amp;= (\cos{\omega} + i \sin{\omega})(\cos{\theta} + i \sin{\theta}) \\
+&amp;= (\cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta}) +
+i (\cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta})
+\end{aligned}
+\end{split}\]</div>
+<p>Since both real and imaginary parts of the above formula should be
+equal, we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cos{(\omega + \theta)} = \cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta} \\
+\sin{(\omega + \theta)} = \cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta}
+\end{aligned}
+\end{split}\]</div>
+<p>The equations above are also known as the <strong>angle sum identities</strong>. We
+can verify the equations using the <code class="docutils literal notranslate"><span class="pre">simplify</span></code> function in the
+<code class="docutils literal notranslate"><span class="pre">sympy</span></code> package.</p>
+</section>
+<section id="example-3-trigonometric-integrals">
+<h2>Example-3: Trigonometric Integrals<a class="headerlink" href="#example-3-trigonometric-integrals" title="Permalink to this heading">#</a></h2>
+<p>We can also compute the trigonometric integrals using polar forms of
+complex numbers.</p>
+<p>For example, we want to solve the following integral:</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega\]</div>
+<p>Using Euler’s formula, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\int \cos(\omega) \sin(\omega) \, d\omega
+&amp;=
+\int
+\frac{(e^{i\omega} + e^{-i\omega})}{2}
+\frac{(e^{i\omega} - e^{-i\omega})}{2i}
+\, d\omega  \\
+&amp;=
+\frac{1}{4i}
+\int
+e^{2i\omega} - e^{-2i\omega}
+\, d\omega  \\
+&amp;=
+\frac{1}{4i}
+\bigg( \frac{-i}{2} e^{2i\omega} - \frac{i}{2} e^{-2i\omega} + C_1 \bigg) \\
+&amp;=
+-\frac{1}{8}
+\bigg[ \bigg(e^{i\omega}\bigg)^2 + \bigg(e^{-i\omega}\bigg)^2 - 2 \bigg] + C_2 \\
+&amp;=
+-\frac{1}{8}  (e^{i\omega} - e^{-i\omega})^2  + C_2 \\
+&amp;=
+\frac{1}{2} \bigg( \frac{e^{i\omega} - e^{-i\omega}}{2i} \bigg)^2 + C_2 \\
+&amp;= \frac{1}{2} \sin^2(\omega) + C_2
+\end{aligned}\end{split}\]</div>
+<p>and thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega =
+\frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
+\]</div>
 </section>
 </section>
 
@@ -568,11 +656,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="note05.html"
+       href="../demos/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complex numbers</p>
+        <p class="prev-next-title">Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -594,8 +682,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-unit-converter">Energy unit converter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
