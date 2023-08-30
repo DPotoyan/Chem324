@@ -138,3 +138,53 @@ We see that this yields an expression for the Rydberg constant in terms of funda
 $$\begin{equation}
 R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
 \end{equation}$$
+
+### Problems 
+
+````{tab-set}
+```{tab-item} Problem 1
+ The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
+```
+
+```{tab-item} Solution 1
+
+**A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
+
+$$
+\dfrac{1}{\lambda }=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right )
+$$
+
+The lowest energy results from a transition from or to nearest energy level hence $n_2 = n_1+1$
+
+$$
+\begin{align*} \dfrac{1}{\lambda } &=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right ) \\[4pt] &=1.097 \times 10^{7}\, m^{-1}\left ( \dfrac{1}{1}-\dfrac{1}{4} \right )\\[4pt] &= 8.228 \times 10^{6}\; m^{-1} \end{align*}
+$$
+
+
+Spectroscopists often talk about energy and frequency as equivalent. The $cm^{-1}$ unit (wavenumbers) is particularly convenient. We can convert the answer in part A to $cm^{-1}$
+
+$$
+\begin{align*} \widetilde{\nu} &=\dfrac{1}{\lambda } \\[4pt] &= 8.228\times 10^{6}\cancel{m^{-1}}\left (\dfrac{\cancel{m}}{100\;cm} \right ) \\[4pt] &= 82,280\: cm^{-1} \end{align*}
+$$
+
+and
+
+$$\lambda = 1.215 \times 10^{−7}\; m = 122\; nm \nonumber$$
+
+This emission line is called Lyman alpha and is the strongest atomic emission line from the sun and drives the chemistry of the upper atmosphere of all the planets producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules to O atoms which react with other O2 molecules to form stratospheric ozone
+
+**B** This wavelength is in the UV region of the spectrum.
+```
+````
+
+
+````{tab-set}
+```{tab-item} Problem 2
+- A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with  n=4 to and orbit with  $n=1$
+- B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
+```
+
+```{tab-item} Solution 2
+- A
+```
+````
