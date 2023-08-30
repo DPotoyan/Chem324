@@ -186,3 +186,18 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 - B
 ```
 
+#### Problem 3
+
+Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
+
+```{dropdown} Solution 
+
+```
+
+#### Problem 4
+
+A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
+
+```{dropdown} Solution 
+
+```
