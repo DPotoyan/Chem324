@@ -201,3 +201,20 @@ A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7}
 ```{dropdown} Solution 
 
 ```
+
+
+#### Problem 5
+
+Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
+
+```{dropdown} Solution 
+
+```
+
+#### Problem 6
+
+Calculate radii of Borh orbit for first few levels. Using python plot $r_n$ vs $n$
+
+```{dropdown} Solution 
+
+```
