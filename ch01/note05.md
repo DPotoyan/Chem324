@@ -12,18 +12,21 @@
 - Alas for atoms with more than one electron Bohr's theory fails to generalize which prompted scientist to develop a more rigorous theory fo quantum Mechanics
 ```
 
-![](images/spectra.png)
+```{image} images/spectra.png
+:align: center
+```
 
 - When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique.  These discrete emitted frequencies comprise a stick spectrum such as the one shown above.  
 
 ### H atom spectra
 
-![](images/lec1_AtomicSpectrum.png)
+```{image} images/lec1_AtomicSpectrum.png
+:align: center
+```
 
 - These stick spectra are clearly impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
 $$v = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
-
 
 where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
 
@@ -39,7 +42,12 @@ where
 
 - In 1911, Niels Bohr proposed a model for the hydrogen atom that was able to recapitulate the hydrogen atom spectrum. 
 - The model consists of an electron orbiting a proton in circular orbits.  The proton is considered to be fixed in space because it is so much more massive than the electron.  
-- Most importantly Bohr had to assume that the electron demonstrates wavelike characteristics and that these waves must have an integer number of modes around the circular orbit.  This equates to
+- Most importantly Bohr had to introduce new ad-hoc requirements to keep the electron stable. Namely the electron demonstrates wavelike characteristics which has an integer number $n=1,2,3,...$ of modes around the circular orbit.  
+- Thanks to this quantization rule expression for the H atom energy is obtained which is a function of an integer number $n=1,2,3,...$
+
+### Quantizes states of electron
+
+Restricitng waves with wavelength $\lambda$ to sit around orbit separated by integer number yields
 
 $$\begin{equation}
 2\pi r = n\lambda_e \quad n=1,2,3,...
@@ -58,6 +66,10 @@ m_evr = \frac{nh}{2\pi} = n\hbar,
 \end{equation}$$
 
 where we have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it comes up frequently in quantum mechanics. The term on the left-hand side of the last equation, $m_evr$, is the angular momentum of the electron.  Thus Bohr 's model demonstrates a quantization of the angular momentum of the electron.
+
+### Force balance
+
+After introducing ad-hoc quantization rule, Bohr's model then resorts to lclassical mechanics to obtain energy function. 
 
 Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron,
 
@@ -89,7 +101,7 @@ $$\begin{align}
 
 The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  Allowed values of $r$ as a function of $n$ are plotted below.
 
-### Energy of H atom within Bohr's theory eplains spectral lines from first principles
+### Energy of H atom 
 
 The energy of the system can is a sum of the Coulomb attraction between the electron and the proton and the kinetic energy of the electron:
 
