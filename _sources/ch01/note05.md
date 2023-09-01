@@ -46,7 +46,7 @@ Example of light refracting when passing through a prism.
 
 
 :::{figure-md} markdown-fig
-<img src="./images/lec3_Xscatter2.png" alt="compton" class="bg-primary mb-1" width="300px">
+<img src="./images/lec3_Xscatter2.png" alt="compton" class="bg-primary mb-1" width="400px">
 
 Example of light refracting when passing through a prism. 
 :::
@@ -61,7 +61,7 @@ $$\boxed{2d sin\theta = n\lambda}$$
 
 
 :::{figure-md} markdown-fig
-<img src="./images/lec3_DavisonGermer.png" alt="compton" class="bg-primary mb-1" width="300px">
+<img src="./images/lec3_DavisonGermer.png" alt="compton" class="bg-primary mb-1" width="500px">
 
 Demonstration of electron diffraction. 
 :::
@@ -74,7 +74,7 @@ Demonstration of electron diffraction.
 ### Particles can behave like waves in appropriate circumstances.  
 
 :::{figure-md} markdown-fig
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif" alt="compton" class="bg-primary mb-1" width="300px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif" alt="compton" class="bg-primary mb-1" width="400px">
 
 Example of light refracting when passing through a prism. 
 :::
@@ -84,7 +84,7 @@ Example of light refracting when passing through a prism.
 ### But which way did the electron go??
 
 :::{figure-md} markdown-fig
-<img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="300px">
+<img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="400px">
 
 Expectation of where electrons would fall based on classical vs quantum theories.
 :::
@@ -106,7 +106,7 @@ Placing a detector that fires off photons to determine electron position exiting
 ### Compton scattering
 
 :::{figure-md} markdown-fig
-<img src="./images/lec3_compton.jpeg" alt="compton" class="bg-primary mb-1" width="200px">
+<img src="./images/lec3_compton.jpeg" alt="compton" class="bg-primary mb-1" width="300px">
 
 Compton scattering: A phenomenon where photons scatter off electrons the same way other particles with mass do.
 :::
@@ -155,7 +155,7 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 - The principle states that the more precisely the position is known, the more uncertain the momentum is, and vice versa. For example, if we know everything about where a particle is located, we know nothing about its momentum.
 
 :::{figure-md} markdown-fig
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Uncertainty_Momentum_1.gif" alt="compton" class="bg-primary mb-1" width="200px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Uncertainty_Momentum_1.gif" alt="compton" class="bg-primary mb-1" width="400px">
 
 Demonstration of uncertainty principle. When electron position is localized by making the hole smaller its momentum becomes more unpredictable resulting in electrons hitting the detector over wider range.  
 :::

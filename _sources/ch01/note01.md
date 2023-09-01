@@ -16,9 +16,11 @@
 - This is, in fact, is an understatement. Don't take my word for it take Richard Feynman's word: 
 
 
-```{image} ./images/feynman.png
-:align: center
-```
+:::{figure-md} markdown-fig
+<img src="./images/feynman.png" alt="compton" class="bg-primary mb-1" width="300px">
+
+[Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), A renown american physicsits. Won [Physics Nobel laureate for his groundbreaking work on quantum electrodynamics](https://www.nobelprize.org/prizes/physics/1965/summary/) in 1965. 
+:::
 
 > Richard Feynman, an American physicist. Winner of 1965 Nobel prize in Physics for groundbreaking contributions to Quantum Electrodynamics.
  
@@ -65,9 +67,13 @@ Study of quantum mechanics will arm you with several powerful skills beyond quan
 - Well if the above-given reasons were not enough for you... let me sweeten the deal by saying you will also be able to get popular references and up your meme game to include "quantum" jokes like this one:
 
 
-```{image} ./images/qm_meme.jpeg
-:align: center
-```
+:::{figure-md} markdown-fig
+<img src="./images/qm_meme.jpeg" alt="compton" class="bg-primary mb-1" width="300px">
+
+Have a quantum joke ready for any occasion. 
+:::
+
+
 
 
 
