@@ -14,37 +14,44 @@
 -  Thus all quantum objects can behave both as a wave and a particle! Which behavior would be more pronounced depends on the experiment!
 ```
 
-### Diffraction and Double Slit experiment 
+### Diffraction, interfernece and Double Slit experiment 
 
 
 :::{figure-md} markdown-fig
 <img src="https://i0.wp.com/opencurve.info/wp-content/uploads/2020/05/double_slit.gif" alt="compton" class="bg-primary mb-1" width="300px">
 
-Caption
+Waves passing throw two slits and creating diffraction pattern on the screen. 
 :::
 
+- **Diffraction:** spreading of waves around obstacles or through small openings. Diffraction can occur with any type of wave, including light, sound, radio, and water.
 
-- In classical double slit experiment light is permitted to diffract through slits that display diffraction: that is producing wave-like interference patterns or bands on an opposite screen.
+- **interference:** when two waves meet one another their intensities either go up or go down if the two waves are in phase or out of phase, respectively.
+
+- In the classical double slit experiment light waves (or water waves) are passing through a wall with two slits which results in wave-like interference patterns or bands on the detector screen.
 
 ### Refraction and prisms
 
 :::{figure-md} markdown-fig
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Light_dispersion_conceptual_waves.gif/330px-Light_dispersion_conceptual_waves.gif" alt="compton" class="bg-primary mb-1" width="300px">
 
-Caption
+Example of light refracting when passing through a prism. 
 :::
 
-- Another closely related phenomenon is refraction: change in direction of propagation of any wave as a result of its traveling at different speeds at different points along the wave front.
-- For example, light bends when it travels from air to glass. 
- The bending of light by refraction makes it possible for us to have lenses, magnifying glasses, prisms, and rainbows. Even our eyes depend upon this bending of light
+- **Refraction:** change in direction of propagation of any wave as a result of its traveling at different speeds at different points along the wave front.
+- For example, light bends when it travels from air to glass. The bending of light by refraction makes it possible for us to have lenses, magnifying glasses, prisms, and rainbows. Even our eyes depend upon this bending of light
 
 ### Bragg's formula for diffraction. 
 
 - X-rays interact with the atoms in a crystal. The phase shift upon scattering off of atoms causes constructive (left figure) or destructive (right figure) interferences.
 
-![](./images/lec3_Xscatter.png)
 
-- Maxima and minima in interference patters are dictated by simple geometric  argument captured in Bragg’s formula: 
+:::{figure-md} markdown-fig
+<img src="./images/lec3_Xscatter2.png" alt="compton" class="bg-primary mb-1" width="300px">
+
+Example of light refracting when passing through a prism. 
+:::
+
+- Maxima and minima in the interference patters are dictated by simple geometric  argument captured in Bragg’s formula: 
 
 $$\boxed{2d sin\theta = n\lambda}$$
 
@@ -52,20 +59,25 @@ $$\boxed{2d sin\theta = n\lambda}$$
 
 ### Both X-rays and electrons show diffraction patterns. 
 
-![](./images/lec3_Xscatter2.png)
 
+:::{figure-md} markdown-fig
+<img src="./images/lec3_DavisonGermer.png" alt="compton" class="bg-primary mb-1" width="300px">
+
+Demonstration of electron diffraction. 
+:::
 
 - In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. 
 - This peak indicated wave behavior for the electrons and could be interpreted by Bragg's law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
-
-![](./images/lec3_DavisonGermer.png)
 
 
 
 ### Particles can behave like waves in appropriate circumstances.  
 
+:::{figure-md} markdown-fig
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif" alt="compton" class="bg-primary mb-1" width="300px">
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif)
+Example of light refracting when passing through a prism. 
+:::
 
 - Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
 
@@ -74,7 +86,7 @@ $$\boxed{2d sin\theta = n\lambda}$$
 :::{figure-md} markdown-fig
 <img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="300px">
 
-Caption
+Expectation of where electrons would fall based on classical vs quantum theories.
 :::
 
 - The interference pattern would arise only if we consider electrons as waves, which
@@ -85,7 +97,7 @@ the holes at once, we still observe the interference effect.
 :::{figure-md} markdown-fig
 <img src="./images/double_slit2.png" alt="compton" class="bg-primary mb-1" width="300px">
 
-Caption
+Placing a detector that fires off photons to determine electron position exiting from slits. 
 :::
 
 - If we try to determine which way the electron traveled, the interference pattern disappears!
