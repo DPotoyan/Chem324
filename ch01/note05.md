@@ -16,13 +16,23 @@
 
 ### Diffraction and Double Slit experiment 
 
-![](https://i0.wp.com/opencurve.info/wp-content/uploads/2020/05/double_slit.gif)
+
+:::{figure-md} markdown-fig
+<img src="https://i0.wp.com/opencurve.info/wp-content/uploads/2020/05/double_slit.gif" alt="compton" class="bg-primary mb-1" width="300px">
+
+Caption
+:::
+
 
 - In classical double slit experiment light is permitted to diffract through slits that display diffraction: that is producing wave-like interference patterns or bands on an opposite screen.
 
 ### Refraction and prisms
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Light_dispersion_conceptual_waves.gif/330px-Light_dispersion_conceptual_waves.gif)
+:::{figure-md} markdown-fig
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Light_dispersion_conceptual_waves.gif/330px-Light_dispersion_conceptual_waves.gif" alt="compton" class="bg-primary mb-1" width="300px">
+
+Caption
+:::
 
 - Another closely related phenomenon is refraction: change in direction of propagation of any wave as a result of its traveling at different speeds at different points along the wave front.
 - For example, light bends when it travels from air to glass. 
@@ -63,6 +73,8 @@ $$\boxed{2d sin\theta = n\lambda}$$
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="300px">
+
+Caption
 :::
 
 - The interference pattern would arise only if we consider electrons as waves, which
@@ -72,6 +84,8 @@ the holes at once, we still observe the interference effect.
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit2.png" alt="compton" class="bg-primary mb-1" width="300px">
+
+Caption
 :::
 
 - If we try to determine which way the electron traveled, the interference pattern disappears!
