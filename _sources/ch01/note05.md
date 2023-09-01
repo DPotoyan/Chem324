@@ -179,7 +179,7 @@ Quantify uncertainty in position of electron in the ground state of H atom by us
 
 #### Problem 4
 
-quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 ev$
+Quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 eV$
 
 :::{dropdown} Hint
 $$KE = \frac{p^2}{2m}$$
