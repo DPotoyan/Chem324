@@ -5,30 +5,15 @@
 
 ```{admonition} What you need to know
 :class: note
-- Compton scattering and electron diffraction experimentshave demonstrated that concepts of a particle and wave are not mutually exclusive.
+- Compton scattering and electron diffraction experiment shave demonstrated that concepts of a particle and wave are not mutually exclusive.
 
-- A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics.
+- A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics. An electron has a wavelength; a photon has momentum.
 
 - Wave-like and particle-like characteristics are inversely proportional to each other and are quantified by de Broglie relation: $\lambda = \frac{h}{p}$
 
-- An electron has a wavelength; a photon has momentum. Welcome to the reality where everything can behave both as a wave and a particle!
+-  Thus all quantum objects can behave both as a wave and a particle! Which behavior would be more pronounced depends on the experiment!
 ```
 
-
-
-
-### Electron diffraction
-
-- Davisson and Germer at Bell Labs showed that electrons exhibit diffraction. Diffraction was previously thought to be classical wave pheonomenon.
-
-- Electron diffraction and neutron diffraction are widely used experimental techniques today, complementing X-ray diffraction.
-
-
-### Diffraction and color. 
-
-- Thin films of oil, soap bubbles, butterfly wings, seashells, CD and DVD, etc. show a rainbow pattern. This is caused by the constructive and destructive interference of light traveling slightly different paths.
-
-- An electron can be scattered by different layers of a crystal lattice and interfere constructively or destructively, giving rise to alternating intensity patterns. 
 
 ### Bragg's formula for diffraction. 
 
@@ -62,10 +47,20 @@ $$\boxed{2d sin\theta = n\lambda}$$
 
 - Another striking wave behavior of electrons emerges in the double-slit experiment where electrons all line up as bands on the detector screen after passing throw a double-slit wall. We are going to have a more in-depth look into this incredible experiment later on.
 
+### Diffraction and color. 
+
+- Thin films of oil, soap bubbles, butterfly wings, seashells, CD and DVD, etc. show a rainbow pattern. This is caused by the constructive and destructive interference of light traveling slightly different paths.
+
+- An electron can be scattered by different layers of a crystal lattice and interfere constructively or destructively, giving rise to alternating intensity patterns. 
+
 ### Compton scattering
 
+:::{figure-md} markdown-fig
+<img src="./images/lec3_compton.jpeg" alt="fishy" class="bg-primary mb-1" width="200px">
 
-![](./images/lec3_compton.jpeg)
+Caption
+:::
+
 
 Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Note that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
 
@@ -85,5 +80,24 @@ $$\boxed{\lambda = \frac{h}{p}}$$
 - The relation implies that heavy objects have a small wavelength, and light objects have a large wavelength. Hence the smaller the object, the more pronounced wave-like qualities it will have. And vice versa, the bigger the object, the more particle-like qualities it will have. 
 
 
+### Problems
 
+#### Problem 1
+
+Estimate the wavelength of electrons that have been accelerated from
+rest through a potential difference of $V = 40 kV$. 
+> Note that potential energy difference that the electrons experience is simply $e×V$ where e is the magnitude of electron charge and $V$ potential difference.
+
+:::{dropdown} Solution
+In order to calculate the de Broglie wavelength, we need to calculate the linear momentum of the electrons.
+At the end of the acceleration, all the acquired energy is in the form of kinetic energy ($p^2 / 2m_e$).
+
+$$
+\frac{p^2}{2m_e} = eV \Rightarrow p = {\sqrt{2m_eeV}}
+$$
+
+$$
+{\lambda = \frac{h}{p} = \frac{h}{\sqrt{2m_eeV}}}{= \frac{6.626\times 10^{-34}\textnormal{ Js}}{\sqrt{2\times (9.109\times 10^{-31}\textnormal{ kg})\times (1.609\times 10^{-19}\textnormal{ C})\times (4.0\times 10^4\textnormal{ V})}}}{ = 6.1\times 10^{-12}}\, m
+$$
+:::
 
