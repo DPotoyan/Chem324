@@ -154,8 +154,11 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 
 - The principle states that the more precisely the position is known, the more uncertain the momentum is, and vice versa. For example, if we know everything about where a particle is located, we know nothing about its momentum.
 
+:::{figure-md} markdown-fig
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Uncertainty_Momentum_1.gif" alt="compton" class="bg-primary mb-1" width="200px">
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/78/Uncertainty_Momentum_1.gif)
+Demonstration of uncertainty principle. When electron position is localized by making the hole smaller its momentum becomes more unpredictable resulting in electrons hitting the detector over wider range.  
+:::
 
 ### Heisenberg's uncertainty principle
 
