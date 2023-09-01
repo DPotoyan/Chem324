@@ -1,0 +1,1227 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>QM overview &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Math" href="math/index.html" />
+    <link rel="prev" title="Units" href="units.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/cat.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/cat.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch01/note02.html">The need for quantization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch01/note04.html">Atomic spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch01/note05.html">Wave-particle duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch01/BlackBody.html">DEMO: Black Body radiation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch02/note02.html">Wave equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch03/note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="ch03/note02.html">Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch03/note03.html">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch03/note04.html">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch03/note05.html">Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch03/note06.html">Time dependence</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="ch03/note07.html">Commutability and precision of measurement</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note01.html">Molecular degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note02.html">Particle in a 3D box</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="ch04/note03A.html">Harmonic Oscillator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="ch04/note03B.html">Vibrational spectra of diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note03C.html">Beyond harmonic oscillator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note04A.html">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note04B.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note04C.html">Rotational spectra of diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch04/note05.html">Vibration-rotation spectra of diatomic molecules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch05/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch05/note02.html">Spectrum of hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch05/note03.html">Probability densities for hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch05/note04.html">Orbital angular momentum of the hydrogen atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch05/note05.html">Spin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch06/note01.html">Perturbation Method</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="ch06/note02.html">Variational Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch06/note03.html">Linear variational method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch07/note01.html">Helium atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch07/note02.html">Pauli exclusion principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch07/note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch07/note04.html">Atomic terms and selection rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch08/index.html">8. Molecules</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note01.html">BO approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note02.html">The hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note07.html">Huckel molecular orbital theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note08.html">Dipole moments and ionic bonding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08/note09.html">Intermolecular forces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">QM overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="math/index.html">Math</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="math/note01.html">Integrals</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="math/note02.html">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/note03.html">Complex numbers</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="demos/index.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="demos/intro2py.html">Python3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demos/intro2numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demos/intro2viz.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demos/animation.html">Animations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demos/sympy.html">Sympy</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/overview.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>QM overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum">From classical to Quantum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbody-radiation">Blackbody radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-particle-duality">Wave-particle duality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-hydrogen-and-bohrs-model">Atomic spectra of hydrogen and Bohr’s model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waves">Waves</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-mechanical-postulates">Quantum-Mechanical Postulates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quantum-systems">Simple Quantum Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-states">Stationary states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-1d-box">Particle in a 1D box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-3d-box">Particle in a 3D box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-potential-well">Finite potential well</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-uncertainty">Commutators and Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopy">Spectroscopy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-quantum-harmonic-oscillator">Vibration: quantum harmonic oscillator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-quantum-rigid-rotor">Rotation: quantum rigid rotor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-rigid-rotor">Classical rigid rotor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor">Quantum rigid rotor</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-atom">Hydrogen atom</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-and-proton-system">Many Electron and Proton System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-atom">Many electron atom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin">Spin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identical-particles">Identical particles</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="qm-overview">
+<h1>QM overview<a class="headerlink" href="#qm-overview" title="Permalink to this heading">#</a></h1>
+<section id="from-classical-to-quantum">
+<h2>From classical to Quantum<a class="headerlink" href="#from-classical-to-quantum" title="Permalink to this heading">#</a></h2>
+<section id="blackbody-radiation">
+<h3>Blackbody radiation<a class="headerlink" href="#blackbody-radiation" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Energy quantization</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E = nh\nu\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Average energy of an oscillating dipole</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\langle E_{\text{osc}} \rangle = \dfrac{h\nu}{e^{h\nu / k_B T} - 1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Spectral radiation density of blackbody (Planck)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3}\dfrac{1}{e^{h\nu / k_B T} - 1} \ d\nu\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Spectral radiation density of blackbody (classical)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3} k_B T d\nu\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wave-particle-duality">
+<h3>Wave-particle duality<a class="headerlink" href="#wave-particle-duality" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Energy of light</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E = h \nu\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><strong>Photoelectric effect</strong> <br/> Kinetic energy of ejected photoelectron</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_k = h \nu - \Phi\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>de Broglie relation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p = \dfrac{h}{\lambda}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Kinetic energy</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_k = \dfrac{1}{2}mv^2 = \dfrac{p^2}{2m}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="atomic-spectra-of-hydrogen-and-bohrs-model">
+<h3>Atomic spectra of hydrogen and Bohr’s model<a class="headerlink" href="#atomic-spectra-of-hydrogen-and-bohrs-model" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Hydrogen emission lines <br/> <span class="math notranslate nohighlight">\(n_2 &gt; n_1\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\tilde{\nu} = \dfrac{1}{\lambda} = R_H \left( \dfrac{1}{n_1^2} - \dfrac{1}{n_2^2} \right)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Bohr’s radius</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r = \dfrac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Energy level in Bohr’s model</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = -\dfrac{m_e e^4}{8\varepsilon_0^2 h^2n^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Emission of hydrogen atom <br/> <span class="math notranslate nohighlight">\(n_2 &gt; n_1\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\nu = \dfrac{m_e e^4}{8\varepsilon_0^2 h^3} \left( \dfrac{1}{n_1^2} - \dfrac{1}{n_2^2} \right)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="waves">
+<h3>Waves<a class="headerlink" href="#waves" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Classical nondispersive wave equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{\partial \Psi(x, t)}{\partial x^2} = \dfrac{1}{v^2} \dfrac{\partial \Psi(x, t)}{\partial t^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Wave number</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(k = \dfrac{2\pi}{\lambda}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Frequency</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\nu = \dfrac{1}{T}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Angular frequency</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\omega = \dfrac{2\pi}{T} = 2\pi\nu\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Wave speed</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(v = \lambda\nu\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Euler’s formula</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(e^{i\theta} = \cos\theta + i\sin\theta\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Solution of wave equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\Psi(x, t) &amp;= A \sin(kx - \omega t + \phi) \\\ &amp;= \mathrm{Re}(Ae^{i(kx-\omega t + \phi')})\end{aligned}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Interfering traveling waves give standing wave</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\Psi(x, t) &amp;= A[\sin(kx - \omega t) + \sin(kx + \omega t)] \\\ &amp;= 2A \sin(kx)\cos(\omega t) \\\ &amp;= \psi(x)\cos(\omega t) \end{aligned}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Time-independent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2m}\dfrac{d^2\psi(x)}{dx^2} + V(x)\psi(x) = E\psi(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Time-dependent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2m}\dfrac{\partial^2\Psi(x, t)}{\partial x^2} + V(x, t)\Psi(x, t) = i\hbar\Psi(x, t)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Stationary states are standing waves</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(x, t) = \psi(x) e^{-i(E/\hbar)t}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Normalization</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Vert f(x) \Vert = \int_D f^* f \ dx = 1\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Orthogonality</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_D f^* g \ dx = 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Use quantum mechanics when …</p></td>
+<td class="text-left"><p>1. <span class="math notranslate nohighlight">\(\lambda_{\text{particle}} \sim L_{\text{problem}}\)</span> <br/> 2. <span class="math notranslate nohighlight">\(\Delta E \gtrsim k_bT\)</span> (discrete energy spectrum)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quantum-mechanical-postulates">
+<h2>Quantum-Mechanical Postulates<a class="headerlink" href="#quantum-mechanical-postulates" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>The state of a quantum-mechanical particle is completely specified by a wave function <span class="math notranslate nohighlight">\(\Psi(x, t)\)</span>. The probability that the particle will be found at time <span class="math notranslate nohighlight">\(t_0\)</span> in a spatial interval of width <span class="math notranslate nohighlight">\(dx\)</span> centered at <span class="math notranslate nohighlight">\(x_0\)</span> is given by <span class="math notranslate nohighlight">\(\Psi^*(x_0, t_0)\Psi(x_0, t_0) dx\)</span></p></li>
+<li><p>For every measurable property of a system, there exists a corresponding operator.</p></li>
+<li><p>In any single measurement of the observable that corresponds to the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the only values that will ever be measured are the eigenvalues of that operator.</p></li>
+<li><p>If the system is in a state described by the wave function <span class="math notranslate nohighlight">\(\Psi(x, t)\)</span>, and the value of the observatle <span class="math notranslate nohighlight">\(a\)</span> is measured once on each of many identically prepared systems, the average value (expectation value) of all of the measurements is given by
+$<span class="math notranslate nohighlight">\(
+\langle a \rangle = \dfrac{\displaystyle\int_{-\infty}^{\infty} \Psi^* \hat{A} \Psi \ dx}{\displaystyle\int_{-\infty}^{\infty} \Psi^*\Psi \ dx}
+\)</span>$</p></li>
+<li><p>The evolution in time of a quantum-mechanical system is governed by the time-dependent Schrödinger equation
+$<span class="math notranslate nohighlight">\(
+\hat{H}\Psi(x, t) = i\hbar\dfrac{\partial\Psi(x, t)}{\partial t}
+\)</span>$</p></li>
+</ol>
+<section id="operators">
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>1D</p></th>
+<th class="head text-left"><p>3D</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Position</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{x} = x\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{x}} = \mathbf{x}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Linear momentum</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{p}_x = -i\hbar \dfrac{d}{dx}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{p}} = -i\hbar\mathbf{\nabla}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Kinetic energy</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{T} = \dfrac{\hat{p}_x^2}{2m} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{T}} = -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Potential energy</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{V} = V(x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{V}} = V(\mathbf{x})\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Total energy Hamiltonian</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H} = \hat{T} + \hat{V} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} + V(x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{H}} = -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{x})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="simple-quantum-systems">
+<h2>Simple Quantum Systems<a class="headerlink" href="#simple-quantum-systems" title="Permalink to this heading">#</a></h2>
+<section id="stationary-states">
+<h3>Stationary states<a class="headerlink" href="#stationary-states" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Time dependent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H}\Psi(x, t) = i\hbar\dfrac{\partial\Psi(x, t)}{\partial t}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H}\psi_n(x) = E_n \psi_n(x)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Stationary state wave function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(x, t) = \psi(x) T(t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Time component of wave function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(T(t) = e^{iEt/\hbar}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Probability of finding particle in an interval</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathrm{Prob}(x, x+dx) = \vert \Psi(x, t) \vert^2 dx = \vert \psi(x) \vert^2 dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>General solution as linear combination of stationary states</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(x) = \sum\limits_n c_n \phi_n(x)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Expansion coefficients</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^* \psi \ dx\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Normalization</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_n c_n = 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="particle-in-a-1d-box">
+<h3>Particle in a 1D box<a class="headerlink" href="#particle-in-a-1d-box" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} + V(x) \right] \psi(x) = E\psi(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi_n(x) = \sqrt{\dfrac{2}{L}} \sin\left(\dfrac{n \pi x}{L}\right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Energy eigenvalues</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = \dfrac{h^2}{8mL^2} n^2 = \dfrac{\hbar^2 \pi^2}{2mL^2}n^2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="particle-in-a-3d-box">
+<h3>Particle in a 3D box<a class="headerlink" href="#particle-in-a-3d-box" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{x}) \right] \psi(\mathbf{x}) = E\psi(\mathbf{x})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n_x = 0, 1, 2, ...\)</span> <br/> <span class="math notranslate nohighlight">\(n_y = 0, 1, 2, ...\)</span> <br/> <span class="math notranslate nohighlight">\(n_z = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}&amp;\psi_{n_x, n_y, n_z}(\mathbf{x}) \\\ =&amp; \psi_{n_x}(x)\psi_{n_y}(y)\psi_{n_z}(z) \\\ =&amp; \sqrt{\dfrac{2}{L_x}}\sqrt{\dfrac{2}{L_y}}\sqrt{\dfrac{2}{L_z}} \sin\left(\dfrac{n_x \pi x}{L_x}\right)\sin\left(\dfrac{n_y \pi y}{L_y}\right)\sin\left(\dfrac{n_z \pi z}{L_z}\right)\end{aligned}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Energy eigenvalues</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = \dfrac{h^2}{8m} \left(\dfrac{n_x^2}{L_x^2} + \dfrac{n_y^2}{L_y^2} + \dfrac{n_z^2}{L_z^2}\right)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="finite-potential-well">
+<h3>Finite potential well<a class="headerlink" href="#finite-potential-well" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Potential</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V(x) = \begin{cases}0 &amp; x\in [0, L] \\\ V_0 &amp; \mathrm{elsewhere}\end{cases}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Reflection probability</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(R = \dfrac{(\sqrt{E} - \sqrt{E - V_0})^2}{(\sqrt{E} + \sqrt{E - V_0})^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Transmission probability</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(T = \dfrac{4\sqrt{E(E - V_0)}}{(\sqrt{E} - \sqrt{E - V_0})^2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="commutators-and-uncertainty">
+<h2>Commutators and Uncertainty<a class="headerlink" href="#commutators-and-uncertainty" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Commutator</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([A, B] = AB - BA\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Condition of commutation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([A, B] = 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Standard deviation (uncertainty)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\sigma_A &amp;= \sqrt{\langle (A - \langle A \rangle^2 \rangle)} \\\ &amp;= \sqrt{\langle A^2 \rangle - \langle A \rangle^2}\end{aligned}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Heisenberg uncertainty principle (general)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sigma_A \sigma_B \ge \frac{1}{2} \vert\langle[\hat{A}, \hat{B}]\rangle\vert\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Heisenberg uncertainty principle (position-momentum)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sigma_x \sigma_p \ge \frac{\hbar}{2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectroscopy">
+<h2>Spectroscopy<a class="headerlink" href="#spectroscopy" title="Permalink to this heading">#</a></h2>
+<section id="vibration-quantum-harmonic-oscillator">
+<h3>Vibration: quantum harmonic oscillator<a class="headerlink" href="#vibration-quantum-harmonic-oscillator" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Vibrational Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2\mu}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + V(r) \right]\psi(\mathbf{x}) = E\psi(\mathbf{x})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Wave function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}) = R(r)Y(\theta, \phi)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Harmonic approximation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V(r) \approx \frac{1}{2}kr^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Spring constant</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(k = \mu\omega_0^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Vibrational Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2\mu}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{1}{2}kr^2 \right]\psi(r) = E\psi(r)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(r) = \dfrac{1}{\sqrt{2^2 n!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4} H_n(\sqrt{\alpha} r) e^{-\alpha r^2 / 2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Hermite polynomials</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(H_n(r) = (-)^n e^{x^2}\left(\dfrac{d^n}{dx^n}\right)e^{-x^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Constant</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\alpha = \dfrac{m\omega_0}{\hbar}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Energy eigenvalue <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = (n + \frac{1}{2})\hbar \omega_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Transition dipole moment</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\vec{\mu}_{fi} = \dfrac{d\vec{\mu}(x_0)}{dx} \langle \psi_f \vert \hat{x} \vert \psi_i \rangle\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Vibrational selection rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Delta n = \pm 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rotation-quantum-rigid-rotor">
+<h3>Rotation: quantum rigid rotor<a class="headerlink" href="#rotation-quantum-rigid-rotor" title="Permalink to this heading">#</a></h3>
+<section id="classical-rigid-rotor">
+<h4>Classical rigid rotor<a class="headerlink" href="#classical-rigid-rotor" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Angular momentum</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{L} = \mathbf{x} \times \mathbf{p} = I\vec{\omega}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Linear velocity</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\vec{v} = R_0 \vec{\omega}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Moment of inertia</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(I = mR_0^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Rotational kinetic energy</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E = \dfrac{1}{2}I\omega^2 = \dfrac{L^2}{2I}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quantum-rigid-rotor">
+<h4>Quantum rigid rotor<a class="headerlink" href="#quantum-rigid-rotor" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Angular momentum operator</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{L}} = \hat{\mathbf{x}} \times \hat{\mathbf{p}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>z-component of angular momentum operator</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(L_x = \dfrac{\hbar}{i}\dfrac{\partial}{\partial\phi}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Magnitude of angular momentum operator</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{L}}^2 = L^2 =  -\hbar^2 \left[ \dfrac{1}{\sin\theta}\dfrac{\partial}{\partial\theta} \left( \sin\theta\dfrac{\partial}{\partial\theta} + \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\phi^2} \right) \right]\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{L}}\)</span> does not commute</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{L}_i, \hat{L}_j] = i\hbar \hat{L}_k\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{L}}\)</span> commute with its magnitude</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{L}_i, L^2] = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Rotational Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2\mu R_0^2}\left[ \dfrac{1}{r^2 \sin\theta}\dfrac{\partial}{\partial \theta}\left(\sin\theta\dfrac{\partial}{\partial \theta}\right) + \dfrac{1}{r^2 \sin^2 \theta}\dfrac{\partial^2}{\partial\phi^2} \right]Y(\theta, \phi) = EY(\theta, \phi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Spherical harmonics</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(Y_l^m(\theta, \phi) = (-)^m \sqrt{\dfrac{(2l+1)}{4\pi}\dfrac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Legendre polynomial</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P_l^m(x) = \dfrac{1}{2^l l!}(1-x^2)^{m/2} \dfrac{d^{(l+m)}}{dx^{(l+m)}}(x^2-1)^l\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Energy eigenvalues <br/> <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_l = \dfrac{\hbar^2}{2I}l(l+1)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Angular momentum eigenvalues <br/> <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(L^2 Y = \hbar^2l(l+1) Y\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>z-component eigenvalues <br/> <span class="math notranslate nohighlight">\(m = -l, ..., 0, ..., l\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(L_z Y = \hbar m Y\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Transition dipole moment</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\mu_{fi} = \langle \psi_f \vert \mu_z \cos\theta \vert \psi_i \rangle\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Rotational selection rule</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Delta l = \pm 1, \Delta m = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="hydrogen-atom">
+<h3>Hydrogen atom<a class="headerlink" href="#hydrogen-atom" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Hydrogen atom Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar}{2m_e}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{\vec{L}}{2m_er^2} - \dfrac{e^2}{r} \right]\psi(x) = E\psi(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Effective potential</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_{\text{eff}} = \dfrac{\hbar l(l+1)}{2mr^2} - \dfrac{e^2}{r}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi_{nlm}(x) = R_{nl}(r)Y_l^m(\theta, \phi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Energy eigenvalues <br/> <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = -\dfrac{e^2}{2a_0}\dfrac{1}{n^2} = -\dfrac{me^4}{2\hbar^2}\dfrac{1}{n^2} - \dfrac{R_H}{n^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Rydberg’s constant</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(R_H = 2.179 \times 10^{-18} \mathrm{J} = 13.6 \ \mathrm{eV}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Bohr’s radius</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(a_0 = \dfrac{\hbar^2}{me^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Radial probability distribution</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{nl}(r) dr = r^2 R^2_{nl}(r) dr\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="many-electron-and-proton-system">
+<h2>Many Electron and Proton System<a class="headerlink" href="#many-electron-and-proton-system" title="Permalink to this heading">#</a></h2>
+<section id="many-electron-atom">
+<h3>Many electron atom<a class="headerlink" href="#many-electron-atom" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Helium Schrodinger equation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ \underbrace{-\dfrac{\hbar^2}{2m}\nabla_1^2}\_{\text{KE of }e^-_1} \overbrace{-\dfrac{\hbar^2}{2m}\nabla_2^2}\^{\text{KE of }e^-_2} \underbrace{-\dfrac{2e^2}{\vert\mathbf{x}_1\vert}}\_{e^-_1\text{-N attraction}} \overbrace{-\dfrac{2e^2}{\vert\mathbf{x}_2\vert}}\^{e^-_2\text{-N attraction}} + \underbrace{\dfrac{e^2}{\vert\mathbf{x}_1 - \mathbf{x}_2\vert}}\_{e^-_1 \text{-} e^-_2 \text{repulsion}} \right] \psi(\mathbf{x}_1, \mathbf{x}_2) = E \psi(\mathbf{x}_1, \mathbf{x}_2)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Orbital approximation</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n) = \phi(\mathbf{x}_1)\phi(\mathbf{x}_2)\dots\phi(\mathbf{x}_n)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Hartree orbital equations</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2 \nabla_i^2}{2m} - \dfrac{Ze^2}{\vert\mathbf{x}\vert} + \sum\limits^N_{j=1, j\not= i} \displaystyle\int \dfrac{e^2 \phi_j^*(\mathbf{x}')\phi_j(\mathbf{x}')}{\vert\mathbf{x} - \mathbf{x}' \vert} d^3\mathbf{x}' \right] \phi_i(\mathbf{x}) = \varepsilon_{ii} \phi_i(\mathbf{x})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spin">
+<h3>Spin<a class="headerlink" href="#spin" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}\)</span> does not commute</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{S}_i, \hat{S}_j] = i\hbar \hat{S}_k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}\)</span> commute with its magnitude</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{S}_i, S^2] = 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Eigenvalue of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}^2\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{S}}^2 \leftrightarrow \hbar^2 s(s+1)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Eigenvalue of <span class="math notranslate nohighlight">\(\hat{S}_z\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S}_z \leftrightarrow \hbar m_s\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<section id="electron-spin">
+<h4>Electron spin<a class="headerlink" href="#electron-spin" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Electron spin</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(s = \frac{1}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Spin up function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\alpha(m_s) = \begin{cases} 1 &amp; m_s = +\frac{1}{2} \\\ 0 &amp; m_s = -\frac{1}{2} \end{cases}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Spin down function</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\beta(m_s) = \begin{cases} 0 &amp; m_s = +\frac{1}{2} \\\ 1 &amp; m_s = -\frac{1}{2} \end{cases}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\alpha\)</span> is eigenfunction of <span class="math notranslate nohighlight">\(\hat{S_z}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S_z} \alpha = +\frac{1}{2}\hbar \alpha\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\beta\)</span> is eigenfunction of <span class="math notranslate nohighlight">\(\hat{S_z}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S_z} \beta = -\frac{1}{2}\hbar \beta\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\alpha, \beta\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S^2}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S^2} \alpha = \hbar^2 s(s+1) \alpha = \frac{3}{4} \hbar^2 \alpha \newline \hat{S^2} \beta = \hbar^2 s(s+1) \beta = \frac{3}{4} \hbar^2 \beta\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Normalization</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{m_s} \alpha^*\alpha = \sum\limits_{m_s} \beta^*\beta = 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Orthogonality</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{m_s} \alpha^*\beta = \sum\limits_{m_s} \beta^*\alpha = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="identical-particles">
+<h3>Identical particles<a class="headerlink" href="#identical-particles" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
+<th class="head text-left"><p>Equations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Spin-spin permutation operator</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{ij} \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_j, \dots, \mathbf{r}_N) = \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_j, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Doing nothing</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{ij}P_{ij} = 1\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Symmetric eigenvalue</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lambda = 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Anti-symmetric eigenvalue</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lambda = -1\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Fermions (e.g. electron)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>-integer spin, anti-symmetric</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Bosons</p></td>
+<td class="text-left"><p>integer spin, symmetric</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Pauli exclusion principle</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N) = - \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N) = 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Slater determinant</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(\mathrm{x}_1, \mathrm{x}_2, \cdots, \mathrm{x}_N) = \dfrac{1}{\sqrt{N!}} \begin{vmatrix}\chi_1(\mathbf{x}_1) &amp; \chi_2(\mathbf{x}_1) &amp; \cdots &amp; \chi_N(\mathbf{x}_1) \\\ \chi_1(\mathbf{x}_2) &amp; \chi_2(\mathbf{x}_2) &amp; \cdots &amp; \chi_N(\mathbf{x}_2) \\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\ \chi_1(\mathbf{x}_N) &amp; \chi_2(\mathbf{x}_N) &amp; \cdots &amp; \chi_N(\mathbf{x}_N) \end{vmatrix}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Hartree-Fock orbital equations</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2\nabla^2}{2m} - \dfrac{Ze^2}{\vert\mathbf{x}\vert} \right] \phi_i(\mathbf{r}) + \displaystyle\sum_{j=1}^N \left[ \phi_i(\mathbf{r}) \int \dfrac{e^2 \phi^*_j(\mathbf{r}) \phi_j(\mathbf{r})}{\vert\mathbf{x} - \mathbf{x}'\vert} d^3r' - \phi_j(\mathbf{r}) \int \dfrac{e^2 \phi^*_j(\mathbf{r}) \phi_i(\mathbf{r})}{\vert\mathbf{x} - \mathbf{x}'\vert} d^3r' \right] = \varepsilon_i \phi_i(\mathbf{r})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Molecular orbital by linear combination of atomic orbitals (MO-LCAO)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}) = c_1 \phi_1 (\mathbf{x}) + c_2 \phi_2 (\mathbf{x}) \newline \mathrm{MO} = c_1 (\mathrm{AO}) + c_2 (\mathrm{AO})\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Variational principle</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(E = \dfrac{\langle \psi \vert H \vert \psi \rangle}{\langle \psi \vert \psi \rangle}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="units.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Units</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="math/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Math</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum">From classical to Quantum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbody-radiation">Blackbody radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-particle-duality">Wave-particle duality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-hydrogen-and-bohrs-model">Atomic spectra of hydrogen and Bohr’s model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waves">Waves</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-mechanical-postulates">Quantum-Mechanical Postulates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quantum-systems">Simple Quantum Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-states">Stationary states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-1d-box">Particle in a 1D box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-3d-box">Particle in a 3D box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-potential-well">Finite potential well</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-uncertainty">Commutators and Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopy">Spectroscopy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-quantum-harmonic-oscillator">Vibration: quantum harmonic oscillator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-quantum-rigid-rotor">Rotation: quantum rigid rotor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-rigid-rotor">Classical rigid rotor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor">Quantum rigid rotor</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-atom">Hydrogen atom</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-and-proton-system">Many Electron and Proton System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-atom">Many electron atom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin">Spin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identical-particles">Identical particles</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>QM overview &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Complex numbers &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/note03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Complex numbers" href="note04.html" />
+    <link rel="next" title="Python" href="../demos/index.html" />
     <link rel="prev" title="Differentiation" href="note02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -243,6 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../units.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">QM overview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
 <ul class="current nav bd-sidenav">
@@ -250,8 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Integrals</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">QM overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Complex numbers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Complex numbers</a></li>
 
 </ul>
 </li>
@@ -399,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>QM overview</h1>
+    <h1>Complex numbers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,46 +409,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum">From classical to Quantum</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbody-radiation">Blackbody radiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-particle-duality">Wave-particle duality</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-hydrogen-and-bohrs-model">Atomic spectra of hydrogen and Bohr’s model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waves">Waves</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-mechanical-postulates">Quantum-Mechanical Postulates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quantum-systems">Simple Quantum Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-states">Stationary states</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-1d-box">Particle in a 1D box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-3d-box">Particle in a 3D box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-potential-well">Finite potential well</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-uncertainty">Commutators and Uncertainty</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopy">Spectroscopy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimer-model">Dimer model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-quantum-harmonic-oscillator">Vibration: quantum harmonic oscillator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-rigid-rotor">Rotation: rigid rotor</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-rigid-rotor">Classical rigid rotor</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor">Quantum rigid rotor</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-atom">Hydrogen atom</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-and-proton-system">Many Electron and Proton System</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-atom">Many electron atom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin">Spin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identical-particles">Identical particles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -459,671 +433,185 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="qm-overview">
-<h1>QM overview<a class="headerlink" href="#qm-overview" title="Permalink to this heading">#</a></h1>
-<section id="from-classical-to-quantum">
-<h2>From classical to Quantum<a class="headerlink" href="#from-classical-to-quantum" title="Permalink to this heading">#</a></h2>
-<section id="blackbody-radiation">
-<h3>Blackbody radiation<a class="headerlink" href="#blackbody-radiation" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Energy quantization</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E = nh\nu\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Average energy of an oscillating dipole</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\langle E_{\text{osc}} \rangle = \dfrac{h\nu}{e^{h\nu / k_B T} - 1}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Spectral radiation density of blackbody (Planck)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3}\dfrac{1}{e^{h\nu / k_B T} - 1} \ d\nu\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Spectral radiation density of blackbody (classical)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3} k_B T d\nu\)</span></p></td>
-</tr>
-</tbody>
-</table>
+  <section id="complex-numbers">
+<h1>Complex numbers<a class="headerlink" href="#complex-numbers" title="Permalink to this heading">#</a></h1>
+<p><strong>Recommended:</strong> Watch the  following YouTube video
+<a class="reference external" href="https://www.youtube.com/watch?v=T647CGsuOVU">“complex numbers are real, part-1”</a></p>
+<p><strong>Also recommended:</strong> <a class="reference external" href="https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">A Visual, Intuitive Guide to Imaginary Numbers</a></p>
+<section id="complex-numbers-are-every-bit-as-real-as-every-other-number">
+<h2>“Complex numbers are every bit as real as every other number. “<a class="headerlink" href="#complex-numbers-are-every-bit-as-real-as-every-other-number" title="Permalink to this heading">#</a></h2>
+<p>A complex number <span class="math notranslate nohighlight">\(z\)</span> is a kind of 2D number that lives in 2D space and requires two components for its full specification:</p>
+<p><img alt="" src="math/images/cnum_intro.png" /></p>
+<ul class="simple">
+<li><p><strong>Real part</strong> <span class="math notranslate nohighlight">\( x \)</span>
+.</p></li>
+<li><p><strong>Imaginary part</strong> <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
+</ul>
+<p>Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that’s how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix.</p>
 </section>
-<section id="wave-particle-duality">
-<h3>Wave-particle duality<a class="headerlink" href="#wave-particle-duality" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Energy of light</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E = h \nu\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p><strong>Photoelectric effect</strong> <br/> Kinetic energy of ejected photoelectron</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_k = h \nu - \Phi\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>de Broglie relation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(p = \dfrac{h}{\lambda}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Kinetic energy</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_k = \dfrac{1}{2}mv^2 = \dfrac{p^2}{2m}\)</span></p></td>
-</tr>
-</tbody>
-</table>
+<section id="introducing-i">
+<h2>Introducing <span class="math notranslate nohighlight">\( i \)</span><a class="headerlink" href="#introducing-i" title="Permalink to this heading">#</a></h2>
+<p>When first confronted with complex numbers they seem unintuitive and hard to visualize. The imaginary unit <span class="math notranslate nohighlight">\( i \)</span> in particular mystifies as to what it is and where did it come from.
+Some facts from mathematics are in order here:</p>
+<ul class="simple">
+<li><p><strong>What is the definition of <span class="math notranslate nohighlight">\( i \)</span>?</strong> The imaginary number <span class="math notranslate nohighlight">\( i \)</span> is defined solely by the property that its square is <span class="math notranslate nohighlight">\(−1\)</span>, that is: <span class="math notranslate nohighlight">\(i\cdot i=-1\)</span>.</p></li>
+<li><p><strong>How does <span class="math notranslate nohighlight">\(i\)</span> change what I know about math of real variables?</strong> Imaginary numbers are an important mathematical concept, which extend the real number system <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to the complex number system <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>, which in turn provides at least one root for every nonconstant polynomial <span class="math notranslate nohighlight">\(P(x)\)</span>. (See the Fundamental theorem of algebra.) The term “imaginary” is used because there is no real number having a negative square.</p></li>
+<li><p><strong>Where does <span class="math notranslate nohighlight">\(i\)</span> appear in math?</strong> Most notably imaginary number (i) provide solutions to quadratic equation <span class="math notranslate nohighlight">\(x^2 + 1 = 0.\)</span> Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i.</p></li>
+<li><p><strong>What do you call a number that contains i?</strong> A complex number z=1+2i. A function of complex variable is a function if it operates on complex variables z.</p></li>
+</ul>
 </section>
-<section id="atomic-spectra-of-hydrogen-and-bohrs-model">
-<h3>Atomic spectra of hydrogen and Bohr’s model<a class="headerlink" href="#atomic-spectra-of-hydrogen-and-bohrs-model" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Hydrogen emission lines <br/> <span class="math notranslate nohighlight">\(n_2 &gt; n_1\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\tilde{\nu} = \dfrac{1}{\lambda} = R_H \left( \dfrac{1}{n_1^2} - \dfrac{1}{n_2^2} \right)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Bohr’s radius</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(r = \dfrac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Energy level in Bohr’s model</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = -\dfrac{m_e e^4}{8\varepsilon_0^2 h^2n^2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Emission of hydrogen atom <br/> <span class="math notranslate nohighlight">\(n_2 &gt; n_1\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\nu = \dfrac{m_e e^4}{8\varepsilon_0^2 h^3} \left( \dfrac{1}{n_1^2} - \dfrac{1}{n_2^2} \right)\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="waves">
-<h3>Waves<a class="headerlink" href="#waves" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Classical nondispersive wave equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{\partial \Psi(x, t)}{\partial x^2} = \dfrac{1}{v^2} \dfrac{\partial \Psi(x, t)}{\partial t^2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Wave number</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(k = \dfrac{2\pi}{\lambda}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Frequency</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\nu = \dfrac{1}{T}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Angular frequency</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\omega = \dfrac{2\pi}{T} = 2\pi\nu\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Wave speed</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(v = \lambda\nu\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Euler’s formula</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(e^{i\theta} = \cos\theta + i\sin\theta\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Solution of wave equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\Psi(x, t) &amp;= A \sin(kx - \omega t + \phi) \\\ &amp;= \mathrm{Re}(Ae^{i(kx-\omega t + \phi')})\end{aligned}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Interfering traveling waves give standing wave</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\Psi(x, t) &amp;= A[\sin(kx - \omega t) + \sin(kx + \omega t)] \\\ &amp;= 2A \sin(kx)\cos(\omega t) \\\ &amp;= \psi(x)\cos(\omega t) \end{aligned}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Time-independent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2m}\dfrac{d^2\psi(x)}{dx^2} + V(x)\psi(x) = E\psi(x)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Time-dependent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2m}\dfrac{\partial^2\Psi(x, t)}{\partial x^2} + V(x, t)\Psi(x, t) = i\hbar\Psi(x, t)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Stationary states are standing waves</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(x, t) = \psi(x) e^{-i(E/\hbar)t}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Normalization</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Vert f(x) \Vert = \int_D f^* f \ dx = 1\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Orthogonality</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\int_D f^* g \ dx = 0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Use quantum mechanics when …</p></td>
-<td class="text-left"><p>1. <span class="math notranslate nohighlight">\(\lambda_{\text{particle}} \sim L_{\text{problem}}\)</span> <br/> 2. <span class="math notranslate nohighlight">\(\Delta E \gtrsim k_bT\)</span> (discrete energy spectrum)</p></td>
-</tr>
-</tbody>
-</table>
+<section id="eculidean-vs-polar-representation-of-complex-numbers">
+<h2>Eculidean vs polar representation of complex numbers<a class="headerlink" href="#eculidean-vs-polar-representation-of-complex-numbers" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="math/images/cnum_2.png" /></p>
+<p>The Euclidean, polar, and trigonometric forms of a complex number <span class="math notranslate nohighlight">\( z \)</span> are given by:</p>
+<div class="math notranslate nohighlight">
+\[z = x + iy = r(\cos{\phi} + i \sin{\phi}) = re^{i\phi} \]</div>
+<p>The second equality above is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&amp;targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity."><strong>Euler’s formula</strong></a>
+And equally widely regarded as one of the most beautiful and mysterious in mathematics.</p>
+<p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\bar z = x-iy =  r (\cos{\phi} - i \sin{\phi} ) = re^{-i\phi}\]</div>
+<p>The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the
+origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p>
+<div class="math notranslate nohighlight">
+\[r = |z| = \sqrt{x^2 + y^2}\]</div>
+<p>The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of (0,0)-(x,y) line with respect to the real axis.
+The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
+\]</div>
+<p>Three elementary trigonometric functions are</p>
+<div class="math notranslate nohighlight">
+\[
+\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
+\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
+\tan{\phi} = \frac{y}{x}
+\]</div>
 </section>
 </section>
-<section id="quantum-mechanical-postulates">
-<h2>Quantum-Mechanical Postulates<a class="headerlink" href="#quantum-mechanical-postulates" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>The state of a quantum-mechanical particle is completely specified by a wave function <span class="math notranslate nohighlight">\(\Psi(x, t)\)</span>. The probability that the particle will be found at time <span class="math notranslate nohighlight">\(t_0\)</span> in a spatial interval of width <span class="math notranslate nohighlight">\(dx\)</span> centered at <span class="math notranslate nohighlight">\(x_0\)</span> is given by <span class="math notranslate nohighlight">\(\Psi^*(x_0, t_0)\Psi(x_0, t_0) dx\)</span></p></li>
-<li><p>For every measurable property of a system, there exists a corresponding operator.</p></li>
-<li><p>In any single measurement of the observable that corresponds to the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the only values that will ever be measured are the eigenvalues of that operator.</p></li>
-<li><p>If the system is in a state described by the wave function <span class="math notranslate nohighlight">\(\Psi(x, t)\)</span>, and the value of the observatle <span class="math notranslate nohighlight">\(a\)</span> is measured once on each of many identically prepared systems, the average value (expectation value) of all of the measurements is given by
-$<span class="math notranslate nohighlight">\(
-\langle a \rangle = \dfrac{\displaystyle\int_{-\infty}^{\infty} \Psi^* \hat{A} \Psi \ dx}{\displaystyle\int_{-\infty}^{\infty} \Psi^*\Psi \ dx}
-\)</span>$</p></li>
-<li><p>The evolution in time of a quantum-mechanical system is governed by the time-dependent Schrödinger equation
-$<span class="math notranslate nohighlight">\(
-\hat{H}\Psi(x, t) = i\hbar\dfrac{\partial\Psi(x, t)}{\partial t}
-\)</span>$</p></li>
-</ol>
-<section id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>1D</p></th>
-<th class="head text-left"><p>3D</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Position</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{x} = x\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{x}} = \mathbf{x}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Linear momentum</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{p}_x = -i\hbar \dfrac{d}{dx}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{p}} = -i\hbar\mathbf{\nabla}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Kinetic energy</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{T} = \dfrac{\hat{p}_x^2}{2m} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{T}} = -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Potential energy</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{V} = V(x)\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{V}} = V(\mathbf{x})\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Total energy Hamiltonian</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H} = \hat{T} + \hat{V} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} + V(x)\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\hat{H}} = -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{x})\)</span></p></td>
-</tr>
-</tbody>
-</table>
+<section id="de-moivres-theorem">
+<h1>De Moivre’s Theorem<a class="headerlink" href="#de-moivres-theorem" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">De Moivre’s theorem</a> states that:</p>
+<div class="math notranslate nohighlight">
+\[
+z^n=(r(\cos{\theta} + i \sin{\theta}))^n =
+r^n e^{in\theta} =
+r^n(\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<p>We raised complex number to power n, used polar representation and realized that exponent raised to power n simply multiplies polar angle by n.
+Note that de Moivre’s theorem allows relating trigonometric functions of angle <span class="math notranslate nohighlight">\(\theta\)</span> raised to power <span class="math notranslate nohighlight">\(n\)</span> to trignomoteric functions of of angle <span class="math notranslate nohighlight">\(n\theta\)</span> of power one:</p>
+<div class="math notranslate nohighlight">
+\[
+r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
+\]</div>
+<p>The proof of de Moivre’s theorem can be done via <a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">induction</a>, e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, …</p>
+<p><strong>Exercise:</strong> set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine.</p>
+<section id="example-1-pythagoras-theorem">
+<h2>Example-1: Pythagoras’ theorem<a class="headerlink" href="#example-1-pythagoras-theorem" title="Permalink to this heading">#</a></h2>
+<p>We can use de Moivre’s theorem to show that
+<span class="math notranslate nohighlight">\( r = \sqrt{x^2 + y^2} \)</span>.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+1 &amp;= e^{i\theta} e^{-i\theta} \\
+&amp;= (\cos{\theta} + i \sin{\theta})(\cos{(\text{-}\theta)} + i \sin{(\text{-}\theta)}) \\
+&amp;= (\cos{\theta} + i \sin{\theta})(\cos{\theta} - i \sin{\theta}) \\
+&amp;= \cos^2{\theta} + \sin^2{\theta} \\
+&amp;= \frac{x^2}{r^2} + \frac{y^2}{r^2}
+\end{aligned}
+\end{split}\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 + y^2 = r^2
+\]</div>
+<p>We recognize this as a theorem of <strong>Pythagoras</strong>.</p>
 </section>
+<section id="example-2-trigonometric-identities">
+<h2>Example-2: Trigonometric Identities<a class="headerlink" href="#example-2-trigonometric-identities" title="Permalink to this heading">#</a></h2>
+<p>We can obtain a complete suite of trigonometric identities by
+appropriately manipulating polar forms of complex numbers.</p>
+<p>We’ll get many of them by deducing implications of the equality</p>
+<div class="math notranslate nohighlight">
+\[e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}\]</div>
+<p>For example, we’ll calculate identities for <span class="math notranslate nohighlight">\(\cos{(\omega + \theta)} \)</span> and <span class="math notranslate nohighlight">\( \sin{(\omega + \theta)}\)</span>.</p>
+<p>Using the sine and cosine formulas presented at the beginning of this
+lecture, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\cos{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} + e^{-i(\omega + \theta)}}{2} \\
+\sin{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} - e^{-i(\omega + \theta)}}{2i}
+\end{aligned}\end{split}\]</div>
+<p>We can also obtain the trigonometric identities as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cos{(\omega + \theta)} + i \sin{(\omega + \theta)}
+&amp;= e^{i(\omega + \theta)} \\
+&amp;= e^{i\omega} e^{i\theta} \\
+&amp;= (\cos{\omega} + i \sin{\omega})(\cos{\theta} + i \sin{\theta}) \\
+&amp;= (\cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta}) +
+i (\cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta})
+\end{aligned}
+\end{split}\]</div>
+<p>Since both real and imaginary parts of the above formula should be
+equal, we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cos{(\omega + \theta)} = \cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta} \\
+\sin{(\omega + \theta)} = \cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta}
+\end{aligned}
+\end{split}\]</div>
+<p>The equations above are also known as the <strong>angle sum identities</strong>. We
+can verify the equations using the <code class="docutils literal notranslate"><span class="pre">simplify</span></code> function in the
+<code class="docutils literal notranslate"><span class="pre">sympy</span></code> package.</p>
 </section>
-<section id="simple-quantum-systems">
-<h2>Simple Quantum Systems<a class="headerlink" href="#simple-quantum-systems" title="Permalink to this heading">#</a></h2>
-<section id="stationary-states">
-<h3>Stationary states<a class="headerlink" href="#stationary-states" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Time dependent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H}\Psi(x, t) = i\hbar\dfrac{\partial\Psi(x, t)}{\partial t}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H}\psi_n(x) = E_n \psi_n(x)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Stationary state wave function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(x, t) = \psi(x) T(t)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Time component of wave function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(T(t) = e^{iEt/\hbar}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Probability of finding particle in an interval</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathrm{Prob}(x, x+dx) = \vert \Psi(x, t) \vert^2 dx = \vert \psi(x) \vert^2 dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>General solution as linear combination of stationary states</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(x) = \sum\limits_n c_n \phi_n(x)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Expansion coefficients</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^* \psi \ dx\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Normalization</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_n c_n = 1\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="particle-in-a-1d-box">
-<h3>Particle in a 1D box<a class="headerlink" href="#particle-in-a-1d-box" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} + V(x) \right] \psi(x) = E\psi(x)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi_n(x) = \sqrt{\dfrac{2}{L}} \sin\left(\dfrac{n \pi x}{L}\right)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Energy eigenvalues</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = \dfrac{h^2}{8mL^2} n^2 = \dfrac{\hbar^2 \pi^2}{2mL^2}n^2\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="particle-in-a-3d-box">
-<h3>Particle in a 3D box<a class="headerlink" href="#particle-in-a-3d-box" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Time independent Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{x}) \right] \psi(\mathbf{x}) = E\psi(\mathbf{x})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n_x = 0, 1, 2, ...\)</span> <br/> <span class="math notranslate nohighlight">\(n_y = 0, 1, 2, ...\)</span> <br/> <span class="math notranslate nohighlight">\(n_z = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}&amp;\psi_{n_x, n_y, n_z}(\mathbf{x}) \\\ =&amp; \psi_{n_x}(x)\psi_{n_y}(y)\psi_{n_z}(z) \\\ =&amp; \sqrt{\dfrac{2}{L_x}}\sqrt{\dfrac{2}{L_y}}\sqrt{\dfrac{2}{L_z}} \sin\left(\dfrac{n_x \pi x}{L_x}\right)\sin\left(\dfrac{n_y \pi y}{L_y}\right)\sin\left(\dfrac{n_z \pi z}{L_z}\right)\end{aligned}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Energy eigenvalues</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = \dfrac{h^2}{8m} \left(\dfrac{n_x^2}{L_x^2} + \dfrac{n_y^2}{L_y^2} + \dfrac{n_z^2}{L_z^2}\right)\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="finite-potential-well">
-<h3>Finite potential well<a class="headerlink" href="#finite-potential-well" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Potential</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(V(x) = \begin{cases}0 &amp; x\in [0, L] \\\ V_0 &amp; \mathrm{elsewhere}\end{cases}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Reflection probability</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(R = \dfrac{(\sqrt{E} - \sqrt{E - V_0})^2}{(\sqrt{E} + \sqrt{E - V_0})^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Transmission probability</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(T = \dfrac{4\sqrt{E(E - V_0)}}{(\sqrt{E} - \sqrt{E - V_0})^2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="commutators-and-uncertainty">
-<h2>Commutators and Uncertainty<a class="headerlink" href="#commutators-and-uncertainty" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Commutator</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([A, B] = AB - BA\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Condition of commutation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([A, B] = 0\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Standard deviation (uncertainty)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\sigma_A &amp;= \sqrt{\langle (A - \langle A \rangle^2 \rangle)} \\\ &amp;= \sqrt{\langle A^2 \rangle - \langle A \rangle^2}\end{aligned}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Heisenberg uncertainty principle (general)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sigma_A \sigma_B \ge \frac{1}{2} \vert\langle[\hat{A}, \hat{B}]\rangle\vert\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Heisenberg uncertainty principle (position-momentum)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sigma_x \sigma_p \ge \frac{\hbar}{2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="spectroscopy">
-<h2>Spectroscopy<a class="headerlink" href="#spectroscopy" title="Permalink to this heading">#</a></h2>
-<section id="dimer-model">
-<h3>Dimer model<a class="headerlink" href="#dimer-model" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Hamiltonian of dimer</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{H}_{\text{dimer}} = \dfrac{\mathbf{p}_1^2}{2m_1} + \dfrac{\mathbf{p}_2^2}{2m_2} + V(\vert \mathbf{x}_1 - \mathbf{x}_2\vert)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Total mass</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(M = m_1 + m_2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Reduced mass</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mu = \dfrac{m_1m_2}{m_1 + m_2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Position in center of mass (COM) coordinate</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{X} = \dfrac{m_1 \mathbf{x}_1 + m_2 \mathbf{x}_2}{M}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Momentum in center of mass (COM) coordinate</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{\Pi} = \mathbf{p}_1 + \mathbf{p}_2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Position in relative coordinate</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{x}_1 - \mathbf{x}_2 \equiv \mathbf{r}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Momentum in relative coordinate</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{p} = \dfrac{m_1 \mathbf{p}_1 + m_2 \mathbf{p}_2}{M}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Hamiltonian of dimer</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\begin{aligned}\mathbf{H}_{\text{dimer}} &amp;= \mathbf{H}\_{\text{free}} + \mathbf{H}\_{\text{int}} \\\ &amp;= \underbrace{\dfrac{\mathbf{\Pi}^2}{2M}}\_{\text{COM coord}} + \underbrace{\dfrac{\mathbf{p}^2}{2\mu} + V(\vert\mathbf{x}\vert)}\_{\text{rel coord}}\end{aligned}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Free particle Hamiltonian</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{H}_{\text{free}} = \dfrac{\mathbf{\Pi}^2}{2M}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Internal Hamiltonian</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{H}_{\text{int}} = \dfrac{\mathbf{p}^2}{2\mu} + V(\vert\mathbf{x}\vert)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Dimer wave function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi_{\text{dimer}} = \Phi(\mathbf{X}) \psi(\mathbf{x})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Free particle (COM) wave function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Phi(\mathbf{X}) = e^{\pm i\mathbf{\Pi X}/\hbar}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Internal Hamiltonian Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2\mu}\nabla_{\mathbf{x}}^2 + V(\mathbf{r}) \right] \psi(\mathbf{x}) = E\psi(\mathbf{x})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Laplacian in spherical coordinate <br/> <span class="math notranslate nohighlight">\(\theta \in [0, \pi]\)</span> <br/> <span class="math notranslate nohighlight">\(\phi \in [0, 2\pi]\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\nabla^2 = \underbrace{\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right)}\_{\text{radial breathing KE, vibration}} + \underbrace{\dfrac{1}{r^2 \sin\theta}\dfrac{\partial}{\partial \theta}\left(\sin\theta\dfrac{\partial}{\partial \theta}\right) + \dfrac{1}{r^2 \sin^2 \theta}\dfrac{\partial^2}{\partial\phi^2}}\_{\text{angular breathing KE, rotation}}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Dimer Hamiltonian</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{H}\_{\text{dimer}} = \hat{H}\_{\text{COM}} + \hat{H}\_{\text{vib}} + \hat{H}\_{\text{rot}}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Dimer total energy (see below)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E = \dfrac{\Pi^2}{2M} + \hbar\omega_0 (n+\frac{1}{2}) + \dfrac{\hbar^2 l(l+1)}{2I}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="vibration-quantum-harmonic-oscillator">
-<h3>Vibration: quantum harmonic oscillator<a class="headerlink" href="#vibration-quantum-harmonic-oscillator" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Vibrational Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2\mu}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + V(r) \right]\psi(\mathbf{x}) = E\psi(\mathbf{x})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Wave function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}) = R(r)Y(\theta, \phi)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Harmonic approximation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(V(r) \approx \frac{1}{2}kr^2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Spring constant</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(k = \mu\omega_0^2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Vibrational Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2}{2\mu}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{1}{2}kr^2 \right]\psi(r) = E\psi(r)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(r) = \dfrac{1}{\sqrt{2^2 n!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4} H_n(\sqrt{\alpha} r) e^{-\alpha r^2 / 2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Hermite polynomials</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(H_n(r) = (-)^n e^{x^2}\left(\dfrac{d^n}{dx^n}\right)e^{-x^2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Constant</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\alpha = \dfrac{m\omega_0}{\hbar}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Energy eigenvalue <br/> <span class="math notranslate nohighlight">\(n = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = (n + \frac{1}{2})\hbar \omega_0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Transition dipole moment</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\vec{\mu}_{fi} = \dfrac{d\vec{\mu}(x_0)}{dx} \langle \psi_f \vert \hat{x} \vert \psi_i \rangle\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Vibrational selection rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Delta n = \pm 1\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="rotation-rigid-rotor">
-<h3>Rotation: rigid rotor<a class="headerlink" href="#rotation-rigid-rotor" title="Permalink to this heading">#</a></h3>
-<section id="classical-rigid-rotor">
-<h4>Classical rigid rotor<a class="headerlink" href="#classical-rigid-rotor" title="Permalink to this heading">#</a></h4>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Angular momentum</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mathbf{L} = \mathbf{x} \times \mathbf{p} = I\vec{\omega}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Linear velocity</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\vec{v} = R_0 \vec{\omega}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Moment of inertia</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(I = mR_0^2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Rotational kinetic energy</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E = \dfrac{1}{2}I\omega^2 = \dfrac{L^2}{2I}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="quantum-rigid-rotor">
-<h4>Quantum rigid rotor<a class="headerlink" href="#quantum-rigid-rotor" title="Permalink to this heading">#</a></h4>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Angular momentum operator</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{L}} = \hat{\mathbf{x}} \times \hat{\mathbf{p}}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>z-component of angular momentum operator</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(L_x = \dfrac{\hbar}{i}\dfrac{\partial}{\partial\phi}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Magnitude of angular momentum operator</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{L}}^2 = L^2 =  -\hbar^2 \left[ \dfrac{1}{\sin\theta}\dfrac{\partial}{\partial\theta} \left( \sin\theta\dfrac{\partial}{\partial\theta} + \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\phi^2} \right) \right]\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{L}}\)</span> does not commute</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{L}_i, \hat{L}_j] = i\hbar \hat{L}_k\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{L}}\)</span> commute with its magnitude</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{L}_i, L^2] = 0\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Rotational Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(-\dfrac{\hbar^2}{2\mu R_0^2}\left[ \dfrac{1}{r^2 \sin\theta}\dfrac{\partial}{\partial \theta}\left(\sin\theta\dfrac{\partial}{\partial \theta}\right) + \dfrac{1}{r^2 \sin^2 \theta}\dfrac{\partial^2}{\partial\phi^2} \right]Y(\theta, \phi) = EY(\theta, \phi)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Spherical harmonics</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(Y_l^m(\theta, \phi) = (-)^m \sqrt{\dfrac{(2l+1)}{4\pi}\dfrac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Legendre polynomial</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(P_l^m(x) = \dfrac{1}{2^l l!}(1-x^2)^{m/2} \dfrac{d^{(l+m)}}{dx^{(l+m)}}(x^2-1)^l\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Energy eigenvalues <br/> <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_l = \dfrac{\hbar^2}{2I}l(l+1)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Angular momentum eigenvalues <br/> <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(L^2 Y = \hbar^2l(l+1) Y\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>z-component eigenvalues <br/> <span class="math notranslate nohighlight">\(m = -l, ..., 0, ..., l\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(L_z Y = \hbar m Y\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Transition dipole moment</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\mu_{fi} = \langle \psi_f \vert \mu_z \cos\theta \vert \psi_i \rangle\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Rotational selection rule</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Delta l = \pm 1, \Delta m = 0\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="hydrogen-atom">
-<h3>Hydrogen atom<a class="headerlink" href="#hydrogen-atom" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Hydrogen atom Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar}{2m_e}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{\vec{L}}{2m_er^2} - \dfrac{e^2}{r} \right]\psi(x) = E\psi(x)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Effective potential</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(V_{\text{eff}} = \dfrac{\hbar l(l+1)}{2mr^2} - \dfrac{e^2}{r}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Wave function <br/> <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi_{nlm}(x) = R_{nl}(r)Y_l^m(\theta, \phi)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Energy eigenvalues <br/> <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E_n = -\dfrac{e^2}{2a_0}\dfrac{1}{n^2} = -\dfrac{me^4}{2\hbar^2}\dfrac{1}{n^2} - \dfrac{R_H}{n^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Rydberg’s constant</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(R_H = 2.179 \times 10^{-18} \mathrm{J} = 13.6 \ \mathrm{eV}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Bohr’s radius</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(a_0 = \dfrac{\hbar^2}{me^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Radial probability distribution</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{nl}(r) dr = r^2 R^2_{nl}(r) dr\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="many-electron-and-proton-system">
-<h2>Many Electron and Proton System<a class="headerlink" href="#many-electron-and-proton-system" title="Permalink to this heading">#</a></h2>
-<section id="many-electron-atom">
-<h3>Many electron atom<a class="headerlink" href="#many-electron-atom" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Helium Schrodinger equation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ \underbrace{-\dfrac{\hbar^2}{2m}\nabla_1^2}\_{\text{KE of }e^-_1} \overbrace{-\dfrac{\hbar^2}{2m}\nabla_2^2}\^{\text{KE of }e^-_2} \underbrace{-\dfrac{2e^2}{\vert\mathbf{x}_1\vert}}\_{e^-_1\text{-N attraction}} \overbrace{-\dfrac{2e^2}{\vert\mathbf{x}_2\vert}}\^{e^-_2\text{-N attraction}} + \underbrace{\dfrac{e^2}{\vert\mathbf{x}_1 - \mathbf{x}_2\vert}}\_{e^-_1 \text{-} e^-_2 \text{repulsion}} \right] \psi(\mathbf{x}_1, \mathbf{x}_2) = E \psi(\mathbf{x}_1, \mathbf{x}_2)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Orbital approximation</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n) = \phi(\mathbf{x}_1)\phi(\mathbf{x}_2)\dots\phi(\mathbf{x}_n)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Hartree orbital equations</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2 \nabla_i^2}{2m} - \dfrac{Ze^2}{\vert\mathbf{x}\vert} + \sum\limits^N_{j=1, j\not= i} \displaystyle\int \dfrac{e^2 \phi_j^*(\mathbf{x}')\phi_j(\mathbf{x}')}{\vert\mathbf{x} - \mathbf{x}' \vert} d^3\mathbf{x}' \right] \phi_i(\mathbf{x}) = \varepsilon_{ii} \phi_i(\mathbf{x})\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="spin">
-<h3>Spin<a class="headerlink" href="#spin" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}\)</span> does not commute</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{S}_i, \hat{S}_j] = i\hbar \hat{S}_k\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Components of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}\)</span> commute with its magnitude</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\([\hat{S}_i, S^2] = 0\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Eigenvalue of <span class="math notranslate nohighlight">\(\hat{\mathbf{S}}^2\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{\mathbf{S}}^2 \leftrightarrow \hbar^2 s(s+1)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Eigenvalue of <span class="math notranslate nohighlight">\(\hat{S}_z\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S}_z \leftrightarrow \hbar m_s\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<section id="electron-spin">
-<h4>Electron spin<a class="headerlink" href="#electron-spin" title="Permalink to this heading">#</a></h4>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Electron spin</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(s = \frac{1}{2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Spin up function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\alpha(m_s) = \begin{cases} 1 &amp; m_s = +\frac{1}{2} \\\ 0 &amp; m_s = -\frac{1}{2} \end{cases}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Spin down function</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\beta(m_s) = \begin{cases} 0 &amp; m_s = +\frac{1}{2} \\\ 1 &amp; m_s = -\frac{1}{2} \end{cases}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\alpha\)</span> is eigenfunction of <span class="math notranslate nohighlight">\(\hat{S_z}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S_z} \alpha = +\frac{1}{2}\hbar \alpha\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\beta\)</span> is eigenfunction of <span class="math notranslate nohighlight">\(\hat{S_z}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S_z} \beta = -\frac{1}{2}\hbar \beta\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\alpha, \beta\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S^2}\)</span></p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{S^2} \alpha = \hbar^2 s(s+1) \alpha = \frac{3}{4} \hbar^2 \alpha \newline \hat{S^2} \beta = \hbar^2 s(s+1) \beta = \frac{3}{4} \hbar^2 \beta\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Normalization</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{m_s} \alpha^*\alpha = \sum\limits_{m_s} \beta^*\beta = 1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Orthogonality</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\sum\limits_{m_s} \alpha^*\beta = \sum\limits_{m_s} \beta^*\alpha = 0\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="identical-particles">
-<h3>Identical particles<a class="headerlink" href="#identical-particles" title="Permalink to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-right"><p>Description</p></th>
-<th class="head text-left"><p>Equations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-right"><p>Spin-spin permutation operator</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{ij} \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_j, \dots, \mathbf{r}_N) = \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_j, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Doing nothing</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(P_{ij}P_{ij} = 1\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Symmetric eigenvalue</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\lambda = 1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Anti-symmetric eigenvalue</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\lambda = -1\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Fermions (e.g. electron)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>-integer spin, anti-symmetric</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Bosons</p></td>
-<td class="text-left"><p>integer spin, symmetric</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Pauli exclusion principle</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N) = - \psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_i, \dots, \mathbf{r}_i, \dots, \mathbf{r}_N) = 0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Slater determinant</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\Psi(\mathrm{x}_1, \mathrm{x}_2, \cdots, \mathrm{x}_N) = \dfrac{1}{\sqrt{N!}} \begin{vmatrix}\chi_1(\mathbf{x}_1) &amp; \chi_2(\mathbf{x}_1) &amp; \cdots &amp; \chi_N(\mathbf{x}_1) \\\ \chi_1(\mathbf{x}_2) &amp; \chi_2(\mathbf{x}_2) &amp; \cdots &amp; \chi_N(\mathbf{x}_2) \\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\ \chi_1(\mathbf{x}_N) &amp; \chi_2(\mathbf{x}_N) &amp; \cdots &amp; \chi_N(\mathbf{x}_N) \end{vmatrix}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Hartree-Fock orbital equations</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\left[ -\dfrac{\hbar^2\nabla^2}{2m} - \dfrac{Ze^2}{\vert\mathbf{x}\vert} \right] \phi_i(\mathbf{r}) + \displaystyle\sum_{j=1}^N \left[ \phi_i(\mathbf{r}) \int \dfrac{e^2 \phi^*_j(\mathbf{r}) \phi_j(\mathbf{r})}{\vert\mathbf{x} - \mathbf{x}'\vert} d^3r' - \phi_j(\mathbf{r}) \int \dfrac{e^2 \phi^*_j(\mathbf{r}) \phi_i(\mathbf{r})}{\vert\mathbf{x} - \mathbf{x}'\vert} d^3r' \right] = \varepsilon_i \phi_i(\mathbf{r})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>Molecular orbital by linear combination of atomic orbitals (MO-LCAO)</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(\psi(\mathbf{x}) = c_1 \phi_1 (\mathbf{x}) + c_2 \phi_2 (\mathbf{x}) \newline \mathrm{MO} = c_1 (\mathrm{AO}) + c_2 (\mathrm{AO})\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>Variational principle</p></td>
-<td class="text-left"><p><span class="math notranslate nohighlight">\(E = \dfrac{\langle \psi \vert H \vert \psi \rangle}{\langle \psi \vert \psi \rangle}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
+<section id="example-3-trigonometric-integrals">
+<h2>Example-3: Trigonometric Integrals<a class="headerlink" href="#example-3-trigonometric-integrals" title="Permalink to this heading">#</a></h2>
+<p>We can also compute the trigonometric integrals using polar forms of
+complex numbers.</p>
+<p>For example, we want to solve the following integral:</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega\]</div>
+<p>Using Euler’s formula, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\int \cos(\omega) \sin(\omega) \, d\omega
+&amp;=
+\int
+\frac{(e^{i\omega} + e^{-i\omega})}{2}
+\frac{(e^{i\omega} - e^{-i\omega})}{2i}
+\, d\omega  \\
+&amp;=
+\frac{1}{4i}
+\int
+e^{2i\omega} - e^{-2i\omega}
+\, d\omega  \\
+&amp;=
+\frac{1}{4i}
+\bigg( \frac{-i}{2} e^{2i\omega} - \frac{i}{2} e^{-2i\omega} + C_1 \bigg) \\
+&amp;=
+-\frac{1}{8}
+\bigg[ \bigg(e^{i\omega}\bigg)^2 + \bigg(e^{-i\omega}\bigg)^2 - 2 \bigg] + C_2 \\
+&amp;=
+-\frac{1}{8}  (e^{i\omega} - e^{-i\omega})^2  + C_2 \\
+&amp;=
+\frac{1}{2} \bigg( \frac{e^{i\omega} - e^{-i\omega}}{2i} \bigg)^2 + C_2 \\
+&amp;= \frac{1}{2} \sin^2(\omega) + C_2
+\end{aligned}\end{split}\]</div>
+<p>and thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega =
+\frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
+\]</div>
 </section>
 </section>
 
@@ -1168,11 +656,11 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </a>
     <a class="right-next"
-       href="note04.html"
+       href="../demos/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complex numbers</p>
+        <p class="prev-next-title">Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1194,46 +682,20 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum">From classical to Quantum</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbody-radiation">Blackbody radiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-particle-duality">Wave-particle duality</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-hydrogen-and-bohrs-model">Atomic spectra of hydrogen and Bohr’s model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waves">Waves</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complex numbers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-every-bit-as-real-as-every-other-number">“Complex numbers are every bit as real as every other number. “</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-mechanical-postulates">Quantum-Mechanical Postulates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quantum-systems">Simple Quantum Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-states">Stationary states</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-1d-box">Particle in a 1D box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-3d-box">Particle in a 3D box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-potential-well">Finite potential well</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-uncertainty">Commutators and Uncertainty</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopy">Spectroscopy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimer-model">Dimer model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-quantum-harmonic-oscillator">Vibration: quantum harmonic oscillator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-rigid-rotor">Rotation: rigid rotor</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-rigid-rotor">Classical rigid rotor</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor">Quantum rigid rotor</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-atom">Hydrogen atom</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-and-proton-system">Many Electron and Proton System</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-electron-atom">Many electron atom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin">Spin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identical-particles">Identical particles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-pythagoras-theorem">Example-1: Pythagoras’ theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-trigonometric-identities">Example-2: Trigonometric Identities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-trigonometric-integrals">Example-3: Trigonometric Integrals</a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>
