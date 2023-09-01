@@ -176,3 +176,11 @@ Quantify uncertainty in position of electron in the ground state of H atom by us
 :::{dropdown} Hint
 - Bohr's equation expresses velocty, energy and radius of electron orbit as a function of quantum number n. 
 :::
+
+#### Problem 4
+
+quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 ev$
+
+:::{dropdown} Hint
+$$KE = \frac{p^2}{2m}$$
+:::
