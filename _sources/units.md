@@ -1,5 +1,13 @@
 ## Units
 
+### Constants
+|   Energy        |              |
+|:---------:|:---------------:|
+| $h = 6.63 \cdot   10^{-34} [ J \cdot s]$                     | $mu   = 1.66 \cdot 10^{-27} [kg]$ |
+| $k_B = 1.38 \cdot 10^{-23}[ J \cdot K^{-1}]$                 | $N_A   = 6.02 \cdot 10^{23} [mol^{-1}]$ |
+| $c = 3.0 \cdot   10^{8} [m \cdot s^{-1}]  $                  | $m_e = 9.1093837015\cdot 10^{-31} \,[kg]$ |
+| $R_H=109680 [cm^{-1}]$                                       | $e = 1.602176634\cdot 10^{-19}\, [C]$ |
+
 ### Energy unit converter
 
 - See [here](https://www.weizmann.ac.il/oc/martin/tools/hartree.html) for interactive option
@@ -12,5 +20,5 @@
 |  $hartree$| $43.60 \cdot 10^{-19}$   | $27.2107$                | $219474.63$              | $1$               | $6.57966 \cdot 10^{15}$ |
 |     $Hz$  | $6.62561 \cdot 10^{-34}$ | $4.13558 \cdot 10^{-15}$ | $3.335 65 \cdot 10^{-11}$ | $1.51983 \cdot 10^{-16}$ | $1$                |
 
-### Constants
+
 
