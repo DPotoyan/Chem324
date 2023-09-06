@@ -1,5 +1,4 @@
-# QM overview
-
+# Equation sheet
 ## From classical to Quantum 
 
 ### Blackbody radiation
