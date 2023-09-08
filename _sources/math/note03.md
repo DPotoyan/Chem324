@@ -20,8 +20,6 @@
 
 **Also recommended:** [A Visual, Intuitive Guide to Imaginary Numbers](https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/)
 
-### ". "  
-
 A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification:
 
 ![](../content/images/cnum_intro.png)
