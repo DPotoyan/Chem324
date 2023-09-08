@@ -1,15 +1,30 @@
 ## Complex numbers
 
+:::{admonition} What you need to know
+:class: note
+- Complex numbers are every bit as real as every other number!
+- Complex numbers are legitimate roots of polynomial equations. E.g quadratic equation can have two complex roots.
+- Complex numbers are visualized on a 2D plane similiar to how one visualizes vectors.
+- Symbol $i=\sqrt{-1}$ is introduced to represent imaginary component of a complex number. 
+- One can use cartesian or polar coordinates to represent complex numbers.
+- Euler equatiion is one of the most fundamental and beautiful equation in all of math and physics. $re^{i\phi}=r(cos\phi+isin\phi$)$
+- Thanks to euler equation complex numbers are easier to manipulate and work with in polar representation.
+- Multiplying by a complex number can be seen as an operation of rotation in complex planes
+- $re^{i\phi}$ means rotating a vector of length r in counter-clockwise direction and $re^{-i\phi}$ in clickwise respectively.
+- Conjugate of complex number is obtained by flipping signs in front of imaginary component(s), $z^{*} = x-iy$
+- Multiplying complex number by its conjugate returns the real number corresponding to the squared distance from origin
+:::
+
 **Recommended:** Watch the  following YouTube video 
 ["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
 
 **Also recommended:** [A Visual, Intuitive Guide to Imaginary Numbers](https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/)
 
-### "Complex numbers are every bit as real as every other number. "  
+### ". "  
 
 A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification:
 
-![](./images/cnum_intro.png)
+![](../content/images/cnum_intro.png)
 
 - **Real part** $ x $ 
 .
@@ -33,7 +48,7 @@ Some facts from mathematics are in order here:
 
 ### Eculidean vs polar representation of complex numbers
 
-![](./images/cnum_2.png)
+![](../content/images/cnum_2.png)
 
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
@@ -69,7 +84,7 @@ $$
 $$
 
 
-## De Moivre’s Theorem
+### De Moivre’s Theorem
 
 [De Moivre’s theorem](https://en.wikipedia.org/wiki/De_Moivre%27s_formula) states that:
 
