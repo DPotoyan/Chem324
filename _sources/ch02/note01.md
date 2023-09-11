@@ -35,7 +35,9 @@ Since wave is a moving disturbance $u$, we describe this disturbance (e.g. verti
 
 Imagine an ocean wave. For an observer standing on a wave (surfer) the wave stands still but for the observer standing on the shore the wave moves away with velocity: $x'=x-vt$
 
-Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer: $f(x,t)=f(x')$
+Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer: 
+
+$$f(x,t)=f(x')$$
 
 $$u(x,t) = f(x-vt)$$
 
@@ -46,13 +48,14 @@ $$u(x,t) = f(x-vt)$$
 
 We will be working a lot with periodic waves that have a shape of a sine or cosine, like this one: $$y(x,t)= A \sin(kx)$$
 Let us now turn this sinusoidal form into a wave traveling along x axis:
-$$y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)$$
+
+$$
+y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)
+$$
 
 - Amplitude $A$: specifies maximum disturbance. 
 - Wave number $k$: specifies periodicity in space.
 - Angular frequency $\omega$: specifies periodicity in time.
-
-> Flashback to first lecture when we had this relationship of wavelength to speed of wave and frequency via $\lambda \nu = v$ and $\nu=\frac{1}{T}$
 
 
 ### Wave equation. 
@@ -66,7 +69,6 @@ $$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{
 We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
 ### Wave interference: definition
-
 
  Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
 
