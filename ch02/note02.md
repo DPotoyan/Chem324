@@ -5,18 +5,22 @@
 ```{admonition} What you need to know
 :class: note
 - A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!
-- An equation, partially differential equation known as a wave completely describes wave's spatial and temporal evolution
-- The wave equation, a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.
+- The wave equation which takes a form of a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.
+- Wave equation is linear which means that any linear combination of any two solutions is also a solution to wave equation. 
+- Hence to write down the most general solution one has to take linear combination of all possible solutions. 
+- To solve wave equation for a concrete physical system one has to specify boundary conditions: what values wave function takes on physical boundaries $(x=0, x=L)$. One may also specify boundary condition with respect to time (initial condition) $t=0$
 - 1D wave equation for a guitar string is governed by the displacement of the string $u(x,t)$ in time and space.
+- Solutions of wave equation for a 1D guitar string is found by imposing boundary conditions at two ends which results in infinite number of periodic solutions parameterized by an integer number $n$.
 ```
 
 
-### Guitar string, a simple toy example desired by wave equation. 
+### 1D guitar string, a simple toy example
 
 ![](./images/lec5_guitar.jpg)
 
  <iframe src="https://giphy.com/embed/x988dOESRoCeQ" width="480" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animation-physics-x988dOESRoCeQ">via GIPHY</a></p>
-Our objective in the next few pages is to describe motion of guitar string mathematically. That is given arbitrary initial conditions precisely predict the evolution of string in time and space. 
+
+- Our objective in the next few pages is to describe motion of guitar string mathematically. That is given arbitrary initial conditions precisely predict the evolution of string in time and space. 
 
 
 ### Solving wave equation by separation of variables. A technique worth remembering!
