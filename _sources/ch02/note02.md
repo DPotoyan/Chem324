@@ -56,9 +56,8 @@ $$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) }\frac{\p
 
 ### Step two: After decomposing PDE into ODEs we begin solving each ODE one by one. 
 
-$$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =K \,\,\,\,and\,\,\,\,\,\,\,\, \frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K$$
 
-$$\frac{\partial^2 T(t)}{\partial t^2} -KT(t)v^2=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial}-K X(x)=0$$
+$$\frac{\partial^2 T(t)}{\partial t^2} -KT(t)v^2=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial x^2}-K X(x)=0$$
 
 ### Intermezzo: solve the ODE by considering all cases for the separating constant. Case K>0 
 
