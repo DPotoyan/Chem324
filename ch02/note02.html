@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/note02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DEMO: Visualizing waves" href="waves.html" />
+    <link rel="next" title="DEMO: Visualizing waves" href="demo_waves.html" />
     <link rel="prev" title="Waves" href="note01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,12 +180,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">2. Waves and wave equation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Waves</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Wave equation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="waves.html">DEMO: Visualizing waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_waves.html">DEMO: Visualizing waves</a></li>
 
 
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="bonus_waves.html">Bonus challenge for Chapter 2</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -449,8 +450,8 @@ document.write(`
 <li><p>Wave equation is linear which means that any linear combination of any two solutions is also a solution to wave equation.</p></li>
 <li><p>Hence to write down the most general solution one has to take linear combination of all possible solutions.</p></li>
 <li><p>To solve wave equation for a concrete physical system one has to specify boundary conditions: what values wave function takes on physical boundaries <span class="math notranslate nohighlight">\((x=0, x=L)\)</span>. One may also specify boundary condition with respect to time (initial condition) <span class="math notranslate nohighlight">\(t=0\)</span></p></li>
-<li><p>1D wave equation for a guitar string is governed by the displacement of the string <span class="math notranslate nohighlight">\(u(x,t)\)</span> in time and space.</p></li>
-<li><p>Solutions of wave equation for a 1D guitar string is found by imposing boundary conditions at two ends which results in infinite number of periodic solutions parameterized by an integer number <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Solutions of wave equation for a 1D guitar string are found by separating variables, solving resulting ordinary diff equations and then by imposing boundary conditions at two ends.</p></li>
+<li><p>Solution of 1D guitar string produces infinite number of periodic solutions parameterized by an integer number <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 </ul>
 </div>
 <section id="d-guitar-string-a-simple-toy-example">
@@ -574,22 +575,27 @@ document.write(`
 <section id="d-membrane-vibrations">
 <h2>2D membrane vibrations.<a class="headerlink" href="#d-membrane-vibrations" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" /></p>
-<p>Wave function of 2D membrane with fixed edges has two independent variables x and y.</p>
+<ul class="simple">
+<li><p>Wave function of 2D membrane with fixed edges has two independent variables x and y.</p></li>
+<li><p>Applying the technique of separation of variables we will get three ordinary differential equations.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[u(x,y,t) =X(x)Y(y)T(t)\]</div>
 <ul class="simple">
+<li><p>This time there will be two boundary conditions fo X and Y</p></li>
 <li><p>Boundary on the <span class="math notranslate nohighlight">\(X\)</span> edge: <span class="math notranslate nohighlight">\(X(0)=X(L)=0\)</span>.</p></li>
 <li><p>Boundary on the <span class="math notranslate nohighlight">\(Y\)</span> edge: <span class="math notranslate nohighlight">\(Y(0)=Y(L)=0\)</span>.</p></li>
+<li><p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes.</p></li>
+<li><p>The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number <span class="math notranslate nohighlight">\(k_x\)</span> and <span class="math notranslate nohighlight">\(k_y\)</span>.</p></li>
 </ul>
-<p>Now we will apply the same procedure as before:<br></p>
-<ol class="arabic simple">
-<li><p>Substitute into PDE to get ODEs. <br></p></li>
-<li><p>Solve for ODEs (applying boundary conditions). <br></p></li>
-<li><p>Put everything back together and obtain full solution.</p></li>
-</ol>
-<p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes.</p>
-<p>The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number <span class="math notranslate nohighlight">\(k_x\)</span> and <span class="math notranslate nohighlight">\(k_y\)</span>.</p>
-<p>Now can you guess what the solution would be fore the 3D case? :)</p>
+<div class="math notranslate nohighlight">
+\[ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} \]</div>
+<p>The angular frequency depends on the geometry of the domain and on two integer numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} \]</div>
+<ul class="simple">
+<li><p>Can you guess what the solution would be fore the 3D case?</p></li>
+</ul>
 </section>
 </section>
 
@@ -634,7 +640,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="waves.html"
+       href="demo_waves.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
