@@ -9,8 +9,8 @@
 - Wave equation is linear which means that any linear combination of any two solutions is also a solution to wave equation. 
 - Hence to write down the most general solution one has to take linear combination of all possible solutions. 
 - To solve wave equation for a concrete physical system one has to specify boundary conditions: what values wave function takes on physical boundaries $(x=0, x=L)$. One may also specify boundary condition with respect to time (initial condition) $t=0$
-- 1D wave equation for a guitar string is governed by the displacement of the string $u(x,t)$ in time and space.
-- Solutions of wave equation for a 1D guitar string is found by imposing boundary conditions at two ends which results in infinite number of periodic solutions parameterized by an integer number $n$.
+- Solutions of wave equation for a 1D guitar string are found by separating variables, solving resulting ordinary diff equations and then by imposing boundary conditions at two ends.
+- Solution of 1D guitar string produces infinite number of periodic solutions parameterized by an integer number $n$.
 ```
 
 
@@ -135,20 +135,23 @@ $$\nu_n=\frac{\omega_n}{2\pi}=\frac{n \nu}{2L}$$
 
 ![](http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif)
 
-Wave function of 2D membrane with fixed edges has two independent variables x and y. 
+- Wave function of 2D membrane with fixed edges has two independent variables x and y. 
+- Applying the technique of separation of variables we will get three ordinary differential equations.
 
 $$u(x,y,t) =X(x)Y(y)T(t)$$
 
+- This time there will be two boundary conditions fo X and Y
 - Boundary on the $X$ edge: $X(0)=X(L)=0$.
 - Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
 
-Now we will apply the same procedure as before:<br>
-1. Substitute into PDE to get ODEs. <br>
-2. Solve for ODEs (applying boundary conditions). <br>
-3. Put everything back together and obtain full solution. 
+- Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes. 
 
-Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes. 
+- The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number $k_x$ and $k_y$. 
 
-The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number $k_x$ and $k_y$. 
+$$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
 
-Now can you guess what the solution would be fore the 3D case? :)
+The angular frequency depends on the geometry of the domain and on two integer numbers $n$ and $m$. 
+
+$$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
+
+- Can you guess what the solution would be fore the 3D case?
