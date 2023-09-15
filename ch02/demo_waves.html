@@ -518,8 +518,9 @@ document.write(`
 </div>
 <section id="standing-and-traveling-waves-in-1d">
 <h2>Standing and traveling waves in 1D<a class="headerlink" href="#standing-and-traveling-waves-in-1d" title="Permalink to this heading">#</a></h2>
-<p>We beging by plotting a simple periodic function using numpy (np) and matplotlib.pyplot (plt)
-$<span class="math notranslate nohighlight">\(y = \sin(kx)=\sin\left(\frac{2\pi}{\lambda} x\right)\)</span>$</p>
+<p>We begin by plotting a simple periodic function using numpy (np) and matplotlib.pyplot (plt)</p>
+<div class="math notranslate nohighlight">
+\[y = \sin(kx)=\sin\left(\frac{2\pi}{\lambda} x\right)\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">0.3</span>            <span class="c1"># Try different wavelengths</span>
@@ -539,10 +540,10 @@ $<span class="math notranslate nohighlight">\(y = \sin(kx)=\sin\left(\frac{2\pi}
 <img alt="../_images/b0a77726734e88abe4226d4a391119896a44732031854a5399152909288d3d32.png" src="../_images/b0a77726734e88abe4226d4a391119896a44732031854a5399152909288d3d32.png" />
 </div>
 </div>
-<p><strong>By putting above example inside a python function will make wavelength exploration much easier.</strong></p>
+<p><strong>By putting above example inside a python function will make wavelength exploration convenient</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
@@ -553,6 +554,7 @@ $<span class="math notranslate nohighlight">\(y = \sin(kx)=\sin\left(\frac{2\pi}
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sine waves&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -560,41 +562,31 @@ $<span class="math notranslate nohighlight">\(y = \sin(kx)=\sin\left(\frac{2\pi}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now try comparing three different wavelengths</span>
-<span class="n">wave</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">wave</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">wave</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">wave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">wave</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e7ccfcc8487be4048b11fa7cf55633afe38f0e2cf21e4a06cd8e8cb2b427cd4d.png" src="../_images/e7ccfcc8487be4048b11fa7cf55633afe38f0e2cf21e4a06cd8e8cb2b427cd4d.png" />
+<img alt="../_images/41899a81903358186bcafc2bcf97b9414575748d2035b99c3620d85226847a84.png" src="../_images/41899a81903358186bcafc2bcf97b9414575748d2035b99c3620d85226847a84.png" />
+<img alt="../_images/9771946d9f6ef14e1e66cc514fe5c7d9ffd5f49aec0b581c483d19a5bc5a5d02.png" src="../_images/9771946d9f6ef14e1e66cc514fe5c7d9ffd5f49aec0b581c483d19a5bc5a5d02.png" />
 </div>
 </div>
 </section>
 <section id="interact-with-waves">
 <h2>Interact with waves<a class="headerlink" href="#interact-with-waves" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>By adding <strong>&#64;widgets.interact(parameters=(init,final))</strong> to our functions we can interactively vary various parameters of the function using dash knobs.</p></li>
-<li><p>Below we illustrate this on the example of our newly created function <strong>wavef(L)</strong> where we vary the length of guitra string L as a parameter between values of 0.1 and 2. Try changing these numbers</p></li>
+<li><p>By adding <code class="docutils literal notranslate"><span class="pre">&#64;widgets.interact(parameters=(init,final))</span></code> to our functions we can interactively vary various parameters of the function using dash knobs.</p></li>
+<li><p>Below we illustrate this on the example of our newly created function <strong>wavef(L)</strong> where we vary the length of guitar string L as a parameter between values of 0.1 and 2. Try changing these numbers</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@interact</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">wavef</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>        
-    
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span> <span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;l=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5bacd5ac38e0407ca746e489949f2aa1", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "12772ccb01954dc48d113c713577d382", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="traveling-wave-as-a-function-of-time-and-position">
