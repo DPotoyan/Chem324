@@ -480,10 +480,12 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing waves</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-and-traveling-waves-in-1d">Standing and traveling waves in 1D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-with-waves">Interact with waves</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-wave-as-a-function-of-time-and-position">Traveling wave as a function of time and position</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-1d-guitar-string">Normal modes of 1D guitar string</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-guitar-vibrations-as-linear-combination-of-normal-modes">1D guitar vibrations as linear combination of normal modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-2d-membrane">Normal modes of 2d membrane</a></li>
@@ -548,7 +550,7 @@ document.write(`
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;l=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;L=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
@@ -561,23 +563,20 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now try comparing three different wavelengths</span>
-<span class="n">wave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">wave</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change wavelength</span>
+<span class="n">wave</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41899a81903358186bcafc2bcf97b9414575748d2035b99c3620d85226847a84.png" src="../_images/41899a81903358186bcafc2bcf97b9414575748d2035b99c3620d85226847a84.png" />
-<img alt="../_images/9771946d9f6ef14e1e66cc514fe5c7d9ffd5f49aec0b581c483d19a5bc5a5d02.png" src="../_images/9771946d9f6ef14e1e66cc514fe5c7d9ffd5f49aec0b581c483d19a5bc5a5d02.png" />
+<img alt="../_images/b99387a0b948b47823632e46c28074c27321ce4db6bb3aafc7ce321d70819c39.png" src="../_images/b99387a0b948b47823632e46c28074c27321ce4db6bb3aafc7ce321d70819c39.png" />
 </div>
 </div>
 </section>
 <section id="interact-with-waves">
 <h2>Interact with waves<a class="headerlink" href="#interact-with-waves" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>By adding <code class="docutils literal notranslate"><span class="pre">&#64;widgets.interact(parameters=(init,final))</span></code> to our functions we can interactively vary various parameters of the function using dash knobs.</p></li>
-<li><p>Below we illustrate this on the example of our newly created function <strong>wavef(L)</strong> where we vary the length of guitar string L as a parameter between values of 0.1 and 2. Try changing these numbers</p></li>
+<li><p>By adding <code class="docutils literal notranslate"><span class="pre">&#64;widgets.interact(parameters=(init,final))</span></code> to our functions we can interactively parameters in the function using slider widgets.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,29 +588,56 @@ document.write(`
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "12772ccb01954dc48d113c713577d382", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
+</section>
+<section id="traveling-standing-waves-and-wave-interference">
+<h1>Traveling, standing waves and wave interference<a class="headerlink" href="#traveling-standing-waves-and-wave-interference" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wavef2</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+
+    <span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    
+    <span class="n">wave1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> 
+    <span class="n">wave2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>    <span class="c1">#try flipping the direction of velocity to get standing wave</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="p">,</span>   <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave2</span><span class="p">,</span>   <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="o">+</span><span class="n">wave2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Wave1&#39;</span><span class="p">,</span><span class="s1">&#39;Wave2&#39;</span><span class="p">,</span><span class="s1">&#39;Wave1+Wave2&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wavef2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">),</span><span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5c2fe850e53443879a44d841e2208127", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 <section id="traveling-wave-as-a-function-of-time-and-position">
 <h2>Traveling wave as a function of time and position<a class="headerlink" href="#traveling-wave-as-a-function-of-time-and-position" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
-<span class="c1"># Parameters for the traveling wave</span>
-<span class="n">A</span> <span class="o">=</span> <span class="mf">1.0</span>         <span class="c1"># Amplitude</span>
-<span class="n">wavelength</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">wavelength</span>  <span class="c1"># Wave number</span>
-<span class="n">T</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">T</span>  <span class="c1"># Angular frequency</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="mf">0.0</span>       <span class="c1"># Phase</span>
+<span class="k">def</span> <span class="nf">wave_x_t</span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    
+    <span class="c1"># Create a grid of x and t values</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 
-<span class="c1"># Create a grid of x and t values</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="c1"># Calculate the wave amplitude for each combination of x and t</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
 
-<span class="c1"># Calculate the wave amplitude for each combination of x and t</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
-
-<span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> 
+    <span class="k">return</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> 
               <span class="n">y</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> 
               <span class="n">z</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> 
               <span class="n">color</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
@@ -622,44 +648,22 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="traveling-standing-waves-and-wave-interference">
-<h1>Traveling, standing waves and wave interference<a class="headerlink" href="#traveling-standing-waves-and-wave-interference" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@interact</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">wavef2</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-
-    <span class="n">v</span><span class="o">=</span><span class="mi">1</span>         <span class="c1">#velocity of waves</span>
-    
-    <span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-    
-    <span class="n">wave1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> 
-    
-    <span class="n">wave2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>    <span class="c1">#try flipping the direction of velocity to get standing wave</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="p">,</span>   <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave2</span><span class="p">,</span>  <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="o">+</span><span class="n">wave2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Wave1&#39;</span><span class="p">,</span><span class="s1">&#39;Wave2&#39;</span><span class="p">,</span><span class="s1">&#39;Wave1+Wave2&#39;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wave_x_t</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "94e85abd2e69414e8fac96d9508856fc", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+</div>
+</section>
 </section>
 <section id="normal-modes-of-1d-guitar-string">
 <h1>Normal modes of 1D guitar string<a class="headerlink" href="#normal-modes-of-1d-guitar-string" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@interact</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">wavef</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wavef</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     
     <span class="n">L</span><span class="o">=</span><span class="mi">1</span>
     
@@ -667,15 +671,22 @@ document.write(`
     
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Normal mode # </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wavef</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5c7d5b3824ca495a9e62066bd36fd75b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "10375e7c9cba4c058ff8c02b0286d759", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="d-guitar-vibrations-as-linear-combination-of-normal-modes">
@@ -851,10 +862,12 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing waves</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-and-traveling-waves-in-1d">Standing and traveling waves in 1D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-with-waves">Interact with waves</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-wave-as-a-function-of-time-and-position">Traveling wave as a function of time and position</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-1d-guitar-string">Normal modes of 1D guitar string</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-guitar-vibrations-as-linear-combination-of-normal-modes">1D guitar vibrations as linear combination of normal modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-2d-membrane">Normal modes of 2d membrane</a></li>
