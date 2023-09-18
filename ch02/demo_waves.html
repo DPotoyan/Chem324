@@ -195,7 +195,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 <li class="toctree-l2"><a class="reference internal" href="bonus_waves.html">Bonus challenge</a></li>
 </ul>
 </li>
@@ -489,7 +488,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-1d-guitar-string">Normal modes of 1D guitar string</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-guitar-vibrations-as-linear-combination-of-normal-modes">1D guitar vibrations as linear combination of normal modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-a-2d-membrane">Normal modes of a 2D membrane</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-of-square-2d-membrane-as-a-linear-combination-of-normal-modes">Vibrations of square 2D membrane as a linear combination of normal modes</a></li>
 </ul>
 
             </nav>
@@ -545,10 +543,11 @@ document.write(`
 <p><strong>By putting above example inside a python function will make wavelength exploration convenient</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave1d</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;L=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     
@@ -556,6 +555,7 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sine waves&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -564,12 +564,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change wavelength</span>
-<span class="n">wave</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">wave1d</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b99387a0b948b47823632e46c28074c27321ce4db6bb3aafc7ce321d70819c39.png" src="../_images/b99387a0b948b47823632e46c28074c27321ce4db6bb3aafc7ce321d70819c39.png" />
+<img alt="../_images/003c3e7ae777fac5856c689e4310243026e0cf3477e5d2a0c0414e91414272fe.png" src="../_images/003c3e7ae777fac5856c689e4310243026e0cf3477e5d2a0c0414e91414272fe.png" />
 </div>
 </div>
 </section>
@@ -580,12 +580,12 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wave1d</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "12772ccb01954dc48d113c713577d382", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0a6d756d52d3451093d8d0b9f4047980", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 </section>
@@ -619,7 +619,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5c2fe850e53443879a44d841e2208127", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6cbdc088c9714f91a85a696c01f373b4", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <section id="traveling-wave-as-a-function-of-time-and-position">
 <h2>Traveling wave as a function of time and position<a class="headerlink" href="#traveling-wave-as-a-function-of-time-and-position" title="Permalink to this heading">#</a></h2>
@@ -663,17 +663,19 @@ document.write(`
 <h1>Normal modes of 1D guitar string<a class="headerlink" href="#normal-modes-of-1d-guitar-string" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wavef</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">guitar1d</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     
+    <span class="n">v</span><span class="o">=</span><span class="mi">1</span>
     <span class="n">L</span><span class="o">=</span><span class="mi">1</span>
-    
+    <span class="n">omega</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">L</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Normal mode # </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -681,12 +683,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wavef</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">guitar1d</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "10375e7c9cba4c058ff8c02b0286d759", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "59a364702b964879986a85a20d4e0d52", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="d-guitar-vibrations-as-linear-combination-of-normal-modes">
@@ -724,18 +726,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c7669f1c3d7a4aa2970b6a7258d82a53", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a3f31f0cb55945579def233721643fe9", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="normal-modes-of-a-2d-membrane">
 <h1>Normal modes of a 2D membrane<a class="headerlink" href="#normal-modes-of-a-2d-membrane" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">membrane2d</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">membrane2d</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Normal modes of 2D membrane on a square geometry&#39;&#39;&#39;</span>
     
     <span class="c1"># Constants</span>
     <span class="n">Lx</span><span class="p">,</span> <span class="n">Ly</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>  <span class="c1"># Dimensions of the rectangular region</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mf">1.0</span>            <span class="c1"># Wave speed</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># wave speed </span>
+    <span class="n">omega</span>  <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">Lx</span> <span class="o">*</span>  <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Angular rate</span>
     
     <span class="c1"># Create a spatial grid</span>
     <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
@@ -743,7 +747,7 @@ document.write(`
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
     <span class="c1"># Compute spatial part of the normal mode</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">Lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">Ly</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">Lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">Ly</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
    
     <span class="c1">### Plot in 3D</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -761,51 +765,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">membrane2d</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">m</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">membrane2d</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">m</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "df2ead743f1346bf8ad3836428c75ab7", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-</section>
-<section id="vibrations-of-square-2d-membrane-as-a-linear-combination-of-normal-modes">
-<h1>Vibrations of square 2D membrane as a linear combination of normal modes<a class="headerlink" href="#vibrations-of-square-2d-membrane-as-a-linear-combination-of-normal-modes" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave_mode</span><span class="p">(</span><span class="n">n1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">n2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">m1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">m2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">omega</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-              <span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&#39;&#39;&#39;Function to compute the 2D mode shapes&#39;&#39;&#39;</span>
-   
-  <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-  <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-  <span class="n">mode1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Y</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> 
-  <span class="n">mode2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Y</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> 
-  <span class="n">u</span>     <span class="o">=</span> <span class="n">mode1</span><span class="o">+</span><span class="n">mode2</span>
-  
-  <span class="c1">### Plot in 3D</span>
-  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">wave_mode</span><span class="p">,</span> <span class="n">n1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">m1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c22e4e43362f4cb5ae53b52a14cc3aef", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "91c2971a0db142ed8e4210a0a5970bce", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 
@@ -884,7 +849,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-1d-guitar-string">Normal modes of 1D guitar string</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-guitar-vibrations-as-linear-combination-of-normal-modes">1D guitar vibrations as linear combination of normal modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-modes-of-a-2d-membrane">Normal modes of a 2D membrane</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-of-square-2d-membrane-as-a-linear-combination-of-normal-modes">Vibrations of square 2D membrane as a linear combination of normal modes</a></li>
 </ul>
 
   </nav></div>
