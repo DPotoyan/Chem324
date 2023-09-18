@@ -3,50 +3,43 @@
 
 ```{admonition} What you need to know
 :class: note
-- By combining classical wave equation with key quantum ideas: discretization of energies and wave-particle duality we will arrive at Schrödinger's equation (SE).
-- Schrödinger's equation depends on both time and space. However, for stationary states  we can use the technique of separation of variables and  turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
-- We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. Furthermore with the help of operator notation will  frame the problem of solving such equations as a linear algebra problem of finding eigenvalues and eigenvectors.
-
-- Classical equation of motion fails at small scales. Quantum works on all scales!  We will see how Schrödinger's equation predicts classical behaviour under apprporiate conditions where quantum effects are negligible.
+- By combining classical wave equation with quantum ideas we arrive at new equation that produces quantum wave functions: Schrödinger's equation (SE).
+- Schrödinger's equation, just like classical wave equation depends on both time and space. 
+- Once again we can use the technique of separation of variables and turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
+- We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. 
 ```
 
   
 
 ## The exciting journey into the microscopic world.  
 
-- In the next few sections we are going to arrive at Schrödinger equation (SE) which is a fundamental law of nature. This implies that  SE can only be inferred or guessed from the experiments. It can not be derived. Its correctness is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations. 
+- In the next few sections we are going to arrive at Schrödinger equation (SE) which is one of the fundamental laws of physics. The expression "fundamental law" means that SE can only be inferred or guessed from the experiments. It can not be derived. Correctness of SE is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations. 
 
 - Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
 
-  <img src="images/SE_intro.jpeg" stylewidth="100px" />
+:::{figure-md} markdown-fig
+<img src="images/SE_intro.jpeg" alt="SE-intro" class="bg-primary mb-1" width="300px">
+
+You are now entering the quantum world. Proceed wih caution 
+:::
 
 ### Picking up where classical mechanics has failed
 
-Let us recall that classical mechanics failed at describing motion at the atomic and molecular scales and it is only an approximate theory valid at large scales. A new, correct equation of motion is needed that can explain:
+- Let us recall that classical mechanics while valid at large scales totally failed at describing motion at the atomic and molecular scales. 
 
-- Quantized nature of energy (remember experiments on blackbody radiation, atomic spectra…)
+- A new, correct equation of motion is needed that can explain:
 
-- Wave-particle duality (Electron diffraction, Compton scattering)
+- **Quantized nature of energy** seen in  experiments on blackbody radiation, atomic and molecular spectra.
+
+- **Wave-particle duality** Electron diffraction, Compton scattering, double slit experiments
 
 - Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects. 
 
-  <img src="images/SE_intro2.gif" width="200px" />
+:::{figure-md} markdown-fig
+<img src="images/SE_intro2.gif" alt="SE-intro" class="bg-primary mb-1" width="300px">
 
-
-
-
-### Schrödinger Equation (time-dependent)
-
-<img src="images/SE_4.jpg" width="0.5" />
-
-- The correct equation of motion that works for microscopic particles and explains all the experiments was originally proposed by Erwin Schrödinger. Below we write the time-dependent Schrödinger equation in 1D. Schrödinger equation, is also known as a wave equation because it describes motion of wave functions in space and time. 
-
-  
-
-   $$i\hbar \frac{\partial \psi(x,t)}{\partial t} =\Big[-\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} +U(x)\Big]\psi(x,t)$$
-
-- Left hand side describes change of wave function with time. The presence of an imaginary unit tells us that solutions of this equation are generally complex functions. 
-- Right hand side describes spatial varation of wave function. We will soon discover that  inside square brackets we have operators of kinetic and potential energies: an analog of kinetic and potential energies in classical mechanics.  
+Schrodinger had to make peace with the idea that correct description of electrons is done via wave functions.
+:::
 
 ### From classical to quantum wave equation
 
@@ -88,7 +81,9 @@ Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ ex
 
 Taking a time derivative once 
 
-$ \frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)$
+$$
+\frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)
+$$
 
 we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.  
 
@@ -116,7 +111,12 @@ $$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^
 
 - We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
-  <img src="images/SE_intro3.jpg" width="300px" />
+:::{figure-md} markdown-fig
+<img src="images/SE_intro3.jpg" alt="SE-intro" class="bg-primary mb-1" width="300px">
+
+Analogy of operators with ordinary functions.
+:::
+
 
 ### Linear operators. 
 
@@ -126,8 +126,7 @@ $$\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)$$
 
 Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
 
--Question: which of the following would be linear operator: $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$
-
+- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$
 
 
 
@@ -191,9 +190,13 @@ $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
 
 ### Eigenvalue eigenfunction problems
 
-Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
+- Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
 
-<img src="images/SE_intro6.jpg" style="zoom:80%;" />
+:::{figure-md} markdown-fig
+<img src="images/SE_intro6.jpg" alt="SE-intro" class="bg-primary mb-1" width="300px">
+
+Eigenvalue/Eigenfunction problem
+:::
 
 E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
@@ -202,9 +205,6 @@ E.g while action of operator can in general change the function in quantum mecha
 The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where our eigenfunctions are wave-functions and eigenvalues are energies.
 
 $$\hat{H}\psi(x)=E\psi(x)$$
-
-<img src="images/SE_intro5.jpg" style="zoom:70%;" />
-
 
 
 ### The correspondence principle of Quantum Mechanics
