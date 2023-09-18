@@ -193,7 +193,7 @@ $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
 - Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
 
 :::{figure-md} markdown-fig
-<img src="images/SE_intro6.jpg" alt="SE-intro" class="bg-primary mb-1" width="300px">
+<img src="images/SE_intro6.jpg" alt="eigval-func" class="bg-primary mb-1" width="300px">
 
 Eigenvalue/Eigenfunction problem
 :::
