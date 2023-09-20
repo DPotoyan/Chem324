@@ -208,6 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Time dependence</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Commutability and precision of measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PIB.html">DEMO: 1D particle in a box</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -440,6 +441,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -705,6 +711,38 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 </tbody>
 </table>
 </section>
+<section id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
+<section id="problem-1">
+<h3>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h3>
+<p>Confirm that the following wavefunctions are eigenfunctions of linear momentum and kinetic energy (or neither or both):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C sin(ax)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(N e^{-ix/\hbar}\)</span></p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Start by applying linear momentum operator to first function</p>
+<div class="math notranslate nohighlight">
+\[-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar Aa \cos(ax) \nonumber\]</div>
+<p class="sd-card-text">We see that action of operator changed the sin wave function hence sin function can not be an eigenfunction of linear momentum.</p>
+<p class="sd-card-text">Next we apply kinetic energy operator</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*} -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) &amp;= -\dfrac{\hbar^2}{2m} \dfrac{\partial}{\partial x} Aa \cos(ax) \\[4pt] &amp;= +\dfrac{\hbar^2}{2m} Aa^2 \sin(ax) \end{align*}  \nonumber
+\end{split}\]</div>
+<p class="sd-card-text">Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator</p>
+</div>
+</details></section>
+<section id="problem-2">
+<h3>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -783,6 +821,11 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
