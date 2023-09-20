@@ -479,8 +479,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-gallery-of-useful-examples">A gallery of useful examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-and-ax-objects">fig and ax objects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-2d">Plotting in 2D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-histograms-and-distributions">Plotting histograms and distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-2d-and-3d">Plotting in 2D and 3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-plots-using-plotly">Create interactive plots using Plotly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-histograms">Plotting histograms</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets">Widgets</a></li>
@@ -501,8 +502,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">import</span> <span class="nn">numpy</span>  <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
@@ -611,8 +612,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="plotting-in-2d">
-<h3>Plotting in 2D<a class="headerlink" href="#plotting-in-2d" title="Permalink to this heading">#</a></h3>
+<section id="plotting-in-2d-and-3d">
+<h3>Plotting in 2D and 3D<a class="headerlink" href="#plotting-in-2d-and-3d" title="Permalink to this heading">#</a></h3>
 <p>To make 2D plots we need to generate 2D grid <span class="math notranslate nohighlight">\((x,y)\)</span> of points and pass it to our function <span class="math notranslate nohighlight">\(f(x,y)\)</span></p>
 <div class="math notranslate nohighlight">
 \[f(x,y) = sin(x) \cdot cos(x) \,\,\,\]</div>
@@ -626,32 +627,71 @@ document.write(`
 <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>           <span class="c1"># feed 2D grids to our 2D function f(x,y)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>            <span class="c1"># Create fig and ax objects</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>                  <span class="c1"># plot </span>
-
-<span class="c1"># try also ax.contour, ax.contourf</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>      <span class="c1"># try also ax.contour, ax.contourf </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x16b04b850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x18609d8e0&gt;
 </pre></div>
 </div>
-<img alt="../_images/b8903e6508c68b7aab4f3447c6c1e41176676709512e4a031c0872c14a5efac0.png" src="../_images/b8903e6508c68b7aab4f3447c6c1e41176676709512e4a031c0872c14a5efac0.png" />
+<img alt="../_images/25ac8191becb551e595a74e0e395e0db0d6d781bb395c25f07e5cf938c35b5f8.png" src="../_images/25ac8191becb551e595a74e0e395e0db0d6d781bb395c25f07e5cf938c35b5f8.png" />
 </div>
 </div>
-<p>For 3D plot we will be using a powerful interactive library called <a class="reference external" href="https://plotly.com/python-api-reference/plotly.express.html">plotly-express</a></p>
+<p>Making the 3D plot requires specifying 3d projection in matplotlib</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span> <span class="c1"># tells the plot to render in 3D</span>
 
-<span class="n">px</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+
+<span class="c1"># Setting the layout</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;3D Surface Plot of z = sin(sqrt(x^2 + y^2))&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Axis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Axis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z Axis&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a3c279875bfc7f868cade12cbe2b60f8005afd2050af4243129a277a72f2c7b0.png" src="../_images/a3c279875bfc7f868cade12cbe2b60f8005afd2050af4243129a277a72f2c7b0.png" />
 </div>
 </div>
 </section>
-<section id="plotting-histograms-and-distributions">
-<h3>Plotting histograms and distributions<a class="headerlink" href="#plotting-histograms-and-distributions" title="Permalink to this heading">#</a></h3>
+<section id="create-interactive-plots-using-plotly">
+<h3>Create interactive plots using Plotly<a class="headerlink" href="#create-interactive-plots-using-plotly" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For instance the previous 3D plot is generated using <strong>Plotly</strong> allowing you to rotate and interact with the surface</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the 3D surface plot</span>
+<span class="n">surface_plot</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Add plot to figure and specify labels</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">surface_plot</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;3D Surface Plot&#39;</span><span class="p">,</span>
+                  <span class="n">scene</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                      <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;X Axis&#39;</span><span class="p">,</span>
+                      <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Y Axis&#39;</span><span class="p">,</span>
+                      <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;Z Axis&#39;</span>
+                  <span class="p">))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+<section id="plotting-histograms">
+<h3>Plotting histograms<a class="headerlink" href="#plotting-histograms" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make up some random data</span>
@@ -665,46 +705,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/9baf313a2e7f646ba6d3da4c1ec399c6afe1fbc16c52da2bf894fab63b32ab13.png" src="../_images/9baf313a2e7f646ba6d3da4c1ec399c6afe1fbc16c52da2bf894fab63b32ab13.png" />
-</div>
-</div>
-<ul class="simple">
-<li><p><a class="reference external" href="https://seaborn.pydata.org/index.html">Seaborn</a> library is especially powerful for visualizing statistical plots.</p></li>
-<li><p>Seaborn is is a higher level library build on top of matplotlib that simplifies many intermediate steps that are needed to go from data to beautiful and polished visualization</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make up some random data</span>
-<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-
-<span class="c1"># Plot 2D histogram of the data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/133cff17b61f731cb3b49d13ae965919b59eb1f3ffcb0836474fa9c6e0cd625c.png" src="../_images/133cff17b61f731cb3b49d13ae965919b59eb1f3ffcb0836474fa9c6e0cd625c.png" />
-</div>
-</div>
-<p>Let us plot the same using seaborn now. Notice that when plotting with seaborn we pass on x and y explicitely</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> 
-            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> 
-            <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span><span class="p">,</span> 
-            <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -733,6 +733,7 @@ document.write(`
     <span class="n">y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">freq</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">phase</span><span class="p">)</span>
         
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -746,7 +747,31 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6bd44e14c62c4f9aaa0808f748b68220", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "725d1472607446bdabd54750d7b19015", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Here is another example combining interactive plotly plot with ipywidget slider</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sine_wave</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">frequency</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">trace</span>  <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">)</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Sine Wave with Frequency = </span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s1"> Hz&#39;</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">trace</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_sine_wave</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "420f27f50e884c4597c868fab3923caf", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_sine_wave(frequency=1.0)&gt;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="additional-resoruces">
@@ -827,8 +852,9 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-gallery-of-useful-examples">A gallery of useful examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-and-ax-objects">fig and ax objects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-2d">Plotting in 2D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-histograms-and-distributions">Plotting histograms and distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-2d-and-3d">Plotting in 2D and 3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-plots-using-plotly">Create interactive plots using Plotly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-histograms">Plotting histograms</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets">Widgets</a></li>
