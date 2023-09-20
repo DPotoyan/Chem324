@@ -222,3 +222,32 @@ Thanks to universality of energy conservation law, for every observable in class
 |           Equation of motion            | Newton's law $F=ma$ <br>or Hamiltons equations | $\hat{H}\psi=E\psi$ Or <br>$i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi$ |
 | Quantization and wave-particle duality? |                      N/A                       | Energy quantization and duality are<br> naturally described by $E_n$ and $\psi_n$. |
 
+### Problems
+
+#### Problem 1
+
+Confirm that the following wavefunctions are eigenfunctions of linear momentum and kinetic energy (or neither or both):
+
+- $C sin(ax)$
+
+- $N e^{-ix/\hbar}$
+
+:::{dropdown} Solution 
+
+Start by applying linear momentum operator to first function
+
+$$-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar Aa \cos(ax) \nonumber$$
+
+We see that action of operator changed the sin wave function hence sin function can not be an eigenfunction of linear momentum. 
+
+Next we apply kinetic energy operator
+
+$$
+\begin{align*} -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) &= -\dfrac{\hbar^2}{2m} \dfrac{\partial}{\partial x} Aa \cos(ax) \\[4pt] &= +\dfrac{\hbar^2}{2m} Aa^2 \sin(ax) \end{align*}  \nonumber
+$$
+
+Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator
+:::
+
+#### Problem 2
+
