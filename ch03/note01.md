@@ -3,10 +3,12 @@
 
 ```{admonition} What you need to know
 :class: note
-- By combining classical wave equation with quantum ideas we arrive at new equation that produces quantum wave functions: Schrödinger's equation (SE).
+- By combining classical wave equation with quantum ideas we arrive at a new equation describing quantum wave functions: Schrödinger's equation (SE).
 - Schrödinger's equation, just like classical wave equation depends on both time and space. 
 - Once again we can use the technique of separation of variables and turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
-- We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. The operator notation helps with drawing many useful analogies with intuitive notions in classical  mechanics. 
+- We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. 
+- Each physical quantity that is measured in experiments (energy, momentum, position, etc) has a corresponding operator in quantum mechanics. 
+- We re-formulate the problem of solving Schrodinger equation into a problem of finding eigenfunctions and eigenvalues corresponding to different operators.  
 ```
 
   
@@ -25,15 +27,11 @@ You are now entering the quantum world. Proceed wih caution
 
 ### Picking up where classical mechanics has failed
 
-- Let us recall that classical mechanics while valid at large scales totally failed at describing motion at the atomic and molecular scales. 
-
-- A new, correct equation of motion is needed that can explain:
+- Let us recall that classical mechanics while valid at large scales totally failed at describing motion at the atomic and molecular scales. A new, correct equation of motion is needed that can explain:
 
 - **Quantized nature of energy** seen in  experiments on blackbody radiation, atomic and molecular spectra.
 
 - **Wave-particle duality** Electron diffraction, Compton scattering, double slit experiments
-
-- Explain why classical mechanics and classical thinking completely breaks down at small scales but works perfectly for larger objects. 
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro2.gif" alt="SE-intro" class="bg-primary mb-1" width="300px">
@@ -43,73 +41,69 @@ Schrodinger had to make peace with the idea that correct description of electron
 
 ### From classical to quantum wave equation
 
-- In 1925/1926 Erwin Schrödinger, who was an expert on waves, attempted to derive new equation of motion that could unify weird quantum facts of  energy quantization and wave-particle duality under one sound theoretical roof! He (correctly) guessed that the equation of motion for quantum mechanics should be a wave equation.
+- In 1925/1926 Erwin Schrödinger, who was an expert on physics of waves, derived a new equation of motion which allows computing, predicting and obtaining from first principles the quantum phenomena such as energy quantization and wave-particle duality.
 
-- This was the only wave equation known at that time so Schrödinger started his reasoning from here. 
+- We can trace Schordinger's approach by starting with classical wave equation
 
   $$\frac{\partial^2 \Psi(x,t)}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 \Psi(x,t)}{\partial t^2}$$
 
-- Taking a typical wave function which satisfies a wave equation we will now inject the above mentioned key quantum relationships and will try to figure out which equation governs such solutions. 
+- Solution of classical wave equation in general produces traveling waves such as a periodic wave seen in previous sections. 
 
-  As an example let us take  a freely moving periodic wave which satisfies classical wave equation. Plug it in above equation to verify. 
+$$\Psi(x,t) = Acos{(kx-\omega t)}$$
 
-  $$\Psi(x,t)=Ae^{i(kx-\omega t)}$$
+- Or the following more general and mathematically convenient representation of a periodic traveling wave: 
 
-  We could have written a sin or cos functions with equation success. But the complex notation is more general and convenient to work with mathematically. 
+$$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
 
+### Arriving at Schrödinger Equation
 
+Now let us combine the following two cornerstone quantum ideas into a periodic wave function:
 
-### An attempt at deriving Schrödinger Equation
+- **De Broglie relation:** Encoding wave-particle duality 
 
-Now let us combine the following two cornerstone quantum ideas into a free periodic wave function:
+$$p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$$
 
-- **De Broglie relation:** **$p=h/\lambda$** Matter has both particle and wave like qualities. 
+- **Planck equaton:**   Encoding energy quantization
 
-- **Planck equaton:** $E=h\nu$  Energy levels  are quantized.
+$$E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$$
 
-$$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{i2\pi(\frac{x}{\lambda}-\nu t)}= Ae^{\frac{i}{\hbar}(px-E t)}$$
+- Inserting the two quantum expressions into the classical wave function we now get a quantum wave function:
 
-Where we have plugged in wave vector $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$ expressed in terms of momenum via de Broglie relation and angular frequency expressed in terms of energy via Planck equation $\omega=2\pi \nu=\frac{E}{\hbar}$
+$$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{\frac{i}{\hbar}(px-E t)}$$
+
+- **What equation can genereate such wave functions?** To find out we need to take derivatives with respect to time and space.
 
 
 
 ### Turning a quantum wave function into quantum wave equation. 
 
-- What we have achieved so far is design a wave function which reflects quantum reality by having the right momentum to wave length and energy to frequency relationships. 
-
-- Now the question is which equation is governing such wave functions?  To find out we will have to differentiatiate the wave function with respect to spatial and temporal components. 
-
-Taking a time derivative once 
+- Taking time derivative we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.
 
 $$
 \frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)
 $$
 
-we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.  
-
-Likewise we can recover total energy by taking  spatial derivatve twice
+- We can recover total energy by taking  two spatial derivatives. 
 
 $$ \frac{\partial \Psi(x,t)}{\partial x}=\frac{i}{\hbar}p\Psi(x,t)$$
 
 $$ \frac{\partial^2 \Psi(x,t)}{\partial x^2}=-\frac{p^2}{\hbar^2}\Psi(x,t)=-\frac{2m(E-V)}{\hbar^2}\Psi(x,t)$$
 
-Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  $E=\frac{p^2}{2m}+V$
+- Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  $E=\frac{p^2}{2m}+V$
 
 This last expression we will come to know as the time-independent Schrödinger equation (TI-SE):
 
-$$-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V\Psi=E\Psi  $$
+$$\boxed{{\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi=E\Psi}}$$
 
 By connecting spatial and temporal derivatives through total energy we obtain the time-dependent Schrödinger equation (TD-SE):
 
-$$ i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V]\Psi$$
+$$\boxed{{\color{red}i\hbar \frac{\partial }{\partial t} \Psi }= {\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi} }$$
 
 ### The mathematical language of QM: operators
 
-- Let us introduce some jargon and notation which is going to help us make mathematics and analogies more concise.
-
-- Operators make quantum mechanics more compact  transparent. 
-
-- We define operators via a mathematical act of turning function A into function B.  By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
+- Let us introduce some jargon and notation which is going to help us make mathematics and analogies with classical intuition more concise.
+ 
+- We define operators via a mathematical act of turning function A into function B. By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro3.jpg" alt="SE-intro" class="bg-primary mb-1" width="300px">
@@ -120,29 +114,31 @@ Analogy of operators with ordinary functions.
 
 ### Linear operators. 
 
-Linear means that operator acting on sum of function does not change the power of any of functions. 
+- Linear means that operator acting on sum of function does not change the power of any of functions. 
 
 $$\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)$$
 
-Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
+- Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
 
-- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$
+- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$.
 
 
 
 ### Time-dependent Schrödinger equation in operator notation.
 
-By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
+- By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
 
-$$i\hbar \frac{\partial }{\partial t} \Psi= [-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V]\Psi=\hat{H}\Psi$$
+$$i\hbar \frac{\partial }{\partial t} \Psi= \Big[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V \Big]\Psi=\hat{H}\Psi$$
 
-The operator $\hat{H}$ is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian $H(x,p)=\frac{p^2}{2m}+V$ which is an expression of total energy. 
+- The operator $\hat{H}$ is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian  which is an expression of total energy. 
+
+$$H(x,p)=K+V = \frac{p^2}{2m}+V(x)$$
 
 $$\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)$$
 
-As we  see the analog of classical kinetic operator is a second order partial differentiation. 
+We see that the analog of classical kinetic energy is an a second order partial differentiation operator. 
 
-Whereas the  potential energy has exactly the same appearance of a function of spatial coordinates. 
+- Potential energy has exactly the same appearance: It is a function of spatial coordinates, e.g $V(x)=0$ (free particle) or $V(x)=kx^2$ (particle trapped in harmonic well) or  $V(x)=cos(x)$ (particle subject to periodic potential).
 
 
 
@@ -160,9 +156,9 @@ Now collecting $x$ and $t$ terms we achieve separation of variables.
 
 $$\frac{1}{f(t)}i\hbar \frac{\partial }{\partial t} f(t)=\frac{1}{\psi(x) }\hat{H}\psi(x)=E$$
 
-Notice that the hamiltonian operator contains $x$ derivatives hence $f(t)$ can be taken out of the oeprator expression. In the expression $\frac{\hat{H}\psi(x)}{\psi(x)}$ however one can not cancel $\psi$ becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product! 
+Notice that the hamiltonian operator contains $x$ derivatives hence $f(t)$ can be taken out of the operator expression. In the expression $\frac{\hat{H}\psi(x)}{\psi(x)}$ however one can not cancel $\psi$ becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product! 
 
-The separation constant can be recognized as the total energy as is evident by recalling that the hamiltonain operator is the analog of Hamilton function.  The temporal part is solved instantly:
+The separation constant can be recognized as the total energy as is evident by recalling that the Hamiltonian operator is the analog of Hamilton function.  The temporal part is solved instantly:
 
 $$f(t)=e^{-iEt/\hbar} $$
 
@@ -170,21 +166,29 @@ The spatial part is obtained by solving time-independent Schrödinger equation.
 
 $$\hat{H}\psi(x)=E\psi(x)$$
 
-Once we have a solution to both spatial and temproal parts of the wave function we can write down the  
+Once we have a solution to both spatial and temporal parts of the wave function we can put them back into $\psi(x)f(t)$ and obtain full wave function:
 
-$$\psi(x,t)=\psi(x)f(t)=\psi(x) e^{-\frac{i}{\hbar}Et}$$
-
+$$\boxed{\psi(x,t) = {\color{green}\psi(x)} {\color{red}e^{-\frac{i}{\hbar}Et}} }$$
 
 
 ### What about the boundary conditions and normal modes?
 
-As we recall from solving classical wave equation whenever there are bounary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
+- As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
 
-$$\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x) $$
+$$\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x)$$
 
-In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels! The wave functions for each $n$ are going to have special signficance as gateways to describing the probability profile of finding electrons in different points in space. 
+- The general solution is written as linear combination of normal modes
+$$u(x,t) = \sum_n c_n u_n(x) f_n(t)$$
+
+- In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels! 
+
+- The wave functions for each $n$ are going to have special significance as gateways to describing the probability profile of finding electrons in different points in space. 
 
 $$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
+
+- The general solution is written as linear combination of wave functions:
+
+$$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 
 
 
@@ -200,12 +204,9 @@ Eigenvalue/Eigenfunction problem
 
 E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
-### Time-independent Schrödinger equation as an eigenvalue-eigenfunction problem.
+**The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where eigenfunctions $\psi_n$ are wave-functions and eigenvalues are energies $E_n$.**
 
-The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where our eigenfunctions are wave-functions and eigenvalues are energies.
-
-$$\hat{H}\psi(x)=E\psi(x)$$
-
+$$\boxed{\hat{H} \psi_n=E_n \psi_n}$$
 
 ### The correspondence principle of Quantum Mechanics
 
