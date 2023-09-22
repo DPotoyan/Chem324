@@ -167,6 +167,26 @@ $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
 Not that normalization coefficient turned out to be independent of $n$.
 
+
+
+### Computing Average Properties from a Wave Function
+
+Because of the probabilistic interpretation of the wave function, average properties can be computed from the wave function.  The general formula is
+
+$$\begin{equation}
+<A> = \int \psi^*(x)\hat{A}\psi(x)dx
+\end{equation}$$
+
+where $\hat{A}$ is any operator.  This could be momentum, kinetic energy, etc.
+    
+Let's look at a few examples.  
+
+1. Compute the probability to find particle in a range $a<x<b$   
+2. Compute the average value of $x^2$ for a particle in a box
+3. Compute the average energy for a particle in a box
+4. Compute the average momentum for a particle in a box
+
+
 :::{admonition} Example: Compute the probability of observing the particle in a box being in the domain $\frac{a}{3} \leq x \leq \frac{2a}{3}$. 
 :class: tip, dropdown
 
@@ -198,22 +218,6 @@ $$\begin{align}
 \end{align}$$
 :::
 
-
-### Computing Average Properties from a Wave Function
-
-Because of the probabilistic interpretation of the wave function, average properties can be computed from the wave function.  The general formula is
-
-$$\begin{equation}
-<A> = \int \psi^*(x)\hat{A}\psi(x)dx
-\end{equation}$$
-
-where $\hat{A}$ is any operator.  This could be momentum, kinetic energy, etc.
-    
-Let's look at a few examples.  
-    
-1. Compute the average value of $x^2$ for a particle in a box
-2. Compute the average energy for a particle in a box
-3. Compute the average momentum for a particle in a box
 
 :::{admonition} Example: Compute he average of $x^2$ for a particle in a box
 :class: tip, dropdown
@@ -260,7 +264,7 @@ $$\begin{equation}
 
 
 
-:::{admonition} Compute the average Energy of Particle in a Box
+:::{admonition} Example: Compute the average Energy of Particle in a Box
 :class: tip, dropdown
 
 The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction
