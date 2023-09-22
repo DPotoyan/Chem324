@@ -167,8 +167,6 @@ $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
 Not that normalization coefficient turned out to be independent of $n$.
 
-### Examples of using wavefunction to extract measurable quantities 
-
 :::{admonition} Example: Compute the probability of observing the particle in a box being in the domain $\frac{a}{3} \leq x \leq \frac{2a}{3}$. 
 :class: tip, dropdown
 
