@@ -2,40 +2,47 @@
 
 ```{admonition} What you need to know
 :class: note
-- **We explore the meaning of a wave function which is a gateway into probabilsitc quantum-mechanical world of small systems. We learn that psi squared  is a probability distribution function.**
-- **We illustrate several key quantum mechanical principles on the example of a Particle in Box. A simple toy system useful for understanding behaviour of bound states of electrons in atoms or molecules such as** 
-  - **Energetic quantization**. 
-  - **Probabilistic nature of quantum particle.** Having non uniform distirbutions of position when occupying different energy levels. 
-  - **Uncertainy relation.** Inverse relationship between spread in position and momentum values. 
+- Quantum world is probabilistic in its nature 
+- Absolute value of wave function squared is a probability distribution function to find quantum object in space and time
+- A simple toy system, like Particle in a Box is introduced to qualitatively explain behavior of electrons bound inside atom and molecules.
+  - On the example of PIB we see **Energetic quantization**. 
+  - **Probabilistic nature of quantum particle.** Having non uniform distributions over position with existence of nodal points. 
+  - **Uncertainty relation.** Inverse relationship between spread in position and momentum values. 
   - **Existence of zero point energy.** A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles. 
   - **Quantum-classical correspondence.** Smooth transition to classical behavior when going larger scales.   
-  - **Degeneracy in energy levels.** How symmetries lead to different wave functions correpsonding to the same energy levels. 
+  - **Degeneracy in energy levels.** How symmetries lead to different wave functions corresponding to the same energy levels. 
 ```
-
-
 ### What is the meaning of a wave-function $\psi$ ? 
 
-- In classical wave equation, wave function has a simple mechanical  interpretation: it's just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.  
+- In classical wave equation, wave function has a simple mechanical interpretation: it's just the degree of disturbance of the wave. E.g. elevation of guitar string from a rest position.  
 - In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments. 
-- As It turns out, the square value of wave function that is $p(x)=\psi(x) \cdot \psi^{*}(x)$ is a probability distribution function describing likelihood of quantum objects being at different points $x$  in 1D space. For 3D space the analogous expression is $p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$ and so on. 
+- It turns out that the absolute value of wave function squared that is 
+$$p(x)=\psi(x) \cdot \psi^{*}(x)$$ 
+
+- $p(x)$ is a probability distribution function describing likelihood of quantum objects being at different points $x$. 
+
+- For 3D space the analogous expression is 
+
+$$p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$$ 
 
 ### The importance of normalization
 
-To be a proper probability distirbution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distirbution and not equal. Normalization of $\psi^2$  means that that there is absolute certainty that quantum object exisits somehwere in space. Hence in an experiment when you search for quantum particule in an entire space you are going to find it somehwere.
+- To be a proper probability distribution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distribution and not equal. 
+- Normalization of $\psi^2$  means that that there is absolute certainty that quantum object exists somehwere in space. Hence in an experiment when you search for quantum particle in an entire space you are going to find it somewhere.
 
-Tne normalization In 1D is:
+Normalization in 1D:
 
 $$\int^{+\infty}_{-\infty} |\psi(x)|^2 dx= \int^{+\infty}_{-\infty} p(x)dx=1$$ 
 
 Normalization of a wave function $\psi'$ is done by multiplying it by a constant  $\psi=N\psi'$ and plugging in the above condition to find the value of $N$. In another words normalization allows determining the constant multiplicative factor in front of wave functions.
 
-Normalization In 3D is:
+Normalization in 3D:
 
 $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1$$
 
 ### What can we do with probability distribution functions (PDF)? 
 
-- By defnitition probability distribution function $p(x) $ allows quantifying various probabilities that a quantum "particle" is located in an infinitesimal slice $[x, x+dx]$ around point $x$.  This then enables us to  find probabilities in any finite region $[a,b]$ simply by integrating:
+- By definition probability distribution function $p(x) $ allows quantifying various probabilities that a quantum "particle" is located in an infinitesimal slice $[x, x+dx]$ around point $x$.  This then enables us to  find probabilities in any finite region $[a,b]$ simply by integrating:
 
   $$p(a<x<b)=\int_a^b |\psi(x)|^2dx$$
 
@@ -45,7 +52,7 @@ $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} 
 
 ### Computing moments of probability distirbution function
 
-Probability distribution function contains lot of information. E.g probability of observing every posisble value of $x$.  
+- Probability distribution function contains lot of information. E.g probability of observing every possible value of $x$.  
 
 - But often we are interested in more reduced descriptions in terms of moments such quantifying average value (first moment) or spread in the distribution (second moment). Below we re-list the definitions of various quantities one can extract from a PDF.
 
@@ -54,7 +61,7 @@ Probability distribution function contains lot of information. E.g probability o
 |         $$\langle x \rangle=\int p(x) x dx$$         | **1-st moment** |
 |       $$\langle x^2 \rangle=\int p(x)x^2 dx$$        | **2-nd moment** |
 |       $$\langle x^n \rangle=\int p(x)x^n dx$$        | **N-th moment** |
-| $\sigma^2=\langle x^2 \rangle-\langle x \rangle^2  $ | **Dispersion**  |
+| $\sigma^2=\langle x^2 \rangle-\langle x \rangle^2$   | **Dispersion**  |
 
 
 
@@ -74,7 +81,7 @@ Probability distribution function contains lot of information. E.g probability o
 ### Particle in a Box (PIB):
 
 - Particle in a box is a toy model of electron/atom/molecule trapped in some region of space $[0,L]$. The positional information of a quantum "particle" is described by a quantum wave function $\psi(x)$ which is obtained by solving Schrödinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem. 
--  Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a "wave".
+- Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a "wave".
 
 
 
@@ -135,15 +142,171 @@ $$k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\fra
 
 Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.
 
-### Normalizing wave function determines the constant multiplicative factor 
+### Wave functions must be normalized
 
-$$\int^L_0 \psi(x)^2 dx=1 $$
+Now we will see how requirement of normalization determines the constant coefficient B. 
 
-$$B^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B^2}{2}=1$$
+$$\int^L_0 \psi_n(x)^2 dx=1 $$
 
-$$B=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
-Where we made use of $\sin^2(x)=\frac{1}{2}(1-\cos(2x))$ trig relation. 
+$$\psi_n^*(x) \psi_n(x)  = B_n^*B_n \sin^2\frac{n\pi x}{a}$$
+
+We will make use of $\sin^2(x)=\frac{1}{2}(1-\cos(2x))$ trig relation to evaluate integral
+
+$$B_n^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B_n^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B_n^2}{2}=1$$
+
+$$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
+
+Not that normalization coefficient turned out to be independent of $n$.
+
+### Example: Probability of Observing Particle in Finite Domain
+
+Since the square of the wave function is a probability function, we can determine the probability of observing a particle in a particular domain using the relationship
+
+$$\begin{equation}
+\text{Prob}(x_1 \leq x \leq x_2) = \int_{x_1}^{x_2}P(x)dx = \int_{x_1}^{x_2} \psi^*(x)\psi(x)dx
+\end{equation}$$
+
+:::{admonition} Compute the probability of observing the particle in a box being in the domain $\frac{a}{3} \leq x \leq \frac{2a}{3}$. We simply use the above equation and the normalized particle in a box wave function:
+:class: tip, dropdown
+
+
+$$\begin{align}
+\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) = \frac{2}{a}\int_{\frac{a}{3}}^{\frac{2a}{3}} \sin^2\frac{n\pi x}{a}dx
+\end{align}$$
+
+We will use the definite integral of $\sin^2ax$ from a table:
+
+$$\begin{equation}
+\int\sin^2axdx = \frac{x}{2} - \frac{\sin2ax}{4a}
+\end{equation}$$
+
+Perform $u = $ substition of the integral above to get into the table form
+
+$$\begin{align}
+\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) &= \frac{2}{a}\left[ \frac{x}{2} - \frac{\sin\frac{2n\pi x}{a}}{\frac{4n\pi}{a}}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
+&= \frac{2}{a}\left[ \frac{x}{2} - \frac{a\sin\frac{2n\pi x}{a}}{4n\pi}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
+&= \frac{2}{a}\left[ \frac{a}{3} - \frac{a\sin\frac{4n\pi}{3}}{4n\pi} - \frac{a}{6} + \frac{a\sin\frac{2n\pi }{3}}{4n\pi}\right] \\
+&= 2\left[ \frac{1}{6}  + \frac{\sin\frac{2n\pi }{3} - \sin\frac{4n\pi}{3}}{4n\pi}\right]
+\end{align}$$
+:::
+
+
+### Computing Average Properties from a Wave Function
+
+Because of the probabilistic interpretation of the wave funtion, average properties can be computed from the wave function.  The general formula is
+
+$$\begin{equation}
+<A> = \int \psi^*(x)\hat{A}\psi(x)dx
+\end{equation}$$
+
+where $\hat{A}$ is any operator.  This could be momentum, kinetic energy, etc.
+    
+Let's look at a few examples.  
+    
+1. Compute the average value of $x^2$ for a particle in a box
+2. Compute the average energy for a particle in a box
+3. Compute the average momentum for a particle in a box
+
+### Example: The average of $x^2$ for a particle in a box
+
+To compute the average value of $x^2$ we start by writing the integral expression
+
+$$\begin{equation}
+\langle x^2 \rangle = \int \psi^*(x) x^2 \psi(x)dx
+\end{equation}$$
+
+For the particle in a box, we can limit the domain, and thus the bounds of integration, to $0\leq x \leq a$.  We can also set $\psi_n(x) = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}$.
+
+Thus, for a particle in a 1D box of size $a$ we get
+
+$$\begin{align}
+\langle x^2 \rangle &= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
+&= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx
+\end{align}$$
+
+From an integral table we find that
+
+$$\begin{equation}
+\int x^2\sin^2\alpha xdx = \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2} + C
+\end{equation}$$
+
+We use this equation with $\alpha = \frac{n\pi}{a}$ and get
+
+$$\begin{align}
+\langle x^2 \rangle &= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
+&= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx \\
+&= \frac{2}{a}\left[ \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2}\right]_0^a \\
+&= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha a - \frac{a\cos 2\alpha a}{4\alpha^2} \right] \\
+&= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\frac{n\pi}{a}} - \frac{1}{8\left(\frac{n\pi}{a}\right)^3}\right)\sin2\frac{n\pi}{a} a - \frac{a\cos 2\frac{n\pi}{a} a}{4\left(\frac{n\pi}{a}\right)^2} \right] \\
+&= \frac{2}{a}\left[ \frac{a^3}{6} - \frac{a^3}{\left(2n\pi\right)^2} \right] \\
+&=  \frac{a^2}{3} - \frac{a^2}{2\left(n\pi\right)^2} 
+\end{align}$$
+
+This result, combined with the result for $\langle x \rangle$, can be used to determine $\sigma_x$, the standard deviation of particle deviation:
+
+$$\begin{equation}
+\sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} = \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3} -2}
+\end{equation}$$
+
+### Example: Average Energy of Particle in a Box
+
+The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction
+
+$$\begin{equation}
+\langle E \rangle = \int_0^a \psi_n^*(x)\hat{E}\psi_n(x)dx
+\end{equation}$$
+
+where $\hat{E}$ is the total energy operator.  We know the total energy operator by another symbol, namely $\hat{E} = \hat{H}$.  We plug this into the above equation to get
+
+$$\begin{equation}
+\langle E \rangle = \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx.
+\end{equation}$$
+
+We now recognize that, for the particle in a box wavefunctions that we are discussion these were derived from the Schrodinger equation
+
+$$\begin{equation}
+\hat{H}\psi_n(x)  = E_n\psi_n(x)
+\end{equation}$$
+
+where $E_n$ is a scalar.  Thus, for the average energy we get
+
+$$\begin{align}
+\langle E \rangle &= \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx \\
+&=\int_0^a \psi_n^*(x)E_n\psi_n(x)dx \\
+&=E_n\int_0^a \psi_n^*(x)\psi_n(x)dx \\
+&= E_n
+\end{align}$$
+
+The last equality holding because the wave functions are normalized.
+
+### Example: Average momentum
+
+To compute the average momentum of a particle in a 1D box we start in the usual way
+
+$$\begin{equation}
+\langle p \rangle = \int_0^a \psi_n^*(x)\hat{p}\psi_n(x)dx
+\end{equation}$$
+
+Recall that the momentum operator in one dimension is given by
+
+$$\begin{equation}
+\hat{p}_x = -i\hbar\frac{d}{dx}
+\end{equation}$$
+
+We now substitute this into the  above equation and solve
+
+$$\begin{align}
+\langle p \rangle &= \int_0^a \psi_n^*(x)\left(-i\hbar\frac{d}{dx}\right)\psi_n(x)dx \\
+&= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{d}{dx}\left(\sin\left(\frac{n\pi x}{a}\right)\right)dx \\
+&= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{n\pi}{a}\cos\left(\frac{n\pi x}{a}\right)dx \\
+&= -\frac{2in\pi\hbar}{a^2}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\cos\left(\frac{n\pi x}{a}\right)dx \\
+&= 0
+\end{align}$$
+
+where the last equality can be found in an integral table.
+
+So the average momentum of a particle in a box is zero.  This is because it is equally probable for the particle to be moving forward and backwards.
 
 ### Problems
 

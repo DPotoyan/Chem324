@@ -125,7 +125,7 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 - Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe!
 
 
-```{admonition} Quiz
+:::{admonition} Quiz
 :class: tip, dropdown
 
 **What is the problem with classical mechanical explanation of black body radiation?**
@@ -134,7 +134,7 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 2. CM makes some uncontrolled approximations about energy.  
 3. CM can not model waves. 
 4. Classical mechanics does not have a way to account for the quantization of energy.
-```
+:::
 
 ### Max Planck and the trick of quantization 
 

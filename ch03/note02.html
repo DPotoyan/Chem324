@@ -438,7 +438,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-probability-of-observing-particle-in-finite-domain">Example: Probability of Observing Particle in Finite Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-average-of-x-2-for-a-particle-in-a-box">Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-energy-of-particle-in-a-box">Example: Average Energy of Particle in a Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-momentum">Example: Average momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
             </nav>
@@ -456,15 +461,16 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p><strong>We explore the meaning of a wave function which is a gateway into probabilsitc quantum-mechanical world of small systems. We learn that psi squared  is a probability distribution function.</strong></p></li>
-<li><p><strong>We illustrate several key quantum mechanical principles on the example of a Particle in Box. A simple toy system useful for understanding behaviour of bound states of electrons in atoms or molecules such as</strong></p>
+<li><p>Quantum world is probabilistic in its nature</p></li>
+<li><p>Absolute value of wave function squared is a probability distribution function to find quantum object in space and time</p></li>
+<li><p>A simple toy system, like Particle in a Box is introduced to qualitatively explain behavior of electrons bound inside atom and molecules.</p>
 <ul>
-<li><p><strong>Energetic quantization</strong>.</p></li>
-<li><p><strong>Probabilistic nature of quantum particle.</strong> Having non uniform distirbutions of position when occupying different energy levels.</p></li>
-<li><p><strong>Uncertainy relation.</strong> Inverse relationship between spread in position and momentum values.</p></li>
+<li><p>On the example of PIB we see <strong>Energetic quantization</strong>.</p></li>
+<li><p><strong>Probabilistic nature of quantum particle.</strong> Having non uniform distributions over position with existence of nodal points.</p></li>
+<li><p><strong>Uncertainty relation.</strong> Inverse relationship between spread in position and momentum values.</p></li>
 <li><p><strong>Existence of zero point energy.</strong> A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles.</p></li>
 <li><p><strong>Quantum-classical correspondence.</strong> Smooth transition to classical behavior when going larger scales.</p></li>
-<li><p><strong>Degeneracy in energy levels.</strong> How symmetries lead to different wave functions correpsonding to the same energy levels.</p></li>
+<li><p><strong>Degeneracy in energy levels.</strong> How symmetries lead to different wave functions corresponding to the same energy levels.</p></li>
 </ul>
 </li>
 </ul>
@@ -472,26 +478,34 @@ document.write(`
 <section id="what-is-the-meaning-of-a-wave-function-psi">
 <h2>What is the meaning of a wave-function <span class="math notranslate nohighlight">\(\psi\)</span> ?<a class="headerlink" href="#what-is-the-meaning-of-a-wave-function-psi" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>In classical wave equation, wave function has a simple mechanical  interpretation: it’s just the degree of distrurbance of the wave. E.g. elevation of guitar string from a rest position.</p></li>
+<li><p>In classical wave equation, wave function has a simple mechanical interpretation: it’s just the degree of disturbance of the wave. E.g. elevation of guitar string from a rest position.</p></li>
 <li><p>In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments.</p></li>
-<li><p>As It turns out, the square value of wave function that is <span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</span> is a probability distribution function describing likelihood of quantum objects being at different points <span class="math notranslate nohighlight">\(x\)</span>  in 1D space. For 3D space the analogous expression is <span class="math notranslate nohighlight">\(p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)\)</span> and so on.</p></li>
+<li><p>It turns out that the absolute value of wave function squared that is
+$<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x)\)</span> is a probability distribution function describing likelihood of quantum objects being at different points <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>For 3D space the analogous expression is</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)\]</div>
 </section>
 <section id="the-importance-of-normalization">
 <h2>The importance of normalization<a class="headerlink" href="#the-importance-of-normalization" title="Permalink to this heading">#</a></h2>
-<p>To be a proper probability distirbution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distirbution and not equal. Normalization of <span class="math notranslate nohighlight">\(\psi^2\)</span>  means that that there is absolute certainty that quantum object exisits somehwere in space. Hence in an experiment when you search for quantum particule in an entire space you are going to find it somehwere.</p>
-<p>Tne normalization In 1D is:</p>
+<ul class="simple">
+<li><p>To be a proper probability distribution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distribution and not equal.</p></li>
+<li><p>Normalization of <span class="math notranslate nohighlight">\(\psi^2\)</span>  means that that there is absolute certainty that quantum object exists somehwere in space. Hence in an experiment when you search for quantum particle in an entire space you are going to find it somewhere.</p></li>
+</ul>
+<p>Normalization in 1D:</p>
 <div class="math notranslate nohighlight">
 \[\int^{+\infty}_{-\infty} |\psi(x)|^2 dx= \int^{+\infty}_{-\infty} p(x)dx=1\]</div>
 <p>Normalization of a wave function <span class="math notranslate nohighlight">\(\psi'\)</span> is done by multiplying it by a constant  <span class="math notranslate nohighlight">\(\psi=N\psi'\)</span> and plugging in the above condition to find the value of <span class="math notranslate nohighlight">\(N\)</span>. In another words normalization allows determining the constant multiplicative factor in front of wave functions.</p>
-<p>Normalization In 3D is:</p>
+<p>Normalization in 3D:</p>
 <div class="math notranslate nohighlight">
 \[ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1\]</div>
 </section>
 <section id="what-can-we-do-with-probability-distribution-functions-pdf">
 <h2>What can we do with probability distribution functions (PDF)?<a class="headerlink" href="#what-can-we-do-with-probability-distribution-functions-pdf" title="Permalink to this heading">#</a></h2>
 <ul>
-<li><p>By defnitition probability distribution function <span class="math notranslate nohighlight">\(p(x) \)</span> allows quantifying various probabilities that a quantum “particle” is located in an infinitesimal slice <span class="math notranslate nohighlight">\([x, x+dx]\)</span> around point <span class="math notranslate nohighlight">\(x\)</span>.  This then enables us to  find probabilities in any finite region <span class="math notranslate nohighlight">\([a,b]\)</span> simply by integrating:</p>
+<li><p>By definition probability distribution function <span class="math notranslate nohighlight">\(p(x) \)</span> allows quantifying various probabilities that a quantum “particle” is located in an infinitesimal slice <span class="math notranslate nohighlight">\([x, x+dx]\)</span> around point <span class="math notranslate nohighlight">\(x\)</span>.  This then enables us to  find probabilities in any finite region <span class="math notranslate nohighlight">\([a,b]\)</span> simply by integrating:</p>
 <div class="math notranslate nohighlight">
 \[p(a&lt;x&lt;b)=\int_a^b |\psi(x)|^2dx\]</div>
 </li>
@@ -503,8 +517,8 @@ document.write(`
 </section>
 <section id="computing-moments-of-probability-distirbution-function">
 <h2>Computing moments of probability distirbution function<a class="headerlink" href="#computing-moments-of-probability-distirbution-function" title="Permalink to this heading">#</a></h2>
-<p>Probability distribution function contains lot of information. E.g probability of observing every posisble value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <ul class="simple">
+<li><p>Probability distribution function contains lot of information. E.g probability of observing every possible value of <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>But often we are interested in more reduced descriptions in terms of moments such quantifying average value (first moment) or spread in the distribution (second moment). Below we re-list the definitions of various quantities one can extract from a PDF.</p></li>
 </ul>
 <table class="table">
@@ -523,7 +537,7 @@ document.write(`
 <tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x^n \rangle=\int p(x)x^n dx\)</span>$</p></td>
 <td class="text-center"><p><strong>N-th moment</strong></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sigma^2=\langle x^2 \rangle-\langle x \rangle^2  \)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sigma^2=\langle x^2 \rangle-\langle x \rangle^2\)</span></p></td>
 <td class="text-center"><p><strong>Dispersion</strong></p></td>
 </tr>
 </tbody>
@@ -609,15 +623,149 @@ document.write(`
 \[k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\frac{n^2 h^2}{8mL^2} \]</div>
 <p>Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.</p>
 </section>
-<section id="normalizing-wave-function-determines-the-constant-multiplicative-factor">
-<h2>Normalizing wave function determines the constant multiplicative factor<a class="headerlink" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor" title="Permalink to this heading">#</a></h2>
+<section id="wave-functions-must-be-normalized">
+<h2>Wave functions must be normalized<a class="headerlink" href="#wave-functions-must-be-normalized" title="Permalink to this heading">#</a></h2>
+<p>Now we will see how requirement of normalization determines the constant coefficient B.</p>
 <div class="math notranslate nohighlight">
-\[\int^L_0 \psi(x)^2 dx=1 \]</div>
+\[\int^L_0 \psi_n(x)^2 dx=1 \]</div>
 <div class="math notranslate nohighlight">
-\[B^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B^2}{2}=1\]</div>
+\[\psi_n^*(x) \psi_n(x)  = B_n^*B_n \sin^2\frac{n\pi x}{a}\]</div>
+<p>We will make use of <span class="math notranslate nohighlight">\(\sin^2(x)=\frac{1}{2}(1-\cos(2x))\)</span> trig relation to evaluate integral</p>
 <div class="math notranslate nohighlight">
-\[B=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} \]</div>
-<p>Where we made use of <span class="math notranslate nohighlight">\(\sin^2(x)=\frac{1}{2}(1-\cos(2x))\)</span> trig relation.</p>
+\[B_n^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B_n^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B_n^2}{2}=1\]</div>
+<div class="math notranslate nohighlight">
+\[B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} \]</div>
+<p>Not that normalization coefficient turned out to be independent of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</section>
+<section id="example-probability-of-observing-particle-in-finite-domain">
+<h2>Example: Probability of Observing Particle in Finite Domain<a class="headerlink" href="#example-probability-of-observing-particle-in-finite-domain" title="Permalink to this heading">#</a></h2>
+<p>Since the square of the wave function is a probability function, we can determine the probability of observing a particle in a particular domain using the relationship</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\text{Prob}(x_1 \leq x \leq x_2) = \int_{x_1}^{x_2}P(x)dx = \int_{x_1}^{x_2} \psi^*(x)\psi(x)dx
+\end{equation}\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Compute the probability of observing the particle in a box being in the domain <span class="math notranslate nohighlight">\(\frac{a}{3} \leq x \leq \frac{2a}{3}\)</span>. We simply use the above equation and the normalized particle in a box wave function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) = \frac{2}{a}\int_{\frac{a}{3}}^{\frac{2a}{3}} \sin^2\frac{n\pi x}{a}dx
+\end{align}\]</div>
+<p>We will use the definite integral of <span class="math notranslate nohighlight">\(\sin^2ax\)</span> from a table:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\int\sin^2axdx = \frac{x}{2} - \frac{\sin2ax}{4a}
+\end{equation}\]</div>
+<p>Perform <span class="math notranslate nohighlight">\(u = \)</span> substition of the integral above to get into the table form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) &amp;= \frac{2}{a}\left[ \frac{x}{2} - \frac{\sin\frac{2n\pi x}{a}}{\frac{4n\pi}{a}}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
+&amp;= \frac{2}{a}\left[ \frac{x}{2} - \frac{a\sin\frac{2n\pi x}{a}}{4n\pi}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
+&amp;= \frac{2}{a}\left[ \frac{a}{3} - \frac{a\sin\frac{4n\pi}{3}}{4n\pi} - \frac{a}{6} + \frac{a\sin\frac{2n\pi }{3}}{4n\pi}\right] \\
+&amp;= 2\left[ \frac{1}{6}  + \frac{\sin\frac{2n\pi }{3} - \sin\frac{4n\pi}{3}}{4n\pi}\right]
+\end{align}\end{split}\]</div>
+</div>
+</section>
+<section id="computing-average-properties-from-a-wave-function">
+<h2>Computing Average Properties from a Wave Function<a class="headerlink" href="#computing-average-properties-from-a-wave-function" title="Permalink to this heading">#</a></h2>
+<p>Because of the probabilistic interpretation of the wave funtion, average properties can be computed from the wave function.  The general formula is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+&lt;A&gt; = \int \psi^*(x)\hat{A}\psi(x)dx
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{A}\)</span> is any operator.  This could be momentum, kinetic energy, etc.</p>
+<p>Let’s look at a few examples.</p>
+<ol class="arabic simple">
+<li><p>Compute the average value of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</p></li>
+<li><p>Compute the average energy for a particle in a box</p></li>
+<li><p>Compute the average momentum for a particle in a box</p></li>
+</ol>
+</section>
+<section id="example-the-average-of-x-2-for-a-particle-in-a-box">
+<h2>Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box<a class="headerlink" href="#example-the-average-of-x-2-for-a-particle-in-a-box" title="Permalink to this heading">#</a></h2>
+<p>To compute the average value of <span class="math notranslate nohighlight">\(x^2\)</span> we start by writing the integral expression</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\langle x^2 \rangle = \int \psi^*(x) x^2 \psi(x)dx
+\end{equation}\]</div>
+<p>For the particle in a box, we can limit the domain, and thus the bounds of integration, to <span class="math notranslate nohighlight">\(0\leq x \leq a\)</span>.  We can also set <span class="math notranslate nohighlight">\(\psi_n(x) = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}\)</span>.</p>
+<p>Thus, for a particle in a 1D box of size <span class="math notranslate nohighlight">\(a\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle x^2 \rangle &amp;= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
+&amp;= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx
+\end{align}\end{split}\]</div>
+<p>From an integral table we find that</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\int x^2\sin^2\alpha xdx = \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2} + C
+\end{equation}\]</div>
+<p>We use this equation with <span class="math notranslate nohighlight">\(\alpha = \frac{n\pi}{a}\)</span> and get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle x^2 \rangle &amp;= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
+&amp;= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx \\
+&amp;= \frac{2}{a}\left[ \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2}\right]_0^a \\
+&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha a - \frac{a\cos 2\alpha a}{4\alpha^2} \right] \\
+&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\frac{n\pi}{a}} - \frac{1}{8\left(\frac{n\pi}{a}\right)^3}\right)\sin2\frac{n\pi}{a} a - \frac{a\cos 2\frac{n\pi}{a} a}{4\left(\frac{n\pi}{a}\right)^2} \right] \\
+&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \frac{a^3}{\left(2n\pi\right)^2} \right] \\
+&amp;=  \frac{a^2}{3} - \frac{a^2}{2\left(n\pi\right)^2} 
+\end{align}\end{split}\]</div>
+<p>This result, combined with the result for <span class="math notranslate nohighlight">\(\langle x \rangle\)</span>, can be used to determine <span class="math notranslate nohighlight">\(\sigma_x\)</span>, the standard deviation of particle deviation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} = \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3} -2}
+\end{equation}\]</div>
+</section>
+<section id="example-average-energy-of-particle-in-a-box">
+<h2>Example: Average Energy of Particle in a Box<a class="headerlink" href="#example-average-energy-of-particle-in-a-box" title="Permalink to this heading">#</a></h2>
+<p>The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\langle E \rangle = \int_0^a \psi_n^*(x)\hat{E}\psi_n(x)dx
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{E}\)</span> is the total energy operator.  We know the total energy operator by another symbol, namely <span class="math notranslate nohighlight">\(\hat{E} = \hat{H}\)</span>.  We plug this into the above equation to get</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\langle E \rangle = \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx.
+\end{equation}\]</div>
+<p>We now recognize that, for the particle in a box wavefunctions that we are discussion these were derived from the Schrodinger equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\hat{H}\psi_n(x)  = E_n\psi_n(x)
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_n\)</span> is a scalar.  Thus, for the average energy we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle E \rangle &amp;= \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx \\
+&amp;=\int_0^a \psi_n^*(x)E_n\psi_n(x)dx \\
+&amp;=E_n\int_0^a \psi_n^*(x)\psi_n(x)dx \\
+&amp;= E_n
+\end{align}\end{split}\]</div>
+<p>The last equality holding because the wave functions are normalized.</p>
+</section>
+<section id="example-average-momentum">
+<h2>Example: Average momentum<a class="headerlink" href="#example-average-momentum" title="Permalink to this heading">#</a></h2>
+<p>To compute the average momentum of a particle in a 1D box we start in the usual way</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\langle p \rangle = \int_0^a \psi_n^*(x)\hat{p}\psi_n(x)dx
+\end{equation}\]</div>
+<p>Recall that the momentum operator in one dimension is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\hat{p}_x = -i\hbar\frac{d}{dx}
+\end{equation}\]</div>
+<p>We now substitute this into the  above equation and solve</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle p \rangle &amp;= \int_0^a \psi_n^*(x)\left(-i\hbar\frac{d}{dx}\right)\psi_n(x)dx \\
+&amp;= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{d}{dx}\left(\sin\left(\frac{n\pi x}{a}\right)\right)dx \\
+&amp;= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{n\pi}{a}\cos\left(\frac{n\pi x}{a}\right)dx \\
+&amp;= -\frac{2in\pi\hbar}{a^2}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\cos\left(\frac{n\pi x}{a}\right)dx \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>where the last equality can be found in an integral table.</p>
+<p>So the average momentum of a particle in a box is zero.  This is because it is equally probable for the particle to be moving forward and backwards.</p>
 </section>
 <section id="problems">
 <h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
@@ -697,7 +845,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-wave-function-determines-the-constant-multiplicative-factor">Normalizing wave function determines the constant multiplicative factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-probability-of-observing-particle-in-finite-domain">Example: Probability of Observing Particle in Finite Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-average-of-x-2-for-a-particle-in-a-box">Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-energy-of-particle-in-a-box">Example: Average Energy of Particle in a Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-momentum">Example: Average momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
   </nav></div>
