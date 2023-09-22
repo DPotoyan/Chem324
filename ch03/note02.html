@@ -439,11 +439,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-probability-of-observing-particle-in-finite-domain">Example: Probability of Observing Particle in Finite Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-wavefunction-to-extract-measurable-quantities">Examples of using wavefunction to extract measurable quantities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-average-of-x-2-for-a-particle-in-a-box">Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-energy-of-particle-in-a-box">Example: Average Energy of Particle in a Box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-momentum">Example: Average momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
             </nav>
@@ -528,13 +525,13 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x \rangle=\int p(x) x dx\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle x \rangle=\int p(x) x dx\)</span></p></td>
 <td class="text-center"><p><strong>1-st moment</strong></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x^2 \rangle=\int p(x)x^2 dx\)</span>$</p></td>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle x^2 \rangle=\int p(x)x^2 dx\)</span></p></td>
 <td class="text-center"><p><strong>2-nd moment</strong></p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle x^n \rangle=\int p(x)x^n dx\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle x^n \rangle=\int p(x)x^n dx\)</span></p></td>
 <td class="text-center"><p><strong>N-th moment</strong></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sigma^2=\langle x^2 \rangle-\langle x \rangle^2\)</span></p></td>
@@ -577,8 +574,12 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 </section>
 <section id="classical-vs-quantum-particle-in-a-box">
 <h2>Classical vs Quantum particle in a box<a class="headerlink" href="#classical-vs-quantum-particle-in-a-box" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" /></p>
-<p>The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamiltonian <span class="math notranslate nohighlight">\(n=1,2,3\)</span>.  While E and F are not.</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif"><img alt="PIB-wiki" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamiltonian <span class="math notranslate nohighlight">\(n=1,2,3\)</span>.  While E and F are not.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="what-are-some-new-ideas-that-we-learn-from-pib">
 <h2>What are some new ideas that we learn from PIB<a class="headerlink" href="#what-are-some-new-ideas-that-we-learn-from-pib" title="Permalink to this heading">#</a></h2>
@@ -590,8 +591,13 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 </section>
 <section id="solving-schrodinger-quation-for-particle-in-a-box-pib">
 <h2>Solving Schrödinger quation for Particle in a Box (PIB):<a class="headerlink" href="#solving-schrodinger-quation-for-particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<p>The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with inifinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the “particle” stays inside the box where it has acess only to the kinetic energy term.</p>
-<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" /></p>
+<p>The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with infinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the “particle” stays inside the box where it has acess only to the kinetic energy term.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg"><img alt="pib1" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" width="300px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Particle in a box subject to infinitely high potential walls</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Mathematically, the potential energy is:</p>
 <div class="math notranslate nohighlight">
 \[V(x=0)=V(x=L)=\infty \,\,\,\,V(0&lt;x&lt;L)=0 \]</div>
@@ -637,15 +643,16 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 \[B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} \]</div>
 <p>Not that normalization coefficient turned out to be independent of <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </section>
-<section id="example-probability-of-observing-particle-in-finite-domain">
-<h2>Example: Probability of Observing Particle in Finite Domain<a class="headerlink" href="#example-probability-of-observing-particle-in-finite-domain" title="Permalink to this heading">#</a></h2>
+<section id="examples-of-using-wavefunction-to-extract-measurable-quantities">
+<h2>Examples of using wavefunction to extract measurable quantities<a class="headerlink" href="#examples-of-using-wavefunction-to-extract-measurable-quantities" title="Permalink to this heading">#</a></h2>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Example: Compute the probability of observing the particle in a box being in the domain <span class="math notranslate nohighlight">\(\frac{a}{3} \leq x \leq \frac{2a}{3}\)</span>. </p>
 <p>Since the square of the wave function is a probability function, we can determine the probability of observing a particle in a particular domain using the relationship</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 \text{Prob}(x_1 \leq x \leq x_2) = \int_{x_1}^{x_2}P(x)dx = \int_{x_1}^{x_2} \psi^*(x)\psi(x)dx
 \end{equation}\]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Compute the probability of observing the particle in a box being in the domain <span class="math notranslate nohighlight">\(\frac{a}{3} \leq x \leq \frac{2a}{3}\)</span>. We simply use the above equation and the normalized particle in a box wave function:</p>
+<p>We simply use the above equation and the normalized particle in a box wave function:</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) = \frac{2}{a}\int_{\frac{a}{3}}^{\frac{2a}{3}} \sin^2\frac{n\pi x}{a}dx
@@ -667,7 +674,7 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 </section>
 <section id="computing-average-properties-from-a-wave-function">
 <h2>Computing Average Properties from a Wave Function<a class="headerlink" href="#computing-average-properties-from-a-wave-function" title="Permalink to this heading">#</a></h2>
-<p>Because of the probabilistic interpretation of the wave funtion, average properties can be computed from the wave function.  The general formula is</p>
+<p>Because of the probabilistic interpretation of the wave function, average properties can be computed from the wave function.  The general formula is</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 &lt;A&gt; = \int \psi^*(x)\hat{A}\psi(x)dx
@@ -679,9 +686,8 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 <li><p>Compute the average energy for a particle in a box</p></li>
 <li><p>Compute the average momentum for a particle in a box</p></li>
 </ol>
-</section>
-<section id="example-the-average-of-x-2-for-a-particle-in-a-box">
-<h2>Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box<a class="headerlink" href="#example-the-average-of-x-2-for-a-particle-in-a-box" title="Permalink to this heading">#</a></h2>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Example: Compute he average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</p>
 <p>To compute the average value of <span class="math notranslate nohighlight">\(x^2\)</span> we start by writing the integral expression</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
@@ -715,9 +721,9 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 \[\begin{equation}
 \sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} = \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3} -2}
 \end{equation}\]</div>
-</section>
-<section id="example-average-energy-of-particle-in-a-box">
-<h2>Example: Average Energy of Particle in a Box<a class="headerlink" href="#example-average-energy-of-particle-in-a-box" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Compute the average Energy of Particle in a Box</p>
 <p>The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
@@ -742,9 +748,9 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 &amp;= E_n
 \end{align}\end{split}\]</div>
 <p>The last equality holding because the wave functions are normalized.</p>
-</section>
-<section id="example-average-momentum">
-<h2>Example: Average momentum<a class="headerlink" href="#example-average-momentum" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Example: Compute Average momentum</p>
 <p>To compute the average momentum of a particle in a 1D box we start in the usual way</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
@@ -766,6 +772,7 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 \end{align}\end{split}\]</div>
 <p>where the last equality can be found in an integral table.</p>
 <p>So the average momentum of a particle in a box is zero.  This is because it is equally probable for the particle to be moving forward and backwards.</p>
+</div>
 </section>
 <section id="problems">
 <h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
@@ -846,11 +853,8 @@ $<span class="math notranslate nohighlight">\(p(x)=\psi(x) \cdot \psi^{*}(x)\)</
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-probability-of-observing-particle-in-finite-domain">Example: Probability of Observing Particle in Finite Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-wavefunction-to-extract-measurable-quantities">Examples of using wavefunction to extract measurable quantities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-average-of-x-2-for-a-particle-in-a-box">Example: The average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-energy-of-particle-in-a-box">Example: Average Energy of Particle in a Box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-average-momentum">Example: Average momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
   </nav></div>

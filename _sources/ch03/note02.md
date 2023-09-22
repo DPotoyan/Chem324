@@ -58,9 +58,9 @@ $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} 
 
 |                      DEFINITION                      | NAME of moment  |
 | :--------------------------------------------------: | :-------------: |
-|         $$\langle x \rangle=\int p(x) x dx$$         | **1-st moment** |
-|       $$\langle x^2 \rangle=\int p(x)x^2 dx$$        | **2-nd moment** |
-|       $$\langle x^n \rangle=\int p(x)x^n dx$$        | **N-th moment** |
+|         $\langle x \rangle=\int p(x) x dx$         | **1-st moment** |
+|       $\langle x^2 \rangle=\int p(x)x^2 dx$        | **2-nd moment** |
+|       $\langle x^n \rangle=\int p(x)x^n dx$        | **N-th moment** |
 | $\sigma^2=\langle x^2 \rangle-\langle x \rangle^2$   | **Dispersion**  |
 
 
@@ -87,9 +87,12 @@ $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} 
 
 ### Classical vs Quantum particle in a box
 
-![](https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif)
+:::{figure-md} markdown-fig
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" alt="PIB-wiki" class="bg-primary mb-1" width="300px">
 
 The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  $\psi_n(x)$. The states (B,C,D) are the eigenfunctions of Hamiltonian $n=1,2,3$.  While E and F are not. 
+:::
+
 
 ### What are some new ideas that we learn from PIB
 
@@ -103,9 +106,14 @@ The particle in a box (PIB) is a convenient system for illustrating the differen
 
 ### Solving Schrödinger quation for Particle in a Box (PIB):
 
-The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with inifinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the "particle" stays inside the box where it has acess only to the kinetic energy term.
+The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with infinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the "particle" stays inside the box where it has acess only to the kinetic energy term.
 
-![](https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg)
+:::{figure-md} markdown-fig
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" alt="pib1" class="bg-primary mb-1" width="300px">
+
+Particle in a box subject to infinitely high potential walls
+:::
+
 
 Mathematically, the potential energy is: 
 
@@ -159,7 +167,10 @@ $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
 Not that normalization coefficient turned out to be independent of $n$.
 
-### Example: Probability of Observing Particle in Finite Domain
+### Examples of using wavefunction to extract measurable quantities 
+
+:::{admonition} Example: Compute the probability of observing the particle in a box being in the domain $\frac{a}{3} \leq x \leq \frac{2a}{3}$. 
+:class: tip, dropdown
 
 Since the square of the wave function is a probability function, we can determine the probability of observing a particle in a particular domain using the relationship
 
@@ -167,9 +178,7 @@ $$\begin{equation}
 \text{Prob}(x_1 \leq x \leq x_2) = \int_{x_1}^{x_2}P(x)dx = \int_{x_1}^{x_2} \psi^*(x)\psi(x)dx
 \end{equation}$$
 
-:::{admonition} Compute the probability of observing the particle in a box being in the domain $\frac{a}{3} \leq x \leq \frac{2a}{3}$. We simply use the above equation and the normalized particle in a box wave function:
-:class: tip, dropdown
-
+We simply use the above equation and the normalized particle in a box wave function:
 
 $$\begin{align}
 \text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) = \frac{2}{a}\int_{\frac{a}{3}}^{\frac{2a}{3}} \sin^2\frac{n\pi x}{a}dx
@@ -194,7 +203,7 @@ $$\begin{align}
 
 ### Computing Average Properties from a Wave Function
 
-Because of the probabilistic interpretation of the wave funtion, average properties can be computed from the wave function.  The general formula is
+Because of the probabilistic interpretation of the wave function, average properties can be computed from the wave function.  The general formula is
 
 $$\begin{equation}
 <A> = \int \psi^*(x)\hat{A}\psi(x)dx
@@ -208,7 +217,8 @@ Let's look at a few examples.
 2. Compute the average energy for a particle in a box
 3. Compute the average momentum for a particle in a box
 
-### Example: The average of $x^2$ for a particle in a box
+:::{admonition} Example: Compute he average of $x^2$ for a particle in a box
+:class: tip, dropdown
 
 To compute the average value of $x^2$ we start by writing the integral expression
 
@@ -248,8 +258,12 @@ This result, combined with the result for $\langle x \rangle$, can be used to de
 $$\begin{equation}
 \sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} = \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3} -2}
 \end{equation}$$
+:::
 
-### Example: Average Energy of Particle in a Box
+
+
+:::{admonition} Compute the average Energy of Particle in a Box
+:class: tip, dropdown
 
 The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction
 
@@ -279,8 +293,11 @@ $$\begin{align}
 \end{align}$$
 
 The last equality holding because the wave functions are normalized.
+:::
 
-### Example: Average momentum
+
+:::{admonition} Example: Compute Average momentum
+:class: tip, dropdown
 
 To compute the average momentum of a particle in a 1D box we start in the usual way
 
@@ -307,6 +324,8 @@ $$\begin{align}
 where the last equality can be found in an integral table.
 
 So the average momentum of a particle in a box is zero.  This is because it is equally probable for the particle to be moving forward and backwards.
+:::
+
 
 ### Problems
 
