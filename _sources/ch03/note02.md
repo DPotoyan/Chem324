@@ -165,7 +165,11 @@ $$B_n^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B_n^2}{2} \int^L_0 \l
 
 $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
-Not that normalization coefficient turned out to be independent of $n$.
+- Note that normalization coefficient turned out to be independent of $n$.
+
+- Normalized wavefunction of particle in a box is below. This is the wavefunction you want to use when calculating averages. 
+
+$$\boxed{\psi_n(x) = \Big (\frac{2}{L}\Big)^{\frac{1}{2}} \sin\frac{n\pi x}{a}}$$
 
 
 
