@@ -146,7 +146,9 @@ $$\psi(x)=c_1e^{ikx}+c_2e^{-ikx}=A\cos(kx)+B\sin(kx)$$
 
 $$k=\frac{n\pi}{L}\,\,\, \rightarrow\,\,\, \psi(x)=B \sin(\frac{n\pi}{L}x)$$
 
-$$k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2} \,\,\, \rightarrow\,\,\, E=\frac{n^2 h^2}{8mL^2} $$
+$$k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2}$$
+
+$$E_n=\frac{n^2 h^2}{8mL^2}$$
 
 Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.
 
@@ -167,9 +169,13 @@ $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
 - Note that normalization coefficient turned out to be independent of $n$.
 
-- Normalized wavefunction of particle in a box is below. This is the wavefunction you want to use when calculating averages. 
+### Eigenfunctions and eigenvalues of 1D particle in a box
+
+- Obtaining and normalizing wavefunctions we completed solution of Schrodinger equation as an eigenfunction eigenvalue problem $\hat{H}\psi_n = E_n \psi_n$ 
 
 $$\boxed{\psi_n(x) = \Big (\frac{2}{L}\Big)^{\frac{1}{2}} \sin\frac{n\pi x}{a}}$$
+
+$$\boxed{E_n=\frac{n^2 h^2}{8mL^2}}$$
 
 
 
