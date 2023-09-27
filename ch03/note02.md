@@ -173,7 +173,7 @@ $$B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} $$
 
 - Obtaining and normalizing wavefunctions we completed solution of Schrodinger equation as an eigenfunction eigenvalue problem $\hat{H}\psi_n = E_n \psi_n$ 
 
-$$\boxed{\psi_n(x) = \Big (\frac{2}{L}\Big)^{\frac{1}{2}} \sin\frac{n\pi x}{a}}$$
+$$\boxed{\psi_n(x) = \Big (\frac{2}{L}\Big)^{\frac{1}{2}} \sin\frac{n\pi x}{L}}$$
 
 $$\boxed{E_n=\frac{n^2 h^2}{8mL^2}}$$
 
