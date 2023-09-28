@@ -73,35 +73,34 @@ Energy is again quantized and when $a = b = c$, we the energy levels can also be
 
 In most cases, degeneracy in quantum mechanics arises from symmetry. When $a = b = c$, the lowest levels have the following degeneracy factors:
 
-| Quantum Numbers $\( n_x, n_y, n_z \$) | Energy $\( E_{n_x, n_y, n_z} \)$ | Degeneracy |
+| Quantum Numbers $( n_x, n_y, n_z \$) | Energy $( E_{n_x, n_y, n_z} )$ | Degeneracy |
 |------------------------------------|-------------------------------|------------|
-| (1,1,1)                            | $\( \frac{3\hbar^2}{2mL^2} \)  $| 1          |
-| (1,1,2), (1,2,1), (2,1,1)          | $\( \frac{6\hbar^2}{2mL^2} \)  $| 3          |
-| (1,1,3), (1,3,1), (3,1,1)          | $\( \frac{11\hbar^2}{2mL^2} \) $| 3          |
-| (1,2,2), (2,1,2), (2,2,1)          | $\( \frac{9\hbar^2}{2mL^2} \)  $| 3          |
-| (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1) | $\( \frac{14\hbar^2}{2mL^2} \)$ | 6 |
-| (1,3,3), (3,1,3), (3,3,1)          | $\( \frac{19\hbar^2}{2mL^2} \)$ | 3          |
-| (2,2,2)                            | $\( \frac{12\hbar^2}{2mL^2} \)$ | 1          |
-| (2,2,3), (2,3,2), (3,2,2)          | $\( \frac{17\hbar^2}{2mL^2} \)$ | 3          |
-| (2,3,3), (3,2,3), (3,3,2)          | $\( \frac{22\hbar^2}{2mL^2} \)$ | 3          |
-| (3,3,3)                            | $\( \frac{27\hbar^2}{2mL^2} \)$ | 1          |
-| (1,1,4), (1,4,1), (4,1,1)          | $\( \frac{18\hbar^2}{2mL^2} \)$ | 3          |
-| (1,2,4), (1,4,2), (2,1,4), (2,4,1), (4,1,2), (4,2,1) | $\( \frac{21\hbar^2}{2mL^2} \)$ | 6 |
-| (1,3,4), (1,4,3), (3,1,4), (3,4,1), (4,1,3), (4,3,1) | $\( \frac{26\hbar^2}{2mL^2} \)$ | 6 |
-| (1,4,4), (4,1,4), (4,4,1)          | $\( \frac{33\hbar^2}{2mL^2} \)$ | 3          |
-| (2,2,4), (2,4,2), (4,2,2)          | $\( \frac{24\hbar^2}{2mL^2} \)$ | 3          |
-| (2,3,4), (2,4,3), (3,2,4), (3,4,2), (4,2,3), (4,3,2) | $\( \frac{29\hbar^2}{2mL^2} \)$ | 6 |
-| (2,4,4), (4,2,4), (4,4,2)          | $\( \frac{36\hbar^2}{2mL^2} \)$ | 3          |
-| (3,3,4), (3,4,3), (4,3,3)          | $\( \frac{34\hbar^2}{2mL^2} \)$ | 3          |
-| (3,4,4), (4,3,4), (4,4,3)          | $\( \frac{39\hbar^2}{2mL^2} \)$ | 3          |
-| (4,4,4)                            | $\( \frac{48\hbar^2}{2mL^2} \)$ | 1          |
+| (1,1,1)                            | $( \frac{3\hbar^2}{2mL^2} )  $| 1          |
+| (1,1,2), (1,2,1), (2,1,1)          | $( \frac{6\hbar^2}{2mL^2} )  $| 3          |
+| (1,1,3), (1,3,1), (3,1,1)          | $( \frac{11\hbar^2}{2mL^2} ) $| 3          |
+| (1,2,2), (2,1,2), (2,2,1)          | $( \frac{9\hbar^2}{2mL^2} )  $| 3          |
+| (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1) | $( \frac{14\hbar^2}{2mL^2} )$ | 6 |
+| (1,3,3), (3,1,3), (3,3,1)          | $( \frac{19\hbar^2}{2mL^2} )$ | 3          |
+| (2,2,2)                            | $( \frac{12\hbar^2}{2mL^2} )$ | 1          |
+| (2,2,3), (2,3,2), (3,2,2)          | $( \frac{17\hbar^2}{2mL^2} )$ | 3          |
+| (2,3,3), (3,2,3), (3,3,2)          | $( \frac{22\hbar^2}{2mL^2} )$ | 3          |
+| (3,3,3)                            | $( \frac{27\hbar^2}{2mL^2} )$ | 1          |
+| (1,1,4), (1,4,1), (4,1,1)          | $( \frac{18\hbar^2}{2mL^2} )$ | 3          |
+| (1,2,4), (1,4,2), (2,1,4), (2,4,1), (4,1,2), (4,2,1) | $( \frac{21\hbar^2}{2mL^2} )$ | 6 |
+| (1,3,4), (1,4,3), (3,1,4), (3,4,1), (4,1,3), (4,3,1) | $( \frac{26\hbar^2}{2mL^2} )$ | 6 |
+| (1,4,4), (4,1,4), (4,4,1)          | $( \frac{33\hbar^2}{2mL^2} )$ | 3          |
+| (2,2,4), (2,4,2), (4,2,2)          | $( \frac{24\hbar^2}{2mL^2} )$ | 3          |
+| (2,3,4), (2,4,3), (3,2,4), (3,4,2), (4,2,3), (4,3,2) | $( \frac{29\hbar^2}{2mL^2} )$ | 6 |
+| (2,4,4), (4,2,4), (4,4,2)          | $( \frac{36\hbar^2}{2mL^2} )$ | 3          |
+| (3,3,4), (3,4,3), (4,3,3)          | $( \frac{34\hbar^2}{2mL^2} )$ | 3          |
+| (3,4,4), (4,3,4), (4,4,3)          | $( \frac{39\hbar^2}{2mL^2} )$ | 3          |
+| (4,4,4)                            | $( \frac{48\hbar^2}{2mL^2} )$ | 1          |
 
 
 
 
 
-:::{admonition} Example: 
-Consider an electron in superfluid helium ($^4$He) where it forms a solvation cavity with a radius of 18 \AA. Calculate the zero-point energy and the energy difference between the ground and first excited states by approximating the electron by a particle in a 3-dimensional box.
+:::{admonition} Example: Consider an electron in superfluid helium ($^4$He) where it forms a solvation cavity with a radius of 18 \AA. Calculate the zero-point energy and the energy difference between the ground and first excited states by approximating the electron by a particle in a 3-dimensional box.
 :class: tip, dropdown
 
 **Solution** The zero-point energy can be obtained from the lowest state energy (e.g. $n = 1$) with $a = b = c = 36$ \AA. The first excited state is triply degenerate ($E_{112}, E_{121}$ and $E_{211}$). Use Eq. (\ref{eq9.87}):
