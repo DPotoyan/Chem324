@@ -1,8 +1,10 @@
-## Postulates of Quantum Mechanics
+## Postulates 
 
 ```{admonition} What you need to know
 :class: note
-- **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere application of Schrödinger equation. In practice theory is not so easy to apply. 
+- Quantum Mechanics can be built on top of few postulates which have been learned from comparisons of theory with the experiments.
+- Postulates are mathematical requirements which ensure physically meaningul solutions to schrodinger equation and which provide connection between abstract concepts of operators and experimental observables.
+- Once we accept thses postulates Quantum Mechanics becomes a self-contained theory capable of explaining and computing all that is to know about atoms and molecules and their interactions with radiation. 
 ```
 
 ### Postulate 1: Wave function
