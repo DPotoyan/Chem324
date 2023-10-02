@@ -2,7 +2,12 @@
 
 :::{admonition} What you need to know
 :class: note
-- **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere 
+- For every experimental observable there is a corresponding operator in quantum mechanics
+- Mathematical properties of operator tell us about the nature of experimental observatles.
+- Operators must be linear for they are dervied from Schrodinger equation which itself is linear.
+- Operatprs must prudice real eigenvalues becasue eigenvalue are what is measrued in experiments.
+- Operatprs must be Hermitial becasue only hermitian operators produce real eigenvalues.
+- Operators commutations show weather two experimental observables can be determined simulateneously.
 :::
 
 ### Operators: A reminder
@@ -49,60 +54,71 @@ $${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
 
 - This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
 
-**Example** What are the eigenfunctions and eigenvalues of operator $d/dx$?
+:::{admonition} **Example** What are the eigenfunctions and eigenvalues of an operator?
+:class: note
+$$$\hat{A} = d/dx$$$
+:::
 
-**Solution** Start with the eigenvalue equation:
-
-
+:::{dropdown} **Solution**
+Start with the eigenvalue equation:
 
 $${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}}
 {\Rightarrow \ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}}
 {\Rightarrow f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}$$
+:::
+
 
 ### Exepctation
 
-The eigenfunctions are $f_k(x)$ with the corresponding eigenvalue given by $k$. In general, for operator $\hat{A}$, the expectation value (quantum mechanical average) is defined as:
+- The eigenfunctions are $f_k(x)$ with the corresponding eigenvalue given by $k$. In general, for operator $\hat{A}$, the expectation value (quantum mechanical average) is defined as:
 
 $${\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \left<\psi\left|\hat{A}\right|\psi\right>}$$
 
-The last ``Bra - Ket'' form is called the [dirac notation](http://en.wikipedia.org/wiki/Dirac_notation). Note that the Bra part always contains the complex conjugation.
+- The last ``Bra - Ket'' form is called the [dirac notation](http://en.wikipedia.org/wiki/Dirac_notation). Note that the Bra part always contains the complex conjugation.
 
 
-If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
+- If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
 
 $${\hat{A}\psi = a\psi \Rightarrow \left<\hat{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}$$
 
-Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'').
+- Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'').
 
 ### Hermitian property
 
-Operators that yield real eigenvalues are called [hermitian](http://en.wikipedia.org/wiki/Hermitian_operator) . Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
+Operators that yield real eigenvalues are called [hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
 
 $${\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}$$
 
-Note that this implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Since Eq. (\ref{eq9.38}) applies to all functions, choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Now Eq. (\ref{eq9.38}) implies that $a = a^*$, which means that $a$ must be real.
+Note that this implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Hence $a = a^*$, which means that $a$ must be real.
 
+:::{admonition} **Example** Prove that the momentum operator (in one dimension) is Hermitian.
+:class: note
+:::
 
-**Example** Prove that the momentum operator (in one dimension) is Hermitian.
-
-**Solution**
-
+:::{dropdown} **Solution**
 ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}$
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx}_{\textnormal{}} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
 
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
+:::
 
 
 The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
 
-$${\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}$$
+$$
+{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}
+$$
 
-$${\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}$$
+$$
+{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}
+$$
 
 
-Here Hermiticity requires LHS = RHS. If $a_j \ne a_k$, the only way fulfill Eq. (\ref{eq9.38}) is to have:
+Here Hermiticity requires LHS = RHS. If $a_j \ne a_k$, then we are dealing with:
 
-$${{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}$$
+$$
+{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
+$$
 
 Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
 
@@ -120,16 +136,20 @@ If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order 
 $${\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}$$
 
 
-**Example** Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\left[\hat{A}, \hat{B}\right] \ne 0$).
+:::{admonition} **Example**
+:class: note
+Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\left[\hat{A}, \hat{B}\right] \ne 0$).
+:::
 
-**Solution** Let $f$ be an arbitrary well-behaved function. We need to calculate both $\hat{A}\hat{B}f$ and $\hat{B}\hat{A}f$:
+:::{dropdown} **Solution** 
+Let $f$ be an arbitrary well-behaved function. We need to calculate both $\hat{A}\hat{B}f$ and $\hat{B}\hat{A}f$:
 
 $$\hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)$$
 $$\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}$$
 $$\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}$$
+:::
 
 ### Simple rules for commutators
-
 
 $${\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}$$
 
@@ -144,7 +164,6 @@ $${\left[A+B,C+D\right] = \left[A,C\right] + \left[A,D\right] + \left[B,C\right]
 $${\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}$$
 
 ## Commutability and precision of measurement
-
 
 We have seen previously that operators may not always commute (i.e., $[A, B] \ne 0$). An example of such operator pair is position $\hat{x}$ and momentum $\hat{p}_x$:
 
@@ -170,24 +189,32 @@ In general, it turns out that for operators $\hat{A}$ and $\hat{B}$ that do not 
 $${\Delta A\Delta B \ge \frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\right>\right|}$$
 
 
-**Example**  obtain the position/momentum uncertainty principle 
+:::{admonition} **Example**  obtain the position/momentum uncertainty principle 
+:class: note
+:::
 
-**Solution** Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
+:::{dropdown} **Solution**
+Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
 
 
 $$\frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\right>\right| = \frac{1}{2}\left|\left<\left[\hat{x},\hat{p}_x\right]\right>\right| = \frac{1}{2}\left|\left<\frac{\hbar}{i}\right>\right|
 = \frac{1}{2}\left|\left<\psi\left|\frac{\hbar}{i}\right|\psi\right>\right| = \frac{1}{2}\left|\frac{\hbar}{i}\underbrace{\left<\psi\left|\psi\right.\right>}_{=1}\right| = \frac{\hbar}{2}$$
 
 $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
+:::
 
 
 
-**Example** Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other.
+:::{admonition} **Example**  Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
+:class: note
+:::
 
-**Solution** Denote the eigenvalues of $\hat{A}$ and $\hat{B}$ by $a_i$ and $b_i$ and the common eigenfunctions by $\psi_i$. For both operators we have then:
+
+:::{dropdown} **Solution** 
+
+Denote the eigenvalues of $\hat{A}$ and $\hat{B}$ by $a_i$ and $b_i$ and the common eigenfunctions by $\psi_i$. For both operators we have then:
 
 $$\hat{A}\psi_i = a_i\psi_i\textnormal{ and }\hat{B}\psi_i = b_i\psi_i$$
-
 
 By using these two equations and expressing the general wavefunction $\psi$ as a linear combination of the eigenfunctions, the commutator can be evaluated as:
 
@@ -198,6 +225,6 @@ $$= \hat{B}\sum\limits_{i=1}^{\infty}c_ia_i\psi_i = \hat{B}\sum\limits_{i=1}^{\i
 $$\Rightarrow \left[\hat{A},\hat{B}\right] = 0$$
 
 Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!
-
+:::
 
 

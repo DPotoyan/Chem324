@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Eigenvalues" href="note05.html" />
-    <link rel="prev" title="Postulates of Quantum Mechanics" href="note03.html" />
+    <link rel="prev" title="Postulates" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Operators</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Eigenvalues</a></li>
@@ -456,7 +456,12 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p><strong>A set of fundamental postulates</strong> make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere</p></li>
+<li><p>For every experimental observable there is a corresponding operator in quantum mechanics</p></li>
+<li><p>Mathematical properties of operator tell us about the nature of experimental observatles.</p></li>
+<li><p>Operators must be linear for they are dervied from Schrodinger equation which itself is linear.</p></li>
+<li><p>Operatprs must prudice real eigenvalues becasue eigenvalue are what is measrued in experiments.</p></li>
+<li><p>Operatprs must be Hermitial becasue only hermitian operators produce real eigenvalues.</p></li>
+<li><p>Operators commutations show weather two experimental observables can be determined simulateneously.</p></li>
 </ul>
 </div>
 <section id="operators-a-reminder">
@@ -510,43 +515,73 @@ document.write(`
 <ul class="simple">
 <li><p>This is an eigenvalue problem where one needs to determine the eigenfunctions <span class="math notranslate nohighlight">\(\psi_i\)</span> and the eigenvalues <span class="math notranslate nohighlight">\(E_i\)</span>. If <span class="math notranslate nohighlight">\(\psi_i\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{H}\)</span>, operating with <span class="math notranslate nohighlight">\(\hat{H}\)</span> on it must yield a constant times <span class="math notranslate nohighlight">\(\psi_i\)</span>.</p></li>
 </ul>
-<p><strong>Example</strong> What are the eigenfunctions and eigenvalues of operator <span class="math notranslate nohighlight">\(d/dx\)</span>?</p>
-<p><strong>Solution</strong> Start with the eigenvalue equation:</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong> What are the eigenfunctions and eigenvalues of an operator?</p>
+<div class="math notranslate nohighlight">
+\[$\hat{A} = d/dx$\]</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<strong>Solution</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Start with the eigenvalue equation:</p>
 <div class="math notranslate nohighlight">
 \[{\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}}
 {\Rightarrow \ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}}
 {\Rightarrow f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}\]</div>
-</section>
+</div>
+</details></section>
 <section id="exepctation">
 <h2>Exepctation<a class="headerlink" href="#exepctation" title="Permalink to this heading">#</a></h2>
-<p>The eigenfunctions are <span class="math notranslate nohighlight">\(f_k(x)\)</span> with the corresponding eigenvalue given by <span class="math notranslate nohighlight">\(k\)</span>. In general, for operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the expectation value (quantum mechanical average) is defined as:</p>
+<ul class="simple">
+<li><p>The eigenfunctions are <span class="math notranslate nohighlight">\(f_k(x)\)</span> with the corresponding eigenvalue given by <span class="math notranslate nohighlight">\(k\)</span>. In general, for operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the expectation value (quantum mechanical average) is defined as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\left&lt;\hat{A}\right&gt; = \int\psi^*\hat{A}\psi d\tau = \left&lt;\psi\left|\hat{A}\right|\psi\right&gt;}\]</div>
-<p>The last ``Bra - Ket’’ form is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Dirac_notation">dirac notation</a>. Note that the Bra part always contains the complex conjugation.</p>
-<p>If <span class="math notranslate nohighlight">\(\psi\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> then the expectation value is equal to the corresponding eigenvalue (<span class="math notranslate nohighlight">\(a\)</span>):</p>
+<ul class="simple">
+<li><p>The last ``Bra - Ket’’ form is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Dirac_notation">dirac notation</a>. Note that the Bra part always contains the complex conjugation.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\psi\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> then the expectation value is equal to the corresponding eigenvalue (<span class="math notranslate nohighlight">\(a\)</span>):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\hat{A}\psi = a\psi \Rightarrow \left&lt;\hat{A}\right&gt;=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}\]</div>
-<p>Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’).</p>
+<ul class="simple">
+<li><p>Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’).</p></li>
+</ul>
 </section>
 <section id="hermitian-property">
 <h2>Hermitian property<a class="headerlink" href="#hermitian-property" title="Permalink to this heading">#</a></h2>
-<p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">hermitian</a> . Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
+<p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">hermitian</a>. Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}\]</div>
-<p>Note that this implies that the eigenvalues are real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Since Eq. (\ref{eq9.38}) applies to all functions, choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then <span class="math notranslate nohighlight">\(\int\psi^*\hat{A}\psi d\tau = a\)</span> and <span class="math notranslate nohighlight">\(\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\)</span>. Now Eq. (\ref{eq9.38}) implies that <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real.</p>
-<p><strong>Example</strong> Prove that the momentum operator (in one dimension) is Hermitian.</p>
-<p><strong>Solution</strong></p>
-<p><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}\)</span>
+<p>Note that this implies that the eigenvalues are real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then <span class="math notranslate nohighlight">\(\int\psi^*\hat{A}\psi d\tau = a\)</span> and <span class="math notranslate nohighlight">\(\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\)</span>. Hence <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<strong>Solution</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}\)</span>
 <span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx}_{\textnormal{}} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
-<p>Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
-<p>The Hermitian property can also be used to show that the eigenfunctions (<span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>), which have different eigenvalues (i.e., <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> with <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>; ``non-degenerate’’), are orthogonal to each other:</p>
+<p class="sd-card-text">Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
+</div>
+</details><p>The Hermitian property can also be used to show that the eigenfunctions (<span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>), which have different eigenvalues (i.e., <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> with <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>; ``non-degenerate’’), are orthogonal to each other:</p>
 <div class="math notranslate nohighlight">
-\[{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}\]</div>
+\[
+{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}
+\]</div>
 <div class="math notranslate nohighlight">
-\[{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}\]</div>
-<p>Here Hermiticity requires LHS = RHS. If <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>, the only way fulfill Eq. (\ref{eq9.38}) is to have:</p>
+\[
+{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}
+\]</div>
+<p>Here Hermiticity requires LHS = RHS. If <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>, then we are dealing with:</p>
 <div class="math notranslate nohighlight">
-\[{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}\]</div>
+\[
+{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
+\]</div>
 <p>Note that if <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning that the values are <a class="reference external" href="http://en.wikipedia.org/wiki/Degenerate_energy_level">degenerate</a>, this result does not hold.</p>
 <p>The product <span class="math notranslate nohighlight">\(\hat{A}\hat{B}\)</span> of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are defined as follows:</p>
 <div class="math notranslate nohighlight">
@@ -557,15 +592,26 @@ document.write(`
 <p>If the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. Operator multiplication is <a class="reference external" href="http://en.wikipedia.org/wiki/Associativity">associative</a>:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}\]</div>
-<p><strong>Example</strong> Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
-<p><strong>Solution</strong> Let <span class="math notranslate nohighlight">\(f\)</span> be an arbitrary well-behaved function. We need to calculate both <span class="math notranslate nohighlight">\(\hat{A}\hat{B}f\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\hat{A}f\)</span>:</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<strong>Solution</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(f\)</span> be an arbitrary well-behaved function. We need to calculate both <span class="math notranslate nohighlight">\(\hat{A}\hat{B}f\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\hat{A}f\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)\]</div>
 <div class="math notranslate nohighlight">
 \[\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}\]</div>
-</section>
+</div>
+</details></section>
 <section id="simple-rules-for-commutators">
 <h2>Simple rules for commutators<a class="headerlink" href="#simple-rules-for-commutators" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
@@ -602,18 +648,31 @@ document.write(`
 <p>In general, it turns out that for operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> that do not commute, the <a class="reference external" href="http://en.wikipedia.org/wiki/Uncertainty_principle">uncertainty principle</a> applies in the following form:</p>
 <div class="math notranslate nohighlight">
 \[{\Delta A\Delta B \ge \frac{1}{2}\left|\left&lt;\left[\hat{A},\hat{B}\right]\right&gt;\right|}\]</div>
-<p><strong>Example</strong>  obtain the position/momentum uncertainty principle</p>
-<p><strong>Solution</strong> Denote <span class="math notranslate nohighlight">\(\hat{A} = \hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = \hat{p}_x\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<strong>Solution</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Denote <span class="math notranslate nohighlight">\(\hat{A} = \hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = \hat{p}_x\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{2}\left|\left&lt;\left[\hat{A},\hat{B}\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\left[\hat{x},\hat{p}_x\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\frac{\hbar}{i}\right&gt;\right|
 = \frac{1}{2}\left|\left&lt;\psi\left|\frac{\hbar}{i}\right|\psi\right&gt;\right| = \frac{1}{2}\left|\frac{\hbar}{i}\underbrace{\left&lt;\psi\left|\psi\right.\right&gt;}_{=1}\right| = \frac{\hbar}{2}\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}\]</div>
-<p><strong>Example</strong> Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p>
-<p><strong>Solution</strong> Denote the eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> by <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and the common eigenfunctions by <span class="math notranslate nohighlight">\(\psi_i\)</span>. For both operators we have then:</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<strong>Solution</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Denote the eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> by <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and the common eigenfunctions by <span class="math notranslate nohighlight">\(\psi_i\)</span>. For both operators we have then:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\psi_i = a_i\psi_i\textnormal{ and }\hat{B}\psi_i = b_i\psi_i\]</div>
-<p>By using these two equations and expressing the general wavefunction <span class="math notranslate nohighlight">\(\psi\)</span> as a linear combination of the eigenfunctions, the commutator can be evaluated as:</p>
+<p class="sd-card-text">By using these two equations and expressing the general wavefunction <span class="math notranslate nohighlight">\(\psi\)</span> as a linear combination of the eigenfunctions, the commutator can be evaluated as:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\hat{B}\psi = \hat{A}\left(\hat{B}\psi\right) = \hat{A}\overbrace{\left(\hat{B}\sum\limits_{i=1}^{\infty}c_i\psi_i\right)}^{\textnormal{complete basis}}
 = \hat{A}\overbrace{\left(\sum\limits_{i=1}^{\infty}c_i\hat{B}\psi_i\right)}^{\hat{B}\textnormal{ linear}} = \hat{A}\overbrace{\left(\sum\limits_{i=1}^{\infty}c_ib_i\psi_i\right)}^{\textnormal{eigenfunction of }\hat{B}}\]</div>
@@ -623,8 +682,9 @@ document.write(`
 \[= \hat{B}\sum\limits_{i=1}^{\infty}c_ia_i\psi_i = \hat{B}\sum\limits_{i=1}^{\infty}c_i\hat{A}\psi_i = \hat{B}\hat{A}\sum\limits_{i=1}^{\infty}c_i\psi_i = \hat{B}\hat{A}\psi\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = 0\]</div>
-<p>Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
-</section>
+<p class="sd-card-text">Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
+</div>
+</details></section>
 
     <script type="text/x-thebe-config">
     {
@@ -662,7 +722,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Postulates of Quantum Mechanics</p>
+        <p class="prev-next-title">Postulates</p>
       </div>
     </a>
     <a class="right-next"
