@@ -1,5 +1,11 @@
 ## Operators
 
+:::{admonition} What you need to know
+:class: note
+- **A set of fundamental postulates** make quantum mechanics a self contained fool-proof logical theory. Armed with such a theory all of chemistry and biology “in theory” reduces to mere 
+:::
+
+### Operators: A reminder
 
 We have already seen examples of operators. For short, they consist of mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
 
@@ -34,9 +40,6 @@ and $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Line
 -  $\hat{A}\left(e^{-ikx}\right) = -i\hbar\frac{d}{dx}\left(e^{-ikx}\right) = -\hbar ke^{-ikx}$.
 - $\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}$
 :::
-
-
-
 
 
 
@@ -193,7 +196,6 @@ $$\hat{A}\hat{B}\psi = \hat{A}\left(\hat{B}\psi\right) = \hat{A}\overbrace{\left
 $$= \overbrace{\sum\limits_{i=1}^{\infty}c_ib_i\hat{A}\psi_i}^{\hat{A}\textnormal{ linear}} = \overbrace{\sum\limits_{i=1}^{\infty}c_ib_ia_i\psi_i}^{\textnormal{eigenfunction of }\hat{A}} = \overbrace{\sum\limits_{i=1}^{\infty}c_ia_ib_i\psi_i}^{a_i\textnormal{ and }b_i\textnormal{ are constants}} = \sum\limits_{i=1}^{\infty}c_ia_i\hat{B}\psi_i$$
 $$= \hat{B}\sum\limits_{i=1}^{\infty}c_ia_i\psi_i = \hat{B}\sum\limits_{i=1}^{\infty}c_i\hat{A}\psi_i = \hat{B}\hat{A}\sum\limits_{i=1}^{\infty}c_i\psi_i = \hat{B}\hat{A}\psi$$
 $$\Rightarrow \left[\hat{A},\hat{B}\right] = 0$$
-
 
 Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!
 
