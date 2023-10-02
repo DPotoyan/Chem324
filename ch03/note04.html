@@ -570,8 +570,8 @@ document.write(`
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}\)</span>
-<span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx}_{\textnormal{}} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration by parts}}\)</span>
+<span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
 <p class="sd-card-text">Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
 </div>
 </details><p>The Hermitian property can also be used to show that the eigenfunctions (<span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>), which have different eigenvalues (i.e., <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> with <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>; ``non-degenerate’’), are orthogonal to each other:</p>
@@ -591,7 +591,9 @@ document.write(`
 <p>Note that if <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning that the values are <a class="reference external" href="http://en.wikipedia.org/wiki/Degenerate_energy_level">degenerate</a>, this result does not hold.</p>
 <p>The product <span class="math notranslate nohighlight">\(\hat{A}\hat{B}\)</span> of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> on some function f are defined as follows:</p>
 <div class="math notranslate nohighlight">
-\[{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}}\]</div>
+\[
+{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
+\]</div>
 <p>In practice, this means that we first operate with <span class="math notranslate nohighlight">\(\hat{B}\)</span> and then with <span class="math notranslate nohighlight">\(\hat{A}\)</span>. Note that the order of multiplication is important because they may not commute (<span class="math notranslate nohighlight">\(\hat{A}\hat{B} \ne \hat{B}\hat{A}\)</span>; just like for matrices). The commutator of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[{\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}\]</div>
@@ -649,10 +651,14 @@ document.write(`
 \[{\Rightarrow \left[\hat{p}_x,\hat{x}\right] = \frac{\hbar}{i}}\]</div>
 <p>In contrast, the kinetic energy operator and the momentum operators commute:</p>
 <div class="math notranslate nohighlight">
-\[{\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = \frac{p_x^3}{2m} - \frac{p_x^3}{2m} = 0}\]</div>
+\[
+{\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = \frac{p_x^3}{2m} - \frac{p_x^3}{2m} = 0}
+\]</div>
 <p>We had the uncertainty principle for the position and momentum operators:</p>
 <div class="math notranslate nohighlight">
-\[\Delta x\Delta p_x \ge \frac{\hbar}{2}\]</div>
+\[
+\Delta x\Delta p_x \ge \frac{\hbar}{2}
+\]</div>
 <p>In general, it turns out that for operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> that do not commute, the <a class="reference external" href="http://en.wikipedia.org/wiki/Uncertainty_principle">uncertainty principle</a> applies in the following form:</p>
 <div class="math notranslate nohighlight">
 \[{\Delta A\Delta B \ge \frac{1}{2}\left|\left&lt;\left[\hat{A},\hat{B}\right]\right&gt;\right|}\]</div>

@@ -100,8 +100,8 @@ Prove that the momentum operator (in one dimension) is Hermitian.
 :::
 
 :::{dropdown} **Solution**
-${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx}^{\textnormal{}} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{\textnormal{integration by parts}}$
-$ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx}_{\textnormal{}} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
+${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration by parts}}$
+$ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
 
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
 :::
@@ -129,7 +129,9 @@ Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wik
 
 The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ on some function f are defined as follows:
 
-$${\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}}$$
+$$
+{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
+$$
 
 In practice, this means that we first operate with $\hat{B}$ and then with $\hat{A}$. Note that the order of multiplication is important because they may not commute ($\hat{A}\hat{B} \ne \hat{B}\hat{A}$; just like for matrices). The commutator of two operators $\hat{A}$ and $\hat{B}$ is defined as:
 
@@ -183,11 +185,15 @@ $${\Rightarrow \left[\hat{p}_x,\hat{x}\right] = \frac{\hbar}{i}}$$
 
 In contrast, the kinetic energy operator and the momentum operators commute:
 
-$${\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = \frac{p_x^3}{2m} - \frac{p_x^3}{2m} = 0}$$
+$$
+{\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = \frac{p_x^3}{2m} - \frac{p_x^3}{2m} = 0}
+$$
 
 We had the uncertainty principle for the position and momentum operators:
 
-$$\Delta x\Delta p_x \ge \frac{\hbar}{2}$$
+$$
+\Delta x\Delta p_x \ge \frac{\hbar}{2}
+$$
 
 
 In general, it turns out that for operators $\hat{A}$ and $\hat{B}$ that do not commute, the [uncertainty principle](http://en.wikipedia.org/wiki/Uncertainty_principle) applies in the following form:
