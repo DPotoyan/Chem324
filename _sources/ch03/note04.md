@@ -54,9 +54,9 @@ $${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
 
 - This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
 
-:::{admonition} **Example** What are the eigenfunctions and eigenvalues of an operator?
+:::{admonition} **Example** 
 :class: note
-$$$\hat{A} = d/dx$$$
+What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
 :::
 
 :::{dropdown} **Solution**
@@ -72,14 +72,17 @@ $${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (i
 
 - The eigenfunctions are $f_k(x)$ with the corresponding eigenvalue given by $k$. In general, for operator $\hat{A}$, the expectation value (quantum mechanical average) is defined as:
 
-$${\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \left<\psi\left|\hat{A}\right|\psi\right>}$$
+$$
+{\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \left<\psi\left|\hat{A}\right|\psi\right>}$$
 
 - The last ``Bra - Ket'' form is called the [dirac notation](http://en.wikipedia.org/wiki/Dirac_notation). Note that the Bra part always contains the complex conjugation.
 
 
 - If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
 
-$${\hat{A}\psi = a\psi \Rightarrow \left<\hat{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}$$
+$$
+{\hat{A}\psi = a\psi \Rightarrow \left<\hat{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
+$$
 
 - Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'').
 
@@ -91,8 +94,9 @@ $${\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau
 
 Note that this implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Hence $a = a^*$, which means that $a$ must be real.
 
-:::{admonition} **Example** Prove that the momentum operator (in one dimension) is Hermitian.
+:::{admonition} **Example** 
 :class: note
+Prove that the momentum operator (in one dimension) is Hermitian.
 :::
 
 :::{dropdown} **Solution**
@@ -123,9 +127,9 @@ $$
 Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
 
 
-The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ are defined as follows:
+The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ on some function f are defined as follows:
 
-$${\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)\textnormal{ (\textit{f} is a function)}}$$
+$${\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}}$$
 
 In practice, this means that we first operate with $\hat{B}$ and then with $\hat{A}$. Note that the order of multiplication is important because they may not commute ($\hat{A}\hat{B} \ne \hat{B}\hat{A}$; just like for matrices). The commutator of two operators $\hat{A}$ and $\hat{B}$ is defined as:
 
@@ -144,9 +148,11 @@ Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\
 :::{dropdown} **Solution** 
 Let $f$ be an arbitrary well-behaved function. We need to calculate both $\hat{A}\hat{B}f$ and $\hat{B}\hat{A}f$:
 
-$$\hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)$$
+$$
+\hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)$$
 $$\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}$$
-$$\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}$$
+$$\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}
+$$
 :::
 
 ### Simple rules for commutators
@@ -189,8 +195,9 @@ In general, it turns out that for operators $\hat{A}$ and $\hat{B}$ that do not 
 $${\Delta A\Delta B \ge \frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\right>\right|}$$
 
 
-:::{admonition} **Example**  obtain the position/momentum uncertainty principle 
+:::{admonition} **Example**  
 :class: note
+Obtain the position/momentum uncertainty principle 
 :::
 
 :::{dropdown} **Solution**
@@ -205,7 +212,8 @@ $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
 
 
 
-:::{admonition} **Example**  Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
+:::{admonition} **Example**  
+Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 :class: note
 :::
 
