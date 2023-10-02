@@ -31,11 +31,11 @@ and $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Line
 
 :::{admonition} **Example** Apply the following operators on the given functions:
 :class: note
-1. Operator $\hat{A} = d/dx$ and function $x^2$.\\
-2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$.\\
-3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$.
-4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$.
-5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$.
+1. Operator $\hat{A} = d/dx$ and function $x^2$
+2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$
+3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$
+4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$
+5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$
 :::
 
 :::{dropdown} **Solution**
@@ -60,11 +60,12 @@ What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
 :::
 
 :::{dropdown} **Solution**
+
 Start with the eigenvalue equation:
 
-$${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}}
-{\Rightarrow \ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}}
-{\Rightarrow f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}$$
+$${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}} \\
+{\ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}} \\
+{f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}$$
 :::
 
 
@@ -73,7 +74,8 @@ $${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (i
 - The eigenfunctions are $f_k(x)$ with the corresponding eigenvalue given by $k$. In general, for operator $\hat{A}$, the expectation value (quantum mechanical average) is defined as:
 
 $$
-{\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \left<\psi\left|\hat{A}\right|\psi\right>}$$
+{\left < {A}\right> = \int\psi^*\hat{A}\psi d\tau}
+$$
 
 - The last ``Bra - Ket'' form is called the [dirac notation](http://en.wikipedia.org/wiki/Dirac_notation). Note that the Bra part always contains the complex conjugation.
 
@@ -81,14 +83,14 @@ $$
 - If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
 
 $$
-{\hat{A}\psi = a\psi \Rightarrow \left<\hat{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
+{\hat{A}\psi = a\psi \Rightarrow \left<{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
 $$
 
 - Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'').
 
 ### Hermitian property
 
-Operators that yield real eigenvalues are called [hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
+Operators that yield real eigenvalues are called [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
 
 $${\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}$$
 
@@ -100,7 +102,8 @@ Prove that the momentum operator (in one dimension) is Hermitian.
 :::
 
 :::{dropdown} **Solution**
-${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration by parts}}$
+
+${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
 
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
@@ -126,7 +129,7 @@ $$
 
 Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
 
-
+### Commutations of operators
 The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ on some function f are defined as follows:
 
 $$
@@ -162,12 +165,6 @@ $$
 $${\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}$$
 
 $${\left[A,B\right] = -\left[B,A\right]}$$
-
-$${\left[B+C+...,A\right] = \left[B,A\right] + \left[C,A\right] + ...}$$
-
-$${\left[A,B+C+...\right] = \left[A,B\right] + \left[A,C\right] + ...}$$
-
-$${\left[A+B,C+D\right] = \left[A,C\right] + \left[A,D\right] + \left[B,C\right] + \left[B,D\right]}$$
 
 $${\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}$$
 
@@ -219,8 +216,9 @@ $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
 
 
 :::{admonition} **Example**  
-Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 :class: note
+
+Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 :::
 
 

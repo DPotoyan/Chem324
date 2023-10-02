@@ -460,14 +460,18 @@ document.write(`
 <div class="important admonition">
 <p class="admonition-title">Wave function </p>
 <ul class="simple">
-<li><p>The state of a system is completely specified by a wave function which contains all the dynamical information. The square of wave function is a probability distribution of finding the object in space.</p></li>
+<li><p><strong>The square of wave function is a probability distribution of finding the object in space.</strong></p></li>
+<li><p>It is important to stress that the state of a system is completely specified by a wave function which contains all the information acessible to us through experiments.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[P(x,t)=|\psi(x,t)|^2 \,\,\,   \,\,\, \int |\psi(x,t)|^2 dx=1 \]</div>
+\[P(x,t)=|\psi(x,t)|^2 \,\,\,\]</div>
 <ul class="simple">
-<li><p>Wave function that describes real physical objects should be well behaved in order to correspond to probability distribution.</p></li>
-<li><p>Continuous, single-valued, differentiable and finite over finite range.</p></li>
-<li><p>Functions that do not satisfy these criteria are discarded as non-physical.</p></li>
+<li><p>Wave function needs to conform to a number of requirments in order to be probability distribution integral of which should always return 1 meaning that quantum object is to be found somehwere.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int |\psi(x,t)|^2 dx=1 \]</div>
+<ul class="simple">
+<li><p><strong>Being Continuous, single-valued, differentiable and finite.</strong>  Functions that do not satisfy these criteria are discarded as non-physical.</p></li>
 </ul>
 </div>
 </section>
@@ -476,22 +480,20 @@ document.write(`
 <div class="important admonition">
 <p class="admonition-title">Operators</p>
 <ul class="simple">
-<li><p>For every observable quantity there is a corresponding linear and Hermitian operator in quantum mechanics.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\hat{A} (c_1 \psi_i+c_2 \psi_2) =  c_1 \hat{A}\psi_i+c_2 \hat{A}\psi_2\]</div>
-<div class="math notranslate nohighlight">
-\[\int \psi^* (\hat{A}\phi) dx = \int \phi (\hat{A} \psi)^* dx\]</div>
-<ul class="simple">
-<li><p>Linearity of opeartors follows from the nature of Schrödinger equation which is a linear differenetial equation. Linearity implies a distirbutive property of opeartors when applied to any linear combination of functions.</p></li>
+<li><p><strong>Operators in QM are Linear</strong>. Linearity follows from the nature of Schrödinger equation which is a linear differenetial equation. Linearity implies a distirbutive property of opeartors when applied to any linear combination of functions.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\hat{L} (c_1\psi_1+c_2\psi_2+...+c_n\psi_n)=c_1\hat{L} \psi_1+c_2\hat{L}\psi_2+...+c_n\hat{L}\psi_n \]</div>
 <ul class="simple">
-<li><p>Beside being linear operators of observables in quantum mechanics are Hermitian. Hermtian property guarantees that eigenvalues are strictly real. And since eigenvalues are the only values observed in experimental measurements it is sensible to expect that one would not be getting mixed complex and real numbers in the experiments. An Hermitian property is defined by the following equality where an  operator can go into complex conjugate mode and act on complex conjugate pair of the function.</p></li>
+<li><p><strong>Operators in QM are Hermtian</strong>. Hermitian property of operators guarantees that eigenvalues are strictly real. And since eigenvalues are the only values observed in experimental measurements it is sensible to expect that one would not be getting mixed complex and real numbers in the experiments. Hermitian property is defined by the following equality where the same operator can go into complex conjugate mode and act on complex conjugate pair of the function.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\int \psi^* (\hat{H} \phi) dx = \int \phi (\hat{H} \psi)^* dx =\int \phi \hat{H}^* \psi^* dx \]</div>
+<ul class="simple">
+<li><p>In dirac notation the hermitian condition looks simpler:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\langle \phi |\hat{H} | \psi \rangle = \langle \psi |\hat{H} | \phi \rangle^{*}\]</div>
 </div>
 </section>
 <section id="postulate-3-eigenvalues">
@@ -499,13 +501,10 @@ document.write(`
 <div class="important admonition">
 <p class="admonition-title">Eigenvalues</p>
 <ul class="simple">
-<li><p>Eigenvalues of an operator are the only possible values of the corresponding observable that can be measured in the experiments.</p></li>
+<li><p>Eigenvalues of an operator are the only possible values of the corresponding observable that can be measured in the experiments. No other values are possible.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\hat{A}\psi_n =a_n \psi_n \]</div>
-<p>Eigenvalues of an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> exhaust the posisble values one can get in the experiments. Put another way eiganvalues are the only kind fo values to be measured. As a result of boundary conditions one often has discrete eigenvalues for observables which are indexed by integer numbers known as quantum numbers.</p>
-<div class="math notranslate nohighlight">
-\[\hat{A}\psi_n = a_n\psi_n \]</div>
 </div>
 </section>
 <section id="postulate-4-expectations">
@@ -517,10 +516,10 @@ document.write(`
 function <span class="math notranslate nohighlight">\(\psi\)</span> is given by expression:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\langle A \rangle = \int \psi^* \hat{A}\psi dx \]</div>
-<p>What is the expected value of an abservable obtained  on average as a result of large number of experiments? The answer is given by plugging operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> corresponding to observable <span class="math notranslate nohighlight">\(A\)</span> into an expression of average with wave function square acting as probabilty distribution function.</p>
-<div class="math notranslate nohighlight">
-\[\langle A \rangle =\int \psi^* \hat{A}\psi dx \]</div>
+\[\boxed{\langle A \rangle = \int \psi^* \hat{A}\psi dx = \langle \psi | A| \psi \rangle}\]</div>
+<ul class="simple">
+<li><p>Expected value predicts what would result from doing large number of experiments measuring observable and then taking average.</p></li>
+</ul>
 </div>
 </section>
 <section id="postulate-5-time-evolution">
@@ -530,13 +529,8 @@ function <span class="math notranslate nohighlight">\(\psi\)</span> is given by 
 <ul>
 <li><p>Time evolution of wave function is governed by time-dependent Schrödinger equation.</p>
 <div class="math notranslate nohighlight">
-\[i\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi \]</div>
+\[\boxed{i\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi}\]</div>
 </li>
-<li><p>State of quantum mechanical system evolves in time according to Schrödinger equation.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[i\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi \]</div>
-<ul class="simple">
 <li><p>We are often interested in stationary states described by pure eigenfunctions where time dependnce does not figure explicitely. In mixed states described by superposition of eigenfunctions, however, leads to time dependece of observable quantities.</p></li>
 </ul>
 </div>

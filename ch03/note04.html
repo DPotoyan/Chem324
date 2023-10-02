@@ -435,6 +435,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation">Exepctation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property">Hermitian property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
@@ -485,11 +486,11 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong> Apply the following operators on the given functions:</p>
 <ol class="arabic simple">
-<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d/dx\)</span> and function <span class="math notranslate nohighlight">\(x^2\)</span>.\</p></li>
-<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(4x^2\)</span>.\</p></li>
-<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = \left(\partial / \partial y\right)_x\)</span> and function <span class="math notranslate nohighlight">\(xy^2\)</span>.</p></li>
-<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -i\hbar d/dx\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span>.</p></li>
-<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -\hbar^2 d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span>.</p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d/dx\)</span> and function <span class="math notranslate nohighlight">\(x^2\)</span></p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(4x^2\)</span></p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = \left(\partial / \partial y\right)_x\)</span> and function <span class="math notranslate nohighlight">\(xy^2\)</span></p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -i\hbar d/dx\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span></p></li>
+<li><p>Operator <span class="math notranslate nohighlight">\(\hat{A} = -\hbar^2 d^2/dx^2\)</span> and function <span class="math notranslate nohighlight">\(\exp(-ikx)\)</span></p></li>
 </ol>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -528,9 +529,9 @@ document.write(`
 </summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Start with the eigenvalue equation:</p>
 <div class="math notranslate nohighlight">
-\[{\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}}
-{\Rightarrow \ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}}
-{\Rightarrow f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}\]</div>
+\[\begin{split}{\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}} \\
+{\ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}} \\
+{f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}\end{split}\]</div>
 </div>
 </details></section>
 <section id="exepctation">
@@ -540,14 +541,15 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[
-{\left&lt;\hat{A}\right&gt; = \int\psi^*\hat{A}\psi d\tau = \left&lt;\psi\left|\hat{A}\right|\psi\right&gt;}\]</div>
+{\left &lt; {A}\right&gt; = \int\psi^*\hat{A}\psi d\tau}
+\]</div>
 <ul class="simple">
 <li><p>The last ``Bra - Ket’’ form is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Dirac_notation">dirac notation</a>. Note that the Bra part always contains the complex conjugation.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\psi\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> then the expectation value is equal to the corresponding eigenvalue (<span class="math notranslate nohighlight">\(a\)</span>):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-{\hat{A}\psi = a\psi \Rightarrow \left&lt;\hat{A}\right&gt;=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
+{\hat{A}\psi = a\psi \Rightarrow \left&lt;{A}\right&gt;=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
 \]</div>
 <ul class="simple">
 <li><p>Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’).</p></li>
@@ -555,7 +557,7 @@ document.write(`
 </section>
 <section id="hermitian-property">
 <h2>Hermitian property<a class="headerlink" href="#hermitian-property" title="Permalink to this heading">#</a></h2>
-<p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">hermitian</a>. Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
+<p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">Hermitian</a>. Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}\]</div>
 <p>Note that this implies that the eigenvalues are real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then <span class="math notranslate nohighlight">\(\int\psi^*\hat{A}\psi d\tau = a\)</span> and <span class="math notranslate nohighlight">\(\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\)</span>. Hence <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real.</p>
@@ -570,7 +572,7 @@ document.write(`
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration by parts}}\)</span>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}\)</span>
 <span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
 <p class="sd-card-text">Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
 </div>
@@ -589,6 +591,9 @@ document.write(`
 {{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
 \]</div>
 <p>Note that if <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning that the values are <a class="reference external" href="http://en.wikipedia.org/wiki/Degenerate_energy_level">degenerate</a>, this result does not hold.</p>
+</section>
+<section id="commutations-of-operators">
+<h2>Commutations of operators<a class="headerlink" href="#commutations-of-operators" title="Permalink to this heading">#</a></h2>
 <p>The product <span class="math notranslate nohighlight">\(\hat{A}\hat{B}\)</span> of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> on some function f are defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -628,12 +633,6 @@ document.write(`
 \[{\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}\]</div>
 <div class="math notranslate nohighlight">
 \[{\left[A,B\right] = -\left[B,A\right]}\]</div>
-<div class="math notranslate nohighlight">
-\[{\left[B+C+...,A\right] = \left[B,A\right] + \left[C,A\right] + ...}\]</div>
-<div class="math notranslate nohighlight">
-\[{\left[A,B+C+...\right] = \left[A,B\right] + \left[A,C\right] + ...}\]</div>
-<div class="math notranslate nohighlight">
-\[{\left[A+B,C+D\right] = \left[A,C\right] + \left[A,D\right] + \left[B,C\right] + \left[B,D\right]}\]</div>
 <div class="math notranslate nohighlight">
 \[{\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}\]</div>
 </section>
@@ -680,10 +679,9 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}\]</div>
 </div>
-</details><div class="admonition-example admonition">
+</details><div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
-<p>Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.
-:class: note</p>
+<p>Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -778,6 +776,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation">Exepctation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property">Hermitian property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
