@@ -18,15 +18,14 @@ $${\hat{A}\left(c\psi\right) = c\hat{A}\psi\textnormal{ where \textit{c} is a co
 
 and $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Linear_operators). Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to $\hat{A}_1 + \hat{A}_2$. Multiplication corresponds to them operating one after another.
 
-:::{admonition}
+:::{admonition} **Example** Apply the following operators on the given functions:
 :class: note
-**Example** Apply the following operators on the given functions:
-
 1. Operator $\hat{A} = d/dx$ and function $x^2$.\\
 2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$.\\
 3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$.
 4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$.
 5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$.
+:::
 
 :::{dropdown} **Solution**
 -  $\hat{A}\left(x^2\right) = \frac{d}{dx}x^2 = 2x$.
@@ -36,7 +35,7 @@ and $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Line
 - $\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}$
 :::
 
-:::
+
 
 
 
