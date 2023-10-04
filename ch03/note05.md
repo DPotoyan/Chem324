@@ -20,7 +20,6 @@ Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on
 
 
 <html>
-
 <iframe width="500" height="250" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
 </iframe>
 </html>
@@ -31,7 +30,7 @@ Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on
   -  $a=(-2,8) \,\,\,$ *A 2D vector.*
   -  $b=(1.34,4.23,5.98) \,\,\,$  *A 3D vector.*
   -  $c=(1,-2,4i,3+2i) \,\,\,$  *A 4D vector with complex components.*
-  - $f=(1,2,3,4,5,6 ...,\infty)\,\,\,$ *An infinite-dimensional vector with integers as components.*
+  -  $f=(1,2,3,4,5,6 ...,\infty)\,\,\,$ *An infinite-dimensional vector with integers as components.*
 
 ### Dirac notation
 
@@ -39,10 +38,10 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
 
 |                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ <br>Example: $\mid a \rangle =(1, 2i)$ | **Ket:** $\mid \psi\rangle=\psi$$<br> Example: $\mid \psi \rangle=ix^2$ |
+| **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ <br>Example: $\mid a \rangle =(1, 2i)$ | **Ket:** $\mid \psi\rangle=\psi$<br> Example: $\mid \psi \rangle=ix^2$ |
 | **Bra:**$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$ <br> $\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $\langle \psi \mid=\psi^*$<br>  $\langle \psi \mid = -ix^2$ |
 |        $\langle a \mid b \rangle = \sum_i a_i b_i$         | $\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$ |
-| Example of Bra-Ket product for vectors in terms of components <br>$\langle a \mid a \rangle = \sum_i a^2_i$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$ | Example of Bra-Ket product for functions in terms of components<br>$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$<br> $\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$ |
+| Example: <br> $\langle a \mid a \rangle = \sum_i a^2_i$<br> $\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$ | Example: <br> $\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$<br> $\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$ |
 
 ### Representation of vectors
 
