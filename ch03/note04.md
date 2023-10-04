@@ -2,23 +2,25 @@
 
 :::{admonition} What you need to know
 :class: note
-- For every experimental observable there is a corresponding operator in quantum mechanics
-- Mathematical properties of operator tell us about the nature of experimental observatles.
-- Operators must be linear for they are dervied from Schrodinger equation which itself is linear.
-- Operatprs must prudice real eigenvalues becasue eigenvalue are what is measrued in experiments.
-- Operatprs must be Hermitial becasue only hermitian operators produce real eigenvalues.
-- Operators commutations show weather two experimental observables can be determined simulateneously.
+- For every experimental **observable** there is a **corresponding operator** in quantum mechanics. 
+- **Operators must be linear.** Becasue they are dervied from Schrodinger equation which itself is linear.
+- **Operatprs must be Hermitian** becasue only Hermitian operators produce real eigenvalues.
+- **Operatprs must produce real eigenvalues.** Becasue eigenvalue are the only possible values that are measured in experiments.
+- Operators **commutations** show weather two experimental observables can be **measured simulateneously**. E.g can one simulatenoulsy and precisely determine the values of position and momentum of an electron. 
 :::
 
 ### Operators: A reminder
 
-We have already seen examples of operators. For short, they consist of mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
+We have already seen examples of operators. For short, operators are deonted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
 
 $${\hat{p}_x = -i\hbar\frac{d}{dx}}$$
+- When this operates on a function, it does the following: differentiate the function with respect to $x$ and then  multiply the result from by $-i\hbar$. 
 
-- When this operates on a function, it does the following: (1) differentiate the function with respect to $x$ and then (2) multiply the result from (1) by $-i\hbar$. 
+- The quantum mechanical momentum operator of position is:
 
-- Another example of an operator is the position operator given just by coordinate $x$. This would operate on a given wavefunction just by multiplying it by $x$. We denote operators with \^{} sign (``hat'') above them.
+$$\hat{x} = x$$
+
+- When this operates on a function, it does the following: multiply function by x. 
 
 ### Linearity of operators
 Operators in quantum mechanics are *linear*, which means that they fulfill the following rules:
@@ -54,18 +56,20 @@ $${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
 
 - This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
 
-:::{admonition} **Example** 
+:::{note} **Example** 
 :class: note
+
 What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
 :::
 
-:::{dropdown} **Solution**
+:::{note} **Solution**
+:class: dropdown
 
 Start with the eigenvalue equation:
 
-$${\frac{d}{dx}f(x) = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx \textnormal{ (integrate both sides)}} \\
-{\ln(f(x)) = kx + c\textnormal{ (\textit{k} and \textit{c} are constants)}} \\
-{f_k(x) = e^ce^{kx} = c'e^{kx}\textnormal{ (\textit{c}' is another constant)}}$$
+$${\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx { (integrate both sides)}}$$ 
+$$\ln(f) = kx + c$$ 
+$${f_k = e^ce^{kx} = c'e^{kx}}$$
 :::
 
 
@@ -77,8 +81,6 @@ $$
 {\left < {A}\right> = \int\psi^*\hat{A}\psi d\tau}
 $$
 
-- The last ``Bra - Ket'' form is called the [dirac notation](http://en.wikipedia.org/wiki/Dirac_notation). Note that the Bra part always contains the complex conjugation.
-
 
 - If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
 
@@ -86,22 +88,29 @@ $$
 {\hat{A}\psi = a\psi \Rightarrow \left<{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
 $$
 
-- Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'').
+- Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. 
+- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
+- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
 
 ### Hermitian property
 
+### Real eigenvalues
 Operators that yield real eigenvalues are called [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
 
-$${\int\psi^*_j\hat{A}\psi_k d\tau = \int\psi_k\left(\hat{A}\psi_j\right)^*d\tau}$$
+$${\int \blue{\psi^*_j}\green{\hat{A} \psi_k} d\tau = \int\green{\psi_k}\blue{\left(\hat{A}\psi_j\right)^*}d\tau}$$
 
-Note that this implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Hence $a = a^*$, which means that $a$ must be real.
+- Take note of the symmetry: The result remains when perator acts in the space of function or its complex conjugate pair. 
 
-:::{admonition} **Example** 
+- This symmetry implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Hence $a = a^*$, which means that $a$ must be real!
+
+:::{note} **Example** 
 :class: note
+
 Prove that the momentum operator (in one dimension) is Hermitian.
 :::
 
-:::{dropdown} **Solution**
+:::{note} **Solution**
+:class: dropdown
 
 ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
@@ -109,6 +118,7 @@ $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\r
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
 :::
 
+#### Orthogonality of eigenfunctions 
 
 The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
 
@@ -145,12 +155,14 @@ If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order 
 $${\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}$$
 
 
-:::{admonition} **Example**
+:::{note} **Example**
 :class: note
 Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\left[\hat{A}, \hat{B}\right] \ne 0$).
 :::
 
-:::{dropdown} **Solution** 
+:::{note} **Solution** 
+:class: dropdown
+
 Let $f$ be an arbitrary well-behaved function. We need to calculate both $\hat{A}\hat{B}f$ and $\hat{B}\hat{A}f$:
 
 $$
