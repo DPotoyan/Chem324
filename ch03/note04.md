@@ -98,7 +98,9 @@ $$
 ### Real eigenvalues
 Operators that yield real eigenvalues are called [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
 
-$${\int \blue{\psi^*_j}\green{\hat{A} \psi_k} d\tau = \int\green{\psi_k}\blue{\left(\hat{A}\psi_j\right)^*}d\tau}$$
+$$
+{\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
+$$
 
 - Take note of the symmetry: The result remains when perator acts in the space of function or its complex conjugate pair. 
 
@@ -156,20 +158,20 @@ If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order 
 $${\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}$$
 
 
-:::{note} **Example**
+:::{admonition} **Example**
 :class: note
 
 Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\left[\hat{A}, \hat{B}\right] \ne 0$).
 :::
 
-:::{note} **Solution** 
+:::{admonition} **Solution** 
 :class: dropdown
 
 Let $f$ be an arbitrary well-behaved function. We need to calculate both $\hat{A}\hat{B}f$ and $\hat{B}\hat{A}f$:
 
 $$
 \hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)$$
-$$\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}$$
+$$\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f$$
 $$\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}
 $$
 :::
@@ -218,7 +220,7 @@ $${\Delta A\Delta B \ge \frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\righ
 Obtain the position/momentum uncertainty principle 
 :::
 
-:::{note} **Solution**
+:::{admonition} **Solution**
 :class: dropdown
 
 Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
@@ -233,14 +235,14 @@ $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
 
 ### Commuting operators share eigenfunctions
 
-:::{note} **Example**  
+:::{admonition} **Example**  
 :class: note
 
 Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 :::
 
 
-:::{note} **Solution** 
+:::{admonition} **Solution** 
 :class: dropdown
 
 Denote the eigenvalues of $\hat{A}$ and $\hat{B}$ by $a_i$ and $b_i$ and the common eigenfunctions by $\psi_i$. For both operators we have then:
