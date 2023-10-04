@@ -7,6 +7,7 @@
 - **Operatprs must be Hermitian** becasue only Hermitian operators produce real eigenvalues.
 - **Operatprs must produce real eigenvalues.** Becasue eigenvalue are the only possible values that are measured in experiments.
 - Operators **commutations** show weather two experimental observables can be **measured simulateneously**. E.g can one simulatenoulsy and precisely determine the values of position and momentum of an electron. 
+- Commuting operators share eignefunctions, non-commuiting operators have different eigenfunctions.
 :::
 
 ### Operators: A reminder
@@ -157,6 +158,7 @@ $${\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\ha
 
 :::{note} **Example**
 :class: note
+
 Prove that operators $\hat{A} = x$ and $\hat{B} = d/dx$ do not commute (i.e., $\left[\hat{A}, \hat{B}\right] \ne 0$).
 :::
 
@@ -172,7 +174,7 @@ $$\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero an
 $$
 :::
 
-### Simple rules for commutators
+#### Simple rules for commutators
 
 $${\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}$$
 
@@ -180,7 +182,7 @@ $${\left[A,B\right] = -\left[B,A\right]}$$
 
 $${\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}$$
 
-## Commutability and precision of measurement
+## Commutability measurements
 
 We have seen previously that operators may not always commute (i.e., $[A, B] \ne 0$). An example of such operator pair is position $\hat{x}$ and momentum $\hat{p}_x$:
 
@@ -212,10 +214,13 @@ $${\Delta A\Delta B \ge \frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\righ
 
 :::{admonition} **Example**  
 :class: note
+
 Obtain the position/momentum uncertainty principle 
 :::
 
-:::{dropdown} **Solution**
+:::{note} **Solution**
+:class: dropdown
+
 Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
 
 
@@ -226,15 +231,17 @@ $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
 :::
 
 
+### Commuting operators share eigenfunctions
 
-:::{admonition} **Example**  
+:::{note} **Example**  
 :class: note
 
 Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 :::
 
 
-:::{dropdown} **Solution** 
+:::{note} **Solution** 
+:class: dropdown
 
 Denote the eigenvalues of $\hat{A}$ and $\hat{B}$ by $a_i$ and $b_i$ and the common eigenfunctions by $\psi_i$. For both operators we have then:
 
