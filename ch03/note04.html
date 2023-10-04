@@ -439,11 +439,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-eigenfunctions">Orthogonality of eigenfunctions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-and-precision-of-measurement">Commutability and precision of measurement</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -466,6 +471,7 @@ document.write(`
 <li><p><strong>Operatprs must be Hermitian</strong> becasue only Hermitian operators produce real eigenvalues.</p></li>
 <li><p><strong>Operatprs must produce real eigenvalues.</strong> Becasue eigenvalue are the only possible values that are measured in experiments.</p></li>
 <li><p>Operators <strong>commutations</strong> show weather two experimental observables can be <strong>measured simulateneously</strong>. E.g can one simulatenoulsy and precisely determine the values of position and momentum of an electron.</p></li>
+<li><p>Commuting operators share eignefunctions, non-commuiting operators have different eigenfunctions.</p></li>
 </ul>
 </div>
 <section id="operators-a-reminder">
@@ -621,8 +627,8 @@ document.write(`
 \[{\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}\]</div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p><strong>Example</strong>
-Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
+<p><strong>Example</strong></p>
+<p>Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
 </div>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
@@ -637,9 +643,8 @@ Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)<
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}
 \]</div>
 </div>
-</section>
 <section id="simple-rules-for-commutators">
-<h2>Simple rules for commutators<a class="headerlink" href="#simple-rules-for-commutators" title="Permalink to this heading">#</a></h2>
+<h3>Simple rules for commutators<a class="headerlink" href="#simple-rules-for-commutators" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[{\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}\]</div>
 <div class="math notranslate nohighlight">
@@ -648,8 +653,9 @@ Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)<
 \[{\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}\]</div>
 </section>
 </section>
-<section id="commutability-and-precision-of-measurement">
-<h1>Commutability and precision of measurement<a class="headerlink" href="#commutability-and-precision-of-measurement" title="Permalink to this heading">#</a></h1>
+</section>
+<section id="commutability-measurements">
+<h1>Commutability measurements<a class="headerlink" href="#commutability-measurements" title="Permalink to this heading">#</a></h1>
 <p>We have seen previously that operators may not always commute (i.e., <span class="math notranslate nohighlight">\([A, B] \ne 0\)</span>). An example of such operator pair is position <span class="math notranslate nohighlight">\(\hat{x}\)</span> and momentum <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{p}_x\hat{x}\psi(x) = \hat{p}_x\left(x\psi(x)\right) = \left(\frac{\hbar}{i}\frac{d}{dx}\right)\left(x\psi(x)\right) = \frac{\hbar x}{i}\frac{d\psi(x)}{dx} + \frac{\hbar}{i}\psi(x)}\]</div>
@@ -676,35 +682,30 @@ Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)<
 <p class="admonition-title"><strong>Example</strong></p>
 <p>Obtain the position/momentum uncertainty principle</p>
 </div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<strong>Solution</strong><div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Denote <span class="math notranslate nohighlight">\(\hat{A} = \hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = \hat{p}_x\)</span>.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Solution</strong></p>
+<p>Denote <span class="math notranslate nohighlight">\(\hat{A} = \hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = \hat{p}_x\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{2}\left|\left&lt;\left[\hat{A},\hat{B}\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\left[\hat{x},\hat{p}_x\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\frac{\hbar}{i}\right&gt;\right|
 = \frac{1}{2}\left|\left&lt;\psi\left|\frac{\hbar}{i}\right|\psi\right&gt;\right| = \frac{1}{2}\left|\frac{\hbar}{i}\underbrace{\left&lt;\psi\left|\psi\right.\right&gt;}_{=1}\right| = \frac{\hbar}{2}\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}\]</div>
 </div>
-</details><div class="note admonition">
-<p class="admonition-title"><strong>Example</strong></p>
+<section id="commuting-operators-share-eigenfunctions">
+<h2>Commuting operators share eigenfunctions<a class="headerlink" href="#commuting-operators-share-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><strong>Example</strong></p>
 <p>Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p>
 </div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<strong>Solution</strong><div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Denote the eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> by <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and the common eigenfunctions by <span class="math notranslate nohighlight">\(\psi_i\)</span>. For both operators we have then:</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Solution</strong></p>
+<p>Denote the eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> by <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and the common eigenfunctions by <span class="math notranslate nohighlight">\(\psi_i\)</span>. For both operators we have then:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\psi_i = a_i\psi_i\textnormal{ and }\hat{B}\psi_i = b_i\psi_i\]</div>
-<p class="sd-card-text">By using these two equations and expressing the general wavefunction <span class="math notranslate nohighlight">\(\psi\)</span> as a linear combination of the eigenfunctions, the commutator can be evaluated as:</p>
+<p>By using these two equations and expressing the general wavefunction <span class="math notranslate nohighlight">\(\psi\)</span> as a linear combination of the eigenfunctions, the commutator can be evaluated as:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\hat{B}\psi = \hat{A}\left(\hat{B}\psi\right) = \hat{A}\overbrace{\left(\hat{B}\sum\limits_{i=1}^{\infty}c_i\psi_i\right)}^{\textnormal{complete basis}}
 = \hat{A}\overbrace{\left(\sum\limits_{i=1}^{\infty}c_i\hat{B}\psi_i\right)}^{\hat{B}\textnormal{ linear}} = \hat{A}\overbrace{\left(\sum\limits_{i=1}^{\infty}c_ib_i\psi_i\right)}^{\textnormal{eigenfunction of }\hat{B}}\]</div>
@@ -714,9 +715,10 @@ Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)<
 \[= \hat{B}\sum\limits_{i=1}^{\infty}c_ia_i\psi_i = \hat{B}\sum\limits_{i=1}^{\infty}c_i\hat{A}\psi_i = \hat{B}\hat{A}\sum\limits_{i=1}^{\infty}c_i\psi_i = \hat{B}\hat{A}\psi\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = 0\]</div>
-<p class="sd-card-text">Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
+<p>Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
 </div>
-</details></section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -791,11 +793,16 @@ Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)<
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-eigenfunctions">Orthogonality of eigenfunctions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-and-precision-of-measurement">Commutability and precision of measurement</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
