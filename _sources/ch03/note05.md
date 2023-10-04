@@ -11,10 +11,17 @@
 
 ### Vectors, what are they?
 
-Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter. 
+Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 and 2. 
 
 <html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+<iframe width="500 height="250" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+
+
+<html>
+
+<iframe width="500" height="250" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
 </iframe>
 </html>
 
@@ -32,10 +39,10 @@ Here, anticipating their immense usefulenss,  we introduce Dirac notation for ve
 
 |                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Ket:** $$\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$$ <br>Example: $$\mid a \rangle =(1, 2i)$$ | **Ket:** $$\mid \psi\rangle=\psi$$<br> Example: $$\mid \psi \rangle=ix^2$$ |
-| **Bra:**$$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$$ <br> $$\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $$\langle \psi \mid=\psi^*$$<br>  $$\langle \psi \mid = -ix^2$$ |
-|        $$\langle a \mid b \rangle = \sum_i a_i b_i$$         | $$\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$$ |
-| Example of Bra-Ket product for vectors in terms of components <br>$$\langle a \mid a \rangle = \sum_i a^2_i$$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$$ | Example of Bra-Ket product for functions in terms of components<br>$$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$$<br> $$\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$$ |
+| **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ <br>Example: $\mid a \rangle =(1, 2i)$ | **Ket:** $\mid \psi\rangle=\psi$$<br> Example: $\mid \psi \rangle=ix^2$ |
+| **Bra:**$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$ <br> $\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $\langle \psi \mid=\psi^*$<br>  $\langle \psi \mid = -ix^2$ |
+|        $\langle a \mid b \rangle = \sum_i a_i b_i$         | $\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$ |
+| Example of Bra-Ket product for vectors in terms of components <br>$\langle a \mid a \rangle = \sum_i a^2_i$<br> $$\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$ | Example of Bra-Ket product for functions in terms of components<br>$\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$<br> $\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$ |
 
 ### Representation of vectors
 
@@ -151,16 +158,6 @@ When the norm is $\mid a \mid=1$, vector is called normalized. To normalize a ve
   $$\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0$$   
 
 The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient $\alpha_i$ and express the unit vector $\mid e_i\rangle$ in terms of the others.
-
-### Video "Linear combinations, span, and basis vectors"
-
-Now watch the second video from 3B1B on linear combinations and basis vectors. 
-
-<html>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
-</iframe>
-</html>
 
 ### Decomposition of functions into orthogonal components
 

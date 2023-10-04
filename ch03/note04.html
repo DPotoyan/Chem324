@@ -577,7 +577,9 @@ document.write(`
 <h2>Real eigenvalues<a class="headerlink" href="#real-eigenvalues" title="Permalink to this heading">#</a></h2>
 <p>Operators that yield real eigenvalues are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermitian_operator">Hermitian</a>. Operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian if it fulfills the following condition for <em>all</em> well-behaved functions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[{\int \blue{\psi^*_j}\green{\hat{A} \psi_k} d\tau = \int\green{\psi_k}\blue{\left(\hat{A}\psi_j\right)^*}d\tau}\]</div>
+\[
+{\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
+\]</div>
 <ul class="simple">
 <li><p>Take note of the symmetry: The result remains when perator acts in the space of function or its complex conjugate pair.</p></li>
 <li><p>This symmetry implies that the eigenvalues are real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then <span class="math notranslate nohighlight">\(\int\psi^*\hat{A}\psi d\tau = a\)</span> and <span class="math notranslate nohighlight">\(\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\)</span>. Hence <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real!</p></li>
@@ -627,19 +629,17 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[{\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}\]</div>
 <div class="note admonition">
-<p class="admonition-title">Note</p>
-<p><strong>Example</strong></p>
+<p class="admonition-title"><strong>Example</strong></p>
 <p>Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
 </div>
-<div class="dropdown admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Solution</strong></p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> be an arbitrary well-behaved function. We need to calculate both <span class="math notranslate nohighlight">\(\hat{A}\hat{B}f\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\hat{A}f\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{A}\hat{B}f = xf'(x)\textnormal{ and } \hat{B}\hat{A}f = \frac{d}{dx}\left(xf(x)\right) = f(x) + xf'(x)\]</div>
 <div class="math notranslate nohighlight">
-\[\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\textnormal{ (remove \textit{f})}\]</div>
+\[\left[\hat{A},\hat{B}\right]f = \hat{A}\hat{B}f - \hat{B}\hat{A}f = -f\]</div>
 <div class="math notranslate nohighlight">
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = -1\textnormal{ (this is non-zero and the operators do not commute)}
 \]</div>
@@ -683,9 +683,8 @@ document.write(`
 <p class="admonition-title"><strong>Example</strong></p>
 <p>Obtain the position/momentum uncertainty principle</p>
 </div>
-<div class="dropdown admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Solution</strong></p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
 <p>Denote <span class="math notranslate nohighlight">\(\hat{A} = \hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = \hat{p}_x\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{2}\left|\left&lt;\left[\hat{A},\hat{B}\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\left[\hat{x},\hat{p}_x\right]\right&gt;\right| = \frac{1}{2}\left|\left&lt;\frac{\hbar}{i}\right&gt;\right|
@@ -696,13 +695,11 @@ document.write(`
 <section id="commuting-operators-share-eigenfunctions">
 <h2>Commuting operators share eigenfunctions<a class="headerlink" href="#commuting-operators-share-eigenfunctions" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
-<p class="admonition-title">Note</p>
-<p><strong>Example</strong></p>
+<p class="admonition-title"><strong>Example</strong></p>
 <p>Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p>
 </div>
-<div class="dropdown admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Solution</strong></p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
 <p>Denote the eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> by <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and the common eigenfunctions by <span class="math notranslate nohighlight">\(\psi_i\)</span>. For both operators we have then:</p>
 <div class="math notranslate nohighlight">
 \[\hat{A}\psi_i = a_i\psi_i\textnormal{ and }\hat{B}\psi_i = b_i\psi_i\]</div>

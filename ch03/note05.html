@@ -437,7 +437,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-linear-combinations-span-and-basis-vectors">Video “Linear combinations, span, and basis vectors”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
@@ -473,9 +472,13 @@ document.write(`
 </div>
 <section id="vectors-what-are-they">
 <h2>Vectors, what are they?<a class="headerlink" href="#vectors-what-are-they" title="Permalink to this heading">#</a></h2>
-<p>Let’s remind ourselves what are vectors. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 now and video 2 at the end of this chapter.</p>
+<p>Let’s remind ourselves what are vectors. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 and 2.</p>
 <html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+<iframe width="500 height="250" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+<html>
+<iframe width="500" height="250" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
 </iframe>
 </html>
 </section>
@@ -502,17 +505,17 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><strong>Ket:</strong> $<span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,\)</span><span class="math notranslate nohighlight">\( &lt;br&gt;Example: \)</span><span class="math notranslate nohighlight">\(\mid a \rangle =(1, 2i)\)</span>$</p></td>
-<td class="text-center"><p><strong>Ket:</strong> $<span class="math notranslate nohighlight">\(\mid \psi\rangle=\psi\)</span><span class="math notranslate nohighlight">\(&lt;br&gt; Example: \)</span><span class="math notranslate nohighlight">\(\mid \psi \rangle=ix^2\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><strong>Ket:</strong> <span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,\)</span> <br>Example: <span class="math notranslate nohighlight">\(\mid a \rangle =(1, 2i)\)</span></p></td>
+<td class="text-center"><p><strong>Ket:</strong> <span class="math notranslate nohighlight">\(\mid \psi\rangle=\psi\)</span><span class="math notranslate nohighlight">\(&lt;br&gt; Example: \)</span>\mid \psi \rangle=ix^2$</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p><strong>Bra:</strong>$<span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span><span class="math notranslate nohighlight">\( &lt;br&gt; \)</span><span class="math notranslate nohighlight">\(\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}\)</span>$</p></td>
-<td class="text-center"><p><strong>Bra:</strong> $<span class="math notranslate nohighlight">\(\langle \psi \mid=\psi^*\)</span><span class="math notranslate nohighlight">\(&lt;br&gt;  \)</span><span class="math notranslate nohighlight">\(\langle \psi \mid = -ix^2\)</span>$</p></td>
+<tr class="row-odd"><td class="text-center"><p><strong>Bra:</strong><span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span> <br> <span class="math notranslate nohighlight">\(\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}\)</span>$</p></td>
+<td class="text-center"><p><strong>Bra:</strong> <span class="math notranslate nohighlight">\(\langle \psi \mid=\psi^*\)</span><br>  <span class="math notranslate nohighlight">\(\langle \psi \mid = -ix^2\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle a \mid b \rangle = \sum_i a_i b_i\)</span>$</p></td>
-<td class="text-center"><p>$<span class="math notranslate nohighlight">\(\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle a \mid b \rangle = \sum_i a_i b_i\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Example of Bra-Ket product for vectors in terms of components <br>$<span class="math notranslate nohighlight">\(\langle a \mid a \rangle = \sum_i a^2_i\)</span><span class="math notranslate nohighlight">\(&lt;br&gt; \)</span><span class="math notranslate nohighlight">\(\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5\)</span>$</p></td>
-<td class="text-center"><p>Example of Bra-Ket product for functions in terms of components<br>$<span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx\)</span><span class="math notranslate nohighlight">\(&lt;br&gt; \)</span><span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}\)</span>$</p></td>
+<tr class="row-odd"><td class="text-center"><p>Example of Bra-Ket product for vectors in terms of components <br><span class="math notranslate nohighlight">\(\langle a \mid a \rangle = \sum_i a^2_i\)</span><br> $<span class="math notranslate nohighlight">\(\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5\)</span></p></td>
+<td class="text-center"><p>Example of Bra-Ket product for functions in terms of components<br><span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx\)</span><br> <span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -666,14 +669,6 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0\]</div>
 <p>The converse, when one of the coefificent <span class="math notranslate nohighlight">\(\alpha_i\)</span>can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient <span class="math notranslate nohighlight">\(\alpha_i\)</span> and express the unit vector <span class="math notranslate nohighlight">\(\mid e_i\rangle\)</span> in terms of the others.</p>
-</section>
-<section id="video-linear-combinations-span-and-basis-vectors">
-<h2>Video “Linear combinations, span, and basis vectors”<a class="headerlink" href="#video-linear-combinations-span-and-basis-vectors" title="Permalink to this heading">#</a></h2>
-<p>Now watch the second video from 3B1B on linear combinations and basis vectors.</p>
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
-</iframe>
-</html>
 </section>
 <section id="decomposition-of-functions-into-orthogonal-components">
 <h2>Decomposition of functions into orthogonal components<a class="headerlink" href="#decomposition-of-functions-into-orthogonal-components" title="Permalink to this heading">#</a></h2>
@@ -944,7 +939,6 @@ c_i^*c_k\left&lt;\phi_i\left|\hat{A}\right|\phi_k\right&gt;}\]</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-linear-combinations-span-and-basis-vectors">Video “Linear combinations, span, and basis vectors”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
