@@ -17,8 +17,7 @@ Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on
 <iframe width="300 height="300" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
 </iframe>
 </html>
-
-
+<br>
 <html>
 <iframe width="300" height="300" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
 </iframe>
@@ -322,7 +321,7 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
   $$\langle \phi_1 \mid \phi_2 \rangle=0$$
 
 
-- "The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
+- The [Copenhagen interpretation](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1) is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.
 
 - According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. 
 - The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
@@ -354,7 +353,6 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 ### Double slit Experiment
 
 <html>
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
 </iframe>
 </html>
