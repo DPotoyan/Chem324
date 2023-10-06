@@ -96,23 +96,32 @@ $$
 ### Hermitian property
 
 ### Real eigenvalues
-Operators that yield real eigenvalues are called [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator). Operator $\hat{A}$ is Hermitian if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
+
+- Operator $\hat{A}$ is [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator) if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
 
 $$
 {\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
 $$
 
-- Take note of the symmetry: The result remains when perator acts in the space of function or its complex conjugate pair. 
+- *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
 
-- This symmetry implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then $\int\psi^*\hat{A}\psi d\tau = a$ and $\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$. Hence $a = a^*$, which means that $a$ must be real!
+- In general most operators are not hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
 
-:::{note} **Example** 
+- This symmetry implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+
+$$\int\psi^*\hat{A}\psi d\tau = a$$ 
+
+$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
+
+Hence $a = a^*$, which means that $a$ must be real!
+
+:::{admonition} **Example** 
 :class: note
 
 Prove that the momentum operator (in one dimension) is Hermitian.
 :::
 
-:::{note} **Solution**
+:::{admonition} **Solution**
 :class: dropdown
 
 ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
