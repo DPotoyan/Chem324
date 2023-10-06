@@ -14,13 +14,13 @@
 Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on linear algebra with stunning visual examples. I highly reccomend watching video 1 and 2. 
 
 <html>
-<iframe width="500 height="250" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+<iframe width="300 height="300" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
 </iframe>
 </html>
 
 
 <html>
-<iframe width="500" height="250" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
+<iframe width="300" height="300" src="https://www.youtube.com/embed/k7RM-ot2NWY" frameborder="0" allowfullscreen>
 </iframe>
 </html>
 
