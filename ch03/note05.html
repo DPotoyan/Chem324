@@ -214,7 +214,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="PIB.html">DEMO: 1D particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PIB3D.html">DEMO: 3D particle in a box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operators.html">DEMO: Operators and eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.html">DEMO: Postulates</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -663,19 +663,19 @@ document.write(`
 </ul>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p>$<span class="math notranslate nohighlight">\(\,\)</span>$Sequence vectors</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Vectors</p></th>
 <th class="head text-center"><p>Functions</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p>Orthonormality of basis unit vectors x and y:<br> $<span class="math notranslate nohighlight">\(\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}\)</span>$</p></td>
-<td class="text-center"><p>Orthonormality of eigenfunctions of Hermitian operator: <br>$<span class="math notranslate nohighlight">\(\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}\)</span></p></td>
+<td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Linear superposition: <br>$<span class="math notranslate nohighlight">\(\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle\)</span>$</p></td>
-<td class="text-center"><p>Linear superposition: <br/>$<span class="math notranslate nohighlight">\(\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle\)</span>$</p></td>
+<tr class="row-odd"><td class="text-center"><p><strong>Linear superposition</strong>  <span class="math notranslate nohighlight">\(\\ \mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle\)</span></p></td>
+<td class="text-center"><p><strong>Linear superposition</strong> <span class="math notranslate nohighlight">\(\\ \mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>Coefficients are expressed via projections onto basis vectors: <br/>$<span class="math notranslate nohighlight">\(\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  \)</span>$</p></td>
-<td class="text-center"><p>Coefficients are expressed via projections onto basis functions: <br/>$<span class="math notranslate nohighlight">\(\langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1\)</span>$</p></td>
+<tr class="row-even"><td class="text-center"><p><strong>Projections</strong>  <span class="math notranslate nohighlight">\(\\ \langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  \)</span></p></td>
+<td class="text-center"><p><strong>Projections</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -683,14 +683,18 @@ document.write(`
 </section>
 <section id="eigenfunctions-of-hermitian-operators-form-complete-basis-set">
 <h2>Eigenfunctions of Hermitian operators form complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set" title="Permalink to this heading">#</a></h2>
-<p>The three crucial consequences of Hermitian property of operators  <span class="math notranslate nohighlight">\(\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\)</span></p>
+<p>The three crucial consequences of Hermitian property of operators</p>
+<div class="math notranslate nohighlight">
+\[\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\]</div>
 <ul class="simple">
-<li><p>Eigenvalues <span class="math notranslate nohighlight">\(\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle\)</span>  are real:</p></li>
+<li><p>Eigenvalues  are real:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle\]</div>
 <div class="math notranslate nohighlight">
 \[E_n=E^*_n\]</div>
 <ul class="simple">
-<li><p>Eigenfunctions are orthogonal:</p></li>
+<li><p>Eigenfunctions are orthogonal (and can also be normalized)</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}\]</div>
@@ -703,7 +707,7 @@ document.write(`
 </section>
 <section id="wave-function-as-a-linear-superoposition-of-eigenfunctions">
 <h2>Wave function as a linear superoposition of eigenfunctions<a class="headerlink" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions" title="Permalink to this heading">#</a></h2>
-<p>This is where we see the power and beautfy of Dirac notation. Reagardless of how the function <span class="math notranslate nohighlight">\(f\)</span> looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same!</p>
+<p>This is where we see the power and beautfy of Dirac notation. Reagardless of how the function <span class="math notranslate nohighlight">\(f\)</span> looks like, We can always express it in terms of the energy eigenfucntions or the position eigenfunctions or any other complete set of functions.</p>
 <ul class="simple">
 <li><p>Express <span class="math notranslate nohighlight">\(f(x)\)</span> function in terms of eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H} \mid n\rangle=E_n \mid n \rangle\)</span>.</p>
 <ul>
@@ -711,14 +715,14 @@ document.write(`
 <li><p>In explicit notation: <span class="math notranslate nohighlight">\(f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )\)</span></p></li>
 </ul>
 </li>
-<li><p>What about coefficients <span class="math notranslate nohighlight">\(c_n\)</span>? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient <span class="math notranslate nohighlight">\(k\)</span>, just like component of a vector can be found by projecting our function (vectors) on eigenfunction <span class="math notranslate nohighlight">\(k\)</span> (unit basis vector <span class="math notranslate nohighlight">\(k\)</span>).</p>
+<li><p>How do we find the coefficients <span class="math notranslate nohighlight">\(c_n\)</span>? Thanks to orthogonality of eigenfunctions any coeficient <span class="math notranslate nohighlight">\(k\)</span>, just like component of a vector can be found by projecting our function (vectors) on eigenfunction <span class="math notranslate nohighlight">\(k\)</span> (unit basis vector <span class="math notranslate nohighlight">\(k\)</span>).</p>
 <ul>
 <li><p>In Dirac notation: <span class="math notranslate nohighlight">\(c_k = \braket{k \mid f}\)</span></p></li>
 <li><p>In explicit notation: <span class="math notranslate nohighlight">\(c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx\)</span></p></li>
 </ul>
 </li>
+<li><p>Thus any wave function in quantum mechanics say <span class="math notranslate nohighlight">\(f(x)=x^2\)</span> on <span class="math notranslate nohighlight">\([0,L]\)</span> for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion.</p></li>
 </ul>
-<p>Thus any wave function in quantum mechanics say <span class="math notranslate nohighlight">\(f(x)=x^2\)</span> on <span class="math notranslate nohighlight">\([0,L]\)</span> for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion.</p>
 </section>
 <section id="quantum-states-as-linear-superposition">
 <h2>Quantum states as linear superposition.<a class="headerlink" href="#quantum-states-as-linear-superposition" title="Permalink to this heading">#</a></h2>

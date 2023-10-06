@@ -170,23 +170,27 @@ The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely 
 
 - Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a **Hilbert space**, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.   
 
-|                $$\,$$Sequence vectors                 |                          Functions                           |
+|    Vectors                 |    Functions                  |                         
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Orthonormality of basis unit vectors x and y:<br> $$\langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$$ | Orthonormality of eigenfunctions of Hermitian operator: <br>$$\langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$$ |
-| Linear superposition: <br>$$\mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$$ | Linear superposition: <br/>$$\mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$$ |
-| Coefficients are expressed via projections onto basis vectors: <br/>$$\langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $$ | Coefficients are expressed via projections onto basis functions: <br/>$$\langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1$$ |
+| **Orthonormality** $\\ \langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}$ | **Orthonormality** $\\ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}$ |
+| **Linear superposition**  $\\ \mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle$ | **Linear superposition** $\\ \mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle$ |
+| **Projections**  $\\ \langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  $ | **Projections** $\\ \langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1$ |
 
 In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!
 
 ### Eigenfunctions of Hermitian operators form complete basis set
 
-The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
+The three crucial consequences of Hermitian property of operators  
 
-- Eigenvalues $\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$  are real: 
+$$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$$
+
+- Eigenvalues  are real: 
+
+$$\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
 
 $$E_n=E^*_n$$
 
-- Eigenfunctions are orthogonal:
+- Eigenfunctions are orthogonal (and can also be normalized)
 
 $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
@@ -198,9 +202,7 @@ The last two properties imply that eigenfunctions of Hermitian opeartors  play t
 
 ### Wave function as a linear superoposition of eigenfunctions
 
-This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, weather we want to express it in terms of the energy eigenfucntions or the position eigenfunctions, the key expressions are going to be the same! 
-
-
+This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, We can always express it in terms of the energy eigenfucntions or the position eigenfunctions or any other complete set of functions.
 
 - Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
 
@@ -208,16 +210,14 @@ This is where we see the power and beautfy of Dirac notation. Reagardless of how
   - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
 
   
-
-- What about coefficients $c_n$? They are what define the expansion. Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
+- How do we find the coefficients $c_n$? Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
 
   - In Dirac notation: $c_k = \braket{k \mid f}$
 
   - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
 
     
-
-Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
+- Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
 
 
 
