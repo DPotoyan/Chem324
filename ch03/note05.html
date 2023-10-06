@@ -438,14 +438,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-example-of-a-superoposition-state">Particle in a box example of a superoposition state</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-values">Expectation values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
@@ -484,15 +481,25 @@ document.write(`
 </section>
 <section id="vectors-in-2d-3d">
 <h2>Vectors in 2D/3D<a class="headerlink" href="#vectors-in-2d-3d" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>An example of a vector is an ordered collection of numbers, e.g:</p>
 <ul>
+<li><p>An example of a vector is an ordered collection of numbers, e.g:</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a=(-2,8) \,\,\,\)</span> <em>A 2D vector.</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(b=(1.34,4.23,5.98) \,\,\,\)</span>  <em>A 3D vector.</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(c=(1,-2,4i,3+2i) \,\,\,\)</span>  <em>A 4D vector with complex components.</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(f=(1,2,3,4,5,6 ...,\infty)\,\,\,\)</span> <em>An infinite-dimensional vector with integers as components.</em></p></li>
 </ul>
 </li>
+<li><p>Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.</p>
+<div class="math notranslate nohighlight">
+\[\vec{a}=2\vec{e_i}+3\vec{e_j}\]</div>
+<div class="math notranslate nohighlight">
+\[a=(2,3)\]</div>
+<div class="math notranslate nohighlight">
+\[\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle\]</div>
+</li>
+<li><p>These vectors can encode information about position of a particle or population of countries or temeprature in different parts of the forest, etc.</p></li>
+<li><p>We examine the last notation closely that used Diract bra and ket notation for vectors</p></li>
 </ul>
 </section>
 <section id="dirac-notation">
@@ -505,52 +512,30 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><strong>Ket:</strong> <span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,\)</span> <br>Example: <span class="math notranslate nohighlight">\(\mid a \rangle =(1, 2i)\)</span></p></td>
-<td class="text-center"><p><strong>Ket:</strong> <span class="math notranslate nohighlight">\(\mid \psi\rangle=\psi\)</span><br> Example: <span class="math notranslate nohighlight">\(\mid \psi \rangle=ix^2\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p><strong>Ket</strong> <span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..)\\ \)</span> <strong>Bra</strong> <span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span></p></td>
+<td class="text-center"><p><strong>Ket</strong> <span class="math notranslate nohighlight">\(\mid \psi\rangle=\psi(x)\\\)</span> <span class="math notranslate nohighlight">\(\\\)</span> <strong>Bra</strong> <span class="math notranslate nohighlight">\(\langle \psi \mid=\psi(x)^*\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p><strong>Bra:</strong><span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span> <br> <span class="math notranslate nohighlight">\(\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}\)</span>$</p></td>
-<td class="text-center"><p><strong>Bra:</strong> <span class="math notranslate nohighlight">\(\langle \psi \mid=\psi^*\)</span><br>  <span class="math notranslate nohighlight">\(\langle \psi \mid = -ix^2\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p><strong>Example</strong> <span class="math notranslate nohighlight">\(\\ \mid a \rangle =(1, 2i)\)</span> <span class="math notranslate nohighlight">\(\\\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}\)</span></p></td>
+<td class="text-center"><p><strong>Example</strong>  <span class="math notranslate nohighlight">\(\\ \mid \psi \rangle=e^{ix^2}\)</span>  <span class="math notranslate nohighlight">\(\\ \langle \psi \mid = e^{-ix^2}\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\langle a \mid b \rangle = \sum_i a_i b_i\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p><strong>dot product</strong>     <span class="math notranslate nohighlight">\(\langle a \mid b \rangle = \sum_i a_i b_i\)</span></p></td>
+<td class="text-center"><p><strong>dot product</strong> <span class="math notranslate nohighlight">\(\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Example: <br> <span class="math notranslate nohighlight">\(\langle a \mid a \rangle = \sum_i a^2_i\)</span><br> <span class="math notranslate nohighlight">\(\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5\)</span></p></td>
-<td class="text-center"><p>Example: <br> <span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx\)</span><br> <span class="math notranslate nohighlight">\(\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p><strong>Example</strong> <span class="math notranslate nohighlight">\( \\  \langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5\)</span></p></td>
+<td class="text-center"><p><strong>Example</strong>  <span class="math notranslate nohighlight">\(\\ \langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="representation-of-vectors">
 <h2>Representation of vectors<a class="headerlink" href="#representation-of-vectors" title="Permalink to this heading">#</a></h2>
-<p>Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.</p>
-<ul>
-<li><div class="math notranslate nohighlight">
-\[\vec{a}=2\vec{e_i}+3\vec{e_j}\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[a=(2,3)\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[\begin{split}a= \begin{pmatrix} 2 \\ 3 \\ \end{pmatrix}\end{split}\]</div>
-</li>
+<ul class="simple">
+<li><p>In classical physics vectors are attached to a coordinate system with unit vectors (<span class="math notranslate nohighlight">\(\vec{e_i}\)</span>) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes.</p></li>
 </ul>
-<p>In classical physics vectors are attached to a coordinate system with unit vectors (<span class="math notranslate nohighlight">\(\vec{e_i}\)</span>) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes.</p>
 <div class="math notranslate nohighlight">
 \[e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)\]</div>
-<p>However, a vector can be just an array of numbers, and the components of a vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, populations of some countries, stock prices over last ten years, etc.</p>
-<ul>
-<li><div class="math notranslate nohighlight">
-\[Person = (22, 1.75, 80)\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[Population  =(3.0, 40.0, 2.0, ...)\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[Stock = (1.4, 3.6, 8.5, ...)\]</div>
-</li>
+<ul class="simple">
+<li><p><strong>In different coordinate system the same vector will have different components</strong></p></li>
 </ul>
 </section>
 <section id="vector-operations">
@@ -603,33 +588,34 @@ document.write(`
 </section>
 <section id="projection-orthogonality-and-norm">
 <h2>Projection, orthogonality and norm<a class="headerlink" href="#projection-orthogonality-and-norm" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>Dot product  <span class="math notranslate nohighlight">\(\langle a\mid b \rangle\)</span> quantifies the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> and vice-versa. That is, how much <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> have in common with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system:</p>
-<ul>
-<li><div class="math notranslate nohighlight">
+<ul class="simple">
+<li><p><strong>Dot product  <span class="math notranslate nohighlight">\(\langle a\mid b \rangle\)</span></strong> quantifies the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> and vice-versa. That is, how much <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> have in common with each other in terms of direction in space.  I</p></li>
+</ul>
+<div class="math notranslate nohighlight">
 \[\langle e_i \mid e_j \rangle =\delta_{ij}\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[\begin{split}(1,0)\begin{pmatrix}
+<ul class="simple">
+<li><p><strong>Norm of a vector <span class="math notranslate nohighlight">\(\mid a\mid\)</span></strong> Is project of the vector onto itself and quantifies the length of the vector. When the norm is <span class="math notranslate nohighlight">\(\mid a \mid=1\)</span>, we say that the vector is normalized.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\langle a \mid a\rangle= a_1^2+a_2^2\]</div>
+<div class="math notranslate nohighlight">
+\[\mid a \mid =\sqrt{a_1^2+a_2^2}\]</div>
+<ul class="simple">
+<li><p><strong>Orthogonality</strong> If the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  (1,0)\begin{pmatrix}
     0\\
     1\\
-    \end{pmatrix}=1\cdot 0+0\cdot 1=0\end{split}\]</div>
-</li>
+    \end{pmatrix}=1\cdot 0+0\cdot 1=0
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Orthonormal vectors</strong> are both normalized and orthogonal.  We denote orthornamilty condition with the convenient Kornecker symbol: <span class="math notranslate nohighlight">\(\delta_{ij}=0\)</span>  when <span class="math notranslate nohighlight">\(i\neq j\)</span> and <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(i=j\)</span>.</p></li>
 </ul>
-<p>Where we denote both orthogonality and normalization with the convenient Kornecker symbol: <span class="math notranslate nohighlight">\(\delta_{ij}=0\)</span>  when <span class="math notranslate nohighlight">\(i\neq j\)</span> and <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(i=j\)</span>.</p>
-</li>
-<li><p>Norm of a vector <span class="math notranslate nohighlight">\(\mid a\mid\)</span> quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:</p>
-<ul>
-<li><div class="math notranslate nohighlight">
-\[\langle a \mid a\rangle= a_1^2+a_2^2\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[\mid a \mid =\sqrt{a_1^2+a_2^2}\]</div>
-</li>
-</ul>
-</li>
-</ul>
-<p>When the norm is <span class="math notranslate nohighlight">\(\mid a \mid=1\)</span>, vector is called normalized. To normalize a vector is to divide the vector by its norm. <span class="math notranslate nohighlight">\(\mid E_1\rangle = (4,0,0,0)\)</span> is not normalized since <span class="math notranslate nohighlight">\(\langle E_1\mid E_1\rangle = 4\)</span> hence we divide by norm and obtain a normalized vector <span class="math notranslate nohighlight">\(\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)\)</span>. And now <span class="math notranslate nohighlight">\(\langle e_1 \mid  e_1\rangle=1\)</span>.</p>
+<blockquote>
+<div><p>To normalize a vector is to divide the vector by its norm. <span class="math notranslate nohighlight">\(\mid E_1\rangle = (4,0,0,0)\)</span> is not normalized since <span class="math notranslate nohighlight">\(\langle E_1\mid E_1\rangle = 4\)</span> hence we divide by norm and obtain a normalized vector <span class="math notranslate nohighlight">\(\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)\)</span>. And now <span class="math notranslate nohighlight">\(\langle E_1 \mid  E_1\rangle=1\)</span>.</p>
+</div></blockquote>
 </section>
 <section id="basis-set-and-linear-independence">
 <h2>Basis set and linear independence.<a class="headerlink" href="#basis-set-and-linear-independence" title="Permalink to this heading">#</a></h2>
@@ -695,8 +681,8 @@ document.write(`
 </table>
 <p>In the first column we decompose a vectors in terms of two orthogonal components <span class="math notranslate nohighlight">\(A_i\)</span> or projections of vector <span class="math notranslate nohighlight">\(A\)</span> along the orthonormal vectors <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!</p>
 </section>
-<section id="eigenfunctions-of-hermitian-operators-are-complete-basis-set">
-<h2>Eigenfunctions of Hermitian operators are complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set" title="Permalink to this heading">#</a></h2>
+<section id="eigenfunctions-of-hermitian-operators-form-complete-basis-set">
+<h2>Eigenfunctions of Hermitian operators form complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set" title="Permalink to this heading">#</a></h2>
 <p>The three crucial consequences of Hermitian property of operators  <span class="math notranslate nohighlight">\(\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\)</span></p>
 <ul class="simple">
 <li><p>Eigenvalues <span class="math notranslate nohighlight">\(\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle\)</span>  are real:</p></li>
@@ -752,31 +738,64 @@ document.write(`
 </section>
 <section id="averages-are-probability-weighted-sums-of-eigenvalues">
 <h2>Averages are probability weighted sums of eigenvalues.<a class="headerlink" href="#averages-are-probability-weighted-sums-of-eigenvalues" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket.</p>
+<ul class="simple">
+<li><p>Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1\end{split}\]</div>
-</li>
+<ul class="simple">
 <li><p>The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2\end{split}\]</div>
-</section>
-<section id="particle-in-a-box-example-of-a-superoposition-state">
-<h2>Particle in a box example of a superoposition state<a class="headerlink" href="#particle-in-a-box-example-of-a-superoposition-state" title="Permalink to this heading">#</a></h2>
-<p>Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian:</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Particle in a box is described as a supperopistion of 1-st and 5-th states.</p>
+<ul class="simple">
+<li><p>Write down the wavefunction in terms of Hamiltonian operators eigenfunctions.</p></li>
+<li><p>Compute the average energy</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
 <div class="math notranslate nohighlight">
 \[\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}\]</div>
 <p>This means that when we measure  energy we are going to obtain only two values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_5\)</span> with equal probabilities <span class="math notranslate nohighlight">\(p_1=p_2=(1/\sqrt{2})^2\)</span>.</p>
 <p>The average of energy will be given by</p>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}\]</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Consider a particle in a quantum state <span class="math notranslate nohighlight">\(\psi\)</span> that is a superposition of two eigenfunctions <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>, with energy eigenvalues <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> of operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>  (<span class="math notranslate nohighlight">\(E_1 \ne E_2\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\psi = c_1\phi_1 + c_2\phi_2\]</div>
+<ul class="simple">
+<li><p>If one attempts to measure energy of such state, what will be the outcome?</p></li>
+<li><p>What will be the average energy and the standard deviation in energy?</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Since <span class="math notranslate nohighlight">\(\psi\)</span> is normalized and <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> are orthogonal, we have <span class="math notranslate nohighlight">\(\left|c_1\right|^2 + \left|c_2\right|^2 = 1\)</span>. The probability of measuring <span class="math notranslate nohighlight">\(E_1\)</span> is <span class="math notranslate nohighlight">\(\left|c_1\right|^2\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> is <span class="math notranslate nohighlight">\(\left|c_2\right|^2\)</span>. The average energy is given by:</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{H}\right&gt; = \left&lt;\psi\left|\hat{H}\right|\psi\right&gt; = \left|c_1\right|^2\left&lt;\phi_1\left|\hat{H}\right|\phi_1\right&gt; + c_1^*c_2\left&lt;\phi_1\left|\hat{H}\right|\phi_2\right&gt; + c_2^*c_1\left&lt;\phi_2\left|\hat{H}\right|\phi_1\right&gt;\]</div>
+<div class="math notranslate nohighlight">
+\[ + \left|c_2\right|^2\left&lt;\phi_2\left|\hat{H}\right|\phi_2\right&gt; = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left&lt;\phi_1\left|\phi_2\right.\right&gt;}_{= 0} + c_2^*c_1E_1\underbrace{\left&lt;\phi_2\left|\phi_1\right.\right&gt;}_{= 0} + \left|c_2\right|^2E_2\]</div>
+<div class="math notranslate nohighlight">
+\[= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\]</div>
+<p>The standard deviation is given by : <span class="math notranslate nohighlight">\(\sigma_{\hat{H}} = \sqrt{\left&lt;\hat{H}^2\right&gt; - \left&lt;\hat{H}\right&gt;^2}\)</span>. We have already calculated <span class="math notranslate nohighlight">\(\left&lt;\hat{H}\right&gt;\)</span> above and need to calculate <span class="math notranslate nohighlight">\(\left&lt;\hat{H}^2\right&gt;\)</span> (use the eigenvalue equation and orthogonality):</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{H}^2\right&gt; = \left&lt;\psi\left|\hat{H}^2\right|\psi\right&gt; = \left&lt;\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right&gt; = \left&lt;c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right&gt;\]</div>
+<div class="math notranslate nohighlight">
+\[ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}\]</div>
+</div>
 </section>
 <section id="quantum-states-as-linear-superposition-of-mutually-exclusive-states">
 <h2>Quantum states as linear superposition of mutually exclusive states.<a class="headerlink" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states" title="Permalink to this heading">#</a></h2>
-<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics.</p>
+<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics.</p>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
 <ul>
@@ -788,59 +807,10 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\langle \phi_1 \mid \phi_2 \rangle=0\]</div>
 </li>
+<li><p>“The <strong>Copenhagen interpretation</strong> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1</a>)(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2</a>)</p></li>
+<li><p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results.</p></li>
+<li><p>The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p></li>
 </ul>
-</section>
-<section id="expectation-values">
-<h2>Expectation values<a class="headerlink" href="#expectation-values" title="Permalink to this heading">#</a></h2>
-<p>In most cases, we need to calculate expectation values for wavefunctions, which are not eigenfunctions of the given operator. It can be shown that for any given Hermitian operator and physically sensible <a class="reference external" href="http://en.wikipedia.org/wiki/Boundary_condition">boundary conditions</a>, the eigenfunctions form a <a class="reference external" href="http://en.wikipedia.org/wiki/Basis_(linear_algebra)">complete basis set</a>. This means that any well-behaved function <span class="math notranslate nohighlight">\(\psi\)</span> can be written as a <a class="reference external" href="http://en.wikipedia.org/wiki/Linear_combination">linear combination</a>  of the eigenfunctions <span class="math notranslate nohighlight">\(\phi_i\)</span> <a class="reference external" href="http://en.wikipedia.org/wiki/Quantum_superposition">superposition state</a>; the upper limit in the summation may be finite:</p>
-<div class="math notranslate nohighlight">
-\[{\psi(x) = \sum\limits_{i=1}^{\infty}c_i\phi_i(x)\textnormal{ where }\hat{A}\phi_i = a_i\phi_i}\]</div>
-<p>where <span class="math notranslate nohighlight">\(c_i\)</span> are constants specific to the given <span class="math notranslate nohighlight">\(\psi\)</span>. Since the <span class="math notranslate nohighlight">\(\phi_i\)</span> are orthonormal (Eq. (\ref{eq9.43})) and <span class="math notranslate nohighlight">\(\psi\)</span>is normalized to one, we have:</p>
-<div class="math notranslate nohighlight">
-\[{1 = \int\psi^*\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*
-\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = \sum\limits_{i=1}^{\infty}c_i^*c_i\int\phi_i^*\phi_i d\tau = \sum\limits_{i=1}^{\infty}\left|c_i\right|^2}\]</div>
-<p>The expectation value of <span class="math notranslate nohighlight">\(\hat{A}\)</span> is given (in terms of the eigenfunction basis; <span class="math notranslate nohighlight">\(\hat{A}\)</span> linear):</p>
-<div class="math notranslate nohighlight">
-\[{\left&lt;\hat{A}\right&gt; = \int\psi^*\hat{A}\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*\hat{A}\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau}
-{= \sum\limits_{i=1,k=1}^{\infty}c_i^*c_k\int\phi_i^*\hat{A}\phi_kd\tau = \sum\limits_{i=1,k=1}^{\infty}
-c_i^*c_k\left&lt;\phi_i\left|\hat{A}\right|\phi_k\right&gt;}\]</div>
-<p>Above <span class="math notranslate nohighlight">\(\left&lt;\phi_i\left|\hat{A}\right|\phi_k\right&gt;\)</span> is often called a ``matrix element’’. Since <span class="math notranslate nohighlight">\(\phi_i\)</span>’s are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{A}\)</span>, we get:</p>
-<div class="math notranslate nohighlight">
-\[{\left&lt;\hat{A}\right&gt; = \sum\limits_{i=1}^{\infty} \left|c_i\right|^2a_i}\]</div>
-<p>Note that above <span class="math notranslate nohighlight">\(\psi\)</span> is not an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span>. The expectation value is a weighted average of the eigenvalues.</p>
-<p>The coefficients <span class="math notranslate nohighlight">\(\left|c_i\right|^2\)</span> give the probability for a measurement to give an outcome corresponding to <span class="math notranslate nohighlight">\(a_i\)</span>. This is often taken as one of the postulates (``assumption’’) for quantum mechanics (Bohr’s probability interpretation). Note that the coefficients <span class="math notranslate nohighlight">\(c_i\)</span> may be complex but <span class="math notranslate nohighlight">\(\left|c_i\right|^2\)</span> is always real.</p>
-<p>Given a wavefunction <span class="math notranslate nohighlight">\(\psi\)</span>, it is possible to find out how much a certain eigenfunction <span class="math notranslate nohighlight">\(\phi_i\)</span> contributes to it (using orthogonality of the eigenfunctions):</p>
-<div class="math notranslate nohighlight">
-\[{\int\phi_i^*\psi d\tau = \int\phi_i^*\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = c_i}\]</div>
-<div class="math notranslate nohighlight">
-\[{\textnormal{OR }\left|c_i\right|^2 = \left|\int\phi_i^*\psi d\tau\right|^2}\]</div>
-<p>Note that the discrete basis expansion does not work when the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> has a continuous set of eigenvalues (continuous spectrum).</p>
-<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Variance">variance</a>  <span class="math notranslate nohighlight">\(\sigma_A^2\)</span> for operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> is defined as:</p>
-<div class="math notranslate nohighlight">
-\[{\sigma_A^2 = \left&lt;\left(\hat{A} - \left&lt;\hat{A}\right&gt;\right)^2\right&gt; = \left&lt;\psi\left|\left(\hat{A} - \left&lt;\hat{A}\right&gt;\right)^2\right|\psi\right&gt; = \left&lt;\psi\left|\hat{A}^2\right|\psi\right&gt;}{ - \underbrace{\left&lt;\psi\left|2\hat{A}\left&lt;\psi\left|\hat{A}\right|\psi\right&gt;\right|\psi\right&gt;}_{= 2\left&lt;\psi\left|\hat{A}\right|\psi\right&gt;^2} + \left&lt;\psi\left|\hat{A}\right|\psi\right&gt;^2}
-{= \left&lt;\psi\left|\hat{A}^2\right|\psi\right&gt; - \left&lt;\psi\left|\hat{A}\right|\psi\right&gt;^2 = \left&lt;\hat{A}^2\right&gt; - \left&lt;\hat{A}\right&gt;^2}\]</div>
-<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a>  is given by the square root of <span class="math notranslate nohighlight">\(\sigma_A^2\)</span>.</p>
-<p><strong>Example</strong> Consider a particle in a quantum state <span class="math notranslate nohighlight">\(\psi\)</span> that is a superposition of two eigenfunctions <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>, with energy eigenvalues <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> of operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>  (<span class="math notranslate nohighlight">\(E_1 \ne E_2\)</span>):</p>
-<div class="math notranslate nohighlight">
-\[\psi = c_1\phi_1 + c_2\phi_2\]</div>
-<p>If one attempts to measure energy of such state, what will be the outcome? What will be the average energy and the standard deviation in energy?</p>
-<p><strong>Solution</strong> Since <span class="math notranslate nohighlight">\(\psi\)</span> is normalized and <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> are orthogonal, we have <span class="math notranslate nohighlight">\(\left|c_1\right|^2 + \left|c_2\right|^2 = 1\)</span>. The probability of measuring <span class="math notranslate nohighlight">\(E_1\)</span> is <span class="math notranslate nohighlight">\(\left|c_1\right|^2\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> is <span class="math notranslate nohighlight">\(\left|c_2\right|^2\)</span>. The average energy is given by:</p>
-<div class="math notranslate nohighlight">
-\[\left&lt;\hat{H}\right&gt; = \left&lt;\psi\left|\hat{H}\right|\psi\right&gt; = \left|c_1\right|^2\left&lt;\phi_1\left|\hat{H}\right|\phi_1\right&gt; + c_1^*c_2\left&lt;\phi_1\left|\hat{H}\right|\phi_2\right&gt; + c_2^*c_1\left&lt;\phi_2\left|\hat{H}\right|\phi_1\right&gt;\]</div>
-<div class="math notranslate nohighlight">
-\[ + \left|c_2\right|^2\left&lt;\phi_2\left|\hat{H}\right|\phi_2\right&gt; = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left&lt;\phi_1\left|\phi_2\right.\right&gt;}_{= 0} + c_2^*c_1E_1\underbrace{\left&lt;\phi_2\left|\phi_1\right.\right&gt;}_{= 0} + \left|c_2\right|^2E_2\]</div>
-<div class="math notranslate nohighlight">
-\[= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\]</div>
-<p><strong>Exercise:</strong> write the above equation without using the Dirac notation). The standard deviation is given by : <span class="math notranslate nohighlight">\(\sigma_{\hat{H}} = \sqrt{\left&lt;\hat{H}^2\right&gt; - \left&lt;\hat{H}\right&gt;^2}\)</span>. We have already calculated <span class="math notranslate nohighlight">\(\left&lt;\hat{H}\right&gt;\)</span> above and need to calculate <span class="math notranslate nohighlight">\(\left&lt;\hat{H}^2\right&gt;\)</span> (use the eigenvalue equation and orthogonality):</p>
-<div class="math notranslate nohighlight">
-\[\left&lt;\hat{H}^2\right&gt; = \left&lt;\psi\left|\hat{H}^2\right|\psi\right&gt; = \left&lt;\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right&gt; = \left&lt;c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right&gt;\]</div>
-<div class="math notranslate nohighlight">
-\[ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}\]</div>
-</section>
-<section id="copenhagen-interpretation">
-<h2>Copenhagen interpretation<a class="headerlink" href="#copenhagen-interpretation" title="Permalink to this heading">#</a></h2>
-<p>“The <strong>Copenhagen interpretation</strong> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1</a>)(<a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2">https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2</a>)</p>
-<p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p>
 </section>
 <section id="quantum-superopsition-of-atom">
 <h2>Quantum superopsition of atom.<a class="headerlink" href="#quantum-superopsition-of-atom" title="Permalink to this heading">#</a></h2>
@@ -940,14 +910,11 @@ c_i^*c_k\left&lt;\phi_i\left|\hat{A}\right|\phi_k\right&gt;}\]</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-orthogonality-and-norm">Projection, orthogonality and norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-complete-basis-set">Eigenfunctions of Hermitian operators are complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-example-of-a-superoposition-state">Particle in a box example of a superoposition state</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-values">Expectation values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>

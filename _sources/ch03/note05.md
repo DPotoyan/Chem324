@@ -32,37 +32,40 @@ Let's remind ourselves what are vectors. 3B1B has an excellent lecture series on
   -  $c=(1,-2,4i,3+2i) \,\,\,$  *A 4D vector with complex components.*
   -  $f=(1,2,3,4,5,6 ...,\infty)\,\,\,$ *An infinite-dimensional vector with integers as components.*
 
+- Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
+
+  $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
+  $$a=(2,3)$$  
+  $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$ 
+
+- These vectors can encode information about position of a particle or population of countries or temeprature in different parts of the forest, etc.
+- We examine the last notation closely that used Diract bra and ket notation for vectors 
+
 ### Dirac notation
 
 Here, anticipating their immense usefulenss,  we introduce Dirac notation for vectors and functions. At this point let us just get used to this new and fancy looking notation.
 
 |                 Dirac notation for vectors                   |                 Dirac notation for functions                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Ket:** $\mid a \rangle =(a_1,a_2,..) \,\,\,\,\,$ <br>Example: $\mid a \rangle =(1, 2i)$ | **Ket:** $\mid \psi\rangle=\psi$<br> Example: $\mid \psi \rangle=ix^2$ |
-| **Bra:**$\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$ <br> $\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$$ | **Bra:** $\langle \psi \mid=\psi^*$<br>  $\langle \psi \mid = -ix^2$ |
-|        $\langle a \mid b \rangle = \sum_i a_i b_i$         | $\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$ |
-| Example: <br> $\langle a \mid a \rangle = \sum_i a^2_i$<br> $\langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$ | Example: <br> $\langle \psi \mid \psi \rangle = \int \mid \psi(x) \mid^2 dx$<br> $\langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$ |
+| **Ket** $\mid a \rangle =(a_1,a_2,..)\\ $ **Bra** $\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}$  | **Ket** $\mid \psi\rangle=\psi(x)\\$ $\\$ **Bra** $\langle \psi \mid=\psi(x)^*$  |
+|  **Example** $\\ \mid a \rangle =(1, 2i)$ $\\\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}$ | **Example**  $\\ \mid \psi \rangle=e^{ix^2}$  $\\ \langle \psi \mid = e^{-ix^2}$ |
+|   **dot product**     $\langle a \mid b \rangle = \sum_i a_i b_i$         | **dot product** $\langle \phi \mid \psi \rangle = \int  \phi(x)^* \psi(x) dx$ |
+| **Example** $ \\  \langle a \mid a \rangle=(1)(1)+(2i)(-2i)=5$ |   **Example**  $\\ \langle \psi \mid \psi \rangle = \int^L_0 (ix^2)(-ix^2) dx=\frac{L^5}{5}$ |
 
 ### Representation of vectors
 
-Notation for vectors can be different depending on the context. Below we list the different representation of the same vector.
+  
 
-  - $$\vec{a}=2\vec{e_i}+3\vec{e_j}$$  
-  - $$\mid a\rangle = 2\mid e_i\rangle+3 \mid e_j\rangle$$  
-  - $$a=(2,3)$$    
-  - $$a= \begin{pmatrix} 2 \\ 3 \\ \end{pmatrix}$$ 
-
-In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
+- In classical physics vectors are attached to a coordinate system with unit vectors ($\vec{e_i}$) and are drawn with an arrow to emphasize that vector has a direction in addition to magnitude. Below is an example of unit vectors in cartesian space where each vector is aligned alogn x, y and z axes. 
 
 $$e_1 = (1, 0, 0)\,\,\, e_2=(0,1,0), e_3=(0,0,1)$$
 
-However, a vector can be just an array of numbers, and the components of a vector can refer to quantities for which direction is less relevant e.g (age, height and weight) of a person, populations of some countries, stock prices over last ten years, etc. 
 
-  - $$Person = (22, 1.75, 80)$$   
 
-  - $$Population  =(3.0, 40.0, 2.0, ...)$$ 
 
-  - $$Stock = (1.4, 3.6, 8.5, ...)$$  
+- **In different coordinate system the same vector will have different components**
+
+
 
 ### Vector operations 
 
@@ -104,24 +107,29 @@ $$\mid a\rangle=a_1\mid e_1\rangle+a_2\mid e_2\rangle$$
 
 ###  Projection, orthogonality and norm
 
-- Dot product  $\langle a\mid b \rangle$ quantifies the projection of vector $a$ on $b$ and vice-versa. That is, how much $a$ and $b$ have in common with each other in terms of direction in space.  If the projection is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system: 
+- **Dot product  $\langle a\mid b \rangle$** quantifies the projection of vector $a$ on $b$ and vice-versa. That is, how much $a$ and $b$ have in common with each other in terms of direction in space.  I
 
-  - $$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
-  - $$(1,0)\begin{pmatrix}
+$$\langle e_i \mid e_j \rangle =\delta_{ij}$$  
+
+- **Norm of a vector $\mid a\mid$** Is project of the vector onto itself and quantifies the length of the vector. When the norm is $\mid a \mid=1$, we say that the vector is normalized.
+	
+$$\langle a \mid a\rangle= a_1^2+a_2^2$$
+	
+$$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
+
+- **Orthogonality** If the projection of vector $a$ on $b$ is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system. 
+
+$$
+  (1,0)\begin{pmatrix}
     0\\
     1\\
-    \end{pmatrix}=1\cdot 0+0\cdot 1=0$$
+    \end{pmatrix}=1\cdot 0+0\cdot 1=0
+$$
 
-   Where we denote both orthogonality and normalization with the convenient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and $1$ when $i=j$. 
+- **Orthonormal vectors** are both normalized and orthogonal.  We denote orthornamilty condition with the convenient Kornecker symbol: $\delta_{ij}=0$  when $i\neq j$ and $1$ when $i=j$. 	
 
-- Norm of a vector $\mid a\mid$ quantifies the length or magnitude of vector. Norm is defined via square root of dot product of vector with itself:
-	
-	- $$\langle a \mid a\rangle= a_1^2+a_2^2$$
-	
-	- $$\mid a \mid =\sqrt{a_1^2+a_2^2}$$
-	
-
-When the norm is $\mid a \mid=1$, vector is called normalized. To normalize a vector is to divide the vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we divide by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle e_1 \mid  e_1\rangle=1$.
+ 
+> To normalize a vector is to divide the vector by its norm. $\mid E_1\rangle = (4,0,0,0)$ is not normalized since $\langle E_1\mid E_1\rangle = 4$ hence we divide by norm and obtain a normalized vector $\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)$. And now $\langle E_1 \mid  E_1\rangle=1$.
 
 
 ### Basis set and linear independence. 
@@ -170,7 +178,7 @@ The converse, when one of the coefificent $\alpha_i$can be non-zero immeaditely 
 
 In the first column we decompose a vectors in terms of two orthogonal components $A_i$ or projections of vector $A$ along the orthonormal vectors $x$ and $y$.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!
 
-### Eigenfunctions of Hermitian operators are complete basis set
+### Eigenfunctions of Hermitian operators form complete basis set
 
 The three crucial consequences of Hermitian property of operators  $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$ 
 
@@ -235,21 +243,27 @@ $$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
 
 ### Averages are probability weighted sums of eigenvalues.
 
-- Superposition is a legitimate stae in which objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
+- Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
 
-  $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
+$$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
 
-    $$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
+$$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
 
 - The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment. 
 
  $$\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2$$
 
 
+:::{admonition} **Example**  
+:class: note
 
-### Particle in a box example of a superoposition state
+Particle in a box is described as a supperopistion of 1-st and 5-th states. 
+- Write down the wavefunction in terms of Hamiltonian operators eigenfunctions.
+- Compute the average energy
+:::
 
-Suppose a the particle in a box is in a state of supperopistion of 1-st and 5-th states of eigenfunctions of Hamiltonian: 
+:::{admonition} **Solution**  
+:class: dropdown
 
 $$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}$$ 
 
@@ -258,12 +272,44 @@ This means that when we measure  energy we are going to obtain only two values $
 The average of energy will be given by
 
 $$\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}$$
+:::
+
+
+
+:::{admonition} **Example**  
+:class: note
+
+Consider a particle in a quantum state $\psi$ that is a superposition of two eigenfunctions $\phi_1$ and $\phi_2$, with energy eigenvalues $E_1$ and $E_2$ of operator $\hat{H}$  ($E_1 \ne E_2$):
+
+$$\psi = c_1\phi_1 + c_2\phi_2$$
+
+- If one attempts to measure energy of such state, what will be the outcome? 
+- What will be the average energy and the standard deviation in energy?
+:::
+
+:::{admonition} **Solution**  
+:class: dropdown
+
+Since $\psi$ is normalized and $\phi_1$ and $\phi_2$ are orthogonal, we have $\left|c_1\right|^2 + \left|c_2\right|^2 = 1$. The probability of measuring $E_1$ is $\left|c_1\right|^2$ and $E_2$ is $\left|c_2\right|^2$. The average energy is given by:
+
+
+$$\left<\hat{H}\right> = \left<\psi\left|\hat{H}\right|\psi\right> = \left|c_1\right|^2\left<\phi_1\left|\hat{H}\right|\phi_1\right> + c_1^*c_2\left<\phi_1\left|\hat{H}\right|\phi_2\right> + c_2^*c_1\left<\phi_2\left|\hat{H}\right|\phi_1\right>$$
+$$ + \left|c_2\right|^2\left<\phi_2\left|\hat{H}\right|\phi_2\right> = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left<\phi_1\left|\phi_2\right.\right>}_{= 0} + c_2^*c_1E_1\underbrace{\left<\phi_2\left|\phi_1\right.\right>}_{= 0} + \left|c_2\right|^2E_2$$
+$$= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2$$
+
+
+ The standard deviation is given by : $\sigma_{\hat{H}} = \sqrt{\left<\hat{H}^2\right> - \left<\hat{H}\right>^2}$. We have already calculated $\left<\hat{H}\right>$ above and need to calculate $\left<\hat{H}^2\right>$ (use the eigenvalue equation and orthogonality):
+
+$$\left<\hat{H}^2\right> = \left<\psi\left|\hat{H}^2\right|\psi\right> = \left<\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right> = \left<c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right>$$
+$$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}$$
+
+:::
 
 
 
 ### Quantum states as linear superposition of mutually exclusive states.
 
-It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition "collapses" to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubles many physicsis, who were at the frontiers of development of quantum mechanics. 
+It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition "collapses" to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics. 
 
 $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
@@ -275,80 +321,11 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
   $$\langle \phi_1 \mid \phi_2 \rangle=0$$
 
-### Expectation values
 
+- "The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
 
-In most cases, we need to calculate expectation values for wavefunctions, which are not eigenfunctions of the given operator. It can be shown that for any given Hermitian operator and physically sensible [boundary conditions](http://en.wikipedia.org/wiki/Boundary_condition), the eigenfunctions form a [complete basis set](http://en.wikipedia.org/wiki/Basis_(linear_algebra)). This means that any well-behaved function $\psi$ can be written as a [linear combination](http://en.wikipedia.org/wiki/Linear_combination)  of the eigenfunctions $\phi_i$ [superposition state](http://en.wikipedia.org/wiki/Quantum_superposition); the upper limit in the summation may be finite:
-
-$${\psi(x) = \sum\limits_{i=1}^{\infty}c_i\phi_i(x)\textnormal{ where }\hat{A}\phi_i = a_i\phi_i}$$
-
-where $c_i$ are constants specific to the given $\psi$. Since the $\phi_i$ are orthonormal (Eq. (\ref{eq9.43})) and $\psi$is normalized to one, we have:
-
-
-
-$${1 = \int\psi^*\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*
-\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = \sum\limits_{i=1}^{\infty}c_i^*c_i\int\phi_i^*\phi_i d\tau = \sum\limits_{i=1}^{\infty}\left|c_i\right|^2}$$
-
-The expectation value of $\hat{A}$ is given (in terms of the eigenfunction basis; $\hat{A}$ linear):
-
-
-
-$${\left<\hat{A}\right> = \int\psi^*\hat{A}\psi d\tau = \int\left(\sum\limits_{i=1}^{\infty}c_i\phi_i\right)^*\hat{A}\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau}
-{= \sum\limits_{i=1,k=1}^{\infty}c_i^*c_k\int\phi_i^*\hat{A}\phi_kd\tau = \sum\limits_{i=1,k=1}^{\infty}
-c_i^*c_k\left<\phi_i\left|\hat{A}\right|\phi_k\right>}$$
-
-Above $\left<\phi_i\left|\hat{A}\right|\phi_k\right>$ is often called a ``matrix element''. Since $\phi_i$'s are eigenfunctions of $\hat{A}$, we get:
-
-$${\left<\hat{A}\right> = \sum\limits_{i=1}^{\infty} \left|c_i\right|^2a_i}$$
-
-Note that above $\psi$ is not an eigenfunction of $\hat{A}$. The expectation value is a weighted average of the eigenvalues.
-
-
-The coefficients $\left|c_i\right|^2$ give the probability for a measurement to give an outcome corresponding to $a_i$. This is often taken as one of the postulates (``assumption'') for quantum mechanics (Bohr's probability interpretation). Note that the coefficients $c_i$ may be complex but $\left|c_i\right|^2$ is always real.
-
-
-Given a wavefunction $\psi$, it is possible to find out how much a certain eigenfunction $\phi_i$ contributes to it (using orthogonality of the eigenfunctions):
-
-$${\int\phi_i^*\psi d\tau = \int\phi_i^*\left(\sum\limits_{k=1}^{\infty}c_k\phi_k\right)d\tau = c_i}$$
-
-$${\textnormal{OR }\left|c_i\right|^2 = \left|\int\phi_i^*\psi d\tau\right|^2}$$
-
-Note that the discrete basis expansion does not work when the operator $\hat{A}$ has a continuous set of eigenvalues (continuous spectrum).
-
-
-The [variance](http://en.wikipedia.org/wiki/Variance)  $\sigma_A^2$ for operator $\hat{A}$ is defined as:
-
-$${\sigma_A^2 = \left<\left(\hat{A} - \left<\hat{A}\right>\right)^2\right> = \left<\psi\left|\left(\hat{A} - \left<\hat{A}\right>\right)^2\right|\psi\right> = \left<\psi\left|\hat{A}^2\right|\psi\right>}{ - \underbrace{\left<\psi\left|2\hat{A}\left<\psi\left|\hat{A}\right|\psi\right>\right|\psi\right>}_{= 2\left<\psi\left|\hat{A}\right|\psi\right>^2} + \left<\psi\left|\hat{A}\right|\psi\right>^2}
-{= \left<\psi\left|\hat{A}^2\right|\psi\right> - \left<\psi\left|\hat{A}\right|\psi\right>^2 = \left<\hat{A}^2\right> - \left<\hat{A}\right>^2}$$
-
-The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation)  is given by the square root of $\sigma_A^2$.
-
-**Example** Consider a particle in a quantum state $\psi$ that is a superposition of two eigenfunctions $\phi_1$ and $\phi_2$, with energy eigenvalues $E_1$ and $E_2$ of operator $\hat{H}$  ($E_1 \ne E_2$):
-
-$$\psi = c_1\phi_1 + c_2\phi_2$$
-
-If one attempts to measure energy of such state, what will be the outcome? What will be the average energy and the standard deviation in energy?
-
-
-
-**Solution** Since $\psi$ is normalized and $\phi_1$ and $\phi_2$ are orthogonal, we have $\left|c_1\right|^2 + \left|c_2\right|^2 = 1$. The probability of measuring $E_1$ is $\left|c_1\right|^2$ and $E_2$ is $\left|c_2\right|^2$. The average energy is given by:
-
-
-$$\left<\hat{H}\right> = \left<\psi\left|\hat{H}\right|\psi\right> = \left|c_1\right|^2\left<\phi_1\left|\hat{H}\right|\phi_1\right> + c_1^*c_2\left<\phi_1\left|\hat{H}\right|\phi_2\right> + c_2^*c_1\left<\phi_2\left|\hat{H}\right|\phi_1\right>$$
-$$ + \left|c_2\right|^2\left<\phi_2\left|\hat{H}\right|\phi_2\right> = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left<\phi_1\left|\phi_2\right.\right>}_{= 0} + c_2^*c_1E_1\underbrace{\left<\phi_2\left|\phi_1\right.\right>}_{= 0} + \left|c_2\right|^2E_2$$
-$$= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2$$
-
-**Exercise:** write the above equation without using the Dirac notation). The standard deviation is given by : $\sigma_{\hat{H}} = \sqrt{\left<\hat{H}^2\right> - \left<\hat{H}\right>^2}$. We have already calculated $\left<\hat{H}\right>$ above and need to calculate $\left<\hat{H}^2\right>$ (use the eigenvalue equation and orthogonality):
-
-$$\left<\hat{H}^2\right> = \left<\psi\left|\hat{H}^2\right|\psi\right> = \left<\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right> = \left<c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right>$$
-$$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}$$
-
-
-### Copenhagen interpretation
-
-"The **Copenhagen interpretation** is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1)(https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Wimmel1992-2)
-
-According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
+- According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement's possible results. 
+- The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse)."
 
 
 
