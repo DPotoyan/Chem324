@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Model systems" href="../ch04/index.html" />
-    <link rel="prev" title="DEMO: Quantum Waves" href="quantum_waves.html" />
+    <link rel="prev" title="DEMO: Quantum Waves" href="demo_quantum_waves.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -210,10 +210,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Eigenvalues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Time dependence</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="PIB.html">DEMO: 1D particle in a box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PIB3D.html">DEMO: 3D particle in a box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operators.html">DEMO: Postulates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum_waves.html">DEMO: Quantum Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_operators.html">DEMO: Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DEMO: Bonus challenge</a></li>
 </ul>
 </li>
@@ -511,18 +510,68 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">ipywidgets.widgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="problem-1">
 <h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h2>
+<p><strong>Evaluate the following quantities using particle in a box wavefunctions</strong></p>
+<ul class="simple">
+<li><p>Most likely to be in the middle thrid of box</p></li>
+<li><p>Average momentum and momentum square</p></li>
+<li><p>Average position and position square</p></li>
+<li><p>Show uncertainty relation</p></li>
+</ul>
+<blockquote>
+<div><p>Hint: For some averages you may want to take numerical derivatives. Below is an example on how to do it using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.gradient.html">grad</a> function of numpy. Also recall that numerically integral is just a sum over small discretized space dx. This is done by <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.trapz.html">trapz</a> function of numpy which is using <a class="reference external" href="https://en.wikipedia.org/wiki/Trapezoidal_rule">trapezoidal rule</a></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span>  <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">gradient</span> <span class="k">as</span> <span class="n">grad</span> 
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">trapz</span> 
+
+<span class="c1">### Define boundaries and dx-</span>
+<span class="n">L</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="n">N</span>  <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">L</span><span class="o">/</span><span class="n">N</span>
+<span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1">### A numerical array of function. Feel free to change this function, e.g exp or sine etc</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f=x^2$&#39;</span><span class="p">)</span>
+
+<span class="c1">### First derivative function f(x)</span>
+<span class="n">dfdx</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dfdx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$df/dx=2x$&#39;</span><span class="p">)</span>
+
+<span class="c1">### Compute integral now using trapezoidal rule</span>
+<span class="n">int_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="n">dx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Numerical integral:&#39;</span><span class="p">,</span> <span class="n">int_f</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;function, derivative and integral&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numerical integral: 0.999
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;function, derivative and integral&#39;)
+</pre></div>
+</div>
+<img alt="../_images/4edae67173f20ffc37b712670b35eedb0b943341f19de0557f693b808e1c448d.png" src="../_images/4edae67173f20ffc37b712670b35eedb0b943341f19de0557f693b808e1c448d.png" />
+</div>
+</div>
 </section>
 <section id="problem-2">
 <h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this heading">#</a></h2>
@@ -563,7 +612,7 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="quantum_waves.html"
+       href="demo_quantum_waves.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
