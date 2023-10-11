@@ -181,7 +181,7 @@ $${\psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4} x e^{-\alpha x^2/2}}$$
 
 :::{figure-md} markdown-fig
 
-<img src="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png" alt="ho" class="bg-primary mb-1" width="300px">
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png" alt="ho1" class="bg-primary mb-1" width="500px">
 
 Eigenfunctions and Eigenvalues of Harmonic Oscillator
 :::
@@ -190,7 +190,7 @@ Eigenfunctions and Eigenvalues of Harmonic Oscillator
 
 :::{figure-md} markdown-fig
 
-<img src="./images/classical_quantum_ho.gif" alt="ho" class="bg-primary mb-1" width="300px">
+<img src="./images/classical_quantum_ho.gif" alt="ho2" class="bg-primary mb-1" width="500px">
 
 Classical vs quantum probabilities of finding oscillating particle at position x
 :::
