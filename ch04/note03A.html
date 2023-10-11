@@ -434,14 +434,20 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Harmonic Oscillator</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bead-spring-and-a-wall">Bead, spring and a wall.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-harmonic-oscillator-problem">Solving harmonic oscillator problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-harmonic-oscillator">Energy of the harmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-system">Conservative system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-total-energy">Conservation of total energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diatomic-molecule-and-two-body-problem">Diatomic molecule and two-body problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-mass-of-vibration">Effective mass of vibration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beads-and-springs-model-of-molecules">Beads and springs model of molecules</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-harmonic-oscillator">Quantum harmonic oscillator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-harmonic-oscillator">Quantum harmonic oscillator</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials">Hermite Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-in-3d">Harmonic Oscillator in 3D</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -460,109 +466,137 @@ document.write(`
 <p class="admonition-title">What you need to know</p>
 <p>In this section we study quantum mechanical version of <a class="reference external" href="https://en.wikipedia.org/wiki/Harmonic_oscillator">harmonic oscillator</a>. Harmonic oscillators have ubqiutuous presence in everyday world: beads bound by a spring which vibrate around equilibirum positions. Turns out beads on a pring is remarkably common in microsocpic world as nuclie of atoms in solids or molecules are in some sense “quantum beads” vibrating around equilibriu position of “quantum springs”. The distinction between quantum vs classical regimes will again be highly illuminating about the role of quantum effects on small scales. The key topics we will learn are:</p>
 <ul class="simple">
-<li><p><strong>Quantization of vibrational degrees of freedom in molecules.</strong> This has implication for Infrared and raman spectroscopies, molecular mechancis and condensed matter in general.</p></li>
-<li><p><strong>Existence of zero point energy and tunneling.</strong> We have seen this on PIB example and will see again on the example of harmonic oscillator.</p></li>
-<li><p><strong>Hermite Polynomials as orthogonal eigenfunctions.</strong> This will be our first foray into the world od special functions.</p></li>
-<li><p><strong>Raising and lower operators as elegant way of solving problems.</strong> This will be our first introduction to raising and lowering operators which provide highly elegant way of solving problems in quantum mechanics.</p></li>
+<li><p><strong>Quantization of vibrations in molecules.</strong> Vibrational degrees of freedom are quantized which has implications for infrared and raman spectroscopies and bonding.</p></li>
+<li><p><strong>Existence of zero point energy and tunneling.</strong> Enenergy is not zero even at zero temperature. We appreciate this as a consequence of uncertainty relation.</p></li>
+<li><p><strong>Hermite Polynomials are eigenfunctions</strong></p></li>
 <li><p><strong>Effects of unharmonicity.</strong> We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation.</p></li>
+<li><p><strong>Raising and lower operators offer an elegant way of solving harmonic oscilator problem</strong> This will be our first introduction to raising and lowering operators which provide highly elegant way of solving problems in quantum mechanics.</p></li>
 </ul>
 </div>
 <section id="bead-spring-and-a-wall">
 <h2>Bead, spring and a wall.<a class="headerlink" href="#bead-spring-and-a-wall" title="Permalink to this heading">#</a></h2>
-<p>The classical <strong>harmonic oscillator</strong> is a system of bead attached to a wall with a spring. When bead is displaced from its equilibrium or resting position <span class="math notranslate nohighlight">\(r_0\)</span> to some point <span class="math notranslate nohighlight">\(r\)</span>, experiences a restoring force <span class="math notranslate nohighlight">\(F\)</span> proportional to the displacement <span class="math notranslate nohighlight">\(x=r-r_0\)</span>:</p>
+<p><img alt="" src="../_images/harm-osc1.png" /></p>
+<ul class="simple">
+<li><p>The classical <strong>harmonic oscillator</strong> is a system of bead attached to a wall with a spring. When bead is displaced from its equilibrium or resting position <span class="math notranslate nohighlight">\(r_0\)</span> to some point <span class="math notranslate nohighlight">\(r\)</span>, experiences a restoring force <span class="math notranslate nohighlight">\(F\)</span> proportional to the displacement <span class="math notranslate nohighlight">\(x=r-r_0\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[ F=-kx\]</div>
-<p>The above expression is also known as <strong>Hooke’s law</strong>, where minus sign indicates that the direction of force is always towards restoring equilibrium location. The constant k characterizes stiffness of the spring and is called <strong>spring constant.</strong></p>
-<p><img alt="" src="images/harm-osc1.png" /></p>
+\[F=-kx\]</div>
+<ul class="simple">
+<li><p>The above expression is also known as <strong>Hooke’s law</strong>, where minus sign indicates that the direction of force is always towards restoring equilibrium location. The constant k characterizes stiffness of the spring and is called <strong>spring constant.</strong></p></li>
+</ul>
+<p><img alt="" src="../_images/harm-osc1.png" /></p>
 <p><img alt="" src="https://askeyphysics.files.wordpress.com/2011/08/solveharmonic.gif" /></p>
 </section>
 <section id="solving-harmonic-oscillator-problem">
 <h2>Solving harmonic oscillator problem<a class="headerlink" href="#solving-harmonic-oscillator-problem" title="Permalink to this heading">#</a></h2>
-<p>The classical equation of motion for a one-dimensional simple harmonic oscillator with a particle of mass mm attached to a spring having spring constant kk is</p>
+<ul class="simple">
+<li><p>The classical equation of motion for a one-dimensional simple harmonic oscillator with a particle of mass m attached to a spring having spring constant k generates mechanical waves.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[m \ddot x=−kx\]</div>
 <div class="math notranslate nohighlight">
 \[m \ddot x+kx = 0 \,\,\,\,\rightarrow \,\,\,\, \ddot{x}+\omega^2 x =0\]</div>
-<p>whwhere we have intorduced constant <span class="math notranslate nohighlight">\(\omega\)</span> which we will see is the frequency oscillations:</p>
+<ul class="simple">
+<li><p>The intorduced constant <span class="math notranslate nohighlight">\(\omega\)</span> will be seen as the <strong>frequency oscillations</strong>.Note that frequency is inversly porportional to mass (heavier objects with same spring constant oscillate rapdily around equilibrium) and proprotional to spring constant (stiffer springs increase oscillations around equilibrium for same mass)</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\omega=\Big(\frac{k}{m}\Big)^{1/2}\]</div>
-<p>The differneital equation is a simple second order, linear ODE  which can be solved by a standard trick of pluggin exponential <span class="math notranslate nohighlight">\(x(t)=e^{\alpha t}\)</span> and convertin the problem to algebraic equation. The solution is</p>
+<ul class="simple">
+<li><p>The differneital equation is a simple second order, linear ODE  which can be solved by a standard trick of pluggin exponential <span class="math notranslate nohighlight">\(x(t)=e^{\alpha t}\)</span> and convertin the problem to algebraic equation. The solution is</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[x(t)= A sin(\omega t+\phi)\]</div>
-<p>Where the two constnants  are: <span class="math notranslate nohighlight">\(A\)</span> the amplitude of oscillations and <span class="math notranslate nohighlight">\(\phi\)</span> is constant specifying the initial position of the bead.</p>
+<ul class="simple">
+<li><p>The two constnants  are: <span class="math notranslate nohighlight">\(A\)</span> the <strong>amplitude of oscillations</strong> and <span class="math notranslate nohighlight">\(\phi\)</span> is constant specifying the initial position of the bead.</p></li>
+</ul>
+</section>
+<section id="energy-of-the-harmonic-oscillator">
+<h2>Energy of the harmonic oscillator<a class="headerlink" href="#energy-of-the-harmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In classical mechanics the force and the potential energy of a conservative system are related via the formula:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[F = - \frac{\partial V(x)}{\partial x} \]</div>
+<ul class="simple">
+<li><p>This means the steeper the potential the higher the force and minus sign indicates that force is restoring the equilibrium position. The potential energy can be obtained by integrating:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ V(x)= - \int F dx = - \int (-kx) dx =\frac{kx^2}{2}+C\]</div>
+<ul class="simple">
+<li><p>Thus the potential energy for a simple harmoncin oscillator is a parabolic function of displacement. It is  convenient  to set <span class="math notranslate nohighlight">\(C=0\)</span> and measure potential energy relative to equilibrium state <span class="math notranslate nohighlight">\(V(x=0)=0\)</span></p></li>
+<li><p>The total energy consisting of kinetic and potential enregies will be used to obtain Schordinger equation.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E=\frac{p^2}{2m} + \frac{kx^2}{2}\]</div>
 </section>
 <section id="conservative-system">
 <h2>Conservative system<a class="headerlink" href="#conservative-system" title="Permalink to this heading">#</a></h2>
-<p>In the simple harmonic oscillator problem <span class="math notranslate nohighlight">\(F\)</span> is the only force acting on the system.  We way that the system is conservative becasue the kinetic and potential energies keep being interconverted with no amount of total energy being of the system being dissipated into the environment. This will be true in a vaccuum where there is no friction.  For a simple harmonic oscillatorthe oscillations go on forever with position <span class="math notranslate nohighlight">\(x(t)\)</span> velocity <span class="math notranslate nohighlight">\(v=\dot{x}(t)\)</span> and acceleration <span class="math notranslate nohighlight">\(a=\ddot{x(t)}\)</span> with same constant frequency <span class="math notranslate nohighlight">\(\omega\)</span> but with different amplitudes.</p>
-<iframe src='https://gfycat.com/ifr/CheapSelfishAlbacoretuna' frameborder='0' scrolling='no' allowfullscreen width='240' height='224'></iframe><p> <a href="https://gfycat.com/cheapselfishalbacoretuna"></a></p>
-## Energy of the harmonic oscillator
-<p>In classical mechanics the force and the potential energy of a conservative system are related via the formula:</p>
-<div class="math notranslate nohighlight">
-\[F = - \frac{\partial V(x)}{\partial x} \]</div>
-<p>This means the steeper the potential the higher the force and minus sign indicates that force is restoring the equilibrium position. The potential energy can be obtained by integrating:</p>
-<div class="math notranslate nohighlight">
-\[ V(x)= - \int F dx = - \int (-kx) dx =\frac{kx^2}{2}+C\]</div>
-<p>Thus the potential energy for a simple harmoncin oscillator is a parabolic function of displacement. It is  convenient  to set <span class="math notranslate nohighlight">\(C=0\)</span> and measure potential energy relative to equilibrium state <span class="math notranslate nohighlight">\(V(x=0)=0\)</span></p>
-<div class="math notranslate nohighlight">
-\[V(x)=\frac{kx^2}{2}\]</div>
-</section>
-<section id="conservation-of-total-energy">
-<h2>Conservation of total energy<a class="headerlink" href="#conservation-of-total-energy" title="Permalink to this heading">#</a></h2>
-<p>Kinetic energy is the familiar expression expressed either via momentum <span class="math notranslate nohighlight">\(p=mv\)</span> or velocity <span class="math notranslate nohighlight">\(v=\dot{x}\)</span></p>
-<div class="math notranslate nohighlight">
-\[K=\frac{p^2}{2m} = \frac{m \dot{x}^2}{2}\]</div>
-<p>Note that while both kinetic and potential energies oscilate over time, the total energy remains constant:</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.physicslens.com/wp-content/uploads/2021/11/simple-harmonic-motion-graphs.gif"><img alt="compton" class="bg-primary mb-1" src="https://www.physicslens.com/wp-content/uploads/2021/11/simple-harmonic-motion-graphs.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">The harmonic oscilator (in a vacuum) is a conservative system becasue the kinetic and potential energies keep being interconverted with no amount of total energy being dissipated into the environment. Oscillations go on forever with position <span class="math notranslate nohighlight">\(x(t)\)</span> velocity <span class="math notranslate nohighlight">\(v=\dot{x}(t)\)</span> and acceleration <span class="math notranslate nohighlight">\(a=\ddot{x(t)}\)</span> with same constant frequency <span class="math notranslate nohighlight">\(\omega\)</span> but with different amplitudes.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="diatomic-molecule-and-two-body-problem">
 <h2>Diatomic molecule and two-body problem<a class="headerlink" href="#diatomic-molecule-and-two-body-problem" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="ch04/images/osc-2.jpeg" /></p>
-<p>Equations of motion for diatomic molecule modeled as beads bound by a spring are:</p>
-<div class="math notranslate nohighlight">
-\[F_1=m_1 \ddot{x_1}=k(x_2-x_1-l_0)\]</div>
-<div class="math notranslate nohighlight">
-\[F_2=m_2 \ddot{x_2}=-k(x_2-x_1-l_0)\]</div>
-<p>Where <span class="math notranslate nohighlight">\(F_1=-F_2\)</span> which is a reflection of Newtno’s thrid law. By introducing a more convenient cooridnates in the from of relative distance <span class="math notranslate nohighlight">\(x\)</span> and center of mass <span class="math notranslate nohighlight">\(x_{com}\)</span> we are now going to reduce the two body problem to one body problem.</p>
-<div class="math notranslate nohighlight">
-\[x=x_2-x_1-l_0\]</div>
-<div class="math notranslate nohighlight">
-\[x_{com}=\frac{m_1x_2+x_2 m_2}{m_1+m_2}\]</div>
-</section>
-<section id="effective-mass-of-vibration">
-<h2>Effective mass of vibration<a class="headerlink" href="#effective-mass-of-vibration" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Diatomic molecule is stable because the same force is acting on both ends</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}m_1\ddot{x_1}=kx \\  m_2\ddot{x_2}=-kx\end{split}\]</div>
-<p>By expressing equations of motion in terms of the center of mass which, we find that center of mass moves freely without acceleration.</p>
+<ul class="simple">
+<li><p>By expressing equations of motion in terms of the center of mass which, we find that center of mass moves freely without acceleration.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[m_1\ddot{x_1}+ m_2\ddot{x_2}=0\,\,\,\, \rightarrow \frac{m_1\ddot{x_1}+ m_2\ddot{x_2}}{m_1+m_2}=\ddot{x}_{com}=0\]</div>
-<p>Next by taking difference between coordinates <span class="math notranslate nohighlight">\(\ddot{x_2}=-\frac{k}{m_2}x_2\)</span> and  <span class="math notranslate nohighlight">\(\ddot{x_1}=\frac{k}{m_1}x_1\)</span>we expres  the equations of motion in terms of relative distance</p>
+<ul class="simple">
+<li><p>Next by taking difference between coordinates <span class="math notranslate nohighlight">\(\ddot{x_2}=-\frac{k}{m_2}x_2\)</span> and  <span class="math notranslate nohighlight">\(\ddot{x_1}=\frac{k}{m_1}x_1\)</span>we expres  the equations of motion in terms of relative distance</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\ddot{x}=\ddot{x_2} - \ddot{x_1} =-\Big(\frac{1}{m_1}+\frac{1}{m_2} \Big)kx=-\frac{k}{\mu}x\]</div>
-<p>This equation looks identical to the probel of bead anchored to wall with a spring. We have thus managed to reduce the two body probelm to a one modey problem by replacing masses of bodies with a reduced mass:  <span class="math notranslate nohighlight">\(\mu=\frac{1}{m_1}+\frac{1}{m_2}=\frac{m_1 m_2}{m_1+m_2}\)</span></p>
+<ul class="simple">
+<li><p>This equation looks identical to the probem of bead anchored to wall with a spring. We have thus managed to reduce the two body probelm to a one modey problem by replacing masses of bodies with a reduced mass:  <span class="math notranslate nohighlight">\(\mu=\frac{1}{m_1}+\frac{1}{m_2}=\frac{m_1 m_2}{m_1+m_2}\)</span></p></li>
+</ul>
 </section>
 <section id="beads-and-springs-model-of-molecules">
 <h2>Beads and springs model of molecules<a class="headerlink" href="#beads-and-springs-model-of-molecules" title="Permalink to this heading">#</a></h2>
-<p>Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down?</p>
-<p>For an aribtarry potential energy funciton of x we can carry out Taylor’s expansion around equilibrium bond length <span class="math notranslate nohighlight">\(x_0\)</span> obtaining infinitey series.</p>
+<ul class="simple">
+<li><p>Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down? For an aribtarry potential energy funciton of x we can carry out Taylor’s expansion around equilibrium bond length <span class="math notranslate nohighlight">\(x_0\)</span> obtaining infinitey series.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[U(x) = U(x_0)+U'(x_0)(x-x_0)+\frac{1}{2!}U''(x_0)(x-x_0)^2+\frac{1}{3!}U'''(x_0)(x-x_0)^3+...\]</div>
-<p>Setting energy scale to be relative to  <span class="math notranslate nohighlight">\(U(x_0)=0\)</span> and recongizing that first derivative vanishes at minima <span class="math notranslate nohighlight">\(x_0\)</span> we have</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/harm_approx.png"><img alt="compton" class="bg-primary mb-1" src="../_images/harm_approx.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Deviation from simple harmonic potential approximation (red curve) of true/exact potential (blue curve) with cubic term (green)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Setting energy scale to be relative to  <span class="math notranslate nohighlight">\(U(x_0)=0\)</span> and recongizing that first derivative vanishes at minima <span class="math notranslate nohighlight">\(x_0\)</span> we have</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...\]</div>
-<p>Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as <span class="math notranslate nohighlight">\(\gamma\)</span> are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion.</p>
+<ul class="simple">
+<li><p>Hence we see that the Harmonic approximation is only the first non vanishing term! Furthermore we see that spring constant k and subsequent anharmonicity consnats such as <span class="math notranslate nohighlight">\(\gamma\)</span> are higher order derivatives of potential energy. That is the more non-linear the potential the higer the contribution of these terms. And vice verse clsoer the potential to quadratic form the more accurate is the harmonic assumtion.</p></li>
+</ul>
 </section>
 </section>
 <section id="quantum-harmonic-oscillator">
 <h1>Quantum harmonic oscillator<a class="headerlink" href="#quantum-harmonic-oscillator" title="Permalink to this heading">#</a></h1>
-<p>In classical physics, the Hamiltonian for a <a class="reference external" href="http://en.wikipedia.org/wiki/Harmonic_oscillator">harmonic oscillator</a> is given by:</p>
+<ul class="simple">
+<li><p>Taking the classical Hamiltonian for a harmonic oscillator is given by:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{H = \frac{1}{2\mu}p_x^2 + \frac{1}{2}\omega^2\mu x^2 = \frac{1}{2\mu}p_x^2 + \frac{1}{2}kx^2\textnormal{ with }\omega = \sqrt{k/\mu}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu\)</span> denotes the mass. We have chosen <span class="math notranslate nohighlight">\(\mu\)</span> instead of <span class="math notranslate nohighlight">\(m\)</span> because later we will use this equation in such context where <span class="math notranslate nohighlight">\(\mu\)</span> will refer to so called <a class="reference external" href="http://en.wikipedia.org/wiki/Reduced_mass">reduced mass</a></p>
+\[{H =  \frac{1}{2\mu}p_x^2 + \frac{1}{2}kx^2}\]</div>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator">quantum mechanicalm harmonic oscillator</a> is obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{\mu = \frac{m_1m_2}{m_1 + m_2}\textnormal{ (in kg; }m_1\textnormal{ and }m_2\textnormal{ are masses for two particles)}}\]</div>
-<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator">quantum mechanicalm harmonic oscillator</a> is obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators</p>
-<div class="math notranslate nohighlight">
-\[{\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + 2\pi^2\nu^2\mu x^2 \,\,\, \textnormal{ where }\nu = \frac{1}{2\pi}\sqrt{\frac{k}{\mu}}}\]</div>
-<p>Note that the potential term may be expressed in terms of three parameters:</p>
+\[{\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 }\]</div>
+<ul class="simple">
+<li><p>Note that the potential term may be expressed in terms of three parameters becasue of <span class="math notranslate nohighlight">\(k=\frac{\mu}{\omega}\)</span> and <span class="math notranslate nohighlight">\(\omega=2\pi \nu\)</span> relations</p></li>
+</ul>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
@@ -578,33 +612,101 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Depending on the context any of these constants may be used to specify the harmonic potential.</p>
-<p>The solutions to this equation are found to be (derivations not shown):</p>
+<ul class="simple">
+<li><p>Depending on the context any of these constants may be used to specify the harmonic potential.</p></li>
+</ul>
+<section id="eigenfunctions-and-eiganvalues">
+<h2>Eigenfunctions and Eiganvalues<a class="headerlink" href="#eigenfunctions-and-eiganvalues" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\hat{H}\psi_v = E_v\psi_v\]</div>
+<ul class="simple">
+<li><p>The solutions to this equation produce eiganvalues (Energies)</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{E_v = \left(v + \frac{1}{2}\right)h\nu = \left(v + \frac{1}{2}\right)\hbar\omega\textnormal{ where }v=0,1,2,3...}\]</div>
+<ul class="simple">
+<li><p>Eigenfunctions  (position wavefunctions)</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi_v = N_v\times\overbrace{H_v\left(\sqrt{\alpha}x\right)}^{\textnormal{Hermite polynomial}}\times e^{-\alpha x^2/2}\textnormal{ where }\alpha = \sqrt{\frac{k\mu}{\hbar^2}}}\]</div>
-<div class="math notranslate nohighlight">
-\[{N_v = \frac{1}{\sqrt{2^vv!}}\left(\frac{\alpha}{\pi}\right)^{1/4}}\]</div>
-<div class="math notranslate nohighlight">
-\[{H_0\left(\sqrt{\alpha}x\right) = 1, H_1\left(\sqrt{\alpha}x\right) = 2\sqrt{\alpha}x, H_2\left(\sqrt{\alpha}x\right) = 4\left(\sqrt{\alpha}x\right)^2 - 2\left(\sqrt{\alpha}x\right)}\]</div>
-<div class="math notranslate nohighlight">
-\[{H_3\left(\sqrt{\alpha}x\right) = 8\left(\sqrt{\alpha}x\right)^3 - 12\left(\sqrt{\alpha}x\right)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(H_v\)</span>’s are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomials</a>.</p>
+<ul class="simple">
+<li><p>Normalization factor <span class="math notranslate nohighlight">\({N_v = \frac{1}{\sqrt{2^vv!}}\left(\frac{\alpha}{\pi}\right)^{1/4}}\)</span></p></li>
+<li><p>where <span class="math notranslate nohighlight">\(H_v\)</span>’s are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomials</a>.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>n</p></th>
+<th class="head"><p>Hermite Polynomial <span class="math notranslate nohighlight">\(( H_n(x))\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(2x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(4x^2 - 2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(8x^3 - 12x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(16x^4 - 48x^2 + 12\)</span></p></td>
+</tr>
+</tbody>
+</table>
 <p>For example, the wavefunctions for the two lowest states are:</p>
 <div class="math notranslate nohighlight">
 \[{\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}}\]</div>
 <div class="math notranslate nohighlight">
 \[{\psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4} x e^{-\alpha x^2/2}}\]</div>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png"><img alt="ho" class="bg-primary mb-1" src="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Eigenfunctions and Eigenvalues of Harmonic Oscillator</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="interpreting-solutions">
+<h2>Interpreting solutions<a class="headerlink" href="#interpreting-solutions" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/classical_quantum_ho.gif"><img alt="ho" class="bg-primary mb-1" src="../_images/classical_quantum_ho.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Classical vs quantum probabilities of finding oscillating particle at position x</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Some of the lowest state solutions to the harmonic oscillator (HO) problem are displayed below:</p>
 <ul class="simple">
 <li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 0, 2, 4, ...\)</span> are even: <span class="math notranslate nohighlight">\(\psi_v(x) = \psi_v(-x)\)</span>.</p></li>
 <li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 1, 3, 5, ...\)</span> are odd: <span class="math notranslate nohighlight">\(\psi_v(x) = -\psi_v(-x)\)</span>.</p></li>
 <li><p>Integral of an odd function from <span class="math notranslate nohighlight">\(-a\)</span> to <span class="math notranslate nohighlight">\(a\)</span> (<span class="math notranslate nohighlight">\(a\)</span> may be <span class="math notranslate nohighlight">\(\infty\)</span>) is zero.</p></li>
-<li><p>The tails of the wavefunctions penetrate into the potential barrier deeper than the classical physics would allow. This phenomenon is called quantum mechanical \textit{tunneling}.</p></li>
+<li><p>The tails of the wavefunctions penetrate into the potential barrier deeper than the classical physics would allow. This phenomenon is called quantum mechanical tunneling.</p></li>
 </ul>
-<p><strong>Example</strong> Show that the lowest level of HO obeys the uncertainty principle.</p>
-<p><strong>Solution</strong></p>
+</section>
+<section id="hermite-polynomials">
+<h2>Hermite Polynomials<a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
+<p>The following realtions are useful when working with <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomials</a>:</p>
+<div class="math notranslate nohighlight">
+\[{H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0\textnormal{ (characteristic equation)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)\textnormal{ (recursion relation)}}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{matrix}
+0, &amp; \textnormal{ if }v' \ne v\\
+\sqrt{\pi}2^vv!, &amp; \textnormal{ if }v' = v\\
+\end{matrix}\right.
+}\end{split}\]</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Show that the lowest level of Harmonic oscillator obeys the uncertainty principle.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
 <div class="math notranslate nohighlight">
 \[\Delta x = \sigma_x = \sqrt{\left&lt;\hat{x}^2\right&gt; - \left&lt;\hat{x}\right&gt;^2}\textnormal{ and }\Delta p_x = \sigma_{p_x} = \sqrt{\left&lt;\hat{p}_x^2\right&gt; - \left&lt;\hat{p}_x\right&gt;^2}\]</div>
 <p>First we calculate <span class="math notranslate nohighlight">\(\left&lt;\hat{x}\right&gt;\)</span> (<span class="math notranslate nohighlight">\(\psi_0\)</span> is an even function, <span class="math notranslate nohighlight">\(x\)</span> is odd, the integrand is odd overall):</p>
@@ -634,11 +736,19 @@ document.write(`
 \[\Delta x\Delta p_x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\times \sqrt{\frac{\hbar\sqrt{\mu k}}{2}} = \sqrt{\frac{\hbar^2}{4}} = \frac{\hbar}{2}\]</div>
 <p>Recall that the uncertainty principle stated that: <span class="math notranslate nohighlight">\(\Delta x\Delta p_x \ge \frac{\hbar}{2}\)</span></p>
 <p>Thus we can conclude that <span class="math notranslate nohighlight">\(\psi_0\)</span> fulfills the Heisenberg uncertainty principle.</p>
-<p><strong>Example</strong> Quantization of nuclear motion. <a class="reference external" href="http://en.wikipedia.org/wiki/Molecular_vibration">Molecular vibration</a> in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass as given previously and the variable <span class="math notranslate nohighlight">\(x\)</span> is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length <span class="math notranslate nohighlight">\(R_e\)</span>).\</p>
-<p>a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\
-b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For <span class="math notranslate nohighlight">\(^{12}C^{16}O\)</span>, we have:
-<span class="math notranslate nohighlight">\(\tilde{v}\)</span> = 2170 cm<span class="math notranslate nohighlight">\(^{-1}\)</span> (vibrational frequency) and <span class="math notranslate nohighlight">\(R_e\)</span> = 113 pm (equilibrium bond length)</p>
-<p><strong>Solution</strong> The harmonic vibration frequency is given in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>). This must be converted according to: <span class="math notranslate nohighlight">\(\nu = c\tilde{v}\)</span>. The previous example gives expression for <span class="math notranslate nohighlight">\(\sigma_x\)</span>:</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Quantization of nuclear motion. <a class="reference external" href="http://en.wikipedia.org/wiki/Molecular_vibration">Molecular vibration</a> in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass as given previously and the variable <span class="math notranslate nohighlight">\(x\)</span> is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length <span class="math notranslate nohighlight">\(R_e\)</span>).\</p>
+<ul class="simple">
+<li><p>a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\</p></li>
+<li><p>b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For <span class="math notranslate nohighlight">\(^{12}C^{16}O\)</span>, we have:
+<span class="math notranslate nohighlight">\(\tilde{v}\)</span> = 2170 cm<span class="math notranslate nohighlight">\(^{-1}\)</span> (vibrational frequency) and <span class="math notranslate nohighlight">\(R_e\)</span> = 113 pm (equilibrium bond length)</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>The harmonic vibration frequency is given in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>). This must be converted according to: <span class="math notranslate nohighlight">\(\nu = c\tilde{v}\)</span>. The previous example gives expression for <span class="math notranslate nohighlight">\(\sigma_x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\sigma_x = \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\]</div>
 <p>In considering spectroscopic data, it is convenient to express this in terms of <span class="math notranslate nohighlight">\(\tilde{v}\)</span>:</p>
@@ -655,24 +765,17 @@ b. What percentage of the equilibrium bond length is this standard deviation for
 \[\Delta x = \sigma_x = \left[\frac{1.055\times 10^{-34}\textnormal{ Js}}{4\pi\underbrace{\left(2.998\times 10^{10}\textnormal{ cm s}^{-1}\right)}_{\textnormal{speed of light}}\left(2170\textnormal{ cm}^{-1}\right)\left(1.139\times 10^{-26}\textnormal{ kg}\right)}\right]^{1/2}\]</div>
 <div class="math notranslate nohighlight">
 \[ = 3.37\textnormal{ pm} \Rightarrow \textnormal{\% of deviation} = 100\%\times\frac{3.37\textnormal{ pm}}{113\textnormal{ pm}} = 2.98\%\]</div>
-<p>Finally, the following realtions are useful when working with Hermite polynomials:</p>
-<div class="math notranslate nohighlight">
-\[{H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0\textnormal{ (characteristic equation)}}\]</div>
-<div class="math notranslate nohighlight">
-\[{H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)\textnormal{ (recursion relation)}}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{matrix}
-0, &amp; \textnormal{ if }v' \ne v\\
-\sqrt{\pi}2^vv!, &amp; \textnormal{ if }v' = v\\
-\end{matrix}\right.
-}\end{split}\]</div>
-<p>More results for Hermite polynomials can be found <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">here</a></p>
+</div>
+</section>
+<section id="harmonic-oscillator-in-3d">
+<h2>Harmonic Oscillator in 3D<a class="headerlink" href="#harmonic-oscillator-in-3d" title="Permalink to this heading">#</a></h2>
 <p>In a three-dimensional harmonic oscillator potential, <span class="math notranslate nohighlight">\(V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2\)</span>, the separation technique similar to the three-dimensional particle in a box problem can be used. The resulting eigenfunctions and eigenvalues are:</p>
 <div class="math notranslate nohighlight">
 \[{E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}
 {\psi(x,y,z) = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
 { \times N_{v_y}H_{v_y}\left(\sqrt{\alpha_y}y\right)e^{-\alpha_yy^2/2} \times N_{v_z}H_{v_z}\left(\sqrt{\alpha_z}z\right)e^{-\alpha_zz^2/2}}\]</div>
 <p>where the <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(N\)</span>, and <span class="math notranslate nohighlight">\(H\)</span> are defined in above and the <span class="math notranslate nohighlight">\(v\)</span>’s are the quantum numbers along the Cartesian coordinates.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -741,14 +844,20 @@ b. What percentage of the equilibrium bond length is this standard deviation for
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Harmonic Oscillator</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bead-spring-and-a-wall">Bead, spring and a wall.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-harmonic-oscillator-problem">Solving harmonic oscillator problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-harmonic-oscillator">Energy of the harmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-system">Conservative system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-total-energy">Conservation of total energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diatomic-molecule-and-two-body-problem">Diatomic molecule and two-body problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-mass-of-vibration">Effective mass of vibration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beads-and-springs-model-of-molecules">Beads and springs model of molecules</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-harmonic-oscillator">Quantum harmonic oscillator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-harmonic-oscillator">Quantum harmonic oscillator</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials">Hermite Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-in-3d">Harmonic Oscillator in 3D</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
