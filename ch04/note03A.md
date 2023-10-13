@@ -1,6 +1,6 @@
 ## Harmonic Oscillator 
 
-```{admonition} What you need to know
+:::{admonition} What you need to know
 :class: note
 In this section we study quantum mechanical version of [harmonic oscillator](https://en.wikipedia.org/wiki/Harmonic_oscillator). Harmonic oscillators have ubqiutuous presence in everyday world: beads bound by a spring which vibrate around equilibirum positions. Turns out beads on a pring is remarkably common in microsocpic world as nuclie of atoms in solids or molecules are in some sense "quantum beads" vibrating around equilibriu position of "quantum springs". The distinction between quantum vs classical regimes will again be highly illuminating about the role of quantum effects on small scales. The key topics we will learn are:
 
@@ -9,7 +9,7 @@ In this section we study quantum mechanical version of [harmonic oscillator](htt
 - **Hermite Polynomials are eigenfunctions** 
 - **Effects of unharmonicity.** We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation. 
 - **Raising and lower operators offer an elegant way of solving harmonic oscilator problem** This will be our first introduction to raising and lowering operators which provide highly elegant way of solving problems in quantum mechanics. 
-```
+:::
 
 ### Bead, spring and a wall. 
 
@@ -274,9 +274,9 @@ Thus we can conclude that $\psi_0$ fulfills the Heisenberg uncertainty principle
 :::{admonition} **Example**  
 :class: note
 
-Quantization of nuclear motion. [Molecular vibration](http://en.wikipedia.org/wiki/Molecular_vibration) in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There $\mu$ is the reduced mass as given previously and the variable $x$ is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length $R_e$).\\
+Quantization of nuclear motion. [Molecular vibration](http://en.wikipedia.org/wiki/Molecular_vibration) in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There $\mu$ is the reduced mass as given previously and the variable $x$ is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length $R_e$).
 
-- a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\\
+- a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.
 - b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For $^{12}C^{16}O$, we have:
 $\tilde{v}$ = 2170 cm$^{-1}$ (vibrational frequency) and $R_e$ = 113 pm (equilibrium bond length)
 :::
@@ -312,10 +312,16 @@ $$ = 3.37\textnormal{ pm} \Rightarrow \textnormal{\% of deviation} = 100\%\times
 ### Harmonic Oscillator in 3D
 
 
-In a three-dimensional harmonic oscillator potential, $V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2$, the separation technique similar to the three-dimensional particle in a box problem can be used. The resulting eigenfunctions and eigenvalues are:
+- In a three-dimensional harmonic oscillator the potential energy term now can have different spring constants corresponding to deformation along each axis:
 
-$${E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}
-{\psi(x,y,z) = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
+$$V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2$$
+
+- the separation of variables technique similar to the three-dimensional particle in a box problem can be used here. The result is once again eigenfunctions that are product of 1D eigenfunctions and eigenvalues that are sum of 1D eigenvalues:
+
+$${E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}$$
+
+
+$${\psi(x,y,z) = \psi_{v_x}(x)\psi(y)_{v_y}\psi(z)_{v_z} = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
 { \times N_{v_y}H_{v_y}\left(\sqrt{\alpha_y}y\right)e^{-\alpha_yy^2/2} \times N_{v_z}H_{v_z}\left(\sqrt{\alpha_z}z\right)e^{-\alpha_zz^2/2}}$$
 
-where the $\alpha$, $N$, and $H$ are defined in above and the $v$'s are the quantum numbers along the Cartesian coordinates.
+- The $\alpha$, $N$, and $H$ are defined in above and the $v$'s are the quantum numbers along the Cartesian coordinates.
