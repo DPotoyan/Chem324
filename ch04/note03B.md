@@ -2,10 +2,8 @@
 
 :::{admonition} What you need to know
 :class: note
-In this section we study quantum mechanical version of [harmonic oscillator](https://en.wikipedia.org/wiki/Harmonic_oscillator). Harmonic oscillators have ubqiutuous presence in everyday world: beads bound by a spring which vibrate around equilibirum positions. Turns out beads on a pring is remarkably common in microsocpic world as nuclie of atoms in solids or molecules are in some sense "quantum beads" vibrating around equilibriu position of "quantum springs". The distinction between quantum vs classical regimes will again be highly illuminating about the role of quantum effects on small scales. The key topics we will learn are:
-
 - **Quantization of vibrations in molecules.** Vibrational degrees of freedom are quantized which has implications for infrared and raman spectroscopies and bonding. 
-- **Existence of zero point energy and tunneling.** Enenergy is not zero even at zero temperature. We appreciate this as a consequence of uncertainty relation.  
+- **Existence of Selection rules.** Not all transitions are possible. Quantum mechanics predicts that for transition to occur the transition dipole moment needs to be finite.  
 - **Effects of unharmonicity.** We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation. 
 :::
 
@@ -45,6 +43,8 @@ $$\frac{\nu_{DCl}}{\nu_{HCL}}=\Big(\frac{\mu_{HCl}}{\mu_{DCL}}\Big)^{1/2}=0.717$
 :::
 
 ### Going beyond harmonic approximation
+
+![](./images/unharm.png)
 
 - Earlier when we have discussed the harmonic oscillator problem and we briefly mentioned that it can be used to approximate atom - atom interaction energy (*potential energy curve*) near the equilibrium bond length. 
 
@@ -93,6 +93,8 @@ $${\tilde{\nu}(v) = \tilde{E}_{v+1} - \tilde{E}_v = \tilde{\nu}_e - 2\tilde{\nu}
 As we will see soon that by adding the 2nd order polynomial term to the eigenvalues, we actually imply the use of a potential function that allows for dissociation. 
 
 ### Overtone transitions
+
+![](./images/vib_modes.jpeg)
 
 The higher order terms are small but they give rise to overtone transitions with $\Delta v = \pm 2, \pm 3, ...$ with rapidly decreasing intensities.
 
