@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note03B';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Beyond harmonic oscillator" href="note03C.html" />
+    <link rel="next" title="Angular momentum" href="note04A.html" />
     <link rel="prev" title="Harmonic Oscillator" href="note03A.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -223,7 +223,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03A.html">Harmonic Oscillator</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Vibrational spectra of diatomic molecules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03C.html">Beyond harmonic oscillator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
@@ -432,8 +431,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-dissociation-energy">On dissociation energy</a></li>
 </ul>
             </nav>
         </div>
@@ -447,6 +450,29 @@ document.write(`
                   
   <section id="vibrational-spectra-of-diatomic-molecules">
 <h1>Vibrational spectra of diatomic molecules<a class="headerlink" href="#vibrational-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<p>In this section we study quantum mechanical version of <a class="reference external" href="https://en.wikipedia.org/wiki/Harmonic_oscillator">harmonic oscillator</a>. Harmonic oscillators have ubqiutuous presence in everyday world: beads bound by a spring which vibrate around equilibirum positions. Turns out beads on a pring is remarkably common in microsocpic world as nuclie of atoms in solids or molecules are in some sense “quantum beads” vibrating around equilibriu position of “quantum springs”. The distinction between quantum vs classical regimes will again be highly illuminating about the role of quantum effects on small scales. The key topics we will learn are:</p>
+<ul class="simple">
+<li><p><strong>Quantization of vibrations in molecules.</strong> Vibrational degrees of freedom are quantized which has implications for infrared and raman spectroscopies and bonding.</p></li>
+<li><p><strong>Existence of zero point energy and tunneling.</strong> Enenergy is not zero even at zero temperature. We appreciate this as a consequence of uncertainty relation.</p></li>
+<li><p><strong>Effects of unharmonicity.</strong> We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation.</p></li>
+</ul>
+</div>
+<section id="harmonic-oscillator">
+<h2>Harmonic Oscillator<a class="headerlink" href="#harmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>First let us write harmonic oscillator energies in a format used for spectroscopic analysis. This means converting to wavenumber units:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}\]</div>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(v\)</span> is the vibrational quantum number, the vibrational frequency <span class="math notranslate nohighlight">\(\nu = \frac{1}{2\pi}\sqrt{k/\mu}\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass of the diatomic molecule. Note that <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> look very similar but have different meaning! This can be expressed in wavenumber units as:</p></li>
+<li><p>A typical value for vibrational frequency would be around 500 - 4000 <span class="math notranslate nohighlight">\(cm^{-1}\)</span>.Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.</p></li>
+</ul>
+</section>
+<section id="going-beyond-harmonic-approximation">
+<h2>Going beyond harmonic approximation<a class="headerlink" href="#going-beyond-harmonic-approximation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Earlier when we have discussed the harmonic oscillator problem and we briefly mentioned that it can be used to approximate atom - atom interaction energy (<em>potential energy curve</em>) near the equilibrium bond length.</p></li>
 <li><p>Harmonic potential would not allow for molecular dissociation and therefore it is clear that it would not be a realistic model when we are far away from the equilibrium geometry. The harmonic potential is given by:</p></li>
@@ -459,32 +485,37 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[{E(R) = E(R_e) + \left(\frac{dE}{dR}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{d^2E}{dR^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
-<p>Note that at the minimum we get <span class="math notranslate nohighlight">\(E(R) = E(R_e)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[{E_v = \left(v + \frac{1}{2}\right)h\nu\textnormal{ with }v = 0, 1, 2,...}\]</div>
-<ul class="simple">
-<li><p>The <span class="math notranslate nohighlight">\(v\)</span> is the vibrational quantum number, the vibrational frequency <span class="math notranslate nohighlight">\(\nu = \frac{1}{2\pi}\sqrt{k/\mu}\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass of the diatomic molecule. Note that <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> look very similar but have different meaning! This can be expressed in wavenumber units as:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}\]</div>
-<blockquote>
-<div><p>A typical value for vibrational frequency would be around 500 - 4000 <span class="math notranslate nohighlight">\(cm^{-1}\)</span>. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.</p>
-</div></blockquote>
+</section>
 <section id="selection-rules">
 <h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
-<p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. Previously we found that the dipole moment depends on the internuclear distance. To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p>
+<ul class="simple">
+<li><p>Selection rules in spectroscopy are fundamental principles that dictate whether a transition is allowed or forbidden during the absorption or emission of electromagnetic radiation, such as infrared (IR) or Raman spectroscopy. The origins of these rules lie in the quantum mechanical description of molecular vibrations and the interactions of molecules with electromagnetic radiation.</p></li>
+<li><p>Molecular symmetry plays a crucial role in determining the allowed transitions.
+Symmetry considerations, especially in molecules, come from group theory, which helps in predicting whether a certain vibrational mode will be IR or Raman active.</p></li>
+<li><p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. We will learn more about whu To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\mu_0^{(e)}(R) = \mu_e + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
 <p>Next we integrate over the vibrational degrees of freedom and obtain:</p>
 <div class="math notranslate nohighlight">
-\[{\hspace*{-1cm}\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v'}dR + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)\psi_{v'}dR\hspace*{0.1cm}}
-{ + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)^2\psi_{v'}dR + ...}\]</div>
+\[\begin{split}{\hspace*{-1cm}\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v'}dR + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)\psi_{v'}dR\hspace*{0.1cm}}\\
+{ + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)^2\psi_{v'}dR + ...}\end{split}\]</div>
 <ul class="simple">
 <li><p>The first term above is zero since the vibrational eigenfunctions are orthogonal. The second term is nonzero if the dipole moment depends on the internuclear distance <span class="math notranslate nohighlight">\(R\)</span>. Therefore we conclude that the selection rule for pure vibrational transition is that the dipole moment must change as a function of <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
 <li><p>All homonuclear diatomic molecules (e.g., <span class="math notranslate nohighlight">\(H_2\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, etc.) have zero dipole moment, which cannot change as a function of <span class="math notranslate nohighlight">\(R\)</span>. Hence these molecules do not show vibrational spectra.</p></li>
 <li><p>In general, all molecules that have dipole moment have vibrational spectra as change in <span class="math notranslate nohighlight">\(R\)</span> also results in change of dipole moment. We still have the integral present in the second term.</p></li>
 <li><p>For harmonic oscillator wavefunctions, this integral is zero unless <span class="math notranslate nohighlight">\(v'' = v'\pm 1\)</span> . This provides an additional selection rule, which says that the vibrational quantum number may either decrease or increase by one.</p></li>
 </ul>
+</section>
+<section id="unharmonic-oscillator">
+<h2>Unharmonic oscillator<a class="headerlink" href="#unharmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<p>We attempt to account for the deviation from the harmonic behavior by adding higher order polynomial terms <span class="math notranslate nohighlight">\(\tilde{E}_v\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_v = \tilde{\nu}_e(v + \frac{1}{2}) - \tilde{\nu}_ex_e(v + \frac{1}{2})^2 + \tilde{\nu}_ey_e(v + \frac{1}{2})^3}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{\nu}_e\)</span> is the vibrational wavenumber, <span class="math notranslate nohighlight">\(x_e\)</span> and <span class="math notranslate nohighlight">\(y_e\)</span> are anharmonicity constants, and <span class="math notranslate nohighlight">\(v\)</span> is the vibrational quantum number. Usually the third term is ignored and we can write the vibrational transition frequencies as (<span class="math notranslate nohighlight">\(v\rightarrow v+1\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}(v) = \tilde{E}_{v+1} - \tilde{E}_v = \tilde{\nu}_e - 2\tilde{\nu}_ex_e(v+1)}\]</div>
+<p>As we will see soon that by adding the 2nd order polynomial term to the eigenvalues, we actually imply the use of a potential function that allows for dissociation.</p>
 </section>
 <section id="overtone-transitions">
 <h2>Overtone transitions<a class="headerlink" href="#overtone-transitions" title="Permalink to this heading">#</a></h2>
@@ -503,6 +534,24 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[{f_v = \left(1 - e^{-h\nu/(k_BT)}\right)e^{-vh\nu/(k_BT)}}\]</div>
 <p>For example, for <span class="math notranslate nohighlight">\(H^{35}Cl\)</span> the thermal population of the first vibrational level <span class="math notranslate nohighlight">\(v = 1\)</span> is very small (<span class="math notranslate nohighlight">\(9\times\)</span> <span class="math notranslate nohighlight">\(10^{-7}\)</span>) and therefore the excited vibrational levels do not contribute to the (IR) spectrum.</p>
+</section>
+<section id="on-dissociation-energy">
+<h2>On dissociation energy<a class="headerlink" href="#on-dissociation-energy" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>One has to distinguish between two kinds of dissociation energies: <em>equilibrium dissociation energy</em> <span class="math notranslate nohighlight">\(D_e\)</span> and <em>spectroscopic dissociation energy</em> <span class="math notranslate nohighlight">\(D_0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_e\)</span> is measured from the bottom of the potential to the dissociation limit whereas <span class="math notranslate nohighlight">\(D_0\)</span> is measured from the lowest vibrational level to the dissociation limit. The meaning of these two quantities is demonstrated below.</p></li>
+</ul>
+<p>The ground vibrational level energy is given by:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_0 = \frac{\tilde{\nu}_e}{2} - \frac{\tilde{\nu}_ex_e}{4} + \frac{\tilde{\nu}_ey_e}{8}}\]</div>
+<p>And therefore the difference between <span class="math notranslate nohighlight">\(D_0\)</span> and <span class="math notranslate nohighlight">\(D_e\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{D}_e - \tilde{D}_0 = \tilde{E}_0}\]</div>
+<p>When starting from the lowest vibrational level (<span class="math notranslate nohighlight">\(v = 0\)</span>), the observed absorption frequencies for <span class="math notranslate nohighlight">\(v' = 1,2,3...\)</span> are given by:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu}(v') = \tilde{E}_{v'} - \tilde{E}_0 = \tilde{\nu}_ev' - \tilde{\nu}_ex_ev'(v'+1)}\]</div>
+<p>Note that sometimes the frequency <span class="math notranslate nohighlight">\(\nu\)</span> may be expressed as angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>. The relationship between the two is just a constant factor:
+<span class="math notranslate nohighlight">\(\omega = 2\pi\nu\)</span>. To convert these to energy, one must use either <span class="math notranslate nohighlight">\(E = h\nu\)</span> or <span class="math notranslate nohighlight">\(E = \hbar\omega\)</span>.</p>
 </section>
 </section>
 
@@ -546,11 +595,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="note03C.html"
+       href="note04A.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Beyond harmonic oscillator</p>
+        <p class="prev-next-title">Angular momentum</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -569,8 +618,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-dissociation-energy">On dissociation energy</a></li>
 </ul>
   </nav></div>
 

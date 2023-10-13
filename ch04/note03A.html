@@ -223,7 +223,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Harmonic Oscillator</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="note03B.html">Vibrational spectra of diatomic molecules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03C.html">Beyond harmonic oscillator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
@@ -740,9 +739,9 @@ document.write(`
 </div>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
-<p>Quantization of nuclear motion. <a class="reference external" href="http://en.wikipedia.org/wiki/Molecular_vibration">Molecular vibration</a> in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass as given previously and the variable <span class="math notranslate nohighlight">\(x\)</span> is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length <span class="math notranslate nohighlight">\(R_e\)</span>).\</p>
+<p>Quantization of nuclear motion. <a class="reference external" href="http://en.wikipedia.org/wiki/Molecular_vibration">Molecular vibration</a> in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass as given previously and the variable <span class="math notranslate nohighlight">\(x\)</span> is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length <span class="math notranslate nohighlight">\(R_e\)</span>).</p>
 <ul class="simple">
-<li><p>a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.\</p></li>
+<li><p>a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.</p></li>
 <li><p>b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For <span class="math notranslate nohighlight">\(^{12}C^{16}O\)</span>, we have:
 <span class="math notranslate nohighlight">\(\tilde{v}\)</span> = 2170 cm<span class="math notranslate nohighlight">\(^{-1}\)</span> (vibrational frequency) and <span class="math notranslate nohighlight">\(R_e\)</span> = 113 pm (equilibrium bond length)</p></li>
 </ul>
@@ -770,12 +769,22 @@ document.write(`
 </section>
 <section id="harmonic-oscillator-in-3d">
 <h2>Harmonic Oscillator in 3D<a class="headerlink" href="#harmonic-oscillator-in-3d" title="Permalink to this heading">#</a></h2>
-<p>In a three-dimensional harmonic oscillator potential, <span class="math notranslate nohighlight">\(V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2\)</span>, the separation technique similar to the three-dimensional particle in a box problem can be used. The resulting eigenfunctions and eigenvalues are:</p>
+<ul class="simple">
+<li><p>In a three-dimensional harmonic oscillator the potential energy term now can have different spring constants corresponding to deformation along each axis:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}
-{\psi(x,y,z) = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
+\[V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2\]</div>
+<ul class="simple">
+<li><p>the separation of variables technique similar to the three-dimensional particle in a box problem can be used here. The result is once again eigenfunctions that are product of 1D eigenfunctions and eigenvalues that are sum of 1D eigenvalues:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi(x,y,z) = \psi_{v_x}(x)\psi(y)_{v_y}\psi(z)_{v_z} = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
 { \times N_{v_y}H_{v_y}\left(\sqrt{\alpha_y}y\right)e^{-\alpha_yy^2/2} \times N_{v_z}H_{v_z}\left(\sqrt{\alpha_z}z\right)e^{-\alpha_zz^2/2}}\]</div>
-<p>where the <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(N\)</span>, and <span class="math notranslate nohighlight">\(H\)</span> are defined in above and the <span class="math notranslate nohighlight">\(v\)</span>’s are the quantum numbers along the Cartesian coordinates.</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(N\)</span>, and <span class="math notranslate nohighlight">\(H\)</span> are defined in above and the <span class="math notranslate nohighlight">\(v\)</span>’s are the quantum numbers along the Cartesian coordinates.</p></li>
+</ul>
 </section>
 </section>
 
