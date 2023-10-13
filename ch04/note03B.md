@@ -20,6 +20,29 @@ $${\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}$$
 
 - A typical value for vibrational frequency would be around 500 - 4000 $cm^{-1}$.Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.
 
+:::{admonition} **Example**
+:class: note
+
+A strong absorption of infrared radiation is observed for 1H^{35}Cl at 2991 cm{-1}.
+
+- Calculate the force constant k for this molecule
+- By what factor do you expect this frequency to shift if deuterium is substituted for hydrogen in this molecule? The force constant is unaffected by this substitution.
+:::
+
+:::{admonition} **Solution**
+
+- **part a**
+
+$$\omega = 2\pi \nu = \Big(\frac{k}{\mu}\Big)^{1/2}$$
+
+$$\Delta E = h\nu = \frac{hc}{\lambda}=\hbar \Big(\frac{k}{\mu}\Big)^{1/2}$$
+
+$$k = 4\pi^2 \Big(\frac{c}{\lambda}\Big)^2=516 N \cdot m^{-1}$$
+
+- **part b**
+
+$$\frac{\nu_{DCl}}{\nu_{HCL}}=\Big(\frac{\mu_{HCl}}{\mu_{DCL}}\Big)^{1/2}=0.717$$
+:::
 
 ### Going beyond harmonic approximation
 
