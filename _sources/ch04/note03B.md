@@ -21,7 +21,7 @@ $${\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}$$
 :::{admonition} **Example**
 :class: note
 
-A strong absorption of infrared radiation is observed for 1H^{35}Cl at 2991 cm{-1}.
+A strong absorption of infrared radiation is observed for $1H^{35}Cl$ at $2991 cm{-1}$.
 
 - Calculate the force constant k for this molecule
 - By what factor do you expect this frequency to shift if deuterium is substituted for hydrogen in this molecule? The force constant is unaffected by this substitution.
@@ -82,62 +82,75 @@ $${\hspace*{-1cm}\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v
 
 ### Unharmonic oscillator
 
-We attempt to account for the deviation from the harmonic behavior by adding higher order polynomial terms $\tilde{E}_v$:
+- We attempt to account for the deviation from the harmonic behavior by adding higher order polynomial terms $\tilde{E}_v$:
 
 $${\tilde{E}_v = \tilde{\nu}_e(v + \frac{1}{2}) - \tilde{\nu}_ex_e(v + \frac{1}{2})^2 + \tilde{\nu}_ey_e(v + \frac{1}{2})^3}$$
 
-where $\tilde{\nu}_e$ is the vibrational wavenumber, $x_e$ and $y_e$ are anharmonicity constants, and $v$ is the vibrational quantum number. Usually the third term is ignored and we can write the vibrational transition frequencies as ($v\rightarrow v+1$):
+- where $\tilde{\nu}_e$ is the vibrational wavenumber, $x_e$ and $y_e$ are anharmonicity constants, and $v$ is the vibrational quantum number. Usually the third term is ignored and we can write the vibrational transition frequencies as ($v\rightarrow v+1$):
 
-$${\tilde{\nu}(v) = \tilde{E}_{v+1} - \tilde{E}_v = \tilde{\nu}_e - 2\tilde{\nu}_ex_e(v+1)}$$
+$${\tilde{\nu}_{v\rightarrow v+1} = \tilde{E}_{v+1} - \tilde{E}_v = \tilde{\nu}_e[1- 2x_e  (v+1)] }$$
 
-As we will see soon that by adding the 2nd order polynomial term to the eigenvalues, we actually imply the use of a potential function that allows for dissociation. 
+- As we will see soon that by adding the 2nd order polynomial term to the eigenvalues, we actually imply the use of a potential function that allows for dissociation. 
+
 
 ### Overtone transitions
 
+
 ![](./images/vib_modes.jpeg)
 
-The higher order terms are small but they give rise to overtone transitions with $\Delta v = \pm 2, \pm 3, ...$ with rapidly decreasing intensities.
+- The higher order terms are small but they give rise to overtone transitions with $\Delta v = \pm 2, \pm 3, ...$ with rapidly decreasing intensities.
+
+$${\tilde{\nu}_{0\rightarrow v}  = \tilde{E}_{v} - \tilde{E}_0 = \tilde{\nu}_e \cdot v - \tilde{\nu}_ex_e \cdot v (v+1)}$$
+
+:::{admonition} **Example**
+:class: note
+
+Given  $\tilde{\nu}=536 cm^{-1}$ and $x_e\tilde{\nu}=3.4 cm^{-1}$ for ${23}^Na^{19}F$ molecule, calculate frequencies of first two overtones
+:::
+
+:::{admonition} **Solution**
+:class: note, dropdown
+
+We make use of the equation ${\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot v - 2\tilde{\nu}_ex_e v (v+1)}$ to compute transitions to levels 1 (fundamental), 2 (first overtone) and 3 (second overtone)
+
+- ${\tilde{\nu}_{0\rightarrow 1} = \tilde{\nu}_e \cdot v - 2\tilde{\nu}_ex_e }=529 cm^{-1}$
+- ${\tilde{\nu}_{0\rightarrow 2} = \tilde{\nu}_e \cdot v - 6\tilde{\nu}_ex_e }=1059 cm^{-1}$
+- ${\tilde{\nu}_{0\rightarrow 3} = \tilde{\nu}_e \cdot v - 12\tilde{\nu}_ex_e }=1567 cm^{-1}$
+:::
+
+### On dissociation energy
+
+:::{figure-md} markdown-fig
+<img src="./images/De.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+One has to distinguish between two kinds of dissociation energies: *equilibrium dissociation energy* $D_e$ and *spectroscopic dissociation energy* $D_0$. Show are Harmonic vs Morse potential
+:::
+
+- $D_e$ is measured from the bottom of the potential to the dissociation limit whereas $D_0$ is measured from the lowest vibrational level to the dissociation limit. 
+
+$$D_0 = D_e-\frac{1}{2}h\nu$$
 
 
-For harmonic oscillator, the Boltzmann distribution  gives the statistical weight for the $v$ level:
+### Population of virbational states
+
+- Out of all possible vibrational states which states do molecules occupy at room temperature? For harmonic oscillator, the Boltzmann distribution  gives the statistical weight for the $v$ level:
 
 $${f_v = \frac{e^{-(v + 1/2)h\nu/(k_BT)}}{\sum\limits_{v=0}^\infty e^{-(v+1/2)h\nu/(k_BT)}}}
 {= \frac{e^{-vh\nu/(k_BT)}}{\sum\limits_{v=0}^\infty e^{-vh\nu/(k_BT)}}}$$
 
-Note that the degeneracy factor is identically one because there is no degeneracy in one dimensional harmonic oscillator. To proceed, we recall geometric series:
+- Note that the degeneracy factor is identically one because there is no degeneracy in one dimensional harmonic oscillator. To proceed, we recall geometric series:
 
 $${\sum\limits_{v=0}^\infty x^v = \frac{1}{1 - x}\textnormal{ with }x < 1}$$
 
-The denominator now gives:
 
 $${\sum\limits_{v=0}^\infty e^{-vh\nu/(k_BT)} = \frac{1}{1 - e^{-h\nu/(k_BT)}}}$$
 
-Further simplifying we obtain:
 
 $${f_v = \left(1 - e^{-h\nu/(k_BT)}\right)e^{-vh\nu/(k_BT)}}$$
 
-For example, for $H^{35}Cl$ the thermal population of the first vibrational level $v = 1$ is very small ($9\times$ $10^{-7}$) and therefore the excited vibrational levels do not contribute to the (IR) spectrum.
-
-### On dissociation energy
-
-- One has to distinguish between two kinds of dissociation energies: *equilibrium dissociation energy* $D_e$ and *spectroscopic dissociation energy* $D_0$. 
-
-- $D_e$ is measured from the bottom of the potential to the dissociation limit whereas $D_0$ is measured from the lowest vibrational level to the dissociation limit. The meaning of these two quantities is demonstrated below.
-
-The ground vibrational level energy is given by:
-
-$${\tilde{E}_0 = \frac{\tilde{\nu}_e}{2} - \frac{\tilde{\nu}_ex_e}{4} + \frac{\tilde{\nu}_ey_e}{8}}$$
-
-And therefore the difference between $D_0$ and $D_e$ is:
-
-$${\tilde{D}_e - \tilde{D}_0 = \tilde{E}_0}$$
+- For example, for $H^{35}Cl$ the thermal population of the first vibrational level $v = 1$ is very small ($9\times$ $10^{-7}$) and **therefore generally the excited vibrational levels do not contribute to the (IR) spectrum.**
 
 
-When starting from the lowest vibrational level ($v = 0$), the observed absorption frequencies for $v' = 1,2,3...$ are given by:
 
-$${\tilde{\nu}(v') = \tilde{E}_{v'} - \tilde{E}_0 = \tilde{\nu}_ev' - \tilde{\nu}_ex_ev'(v'+1)}$$
-
-Note that sometimes the frequency $\nu$ may be expressed as angular frequency $\omega$. The relationship between the two is just a constant factor:
-$\omega = 2\pi\nu$. To convert these to energy, one must use either $E = h\nu$ or $E = \hbar\omega$.
 
 
