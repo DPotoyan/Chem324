@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Vibrational spectra of diatomic molecules &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Molecular Vibrations &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -222,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Molecular degrees of freedom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03A.html">Harmonic Oscillator</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vibrational spectra of diatomic molecules</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Molecular Vibrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
@@ -421,7 +421,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vibrational spectra of diatomic molecules</h1>
+    <h1>Molecular Vibrations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -433,11 +433,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-potential-and-dissociation-energy">Morse potential and dissociation energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-dissociation-energy">On dissociation energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-virbational-states">Population of virbational states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-vibrational-states">Population of vibrational states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-number-of-modes">Calculating number of modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-selection-rules">Application of selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectra">IR spectra</a></li>
 </ul>
             </nav>
         </div>
@@ -449,14 +453,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="vibrational-spectra-of-diatomic-molecules">
-<h1>Vibrational spectra of diatomic molecules<a class="headerlink" href="#vibrational-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h1>
+  <section id="molecular-vibrations">
+<h1>Molecular Vibrations<a class="headerlink" href="#molecular-vibrations" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p><strong>Quantization of vibrations in molecules.</strong> Vibrational degrees of freedom are quantized which has implications for infrared and raman spectroscopies and bonding.</p></li>
-<li><p><strong>Existence of Selection rules.</strong> Not all transitions are possible. Quantum mechanics predicts that for transition to occur the transition dipole moment needs to be finite.</p></li>
-<li><p><strong>Effects of unharmonicity.</strong> We will see the impact on energy levels of harmonic oscillators when one goes beyond harmonic approximation.</p></li>
+<li><p><strong>Quantization of vibrations in molecules.</strong> Vibrational degrees of freedom are quantized in molecules. This which implications for infrared and raman spectroscopies.</p></li>
+<li><p><strong>Existence of Selection rules.</strong> Not all vibrational transitions are observed. Quantum mechanics predicts that for transition to occur the trasnition probability needs to be non zero which is quantified via transition dipole moment.</p></li>
+<li><p><strong>Effects of unharmonicity.</strong> Harmonic osccilator approximation captures the dominant transition frequency but is not fully accurate becasue harmonic shape of the potential descrimed the vicinity of potential energy minima which tends to become less accurate for excited vibrational states of molecules.</p></li>
 </ul>
 </div>
 <section id="harmonic-oscillator">
@@ -498,7 +502,6 @@ document.write(`
 </section>
 <section id="going-beyond-harmonic-approximation">
 <h2>Going beyond harmonic approximation<a class="headerlink" href="#going-beyond-harmonic-approximation" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/unharm.png" /></p>
 <ul class="simple">
 <li><p>Earlier when we have discussed the harmonic oscillator problem and we briefly mentioned that it can be used to approximate atom - atom interaction energy (<em>potential energy curve</em>) near the equilibrium bond length.</p></li>
 <li><p>Harmonic potential would not allow for molecular dissociation and therefore it is clear that it would not be a realistic model when we are far away from the equilibrium geometry. The harmonic potential is given by:</p></li>
@@ -511,27 +514,25 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[{E(R) = E(R_e) + \left(\frac{dE}{dR}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{d^2E}{dR^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/De.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/De.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">One has to distinguish between two kinds of dissociation energies: <em>equilibrium dissociation energy</em> <span class="math notranslate nohighlight">\(D_e\)</span> and <em>spectroscopic dissociation energy</em> <span class="math notranslate nohighlight">\(D_0\)</span>. Show are Harmonic vs Morse potential</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="selection-rules">
-<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+<section id="morse-potential-and-dissociation-energy">
+<h2>Morse potential and dissociation energy<a class="headerlink" href="#morse-potential-and-dissociation-energy" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Selection rules in spectroscopy are fundamental principles that dictate whether a transition is allowed or forbidden during the absorption or emission of electromagnetic radiation, such as infrared (IR) or Raman spectroscopy. The origins of these rules lie in the quantum mechanical description of molecular vibrations and the interactions of molecules with electromagnetic radiation.</p></li>
-<li><p>Molecular symmetry plays a crucial role in determining the allowed transitions.
-Symmetry considerations, especially in molecules, come from group theory, which helps in predicting whether a certain vibrational mode will be IR or Raman active.</p></li>
-<li><p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. We will learn more about whu To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p></li>
+<li><p>Morse potential proisde more accurate description for molecular vibrations and predicts dissociation and changing spacing between energy levels.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\mu_0^{(e)}(R) = \mu_e + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
-<p>Next we integrate over the vibrational degrees of freedom and obtain:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\hspace*{-1cm}\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v'}dR + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)\psi_{v'}dR\hspace*{0.1cm}}\\
-{ + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)^2\psi_{v'}dR + ...}\end{split}\]</div>
+\[V(R)=D_e(1-e^{-a(R-R_e)^2})\]</div>
 <ul class="simple">
-<li><p>The first term above is zero since the vibrational eigenfunctions are orthogonal. The second term is nonzero if the dipole moment depends on the internuclear distance <span class="math notranslate nohighlight">\(R\)</span>. Therefore we conclude that the selection rule for pure vibrational transition is that the dipole moment must change as a function of <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
-<li><p>All homonuclear diatomic molecules (e.g., <span class="math notranslate nohighlight">\(H_2\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, etc.) have zero dipole moment, which cannot change as a function of <span class="math notranslate nohighlight">\(R\)</span>. Hence these molecules do not show vibrational spectra.</p></li>
-<li><p>In general, all molecules that have dipole moment have vibrational spectra as change in <span class="math notranslate nohighlight">\(R\)</span> also results in change of dipole moment. We still have the integral present in the second term.</p></li>
-<li><p>For harmonic oscillator wavefunctions, this integral is zero unless <span class="math notranslate nohighlight">\(v'' = v'\pm 1\)</span> . This provides an additional selection rule, which says that the vibrational quantum number may either decrease or increase by one.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_e\)</span> is measured from the bottom of the potential to the dissociation limit whereas <span class="math notranslate nohighlight">\(D_0\)</span> is measured from the lowest vibrational level to the dissociation limit.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[D_0 = D_e-\frac{1}{2}h\nu\]</div>
 </section>
 <section id="unharmonic-oscillator">
 <h2>Unharmonic oscillator<a class="headerlink" href="#unharmonic-oscillator" title="Permalink to this heading">#</a></h2>
@@ -559,34 +560,20 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 \[{\tilde{\nu}_{0\rightarrow v}  = \tilde{E}_{v} - \tilde{E}_0 = \tilde{\nu}_e \cdot v - \tilde{\nu}_ex_e \cdot v (v+1)}\]</div>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
-<p>Given  <span class="math notranslate nohighlight">\(\tilde{\nu}=536 cm^{-1}\)</span> and <span class="math notranslate nohighlight">\(x_e\tilde{\nu}=3.4 cm^{-1}\)</span> for <span class="math notranslate nohighlight">\({23}^Na^{19}F\)</span> molecule, calculate frequencies of first two overtones</p>
+<p>Given  <span class="math notranslate nohighlight">\(\tilde{\nu}=536 cm^{-1}\)</span> and <span class="math notranslate nohighlight">\(x_e\tilde{\nu}=3.4 cm^{-1}\)</span> for <span class="math notranslate nohighlight">\(^{23}Na^{19}F\)</span> molecule, calculate frequencies of first two overtones.</p>
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title"><strong>Solution</strong></p>
 <p>We make use of the equation <span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot v - 2\tilde{\nu}_ex_e v (v+1)}\)</span> to compute transitions to levels 1 (fundamental), 2 (first overtone) and 3 (second overtone)</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow 1} = \tilde{\nu}_e \cdot v - 2\tilde{\nu}_ex_e }=529 cm^{-1}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow 2} = \tilde{\nu}_e \cdot v - 6\tilde{\nu}_ex_e }=1059 cm^{-1}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow 3} = \tilde{\nu}_e \cdot v - 12\tilde{\nu}_ex_e }=1567 cm^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{\nu}_{0\rightarrow 1} = 1\tilde{\nu}_e  - 2\tilde{\nu}_ex_e= 1\cdot536-2\cdot3.4=529 cm^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow 2} = 2\tilde{\nu}_e  - 6\tilde{\nu}_ex_e= 2\cdot536-6\cdot3.4}=1059 cm^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({\tilde{\nu}_{0\rightarrow 3} = 3\tilde{\nu}_e  - 12\tilde{\nu}_ex_e= 3\cdot536-12\cdot3.4}=1567 cm^{-1}\)</span></p></li>
 </ul>
 </div>
 </section>
-<section id="on-dissociation-energy">
-<h2>On dissociation energy<a class="headerlink" href="#on-dissociation-energy" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/De.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/De.png" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">One has to distinguish between two kinds of dissociation energies: <em>equilibrium dissociation energy</em> <span class="math notranslate nohighlight">\(D_e\)</span> and <em>spectroscopic dissociation energy</em> <span class="math notranslate nohighlight">\(D_0\)</span>. Show are Harmonic vs Morse potential</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(D_e\)</span> is measured from the bottom of the potential to the dissociation limit whereas <span class="math notranslate nohighlight">\(D_0\)</span> is measured from the lowest vibrational level to the dissociation limit.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[D_0 = D_e-\frac{1}{2}h\nu\]</div>
-</section>
-<section id="population-of-virbational-states">
-<h2>Population of virbational states<a class="headerlink" href="#population-of-virbational-states" title="Permalink to this heading">#</a></h2>
+<section id="population-of-vibrational-states">
+<h2>Population of vibrational states<a class="headerlink" href="#population-of-vibrational-states" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Out of all possible vibrational states which states do molecules occupy at room temperature? For harmonic oscillator, the Boltzmann distribution  gives the statistical weight for the <span class="math notranslate nohighlight">\(v\)</span> level:</p></li>
 </ul>
@@ -603,8 +590,89 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 <div class="math notranslate nohighlight">
 \[{f_v = \left(1 - e^{-h\nu/(k_BT)}\right)e^{-vh\nu/(k_BT)}}\]</div>
 <ul class="simple">
-<li><p>For example, for <span class="math notranslate nohighlight">\(H^{35}Cl\)</span> the thermal population of the first vibrational level <span class="math notranslate nohighlight">\(v = 1\)</span> is very small (<span class="math notranslate nohighlight">\(9\times\)</span> <span class="math notranslate nohighlight">\(10^{-7}\)</span>) and <strong>therefore generally the excited vibrational levels do not contribute to the (IR) spectrum.</strong></p></li>
+<li><p>For example, for <span class="math notranslate nohighlight">\(H^{35}Cl\)</span> the thermal population of the first vibrational level <span class="math notranslate nohighlight">\(v = 1\)</span> is very small about <span class="math notranslate nohighlight">\(9\times\)</span> <span class="math notranslate nohighlight">\(10^{-7}\)</span>.</p></li>
+<li><p><strong>This is why generally the excited vibrational levels do not contribute to the (IR) spectrum.</strong></p></li>
 </ul>
+</section>
+<section id="vibrational-modes-of-molecules">
+<h2>Vibrational modes of molecules<a class="headerlink" href="#vibrational-modes-of-molecules" title="Permalink to this heading">#</a></h2>
+<p>A molecule has translational and rotational motion as a whole while each atom has it’s own motion. The vibrational modes can be IR or Raman active. For a mode to be observed in the IR spectrum, changes must occur in the permanent dipole (i.e. not diatomic molecules). Diatomic molecules are observed in the Raman spectra but not in the IR spectra. This is due to the fact that diatomic molecules have one band and no permanent dipole, and therefore one single vibration. An example of this would be <span class="math notranslate nohighlight">\(O_2\)</span> or <span class="math notranslate nohighlight">\(N_2\)</span>.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/CO2_modes.jpg"><img alt="co2-mode" class="bg-primary mb-1" src="../_images/CO2_modes.jpg" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Normal modes of <span class="math notranslate nohighlight">\(CO_2\)</span> with associated vibrational frequencies</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>However, unsymmetric diatomic molecules (i.e. CN do absorb in the IR spectra. Polyatomic molecules undergo more complex vibrations that can be summed or resolved into normal modes of vibration. The normal modes of vibration are: asymmetric, symmetric, wagging, twisting, scissoring, and rocking for polyatomic molecules.</p></li>
+</ul>
+</section>
+<section id="calculating-number-of-modes">
+<h2>Calculating number of modes<a class="headerlink" href="#calculating-number-of-modes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The degrees of vibrational modes for linear molecules can be calculated using the formula:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[3N−5\]</div>
+<ul class="simple">
+<li><p>The degrees of freedom for nonlinear molecules can be calculated using the formula:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[3N−6\]</div>
+<ul class="simple">
+<li><p>Determine if the molecule is linear or nonlinear (i.e. Draw out molecule using VSEPR). If linear, use Equation 1 If nonlinear, use Equation 2
+Calculate how many atoms are in your molecule. This is your N value.
+Plug in your N value and solve.</p></li>
+</ul>
+</section>
+<section id="selection-rules">
+<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Selection rules in spectroscopy are fundamental principles that dictate whether a transition is allowed or forbidden during the absorption or emission of electromagnetic radiation, such as infrared (IR) or Raman spectroscopy. The origins of these rules lie in the quantum mechanical description of molecular vibrations and the interactions of molecules with electromagnetic radiation.</p></li>
+<li><p>Molecular symmetry plays a crucial role in determining the allowed transitions.
+Symmetry considerations, especially in molecules, come from group theory, which helps in predicting whether a certain vibrational mode will be IR or Raman active.</p></li>
+<li><p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. We will learn more about whu To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\mu_0^{(e)}(R) = \mu_e + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}(R - R_e) + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}(R - R_e)^2 + ...}\]</div>
+<ul class="simple">
+<li><p>Next we integrate over the vibrational degrees of freedom and obtain:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\int\psi^*_{v''}\mu_0\psi_{v'}dR = \mu_e\int\psi^*_{v''}\psi_{v'}dR + \left(\frac{\partial\mu}{\partial R}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)\psi_{v'}dR\hspace*{0.1cm}}\\
+{ + \frac{1}{2}\left(\frac{\partial^2\mu}{\partial R^2}\right)_{R = R_e}\int\psi_{v''}^*(R - R_e)^2\psi_{v'}dR + ...}\end{split}\]</div>
+<ul class="simple">
+<li><p>The first term above is zero since the vibrational eigenfunctions are orthogonal. The second term is nonzero if the dipole moment depends on the internuclear distance <span class="math notranslate nohighlight">\(R\)</span>. Therefore we conclude that the selection rule for pure vibrational transition is that the dipole moment must change as a function of <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
+</ul>
+</section>
+<section id="application-of-selection-rules">
+<h2>Application of selection rules<a class="headerlink" href="#application-of-selection-rules" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/selection_rule.jpg"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/selection_rule.jpg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>All homonuclear diatomic molecules (e.g., <span class="math notranslate nohighlight">\(H_2\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, etc.) have zero dipole moment, which cannot change as a function of <span class="math notranslate nohighlight">\(R\)</span>. Hence these molecules do not show vibrational spectra.</p></li>
+<li><p>In general, all molecules that have dipole moment have vibrational spectra as change in <span class="math notranslate nohighlight">\(R\)</span> also results in change of dipole moment. We still have the integral present in the second term.</p></li>
+<li><p>For harmonic oscillator wavefunctions, this integral is zero unless <span class="math notranslate nohighlight">\(v'' = v'\pm 1\)</span> . This provides an additional selection rule, which says that the vibrational quantum number may either decrease or increase by one.</p></li>
+</ul>
+</section>
+<section id="ir-spectra">
+<h2>IR spectra<a class="headerlink" href="#ir-spectra" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/IR-sp.png"><img alt="ir spectra" class="bg-primary mb-1" src="../_images/IR-sp.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">IR spectral frequencies observed due to different vibrational frequencies of bonds in organic molecules.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/amide_modes.png"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/amide_modes.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -673,11 +741,15 @@ Symmetry considerations, especially in molecules, come from group theory, which 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-potential-and-dissociation-energy">Morse potential and dissociation energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-dissociation-energy">On dissociation energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-virbational-states">Population of virbational states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-vibrational-states">Population of vibrational states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-number-of-modes">Calculating number of modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-selection-rules">Application of selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectra">IR spectra</a></li>
 </ul>
   </nav></div>
 
