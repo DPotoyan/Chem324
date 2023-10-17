@@ -24,7 +24,7 @@ $${\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}$$
 :::{admonition} **Example**
 :class: note
 
-A strong absorption of infrared radiation is observed for $1H^{35}Cl$ at $2991 cm{-1}$.
+A strong absorption of infrared radiation is observed for $^1H^{35}Cl$ at $2991 cm{-1}$.
 
 - Calculate the force constant k for this molecule
 - By what factor do you expect this frequency to shift if deuterium is substituted for hydrogen in this molecule? The force constant is unaffected by this substitution.
