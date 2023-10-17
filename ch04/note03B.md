@@ -32,11 +32,10 @@ A strong absorption of infrared radiation is observed for $1H^{35}Cl$ at $2991 c
 
 - **part a**
 
-$$\omega = 2\pi \nu = \Big(\frac{k}{\mu}\Big)^{1/2}$$
+$$\omega = 2\pi \nu = \frac{2\pi c}{\lambda} =\Big(\frac{k}{\mu}\Big)^{1/2}$$
 
-$$\Delta E = h\nu = \frac{hc}{\lambda}=\hbar \Big(\frac{k}{\mu}\Big)^{1/2}$$
 
-$$k = 4\pi^2 \Big(\frac{c}{\lambda}\Big)^2=516 N \cdot m^{-1}$$
+$$k = \Big(\frac{2\pi c}{\lambda}\Big)^2\mu=516 N \cdot m^{-1}$$
 
 - **part b**
 
@@ -113,10 +112,6 @@ We make use of the equation ${\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot
 - ${\tilde{\nu}_{0\rightarrow 2} = 2\tilde{\nu}_e  - 6\tilde{\nu}_ex_e= 2\cdot536-6\cdot3.4}=1059 cm^{-1}$
 - ${\tilde{\nu}_{0\rightarrow 3} = 3\tilde{\nu}_e  - 12\tilde{\nu}_ex_e= 3\cdot536-12\cdot3.4}=1567 cm^{-1}$
 :::
-
-
-
-
 
 
 ### Population of vibrational states
