@@ -31,6 +31,7 @@ A strong absorption of infrared radiation is observed for $^1H^{35}Cl$ at $2991 
 :::
 
 :::{admonition} **Solution**
+:class: dropdown
 
 - **part a**
 
