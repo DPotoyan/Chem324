@@ -16,7 +16,7 @@
 $${\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}$$
 
 - **The vibrational quantum number** is denoted as $v$ 
-- **The vibrational frequency** expressed in wavenumber units $cm^{-1}$ units is $\tilde{\nu} = \frac{1}{2\pic}\sqrt{k/\mu}$
+- **The vibrational frequency** expressed in wavenumber units $cm^{-1}$ units is $\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}$
 - **Reduced mass of the diatomic molecule** $\mu$. 
 
 - Note that $v$ and $\nu$ look very similar but have different meaning!  A typical value for vibrational frequency would be around  $500 - 4000cm^{-1}$. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.
