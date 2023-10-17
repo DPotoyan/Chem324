@@ -11,13 +11,15 @@
 
 ### Harmonic Oscillator
 
-- First let us write harmonic oscillator energies in a format used for spectroscopic analysis. This means converting to wavenumber units:
+- First let us write harmonic oscillator energies in a format used for spectroscopic analysis. This means converting to wavenumber units $\tilde{\nu}=\frac{1}{\lambda}$:
 
 $${\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}$$
 
-- The $v$ is the vibrational quantum number, the vibrational frequency $\nu = \frac{1}{2\pi}\sqrt{k/\mu}$ and $\mu$ is the reduced mass of the diatomic molecule. Note that $v$ and $\nu$ look very similar but have different meaning! This can be expressed in wavenumber units as:
+- **The vibrational quantum number** is denoted as $v$ 
+- **The vibrational frequency** expressed in wavenumber units $cm^{-1}$ units is $\tilde{\nu} = \frac{1}{2\pic}\sqrt{k/\mu}$
+- **Reduced mass of the diatomic molecule** $\mu$. 
 
-- A typical value for vibrational frequency would be around 500 - 4000 $cm^{-1}$.Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.
+- Note that $v$ and $\nu$ look very similar but have different meaning!  A typical value for vibrational frequency would be around  $500 - 4000cm^{-1}$. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.
 
 :::{admonition} **Example**
 :class: note
