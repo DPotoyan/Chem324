@@ -68,7 +68,7 @@ We are once again able to separet two angular variables and solve the esulting O
 
 ### Rotational states of molecules are quantized
 
-Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $m_J$ quantum number. 
+- Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $m_J$ quantum number. 
 
 
 $$
@@ -76,20 +76,22 @@ E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degener
 $$
 
 
-Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
-
-
-**Notes**
-
+- Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
 - Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
 - There is no rotational zero-point energy ($J = 0$ is allowed). The ground state rotational wavefunction has equal probability amplitudes for each orientation.
 - The energies are independent of $m_J$. $m_J$ introduces the degeneracy of a given $J$ level.
-- For non-linear molecules Eq. (\ref{eq9.165}) becomes more complicated.
+- For non-linear molecules Equation of energy becomes more complicated.
 
 
-**Example** What are the reduced mass and moment of inertia of $H^{35}Cl$? The equilibrium internuclear distance $R_e$ is 127.5 pm. What are the values of $L, L_z$ and $E$ for the state with $J = 1$? The atomic masses are: $m_{\textnormal{H}} = 1.673470 \times 10^{-27}$ kg and $m_{\textnormal{Cl}} = 5.806496 \times 10^{-26}$ kg.
+:::{admonition} **Example**
 
-**Solution** First we calculate the reduced mass (Eq. (\ref{eqX.25})):
+What are the reduced mass and moment of inertia of $H^{35}Cl$? The equilibrium internuclear distance $R_e$ is 127.5 pm. What are the values of $L, L_z$ and $E$ for the state with $J = 1$? The atomic masses are: $m_H = 1.673470 \cdot 10^{-27}$ kg and $m_{Cl} = 5.806496 \cdot 10^{-26}$ kg.
+:::
+
+:::{admonition} **Solution**
+:class: note
+
+First we calculate the reduced mass:
 
 $$\mu = \frac{m_{\textnormal{H}}m_{^{35}\textnormal{Cl}}}{m_{\textnormal{H}} + m_{^{35}\textnormal{Cl}}} = \frac{(1.673470\times 10^{-27}\textnormal{ kg})(5.806496\times 10^{-26}\textnormal{ kg})}{(1.673470\times 10^{-27}\textnormal{ kg}) + (5.806496\times 10^{-26}\textnormal{ kg})}$$
 $$= 1.62665\times 10^{-27}\textnormal{ kg}$$
@@ -97,18 +99,17 @@ $$= 1.62665\times 10^{-27}\textnormal{ kg}$$
 
 $$I = \mu R_e^2 = (1.626\times 10^{-27}\textnormal{ kg})(127.5\times 10^{-12}\textnormal{ m})^2 = 2.644\times 10^{-47}\textnormal{ kg m}^2$$
 
-$L$ is given by Eq. (\ref{eq9.166}):
+$L$ and $Lz$ are given by eigenvalue expressions of the respective operators:
 
 $$L = \sqrt{J(J+1)}\hbar = \sqrt{2}\left(1.054\times 10^{-34}\textnormal{ Js}\right) = 1.491\times 10^{-34}\textnormal{ Js}$$
 
-$L_z$ is given by Eq. (\ref{eq9.163}):
 
 $$L_z = -\hbar,0,\hbar\textnormal{ (three possible values)}$$
 
-Energy of the $J = 1$ level is given by 
+Energy of the $J = 1$ level is given by the eiganvalue expression of Hamiltonian:
 
 $$E = \frac{\hbar^2}{2I}J(J+1) = \frac{\hbar^2}{I} = 4.206\times 10^{-22}\textnormal{ J} = 21\textnormal{ cm}^{-1}$$
 
 This rotational spacing can be, for example, observed in gas phase infrared spectrum of HCl.
-
+:::
 
