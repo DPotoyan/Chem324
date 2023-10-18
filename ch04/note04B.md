@@ -89,7 +89,7 @@ What are the reduced mass and moment of inertia of $H^{35}Cl$? The equilibrium i
 :::
 
 :::{admonition} **Solution**
-:class: note
+:class: note, dropdown
 
 First we calculate the reduced mass:
 
@@ -138,7 +138,7 @@ When the molecule is in electronic state $e$ and vibrational state $v$, the tota
 
 $${\int\int\int\psi_e^*\psi_v^*\psi_{J',M'}\hat{\mu}\psi_e\psi_v\psi_{J,M}d\tau_ed\tau_{rot}d\tau_{vib}}$$
 
-where $\hat{\mu}$ is the transition dipole operator (see Eq. (\ref{eq11.80})) and only the rotational wavefunction has change. The electronic part gives the permanent dipole moment:
+where $\hat{\mu}$ is the transition dipole operator and only the rotational wavefunction has change. The electronic part gives the permanent dipole moment:
 
 $${\mu_0^{(e)} = \int\psi_e^*\hat{\mu}\psi_ed\tau_e}$$
 
