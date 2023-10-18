@@ -62,9 +62,15 @@ $$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\h
 
 ### Cartesian to spherical converter 
 
-**Geometric relations**
+:::{figure-md} markdown-fig
+<img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
+:::
 
 Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
+
+**Geometric relations**
 
 $$x=rsin\theta cos\phi$$
 $$y=rsin\theta sin\phi$$
@@ -75,13 +81,6 @@ $$z=cos\theta$$
 $$Radius:\,\,\,0<r<\infty$$
 $$Azimuthal\, angle:\,\,\,0<\phi<2\pi$$
 $$Polar\, angle:\,\,\,0<\theta<\pi$$
-
-
-:::{figure-md} markdown-fig
-<img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="300px">
-
-Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
-:::
 
 **Volume Element**
 
@@ -94,7 +93,7 @@ $$
 Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements
 :::
 
-:::{admonition} **Example**
+:::{admonition} **Solution**
 :class: note, dropdown
 
 $$\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c$$
@@ -119,9 +118,6 @@ $$
 $$
 :::
 ::::
-
-
-
 
 ### Quantum angular momentum 
 
