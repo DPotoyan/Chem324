@@ -7,25 +7,32 @@
 - In QM, there are several angular momentum operators: the total angular momentum (usually denoted by $J$), the orbital angular momentum (usually denoted by $L$ ) and the intrinsic, or spin angular momentum (denoted by $S$). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.
 ```
 
+### L vs p Overview
+
+
+| Property                  | Linear Momentum              | Angular Momentum             |
+|---------------------------|-----------------------------|------------------------------|
+| Symbol                    | $p$                        | $L$                        |
+| Nature                    | Linear motion in a straight line | Rotational motion around an axis |
+| CM formula               | $p = m \cdot v$            | $L = I \cdot \omega$        |
+| QM operators              | $\hat{p_x}=-i\hbar\frac{\partial}{\partial x}$           | ${\hat{L_x} = yp_z - zp_y}$           |
+| Conservation Principle    | Law of Conservation of Linear Momentum | Law of Conservation of Angular Momentum |
+| Conservation Condition    | No net external force acting on a closed system | No net external torque acting on a closed system |
+
+
+
 
 ### Classical angular momentum 
 
-In classical mechanics, the  [angular momentum](http://en.wikipedia.org/wiki/Angular_momentum) is defined as:
+![](images/L.png)
 
-$${\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})\textnormal{ where }\vec{L} = (L_x,L_y,L_z)}$$
+- In classical mechanics, the  [angular momentum](http://en.wikipedia.org/wiki/Angular_momentum) is defined as:
 
+$${\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})}$$
 
+- Where $\vec{L} = (L_x,L_y,L_z)$, ${\vec{r} = (x,y,z)}$ is the position and ${\vec{p} = \left(p_x, p_y, p_z\right)}$ the velocity of the mass $m$. To evaluate the [cross](http://en.wikipedia.org/wiki/Cross_product), we write down the Cartesian components:
 
-Here $\vec{r}$ is the position and $\vec{v}$ the velocity of the mass $m$.
-
-
-To evaluate the [cross](http://en.wikipedia.org/wiki/Cross_product), we write down the Cartesian components:
-
-$${\vec{r} = (x,y,z)}$$
-
-$${\vec{p} = \left(p_x, p_y, p_z\right)}$$
-
-The cross product is convenient to write using a [determinant](http://en.wikipedia.org/wiki/Determinant):
+- The cross product is convenient to write using a [determinant](http://en.wikipedia.org/wiki/Determinant):
 
 $${\vec{L} = \vec{r}\times\vec{p} =
 \begin{vmatrix}
@@ -34,10 +41,7 @@ x & y & z\\
 p_x & p_y & p_z\\
 \end{vmatrix}= \left(yp_z - zp_y\right)\vec{i} + \left(zp_x - xp_z\right)\vec{j} + \left(xp_y - yp_x\right)\vec{k}}$$
 
-where $\vec{i}, \vec{j}$ and $\vec{k}$ denote [unit vectors](http://en.wikipedia.org/wiki/Unit_vector) along the $x, y$ and $z$ axes.
-
-
-The Cartesian components can be identified as:
+- where $\vec{i}, \vec{j}$ and $\vec{k}$ denote [unit vectors](http://en.wikipedia.org/wiki/Unit_vector) along the $x, y$ and $z$ axes. The Cartesian components can be identified as:
 
 $${L_x = yp_z - zp_y}$$
 
@@ -45,7 +49,7 @@ $${L_y = zp_x - xp_z}$$
 
 $${L_z = xp_y - yp_x}$$
 
-The square of the angular momentum is given by:
+- The square of the angular momentum is given by:
 
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
@@ -78,7 +82,7 @@ Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Som
 
 
 $$
-{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y}
+{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\
 {\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
 $$
 
@@ -86,14 +90,13 @@ $$
 
 **Exercise** Prove that the above commutation relations hold.
 
-Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).
+- Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).
 
-
-It is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. It can be shown that for $\vec{\hat{L}}^2$ the eigenfunctions and eigenvalues are:
+- It is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. It can be shown that for $\vec{\hat{L}}^2$ the eigenfunctions and eigenvalues are:
 
 $${\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
-{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
-{\textnormal{Quantum numbers: }l = 0,1,2,3...\textnormal{ and }\left|m\right| = 0,1,2,3,...l}$$
+\\{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
+\\ {\textnormal{Quantum numbers: }l = 0,1,2,3... and \\ \left|m\right| = 0,1,2,3,...l}$$
 
 where $l$ is the [angular momentum quantum number](http://en.wikipedia.org/wiki/Azimuthal_quantum_number)  and $m$ is the [magnetic quantum number](http://en.wikipedia.org/wiki/Magnetic_quantum_number) . Note that here $m$ has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. Functions $Y_l^m$ are called [spherical harmonics](http://en.wikipedia.org/wiki/Spherical_harmonics). Examples of spherical harmonics with various values of $l$ and $m$ are given below (with [Condon-Shortley](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)  [phase convention](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)
 

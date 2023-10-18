@@ -431,6 +431,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
@@ -457,18 +458,55 @@ document.write(`
 <li><p>In QM, there are several angular momentum operators: the total angular momentum (usually denoted by <span class="math notranslate nohighlight">\(J\)</span>), the orbital angular momentum (usually denoted by <span class="math notranslate nohighlight">\(L\)</span> ) and the intrinsic, or spin angular momentum (denoted by <span class="math notranslate nohighlight">\(S\)</span>). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.</p></li>
 </ul>
 </div>
+<section id="l-vs-p-overview">
+<h2>L vs p Overview<a class="headerlink" href="#l-vs-p-overview" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Linear Momentum</p></th>
+<th class="head"><p>Angular Momentum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Symbol</p></td>
+<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Nature</p></td>
+<td><p>Linear motion in a straight line</p></td>
+<td><p>Rotational motion around an axis</p></td>
+</tr>
+<tr class="row-even"><td><p>CM formula</p></td>
+<td><p><span class="math notranslate nohighlight">\(p = m \cdot v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L = I \cdot \omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>QM operators</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p_x}=-i\hbar\frac{\partial}{\partial x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\({\hat{L_x} = yp_z - zp_y}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Conservation Principle</p></td>
+<td><p>Law of Conservation of Linear Momentum</p></td>
+<td><p>Law of Conservation of Angular Momentum</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conservation Condition</p></td>
+<td><p>No net external force acting on a closed system</p></td>
+<td><p>No net external torque acting on a closed system</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="classical-angular-momentum">
 <h2>Classical angular momentum<a class="headerlink" href="#classical-angular-momentum" title="Permalink to this heading">#</a></h2>
-<p>In classical mechanics, the  <a class="reference external" href="http://en.wikipedia.org/wiki/Angular_momentum">angular momentum</a> is defined as:</p>
+<p><img alt="" src="../_images/L.png" /></p>
+<ul class="simple">
+<li><p>In classical mechanics, the  <a class="reference external" href="http://en.wikipedia.org/wiki/Angular_momentum">angular momentum</a> is defined as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})\textnormal{ where }\vec{L} = (L_x,L_y,L_z)}\]</div>
-<p>Here <span class="math notranslate nohighlight">\(\vec{r}\)</span> is the position and <span class="math notranslate nohighlight">\(\vec{v}\)</span> the velocity of the mass <span class="math notranslate nohighlight">\(m\)</span>.</p>
-<p>To evaluate the <a class="reference external" href="http://en.wikipedia.org/wiki/Cross_product">cross</a>, we write down the Cartesian components:</p>
-<div class="math notranslate nohighlight">
-\[{\vec{r} = (x,y,z)}\]</div>
-<div class="math notranslate nohighlight">
-\[{\vec{p} = \left(p_x, p_y, p_z\right)}\]</div>
-<p>The cross product is convenient to write using a <a class="reference external" href="http://en.wikipedia.org/wiki/Determinant">determinant</a>:</p>
+\[{\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})}\]</div>
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(\vec{L} = (L_x,L_y,L_z)\)</span>, <span class="math notranslate nohighlight">\({\vec{r} = (x,y,z)}\)</span> is the position and <span class="math notranslate nohighlight">\({\vec{p} = \left(p_x, p_y, p_z\right)}\)</span> the velocity of the mass <span class="math notranslate nohighlight">\(m\)</span>. To evaluate the <a class="reference external" href="http://en.wikipedia.org/wiki/Cross_product">cross</a>, we write down the Cartesian components:</p></li>
+<li><p>The cross product is convenient to write using a <a class="reference external" href="http://en.wikipedia.org/wiki/Determinant">determinant</a>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\vec{L} = \vec{r}\times\vec{p} =
 \begin{vmatrix}
@@ -476,15 +514,18 @@ document.write(`
 x &amp; y &amp; z\\
 p_x &amp; p_y &amp; p_z\\
 \end{vmatrix}= \left(yp_z - zp_y\right)\vec{i} + \left(zp_x - xp_z\right)\vec{j} + \left(xp_y - yp_x\right)\vec{k}}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span> denote <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_vector">unit vectors</a> along the <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> axes.</p>
-<p>The Cartesian components can be identified as:</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span> denote <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_vector">unit vectors</a> along the <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> axes. The Cartesian components can be identified as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{L_x = yp_z - zp_y}\]</div>
 <div class="math notranslate nohighlight">
 \[{L_y = zp_x - xp_z}\]</div>
 <div class="math notranslate nohighlight">
 \[{L_z = xp_y - yp_x}\]</div>
-<p>The square of the angular momentum is given by:</p>
+<ul class="simple">
+<li><p>The square of the angular momentum is given by:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
 </section>
@@ -510,17 +551,19 @@ table). The Cartesian quantum mechanical angular momentum operators are:</p>
 \[{\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial\phi^2}\right]}_{\equiv \Lambda^2}}\]</div>
 <p>Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). The following commutation relations can be shown to hold:</p>
 <div class="math notranslate nohighlight">
-\[
-{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y}
+\[\begin{split}
+{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\
 {\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
-\]</div>
+\end{split}\]</div>
 <p><strong>Exercise</strong> Prove that the above commutation relations hold.</p>
-<p>Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p>
-<p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p>
+<ul class="simple">
+<li><p>Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p></li>
+<li><p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
-{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
-{\textnormal{Quantum numbers: }l = 0,1,2,3...\textnormal{ and }\left|m\right| = 0,1,2,3,...l}\]</div>
+\[\begin{split}{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
+\\{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
+\\ {\textnormal{Quantum numbers: }l = 0,1,2,3... and \\ \left|m\right| = 0,1,2,3,...l}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(l\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Azimuthal_quantum_number">angular momentum quantum number</a>  and <span class="math notranslate nohighlight">\(m\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Magnetic_quantum_number">magnetic quantum number</a> . Note that here <span class="math notranslate nohighlight">\(m\)</span> has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. Functions <span class="math notranslate nohighlight">\(Y_l^m\)</span> are called <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. Examples of spherical harmonics with various values of <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are given below (with <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">Condon-Shortley</a>  <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">phase convention</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{Y^0_0 = \frac{1}{2\sqrt{\pi}}\textnormal{, }\textnormal{, }Y^0_1 = \sqrt{\frac{3}{4\pi}}\cos(\theta)\textnormal{, }Y^1_1 = -\sqrt{\frac{3}{8\pi}}\sin(\theta)e^{i\phi}} \\
@@ -649,6 +692,7 @@ dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
