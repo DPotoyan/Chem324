@@ -146,3 +146,29 @@ $$
 
 
 
+
+::::{tab-set}
+:::{tab-item} Cartesian
+
+$$
+\nabla^2 = \frac{{\partial^2}}{{\partial x^2}} + \frac{{\partial^2}}{{\partial y^2}} + \frac{{\partial^2}}{{\partial z^2}}
+$$
+
+:::
+
+:::{tab-item} Polar
+$$
+\nabla^2 = \frac{1}{{r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) + \frac{1}{{r^2 \sin(\phi)}} \frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right) + \frac{1}{{r^2 \sin^2(\phi)}} \frac{{\partial^2}}{{\partial \phi^2}}
+$$
+:::
+::::
+
+### Volume Element in Spherical Coordinates
+
+The volume element in spherical coordinates is:
+
+$$
+dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
+$$
+
+These expressions show how the Laplacian and the volume element differ between Cartesian and spherical coordinates.
