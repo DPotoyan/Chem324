@@ -76,8 +76,6 @@ $$
 ::::
 
 
-### Cartesian to polar converter
-
 **Volume Element**
 ::::{tab-set} 
 :::{tab-item} Cartesian
