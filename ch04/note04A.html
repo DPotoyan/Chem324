@@ -533,8 +533,8 @@ p_x &amp; p_y &amp; p_z\\
 </section>
 <section id="cartesian-to-polar-converter">
 <h2>Cartesian to polar converter<a class="headerlink" href="#cartesian-to-polar-converter" title="Permalink to this heading">#</a></h2>
-<p>Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
-<strong>Laplacian</strong></p>
+<p>Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems</p>
+<p><strong>Laplacian</strong></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -575,16 +575,26 @@ dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
 </section>
 <section id="quantum-angular-momentum">
 <h2>Quantum angular momentum<a class="headerlink" href="#quantum-angular-momentum" title="Permalink to this heading">#</a></h2>
-<p>In quantum mechanics, the classical angular momentum is replaced by the corresponding
+<ul class="simple">
+<li><p>In quantum mechanics, the classical angular momentum is replaced by the corresponding
 quantum mechanical operator (see the previous ``classical - quantum’’ correspondence
-table). The Cartesian quantum mechanical angular momentum operators are:</p>
+table).</p></li>
+<li><p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p></li>
+</ul>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Cartesian</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[{\hat{L}_x = -i\hbar\left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y}\right)}\]</div>
 <div class="math notranslate nohighlight">
 \[{\hat{L}_y = -i\hbar\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z}\right)}\]</div>
 <div class="math notranslate nohighlight">
 \[{\hat{L}_z = -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right)}\]</div>
-<p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math):</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Polar</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[{\hat{L}_x = i\hbar\left(\sin(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\cos(\phi)\frac{\partial}{\partial\phi}\right)}\]</div>
 <div class="math notranslate nohighlight">
@@ -593,7 +603,8 @@ table). The Cartesian quantum mechanical angular momentum operators are:</p>
 \[{\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}}\]</div>
 <div class="math notranslate nohighlight">
 \[{\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial\phi^2}\right]}_{\equiv \Lambda^2}}\]</div>
-<p>Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p>
+</div>
+</div>
 </section>
 <section id="commutation-relations">
 <h2>Commutation relations<a class="headerlink" href="#commutation-relations" title="Permalink to this heading">#</a></h2>
@@ -603,40 +614,61 @@ table). The Cartesian quantum mechanical angular momentum operators are:</p>
 {\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\
 {\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
 \end{split}\]</div>
-<p><strong>Exercise</strong> Prove that the above commutation relations hold.</p>
 <ul class="simple">
 <li><p>Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p></li>
 </ul>
 </section>
 <section id="eignefunctins-and-eigenvalues-of-l-and-l-z">
 <h2>Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span><a class="headerlink" href="#eignefunctins-and-eigenvalues-of-l-and-l-z" title="Permalink to this heading">#</a></h2>
+<p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}\]</div>
+<div class="math notranslate nohighlight">
+\[\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}\]</div>
 <ul class="simple">
-<li><p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p></li>
+<li><p><strong>Wavefunction:</strong> <span class="math notranslate nohighlight">\(\psi_{l,m} = Y_l^m(\theta,\phi)\)</span></p></li>
+<li><p><strong>Angular quantum number:</strong> <span class="math notranslate nohighlight">\(l = 0,1,2,3...\)</span></p></li>
+<li><p><strong>Magnetic quantum number:</strong> <span class="math notranslate nohighlight">\(|m| = 0,1,2,3,...l\)</span></p></li>
+<li><p>These eigenvalues are often denoted by <span class="math notranslate nohighlight">\(L_z\)</span> (<span class="math notranslate nohighlight">\(= m\hbar\)</span>). Note that specification of both <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> provides all the information we can have about the system.</p></li>
+<li><p>Note that here <span class="math notranslate nohighlight">\(m\)</span> has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum.</p></li>
+<li><p>Functions <span class="math notranslate nohighlight">\(Y_l^m\)</span> are called <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. Examples of spherical harmonics with various values of <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are given below (with <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">Condon-Shortley</a>  <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">phase convention</a></p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
-\\{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
-\\ {\textnormal{Quantum numbers: }l = 0,1,2,3... and \\ \left|m\right| = 0,1,2,3,...l}\end{split}\]</div>
-<p>Operating on the eigenfunctions by <span class="math notranslate nohighlight">\(L_z\)</span> gives the following eigenvalues for <span class="math notranslate nohighlight">\(L_z\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi) \\ \textnormal{ where }\left| m\right| = 0, ..., l}\end{split}\]</div>
-<p>These eigenvalues are often denoted by <span class="math notranslate nohighlight">\(L_z\)</span> (<span class="math notranslate nohighlight">\(= m\hbar\)</span>). Note that specification of both <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> provides all the information we can have about the system.</p>
-<ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(l\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Azimuthal_quantum_number">angular momentum quantum number</a>  and <span class="math notranslate nohighlight">\(m\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Magnetic_quantum_number">magnetic quantum number</a> . Note that here <span class="math notranslate nohighlight">\(m\)</span> has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. Functions <span class="math notranslate nohighlight">\(Y_l^m\)</span> are called <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. Examples of spherical harmonics with various values of <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are given below (with <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">Condon-Shortley</a>  <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">phase convention</a></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{Y^0_0 = \frac{1}{2\sqrt{\pi}}\textnormal{, }\textnormal{, }Y^0_1 = \sqrt{\frac{3}{4\pi}}\cos(\theta)\textnormal{, }Y^1_1 = -\sqrt{\frac{3}{8\pi}}\sin(\theta)e^{i\phi}} \\
-{Y^{-1}_1 = \sqrt{\frac{3}{8\pi}}\sin(\theta)e^{-i\phi}\textnormal{, }Y^0_2 = \sqrt{\frac{5}{16\pi}}(3\cos^2(\theta) - 1)\textnormal{, }Y_2^1 = -\sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{i\phi}} \\
-{Y_2^{-1} = \sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{-i\phi}\textnormal{, }Y^2_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{2i\phi}\textnormal{, }Y^{-2}_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{-2i\phi}}\end{split}\]</div>
 </section>
 <section id="spherical-harmonics">
 <h2>Spherical harmonics<a class="headerlink" href="#spherical-harmonics" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(Y_{lm}(\theta, \phi)\)</span></p></th>
+<th class="head"><p>Expression</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_{00}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{\sqrt{4\pi}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y_{10}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\frac{3}{4\pi}} \cos(\theta)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_{1-1}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\frac{3}{4\pi}} \sin(\theta) e^{-i\phi}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y_{20}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\frac{5}{16\pi}} (3\cos^2(\theta) - 1)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_{2-1}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\frac{15}{4\pi}} \sin(\theta) \cos(\theta) e^{-i\phi}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y_{2-2}(\theta, \phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\frac{15}{4\pi}} \sin^2(\theta) e^{-2i\phi}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
 <li><p>The functions <span class="math notranslate nohighlight">\(Y_{J,m}(\theta,\phi)\)</span> are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of <a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_orbital">atomic orbital</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Electron_configuration">electron configurations</a>, representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.</p></li>
 </ul>
-<p><img alt="" src="../_images/sphhar.gif" /></p>
+<p><img alt="" src="../_images/sphhar2.png" /></p>
 <ul class="simple">
-<li><p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi part\)</span>) In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency.</p></li>
+<li><p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi\)</span> part). In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency.</p></li>
 </ul>
 <p>The following relations are useful when working with spherical harmonics:</p>
 <p><strong>Orthogonality</strong>
@@ -651,7 +683,6 @@ $<span class="math notranslate nohighlight">\({\int\limits_0^{\pi}\int\limits_0^
 <section id="visualizing-spherical-harmonics">
 <h2>Visualizing spherical harmonics<a class="headerlink" href="#visualizing-spherical-harmonics" title="Permalink to this heading">#</a></h2>
 <p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p>
-<p><img alt="" src="../_images/sphhar2.png" /></p>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif" /></p>
 </section>
 </section>
