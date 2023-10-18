@@ -24,7 +24,11 @@
 
 ### Classical angular momentum 
 
-![](images/L.png)
+:::{figure-md} markdown-fig
+<img src="./images/L.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+Angular momemntum in classical mechanics is a vector quantity defined by the cross product of position vector and linear momentum. Direction is determined by using the thumb rule. 
+:::
 
 - In classical mechanics, the  [angular momentum](http://en.wikipedia.org/wiki/Angular_momentum) is defined via a corss product of position and linear momentum. The cross product is convenient to write using a [determinant](http://en.wikipedia.org/wiki/Determinant):
 
@@ -50,6 +54,8 @@ $${L_z = xp_y - yp_x}$$
 
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
+-  **Spherical coordinates** are more convenient for rotational problems. We therefore replace $(x,y,z)$ by $(r, \phi, \theta)$. For instance: when considering rotation with $r=const$ we are able to eliminate one degree of freedom corresponding to radial direction.
+$$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
 
 ### Cartesian to polar converter 
 
@@ -98,9 +104,6 @@ quantum mechanical operator (see the previous ``classical - quantum'' correspond
 table). 
 
 - In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
-
-- For $r=const$ sitation corresponding to rigid model we are able to redeuce the dimensionality of the problem becasue $\hat{L}_r=0$
-$$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
 
 
 ::::{tab-set} 
@@ -184,9 +187,11 @@ $$\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}$$
 The following relations are useful when working with spherical harmonics:
 
 **Orthogonality**
+
 $${\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}$$
 
 **Triple product**
+
 $${\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}$$
 
 $${\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l', l''\textnormal{ can be formed:}} \\

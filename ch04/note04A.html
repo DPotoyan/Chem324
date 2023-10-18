@@ -499,7 +499,12 @@ document.write(`
 </section>
 <section id="classical-angular-momentum">
 <h2>Classical angular momentum<a class="headerlink" href="#classical-angular-momentum" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/L.png" /></p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/L.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/L.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Angular momemntum in classical mechanics is a vector quantity defined by the cross product of position vector and linear momentum. Direction is determined by using the thumb rule.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>In classical mechanics, the  <a class="reference external" href="http://en.wikipedia.org/wiki/Angular_momentum">angular momentum</a> is defined via a corss product of position and linear momentum. The cross product is convenient to write using a <a class="reference external" href="http://en.wikipedia.org/wiki/Determinant">determinant</a>:</p></li>
 </ul>
@@ -525,6 +530,10 @@ p_x &amp; p_y &amp; p_z\\
 </ul>
 <div class="math notranslate nohighlight">
 \[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
+<ul class="simple">
+<li><p><strong>Spherical coordinates</strong> are more convenient for rotational problems. We therefore replace <span class="math notranslate nohighlight">\((x,y,z)\)</span> by <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>. For instance: when considering rotation with <span class="math notranslate nohighlight">\(r=const\)</span> we are able to eliminate one degree of freedom corresponding to radial direction.
+$<span class="math notranslate nohighlight">\(\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2\)</span>$</p></li>
+</ul>
 </section>
 <section id="cartesian-to-polar-converter">
 <h2>Cartesian to polar converter<a class="headerlink" href="#cartesian-to-polar-converter" title="Permalink to this heading">#</a></h2>
@@ -575,8 +584,6 @@ dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
 quantum mechanical operator (see the previous ``classical - quantum’’ correspondence
 table).</p></li>
 <li><p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p></li>
-<li><p>For <span class="math notranslate nohighlight">\(r=const\)</span> sitation corresponding to rigid model we are able to redeuce the dimensionality of the problem becasue <span class="math notranslate nohighlight">\(\hat{L}_r=0\)</span>
-$<span class="math notranslate nohighlight">\(\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2\)</span>$</p></li>
 </ul>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
@@ -670,10 +677,12 @@ Polar</label><div class="sd-tab-content docutils">
 <li><p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi\)</span> part). In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency.</p></li>
 </ul>
 <p>The following relations are useful when working with spherical harmonics:</p>
-<p><strong>Orthogonality</strong>
-$<span class="math notranslate nohighlight">\({\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}\)</span>$</p>
-<p><strong>Triple product</strong>
-$<span class="math notranslate nohighlight">\({\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}\)</span>$</p>
+<p><strong>Orthogonality</strong></p>
+<div class="math notranslate nohighlight">
+\[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}\]</div>
+<p><strong>Triple product</strong></p>
+<div class="math notranslate nohighlight">
+\[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l', l''\textnormal{ can be formed:}} \\
 {l''^2 = l^2 + l'^2 - 2ll'\cos(\alpha)\textnormal{ with some value of }\alpha\textnormal{ }(\left|\cos(\alpha)\right|\le 1)}\\
