@@ -26,13 +26,7 @@
 
 ![](images/L.png)
 
-- In classical mechanics, the  [angular momentum](http://en.wikipedia.org/wiki/Angular_momentum) is defined as:
-
-$${\vec{L} = \vec{r}\times \vec{p} = \vec{r}\times(m\vec{v})}$$
-
-- Where $\vec{L} = (L_x,L_y,L_z)$, ${\vec{r} = (x,y,z)}$ is the position and ${\vec{p} = \left(p_x, p_y, p_z\right)}$ the velocity of the mass $m$. To evaluate the [cross](http://en.wikipedia.org/wiki/Cross_product), we write down the Cartesian components:
-
-- The cross product is convenient to write using a [determinant](http://en.wikipedia.org/wiki/Determinant):
+- In classical mechanics, the  [angular momentum](http://en.wikipedia.org/wiki/Angular_momentum) is defined via a corss product of position and linear momentum. The cross product is convenient to write using a [determinant](http://en.wikipedia.org/wiki/Determinant):
 
 $${\vec{L} = \vec{r}\times\vec{p} =
 \begin{vmatrix}
@@ -41,7 +35,10 @@ x & y & z\\
 p_x & p_y & p_z\\
 \end{vmatrix}= \left(yp_z - zp_y\right)\vec{i} + \left(zp_x - xp_z\right)\vec{j} + \left(xp_y - yp_x\right)\vec{k}}$$
 
-- where $\vec{i}, \vec{j}$ and $\vec{k}$ denote [unit vectors](http://en.wikipedia.org/wiki/Unit_vector) along the $x, y$ and $z$ axes. The Cartesian components can be identified as:
+
+- where $\vec{i}, \vec{j}$ and $\vec{k}$ denote [unit vectors](http://en.wikipedia.org/wiki/Unit_vector) along the $x, y$ and $z$ axes. $p_x$ and $L_x$ are components of linear and angular momentum respectively 
+
+- **The Cartesian components of angular momentum** can be identified as:
 
 $${L_x = yp_z - zp_y}$$
 
@@ -49,7 +46,7 @@ $${L_y = zp_x - xp_z}$$
 
 $${L_z = xp_y - yp_x}$$
 
-- The square of the angular momentum is given by:
+- **The square of the angular momentum** is given by:
 
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
