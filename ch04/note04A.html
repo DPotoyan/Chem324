@@ -546,7 +546,7 @@ p_x &amp; p_y &amp; p_z\\
 </section>
 <section id="cartesian-to-spherical-converter">
 <h2>Cartesian to spherical converter<a class="headerlink" href="#cartesian-to-spherical-converter" title="Permalink to this heading">#</a></h2>
-<p><strong>Geometrical relations</strong></p>
+<p><strong>Geometric relations</strong></p>
 <p>Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems</p>
 <div class="math notranslate nohighlight">
 \[x=rsin\theta cos\phi\]</div>
@@ -570,8 +570,19 @@ p_x &amp; p_y &amp; p_z\\
 <p><strong>Volume Element</strong></p>
 <div class="math notranslate nohighlight">
 \[
-dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
+dV = r^2 \sin \theta \, dr \, d\theta \, d\phi
 \]</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<div class="math notranslate nohighlight">
+\[\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c\]</div>
+<div class="math notranslate nohighlight">
+\[\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}\]</div>
+</div>
 <p><strong>Laplacian</strong></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -689,23 +700,23 @@ Polar</label><div class="sd-tab-content docutils">
 </ul>
 <p><img alt="" src="../_images/sphhar2.png" /></p>
 <ul class="simple">
-<li><p>Spherical harmonics consist of associated Legendre polynomials (<span class="math notranslate nohighlight">\(\theta\)</span> part) and complex exponential (<span class="math notranslate nohighlight">\(\phi\)</span> part). In and physical science, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency.</p></li>
+<li><p>Spherical harmonics consist of a well known special functions called <a class="reference external" href="https://en.wikipedia.org/wiki/Associated_Legendre_polynomials">associated Legendre polynomials</a> (<span class="math notranslate nohighlight">\(\theta\)</span> part) times the complex exponential (<span class="math notranslate nohighlight">\(\phi\)</span> part).</p></li>
+<li><p>In physics, <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a> are defined on the surface of a sphere  form a complete basis set.</p></li>
+<li><p>Spherical harmonics can be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a>. Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency.</p></li>
 </ul>
-<p>The following relations are useful when working with spherical harmonics:</p>
 <p><strong>Orthogonality</strong></p>
 <div class="math notranslate nohighlight">
+\[\langle l', m'| l, m\rangle=\delta_{l,l'}\delta_{m,m'}\]</div>
+<div class="math notranslate nohighlight">
 \[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}\]</div>
-<p><strong>Triple product</strong></p>
-<div class="math notranslate nohighlight">
-\[{\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l', l''\textnormal{ can be formed:}} \\
-{l''^2 = l^2 + l'^2 - 2ll'\cos(\alpha)\textnormal{ with some value of }\alpha\textnormal{ }(\left|\cos(\alpha)\right|\le 1)}\\
-{Y^{m*}_l = (-1)^mY^{-m}_l\textnormal{ (Condon-Shortley)}}\end{split}\]</div>
 </section>
 <section id="visualizing-spherical-harmonics">
 <h2>Visualizing spherical harmonics<a class="headerlink" href="#visualizing-spherical-harmonics" title="Permalink to this heading">#</a></h2>
-<p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p>
+<ul class="simple">
+<li><p>Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials.</p></li>
+<li><p>Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator.</p></li>
+<li><p>Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!</p></li>
+</ul>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif" /></p>
 </section>
 </section>

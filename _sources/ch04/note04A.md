@@ -62,7 +62,7 @@ $$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\h
 
 ### Cartesian to spherical converter 
 
-**Geometrical relations**
+**Geometric relations**
 
 Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
 
@@ -86,9 +86,21 @@ Converting between cartesian and spherical coordinates. Shown is the rectangular
 **Volume Element**
 
 $$
-dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
+dV = r^2 \sin \theta \, dr \, d\theta \, d\phi
 $$
 
+:::{admonition} **Example**
+:class: note
+Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements
+:::
+
+:::{admonition} **Example**
+:class: note, dropdown
+
+$$\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c$$
+
+$$\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}$$
+:::
 
 **Laplacian**
 
@@ -196,28 +208,25 @@ $$\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}$$
 
 ![](./images/sphhar2.png)
 
-- Spherical harmonics consist of associated Legendre polynomials ($\theta$ part) and complex exponential ($\phi$ part). In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics) are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency. 
+- Spherical harmonics consist of a well known special functions called [associated Legendre polynomials](https://en.wikipedia.org/wiki/Associated_Legendre_polynomials) ($\theta$ part) times the complex exponential ($\phi$ part). 
+- In physics, [spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics) are defined on the surface of a sphere  form a complete basis set. 
+- Spherical harmonics can be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency. 
 
-The following relations are useful when working with spherical harmonics:
 
 **Orthogonality**
 
+
+$$\langle l', m'| l, m\rangle=\delta_{l,l'}\delta_{m,m'}$$ 
+
 $${\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = \delta_{l,l'}\delta_{m,m'}}$$
-
-**Triple product**
-
-$${\int\limits_0^{\pi}\int\limits_0^{2\pi}Y^{m''*}_{l''}(\theta,\phi)Y_{l'}^{m'}(\theta,\phi)Y_l^m(\theta,\phi)\sin(\theta)d\theta d\phi = 0}$$
-
-$${\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l', l''\textnormal{ can be formed:}} \\
-{l''^2 = l^2 + l'^2 - 2ll'\cos(\alpha)\textnormal{ with some value of }\alpha\textnormal{ }(\left|\cos(\alpha)\right|\le 1)}\\
-{Y^{m*}_l = (-1)^mY^{-m}_l\textnormal{ (Condon-Shortley)}}$$
-
 
 
 
 ### Visualizing spherical harmonics 
 
-Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
+- Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. 
+- Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. 
+- Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
 
 ![](https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif)
 
