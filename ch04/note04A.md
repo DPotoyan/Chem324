@@ -55,11 +55,42 @@ $${L_z = xp_y - yp_x}$$
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
 -  **Spherical coordinates** are more convenient for rotational problems. We therefore replace $(x,y,z)$ by $(r, \phi, \theta)$. For instance: when considering rotation with $r=const$ we are able to eliminate one degree of freedom corresponding to radial direction.
+
 $$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
 
 ### Cartesian to polar converter 
 
 Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
+
+:::{figure-md} markdown-fig
+<img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
+$$x=rsin\theta cos\phi$$
+$$y=rsin\theta sin\phi$$
+$$z=cos\theta$$
+:::
+
+
+
+
+**Volume Element**
+::::{tab-set} 
+:::{tab-item} Cartesian
+
+$$
+dV = dxdydz
+$$
+
+:::
+
+:::{tab-item} Polar
+$$
+dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
+$$
+:::
+::::
+
 
 **Laplacian**
 
@@ -80,22 +111,7 @@ $$
 ::::
 
 
-**Volume Element**
-::::{tab-set} 
-:::{tab-item} Cartesian
 
-$$
-dV = dxdydz
-$$
-
-:::
-
-:::{tab-item} Polar
-$$
-dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
-$$
-:::
-::::
 
 ### Quantum angular momentum 
 
