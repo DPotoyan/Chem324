@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note04B';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Rotational spectra of diatomic molecules" href="note04C.html" />
+    <link rel="next" title="Vibration-rotation spectra of diatomic molecules" href="note05.html" />
     <link rel="prev" title="Angular momentum" href="note04A.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -225,7 +225,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03B.html">Molecular Vibrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Rigid Rotor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note04C.html">Rotational spectra of diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Vibration-rotation spectra of diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_ho.html">DEMO: Harmonic Oscillator</a></li>
 </ul>
@@ -435,6 +434,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-spectra-of-diatomic-molecules">Rotational spectra of diatomic molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rovibronic-coupling">Rovibronic coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-states">Population of states</a></li>
 </ul>
             </nav>
         </div>
@@ -542,6 +545,92 @@ E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degener
 <p>This rotational spacing can be, for example, observed in gas phase infrared spectrum of HCl.</p>
 </div>
 </section>
+<section id="rotational-spectra-of-diatomic-molecules">
+<h2>Rotational spectra of diatomic molecules<a class="headerlink" href="#rotational-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h2>
+<p>We assume that the molecule is a rigid rotor, which means that the molecular geometry does not change during molecular rotation. We have solved this problem already</p>
+<div class="math notranslate nohighlight">
+\[{E_r = \frac{\hbar^2}{2I}J(J+1)\textnormal{ with }J=0,1,2...\textnormal{ and }M=-J,...,0,...J}\]</div>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(I\)</span> is the moment of inertia for the molecule. Since the energy does not depend on <span class="math notranslate nohighlight">\(M\)</span>, each rotational level is <span class="math notranslate nohighlight">\(2J + 1\)</span> fold degenerate.</p></li>
+<li><p>Energies are typically expressed in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span> although the basic SI unit is <span class="math notranslate nohighlight">\(m^{-1}\)</span>) by dividing <span class="math notranslate nohighlight">\(E\)</span> by <span class="math notranslate nohighlight">\(hc\)</span>. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span>). The rotational energies expressed in wavenumbers are given by:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_r(J) = \frac{E_r}{hc} = \frac{J(J+1)h}{8\pi^2Ic} = J(J+1)\tilde{B}}\]</div>
+<ul class="simple">
+<li><p>where the <em>rotational constant</em> is given by:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\tilde{B} = \frac{h}{8\pi^2Ic}}\]</div>
+</section>
+<section id="selection-rules">
+<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+<p>The rotational constant defines the rotational energy levels for a rigid diatomic molecule.
+When the molecule is in electronic state <span class="math notranslate nohighlight">\(e\)</span> and vibrational state <span class="math notranslate nohighlight">\(v\)</span>, the total wavefunction is written as <span class="math notranslate nohighlight">\(\psi = \psi_e\psi_v\psi_{J,M}\)</span>. The <strong>transition moment</strong> between two different rotational levels <span class="math notranslate nohighlight">\(J,M\)</span> and <span class="math notranslate nohighlight">\(J',M'\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\int\int\int\psi_e^*\psi_v^*\psi_{J',M'}\hat{\mu}\psi_e\psi_v\psi_{J,M}d\tau_ed\tau_{rot}d\tau_{vib}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> is the transition dipole operator (see Eq. (\ref{eq11.80})) and only the rotational wavefunction has change. The electronic part gives the permanent dipole moment:</p>
+<div class="math notranslate nohighlight">
+\[{\mu_0^{(e)} = \int\psi_e^*\hat{\mu}\psi_ed\tau_e}\]</div>
+<p>Therefore we can reduce the last equation to:</p>
+<div class="math notranslate nohighlight">
+\[{\int\int\psi_v^*\psi^*_{J',M'}\mu_0^{(e)}\psi_v\psi_{J,M}d\tau_{rot}d\tau_{vib}}\]</div>
+<p>The vibrational part just gives the dipole moment for the molecule in vibrational state <span class="math notranslate nohighlight">\(v\)</span> and we can write:</p>
+<div class="math notranslate nohighlight">
+\[{\int\psi_{J',M'}^*\mu_0\psi_{J,M}d\tau_{rot}}\]</div>
+<ul class="simple">
+<li><p>The rotational transition can only occur if this integral has a non-zero value. Clearly <span class="math notranslate nohighlight">\(\mu_0\)</span> must be non-zero for the transition to occur, which means that the molecule must have a permanent dipole moment for the rotational transition to occur.</p></li>
+<li><p>For example, homonuclear diatomic molecules like <span class="math notranslate nohighlight">\(H_2\)</span> and <span class="math notranslate nohighlight">\(O_2\)</span> will not show pure rotational spectra. Heteronuclear molecules show pure rotational spectra.</p></li>
+</ul>
+<p>Using the known properties for spherical harmonics, one can show the following selection rule:</p>
+<div class="math notranslate nohighlight">
+\[{\Delta J = J' - J = \pm 1\textnormal{ and }\Delta M = M' - M = 0, \pm 1}\]</div>
+<p>Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by (<span class="math notranslate nohighlight">\(J = 0,1,2,...\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}\]</div>
+<p>The successive line positions in the rotational spectrum are given by <span class="math notranslate nohighlight">\(2\tilde{B}, 4\tilde{B}, 6\tilde{B},...\)</span>. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.</p>
+</section>
+<section id="rovibronic-coupling">
+<h2>Rovibronic coupling<a class="headerlink" href="#rovibronic-coupling" title="Permalink to this heading">#</a></h2>
+<p>In reality molecules are not rigid rotors and one must consider the coupling between <span class="math notranslate nohighlight">\(H_{rot}\)</span> and <span class="math notranslate nohighlight">\(H_{vib}\)</span>. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term in Eq. (\ref{eqn5.33}):</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_r(J) = \tilde{B}J(J+1) - \tilde{D}J^2(J+1)^2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{D}\)</span> is the <em>centrifugal distortion constant</em> (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>). Note that both <span class="math notranslate nohighlight">\(\tilde{B}\)</span> and <span class="math notranslate nohighlight">\(\tilde{D}\)</span> are positive.</p>
+<p>When the centrifugal distortion is taken into account, the rotational transition frequencies are given by:</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J) = 2\tilde{B}(J+1) - 4\tilde{D}(J+1)^3\textnormal{ where }J=0,1,2,...}\]</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Measurement of pure rotational spectrum of H<span class="math notranslate nohighlight">\(^{35}\)</span>Cl molecule gave the following positions for the absorption lines:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{\nu} = \left(20.794\textnormal{cm}^{-1}\right)\left(J+1\right) - \left(0.000164\textnormal{cm}^{-1}\right)\left(J+1\right)^3\]</div>
+<p>What is the equilibrium bond length and what is the value of the centrifugal distortion constant?</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>We first write the expression for <span class="math notranslate nohighlight">\(\tilde{B}\)</span> and then use the definition of the moment of inertia <span class="math notranslate nohighlight">\(I\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{B} = \frac{h}{8\pi^2cI} = \frac{h}{8\pi^2c\mu R_0^2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass for the molecule and <span class="math notranslate nohighlight">\(R_0\)</span> is the equilibrium bond length. Solving for <span class="math notranslate nohighlight">\(R_0\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[R_0 = \sqrt{\frac{h}{8\pi^2c\mu\tilde{B}}} = 129\textnormal{ pm}\]</div>
+<p>The centrifugal distortion constant can obtained by comparing the above equation with the equation for rovibronic coupling</p>
+<div class="math notranslate nohighlight">
+\[\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}\]</div>
+</div>
+</section>
+<section id="population-of-states">
+<h2>Population of states<a class="headerlink" href="#population-of-states" title="Permalink to this heading">#</a></h2>
+<p>Another factor that affects the line intensities in a rotational spectrum is related to the thermal population of the rotational levels. Thermal populations of the rotational levels is given by the Boltzmann distribution (for a collection of molecules):</p>
+<div class="math notranslate nohighlight">
+\[{f_J = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{\sum\limits_{J'}g_{J'}e^{-hc\tilde{E}_r(J') / (k_B T)}} = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{q}}\]</div>
+<ul class="simple">
+<li><p>The  <span class="math notranslate nohighlight">\(q\)</span> is called the <em>partition function</em> and <span class="math notranslate nohighlight">\(g_J = 2J + 1\)</span> corresponds to the degeneracy count of state <span class="math notranslate nohighlight">\(J\)</span>. A useful comparison of thermal energy is given by <span class="math notranslate nohighlight">\(kT\)</span> and if the energy of a state is much higher than this, it will not be thermally populated.</p></li>
+<li><p>one expects the intensities to first increase as a function of the initial state <span class="math notranslate nohighlight">\(J\)</span>, reach a maximum, and then decrease because the thermal populations decrease. In an absorption experiment, one can see the thermal populations of the initial rotational levels.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For systems, where the rotational degrees of freedom may exchange identical nuclei, an additional complication arises from the symmetry requirement for the nuclear wavefunction. Recall that bosons must have symmetric wavefunctions and fermions antisymmetric. We will not discuss this in more detail here.</p>
+</div></blockquote>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -584,11 +673,11 @@ E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degener
       </div>
     </a>
     <a class="right-next"
-       href="note04C.html"
+       href="note05.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Rotational spectra of diatomic molecules</p>
+        <p class="prev-next-title">Vibration-rotation spectra of diatomic molecules</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -611,6 +700,10 @@ E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degener
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-rigid-rotor-and-angular-momentum-operator">Quantum rigid rotor and angular momentum operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,m)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-spectra-of-diatomic-molecules">Rotational spectra of diatomic molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rovibronic-coupling">Rovibronic coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-of-states">Population of states</a></li>
 </ul>
   </nav></div>
 
