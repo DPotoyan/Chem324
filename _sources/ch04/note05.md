@@ -1,6 +1,5 @@
 ## Vibration-rotation spectra of diatomic molecules
 
-
 Rotational structure can often be observed to accompany vibronic transitions when using sufficiently high spectral resolution. Spectral lines in such spectrum correspond to simultaneous change in both vibrational and rotational quantum numbers. For example, for HCl molecule one can observe the vibrational quantum number to change $v' = v'' \pm 1$ and $J' = J''\pm 1$. The vibration-rotation spectrum of HBr is shown below. Note that the rotational structure can usually only be observed in dilute gas phase samples as molecular rotations tend to be quenched in liquids and solids.
 
 ### Selection rules
