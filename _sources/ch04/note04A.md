@@ -99,6 +99,9 @@ table).
 
 - In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
 
+- For $r=const$ sitation corresponding to rigid model we are able to redeuce the dimensionality of the problem becasue $\hat{L}_r=0$
+$$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
+
 
 ::::{tab-set} 
 :::{tab-item} Cartesian
@@ -109,6 +112,7 @@ $${\hat{L}_y = -i\hbar\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\par
 
 $${\hat{L}_z = -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right)}$$
 
+$$\hat{L}^2=\hat{L_x}^2+\hat{L_y}^2+\hat{L_z}^2$$
 :::
 
 :::{tab-item} Polar
@@ -121,6 +125,8 @@ $${\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}}$$
 $${\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial\phi^2}\right]}_{\equiv \Lambda^2}}$$
 :::
 ::::
+
+
 
 
 ### Commutation relations
