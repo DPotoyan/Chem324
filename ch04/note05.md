@@ -61,9 +61,16 @@ $${\tilde{\nu}_R(J-1) - \tilde{\nu}_P(J+1) = 4\tilde{B}_0\left(J + \frac{1}{2}\r
 where $J$ is the initial state rotational quantum number. To apply these equations one must label the rotational lines according to their $J$ and record the peak positions in wavenumbers. This should be applied to many peak pairs and then obtain the averaged values for $\tilde{B}_0$ and $\tilde{B}_1$.
 
 
-**Example** Calculate the relative populations of the first five rotational levels of the ground vibrational state of $H^{35}$Cl at 300 K. The ground vibrational state rotational constant $B_0 = 10.44$ cm$^{-1}$.\\
+:::{admonition} **Example** 
+:class: note
 
-**Solution** The level populations are given by the Boltzmann distribution:
+Calculate the relative populations of the first five rotational levels of the ground vibrational state of $H^{35}$Cl at 300 K. The ground vibrational state rotational constant $B_0 = 10.44$ cm$^{-1}$.
+:::
+
+:::{admonition} **Solution** 
+:class: note, dropdown 
+
+The level populations are given by the Boltzmann distribution:
 
 $$\frac{N_J}{N_0} = \left(2J + 1\right)e^{-hcJ(J+1)\tilde{B}_0/(k_BT)}$$
 
@@ -78,10 +85,14 @@ Then, for example, for $J = 1$ we get:
 $$\frac{N_1}{N_0} = 3e^{-2(5.007\times 10^{-2})} = 2.71$$
 
 The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.31, and 2.45 for $J = 0, 1, 2, 3, 4, 5$. Note that these are relative populations since we did not calculate the partition function $q$.
+:::  
 
-### Summary
 
-### Spectroscopic applications of Rigid rotor model
+
+:::{admonition} **Summary of spectroscopic applications of rigid rotor and harmonic oscillator**
+:class: dropdown
+
+**Spectroscopic applications of Rigid rotor model**
 
 The energy spacing between rotational levels assume simple expression predicting integer multiples (J+1) of spectral lines for $J=0,1,2,...$
 
@@ -95,11 +106,11 @@ $$
 \tilde{\nu}_{J+1,J} =\frac{1}{\lambda} = \frac{\Delta E}{hc} = 2\tilde{B}(J+1)
 $$
 
-Where rotational constant has units of inverse wavelength [cm^{-1}]  $\tilde{B}=\frac{h^2}{8\pi^2 I c}$
+Where rotational constant has units of inverse wavelength $[cm^{-1}]$ and is exprssed as  $\tilde{B}=\frac{h^2}{8\pi^2 I c}$
 
 
 
-### Spectral lines are predicted to be equidistant!
+**Spectral lines are predicted to be equidistant!**
 
 Rigid rotor model makes a very specifci prediction about spectral lines: they are to be equally spaced. In other words difference between adjacent frequency of tranisitons is a constnat number:
 
@@ -111,7 +122,7 @@ Thus be measuring this spectral line difference, we can extract structural infor
 
 
 
-### Rotational-virbational transitions
+**Rotational-virbational transitions**
 
 Rotational transitions often accompany the transitions in vibrational levels. The simplest  model for joint vibrational and rotational transitions is a combination of a harmonic oscillator with rigid rotor models:
 
@@ -125,7 +136,7 @@ The selection rules for harmonic oscillator and rigid rotor are $\Delta v =\pm 1
 
 
 
-### Ro-vibrational spectra, R, P and Q branches
+**Ro-vibrational spectra, R, P and Q branches**
 
 Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state $v=0\rightarrow v=1 $. The transitions with $\Delta J=+1$ and $\Delta J=-1$ appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch $\Delta J =0$ is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
@@ -137,7 +148,7 @@ $$
 
 
 
-### Correction #1 rovibrational coupling
+**Correction #1 rovibrational coupling**
 
 One correction one can make to the rotational-vibrational model is to include the effect of coupling between rotational and vibrational degrees of freedom. When exciting molecules to higher vibrational states, it is reasonable to expect that rotational parameters will be impacted as a result of changes in the average intra-nuclear distance, among other things. This can be accounted for by making rotational constant dependent on vibrational level v. $B\rightarrow B_v$. The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
 
@@ -160,7 +171,7 @@ $$
 $$
 
 
-### Correction #2 the unharmonicity/unrigdity term
+**Correction #2 the unharmonicity/unrigdity term**
 
 Similiar to the first order correction we introduced for harmonic oscillator in the form of unharmonicity term  we can now also improve rigid rotor model by accounting for the fact that chemical bonds are not trully rigid: 
 
@@ -169,4 +180,4 @@ $$
 $$
 
 Where constant D is called the **centrifugal distortion constant.** and is typically a small number $D<<1$
-
+:::
