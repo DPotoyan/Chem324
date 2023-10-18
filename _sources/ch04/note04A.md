@@ -12,9 +12,11 @@
 
 | Property                  | Linear Momentum              | Angular Momentum             |
 |---------------------------|-----------------------------|------------------------------|
-| Symbol                    | $p$                        | $L$                        |
 | Nature                    | Linear motion in a straight line | Rotational motion around an axis |
-| CM formula               | $p = m \cdot v$            | $L = I \cdot \omega$        |
+| Vector   form            | $\vec{p} = m \cdot \vec{v}$            | $\vec{L} = \vec{p}\times\vec{r}$        |
+| Scalar form               | $ \|\vec{p}\| = m \cdot v$            | $ \|\vec{L}\| = I \cdot \omega$        |
+| Mass for point particles       | $m$            | $I=mr^2$        |
+| Kinetic Energy           | $\frac{p^2}{2m}$            | $\frac{L^2}{2I}$         |
 | QM operators              | $\hat{p_x}=-i\hbar\frac{\partial}{\partial x}$           | ${\hat{L_x} = yp_z - zp_y}$           |
 | Conservation Principle    | Law of Conservation of Linear Momentum | Law of Conservation of Angular Momentum |
 | Conservation Condition    | No net external force acting on a closed system | No net external torque acting on a closed system |
@@ -58,38 +60,34 @@ $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
 $$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
 
-### Cartesian to polar converter 
+### Cartesian to spherical converter 
+
+**Geometrical relations**
 
 Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
+
+$$x=rsin\theta cos\phi$$
+$$y=rsin\theta sin\phi$$
+$$z=cos\theta$$
+
+**The range of spherical variables**
+
+$$Radius:\,\,\,0<r<\infty$$
+$$Azimuthal\, angle:\,\,\,0<\phi<2\pi$$
+$$Polar\, angle:\,\,\,0<\theta<\pi$$
+
 
 :::{figure-md} markdown-fig
 <img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="300px">
 
 Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
-$$x=rsin\theta cos\phi$$
-$$y=rsin\theta sin\phi$$
-$$z=cos\theta$$
 :::
-
-
-
 
 **Volume Element**
-::::{tab-set} 
-:::{tab-item} Cartesian
 
-$$
-dV = dxdydz
-$$
-
-:::
-
-:::{tab-item} Polar
 $$
 dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
 $$
-:::
-::::
 
 
 **Laplacian**

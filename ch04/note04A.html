@@ -433,7 +433,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-polar-converter">Cartesian to polar converter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-spherical-converter">Cartesian to spherical converter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
@@ -470,17 +470,25 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Symbol</p></td>
-<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(L\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Nature</p></td>
+<tr class="row-even"><td><p>Nature</p></td>
 <td><p>Linear motion in a straight line</p></td>
 <td><p>Rotational motion around an axis</p></td>
 </tr>
-<tr class="row-even"><td><p>CM formula</p></td>
-<td><p><span class="math notranslate nohighlight">\(p = m \cdot v\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(L = I \cdot \omega\)</span></p></td>
+<tr class="row-odd"><td><p>Vector   form</p></td>
+<td><p><span class="math notranslate nohighlight">\(\vec{p} = m \cdot \vec{v}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\vec{L} = \vec{p}\times\vec{r}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Scalar form</p></td>
+<td><p><span class="math notranslate nohighlight">\( |\vec{p}| = m \cdot v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( |\vec{L}| = I \cdot \omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass for point particles</p></td>
+<td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I=mr^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Kinetic Energy</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{p^2}{2m}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{L^2}{2I}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>QM operators</p></td>
 <td><p><span class="math notranslate nohighlight">\(\hat{p_x}=-i\hbar\frac{\partial}{\partial x}\)</span></p></td>
@@ -536,49 +544,46 @@ p_x &amp; p_y &amp; p_z\\
 <div class="math notranslate nohighlight">
 \[\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2\]</div>
 </section>
-<section id="cartesian-to-polar-converter">
-<h2>Cartesian to polar converter<a class="headerlink" href="#cartesian-to-polar-converter" title="Permalink to this heading">#</a></h2>
+<section id="cartesian-to-spherical-converter">
+<h2>Cartesian to spherical converter<a class="headerlink" href="#cartesian-to-spherical-converter" title="Permalink to this heading">#</a></h2>
+<p><strong>Geometrical relations</strong></p>
 <p>Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems</p>
+<div class="math notranslate nohighlight">
+\[x=rsin\theta cos\phi\]</div>
+<div class="math notranslate nohighlight">
+\[y=rsin\theta sin\phi\]</div>
+<div class="math notranslate nohighlight">
+\[z=cos\theta\]</div>
+<p><strong>The range of spherical variables</strong></p>
+<div class="math notranslate nohighlight">
+\[Radius:\,\,\,0&lt;r&lt;\infty\]</div>
+<div class="math notranslate nohighlight">
+\[Azimuthal\, angle:\,\,\,0&lt;\phi&lt;2\pi\]</div>
+<div class="math notranslate nohighlight">
+\[Polar\, angle:\,\,\,0&lt;\theta&lt;\pi\]</div>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/spherical_volume.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/spherical_volume.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
-$<span class="math notranslate nohighlight">\(x=rsin\theta cos\phi\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(y=rsin\theta sin\phi\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(z=cos\theta\)</span>$</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Volume Element</strong></p>
+<div class="math notranslate nohighlight">
+\[
+dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
+\]</div>
+<p><strong>Laplacian</strong></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Cartesian</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[
-dV = dxdydz
+\nabla^2 = \frac{{\partial^2}}{{\partial x^2}} + \frac{{\partial^2}}{{\partial y^2}} + \frac{{\partial^2}}{{\partial z^2}}
 \]</div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-Polar</label><div class="sd-tab-content docutils">
-<div class="math notranslate nohighlight">
-\[
-dV = r^2 \sin(\phi) \, dr \, d\theta \, d\phi
-\]</div>
-</div>
-</div>
-<p><strong>Laplacian</strong></p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Cartesian</label><div class="sd-tab-content docutils">
-<div class="math notranslate nohighlight">
-\[
-\nabla^2 = \frac{{\partial^2}}{{\partial x^2}} + \frac{{\partial^2}}{{\partial y^2}} + \frac{{\partial^2}}{{\partial z^2}}
-\]</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
 Polar</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[
@@ -596,8 +601,8 @@ table).</p></li>
 <li><p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p></li>
 </ul>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
 Cartesian</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[{\hat{L}_x = -i\hbar\left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y}\right)}\]</div>
@@ -608,8 +613,8 @@ Cartesian</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[\hat{L}^2=\hat{L_x}^2+\hat{L_y}^2+\hat{L_z}^2\]</div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
 Polar</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[{\hat{L}_x = i\hbar\left(\sin(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\cos(\phi)\frac{\partial}{\partial\phi}\right)}\]</div>
@@ -770,7 +775,7 @@ Polar</label><div class="sd-tab-content docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-polar-converter">Cartesian to polar converter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-spherical-converter">Cartesian to spherical converter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
