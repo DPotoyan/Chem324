@@ -57,6 +57,7 @@ $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 ### Cartesian to polar converter 
 
 Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
+
 **Laplacian**
 
 ::::{tab-set} 
@@ -95,9 +96,15 @@ $$
 
 ### Quantum angular momentum 
 
-In quantum mechanics, the classical angular momentum is replaced by the corresponding
+- In quantum mechanics, the classical angular momentum is replaced by the corresponding
 quantum mechanical operator (see the previous ``classical - quantum'' correspondence
-table). The Cartesian quantum mechanical angular momentum operators are:
+table). 
+
+- In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
+
+
+::::{tab-set} 
+:::{tab-item} Cartesian
 
 $${\hat{L}_x = -i\hbar\left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y}\right)}$$
 
@@ -105,9 +112,9 @@ $${\hat{L}_y = -i\hbar\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\par
 
 $${\hat{L}_z = -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right)}$$
 
+:::
 
-In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form (derivations are quite tedious but just math):
-
+:::{tab-item} Polar
 $${\hat{L}_x = i\hbar\left(\sin(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\cos(\phi)\frac{\partial}{\partial\phi}\right)}$$
 
 $${\hat{L}_y = i\hbar\left(-\cos(\phi)\frac{\partial}{\partial\theta} + \cot(\theta)\sin(\phi)\frac{\partial}{\partial\phi}\right)}$$
@@ -115,8 +122,9 @@ $${\hat{L}_y = i\hbar\left(-\cos(\phi)\frac{\partial}{\partial\theta} + \cot(\th
 $${\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}}$$
 
 $${\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial\phi^2}\right]}_{\equiv \Lambda^2}}$$
+:::
+::::
 
-Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
 
 ### Commutation relations
 
@@ -128,39 +136,47 @@ $$
 $$
 
 
-
-**Exercise** Prove that the above commutation relations hold.
-
 - Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).
 
 ### Eignefunctins and eigenvalues of $L$ and $L_z$
 
-- It is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. It can be shown that for $\vec{\hat{L}}^2$ the eigenfunctions and eigenvalues are:
+It is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. It can be shown that for $\vec{\hat{L}}^2$ the eigenfunctions and eigenvalues are:
 
-$${\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}
-\\{\textnormal{where }\psi_{l,m} = Y_l^m(\theta,\phi)}
-\\ {\textnormal{Quantum numbers: }l = 0,1,2,3... and \\ \left|m\right| = 0,1,2,3,...l}$$
+$$\boxed{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}$$
 
-Operating on the eigenfunctions by $L_z$ gives the following eigenvalues for $L_z$:
+$$\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}$$
 
-$${\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi) \\ \textnormal{ where }\left| m\right| = 0, ..., l}$$
+- **Wavefunction:** $\psi_{l,m} = Y_l^m(\theta,\phi)$
+- **Angular quantum number:** $l = 0,1,2,3...$ 
+- **Magnetic quantum number:** $|m| = 0,1,2,3,...l$
 
-These eigenvalues are often denoted by $L_z$ ($= m\hbar$). Note that specification of both $L^2$ and $L_z$ provides all the information we can have about the system.
 
-- where $l$ is the [angular momentum quantum number](http://en.wikipedia.org/wiki/Azimuthal_quantum_number)  and $m$ is the [magnetic quantum number](http://en.wikipedia.org/wiki/Magnetic_quantum_number) . Note that here $m$ has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. Functions $Y_l^m$ are called [spherical harmonics](http://en.wikipedia.org/wiki/Spherical_harmonics). Examples of spherical harmonics with various values of $l$ and $m$ are given below (with [Condon-Shortley](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)  [phase convention](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)
 
-$${Y^0_0 = \frac{1}{2\sqrt{\pi}}\textnormal{, }\textnormal{, }Y^0_1 = \sqrt{\frac{3}{4\pi}}\cos(\theta)\textnormal{, }Y^1_1 = -\sqrt{\frac{3}{8\pi}}\sin(\theta)e^{i\phi}} \\
-{Y^{-1}_1 = \sqrt{\frac{3}{8\pi}}\sin(\theta)e^{-i\phi}\textnormal{, }Y^0_2 = \sqrt{\frac{5}{16\pi}}(3\cos^2(\theta) - 1)\textnormal{, }Y_2^1 = -\sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{i\phi}} \\
-{Y_2^{-1} = \sqrt{\frac{15}{8\pi}}\sin(\theta)\cos(\theta)e^{-i\phi}\textnormal{, }Y^2_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{2i\phi}\textnormal{, }Y^{-2}_2 = \sqrt{\frac{15}{32\pi}}\sin^2(\theta)e^{-2i\phi}}$$
+
+- These eigenvalues are often denoted by $L_z$ ($= m\hbar$). Note that specification of both $L^2$ and $L_z$ provides all the information we can have about the system.
+
+- Note that here $m$ has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. 
+- Functions $Y_l^m$ are called [spherical harmonics](http://en.wikipedia.org/wiki/Spherical_harmonics). Examples of spherical harmonics with various values of $l$ and $m$ are given below (with [Condon-Shortley](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)  [phase convention](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)
+
+
 
 
 ### Spherical harmonics
 
+| $Y_{lm}(\theta, \phi)$ | Expression |
+|-----------------------|------------|
+| $Y_{00}(\theta, \phi)$ | $\frac{1}{\sqrt{4\pi}}$ |
+| $Y_{10}(\theta, \phi)$ | $\sqrt{\frac{3}{4\pi}} \cos(\theta)$ |
+| $Y_{1-1}(\theta, \phi)$ | $\sqrt{\frac{3}{4\pi}} \sin(\theta) e^{-i\phi}$ |
+| $Y_{20}(\theta, \phi)$ | $\sqrt{\frac{5}{16\pi}} (3\cos^2(\theta) - 1)$ |
+| $Y_{2-1}(\theta, \phi)$ | $\sqrt{\frac{15}{4\pi}} \sin(\theta) \cos(\theta) e^{-i\phi}$ |
+| $Y_{2-2}(\theta, \phi)$ | $\sqrt{\frac{15}{4\pi}} \sin^2(\theta) e^{-2i\phi}$ |
+
 - The functions $Y_{J,m}(\theta,\phi)$ are spherical harmonics that frequently occur in problems with spherical symmetry as the convenient basis of expansion. Spherical harmonics are important in many theoretical and practical applications, e.g., the representation of multipole electrostatic and electromagnetic fields, computation of [atomic orbital](https://en.wikipedia.org/wiki/Atomic_orbital) [electron configurations](https://en.wikipedia.org/wiki/Electron_configuration), representation of gravitational fields,  MRI imaging for streamline tractography, and the magnetic fields of planetary bodies and stars.
 
-![](./images/sphhar.gif)
+![](./images/sphhar2.png)
 
-- Spherical harmonics consist of associated Legendre polynomials ($\theta$ part) and complex exponential ($\phi part$) In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics) are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency. 
+- Spherical harmonics consist of associated Legendre polynomials ($\theta$ part) and complex exponential ($\phi$ part). In and physical science, [spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics) are defined on the surface of a sphere. The spherical harmonics are a complete set of on the sphere, and thus may be used to represent functions defined on the surface of a sphere, just as circular functions (sines and cosines) are used to represent functions on a circle via [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). Like the sines and cosines in the Fourier series, the spherical harmonics may be organized by (spatial) angular frequency. 
 
 The following relations are useful when working with spherical harmonics:
 
@@ -180,8 +196,6 @@ $${\textnormal{unless }m'' = m + m'\textnormal{ and a triangle with sides }l, l'
 ### Visualizing spherical harmonics 
 
 Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
-
-![](./images/sphhar2.png)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif)
 
