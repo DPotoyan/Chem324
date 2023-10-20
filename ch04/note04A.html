@@ -432,7 +432,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-spherical-converter">Cartesian to spherical converter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
@@ -537,21 +537,20 @@ p_x &amp; p_y &amp; p_z\\
 </ul>
 <div class="math notranslate nohighlight">
 \[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
+</section>
+<section id="spherical-coordinates">
+<h2>Spherical coordinates<a class="headerlink" href="#spherical-coordinates" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Spherical coordinates</strong> are more convenient for rotational problems. We therefore replace <span class="math notranslate nohighlight">\((x,y,z)\)</span> by <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>. For instance: when considering rotation with <span class="math notranslate nohighlight">\(r=const\)</span> we are able to eliminate one degree of freedom corresponding to radial direction.</p></li>
+<li><p><strong>Spherical coordinates</strong> are more convenient for rotational problems. We therefore replace <span class="math notranslate nohighlight">\((x,y,z)\)</span> by <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>. For instance: when considering rotation with <span class="math notranslate nohighlight">\(r=const\)</span> we are able to eliminate one degree of freedom associated with radial direction.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2\]</div>
-</section>
-<section id="cartesian-to-spherical-converter">
-<h2>Cartesian to spherical converter<a class="headerlink" href="#cartesian-to-spherical-converter" title="Permalink to this heading">#</a></h2>
+\[\hat{L}^2= L_x^2 + L_y^2 + L_z^2=\hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2\]</div>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/spherical_volume.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/spherical_volume.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems. This figure shows a rectangular volume element expressed in spherical coordinates.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems</p>
 <p><strong>Geometric relations</strong></p>
 <div class="math notranslate nohighlight">
 \[x={\color{blue} r}{\color{green}sin\theta} {\color{orange} cos\phi}\]</div>
@@ -590,6 +589,10 @@ Polar</label><div class="sd-tab-content docutils">
 \]</div>
 </div>
 </div>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2 = {\color{blue}\frac{1}{{ r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) } + \frac{\color{green}1}{{{\color{blue} r^2} {\color{green}\sin(\theta)}}} {\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right)} + {\color{green}\frac{1}{{{\color{blue} r^2} \sin^2(\theta)}} {\color{orange}\frac{{\partial^2}}{{\partial \phi^2}}}}
+\]</div>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
 <p>Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements</p>
@@ -601,14 +604,24 @@ Polar</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}\]</div>
 </div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Write down laplacian for a rigid rotor problem <span class="math notranslate nohighlight">\(r=const\)</span>. Show what equations result when you separate the two angular variables by pluggin in <span class="math notranslate nohighlight">\(\psi(r, \theta, \phi)\)</span></p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2 =  {\color{blue}\frac{1}{{ r^2}}}\Big[  {\color{green}\frac{1}{\sin(\theta)}}{\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\theta) \frac{{\partial}}{{\partial \theta}}\right)} + {{\color{green}\frac{1}{{ \sin^2(\theta)}}} {\color{orange} \frac{{\partial^2}}{{\partial \phi^2}}}}\Big] = {\color{blue}\frac{1}{r^2}}\nabla^2_{\theta, \phi}
+\]</div>
+</div>
 </section>
 <section id="quantum-angular-momentum">
 <h2>Quantum angular momentum<a class="headerlink" href="#quantum-angular-momentum" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In quantum mechanics, the classical angular momentum is replaced by the corresponding
-quantum mechanical operator (see the previous ``classical - quantum’’ correspondence
-table).</p></li>
-<li><p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis (``quantization axis’’) here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p></li>
+quantum mechanical operator.</p></li>
+<li><p>In <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>, the angular momentum operators can be written in the following form. The derivations are <a class="reference external" href="https://planetmath.org/derivationofthelaplacianfromrectangulartosphericalcoordinates">quite tedious</a> involving multiple applications of chain rule but its just a straightforward math procedure. Note that the choice of <span class="math notranslate nohighlight">\(z\)</span>-axis  here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field).</p></li>
 </ul>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -785,7 +798,7 @@ Polar</label><div class="sd-tab-content docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-to-spherical-converter">Cartesian to spherical converter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
