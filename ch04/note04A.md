@@ -56,19 +56,18 @@ $${L_z = xp_y - yp_x}$$
 
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
 
--  **Spherical coordinates** are more convenient for rotational problems. We therefore replace $(x,y,z)$ by $(r, \phi, \theta)$. For instance: when considering rotation with $r=const$ we are able to eliminate one degree of freedom corresponding to radial direction.
 
-$$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
+### Spherical coordinates
 
-### Cartesian to spherical converter 
+-  **Spherical coordinates** are more convenient for rotational problems. We therefore replace $(x,y,z)$ by $(r, \phi, \theta)$. For instance: when considering rotation with $r=const$ we are able to eliminate one degree of freedom associated with radial direction.
+
+$$\hat{L}^2= L_x^2 + L_y^2 + L_z^2=\hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\hat{L_\theta}^2$$
 
 :::{figure-md} markdown-fig
 <img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="450px">
 
-Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
+Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems. This figure shows a rectangular volume element expressed in spherical coordinates. 
 :::
-
-Since we are going to work in spherical coordinate system we need to know how operators look in differnet cooridnate systems
 
 **Geometric relations**
 
@@ -106,6 +105,9 @@ $$
 :::
 ::::
 
+$$
+\nabla^2 = {\color{blue}\frac{1}{{ r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) } + \frac{\color{green}1}{{{\color{blue} r^2} {\color{green}\sin(\theta)}}} {\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right)} + {\color{green}\frac{1}{{{\color{blue} r^2} \sin^2(\theta)}} {\color{orange}\frac{{\partial^2}}{{\partial \phi^2}}}}
+$$
 
 
 :::{admonition} **Example**
@@ -121,15 +123,27 @@ $$\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c$$
 $$\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}$$
 :::
 
+:::{admonition} **Example**
+:class: note
+
+Write down laplacian for a rigid rotor problem $r=const$. Show what equations result when you separate the two angular variables by pluggin in $\psi(r, \theta, \phi)$
+:::
+
+:::{admonition} **Solution**
+:class: note, dropdown
+
+$$
+\nabla^2 =  {\color{blue}\frac{1}{{ r^2}}}\Big[  {\color{green}\frac{1}{\sin(\theta)}}{\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\theta) \frac{{\partial}}{{\partial \theta}}\right)} + {{\color{green}\frac{1}{{ \sin^2(\theta)}}} {\color{orange} \frac{{\partial^2}}{{\partial \phi^2}}}}\Big] = {\color{blue}\frac{1}{r^2}}\nabla^2_{\theta, \phi}
+$$
+:::
 
 
 ### Quantum angular momentum 
 
 - In quantum mechanics, the classical angular momentum is replaced by the corresponding
-quantum mechanical operator (see the previous ``classical - quantum'' correspondence
-table). 
+quantum mechanical operator.
 
-- In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form (derivations are quite tedious but just math). Note that the choice of $z$-axis (``quantization axis'') here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
+- In [spherical coordinates](http://en.wikipedia.org/wiki/Spherical_coordinate_system), the angular momentum operators can be written in the following form. The derivations are [quite tedious](https://planetmath.org/derivationofthelaplacianfromrectangulartosphericalcoordinates) involving multiple applications of chain rule but its just a straightforward math procedure. Note that the choice of $z$-axis  here was arbitrary. Sometimes the physical system implies such axis naturally (for example, the direction of an external magnetic field). 
 
 
 ::::{tab-set} 
