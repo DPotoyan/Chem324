@@ -105,9 +105,7 @@ $$
 :::
 ::::
 
-$$
-\nabla^2 = {\color{blue}\frac{1}{{ r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) } + \frac{\color{green}1}{{{\color{blue} r^2} {\color{green}\sin(\theta)}}} {\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right)} + {\color{green}\frac{1}{{{\color{blue} r^2} \sin^2(\theta)}} {\color{orange}\frac{{\partial^2}}{{\partial \phi^2}}}}
-$$
+
 
 
 :::{admonition} **Example**
