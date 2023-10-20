@@ -72,9 +72,9 @@ Since we are going to work in spherical coordinate system we need to know how op
 
 **Geometric relations**
 
-$$x=rsin\theta cos\phi$$
-$$y=rsin\theta sin\phi$$
-$$z=cos\theta$$
+$$x=\orange{r}\blue{sin\theta} \green{cos\phi}$$
+$$y=\orange{r}\blue{sin\theta}  \green{cos\phi}$$
+$$z=\orange{r} \green{cos\theta}$$
 
 **The range of spherical variables**
 
