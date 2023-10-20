@@ -72,7 +72,7 @@ Since we are going to work in spherical coordinate system we need to know how op
 
 **Geometric relations**
 
-$$x=\orange{r}\blue{sin\theta} \green{cos\phi}$$
+$$x=\color{orange}{r}\color{blue}{sin\theta} \green{cos\phi}$$
 $$y=\orange{r}\blue{sin\theta}  \green{cos\phi}$$
 $$z=\orange{r} \green{cos\theta}$$
 
