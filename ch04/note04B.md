@@ -1,16 +1,24 @@
 ## Rigid Rotor  
 
-```{admonition} What you need to know
+:::{admonition} What you need to know
 :class: note
 - The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.
 - Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers. 
 - Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals. 
 - The selection rule is established via the recursion relation of spherical harmonics.
 - Coupling of vibrational degrees leads to rovibronic transitions and necessitates the inclusion of vibrational quantum numbers for a more accurate account of transitions. 
-```
+:::
 
 
 ### Classical picture: Rotating dumbbell
+
+
+:::{figure-md} markdown-fig
+<img src="./images/conserv_L.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+Conservation of angular momentum: In the absence of torque angular momentum of conservative system remains constant. This has implications for rotational motion, for instance you can rotate faster if you decreese moment of inertia and vice versa.
+:::
+
 
 The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation: 
 
@@ -79,8 +87,9 @@ $$
 - Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
 - Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
 - There is no rotational zero-point energy ($J = 0$ is allowed). The ground state rotational wavefunction has equal probability amplitudes for each orientation.
-- The energies are independent of $m_J$. $m_J$ introduces the degeneracy of a given $J$ level.
-- For non-linear molecules Equation of energy becomes more complicated.
+- The energies are independent of $m_J$. 
+- $m_J$ introduces the degeneracy of a given $J$ level.
+- For non-linear molecules energy expression becomes more complicated.
 
 
 :::{admonition} **Example**
@@ -157,7 +166,7 @@ $${\int\psi_{J',M'}^*\mu_0\psi_{J,M}d\tau_{rot}}$$
 
 Using the known properties for spherical harmonics, one can show the following selection rule:
 
-$${\Delta J = J' - J = \pm 1\textnormal{ and }\Delta M = M' - M = 0, \pm 1}$$
+$${\Delta J = J' - J = \pm 1}$$
 
 Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
 
@@ -165,15 +174,82 @@ $${\tilde{\nu} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)
 
 The successive line positions in the rotational spectrum are given by $2\tilde{B}, 4\tilde{B}, 6\tilde{B},...$. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.
 
-### Rovibronic coupling
 
-In reality molecules are not rigid rotors and one must consider the coupling between $H_{rot}$ and $H_{vib}$. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term the energy expresison for rigid rotor:
+### Population of states
+
+Another factor that affects the line intensities in a rotational spectrum is related to the thermal population of the rotational levels. Thermal populations of the rotational levels is given by the Boltzmann distribution (for a collection of molecules):
+
+$${f_J = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{\sum\limits_{J'}g_{J'}e^{-hc\tilde{E}_r(J') / (k_B T)}} = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{q}}$$
+
+- The  $q$ is called the *partition function* and $g_J = 2J + 1$ corresponds to the degeneracy count of state $J$. A useful comparison of thermal energy is given by $kT$ and if the energy of a state is much higher than this, it will not be thermally populated. 
+- one expects the intensities to first increase as a function of the initial state $J$, reach a maximum, and then decrease because the thermal populations decrease. In an absorption experiment, one can see the thermal populations of the initial rotational levels.
+
+> Note: For systems, where the rotational degrees of freedom may exchange identical nuclei, an additional complication arises from the symmetry requirement for the nuclear wavefunction. Recall that bosons must have symmetric wavefunctions and fermions antisymmetric. We will not discuss this in more detail here.
+
+
+:::{admonition} **Example** 
+:class: note
+
+Calculate the relative populations of the first five rotational levels of the ground vibrational state of $H^{35}$Cl at 300 K. The ground vibrational state rotational constant $B_0 = 10.44$ cm$^{-1}$.
+:::
+
+:::{admonition} **Solution** 
+:class: note, dropdown 
+
+The level populations are given by the Boltzmann distribution:
+
+$$\frac{N_J}{N_0} = \left(2J + 1\right)e^{-hcJ(J+1)\tilde{B}_0/(k_BT)}$$
+
+where $N_0$ is the number of molecules in the rotational ground state. First we calculate the factor appearing in the exponent:
+
+
+$$\frac{hc\tilde{B}_0}{k_BT} = \frac{(6.626\times 10^{-34}\textnormal{ Js})(2.998\times 10^8\textnormal{ m/s})(10.44\textnormal{ cm}^{-1})(10^2\textnormal{ cm/m})}{(1.3806\times 10^{-23}\textnormal{ J K}^{-1})(300\textnormal{ K})}$$
+$$ = 5.007\times 10^{-2}$$
+
+Then, for example, for $J = 1$ we get:
+
+$$\frac{N_1}{N_0} = 3e^{-2(5.007\times 10^{-2})} = 2.71$$
+
+The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.31, and 2.45 for $J = 0, 1, 2, 3, 4, 5$. Note that these are relative populations since we did not calculate the partition function $q$.
+:::  
+
+
+### Ro-vibrational spectra, R, P and Q branches**
+
+
+:::{figure-md} markdown-fig
+<img src="./images/P_Q_R_branch.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+A cartoon depiction of a ideal rovibrational spectrum.
+:::
+
+- Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state $v=0\rightarrow v=1 $. The transitions with $\Delta J=+1$ and $\Delta J=-1$ appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch $\Delta J =0$ is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
+
+$$
+\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+$$
+
+
+### Beyond rigid rotor 1
+
+:::{figure-md} markdown-fig
+<img src="./images/ideal.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+A cartoon depiction of a ideal rovibrational spectrum.
+:::
+
+
+:::{figure-md} markdown-fig
+<img src="./images/real.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+A cartoon depiction of a real rovibrational spectrum.
+:::
+
+- **Centrifugal distortion** In reality molecules are not rigid rotors and one must consider the coupling between $H_{rot}$ and $H_{vib}$. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term the energy expresison for rigid rotor:
 
 $${\tilde{E}_r(J) = \tilde{B}J(J+1) - \tilde{D}J^2(J+1)^2}$$
 
-where $\tilde{D}$ is the *centrifugal distortion constant* ($cm^{-1}$). Note that both $\tilde{B}$ and $\tilde{D}$ are positive.
-
-
+- The $\tilde{D}$ is the *centrifugal distortion constant* ($cm^{-1}$). Note that both $\tilde{B}$ and $\tilde{D}$ are positive.
 When the centrifugal distortion is taken into account, the rotational transition frequencies are given by:
 
 $${\tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J) = 2\tilde{B}(J+1) - 4\tilde{D}(J+1)^3\textnormal{ where }J=0,1,2,...}$$
@@ -205,15 +281,32 @@ The centrifugal distortion constant can obtained by comparing the above equation
 $$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 :::
 
+### Beyond rigid rotor 2
 
-### Population of states
+- **Rovibronic coupling** As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
 
-Another factor that affects the line intensities in a rotational spectrum is related to the thermal population of the rotational levels. Thermal populations of the rotational levels is given by the Boltzmann distribution (for a collection of molecules):
+The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
 
-$${f_J = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{\sum\limits_{J'}g_{J'}e^{-hc\tilde{E}_r(J') / (k_B T)}} = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{q}}$$
+$$
+B_v = B_e-\alpha_e(v+1/2)
+$$
 
-- The  $q$ is called the *partition function* and $g_J = 2J + 1$ corresponds to the degeneracy count of state $J$. A useful comparison of thermal energy is given by $kT$ and if the energy of a state is much higher than this, it will not be thermally populated. 
-- one expects the intensities to first increase as a function of the initial state $J$, reach a maximum, and then decrease because the thermal populations decrease. In an absorption experiment, one can see the thermal populations of the initial rotational levels.
+Where $Be$ is the rotational constant for a rigid rotor and αe
+is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
 
-> Note: For systems, where the rotational degrees of freedom may exchange identical nuclei, an additional complication arises from the symmetry requirement for the nuclear wavefunction. Recall that bosons must have symmetric wavefunctions and fermions antisymmetric. We will not discuss this in more detail here.
+The expression of energy with these correction would then be:
 
+$$
+E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
+$$
+
+The R branch with rovibronic coupling is now:
+
+$$
+\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
+
+The P brnach with rovibronic coupling is now:
+$$
+\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
