@@ -88,19 +88,6 @@ $$
 dV = r^2 \sin \theta \, dr \, d\theta \, d\phi
 $$
 
-:::{admonition} **Example**
-:class: note
-Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements
-:::
-
-:::{admonition} **Solution**
-:class: note, dropdown
-
-$$\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c$$
-
-$$\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}$$
-:::
-
 **Laplacian**
 
 ::::{tab-set} 
@@ -118,6 +105,21 @@ $$
 $$
 :::
 ::::
+
+:::{admonition} **Example**
+:class: note
+Compute volume of cube and sphere using cartesian and spherical cooridnates by integrating volume elements
+:::
+
+:::{admonition} **Solution**
+:class: note, dropdown
+
+$$\int^a_0\int^b_0\int^c_0 dxdydz=a\cdot b\cdot c$$
+
+$$\int^r_0\int^{2\pi}_0\int^\pi_0 r^2 \sin \theta \, dr \, d\theta \, d\phi=\frac{r^3}{3}\Big|^r_0 \cdot 2\pi \cdot (-cos\theta) \Big|^\pi_0\cdot 2\pi=\frac{4\pi r^3}{3}$$
+:::
+
+
 
 ### Quantum angular momentum 
 
