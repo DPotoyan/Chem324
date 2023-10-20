@@ -2,7 +2,7 @@
 
 ```{admonition} What you need to know
 :class: note
-- Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact reduces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more. 
+- Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact orangeuces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more. 
 - Similarly, in quantum mechanics, angular momentum plays a central role in understanding the structure of atoms, as well as other quantum problems that involve rotational symmetry. Like other observable quantities, angular momentum is described in QM by an operator. This is in fact a vector operator, similar to momentum operator. However, contrary to the linear momentum operator, the three components of the angular momentum operator do not commute!
 - In QM, there are several angular momentum operators: the total angular momentum (usually denoted by $J$), the orbital angular momentum (usually denoted by $L$ ) and the intrinsic, or spin angular momentum (denoted by $S$). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.
 ```
@@ -63,7 +63,7 @@ $$\hat{L}^2= \hat{L_r}^2+\hat{L_{\phi}}^2+\hat{L_\theta}^2 = \hat{L_{\phi}}^2+\h
 ### Cartesian to spherical converter 
 
 :::{figure-md} markdown-fig
-<img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+<img src="./images/spherical_volume.png" alt="DeD0" class="bg-primary mb-1" width="450px">
 
 Converting between cartesian and spherical coordinates. Shown is the rectangular volume element expressed in spherical coordinates
 :::
@@ -72,20 +72,20 @@ Since we are going to work in spherical coordinate system we need to know how op
 
 **Geometric relations**
 
-$$x=\color{orange}{r}\color{blue}{sin\theta} \green{cos\phi}$$
-$$y=\orange{r}\blue{sin\theta}  \green{cos\phi}$$
-$$z=\orange{r} \green{cos\theta}$$
+$$x={\color{blue} r}{\color{green}sin\theta} {\color{orange} cos\phi}$$
+$$y={\color{blue} r}{\color{green} sin\theta}  {\color{orange} cos\phi}$$
+$$z={\color{blue} r} {\color{green} cos\theta}$$
 
 **The range of spherical variables**
 
-$$Radius:\,\,\,0<r<\infty$$
-$$Azimuthal\, angle:\,\,\,0<\phi<2\pi$$
-$$Polar\, angle:\,\,\,0<\theta<\pi$$
+$$Radius:\,\,\,{\color{blue} 0<{r}<\infty}$$
+$$Azimuthal\, angle:{\color{green}\,\,\,0<\phi<2\pi}$$
+$$Polar\, angle:\,\,\,{\color{orange} 0<\theta<\pi}$$
 
 **Volume Element**
 
 $$
-dV = r^2 \sin \theta \, dr \, d\theta \, d\phi
+dV = {\color{blue} r^2} {\color{green}\sin \theta} \, {\color{blue} dr} \, {\color{green}d\theta} \, {\color{orange}d\phi}
 $$
 
 **Laplacian**
@@ -101,10 +101,12 @@ $$
 
 :::{tab-item} Polar
 $$
-\nabla^2 = \frac{1}{{r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) + \frac{1}{{r^2 \sin(\phi)}} \frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right) + \frac{1}{{r^2 \sin^2(\phi)}} \frac{{\partial^2}}{{\partial \phi^2}}
+\nabla^2 = {\color{blue}\frac{1}{{ r^2}} \frac{{\partial}}{{\partial r}} \left(r^2 \frac{{\partial}}{{\partial r}}\right) } + \frac{1}{{{\color{blue} r^2} {\color{orange}\sin(\phi)}}} {\color{green}\frac{{\partial}}{{\partial \theta}} \left(\sin(\phi) \frac{{\partial}}{{\partial \theta}}\right)} + {\color{orange}\frac{1}{{{\color{blue} r^2} \sin^2(\phi)}} \frac{{\partial^2}}{{\partial \phi^2}}}
 $$
 :::
 ::::
+
+
 
 :::{admonition} **Example**
 :class: note
