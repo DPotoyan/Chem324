@@ -58,9 +58,9 @@ $$
 
 
 
-### Quantum numbers $(J,m)$ for quantizing $(\theta,\phi)$ coordiante pair. 
+### Quantum numbers $(J,M_J)$ for quantizing $(\theta,\phi)$ coordiante pair. 
 
-Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. The eigenfunctions turn out to be well known special functions called spherical harmonics $Y(\theta,\phi)$:
+- Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. The eigenfunctions turn out to be well known special functions called spherical harmonics $Y(\theta,\phi)$:
 
 
 $$
@@ -68,28 +68,24 @@ $$
 $$
 
 
-We are once again able to separet two angular variables and solve the esulting ODE exactly:
-
-- The constant $\beta = \frac{2IE}{\hbar^2}=J(J+1)$ with $J=0,1,2,..$ is a quantum number which emerges from solution of $\theta$ part.
--  The $m=0,\pm1,\pm2,...J$ is the quantum number which emerges from  the solution of $\phi $ part. 
+- We are once again able to separat two angular variables and solve the resulting ODE exactly. 
+- We expect energy to depend on two quantum numbers $J$ and $M_J$ which quantize roational motion acorss $\theta$ and $\phi$ angles. 
 
 
 ### Rotational states of molecules are quantized
 
-- Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $m_J$ quantum number. 
+- Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $M_J$ quantum number. 
 
 
 $$
-E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1) \,\,\, with\,\,\, g_j=2J+1 \,\,\, degeneracy
+\boxed{E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1)}
 $$
-
 
 - Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
 - Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
-- There is no rotational zero-point energy ($J = 0$ is allowed). The ground state rotational wavefunction has equal probability amplitudes for each orientation.
-- The energies are independent of $m_J$. 
-- $m_J$ introduces the degeneracy of a given $J$ level.
-- For non-linear molecules energy expression becomes more complicated.
+- There is no rotational zero-point energy ($J = 0$ is allowed). 
+- The ground state rotational wavefunction has equal probability amplitudes for each orientation.
+
 
 
 :::{admonition} **Example**
@@ -124,17 +120,11 @@ This rotational spacing can be, for example, observed in gas phase infrared spec
 
 ### Rotational spectra of diatomic molecules
 
-
-We assume that the molecule is a rigid rotor, which means that the molecular geometry does not change during molecular rotation. We have solved this problem already 
-
-$${E_r = \frac{\hbar^2}{2I}J(J+1)\textnormal{ with }J=0,1,2...\textnormal{ and }M=-J,...,0,...J}$$
-
-- The $I$ is the moment of inertia for the molecule. Since the energy does not depend on $M$, each rotational level is $2J + 1$ fold degenerate.
-
+- We assume that the molecule is a rigid rotor, which means that the molecular geometry does not change during molecular rotation. We have solved this problem already 
 
 - Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). The rotational energies expressed in wavenumbers are given by:
 
-$${\tilde{E}_r(J) = \frac{E_r}{hc} = \frac{J(J+1)h}{8\pi^2Ic} = J(J+1)\tilde{B}}$$
+$${\tilde{E}_r(J) = \frac{E_r}{hc} = \frac{J(J+1)h}{8\pi^2Ic} = \tilde{B} J(J+1)}$$
 
 - where the *rotational constant* is given by:
 
@@ -173,6 +163,12 @@ Since photons have one unit of angular momentum, the above rule can be understoo
 $${\tilde{\nu} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
 
 The successive line positions in the rotational spectrum are given by $2\tilde{B}, 4\tilde{B}, 6\tilde{B},...$. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.
+
+:::{figure-md} markdown-fig
+<img src="./images/wqual_space.png" alt="DeD0" class="bg-primary mb-1" width="350px">
+
+Rigid rotor model predicts evenlys spaced spectral lines
+:::
 
 
 ### Population of states
@@ -218,16 +214,26 @@ The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.
 
 
 :::{figure-md} markdown-fig
-<img src="./images/P_Q_R_branch.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+<img src="./images/P_Q_R_branch.png" alt="DeD0" class="bg-primary mb-1" width="400px">
 
 A cartoon depiction of a ideal rovibrational spectrum.
 :::
 
-- Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state $v=0\rightarrow v=1 $. The transitions with $\Delta J=+1$ and $\Delta J=-1$ appear as two branches in the spectrum known as R and P   branch, respectively. The Q-branch $\Delta J =0$ is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
+- Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state $v=0\rightarrow v=1 $. This can be described by combing rigid rotor and harmonic oscillator models:
 
 $$
-\tilde{\nu}_{\Delta J=+/-1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+E_{v,J} = \tilde{\omega}(v+1/2)+\tilde{B}J(J+1)
 $$
+
+- Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground (v=0) and the first excited (v=1) vibrational states.
+- Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states  
+ $$
+\tilde{\nu}_{\Delta J=\pm1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
+$$
+ - The transitions with $\Delta J=+1$ and $\Delta J=-1$ appear as two branches in the spectrum known as R and P  branch, respectively. 
+ - The Q-branch $\Delta J =0$ is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
+
+
 
 
 ### Beyond rigid rotor 1
@@ -285,28 +291,24 @@ $$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 
 - **Rovibronic coupling** As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
 
-The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
+- The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
 
 $$
 B_v = B_e-\alpha_e(v+1/2)
 $$
 
-Where $Be$ is the rotational constant for a rigid rotor and αe
-is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
+- Where $B_e$ is the rotational constant for a rigid rotor and $\alpha_e$ is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
 
-The expression of energy with these correction would then be:
-
-$$
-E_{v,J} = h\nu(v+1/2)+B_vJ(J+1)
-$$
-
-The R branch with rovibronic coupling is now:
+**The R branch with rovibronic coupling**:
 
 $$
 \tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
 $$
 
-The P brnach with rovibronic coupling is now:
+**The P brnach with rovibronic coupling**:
 $$
 \tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
 $$
+
+
+- When $B_0=B_1$ we recover rigid-rotor harmonic oscillator predictions.
