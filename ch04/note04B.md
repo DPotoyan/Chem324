@@ -2,11 +2,15 @@
 
 :::{admonition} What you need to know
 :class: note
+
 - The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.
 - Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers. 
-- Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals. 
-- The selection rule is established via the recursion relation of spherical harmonics.
+- To compute rotational spectra we need to know moment of inertia of a molecules which for diatomics takes simple form $I=\mu r^2$ where $\mu$ is reduced mass and $r$ is distance.
+- For polyatomic molecules may require more elaborate calculations to account for spatial mass distribution.
+- Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals equal $2\tilde{B}$. 
+- The selection rule is established via the recursion relation of spherical harmonics and is $\Delta J\pm 1$ and $M_J =0, \pm 1$.
 - Coupling of vibrational degrees leads to rovibronic transitions and necessitates the inclusion of vibrational quantum numbers for a more accurate account of transitions. 
+- Rotatioal motion can lead to change in bond length, this is known as centrifugal effect and can be accounted for by adding an extra centrifgual correction term to rigid rotor model. 
 :::
 
 
@@ -124,9 +128,9 @@ This rotational spacing can be, for example, observed in gas phase infrared spec
 
 - Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). The rotational energies expressed in wavenumbers are given by:
 
-$${\tilde{E}_r(J) = \frac{E_r}{hc} = \frac{J(J+1)h}{8\pi^2Ic} = \tilde{B} J(J+1)}$$
+$$\boxed{\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
 
-- where the *rotational constant* is given by:
+- Where the *rotational constant* is usually expressed in $cm^{-1}$ units and is given by:
 
 $${\tilde{B} = \frac{h}{8\pi^2Ic}}$$
 
@@ -154,9 +158,9 @@ $${\int\psi_{J',M'}^*\mu_0\psi_{J,M}d\tau_{rot}}$$
 - For example, homonuclear diatomic molecules like $H_2$ and $O_2$ will not show pure rotational spectra. Heteronuclear molecules show pure rotational spectra.
 
 
-Using the known properties for spherical harmonics, one can show the following selection rule:
+Using the known properties for spherical harmonics, one can show the following selection rule holds for the rigid rotor model:
 
-$${\Delta J = J' - J = \pm 1}$$
+$$\boxed{\Delta J = J' - J = \pm 1}$$
 
 Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
 
@@ -230,8 +234,9 @@ $$
  $$
 \tilde{\nu}_{\Delta J=\pm1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
 $$
- - The transitions with $\Delta J=+1$ and $\Delta J=-1$ appear as two branches in the spectrum known as R and P  branch, respectively. 
- - The Q-branch $\Delta J =0$ is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
+ - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} + 2\tilde{B}(J+1)$
+ - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} - 2\tilde{B}(J+1)$
+ - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
 
 
@@ -251,7 +256,10 @@ A cartoon depiction of a ideal rovibrational spectrum.
 A cartoon depiction of a real rovibrational spectrum.
 :::
 
-- **Centrifugal distortion** In reality molecules are not rigid rotors and one must consider the coupling between $H_{rot}$ and $H_{vib}$. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term the energy expresison for rigid rotor:
+
+### Centrifugal distortion
+
+In reality molecules are not rigid rotors and one must consider the coupling between $H_{rot}$ and $H_{vib}$. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term the energy expresison for rigid rotor:
 
 $${\tilde{E}_r(J) = \tilde{B}J(J+1) - \tilde{D}J^2(J+1)^2}$$
 
@@ -287,9 +295,9 @@ The centrifugal distortion constant can obtained by comparing the above equation
 $$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 :::
 
-### Beyond rigid rotor 2
+### Rovibronic coupling
 
-- **Rovibronic coupling** As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
+- As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
 
 - The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
 
@@ -309,6 +317,5 @@ $$
 $$
 \tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
 $$
-
 
 - When $B_0=B_1$ we recover rigid-rotor harmonic oscillator predictions.
