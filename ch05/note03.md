@@ -53,21 +53,26 @@ $${p_x = -\frac{1}{\sqrt{2}}\left( p_{+1} - p_{-1}\right)\propto \textnormal{sin
 {p_y = \frac{i}{\sqrt{2}}\left( p_{+1} + p_{-1}\right)\propto \textnormal{sin}(\theta)\textnormal{sin}(\phi)\propto y}
 {p_z = p_0}$$
 
-Note by combining $p_x$, $p_y$ and $p_z$, the lobe of the orbital can be made to point at any direction. For $d$-orbitals, we have five degenerate levels:
 
 ![](images/Orbital_p1-px_animation.gif)
 
+- Note by combining $p_x$, $p_y$ and $p_z$, the lobe of the orbital can be made to point at any direction. For $d$-orbitals, we have five degenerate levels:
 
+![](images/p-orbitals.png)
 
 $${d_{x^2 - y^2} = \frac{1}{\sqrt{2}} \left(d_{+2} + d_{-2}\right)\textnormal{, }d_{xy} = -\frac{i}{\sqrt{2}}\left( d_{+2} - d_{-2}\right)}
 {d_{xz} = -\frac{1}{\sqrt{2}}\left( d_{+1} - d_{-1}\right)\textnormal{, }d_{yz} = \frac{i}{\sqrt{2}}\left( d_{+1} + d_{-1}\right)}
 {d_{z^2} = d_0}$$
 
+### Table of 2D orbitals
+
+![](images/hydrogen_probability_densities.png)
+
 ### Table of 3D orbitals
 
 ![](images/AO3.png)
 
-### Interactive plotter of Orbitals
+### Interactive plotter of Atomic Orbitals
 
 <iframe src="https://al2me6.github.io/evanescence/"
         width="800"
