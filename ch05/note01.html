@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch05/note01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Spectrum of hydrogenlike atoms" href="note02.html" />
+    <link rel="next" title="Atomic orbitals" href="note03.html" />
     <link rel="prev" title="5. Hydrogen Atom" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -231,8 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">5. Hydrogen Atom</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Hydrogenlike atoms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note02.html">Spectrum of hydrogenlike atoms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03.html">Probability densities for hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Atomic orbitals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Orbital angular momentum of the hydrogen atom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Spin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
@@ -431,12 +430,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-h">Atomic spectra of H</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-atom-in-spherical-coordinates-system">H-atom in spherical coordinates system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">Examples of the radial wavefunctions for hydrogenlike atoms</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-h-atom">Spectrum of H atom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-n-l-and-m">Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wave-function">Total wave function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-wavefunctions-in-cartesian-coordinates">Table of Wavefunctions in cartesian coordinates</a></li>
 </ul>
             </nav>
         </div>
@@ -453,75 +457,90 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>Hydrogen atom is the simplest atom for which Schrodinge equation can be solved exactly. He atom which only has one more electron already proves to be impossible to solve exactly.</p></li>
+<li><p>Hydrogen atom is the simplest atom for which Schrodinger equation can be solved exactly. He atom which only has one more electron already proves to be impossible to solve exactly.</p></li>
 <li><p>The solution of the Schrödinger equation for H atom uses the fact that the Coulomb potential produced by the nucleus is isotropic: it is radially symmetric in space and only depends on the distance to the nucleus. This symmetry gives rise to degenercaies in energy levels.</p></li>
 <li><p>Although the resulting energy eigenfunctions (the orbitals) are not necessarily isotropic themselves, their dependence on the angular coordinates follows completely generally from this isotropy of the underlying potential.</p></li>
 <li><p>The angular momentum is conserved, therefore, the energy eigenvalues may be classified by two angular momentum quantum numbers, ℓ and m (both are integers) and quantize mangitude and projection of angular momentum.</p></li>
 <li><p>Atomic orbitals are introduced which are used for also describing multi-electron atoms and molecules.</p></li>
 </ul>
 </div>
-<section id="atomic-spectra-of-h">
-<h2>Atomic spectra of H<a class="headerlink" href="#atomic-spectra-of-h" title="Permalink to this heading">#</a></h2>
-<p>Hydrogen atom spectra was the first real test that Schroidinger equation passed perfectly by predicitng all the lines with an energy expressed expressed in terms of dunemtnal constants. The Schroinger equation thereby opened the door for systmetic treatment of spectra and structures of atoms and moelcuels far more complex than H atom, which alas do not admit an exact solution. This is why we treasure the solution fo H atom so much. It provides a fundmental building block to understand more complex systems.</p>
-</section>
 <section id="schrodinger-equation-for-hydrogenlike-atoms">
 <h2>Schrodinger equation for hydrogenlike atoms<a class="headerlink" href="#schrodinger-equation-for-hydrogenlike-atoms" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>H atom is a two body problm: one electron and one nucleus</p></li>
-<li><p>We can reduce the two body problem to one body problem of electron with reduced mass moving with respect to fixed nucleus.</p></li>
-<li><p>We have a porblem of one particle moving in a symmetric potential field in 3D. Expect to get 3 quantum numbers, anticipate some degenreacies due to this raidal symmetry.</p></li>
-<li><p>Potential energy consists of coulomb term encoding the electrostatic attraction between nucleus and electron.</p></li>
 <li><p>Consider one electron and one nucleus with charge <span class="math notranslate nohighlight">\(Ze\)</span> where <span class="math notranslate nohighlight">\(e\)</span> is the magnitude of the electron charge (1.6021773 <span class="math notranslate nohighlight">\(\times\)</span> <span class="math notranslate nohighlight">\(10^{-19}\)</span> C) and <span class="math notranslate nohighlight">\(Z\)</span> is the atomic number. Examples of such systems are: H, <span class="math notranslate nohighlight">\(He^+\)</span>, <span class="math notranslate nohighlight">\(Li^{2+}\)</span></p></li>
-<li><p>For these simple atomic systems, the Schrodinger equation can be solved analytically.  This can be generalized for systems having nuclei with charges other than <span class="math notranslate nohighlight">\(+1\)</span> as follows:</p></li>
+<li><p>We can reduce the two body problem to one body problem of electron with reduced mass moving with respect to fixed nucleus. Since electron is might lighter compared to the nucleus we can use electron mass instead of reduced mass <span class="math notranslate nohighlight">\(\mu\approx m_e\)</span></p></li>
+<li><p>We have a porblem of one particle moving in a symmetric potential field in 3D. Expect to get 3 quantum numbers, anticipate some degenreacies due to this raidal symmetry.</p></li>
+<li><p><strong>Potential energy</strong> operator consists of one coulomb term encoding the electrostatic attraction between nucleus and electron:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{-\frac{\hbar^2}{2m_e}\Delta \psi_i(x,y,z) - \frac{Ze^2}{4\pi\epsilon_0\sqrt{x^2 + y^2 + z^2}}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(m_e\)</span> is the electron mass, <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permittivity">vacuum permitivity</a> and subscripts for <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(E\)</span> signify the fact that there are multiple (<span class="math notranslate nohighlight">\(\psi_i\)</span>, <span class="math notranslate nohighlight">\(E_i\)</span>) combinations.</p>
-<blockquote>
-<div><p>Note again that we should have used the reduced mass  for the nucleus and electron above, but because the nucleus is much heavier then the electron, the reduced mass is very close to the electron mass.</p>
-</div></blockquote>
+\[V= - \frac{Ze^2}{4\pi\epsilon_0 r}\]</div>
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(m_e\)</span> is the electron mass,  <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permittivity">vacuum permitivity</a>.</p></li>
+<li><p><strong>Kinetic energy operator</strong> in 3D is the same as in the particle in a box in 3D:
+$<span class="math notranslate nohighlight">\(\frac{\hbar^2}{2m_e}\nabla^2\)</span>$</p></li>
+</ul>
+</section>
+<section id="h-atom-in-spherical-coordinates-system">
+<h2>H-atom in spherical coordinates system<a class="headerlink" href="#h-atom-in-spherical-coordinates-system" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Because of the spherical symmetry of the <a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb's_law">Coulomb potential</a>it is convenient to work in spherical coordinates:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}\]</div>
-<p>where the <span class="math notranslate nohighlight">\(\Delta\)</span> is expressed in spherical coordinates:</p>
+<ul class="simple">
+<li><p>Subscripts for <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(E\)</span> signify the fact that there are multiple (<span class="math notranslate nohighlight">\(\psi_i\)</span>, <span class="math notranslate nohighlight">\(E_i\)</span>) combinations. The <span class="math notranslate nohighlight">\(\Delta\)</span> is expressed in spherical coordinates:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\textnormal{sin}(\theta)}
 \frac{\partial}{\partial\theta}\left(\textnormal{sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\textnormal{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}\]</div>
-<p>Note that the Coulomb potential term above depends only on <span class="math notranslate nohighlight">\(r\)</span> (and not on <span class="math notranslate nohighlight">\(\theta\)</span> or <span class="math notranslate nohighlight">\(\phi\)</span>). The Laplacian can be written in terms of the angular momentum operator <span class="math notranslate nohighlight">\(\hat{L}\)</span>:</p>
+<ul class="simple">
+<li><p>Note that the Coulomb potential term above depends only on <span class="math notranslate nohighlight">\(r\)</span> (and not on <span class="math notranslate nohighlight">\(\theta\)</span> or <span class="math notranslate nohighlight">\(\phi\)</span>). The Laplacian can be written in terms of the angular momentum operator <span class="math notranslate nohighlight">\(\hat{L}\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\Delta = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}
 = \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}}\]</div>
-<p>By substituting this into Eq. (\ref{eq10.4}) and multiplying both sides by <span class="math notranslate nohighlight">\(2m_er^2\)</span>, we get:</p>
+<p>By substituting this into  and multiplying both sides by <span class="math notranslate nohighlight">\(2m_er^2\)</span>, we get:</p>
 <div class="math notranslate nohighlight">
-\[\left[-\hbar^2r^2\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{m_er^2Ze^2}{2\pi\epsilon_0r}+ \hat{L}^2\right]\psi_i(r,\theta,\phi) = (2m_er^2E_i)\psi_i(r,\theta,\phi)\]</div>
+\[\left[\frac{-\hbar^2}{2m_e}\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{\hat{L}^2}{2m_e r^2}\right]\psi_i(r,\theta,\phi) = \psi_i(r,\theta,\phi)\]</div>
 <p>Since the operator can be split into <span class="math notranslate nohighlight">\(r\)</span> and angle dependent parts, the solution can be written as a product of the radial and angular parts</p>
 </section>
 <section id="separation-of-variables">
 <h2>Separation of variables<a class="headerlink" href="#separation-of-variables" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[{\psi_i(r,\theta,\phi) = R_{nl}(r)Y_l^m(\theta,\phi)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(R_{nl}\)</span> is called the radial wavefunction and <span class="math notranslate nohighlight">\(Y_l^m\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> as discussed earlier. Eq. (\ref{eq10.7}) can now be rewritten as:</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(R_{nl}\)</span> is called the <strong>radial wavefunction</strong> which we need to obtain.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(Y_l^m\)</span> are <strong>spherical harmonics</strong> which are eigenfunctions of angular momentum <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> as discussed earlier. Hence this part is already solved.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{-\hbar^2Y_l^m(\theta,\phi)r^2\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) R_{nl}(r) - Y_l^m(\theta,\phi)
-\frac{m_er^2Ze^2}{2\pi\epsilon_0r}R_{nl}(r)}
-{+ Y_l^m(\theta, \phi)R_{nl}(r)\underbrace{l(l+1)\hbar^2}_{= \hat{L}^2} = (2m_er^2E_{nl})Y_l^m(\theta,\phi)R_{nl}(r)}\]</div>
-<p>Next we divide the above equation side by side by <span class="math notranslate nohighlight">\(Y_l^m\times (2m_er^2)\)</span>:</p>
+\[\hat{L}^2 Y_{lm}=\hbar^2l(l+1)Y_{lm}\]</div>
+<ul class="simple">
+<li><p>Plugging the <span class="math notranslate nohighlight">\(R_{nl}(r)Y_l^m(\theta,\phi)\)</span> into Schoringer euqation, applying angular momentum operator and calcelling spherical harmonics from both sides we end up with the radial part.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\left[ -\frac{\hbar^2}{2m_e}\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2}\right] R_{nl}(r) = E_{nl}R_{nl}(r)}\]</div>
-<p>Substituting <span class="math notranslate nohighlight">\(R_{nl}(r) = S_{nl}(r) / r\)</span> and multiplying both sides by <span class="math notranslate nohighlight">\(r\)</span> gives a slightly simpler form:</p>
+<ul class="simple">
+<li><p>We find that electron is moving in an effective potential generated by attractive coloumb interaction and repulsive orbtial kinetic energy.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{-\frac{\hbar^2}{2m_e}\frac{\partial^2S_{nl}(r)}{\partial r^2} + \underbrace{\left( -\frac{Ze^2}{4\pi\epsilon_0r} + \overbrace{\frac{l(l+1)\hbar^2}{2m_er^2}}^{\textnormal{``centrifugal potential''}}\right)}_{\equiv V_{eff}(r)} S_{nl}(r) = E_{nl}S_{nl}(r)}\]</div>
-<p>with <span class="math notranslate nohighlight">\(l = 0, 1, 2, ...\)</span>.</p>
-<p>The eigenvalues <span class="math notranslate nohighlight">\(E_{nl}\)</span> and and the radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p>
+\[V_{eff} = - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2} \]</div>
+<ul class="simple">
+<li><p>The first repuslive term more rapidly with <span class="math notranslate nohighlight">\(r\)</span> than the Coulomb potential, it dominates at small distances if <span class="math notranslate nohighlight">\(l\neq0\)</span>. Both terms approach zero for large values of r. The resultant potential is repulsive at short distances for <span class="math notranslate nohighlight">\(l&gt;0\)</span> and is more repulsive the greater the value of <span class="math notranslate nohighlight">\(l\)</span>. The net result of this repulsive centrifugal potential is to force the electrons in orbitals with l <span class="math notranslate nohighlight">\(l&gt;0\)</span> on average farther from the nucleus than l = 0.</p></li>
+</ul>
+</section>
+<section id="eigenvalues-and-eigenfunctions">
+<h2>Eigenvalues and Eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The eigenvalues <span class="math notranslate nohighlight">\(E_{nl}\)</span> and and the radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}\textnormal{ with }n = 1,2,3...\textnormal{ (independent of }l,l&lt;n\textnormal{)}}\]</div>
 <div class="math notranslate nohighlight">
 \[{R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho)\textnormal{exp}\left(-\frac{\rho}{2}\right)\textnormal{ with }\rho = \frac{2Zr}{na_0}\textnormal{ and }
 a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(L_{n+l}^{2l+1}(\rho)\)</span> are <a class="reference external" href="http://en.wikipedia.org/wiki/Laguerre_polynomials">Laguerre polynomials</a>. Explicit expressions will be given later in the text. The constant <span class="math notranslate nohighlight">\(a_0\)</span> is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Bohr_radius">Bohr radius</a> Some of the first radial wavefunctions are listed on the next page.</p>
-<p>Some of the electronic energy levels of hydrogen atom are shown below.</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(L_{n+l}^{2l+1}(\rho)\)</span> are <a class="reference external" href="http://en.wikipedia.org/wiki/Laguerre_polynomials">Laguerre polynomials</a>. The constant <span class="math notranslate nohighlight">\(a_0\)</span> is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Bohr_radius">Bohr radius</a>. Some of the first radial wavefunctions are listed on the next page.Some of the electronic energy levels of hydrogen atom are shown below.</p></li>
+</ul>
 <section id="examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">
 <h3>Examples of the radial wavefunctions for hydrogenlike atoms<a class="headerlink" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms" title="Permalink to this heading">#</a></h3>
 <table class="table">
@@ -567,6 +586,141 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
 </table>
 </section>
 </section>
+<section id="spectrum-of-h-atom">
+<h2>Spectrum of H atom<a class="headerlink" href="#spectrum-of-h-atom" title="Permalink to this heading">#</a></h2>
+<p>Equation of hydroen atom energy can be expressed in units (<span class="math notranslate nohighlight">\(m^{-1}\)</span>; usually <span class="math notranslate nohighlight">\(cm^{-1}\)</span> is used):</p>
+<div class="math notranslate nohighlight">
+\[{\tilde{E}_n = \frac{E_n}{hc} = \frac{E_n}{2\pi\hbar c} = -\overbrace{\frac{m_ee^4}{4\pi c(4\pi\epsilon_0)^2\hbar^3}}^{\equiv R}
+\times\frac{Z^2}{n^2}\textnormal{ }}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(R\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a> and we have assumed that the nucleus has an infinite mass. To be exact, the Rydberg constant depends on the nuclear mass, but this difference is very small. For H atom <span class="math notranslate nohighlight">\(R_H = 1.096 775 856 \times 10^7\)</span> <span class="math notranslate nohighlight">\(m^{-1}\)</span>.</p></li>
+<li><p>The Eq of H atom energy can be used to calculate the differences in the energy levels:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Delta\tilde{v}_{n_1,n_2} = \tilde{E}_{n_2} - \tilde{E}_{n_1} = -\frac{R_HZ^2}{n_2^2} + \frac{R_HZ^2}{n_1^2} = R_HZ^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)\]</div>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Lyman_series">Lyman series</a> is obtained with <span class="math notranslate nohighlight">\(n_1 = 1\)</span>, <a class="reference external" href="http://en.wikipedia.org/wiki/Balmer_series">Balmer series</a> with <span class="math notranslate nohighlight">\(n_1 = 2\)</span>, and <a class="reference external" href="http://en.wikipedia.org/wiki/Hydrogen_spectral_series">Paschen series</a> with <span class="math notranslate nohighlight">\(n_1 = 3\)</span>. The ionization energy  is given by:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E_i = R_HZ^2\left(\frac{1}{1^2} - \frac{1}{\infty}\right)}\]</div>
+<ul class="simple">
+<li><p>For a ground state hydrogen atom (i.e., <span class="math notranslate nohighlight">\(n = 1\)</span>), the above equation gives a value of 109678 cm<span class="math notranslate nohighlight">\(^{-1}\)</span> = 13.6057 eV. Note that the larger the nuclear charge <span class="math notranslate nohighlight">\(Z\)</span> is, the larger the binding energy is.</p></li>
+</ul>
+</section>
+<section id="quantum-numbers-n-l-and-m">
+<h2>Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span><a class="headerlink" href="#quantum-numbers-n-l-and-m" title="Permalink to this heading">#</a></h2>
+<p>The quantum numbers in hydrogenlike atoms take on the following values dicated by the solution of Schrodinger equation with boundary conditions imposed respective radial and anuglar parts:</p>
+<div class="math notranslate nohighlight">
+\[{n = 1, 2, 3, ...}\]</div>
+<div class="math notranslate nohighlight">
+\[{l = 0, 1, 2, ..., n-1}\]</div>
+<div class="math notranslate nohighlight">
+\[{m = 0, \pm 1, \pm 2,...,\pm l}\]</div>
+<ul class="simple">
+<li><p>For a given value of <span class="math notranslate nohighlight">\(n\)</span>, the level is <span class="math notranslate nohighlight">\(n^2\)</span> times degenerate.</p></li>
+<li><p>For historical reasons, the following letters are used to express the value of <span class="math notranslate nohighlight">\(l\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\phantom{\textnormal{symbo}}l = 0, 1, 2, 3, ...}{\textnormal{symbol} = s, p, d, f, ...}\]</div>
+<ul class="simple">
+<li><p>Recall that the wavefunctions for hydrogenlike atoms are <span class="math notranslate nohighlight">\(R_{nl}(r)Y_l^m(\theta,\phi)\)</span> with <span class="math notranslate nohighlight">\(l &lt; n\)</span>. For the first shell we have only one wavefunction: <span class="math notranslate nohighlight">\(R_{10}(r)Y_0^0(\theta,\phi)\)</span>. This state is usually labeled as <span class="math notranslate nohighlight">\(1s\)</span>, where 1 indicates the <a class="reference external" href="http://en.wikipedia.org/wiki/Electron_shell">shell number</a> (<span class="math notranslate nohighlight">\(n\)</span>) and <span class="math notranslate nohighlight">\(s\)</span> corresponds to orbital angular momentum <span class="math notranslate nohighlight">\(l\)</span> being zero. For <span class="math notranslate nohighlight">\(n = 2\)</span>, we have several possibilities: <span class="math notranslate nohighlight">\(l = 0\)</span> or <span class="math notranslate nohighlight">\(l = 1\)</span>. The former is labeled as <span class="math notranslate nohighlight">\(2s\)</span>. The latter is <span class="math notranslate nohighlight">\(2p\)</span> state and consists of three degenerate states: (for example, <span class="math notranslate nohighlight">\(2p_x\)</span>, <span class="math notranslate nohighlight">\(2p_y\)</span>, <span class="math notranslate nohighlight">\(2p_z\)</span> or <span class="math notranslate nohighlight">\(2p_{+1}\)</span>, <span class="math notranslate nohighlight">\(2p_0\)</span>, <span class="math notranslate nohighlight">\(2p_{-1}\)</span>). In the latter notation the values for <span class="math notranslate nohighlight">\(m\)</span> have been indicated as subscripts.</p></li>
+<li><p>There is one more quantum number that has not been discussed yet: <a class="reference external" href="http://en.wikipedia.org/wiki/Spin_quantum_number">Spin quantum number</a> For one-electron systems this can have values <span class="math notranslate nohighlight">\(\pm\frac{1}{2}\)</span> (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is <span class="math notranslate nohighlight">\(2n^2\)</span>.</p></li>
+</ul>
+</section>
+<section id="total-wave-function">
+<h2>Total wave function<a class="headerlink" href="#total-wave-function" title="Permalink to this heading">#</a></h2>
+<p>The total wavefunction for a hydrogenlike atom is (<span class="math notranslate nohighlight">\(m\)</span> is usually denoted by <span class="math notranslate nohighlight">\(m_l\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[{\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}R_{nl}(r)Y_l^{m_l}(\theta,\phi)}\]</div>
+<div class="math notranslate nohighlight">
+\[{N_{nl} = \sqrt{\left(\frac{2Z}{na_0}\right)^3\frac{(n - l - 1)!}{2n\left[(n + l)!\right]}}}\]</div>
+<div class="math notranslate nohighlight">
+\[R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}\]</div>
+</section>
+<section id="table-of-wavefunctions-in-cartesian-coordinates">
+<h2>Table of Wavefunctions in cartesian coordinates<a class="headerlink" href="#table-of-wavefunctions-in-cartesian-coordinates" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(l\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m\)</span></p></th>
+<th class="head"><p>Wavefunction expressed in <span class="math notranslate nohighlight">\(\sigma= \frac{zr}{a_0}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{1s} = \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}e^{-\sigma}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{2s} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}(2 - \sigma)e^{-\sigma/2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{2p_z} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}	\textnormal{cos}(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pm 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{2p_x} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}\textnormal{sin}(\theta)\textnormal{cos}(\phi)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{2p_y} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}\textnormal{sin}(\theta)\textnormal{sin}(\phi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3s} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(27 - 18\sigma + 2\sigma^2\right)e^{-\sigma/3}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3p_z} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma e^{-\sigma/3}	extnormal{cos}(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pm 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3p_x} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma  e^{-\sigma/3}\textnormal{sin}(\theta)\textnormal{cos}(\phi)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3p_y} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma    \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3d_{z^2}} = \frac{1}{81\sqrt{6\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2e^{-\sigma/3}\left(3\textnormal{cos}^2(\theta) - 1\right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pm 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3d_{xz}} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}\textnormal{sin}(\theta)\textnormal{cos}(\theta)\textnormal{cos}(\phi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3d_{yz}} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pm 2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3d_{x^2-y^2}} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}\textnormal{sin}^2(\theta)\textnormal{cos}(2\phi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\(\psi_{3d_{xy}} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -609,11 +763,11 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
       </div>
     </a>
     <a class="right-next"
-       href="note02.html"
+       href="note03.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Spectrum of hydrogenlike atoms</p>
+        <p class="prev-next-title">Atomic orbitals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -632,12 +786,17 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-spectra-of-h">Atomic spectra of H</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-atom-in-spherical-coordinates-system">H-atom in spherical coordinates system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">Examples of the radial wavefunctions for hydrogenlike atoms</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-h-atom">Spectrum of H atom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-n-l-and-m">Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wave-function">Total wave function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-wavefunctions-in-cartesian-coordinates">Table of Wavefunctions in cartesian coordinates</a></li>
 </ul>
   </nav></div>
 
