@@ -90,7 +90,7 @@ $${d_{x^2 - y^2} = \frac{1}{\sqrt{2}} \left(d_{+2} + d_{-2}\right)\textnormal{, 
 - What are the energies of these states?
 - Consider several values for n, and show that the number of orbitals for each $n$ is $n^2$
 
-:::{dropdown} Hint
+:::{dropdown} **Solution**
 
 If  n=3 the allowed values of l are 0, 1, and 2. 
 - If  l=0; m=0 (1 state)
@@ -115,7 +115,7 @@ $$
 - What are the possible orientations for the angular momentum vector?
 
 
-:::{dropdown} Hint
+:::{dropdown} **Hint**
 
 - 3d orbital corresponds to n=1 and l=2. A number of $m_l$ values are possible
 - Orientation of $L_z$. with respect to L is defined by $cos\theta = L_z/L$
@@ -130,7 +130,7 @@ $$
 \psi_{3p_z} = \frac{1}{81}\sqrt{\frac{2}{\pi}}\left(\frac{1}{a_0}\right)^{3/2}\left(6\frac{r}{a_0} - \frac{r^2}{a^2_0}\right) e^{-r/3a_0}	{cos}(\theta)
 $$
 
-:::{dropdown} Hint
+:::{dropdown} **Solution**
 
 - $3p_z$ corresponds to $n=3$, $l=1$ and $m_l=0$
 
@@ -147,7 +147,7 @@ $$
 - Calculate probabiltiy to find the electron within first Bohr raidus $a_0.$
 - calcualte the most probable value of r to find the electron. 
 
-:::{dropdown} Hint
+:::{dropdown} **Solution**
 
 - Ground state is 1s;
 
@@ -205,3 +205,4 @@ Calculate average potential energy of H-atom in its ground and first excited sta
 
 - This problem is solved in Chapter 7 of McQuarrie's book. Page 3332
 :::
+

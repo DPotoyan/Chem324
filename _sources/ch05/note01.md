@@ -174,8 +174,26 @@ $$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
 
 ### Computationals with wavefunctions
 
+- We can use the wavefunctions from the table above to calculate various averages by using the definition of average in quantum mechanics: $\langle f(r) \rangle =\langle \psi |f(r)|\psi\rangle$:
 
+$$
+\langle r\rangle_{n,l,m} = \frac{a^2_0 n^4}{Z^2}\Big( 1+\frac{1}{2}\Big[1-\frac{l(l+1)}{n^2} \Big]) 
+$$
 
+$$
+\langle r^2\rangle_{n,l,m} = \frac{a^2_0 n^4}{Z^2}\Big( 1+\frac{3}{2}\Big[1-\frac{l(l+1)-1/3}{n^2} \Big]) 
+$$
 
+$$
+\langle r^{-1}\rangle_{n,l,m} = \frac{Z}{a_0 n^2}
+$$
+
+$$
+\langle r^{-2}\rangle_{n,l,m} = \frac{Z^2}{a^2_0 n^3 (l+1/2)}
+$$
+
+$$
+\langle r^{-3}\rangle_{n,l,m} = \frac{Z^3}{a^3_0 n^3 (l+1/2)(l+1)}
+$$
 
 
