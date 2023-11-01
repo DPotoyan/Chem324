@@ -39,8 +39,8 @@ $${\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi
 
 - Subscripts for $\psi$ and $E$ signify the fact that there are multiple ($\psi_i$, $E_i$) combinations. The $\Delta$ is expressed in spherical coordinates:
 
-$${\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\textnormal{sin}(\theta)}
-\frac{\partial}{\partial\theta}\left(\textnormal{sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\textnormal{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}$$
+$${\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2{sin}(\theta)}
+\frac{\partial}{\partial\theta}\left({sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}$$
 
 
 - Note that the Coulomb potential term above depends only on $r$ (and not on $\theta$ or $\phi$). The Laplacian can be written in terms of the angular momentum operator $\hat{L}$:
@@ -78,9 +78,9 @@ $$V_{eff} = - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2} $$
 
 - The eigenvalues $E_{nl}$ and and the radial eigenfunctions $R_{nl}$ can be written as (derivations are lengthy but standard math):
 
-$${E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}\textnormal{ with }n = 1,2,3...\textnormal{ (independent of }l,l<n\textnormal{)}}$$
+$${E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ with }n = 1,2,3...{ (independent of }l,l<n{)}}$$
 
-$${R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho)\textnormal{exp}\left(-\frac{\rho}{2}\right)\textnormal{ with }\rho = \frac{2Zr}{na_0}\textnormal{ and }
+$${R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho){exp}\left(-\frac{\rho}{2}\right){ with }\rho = \frac{2Zr}{na_0}{ and }
 a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}$$
 
 - where $L_{n+l}^{2l+1}(\rho)$ are [Laguerre polynomials](http://en.wikipedia.org/wiki/Laguerre_polynomials). The constant $a_0$ is called the [Bohr radius](http://en.wikipedia.org/wiki/Bohr_radius). Some of the first radial wavefunctions are listed on the next page.Some of the electronic energy levels of hydrogen atom are shown below.
@@ -104,7 +104,7 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}$$
 Equation of hydroen atom energy can be expressed in units ($m^{-1}$; usually $cm^{-1}$ is used):
 
 $${\tilde{E}_n = \frac{E_n}{hc} = \frac{E_n}{2\pi\hbar c} = -\overbrace{\frac{m_ee^4}{4\pi c(4\pi\epsilon_0)^2\hbar^3}}^{\equiv R}
-\times\frac{Z^2}{n^2}\textnormal{ }}$$
+\times\frac{Z^2}{n^2}{ }}$$
 
 - where $R$ is the [Rydberg constant](http://en.wikipedia.org/wiki/Rydberg_constant) and we have assumed that the nucleus has an infinite mass. To be exact, the Rydberg constant depends on the nuclear mass, but this difference is very small. For H atom $R_H = 1.096 775 856 \times 10^7$ $m^{-1}$.
 
@@ -131,7 +131,7 @@ $${m = 0, \pm 1, \pm 2,...,\pm l}$$
 
 - For historical reasons, the following letters are used to express the value of $l$:
 
-$${\phantom{\textnormal{symbo}}l = 0, 1, 2, 3, ...}{\textnormal{symbol} = s, p, d, f, ...}$$
+$${\phantom{{symbo}}l = 0, 1, 2, 3, ...}{{symbol} = s, p, d, f, ...}$$
 
 
 - Recall that the wavefunctions for hydrogenlike atoms are $R_{nl}(r)Y_l^m(\theta,\phi)$ with $l < n$. For the first shell we have only one wavefunction: $R_{10}(r)Y_0^0(\theta,\phi)$. This state is usually labeled as $1s$, where 1 indicates the [shell number](http://en.wikipedia.org/wiki/Electron_shell) ($n$) and $s$ corresponds to orbital angular momentum $l$ being zero. For $n = 2$, we have several possibilities: $l = 0$ or $l = 1$. The former is labeled as $2s$. The latter is $2p$ state and consists of three degenerate states: (for example, $2p_x$, $2p_y$, $2p_z$ or $2p_{+1}$, $2p_0$, $2p_{-1}$). In the latter notation the values for $m$ have been indicated as subscripts.
@@ -158,18 +158,22 @@ $$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
 |-----|-----|---------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 1   | 0   | 0       | $\psi_{1s} = \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}e^{-\sigma}$                                                            |
 | 2   | 0   | 0       | $\psi_{2s} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}(2 - \sigma)e^{-\sigma/2}$                                            |
-| 2   | 1   | 0       | $\psi_{2p_z} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}	\textnormal{cos}(\theta)$                        |
-| 2   | 1   | $\pm 1$ | $\psi_{2p_x} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}\textnormal{sin}(\theta)\textnormal{cos}(\phi)$ |
-|     |     |         | $\psi_{2p_y} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}\textnormal{sin}(\theta)\textnormal{sin}(\phi)$ |
+| 2   | 1   | 0       | $\psi_{2p_z} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}	{cos}(\theta)$                        |
+| 2   | 1   | $\pm 1$ | $\psi_{2p_x} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}{sin}(\theta){cos}(\phi)$ |
+|     |     |         | $\psi_{2p_y} = \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma e^{-\sigma/2}{sin}(\theta){sin}(\phi)$ |
 | 3   | 0   | 0       | $\psi_{3s} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(27 - 18\sigma + 2\sigma^2\right)e^{-\sigma/3}$                                                      |
-| 3   | 1   | 0       | $\psi_{3p_z} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma e^{-\sigma/3}	extnormal{cos}(\theta)$                               |
-| 3   | 1   | $\pm 1$ | $\psi_{3p_x} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma  e^{-\sigma/3}\textnormal{sin}(\theta)\textnormal{cos}(\phi)$       |
+| 3   | 1   | 0       | $\psi_{3p_z} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma e^{-\sigma/3}	{cos}(\theta)$                               |
+| 3   | 1   | $\pm 1$ | $\psi_{3p_x} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma  e^{-\sigma/3}{sin}(\theta){cos}(\phi)$       |
 |     |     |         | $\psi_{3p_y} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\left(6 - \sigma\right)\sigma    $                                                                 |
-| 3   | 2   | 0       | $\psi_{3d_{z^2}} = \frac{1}{81\sqrt{6\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2e^{-\sigma/3}\left(3\textnormal{cos}^2(\theta) - 1\right)$                                  |
-| 3   | 2   | $\pm 1$ | $\psi_{3d_{xz}} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}\textnormal{sin}(\theta)\textnormal{cos}(\theta)\textnormal{cos}(\phi)$ |
+| 3   | 2   | 0       | $\psi_{3d_{z^2}} = \frac{1}{81\sqrt{6\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2e^{-\sigma/3}\left(3{cos}^2(\theta) - 1\right)$                                  |
+| 3   | 2   | $\pm 1$ | $\psi_{3d_{xz}} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}{sin}(\theta){cos}(\theta){cos}(\phi)$ |
 |     |     |         | $\psi_{3d_{yz}} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  $                                                                                     |
-| 3   | 2   | $\pm 2$ | $\psi_{3d_{x^2-y^2}} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}\textnormal{sin}^2(\theta)\textnormal{cos}(2\phi)$                       |
+| 3   | 2   | $\pm 2$ | $\psi_{3d_{x^2-y^2}} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2  e^{-\sigma/3}{sin}^2(\theta){cos}(2\phi)$                       |
 |     |     |         | $\psi_{3d_{xy}} = \frac{1}{81\sqrt{3\pi}}\left(\frac{Z}{a_0}\right)^{3/2}\sigma^2$                                                                                             |
+
+
+### Computationals with wavefunctions
+
 
 
 

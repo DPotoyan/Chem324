@@ -79,3 +79,129 @@ $${d_{x^2 - y^2} = \frac{1}{\sqrt{2}} \left(d_{+2} + d_{-2}\right)\textnormal{, 
         height="500"
         allowfullscreen>
 </iframe>
+
+
+
+### Problems
+
+#### Problem 1
+
+- For the hydrogen atom, how many possible quantum states correspond to the principal number $n=3$
+- What are the energies of these states?
+- Consider several values for n, and show that the number of orbitals for each $n$ is $n^2$
+
+:::{dropdown} Hint
+
+If  n=3 the allowed values of l are 0, 1, and 2. 
+- If  l=0; m=0 (1 state)
+- If  l=1; m=−1,0,1 (3 states);
+- If  l=2; m=−2,−1,0,1,2 (5 states). 
+
+In total, there are 1 + 3 + 5 = 9 allowed states. This confirms that number of orbitals for H-atom is $n^2$
+
+- Because the total energy depends only on the principal quantum number!  n=3. the energy of each of these states is given by:
+
+$$
+E_n = -13.5 \frac{1}{n^2}\, [eV]
+$$
+
+:::
+
+#### Problem 2
+
+- The notation $3d$ specifies the quantum numbers for an electron in the hydrogen atom. What are the values for $n$ and $l$? 
+- What are the values for the energy and angular momentum? 
+- What are the possible values for the magnetic quantum number? 
+- What are the possible orientations for the angular momentum vector?
+
+
+:::{dropdown} Hint
+
+- 3d orbital corresponds to n=1 and l=2. A number of $m_l$ values are possible
+- Orientation of $L_z$. with respect to L is defined by $cos\theta = L_z/L$
+:::
+
+
+#### Problem 3
+
+Locate nodes or nodal surfaces of $3p_z$ orbital:
+
+$$
+\psi_{3p_z} = \frac{1}{81}\sqrt{\frac{2}{\pi}}\left(\frac{1}{a_0}\right)^{3/2}\left(6\frac{r}{a_0} - \frac{r^2}{a^2_0}\right) e^{-r/3a_0}	{cos}(\theta)
+$$
+
+:::{dropdown} Hint
+
+- $3p_z$ corresponds to $n=3$, $l=1$ and $m_l=0$
+
+- Radial part of the equations is zero at $r=0$ and $r=6a_0$. First one is part of a boundary condition and not a node becaue wavfunction is not changing a sign. Hence 1 node from radial part.
+
+- Angular part has one nodal surface due to  $cos\theta=0$ which happens at $\theta=\frac{\pi}{2}$
+
+- We have 2 nodes for $3p_z$ orbital. The toal number of nodes are n-1 where one has l angular nodes and n - l - 1 radial nodes.
+:::
+
+#### Problem 4
+
+- Calculate average distance from nucleus to find the electron in H-atom in its ground state.
+- Calculate probabiltiy to find the electron within first Bohr raidus $a_0.$
+- calcualte the most probable value of r to find the electron. 
+
+:::{dropdown} Hint
+
+- Ground state is 1s;
+
+$$
+\psi_{1s}(r) = \frac{1}{\sqrt{\pi}}\frac{1}{a^{3/2}_0}e^{-r/a_0}
+$$
+
+- **Compute averages.** Averages  or expectations of observables in quantum mechanics are calculated as usual by $\langle\psi |A| \psi \rangle$ expression:
+
+$$\langle 1s |r| 1s\rangle = \frac{1}{\pi a^3_0}\int^{\infty}_0 e^{-2r/a_0} r \cdot r^2 dr \int^{\pi}_0 sin\theta d\theta \int^{2\pi}_0d\phi = \frac{4}{a^3_0}\int^{\infty}_0 r^3 e^{-2r/a_0} dr$$
+
+The last integral is evaluated using the following table integral:
+
+$$
+\int^{\infty}_0 x^n e^{-Ax}dx = \frac{n!}{A^{n+1}}
+$$
+
+$$\langle 1s |r| 1s\rangle=\frac{4}{a^3_0} \cdot \frac{3!}{(2/a_0)^4}=\frac{3}{2}a_0$$
+
+- **Computing probabilities** Wavefunction square is a probability distribution function to find electron in small volume dV in 3D space. Probability to find electron at a distance regardless of angles is found by integrating out angles:
+
+$$
+Prob(r)= \int |\psi(r, \theta, \phi)|^2d\theta d\phi = |\psi(r)|^2 = \frac{4}{a^3_0} r^2 e^{-2r/a_0}
+$$
+
+- Probability to find electron in a range $0\leq r\leq a_0$ is found by integrating (summing probabilities) over that range:
+
+$$
+Prob(0\leq r\leq a_0)= \frac{4}{a^3_0} \int^{a_0}_0 r^2 e^{-2r/a_0} dr
+$$
+
+- **Most probable value** is found by finding the maximim value of $P(r)$
+
+$$
+\frac{dP(r)}{dr}|_{r=r_max}=0
+$$
+
+Carrying out the derivative we find that $r_max=a_0$
+:::
+
+#### Problem 5
+
+Show that $|210\rangle$ is normalized and orthogoanal to $|200\rangle$
+
+:::{dropdown} Hint
+
+- This problem is solved in Chapter 7 of McQuarrie's book. Page 326
+:::
+
+#### Problem 6
+
+Calculate average potential energy of H-atom in its ground and first excited states.
+
+:::{dropdown} Hint
+
+- This problem is solved in Chapter 7 of McQuarrie's book. Page 3332
+:::
