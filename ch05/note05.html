@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DEMO: H wavefunctions" href="hydrogen_wavefunctions.html" />
-    <link rel="prev" title="Orbital angular momentum of the hydrogen atom" href="note04.html" />
+    <link rel="prev" title="Atomic orbitals" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -232,7 +232,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">5. Hydrogen Atom</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Hydrogenlike atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Atomic orbitals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Orbital angular momentum of the hydrogen atom</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Spin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
 </ul>
@@ -430,16 +429,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-angular-momentum-of-the-hydrogen-atom">Orbital angular momentum of the hydrogen atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-charge-generates-mangetic-moment">Rotating charge generates mangetic moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-herlach-experiment">Stern-Herlach experiment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin">Eigenvalues of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-spin">Eigenfunctions of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-spin">Effect of magnetic field on spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin-magnetic-moment">Eigenvalues of spin magnetic moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term symbols</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-spim-and-angular-momentum">Summary of spim and angular momentum</a></li>
 </ul>
             </nav>
@@ -454,54 +458,111 @@ document.write(`
                   
   <section id="spin">
 <h1>Spin<a class="headerlink" href="#spin" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>Experiment of Stern and Herlach provdies estblaishes the existance of spin for electrons. Contrary to the suggestive name, the spin is an intrinsic magnetic momentum which is permanently attached to a subatomic particle and has nothing to do with “spinning” or motion. Spins is an intrinsic property just like mass and charge.</p></li>
+<li><p>Experiment of Stern and Herlach provdies estblaishes the existance of spin for electrons. Contrary to the suggestive name, <em>spin</em> is an intrinsic magnetic momentum which is permanently attached to a subatomic particle and has nothing to do with “spinning” or motion. Spins is a fundamental property of particles just like mass or charge.</p></li>
 <li><p>Particles with half-integer spins, such as 1/2, 3/2, 5/2, are known as fermions, while those particles with integer spins, such as 0, 1, 2, are known as bosons . The two families of particles obey different rules. Fermions obey the Pauli exclusion principle:  there cannot be two identical fermions simultaneously having the same quantum numbers, e.g, having the same position, velocity and spin direction. In contrast, bosons  have no such restriction, so they may “bunch together” even if in identical states.</p></li>
 <li><p><em>Normal Zeeman effect</em>: splitting of singlet states with spin zero in the magnetic field is due to electron’s angular momentum can be understood classically.</p></li>
 <li><p><em>Anomalous Zeeman effect</em>: Is a more general case of electron spin and angular mometnum both contributing to splitting of energy levels.</p></li>
 </ul>
+</div>
+<section id="orbital-angular-momentum-of-the-hydrogen-atom">
+<h2>Orbital angular momentum of the hydrogen atom<a class="headerlink" href="#orbital-angular-momentum-of-the-hydrogen-atom" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In hydrogenlike atoms degeneracy implies that the angular momentum is non-zero. If the quantum numbers <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are known, it is possible to calculate <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> directly:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{L^2 = l(l+1)\hbar^2\textnormal{ (or formally }L = \sqrt{l(l+1)}\hbar\textnormal{)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{L_z = m\hbar\textnormal{ where }m = -l,...,0,...,+l}\]</div>
+<ul class="simple">
+<li><p>Without external electric or magnetic fields and ignroing electron spin (to be interoduced later), the energy of hydrogen atom is independent of quantum number <span class="math notranslate nohighlight">\(m\)</span>. The Lorentz force law (see your physics course lecture notes) gives the interaction of a charged particle with an electromagnetic field (for a classical particle):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\vec{F} = q\left( \vec{E} + \vec{v}\times \vec{B}\right)}\]</div>
+<ul class="simple">
+<li><p>where vector <span class="math notranslate nohighlight">\(\vec{F}\)</span> is the force experienced by the charged particle, <span class="math notranslate nohighlight">\(q\)</span> is the particle charge, <span class="math notranslate nohighlight">\(\vec{E}\)</span> is the electric field vector, <span class="math notranslate nohighlight">\(\vec{v}\)</span> is the particle velocity vector and <span class="math notranslate nohighlight">\(\vec{B}\)</span> is the magnetic field vector. Even though the above expression strictly applies to the classical case, it suggests that the presence of external magnetic or electric fields should somehow affect the electron orbit in hydrogenlike atoms.</p></li>
+</ul>
+</section>
 <section id="rotating-charge-generates-mangetic-moment">
 <h2>Rotating charge generates mangetic moment<a class="headerlink" href="#rotating-charge-generates-mangetic-moment" title="Permalink to this heading">#</a></h2>
-<p>Charged electron moving on a circle of radius has an angular momentum <span class="math notranslate nohighlight">\(\vec{L}=\vec{r} \times \vec{p}\)</span> which generates a magnetic moment given by:
-$<span class="math notranslate nohighlight">\(
-\mu_L = -\frac{e}{2m_e}\vec{L}
-\)</span>$</p>
-<p><img alt="" src="ch05/images/magnetic.jpg" /></p>
-<p>In an external magnetic field magnetic moment interacts with the field with a potential energy given as a scalar product of two vectors:
-$<span class="math notranslate nohighlight">\(
-U = -\vec{\mu_L}\cdot\vec{B} = \frac{e}{2m_e}\vec{L}\cdot \vec{B}
-\)</span>$</p>
-</section>
-<section id="effect-of-magnetic-field-on-atoms">
-<h2>Effect of magnetic field on atoms<a class="headerlink" href="#effect-of-magnetic-field-on-atoms" title="Permalink to this heading">#</a></h2>
-<p>The expressionof energy of mangeitc moment in the extenal magnetic field  <span class="math notranslate nohighlight">\(U = -\vec{\mu_L}\cdot\vec{B}\)</span> implies that the magnetic field has an ordering effect which ias acheived via an exertion of a force:</p>
+<ul class="simple">
+<li><p>A moving charge interacts with an external magnetic field. When an electron is in a state with <span class="math notranslate nohighlight">\(l &gt; 0\)</span>, it can be thought to be in quantum mechanical circular motion around the nucleus and generate its own magnetic field. Note that this motion is not classical but here we are just trying to obtain a wire frame model based on classical interpretation. The electron has now a magnetic moment given by (see your physics lecture notes):</p></li>
+</ul>
+<p><img alt="" src="../_images/magnetic.jpg" /></p>
+<div class="math notranslate nohighlight">
+\[{\vec{\mu} = \gamma_e\vec{L}}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\gamma_e\)</span> is the magnetogyric ratio of the electron (<span class="math notranslate nohighlight">\(-\frac{e}{2m_e}\)</span>). We choose the external magnetic field to lie along the <span class="math notranslate nohighlight">\(z\)</span>-axis and therefore it is important to consider the <span class="math notranslate nohighlight">\(z\)</span> component of <span class="math notranslate nohighlight">\(\vec{\mu}\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\mu_z = -\left(\frac{e}{2m_e}\right)L_z = -\left(\frac{e\hbar}{2m_e}\right)m \equiv -\mu_B m}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\mu_B\)</span> is the Bohr magneton as defined above. The interaction between a magnetic moment and an external magnetic field is given by (classical expression):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E = -\vec{\mu}\cdot\vec{B} = -|\vec{\mu}||\vec{B}|\cos(\alpha)}\]</div>
+<ul class="simple">
+<li><p>The expressionof energy of mangeitc moment in the extenal magnetic field  <span class="math notranslate nohighlight">\(U = -\vec{\mu_L}\cdot\vec{B}\)</span> implies that the magnetic field has an ordering effect which ias acheived via an exertion of a force:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 F_z=-\frac{\partial U}{\partial z}
 \]</div>
-<p><img alt="" src="ch05/images/spin3.gif" /></p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the angle between the two magnetic field vectors. This gives the energy for a bar magnet in presence of an external magnetic field:</p></li>
+<li><p>In quantum mechanics, a magnetic moment (here corresponding to a <span class="math notranslate nohighlight">\(p\)</span>-electron) may only take specific orientations. But In classical mechanics any orientation is allowed. When the external magnetic field is oriented along <span class="math notranslate nohighlight">\(z\)</span>-axis reads:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E = -\mu_z B = \frac{eB}{2m_e}L_z}\]</div>
+</section>
+<section id="effect-of-magnetic-field-on-atoms">
+<h2>Effect of magnetic field on atoms<a class="headerlink" href="#effect-of-magnetic-field-on-atoms" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(z\)</span>-axis is often called the quantization axis. The eigenvalues of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> essentially give the possible orientations of the magnetic moment with respect to the external field. For example, consider an electron on <span class="math notranslate nohighlight">\(2p\)</span> orbital in a hydrogenlike atom. The electron may reside on any of <span class="math notranslate nohighlight">\(2p_{+1}\)</span>, <span class="math notranslate nohighlight">\(2p_0\)</span> or <span class="math notranslate nohighlight">\(2p_{-1}\)</span> orbitals (degenerate without the field). For these orbitals <span class="math notranslate nohighlight">\(L_z\)</span> may take the following values (<span class="math notranslate nohighlight">\(+\hbar, 0, -\hbar\)</span>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_z|p_{+1}\rangle = +1\times\hbar|p_{+1}\rangle\textnormal{, }\hat{L}_z|p_0\rangle = 0\times\hbar|p_{0}\rangle\textnormal{, }\hat{L}_z|p_{-1}\rangle = -1\times\hbar|p_{-1}\rangle}\]</div>
+<p><img alt="" src="../_images/spin3.gif" /></p>
 </section>
 <section id="mangetic-field-modifies-the-hamiltonian">
 <h2>Mangetic field modifies the hamiltonian<a class="headerlink" href="#mangetic-field-modifies-the-hamiltonian" title="Permalink to this heading">#</a></h2>
-<p>In a constant magnetic field the hydrogen atom’s Hamiltonian willl be supplemetned with a new term    accounting for the interaction of electron’s magnetic moment with the magnetic field  (e.g needs to not be in an s orbital with l=0). Picking the mangetic field along direction z  we can write the hamiltonain as:</p>
-<div class="math notranslate nohighlight">
-\[
-\hat{H} = \hat{H}_0 + \hat{H}_{mag}+ \frac{e}{2m_e} B \hat{L}_z
-\]</div>
-<p>Since <span class="math notranslate nohighlight">\([\hat{L}_z, \hat{H}_0]=0\)</span> we have</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat{L}_z\mid n,l, m_l\rangle = \hbar m_l \mid n,l, m_l\rangle\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{H}_0\mid n,l, m_l\rangle =E_n\mid n,l, m_l\rangle\)</span></p></li>
+<li><p>The relative orientations with respect to the external magnetic field are shown on the left side of the figure. The total quantum mechanical Hamiltonian for a hydrogenlike atom in a magnetic field can now be written as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{H} = \hat{H}_0 + \frac{eB}{2m_e}\hat{L}_z}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> denotes the Hamiltonian in absence of the magnetic field.</p></li>
+<li><p>Since projection of angular momentum commutes with Hamitlonian <span class="math notranslate nohighlight">\([\hat{L}_z, \hat{H}_0]=0\)</span> we have same eigenfunctions for both:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{L}_z\mid n,l, m_l\rangle = \hbar m_l \mid n,l, m_l\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{H}_0\mid n,l, m_l\rangle =E_n\mid n,l, m_l\rangle\]</div>
+<ul class="simple">
+<li><p>The eigenvalues are (derivation not shown):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E_{nlm} = -\frac{m_ee^4Z^2}{2(4\pi\epsilon_0)^2n^2\hbar^2} + \mu_BmB}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span>; <span class="math notranslate nohighlight">\(l = 0, 1, ..., n - 1\)</span>; and <span class="math notranslate nohighlight">\(m = -l, ..., 0, ..., +l\)</span>. In the presence of magnetic field, the <span class="math notranslate nohighlight">\((2l + 1)\)</span> degenerate levels have been split (i.e., the degeneracy is lifted). This is called the orbital Zeeman effect.</p></li>
+</ul>
+</section>
+<section id="the-zeeman-effect">
+<h2>The  Zeeman effect<a class="headerlink" href="#the-zeeman-effect" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Energy levels are affected by the external magnetic field</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 E=E_n +\hbar m \frac{e}{2m_e} B=E_n+m\beta_B B
 \]</div>
-<p>Where we have introduce the Boh’r magneton <span class="math notranslate nohighlight">\(\beta_B = \frac{\hbar e}{2 m_e}\)</span>. The energy expression predicts removal of degeneracy with respect to <span class="math notranslate nohighlight">\(m_l\)</span> generating splitting energy levels into <span class="math notranslate nohighlight">\(2l+1\)</span> lines. For instance the 2p level of hydrogen atom will split into 3 levels <span class="math notranslate nohighlight">\(-\beta_B B, 0,+\beta_B\)</span></p>
-</section>
-<section id="the-zeeman-effect">
-<h2>The  Zeeman effect<a class="headerlink" href="#the-zeeman-effect" title="Permalink to this heading">#</a></h2>
-<p>When an external magnetic field is applied, sharp spectral lines like the <span class="math notranslate nohighlight">\(n=3\rightarrow 2\)</span> transition of hydrogen split into multiple closely spaced lines. First observed by Pieter Zeeman, this splitting is attributed to the interaction between the magnetic field and the magnetic dipole moment associated with the orbital angular momentum. In the absence of the magnetic field, the hydrogen energies depend only upon the principal quantum number n , and the emissions occur at a single wavelength.</p>
+<ul class="simple">
+<li><p>Where we have introduce the Boh’r magneton <span class="math notranslate nohighlight">\(\beta_B = \frac{\hbar e}{2 m_e}\)</span>. The energy expression predicts removal of degeneracy with respect to <span class="math notranslate nohighlight">\(m_l\)</span> generating splitting energy levels into <span class="math notranslate nohighlight">\(2l+1\)</span> lines. For instance the 2p level of hydrogen atom will split into 3 levels <span class="math notranslate nohighlight">\(-\beta_B B, 0,+\beta_B\)</span></p></li>
+<li><p>When an external magnetic field is applied, sharp spectral lines like the <span class="math notranslate nohighlight">\(n=3\rightarrow 2\)</span> transition of hydrogen split into multiple closely spaced lines. First observed by Pieter Zeeman, this splitting is attributed to the interaction between the magnetic field and the magnetic dipole moment associated with the orbital angular momentum. In the absence of the magnetic field, the hydrogen energies depend only upon the principal quantum number n , and the emissions occur at a single wavelength.</p></li>
+</ul>
 </section>
 <section id="stern-herlach-experiment">
 <h2>Stern-Herlach experiment<a class="headerlink" href="#stern-herlach-experiment" title="Permalink to this heading">#</a></h2>
@@ -512,76 +573,116 @@ E=E_n +\hbar m \frac{e}{2m_e} B=E_n+m\beta_B B
 </section>
 <section id="spin-as-a-tiny-magnet">
 <h2>Spin as a tiny magnet<a class="headerlink" href="#spin-as-a-tiny-magnet" title="Permalink to this heading">#</a></h2>
-<p>We come to view <em>spin</em> of subatomic particles in a same way as we view mass and charge. Spin is an intrinsic property of a particle manifested in having permanent magnetic moment. A particle with spin can interact with magnetic fields just like particles with charge can interact with electric fields. This is why spin is pictorially depcited as tiny manget.</p>
-<p><img alt="" src="ch05/images/Spin1.jpg" /></p>
-</section>
-<section id="spin-orbit-coupling">
-<h2>Spin-Orbit coupling<a class="headerlink" href="#spin-orbit-coupling" title="Permalink to this heading">#</a></h2>
-<p>Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling.</p>
-<p><img alt="" src="ch05/images/spin-orbit1.png" /></p>
-<p><img alt="" src="ch05/images/spin-orbit2.png" /></p>
-</section>
-<section id="term-symbols">
-<h2>Term symbols<a class="headerlink" href="#term-symbols" title="Permalink to this heading">#</a></h2>
-<p>Becsue of spint orbit coupling the energy levels are no longer diescribed by <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(s\)</span> separetely. This is why one introduces term sybols to describe new states with total spin multiplicity <span class="math notranslate nohighlight">\((2S+1)\)</span> and anuglar momentum <span class="math notranslate nohighlight">\(L\)</span> and total angular momentum <span class="math notranslate nohighlight">\(J=L+S\)</span>. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed.
-$<span class="math notranslate nohighlight">\(
-^{(2S+1)}L_J
-\)</span>$</p>
-</section>
-<section id="anomalous-zeeman-effect">
-<h2>“Anomalous” Zeeman Effect<a class="headerlink" href="#anomalous-zeeman-effect" title="Permalink to this heading">#</a></h2>
-<p>While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the “anomalous Zeeman effect” and were very puzzling to early researchers. The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the “anomalous” Zeeman effect is really the normal Zeeman effect when electron spin is included.</p>
-<p><img alt="" src="ch05/images/Zeeman.png" /></p>
+<ul class="simple">
+<li><p>We come to view <em>spin</em> of subatomic particles in a same way as we view mass and charge. Spin is an intrinsic property of a particle manifested in having permanent magnetic moment. A particle with spin can interact with magnetic fields just like particles with charge can interact with electric fields. This is why spin is pictorially depcited as tiny manget.</p></li>
+</ul>
+<p><img alt="" src="../_images/Spin1.jpg" /></p>
 </section>
 <section id="electron-spin">
 <h2>Electron spin<a class="headerlink" href="#electron-spin" title="Permalink to this heading">#</a></h2>
-<p>The Schr”odinger equation does not account for electron spin. The concept of electron spin originates from Dirac’s relativistic equation. However, it can be included in the Schr”odinger equation as an extra quantum number (<span class="math notranslate nohighlight">\(s\)</span>). Furthermore, it appears to follow the general laws of angular momentum.</p>
-<p>The spin angular momentum vector <span class="math notranslate nohighlight">\(\vec{S}\)</span> has a magnitude: <span class="math notranslate nohighlight">\(|\vec{S}| = S = \sqrt{s(s+1)}\hbar\)</span> where <span class="math notranslate nohighlight">\(s\)</span> is the spin quantum number (<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>). A crude way of thinking about the origin of the spin angular momentum is to consider the magnetic moment to arise from the internal spinning motion of the electron about its own axis. However, this is not exactly true because electrons have internal structure that we have ignored here.</p>
-<p>To summarize the behavior of electron spin angular momentum:</p>
+<ul class="simple">
+<li><p>The Schrodinger equation does not account for electron spin. The concept of electron spin originates from Dirac’s relativistic equation. However, it can be included in the Schrodinger equation as an extra quantum number (<span class="math notranslate nohighlight">\(s\)</span>). Furthermore, it appears to follow the general laws of angular momentum.</p></li>
+<li><p>The spin angular momentum vector <span class="math notranslate nohighlight">\(\vec{S}\)</span> has a magnitude: <span class="math notranslate nohighlight">\(|\vec{S}| = S = \sqrt{s(s+1)}\hbar\)</span> where <span class="math notranslate nohighlight">\(s\)</span> is the spin quantum number (<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>). A crude way of thinking about the origin of the spin angular momentum is to consider the magnetic moment to arise from the internal spinning motion of the electron about its own axis. However, this is not exactly true because electrons have internal structure that we have ignored here.</p></li>
+</ul>
+</section>
+<section id="eigenvalues-of-spin">
+<h2>Eigenvalues of spin<a class="headerlink" href="#eigenvalues-of-spin" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>To summarize the behavior of electron spin angular momentum:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{S^2 = s(s+1)\hbar^2 = \frac{3}{4}\hbar^2\textnormal{ (since }s = \frac{1}{2}\textnormal{)}}\]</div>
 <div class="math notranslate nohighlight">
-\[{S_z = m_s\hbar\textnormal{ with }m_s = \pm\frac{1}{2}\textnormal{ (}+\frac{1}{2} = \textnormal{``spin up''; }-\frac{1}{2}
-= \textnormal{``spin down'')}}\]</div>
-<p>The corresponding operators are denoted by <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> and <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>. How about the eigenfunctions?</p>
-<p>The eigenfunctions are denoted by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> and we don’t write down their specific forms. The following relations apply for these eigenfunctions:</p>
+\[{S_z = m_s\hbar\textnormal{ with }m_s = \pm\frac{1}{2}}\]</div>
+</section>
+<section id="eigenfunctions-of-spin">
+<h2>Eigenfunctions of spin<a class="headerlink" href="#eigenfunctions-of-spin" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The corresponding operators are denoted by <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> and <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>. How about the eigenfunctions? The eigenfunctions are denoted by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> and we don’t write down their specific forms. The following relations apply for these eigenfunctions:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\hat{S}^2\alpha\equiv \hat{S}^2|\alpha\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\alpha = \frac{3}{4}\hbar^2\alpha\equiv\frac{3}{4}\hbar^2|\alpha\rangle}\]</div>
-<p>\aeqn{10.47}{\hat{S}^2\beta\equiv \hat{S}^2|\beta\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\beta = \frac{3}{4}\hbar^2\beta\equiv\frac{3}{4}\hbar^2|\beta\rangle}</p>
+<div class="math notranslate nohighlight">
+\[{\hat{S}^2\beta\equiv \hat{S}^2|\beta\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\beta = \frac{3}{4}\hbar^2\beta\equiv\frac{3}{4}\hbar^2|\beta\rangle}\]</div>
 <div class="math notranslate nohighlight">
 \[{\hat{S}_z\alpha\equiv \hat{S}_z|\alpha\rangle = +\frac{1}{2}\hbar\alpha\equiv +\frac{1}{2}\hbar |\alpha\rangle}\]</div>
 <div class="math notranslate nohighlight">
 \[{\hat{S}_z\beta\equiv \hat{S}_z|\beta\rangle = -\frac{1}{2}\hbar\beta\equiv -\frac{1}{2}\hbar |\beta\rangle}\]</div>
-<p>Note that all the following operators commute: <span class="math notranslate nohighlight">\(\hat{H}\)</span>, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>, <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>, and <span class="math notranslate nohighlight">\(\hat{S}_z\)</span>. This means that they all can be specified simultaneously. The spin eigenfunctions are taken to be orthonormal:</p>
+<ul class="simple">
+<li><p>Note that all the following operators commute: <span class="math notranslate nohighlight">\(\hat{H}\)</span>, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>, <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>, and <span class="math notranslate nohighlight">\(\hat{S}_z\)</span>. This means that they all can be specified simultaneously. The spin eigenfunctions are taken to be orthonormal:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\int\alpha^*\alpha d\sigma\equiv\langle\alpha|\alpha\rangle = \int\beta^*\beta d\sigma\equiv\langle\beta|\beta\rangle = 1}\]</div>
 <div class="math notranslate nohighlight">
 \[{\int\alpha^*\beta d\sigma\equiv\langle\alpha|\beta\rangle = \int\beta^*\alpha d\sigma\equiv\langle\beta|\alpha\rangle = 0}\]</div>
-<p>where the integrations are over variables that the spin eigenfunctions depend on. Note that we have not specified the actual forms these eigenfunctions. We have only stated that they follow from the rules of angular momentum. A complete wavefunction for a hydrogen like atom must specify also the spin part. The total wavefunction is then a product of the spatial wavefunction and the spin part.</p>
-<p>Note that analogously, the <span class="math notranslate nohighlight">\(\hat{S}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_y\)</span> operators can be defined. These do not commute with <span class="math notranslate nohighlight">\(\hat{S}_z\)</span>. Because electrons have spin angular momentum, the unpaired electrons in silver atoms (Stern-Gerlach experiment) produce an overall magnetic moment (``the two two spots of silver atoms’’). The spin magnetic moment is proportional to its spin angular momentum (compare with Eq. (\ref{eq10.36})):</p>
+<ul class="simple">
+<li><p>where the integrations are over variables that the spin eigenfunctions depend on. Note that we have not specified the actual forms these eigenfunctions. We have only stated that they follow from the rules of angular momentum. A complete wavefunction for a hydrogen like atom must specify also the spin part. The total wavefunction is then a product of the spatial wavefunction and the spin part.</p></li>
+</ul>
+</section>
+<section id="effect-of-magnetic-field-on-spin">
+<h2>Effect of magnetic field on spin<a class="headerlink" href="#effect-of-magnetic-field-on-spin" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Note that analogously, the <span class="math notranslate nohighlight">\(\hat{S}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_y\)</span> operators can be defined. These do not commute with <span class="math notranslate nohighlight">\(\hat{S}_z\)</span>. Because electrons have spin angular momentum, the unpaired electrons in silver atoms (Stern-Gerlach experiment) produce an overall magnetic moment (``the two two spots of silver atoms’’). The spin magnetic moment is proportional to its spin angular momentum:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\vec{\hat{\mu}}_S = -\frac{g_ee}{2m_e}\vec{\hat{S}}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(g_e\)</span> is the free electron <span class="math notranslate nohighlight">\(g\)</span>-factor (2.002322 from quantum electrodynamics). The <span class="math notranslate nohighlight">\(z\)</span>-component of the spin magnetic moment is (<span class="math notranslate nohighlight">\(z\)</span> is the quantiziation axis):</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(g_e\)</span> is the free electron <span class="math notranslate nohighlight">\(g\)</span>-factor (2.002322 from quantum electrodynamics). The <span class="math notranslate nohighlight">\(z\)</span>-component of the spin magnetic moment is (<span class="math notranslate nohighlight">\(z\)</span> is the quantiziation axis):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\hat{\mu}_z = -\frac{g_ee}{2m_e}\hat{S}_z}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(S_z\)</span> is given by \ref{eq10.45}, we have:</p>
+</section>
+<section id="eigenvalues-of-spin-magnetic-moment">
+<h2>Eigenvalues of spin magnetic moment<a class="headerlink" href="#eigenvalues-of-spin-magnetic-moment" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Following the eigenfunctions of <span class="math notranslate nohighlight">\(S_z\)</span> obtained above the corresponding eigenvalues for spin mangetic moment will be:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\mu_z = -\frac{g_ee\hbar}{2m_e}m_s = -g_e\mu_Bm_s}\]</div>
-<p>Thus the total energy for a spin in an external magnetic field is:</p>
+<ul class="simple">
+<li><p>Thus the total energy for a spin in an external magnetic field is:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{E = g_e\mu_Bm_sB}\]</div>
-<p>where <span class="math notranslate nohighlight">\(B\)</span> is the magnetic field strength (in Tesla).</p>
-<p>By combining the contributions from the hydrogenlike atom Hamiltonian and the orbital
-and electron Zeeman terms, we have the total Hamiltonian:</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(B\)</span> is the magnetic field strength (in Tesla). By combining the contributions from the hydrogenlike atom Hamiltonian and the orbital
+and electron Zeeman terms, we have the total Hamiltonian:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\hat{H} = \hat{H}_0 + \frac{eB}{2m_e}\hat{L}_z + \frac{g_eeB}{2m_e}\hat{S}_z = \hat{H}_0 + \frac{eB}{2m_e}\left(\hat{L}_z + g_e\hat{S}_z\right)}\]</div>
-<p>The eigenvalues of this operator are (derivation not shown):</p>
+<ul class="simple">
+<li><p>The eigenvalues of this operator are (derivation not shown):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hbar}{2m_e}\left(m_l + g_em_s\right)}\]</div>
 </section>
+<section id="spin-orbit-coupling">
+<h2>Spin-Orbit coupling<a class="headerlink" href="#spin-orbit-coupling" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling.</p></li>
+</ul>
+<p><img alt="" src="../_images/spin-orbit1.png" /></p>
+</section>
+<section id="term-symbols">
+<h2>Term symbols<a class="headerlink" href="#term-symbols" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Becsue of spint orbit coupling the energy levels are no longer diescribed by <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(s\)</span> separetely. This is why one introduces term sybols to describe new states with total spin multiplicity <span class="math notranslate nohighlight">\((2S+1)\)</span> and anuglar momentum <span class="math notranslate nohighlight">\(L\)</span> and total angular momentum <span class="math notranslate nohighlight">\(J=L+S\)</span>. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed.
+$<span class="math notranslate nohighlight">\(
+^{(2S+1)}L_J
+\)</span>$</p></li>
+</ul>
+<p><img alt="" src="../_images/spin-orbit2.png" /></p>
+</section>
+<section id="anomalous-zeeman-effect">
+<h2>“Anomalous” Zeeman Effect<a class="headerlink" href="#anomalous-zeeman-effect" title="Permalink to this heading">#</a></h2>
+<p>While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the “anomalous Zeeman effect” and were very puzzling to early researchers. The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the “anomalous” Zeeman effect is really the normal Zeeman effect when electron spin is included.</p>
+<p><img alt="" src="../_images/Zeeman.png" /></p>
+</section>
 <section id="summary-of-spim-and-angular-momentum">
 <h2>Summary of spim and angular momentum<a class="headerlink" href="#summary-of-spim-and-angular-momentum" title="Permalink to this heading">#</a></h2>
-<p>Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!</p>
+<ul class="simple">
+<li><p>Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!</p></li>
+</ul>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p><em>Angular momentum</em> (eigenfunctions and eigenvalues)</p></th>
@@ -643,12 +744,12 @@ and electron Zeeman terms, we have the total Hamiltonian:</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note04.html"
+       href="note03.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Orbital angular momentum of the hydrogen atom</p>
+        <p class="prev-next-title">Atomic orbitals</p>
       </div>
     </a>
     <a class="right-next"
@@ -675,16 +776,21 @@ and electron Zeeman terms, we have the total Hamiltonian:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-angular-momentum-of-the-hydrogen-atom">Orbital angular momentum of the hydrogen atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-charge-generates-mangetic-moment">Rotating charge generates mangetic moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-herlach-experiment">Stern-Herlach experiment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin">Eigenvalues of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-spin">Eigenfunctions of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-spin">Effect of magnetic field on spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin-magnetic-moment">Eigenvalues of spin magnetic moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term symbols</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-spin">Electron spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-spim-and-angular-momentum">Summary of spim and angular momentum</a></li>
 </ul>
   </nav></div>
