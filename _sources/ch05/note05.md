@@ -39,33 +39,24 @@ $${\mu_z = -\left(\frac{e}{2m_e}\right)L_z = -\left(\frac{e\hbar}{2m_e}\right)m 
 
 - where $\mu_B$ is the Bohr magneton as defined above. The interaction between a magnetic moment and an external magnetic field is given by (classical expression):
 
-$${E = -\vec{\mu}\cdot\vec{B} = -|\vec{\mu}||\vec{B}|\cos(\alpha)}$$
+$${U = -\vec{\mu}\cdot\vec{B} = -|\vec{\mu}||\vec{B}|\cos(\alpha)}$$
 
-- The expressionof energy of mangeitc moment in the extenal magnetic field  $U = -\vec{\mu_L}\cdot\vec{B}$ implies that the magnetic field has an ordering effect which ias acheived via an exertion of a force:
+- Where $\alpha$ is the angle between the two magnetic field vectors. This gives the energy for a bar magnet in presence of an external magnetic field:
 
-$$
-F_z=-\frac{\partial U}{\partial z}
-$$
+-  Unlike quantum mechanics in classical mechanics any orientation is allowed. When the external magnetic field is oriented along $z$-axis the potential energy of interaction with field in classical mechanics is:
 
-- where $\alpha$ is the angle between the two magnetic field vectors. This gives the energy for a bar magnet in presence of an external magnetic field:
-
-
--  In quantum mechanics, a magnetic moment (here corresponding to a $p$-electron) may only take specific orientations. But In classical mechanics any orientation is allowed. When the external magnetic field is oriented along $z$-axis reads:
-
-$${E = -\mu_z B = \frac{eB}{2m_e}L_z}$$
-
-
+$${U = -\mu_z B = \frac{eB}{2m_e}L_z}$$
 
 
 
 
 ### Effect of magnetic field on atoms
 
-
+- In quantum mechanics, a magnetic moment (here corresponding to a non $s$ orbital electron) may only take specific orientations.
 
 - The $z$-axis is often called the quantization axis. The eigenvalues of $\hat{L}_z$ essentially give the possible orientations of the magnetic moment with respect to the external field. For example, consider an electron on $2p$ orbital in a hydrogenlike atom. The electron may reside on any of $2p_{+1}$, $2p_0$ or $2p_{-1}$ orbitals (degenerate without the field). For these orbitals $L_z$ may take the following values ($+\hbar, 0, -\hbar$):
 
-$${\hat{L}_z|p_{+1}\rangle = +1\times\hbar|p_{+1}\rangle\textnormal{, }\hat{L}_z|p_0\rangle = 0\times\hbar|p_{0}\rangle\textnormal{, }\hat{L}_z|p_{-1}\rangle = -1\times\hbar|p_{-1}\rangle}$$
+$${\hat{L}_z|p_{+1}\rangle = +1\times\hbar|p_{+1}\rangle\textnormal{,\,\, }\hat{L}_z|p_0\rangle = 0\times\hbar|p_{0}\rangle\textnormal{,\,\, }\hat{L}_z|p_{-1}\rangle = -1\times\hbar|p_{-1}\rangle}$$
 
 
 
@@ -76,7 +67,7 @@ $${\hat{L}_z|p_{+1}\rangle = +1\times\hbar|p_{+1}\rangle\textnormal{, }\hat{L}_z
 
 
 
-### Mangetic field modifies the hamiltonian
+### Mangetic field modifies the Hamiltonian
 
 - The relative orientations with respect to the external magnetic field are shown on the left side of the figure. The total quantum mechanical Hamiltonian for a hydrogenlike atom in a magnetic field can now be written as:
 
@@ -130,18 +121,7 @@ $$
 ![](./images/Spin1.jpg)
 
 
-
-
-
-
-
-
-### Electron spin
-
-- The Schrodinger equation does not account for electron spin. The concept of electron spin originates from Dirac's relativistic equation. However, it can be included in the Schrodinger equation as an extra quantum number ($s$). Furthermore, it appears to follow the general laws of angular momentum.
-
-
-- The spin angular momentum vector $\vec{S}$ has a magnitude: $|\vec{S}| = S = \sqrt{s(s+1)}\hbar$ where $s$ is the spin quantum number ($\frac{1}{2}$). A crude way of thinking about the origin of the spin angular momentum is to consider the magnetic moment to arise from the internal spinning motion of the electron about its own axis. However, this is not exactly true because electrons have internal structure that we have ignored here.
+- The Schrodinger equation does not account for electron spin. The concept of electron spin originates from Dirac's relativistic equation. However, it can be included in the Schrodinger equation as an extra quantum number ($s$). Furthermore, it appears to follow the general laws of angular momentum. The spin angular momentum vector $\vec{S}$ has a magnitude: $|\vec{S}| = S = \sqrt{s(s+1)}\hbar$ where $s$ is the spin quantum number ($\frac{1}{2}$). 
 
 ### Eigenvalues of spin
 
@@ -207,24 +187,18 @@ $${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hb
 
 - Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling. 
 
-![](./images/spin-orbit1.png)
-
-### Term symbols
-
-- Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed. 
-$$
-^{(2S+1)}L_J
-$$
-
-
 ![](./images/spin-orbit2.png)
+
+
+- Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed $^{(2S+1)}L_J$
 
 
 
 ### "Anomalous" Zeeman Effect
 
 
-While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the "anomalous Zeeman effect" and were very puzzling to early researchers. The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the "anomalous" Zeeman effect is really the normal Zeeman effect when electron spin is included.
+- While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the **anomalous Zeeman effect** and were very puzzling to early researchers. 
+- The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the "anomalous" Zeeman effect is really the normal Zeeman effect when electron spin is included.
 
 ![](./images/Zeeman.png)
 
