@@ -303,7 +303,7 @@ Use the analogy with angular momentum
 
 #### Problem-2
 
-- Why we use four quantum numbers n, l, m_l, m_s to specify H-atom states $|1, 0, 0, +1/2\rangle$ for instance.
+- Why we use four quantum numbers $n$, $l$, $m_l$, $m_s$ to specify H-atom states $|1, 0, 0, +1/2\rangle$ for instance.
 - What can we say about operators whose eigenvalues are defined in terms of these quantum numbers?
 
 :::{dropdown} **Hint**
