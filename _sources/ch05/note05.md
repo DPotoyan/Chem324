@@ -271,7 +271,7 @@ Anomalous Zeeman effect. The lines of H-atom are split into multiple microstates
 
 - Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!
 
-| *Angular momentum* (eigenfunctions and eigenvalues)          | *Spin momentum* (eigenfunctions and eigenvalues)             |
+| *Angular momentum*          | *Spin momentum*           |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\hat{L}=\hat{r}\times \hat{p}$<br>$\hat{L}_z = -i\hbar \Big (x\frac{\partial}{\partial y}-y\frac{\partial}{\partial x} \Big)$ | $\hat{S}$<br>$\hat{S}_z$                                     |
 | $l=0,1,2,3,...$<br>$m_l=-l...0...l$                          | $s=1/2$ <br> $m_s=-1/2,1/2$                                  |
@@ -295,7 +295,7 @@ Use the analogy with angular momentum
 
 #### Problem-2
 
-- Why we use four quantum numbers n, l, m_l, m_s to specify H-atom states $|1, 0, 0, +1/2\range$ for instance.
+- Why we use four quantum numbers n, l, m_l, m_s to specify H-atom states $|1, 0, 0, +1/2\rangle$ for instance.
 - What can we say about operators whose eigenvalues are defined in terms of these quantum numbers?
 
 :::{dropdown} **Hint**
@@ -304,4 +304,8 @@ Use the analogy with angular momentum
 - Think of commutation relation
 
 :::
+
+#### Problem-3
+
+Determine microstates of H-atom correpsonding to $l=4$
 
