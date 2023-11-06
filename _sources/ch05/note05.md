@@ -217,13 +217,15 @@ $$\hat{H} = \hat{H}_0 + \frac{A}{r^3} \cdot \hat{L}\hat{S}$$
 :::{figure-md} markdown-fig
 <img src="./images/spin-orbit2.png" alt="spin-ornit coupling" class="bg-primary mb-1" width="300px">
 
-Determining the values of total angular momentum $j=l+s$ by using the fact that projections $m_j$ are given as scalar sum of projections of angular and spin quantum numbers $m_j=m_l+m_s$ and that $j$ values follow the anuglar momentum quantization and assume $2j+1$ values. Shown is the example of determining microstates for l=1 state of H-atom (2p^1) orbital which gives rise to $^2P_3/2$ and $^2P_1/2$ microstates. 
+Determining the values of total angular momentum $j=l+s$ by using the fact that projections $m_j$ are given as scalar sum of projections of angular and spin quantum numbers $m_j=m_l+m_s$ and that $j$ values follow the anuglar momentum quantization and assume $2j+1$ values. Shown is the example of determining microstates for $l=1$ state of H-atom ($2p^1$) orbital which gives rise to $^2P_{3/2}$ and $^2P_{1/2}$ microstates. 
 :::
 
 
 - Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed. For H-atom $S=1/2$ and $L=l$
 
-$$^{(2S+1)}L_J$$
+$$^{2S+1}L_J$$
+
+
 
 :::{admonition} **Example:** 
 :class: note
@@ -242,6 +244,27 @@ Determine the microstates of l=1 and l=2 resulting from spin-orbit coupling.
 
 :::
 
+
+### "Anomalous" Zeeman Effect
+
+
+- While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the **anomalous Zeeman effect** and were very puzzling to early researchers. 
+- The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the "anomalous" Zeeman effect is really the normal Zeeman effect when electron spin is included.
+
+:::{figure-md} markdown-fig
+<img src="./images/vecz.png" alt="spin-ornit coupling" class="bg-primary mb-1" width="300px">
+
+In the presence of magnetic field the spectral lines are split further into levels described by $m_J$.
+:::
+
+- When magnetic field is applied to $H$ atom the external field $B$ now interacts with the total combined angular momentum $J$ which results in splitting of energy values of each level with distinct $J$. That is $^2P_{3/2}$ is split into $2\cdot(3/2+1)=5$ lines and $^2P_{1/2}$ is split into $2(1/2+1)=3$ lines. 
+
+:::{figure-md} markdown-fig
+<img src="./images/Zeeman.png" alt="anomalus zeeman" class="bg-primary mb-1" width="300px">
+
+Anomalous Zeeman effect. (left) The spectral lines are split into multiple microstates becasue of spin-orbit coupling. Energy states are described by term symbols (right) With weak magnetic field the lines are split further acording to values of $j$ and its projection $m_j$. 
+:::
+
 ### Selection rules
 
 Just like with energetic transitions of other model systems for H-atom probability of transition is given by transition moment or its z-projection $\langle n,l,m_l, m_s |z|n,l,m_l, m_s \rangle$. Evaluating the expression using properties of special functions we get the following selection rules
@@ -252,22 +275,7 @@ $$\Delta S= 0$$
 
 $$\Delta J=0, \pm 1\,\,(0\rightarrow 0\,\, forbidden)$$
 
-
-### "Anomalous" Zeeman Effect
-
-
-- While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the **anomalous Zeeman effect** and were very puzzling to early researchers. 
-- The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the "anomalous" Zeeman effect is really the normal Zeeman effect when electron spin is included.
-
-:::{figure-md} markdown-fig
-<img src="./images/Zeeman.png" alt="anomalus zeeman" class="bg-primary mb-1" width="300px">
-
-Anomalous Zeeman effect. The lines of H-atom are split into multiple microstates becasue of spin-orbit coupling. The separation between states is now described by a new quantum number $j$ and its projection $m_j$. 
-:::
-
-
-
-### Summary of spim and angular momentum
+### Summary of spin and angular momentum
 
 - Spin emerges naturally once one accounts for relativistic effect, as was originally shown by Paul Dirac. Except for special cases relativisti effects however are not too significant to include in quantum mechanics therefore we incoprorate spin as an additional degree of freedom which has not been accounted for but which is knwon to exist!
 
