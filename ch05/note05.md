@@ -207,13 +207,50 @@ $${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hb
 
 ### Spin-Orbit coupling
 
-- Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling. 
+- Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. And such a possibility is indeed realized and known under name of spin-orbit coupling! A new term is added to hamitlonian to account for this fact.
 
-![](./images/spin-orbit2.png)
+$$\hat{H} = \hat{H}_0 + \frac{A}{r^3} \cdot \hat{L}\hat{S}$$
+
+- Where the A is a constant, $\hat{H}_0$ hamiltonain for H-atom without spin and $\hat{L}$ and $\hat{S}$ are operators for total angular and spin momentum. Notice two things here: one, the term decays as $1/r^3$ that is faster than potential energy hence this term makes much smaller contribution compared to hamiltonian for H-atom $\hat{H}_0$. Secondly becasue of spin-orbit coupling neither  $\hat{L}$ nor $hat{S}$ commute with hamiltonian! Hence one needs a new quantum number to specify H-atom states. this new quantum number is total angular momentum $J+L+S$
 
 
-- Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed $^{(2S+1)}L_J$
+:::{figure-md} markdown-fig
+<img src="./images/spin-orbit2.png" alt="spin-ornit coupling" class="bg-primary mb-1" width="300px">
 
+Determining the values of total angular momentum $j=l+s$ by using the fact that projections $m_j$ are given as scalar sum of projections of angular and spin quantum numbers $m_j=m_l+m_s$ and that $j$ values follow the anuglar momentum quantization and assume $2j+1$ values. Shown is the example of determining microstates for l=1 state of H-atom (2p^1) orbital which gives rise to $^2P_3/2$ and $^2P_1/2$ microstates. 
+:::
+
+
+- Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed. For H-atom $S=1/2$ and $L=l$
+
+$$^{(2S+1)}L_J$$
+
+:::{admonition} **Example:** 
+:class: note
+
+Determine the microstates of l=1 and l=2 resulting from spin-orbit coupling.
+:::
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+- The $j=l+s$ values follow the rules of spatial quantization of angular momentum just like $l$ and $s$. That is the projection of $J$, the m_j can only take $l+s, l+s-1,...l-s$ values. Since $s=1/2$ we are left with $l+1/2$ and $l-1/2$ values of $m_j$. Note that the total number of microstates is equal to 2 values of $m_s$ $+1/2, -1/2$ and $2l+1$ values of $m_l$. In total we expect $2(2l+1)$ microstates. 
+
+- For l=1 we identify $m_j=1+1/2=3/2$ the maximum projection which is coming from j=3/2 valyes. We also idenitfy $m_j=l-1/2=1/2$ the minimum projection which should come from $j=1/2$
+
+- We thus have two microstates
+
+:::
+
+### Selection rules
+
+Just like with energetic transitions of other model systems for H-atom probability of transition is given by transition moment or its z-projection $\langle n,l,m_l, m_s |z|n,l,m_l, m_s \rangle$. Evaluating the expression using properties of special functions we get the following selection rules
+
+$$\Delta L=\pm 1$$
+
+$$\Delta S= 0$$
+
+$$\Delta J=0, \pm 1\,\,(0\rightarrow 0\,\, forbidden)$$
 
 
 ### "Anomalous" Zeeman Effect
@@ -222,7 +259,12 @@ $${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hb
 - While the Zeeman effect in some atoms (e.g., hydrogen) showed the expected equally-spaced triplet, in other atoms the magnetic field split the lines into four, six, or even more lines and some triplets showed wider spacings than expected. These deviations were labeled the **anomalous Zeeman effect** and were very puzzling to early researchers. 
 - The explanation of these different patterns of splitting gave additional insight into the effects of electron spin. With the inclusion of electron spin in the total angular momentum, the other types of multiplets formed part of a consistent picture. So what has been historically called the "anomalous" Zeeman effect is really the normal Zeeman effect when electron spin is included.
 
-![](./images/Zeeman.png)
+:::{figure-md} markdown-fig
+<img src="./images/Zeeman.png" alt="anomalus zeeman" class="bg-primary mb-1" width="300px">
+
+Anomalous Zeeman effect. The lines of H-atom are split into multiple microstates becasue of spin-orbit coupling. The separation between states is now described by a new quantum number $j$ and its projection $m_j$. 
+:::
+
 
 
 ### Summary of spim and angular momentum
@@ -237,5 +279,29 @@ $${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hb
 | $L=\hbar\sqrt{l(l+1)}$<br>$L_z=\hbar m$                      | $S=\hbar\sqrt{s(s+1)}=\hbar\sqrt{3/4}$<br>$S_z=\hbar m_s= \pm \hbar/2$ |
 | $\mu_L=- g_l \frac{e}{2m_e}L$<br>$g_l=1$                     | $\mu_S = g_s \frac{e}{2m_e}S$ <br> $g_s \approx 2$           |
 |                                                              |                                                              |
+
 ### Problems
+
+#### Problem-1
+
+Why is it sufficient to specify $|s, m_s\rangle$ for spin states
+
+:::{dropdown} **Hint**
+
+Use the analogy with angular momentum
+
+:::
+
+
+#### Problem-2
+
+- Why we use four quantum numbers n, l, m_l, m_s to specify H-atom states $|1, 0, 0, +1/2\range$ for instance.
+- What can we say about operators whose eigenvalues are defined in terms of these quantum numbers?
+
+:::{dropdown} **Hint**
+
+- These quantum numbers uniquely specify the state of H-atom. That is we can simultaneosuly measure all quantum numbers. 
+- Think of commutation relation
+
+:::
 
