@@ -50,20 +50,3 @@ $$
 
 
 
-### Determinant for  N trial functions
-
-Variational minimization of coeffients of  N trial functions $(c_1, c_2,...c_N)$ leads to an N by N determinant:
-
-$$
-\mid \phi \rangle = \sum_i c_i \mid f_i \rangle
-$$
-
-$$
-\begin{vmatrix}
-H_{11}-ES_{11} & H_{12}-ES_{12}  & \dots & H_{1N}-ES_{1N} \\
-H_{21}-ES_{21} & H_{22}-ES_{22}  & \dots & H_{2N}-ES_{2N} \\
-H_{31}-ES_{31} & H_{32}-ES_{32}  & \dots & H_{3N}-ES_{3N}  \\
-\dots & \dots & \dots & \dots \\
-H_{N1}-ES_{11} & H_{N2}-ES_{N2}  & \dots & H_{NN}-ES_{NN}
-\end{vmatrix} = 0
-$$
