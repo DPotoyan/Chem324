@@ -485,7 +485,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-matrix-elements">Computing the matrix elements:</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -597,36 +600,56 @@ document.write(`
 <section id="example-particle-in-a-box">
 <h1>Example: Particle in a Box<a class="headerlink" href="#example-particle-in-a-box" title="Permalink to this heading">#</a></h1>
 <p>Let’s consider a free particle in 1D bounded to <span class="math notranslate nohighlight">\(0\leq x\leq a\)</span>.  The Hamiltonian for such a system is simply the kinetic energy operator</p>
-<p><span class="math notranslate nohighlight">\(\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
 <p>While we can (/have) solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating <span class="math notranslate nohighlight">\(\psi(x)\)</span> as an expansion in two basis functions</p>
-<p><span class="math notranslate nohighlight">\(\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2\]</div>
 <p>where the basis functions are <span class="math notranslate nohighlight">\(f_1(x) = x(a-x)\)</span> and <span class="math notranslate nohighlight">\(f_2(x) = x^2(a-x)^2\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the variational parameters (/linear coefficients of basis functions).  In order to solve for the variational energies and wavefunctions given this expansion we must construct the Hamiltonian matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span>, and the basis function overlap matrix, <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>.  We will then compute and diagonlize the <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> matrix.  Recall,</p>
-<p><span class="math notranslate nohighlight">\( H_{ij} = \langle f_i|\hat{H}|f_j\rangle\)</span></p>
+<div class="math notranslate nohighlight">
+\[H_{ij} = \langle f_i|\hat{H}|f_j\rangle\]</div>
 <p>and</p>
-<p><span class="math notranslate nohighlight">\( S_{ij} = \langle f_i|f_j\rangle \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[S_{ij} = \langle f_i|f_j\rangle \]</div>
 <p>In this problem, we have two basis functions</p>
-<p><span class="math notranslate nohighlight">\(f_1(x) = x(a-x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[f_1(x) = x(a-x)\]</div>
 <p>and</p>
-<p><span class="math notranslate nohighlight">\(f_2(x) = x^2(a-x)^2\)</span>.</p>
-<p>We can now compute the matrix elements:</p>
-<p><span class="math notranslate nohighlight">\(H_{11} = \langle x(a-x)|\hat{H}|x(a-x)\rangle\)</span></p>
-<p><span class="math notranslate nohighlight">\( = \langle ax|\hat{H}|ax\rangle -\langle ax|\hat{H}|x^2\rangle - \langle x^2|\hat{H}|ax\rangle + \langle x^2|\hat{H}|x^2\rangle\)</span></p>
-<p><span class="math notranslate nohighlight">\( = -a\langle x|\hat{H}|x^2\rangle + \langle x^2|\hat{H}|x^2\rangle \)</span></p>
+<div class="math notranslate nohighlight">
+\[f_2(x) = x^2(a-x)^2\]</div>
+<section id="computing-the-matrix-elements">
+<h2>Computing the matrix elements:<a class="headerlink" href="#computing-the-matrix-elements" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[H_{11} = \langle x(a-x)|\hat{H}|x(a-x)\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[= \langle ax|\hat{H}|ax\rangle -\langle ax|\hat{H}|x^2\rangle - \langle x^2|\hat{H}|ax\rangle + \langle x^2|\hat{H}|x^2\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[ = -a\langle x|\hat{H}|x^2\rangle + \langle x^2|\hat{H}|x^2\rangle\]</div>
 <p>where the last equality holds because the second derivative of <span class="math notranslate nohighlight">\(x\)</span> with respect to x is zero. Let’s now investigate each of these integrals</p>
-<p><span class="math notranslate nohighlight">\( \langle x|\hat{H}|x^2\rangle = \int_0^ax \frac{-\hbar^2}{2m}\frac{d^2}{dx^2} x^2dx \\ = \frac{-\hbar^2}{m}\int_0^axdx = \frac{-\hbar^2a^2}{2m} \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle x|\hat{H}|x^2\rangle = \int_0^ax \frac{-\hbar^2}{2m}\frac{d^2}{dx^2} x^2dx \\ = \frac{-\hbar^2}{m}\int_0^axdx = \frac{-\hbar^2a^2}{2m}\end{split}\]</div>
 <p>Similarly we should get</p>
-<p><span class="math notranslate nohighlight">\( \langle x^2|\hat{H}|x^2\rangle =\frac{-\hbar^2a^3}{3m} \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\langle x^2|\hat{H}|x^2\rangle =\frac{-\hbar^2a^3}{3m}\]</div>
 <p>Thus</p>
-<p><span class="math notranslate nohighlight">\(H_{11} = -a\frac{-\hbar^2a^2}{2m} + \frac{-\hbar^2a^3}{3m} = \frac{\hbar^2a^3}{6m}\)</span></p>
-<p><span class="math notranslate nohighlight">\(H_{22} = \langle x^2(a-x)^2|\hat{H}|x^2(a-x)^2\rangle\)</span></p>
-<p><span class="math notranslate nohighlight">\( = \langle a^2x^2|\hat{H}|a^2x^2\rangle -2\langle a^2x^2|\hat{H}|2ax^3\rangle + \langle a^2x^2|\hat{H}|x^4\rangle -2\langle ax^3|\hat{H}|a^2x^2\rangle + 4\langle ax^3|\hat{H}|ax^3\rangle -2\langle ax^3|\hat{H}|x^4\rangle + \langle x^4|\hat{H}|a^2x^2\rangle - 2\langle x^4|\hat{H}|ax^3\rangle + \langle x^4|\hat{H}|x^4\rangle\)</span></p>
-<p><span class="math notranslate nohighlight">\( = \frac{-\hbar^2a^7}{3m} +\frac{3\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{5m} +\frac{\hbar^2 a^7}{2m} - \frac{12\hbar^2 a^7}{5m} +\frac{2\hbar^2 a^7}{m} - \frac{\hbar^2 a^7}{5m} + \frac{\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{7m}\)</span></p>
-<p><span class="math notranslate nohighlight">\( = \frac{\hbar^2a^7}{105m} \)</span></p>
-<p><span class="math notranslate nohighlight">\(H_{12} = H_{21} = \frac{\hbar^2a^5}{30m}\)</span></p>
+<div class="math notranslate nohighlight">
+\[H_{11} = -a\frac{-\hbar^2a^2}{2m} + \frac{-\hbar^2a^3}{3m} = \frac{\hbar^2a^3}{6m}\]</div>
+<div class="math notranslate nohighlight">
+\[H_{22} = \langle x^2(a-x)^2|\hat{H}|x^2(a-x)^2\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[ = \langle a^2x^2|\hat{H}|a^2x^2\rangle -2\langle a^2x^2|\hat{H}|2ax^3\rangle + \langle a^2x^2|\hat{H}|x^4\rangle -2\langle ax^3|\hat{H}|a^2x^2\rangle + 4\langle ax^3|\hat{H}|ax^3\rangle -2\langle ax^3|\hat{H}|x^4\rangle + \langle x^4|\hat{H}|a^2x^2\rangle - 2\langle x^4|\hat{H}|ax^3\rangle + \langle x^4|\hat{H}|x^4\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{-\hbar^2a^7}{3m} +\frac{3\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{5m} +\frac{\hbar^2 a^7}{2m} - \frac{12\hbar^2 a^7}{5m} +\frac{2\hbar^2 a^7}{m} - \frac{\hbar^2 a^7}{5m} + \frac{\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{7m}\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{\hbar^2a^7}{105m} \]</div>
+<div class="math notranslate nohighlight">
+\[H_{12} = H_{21} = \frac{\hbar^2a^5}{30m}\]</div>
 <p>We can now complete the Hamiltonian matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span>,</p>
-<p><span class="math notranslate nohighlight">\(\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} &amp; \frac{a^2}{30}\\ \frac{a^2}{30} &amp; \frac{a^4}{105} \end{bmatrix} \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} &amp; \frac{a^2}{30}\\ \frac{a^2}{30} &amp; \frac{a^4}{105} \end{bmatrix}\end{split}\]</div>
 <p>It can also be shown that <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> is</p>
-<p><span class="math notranslate nohighlight">\(\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} &amp; \frac{a^2}{14}\\ \frac{a^2}{14} &amp; \frac{a^4}{63} \end{bmatrix} \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} &amp; \frac{a^2}{14}\\ \frac{a^2}{14} &amp; \frac{a^4}{63} \end{bmatrix}\end{split}\]</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -694,11 +717,14 @@ S^{-1}H =  [[ 14.  -8.]
 </div>
 </div>
 <p>So we see that the smallest energy in this basis is</p>
-<p><span class="math notranslate nohighlight">\(E_\phi = 4.9349 \frac{\hbar^2}{m}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[E_\phi = 4.9349 \frac{\hbar^2}{m}\]</div>
 <p>How does this compare to the analytic solution?  We need to recall that for particle in a box we have:</p>
-<p><span class="math notranslate nohighlight">\(E_n = \frac{n^2\pi^2\hbar^2}{2ma^2} \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[E_n = \frac{n^2\pi^2\hbar^2}{2ma^2} \]</div>
 <p>Plugging in for the ground state, <span class="math notranslate nohighlight">\(n=1\)</span>, and <span class="math notranslate nohighlight">\(a=1\)</span> since that is what we used numerically above we get</p>
-<p><span class="math notranslate nohighlight">\(E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \frac{\hbar^2}{m} \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \frac{\hbar^2}{m} \]</div>
 <p>So we can see that our variational solution worked out well for the energy.  Now how about the wavefunction?</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -726,12 +752,13 @@ S^{-1}H =  [[ 14.  -8.]
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x151dbd9e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9083657a90&gt;
 </pre></div>
 </div>
-<img alt="../_images/8ef2c7786b193a4eaac491ad64d9936071d441cfa7e8ebd254808154c12feb23.png" src="../_images/8ef2c7786b193a4eaac491ad64d9936071d441cfa7e8ebd254808154c12feb23.png" />
+<img alt="../_images/4989e054990cf789c0ad47e8c5fc69e5e8f14435d3aec603e1038fab8d205228.png" src="../_images/4989e054990cf789c0ad47e8c5fc69e5e8f14435d3aec603e1038fab8d205228.png" />
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -803,7 +830,10 @@ S^{-1}H =  [[ 14.  -8.]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-matrix-elements">Computing the matrix elements:</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
