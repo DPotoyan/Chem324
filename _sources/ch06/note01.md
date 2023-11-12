@@ -102,17 +102,21 @@ $$
 ### Computing pertrubation correction to energy levels 
 
 $$
-\boxed{E_n = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
+\boxed{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
 $$
 
-- Where the matrix elements are $H_{nk}=\langle n^0\mid H^1\mid k^0\rangle$.
+- **matrix elements**. The terms $H_{nk}=\langle n^0\mid H^1\mid k^0\rangle$ are matrix elements of the hamiltonian perturbation $\hat{H}^1$.
 
-- The energy in the denominator of 2nd order term is the difference between energy of a given state $E_n$ from all other states $E_k$ with k being the summation index. 
-- If the matrix elements of $\hat{H}^1$ are of comparable magnitude the neighbouring levels make larger contributions that distance levels.
+- **1st order correction** requires computing diagonal matrix elements only $H_{nn}$. For instance the correction to ground state we must compute $H_{00} = \langle 0|\hat{H}^1|0\rangle$
+
+- **2nd order correction** requires calculating off diagonal elements $H_{nk}$.Note how the energy in the denominator of 2nd order term involves difference between energy of a given state $E_n$ from all other states $E_k$ denoted by k the summation index. 
+- **Key insight** If the matrix elements are of comparable magnitude the neighbouring energy levels make larger contributions to pertrubation expression.
 
 ### Derivations of 1st and 2nd order corrections
 
 :::{admonition} **Deriving 1st order correction to energy $E^1_n$**
+:class: dropdown
+
 
 **Fixing the normalization**
 
@@ -171,6 +175,7 @@ $$
 
 
 :::{admonition} **Deriving 1st order correction to eigenfunction $\mid n^1 \rangle$**
+:class: dropdown
 
 - We express the unknown first order eigenfunctions $\mid n^1 \rangle$ in terms of known eigenfunctions $\mid k^0 \rangle$ which becasue of Hermitian property of operators must form complete basis set. 
 

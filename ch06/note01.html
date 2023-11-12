@@ -541,17 +541,18 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 <h2>Computing pertrubation correction to energy levels<a class="headerlink" href="#computing-pertrubation-correction-to-energy-levels" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
-\boxed{E_n = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
+\boxed{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
 \]</div>
 <ul class="simple">
-<li><p>Where the matrix elements are <span class="math notranslate nohighlight">\(H_{nk}=\langle n^0\mid H^1\mid k^0\rangle\)</span>.</p></li>
-<li><p>The energy in the denominator of 2nd order term is the difference between energy of a given state <span class="math notranslate nohighlight">\(E_n\)</span> from all other states <span class="math notranslate nohighlight">\(E_k\)</span> with k being the summation index.</p></li>
-<li><p>If the matrix elements of <span class="math notranslate nohighlight">\(\hat{H}^1\)</span> are of comparable magnitude the neighbouring levels make larger contributions that distance levels.</p></li>
+<li><p><strong>matrix elements</strong>. The terms <span class="math notranslate nohighlight">\(H_{nk}=\langle n^0\mid H^1\mid k^0\rangle\)</span> are matrix elements of the hamiltonian perturbation <span class="math notranslate nohighlight">\(\hat{H}^1\)</span>.</p></li>
+<li><p><strong>1st order correction</strong> requires computing diagonal matrix elements only <span class="math notranslate nohighlight">\(H_{nn}\)</span>. For instance the correction to ground state we must compute <span class="math notranslate nohighlight">\(H_{00} = \langle 0|\hat{H}^1|0\rangle\)</span></p></li>
+<li><p><strong>2nd order correction</strong> requires calculating off diagonal elements <span class="math notranslate nohighlight">\(H_{nk}\)</span>.Note how the energy in the denominator of 2nd order term involves difference between energy of a given state <span class="math notranslate nohighlight">\(E_n\)</span> from all other states <span class="math notranslate nohighlight">\(E_k\)</span> denoted by k the summation index.</p></li>
+<li><p><strong>Key insight</strong> If the matrix elements are of comparable magnitude the neighbouring energy levels make larger contributions to pertrubation expression.</p></li>
 </ul>
 </section>
 <section id="derivations-of-1st-and-2nd-order-corrections">
 <h2>Derivations of 1st and 2nd order corrections<a class="headerlink" href="#derivations-of-1st-and-2nd-order-corrections" title="Permalink to this heading">#</a></h2>
-<div class="admonition-deriving-1st-order-correction-to-energy-e-1-n admonition">
+<div class="dropdown admonition">
 <p class="admonition-title"><strong>Deriving 1st order correction to energy <span class="math notranslate nohighlight">\(E^1_n\)</span></strong></p>
 <p><strong>Fixing the normalization</strong></p>
 <p>If we have normalization of the zero order eigenfunctions, then unperturbed eigenfunctions will be orthogonal to all higher order eigenfunctions:</p>
@@ -598,7 +599,7 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 <li><p>Note how this expression is different from expectation expressions we have seen before. Here the eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H}^0\)</span> sandwich the the pertrubation hamitlonian <span class="math notranslate nohighlight">\(\hat{H}^1\)</span> . The two hamitlonians in general do not share eigenfunctions!</p></li>
 </ul>
 </div>
-<div class="admonition-deriving-1st-order-correction-to-eigenfunction-mid-n-1-rangle admonition">
+<div class="dropdown admonition">
 <p class="admonition-title"><strong>Deriving 1st order correction to eigenfunction <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span></strong></p>
 <ul class="simple">
 <li><p>We express the unknown first order eigenfunctions <span class="math notranslate nohighlight">\(\mid n^1 \rangle\)</span> in terms of known eigenfunctions <span class="math notranslate nohighlight">\(\mid k^0 \rangle\)</span> which becasue of Hermitian property of operators must form complete basis set.</p></li>
