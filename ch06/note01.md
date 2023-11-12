@@ -115,6 +115,8 @@ $$
 ### Derivations of 1st and 2nd order corrections
 
 :::{admonition} **Deriving 1st order correction to energy $E^1_n$**
+:class: dropdown
+
 
 **Fixing the normalization**
 
@@ -173,6 +175,7 @@ $$
 
 
 :::{admonition} **Deriving 1st order correction to eigenfunction $\mid n^1 \rangle$**
+:class: dropdown
 
 - We express the unknown first order eigenfunctions $\mid n^1 \rangle$ in terms of known eigenfunctions $\mid k^0 \rangle$ which becasue of Hermitian property of operators must form complete basis set. 
 
