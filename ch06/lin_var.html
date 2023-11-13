@@ -657,16 +657,18 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to code this up we are going to set a=1</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eig</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="n">eigh</span>
+
+<span class="c1"># Lets adopt simpler units</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
 
-<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">140.0</span><span class="p">],[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">140.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">630.0</span><span class="p">]])</span>
-<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">],[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">105.0</span><span class="p">]])</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">140.0</span><span class="p">],[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">140.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">630.0</span><span class="p">]])</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">],[</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">105.0</span><span class="p">]])</span>
 
-<span class="n">e</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">),</span><span class="n">H</span><span class="p">))</span>
+<span class="n">e</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">H</span><span class="p">)</span> <span class="c1">#e, v = eigh(H, S) #Same values eigh is for hermitian matrices</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvalues:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First eigenvector:&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
@@ -675,43 +677,8 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenvalues: [ 4.93487481 51.06512519]
-First eigenvector: [[-0.66168489]
- [-0.74978204]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S^{-1}H = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">),</span><span class="n">H</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S^{-1} =  [[  840. -3780.]
- [-3780. 17640.]]
-S^{-1}H =  [[ 14.  -8.]
- [-42.  42.]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">56</span><span class="p">,</span><span class="mi">14</span><span class="o">*</span><span class="mi">42</span><span class="o">-</span><span class="mi">42</span><span class="o">*</span><span class="mi">8</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([51.06512519,  4.93487481])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenvalues: [ 4.93487481+0.j 51.06512519+0.j]
+First eigenvector: [-0.66168489 -0.74978204]
 </pre></div>
 </div>
 </div>
