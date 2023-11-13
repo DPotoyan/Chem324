@@ -5,12 +5,20 @@
 :class: note
 
 -  **Perturbation method**, attempts to solve analytically intractable problems by idintifying an exactly *sovable* part and a *"small"* pertrubation to it. 
-- The method is similair in spirit to taylor expansion of functions familiar from calculus and is a powerful tool for solving problems in quantum mechanics. 
+- The method is similair in spirit to taylor expansion of continuous functions familiar to us from calculus. Just like in taylor expansion in pertrubation expansion the key is identifying the relatively small parameter in the problem to expand.
 
 - Application of pertrubation theory proceeds in two steps. Step one identify solvable part and perturbation. Part two expand energy and eigenfunctions as series of corrections of increasing order. In practice first and second order corrections to energy are sufficient to get quantiatively accurate results. 
+
+- Perturbation theory allows writing down expressions entirely in terms of eigenfunctions and eigenvalues of exactly solved problem!
 :::
 
-  ![](./images/perturb1.png)
+
+:::{figure-md} markdown-fig
+<img src="./images/perturb1.png" alt="pertrub" class="bg-primary mb-1" width="300px">
+
+Pertrubation theory quantifies how much energy levels get pertrubed by adding "small" deviation of the exactly solvable Hamiltonian. For many problems which are impossibvle to solve exactly one can still identify part of the hamiltonian as exactly solvable $\hat{H}^0$ with the rest being treated as pertrubation
+:::
+
 
 
 ## Time independent perturbations
@@ -57,17 +65,15 @@ $$
 \mid n\rangle = {\color{green}\mid n^0\rangle}+{\color{red} \lambda\mid n^1\rangle}+{\color{blue} \lambda^2\mid n^2\rangle} ...
 $$
 
-- Pluggin in the expansions into $\hat{H}\mid n\rangle =E_n \mid n\rangle$ we get
+- Pluggin in the expansions into $\hat{H}\mid n\rangle =E_n \mid n\rangle$ we get expression involving various terms with $\lambda$. Next step is to expand brackets and group terms according to $\lambda^0$, $\lambda^1$, and $\lambda^2$, 
 
 $$
-\Big({\color{green}\hat{H}^0}+{\color{red}\lambda \hat{H}^1} \Big)\Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle} \Big)  = \Big({\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_n}\Big) \Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle}\Big)
+\Big({\color{green}\hat{H}^0}+{\color{red}\lambda \hat{H}^1} \Big)\Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle} +{\color{blue}\lambda^2\mid n^2\rangle}\Big)  = \Big({\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_n}\Big) \Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle}+{\color{blue}\lambda^2\mid n^2\rangle}\Big)
 $$
 
-- Now we expand terms and collct products according to order of lambd:
 
-$$
-\begin{split}\color{green}{\hat{H}^0 \mid n^0\rangle} + \lambda \color{red}{ \big (\hat{H}^1 \mid n^0\rangle + \hat{H}^0 \mid n^1\rangle \big)}+\lambda^2 \color{blue}{\hat{H}^1 \mid n^1\rangle }  = \\ = \color{green}{E^0_n \mid n^0\rangle} +\lambda \color{red}{ \big( E^1_n \mid n^0\rangle+ E^0_n \mid n^1\big )} +  \lambda^2\color{blue}{\big(E^1_n \mid n^1\rangle+E^2_n \mid n^0\rangle \big)}\end{split}
-$$
+
+
 
 
 
@@ -89,7 +95,7 @@ $$
 
 
 $$
-\color{blue}{\hat{H^1}\mid n^1\rangle = E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
+\color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E^0_n\mid n^2 \rangle + E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 $$
 
 

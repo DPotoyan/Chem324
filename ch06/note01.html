@@ -457,11 +457,17 @@ document.write(`
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
 <li><p><strong>Perturbation method</strong>, attempts to solve analytically intractable problems by idintifying an exactly <em>sovable</em> part and a <em>“small”</em> pertrubation to it.</p></li>
-<li><p>The method is similair in spirit to taylor expansion of functions familiar from calculus and is a powerful tool for solving problems in quantum mechanics.</p></li>
+<li><p>The method is similair in spirit to taylor expansion of continuous functions familiar to us from calculus. Just like in taylor expansion in pertrubation expansion the key is identifying the relatively small parameter in the problem to expand.</p></li>
 <li><p>Application of pertrubation theory proceeds in two steps. Step one identify solvable part and perturbation. Part two expand energy and eigenfunctions as series of corrections of increasing order. In practice first and second order corrections to energy are sufficient to get quantiatively accurate results.</p></li>
+<li><p>Perturbation theory allows writing down expressions entirely in terms of eigenfunctions and eigenvalues of exactly solved problem!</p></li>
 </ul>
 </div>
-<p><img alt="" src="ch06/images/perturb1.png" /></p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/perturb1.png"><img alt="pertrub" class="bg-primary mb-1" src="../_images/perturb1.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Pertrubation theory quantifies how much energy levels get pertrubed by adding “small” deviation of the exactly solvable Hamiltonian. For many problems which are impossibvle to solve exactly one can still identify part of the hamiltonian as exactly solvable <span class="math notranslate nohighlight">\(\hat{H}^0\)</span> with the rest being treated as pertrubation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="time-independent-perturbations">
 <h1>Time independent perturbations<a class="headerlink" href="#time-independent-perturbations" title="Permalink to this heading">#</a></h1>
@@ -502,19 +508,12 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 \mid n\rangle = {\color{green}\mid n^0\rangle}+{\color{red} \lambda\mid n^1\rangle}+{\color{blue} \lambda^2\mid n^2\rangle} ...
 \]</div>
 <ul class="simple">
-<li><p>Pluggin in the expansions into <span class="math notranslate nohighlight">\(\hat{H}\mid n\rangle =E_n \mid n\rangle\)</span> we get</p></li>
+<li><p>Pluggin in the expansions into <span class="math notranslate nohighlight">\(\hat{H}\mid n\rangle =E_n \mid n\rangle\)</span> we get expression involving various terms with <span class="math notranslate nohighlight">\(\lambda\)</span>. Next step is to expand brackets and group terms according to <span class="math notranslate nohighlight">\(\lambda^0\)</span>, <span class="math notranslate nohighlight">\(\lambda^1\)</span>, and <span class="math notranslate nohighlight">\(\lambda^2\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\Big({\color{green}\hat{H}^0}+{\color{red}\lambda \hat{H}^1} \Big)\Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle} \Big)  = \Big({\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_n}\Big) \Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle}\Big)
+\Big({\color{green}\hat{H}^0}+{\color{red}\lambda \hat{H}^1} \Big)\Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle} +{\color{blue}\lambda^2\mid n^2\rangle}\Big)  = \Big({\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_n}\Big) \Big({\color{green}\mid n^0\rangle}+{\color{red}\lambda\mid n^1\rangle}+{\color{blue}\lambda^2\mid n^2\rangle}\Big)
 \]</div>
-<ul class="simple">
-<li><p>Now we expand terms and collct products according to order of lambd:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{split}\color{green}{\hat{H}^0 \mid n^0\rangle} + \lambda \color{red}{ \big (\hat{H}^1 \mid n^0\rangle + \hat{H}^0 \mid n^1\rangle \big)}+\lambda^2 \color{blue}{\hat{H}^1 \mid n^1\rangle }  = \\ = \color{green}{E^0_n \mid n^0\rangle} +\lambda \color{red}{ \big( E^1_n \mid n^0\rangle+ E^0_n \mid n^1\big )} +  \lambda^2\color{blue}{\big(E^1_n \mid n^1\rangle+E^2_n \mid n^0\rangle \big)}\end{split}
-\end{split}\]</div>
 </section>
 <section id="pertubation-equations-of-order-0-1-and-2">
 <h2>Pertubation equations of order <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.<a class="headerlink" href="#pertubation-equations-of-order-0-1-and-2" title="Permalink to this heading">#</a></h2>
@@ -529,7 +528,7 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\color{blue}{\hat{H^1}\mid n^1\rangle = E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
+\color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E^0_n\mid n^2 \rangle + E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 \]</div>
 <ul class="simple">
 <li><p>Note how the sum of  upstairs index determines the order of perturbation expansion</p></li>
