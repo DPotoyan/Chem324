@@ -481,7 +481,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-functions-to-compute-matrix-elements">Write functions to compute matrix elements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-numerical-accuracy">Test for numerical accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">Solve eigenvalue problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenvectors">Visualize eigenvectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">visualize Eigenfunctions and eigenvalues</a></li>
 </ul>
             </nav>
         </div>
@@ -516,13 +516,10 @@ document.write(`
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
 
-
-<span class="k">def</span> <span class="nf">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Define any 1D trial function you like.</span>
-<span class="sd">    n: is a parameter that defines basis functions in a linear combination </span>
-<span class="sd">    e.g c_1 f_1+c_2f_2+...&#39;&#39;&#39;</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">E0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Eiganvalues of harmonic oscillator</span>
+<span class="sd">    The following units used; hbar=1, mu=1, k=1 making omega=1&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -532,7 +529,14 @@ document.write(`
 <h2>Write functions to compute matrix elements<a class="headerlink" href="#write-functions-to-compute-matrix-elements" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the potential energy function for your quantum system</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Define any 1D trial function you like.</span>
+<span class="sd">    n: is a parameter that defines basis functions in a linear combination </span>
+<span class="sd">    e.g c_1 f_1+c_2f_2+...&#39;&#39;&#39;</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Define the potential energy function for your quantum system</span>
 <span class="k">def</span> <span class="nf">PE</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Potential energy with the following units used; hbar=1, mu=1, k=1</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -593,7 +597,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the number of basis functions and the range of x</span>
-<span class="n">num_basis_functions</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_basis_functions</span> <span class="o">=</span> <span class="mi">8</span>
 
 <span class="c1"># Compute the overlap matrix and Hamiltonian matrix</span>
 <span class="n">overlap_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_basis_functions</span><span class="p">,</span> <span class="n">num_basis_functions</span><span class="p">))</span>
@@ -630,26 +634,34 @@ Ground-State Wavefunction Coefficients: [-2.12550098e-03 -6.16906835e+00  7.2900
 </div>
 </div>
 </section>
-<section id="visualize-eigenvectors">
-<h2>Visualize eigenvectors<a class="headerlink" href="#visualize-eigenvectors" title="Permalink to this heading">#</a></h2>
+<section id="visualize-eigenfunctions-and-eigenvalues">
+<h2>visualize Eigenfunctions and eigenvalues<a class="headerlink" href="#visualize-eigenfunctions-and-eigenvalues" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psi</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># trial function</span>
 <span class="n">k</span>   <span class="o">=</span> <span class="mi">0</span> <span class="c1"># eigenvector </span>
 
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_basis_functions</span><span class="p">):</span>
 
     <span class="n">psi</span> <span class="o">+=</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;var approx&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact ground state&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ground-State Energy: </span><span class="si">{</span><span class="n">ground_state_energy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$|\psi(x)|^2$&#39;</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">):</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Level </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Energy levels&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa96ee787c0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/ada43b757b9857fe5984e6bff80f359d479f5ea29c8696a8607e48b902485840.png" src="../_images/ada43b757b9857fe5984e6bff80f359d479f5ea29c8696a8607e48b902485840.png" />
 </div>
 </div>
 </section>
@@ -722,7 +734,7 @@ Ground-State Wavefunction Coefficients: [-2.12550098e-03 -6.16906835e+00  7.2900
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-functions-to-compute-matrix-elements">Write functions to compute matrix elements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-numerical-accuracy">Test for numerical accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">Solve eigenvalue problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenvectors">Visualize eigenvectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">visualize Eigenfunctions and eigenvalues</a></li>
 </ul>
   </nav></div>
 
