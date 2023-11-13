@@ -519,6 +519,7 @@ document.write(`
 <span class="k">def</span> <span class="nf">E0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Eiganvalues of harmonic oscillator</span>
 <span class="sd">    The following units used; hbar=1, mu=1, k=1 making omega=1&#39;&#39;&#39;</span>
+    
     <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -529,12 +530,15 @@ document.write(`
 <h2>Write functions to compute matrix elements<a class="headerlink" href="#write-functions-to-compute-matrix-elements" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Define any 1D trial function you like.</span>
-<span class="sd">    n: is a parameter that defines basis functions in a linear combination </span>
+<span class="sd">    n: is a parameter that defines basis functions in a linear combination, n=1,2,3,...</span>
+<span class="sd">    alpha: is a constat that can also be varied.</span>
 <span class="sd">    e.g c_1 f_1+c_2f_2+...&#39;&#39;&#39;</span>
 
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span> <span class="c1"># n=1,2,3,4...</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Define the potential energy function for your quantum system</span>
 <span class="k">def</span> <span class="nf">PE</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -562,31 +566,22 @@ document.write(`
 <h2>Test for numerical accuracy<a class="headerlink" href="#test-for-numerical-accuracy" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check normalization, should be 1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="n">dx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check ground energy 1/2 hbar omega = 1/2 (because h=1 and omega=1 because k=1, mu=1)</span>
-<span class="n">fHf</span> <span class="o">=</span> <span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">KE</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dx</span><span class="p">)</span><span class="o">+</span> <span class="n">PE</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span> <span class="p">)</span>
+<span class="c1">#Check normalization, should be 1</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fHf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="c1">#Check ground energy 1/2 hbar omega = 1/2 (because h=1 and omega=1 because k=1, mu=1)</span>
+<span class="n">Hii</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span>  <span class="n">KE</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">PE</span><span class="p">(</span><span class="n">psi0</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span> <span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Hii</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49999949990084436
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+0.49999949990084436
 </pre></div>
 </div>
 </div>
@@ -610,7 +605,7 @@ document.write(`
 
         <span class="n">overlap_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 
-        <span class="n">hamiltonian_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="p">(</span> <span class="n">KE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span><span class="o">+</span> <span class="n">PE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">hamiltonian_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">KE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="n">fi</span> <span class="o">*</span> <span class="n">PE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># Diagonalize the matrices to find eigenvalues and eigenvectors</span>
 <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">hamiltonian_matrix</span><span class="p">,</span> <span class="n">overlap_matrix</span><span class="p">)</span>
@@ -625,10 +620,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ground-State Energy: 0.6548831175123827
-Ground-State Wavefunction Coefficients: [-2.12550098e-03 -6.16906835e+00  7.29002966e+01 -5.13399936e+02
-  2.10788059e+03 -5.25746977e+03  8.07103179e+03 -7.44534509e+03
-  3.78351758e+03 -8.13758627e+02]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ground-State Energy: 0.49999949989968206
+Ground-State Wavefunction Coefficients: [ 7.51124454e-01 -1.97542024e-05  1.44430858e-04 -4.63737995e-04
+  8.42174778e-04 -8.76942577e-04  4.87539363e-04 -1.12151492e-04]
 </pre></div>
 </div>
 </div>
@@ -654,14 +648,21 @@ Ground-State Wavefunction Coefficients: [-2.12550098e-03 -6.16906835e+00  7.2900
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$|\psi(x)|^2$&#39;</span><span class="p">)</span>
 
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">):</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Level </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">E0</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Level </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Level </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Energy levels&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Energy levels&#39;)
+</pre></div>
+</div>
+<img alt="../_images/e3f6ee1d08e773e4c46b8fafed87c33c6570a96d81be7206f98b4bed078ce62f.png" src="../_images/e3f6ee1d08e773e4c46b8fafed87c33c6570a96d81be7206f98b4bed078ce62f.png" />
 </div>
 </div>
 </section>
