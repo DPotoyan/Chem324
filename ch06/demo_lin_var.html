@@ -481,7 +481,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-functions-to-compute-matrix-elements">Write functions to compute matrix elements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-numerical-accuracy">Test for numerical accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">Solve eigenvalue problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">visualize Eigenfunctions and eigenvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">Visualize Eigenfunctions and eigenvalues</a></li>
 </ul>
             </nav>
         </div>
@@ -615,20 +615,20 @@ document.write(`
 <span class="n">num_basis_functions</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1"># Compute the overlap matrix and Hamiltonian matrix</span>
-<span class="n">overlap_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_basis_functions</span><span class="p">,</span> <span class="n">num_basis_functions</span><span class="p">))</span>
-<span class="n">hamiltonian_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_basis_functions</span><span class="p">,</span> <span class="n">num_basis_functions</span><span class="p">))</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_basis_functions</span><span class="p">,</span> <span class="n">num_basis_functions</span><span class="p">))</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_basis_functions</span><span class="p">,</span> <span class="n">num_basis_functions</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_basis_functions</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_basis_functions</span><span class="p">):</span>
 
         <span class="n">fi</span><span class="p">,</span> <span class="n">fj</span> <span class="o">=</span> <span class="n">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">basis_functions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
-        <span class="n">overlap_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 
-        <span class="n">hamiltonian_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">KE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="n">fi</span> <span class="o">*</span> <span class="n">PE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">fi</span> <span class="o">*</span> <span class="n">KE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="n">fi</span> <span class="o">*</span> <span class="n">PE</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># Diagonalize the matrices to find eigenvalues and eigenvectors</span>
-<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">hamiltonian_matrix</span><span class="p">,</span> <span class="n">overlap_matrix</span><span class="p">)</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
 
 <span class="c1"># Find the ground-state energy (lowest eigenvalue) and corresponding eigenfunction</span>
 <span class="n">ground_state_energy</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -648,7 +648,7 @@ Ground-State Wavefunction Coefficients: [ 0.33492713 -0.97644553]
 </div>
 </section>
 <section id="visualize-eigenfunctions-and-eigenvalues">
-<h2>visualize Eigenfunctions and eigenvalues<a class="headerlink" href="#visualize-eigenfunctions-and-eigenvalues" title="Permalink to this heading">#</a></h2>
+<h2>Visualize Eigenfunctions and eigenvalues<a class="headerlink" href="#visualize-eigenfunctions-and-eigenvalues" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psi</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># trial function</span>
@@ -754,7 +754,7 @@ Ground-State Wavefunction Coefficients: [ 0.33492713 -0.97644553]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-functions-to-compute-matrix-elements">Write functions to compute matrix elements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-numerical-accuracy">Test for numerical accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">Solve eigenvalue problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">visualize Eigenfunctions and eigenvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-eigenfunctions-and-eigenvalues">Visualize Eigenfunctions and eigenvalues</a></li>
 </ul>
   </nav></div>
 
