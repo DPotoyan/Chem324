@@ -26,7 +26,7 @@ $${\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\
 
 - A generalization of antisimmetric wavefunctions for N electrons was proposed by Slater in 1929:
 
-$${\hspace*{-0.4cm}
+$${
 \psi(r_1,...,r_n) = \frac{1}{\sqrt{n!}}
 \begin{vmatrix}
 1s(1)\alpha(1) & 1s(1)\beta(1) & 2s(1)\alpha(1) & ... \\
