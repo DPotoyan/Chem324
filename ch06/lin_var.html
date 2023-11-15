@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch07/note01.html">Helium atom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Pauli exclusion principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Multi-electron atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch07/note03.html">Angular momentum of many-electron atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch07/note04.html">Atomic terms and selection rules</a></li>
 </ul>
@@ -503,10 +503,15 @@ document.write(`
                   
   <section id="linear-variational-method">
 <h1>Linear Variational Method<a class="headerlink" href="#linear-variational-method" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
 <ul class="simple">
 <li><p>The variational method is a powerful method that can be used to determine upper bounds and approximations for ground state energies of numerous quantum mechanical problems.</p></li>
 <li><p>The variational method is used heavily in electronic structure theories such as Hartree Fock.</p></li>
+<li><p>The linear varaation method is seeking solutions to Schrodinger equation by expressing trial wavefunctions as linear combinations of easy to compute functions like gaussians or exponential.</p></li>
+<li><p>The linear variational method converts Schrodinger equation into linear algebra problem of finding eigenvalues (energies) and eigenvectors (coefficients in linear combination)</p></li>
 </ul>
+</div>
 <section id="linearizing-the-pproblem">
 <h2>Linearizing the pproblem<a class="headerlink" href="#linearizing-the-pproblem" title="Permalink to this heading">#</a></h2>
 <p>How does this help us in practice?  In a typical QM problem, we are attempting to solve for the wavefunction(s) and energy(ies) for a given Hamiltonian.  If the Hamiltonian is such that solving the problem exactly is too challenging (e.g. any two or more electron problem) we can expand the wavefunction in a basis and attempt to solve the problem that way.  We start with</p>
