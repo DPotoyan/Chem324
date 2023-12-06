@@ -10,6 +10,12 @@
 
 ### Constructing MOs from AOs
 
+:::{figure-md} markdown-fig
+<img src="./images/Starting_aos.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+AOs centered on each H atom in $H^{+}_2$ molecule
+:::
+
 - The electronic Schrodinger equation for H$_2^+$ can be solved exactly because the equation contains only one particle. However, the  involved math is very complicated and here we take another simpler but  approximate approach. This method will reveal all the important features of chemical bond. An approximate (trial) wavefunction is written as (real functions):
 
 $${\psi_\pm(\vec{r}_1) = c_11s_A(\vec{r}_1) \pm c_21s_B(\vec{r}_1)}$$
@@ -25,6 +31,11 @@ constructed, one with + sign and the other with $-$ sign. Normalization of the w
 
 $${\int{\psi_\pm^*\psi_\pm d\tau} = 1}$$
 
+:::{figure-md} markdown-fig
+<img src="./images/b_vs_u.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+Bonding vs anti-bonding wavefunctions (Molecular Orbitals). Show are wavefunctions and probability densities (squares of wavefunctions)
+:::
 
 ### Overlap integral
 
