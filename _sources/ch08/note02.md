@@ -62,7 +62,7 @@ Note that the antibonding orbital has \underline{zero} electron density between 
 ### Bonding vs antibonding orbitals
 
 :::{figure-md} markdown-fig
-<img src="./images/b_vs_u.png" alt="electro" class="bg-primary mb-1" width="400px">
+<img src="./images/b_vs_u.png" alt="electro" class="bg-primary mb-1" width="800px">
 
 Bonding vs anti-bonding wavefunctions (Molecular Orbitals). Show are wavefunctions and probability densities (squares of wavefunctions)
 :::
