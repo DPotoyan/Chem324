@@ -1,4 +1,5 @@
-##Molecular orbital description of hydrogen molecule
+## Molecular orbital description of hydrogen molecule
+
 
 
 Using the Born-Oppenheimer approximation, the electronic Hamiltonian for H$_2$ molecule can be written as:
@@ -118,9 +119,13 @@ atoms):
 
 $${^{2S+1}\Lambda}$$
 
+### Examples of molecular term symbols 
+
 **Example** What is the term symbol for ground state $H_2$?
 
-**Solution** Both electrons are on a $\sigma$ orbital and hence $\lambda_1 = \lambda_2
+:::{dropdwon} **Solution** 
+
+Both electrons are on a $\sigma$ orbital and hence $\lambda_1 = \lambda_2
 = 0$. This gives $\Lambda = 0$, which corresponds to $\Sigma$. The electrons 
 occupy the same molecular orbital with opposite spins and hence $2S + 1 = 1$.
 This gives the term symbol as $^1\Sigma$.
@@ -136,11 +141,14 @@ label reflects the symmetry of the unpaired electron orbital. Closed shell
 molecules have always $g$. With more than one unpaired electron, the overall
 parity should be calculated using the following rules: $g \times g = g$, $g \times 
 u = u$, $u \times g = u$ and $u \times u = g$.
+:::
 
 **Example** What is the term symbol for ground state $O_2$?
 
-**Solution** Ground state $O_2$ has two electrons with parallel spins on the $\pi_{+1}$ and $\pi_{-1}$ orbitals. Thus this is a triplet state molecule with the orbital angular momentum from the two $\pi$-electrons being cancelled. This gives a $^3\Sigma$ term.  The two $\pi$'s are anti-bonding and as such they are desginated as $g$ and further $g\times g = g$ (remember that for $\pi$ orbigals the $g/u$ vs. bonding/anti-bonding is reversed from that of $\sigma$ orbitals). To see the $+/-$ symmetry, it is convenient to think about $\pi_x$ and $\pi_y$ Cartesian orbitals (draw a picture!) and see that one of them is $+$ and the other is $-$ (they are perpendicular to each other). Again $+ \times - = -$ and we have the complete term symbol as $^3\Sigma_g^-$.
+::{dropdwon} **Solution** 
 
+:Ground state $O_2$ has two electrons with parallel spins on the $\pi_{+1}$ and $\pi_{-1}$ orbitals. Thus this is a triplet state molecule with the orbital angular momentum from the two $\pi$-electrons being cancelled. This gives a $^3\Sigma$ term.  The two $\pi$'s are anti-bonding and as such they are desginated as $g$ and further $g\times g = g$ (remember that for $\pi$ orbigals the $g/u$ vs. bonding/anti-bonding is reversed from that of $\sigma$ orbitals). To see the $+/-$ symmetry, it is convenient to think about $\pi_x$ and $\pi_y$ Cartesian orbitals (draw a picture!) and see that one of them is $+$ and the other is $-$ (they are perpendicular to each other). Again $+ \times - = -$ and we have the complete term symbol as $^3\Sigma_g^-$.
 
 - When spin-orbit interaction is small, the above term symbols are  adequate (Hund's case (a)).
 - When spin-orbit interaction is large, $S$ and $\Lambda$ can no longer be  specified but their sum $J = |S + \Lambda|$ is a good quantum number.
+:::
