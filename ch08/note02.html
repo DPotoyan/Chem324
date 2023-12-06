@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -40,9 +40,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -145,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -256,6 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note01.html">BO approximation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular orbital description of hydrogen molecule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
@@ -390,6 +392,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -400,6 +403,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -407,7 +411,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -423,6 +429,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-from-aos">Constructing MOs from AOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonding-vs-antibonding-orbitals">Bonding vs antibonding orbitals</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -434,17 +450,35 @@ document.write(`
                   
   <section id="the-hydrogen-molecule-ion">
 <h1>The hydrogen molecule ion<a class="headerlink" href="#the-hydrogen-molecule-ion" title="Permalink to this heading">#</a></h1>
-<p>The electronic Schr”odinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> can be solved exactly because the equation contains only one particle. However, the  involved math is very complicated and here we take another simpler but  approximate approach. This method will reveal all the important features of chemical bond. An approximate (trial) wavefunction is written as (real functions):</p>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ul class="simple">
+<li><p>We construct trial wavefunction of the molecule from atomic orbitals.</p></li>
+<li><p>Applying variational method we find the two MOs to have distinct spatial profiles with one increasing probability of electron between the two nuclei and the other depleating.</p></li>
+<li><p>These MOs are called bonding and anibonding orbitals. They lower and raise eneryg of molecule relative to two separated atoms.</p></li>
+</ul>
+</div>
+<section id="constructing-mos-from-aos">
+<h2>Constructing MOs from AOs<a class="headerlink" href="#constructing-mos-from-aos" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The electronic Schrodinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> can be solved exactly because the equation contains only one particle. However, the  involved math is very complicated and here we take another simpler but  approximate approach. This method will reveal all the important features of chemical bond. An approximate (trial) wavefunction is written as (real functions):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi_\pm(\vec{r}_1) = c_11s_A(\vec{r}_1) \pm c_21s_B(\vec{r}_1)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(1s_A\)</span> and <span class="math notranslate nohighlight">\(1s_B\)</span> are hydrogen atom wavefunctions centered at nucleus A
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(1s_A\)</span> and <span class="math notranslate nohighlight">\(1s_B\)</span> are hydrogen atom wavefunctions centered at nucleus A
 and B, respectively, and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are constants. This function is
 essentially a linear combination of the atomic orbitals (LCAO molecular
-orbitals). Because the two protons are identical, we must have <span class="math notranslate nohighlight">\(c_1 = c_2 \equiv c\)</span> (also <span class="math notranslate nohighlight">\(c &gt; 0\)</span>).
-The <span class="math notranslate nohighlight">\(\pm\)</span> notation in Eq. (\ref{eq11.7}) indicates that two different wavefunctions can be
-constructed, one with <code class="docutils literal notranslate"><span class="pre">+''</span> <span class="pre">sign</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">other</span> <span class="pre">with</span> </code><span class="math notranslate nohighlight">\(-\)</span>‘’ sign. Normalization of the wavefunction requires:</p>
+orbitals).</p></li>
+<li><p>Because the two protons are identical, we must have <span class="math notranslate nohighlight">\(c_1 = c_2 \equiv c\)</span> (also <span class="math notranslate nohighlight">\(c &gt; 0\)</span>).</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(\pm\)</span> notation indicates that two different wavefunctions can be
+constructed, one with + sign and the other with <span class="math notranslate nohighlight">\(-\)</span> sign. Normalization of the wavefunction requires:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\int{\psi_\pm^*\psi_\pm d\tau} = 1}\]</div>
+</section>
+<section id="overlap-integral">
+<h2>Overlap integral<a class="headerlink" href="#overlap-integral" title="Permalink to this heading">#</a></h2>
 <p>In the following, we consider the wavefunction with a ``+‘’ sign and evaluate the normalization integral (<span class="math notranslate nohighlight">\(S\)</span> = overlap integral, which depends on <span class="math notranslate nohighlight">\(R\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}1 = c^2\int{(1s_A + 1s_B)(1s_A + 1s_B)d \tau}= \\ c^2\int{1s_A^2d \tau} = 1 + c^2{\int{1s_B^2d}\tau}\end{split}\]</div>
@@ -456,12 +490,16 @@ constructed, one with <code class="docutils literal notranslate"><span class="pr
 <p>and the complete ``+‘’ wavefunction is then:</p>
 <div class="math notranslate nohighlight">
 \[{\psi_+ \equiv \psi_g = \frac{1}{\sqrt{2(1 + S)}}(1s_A + 1s_B)}\]</div>
-<p>In exactly the same way, we can get the ``<span class="math notranslate nohighlight">\(-\)</span>‘’ wavefunction:</p>
+<p>In exactly the same way, we can get the <span class="math notranslate nohighlight">\(-\)</span> wavefunction:</p>
 <div class="math notranslate nohighlight">
 \[{\psi_- \equiv \psi_u = \frac{1}{\sqrt{2(1 - S)}}(1s_A - 1s_B)}\]</div>
 <p>Note that the antibonding orbital has \underline{zero} electron density between the nuclei.</p>
-<p>Recall that the square of the wavefunction gives the electron density. In the left hand side figure (the <code class="docutils literal notranslate"><span class="pre">+''</span> <span class="pre">wavefunction),</span> <span class="pre">the</span> <span class="pre">electron</span> <span class="pre">density</span> <span class="pre">is</span> <span class="pre">amplified</span> <span class="pre">between</span> <span class="pre">the</span> <span class="pre">nuclei</span> <span class="pre">whereas</span> <span class="pre">in</span> <span class="pre">the</span> </code><span class="math notranslate nohighlight">\(-\)</span>‘’ wavefunction the opposite happens. \textit{The main feature of a chemical bond is the increased electron  density between the nuclei.} This identifies the <code class="docutils literal notranslate"><span class="pre">+''</span> <span class="pre">wavefunction</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">\underline{bonding</span> <span class="pre">orbital}</span> <span class="pre">and</span> </code><span class="math notranslate nohighlight">\(-\)</span>‘’ as an \underline{antibonding orbital}.</p>
+</section>
+<section id="bonding-vs-antibonding-orbitals">
+<h2>Bonding vs antibonding orbitals<a class="headerlink" href="#bonding-vs-antibonding-orbitals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
+<li><p>Recall that the square of the wavefunction gives the electron density. In the left hand side figure (the + wavefunction), the electron density is amplified between the nuclei whereas in the <span class="math notranslate nohighlight">\(-\)</span> wavefunction the opposite happens.</p></li>
+<li><p>The main feature of a chemical bond is the increased electron  density between the nuclei. This identifies the + wavefunction as a  <strong>bonding orbital</strong> and <span class="math notranslate nohighlight">\(-\)</span> as an <strong>antibonding orbital</strong>.</p></li>
 <li><p>When a molecule has a center of symmetry (here at the half-way between the
 nuclei), the wavefunction may or may not change sign when it is inverted
 through the center of symmetry. If the origin is placed at the center of
@@ -476,9 +514,10 @@ Later we will see that this is \underline{reversed} for <span class="math notran
 </ul>
 <div class="math notranslate nohighlight">
 \[{S(R) = e^{-R}\left( 1 + R + \frac{R^3}{3}\right)}\]</div>
-<blockquote>
-<div><p>Note that when <span class="math notranslate nohighlight">\(R = 0\)</span> (i.e. the nuclei overlap), <span class="math notranslate nohighlight">\(S(0) = 1\)</span> (just a check to see that the expression is reasonable).</p>
-</div></blockquote>
+<ul class="simple">
+<li><p>Note that when <span class="math notranslate nohighlight">\(R = 0\)</span> (i.e. the nuclei overlap), <span class="math notranslate nohighlight">\(S(0) = 1\)</span> (just a check to see that the expression is reasonable).</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -509,7 +548,7 @@ Later we will see that this is \underline{reversed} for <span class="math notran
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="note01.html"
@@ -536,6 +575,22 @@ Later we will see that this is \underline{reversed} for <span class="math notran
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-from-aos">Constructing MOs from AOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonding-vs-antibonding-orbitals">Bonding vs antibonding orbitals</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -552,6 +607,7 @@ By Davit Potoyan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -578,8 +634,8 @@ By Davit Potoyan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

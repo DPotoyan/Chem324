@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -40,9 +40,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -145,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -256,6 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">BO approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02.html">The hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular orbital description of hydrogen molecule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
@@ -390,6 +392,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -400,6 +403,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -407,7 +411,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -423,6 +429,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplest-molecule">Simplest molecule</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -434,7 +448,18 @@ document.write(`
                   
   <section id="bo-approximation">
 <h1>BO approximation<a class="headerlink" href="#bo-approximation" title="Permalink to this heading">#</a></h1>
-<p>Because nuclei are much heavier than electrons, the Schrodinger equation can be approximately separated into the nuclear and the electron parts. Thus the electronic Schr”odinger equation for a molecule can be solved separately at each fixed nuclear configuration. This is called the Born-Oppenheimer approximation.</p>
+<div class="note admonition">
+<p class="admonition-title">What you need to know</p>
+<ul class="simple">
+<li><p><strong>Born-Oppenheimer (BO) approximation</strong>, Because nuclei are much heavier than electrons, the Schrodinger equation can be approximately separated into the nuclear and the electron parts. Thus the electronic Schrodinger equation for a molecule can be solved separately at each fixed nuclear configuration. This is called the Born-Oppenheimer approximation.</p></li>
+<li><p>BO approximation allows us to extend multi-electron treatment of atoms to molecules.</p></li>
+<li><p>Single electron wavefunctions of molecules are called <strong>Molecular Orbitals (MO)</strong></p></li>
+<li><p>Geometry of <span class="math notranslate nohighlight">\(H_2\)</span> molecule defined by its bond length <span class="math notranslate nohighlight">\(R\)</span> is fixed when determining molecular orbitals.</p></li>
+<li><p>Nuclear geometry is a varyable parameter in the problem: For different values of R one gets different energies and MOs.</p></li>
+</ul>
+</div>
+<section id="simplest-molecule">
+<h2>Simplest molecule<a class="headerlink" href="#simplest-molecule" title="Permalink to this heading">#</a></h2>
 <p>In the following, we will consider the simplest molecule <span class="math notranslate nohighlight">\(H_2^+\)</span>, which contains only one electron. This simple system will demonstrate the basic concepts in chemical bonding. The Schr”odinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[{H\psi(\vec{r}_1,\vec{R}_A,\vec{R}_B) = E\psi(\vec{r}_1,\vec{R}_A,\vec{R}_B)}\]</div>
@@ -449,11 +474,12 @@ are the positions of the two protons. The Hamiltonian for H<span class="math not
 <p>where <span class="math notranslate nohighlight">\(\psi_e\)</span> is the electronic wavefunction that depends on the distance <span class="math notranslate nohighlight">\(R\)</span> between the nuclei and <span class="math notranslate nohighlight">\(\psi_n\)</span> is the nuclear wavefunction depending on <span class="math notranslate nohighlight">\(\vec{R}_A\)</span> and <span class="math notranslate nohighlight">\(\vec{R}_B\)</span>. It can be shown that the nuclear part can be often be separated into vibrational, rotational and translational parts. The electronic Schr”odinger equation can now be written as:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{H}_e\psi_e = E_e\psi_e}\]</div>
-<p>Note that Eq. (\ref{eq11.4}) depends parametrically on <span class="math notranslate nohighlight">\(R\)</span> (``one equation for each value of <span class="math notranslate nohighlight">\(R\)</span>’’). The \textit{electronic Hamiltonian} is:</p>
+<p>Note that equation depends parametrically on <span class="math notranslate nohighlight">\(R\)</span> (``one equation for each value of <span class="math notranslate nohighlight">\(R\)</span>’’). The \textit{electronic Hamiltonian} is:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{H}_e = -\frac{\hbar^2}{2m_e}\Delta_e + \frac{e^2}{4\pi\epsilon_0}
 \left(\frac{1}{R} - \frac{1}{|r_1 - R_A|} - \frac{1}{|r_1 - R_B|}\right)}\]</div>
 <p>Because <span class="math notranslate nohighlight">\(R\)</span> is a parameter, both <span class="math notranslate nohighlight">\(E_e\)</span> and <span class="math notranslate nohighlight">\(\psi_e\)</span> are functions of <span class="math notranslate nohighlight">\(R\)</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -484,7 +510,7 @@ are the positions of the two protons. The Hamiltonian for H<span class="math not
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
@@ -511,6 +537,20 @@ are the positions of the two protons. The Hamiltonian for H<span class="math not
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplest-molecule">Simplest molecule</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -527,6 +567,7 @@ By Davit Potoyan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -553,8 +594,8 @@ By Davit Potoyan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
