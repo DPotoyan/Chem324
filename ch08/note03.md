@@ -71,7 +71,7 @@ $${E_g(R) = E_{1s} + \frac{J(R) + K(R)}{1 + S(R)}}$$
 $${E_u(R) = E_{1s} + \frac{J(R) - K(R)}{1 - S(R)}}$$
 
 :::{figure-md} markdown-fig
-<img src="./images/Energies.png" alt="electro" class="bg-primary mb-1" width="400px">
+<img src="./images/Energies.png" alt="electro" class="bg-primary mb-1" width="600px">
 
 Energies of bonding and antibonding orbitals
 :::
@@ -112,7 +112,7 @@ a $\sigma$ molecular orbital is formed. The notation $\sigma$ specifies
 the amount of angular momentum about the molecular axis (for $\sigma$, $\lambda = 0$ with $L_z = \pm\lambda\hbar$). In many-electron systems, both bonding and antibonding $\sigma$  orbitals can each hold a maximum of two electrons. Antibonding orbitals are often  denoted by *.
 
 :::{figure-md} markdown-fig
-<img src="./images/MO_variety.png" alt="electro" class="bg-primary mb-1" width="400px">
+<img src="./images/MO_variety.png" alt="electro" class="bg-primary mb-1" width="800px">
 
 MOs for homonuclear molecules have distinct symmetry
 :::
