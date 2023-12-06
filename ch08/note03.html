@@ -263,6 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
@@ -468,7 +469,7 @@ used to denote the integrals occurring in variational treatment of the problem. 
 <section id="variational-solution">
 <h2>Variational solution<a class="headerlink" href="#variational-solution" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>To minimize the energy expectation value in Eq. (\ref{eq11.14}) with respect to <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>, we have to calculate the partial derivatives of energy with respect to these parameters:</p></li>
+<li><p>To minimize the energy expectation value  with respect to <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>, we have to calculate the partial derivatives of energy with respect to these parameters:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{E\times (c_1^2 + 2c_1c_2S + c_2^2) = c_1^2H_{AA} + 2c_1c_2H_{AB} + c_2^2H_{BB}}\]</div>
@@ -530,6 +531,12 @@ E_{1s}S + K - SE &amp; E_{1s} + J - E\\
 \[{E_g(R) = E_{1s} + \frac{J(R) + K(R)}{1 + S(R)}}\]</div>
 <div class="math notranslate nohighlight">
 \[{E_u(R) = E_{1s} + \frac{J(R) - K(R)}{1 - S(R)}}\]</div>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/Energies.png"><img alt="electro" class="bg-primary mb-1" src="../_images/Energies.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Energies of bonding and antibonding orbitals</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Since energy is a relative quantity, it can be expressed relative to separated
 nuclei:</p></li>
@@ -556,12 +563,34 @@ solutions. These would correspond <span class="math notranslate nohighlight">\(u
 <ul class="simple">
 <li><p>It is a common practice to represent the molecular orbitals by molecular
 orbital (MO) diagrams. The formation of bonding and antibonding orbitals can be visualized as follows:</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/h2plus_diag.png"><img alt="electro" class="bg-primary mb-1" src="../_images/h2plus_diag.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Molecular Orbital diagram</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\sigma\)</span> orbitals When two <span class="math notranslate nohighlight">\(s\)</span> or <span class="math notranslate nohighlight">\(p_z\)</span> orbitals interact,
 a <span class="math notranslate nohighlight">\(\sigma\)</span> molecular orbital is formed. The notation <span class="math notranslate nohighlight">\(\sigma\)</span> specifies
 the amount of angular momentum about the molecular axis (for <span class="math notranslate nohighlight">\(\sigma\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0\)</span> with <span class="math notranslate nohighlight">\(L_z = \pm\lambda\hbar\)</span>). In many-electron systems, both bonding and antibonding <span class="math notranslate nohighlight">\(\sigma\)</span>  orbitals can each hold a maximum of two electrons. Antibonding orbitals are often  denoted by *.</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/MO_variety.png"><img alt="electro" class="bg-primary mb-1" src="../_images/MO_variety.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">MOs for homonuclear molecules have distinct symmetry</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\pi\)</span> orbitals. When two <span class="math notranslate nohighlight">\(p_{x,y}\)</span> orbitals interact, a <span class="math notranslate nohighlight">\(\pi\)</span> molecular orbital forms. <span class="math notranslate nohighlight">\(\pi\)</span>-orbitals are doubly degenerate: <span class="math notranslate nohighlight">\(\pi_{+1}\)</span> and <span class="math notranslate nohighlight">\(\pi_{-1}\)</span> (or alternatively <span class="math notranslate nohighlight">\(\pi_x\)</span> and <span class="math notranslate nohighlight">\(\pi_y\)</span>), where the <span class="math notranslate nohighlight">\(+1/-1\)</span> refer to the eigenvalue of the <span class="math notranslate nohighlight">\(L_z\)</span> operator (<span class="math notranslate nohighlight">\(\lambda = \pm1\)</span>). In many-electron systems a bonding <span class="math notranslate nohighlight">\(\pi\)</span>-orbital can therefore hold a maximum of 4 electrons (i.e. both <span class="math notranslate nohighlight">\(\pi_{+1}\)</span> and <span class="math notranslate nohighlight">\(\pi_{-1}\)</span> each can hold two electrons). The same holds for the antibonding <span class="math notranslate nohighlight">\(\pi\)</span> orbitals. Note that only the atomic orbitals of the same symmetry mix to form molecular orbitals (for example, <span class="math notranslate nohighlight">\(p_z - p_z\)</span>, <span class="math notranslate nohighlight">\(p_x -  p_x\)</span> and <span class="math notranslate nohighlight">\(p_y - p_y\)</span>). When atomic <span class="math notranslate nohighlight">\(d\)</span> orbitals mix to form molecular orbitals, <span class="math notranslate nohighlight">\(\sigma (\lambda = 0)\)</span>, <span class="math notranslate nohighlight">\(\pi (\lambda = \pm 1)\)</span> and <span class="math notranslate nohighlight">\(\delta (\lambda = \pm 2)\)</span> MOs form.</p></li>
 <li><p>Excited state energies of <span class="math notranslate nohighlight">\(H_2^+\)</span> resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.</p></li>
 </ul>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/MO_summary.png"><img alt="electro" class="bg-primary mb-1" src="../_images/MO_summary.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Mo diagram of homonuclear molecules follows similiar pattern with alternating bonding and anti-bonding MOs.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 

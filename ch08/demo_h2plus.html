@@ -1,0 +1,1121 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DEMO: Solving \(H^{+}_2\) via Variational Method &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch08/demo_h2plus';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scratchpad" href="../scratch.html" />
+    <link rel="prev" title="Intermolecular forces" href="note09.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Quantum Mechanics for Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Quantum Mechanics for Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Atomic spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note05.html">Wave-particle duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/demo_waves.html">DEMO: Visualizing waves</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch02/bonus_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02.html">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02B.html">Particle in a 3D box</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03.html">Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note04.html">Operators</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note05.html">Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note06.html">Time dependence</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_PIB.html">DEMO: Particle in a box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_operators.html">DEMO: Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/bonus_quantum_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note01.html">Molecular degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03A.html">Harmonic Oscillator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03B.html">Molecular Vibrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04A.html">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04B.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/demo_ho.html">DEMO: Harmonic Oscillator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note05.html">Spin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note01.html">Perturbation Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note02.html">Variational Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/lin_var.html">Linear Variational Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/demo_lin_var.html">DEMO: Solving QM problems with Variational method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note01.html">Helium atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Multi-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note04.html">Atomic terms and selection rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">8. Molecules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">BO approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02.html">The hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular orbital description of hydrogen molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../units.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Equation sheet</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/index.html">Math</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/note01.html">Integrals</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note03.html">Complex numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2py.html">Python3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2viz.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/animation.html">Animations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/sympy.html">Sympy</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/ch08/demo_h2plus.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch08/demo_h2plus.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DEMO: Solving H^{+}_2 via Variational Method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#populating-the-h-and-s-matrices">Populating the <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-overlap-matrix-s">The Overlap Matrix <span class="math notranslate nohighlight">\(S\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hamiltonian-matrix-h">The Hamiltonian Matrix <span class="math notranslate nohighlight">\(H\)</span>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-solution">Combined Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-as-a-function-of-r">Solution as a Function of <span class="math notranslate nohighlight">\(R\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-electron-densities">Orbital/Electron Densities</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-solving-h-2-via-variational-method">
+<h1>DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method<a class="headerlink" href="#demo-solving-h-2-via-variational-method" title="Permalink to this heading">#</a></h1>
+<section id="populating-the-h-and-s-matrices">
+<h2>Populating the <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> Matrices<a class="headerlink" href="#populating-the-h-and-s-matrices" title="Permalink to this heading">#</a></h2>
+<p>To determine the variationally optimal energy and wave function, we need to determine the variationally optimal linear coefficients <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> of the trial wave function.  The procedure for this is to:</p>
+<ol class="arabic simple">
+<li><p>Posit the trial wave function (done)</p></li>
+<li><p>Populate the <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> matrices</p></li>
+<li><p>Diagonalize <span class="math notranslate nohighlight">\(S^{-1}H\)</span>.</p></li>
+</ol>
+<p>Here will will populate the <span class="math notranslate nohighlight">\(2\times 2\)</span> matrices.</p>
+<section id="the-overlap-matrix-s">
+<h3>The Overlap Matrix <span class="math notranslate nohighlight">\(S\)</span><a class="headerlink" href="#the-overlap-matrix-s" title="Permalink to this heading">#</a></h3>
+<p>We start with <span class="math notranslate nohighlight">\(S\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8da38f83-ac1a-4b08-adf9-e910def92f36">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8da38f83-ac1a-4b08-adf9-e910def92f36" title="Permalink to this equation">#</a></span>\[\begin{align}
+S = \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_22 \end{bmatrix}
+\end{align}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-529a3daf-3c32-4764-aff4-6b31034d275b">
+<span class="eqno">(2)<a class="headerlink" href="#equation-529a3daf-3c32-4764-aff4-6b31034d275b" title="Permalink to this equation">#</a></span>\[\begin{align}
+S_{11} &amp;= \left\langle 1s_A | 1s_A \right\rangle \\
+S_{12} &amp;= \left\langle 1s_A | 1s_B \right\rangle \\
+S_{22} &amp;= \left\langle 1s_B | 1s_B \right\rangle
+\end{align}\]</div>
+<p>From normalization conditions, we know that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-21c2516b-437e-4c4e-9ce7-814f9505372e">
+<span class="eqno">(3)<a class="headerlink" href="#equation-21c2516b-437e-4c4e-9ce7-814f9505372e" title="Permalink to this equation">#</a></span>\[\begin{align}
+S_{11} &amp;= 1 \\
+S_{22} &amp;= 1
+\end{align}\]</div>
+<p>We now set about determining <span class="math notranslate nohighlight">\(S_{12}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f934969f-4235-48de-bdc5-ad526596c2f5">
+<span class="eqno">(4)<a class="headerlink" href="#equation-f934969f-4235-48de-bdc5-ad526596c2f5" title="Permalink to this equation">#</a></span>\[\begin{align}
+S_{12} &amp;= \left\langle 1s_A | 1s_B \right\rangle \\
+&amp;= \int 1s_A(\vec{r})1s_B(\vec{r})d\vec{r}
+\end{align}\]</div>
+<p>This integral is somewhat involved but can be solved.  Rather than doing so here I just provide the solution</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c241f5d9-28d6-48aa-9172-86469f12a747">
+<span class="eqno">(5)<a class="headerlink" href="#equation-c241f5d9-28d6-48aa-9172-86469f12a747" title="Permalink to this equation">#</a></span>\[\begin{equation}
+S_{12} = e^{-R}\left(1+R+\frac{R^2}{3}\right)
+\end{equation}\]</div>
+<p>We note the <span class="math notranslate nohighlight">\(S_{12}\)</span> is a function of nuclear separation <span class="math notranslate nohighlight">\(R\)</span>.  This makes sense as the degree of overlap between the two 1s function will depend on then separation distance between the nuclei.  We should expect no overlap when the nuclei are infinitely separated and maximal overlap when the nuclei are sitting on top of each other.  Below is a plot of <span class="math notranslate nohighlight">\(S_{12}(R)\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">S12</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">R</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="o">+</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#808080&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">S12</span><span class="p">(</span><span class="n">R</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;R/$a_0$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$S_</span><span class="si">{12}</span><span class="s1">(R)$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/90fd76aabdd87c5efc439503d36515a39c975df57b2ebb84268e798a4ef3c61e.png" src="../_images/90fd76aabdd87c5efc439503d36515a39c975df57b2ebb84268e798a4ef3c61e.png" />
+</div>
+</div>
+<p>From this information we can populate the <span class="math notranslate nohighlight">\(S\)</span> matrix as a function of <span class="math notranslate nohighlight">\(R\)</span>.  For example, if we choose <span class="math notranslate nohighlight">\(R=2.5\)</span> <span class="math notranslate nohighlight">\(a_0\)</span> we get and <span class="math notranslate nohighlight">\(S\)</span> matrix of</p>
+<div class="amsmath math notranslate nohighlight" id="equation-44074683-4ee5-4ea3-9a67-6645aaab0a6a">
+<span class="eqno">(6)<a class="headerlink" href="#equation-44074683-4ee5-4ea3-9a67-6645aaab0a6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+S(2.5) = \begin{bmatrix} 1 &amp; 0.458 \\0.458 &amp; 1 \end{bmatrix}
+\end{equation}\]</div>
+<p>Below is a code snippet to populate this matrix.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="n">S12</span><span class="p">(</span><span class="n">R</span><span class="p">)],[</span><span class="n">S12</span><span class="p">(</span><span class="n">R</span><span class="p">),</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S_12(2.5) = &quot;</span><span class="p">,</span> <span class="n">S12</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S(2.5) = &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S_12(2.5) =  0.45830790898343504
+S(2.5) = 
+[[1.         0.45830791]
+ [0.45830791 1.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-hamiltonian-matrix-h">
+<h3>The Hamiltonian Matrix <span class="math notranslate nohighlight">\(H\)</span>:<a class="headerlink" href="#the-hamiltonian-matrix-h" title="Permalink to this heading">#</a></h3>
+<p>The Hamiltonia matrix <span class="math notranslate nohighlight">\(H\)</span> is more challenging.  We start with the definition</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cabc38c8-bc5b-41a5-b0d3-4419fe0e2eb0">
+<span class="eqno">(7)<a class="headerlink" href="#equation-cabc38c8-bc5b-41a5-b0d3-4419fe0e2eb0" title="Permalink to this equation">#</a></span>\[\begin{align}
+H = \begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix}
+\end{align}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0e3aded0-c9e3-49d5-babb-7cae8c8e3cb6">
+<span class="eqno">(8)<a class="headerlink" href="#equation-0e3aded0-c9e3-49d5-babb-7cae8c8e3cb6" title="Permalink to this equation">#</a></span>\[\begin{align}
+H_{11} &amp;= \left\langle 1s_A | \hat{H} | 1s_A \right\rangle \\
+H_{12} &amp;= \left\langle 1s_A | \hat{H} | 1s_B \right\rangle \\
+H_{22} &amp;= \left\langle 1s_B | \hat{H} | 1s_B \right\rangle
+\end{align}\]</div>
+<p>Each of these will need to be determined but we will be able to determine <span class="math notranslate nohighlight">\(H_{22}\)</span> by analogy to <span class="math notranslate nohighlight">\(H_{11}\)</span> since all we are doing in swapping the identity of the electron.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-810b5210-8e84-46cc-8334-041674a1f0a5">
+<span class="eqno">(9)<a class="headerlink" href="#equation-810b5210-8e84-46cc-8334-041674a1f0a5" title="Permalink to this equation">#</a></span>\[\begin{align}
+H_{11} &amp;= \left\langle 1s_A | \hat{H} | 1s_A \right\rangle \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} - \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_A(\vec{r})d\vec{r} \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_A(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_A(\vec{r})d\vec{r} \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_A(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}} \right) 1s_A(\vec{r})d\vec{r} + \frac{1}{R}\int 1s_A(\vec{r})1s_A(\vec{r})d\vec{r}\\
+&amp;= E_{1s} + J + \frac{1}{R}
+\end{align}\]</div>
+<p>where we recognize that the first integral is simply the 1s energy of a hydrogen atom and we define the second integral as <span class="math notranslate nohighlight">\(J\)</span>, what is also called the <em>Coulomb integral</em>.  That is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-22d17bad-68c1-476c-a261-8bd42c91f2b4">
+<span class="eqno">(10)<a class="headerlink" href="#equation-22d17bad-68c1-476c-a261-8bd42c91f2b4" title="Permalink to this equation">#</a></span>\[\begin{align}
+J &amp;= \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}} \right) 1s_A(\vec{r})d\vec{r} \\
+&amp;= -\int 1s_A(\vec{r})\frac{1}{r_{1B}}1s_A(\vec{r})d\vec{r} 
+\end{align}\]</div>
+<p>where that last integral becomes <span class="math notranslate nohighlight">\(\frac{1}{R}\)</span> because <span class="math notranslate nohighlight">\(R\)</span>, the nuclear separation, is constant w.r.t <span class="math notranslate nohighlight">\(\vec{r}\)</span> and the <span class="math notranslate nohighlight">\(1s_A\)</span> function is normalized.</p>
+<p>For the <span class="math notranslate nohighlight">\(H_2^+\)</span> case the remaining integral in <span class="math notranslate nohighlight">\(J\)</span> can be solved analytically.  Doing so yields</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c244dbd7-ea29-43d3-bd90-b372caac349d">
+<span class="eqno">(11)<a class="headerlink" href="#equation-c244dbd7-ea29-43d3-bd90-b372caac349d" title="Permalink to this equation">#</a></span>\[\begin{align}
+J = e^{-2R}\left(1+\frac{1}{R}\right) - \frac{1}{R}
+\end{align}\]</div>
+<p>Thus, we get that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fedce942-38c8-49c8-a79c-055682846042">
+<span class="eqno">(12)<a class="headerlink" href="#equation-fedce942-38c8-49c8-a79c-055682846042" title="Permalink to this equation">#</a></span>\[\begin{align}
+H_{11} &amp; = E_{1s} + J + \frac{1}{R}= -\frac{1}{2} + e^{-2R}\left(1+\frac{1}{R}\right) \\
+H_{22} &amp; = E_{1s} + J + \frac{1}{R}= -\frac{1}{2} + e^{-2R}\left(1+\frac{1}{R}\right)
+\end{align}\]</div>
+<p>For <span class="math notranslate nohighlight">\(H_{12}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f8ee8e2e-1fda-4988-831b-be06007a1554">
+<span class="eqno">(13)<a class="headerlink" href="#equation-f8ee8e2e-1fda-4988-831b-be06007a1554" title="Permalink to this equation">#</a></span>\[\begin{align}
+H_{12} &amp;= \left\langle 1s_A | \hat{H} | 1s_B \right\rangle \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} - \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_B(\vec{r})d\vec{r} \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_B(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_B(\vec{r})d\vec{r} \\
+&amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_B(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}\right)1s_B(\vec{r})d\vec{r} + \frac{1}{R}\int 1s_A(\vec{r}) 1s_B(\vec{r})d\vec{r} \\
+&amp;= E_{1s}S_{12} + K + \frac{S_{12}}{R}
+\end{align}\]</div>
+<p>where we recognize that <span class="math notranslate nohighlight">\(\left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_B = E_{1s}1s_B\)</span>, <span class="math notranslate nohighlight">\(S_{12} = \langle 1s_A | 1s_B\rangle\)</span>, and have defined the <em>exhange integral</em>, <span class="math notranslate nohighlight">\(K\)</span>, to be</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9d5036fd-b521-4b8c-a9ed-8d5d01527706">
+<span class="eqno">(14)<a class="headerlink" href="#equation-9d5036fd-b521-4b8c-a9ed-8d5d01527706" title="Permalink to this equation">#</a></span>\[\begin{align}
+K &amp;= \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  \right) 1s_B(\vec{r})d\vec{r} \\
+&amp;= -\int 1s_A(\vec{r})\frac{1}{r_{1B}}1s_B(\vec{r})d\vec{r} \\
+&amp;= -e^{-R}\left(1+R\right)
+\end{align}\]</div>
+<p>where the last step I have used the solution for the simple case of H<span class="math notranslate nohighlight">\(_2^+\)</span> but have not shown it to be true.</p>
+<p>We can now populate the <span class="math notranslate nohighlight">\(H\)</span> matrix as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-68bce80b-b0ff-4e78-be01-5112efe7d6d8">
+<span class="eqno">(15)<a class="headerlink" href="#equation-68bce80b-b0ff-4e78-be01-5112efe7d6d8" title="Permalink to this equation">#</a></span>\[\begin{align}
+H &amp;= \begin{bmatrix} E_{1s} + J + \frac{1}{R} &amp; E_{1s}S_{12} + K + \frac{S_{12}}{R} \\ E_{1s}S_{12} + K + \frac{S_{12}}{R} &amp; E_{1s} + J + \frac{1}{R}\end{bmatrix} \\
+&amp;= \left(E_{1s} + \frac{1}{R}\right)\begin{bmatrix} 1 &amp; S_{12} \\ S_{12} &amp; 1\end{bmatrix} + \begin{bmatrix} J &amp; K \\  K &amp;  J \end{bmatrix}
+\end{align}\]</div>
+<p>For a nuclear separation value of 2.5 Bohr, for example, this yields</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6cf9c47e-fb54-42e1-b27a-4b16aafb6388">
+<span class="eqno">(16)<a class="headerlink" href="#equation-6cf9c47e-fb54-42e1-b27a-4b16aafb6388" title="Permalink to this equation">#</a></span>\[\begin{equation}
+H(R=2.5) = \begin{bmatrix} -0.491 &amp; -0.333 \\ -0.333 &amp; -0.491\end{bmatrix}
+\end{equation}\]</div>
+<p>Below is the code to compute this.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">R</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="n">R</span><span class="p">)</span><span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">R</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">R</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">H12</span> <span class="o">=</span> <span class="n">H21</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">S12</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">+</span> <span class="n">K</span> <span class="o">+</span> <span class="n">S12</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">/</span><span class="n">R</span>
+    <span class="n">H11</span> <span class="o">=</span> <span class="n">H22</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">+</span> <span class="n">J</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">R</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">H11</span><span class="p">,</span><span class="n">H12</span><span class="p">],[</span><span class="n">H21</span><span class="p">,</span><span class="n">H22</span><span class="p">]])</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H(1.5) = &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">H</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H(1.5) = 
+[[-0.49056687 -0.33312829]
+ [-0.33312829 -0.49056687]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="combined-solution">
+<h3>Combined Solution<a class="headerlink" href="#combined-solution" title="Permalink to this heading">#</a></h3>
+<p>Now that we have equations for <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> in terms of <span class="math notranslate nohighlight">\(R\)</span> (the nuclear separation; <span class="math notranslate nohighlight">\(S_{12}\)</span>, <span class="math notranslate nohighlight">\(J\)</span>, and <span class="math notranslate nohighlight">\(K\)</span> are all functions of <span class="math notranslate nohighlight">\(R\)</span>), we can compute the eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(S^{-1}H\)</span> for a given nuclear separation distance.</p>
+<p>Let’s choose 2.5 Bohr, for example, in which case we have</p>
+<div class="amsmath math notranslate nohighlight" id="equation-38cd7124-7ca2-42ba-b456-8576e77dc501">
+<span class="eqno">(17)<a class="headerlink" href="#equation-38cd7124-7ca2-42ba-b456-8576e77dc501" title="Permalink to this equation">#</a></span>\[\begin{align}
+S(2.5) &amp;= \begin{bmatrix} 1 &amp; 0.458 \\0.458 &amp; 1 \end{bmatrix} \\
+H(2.5) &amp;= \begin{bmatrix} -0.491 &amp; -0.333 \\ -0.333 &amp; -0.491\end{bmatrix} \\
+S(2.5)^{-1}H(2.5) &amp;= \begin{bmatrix} -0.428 &amp; -0.138 \\ -0.138 &amp; -0.428\end{bmatrix}
+\end{align}\]</div>
+<p>Computing the eigenvalues of <span class="math notranslate nohighlight">\(S(2.5)^{-1}H(2.5)\)</span> yields:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83a6d7b9-3e01-4a9c-8385-2bda9527a735">
+<span class="eqno">(18)<a class="headerlink" href="#equation-83a6d7b9-3e01-4a9c-8385-2bda9527a735" title="Permalink to this equation">#</a></span>\[\begin{equation}
+E(2.5) = -0.565\text{ and } -0.291
+\end{equation}\]</div>
+<p>The ground state energy is the first (minimum) of these.  The corresponding eigenvectors (or vectors of variational coefficients) are</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6c991aea-75c9-476c-9509-2a58ff16959c">
+<span class="eqno">(19)<a class="headerlink" href="#equation-6c991aea-75c9-476c-9509-2a58ff16959c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v = \begin{bmatrix} -0.707 &amp; 0.707 \\ -0.707 &amp; -0.707\end{bmatrix}
+\end{equation}\]</div>
+<p>where these are listed as column vectors meaning the that coefficients for the ground state energy are</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b82fe2ca-b7cb-4c06-84bb-dab147da9505">
+<span class="eqno">(20)<a class="headerlink" href="#equation-b82fe2ca-b7cb-4c06-84bb-dab147da9505" title="Permalink to this equation">#</a></span>\[\begin{align}
+c_1 &amp;= -0.707 \\
+c_2 &amp;= -0.707
+\end{align}\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S^{-1}H(2.5) = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)),</span><span class="n">H</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)))</span>
+<span class="n">e</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)),</span><span class="n">H</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvalues:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvectors:&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S^{-1}H(2.5) =  [[-0.4277358  -0.13709359]
+ [-0.13709359 -0.4277358 ]]
+Eigenvalues: [-0.56482939 -0.29064221]
+Eigenvectors: [[-0.70710678  0.70710678]
+ [-0.70710678 -0.70710678]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Due to the symmetry of this problem and normalization requirements, it turns out that the coefficients must always be</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0fb807bc-544b-48f6-af21-2bba2db452e3">
+<span class="eqno">(21)<a class="headerlink" href="#equation-0fb807bc-544b-48f6-af21-2bba2db452e3" title="Permalink to this equation">#</a></span>\[\begin{align}
+c_1 &amp;= \pm \frac{1}{\sqrt{2(1-S_{12})}} \\
+c_2 &amp;= \pm \frac{1}{\sqrt{2(1-S_{12})}}
+\end{align}\]</div>
+<p>That is the must always be the same magnitude (symmetry) and their values are dictated by normalization (which depends on the overlap of the two basis functions).</p>
+<p>The minimum energy state is the linear combination in which the coefficients both have the same sign.  The higher energy (antibonding orbital) has the coefficients with opposing sign.  These can be described as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3b62a74d-f714-4808-9b53-54b6ac550b0e">
+<span class="eqno">(22)<a class="headerlink" href="#equation-3b62a74d-f714-4808-9b53-54b6ac550b0e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\phi_+ = \frac{1}{\sqrt{2(1-S_{12})}}\left(1s_A + 1s_B\right) \\
+\phi_- = \frac{1}{\sqrt{2(1-S_{12})}}\left(1s_A - 1s_B\right)
+\end{align}\]</div>
+</section>
+</section>
+<section id="solution-as-a-function-of-r">
+<h2>Solution as a Function of <span class="math notranslate nohighlight">\(R\)</span><a class="headerlink" href="#solution-as-a-function-of-r" title="Permalink to this heading">#</a></h2>
+<p>In order to investigate things such as the predicted bond length and bonding energy of this model of the H<span class="math notranslate nohighlight">\(_2^+\)</span> molecule, we must perform the above calculation (population of the <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> matrices and diagonalization of the <span class="math notranslate nohighlight">\(S^{-1}H\)</span> matrix) for various <span class="math notranslate nohighlight">\(R\)</span> values.  The bond distance will be the value of <span class="math notranslate nohighlight">\(R\)</span> at the minimum energy and the bonding energy will be the difference between the energy at that position and the energy at infinite separation of the nuclei (<span class="math notranslate nohighlight">\(-0.5\)</span> Hartree in this case).</p>
+<p>Below I make a plot of energies as a function of <span class="math notranslate nohighlight">\(R\)</span> for this model of the H<span class="math notranslate nohighlight">\(_2^+\)</span> molecule.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#808080&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">E_ab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+    <span class="n">e</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="n">r</span><span class="p">)),</span><span class="n">H</span><span class="p">(</span><span class="n">r</span><span class="p">)))</span>
+    <span class="n">E</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">E_ab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;E$_+$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">E_ab</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;E$_-$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;R/$a_0$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$E_0 (Hartree)$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;LCAO Variational Solution to the H$_2^+$ Molecule&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9e3bf76f29b9fd0142d50c3e4d0d5f4227dfcba17ea9853abea493dc52eeef8c.png" src="../_images/9e3bf76f29b9fd0142d50c3e4d0d5f4227dfcba17ea9853abea493dc52eeef8c.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonding energy:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;Hartree or &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mf">627.5895</span><span class="o">*</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">),</span><span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;kcal/mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonding distance:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span><span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;Bohr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bonding energy: -0.06483 Hartree or  -40.68725 kcal/mol
+Bonding distance: 2.493 Bohr
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see from the plot and code output above that the predicted bond distance for this model of H<span class="math notranslate nohighlight">\(_2^+\)</span> is 2.493 Bohr with a bond energy of -0.06483 Hartree (-40.7 kcal/mol).</p>
+<p>These are not actually in great agreement with the “exact” values of 1.999 Bohr and -0.1 Hartree.  But the simple approach outline here does give qualitative agreement and is a useful model for generalizing to other molecules.</p>
+<p>We could get better agreement in a number of ways.  These include:</p>
+<ol class="arabic simple">
+<li><p>Increasing the number of basis functions</p></li>
+<li><p>Improving the basis functions (either by modifying them or including additional variational parameters)</p></li>
+</ol>
+</section>
+<section id="orbital-electron-densities">
+<h2>Orbital/Electron Densities<a class="headerlink" href="#orbital-electron-densities" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make two plots of the same spherical harmonic</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span><span class="p">,</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">sph_harm</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">eval_genlaguerre</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">lpmv</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
+
+<span class="n">a0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># radial unit of Bohr!   </span>
+
+<span class="k">def</span> <span class="nf">hydrogen_atom_wf</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">Y_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">l</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">m</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">m</span><span class="p">))))</span>
+    <span class="n">R_prefactor</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">l</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="mf">2.0</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">a0</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mf">1.5</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">a0</span><span class="p">))</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">R_prefactor</span><span class="o">*</span><span class="n">eval_genlaguerre</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">a0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Y_norm</span><span class="o">*</span><span class="n">sph_harm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">R</span>
+
+<span class="k">def</span> <span class="nf">h2plus_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">phi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">theta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">r1</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span>
+    <span class="n">theta2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">r2</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">s12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r_nuc</span><span class="o">+</span><span class="n">r_nuc</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># </span>
+    <span class="n">h2plus_wf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s12</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="n">hydrogen_atom_wf</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="n">theta1</span><span class="p">,</span><span class="n">phi1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">hydrogen_atom_wf</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span><span class="n">theta2</span><span class="p">,</span><span class="n">phi2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">h2plus_wf</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">h2plus_anti_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">phi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">theta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">r1</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span>
+    <span class="n">theta2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">r2</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">s12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r_nuc</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r_nuc</span><span class="o">+</span><span class="n">r_nuc</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># </span>
+    <span class="n">h2plus_wf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s12</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="n">hydrogen_atom_wf</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="n">theta1</span><span class="p">,</span><span class="n">phi1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">hydrogen_atom_wf</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span><span class="n">theta2</span><span class="p">,</span><span class="n">phi2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">h2plus_wf</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">plot_h2plus_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span> <span class="n">ax_obj</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">phi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">25</span><span class="p">)):</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">THETA</span><span class="p">,</span> <span class="n">PHI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">THETA</span> <span class="o">=</span> <span class="n">THETA</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">PHI</span> <span class="o">=</span> <span class="n">PHI</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">THETA</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">PHI</span><span class="p">)</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">THETA</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">PHI</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">THETA</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">r_nuc</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">h2plus_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">wf</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">wf</span><span class="p">)))</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+    <span class="c1"># plot</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$R=</span><span class="si">{</span><span class="n">r_nuc</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">wf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="c1">#ax_obj.set_box_aspect((100,100,100))</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+    
+<span class="k">def</span> <span class="nf">plot_h2plus_prob_xz_projection</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span> <span class="n">ax_obj</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1200</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">h2plus_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">wf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">wf</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">wf</span><span class="p">)))</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+    <span class="c1"># plot</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$R=</span><span class="si">{</span><span class="n">r_nuc</span><span class="si">}</span><span class="s1">$ Bonding&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="c1">#c = ax_obj.pcolormesh(X, Z, wf, cmap=&#39;RdBu&#39;, vmin=vmin, vmax=vmax)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">ax_obj</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">wf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot_r&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="c1"># set the limits of the plot to the limits of the data</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="c1">#ax_obj.set_axis_off()</span>
+    <span class="k">return</span> <span class="n">c</span>
+<span class="k">def</span> <span class="nf">plot_h2plus_anti_prob_xz_projection</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span> <span class="n">ax_obj</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1200</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">h2plus_anti_prob</span><span class="p">(</span><span class="n">r_nuc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">wf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">wf</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">wf</span><span class="p">)))</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+    <span class="c1"># plot</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$R=</span><span class="si">{</span><span class="n">r_nuc</span><span class="si">}</span><span class="s1">$ Antibonding&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="c1">#c = ax_obj.pcolormesh(X, Z, wf, cmap=&#39;RdBu&#39;, vmin=vmin, vmax=vmax)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">ax_obj</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">wf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot_r&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="c1"># set the limits of the plot to the limits of the data</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax_obj</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="c1">#ax_obj.set_axis_off()</span>
+    <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span> 
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+    <span class="n">plot_h2plus_prob_xz_projection</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plot_h2plus_anti_prob_xz_projection</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/ca505d77ffe3651209053fa9dcb1958d6ccc2ce14187416b2908bb938312ec8a.png" src="../_images/ca505d77ffe3651209053fa9dcb1958d6ccc2ce14187416b2908bb938312ec8a.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note09.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Intermolecular forces</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../scratch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scratchpad</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#populating-the-h-and-s-matrices">Populating the <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-overlap-matrix-s">The Overlap Matrix <span class="math notranslate nohighlight">\(S\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hamiltonian-matrix-h">The Hamiltonian Matrix <span class="math notranslate nohighlight">\(H\)</span>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-solution">Combined Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-as-a-function-of-r">Solution as a Function of <span class="math notranslate nohighlight">\(R\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-electron-densities">Orbital/Electron Densities</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

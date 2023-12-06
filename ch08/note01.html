@@ -263,6 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
@@ -435,6 +436,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplest-molecule">Simplest molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bo-approximation">The BO approximation</a></li>
 </ul>
             </nav>
         </div>
@@ -460,6 +462,12 @@ document.write(`
 </div>
 <section id="simplest-molecule">
 <h2>Simplest molecule<a class="headerlink" href="#simplest-molecule" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/h2plus_mol.png"><img alt="electro" class="bg-primary mb-1" src="../_images/h2plus_mol.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Coordinates used to describe <span class="math notranslate nohighlight">\(H^{+}_2\)</span> molecule.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In the following, we will consider the simplest molecule <span class="math notranslate nohighlight">\(H_2^+\)</span>, which contains only one electron. This simple system will demonstrate the basic concepts in chemical bonding. The Schr”odinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[{H\psi(\vec{r}_1,\vec{R}_A,\vec{R}_B) = E\psi(\vec{r}_1,\vec{R}_A,\vec{R}_B)}\]</div>
@@ -468,13 +476,29 @@ are the positions of the two protons. The Hamiltonian for H<span class="math not
 <div class="math notranslate nohighlight">
 \[{\hat{H} = -\frac{\hbar^2}{2M}(\Delta_A + \Delta_B) - \frac{\hbar^2}{2m_e}\Delta_e+ \frac{e^2}{4\pi\epsilon_0}\left(\frac{1}{R} - \frac{1}{r_{1A}} - \frac{1}{r_{1B}}\right)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is the proton mass, <span class="math notranslate nohighlight">\(m_e\)</span> is the electron mass, <span class="math notranslate nohighlight">\(r_{1A}\)</span> is the distance between the electron and nucleus A, <span class="math notranslate nohighlight">\(r_{1B}\)</span> is the distance between the electron and nucleus B and <span class="math notranslate nohighlight">\(R\)</span> is the A - B distance.</p>
-<p>Note that the Hamiltonian includes also the quantum mechanical kinetic energy for the protons. As such the wavefunction depends on <span class="math notranslate nohighlight">\(\vec{r}_1\)</span>, <span class="math notranslate nohighlight">\(\vec{R}_A\)</span> and <span class="math notranslate nohighlight">\(\vec{R}_B\)</span>. Because the nuclear mass <span class="math notranslate nohighlight">\(M\)</span> is much larger than the electron mass <span class="math notranslate nohighlight">\(m_e\)</span>, the wavefunction can be separated (Born-Oppenheimer approximation):</p>
+<p>Note that the Hamiltonian includes also the quantum mechanical kinetic energy for the protons. As such the wavefunction depends on <span class="math notranslate nohighlight">\(\vec{r}_1\)</span>, <span class="math notranslate nohighlight">\(\vec{R}_A\)</span> and <span class="math notranslate nohighlight">\(\vec{R}_B\)</span>.</p>
+</section>
+<section id="the-bo-approximation">
+<h2>The BO approximation<a class="headerlink" href="#the-bo-approximation" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/Born.jpg"><img alt="electro" class="bg-primary mb-1" src="../_images/Born.jpg" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Max Born</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/BO.jpeg"><img alt="electro" class="bg-primary mb-1" src="../_images/BO.jpeg" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Robert J Oppenheimer</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Because the nuclear mass <span class="math notranslate nohighlight">\(M\)</span> is much larger than the electron mass <span class="math notranslate nohighlight">\(m_e\)</span>, the wavefunction can be separated (Born-Oppenheimer approximation):</p>
 <div class="math notranslate nohighlight">
 \[{\psi(\vec{r}_1,\vec{R}_A,\vec{R}_B) = \psi_e(\vec{r}_1, R)\psi_n(\vec{R}_A, \vec{R}_B)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\psi_e\)</span> is the electronic wavefunction that depends on the distance <span class="math notranslate nohighlight">\(R\)</span> between the nuclei and <span class="math notranslate nohighlight">\(\psi_n\)</span> is the nuclear wavefunction depending on <span class="math notranslate nohighlight">\(\vec{R}_A\)</span> and <span class="math notranslate nohighlight">\(\vec{R}_B\)</span>. It can be shown that the nuclear part can be often be separated into vibrational, rotational and translational parts. The electronic Schr”odinger equation can now be written as:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{H}_e\psi_e = E_e\psi_e}\]</div>
-<p>Note that equation depends parametrically on <span class="math notranslate nohighlight">\(R\)</span> (``one equation for each value of <span class="math notranslate nohighlight">\(R\)</span>’’). The \textit{electronic Hamiltonian} is:</p>
+<p>Note that equation depends parametrically on <span class="math notranslate nohighlight">\(R\)</span> (``one equation for each value of <span class="math notranslate nohighlight">\(R\)</span>’’). The electronic Hamiltonian is:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{H}_e = -\frac{\hbar^2}{2m_e}\Delta_e + \frac{e^2}{4\pi\epsilon_0}
 \left(\frac{1}{R} - \frac{1}{|r_1 - R_A|} - \frac{1}{|r_1 - R_B|}\right)}\]</div>
@@ -546,6 +570,7 @@ are the positions of the two protons. The Hamiltonian for H<span class="math not
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplest-molecule">Simplest molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bo-approximation">The BO approximation</a></li>
 </ul>
   </nav></div>
 

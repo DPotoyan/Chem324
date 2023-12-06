@@ -10,6 +10,12 @@
 
 ### Constructing MOs from AOs
 
+:::{figure-md} markdown-fig
+<img src="./images/Starting_aos.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+AOs centered on each H atom in $H^{+}_2$ molecule
+:::
+
 - The electronic Schrodinger equation for H$_2^+$ can be solved exactly because the equation contains only one particle. However, the  involved math is very complicated and here we take another simpler but  approximate approach. This method will reveal all the important features of chemical bond. An approximate (trial) wavefunction is written as (real functions):
 
 $${\psi_\pm(\vec{r}_1) = c_11s_A(\vec{r}_1) \pm c_21s_B(\vec{r}_1)}$$
@@ -24,6 +30,7 @@ orbitals).
 constructed, one with + sign and the other with $-$ sign. Normalization of the wavefunction requires:
 
 $${\int{\psi_\pm^*\psi_\pm d\tau} = 1}$$
+
 
 
 ### Overlap integral
@@ -54,9 +61,14 @@ Note that the antibonding orbital has \underline{zero} electron density between 
 
 ### Bonding vs antibonding orbitals
 
-- Recall that the square of the wavefunction gives the electron density. In the left hand side figure (the + wavefunction), the electron density is amplified between the nuclei whereas in the $-$ wavefunction the opposite happens. 
+:::{figure-md} markdown-fig
+<img src="./images/b_vs_u.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+Bonding vs anti-bonding wavefunctions (Molecular Orbitals). Show are wavefunctions and probability densities (squares of wavefunctions)
+:::
 
 - The main feature of a chemical bond is the increased electron  density between the nuclei. This identifies the + wavefunction as a  **bonding orbital** and $-$ as an **antibonding orbital**.
+
 
 - When a molecule has a center of symmetry (here at the half-way between the 
 nuclei), the wavefunction may or may not change sign when it is inverted
@@ -67,7 +79,7 @@ $g$ (even parity) and for $\psi(x, y, z) = -\psi(-x, -y, -z)$ we have $u$ label
 (odd parity). 
 -  According to this notation the $g$ symmetry orbital is the 
 bonding orbital and the $u$ symmetry corresponds to the antibonding orbital.
-Later we will see that this is \underline{reversed} for $\pi$-orbitals!
+Later we will see that this is {reversed} for $\pi$-orbitals!
 
 - The overlap integral $S(R)$ can be evaluated analytically (derivation not shown):
 
