@@ -17,7 +17,7 @@ used to denote the integrals occurring in variational treatment of the problem. 
 
 ### Variational solution 
 
-- To minimize the energy expectation value in Eq. (\ref{eq11.14}) with respect to $c_1$ and $c_2$, we have to calculate the partial derivatives of energy with respect to these parameters:
+- To minimize the energy expectation value  with respect to $c_1$ and $c_2$, we have to calculate the partial derivatives of energy with respect to these parameters:
 
 
 $${E\times (c_1^2 + 2c_1c_2S + c_2^2) = c_1^2H_{AA} + 2c_1c_2H_{AB} + c_2^2H_{BB}}$$
@@ -70,6 +70,11 @@ $${E_g(R) = E_{1s} + \frac{J(R) + K(R)}{1 + S(R)}}$$
 
 $${E_u(R) = E_{1s} + \frac{J(R) - K(R)}{1 - S(R)}}$$
 
+:::{figure-md} markdown-fig
+<img src="./images/Energies.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+Energies of bonding and antibonding orbitals
+:::
 
 - Since energy is a relative quantity, it can be expressed relative to separated
 nuclei:
@@ -96,11 +101,28 @@ $2p_y$, $2p_z$ etc. orbitals.
 - It is a common practice to represent the molecular orbitals by molecular 
 orbital (MO) diagrams. The formation of bonding and antibonding orbitals can be visualized as follows:
 
+:::{figure-md} markdown-fig
+<img src="./images/h2plus_diag.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+Molecular Orbital diagram
+:::
+
 - $\sigma$ orbitals When two $s$ or $p_z$ orbitals interact,
 a $\sigma$ molecular orbital is formed. The notation $\sigma$ specifies
 the amount of angular momentum about the molecular axis (for $\sigma$, $\lambda = 0$ with $L_z = \pm\lambda\hbar$). In many-electron systems, both bonding and antibonding $\sigma$  orbitals can each hold a maximum of two electrons. Antibonding orbitals are often  denoted by *.
+
+:::{figure-md} markdown-fig
+<img src="./images/MO_variety.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+MOs for homonuclear molecules have distinct symmetry
+:::
 
 - $\pi$ orbitals. When two $p_{x,y}$ orbitals interact, a $\pi$ molecular orbital forms. $\pi$-orbitals are doubly degenerate: $\pi_{+1}$ and $\pi_{-1}$ (or alternatively $\pi_x$ and $\pi_y$), where the $+1/-1$ refer to the eigenvalue of the $L_z$ operator ($\lambda = \pm1$). In many-electron systems a bonding $\pi$-orbital can therefore hold a maximum of 4 electrons (i.e. both $\pi_{+1}$ and $\pi_{-1}$ each can hold two electrons). The same holds for the antibonding $\pi$ orbitals. Note that only the atomic orbitals of the same symmetry mix to form molecular orbitals (for example, $p_z - p_z$, $p_x -  p_x$ and $p_y - p_y$). When atomic $d$ orbitals mix to form molecular orbitals, $\sigma (\lambda = 0)$, $\pi (\lambda = \pm 1)$ and $\delta (\lambda = \pm 2)$ MOs form. 
 
 - Excited state energies of $H_2^+$ resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.
 
+:::{figure-md} markdown-fig
+<img src="./images/MO_summary.png" alt="electro" class="bg-primary mb-1" width="400px">
+
+Mo diagram of homonuclear molecules follows similiar pattern with alternating bonding and anti-bonding MOs. 
+:::
