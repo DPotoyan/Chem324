@@ -83,7 +83,26 @@ molecule. Note that for other elements with $d$-orbitals, one can also get
 bipyramidal (coordination 5) and octahedral (coordination 6) structures.
 
 
-### 4. NH$_3$ molecule. 
+
+### 4. $H_2 O$ molecule. 
+
+- The oxygen is $sp^3$ hybridized with O atom 
+electron configuration: $1s^22s^22p^4$. Now two of
+the four hybrid orbitals are doubly occupied with the electrons from 
+oxygen atom and the remaining two hybrid orbitals can participate in $\sigma$ bonding 
+with two H atoms. This predicts the bond angle H--O--H as $109\degree $(experimental 
+value $104\degree$). Thus $H_2O$ has two lone-pair electrons.
+
+![](images/watMO1.png)
+
+![](images/watMO2.png)
+
+![](images/watMO3.png)
+
+![](images/watMO-diag.png)
+
+
+### 5. NH$_3$ molecule. 
 
 - In this molecule, nitrogen is also $sp^3$ 
 hybridized. The N atom electron configuration is $1s^22s^22p_x^12p_y^12p_z^1$. Thus
@@ -94,14 +113,7 @@ Because of the lone-pair electrons, the geometry of $NH_3$ is tetrahedral with
 a bond angle of 109\degree (experimental value 107\degree).
 
 
-### 5. $H_2 O$ molecule. 
 
-- The oxygen is $sp^3$ hybridized with O atom 
-electron configuration: $1s^22s^22p^4$. Now two of
-the four hybrid orbitals are doubly occupied with the electrons from 
-oxygen atom and the remaining two hybrid orbitals can participate in $\sigma$ bonding 
-with two H atoms. This predicts the bond angle H--O--H as $109\degree $(experimental 
-value $104\degree$). Thus $H_2O$ has two lone-pair electrons.
 
 ### Numerical Calculations 
 

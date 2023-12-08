@@ -136,7 +136,7 @@ $$
 {E_3 = \alpha - 0.618\beta} \\
 {E_4 = \alpha - 1.618\beta \hspace{0.5cm}\textnormal{(highest energy)}}$$
 
-![](images/Huckel2.png)
+![](images/c4MOs.png)
 
 There are four $\pi$ electrons, which occupy the two lowest energy 
 orbitals. This gives the total $\pi$ electronic energy for the molecule:
@@ -179,4 +179,4 @@ $$
 {E_4 = E_5 = \alpha - \beta} \\
 {E_6 = \alpha - 2\beta~~\textnormal{(highest energy)}}$$
 
-![](images/Huckel3.png)
+![](images/benzeneMos.png)
