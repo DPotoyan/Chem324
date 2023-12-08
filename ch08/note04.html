@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch08/note04';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Electron configurations of homonuclear diatomic molecules" href="note05.html" />
+    <link rel="next" title="Orbitals of homonuclear diatomic molecules" href="note05.html" />
     <link rel="prev" title="Energy of the hydrogen molecule ion" href="note03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -259,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note02.html">The hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Molecular orbital description of hydrogen molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Orbitals of homonuclear diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
@@ -436,7 +436,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-molecular-term-symbols">Examples of molecular term symbols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-hamiltonian">Setting up Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-for-hydrogen-molecule">Constructing MOs for hydrogen molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-upon-simple-mo-approximation">Improving upon simple MO approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols-for-diatomic-molecules">Term symbols for diatomic molecules</a></li>
 </ul>
             </nav>
         </div>
@@ -450,38 +453,39 @@ document.write(`
                   
   <section id="molecular-orbital-description-of-hydrogen-molecule">
 <h1>Molecular orbital description of hydrogen molecule<a class="headerlink" href="#molecular-orbital-description-of-hydrogen-molecule" title="Permalink to this heading">#</a></h1>
-<p>Using the Born-Oppenheimer approximation, the electronic Hamiltonian for H<span class="math notranslate nohighlight">\(_2\)</span> molecule can be written as:</p>
+<section id="setting-up-hamiltonian">
+<h2>Setting up Hamiltonian<a class="headerlink" href="#setting-up-hamiltonian" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../_images/H2mol-fig1.png" /></p>
 <div class="math notranslate nohighlight">
 \[{H = -\frac{\hbar^2}{2m_e}\left( \Delta_1 + \Delta_2\right)
 + \frac{e^2}{4\pi\epsilon_0}\left(\frac{1}{R} + \frac{1}{r_{12}} - \frac{1}{r_{A1}} 
 - \frac{1}{r_{A2}} - \frac{1}{r_{B1}} - \frac{1}{r_{B2}}\right)}\]</div>
-<p>The distances between the electrons and the nuclei are indicated below.</p>
-<p>The main difficulty in the molecular Hamiltonian is the <span class="math notranslate nohighlight">\(1/r_{12}\)</span>
-term, which connects the two electrons to each other. This means that a simple
-product wavefunction is not sufficient. No known analytic solutions have been
-found to the electronic Schr”odinger equation of <span class="math notranslate nohighlight">\(H_2\)</span>. For this reason, we will
-attempt to solve the problem approximately by using the LCAO-MO approach that we
-used previously. For example, the ground state for H<span class="math notranslate nohighlight">\(_2\)</span> is obtained by placing
-two electrons with opposite spins on the <span class="math notranslate nohighlight">\(1\sigma_g\)</span> orbital. This assumes that
-the wavefunction is expressed as antisymmetrized product (e.g. a Slater determinant).</p>
-<p>According to the Pauli principle, two electrons with opposite spins can be assigned
-to a given spatial orbital. As a first approximation, we assume that the molecular
-orbitals in <span class="math notranslate nohighlight">\(H_2\)</span> remain the same as in <span class="math notranslate nohighlight">\(H_2^+\)</span>. Hence we can say that both
-electrons occupy the <span class="math notranslate nohighlight">\(1\sigma_g\)</span> orbital (the ground state) and the electronic
-configuration is denoted by (<span class="math notranslate nohighlight">\(1\sigma_g\)</span>)<span class="math notranslate nohighlight">\(^2\)</span>. This is a similar notation
-that we used previously for atoms (for example, He atom is (<span class="math notranslate nohighlight">\(1s\)</span>)<span class="math notranslate nohighlight">\(^2\)</span>).</p>
-<p>The molecular orbital for electron 1 in <span class="math notranslate nohighlight">\(1\sigma_g\)</span> molecular orbital is:</p>
+<ul class="simple">
+<li><p>The main difficulty in the molecular Hamiltonian is the <span class="math notranslate nohighlight">\(1/r_{12}\)</span>
+term, which connects the two electrons to each other. This means that a simple  product wavefunction is not sufficient. No known analytic solutions have been  found to the electronic Schr”odinger equation of <span class="math notranslate nohighlight">\(H_2\)</span>.</p></li>
+<li><p>For this reason, we will attempt to solve the problem approximately by using the LCAO-MO approach that we  used previously. For example, the ground state for H<span class="math notranslate nohighlight">\(_2\)</span> is obtained by placing  two electrons with opposite spins on the <span class="math notranslate nohighlight">\(1\sigma_g\)</span> orbital. This assumes that
+the wavefunction is expressed as antisymmetrized product (e.g. a Slater determinant).</p></li>
+</ul>
+</section>
+<section id="constructing-mos-for-hydrogen-molecule">
+<h2>Constructing MOs for hydrogen molecule<a class="headerlink" href="#constructing-mos-for-hydrogen-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>According to the Pauli principle, two electrons with opposite spins can be assigned to a given spatial orbital. As a first approximation, we assume that the molecular orbitals in <span class="math notranslate nohighlight">\(H_2\)</span> remain the same as in <span class="math notranslate nohighlight">\(H_2^+\)</span>. Hence we can say that both electrons occupy the <span class="math notranslate nohighlight">\(1\sigma_g\)</span> orbital (the ground state) and the electronic configuration is denoted by (<span class="math notranslate nohighlight">\(1\sigma_g\)</span>)<span class="math notranslate nohighlight">\(^2\)</span>. This is a similar notation  that we used previously for atoms (for example, He atom is (<span class="math notranslate nohighlight">\(1s\)</span>)<span class="math notranslate nohighlight">\(^2\)</span>).</p></li>
+<li><p>The molecular orbital for electron 1 in <span class="math notranslate nohighlight">\(1\sigma_g\)</span> molecular orbital is:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{1\sigma_g(1) = \frac{1}{\sqrt{2(1 + S)}}(1s_A(1) + 1s_B(1))}\]</div>
-<p>Previously we found that the total wavefunction must be antisymmetric with respect to change in electron indices. This can be achieved by using the
-Slater determinant:</p>
+<ul class="simple">
+<li><p>Previously we found that the total wavefunction must be antisymmetric with respect to change in electron indices. This can be achieved by using the  Slater determinant:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\psi_{MO}^{(1\sigma_g)^2} = \frac{1}{\sqrt{2}}\begin{vmatrix}
 1\sigma_g(1)\alpha (1) &amp; 1\sigma_g(1)\beta (1)\\
 1\sigma_g(2)\alpha (2) &amp; 1\sigma_g(2)\beta (2)\\
 \end{vmatrix}}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> denote the electron spin. The Slater determinant can be
-expanded as follows:</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> denote the electron spin. The Slater determinant can be expanded as follows:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi_{MO}^{(1\sigma_g)^2} = \frac{1}{\sqrt{2}} 
  (1\sigma_g(1)1\sigma_g(2)\alpha (1)\beta (2) 
@@ -489,23 +493,24 @@ expanded as follows:</p>
 {= \frac{1}{2\sqrt{2}(1 + S_{AB})}(1s_A(1) + 1s_B(1))(1s_A(2) + 1s_B(2))
 (\alpha (1)\beta (2) - \alpha (2)\beta (1))}\]</div>
 <ul class="simple">
-<li><p>Note that this wavefunction is only approximate and is definitely not an  eigenfunction of the H<span class="math notranslate nohighlight">\(_2\)</span> electronic Hamiltonian. Thus we must calculate the  electronic energy by taking an expectation value of this wavefunction with the
-Hamiltonian given in Eq. (\ref{eq11.37}) (the actual calculation not shown):</p></li>
+<li><p>Note that this wavefunction is only approximate and is definitely not an  eigenfunction of the H<span class="math notranslate nohighlight">\(_2\)</span> electronic Hamiltonian. Thus we must calculate the  electronic energy by taking an expectation value of this wavefunction with the Hamiltonian (the actual calculation not shown):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{E(R) = 2E_{1s} + \frac{e^2}{4\pi\epsilon_0 R} 
 - \textnormal{integrals}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(E_{1s}\)</span> is the electronic energy of one hydrogen atom. The second term
-represents the Coulomb repulsion between the two positively charged nuclei and
-the last term (``integrals’’) contains a series of integrals describing the
-interactions of various charge distributions with one another (see P. W.
-Atkins, Molecular Quantum Mechanics, Oxford University Press). With this
-approach, the minimum energy is reached at <span class="math notranslate nohighlight">\(R\)</span> = 84 pm (experimental 74.1 pm)
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(E_{1s}\)</span> is the electronic energy of one hydrogen atom. The second term  represents the Coulomb repulsion between the two positively charged nuclei and the last term (``integrals’’) contains a series of integrals describing the  interactions of various charge distributions with one another (see P. W.  Atkins, Molecular Quantum Mechanics, Oxford University Press). With this approach, the minimum energy is reached at <span class="math notranslate nohighlight">\(R\)</span> = 84 pm (experimental 74.1 pm)
 and dissociation energy <span class="math notranslate nohighlight">\(D_e\)</span> = 255 kJ <span class="math notranslate nohighlight">\(mol^{-1}\)</span> (experimental 458 kJ
-<span class="math notranslate nohighlight">\(mol^{-1}\)</span>).</p>
-<p>This simple approach is not very accurate but it demonstrates that the method
-works. To improve the accuracy, ionic and covalent terms should be considered
-separately:</p>
+<span class="math notranslate nohighlight">\(mol^{-1}\)</span>).</p></li>
+</ul>
+</section>
+<section id="improving-upon-simple-mo-approximation">
+<h2>Improving upon simple MO approximation<a class="headerlink" href="#improving-upon-simple-mo-approximation" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../_images/H2mol-fig2.png" /></p>
+<ul class="simple">
+<li><p>This simple approach is not very accurate but it demonstrates that the method  works. To improve the accuracy, ionic and covalent terms should be considered
+separately:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{{1s_A(1)1s_A(2)}_{\textnormal{Ionic (H$^-$ + H$^+$)}}
 + {[1s_A(1)1s_B(2) + 1s_A(2)1s_B(1)]}_{\textnormal{Covalent (H + H)}}
@@ -529,6 +534,9 @@ the electron-electron correlation effects completely. The full treatment
 requires use of configuration interaction methods, which can yield essentially
 exact results: <span class="math notranslate nohighlight">\(D_e\)</span> = 36117.8 <span class="math notranslate nohighlight">\(cm^{-1}\)</span> (CI) vs. <span class="math notranslate nohighlight">\(36117.3\pm1.0\, cm^{-1}\)</span>
 (exp) and <span class="math notranslate nohighlight">\(R_e\)</span> = 74.140 pm vs. 74.139 pm (exp).</p>
+</section>
+<section id="term-symbols-for-diatomic-molecules">
+<h2>Term symbols for diatomic molecules<a class="headerlink" href="#term-symbols-for-diatomic-molecules" title="Permalink to this heading">#</a></h2>
 <p>In diatomic (and linear) molecules, the quantization axis is chosen along the
 molecule. When spin-orbit interaction is negligible, this allows us to define
 the total orbital and spin angular momenta about the molecular axis:</p>
@@ -565,19 +573,6 @@ atoms):</p>
 </ul>
 <div class="math notranslate nohighlight">
 \[{^{2S+1}\Lambda}\]</div>
-<section id="examples-of-molecular-term-symbols">
-<h2>Examples of molecular term symbols<a class="headerlink" href="#examples-of-molecular-term-symbols" title="Permalink to this heading">#</a></h2>
-<p><strong>Example</strong> What is the term symbol for ground state <span class="math notranslate nohighlight">\(H_2\)</span>?</p>
-<p><strong>Example</strong> What is the term symbol for ground state <span class="math notranslate nohighlight">\(O_2\)</span>?</p>
-<p>::{dropdwon} <strong>Solution</strong></p>
-<p>:Ground state <span class="math notranslate nohighlight">\(O_2\)</span> has two electrons with parallel spins on the <span class="math notranslate nohighlight">\(\pi_{+1}\)</span> and <span class="math notranslate nohighlight">\(\pi_{-1}\)</span> orbitals. Thus this is a triplet state molecule with the orbital angular momentum from the two <span class="math notranslate nohighlight">\(\pi\)</span>-electrons being cancelled. This gives a <span class="math notranslate nohighlight">\(^3\Sigma\)</span> term.  The two <span class="math notranslate nohighlight">\(\pi\)</span>’s are anti-bonding and as such they are desginated as <span class="math notranslate nohighlight">\(g\)</span> and further <span class="math notranslate nohighlight">\(g\times g = g\)</span> (remember that for <span class="math notranslate nohighlight">\(\pi\)</span> orbigals the <span class="math notranslate nohighlight">\(g/u\)</span> vs. bonding/anti-bonding is reversed from that of <span class="math notranslate nohighlight">\(\sigma\)</span> orbitals). To see the <span class="math notranslate nohighlight">\(+/-\)</span> symmetry, it is convenient to think about <span class="math notranslate nohighlight">\(\pi_x\)</span> and <span class="math notranslate nohighlight">\(\pi_y\)</span> Cartesian orbitals (draw a picture!) and see that one of them is <span class="math notranslate nohighlight">\(+\)</span> and the other is <span class="math notranslate nohighlight">\(-\)</span> (they are perpendicular to each other). Again <span class="math notranslate nohighlight">\(+ \times - = -\)</span> and we have the complete term symbol as <span class="math notranslate nohighlight">\(^3\Sigma_g^-\)</span>.</p>
-<ul class="simple">
-<li><p>When spin-orbit interaction is small, the above term symbols are  adequate (Hund’s case (a)).</p></li>
-<li><p>When spin-orbit interaction is large, <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(\Lambda\)</span> can no longer be  specified but their sum <span class="math notranslate nohighlight">\(J = |S + \Lambda|\)</span> is a good quantum number.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -625,7 +620,7 @@ atoms):</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Electron configurations of homonuclear diatomic molecules</p>
+        <p class="prev-next-title">Orbitals of homonuclear diatomic molecules</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -644,7 +639,10 @@ atoms):</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-molecular-term-symbols">Examples of molecular term symbols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-hamiltonian">Setting up Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-for-hydrogen-molecule">Constructing MOs for hydrogen molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-upon-simple-mo-approximation">Improving upon simple MO approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols-for-diatomic-molecules">Term symbols for diatomic molecules</a></li>
 </ul>
   </nav></div>
 

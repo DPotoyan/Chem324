@@ -1,17 +1,18 @@
 ## Huckel molecular orbital theory
 
 
-Molecules with extensive $\pi$ bonding systems, such as benzene,
+### Conjugated systems
+- Molecules with extensive $\pi$ bonding systems, such as benzene,
 are not described very well by the valence bond theory because the
 $\pi$ electrons are delocalized over the whole molecule. $\sigma$ and $\pi$ 
 bonds are demonstrated below for ethylene ($C_2H_4$ with $sp^2$ carbons):
 
 
-Note that we have chosen $z$-axis along the internuclear axis. Because both $\sigma$ and $\pi$ bonding occurs between the two carbon atoms, we say that this is a double bond. Note that the hybrid orbitals here also explain the geometry. For triple bonds, one $\sigma$ and two $\pi$ bonds are formed.
+- Note that we have chosen $z$-axis along the internuclear axis. Because both $\sigma$ and $\pi$ bonding occurs between the two carbon atoms, we say that this is a double bond. Note that the hybrid orbitals here also explain the geometry. For triple bonds, one $\sigma$ and two $\pi$ bonds are formed.
 
+![](images/Huckel1.png)
 
-
-
+### Huckel MO theory
 - Huckel molecular orbital theory assumes that the $\pi$ electrons, which are  responsible for the special properties of conjugated and aromatic 
 hydrocarbons, do not interact with one another and the total wavefunction is 
 just a product of the one-electron molecular orbitals. The $\pi$ molecular 
@@ -19,8 +20,8 @@ orbital of the two carbons in $C_2H_4$ can be written approximately as:
 
 $${\psi = c_1\phi_1 + c_2\phi_2}$$
 
-where $\phi_1$ and $\phi_2$ are the $2p_y$ atomic orbitals for carbon 1 and 2, 
-respectively. By using the variational principle (see Eq. (\ref{eq11.24})) gives 
+- where $\phi_1$ and $\phi_2$ are the $2p_y$ atomic orbitals for carbon 1 and 2, 
+respectively. By using the variational principle  gives 
 the following secular determinant:
 
 $${\begin{vmatrix} H_{11} - ES_{11} & H_{12} - ES_{12}\\
@@ -41,7 +42,7 @@ $${\begin{vmatrix}\alpha - E & \beta\\
 \beta & \alpha - E\\ \end{vmatrix} = 0}$$
 
 
-In Huckel theory, the Coulomb integral $\alpha$ and the resonance integral 
+- In Huckel theory, the Coulomb integral $\alpha$ and the resonance integral 
 $\beta$ are regarded as empirical parameters. They can be obtained, for 
 example, from experimental data. Thus, in the Huckel theory it is not 
 necessary to specify the Hamiltonian operator!
@@ -51,6 +52,7 @@ In general, it can be shown that $\beta < 0$, which implies that the lowest orbi
 is $E_1 = \alpha + \beta$. There are two $\pi$ electrons and therefore the
 total energy is $E_{tot} = 2E_1 = 2\alpha + 2\beta$. Do not confuse $\alpha$ and $\beta$ here with electron spin.
 
+### Solving for Huckel MOs
 
 The wavefunctions (i.e. the coefficients $c_1$ and $c_2$ 
 can be obtained by substituting the two values of $E$ into the original linear 
@@ -80,10 +82,9 @@ from UV/VIS absorption spectroscopy.
 | LUMO orbital | = The lowest unoccupied molecular orbital. |
 
 
-**Example** Calculate the $\pi$ electronic energy for 1,3-butadiene 
-($CH_2=CHCH=CH_2$) by using the Huckel theory.
+### Example: 1,3-butadiene 
 
-**Solution** First we have to write the secular determinant using the 
+- Lets alculate the $\pi$ electronic energy for 1,3-butadiene ($CH_2=CHCH=CH_2$) by using the Huckel theory. First we have to write the secular determinant using the 
 rules given earlier. In order to do this, it is convenient to number the 
 carbon atoms in the molecule:
 
@@ -102,7 +103,7 @@ In this case there are two scenarios that should be considered:
 
 Here it turns out that scenario 2) gives a lower energy solution and we will 
 study that in more detail. In general, however, both cases should be considered. The 
-energy difference between 1) and 2) is called the \textit{resonance stabilization 
+energy difference between 1) and 2) is called the {resonance stabilization 
 energy}. The secular determinant is:
 
 $${\begin{matrix} 1\\2\\3\\4\\
@@ -135,6 +136,8 @@ $$
 {E_3 = \alpha - 0.618\beta} \\
 {E_4 = \alpha - 1.618\beta \hspace{0.5cm}\textnormal{(highest energy)}}$$
 
+![](images/Huckel2.png)
+
 There are four $\pi$ electrons, which occupy the two lowest energy 
 orbitals. This gives the total $\pi$ electronic energy for the molecule:
 
@@ -152,9 +155,9 @@ $${\psi_1 = 0.372\phi_1 + 0.602\phi_2 + 0.602\phi_3 + 0.372\phi_4}
 {\psi_4 = 0.372\phi_1 - 0.602\phi_2 + 0.602\phi_3 - 0.372\phi_4}$$
 
 
-**Example** Apply the H\"uckel method for benzene molecule.
+### Example: Benzene Molecule
 
-**Solution**The secular determinant for benzene is (electrons delocalized):
+- Let's now apply the H\"uckel method for benzene molecule. The secular determinant for benzene is (electrons delocalized):
 
 $${
 \begin{vmatrix}
@@ -175,3 +178,5 @@ $$
 {E_2 = E_3 = \alpha + \beta} \\
 {E_4 = E_5 = \alpha - \beta} \\
 {E_6 = \alpha - 2\beta~~\textnormal{(highest energy)}}$$
+
+![](images/Huckel3.png)

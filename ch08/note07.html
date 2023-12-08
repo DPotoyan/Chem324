@@ -259,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note02.html">The hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular orbital description of hydrogen molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Orbitals of homonuclear diatomic molecules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Huckel molecular orbital theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
@@ -413,7 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -429,6 +431,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugated-systems">Conjugated systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huckel-mo-theory">Huckel MO theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-for-huckel-mos">Solving for Huckel MOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-butadiene">Example: 1,3-butadiene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-benzene-molecule">Example: Benzene Molecule</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -440,11 +454,19 @@ document.write(`
                   
   <section id="huckel-molecular-orbital-theory">
 <h1>Huckel molecular orbital theory<a class="headerlink" href="#huckel-molecular-orbital-theory" title="Permalink to this heading">#</a></h1>
-<p>Molecules with extensive <span class="math notranslate nohighlight">\(\pi\)</span> bonding systems, such as benzene,
+<section id="conjugated-systems">
+<h2>Conjugated systems<a class="headerlink" href="#conjugated-systems" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Molecules with extensive <span class="math notranslate nohighlight">\(\pi\)</span> bonding systems, such as benzene,
 are not described very well by the valence bond theory because the
 <span class="math notranslate nohighlight">\(\pi\)</span> electrons are delocalized over the whole molecule. <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span>
-bonds are demonstrated below for ethylene (<span class="math notranslate nohighlight">\(C_2H_4\)</span> with <span class="math notranslate nohighlight">\(sp^2\)</span> carbons):</p>
-<p>Note that we have chosen <span class="math notranslate nohighlight">\(z\)</span>-axis along the internuclear axis. Because both <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span> bonding occurs between the two carbon atoms, we say that this is a double bond. Note that the hybrid orbitals here also explain the geometry. For triple bonds, one <span class="math notranslate nohighlight">\(\sigma\)</span> and two <span class="math notranslate nohighlight">\(\pi\)</span> bonds are formed.</p>
+bonds are demonstrated below for ethylene (<span class="math notranslate nohighlight">\(C_2H_4\)</span> with <span class="math notranslate nohighlight">\(sp^2\)</span> carbons):</p></li>
+<li><p>Note that we have chosen <span class="math notranslate nohighlight">\(z\)</span>-axis along the internuclear axis. Because both <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span> bonding occurs between the two carbon atoms, we say that this is a double bond. Note that the hybrid orbitals here also explain the geometry. For triple bonds, one <span class="math notranslate nohighlight">\(\sigma\)</span> and two <span class="math notranslate nohighlight">\(\pi\)</span> bonds are formed.</p></li>
+</ul>
+<p><img alt="" src="../_images/Huckel1.png" /></p>
+</section>
+<section id="huckel-mo-theory">
+<h2>Huckel MO theory<a class="headerlink" href="#huckel-mo-theory" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Huckel molecular orbital theory assumes that the <span class="math notranslate nohighlight">\(\pi\)</span> electrons, which are  responsible for the special properties of conjugated and aromatic
 hydrocarbons, do not interact with one another and the total wavefunction is
@@ -453,9 +475,11 @@ orbital of the two carbons in <span class="math notranslate nohighlight">\(C_2H_
 </ul>
 <div class="math notranslate nohighlight">
 \[{\psi = c_1\phi_1 + c_2\phi_2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> are the <span class="math notranslate nohighlight">\(2p_y\)</span> atomic orbitals for carbon 1 and 2,
-respectively. By using the variational principle (see Eq. (\ref{eq11.24})) gives
-the following secular determinant:</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> are the <span class="math notranslate nohighlight">\(2p_y\)</span> atomic orbitals for carbon 1 and 2,
+respectively. By using the variational principle  gives
+the following secular determinant:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\begin{vmatrix} H_{11} - ES_{11} &amp; H_{12} - ES_{12}\\
 H_{21} - ES_{21} &amp; H_{22} - ES_{22}\\ \end{vmatrix} = 0 \textnormal{ with }
@@ -473,7 +497,8 @@ the indices here also identify atoms because the atomic orbitals are centered on
 <div class="math notranslate nohighlight">
 \[\begin{split}{\begin{vmatrix}\alpha - E &amp; \beta\\
 \beta &amp; \alpha - E\\ \end{vmatrix} = 0}\end{split}\]</div>
-<p>In Huckel theory, the Coulomb integral <span class="math notranslate nohighlight">\(\alpha\)</span> and the resonance integral
+<ul class="simple">
+<li><p>In Huckel theory, the Coulomb integral <span class="math notranslate nohighlight">\(\alpha\)</span> and the resonance integral
 <span class="math notranslate nohighlight">\(\beta\)</span> are regarded as empirical parameters. They can be obtained, for
 example, from experimental data. Thus, in the Huckel theory it is not
 necessary to specify the Hamiltonian operator!
@@ -481,7 +506,11 @@ Expansion of the determinant in Eq. (\ref{eq11.66}) leads to a quadratic
 equation for <span class="math notranslate nohighlight">\(E\)</span>. The solutions are found to be <span class="math notranslate nohighlight">\(E = \alpha \pm \beta\)</span>.
 In general, it can be shown that <span class="math notranslate nohighlight">\(\beta &lt; 0\)</span>, which implies that the lowest orbital energy
 is <span class="math notranslate nohighlight">\(E_1 = \alpha + \beta\)</span>. There are two <span class="math notranslate nohighlight">\(\pi\)</span> electrons and therefore the
-total energy is <span class="math notranslate nohighlight">\(E_{tot} = 2E_1 = 2\alpha + 2\beta\)</span>. Do not confuse <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> here with electron spin.</p>
+total energy is <span class="math notranslate nohighlight">\(E_{tot} = 2E_1 = 2\alpha + 2\beta\)</span>. Do not confuse <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> here with electron spin.</p></li>
+</ul>
+</section>
+<section id="solving-for-huckel-mos">
+<h2>Solving for Huckel MOs<a class="headerlink" href="#solving-for-huckel-mos" title="Permalink to this heading">#</a></h2>
 <p>The wavefunctions (i.e. the coefficients <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>
 can be obtained by substituting the two values of <span class="math notranslate nohighlight">\(E\)</span> into the original linear
 equations:</p>
@@ -511,11 +540,14 @@ from UV/VIS absorption spectroscopy.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Example</strong> Calculate the <span class="math notranslate nohighlight">\(\pi\)</span> electronic energy for 1,3-butadiene
-(<span class="math notranslate nohighlight">\(CH_2=CHCH=CH_2\)</span>) by using the Huckel theory.</p>
-<p><strong>Solution</strong> First we have to write the secular determinant using the
+</section>
+<section id="example-1-3-butadiene">
+<h2>Example: 1,3-butadiene<a class="headerlink" href="#example-1-3-butadiene" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Lets alculate the <span class="math notranslate nohighlight">\(\pi\)</span> electronic energy for 1,3-butadiene (<span class="math notranslate nohighlight">\(CH_2=CHCH=CH_2\)</span>) by using the Huckel theory. First we have to write the secular determinant using the
 rules given earlier. In order to do this, it is convenient to number the
-carbon atoms in the molecule:</p>
+carbon atoms in the molecule:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\overset{1}{\textnormal{CH}_2} = \overset{2}{\textnormal{CH}} 
 - \overset{3}{\textnormal{CH}} = \overset{4}{\textnormal{CH}_2}\]</div>
@@ -526,7 +558,7 @@ carbon atoms in the molecule:</p>
 </ol>
 <p>Here it turns out that scenario 2) gives a lower energy solution and we will
 study that in more detail. In general, however, both cases should be considered. The
-energy difference between 1) and 2) is called the \textit{resonance stabilization
+energy difference between 1) and 2) is called the {resonance stabilization
 energy}. The secular determinant is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\begin{matrix} 1\\2\\3\\4\\
@@ -552,6 +584,7 @@ x &amp; 1 &amp; 0 &amp; 0\\
 {E_2 = \alpha + 0.618\beta} \\
 {E_3 = \alpha - 0.618\beta} \\
 {E_4 = \alpha - 1.618\beta \hspace{0.5cm}\textnormal{(highest energy)}}\end{split}\]</div>
+<p><img alt="" src="../_images/Huckel2.png" /></p>
 <p>There are four <span class="math notranslate nohighlight">\(\pi\)</span> electrons, which occupy the two lowest energy
 orbitals. This gives the total <span class="math notranslate nohighlight">\(\pi\)</span> electronic energy for the molecule:</p>
 <div class="math notranslate nohighlight">
@@ -564,8 +597,12 @@ orbitals. This gives the total <span class="math notranslate nohighlight">\(\pi\
 {\psi_2 = 0.602\phi_1 + 0.372\phi_2 - 0.372\phi_3 - 0.602\phi_4}
 {\psi_3 = 0.602\phi_1 - 0.372\phi_2 - 0.372\phi_3 + 0.602\phi_4}
 {\psi_4 = 0.372\phi_1 - 0.602\phi_2 + 0.602\phi_3 - 0.372\phi_4}\]</div>
-<p><strong>Example</strong> Apply the H”uckel method for benzene molecule.</p>
-<p><strong>Solution</strong>The secular determinant for benzene is (electrons delocalized):</p>
+</section>
+<section id="example-benzene-molecule">
+<h2>Example: Benzene Molecule<a class="headerlink" href="#example-benzene-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Let’s now apply the H”uckel method for benzene molecule. The secular determinant for benzene is (electrons delocalized):</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{
 \begin{vmatrix}
@@ -585,6 +622,8 @@ orbitals. This gives the total <span class="math notranslate nohighlight">\(\pi\
 {E_2 = E_3 = \alpha + \beta} \\
 {E_4 = E_5 = \alpha - \beta} \\
 {E_6 = \alpha - 2\beta~~\textnormal{(highest energy)}}\end{split}\]</div>
+<p><img alt="" src="../_images/Huckel3.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -641,6 +680,24 @@ orbitals. This gives the total <span class="math notranslate nohighlight">\(\pi\
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugated-systems">Conjugated systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huckel-mo-theory">Huckel MO theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-for-huckel-mos">Solving for Huckel MOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-butadiene">Example: 1,3-butadiene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-benzene-molecule">Example: Benzene Molecule</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -1,9 +1,8 @@
-## Electron configurations of homonuclear diatomic molecules
+## Orbitals of homonuclear diatomic molecules
 
 
 Which atomic orbitals mix to form molecular orbitals and what are their
-relative energies? The graph on the left can be used to obtain the energy order
-of molecular orbitals and indicates the atomic orbital limits.
+relative energies? The graph on the left can be used to obtain the energy order of molecular orbitals and indicates the atomic orbital limits.
 
 
 ### The non-crossing rule: States with the same symmetry never cross.
@@ -12,8 +11,10 @@ of molecular orbitals and indicates the atomic orbital limits.
 |-----------------------|------------------------------------------------|
 | Antibonding orbitals: | $1\sigma_u^*$, $2\sigma_u^*$, $1\pi_g^*$, etc. |
 
+![](images/non-crossing-rule.png)
 
 ### Table of MOs
+
 
 
 The orbitals should be filled with electrons in the order of increasing energy. 

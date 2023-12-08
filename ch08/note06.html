@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Huckel molecular orbital theory" href="note07.html" />
-    <link rel="prev" title="Electron configurations of homonuclear diatomic molecules" href="note05.html" />
+    <link rel="prev" title="Orbitals of homonuclear diatomic molecules" href="note05.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -259,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note02.html">The hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Energy of the hydrogen molecule ion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Molecular orbital description of hydrogen molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Electron configurations of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Orbitals of homonuclear diatomic molecules</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Electronic structure of polyatomic molecules: the valece bond method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note07.html">Huckel molecular orbital theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note08.html">Dipole moments and ionic bonding</a></li>
@@ -413,7 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -429,6 +431,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-hybrid-orbitals-centered-on-atoms">Creating hybrid orbitals centered on atoms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beh-2-molecule">1. <span class="math notranslate nohighlight">\(BeH_2\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bh-3-molecule">2. <span class="math notranslate nohighlight">\(BH_3\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-molecule">3. <span class="math notranslate nohighlight">\(CH_4\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nh-3-molecule">4. NH<span class="math notranslate nohighlight">\(_3\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-2-o-molecule">5. <span class="math notranslate nohighlight">\(H_2 O\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-calculations">Numerical Calculations</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -440,41 +456,48 @@ document.write(`
                   
   <section id="electronic-structure-of-polyatomic-molecules-the-valece-bond-method">
 <h1>Electronic structure of polyatomic molecules: the valece bond method<a class="headerlink" href="#electronic-structure-of-polyatomic-molecules-the-valece-bond-method" title="Permalink to this heading">#</a></h1>
-<p>The valence bond method is an approximate approach, which can be used in  understanding formation of chemical bonding. In particular, concepts like
-hybrid orbitals follow directly from it.</p>
-<p>The valence bond method is based on the idea that a chemical bond is formed
-when there is non-zero overlap between the atomic orbitals of the participating
-atoms. Note that the the atomic orbitals must therefore have the same symmetry in
-order to gain overlap.</p>
-<p>Hybrid orbitals are essentially linear combinations of atomic orbitals that
-belong to a single atom. Note that hybrid orbitals are not meaningful for free
-atoms as they only start to form when other atoms approach. The idea is best
-illustrated through the following examples.</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(BeH_2\)</span> molecule. <span class="math notranslate nohighlight">\(Be\)</span> atoms have atomic electron configuration of He<span class="math notranslate nohighlight">\(2s^2\)</span>. The two approaching hydrogen perturb the atomic orbitals and the two outer shell electrons reside on the two hybrid orbitals formed (<span class="math notranslate nohighlight">\(z\)</span>-axis is along the molecular axis):</p></li>
-</ol>
+<section id="creating-hybrid-orbitals-centered-on-atoms">
+<h2>Creating hybrid orbitals centered on atoms<a class="headerlink" href="#creating-hybrid-orbitals-centered-on-atoms" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The valence bond method is an approximate approach, which can be used in  understanding formation of chemical bonding. In particular, concepts like  hybrid orbitals follow directly from it.</p></li>
+<li><p>The valence bond method is based on the idea that a chemical bond is formed  when there is non-zero overlap between the atomic orbitals of the participating  atoms. Note that the the atomic orbitals must therefore have the same symmetry in  order to gain overlap.</p></li>
+<li><p>Hybrid orbitals are essentially linear combinations of atomic orbitals that  belong to a single atom. Note that hybrid orbitals are not meaningful for free  atoms as they only start to form when other atoms approach. The idea is best  illustrated through the following examples.</p></li>
+</ul>
+</section>
+<section id="beh-2-molecule">
+<h2>1. <span class="math notranslate nohighlight">\(BeH_2\)</span> molecule.<a class="headerlink" href="#beh-2-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Be\)</span> atoms have atomic electron configuration of He<span class="math notranslate nohighlight">\(2s^2\)</span>. The two approaching hydrogen perturb the atomic orbitals and the two outer shell electrons reside on the two hybrid orbitals formed (<span class="math notranslate nohighlight">\(z\)</span>-axis is along the molecular axis):</p></li>
+</ul>
+<p><img alt="" src="../_images/BeH1.png" /></p>
 <div class="math notranslate nohighlight">
 \[{\psi_{sp}^1 = \frac{1}{\sqrt{2}}(2s + 2p_z)}\]</div>
 <div class="math notranslate nohighlight">
 \[{\psi_{sp}^2 = \frac{1}{\sqrt{2}}(2s - 2p_z)}\]</div>
 <p>The hybrid orbitals further form two molecular <span class="math notranslate nohighlight">\(\sigma\)</span> orbitals:</p>
+<p><img alt="" src="../_images/BeH2.png" /></p>
 <div class="math notranslate nohighlight">
 \[{\psi = c_11s_A + c_2\psi_{sp}^1}\]</div>
 <div class="math notranslate nohighlight">
 \[{\psi' = c_1'1s_B + c_2\psi_{sp}^2}\]</div>
-<p><strong>This form of hybridization is called <span class="math notranslate nohighlight">\(sp\)</span>.</strong> This states that one
-<span class="math notranslate nohighlight">\(s\)</span> and one <span class="math notranslate nohighlight">\(p\)</span> orbital participate in forming the hybrid orbitals. For <span class="math notranslate nohighlight">\(sp\)</span>
+<p><img alt="" src="../_images/BeH2-orbs.png" /></p>
+<ul class="simple">
+<li><p><strong>This form of hybridization is called <span class="math notranslate nohighlight">\(sp\)</span>.</strong> This states that one  <span class="math notranslate nohighlight">\(s\)</span> and one <span class="math notranslate nohighlight">\(p\)</span> orbital participate in forming the hybrid orbitals. For <span class="math notranslate nohighlight">\(sp\)</span>
 hybrids, linear geometries are favored and here H–Be–H is indeed linear.
 Here each MO between Be and H contain two shared electrons. Note that the
 number of initial atomic orbitals and the number of hybrid orbitals formed must
 be identical. Here <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(p\)</span> atomic orbitals give two <span class="math notranslate nohighlight">\(sp\)</span> hybrid orbitals.
-Note that hybrid orbitals should be orthonormalized.</p>
-<ol class="arabic simple" start="2">
-<li><p><span class="math notranslate nohighlight">\(BH_3\)</span> molecule. All the atoms lie in a plane (i.e. planar
+Note that hybrid orbitals should be orthonormalized.</p></li>
+</ul>
+</section>
+<section id="bh-3-molecule">
+<h2>2. <span class="math notranslate nohighlight">\(BH_3\)</span> molecule.<a class="headerlink" href="#bh-3-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>All the atoms lie in a plane (i.e. planar
 structure) and the angles between the H atoms is 120\degree . The
 boron atom has electron configuration <span class="math notranslate nohighlight">\(1s^22s^22p\)</span>. Now three
 atomic orbitals (<span class="math notranslate nohighlight">\(2s\)</span>, <span class="math notranslate nohighlight">\(2p_z\)</span>, <span class="math notranslate nohighlight">\(2p_x\)</span>) participate in forming three hybrid orbitals:</p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi^1_{sp^2} = \frac{1}{\sqrt{3}}2s + \sqrt{\frac{2}{3}}2p_z}\]</div>
 <div class="math notranslate nohighlight">
@@ -484,16 +507,20 @@ atomic orbitals (<span class="math notranslate nohighlight">\(2s\)</span>, <span
 \[{\psi^3_{sp^2} = \frac{1}{\sqrt{3}}2s - \frac{1}{\sqrt{6}}2p_z 
 - \frac{1}{\sqrt{2}}2p_x}\]</div>
 <p>The three orbitals can have the following spatial orientations:</p>
+<p><img alt="" src="../_images/BeH3.png" /></p>
 <ul class="simple">
 <li><p>Each of these hybrid orbitals bind form <span class="math notranslate nohighlight">\(\sigma\)</span> bonds with H atoms. This is
 called <span class="math notranslate nohighlight">\(sp^2\)</span> hybridization because two <span class="math notranslate nohighlight">\(p\)</span> orbitals and one <span class="math notranslate nohighlight">\(s\)</span> orbital
 participate in the hybrid.</p></li>
 </ul>
-<ol class="arabic simple" start="3">
-<li><p><span class="math notranslate nohighlight">\(CH_4\)</span> molecule. The electron configuration of carbon atom is
+</section>
+<section id="ch-4-molecule">
+<h2>3. <span class="math notranslate nohighlight">\(CH_4\)</span> molecule.<a class="headerlink" href="#ch-4-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The electron configuration of carbon atom is
 <span class="math notranslate nohighlight">\(1s^22s^22p^2\)</span>. The outer four valence electrons should be placed on four
 <span class="math notranslate nohighlight">\(sp^3\)</span> hybrid orbitals:</p></li>
-</ol>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi^1_{sp^3} = \frac{1}{2}(2s + 2p_x + 2p_y + 2p_z)}\]</div>
 <div class="math notranslate nohighlight">
@@ -503,24 +530,36 @@ participate in the hybrid.</p></li>
 <div class="math notranslate nohighlight">
 \[{\psi^4_{sp^3} = \frac{1}{2}(2s - 2p_x + 2p_y - 2p_z)}\]</div>
 <p>These four hybrid orbitals form <span class="math notranslate nohighlight">\(\sigma\)</span> bonds with the four hydrogen atoms.</p>
+<p><img alt="" src="../_images/CH4.png" /></p>
 <p>The <span class="math notranslate nohighlight">\(sp^3\)</span> hybridization is directly responsible for the geometry of CH<span class="math notranslate nohighlight">\(_4\)</span>
 molecule. Note that for other elements with <span class="math notranslate nohighlight">\(d\)</span>-orbitals, one can also get
 bipyramidal (coordination 5) and octahedral (coordination 6) structures.</p>
-<ol class="arabic simple" start="4">
-<li><p>NH<span class="math notranslate nohighlight">\(_3\)</span> molecule. In this molecule, nitrogen is also <span class="math notranslate nohighlight">\(sp^3\)</span>
+</section>
+<section id="nh-3-molecule">
+<h2>4. NH<span class="math notranslate nohighlight">\(_3\)</span> molecule.<a class="headerlink" href="#nh-3-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In this molecule, nitrogen is also <span class="math notranslate nohighlight">\(sp^3\)</span>
 hybridized. The N atom electron configuration is <span class="math notranslate nohighlight">\(1s^22s^22p_x^12p_y^12p_z^1\)</span>. Thus
 a total of 5 electrons should be placed on the four hybrid orbitals. One of the
 hybrid orbitals becomes doubly occupied (``lone-pair electrons’’) and the three
 remaining singly occupied hybrid orbitals form three sigma bonds to H atoms.
 Because of the lone-pair electrons, the geometry of <span class="math notranslate nohighlight">\(NH_3\)</span> is tetrahedral with
 a bond angle of 109\degree (experimental value 107\degree).</p></li>
-<li><p><span class="math notranslate nohighlight">\(H_2 O\)</span> molecule. The oxygen is <span class="math notranslate nohighlight">\(sp^3\)</span> hybridized with O atom
+</ul>
+</section>
+<section id="h-2-o-molecule">
+<h2>5. <span class="math notranslate nohighlight">\(H_2 O\)</span> molecule.<a class="headerlink" href="#h-2-o-molecule" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The oxygen is <span class="math notranslate nohighlight">\(sp^3\)</span> hybridized with O atom
 electron configuration: <span class="math notranslate nohighlight">\(1s^22s^22p^4\)</span>. Now two of
 the four hybrid orbitals are doubly occupied with the electrons from
 oxygen atom and the remaining two hybrid orbitals can participate in <span class="math notranslate nohighlight">\(\sigma\)</span> bonding
 with two H atoms. This predicts the bond angle H–O–H as <span class="math notranslate nohighlight">\(109\degree \)</span>(experimental
 value <span class="math notranslate nohighlight">\(104\degree\)</span>). Thus <span class="math notranslate nohighlight">\(H_2O\)</span> has two lone-pair electrons.</p></li>
-</ol>
+</ul>
+</section>
+<section id="numerical-calculations">
+<h2>Numerical Calculations<a class="headerlink" href="#numerical-calculations" title="Permalink to this heading">#</a></h2>
 <p>In numerical quantum chemical calculations, basis sets that resemble
 linear combinations of atomic orbitals are typically used (LCAO-MO-SCF). The
 atomic orbitals are approximated by a group of Gaussian functions, which allow
@@ -528,6 +567,7 @@ analytic integration of the integrals, for example, appearing in the
 Hartree-Fock (SCF; HF) method. Note that hydrogenlike atom orbitals differ
 from Gaussian functions by the power of <span class="math notranslate nohighlight">\(r\)</span> in the exponent. A useful rule for
 Gaussians: A product of two Gaussian functions is another Gaussian function.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -566,7 +606,7 @@ Gaussians: A product of two Gaussian functions is another Gaussian function.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Electron configurations of homonuclear diatomic molecules</p>
+        <p class="prev-next-title">Orbitals of homonuclear diatomic molecules</p>
       </div>
     </a>
     <a class="right-next"
@@ -584,6 +624,26 @@ Gaussians: A product of two Gaussian functions is another Gaussian function.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-hybrid-orbitals-centered-on-atoms">Creating hybrid orbitals centered on atoms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beh-2-molecule">1. <span class="math notranslate nohighlight">\(BeH_2\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bh-3-molecule">2. <span class="math notranslate nohighlight">\(BH_3\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-molecule">3. <span class="math notranslate nohighlight">\(CH_4\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nh-3-molecule">4. NH<span class="math notranslate nohighlight">\(_3\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-2-o-molecule">5. <span class="math notranslate nohighlight">\(H_2 O\)</span> molecule.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-calculations">Numerical Calculations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
