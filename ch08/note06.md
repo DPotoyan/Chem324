@@ -102,18 +102,13 @@ value $104\degree$). Thus $H_2O$ has two lone-pair electrons.
 ![](images/watMO-diag.png)
 
 
-### 5. NH$_3$ molecule. 
+### Other Molecules
 
-- In this molecule, nitrogen is also $sp^3$ 
-hybridized. The N atom electron configuration is $1s^22s^22p_x^12p_y^12p_z^1$. Thus
-a total of 5 electrons should be placed on the four hybrid orbitals. One of the
-hybrid orbitals becomes doubly occupied (``lone-pair electrons'') and the three
-remaining singly occupied hybrid orbitals form three sigma bonds to H atoms.
-Because of the lone-pair electrons, the geometry of $NH_3$ is tetrahedral with
-a bond angle of 109\degree (experimental value 107\degree).
-
-
-
+<iframe src="https://al2me6.github.io/evanescence/"
+        width="800"
+        height="500"
+        allowfullscreen>
+</iframe>
 
 ### Numerical Calculations 
 
