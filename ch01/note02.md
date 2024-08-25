@@ -153,7 +153,7 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 
 
 :::{admonition} Quiz
-:class: tip, dropdown
+:class: dropdown
 
 **What is the problem with classical mechanical explanation of black body radiation?**
 
@@ -186,7 +186,69 @@ $$\boxed{E= h\nu}$$
 
 ### The black body radiation distribution function 
 
-- assuming that the energy of an oscillator is quantized, Planck showed that the cor- rect thermodynamic relation for the average energy is
+:::{Admonition} **Derivation of Black Body radiation formula**
+:class: tip, dropdown 
+
+### Derivation of Planck's Black Body Radiation Formula
+
+Planck hypothesized that the energy of oscillators in a black body is quantized and given by:
+
+$$E_n = n h \nu$$
+
+where $n$ is a positive integer, $h$ is Planck's constant, and $\nu$ is the frequency.
+
+The average energy of an oscillator is found by summing over all possible energies, weighted by the Boltzmann factor:
+
+$$\langle E \rangle = \frac{\sum_n E_n e^{-E_n/kT}}{\sum_n e^{-E_n/kT}}$$
+
+Substituting $E_n = n h \nu$, the sum becomes:
+
+$$\langle E \rangle = \frac{\sum_n n h \nu e^{-n h \nu / kT}}{\sum_n e^{-n h \nu / kT}}$$
+
+
+This sum is a geometric series. 
+For the geometric series of the form:
+
+$$ S = \sum_{n=0}^{\infty} x^n $$
+
+The sum is given by:
+
+$$ S = \frac{1}{1 - x} \quad \text{for} \quad |x| < 1 $$
+
+In the context of Planck's derivation, we use the series:
+
+$$ \sum_{n=0}^{\infty} e^{-n h \nu / kT} $$
+
+This series can be summed as:
+
+$$ \sum_{n=0}^{\infty} e^{-n h \nu / kT} = \frac{1}{1 - e^{-h \nu / kT}} $$
+
+The series involving $n$ in the numerator is:
+
+$$ \sum_{n=0}^{\infty} n e^{-n h \nu / kT} $$
+
+This can be evaluated using the derivative with respect to $x$:
+
+$$ \sum_{n=0}^{\infty} n x^n = x \frac{d}{dx} \left( \frac{1}{1 - x} \right) = \frac{x}{(1 - x)^2} $$
+
+Substituting $x = e^{-h \nu / kT}$, we get:
+
+$$ \sum_{n=0}^{\infty} n e^{-n h \nu / kT} = \frac{e^{-h \nu / kT}}{(1 - e^{-h \nu / kT})^2} $$
+
+Using these results, Planck's formula for the average energy becomes:
+
+$$ \langle E \rangle = \frac{h \nu}{e^{h \nu / kT} - 1} $$
+
+
+The energy density $\rho(\nu, T)$ is then obtained by multiplying the average energy by the density of states and the number of oscillators per unit volume:
+
+$$\rho(\nu, T) = \frac{8 \pi \nu^2}{c^3} \cdot \frac{h \nu}{e^{h \nu / kT} - 1}$$
+
+This is Planck's law, which describes the spectral density of radiation emitted by a black body in thermal equilibrium at a temperature $T$.
+
+:::
+
+- Assuming that the energy of an oscillator is quantized, Planck showed that the correct thermodynamic relation for the average energy is
 
 $$\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
