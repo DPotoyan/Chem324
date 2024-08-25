@@ -9,14 +9,12 @@
 
 ### Table of indefinite integrals
 
-|Function $f(x)$|Antiderivative $F(x)$|Function $f(x)$|Antiderivative $F(x)$|
+| Function $f(x)$ | Antiderivative $F(x)$ | Function $f(x)$ | Antiderivative $F(x)$ |
 |-:|:-|-:|:---|
-|$x^n$|$\dfrac{x^{n+1}}{n+1}+C$|$\dfrac{1}{x}$|$\ln\lvert x \rvert + C$|
-|$e^x$|$e^x + C$|$b^x$|$\dfrac{b^x}{\ln b} + C$|
-|$\sin x$|$-\cos x + C$|$\cos x$|$\sin x + C$|
-|$\sec^2 x$|$\tan x + C$|$csc^2 x$|$-\cot x + C$|
-|$\sec x\tan x$|$\sec x + C$|$\csc x\cot x$|$-\csc x + C$|
-|$\dfrac{1}{x^2 + a^2}$|$\dfrac{1}{a}\arctan \left(\dfrac{x}{a}\right) + C$|$\dfrac{1}{\sqrt{a^2-x^2}}$|$\arcsin \left(\dfrac{x}{a}\right) + C$|
+| $x^n$           | $\dfrac{x^{n+1}}{n+1} + C$   | $\dfrac{1}{x}$     | $\ln\lvert x \rvert + C$      |
+| $e^x$           | $e^x + C$            | $b^x$           | $\dfrac{b^x}{\ln b} + C$      |
+| $\sin x$        | $-\cos x + C$        | $\cos x$        | $\sin x + C$           |
+| $\dfrac{1}{x^2 + a^2}$ | $\dfrac{1}{a}\arctan \left(\dfrac{x}{a}\right) + C$ | $\dfrac{1}{\sqrt{a^2-x^2}}$ | $\arcsin \left(\dfrac{x}{a}\right) + C$ |
 
 ### Definite integrals as Riemann sums
 
@@ -39,11 +37,12 @@
 
 ### Fundamental theorem of calculus
 
-|Description|Equations|
+| Description | Equations |
 |-:|:-|
-|**Fundamental theorem of calculus I** <br/> ($f$ is continuous on $[a,b]$)|$g(x) = \displaystyle\int_a^x f(t) \ dt \newline g'(x) = f(x)$|
-|**Fundamental theorem of calculus II** <br/> ($f$ is continuous on $[a,b]$)|$\displaystyle\int_a^b f(x) \ dx = F(b) - F(a)$ <br/> where $F$ is any antiderivative of $f$|
-|Net change theorem <br/> The integral of a rate of change is the net change|$\displaystyle\int_a^b F'(x) \ dx = F(b) - F(a)$|
+| **Fundamental Theorem of Calculus I** <br/> (If $f$ is continuous on $[a,b]$) | $g(x) = \displaystyle\int_a^x f(t) \, dt$ <br/> $g'(x) = f(x)$ |
+| **Fundamental Theorem of Calculus II** <br/> (If $f$ is continuous on $[a,b]$) | $\displaystyle\int_a^b f(x) \, dx = F(b) - F(a)$ <br/> where $F$ is any antiderivative of $f$ |
+| **Net Change Theorem** <br/> (The integral of a rate of change is the net change) | $\displaystyle\int_a^b F'(x) \, dx = F(b) - F(a)$ |
+
 
 ### Substitution rule
 
