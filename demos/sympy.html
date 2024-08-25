@@ -490,7 +490,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification">Simplification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-equations">Solving equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers">Complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">Taylor Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiation">Differentiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration">Integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sums-and-products">Sums and products</a></li>
@@ -525,7 +525,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x c m&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y a b c m&#39;</span><span class="p">)</span>
 
 <span class="n">x</span>
 </pre></div>
@@ -538,7 +538,7 @@ document.write(`
 </div>
 <section id="common-sympy-functions">
 <h2>Common SymPy Functions<a class="headerlink" href="#common-sympy-functions" title="Permalink to this heading">#</a></h2>
-<p>Similar to the <code class="docutils literal notranslate"><span class="pre">math</span></code> Python module, SymPy contains an assortment of standard mathematical operators such as square root and trigonometric functions. A table of common functions is below. Some of the functions start with a capital letter such as <code class="docutils literal notranslate"><span class="pre">Abs()</span></code>. This is important so that they do not collide with native Python functions if SymPy is imported into the global namespace.</p>
+<p>SymPy contains an assortment of standard mathematical operators such as square root and trigonometric functions. A table of common functions is below.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p></p></th>
@@ -569,11 +569,10 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>It is important to note that any mathematical function operating on a symbol needs to be from the SymPy library. For example, using a <code class="docutils literal notranslate"><span class="pre">math.cos()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> Python modeule will result in an error.</p>
 </section>
 <section id="common-algebraic-methods">
 <h2>Common Algebraic Methods<a class="headerlink" href="#common-algebraic-methods" title="Permalink to this heading">#</a></h2>
-<p>SymPy is quite capable at algebraic operations and is knowledgeable of common identities such as <span class="math notranslate nohighlight">\(sin(x)^2 + cos(x)^2 = 1\)</span>, but before we proceed with doing algebra in SymPy, we need to cover some basic algebraic methods. These are provided in Table 3 which includes polynomial expansion and factoring, expression simplification, and solving equations. The subsequent sections demonstrate each of these.</p>
+<p>SymPy is quite capable at algebraic operations. Some of the most important ones are listed in the table below. We will focus on those</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Method</p></th>
@@ -752,8 +751,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="series">
-<h2>Series<a class="headerlink" href="#series" title="Permalink to this heading">#</a></h2>
+<section id="taylor-series">
+<h2>Taylor Series<a class="headerlink" href="#taylor-series" title="Permalink to this heading">#</a></h2>
 <p>Series expansion is also one of the most useful features of a CAS. In SymPy we can perform a series expansion of an expression using the series function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1213,7 +1212,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification">Simplification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-equations">Solving equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers">Complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">Taylor Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiation">Differentiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration">Integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sums-and-products">Sums and products</a></li>
