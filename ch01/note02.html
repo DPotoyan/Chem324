@@ -602,7 +602,7 @@ distance traveled in 1 second (hz).</p></li>
 <ul class="simple">
 <li><p>Energy distribution shoots to infinity at high <span class="math notranslate nohighlight">\(\nu\)</span> (or low <span class="math notranslate nohighlight">\(\lambda\)</span>). This is known as the ultraviolet catastrophe!</p></li>
 </ul>
-<div class="tip dropdown admonition">
+<div class="dropdown admonition">
 <p class="admonition-title">Quiz</p>
 <p><strong>What is the problem with classical mechanical explanation of black body radiation?</strong></p>
 <ol class="arabic simple">
@@ -637,8 +637,51 @@ distance traveled in 1 second (hz).</p></li>
 </section>
 <section id="the-black-body-radiation-distribution-function">
 <h2>The black body radiation distribution function<a class="headerlink" href="#the-black-body-radiation-distribution-function" title="Permalink to this heading">#</a></h2>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Derivation of Black Body radiation formula</strong></p>
+<p class="rubric">Derivation of Planck’s Black Body Radiation Formula</p>
+<p>Planck hypothesized that the energy of oscillators in a black body is quantized and given by:</p>
+<div class="math notranslate nohighlight">
+\[E_n = n h \nu\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is a positive integer, <span class="math notranslate nohighlight">\(h\)</span> is Planck’s constant, and <span class="math notranslate nohighlight">\(\nu\)</span> is the frequency.</p>
+<p>The average energy of an oscillator is found by summing over all possible energies, weighted by the Boltzmann factor:</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle = \frac{\sum_n E_n e^{-E_n/kT}}{\sum_n e^{-E_n/kT}}\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(E_n = n h \nu\)</span>, the sum becomes:</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle = \frac{\sum_n n h \nu e^{-n h \nu / kT}}{\sum_n e^{-n h \nu / kT}}\]</div>
+<p>This sum is a geometric series.
+For the geometric series of the form:</p>
+<div class="math notranslate nohighlight">
+\[ S = \sum_{n=0}^{\infty} x^n \]</div>
+<p>The sum is given by:</p>
+<div class="math notranslate nohighlight">
+\[ S = \frac{1}{1 - x} \quad \text{for} \quad |x| &lt; 1 \]</div>
+<p>In the context of Planck’s derivation, we use the series:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{n=0}^{\infty} e^{-n h \nu / kT} \]</div>
+<p>This series can be summed as:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{n=0}^{\infty} e^{-n h \nu / kT} = \frac{1}{1 - e^{-h \nu / kT}} \]</div>
+<p>The series involving <span class="math notranslate nohighlight">\(n\)</span> in the numerator is:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{n=0}^{\infty} n e^{-n h \nu / kT} \]</div>
+<p>This can be evaluated using the derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{n=0}^{\infty} n x^n = x \frac{d}{dx} \left( \frac{1}{1 - x} \right) = \frac{x}{(1 - x)^2} \]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(x = e^{-h \nu / kT}\)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{n=0}^{\infty} n e^{-n h \nu / kT} = \frac{e^{-h \nu / kT}}{(1 - e^{-h \nu / kT})^2} \]</div>
+<p>Using these results, Planck’s formula for the average energy becomes:</p>
+<div class="math notranslate nohighlight">
+\[ \langle E \rangle = \frac{h \nu}{e^{h \nu / kT} - 1} \]</div>
+<p>The energy density <span class="math notranslate nohighlight">\(\rho(\nu, T)\)</span> is then obtained by multiplying the average energy by the density of states and the number of oscillators per unit volume:</p>
+<div class="math notranslate nohighlight">
+\[\rho(\nu, T) = \frac{8 \pi \nu^2}{c^3} \cdot \frac{h \nu}{e^{h \nu / kT} - 1}\]</div>
+<p>This is Planck’s law, which describes the spectral density of radiation emitted by a black body in thermal equilibrium at a temperature <span class="math notranslate nohighlight">\(T\)</span>.</p>
+</div>
 <ul class="simple">
-<li><p>assuming that the energy of an oscillator is quantized, Planck showed that the cor- rect thermodynamic relation for the average energy is</p></li>
+<li><p>Assuming that the energy of an oscillator is quantized, Planck showed that the correct thermodynamic relation for the average energy is</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] \]</div>
