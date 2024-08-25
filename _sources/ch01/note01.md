@@ -17,7 +17,7 @@
 
 
 :::{figure-md} markdown-fig
-<img src="./images/feynman.png" alt="compton" class="bg-primary mb-1" width="300px">
+<img src="./images/feynman.png" alt="ch1-feynman" class="bg-primary mb-1" width="300px">
 
 [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), A renown american physicsits. Won [Physics Nobel laureate for his groundbreaking work on quantum electrodynamics](https://www.nobelprize.org/prizes/physics/1965/summary/) in 1965. 
 :::
