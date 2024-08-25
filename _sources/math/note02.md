@@ -38,15 +38,10 @@
 
 ### Table of derivatives
 
-|Function $f(x)$|Derivative $f'(x)$|Function $f(x)$|Derivative $f'(x)$|
+| Function $f(x)$ | Derivative $f'(x)$ | Function $f(x)$ | Derivative $f'(x)$ |
 |-:|:-|-:|:---|
-|$c$|$0$|$x^n$|$nx^{n-1}$|
-|$x$|$1$|$\lvert x \rvert$|$\dfrac{x}{\lvert x \rvert}$|
-|$e^x$|$e^x$|$\ln x$|$\dfrac{1}{x}$|
-|$a^x$|$a^x\ln(a)$|$\log_{a}x$|$\dfrac{1}{x\ln(a)}$|
-|$\sin x$|$\cos x$|$\sec x$|$\sec x \tan x$|
-|$\cos x$|$-\sin x$|$\csc x$|$-\csc x \cot x$|
-|$\tan x$|$\sec^2 x$|$\cot x$|$-\csc^2 x$|
-|$\arcsin x$|$\dfrac{1}{\sqrt{1-x^2}}$|$\arctan x$|$\dfrac{1}{1+x^2}$|
-|$\arccos x$|$\dfrac{-1}{\sqrt{1-x^2}}$
-
+| $c$           | $0$                 | $x^n$          | $nx^{n-1}$          |
+| $e^x$         | $e^x$               | $\ln x$        | $\dfrac{1}{x}$      |
+| $\sin x$      | $\cos x$            | $\cos x$       | $-\sin x$           |
+| $\tan x$      | $\sec^2 x$          | $\arcsin x$    | $\dfrac{1}{\sqrt{1-x^2}}$ |
+| $\arctan x$   | $\dfrac{1}{1+x^2}$  |                |                     |
