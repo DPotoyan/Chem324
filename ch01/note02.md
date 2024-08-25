@@ -11,7 +11,12 @@
 
 ## What is the nature of light?
 
-<img src="images/EM-Wave.gif" width=70%>
+:::{figure-md} markdown-fig
+<img src="./images/EM-Wave.gif" alt="EM" class="bg-primary mb-1" width="300px">
+
+Electromagneitc radiation has perpendicular electric and magnetic components which propogate with a speed of light. Unlike other forms of waves (water, sounds) light needs to medium and can travel in vaccum! 
+:::
+
 
 - According to the classical wave theory light is seen as a traveling wave consisting of electric and magnetic components. 
 - We will soon see that this picture of light as enelectromagnetic wave is not the whole story and radically new ideas are needed to understand wide variety of phenomena invlving interaction of light with atoms and molecules.
@@ -20,9 +25,9 @@
 
 
 :::{figure-md} markdown-fig
-<img src="./images/lec1_EMspec.jpg" alt="EM" class="bg-primary mb-1" width="300px">
+<img src="./images/lec1_EMspec.jpg" alt="EM" class="bg-primary mb-1" width="80%">
 
-Electromagneitc radiation has perpendicular electric and magnetic components which propogate with a speed of light. Unlike other forms of waves (water, sounds) light needs to medium and can travel in vaccum! 
+Spectrum of Electromagneitc waves showing wavelengths and radiation type. Also shown are objects with comparable size as the wavelength. Also shown are temperatures of objects which radiate different wavelengths. You can see a clear link betwen how "hot" and how much energy the radiation contains. 
 :::
 
 
@@ -34,9 +39,14 @@ Electromagneitc radiation has perpendicular electric and magnetic components whi
 
 ### Relationship between frequency, wavelength and speed of light. 
 
-![Definitions of wavelength $\lambda$ and frequency $\nu$.](./images/lec1_wavelen_freq_c.jpg)
 
----
+:::{figure-md} markdown-fig
+<img src="./images/lec1_wavelen_freq_c.jpg" alt="EM" class="bg-primary mb-1" width="80%">
+
+Definitions of wavelength $\lambda$ and frequency $\nu$.
+:::
+
+
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
 
@@ -56,7 +66,13 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 
 ### What is the relationship between frequency of radiation $\nu$ and energy $E$?  
 
-![EM spectrum and excitable energy states corresponding to each frequency region](./images/lec1_EMspec2.png)
+
+:::{figure-md} markdown-fig
+<img src="./images/lec1_EMspec2.png" alt="EM" class="bg-primary mb-1" width="80%">
+
+EM spectrum and excitable energy states corresponding to each frequency region
+:::
+
 
 ---
 
@@ -66,7 +82,13 @@ Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proporti
 
 ### Black body as a model for all radiating objects.
 
-![Black body radiation guide from PhD comics](./images/Black_body_rad.jpg)
+
+:::{figure-md} markdown-fig
+<img src="./images/Black_body_rad.jpg" alt="EM" class="bg-primary mb-1" width="70%">
+
+Black body radiation guide from PhDcomics! 
+:::
+
 
 ### Thermodynamically speaking.
 
