@@ -186,10 +186,9 @@ $$\boxed{E= h\nu}$$
 
 ### The black body radiation distribution function 
 
-:::{Admonition} **Derivation of Black Body radiation formula**
+:::{Admonition} **Deriving Black Body radiation formula**
 :class: tip, dropdown 
 
-### Derivation of Planck's Black Body Radiation Formula
 
 Planck hypothesized that the energy of oscillators in a black body is quantized and given by:
 
