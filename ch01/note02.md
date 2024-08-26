@@ -99,14 +99,26 @@ Black body radiation guide from PhDcomics!
 
 
 
-### Thermodynamically speaking.
+:::{admonition} **Definition of black body**
+:class: tip
 
-_A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation_
+
+A black body is an idealized system which is in equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation
+:::
 
 - Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. 
 - The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. 
-- If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature! 
+- If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature!
 
+
+
+**When heating up a material we observe three things:**
+
+1. Radiation intensity of material increases, implying higher radiation energy.
+2. Distribution of wavelengths emitted shifts to lower values. Or we can say the distribution of frequency shifts to higher values.
+3. The color of the material changes from red to yellow to blue. 
+
+![](./images/lec1_bb.png)
 
 ### Applications of black Body radiation
 
@@ -114,23 +126,12 @@ The black body is used as a standard with which the absorption of real bodies is
 
 ![](./images/lec1_planets.jpg)
 
-- [The Fingerprint of Stars](https://www.youtube.com/watch?v=uG4xe9cNpP0) 
-
 - [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc)  
 
 
-### Key features of black body radiation?
-
-![](./images/lec1_bb.png)
-
-As temperature T goes up we notice three things:
-
-- Radiation intensity goes up, implying higher radiation energy.
-- Distribution of wavelengths shifts left to lower values (left panel) or we can say the distribution of frequency shifts right (right panel)
-- Color of the object changes from red to yellow to blue. 
 
 
-### What is classical mechanics & thermodynamics perspective on black body radiation?
+### Classical Mechanics perspective on black bodies
 
 - What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
 - What is light? Think of an oscillating spring with frequency $\nu$
@@ -138,7 +139,7 @@ As temperature T goes up we notice three things:
 
 
 
-### Implications of classical mechanics.
+### Ultraviolet catastrophe of classical mechanics
 
 ```{image} ./images/lec1_UVcat.jpg
 :align: center
@@ -189,7 +190,7 @@ $$\boxed{E= h\nu}$$
 
 - When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
 
-> Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale. In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
+- Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale. In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
 
 
