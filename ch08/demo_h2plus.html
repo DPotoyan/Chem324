@@ -268,7 +268,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../units.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Cookbook: Using python to tame the math</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Equation sheet</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
@@ -517,32 +522,32 @@ document.write(`
 <section id="the-overlap-matrix-s">
 <h3>The Overlap Matrix <span class="math notranslate nohighlight">\(S\)</span><a class="headerlink" href="#the-overlap-matrix-s" title="Permalink to this heading">#</a></h3>
 <p>We start with <span class="math notranslate nohighlight">\(S\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb5a371e-1b50-423a-a744-033bf579c38c">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eb5a371e-1b50-423a-a744-033bf579c38c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ef5570fa-cfcd-47a6-bd32-35d170e6720d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ef5570fa-cfcd-47a6-bd32-35d170e6720d" title="Permalink to this equation">#</a></span>\[\begin{align}
 S = \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_22 \end{bmatrix}
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89906735-761b-480a-ac26-ef8dd389758d">
-<span class="eqno">(2)<a class="headerlink" href="#equation-89906735-761b-480a-ac26-ef8dd389758d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8bd99dd0-1f59-4e22-bc81-9682ee2fb194">
+<span class="eqno">(2)<a class="headerlink" href="#equation-8bd99dd0-1f59-4e22-bc81-9682ee2fb194" title="Permalink to this equation">#</a></span>\[\begin{align}
 S_{11} &amp;= \left\langle 1s_A | 1s_A \right\rangle \\
 S_{12} &amp;= \left\langle 1s_A | 1s_B \right\rangle \\
 S_{22} &amp;= \left\langle 1s_B | 1s_B \right\rangle
 \end{align}\]</div>
 <p>From normalization conditions, we know that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ff3cc20e-02ae-40c7-b5f9-a7942199e144">
-<span class="eqno">(3)<a class="headerlink" href="#equation-ff3cc20e-02ae-40c7-b5f9-a7942199e144" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d3107a5-149f-4292-88c0-ed77434d85ea">
+<span class="eqno">(3)<a class="headerlink" href="#equation-7d3107a5-149f-4292-88c0-ed77434d85ea" title="Permalink to this equation">#</a></span>\[\begin{align}
 S_{11} &amp;= 1 \\
 S_{22} &amp;= 1
 \end{align}\]</div>
 <p>We now set about determining <span class="math notranslate nohighlight">\(S_{12}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-16974517-47bd-4dc3-a4f4-acb4f5fb8d43">
-<span class="eqno">(4)<a class="headerlink" href="#equation-16974517-47bd-4dc3-a4f4-acb4f5fb8d43" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2bfa1151-8f0e-469e-85a6-633be1704490">
+<span class="eqno">(4)<a class="headerlink" href="#equation-2bfa1151-8f0e-469e-85a6-633be1704490" title="Permalink to this equation">#</a></span>\[\begin{align}
 S_{12} &amp;= \left\langle 1s_A | 1s_B \right\rangle \\
 &amp;= \int 1s_A(\vec{r})1s_B(\vec{r})d\vec{r}
 \end{align}\]</div>
 <p>This integral is somewhat involved but can be solved.  Rather than doing so here I just provide the solution</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d840b3c-9086-47dc-b368-45487681d818">
-<span class="eqno">(5)<a class="headerlink" href="#equation-2d840b3c-9086-47dc-b368-45487681d818" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ad9922c9-a39a-4810-ae33-694cfd04634f">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ad9922c9-a39a-4810-ae33-694cfd04634f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S_{12} = e^{-R}\left(1+R+\frac{R^2}{3}\right)
 \end{equation}\]</div>
 <p>We note the <span class="math notranslate nohighlight">\(S_{12}\)</span> is a function of nuclear separation <span class="math notranslate nohighlight">\(R\)</span>.  This makes sense as the degree of overlap between the two 1s function will depend on then separation distance between the nuclei.  We should expect no overlap when the nuclei are infinitely separated and maximal overlap when the nuclei are sitting on top of each other.  Below is a plot of <span class="math notranslate nohighlight">\(S_{12}(R)\)</span>.</p>
@@ -574,8 +579,8 @@ S_{12} = e^{-R}\left(1+R+\frac{R^2}{3}\right)
 </div>
 </div>
 <p>From this information we can populate the <span class="math notranslate nohighlight">\(S\)</span> matrix as a function of <span class="math notranslate nohighlight">\(R\)</span>.  For example, if we choose <span class="math notranslate nohighlight">\(R=2.5\)</span> <span class="math notranslate nohighlight">\(a_0\)</span> we get and <span class="math notranslate nohighlight">\(S\)</span> matrix of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e78d14d-b87c-42b9-bf76-9dcbe22b38bf">
-<span class="eqno">(6)<a class="headerlink" href="#equation-8e78d14d-b87c-42b9-bf76-9dcbe22b38bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e1136ed-af6d-4c9d-ae12-944a7df8f749">
+<span class="eqno">(6)<a class="headerlink" href="#equation-9e1136ed-af6d-4c9d-ae12-944a7df8f749" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S(2.5) = \begin{bmatrix} 1 &amp; 0.458 \\0.458 &amp; 1 \end{bmatrix}
 \end{equation}\]</div>
 <p>Below is a code snippet to populate this matrix.</p>
@@ -611,20 +616,20 @@ S(2.5) =
 <section id="the-hamiltonian-matrix-h">
 <h3>The Hamiltonian Matrix <span class="math notranslate nohighlight">\(H\)</span>:<a class="headerlink" href="#the-hamiltonian-matrix-h" title="Permalink to this heading">#</a></h3>
 <p>The Hamiltonia matrix <span class="math notranslate nohighlight">\(H\)</span> is more challenging.  We start with the definition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1247c447-0c8b-460e-9874-020c2fef6f3e">
-<span class="eqno">(7)<a class="headerlink" href="#equation-1247c447-0c8b-460e-9874-020c2fef6f3e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b806a124-3e7c-4d96-a030-b6781eb8552d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-b806a124-3e7c-4d96-a030-b6781eb8552d" title="Permalink to this equation">#</a></span>\[\begin{align}
 H = \begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix}
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-624d8e06-cc89-4c16-a55d-cb47362ea553">
-<span class="eqno">(8)<a class="headerlink" href="#equation-624d8e06-cc89-4c16-a55d-cb47362ea553" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-02866529-8bcd-4b19-8ee6-a3f8ac30a137">
+<span class="eqno">(8)<a class="headerlink" href="#equation-02866529-8bcd-4b19-8ee6-a3f8ac30a137" title="Permalink to this equation">#</a></span>\[\begin{align}
 H_{11} &amp;= \left\langle 1s_A | \hat{H} | 1s_A \right\rangle \\
 H_{12} &amp;= \left\langle 1s_A | \hat{H} | 1s_B \right\rangle \\
 H_{22} &amp;= \left\langle 1s_B | \hat{H} | 1s_B \right\rangle
 \end{align}\]</div>
 <p>Each of these will need to be determined but we will be able to determine <span class="math notranslate nohighlight">\(H_{22}\)</span> by analogy to <span class="math notranslate nohighlight">\(H_{11}\)</span> since all we are doing in swapping the identity of the electron.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90d2fb89-c924-4baf-9001-c01abca4b2db">
-<span class="eqno">(9)<a class="headerlink" href="#equation-90d2fb89-c924-4baf-9001-c01abca4b2db" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c1a85de0-8626-46b6-9bee-318f8b686345">
+<span class="eqno">(9)<a class="headerlink" href="#equation-c1a85de0-8626-46b6-9bee-318f8b686345" title="Permalink to this equation">#</a></span>\[\begin{align}
 H_{11} &amp;= \left\langle 1s_A | \hat{H} | 1s_A \right\rangle \\
 &amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} - \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_A(\vec{r})d\vec{r} \\
 &amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_A(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_A(\vec{r})d\vec{r} \\
@@ -632,26 +637,26 @@ H_{11} &amp;= \left\langle 1s_A | \hat{H} | 1s_A \right\rangle \\
 &amp;= E_{1s} + J + \frac{1}{R}
 \end{align}\]</div>
 <p>where we recognize that the first integral is simply the 1s energy of a hydrogen atom and we define the second integral as <span class="math notranslate nohighlight">\(J\)</span>, what is also called the <em>Coulomb integral</em>.  That is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c1e955b0-e4cc-4390-abb6-68c4135d750a">
-<span class="eqno">(10)<a class="headerlink" href="#equation-c1e955b0-e4cc-4390-abb6-68c4135d750a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9bbdace3-f1dc-415c-85d0-eb995dc247d4">
+<span class="eqno">(10)<a class="headerlink" href="#equation-9bbdace3-f1dc-415c-85d0-eb995dc247d4" title="Permalink to this equation">#</a></span>\[\begin{align}
 J &amp;= \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}} \right) 1s_A(\vec{r})d\vec{r} \\
 &amp;= -\int 1s_A(\vec{r})\frac{1}{r_{1B}}1s_A(\vec{r})d\vec{r} 
 \end{align}\]</div>
 <p>where that last integral becomes <span class="math notranslate nohighlight">\(\frac{1}{R}\)</span> because <span class="math notranslate nohighlight">\(R\)</span>, the nuclear separation, is constant w.r.t <span class="math notranslate nohighlight">\(\vec{r}\)</span> and the <span class="math notranslate nohighlight">\(1s_A\)</span> function is normalized.</p>
 <p>For the <span class="math notranslate nohighlight">\(H_2^+\)</span> case the remaining integral in <span class="math notranslate nohighlight">\(J\)</span> can be solved analytically.  Doing so yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af13c8a9-9156-4ef0-8750-24afbac527e5">
-<span class="eqno">(11)<a class="headerlink" href="#equation-af13c8a9-9156-4ef0-8750-24afbac527e5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba91b13d-515c-48c5-94da-732cbc32081f">
+<span class="eqno">(11)<a class="headerlink" href="#equation-ba91b13d-515c-48c5-94da-732cbc32081f" title="Permalink to this equation">#</a></span>\[\begin{align}
 J = e^{-2R}\left(1+\frac{1}{R}\right) - \frac{1}{R}
 \end{align}\]</div>
 <p>Thus, we get that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb95cdd6-1b43-4a87-a8f9-abd9a55791d3">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eb95cdd6-1b43-4a87-a8f9-abd9a55791d3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1ad16a3b-a45a-4893-9fcc-8e998b0c41ce">
+<span class="eqno">(12)<a class="headerlink" href="#equation-1ad16a3b-a45a-4893-9fcc-8e998b0c41ce" title="Permalink to this equation">#</a></span>\[\begin{align}
 H_{11} &amp; = E_{1s} + J + \frac{1}{R}= -\frac{1}{2} + e^{-2R}\left(1+\frac{1}{R}\right) \\
 H_{22} &amp; = E_{1s} + J + \frac{1}{R}= -\frac{1}{2} + e^{-2R}\left(1+\frac{1}{R}\right)
 \end{align}\]</div>
 <p>For <span class="math notranslate nohighlight">\(H_{12}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3100b4ea-2df0-4196-9915-bfc72cf784be">
-<span class="eqno">(13)<a class="headerlink" href="#equation-3100b4ea-2df0-4196-9915-bfc72cf784be" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f1a063a6-2774-4943-84ab-804fb0453a77">
+<span class="eqno">(13)<a class="headerlink" href="#equation-f1a063a6-2774-4943-84ab-804fb0453a77" title="Permalink to this equation">#</a></span>\[\begin{align}
 H_{12} &amp;= \left\langle 1s_A | \hat{H} | 1s_B \right\rangle \\
 &amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} - \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_B(\vec{r})d\vec{r} \\
 &amp;= \int 1s_A(\vec{r}) \left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_B(\vec{r})d\vec{r} + \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  + \frac{1}{R} \right) 1s_B(\vec{r})d\vec{r} \\
@@ -659,22 +664,22 @@ H_{12} &amp;= \left\langle 1s_A | \hat{H} | 1s_B \right\rangle \\
 &amp;= E_{1s}S_{12} + K + \frac{S_{12}}{R}
 \end{align}\]</div>
 <p>where we recognize that <span class="math notranslate nohighlight">\(\left(-\frac{1}{2}\nabla_1^2 - \frac{1}{r_{1A}} \right) 1s_B = E_{1s}1s_B\)</span>, <span class="math notranslate nohighlight">\(S_{12} = \langle 1s_A | 1s_B\rangle\)</span>, and have defined the <em>exhange integral</em>, <span class="math notranslate nohighlight">\(K\)</span>, to be</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48c3a8c7-bc8a-47a4-bbf5-53b8256e518e">
-<span class="eqno">(14)<a class="headerlink" href="#equation-48c3a8c7-bc8a-47a4-bbf5-53b8256e518e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8c5ad9cb-3d49-4a9d-a61c-2d0389d722d6">
+<span class="eqno">(14)<a class="headerlink" href="#equation-8c5ad9cb-3d49-4a9d-a61c-2d0389d722d6" title="Permalink to this equation">#</a></span>\[\begin{align}
 K &amp;= \int 1s_A(\vec{r}) \left(- \frac{1}{r_{1B}}  \right) 1s_B(\vec{r})d\vec{r} \\
 &amp;= -\int 1s_A(\vec{r})\frac{1}{r_{1B}}1s_B(\vec{r})d\vec{r} \\
 &amp;= -e^{-R}\left(1+R\right)
 \end{align}\]</div>
 <p>where the last step I have used the solution for the simple case of H<span class="math notranslate nohighlight">\(_2^+\)</span> but have not shown it to be true.</p>
 <p>We can now populate the <span class="math notranslate nohighlight">\(H\)</span> matrix as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0acd1d9b-45ec-4bc4-a30a-b851583f0785">
-<span class="eqno">(15)<a class="headerlink" href="#equation-0acd1d9b-45ec-4bc4-a30a-b851583f0785" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b3e545ba-17a7-42ae-a81a-dfebfe724564">
+<span class="eqno">(15)<a class="headerlink" href="#equation-b3e545ba-17a7-42ae-a81a-dfebfe724564" title="Permalink to this equation">#</a></span>\[\begin{align}
 H &amp;= \begin{bmatrix} E_{1s} + J + \frac{1}{R} &amp; E_{1s}S_{12} + K + \frac{S_{12}}{R} \\ E_{1s}S_{12} + K + \frac{S_{12}}{R} &amp; E_{1s} + J + \frac{1}{R}\end{bmatrix} \\
 &amp;= \left(E_{1s} + \frac{1}{R}\right)\begin{bmatrix} 1 &amp; S_{12} \\ S_{12} &amp; 1\end{bmatrix} + \begin{bmatrix} J &amp; K \\  K &amp;  J \end{bmatrix}
 \end{align}\]</div>
 <p>For a nuclear separation value of 2.5 Bohr, for example, this yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09b80934-5466-4b64-b655-45e9c89b1e45">
-<span class="eqno">(16)<a class="headerlink" href="#equation-09b80934-5466-4b64-b655-45e9c89b1e45" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0040b718-ffc2-4db0-9910-8a29a9d6c800">
+<span class="eqno">(16)<a class="headerlink" href="#equation-0040b718-ffc2-4db0-9910-8a29a9d6c800" title="Permalink to this equation">#</a></span>\[\begin{equation}
 H(R=2.5) = \begin{bmatrix} -0.491 &amp; -0.333 \\ -0.333 &amp; -0.491\end{bmatrix}
 \end{equation}\]</div>
 <p>Below is the code to compute this.</p>
@@ -714,25 +719,25 @@ H(R=2.5) = \begin{bmatrix} -0.491 &amp; -0.333 \\ -0.333 &amp; -0.491\end{bmatri
 <h3>Combined Solution<a class="headerlink" href="#combined-solution" title="Permalink to this heading">#</a></h3>
 <p>Now that we have equations for <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(S\)</span> in terms of <span class="math notranslate nohighlight">\(R\)</span> (the nuclear separation; <span class="math notranslate nohighlight">\(S_{12}\)</span>, <span class="math notranslate nohighlight">\(J\)</span>, and <span class="math notranslate nohighlight">\(K\)</span> are all functions of <span class="math notranslate nohighlight">\(R\)</span>), we can compute the eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(S^{-1}H\)</span> for a given nuclear separation distance.</p>
 <p>Let’s choose 2.5 Bohr, for example, in which case we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61ff4e84-02f4-4080-afc0-2f8eb0329122">
-<span class="eqno">(17)<a class="headerlink" href="#equation-61ff4e84-02f4-4080-afc0-2f8eb0329122" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9b14518b-489d-41c8-bc5a-d7fe9c8a4262">
+<span class="eqno">(17)<a class="headerlink" href="#equation-9b14518b-489d-41c8-bc5a-d7fe9c8a4262" title="Permalink to this equation">#</a></span>\[\begin{align}
 S(2.5) &amp;= \begin{bmatrix} 1 &amp; 0.458 \\0.458 &amp; 1 \end{bmatrix} \\
 H(2.5) &amp;= \begin{bmatrix} -0.491 &amp; -0.333 \\ -0.333 &amp; -0.491\end{bmatrix} \\
 S(2.5)^{-1}H(2.5) &amp;= \begin{bmatrix} -0.428 &amp; -0.138 \\ -0.138 &amp; -0.428\end{bmatrix}
 \end{align}\]</div>
 <p>Computing the eigenvalues of <span class="math notranslate nohighlight">\(S(2.5)^{-1}H(2.5)\)</span> yields:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24005a71-5442-4485-a943-67b55906e065">
-<span class="eqno">(18)<a class="headerlink" href="#equation-24005a71-5442-4485-a943-67b55906e065" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-70d50748-bfa2-433c-9bfd-66f6a0ce4c92">
+<span class="eqno">(18)<a class="headerlink" href="#equation-70d50748-bfa2-433c-9bfd-66f6a0ce4c92" title="Permalink to this equation">#</a></span>\[\begin{equation}
 E(2.5) = -0.565\text{ and } -0.291
 \end{equation}\]</div>
 <p>The ground state energy is the first (minimum) of these.  The corresponding eigenvectors (or vectors of variational coefficients) are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-556851c5-7235-4a5c-a764-4f5b559cfa39">
-<span class="eqno">(19)<a class="headerlink" href="#equation-556851c5-7235-4a5c-a764-4f5b559cfa39" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e6594d6a-c70f-46ad-8c13-c8a67e2b18b7">
+<span class="eqno">(19)<a class="headerlink" href="#equation-e6594d6a-c70f-46ad-8c13-c8a67e2b18b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v = \begin{bmatrix} -0.707 &amp; 0.707 \\ -0.707 &amp; -0.707\end{bmatrix}
 \end{equation}\]</div>
 <p>where these are listed as column vectors meaning the that coefficients for the ground state energy are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-697204cf-80f9-4ed7-97b5-1be0a59d802b">
-<span class="eqno">(20)<a class="headerlink" href="#equation-697204cf-80f9-4ed7-97b5-1be0a59d802b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de315b61-e7ae-4c63-bb53-d5a882eb5dbb">
+<span class="eqno">(20)<a class="headerlink" href="#equation-de315b61-e7ae-4c63-bb53-d5a882eb5dbb" title="Permalink to this equation">#</a></span>\[\begin{align}
 c_1 &amp;= -0.707 \\
 c_2 &amp;= -0.707
 \end{align}\]</div>
@@ -762,15 +767,15 @@ Eigenvectors: [[-0.70710678  0.70710678]
 </div>
 </div>
 <p>Due to the symmetry of this problem and normalization requirements, it turns out that the coefficients must always be</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3586856-5d88-4c58-a1cd-37d99c7258a3">
-<span class="eqno">(21)<a class="headerlink" href="#equation-e3586856-5d88-4c58-a1cd-37d99c7258a3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-62a9f72f-cf7c-454e-9613-2d0d3ff9c299">
+<span class="eqno">(21)<a class="headerlink" href="#equation-62a9f72f-cf7c-454e-9613-2d0d3ff9c299" title="Permalink to this equation">#</a></span>\[\begin{align}
 c_1 &amp;= \pm \frac{1}{\sqrt{2(1-S_{12})}} \\
 c_2 &amp;= \pm \frac{1}{\sqrt{2(1-S_{12})}}
 \end{align}\]</div>
 <p>That is the must always be the same magnitude (symmetry) and their values are dictated by normalization (which depends on the overlap of the two basis functions).</p>
 <p>The minimum energy state is the linear combination in which the coefficients both have the same sign.  The higher energy (antibonding orbital) has the coefficients with opposing sign.  These can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be6512f7-c50a-404d-ad1f-b6fa0f8cacd1">
-<span class="eqno">(22)<a class="headerlink" href="#equation-be6512f7-c50a-404d-ad1f-b6fa0f8cacd1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d3635be-823e-4866-9ccd-0f5e75e1ef5d">
+<span class="eqno">(22)<a class="headerlink" href="#equation-7d3635be-823e-4866-9ccd-0f5e75e1ef5d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \phi_+ = \frac{1}{\sqrt{2(1-S_{12})}}\left(1s_A + 1s_B\right) \\
 \phi_- = \frac{1}{\sqrt{2(1-S_{12})}}\left(1s_A - 1s_B\right)
 \end{align}\]</div>
