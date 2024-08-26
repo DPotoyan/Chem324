@@ -94,9 +94,10 @@ Black body radiation guide from PhDcomics!
 - Watch the beutiful animation: FIngerprints of stars. First 3 minutes is solely focused on blackbody radiation
 
 <html>
-<iframe width="300 height="300" src="https://www.youtube.com/watch?v=uG4xe9cNpP0" frameborder="0" allowfullscreen>
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uG4xe9cNpP0?si=WwWocuEyIXdI72CD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </html>
+
+
 
 ### Thermodynamically speaking.
 
