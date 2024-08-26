@@ -10,7 +10,7 @@
 
 
 :::{figure-md} markdown-fig
-<img src="./images/qm.png" alt="qm-whomi" class="bg-primary mb-1" width="300px">
+<img src="./images/qm.png" alt="qm-whomi" class="bg-primary mb-1" width="100%">
 
 Quantum Mechanics provides theory to understnad, describe predict phenomena involving the smallest of particles that do not travel too fast. 
 :::
