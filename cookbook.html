@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="ch01/note01.html">Why Quantum mechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ch01/note02.html">The need for quantization</a></li>
@@ -267,12 +267,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="ch08/demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scratch.html">Scratchpad</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cookbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Equation sheet</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="math/index.html">Math</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="math/note01.html">Integrals</a></li>
 
@@ -485,7 +485,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-tame-the-math">Using python to tame the math!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example-1</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-0-use-python-as-calculator">Example-0: Use python as calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-show-orthogonality">Example-1: Show orthogonality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-solution">Symbolic solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution">Visual solution</a></li>
@@ -508,7 +509,9 @@ document.write(`
 <h2>Using python to tame the math!<a class="headerlink" href="#using-python-to-tame-the-math" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hit enter to import all these goodies</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
 <span class="kn">import</span> <span class="nn">scipy</span>  
@@ -521,18 +524,66 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="example-1">
-<h2>Example-1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h2>
+<section id="example-0-use-python-as-calculator">
+<h2>Example-0: Use python as calculator<a class="headerlink" href="#example-0-use-python-as-calculator" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Show that wavefunctions <span class="math notranslate nohighlight">\(f_1 = sin(x)\)</span> and <span class="math notranslate nohighlight">\(f_2=cos(x)\)</span> are orthogonal on <span class="math notranslate nohighlight">\((0, 2\pi)\)</span> interval.</p></li>
+<li><p>Calculate energy and wavelength of photon that has frequency of <span class="math notranslate nohighlight">\(4\cdot 10^{14}\)</span> Hz. You will have to use Planck’s equation and wavelength-frequency conversion equations.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[E= h\nu\]</div>
+<div class="math notranslate nohighlight">
+\[\lambda = \frac{c}{\nu}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Start typing anything inside physica_constnats it will bring it up. </span>
+<span class="n">physical_constants</span><span class="p">[</span><span class="s1">&#39;Planck constant&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we also have most common constants ready to use. But you have to remember what are the units!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># e here tands for 10 and not exponent! exponent is defined via np.exp()</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">4e14</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">nu</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#lambda is a protected word in pythong cant use it ugh</span>
+<span class="n">wavel</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">nu</span>  
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wavel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1-show-orthogonality">
+<h2>Example-1: Show orthogonality<a class="headerlink" href="#example-1-show-orthogonality" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Show that wavefunctions <span class="math notranslate nohighlight">\(f_1 = sin(x)\)</span> and <span class="math notranslate nohighlight">\(f_2=cos(x)\)</span> are orthogonal on <span class="math notranslate nohighlight">\((0, 2\pi)\)</span> interval. That is you are going to show one of the most ubiquitous equalities in quantum mechanics</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int^{2\pi}_0 f_1(x) f_2(x)dx = 0\]</div>
 <section id="numerical-solution">
 <h3>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Define the range of x values</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the range of x values</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
 <span class="c1"># Calculate sin(x) and cos(x)</span>
@@ -553,9 +604,7 @@ document.write(`
 <h3>Symbolic solution<a class="headerlink" href="#symbolic-solution" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-
-<span class="c1"># Define the symbolic variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the symbolic variable</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 
 <span class="c1"># Define sin(x) and cos(x)</span>
@@ -576,10 +625,8 @@ document.write(`
 <h3>Visual solution<a class="headerlink" href="#visual-solution" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="k">def</span> <span class="nf">plot_orthogonality</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_orthogonality</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Defining functions to encampuslate code is a good habit&#39;&#39;&#39;</span>
 
     <span class="c1"># Define the range of x values</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
@@ -592,7 +639,7 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_sin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_cos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
     
-    <span class="c1"># Fill the area between two horizontal curves</span>
+    <span class="c1"># Fill the area between two horizontal curves (optional)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_sin</span> <span class="o">*</span> <span class="n">y_cos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x) * cos(x)&#39;</span><span class="p">)</span>
     
     <span class="c1"># Labels and title</span>
@@ -677,7 +724,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-tame-the-math">Using python to tame the math!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example-1</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-0-use-python-as-calculator">Example-0: Use python as calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-show-orthogonality">Example-1: Show orthogonality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-solution">Symbolic solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution">Visual solution</a></li>
