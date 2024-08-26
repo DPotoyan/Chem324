@@ -89,6 +89,14 @@ EM spectrum and excitable energy states corresponding to each frequency region
 Black body radiation guide from PhDcomics! 
 :::
 
+---
+
+- Watch the beutiful animation: FIngerprints of stars. First 3 minutes is solely focused on blackbody radiation
+
+<html>
+<iframe width="300 height="300" src="https://www.youtube.com/watch?v=uG4xe9cNpP0" frameborder="0" allowfullscreen>
+</iframe>
+</html>
 
 ### Thermodynamically speaking.
 
