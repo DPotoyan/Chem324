@@ -68,9 +68,12 @@
 
 |Description|Equations|
 |-:|:-|
-| Integral of even power of sine and cosine using trig identities | $\sin^2(x) = \frac{1}{2}(1-\cos(2x)) \newline \cos^2(x) = \frac{1}{2}(1+\cos(2x)) \newline \sin(x)\cos(x) = \frac{1}{2}\sin(2x)$ |
-| Trig identity for solving <br/> $\int \sin(mx)\cos(nx) \, dx$ | $\sin A \cos B = \frac{1}{2}[\sin(A-B) + \sin(A+B)]$ |
-| Trig identity for solving <br/> $\int \sin(mx)\sin(nx) \, dx$ | $\sin A \sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]$ |
-| Trig identity for solving <br/> $\int \cos(mx)\cos(nx) \, dx$ | $\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$ |
+|Integral of odd power of cosine <br/> $(u = \sin x)$|$\int \sin^m(x)\cos^{2k+1}(x) \ dx \newline = \int \sin^m(x) [\cos^2 (x)]^k \ dx \newline = \int \sin^m(x)[1-\sin^2(x)]^k \ dx$|
+|Integral of odd power of sine <br/> $(u = \cos x)$|$\int \sin^{2k+1}(x)\cos^{n}(x) \ dx \newline = \int [\sin^2 (x)]^k \cos^n(x) \sin(x) \ dx \newline = \int [1-\cos^2(x)]^k \cos^n(x) \sin(x) \ dx$|
+|Integral of even power of sine and cosine use trig identities|$\sin^2(x) = \frac{1}{2}(1-\cos(2x)) \newline \cos^2(x) = \frac{1}{2}(1+\cos(2x)) \newline \sin(x)\cos(x) = \frac{1}{2}\sin(2x)$|
+|Trig identity for solving <br/> $\int \sin(mx)\cos(nx) \ dx$|$\sin A \cos B = \frac{1}{2}[\sin(A-B) + \sin(A+B)]$|
+|Trig identity for solving <br/> $\int \sin(mx)\sin(nx) \ dx$|$\sin A \sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]$|
+|Trig identity for solving <br/> $\int \cos(mx)\cos(nx) \ dx$|$\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$|
+
 
 
