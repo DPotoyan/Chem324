@@ -485,6 +485,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-tame-the-math">Using python to tame the math!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-0-use-python-as-calculator">Example-0: Use python as calculator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-show-orthogonality">Example-1: Show orthogonality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-solution">Symbolic solution</a></li>
@@ -518,6 +519,54 @@ document.write(`
 
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-0-use-python-as-calculator">
+<h2>Example-0: Use python as calculator<a class="headerlink" href="#example-0-use-python-as-calculator" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Calculate energy and wavelength of photon that has frequency of <span class="math notranslate nohighlight">\(4\cdot 10^{14}\)</span> Hz. You will have to use Planck’s equation and wavelength-frequency conversion equations.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E= h\nu\]</div>
+<div class="math notranslate nohighlight">
+\[\lambda = \frac{c}{\nu}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Start typing anything inside physica_constnats it will bring it up. </span>
+<span class="n">physical_constants</span><span class="p">[</span><span class="s1">&#39;Planck constant&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we also have most common constants ready to use. But you have to remember what are the units!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># e here tands for 10 and not exponent! exponent is defined via np.exp()</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">4e14</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">nu</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#lambda is a protected word in pythong cant use it ugh</span>
+<span class="n">wavel</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">nu</span>  
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wavel</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -675,6 +724,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-tame-the-math">Using python to tame the math!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-0-use-python-as-calculator">Example-0: Use python as calculator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-show-orthogonality">Example-1: Show orthogonality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-solution">Symbolic solution</a></li>
