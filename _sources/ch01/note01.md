@@ -8,7 +8,13 @@
   - Predictions of quantum mechanics have been verified experimentally to an extremely high degree of accuracy. 
 ```
 
-![](./images/qm.png)
+
+:::{figure-md} markdown-fig
+<img src="./images/qm.png" alt="qm-whomi" class="bg-primary mb-1" width="300px">
+
+Quantum Mechanics provides theory to understnad, describe predict phenomena involving the smallest of particles that do not travel too fast. 
+:::
+
 
 
 ### Beware, Quantum Mechanics is weird! 
@@ -30,6 +36,12 @@
 
 ### How does Quantum Mechanics compare to other physics theories?
 
+:::{figure-md} markdown-fig
+<img src="./images/qm-joke1.jpg" alt="qm-whomi" class="bg-primary mb-1" width="300px">
+
+There are no quantum mechanicians out there. Electrons and atoms do not get broken so you dont need one! Atoms and electrons are what make up ordinary stuff like cars which however can be broken leading you to call a classical mechanic to charge you an arm and leg to fix it. 
+:::
+
 Even though it was discovered by physicists, it’s not a physical theory in the same sense as electromagnetism or general relativity. In the usual “hierarchy of sciences” – with biology at the top, then chemistry, then physics, then math – quantum mechanics sits at a
  level between math and physics that I don’t know a good name for. Basically, quantum mechanics is the operating system that other physical theories run on as application software. There’s even a word for taking a physical theory and porting it to this OS: “to quantize.”
 
@@ -37,15 +49,23 @@ Even though it was discovered by physicists, it’s not a physical theory in the
 
 ### Where is Quantum Mechanics applied
 
-Ideas of quantum mechanics permeate and in many cases form the basis of understanding whole areas in chemistry, biology, physics and materials science. 
+:::{figure-md} markdown-fig
+<img src="./images/qc-applied.png" alt="compton" class="bg-primary mb-1" width="300px">
 
-Some examples are:
+Applications of Quantum Chemistry
+:::
 
 - Chemical bond, molecular structure, reactivity, color, properties of materials.
 - Spectroscopy (NMR, UV, IR, lasers...)
 - Modern electronic structure calculations
 - Condensed matter 
 - Quantum computing
+
+:::{figure-md} markdown-fig
+<img src="./images/qcomp-applied.jpg" alt="compton" class="bg-primary mb-1" width="300px">
+
+Applications of Quantum Computing
+:::
 
 ### What new skills will I learn?
 
