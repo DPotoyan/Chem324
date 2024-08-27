@@ -293,7 +293,7 @@ Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \
 ### Example Problems
 
 
-::::{admonition}**Question: Calculating the Wavelength of a Photon Using Planck's Equation**  
+::::{admonition} **Question: Calculating the Wavelength of a Photon Using Planck's Equation**  
 :class: note
 
 A photon is emitted with an energy of $3.5 \, \text{eV}$. Calculate the wavelength of this photon. Use Planck's equation to relate the energy of the photon to its wavelength. The values of constants are:
