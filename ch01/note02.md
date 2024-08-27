@@ -292,7 +292,53 @@ Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \
 
 ### Example Problems
 
-::::{admonition} **Question:**  
+
+::::{admonition}**Question: Calculating the Wavelength of a Photon Using Planck's Equation**  
+:class: note
+
+A photon is emitted with an energy of $3.5 \, \text{eV}$. Calculate the wavelength of this photon. Use Planck's equation to relate the energy of the photon to its wavelength. The values of constants are:
+- Planck's constant, $h = 6.626 \times 10^{-34} \, \text{J} \cdot \text{s}$
+- Speed of light, $c = 3.00 \times 10^8 \, \text{m/s}$
+- $1 \, \text{eV} = 1.602 \times 10^{-19} \, \text{J}$
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+First, convert the energy of the photon from electron volts (eV) to joules (J):
+
+$$
+E = 3.5 \, \text{eV} \times 1.602 \times 10^{-19} \, \text{J/eV} = 5.607 \times 10^{-19} \, \text{J}
+$$
+
+Now, use Planck's equation to relate the energy $E$ of the photon to its wavelength $\lambda$:
+
+$$
+E = \frac{hc}{\lambda}
+$$
+
+Rearranging to solve for $\lambda$:
+
+$$
+\lambda = \frac{hc}{E}
+$$
+
+Substitute the known values:
+
+$$
+\lambda = \frac{(6.626 \times 10^{-34} \, \text{J} \cdot \text{s}) \times (3.00 \times 10^8 \, \text{m/s})}{5.607 \times 10^{-19} \, \text{J}}
+$$
+
+$$
+\lambda = \frac{1.988 \times 10^{-25} \, \text{J} \cdot \text{m}}{5.607 \times 10^{-19} \, \text{J}} \approx 3.55 \times 10^{-7} \, \text{m} = 355 \, \text{nm}
+$$
+
+The wavelength of the photon is approximately $355 \, \text{nm}$, which is in the ultraviolet range of the electromagnetic spectrum.
+:::
+
+::::
+
+::::{admonition} **Question: Wien's displacement law**  
+:class: note
 
 Using Wien's displacement law, determine the wavelength $\lambda_{\text{max}}$ at which the spectral radiance of a blackbody is maximized. Given the temperature $T$ of the blackbody, calculate $\lambda_{\text{max}}$ for $T = 5800 \, \text{K}$, which is approximately the temperature of the Sun's surface.
 
