@@ -290,3 +290,30 @@ Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \
         allowfullscreen>
 </iframe>
 
+### Example Problems
+
+::::{admonition} **Question:**  
+
+Using Wien's displacement law, determine the wavelength $\lambda_{\text{max}}$ at which the spectral radiance of a blackbody is maximized. Given the temperature $T$ of the blackbody, calculate $\lambda_{\text{max}}$ for $T = 5800 \, \text{K}$, which is approximately the temperature of the Sun's surface.
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+Wien's displacement law states that the wavelength at which the spectral radiance of a blackbody peaks is inversely proportional to the temperature:
+
+$$
+\lambda_{\text{max}} = \frac{b}{T}
+$$
+
+where $b = 2.897 \times 10^{-3} \, \text{m} \cdot \text{K}$ is Wien's displacement constant.
+
+For $T = 5800 \, \text{K}$:
+
+$$
+\lambda_{\text{max}} = \frac{2.897 \times 10^{-3} \, \text{m} \cdot \text{K}}{5800 \, \text{K}} = 5.0 \times 10^{-7} \, \text{m} = 500 \, \text{nm}
+$$
+
+So, the peak wavelength $\lambda_{\text{max}}$ for a blackbody at $5800 \, \text{K}$ is $500 \, \text{nm}$, which is in the visible range.
+:::
+
+::::
