@@ -51,21 +51,16 @@ Definitions of wavelength $\lambda$ and frequency $\nu$.
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
 
-```{admonition} Plack equation
+```{admonition} Wavelength, frequency and speed of light
 :class: important
 
  $$\lambda \nu = c$$
 
  - Speed of light in vacuum, $c=3 \cdot 10^8 m/s$ is a fundamental constant.
-
+ - Frequency of $1 Hz =  1 s^{-1}$ is the distance that the wave travels in 1 second
+ - Wavelength of $1 m$ is the distance between peaks of the wave
 ```
 
-- Think of wavelength as distance between wave peaks 
-  (nanometers, nm)
-
-- Think of frequency as a distance traveled in 1 second (hz). 
-
- 
 
 
 
