@@ -105,14 +105,6 @@ When heating up a material we observe three things. 1. Radiation intensity of ma
 :::
 
 
-### Applications of black Body radiation
-
-The black body is used as a standard with which the absorption of real bodies is compared. To a good approximation, stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors!
-
-![](./images/lec1_planets.jpg)
-
-- [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc)  
-
 
 
 
@@ -272,6 +264,15 @@ Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \
         height="500"
         allowfullscreen>
 </iframe>
+
+### Applications of Black Body radiation
+
+:::{figure-md} markdown-fig
+<img src="./images/lec1_planets.jpg" alt="planets" class="bg-primary mb-1" width="80%">
+
+The black body is used as a standard with which the absorption of real bodies is compared. To a good approximation, stars radiate like blackbody radiators. Thus we can use blackbody radiation as a model to infer the temperature of the stars from their colors! Find out more in this video on [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc)  
+
+:::
 
 ### Example Problems
 
