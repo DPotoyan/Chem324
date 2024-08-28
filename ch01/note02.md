@@ -49,23 +49,15 @@ Definitions of wavelength $\lambda$ and frequency $\nu$.
 :::
 
 
-
-Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
-
 ```{admonition} Wavelength, frequency and speed of light
 :class: important
 
  $$\lambda \nu = c$$
 
- - Speed of light in vacuum, $c=3 \cdot 10^8 m/s$ is a fundamental constant.
- - Frequency of $1 Hz =  1 s^{-1}$ is the distance that the wave travels in 1 second
- - Wavelength of $1 m$ is the distance between peaks of the wave
+ - **Speed of light in vacuum**, $c=3 \cdot 10^8 m/s$ is a fundamental constant.
+ - **Frequency** of $1 Hz =  1 s^{-1}$ is the distance that the wave travels in 1 second
+ - **Wavelength** of $1 m$ is the distance between peaks of the wave
 ```
-
-
-
-
-
 
 
 ### Black body as a model for heated objects.
@@ -79,7 +71,7 @@ Black body radiation guide from PhDcomics!
 
 ---
 
-- Watch the beutiful animation: FIngerprints of stars. First 3 minutes is solely focused on blackbody radiation
+- Watch this beautiful animation where the first 3 minutes is solely focused on blackbody radiation
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uG4xe9cNpP0?si=WwWocuEyIXdI72CD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -105,14 +97,17 @@ When heating up a material we observe three things. 1. Radiation intensity of ma
 :::
 
 
-
-
-
 ### Ultraviolet catastrophe of classical mechanics
 
-```{image} ./images/lec1_UVcat.jpg
-:align: center
-```
+
+:::{figure-md} markdown-fig
+<img src="./images/lec1_UVcat.jpg" alt="ultraviolet catastrophe" class="bg-primary mb-1" width="80%">
+
+Predictions of CM and QM diverge in the high frequency (low wavelength) limit where CM predicts infinite energy and QM predicts insufficent thermal energy for radiation. 
+
+:::
+
+
 **How classical mechanics describes temperature and radiation**
 
 - What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
