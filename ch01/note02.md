@@ -148,7 +148,7 @@ $$\boxed{E= h\nu}$$
 
 - Unit of Planck's constant, $h = 6.63 10^{–34} J \cdot s$
 - Unit of frequency $\nu$, $1 s^{-1}$.
-- Unit of frequency $\nu$, $1 J$.
+- Unit of Energy $E$, $1 J$.
 ```
 
 - This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
