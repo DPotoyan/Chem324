@@ -518,9 +518,9 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">    - (float): Spectral radiance in W/(m^2*sr*m).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># To avoid overflow, limit the exponent to a reasonable maximum</span>
+   
     <span class="n">exponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
-    <span class="n">exponent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>  <span class="c1"># Clip at 700 to avoid overflow</span>
+    <span class="n">exponent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>  <span class="c1"># Clip values of exponent at 700 to avoid overflow</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     
