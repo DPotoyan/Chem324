@@ -158,9 +158,9 @@ $$\boxed{E= h\nu}$$
 - Unit of Energy $E$, $1 J$.
 ```
 
-- This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
+- This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! 
 
-- When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu = E_n - E_m$ is either coming from light or is used to generate light.
+- When light is emitted or absorbed, the atom or molecule jumps from one state to another and the energy difference $h\nu$ is either coming from light or is used to generate light.
 
 - Note how small $h$ is in the macroscopic units (such as J s). This is why quantization of energy is hardly noticeable and classical mechanics works so well at the macro scale. In the limit $h \rightarrow 0$, $E$ becomes continuous, and an arbitrary real value of E is allowed. This is the classical limit.
 
