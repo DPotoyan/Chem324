@@ -101,7 +101,7 @@ When heating up a material we observe three things. 1. Radiation intensity of ma
 
 
 :::{figure-md} markdown-fig
-<img src="./images/lec1_UVcat.jpg" alt="ultraviolet catastrophe" class="bg-primary mb-1" width="80%">
+<img src="./images/lec1_UVcat.jpg" alt="ultraviolet catastrophe" class="bg-primary mb-1" width="50%">
 
 Predictions of CM and QM diverge in the high frequency (low wavelength) limit where CM predicts infinite energy and QM predicts insufficent thermal energy for radiation. 
 
