@@ -3,10 +3,11 @@
 
 ```{admonition} What you need to know
 :class: note
-- Energies of atoms, molecules and light are _quantized_. Quantized means that energies assuming strictly defined discrete values as opposed to having continuum range. 
-- Quantization of energy is a fundamental aspect of our physical reality and is observed in all quantum experiments. Quantum mechanics provies thorough explanation and prediction of quantization.  
-- Key historical developments leading to the birth of QM are _black body radiation_, _double slit experiment_, _photoelectric effect_
-- Some macroscopic phenomena, such as the red color of hot metals, heat capacity of solids at a low temperature, and colors of matter are all due to quantum effects.
+
+- The energies of atoms, molecules, and light are **quantized**. This means that energy can only assume specific, **discrete values** rather than a continuous range.
+- Energy quantization is a fundamental principle of our physical reality, consistently observed in quantum experiments. Quantum mechanics provides a comprehensive explanation and accurate predictions of this phenomenon.
+- Key historical developments leading to the emergence of quantum mechanics include **black body radiation, the double slit experiment, and the photoelectric effect**.
+- Several macroscopic phenomena, such as the red glow of hot metals, the heat capacity of solids at low temperatures, and the colors of materials, are all manifestations of quantum effects.
 ```
 
 ## What is the nature of light?
@@ -50,17 +51,21 @@ Definitions of wavelength $\lambda$ and frequency $\nu$.
 
 Wavelength **$\lambda$** and frequency **$\nu$** of light are inversely proportional with constant of proportionality being the speed of light **c**:
 
+```{admonition} Plack equation
+:class: important
 
  $$\lambda \nu = c$$
 
+ - Speed of light in vacuum, $c=3 \cdot 10^8 m/s$ is a fundamental constant.
+
+```
 
 - Think of wavelength as distance between wave peaks 
   (nanometers, nm)
 
-- Think of frequency as a 
-  distance traveled in 1 second (hz). 
+- Think of frequency as a distance traveled in 1 second (hz). 
 
-- Speed of light in vacuum, c is a constant ($3 \cdot 10^8 m/s$).  Thus knowing the wavelength allows you to compute the frequency and vice versa.  
+ 
 
 
 
@@ -74,13 +79,11 @@ EM spectrum and excitable energy states corresponding to each frequency region
 :::
 
 
----
-
 - This is not such a trivial question. In fact, this very question arose in connection with black body radiation; an experiment that forever changed the course of history by giving birth to quantum mechanics! 
 
 
 
-### Black body as a model for all radiating objects.
+### Black body as a model for heated objects.
 
 
 :::{figure-md} markdown-fig
@@ -93,9 +96,9 @@ Black body radiation guide from PhDcomics!
 
 - Watch the beutiful animation: FIngerprints of stars. First 3 minutes is solely focused on blackbody radiation
 
-<html>
+<div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uG4xe9cNpP0?si=WwWocuEyIXdI72CD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</html>
+</div>
 
 
 
@@ -131,21 +134,18 @@ The black body is used as a standard with which the absorption of real bodies is
 
 
 
-### Classical Mechanics perspective on black bodies
-
-- What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
-- What is light? Think of an oscillating spring with frequency $\nu$
-- Thermodynamics: Heat can only flow from high to low temperature. In equilibrium, each degree of freedom in our case each spring/oscillator gets the same thermal energy $k_B T$.
-
-
-
 ### Ultraviolet catastrophe of classical mechanics
 
 ```{image} ./images/lec1_UVcat.jpg
 :align: center
 ```
+**How classical mechanics describes temperature and radiation**
 
-Classical mechanics reasoning about black body radiation goes like this:
+- What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
+- What is light? Think of an oscillating spring with frequency $\nu$
+- In thermodynamic equilibrium, each degree of freedom in our case each spring or oscillator gets the same thermal energy $k_B T$.
+
+---
 
 - One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves with small frequency region $[\nu, \nu+d\nu]$ is: 
 
