@@ -119,6 +119,45 @@ $$
 
 ::::
 
+---
+
+::::{admonition} **Problem 2: Maximum Kinetic Energy of Photoelectrons**
+:class: note 
+
+Ultraviolet light with a wavelength of 250 nm is incident on a metal surface with a work function of 3.0 eV. Calculate the maximum kinetic energy of the emitted photoelectrons.
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+First, calculate the energy of the incident photons:
+
+$$
+E_{\text{photon}} = \frac{hc}{\lambda}
+$$
+
+Where:
+- $h = 6.626 \times 10^{-34} \, \text{J} \cdot \text{s}$
+- $c = 3.00 \times 10^8 \, \text{m/s}$
+- $\lambda = 250 \, \text{nm} = 250 \times 10^{-9} \, \text{m}$
+
+$$
+E_{\text{photon}} = \frac{6.626 \times 10^{-34} \times 3.00 \times 10^8}{250 \times 10^{-9}} \, \text{J} = 7.95 \times 10^{-19} \, \text{J}
+$$
+
+Convert this energy to eV:
+
+$$
+E_{\text{photon}} = \frac{7.95 \times 10^{-19} \, \text{J}}{1.602 \times 10^{-19} \, \text{J/eV}} \approx 4.96 \, \text{eV}
+$$
+
+The maximum kinetic energy $K_{\text{max}}$ of the emitted photoelectrons is given by:
+
+$$
+K_{\text{max}} = E_{\text{photon}} - \phi = 4.96 \, \text{eV} - 3.0 \, \text{eV} = 1.96 \, \text{eV}
+$$
+:::
+
+::::
 
 ---
 
