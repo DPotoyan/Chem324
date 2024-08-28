@@ -110,23 +110,17 @@ Predictions of CM and QM diverge in the high frequency (low wavelength) limit wh
 
 **How classical mechanics describes temperature and radiation**
 
-- What is “temperature”? A measure for kinetic energy per particle associated with translational, rotational, vibrational degrees of freedom. 
-- What is light? Think of an oscillating spring with frequency $\nu$
-- In thermodynamic equilibrium, each degree of freedom in our case each spring or oscillator gets the same thermal energy $k_B T$.
-
----
-
-- One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality require a few more steps to derive which we skip and write final result:
+- **What is radiation in classical mechanics?** Radiation is considered a wave with frequency $\nu$. In a heated body, naturally vibrating springs (which represent atoms or molecules) generate waves with the same frequency. 
+- **Packing wave modes in a box** One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality requires a few more steps to derive which we skip and write final result:
 
 $$dN_{\nu }= \frac{8\pi}{c^3}\cdot nu^2 d\nu$$   
 
- - From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
+ - **Equipartition of energy** From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
   $$\langle E\rangle = k_BT$$
 
- -  Every vibrating spring in heated body has same energy regardless of frequency, think about this assumption for a sec
-  
+ -  Every vibrating spring in heated body thus has same energy regardless of frequency, think about this assumption for a sec!
 
-- Distribution of radiated frequencies is then product of average thermla energy and number of springs in a frequency interval
+- **Radiation Energy Distribution:** Distribution of radiated frequencies is then product of average thermal energy and number of springs in a frequency interval
 
 $$\rho({\nu}) =  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
 
