@@ -107,10 +107,8 @@ Predictions of CM and QM diverge in the high frequency (low wavelength) limit wh
 
 :::
 
-
-**How classical mechanics describes temperature and radiation**
-
 - **What is radiation in classical mechanics?** Radiation is considered a wave with frequency $\nu$. In a heated body, naturally vibrating springs (which represent atoms or molecules) generate waves with the same frequency. 
+
 - **Packing wave modes in a box** One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality requires a few more steps to derive which we skip and write final result:
 
 $$dN_{\nu }= \frac{8\pi}{c^3}\cdot nu^2 d\nu$$   
@@ -124,7 +122,8 @@ $$dN_{\nu }= \frac{8\pi}{c^3}\cdot nu^2 d\nu$$
 
 $$\rho({\nu}) =  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
 
-- Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe! If you integrate $\rho$ over all frequencies it will give you a total amount of radiation which in this case will be infinite! A light bulb can destroy the universe! Something is off with our classical prediction. 
+- **Ultraviolet catastrophe:** Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe! If you integrate $\rho$ over all frequencies it will give you a total amount of radiation which in this case will be infinite! A light bulb can destroy the universe! Something is off with our classical prediction. 
+
 
 
 :::{admonition} Quiz
@@ -242,11 +241,11 @@ $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{
 
 ### Wien's displacement law
 
-The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law:
+- **Connecting temperature of black body with wavelength or frequency**. The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law. You can derive it by evaluating $d\rho(\lambda)/d\lambda=0$. 
 
 $$\lambda_{max} = \frac{b}{T}$$
 
-Where $ b $ is Wien's displacement constant, approximately equal to $2.8977729 \cdot 10^{-3} $ m·K.
+- Where $ b=2.8977729 \cdot 10^{-3} m·K$ is called Wien's displacement constant.  
 
 ### Explore black body radiation
 
