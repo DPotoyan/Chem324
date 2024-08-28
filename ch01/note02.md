@@ -230,7 +230,7 @@ $$\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
 $$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
 
-You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
+- You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
 
 $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
 
