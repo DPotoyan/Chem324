@@ -2,8 +2,7 @@
 ## Photoelectric effect
 
 
-
-```{admonition} What you need to know
+:::{admonition} What you need to know
 :class: note
 
 - **Photoelectric effect** Electrons are ejected when surface of a material is subjected to radiation exceeding a certain threshold frequency. 
@@ -13,16 +12,18 @@
 - One photon can eject one electron only if it has sufficient energy. Any extra energy gets converted into kinetic energy resulting in electrons flying faster.
 - Photons with insufficent energy scatters of the electron
 - High intensity light meaning lots of photons per unit area per unit time are unable to eject a single electron
-```
+:::
 
-
-```{image} ./images/lec2_intro.png
-:align: center
-```
 
 ### Photoelectric effect challanges classical mechanical thinking.
 
-![](./images/lect2_Eflying.png)
+:::{figure-md} markdown-fig
+
+<img src="./images/lect2_Eflying.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Shown are different effects of radiation on material depending on frequency. From left to right frequency of radiation is increasing. 
+:::
+
 
 - When you shine a light on a metal surface exceeding certain threshold frequency electrons, start flying off the surface. But below this frequency no electrons are ejected regardless of the intensity of light. This experiment challanged classical way of thinking about light according to which energy of light is proportional to amplitude of wave or intensity. 
 
@@ -32,7 +33,13 @@
 
 ### Kinetic energy: frequency vs intensity
 
-![](images/photoel1.png)
+
+:::{figure-md} markdown-fig
+
+<img src="./images/photoel1.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Shown are dependece of electron kinetic energy on frequency of radiation that hits the surface of material (left plot) and on intensity of light for frequencies below and above threoshold (right plot).
+:::
 
 
 1. Frequency $\nu$ determines weather electrons will be ejected: $\nu>\nu_0$ but does not affect the number of electrons (current)
@@ -46,7 +53,11 @@
 
 ### Electric current: frequency vs intensity
 
-![](images/photoel2.png)
+:::{figure-md} markdown-fig
+<img src="./images/photoel2.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Shown are dependece of electron current on frequency of radiation that hits the surface of material (left plot) and on intensity of light for some frequency above threoshold (right plot).  
+:::
 
 1. Once threoshold is reached $\nu>\nu_0$  frequency has no effect on electron current (number of electrons)
 
@@ -72,9 +83,11 @@ $$\boxed{h\nu = E_{bind} + \frac{mv^2}{2}}$$
 
 ### Applications of photoelectric effect
 
-- Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. 
+:::{figure-md} markdown-fig
+<img src="./images/lec2_applic.jpg" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
 
-![](./images/lec2_applic.jpg)
+Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. ! 
+:::
 
-
+### Example Problems
 
