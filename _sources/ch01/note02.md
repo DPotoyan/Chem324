@@ -111,7 +111,7 @@ Predictions of CM and QM diverge in the high frequency (low wavelength) limit wh
 
 - **Packing wave modes in a box** One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality requires a few more steps to derive which we skip and write final result:
 
-$$dN_{\nu }= \frac{8\pi}{c^3}\cdot nu^2 d\nu$$   
+$$dN_{\nu }= \frac{8\pi}{c^3}\cdot \nu^2 d\nu$$   
 
  - **Equipartition of energy** From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
   $$\langle E\rangle = k_BT$$
