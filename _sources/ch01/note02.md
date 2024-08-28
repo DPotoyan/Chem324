@@ -118,19 +118,19 @@ Predictions of CM and QM diverge in the high frequency (low wavelength) limit wh
 
 - One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality require a few more steps to derive which we skip and write final result:
 
-$$dN_{\nu }= \frac{8\pi}{c^3}\nu^2 d\nu$$   
+$$dN_{\nu }= \frac{8\pi}{c^3}\cdot nu^2 d\nu$$   
 
- - From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant you probably have seen in your thermodynamics class. 
-  
+ - From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
   $$\langle E\rangle = k_BT$$
 
- -  Thus the distribution of radiation energy is:
+ -  Every vibrating spring in heated body has same energy regardless of frequency, think about this assumption for a sec
+  
 
-$$\rho({\nu}) = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
+- Distribution of radiated frequencies is then product of average thermla energy and number of springs in a frequency interval
 
-- Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe! 
+$$\rho({\nu}) =  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
 
-- If you integrate $\rho$ over all frequencies it will give you a total amount of radiation which in this case will be infinite! A light bulb can destroy the universe! Something is off with our classical prediction. 
+- Energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe! If you integrate $\rho$ over all frequencies it will give you a total amount of radiation which in this case will be infinite! A light bulb can destroy the universe! Something is off with our classical prediction. 
 
 
 :::{admonition} Quiz
