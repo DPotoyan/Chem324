@@ -91,3 +91,55 @@ Besides its historical role in the establishment of QM photoelectric effect has 
 
 ### Example Problems
 
+::::{admonition} **Problem 1: Calculating the Threshold Frequency**  
+:class: note
+
+A certain metal has a work function ($\phi$) of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+The threshold frequency $\nu_0$ is related to the work function $\phi$ by the equation:
+
+$$
+\phi = h\nu_0
+$$
+
+Where:
+- $\phi = 4.5 \, \text{eV}$
+- $h = 4.1357 \times 10^{-15} \, \text{eV} \cdot \text{s}$ (Planck's constant)
+
+Now, solve for $\nu_0$:
+
+$$
+\nu_0 = \frac{\phi}{h} = \frac{4.5 \, \text{eV}}{4.1357 \times 10^{-15} \, \text{eV} \cdot \text{s}} \approx 1.088 \times 10^{15} \, \text{Hz}
+$$
+
+:::
+
+::::
+
+
+---
+
+::::{admonition} **Problem 3: Photoelectric Current and Light Intensity**  
+:class: note
+
+Explain how the intensity of incident light affects the photoelectric current, assuming the frequency of the light is above the threshold frequency.
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+In the photoelectric effect, the intensity of the incident light is proportional to the number of photons striking the metal surface per unit time. If the frequency of the light is above the threshold frequency, each photon has sufficient energy to eject an electron.
+
+As the intensity increases, more photons hit the surface, leading to the emission of more photoelectrons. Consequently, the photoelectric current, which is proportional to the number of emitted electrons, increases with the intensity of the incident light. However, the kinetic energy of the emitted electrons remains the same and is determined by the energy of the individual photons, not the intensity of the light. \, \text{eV}
+$$
+
+:::
+
+::::
+
+
+
+
+
