@@ -177,8 +177,9 @@ $$\rho_{\nu} = \langle E\rangle \cdot  dN_{\nu}=  k_B T \cdot \frac{8\pi}{c^3}\n
 
 $$\boxed{E= h\nu}$$
 
-- Unit of planck constant, $h = 6.63 10^{–34} J s$
-- Unit of frequency $\nu$, $s^{-1}$.
+- Unit of Planck's constant, $h = 6.63 10^{–34} J \cdot s$
+- Unit of frequency $\nu$, $1 s^{-1}$.
+- Unit of frequency $\nu$, $1 J$.
 ```
 
 - This means atoms and molecules absorb and emit radiation in discrete quantities, multiples of $h\nu$, which are called quanta! $E_1, E_2,E_3 …$
