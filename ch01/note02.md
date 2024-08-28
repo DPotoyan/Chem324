@@ -109,6 +109,13 @@ Predictions of CM and QM diverge in the high frequency (low wavelength) limit wh
 
 - **What is radiation in classical mechanics?** Radiation is considered a wave with frequency $\nu$. In a heated body, naturally vibrating springs (which represent atoms or molecules) generate waves with the same frequency. 
 
+:::{figure-md} markdown-fig
+<img src="./images/phonons.gif" alt="ultraviolet catastrophe" class="bg-primary mb-1" width="30%">
+
+Visualuzation of atomic vibrations in a solid body. These vibrational modes are called phonons not to be confused with photons to be introduced in next section!
+
+:::
+
 - **Packing wave modes in a box** One can fit more of high fequency (short wavelength) waves in the box than small frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. Constant of proportionality requires a few more steps to derive which we skip and write final result:
 
 $$dN_{\nu }= \frac{8\pi}{c^3}\cdot \nu^2 d\nu$$   
