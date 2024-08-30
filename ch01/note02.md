@@ -121,7 +121,7 @@ Visualuzation of atomic vibrations in a solid body. These vibrational modes are 
 $$dN_{\nu }= \frac{8\pi}{c^3}\cdot \nu^2 d\nu$$   
 
  - **Equipartition of energy** From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
- 
+
   $$\langle E\rangle = k_BT$$
 
  -  Every vibrating spring in heated body thus has same energy regardless of frequency, think about this assumption for a sec!
@@ -230,19 +230,24 @@ This is Planck's law, which describes the spectral density of radiation emitted 
 
 :::
 
-- Assuming that the energy of an oscillator is quantized, Planck showed that the correct thermodynamic relation for the average energy is
+- Assuming that the energy of an oscillator is quantized, Planck dervied a new expression for average energy which now depends on frequency of oscillations unlike classical expression of $k_BT$
 
 $$\langle E \rangle = \Big[ \frac{1}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-- Instead of uniform value $kT$ given by classical mechanics we end up with  distirbution of oscillator energies which tends to zero in the high frequency limit. Thus Planck's expression resolves ultraviolet catastrophe!
+- With this expression we end up with a distirbution of oscillator energies which tends to zero in the high frequency limit.
 
 $$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
 
-- You can also express distribution of energy in terms of wavelength by making the subsittion $\lambda = \frac{c}{\nu}$ obtaining:
+- You can also express distribution in terms of wavelength by making the subsittion $\nu = c/\lambda$. Here 
 
 $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
 
-- The expressions for $\rho_{\lambda}(T)d\lambda$ or $\rho_{\nu}(T)d\nu$ have units of energy per volume which is why they are often referred as **energy density** of radiation. By integrating over the entire spectrum (e.g all wavelengths) one can obtain the total energy of radiation per volume!
+
+- The expressions for $\rho_{\lambda}(T)d\lambda$ or $\rho_{\nu}(T)d\nu$ have units of energy per volume which is why they are often referred as **energy density** of radiation. By integrating over the entire spectrum (e.g all frequences or wavelengths) we obtain the total energy of radiation per volume!
+
+$$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4 $$
+
+- $\sigma=5.6697 \cdot 10^{-8} J m^{-2} K^{-4} s^{-1}$ is called Stefan-Boltzmann constat.  
 
 > In some books you may also find black body radiation characterized via the radiation flux which is a radiation measured per unit wavelength and per unit solid angle $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
 
@@ -253,7 +258,7 @@ $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{
 
 $$\lambda_{max} = \frac{b}{T}$$
 
-- Where $ b=2.8977729 \cdot 10^{-3} m·K$ is called Wien's displacement constant.  
+- $ b=2.8977729 \cdot 10^{-3} m·K$ is called Wien's displacement constant.  
 
 ### Explore black body radiation
 
