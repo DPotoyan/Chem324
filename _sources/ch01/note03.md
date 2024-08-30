@@ -93,8 +93,8 @@ Besides its historical role in the establishment of QM photoelectric effect has 
 ### Explore photoelectric effect
 
 <iframe src="https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric"
-        width="600"
-        height="500"
+        width="800"
+        height="800"
         allowfullscreen>
 </iframe>
 
