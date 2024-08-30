@@ -121,6 +121,7 @@ Visualuzation of atomic vibrations in a solid body. These vibrational modes are 
 $$dN_{\nu }= \frac{8\pi}{c^3}\cdot \nu^2 d\nu$$   
 
  - **Equipartition of energy** From thermodynamics we know that in equilibrium each degree of freedom or each oscillator gets the same $k_BT$ of energy where $k_B$ is the Boltzman's constant. 
+ 
   $$\langle E\rangle = k_BT$$
 
  -  Every vibrating spring in heated body thus has same energy regardless of frequency, think about this assumption for a sec!
