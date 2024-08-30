@@ -123,7 +123,7 @@ When two waves interfere, their amplitude can double (constructive interference)
 Constructive vs destructive intereference. 
 :::
 
-
+### Example Problems
 
 
 
