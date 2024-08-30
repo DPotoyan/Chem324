@@ -155,3 +155,5 @@ The angular frequency depends on the geometry of the domain and on two integer n
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
 - Can you guess what the solution would be fore the 3D case?
+
+### Example Problems
