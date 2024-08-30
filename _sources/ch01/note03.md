@@ -75,7 +75,7 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 - Any extra energy gets converted into kinetic energy of the ejected electron
 - If frequency is lower than threshold photon does not transfer any energy to the electron! 
 
-:::{admonition}
+:::{admonition} **energy of photon = work function + kinetic energy of electron**
 :class: important
 
 $$\boxed{E_{photon} = E_{bind} + KE}$$
