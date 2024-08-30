@@ -9,7 +9,7 @@
 ```
 
 
-### Waves, waves and more waves
+### Types of Waves
 
 - Sound Waves. 
 - Waves on a guitar string.
@@ -21,7 +21,14 @@
 
 ### Classification of waves by orientation: Transverse vs Longitudinal
 
-![](https://media.giphy.com/media/og52So0BUmZVe/giphy.gif)
+
+:::{figure-md} markdown-fig
+
+<img src="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Transverse waves carry distrubance perpendicular to the direction of wave propogation. Longitudinal waves carry disturbance along the direction of wave propogation. 
+:::
+
 
 ### Classification of waves by appearance: Standing vs Traveling
 
@@ -31,9 +38,13 @@
 
 ### Defining wave mathematically  
 
-Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via: $u(x,t) = f(x, t)$.
+Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via: 
 
-Imagine an ocean wave. For an observer standing on a wave (surfer) the wave stands still but for the observer standing on the shore the wave moves away with velocity: $x'=x-vt$
+$$u(x,t) = f(x, t)$$
+
+Imagine an ocean wave. For an observer standing on a wave (surfer) the wave stands still but for the observer standing on the shore the wave moves away with velocity: 
+
+$$x'=x-vt$$
 
 Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer: 
 
@@ -72,7 +83,13 @@ We just obtained a 1D classical wave equation. Solutions of this equation are fu
 
  Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
 
- ![](https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif)
+:::{figure-md} markdown-fig
+
+<img src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Illustration of wave interference
+:::
+
 
 
  This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves $A$ and $B$ are both solutions of the wave equation, then so is a wave $C = A + B$.
@@ -99,7 +116,13 @@ When two waves interfere, their amplitude can double (constructive interference)
 - $\phi=0$ Fully constructive interference $y(x,t)=2A \cos(kx-\omega t)$
 - $\phi=\pi$ Fully destructive interference. $y(x,t)=0$
 
-![](https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif)
+:::{figure-md} markdown-fig
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Constructive vs destructive intereference. 
+:::
+
 
 
 
