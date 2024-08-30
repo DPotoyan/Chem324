@@ -67,18 +67,24 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 
 ### Photons explains photoelectric effect 
 
-- Light consists of photons: tiny packets of energy carrying $h\nu$ energy. 
-- Intensity of light is measure of number of photons. frequency is measure of energy of photons. 
-- 1 photon can collide with 1 electron and eject it if it has sufficient energy 
+- **Light consists of photons**: tiny packets of energy carrying $h\nu$ energy. 
+- **Intensity of light**  quantifies number of photons. 
+- **Frequency of light**  quantifies energy of photons. 
+- **Particular nature of light** 1 photon can "collide" with 1 electron and eject it if photon has sufficient energy.
+- **The work function** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials.
+- Any extra energy gets converted into kinetic energy of the ejected electron
+- If frequency is lower than threshold photon does not transfer any energy to the electron! 
 
-$$\boxed{E_{photon} = h\nu}$$
+:::{admonition}
+:class: important
 
 $$\boxed{E_{photon} = E_{bind} + KE}$$
 
-$$\boxed{h\nu = E_{bind} + \frac{mv^2}{2}}$$
+$$\boxed{h\nu = h\nu_0 + \frac{mv_e^2}{2}}$$
 
-- Any extra energy gets converted into kinetic energy of ejected electron
-- If frequency is lower than threshold photon does not transfer any energy to electron! 
+:::
+
+
 
 
 ### Applications of photoelectric effect
