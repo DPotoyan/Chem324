@@ -7,8 +7,8 @@
 
 - **Photoelectric effect** Electrons are ejected when surface of a material is subjected to radiation exceeding a certain threshold frequency. 
 - Below the threshold fequency no electrons are ejected regardless of intensity of light (brightness)
-- Photoelectric effect is impossible to explain classically because energy in Classical Mechanics is thought to only grows with intensity of light. 
-- In QM radiation just like matter is quantized. Radiation can be viewed as a stream of photons: a tiny and discrete packets of energy.
+- Photoelectric effect is impossible to explain classically because energy in Classical Mechanics energy is thought to only grows with intensity of light. 
+- In QM energy of radiation just like matter is quantized. Radiation can be viewed as a stream of photons: a tiny and discrete packets of energy.
 - One photon can eject one electron only if it has sufficient energy. Any extra energy gets converted into kinetic energy resulting in electrons flying faster.
 - Photons with insufficent energy scatters of the electron
 - High intensity light meaning lots of photons per unit area per unit time are unable to eject a single electron
