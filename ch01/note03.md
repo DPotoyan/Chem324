@@ -71,14 +71,14 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 - **Intensity of light**  quantifies number of photons. 
 - **Frequency of light**  quantifies energy of photons. 
 - **Particular nature of light** 1 photon can "collide" with 1 electron and eject it if photon has sufficient energy.
-- **The work function** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials.
-- Any extra energy gets converted into kinetic energy of the ejected electron
+- **The work function $W_0$** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials.
+- Any extra energy gets converted into kinetic energy $KE$ of the ejected electron
 - If frequency is lower than threshold photon does not transfer any energy to the electron! 
 
 :::{admonition} **energy of photon = work function + kinetic energy of electron**
 :class: important
 
-$$\boxed{E_{photon} = E_{bind} + KE}$$
+$$\boxed{E_{photon} = W_0 + KE}$$
 
 $$\boxed{h\nu = h\nu_0 + \frac{mv_e^2}{2}}$$
 
@@ -110,7 +110,7 @@ Besides its historical role in the establishment of QM photoelectric effect has 
 ::::{admonition} **Problem 1: Calculating the Threshold Frequency**  
 :class: note
 
-A certain metal has a work function ($\phi$) of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
+A certain metal has a work function of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
 
 :::{admonition} **Solution:**
 :class: dropdown
