@@ -89,6 +89,16 @@ $$\boxed{h\nu = E_{bind} + \frac{mv^2}{2}}$$
 Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. ! 
 :::
 
+
+### Explore photoelectric effect
+
+<iframe src="https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric"
+        width="800"
+        height="500"
+        allowfullscreen>
+</iframe>
+
+
 ### Example Problems
 
 ::::{admonition} **Problem 1: Calculating the Threshold Frequency**  
