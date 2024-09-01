@@ -11,13 +11,11 @@ In other words, the energies of atoms are quantized.
 - **Limitation of Bohr's Theory:** However, for atoms with more than one electron, Bohr's theory fails to generalize, leading scientists to develop a more rigorous theory—Quantum Mechanics.
 :::
 
-```{image} images/emission_absorption.jpeg
-:align: center
-```
 
-- When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique.  These discrete emitted frequencies comprise a stick spectrum such as the one shown above.  
 
 ### H atom spectra
+
+- When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique. 
 
 :::{figure-md} markdown-fig
 
