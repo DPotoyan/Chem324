@@ -40,11 +40,17 @@ $$v = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
 
 where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
 
+:::{admonition} **Rydberg formula**
+:class: important
+
+
 $$\tilde{v} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
 
 where 
 - $R_H = 109677.581$ cm$^{-1}$ is the Rydberg constant
 - $n_1 = 1,2,3,...$, and $n_2 = n_1+1,n_1+2,...$.  
+
+:::
 
 - While these equations fit the hydrogen atom spectrum nicely, they do not prescribe any physics to the system.  They do not present a model of the hydrogen atom but rather a heuristic equation that fits the data.  Nonetheless, scientists were perplexed by the presence of the integers $n_1$ and $n_2$. 
 
@@ -147,9 +153,7 @@ E(r) &= \frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} - \frac{e^2}{4\pi\varepsilon_0
     &= -\frac{m_ee^4}{8\varepsilon_0^2h^2}\frac{1}{n^2} \quad n=1,2,3,...
 \end{align}$$
 
-where I plugged in the quantized values for $r$ derived from the for balance relationship.  
-
-Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
+where I plugged in the quantized values for $r$ derived from the for balance relationship.   Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
 
 $$\begin{equation}
 \Delta E = \frac{m_ee^4}{8\varepsilon_0^2h^2}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
