@@ -1,16 +1,15 @@
 
 ## Atomic spectra
 
-```{admonition} What you need to know
+::: {admonition} **What You Need to Know**
 :class: note
 
-- Atomic spectroscopy measures frequencies or wavelengths of radiation absorbed or emitted by atoms.
-- Spectra of atoms show discrete lines which indicate that atoms absorb or emit only very specific few frequencies
-- In other words energies of atoms are quantized.
-- Bohr tried to develop theory to explain spectra of atoms by combining classical mechanics with rules of quantization.
-- For the simplest H atom Bohr's theory worked perfectly giving a closed formula which explains all spectral lines of H atom.
-- Alas for atoms with more than one electron Bohr's theory fails to generalize which prompted scientist to develop a more rigorous theory fo quantum Mechanics
-```
+- **Atomic Spectroscopy** measures the frequencies or wavelengths of radiation absorbed or emitted by atoms.
+- **Spectra of Atoms** show discrete lines, indicating that atoms absorb or emit only specific, few frequencies.
+In other words, the energies of atoms are quantized.
+- **Bohr's Theory:** Bohr attempted to explain atomic spectra by combining classical mechanics with the concept of quantization. For the simplest hydrogen atom, Bohr's theory worked perfectly, providing a closed formula that explains all the spectral lines of the hydrogen atom.
+- **Limitation of Bohr's Theory:** However, for atoms with more than one electron, Bohr's theory fails to generalize, leading scientists to develop a more rigorous theory—Quantum Mechanics.
+:::
 
 ```{image} images/emission_absorption.jpeg
 :align: center
@@ -20,13 +19,21 @@
 
 ### H atom spectra
 
-```{image} images/lec1_AtomicSpectrum.png
-:align: center
-```
+:::{figure-md} markdown-fig
 
-```{image} images/spectra.png
-:align: center
-```
+<img src="images/lec1_AtomicSpectrum.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Atomic spectorscopy of hydrogen atom. hydrogen in gas discharge tube radiates discrete wavelengts which can be detected as discrete lines by passing the radiation through prism.
+:::
+
+
+:::{figure-md} markdown-fig
+
+<img src="images/spectra.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Using spectorscopy one could detect presence of different elements in the sun. 
+:::
+
 
 - These stick spectra are clearly impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
@@ -42,9 +49,15 @@ where
 
 - While these equations fit the hydrogen atom spectrum nicely, they do not prescribe any physics to the system.  They do not present a model of the hydrogen atom but rather a heuristic equation that fits the data.  Nonetheless, scientists were perplexed by the presence of the integers $n_1$ and $n_2$. 
 
-```{image} images/Lymann.jpeg
-:align: center
-```
+
+:::{figure-md} markdown-fig
+
+<img src="images/Lymann.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Atomic spectral lines are named after their disocerers. Each series contains all transitions to a distinct ground or excited state level n=1,2,3. 
+:::
+
+
 
 ### Bohr model of H atom
 
@@ -61,9 +74,14 @@ $$\begin{equation}
 2\pi r = n\lambda_e \quad n=1,2,3,...
 \end{equation}$$
 
-```{image} images/quantization_orbits.jpeg
-:align: center
-```
+
+:::{figure-md} markdown-fig
+
+<img src="images/quantization_orbits.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+One could rationalize discrete Bohr's orbits by the integer number of wavelengths one could fit into the orbit.  
+:::
+
 
 where $\lambda_e$ is the deBroglie wavelength of an electron and can be written as
 

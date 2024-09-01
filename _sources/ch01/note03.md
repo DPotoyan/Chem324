@@ -2,16 +2,15 @@
 ## Photoelectric effect
 
 
-:::{admonition} What you need to know
+::: {admonition} **What You Need to Know**
 :class: note
 
-- **Photoelectric effect** Electrons are ejected when surface of a material is subjected to radiation exceeding a certain threshold frequency. 
-- Below the threshold fequency no electrons are ejected regardless of intensity of light (brightness)
-- Photoelectric effect is impossible to explain classically because energy in Classical Mechanics energy is thought to only grows with intensity of light. 
-- In QM energy of radiation just like matter is quantized. Radiation can be viewed as a stream of photons: a tiny and discrete packets of energy.
-- One photon can eject one electron only if it has sufficient energy. Any extra energy gets converted into kinetic energy resulting in electrons flying faster.
-- Photons with insufficent energy scatters of the electron
-- High intensity light meaning lots of photons per unit area per unit time are unable to eject a single electron
+- **Photoelectric Effect:** Electrons are ejected from the surface of a material when it is exposed to radiation with a frequency exceeding a specific threshold frequency.
+- **Threshold Frequency:** No electrons are ejected if the radiation's frequency is below this threshold, regardless of the light's intensity (brightness).
+**Classical Mechanics vs. Quantum Mechanics:** The photoelectric effect cannot be explained using classical mechanics, where energy is thought to increase continuously with light intensity. However, in quantum mechanics, energy is quantized. Radiation is treated as a stream of photons, which are discrete packets of energy.
+- **Photon-Electron Interaction:** A single photon can eject a single electron if the photon has sufficient energy. Any excess energy is converted into the kinetic energy of the ejected electron, causing it to move faster.
+- **Insufficient Energy:** Photons with energy below the threshold will not eject electrons; instead, they scatter off the material.
+- **High-Intensity Light:** Even high-intensity light, which means more photons per unit area per unit time, cannot eject electrons if the photons lack sufficient energy.
 :::
 
 
