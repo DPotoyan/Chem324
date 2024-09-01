@@ -13,7 +13,7 @@ In other words, the energies of atoms are quantized.
 
 
 
-### H atom spectra
+### Spectroscopy of atoms
 
 - When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique. 
 
@@ -32,8 +32,9 @@ Atomic spectorscopy of hydrogen atom. hydrogen in gas discharge tube radiates di
 Using spectorscopy one could detect presence of different elements in the sun. 
 :::
 
+### Spectral lines and Rydberg's formula
 
-- These stick spectra are clearly impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
+- The existance of discrete spectral lines are impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
 $$v = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
 
@@ -56,8 +57,7 @@ Atomic spectral lines are named after their disocerers. Each series contains all
 :::
 
 
-
-### Bohr model of H atom
+### Bohr's model of H atom
 
 - In 1911, Niels Bohr proposed a model for the hydrogen atom that was able to recapitulate the hydrogen atom spectrum. 
 - The model consists of an electron orbiting a proton in circular orbits.  The proton is considered to be fixed in space because it is so much more massive than the electron.  
