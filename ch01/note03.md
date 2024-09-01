@@ -64,15 +64,18 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 
 
 
-### Photons explains photoelectric effect 
+### Photons explain photoelectric effect 
 
-- **Light consists of photons**: tiny packets of energy carrying $h\nu$ energy. 
+- **Light consists of photons**: tiny packets of energy carrying $E_{photon}=h\nu$ energy. 
 - **Intensity of light**  quantifies number of photons. 
 - **Frequency of light**  quantifies energy of photons. 
+- If light radiates $n$ number of photons per second, then the total energy radiated per second is $nh\nu$
 - **Particular nature of light** 1 photon can "collide" with 1 electron and eject it if photon has sufficient energy.
-- **The work function $W_0$** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials.
-- Any extra energy gets converted into kinetic energy $KE$ of the ejected electron
+- **The work function $W_0=h\nu_0$** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials. 
+- The $\nu_0$ is called **threshold frequency:** minimum frequecny needed to eject electron. 
 - If frequency is lower than threshold photon does not transfer any energy to the electron! 
+- Any extra energy gets converted into kinetic energy $KE=mv_e^2/2$ of the ejected electron, where $v_e$ is the mangniture of ejected electron velcotiy. 
+
 
 :::{admonition} **energy of photon = work function + kinetic energy of electron**
 :class: important
