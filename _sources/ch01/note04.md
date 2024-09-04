@@ -83,13 +83,21 @@ Evolution of atomic model from pre-quantum to present day complete quantum theor
 <img src="images/bohring.png" alt="FrigginBohr" class="bg-primary mb-1" width="20%">
 
 A man goes to visit Niels Bohr, and sees a horseshoe hanging over Bohr's door (a scandinavian superstition).
-- The man says, "But Niels, you are a scientist! Surely you do not believe in this superstition?"
-- Niels replies, "Of course I don't believe in it!"
-- The man is confused. "Why do you have it if you don't believe in it?"
-- Bohr replies, "It is supposed to work, even if you don't believe in it!"
+The man says, "But Niels, you are a scientist! Surely you do not believe in this superstition?"
+Niels replies, "Of course I don't believe in it!"
+The man is confused. "Why do you have it if you don't believe in it?"
+Bohr replies, "It is supposed to work, even if you don't believe in it!"
 :::
 
 ### Quantizes states of electron
+
+:::{figure-md} markdown-fig
+
+<img src="images/quantization_orbits.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="60%">
+
+One could rationalize discrete Bohr's orbits by the integer number of wavelengths one could fit into the orbit.  
+
+:::
 
 Restricitng waves with wavelength $\lambda$ to sit around orbit separated by integer number yields
 
@@ -97,28 +105,19 @@ $$\begin{equation}
 2\pi r = n\lambda_e \quad n=1,2,3,...
 \end{equation}$$
 
-
-:::{figure-md} markdown-fig
-
-<img src="images/quantization_orbits.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
-
-One could rationalize discrete Bohr's orbits by the integer number of wavelengths one could fit into the orbit.  
-:::
-
-
 where $\lambda_e$ is the deBroglie wavelength of an electron and can be written as
 
 $$\begin{equation}
 \lambda_e = \frac{h}{m_ev}.
 \end{equation}$$
 
-Plugging the deBroglie wavelength equation into the circular wave equation yields
+Plugging the deBroglie wavelength equation we get first equation that electron in H atom should satisfy. 
 
 $$\begin{equation}
 m_evr = \frac{nh}{2\pi} = n\hbar,
 \end{equation}$$
 
-where we have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it comes up frequently in quantum mechanics. The term on the left-hand side of the last equation, $m_evr$, is the angular momentum of the electron.  Thus Bohr 's model demonstrates a quantization of the angular momentum of the electron.
+We have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it comes up frequently in quantum mechanics. The term on the left-hand side of the last equation, $m_evr$, is the angular momentum of the electron.  Thus Bohr 's model demonstrates a quantization of the angular momentum of the electron.
 
 ### Force balance
 
