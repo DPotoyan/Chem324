@@ -57,18 +57,36 @@ where
 
 :::{figure-md} markdown-fig
 
-<img src="images/Lymann.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+<img src="images/Lymann.jpeg" alt="atomic series" class="bg-primary mb-1" width="30%">
 
-Atomic spectral lines are named after their disocerers. Each series contains all transitions to a distinct ground or excited state level n=1,2,3. 
+Atomic spectral lines are named after their disocerers. Each series contains all transitions to a distinct ground or excited state level $n=1,2,3$. 
 :::
 
 
 ### Bohr's model of H atom
 
+<img src="images/evolution_atom.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+
+Evolution of atomic model from pre-quantum to present day complete quantum theory of atoms.
+:::
+
 - In 1911, Niels Bohr proposed a model for the hydrogen atom that was able to recapitulate the hydrogen atom spectrum. 
 - The model consists of an electron orbiting a proton in circular orbits.  The proton is considered to be fixed in space because it is so much more massive than the electron.  
 - Most importantly Bohr had to introduce new ad-hoc requirements to keep the electron stable. Namely the electron demonstrates wavelike characteristics which has an integer number $n=1,2,3,...$ of modes around the circular orbit.  
 - Thanks to this quantization rule expression for the H atom energy is obtained which is a function of an integer number $n=1,2,3,...$
+
+<img src="images/bohring.png" alt="FrigginBohr" class="bg-primary mb-1" width="20%">
+
+A man goes to visit Niels Bohr, and sees a horseshoe hanging over Bohr's door (a scandinavian superstition).
+
+- The man says, "But Niels, you are a scientist! Surely you do not believe in this superstition?"
+
+- Niels replies, "Of course I don't believe in it!"
+
+- The man is confused. "Why do you have it if you don't believe in it?"
+
+- Bohr replies, "It is supposed to work, even if you don't believe in it!"
+:::
 
 ### Quantizes states of electron
 
@@ -103,28 +121,28 @@ where we have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it come
 
 ### Force balance
 
-After introducing ad-hoc quantization rule, Bohr's model then resorts to lclassical mechanics to obtain energy function. 
+- After introducing ad-hoc quantization rule, Bohr's model then resorts to classical mechanics to obtain energy function. Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron must match centrifugal force
 
-Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron,
-
+**Electrostatic force**
 $$\begin{equation}
-f = \frac{e^2}{4\pi\varepsilon_0r^2}
+f_{el} = \frac{e^2}{4\pi\varepsilon_0r^2}
 \end{equation}$$
 
-where $4\pi\varepsilon_0$ is present to achieve SI units, must be equal to the centrifugal force,
+- where $4\pi\varepsilon_0$ is present to achieve SI units.
+
+**Fentrifugal force**
 
 $$\begin{equation}
-f = \frac{m_ev^2}{r}
+f_{cf} = \frac{m_ev^2}{r}
 \end{equation}$$
 
-where $m_e$ is the mass and $v$ is the velocity of the electron.  Equating these two forces yields
+- where $m_e$ is the mass and $v$ is the velocity of the electron.  Equating these two forces yields
 
 $$\begin{equation}
 \frac{e^2}{4\pi\varepsilon_0r^2} = \frac{m_ev^2}{r}.
 \end{equation}$$
 
-
-The combination of the force balance equation and the quantized angular momentum equation quantizes the values of $r$, the radius of the electron's circular orbit, that can be taken.  To demonstrate this we solve the quantized angular momentum equation for $v$ and plug the result into the force balance equation and solve for $r$:
+- The combination of the force balance equation and the quantized angular momentum equation quantizes the values of $r$, the radius of the electron's circular orbit, that can be taken.  To demonstrate this we solve the quantized angular momentum equation for $v$ and plug the result into the force balance equation and solve for $r$:
 
 $$\begin{align}
 \frac{e^2}{4\pi\varepsilon_0r^2} &= \frac{m_e\left( \frac{n\hbar}{m_er}\right)^2}{r} \\
@@ -133,7 +151,7 @@ $$\begin{align}
 \Rightarrow r &= \frac{4\pi\varepsilon_0(n\hbar)^2}{e^2m_e} \quad n=1,2,3,...
 \end{align}$$
 
-The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  Allowed values of $r$ as a function of $n$ are plotted below.
+The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  
 
 ### Energy of H atom 
 
@@ -153,23 +171,20 @@ E(r) &= \frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} - \frac{e^2}{4\pi\varepsilon_0
     &= -\frac{m_ee^4}{8\varepsilon_0^2h^2}\frac{1}{n^2} \quad n=1,2,3,...
 \end{align}$$
 
-where I plugged in the quantized values for $r$ derived from the for balance relationship.   Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
+where we plugged in the quantized values for $r$ derived from the for balance relationship.   Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
 
 $$\begin{equation}
 \Delta E = \frac{m_ee^4}{8\varepsilon_0^2h^2}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}$$
+\end{equation}
+$$
 
-Equating this to the frequency (use $E = h\nu$ and $\tilde{\nu} = \frac{\nu}{c}$) of emitted light yields
-
-$$\begin{equation}
-\tilde{v} = \frac{m_ee^4}{8\varepsilon_0^2ch^3}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}$$
-
-We see that this yields an expression for the Rydberg constant in terms of fundamental constants
+Equating this to the frequency (use $E = h\nu$ and $\tilde{\nu} = \frac{\nu}{c}$) of emitted light yields:
 
 $$\begin{equation}
-R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
+\tilde{v} = \frac{m_ee^4}{8\varepsilon_0^2ch^3}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right) = R_H \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
 \end{equation}$$
+
+We see that this yields an expression for the Rydberg constant in terms of fundamental constants $R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}$
 
 ### Problems 
 
