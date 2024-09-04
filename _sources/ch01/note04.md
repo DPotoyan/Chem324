@@ -47,7 +47,7 @@ where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to accoun
 $$\tilde{v} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
 
 where 
-- $R_H = 109677.581$ cm$^{-1}$ is the Rydberg constant
+- $R_H = 1.097 \times 10^7 \ \text{m}^{-1}$ is the Rydberg constant.
 - $n_1 = 1,2,3,...$, and $n_2 = n_1+1,n_1+2,...$.  
 
 :::
