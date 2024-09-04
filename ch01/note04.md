@@ -122,9 +122,10 @@ where we have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it come
 
 ### Force balance
 
-- After introducing ad-hoc quantization rule, Bohr's model then resorts to classical mechanics to obtain energy function. Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron must match centrifugal force
+After introducing ad-hoc quantization rule, Bohr's model then resorts to classical mechanics to obtain energy function. Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron must match centrifugal force
 
 **Electrostatic force**
+
 $$\begin{equation}
 f_{el} = \frac{e^2}{4\pi\varepsilon_0r^2}
 \end{equation}$$
