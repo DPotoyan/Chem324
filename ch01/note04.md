@@ -177,7 +177,8 @@ R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
 
 The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution** 
+:class: dropdown
 
 **A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
 
@@ -213,7 +214,8 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 - B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
 
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution** 
+:class: dropdown
 
 **A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^2}$ to calculate energy of a photon. 
 
@@ -226,7 +228,8 @@ $$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.937
 
 Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution** 
+:class: dropdown
 The Rydberg formula is given by:
 
 $$
@@ -280,7 +283,8 @@ So, the first three wavelengths of the Lyman series are approximately $121.57$ n
 
 A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
 
-:::{dropdown} **Solution** 
+:::{admonition} **Solution** 
+:class: dropdown
 
 We are given a wavelength $\lambda = 1.03 \times 10^{-7} \ \text{m}$ and asked to find the original level $n_2$ of the electron in the Lyman series (where $n_1 = 1$).
 
@@ -338,7 +342,8 @@ Thus, the original level of the electron is $n_2 = 3$.
 
 Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 
-:::{dropdown} **Solution** 
+:::{admonition} **Solution** 
+:class: dropdown
 
 The ionization energy is the energy required to remove an electron from its ground state to infinity. Using Bohr's theory, the energy of an electron in an orbit is given by:
 
@@ -375,7 +380,8 @@ Therefore, the ionization energy of singly ionized helium $He^+$ is $54.4 \ \tex
 
 - (Optional) Using python plot $r_n$ vs $n$
 
-:::{dropdown} Solution 
+:::{admonition} **Solution** 
+:class: dropdown
 
 The radius of the Bohr orbit is given by the formula:
 

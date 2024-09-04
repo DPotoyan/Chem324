@@ -107,9 +107,11 @@ Besides its historical role in the establishment of QM photoelectric effect has 
 </iframe>
 
 
-### Example Problems
+### Problems
 
-::::{admonition} **Problem 1: Calculating the Threshold Frequency**  
+#### Problem 1
+
+::::{admonition} **Calculating the Threshold Frequency**  
 :class: note
 
 A certain metal has a work function of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
@@ -137,9 +139,11 @@ $$
 
 ::::
 
----
 
-::::{admonition} **Problem 2: Maximum Kinetic Energy of Photoelectrons**
+
+#### Problem 2
+
+::::{admonition} **Maximum Kinetic Energy of Photoelectrons**
 :class: note 
 
 Ultraviolet light with a wavelength of 250 nm is incident on a metal surface with a work function of 3.0 eV. Calculate the maximum kinetic energy of the emitted photoelectrons.
@@ -177,9 +181,11 @@ $$
 
 ::::
 
----
 
-::::{admonition} **Problem 3: Photoelectric Current and Light Intensity**  
+
+#### Problem 3
+
+::::{admonition} **Photoelectric Current and Light Intensity**  
 :class: note
 
 Explain how the intensity of incident light affects the photoelectric current, assuming the frequency of the light is above the threshold frequency.

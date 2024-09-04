@@ -277,10 +277,11 @@ The black body is used as a standard with which the absorption of real bodies is
 
 :::
 
-### Example Problems
+### Problems
 
+#### Problem 1
 
-::::{admonition} **Question: Calculating the Wavelength of a Photon Using Planck's Equation**  
+::::{admonition} **Calculating the Wavelength of a Photon Using Planck's Equation**  
 :class: note
 
 A photon is emitted with an energy of $3.5 \, \text{eV}$. Calculate the wavelength of this photon. Use Planck's equation to relate the energy of the photon to its wavelength. The values of constants are:
@@ -323,6 +324,8 @@ The wavelength of the photon is approximately $355 \, \text{nm}$, which is in th
 :::
 
 ::::
+
+#### Problem 2
 
 ::::{admonition} **Question: Wien's displacement law**  
 :class: note
