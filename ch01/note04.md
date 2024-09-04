@@ -65,6 +65,8 @@ Atomic spectral lines are named after their disocerers. Each series contains all
 
 ### Bohr's model of H atom
 
+:::{figure-md} markdown-fig
+
 <img src="images/evolution_atom.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
 
 Evolution of atomic model from pre-quantum to present day complete quantum theory of atoms.
@@ -75,16 +77,15 @@ Evolution of atomic model from pre-quantum to present day complete quantum theor
 - Most importantly Bohr had to introduce new ad-hoc requirements to keep the electron stable. Namely the electron demonstrates wavelike characteristics which has an integer number $n=1,2,3,...$ of modes around the circular orbit.  
 - Thanks to this quantization rule expression for the H atom energy is obtained which is a function of an integer number $n=1,2,3,...$
 
+
+:::{figure-md} markdown-fig
+
 <img src="images/bohring.png" alt="FrigginBohr" class="bg-primary mb-1" width="20%">
 
 A man goes to visit Niels Bohr, and sees a horseshoe hanging over Bohr's door (a scandinavian superstition).
-
 - The man says, "But Niels, you are a scientist! Surely you do not believe in this superstition?"
-
 - Niels replies, "Of course I don't believe in it!"
-
 - The man is confused. "Why do you have it if you don't believe in it?"
-
 - Bohr replies, "It is supposed to work, even if you don't believe in it!"
 :::
 
