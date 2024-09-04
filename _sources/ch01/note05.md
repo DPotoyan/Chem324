@@ -176,7 +176,9 @@ Estimate the wavelength of electrons that have been accelerated from
 rest through a potential difference of $V = 40 kV$. 
 - Note that potential energy difference that the electrons experience is simply $e×V$ where e is the magnitude of electron charge and $V$ potential difference.
 
-:::{dropdown} Solution
+:::{admonition} **Solution** 
+:class: dropdown
+
 In order to calculate the de Broglie wavelength, we need to calculate the linear momentum of the electrons.
 At the end of the acceleration, all the acquired energy is in the form of kinetic energy ($p^2 / 2m_e$).
 
@@ -194,15 +196,20 @@ $$
 If you would consider yourself as a particle moving at $2 m/s$, what would be your de Broglie wavelength? 
 Would it make sense to use quantum mechanics in this case?
 
-:::{dropdown} Hint
+:::{admonition} **Solution** 
+:class: dropdown
+
 - A. Plug in velocity in the classical mechanics expression for momentum $p=mv$ then use de Brglie equation to compute wavelength
+
 :::
 
 #### Problem 3
 
 Quantify uncertainty in position of electron in the ground state of H atom by using Bohr's model. 
 
-:::{dropdown} Hint
+:::{admonition} **Solution** 
+:class: dropdown
+
 - Bohr's equation expresses velocty, energy and radius of electron orbit as a function of quantum number n. 
 :::
 
@@ -210,6 +217,8 @@ Quantify uncertainty in position of electron in the ground state of H atom by us
 
 Quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 eV$
 
-:::{dropdown} Hint
+:::{admonition} **Solution** 
+:class: dropdown
+
 $$KE = \frac{p^2}{2m}$$
 :::
