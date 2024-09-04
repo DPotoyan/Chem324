@@ -177,7 +177,7 @@ R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}
 
 The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
 
-```{dropdown} Solution
+:::{dropdown} **Solution**
 
 **A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
 
@@ -205,7 +205,7 @@ $$\lambda = 1.215 \times 10^{−7}\; m = 122 \,\,nm$$
 This emission line is called Lyman alpha and is the strongest atomic emission line from the sun and drives the chemistry of the upper atmosphere of all the planets producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules to O atoms which react with other O2 molecules to form stratospheric ozone
 
 **B** This wavelength is in the UV region of the spectrum.
-```
+:::
 
 #### Problem 2
 
@@ -213,43 +213,207 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 - B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
 
 
-```{dropdown} Solution 
-**A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^}$ to calculate energy of a photon. 
+:::{dropdown} **Solution**
+
+**A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^2}$ to calculate energy of a photon. 
 
 $$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.9375 = 18.375\,\, ev$$
 
 **B.** Energy of a photon goes up as we excite electron to higher and higher level. As $n_2\rightarrow \infty$ we end up with a photon that has sufficient energy to ionize the atom. $E = 19.6 \cdot ( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 19.6 ev$
-```
+:::
 
 #### Problem 3
 
 Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
 
-```{dropdown} Solution 
+:::{dropdown} **Solution**
+The Rydberg formula is given by:
 
-```
+$$
+\frac{1}{\lambda} = R_H \left( \frac{1}{n_1^2} - \frac{1}{n_2^2} \right)
+$$
+
+For the Lyman series, $n_1 = 1$, and $n_2 = 2, 3, 4, \dots$. The Rydberg constant for hydrogen is:
+
+$$
+R_H = 1.097 \times 10^7 \ \text{m}^{-1}
+$$
+
+**First few lines of the Lyman series:**
+
+For $n_2 = 2$:
+
+$$
+\frac{1}{\lambda} = 1.097 \times 10^7 \left( \frac{1}{1^2} - \frac{1}{2^2} \right)
+$$
+
+$$
+\lambda = 1.2157 \times 10^{-7} \ \text{m} = 121.57 \ \text{nm}
+$$
+
+For $n_2 = 3$:
+
+$$
+\frac{1}{\lambda} = 1.097 \times 10^7 \left( \frac{1}{1^2} - \frac{1}{3^2} \right)
+$$
+
+$$
+\lambda = 1.0257 \times 10^{-7} \ \text{m} = 102.57 \ \text{nm}
+$$
+
+For $n_2 = 4$:
+
+$$
+\frac{1}{\lambda} = 1.097 \times 10^7 \left( \frac{1}{1^2} - \frac{1}{4^2} \right)
+$$
+
+$$
+\lambda = 9.724 \times 10^{-8} \ \text{m} = 97.24 \ \text{nm}
+$$
+
+So, the first three wavelengths of the Lyman series are approximately $121.57$ nm, $102.57$ nm, and $97.24$ nm.
+
+
+:::
 
 #### Problem 4
 
 A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
 
-```{dropdown} Solution 
+:::{dropdown} **Solution** 
 
-```
+We are given a wavelength $\lambda = 1.03 \times 10^{-7} \ \text{m}$ and asked to find the original level $n_2$ of the electron in the Lyman series (where $n_1 = 1$).
+
+Using the Rydberg formula:
+
+$$
+\frac{1}{\lambda} = R_H \left( \frac{1}{n_1^2} - \frac{1}{n_2^2} \right)
+$$
+
+For the Lyman series, $n_1 = 1$, so the equation becomes:
+
+$$
+\frac{1}{\lambda} = R_H \left( 1 - \frac{1}{n_2^2} \right)
+$$
+
+Rearranging to solve for $n_2$:
+
+$$
+\frac{1}{n_2^2} = 1 - \frac{1}{R_H \lambda}
+$$
+
+Substituting the values:
+
+$$
+R_H = 1.097 \times 10^7 \ \text{m}^{-1}
+$$
+
+$$
+\frac{1}{n_2^2} = 1 - \frac{1}{(1.097 \times 10^7) \times (1.03 \times 10^{-7})}
+$$
+
+$$
+\frac{1}{n_2^2} = 1 - \frac{1}{1.13091} = 1 - 0.884 = 0.116
+$$
+
+Now, solving for $n_2$:
+
+$$
+n_2^2 = \frac{1}{0.116} = 8.621
+$$
+
+$$
+n_2 = \sqrt{8.621} \approx 2.94
+$$
+
+Since $n_2$ must be an integer, we round it to $n_2 = 3$.
+
+Thus, the original level of the electron is $n_2 = 3$.
+
+
+:::
 
 
 #### Problem 5
 
 Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 
-```{dropdown} Solution 
+:::{dropdown} **Solution** 
 
-```
+The ionization energy is the energy required to remove an electron from its ground state to infinity. Using Bohr's theory, the energy of an electron in an orbit is given by:
+
+$$
+E_n = -\frac{Z^2 R_H}{n^2}
+$$
+
+Where:
+- $Z$ is the atomic number,
+- $R_H = 13.6 \ \text{eV}$ is the Rydberg constant for hydrogen,
+- $n$ is the principal quantum number.
+
+For singly ionized helium $He^+$, the atomic number $Z = 2$. In the ground state, $n = 1$.
+
+Thus, the energy in the ground state is:
+
+$$
+E_1 = -\frac{Z^2 R_H}{1^2} = -\frac{(2)^2 \times 13.6 \ \text{eV}}{1^2} = -4 \times 13.6 \ \text{eV} = -54.4 \ \text{eV}
+$$
+
+The ionization energy is the negative of this ground state energy (since we want to bring the electron to $n = \infty$):
+
+$$
+E_{\text{ionization}} = 54.4 \ \text{eV}
+$$
+
+Therefore, the ionization energy of singly ionized helium $He^+$ is $54.4 \ \text{eV}$.
+
+:::
 
 #### Problem 6
 
-Calculate radii of Bohr orbit for first few levels. Using python plot $r_n$ vs $n$
+- Calculate radii of Bohr orbit for first few levels. 
 
-```{dropdown} Solution 
+- (Optional) Using python plot $r_n$ vs $n$
 
-```
+:::{dropdown} Solution 
+
+The radius of the Bohr orbit is given by the formula:
+
+$$
+r_n = \frac{n^2 a_0}{Z}
+$$
+
+Where:
+- $n$ is the principal quantum number (level),
+- $a_0 = 5.29 \times 10^{-11} \ \text{m}$ is the Bohr radius for hydrogen,
+- $Z$ is the atomic number (for hydrogen, $Z = 1$).
+
+For hydrogen ($Z = 1$), the radii for the first few levels are:
+
+**For $n = 1$:**
+$$
+r_1 = \frac{1^2 \times 5.29 \times 10^{-11} \ \text{m}}{1} = 5.29 \times 10^{-11} \ \text{m}
+$$
+
+**For $n = 2$:**
+$$
+r_2 = \frac{2^2 \times 5.29 \times 10^{-11} \ \text{m}}{1} = 4 \times 5.29 \times 10^{-11} \ \text{m} = 2.116 \times 10^{-10} \ \text{m}
+$$
+
+**For $n = 3$:**
+$$
+r_3 = \frac{3^2 \times 5.29 \times 10^{-11} \ \text{m}}{1} = 9 \times 5.29 \times 10^{-11} \ \text{m} = 4.761 \times 10^{-10} \ \text{m}
+$$
+
+**For $n = 4$:**
+$$
+r_4 = \frac{4^2 \times 5.29 \times 10^{-11} \ \text{m}}{1} = 16 \times 5.29 \times 10^{-11} \ \text{m} = 8.464 \times 10^{-10} \ \text{m}
+$$
+
+Therefore, the radii of the Bohr orbits for the first few levels are:
+- $r_1 = 5.29 \times 10^{-11} \ \text{m}$,
+- $r_2 = 2.116 \times 10^{-10} \ \text{m}$,
+- $r_3 = 4.761 \times 10^{-10} \ \text{m}$,
+- $r_4 = 8.464 \times 10^{-10} \ \text{m}$.
+
+:::
