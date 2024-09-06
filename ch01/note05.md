@@ -71,8 +71,63 @@ Demonstration of electron diffraction.
 - This peak indicated wave behavior for the electrons and could be interpreted by Bragg's law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
 
+### Compton scattering
 
-### Particles can behave like waves in appropriate circumstances.  
+:::{figure-md} markdown-fig
+<img src="./images/lec3_compton.jpeg" alt="compton" class="bg-primary mb-1" width="300px">
+
+Compton scattering: A phenomenon where photons scatter off electrons the same way other particles with mass do.
+:::
+
+
+- Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. 
+- This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Note that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
+
+
+
+### De Broglie wavelength and wave-particle duality
+
+- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qCmtegdqOOA?si=cHMCoUJcuoS1nylO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+- The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
+
+
+:::{admonition} **De Broglie relation**
+:class: important
+
+$$\boxed{\lambda = \frac{h}{p}}$$
+
+- Where $h$: Planck's constant. $p$: the momentum of the object (electron, photon, molecule, chair, etc.). $\lambda$: wavelength associated with the object. 
+
+:::
+
+- The relation implies that heavy objects have a small wavelength, and light objects have a large wavelength. 
+
+- The smaller the object, the more pronounced wave-like qualities it will have. And vice versa, the bigger the object, the more particle-like qualities it will have. 
+
+
+#### Effect of potential energy
+
+According to classical physics, the total energy for a particle is given as a sum of the kinetic and potential energies:
+
+$$
+E = \frac{1}{2}mv^2 + V = \frac{p^2}{2m} + V = T + V
+$$
+
+If we substitute de Broglie's expression for momentum we get:
+
+$$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
+
+- This equation shows that the de Broglie wavelength for particle like electron with constant total energy $E$ would change as it moves into a region with different potential energy. 
+- This has implications of chemical bonding where electrons experience different fields in atoms and molecules. 
+
+
+### Double Slit experiment  
 
 :::{figure-md} markdown-fig
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif" alt="compton" class="bg-primary mb-1" width="400px">
@@ -82,7 +137,7 @@ Example of light refracting when passing through a prism.
 
 - Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
 
-### But which way did the electron go??
+**But which way did the electron go??**
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="400px">
@@ -104,55 +159,7 @@ Placing a detector that fires off photons to determine electron position exiting
 - If we try to determine which way the electron traveled, the interference pattern disappears!
 
 - We will return to resolve this puzzle after establishing the formal theory of quantum mechanics and its postulates. 
-### Compton scattering
 
-:::{figure-md} markdown-fig
-<img src="./images/lec3_compton.jpeg" alt="compton" class="bg-primary mb-1" width="300px">
-
-Compton scattering: A phenomenon where photons scatter off electrons the same way other particles with mass do.
-:::
-
-
-- Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. 
-- This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Note that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
-
-
-### Wave particle duality as universal feature of nature. 
-
-- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
-
-<div style="text-align: center;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qCmtegdqOOA?si=cHMCoUJcuoS1nylO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-
-- The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
-
-### De Broglie relation
-
-$$\boxed{\lambda = \frac{h}{p}}$$
-
-- Where $h$: Planck's constant. $p$: the momentum of the object (electron, photon, molecule, chair, etc.). $\lambda$: wavelength associated with the object. 
-
-- The relation implies that heavy objects have a small wavelength, and light objects have a large wavelength. 
-
-- The smaller the object, the more pronounced wave-like qualities it will have. And vice versa, the bigger the object, the more particle-like qualities it will have. 
-
-
-### Effect of potential energy
-
-According to classical physics, the total energy for a particle is given as a sum of the kinetic and potential energies:
-
-$$
-E = \frac{1}{2}mv^2 + V = \frac{p^2}{2m} + V = T + V
-$$
-
-If we substitute de Broglie's expression for momentum we get:
-
-$$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
-
-- This equation shows that the de Broglie wavelength for particle like electron with constant total energy $E$ would change as it moves into a region with different potential energy. 
-- This has implications of chemical bonding where electrons experience different fields in atoms and molecules. 
 
 ### Uncertainty relation
 
@@ -170,7 +177,8 @@ Demonstration of uncertainty principle. When electron position is localized by m
 - Mathematically uncertainly relation is expressed in terms of standard deviations of position $\sigma_x$ and momenta $\sigma_p$ which are quantified by doing repeat experiments measuring positions, momenta followed by quantifying the spread via standard deviation.
 
 :::{admonition} **Heisenberg's uncertainty principle** 
-:class: imporant
+:class: warning
+
 $$
 \sigma_x \sigma_p \geq \hbar/2
 $$
