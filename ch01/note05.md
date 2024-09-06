@@ -89,10 +89,6 @@ Compton scattering: A phenomenon where photons scatter off electrons the same wa
 
 - Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
 
-<div style="text-align: center;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qCmtegdqOOA?si=cHMCoUJcuoS1nylO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 
 - The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
 
@@ -129,6 +125,11 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 
 ### Double Slit experiment  
 
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qCmtegdqOOA?si=cHMCoUJcuoS1nylO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 :::{figure-md} markdown-fig
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Wave-particle_duality.gif" alt="compton" class="bg-primary mb-1" width="400px">
 
@@ -139,16 +140,19 @@ Example of light refracting when passing through a prism.
 
 **But which way did the electron go??**
 
+- The interference pattern would arise only if we consider electrons as waves, which
+interfere with each other (i.e. constructive and deconstructive interference)
+- When the experiment is carried out many times with only one electron going through
+the holes at once, we still observe the interference effect.
+- If we try to determine which way the electron traveled, the interference pattern disappears!
+- We will return to resolve this puzzle after establishing the formal theory of quantum mechanics and its postulates. 
+
 :::{figure-md} markdown-fig
 <img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="400px">
 
 Expectation of where electrons would fall based on classical vs quantum theories.
 :::
 
-- The interference pattern would arise only if we consider electrons as waves, which
-interfere with each other (i.e. constructive and deconstructive interference)
-- When the experiment is carried out many times with only one electron going through
-the holes at once, we still observe the interference effect.
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit2.png" alt="compton" class="bg-primary mb-1" width="300px">
@@ -156,9 +160,7 @@ the holes at once, we still observe the interference effect.
 Placing a detector that fires off photons to determine electron position exiting from slits. 
 :::
 
-- If we try to determine which way the electron traveled, the interference pattern disappears!
 
-- We will return to resolve this puzzle after establishing the formal theory of quantum mechanics and its postulates. 
 
 
 ### Uncertainty relation
