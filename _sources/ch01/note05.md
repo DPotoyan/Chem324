@@ -136,16 +136,12 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 Example of light refracting when passing through a prism. 
 :::
 
-- Observing diffraction patterns and computing wavelength from de Broglie relation confirmed that thinking of matter as a dual wave-particle was correct with an impressive agreement between experimental predictions and theory. 
-
-**But which way did the electron go??**
+**Electron displays wave like interference**
 
 - The interference pattern would arise only if we consider electrons as waves, which
 interfere with each other (i.e. constructive and deconstructive interference)
 - When the experiment is carried out many times with only one electron going through
 the holes at once, we still observe the interference effect.
-- If we try to determine which way the electron traveled, the interference pattern disappears!
-- We will return to resolve this puzzle after establishing the formal theory of quantum mechanics and its postulates. 
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit1.png" alt="compton" class="bg-primary mb-1" width="400px">
@@ -153,13 +149,17 @@ the holes at once, we still observe the interference effect.
 Expectation of where electrons would fall based on classical vs quantum theories.
 :::
 
+**But which slit did the electron go through??**
+
+- If we try to determine which way the electron traveled, the interference pattern disappears!
+- We will return to resolve this puzzle after establishing the formal theory of quantum mechanics and its postulates. 
+
 
 :::{figure-md} markdown-fig
 <img src="./images/double_slit2.png" alt="compton" class="bg-primary mb-1" width="300px">
 
 Placing a detector that fires off photons to determine electron position exiting from slits. 
 :::
-
 
 
 
