@@ -15,6 +15,8 @@
 - Multiplying complex number by its conjugate returns the real number corresponding to the squared distance from origin
 :::
 
+
+### Complex number living in 2D
 **Recommended:** Watch the  following YouTube video 
 ["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
 
@@ -22,13 +24,20 @@
 
 A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification:
 
-![](../content/images/cnum_intro.png)
+
+:::{figure-md} markdown-fig
+
+<img src="../content/images/cnum_intro.png" alt="compl-num-1" class="bg-primary mb-1" width="60%">
+
+Visualizing complaex numbers in cartesian and polar coordinates. 
+:::
+
 
 - **Real part** $ x $ 
 .
 - **Imaginary part** $ y $.
 
-Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that's how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
+- Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that's how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
 
 ### Introducing $ i $ 
 
@@ -46,7 +55,15 @@ Some facts from mathematics are in order here:
 
 ### Eculidean vs polar representation of complex numbers
 
-![](../content/images/cnum_2.png)
+
+:::{figure-md} markdown-fig
+
+<img src="../content/images/cnum_2.png" alt="applied photoelectric" class="bg-primary mb-1" width="60%">
+
+Visualizing complaex numbers in cartesian and polar coordinates. 
+
+:::
+
 
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
@@ -105,9 +122,7 @@ $$
 
 The proof of de Moivre's theorem can be done via [induction](https://en.wikipedia.org/wiki/De_Moivre%27s_formula), e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, ...
 
-
 **Exercise:** set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine. 
-
 
 
 ### Example-1: Pythagoras' theorem

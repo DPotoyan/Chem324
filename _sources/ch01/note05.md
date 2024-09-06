@@ -3,16 +3,17 @@
 ## Wave-particle duality
 
 
-```{admonition} What you need to know
+:::{admonition} What you need to know
 :class: note
-- Compton scattering and electron diffraction experiment shave demonstrated that concepts of a particle and wave are not mutually exclusive.
 
-- A physical entity has both wave-like (wavelengths, interference, diffraction, etc.) and particle-like (momentum, collision, countable, etc.) characteristics. An electron has a wavelength; a photon has momentum.
+- Compton scattering and electron diffraction experiments have demonstrated that the concepts of particles and waves are not mutually exclusive.
 
-- Wave-like and particle-like characteristics are inversely proportional to each other and are quantified by de Broglie relation: $\lambda = \frac{h}{p}$
+- A physical entity exhibits both wave-like (e.g., wavelength, interference, diffraction) and particle-like (e.g., momentum, collisions, countable) characteristics. For instance, an electron has a wavelength, while a photon has momentum.
 
--  Thus all quantum objects can behave both as a wave and a particle! Which behavior would be more pronounced depends on the experiment!
-```
+- The relationship between wave-like and particle-like characteristics is inversely proportional and is quantified by the de Broglie relation: $\lambda = \frac{h}{p}$, where $\lambda$ is the wavelength, $h$ is Planck's constant, and $p$ is momentum.
+
+- Therefore, all quantum objects can behave as both waves and particles! The dominant behavior—wave-like or particle-like—depends on the specific experimental conditions.
+:::
 
 ### Diffraction, interfernece and Double Slit experiment 
 
@@ -25,9 +26,9 @@ Waves passing throw two slits and creating diffraction pattern on the screen.
 
 - **Diffraction:** spreading of waves around obstacles or through small openings. Diffraction can occur with any type of wave, including light, sound, radio, and water.
 
-- **interference:** when two waves meet one another their intensities either go up or go down if the two waves are in phase or out of phase, respectively.
+- **Interference:** when two waves meet one another their intensities either go up or go down if the two waves are in phase or out of phase, respectively.
 
-- In the classical double slit experiment light waves (or water waves) are passing through a wall with two slits which results in wave-like interference patterns or bands on the detector screen.
+- **Double slit experiment** light waves (or water waves) are passing through a wall with two slits which results in wave-like interference patterns or bands on the detector screen.
 
 ### Refraction and prisms
 
@@ -160,13 +161,16 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 Demonstration of uncertainty principle. When electron position is localized by making the hole smaller its momentum becomes more unpredictable resulting in electrons hitting the detector over wider range.  
 :::
 
-### Heisenberg's uncertainty principle
 
 - Mathematically uncertainly relation is expressed in terms of standard deviations of position $\sigma_x$ and momenta $\sigma_p$ which are quantified by doing repeat experiments measuring positions, momenta followed by quantifying the spread via standard deviation.
 
+:::{admonition} **Heisenberg's uncertainty principle** 
+:class: imporant
 $$
 \sigma_x \sigma_p \geq \hbar/2
 $$
+
+:::
 
 ### Problems
 
@@ -187,7 +191,7 @@ $$
 $$
 
 $$
-{\lambda = \frac{h}{p} = \frac{h}{\sqrt{2m_eeV}}}{= \frac{6.626\times 10^{-34}\textnormal{ Js}}{\sqrt{2\times (9.109\times 10^{-31}\textnormal{ kg})\times (1.609\times 10^{-19}\textnormal{ C})\times (4.0\times 10^4\textnormal{ V})}}}{ = 6.1\times 10^{-12}}\, m
+{\lambda = \frac{h}{p} = \frac{h}{\sqrt{2m_eeV}}}{= \frac{6.626\times 10^{-34}{ Js}}{\sqrt{2\times (9.109\times 10^{-31} { kg})\times (1.609\times 10^{-19} { C})\times (4.0\times 10^4 { V})}}}{ = 6.1\times 10^{-12}}\, m
 $$
 :::
 
@@ -199,7 +203,32 @@ Would it make sense to use quantum mechanics in this case?
 :::{admonition} **Solution** 
 :class: dropdown
 
-- A. Plug in velocity in the classical mechanics expression for momentum $p=mv$ then use de Brglie equation to compute wavelength
+- A. If you consider yourself as a particle moving at $2 \, {m/s}$, we can calculate your de Broglie wavelength using the de Broglie relation:
+
+$$
+\lambda = \frac{h}{p}
+$$
+
+where $h$ is Planck's constant, $6.626 \times 10^{-34} \, {J·s}$, and $p$ is the momentum of the object. The momentum is given by:
+
+$$
+p = mv
+$$
+
+where $m$ is your mass and $v = 2 \, {m/s}$ is your velocity. Assuming your mass is $70 \, {kg}$, the momentum would be:
+
+$$
+p = 70 \, {kg} \times 2 \, {m/s} = 140 \, {kg·m/s}
+$$
+
+Now, plugging the values into the de Broglie relation:
+
+$$
+\lambda = \frac{6.626 \times 10^{-34} \, {J·s}}{140 \, {kg·m/s}} \approx 4.73 \times 10^{-36} \, {m}
+$$
+
+- B. This wavelength is extremely small, much smaller than the scale at which quantum effects become noticeable. In this case, it wouldn't make sense to use quantum mechanics, as classical mechanics is sufficient for describing the behavior of macroscopic objects like a person.
+
 
 :::
 
@@ -210,7 +239,59 @@ Quantify uncertainty in position of electron in the ground state of H atom by us
 :::{admonition} **Solution** 
 :class: dropdown
 
-- Bohr's equation expresses velocty, energy and radius of electron orbit as a function of quantum number n. 
+To quantify the uncertainty in the position of an electron in the ground state of a hydrogen atom using Bohr's model, we begin by recalling that the electron orbits the nucleus at a distance equal to the Bohr radius $a_0$ in the ground state. The Bohr radius is given by:
+
+$$
+a_0 = \frac{4 \pi \varepsilon_0 \hbar^2}{m_e e^2}
+$$
+
+where:
+
+- $\varepsilon_0 = 8.854 \times 10^{-12} \, {F/m}$ (permittivity of free space),
+- $\hbar = 1.055 \times 10^{-34} \, {J·s}$ (reduced Planck’s constant),
+- $m_e = 9.109 \times 10^{-31} \, {kg}$ (mass of the electron),
+- $e = 1.602 \times 10^{-19} \, {C}$ (elementary charge).
+
+Substituting these values, we can calculate the Bohr radius:
+
+$$
+a_0 = \frac{4 \pi (8.854 \times 10^{-12}) (1.055 \times 10^{-34})^2}{(9.109 \times 10^{-31}) (1.602 \times 10^{-19})^2} \approx 5.29 \times 10^{-11} \, {m}
+$$
+
+Now, Bohr's model treats the electron as orbiting at this radius with a known trajectory. However, quantum mechanics introduces the Heisenberg uncertainty principle, which relates the uncertainties in position and momentum:
+
+$$
+\Delta x \Delta p \geq \frac{\hbar}{2}
+$$
+
+In the ground state, the uncertainty in momentum can be estimated from the momentum of the electron. The momentum $p$ of the electron in the Bohr model is related to the velocity $v$ and the mass $m_e$:
+
+$$
+p = m_e v
+$$
+
+Using the fact that the electron in the ground state has a velocity $v \approx \frac{e^2}{4 \pi \varepsilon_0 \hbar} \approx 2.18 \times 10^6 \, {m/s}$, we can calculate the momentum:
+
+$$
+p = (9.109 \times 10^{-31} \, {kg}) (2.18 \times 10^6 \, {m/s}) \approx 1.99 \times 10^{-24} \, {kg·m/s}
+$$
+
+Now, using the uncertainty relation:
+
+$$
+\Delta x \geq \frac{\hbar}{2 \Delta p}
+$$
+
+Substituting $\Delta p \approx p$, we get:
+
+$$
+\Delta x \geq \frac{1.055 \times 10^{-34} \, {J·s}}{2 (1.99 \times 10^{-24} \, {kg·m/s})} \approx 2.65 \times 10^{-11} \, {m}
+$$
+
+Thus, the uncertainty in the position of the electron in the ground state of a hydrogen atom is approximately $2.65 \times 10^{-11} \, {m}$, which is on the order of the Bohr radius.
+
+This result suggests that the electron’s position is spread out over a region approximately the size of the atom, supporting the idea that the electron in an atom cannot be described as a classical particle with a well-defined position.
+
 :::
 
 #### Problem 4
@@ -220,5 +301,56 @@ Quantify uncertainty in the position of electron traveling freely with kinetic e
 :::{admonition} **Solution** 
 :class: dropdown
 
-$$KE = \frac{p^2}{2m}$$
+To quantify the uncertainty in the position of an electron traveling freely with a kinetic energy of 3 eV, we can use the Heisenberg uncertainty principle:
+
+$$
+\Delta x \Delta p \geq \frac{\hbar}{2}
+$$
+
+First, we need to calculate the momentum of the electron. The kinetic energy is related to the momentum by the equation:
+
+$$
+K = \frac{p^2}{2m_e}
+$$
+
+where:
+- $K = 3 \, {eV} = 3 \times 1.602 \times 10^{-19} \, {J} = 4.806 \times 10^{-19} \, {J}$ (since $1 \, {eV} = 1.602 \times 10^{-19} \, {J}$),
+- $m_e = 9.109 \times 10^{-31} \, {kg}$ is the mass of the electron.
+
+Rearranging for momentum:
+
+$$
+p = \sqrt{2 m_e K}
+$$
+
+Substituting the values:
+
+$$
+p = \sqrt{2 \times 9.109 \times 10^{-31} \, {kg} \times 4.806 \times 10^{-19} \, {J}}
+$$
+
+$$
+p \approx 1.176 \times 10^{-24} \, {kg·m/s}
+$$
+
+Now, using the Heisenberg uncertainty principle:
+
+$$
+\Delta x \geq \frac{\hbar}{2 \Delta p}
+$$
+
+Assuming $\Delta p \approx p$, we substitute the values:
+
+$$
+\Delta x \geq \frac{1.055 \times 10^{-34} \, {J·s}}{2 \times 1.176 \times 10^{-24} \, {kg·m/s}}
+$$
+
+$$
+\Delta x \geq 4.48 \times 10^{-11} \, \text{m}
+$$
+
+Thus, the uncertainty in the position of the electron traveling with a kinetic energy of 3 eV is approximately $4.48 \times 10^{-11}$ meters.
+
+This is on the order of atomic scales, which indicates that quantum effects are relevant in this case.
+
 :::
