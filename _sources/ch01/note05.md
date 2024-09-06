@@ -121,6 +121,11 @@ Compton scattering: A phenomenon where photons scatter off electrons the same wa
 
 - Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
 
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qCmtegdqOOA?si=cHMCoUJcuoS1nylO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
 - The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
 
 ### De Broglie relation
