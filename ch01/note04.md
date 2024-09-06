@@ -149,10 +149,10 @@ $$\begin{align}
 \frac{e^2}{4\pi\varepsilon_0r^2} &= \frac{m_e\left( \frac{n\hbar}{m_er}\right)^2}{r} \\
 \Rightarrow \frac{e^2}{4\pi\varepsilon_0} &= \frac{(n\hbar)^2}{m_er} \\
 \Rightarrow e^2m_er &= 4\pi\varepsilon_0(n\hbar)^2 \\
-\Rightarrow r &= \frac{4\pi\varepsilon_0(n\hbar)^2}{e^2m_e} \quad n=1,2,3,...
+\Rightarrow r &= \frac{4\pi\varepsilon_0(n\hbar)^2}{e^2m_e} = n^2 \cdot a_0 \quad n=1,2,3,...
 \end{align}$$
 
-The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  
+- The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  
 
 ### Energy of H atom 
 
