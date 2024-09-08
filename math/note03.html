@@ -437,7 +437,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-imaginary-number-i">Introducing imaginary number <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vs-polar-representation">Cartesian vs polar representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>
@@ -505,13 +506,18 @@ When you multiply a complex number by its conjugate, <span class="math notransla
 <li><p><strong>What is the definition of <span class="math notranslate nohighlight">\( i \)</span>?</strong> The imaginary number <span class="math notranslate nohighlight">\( i \)</span> is defined solely by the property that its square is <span class="math notranslate nohighlight">\(−1\)</span>, that is: <span class="math notranslate nohighlight">\(i\cdot i=-1\)</span>.</p></li>
 <li><p><strong>How does <span class="math notranslate nohighlight">\(i\)</span> change what I know about math of real variables?</strong> Imaginary numbers extend the real number system <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to the complex number system <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>.</p></li>
 <li><p><strong>Fundamental theorem of algebra.</strong> says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.</p></li>
-<li><p>This equation must have two roots, how do we visualize them?</p></li>
+<li><p>This equation must have two solutions/roots. How do we visualize them?</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[x^2+1=0\]</div>
+<div class="math notranslate nohighlight">
+\[x_{1,2}= \pm\sqrt{-1} = \pm i\]</div>
+<ul class="simple">
+<li><p>The answer: we will need two dimensions! quantifying how much real and how much imaginary component the number has</p></li>
+</ul>
 </section>
-<section id="cartesian-vs-polar-representation">
-<h2>Cartesian vs polar representation<a class="headerlink" href="#cartesian-vs-polar-representation" title="Permalink to this heading">#</a></h2>
+<section id="cartesian-vrepresentation">
+<h2>Cartesian vrepresentation<a class="headerlink" href="#cartesian-vrepresentation" title="Permalink to this heading">#</a></h2>
 <div class="warning admonition">
 <p class="admonition-title"><strong>Cartesian Representation</strong></p>
 <div class="math notranslate nohighlight">
@@ -523,11 +529,31 @@ When you multiply a complex number by its conjugate, <span class="math notransla
 <li><p><span class="math notranslate nohighlight">\(z\)</span> complex number</p></li>
 </ul>
 </div>
-<p><strong>Example:</strong> Identify real and imaginary components of the following complex numbers <span class="math notranslate nohighlight">\(z_1 = 3 +2\)</span>, <span class="math notranslate nohighlight">\(z_2 = -2i\)</span>, <span class="math notranslate nohighlight">\(z_3=1.1\)</span></p>
 <ul class="simple">
+<li><p><strong>Example:</strong> Identify real and imaginary components of the following complex numbers <span class="math notranslate nohighlight">\(z_1 = 3 +2\)</span>, <span class="math notranslate nohighlight">\(z_2 = -2i\)</span>, <span class="math notranslate nohighlight">\(z_3=1.1\)</span></p>
+<ul>
 <li><p><span class="math notranslate nohighlight">\(Re(z_1) = 3\)</span>, <span class="math notranslate nohighlight">\(Im(z_1)=2\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Re(z_2) = 0\)</span>, <span class="math notranslate nohighlight">\(Im(z_2)=-2\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Re(z_3) = 1.1\)</span>, <span class="math notranslate nohighlight">\(Im(z_1)=0\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="polar-vrepresentation">
+<h2>Polar vrepresentation<a class="headerlink" href="#polar-vrepresentation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Polar representation expresses complex numbers in terms of radius from origin <span class="math notranslate nohighlight">\(r\)</span> and angle of counterclockwise rotation <span class="math notranslate nohighlight">\(\phi\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x = r\cos\phi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = r\sin\phi\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[z= x+iy = rcos\phi + ir\sin\phi =r(cos\phi+sin\phi)\]</div>
+<ul class="simple">
+<li><p>What’s the big deal? We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers.</p></li>
+<li><p>This dramatic <a class="reference external" href="http://simplification.is">simplification.is</a> thanks to “magical” Euler’s formula that turns trig functions into exponentss!</p></li>
 </ul>
 <div class="warning admonition">
 <p class="admonition-title"><strong>Euler’s formula</strong></p>
@@ -547,12 +573,10 @@ When you multiply a complex number by its conjugate, <span class="math notransla
 <div class="warning admonition">
 <p class="admonition-title"><strong>Polar Representation</strong></p>
 <div class="math notranslate nohighlight">
-\[z = x+iy = r(\cos{\phi} + i \sin{\phi})\]</div>
-<div class="math notranslate nohighlight">
-\[z = = re^{i\phi}\]</div>
+\[z =  re^{i\phi}\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane with <span class="math notranslate nohighlight">\(cos\phi=x/r\)</span> and <span class="math notranslate nohighlight">\(sin\phi = y/r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
 </ul>
 </div>
 <p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
@@ -924,7 +948,8 @@ z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-imaginary-number-i">Introducing imaginary number <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vs-polar-representation">Cartesian vs polar representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>

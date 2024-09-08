@@ -52,20 +52,31 @@ When you multiply a complex number by its conjugate, $z \cdot z^*$, the result i
 
 - **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
 
-- This equation must have two roots, how do we visualize them?
+- This equation must have two solutions/roots. How do we visualize them?
 
 $$x^2+1=0$$
 
+$$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 
-### Cartesian vs polar representation
-
+- The answer: we will need two dimensions! quantifying how much real and how much imaginary component the number has
 
 :::{figure-md} markdown-fig
 align: left
 
-<img src="../content/images/cnum_2.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="30%">
+<img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
 
-Visualizing complaex numbers in cartesian and polar coordinates. 
+Complex numbers live in 2D: You must specify real and imaginary components to fully define a complex number
+:::
+
+
+### Cartesian vrepresentation
+
+:::{figure-md} markdown-fig
+align: left
+
+<img src="images/Cart.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+
+Visualizing complaex numbers in cartesian coordinates. 
 
 :::
 
@@ -81,12 +92,32 @@ $$z = x+iy$$
 :::
 
 
-**Example:** Identify real and imaginary components of the following complex numbers $z_1 = 3 +2$, $z_2 = -2i$, $z_3=1.1$
+- **Example:** Identify real and imaginary components of the following complex numbers $z_1 = 3 +2$, $z_2 = -2i$, $z_3=1.1$
 
-- $Re(z_1) = 3$, $Im(z_1)=2$
-- $Re(z_2) = 0$, $Im(z_2)=-2$
-- $Re(z_3) = 1.1$, $Im(z_1)=0$
+    - $Re(z_1) = 3$, $Im(z_1)=2$
+    - $Re(z_2) = 0$, $Im(z_2)=-2$
+    - $Re(z_3) = 1.1$, $Im(z_1)=0$
 
+### Polar vrepresentation
+
+:::{figure-md} markdown-fig
+align: left
+
+<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+
+Visualizing complaex numbers in polar coordinates. 
+
+:::
+
+- Polar representation expresses complex numbers in terms of radius from origin $r$ and angle of counterclockwise rotation $\phi$
+
+    - $x = r\cos\phi$
+    - $y = r\sin\phi$
+
+$$z= x+iy = rcos\phi + ir\sin\phi =r(cos\phi+sin\phi)$$
+
+- What's the big deal? We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
+- This dramatic simplification.is thanks to "magical" Euler's formula that turns trig functions into exponentss!
 
 :::{admonition} **Euler’s formula**
 :class: warning 
@@ -111,12 +142,10 @@ $$exp(x) = 1+x+\frac{1}{2!}x^2+\frac{1}{3}x^3+...$$
 :::{admonition} **Polar Representation**
 :class: warning 
 
-$$z = x+iy = r(\cos{\phi} + i \sin{\phi})$$
-
-$$z = = re^{i\phi}$$
+$$z =  re^{i\phi}$$
 
 - $r=\sqrt{x^2+y^2}$ distance from origin.
-- $\phi$ rotation angle in complex plane with $cos\phi=x/r$ and $sin\phi = y/r$
+- $\phi$ rotation angle in complex plane.
 :::
 
 
@@ -142,7 +171,6 @@ $$
 $$
 
 #### Going From Carteisan to Polar
-
 
 - **Extract r** The value $r$ is the Euclidean distance of vector $(x,y)$ from the origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
