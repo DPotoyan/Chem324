@@ -74,13 +74,35 @@ Visualizing complaex numbers in cartesian and polar coordinates.
 
 :::
 
-The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
+:::{admonition} **Cartesian Representation**
+:class: warning 
+
+$$z = x+iy$$
+
+- $x$ real component
+- $y$ imaginary component
+- $i$ imaginary number, $i^2=-1$
+- $z$ complex number
+
+:::
 
 :::{admonition} **Euler’s formula**
 :class: warning 
 
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 
+:::
+
+
+:::{admonition} **Polar Representation**
+:class: warning 
+
+$$z = x+iy = r(\cos{\phi} + i \sin{\phi})$$
+
+$$z = = re^{i\phi}$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane with $cos\phi=x/r$ and $sin\phi = y/r$
 :::
 
 
@@ -95,31 +117,39 @@ $$\bar z = re^{-i\phi}$$
 
 :::
 
+- **Sin and cos functions expressed via complex exponentials!** These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
+
+$$
+\cos{\phi} = \frac{e^{i\phi} + e^{-i\phi}}{2}
+$$
+
+$$
+\sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
+$$
+
+#### Going From Carteisan to Polar
 
 
-The value $r$ is the Euclidean distance of vector $(x,y)$ from the
-origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
+- **Extract r** The value $r$ is the Euclidean distance of vector $(x,y)$ from the origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
 
 $$r = |z| = \sqrt{x^2 + y^2}$$
 
-The value $\phi$ is the angle of (0,0)-(x,y) line with respect to the real axis. 
-The tangent of $\phi$ is $\left(\frac{y}{x}\right) $. Therefore,
+-  **Extract $\phi$** The value $\phi$ is the angle of with respect to the real axis.  The tangent of $\phi$ is $\left(\frac{y}{x}\right) $. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn 
+
+$$
+\tan{\phi} = \frac{y}{x}
+$$
 
 $$
 \phi = \tan^{-1} \Big(\frac{y}{x} \Big)
 $$
 
 
-Three elementary trigonometric functions are
 
-$$
-\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
-\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
-\tan{\phi} = \frac{y}{x}
-$$
+### Examples of using complex numbers
 
-
-### De Moivre’s Theorem
+:::{admonition} **De Moivre’s Theorem**
+:class: tip, dropdown
 
 [De Moivre’s theorem](https://en.wikipedia.org/wiki/De_Moivre%27s_formula) states that:
 
@@ -141,11 +171,7 @@ $$
 $$
 
 The proof of de Moivre's theorem can be done via [induction](https://en.wikipedia.org/wiki/De_Moivre%27s_formula), e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, ...
-
-**Exercise:** set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine. 
-
-
-### Examples of using complex numbers
+:::
 
 :::{admonition} **Deriving Pythagoras' theorem**
 :class: tip, dropdown
