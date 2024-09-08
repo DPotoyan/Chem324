@@ -44,17 +44,7 @@ When you multiply a complex number by its conjugate, $z \cdot z^*$, the result i
 </div>
 
 
-
-:::{figure-md} markdown-fig
-
-<img src="../content/images/cnum_intro.png" alt="compl-num-1" class="bg-primary mb-1" width="60%">
-
-Visualizing complaex numbers in cartesian and polar coordinates where Real axis is denoted as Re and Imaginary as Im.
-:::
-
-
-
-### Introducing $ i $ 
+### Introducing imaginary number $ i $ 
 
 - **What is the definition of $ i $?** The imaginary number $ i $ is defined solely by the property that its square is $−1$, that is: $i\cdot i=-1$. 
 
@@ -62,13 +52,17 @@ Visualizing complaex numbers in cartesian and polar coordinates where Real axis 
 
 - **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
 
+- This equation must have two roots, how do we visualize them?
+
+$$x^2+1=0$$
+
 
 ### Eculidean vs polar representation of complex numbers
 
 
 :::{figure-md} markdown-fig
 
-<img src="../content/images/cnum_2.png" alt="applied photoelectric" class="bg-primary mb-1" width="60%">
+<img src="../content/images/cnum_2.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="30%">
 
 Visualizing complaex numbers in cartesian and polar coordinates. 
 
