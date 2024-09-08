@@ -214,6 +214,8 @@ $$z =  re^{i\phi}$$
 :::
 
 
+### Complex Conjugate
+
 The complex conjugate $\bar{z}$ of $z$ is defined as
 
 :::{admonition} **Complex Conjugate**
@@ -222,10 +224,9 @@ The complex conjugate $\bar{z}$ of $z$ is defined as
 $$\bar z = x-iy$$
 
 $$\bar z = re^{-i\phi}$$
-
 :::
 
-- **Sin and cos functions expressed via complex exponentials!** These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
+- **Sin and cos functions expressed via complex exponentials and their conjugates!** These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
 
 $$
 \cos{\phi} = \frac{e^{i\phi} + e^{-i\phi}}{2}
