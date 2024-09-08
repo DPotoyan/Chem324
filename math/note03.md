@@ -485,17 +485,23 @@ Multiply the two complex numbers $z_1 = 3 + 4i$ and $z_2 = 1 - 2i$.
 :class: dropdown
 
 To multiply complex numbers, we use distributive property:
+
 $$
 z_1 \cdot z_2 = (3 + 4i)(1 - 2i)
 $$
+
 Expanding:
+
 $$
 z_1 \cdot z_2 = 3(1) + 3(-2i) + 4i(1) + 4i(-2i)
 $$
+
 $$
 = 3 - 6i + 4i - 8i^2
 $$
+
 Since $i^2 = -1$:
+
 $$
 = 3 - 6i + 4i + 8 = 11 - 2i
 $$
@@ -515,6 +521,7 @@ The complex conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy
 $$
 z^* = -3 - 5i
 $$
+
 :::
 
 
@@ -527,14 +534,19 @@ Convert the complex number $z = 5e^{i\frac{\pi}{4}}$ to its Cartesian form.
 :class: dropdown
 
 Using Euler’s formula:
+
 $$
 z = r(\cos\phi + i\sin\phi)
 $$
+
 For $z = 5e^{i\frac{\pi}{4}}$, we have $r = 5$ and $\phi = \frac{\pi}{4}$, so:
+
 $$
 z = 5\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)
 $$
+
 Since $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}$, we get:
+
 $$
 z = 5\left(\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = \frac{5\sqrt{2}}{2} + i\frac{5\sqrt{2}}{2}
 $$
@@ -549,21 +561,29 @@ Divide the complex numbers $z_1 = 3 + 4i$ by $z_2 = 1 - 2i$.
 :class: dropdown
 
 To divide complex numbers, multiply both the numerator and denominator by the conjugate of the denominator:
+
 $$
 \frac{z_1}{z_2} = \frac{3 + 4i}{1 - 2i} \times \frac{1 + 2i}{1 + 2i}
 $$
+
 First, multiply the numerator:
+
 $$
 (3 + 4i)(1 + 2i) = 3(1) + 3(2i) + 4i(1) + 4i(2i) = 3 + 6i + 4i - 8 = -5 + 10i
 $$
+
 Next, multiply the denominator:
+
 $$
 (1 - 2i)(1 + 2i) = 1^2 - (2i)^2 = 1 + 4 = 5
 $$
+
 Now, divide the result:
+
 $$
 \frac{-5 + 10i}{5} = -1 + 2i
 $$
+
 Thus, $\frac{z_1}{z_2} = -1 + 2i$.
 
 :::
@@ -576,10 +596,13 @@ Find the modulus of the complex number $z = 7 + 24i$.
 :class: dropdown
 
 The modulus of a complex number $z = x + iy$ is given by:
+
 $$
 |z| = \sqrt{x^2 + y^2}
 $$
+
 For $z = 7 + 24i$, we have $x = 7$ and $y = 24$:
+
 $$
 |z| = \sqrt{7^2 + 24^2} = \sqrt{49 + 576} = \sqrt{625} = 25
 $$
@@ -595,13 +618,15 @@ Multiply the complex numbers $z_1 = 2e^{i\frac{\pi}{6}}$ and $z_2 = 3e^{i\frac{\
 :class: dropdown
 
 To multiply two complex numbers in polar form, multiply their magnitudes and add their angles:
+
 $$
-z_1 \cdot z_2 = (2e^{i\frac{\pi}{6}})(3e^{i\frac{\pi}{3}}) = 6e^{i(\frac{\pi}{6} + \frac{\pi}{3})}
+z_1 \cdot z_2 = (2e^{i\frac{\pi}{6}})(3e^{i\frac{\pi}{3}}) = 6e^{i(\frac{\pi}{6} + \frac{\pi}{3})}= 6e^{i\frac{\pi}{2}}
 $$
-$$
-= 6e^{i\frac{\pi}{2}}
-$$
+
+
+
 Thus, the product is:
+
 $$
 z_1 \cdot z_2 = 6e^{i\frac{\pi}{2}} = 6i
 $$
@@ -617,22 +642,28 @@ Express the complex number $z = -4 + 4i$ in polar form.
 :class: dropdown
 
 1. **Modulus**:
+
    $$ 
    r = \sqrt{x^2 + y^2} = \sqrt{(-4)^2 + 4^2} = \sqrt{16 + 16} = \sqrt{32} = 4\sqrt{2} 
    $$
 
 2. **Argument**:
+
    $$ 
    \phi = \tan^{-1}\left(\frac{y}{x}\right) = \tan^{-1}\left(\frac{4}{-4}\right) = \tan^{-1}(-1) 
    $$ 
+
    Since $z$ is in the second quadrant:
+
    $$ 
    \phi = \frac{3\pi}{4}
    $$
 
 Thus, the polar form of $z$ is:
+
 $$ 
 z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
 $$
+
 :::
 
