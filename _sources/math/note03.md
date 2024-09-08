@@ -81,7 +81,7 @@ Visualizing complaex numbers in cartesian coordinates.
 :::
 
 :::{admonition} **Cartesian Representation**
-:class: warning 
+:class: important
 
 $$z = x+iy$$
 
@@ -120,7 +120,7 @@ $$z= x+iy = rcos\phi + ir\sin\phi =r(cos\phi+sin\phi)$$
 - This dramatic simplification.is thanks to "magical" Euler's formula that turns trig functions into exponentss!
 
 :::{admonition} **Euler’s formula**
-:class: warning 
+:class: important 
 
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 :::
@@ -205,7 +205,7 @@ $$
 
 
 :::{admonition} **Polar Representation**
-:class: warning 
+:class: important
 
 $$z =  re^{i\phi}$$
 
@@ -219,7 +219,7 @@ $$z =  re^{i\phi}$$
 The complex conjugate $\bar{z}$ of $z$ is defined as
 
 :::{admonition} **Complex Conjugate**
-:class: warning 
+:class: important 
 
 $$\bar z = x-iy$$
 
@@ -403,22 +403,25 @@ $$
 :::
 
 
-:::{admonition} **Application of Complex Numbers in X-ray diffraction and crystalography**
-:class: danger, dropdown
+:::{admonition} **Applications to X-ray diffraction and crystalography**
+:class: tip, dropdown
 
 Complex numbers play a significant role in various chemistry problems, especially in the context of **X-ray diffraction** and **crystallography**. These applications are crucial for determining the atomic structures of molecules and solids.
 
-**X-ray Diffraction and the Phase Problem****
+**X-ray Diffraction and the Phase Problem**
 In X-ray crystallography, a crystal is bombarded with X-rays, which are diffracted by the electrons in the crystal. The resulting diffraction pattern contains crucial information about the crystal's structure. However, to reconstruct the atomic arrangement from the diffraction pattern, we must solve two key problems: the **magnitude** of the diffracted waves (intensity) and the **phase** of those waves.
 
 - The **phase problem** refers to the challenge of determining the phase of the diffracted X-rays, which is not directly observable from the diffraction pattern. The phase is necessary to accurately reconstruct the electron density of the crystal.
 
-**Complex Numbers in Diffraction****
+**Complex Numbers in Diffraction**
 To solve this, we model the diffracted waves as complex numbers. Each wave can be described in terms of a complex number:
+
 $$
 A(k) = |A(k)|e^{i\phi(k)}
 $$
+
 where:
+
 - $|A(k)|$ is the magnitude of the diffraction wave, corresponding to the intensity of the observed diffraction pattern.
 - $\phi(k)$ is the phase of the wave, which contains essential structural information but is not directly measurable.
 
@@ -426,10 +429,13 @@ By representing diffraction waves as complex numbers, we can manipulate and comb
 
 **Structure Factor: The Key to Electron Density**
 The **structure factor** is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor $F(\mathbf{h})$ is given by:
+
 $$
 F(\mathbf{h}) = \sum_{j} f_j e^{i\mathbf{h} \cdot \mathbf{r_j}}
 $$
+
 where:
+
 - $\mathbf{h}$ is the reciprocal lattice vector, representing the direction of diffraction.
 - $f_j$ is the scattering factor for atom $j$ (how much it scatters X-rays).
 - $\mathbf{r_j}$ is the position of atom $j$ in the unit cell.
@@ -442,12 +448,15 @@ Here, $|F(\mathbf{h})|$ represents the amplitude (related to the intensity of th
 
 **Electron Density Calculation**
 Once the structure factors are known, the **electron density** $\rho(\mathbf{r})$ can be calculated using the inverse Fourier transform:
+
 $$
 \rho(\mathbf{r}) = \frac{1}{V} \sum_{\mathbf{h}} F(\mathbf{h}) e^{-i\mathbf{h} \cdot \mathbf{r}}
 $$
+
 where $V$ is the volume of the unit cell, and the sum is over all reciprocal lattice points $\mathbf{h}$.
 
 In this equation:
+
 - The structure factor $F(\mathbf{h})$ is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.
 - The result is a 3D map of the electron density within the crystal, which reveals the positions of atoms.
 
