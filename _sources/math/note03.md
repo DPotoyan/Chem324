@@ -128,13 +128,63 @@ $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 :::{admonition} **Proof Euler's formula**
 :class: tip, dropdown
 
-One way to prove eulers formula is by carrying out taylor expanssion of sin and cosine and separately then sum them to show they add up to Taylor expansion of exp function
 
-$$sin(x) = x-\frac{1}{3!}x^3+\frac{1}{5!}x^5+...$$
 
-$$cos(x) = 1-\frac{1}{2!}x^2+\frac{1}{4!}x^4+...$$
+Euler's formula states:
+$$
+e^{i\phi} = \cos\phi + i\sin\phi
+$$
+We will prove this by using the Taylor series expansions of the exponential function, cosine, and sine.
 
-$$exp(x) = 1+x+\frac{1}{2!}x^2+\frac{1}{3}x^3+...$$
+**Step 1: Taylor Series Expansion of $e^x$**
+
+The Taylor series expansion of $e^x$ around $x = 0$ is:
+$$
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots
+$$
+For $e^{i\phi}$, substitute $x = i\phi$ into the series:
+$$
+e^{i\phi} = 1 + i\phi + \frac{(i\phi)^2}{2!} + \frac{(i\phi)^3}{3!} + \frac{(i\phi)^4}{4!} + \cdots
+$$
+
+**Step 2: Simplifying Powers of $i$**
+We know that powers of $i$ cycle as follows:
+$$
+i^1 = i, \quad i^2 = -1, \quad i^3 = -i, \quad i^4 = 1, \quad \text{and so on}.
+$$
+Using these identities, we simplify each term in the series:
+$$
+e^{i\phi} = 1 + i\phi - \frac{\phi^2}{2!} - i\frac{\phi^3}{3!} + \frac{\phi^4}{4!} + i\frac{\phi^5}{5!} - \cdots
+$$
+
+**Step 3: Grouping Real and Imaginary Terms**
+Now, we group the real and imaginary terms separately:
+$$
+e^{i\phi} = \left(1 - \frac{\phi^2}{2!} + \frac{\phi^4}{4!} - \cdots\right) + i\left(\phi - \frac{\phi^3}{3!} + \frac{\phi^5}{5!} - \cdots\right)
+$$
+
+**Step 4: Recognizing Taylor Series for $\cos\phi$ and $\sin\phi$**
+
+The Taylor series for $\cos\phi$ is:
+$$
+\cos\phi = 1 - \frac{\phi^2}{2!} + \frac{\phi^4}{4!} - \cdots
+$$
+And the Taylor series for $\sin\phi$ is:
+$$
+\sin\phi = \phi - \frac{\phi^3}{3!} + \frac{\phi^5}{5!} - \cdots
+$$
+
+**Step 5: Substituting the Series Back**
+We see that the real part of the series matches $\cos\phi$, and the imaginary part matches $i\sin\phi$. Therefore:
+$$
+e^{i\phi} = \cos\phi + i\sin\phi
+$$
+
+**Conclusion**
+This completes the proof of Euler's formula:
+$$
+e^{i\phi} = \cos\phi + i\sin\phi
+$$
 
 :::
 
