@@ -145,7 +145,10 @@ The proof of de Moivre's theorem can be done via [induction](https://en.wikipedi
 **Exercise:** set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine. 
 
 
-### Example-1: Pythagoras' theorem
+### Examples of using complex numbers
+
+:::{admonition} **Deriving Pythagoras' theorem**
+:class: tip, dropdown
 
 We can use de Moivre’s theorem to show that
 $ r = \sqrt{x^2 + y^2} $.
@@ -169,9 +172,11 @@ x^2 + y^2 = r^2
 $$
 
 We recognize this as a theorem of **Pythagoras**.
+:::
 
 
-### Example-2: Trigonometric Identities
+:::{admonition} **Deriving Trigonometric Identities**
+:class: tip, dropdown
 
 We can obtain a complete suite of trigonometric identities by
 appropriately manipulating polar forms of complex numbers.
@@ -213,12 +218,13 @@ $$
 \end{aligned}
 $$
 
-The equations above are also known as the **angle sum identities**. We
-can verify the equations using the `simplify` function in the
-`sympy` package.
+The equations above are also known as the **angle sum identities**. 
+
+:::
 
 
-### Example-3: Trigonometric Integrals
+:::{admonition} **Evaluating Trigonometric Integrals**
+:class: tip, dropdown
 
 We can also compute the trigonometric integrals using polar forms of
 complex numbers.
@@ -260,3 +266,44 @@ $$
 \int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega =
 \frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
 $$
+:::
+
+### Problems
+
+#### Problem 1
+
+:::{admonition} **Solution 1** 
+:class: dropdown
+
+:::
+
+
+#### Problem 2
+
+:::{admonition} **Solution 2** 
+:class: dropdown
+
+:::
+
+
+#### Problem 3
+
+:::{admonition} **Solution 3** 
+:class: dropdown
+
+:::
+
+#### Problem 4
+
+:::{admonition} **Solution 4** 
+:class: dropdown
+
+:::
+
+#### Problem 5
+
+:::{admonition} **Solution 5** 
+:class: dropdown
+
+:::
+
