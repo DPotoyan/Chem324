@@ -125,6 +125,21 @@ $$z= x+iy = rcos\phi + ir\sin\phi =r(cos\phi+sin\phi)$$
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 :::
 
+
+
+:::{figure-md} markdown-fig
+align: left
+
+<img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+
+Visualization of Euler's formula as a helix in three-dimensional space. The helix is formed by plotting points for various values of $\phi$ and is determined by both the cosine and sine components of the formula. One curve represents the real component  $cos\phi$ of the formula, while another curve, rotated 90 degrees around the z-axis (due to multiplication by 
+$i$ represents the imaginary component $sin\phi$
+
+
+:::
+
+
+
 :::{admonition} **Proof Euler's formula**
 :class: tip, dropdown
 
