@@ -57,10 +57,11 @@ When you multiply a complex number by its conjugate, $z \cdot z^*$, the result i
 $$x^2+1=0$$
 
 
-### Eculidean vs polar representation of complex numbers
+### Cartesian vs polar representation
 
 
 :::{figure-md} markdown-fig
+align: left
 
 <img src="../content/images/cnum_2.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="30%">
 
@@ -77,13 +78,32 @@ $$z = x+iy$$
 - $y$ imaginary component
 - $i$ imaginary number, $i^2=-1$
 - $z$ complex number
-
 :::
+
+
+**Example:** Identify real and imaginary components of the following complex numbers $z_1 = 3 +2$, $z_2 = -2i$, $z_3=1.1$
+
+- $Re(z_1) = 3$, $Im(z_1)=2$
+- $Re(z_2) = 0$, $Im(z_2)=-2$
+- $Re(z_3) = 1.1$, $Im(z_1)=0$
+
 
 :::{admonition} **Euler’s formula**
 :class: warning 
 
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
+:::
+
+:::{admonition} **Proof Euler's formula**
+:class: tip, dropdown
+
+One way to prove eulers formula is by carrying out taylor expanssion of sin and cosine and separately then sum them to show they add up to Taylor expansion of exp function
+
+$$sin(x) = x-\frac{1}{3!}x^3+\frac{1}{5!}x^5+...$$
+
+$$cos(x) = 1-\frac{1}{2!}x^2+\frac{1}{4!}x^4+...$$
+
+$$exp(x) = 1+x+\frac{1}{2!}x^2+\frac{1}{3}x^3+...$$
 
 :::
 
@@ -290,40 +310,162 @@ $$
 
 ### Problems
 
-#### Problem 1
+#### Problem 1: Multiplication
+
+Multiply the two complex numbers $z_1 = 3 + 4i$ and $z_2 = 1 - 2i$.
 
 :::{admonition} **Solution 1** 
 :class: dropdown
 
+To multiply complex numbers, we use distributive property:
+$$
+z_1 \cdot z_2 = (3 + 4i)(1 - 2i)
+$$
+Expanding:
+$$
+z_1 \cdot z_2 = 3(1) + 3(-2i) + 4i(1) + 4i(-2i)
+$$
+$$
+= 3 - 6i + 4i - 8i^2
+$$
+Since $i^2 = -1$:
+$$
+= 3 - 6i + 4i + 8 = 11 - 2i
+$$
 :::
 
 
-#### Problem 2
+#### Problem 2: Find conjugate
+
+Find the complex conjugate of $z = -3 + 5i$.
+
 
 :::{admonition} **Solution 2** 
 :class: dropdown
 
+The complex conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$. For $z = -3 + 5i$, the conjugate is:
+
+$$
+z^* = -3 - 5i
+$$
 :::
 
 
-#### Problem 3
+#### Problem 3: from polar to cartesian
+
+Convert the complex number $z = 5e^{i\frac{\pi}{4}}$ to its Cartesian form.
+
 
 :::{admonition} **Solution 3** 
 :class: dropdown
 
+Using Euler’s formula:
+$$
+z = r(\cos\phi + i\sin\phi)
+$$
+For $z = 5e^{i\frac{\pi}{4}}$, we have $r = 5$ and $\phi = \frac{\pi}{4}$, so:
+$$
+z = 5\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)
+$$
+Since $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}$, we get:
+$$
+z = 5\left(\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = \frac{5\sqrt{2}}{2} + i\frac{5\sqrt{2}}{2}
+$$
+
 :::
 
-#### Problem 4
+#### Problem 4: Division
+
+Divide the complex numbers $z_1 = 3 + 4i$ by $z_2 = 1 - 2i$.
 
 :::{admonition} **Solution 4** 
 :class: dropdown
 
+To divide complex numbers, multiply both the numerator and denominator by the conjugate of the denominator:
+$$
+\frac{z_1}{z_2} = \frac{3 + 4i}{1 - 2i} \times \frac{1 + 2i}{1 + 2i}
+$$
+First, multiply the numerator:
+$$
+(3 + 4i)(1 + 2i) = 3(1) + 3(2i) + 4i(1) + 4i(2i) = 3 + 6i + 4i - 8 = -5 + 10i
+$$
+Next, multiply the denominator:
+$$
+(1 - 2i)(1 + 2i) = 1^2 - (2i)^2 = 1 + 4 = 5
+$$
+Now, divide the result:
+$$
+\frac{-5 + 10i}{5} = -1 + 2i
+$$
+Thus, $\frac{z_1}{z_2} = -1 + 2i$.
+
 :::
 
-#### Problem 5
+#### Problem 5: Find Modulus
+
+Find the modulus of the complex number $z = 7 + 24i$.
 
 :::{admonition} **Solution 5** 
 :class: dropdown
 
+The modulus of a complex number $z = x + iy$ is given by:
+$$
+|z| = \sqrt{x^2 + y^2}
+$$
+For $z = 7 + 24i$, we have $x = 7$ and $y = 24$:
+$$
+|z| = \sqrt{7^2 + 24^2} = \sqrt{49 + 576} = \sqrt{625} = 25
+$$
+Thus, the modulus of $z$ is 25.
+
+:::
+
+#### Problem 6: Multiplication
+
+Multiply the complex numbers $z_1 = 2e^{i\frac{\pi}{6}}$ and $z_2 = 3e^{i\frac{\pi}{3}}$.
+
+:::{admonition} **Solution 5** 
+:class: dropdown
+
+To multiply two complex numbers in polar form, multiply their magnitudes and add their angles:
+$$
+z_1 \cdot z_2 = (2e^{i\frac{\pi}{6}})(3e^{i\frac{\pi}{3}}) = 6e^{i(\frac{\pi}{6} + \frac{\pi}{3})}
+$$
+$$
+= 6e^{i\frac{\pi}{2}}
+$$
+Thus, the product is:
+$$
+z_1 \cdot z_2 = 6e^{i\frac{\pi}{2}} = 6i
+$$
+
+:::
+
+
+#### Problem 7: from cartesian to polar
+
+Express the complex number $z = -4 + 4i$ in polar form.
+
+:::{admonition} **Solution 5** 
+:class: dropdown
+
+1. **Modulus**:
+   $$ 
+   r = \sqrt{x^2 + y^2} = \sqrt{(-4)^2 + 4^2} = \sqrt{16 + 16} = \sqrt{32} = 4\sqrt{2} 
+   $$
+
+2. **Argument**:
+   $$ 
+   \phi = \tan^{-1}\left(\frac{y}{x}\right) = \tan^{-1}\left(\frac{4}{-4}\right) = \tan^{-1}(-1) 
+   $$ 
+   Since $z$ is in the second quadrant:
+   $$ 
+   \phi = \frac{3\pi}{4}
+   $$
+
+Thus, the polar form of $z$ is:
+$$ 
+z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
+$$
 :::
 
