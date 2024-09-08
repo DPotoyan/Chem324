@@ -437,8 +437,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-complex-numbers">Examples of using complex numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
@@ -517,11 +519,32 @@ When you multiply a complex number by its conjugate, <span class="math notransla
 <p><span class="caption-number">Fig. 79 </span><span class="caption-text">Visualizing complaex numbers in cartesian and polar coordinates.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Euclidean, polar, and trigonometric forms of a complex number <span class="math notranslate nohighlight">\( z \)</span> are given by:</p>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Cartesian Representation</strong></p>
+<div class="math notranslate nohighlight">
+\[z = x+iy\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> real component</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> imaginary component</p></li>
+<li><p><span class="math notranslate nohighlight">\(i\)</span> imaginary number, <span class="math notranslate nohighlight">\(i^2=-1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(z\)</span> complex number</p></li>
+</ul>
+</div>
 <div class="warning admonition">
 <p class="admonition-title"><strong>Euler’s formula</strong></p>
 <div class="math notranslate nohighlight">
 \[\cos{\phi} + i \sin{\phi} = e^{i\phi}\]</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Polar Representation</strong></p>
+<div class="math notranslate nohighlight">
+\[z = x+iy = r(\cos{\phi} + i \sin{\phi})\]</div>
+<div class="math notranslate nohighlight">
+\[z = = re^{i\phi}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane with <span class="math notranslate nohighlight">\(cos\phi=x/r\)</span> and <span class="math notranslate nohighlight">\(sin\phi = y/r\)</span></p></li>
+</ul>
 </div>
 <p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
 <div class="warning admonition">
@@ -531,26 +554,41 @@ When you multiply a complex number by its conjugate, <span class="math notransla
 <div class="math notranslate nohighlight">
 \[\bar z = re^{-i\phi}\]</div>
 </div>
-<p>The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the
-origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p>
+<ul class="simple">
+<li><p><strong>Sin and cos functions expressed via complex exponentials!</strong> These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\cos{\phi} = \frac{e^{i\phi} + e^{-i\phi}}{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
+\]</div>
+<section id="going-from-carteisan-to-polar">
+<h3>Going From Carteisan to Polar<a class="headerlink" href="#going-from-carteisan-to-polar" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Extract r</strong> The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[r = |z| = \sqrt{x^2 + y^2}\]</div>
-<p>The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of (0,0)-(x,y) line with respect to the real axis.
-The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore,</p>
+<ul class="simple">
+<li><p><strong>Extract <span class="math notranslate nohighlight">\(\phi\)</span></strong> The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of with respect to the real axis.  The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\tan{\phi} = \frac{y}{x}
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 \phi = \tan^{-1} \Big(\frac{y}{x} \Big)
 \]</div>
-<p>Three elementary trigonometric functions are</p>
-<div class="math notranslate nohighlight">
-\[
-\cos{\phi} = \frac{x}{r} = \frac{e^{i\phi} + e^{-i\phi}}{2} , \quad
-\sin{\phi} = \frac{y}{r} = \frac{e^{i\phi} - e^{-i\phi}}{2i} , \quad
-\tan{\phi} = \frac{y}{x}
-\]</div>
 </section>
-<section id="de-moivres-theorem">
-<h2>De Moivre’s Theorem<a class="headerlink" href="#de-moivres-theorem" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="examples-of-using-complex-numbers">
+<h2>Examples of using complex numbers<a class="headerlink" href="#examples-of-using-complex-numbers" title="Permalink to this heading">#</a></h2>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>De Moivre’s Theorem</strong></p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">De Moivre’s theorem</a> states that:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -569,10 +607,7 @@ r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
 (\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
 \]</div>
 <p>The proof of de Moivre’s theorem can be done via <a class="reference external" href="https://en.wikipedia.org/wiki/De_Moivre%27s_formula">induction</a>, e.g one can expand the parentheses ans assert the equality for cases n=2, n=3, …</p>
-<p><strong>Exercise:</strong> set n=2 and first set real component to zero and obtain expresion for sine. Then set imaginary component to zero and obtain expression for cosine.</p>
-</section>
-<section id="examples-of-using-complex-numbers">
-<h2>Examples of using complex numbers<a class="headerlink" href="#examples-of-using-complex-numbers" title="Permalink to this heading">#</a></h2>
+</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Deriving Pythagoras’ theorem</strong></p>
 <p>We can use de Moivre’s theorem to show that
@@ -759,8 +794,10 @@ e^{2i\omega} - e^{-2i\omega}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-i">Introducing <span class="math notranslate nohighlight">\( i \)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-moivres-theorem">De Moivre’s Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eculidean-vs-polar-representation-of-complex-numbers">Eculidean vs polar representation of complex numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-complex-numbers">Examples of using complex numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
