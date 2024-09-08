@@ -37,12 +37,12 @@ When you multiply a complex number by its conjugate, $z \cdot z^*$, the result i
 
 ### Complex number living in 2D
 
-**Recommended:** Watch the  following YouTube video 
-["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
+- A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification. Watch the video to get a visual feel for why we need complex numbers. 
 
-**Also recommended:** [A Visual, Intuitive Guide to Imaginary Numbers](https://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/)
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T647CGsuOVU?si=Q2QdaM1jhy4SEdkx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification:
 
 
 :::{figure-md} markdown-fig
