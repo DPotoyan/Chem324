@@ -2,21 +2,41 @@
 
 :::{admonition} What you need to know
 :class: note
-- Complex numbers are every bit as real as every other number!
-- Complex numbers are legitimate roots of polynomial equations. E.g quadratic equation can have two complex roots.
-- Complex numbers are visualized on a 2D plane similiar to how one visualizes vectors.
-- Symbol $i=\sqrt{-1}$ is introduced to represent imaginary component of a complex number. 
-- One can use cartesian or polar coordinates to represent complex numbers.
-- Euler equatiion is one of the most fundamental and beautiful equation in all of math and physics. $re^{i\phi}=r(cos\phi+isin\phi$)$
-- Thanks to euler equation complex numbers are easier to manipulate and work with in polar representation.
-- Multiplying by a complex number can be seen as an operation of rotation in complex planes
-- $re^{i\phi}$ means rotating a vector of length r in counter-clockwise direction and $re^{-i\phi}$ in clickwise respectively.
-- Conjugate of complex number is obtained by flipping signs in front of imaginary component(s), $z^{*} = x-iy$
-- Multiplying complex number by its conjugate returns the real number corresponding to the squared distance from origin
+
+- **Complex numbers are just as 'real' as any other type of number!** 
+They are not abstract, but essential tools in mathematics and physics.
+
+- **Complex numbers as roots of polynomial equations.** 
+For example, quadratic equations can have two complex roots, showcasing their relevance in solving equations.
+
+- **Visualizing complex numbers**
+Complex numbers can be represented on a 2D plane, known as the complex plane, much like vectors. The horizontal axis represents the real part, and the vertical axis represents the imaginary part.
+
+- **The imaginary unit: $i = \sqrt{-1}$**
+This symbol, $i$, represents the imaginary component of a complex number, where $i^2 = -1$.
+
+- **Cartesian and polar representations**
+Complex numbers can be expressed in Cartesian form $(x + iy)$ or polar form $(re^{i\phi})$, where $r$ is the magnitude, and $\phi$ is the phase (angle).
+
+- **Euler’s formula: A beautiful and fundamental equation**
+Euler’s equation, $re^{i\phi} = r(\cos \phi + i\sin \phi)$, elegantly connects complex numbers to trigonometric functions. It’s a cornerstone in both mathematics and physics.
+
+- **Simplifying with polar coordinates**
+Euler's equation makes it much easier to manipulate complex numbers, especially in their polar form, simplifying multiplication and division.
+
+- **Rotation in the complex plane**
+Multiplying by a complex number in polar form corresponds to a rotation. For instance, $re^{i\phi}$ rotates a vector of length $r$ counterclockwise by an angle $\phi$, while $re^{-i\phi}$ rotates it clockwise by $\phi$.
+
+- **Complex conjugate: Flipping the imaginary part**
+The conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$. It’s a useful operation in various calculations.
+
+- **Multiplying by the conjugate**
+When you multiply a complex number by its conjugate, $z \cdot z^*$, the result is a real number equal to the square of its distance from the origin in the complex plane: $|z|^2 = x^2 + y^2$.
 :::
 
 
 ### Complex number living in 2D
+
 **Recommended:** Watch the  following YouTube video 
 ["complex numbers are real, part-1"](https://www.youtube.com/watch?v=T647CGsuOVU)
 
@@ -29,28 +49,18 @@ A complex number $z$ is a kind of 2D number that lives in 2D space and requires 
 
 <img src="../content/images/cnum_intro.png" alt="compl-num-1" class="bg-primary mb-1" width="60%">
 
-Visualizing complaex numbers in cartesian and polar coordinates. 
+Visualizing complaex numbers in cartesian and polar coordinates where Real axis is denoted as Re and Imaginary as Im.
 :::
 
 
-- **Real part** $ x $ 
-.
-- **Imaginary part** $ y $.
-
-- Complex numbers are every bit as real as  negative numbers. Sure, you do not count objects on your fingers by using complex numbers but complex numbers obey important relationships in math and physics the same way other numbers do. In fact we will see that the central equation of quantum mechanics, the Schrödinger equation, contains an imaginary number. As a result, solutions of the Schrödinger equation are functions of complex variable. Why? Because, apparently, that's how nature works. Nature operates on a complex plane, which includes real numbers as subset. Can we learn to use complex numbers with ease and develop an intuition and visual sense? Yup! And that will be our objective in this short Appendix. 
 
 ### Introducing $ i $ 
 
-When first confronted with complex numbers they seem unintuitive and hard to visualize. The imaginary unit $ i $ in particular mystifies as to what it is and where did it come from. 
-Some facts from mathematics are in order here:
-
 - **What is the definition of $ i $?** The imaginary number $ i $ is defined solely by the property that its square is $−1$, that is: $i\cdot i=-1$. 
 
-- **How does $i$ change what I know about math of real variables?** Imaginary numbers are an important mathematical concept, which extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$, which in turn provides at least one root for every nonconstant polynomial $P(x)$. (See the Fundamental theorem of algebra.) The term "imaginary" is used because there is no real number having a negative square.
+- **How does $i$ change what I know about math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
 
-- **Where does $i$ appear in math?** Most notably imaginary number (i) provide solutions to quadratic equation $x^2 + 1 = 0.$ Although there is no real number with this property, i can be used to extend the real numbers to what are called complex numbers, using addition and multiplication. Generally there are two complex square roots of every real number e.g square root of -1 is i and -i. 
-
-- **What do you call a number that contains i?** A complex number z=1+2i. A function of complex variable is a function if it operates on complex variables z. 
+- **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
 
 
 ### Eculidean vs polar representation of complex numbers
@@ -64,18 +74,28 @@ Visualizing complaex numbers in cartesian and polar coordinates.
 
 :::
 
-
 The Euclidean, polar, and trigonometric forms of a complex number $ z $ are given by:
 
-$$z = x + iy = r(\cos{\phi} + i \sin{\phi}) = re^{i\phi} $$
+:::{admonition} **Euler’s formula**
+:class: warning 
 
-The second equality above is known as [**Euler’s formula**](https://en.wikipedia.org/wiki/Euler%27s_formula#targetText=Euler's%20formula%20states%20that%20for,argument%20x%20given%20in%20radians.&targetText=When%20%2C%20Euler's%20formula%20evaluates%20to,is%20known%20as%20Euler's%20identity.) 
-And equally widely regarded as one of the most beautiful and mysterious in mathematics.
+$$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
+
+:::
 
 
 The complex conjugate $\bar{z}$ of $z$ is defined as
 
-$$\bar z = x-iy =  r (\cos{\phi} - i \sin{\phi} ) = re^{-i\phi}$$
+:::{admonition} **Complex Conjugate**
+:class: warning 
+
+$$\bar z = x-iy$$
+
+$$\bar z = re^{-i\phi}$$
+
+:::
+
+
 
 The value $r$ is the Euclidean distance of vector $(x,y)$ from the
 origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
