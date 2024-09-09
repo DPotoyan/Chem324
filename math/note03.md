@@ -186,6 +186,23 @@ Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$.  The heli
 :::
 
 
+:::{admonition} **Physical analogy to rotation**
+:class: tip, dropdown
+
+
+
+- Imagine $e^{i\phi}$ as a spinning wheel where we are rotating angle $\phi$
+
+- velocity would be given by first derivaive with respect to $t$ and is equal $ie^{i\phi}$.
+
+- Mulitplicatin by i we know is rotation by 90 degree. Hence velocity is perpendicular or tangential to spinning wheel. 
+
+- The magnitude of the velocity is $|ie^{i\phi}|=1$ hence wheel is spinning with constant velocity
+
+- The velocity is always tangential to the circular motion, reflecting the nature of rotational movement in the complex plane.
+
+- In summary, the complex exponential function elegantly describes both rotation and scaling in the complex plane, and its derivative gives insight into the velocity of rotation, always perpendicular to the position vector.
+:::
 
 
 
