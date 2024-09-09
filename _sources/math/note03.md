@@ -46,9 +46,6 @@ When you multiply a complex number by its conjugate, $z \cdot z^*$, the result i
 
 ### Introducing imaginary number $ i $ 
 
-- **What is the definition of $ i $?** The imaginary number $ i $ is defined solely by the property that its square is $−1$, that is: $i\cdot i=-1$. 
-
-- **How does $i$ change what I know about math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
 
 - **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
 
@@ -58,7 +55,11 @@ $$x^2+1=0$$
 
 $$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 
-- The answer: we will need two dimensions! quantifying how much real and how much imaginary component the number has
+- The answer: we will need two dimensions! quantifying how much real and how much imaginary component the number has.
+
+- **What is the definition of $ i $?** The imaginary number $ i $ is defined solely by the property that its square is $−1$, that is: $i\cdot i=-1$. 
+
+- **How does $i$ change what I know about math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
 
 :::{figure-md} markdown-fig
 align: left
@@ -114,7 +115,7 @@ Visualizing complaex numbers in polar coordinates.
     - $x = r\cos\phi$
     - $y = r\sin\phi$
 
-$$z= x+iy = rcos\phi + ir\sin\phi =r(cos\phi+sin\phi)$$
+$$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
 
 - What's the big deal? We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
 - This dramatic simplification.is thanks to "magical" Euler's formula that turns trig functions into exponentss!
