@@ -216,17 +216,30 @@ $$z =  re^{i\phi}$$
 
 ### Complex Conjugate
 
-The complex conjugate $\bar{z}$ of $z$ is defined as
-
 :::{admonition} **Complex Conjugate**
 :class: important 
 
 $$\bar z = x-iy$$
 
+
 $$\bar z = re^{-i\phi}$$
+
+
 :::
 
-- **Sin and cos functions expressed via complex exponentials and their conjugates!** These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
+
+#### Obtaining modulus
+
+- Multiplying complex number by its conjugate always results in positive real number!
+- Geometrically this means rotating back to real axis!
+
+$$\bar z \cdot z = (x-iy)\cdot (x+iy) = x^2+y^2$$
+$$\bar z \cdot z = re^{-i\phi}\cdot re^{-i\phi}=r^2$$
+
+
+#### Expressing sin and cos via complex exponentials
+
+- These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
 
 $$
 \cos{\phi} = \frac{e^{i\phi} + e^{-i\phi}}{2}
@@ -428,36 +441,36 @@ where:
 By representing diffraction waves as complex numbers, we can manipulate and combine them to solve for the electron density in the crystal.
 
 **Structure Factor: The Key to Electron Density**
-The **structure factor** is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor $F(\mathbf{h})$ is given by:
+The **structure factor** is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor $F({h})$ is given by:
 
 $$
-F(\mathbf{h}) = \sum_{j} f_j e^{i\mathbf{h} \cdot \mathbf{r_j}}
+F({h}) = \sum_{j} f_j e^{i{h} \cdot {r_j}}
 $$
 
 where:
 
-- $\mathbf{h}$ is the reciprocal lattice vector, representing the direction of diffraction.
+- ${h}$ is the reciprocal lattice vector, representing the direction of diffraction.
 - $f_j$ is the scattering factor for atom $j$ (how much it scatters X-rays).
-- $\mathbf{r_j}$ is the position of atom $j$ in the unit cell.
+- ${r_j}$ is the position of atom $j$ in the unit cell.
 
 The structure factor is complex, with both real and imaginary components:
 $$
-F(\mathbf{h}) = |F(\mathbf{h})|e^{i\phi(\mathbf{h})}
+F({h}) = |F({h})|e^{i\phi({h})}
 $$
-Here, $|F(\mathbf{h})|$ represents the amplitude (related to the intensity of the diffracted wave), and $\phi(\mathbf{h})$ is the phase.
+Here, $|F({h})|$ represents the amplitude (related to the intensity of the diffracted wave), and $\phi({h})$ is the phase.
 
 **Electron Density Calculation**
-Once the structure factors are known, the **electron density** $\rho(\mathbf{r})$ can be calculated using the inverse Fourier transform:
+Once the structure factors are known, the **electron density** $\rho({r})$ can be calculated using the inverse Fourier transform:
 
 $$
-\rho(\mathbf{r}) = \frac{1}{V} \sum_{\mathbf{h}} F(\mathbf{h}) e^{-i\mathbf{h} \cdot \mathbf{r}}
+\rho({r}) = \frac{1}{V} \sum_{{h}} F({h}) e^{-i{h} \cdot {r}}
 $$
 
-where $V$ is the volume of the unit cell, and the sum is over all reciprocal lattice points $\mathbf{h}$.
+where $V$ is the volume of the unit cell, and the sum is over all reciprocal lattice points ${h}$.
 
 In this equation:
 
-- The structure factor $F(\mathbf{h})$ is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.
+- The structure factor $F({h})$ is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.
 - The result is a 3D map of the electron density within the crystal, which reveals the positions of atoms.
 
 **Solving the Phase Problem**

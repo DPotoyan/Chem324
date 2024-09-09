@@ -440,6 +440,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-modulus">Obtaining modulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-sin-and-cos-via-complex-exponentials">Expressing sin and cos via complex exponentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>
@@ -623,7 +625,6 @@ e^{i\phi} = \cos\phi + i\sin\phi
 </section>
 <section id="complex-conjugate">
 <h2>Complex Conjugate<a class="headerlink" href="#complex-conjugate" title="Permalink to this heading">#</a></h2>
-<p>The complex conjugate <span class="math notranslate nohighlight">\(\bar{z}\)</span> of <span class="math notranslate nohighlight">\(z\)</span> is defined as</p>
 <div class="important admonition">
 <p class="admonition-title"><strong>Complex Conjugate</strong></p>
 <div class="math notranslate nohighlight">
@@ -631,8 +632,21 @@ e^{i\phi} = \cos\phi + i\sin\phi
 <div class="math notranslate nohighlight">
 \[\bar z = re^{-i\phi}\]</div>
 </div>
+<section id="obtaining-modulus">
+<h3>Obtaining modulus<a class="headerlink" href="#obtaining-modulus" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Sin and cos functions expressed via complex exponentials and their conjugates!</strong> These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions.</p></li>
+<li><p>Multiplying complex number by its conjugate always results in positive real number!</p></li>
+<li><p>Geometrically this means rotating back to real axis!</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\bar z \cdot z = (x-iy)\cdot (x+iy) = x^2+y^2\]</div>
+<div class="math notranslate nohighlight">
+\[\bar z \cdot z = re^{-i\phi}\cdot re^{-i\phi}=r^2\]</div>
+</section>
+<section id="expressing-sin-and-cos-via-complex-exponentials">
+<h3>Expressing sin and cos via complex exponentials<a class="headerlink" href="#expressing-sin-and-cos-via-complex-exponentials" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -642,6 +656,7 @@ e^{i\phi} = \cos\phi + i\sin\phi
 \[
 \sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
 \]</div>
+</section>
 <section id="going-from-carteisan-to-polar">
 <h3>Going From Carteisan to Polar<a class="headerlink" href="#going-from-carteisan-to-polar" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -806,32 +821,32 @@ A(k) = |A(k)|e^{i\phi(k)}
 </ul>
 <p>By representing diffraction waves as complex numbers, we can manipulate and combine them to solve for the electron density in the crystal.</p>
 <p><strong>Structure Factor: The Key to Electron Density</strong>
-The <strong>structure factor</strong> is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor <span class="math notranslate nohighlight">\(F(\mathbf{h})\)</span> is given by:</p>
+The <strong>structure factor</strong> is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor <span class="math notranslate nohighlight">\(F({h})\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-F(\mathbf{h}) = \sum_{j} f_j e^{i\mathbf{h} \cdot \mathbf{r_j}}
+F({h}) = \sum_{j} f_j e^{i{h} \cdot {r_j}}
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{h}\)</span> is the reciprocal lattice vector, representing the direction of diffraction.</p></li>
+<li><p><span class="math notranslate nohighlight">\({h}\)</span> is the reciprocal lattice vector, representing the direction of diffraction.</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_j\)</span> is the scattering factor for atom <span class="math notranslate nohighlight">\(j\)</span> (how much it scatters X-rays).</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{r_j}\)</span> is the position of atom <span class="math notranslate nohighlight">\(j\)</span> in the unit cell.</p></li>
+<li><p><span class="math notranslate nohighlight">\({r_j}\)</span> is the position of atom <span class="math notranslate nohighlight">\(j\)</span> in the unit cell.</p></li>
 </ul>
 <p>The structure factor is complex, with both real and imaginary components:
 $<span class="math notranslate nohighlight">\(
-F(\mathbf{h}) = |F(\mathbf{h})|e^{i\phi(\mathbf{h})}
+F({h}) = |F({h})|e^{i\phi({h})}
 \)</span><span class="math notranslate nohighlight">\(
-Here, \)</span>|F(\mathbf{h})|<span class="math notranslate nohighlight">\( represents the amplitude (related to the intensity of the diffracted wave), and \)</span>\phi(\mathbf{h})$ is the phase.</p>
+Here, \)</span>|F({h})|<span class="math notranslate nohighlight">\( represents the amplitude (related to the intensity of the diffracted wave), and \)</span>\phi({h})$ is the phase.</p>
 <p><strong>Electron Density Calculation</strong>
-Once the structure factors are known, the <strong>electron density</strong> <span class="math notranslate nohighlight">\(\rho(\mathbf{r})\)</span> can be calculated using the inverse Fourier transform:</p>
+Once the structure factors are known, the <strong>electron density</strong> <span class="math notranslate nohighlight">\(\rho({r})\)</span> can be calculated using the inverse Fourier transform:</p>
 <div class="math notranslate nohighlight">
 \[
-\rho(\mathbf{r}) = \frac{1}{V} \sum_{\mathbf{h}} F(\mathbf{h}) e^{-i\mathbf{h} \cdot \mathbf{r}}
+\rho({r}) = \frac{1}{V} \sum_{{h}} F({h}) e^{-i{h} \cdot {r}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(V\)</span> is the volume of the unit cell, and the sum is over all reciprocal lattice points <span class="math notranslate nohighlight">\(\mathbf{h}\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(V\)</span> is the volume of the unit cell, and the sum is over all reciprocal lattice points <span class="math notranslate nohighlight">\({h}\)</span>.</p>
 <p>In this equation:</p>
 <ul class="simple">
-<li><p>The structure factor <span class="math notranslate nohighlight">\(F(\mathbf{h})\)</span> is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.</p></li>
+<li><p>The structure factor <span class="math notranslate nohighlight">\(F({h})\)</span> is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.</p></li>
 <li><p>The result is a 3D map of the electron density within the crystal, which reveals the positions of atoms.</p></li>
 </ul>
 <p><strong>Solving the Phase Problem</strong></p>
@@ -1073,6 +1088,8 @@ z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-modulus">Obtaining modulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-sin-and-cos-via-complex-exponentials">Expressing sin and cos via complex exponentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>
