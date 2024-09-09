@@ -82,11 +82,16 @@ $$z = x+iy$$
 :::
 
 
-- **Example:** Identify real and imaginary components of the following complex numbers $z_1 = 3 +2$, $z_2 = -2i$, $z_3=1.1$
+:::{admonition} **Example: Identify real and imaginary parts**
+
+Find real and imaginary components of the following complex numbers $z_1 = 3 +2$, $z_2 = -2i$, $z_3=1.1$
+
+**Solution**
 
     - $Re(z_1) = 3$, $Im(z_1)=2$
     - $Re(z_2) = 0$, $Im(z_2)=-2$
     - $Re(z_3) = 1.1$, $Im(z_1)=0$
+:::
 
 ### Polar vrepresentation
 
@@ -99,15 +104,13 @@ Visualizing complaex numbers in polar coordinates.
 
 :::
 
-- Polar representation expresses complex numbers in terms of radius from origin $r$ and angle of counterclockwise rotation $\phi$
-
-    - $x = r\cos\phi$
-    - $y = r\sin\phi$
+- Polar representation expresses complex numbers in terms of radius from origin $r$ and angle of counterclockwise rotation $\phi$. 
+- Using trigonometry we have: $x = r\cos\phi$ and $y = r\sin\phi$ which can be plugged into cartesian representation:
 
 $$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
 
-- What's the big deal? We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
-- This dramatic simplification.is thanks to "magical" Euler's formula that turns trig functions into exponentss!
+- What's the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
+- This dramatic simplification is thanks to "magical" Euler's formula that turns trig functions into exponentss!
 
 :::{admonition} **Euler’s formula**
 :class: important 
@@ -115,6 +118,46 @@ $$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 :::
 
+#### Converting from Carteisan to Polar
+
+- Now having established Euler's formula we need a recepie to go back and forth between cartesian and polar representations.
+
+- **Extract r** The value $r$ is the Euclidean distance of vector $(x,y)$ from the origin.
+
+$$r = \sqrt{x^2 + y^2}$$
+
+-  **Extract $\phi$** The value $\phi$ is the angle of with respect to the real axis.  The tangent of $\phi$ is $\left(\frac{y}{x}\right)$. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn 
+
+$$
+\tan{\phi} = \frac{y}{x}
+$$
+
+$$
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
+$$
+
+:::{admonition} **Example: Convert to polar**
+
+Write complex number $z = -1-2i$ in polar form
+
+**Hot Tip** use atan2 or arctan2 in your calculator which correctly identifies quadrant for angle. 
+
+
+**Solution**
+
+- We need to extract $r$ and $\phi$ to write $z= re^{i\phi}$
+
+$$r = \sqrt{(-1)^2+(-2)^2} = \sqrt{5}$$
+
+$$\phi = arctan2(-2, -1) \approx -2.034$$
+
+- We can always add $2\pi$ to angle we get from arctan2 to make angle positive. Reminder that $\pm 2\pi $ leave trig functions unchanged.
+
+$$\phi = -2.034\rightarrow -2.034+2\pi = 4.248$$
+
+$$z = \sqrt{5}e^{4.248i}$$
+
+:::
 
 
 :::{figure-md} markdown-fig
@@ -122,11 +165,19 @@ align: left
 
 <img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
-Visualization of Euler's formula as a helix in three-dimensional space. The helix is formed by plotting points for various values of $\phi$ and is determined by both the cosine and sine components of the formula. One curve represents the real component  $cos\phi$ of the formula, while another curve, rotated 90 degrees around the z-axis (due to multiplication by 
-$i$ represents the imaginary component $sin\phi$
+Visualization of Euler's formula as a helix in three-dimensional space. The helix is formed by plotting points for various values of $\phi$ and is determined by both the cosine and sine components of the formula. One curve represents the real component  $cos\phi$ of the formula, while another curve, rotated 90 degrees around the z-axis (due to multiplication by  $i$ represents the imaginary component $sin\phi$
 
 :::
 
+
+:::{admonition} **Polar Representation**
+:class: important
+
+$$z =  re^{i\phi}$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane.
+:::
 
 
 :::{admonition} **Proof Euler's formula**
@@ -199,16 +250,6 @@ $$
 :::
 
 
-:::{admonition} **Polar Representation**
-:class: important
-
-$$z =  re^{i\phi}$$
-
-- $r=\sqrt{x^2+y^2}$ distance from origin.
-- $\phi$ rotation angle in complex plane.
-:::
-
-
 ### Complex Conjugate
 
 :::{admonition} **Complex Conjugate**
@@ -246,21 +287,7 @@ $$
 \sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
 $$
 
-#### Going From Carteisan to Polar
 
-- **Extract r** The value $r$ is the Euclidean distance of vector $(x,y)$ from the origin and is equal to the modulus of $|z|=\sqrt{\bar{z}z}$
-
-$$r = |z| = \sqrt{x^2 + y^2}$$
-
--  **Extract $\phi$** The value $\phi$ is the angle of with respect to the real axis.  The tangent of $\phi$ is $\left(\frac{y}{x}\right) $. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn 
-
-$$
-\tan{\phi} = \frac{y}{x}
-$$
-
-$$
-\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
-$$
 
 
 
