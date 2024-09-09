@@ -564,8 +564,15 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 <li><p>Polar representation expresses complex numbers in terms of radius from origin <span class="math notranslate nohighlight">\(r\)</span> and angle of counterclockwise rotation <span class="math notranslate nohighlight">\(\phi\)</span>.</p></li>
 <li><p>Using trigonometry we have: <span class="math notranslate nohighlight">\(x = r\cos\phi\)</span> and <span class="math notranslate nohighlight">\(y = r\sin\phi\)</span> which can be plugged into cartesian representation:</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Polar Representation via sin and cos</strong></p>
 <div class="math notranslate nohighlight">
 \[z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
+</ul>
+</div>
 <ul class="simple">
 <li><p>What’s the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers.</p></li>
 <li><p>This dramatic simplification is thanks to “magical” Euler’s formula that turns trig functions into exponentss!</p></li>
@@ -574,6 +581,15 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 <p class="admonition-title"><strong>Euler’s formula</strong></p>
 <div class="math notranslate nohighlight">
 \[\cos{\phi} + i \sin{\phi} = e^{i\phi}\]</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Polar Representation via complex exponential</strong></p>
+<div class="math notranslate nohighlight">
+\[z =  re^{i\phi}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
+</ul>
 </div>
 <section id="converting-from-carteisan-to-polar">
 <h3>Converting from Carteisan to Polar<a class="headerlink" href="#converting-from-carteisan-to-polar" title="Permalink to this heading">#</a></h3>
@@ -620,15 +636,6 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">Visualization of Euler’s formula <span class="math notranslate nohighlight">\(e^{i\omega t}\)</span> as a function of <span class="math notranslate nohighlight">\(t\)</span>.  The helix is formed by plotting points for various values of <span class="math notranslate nohighlight">\(\omega\)</span> and is determined by both the cos and sin components of the formula. One curve represents the real component  <span class="math notranslate nohighlight">\(cos\omega\)</span> of the formula, while another curve, rotated 90 degrees around the <span class="math notranslate nohighlight">\(t\)</span> axis (due to multiplication by  <span class="math notranslate nohighlight">\(i\)</span> represents the imaginary component <span class="math notranslate nohighlight">\(sin\omega\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="important admonition">
-<p class="admonition-title"><strong>Polar Representation</strong></p>
-<div class="math notranslate nohighlight">
-\[z =  re^{i\phi}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
-</ul>
-</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Proof Euler’s formula</strong></p>
 <p>We will prove this by using the Taylor series expansions of the exponential function, cosine, and sine.</p>
@@ -883,11 +890,12 @@ F({h}) = \sum_{j} f_j e^{i{h} \cdot {r_j}}
 <li><p><span class="math notranslate nohighlight">\(f_j\)</span> is the scattering factor for atom <span class="math notranslate nohighlight">\(j\)</span> (how much it scatters X-rays).</p></li>
 <li><p><span class="math notranslate nohighlight">\({r_j}\)</span> is the position of atom <span class="math notranslate nohighlight">\(j\)</span> in the unit cell.</p></li>
 </ul>
-<p>The structure factor is complex, with both real and imaginary components:
-$<span class="math notranslate nohighlight">\(
+<p>The structure factor is complex, with both real and imaginary components:</p>
+<div class="math notranslate nohighlight">
+\[
 F({h}) = |F({h})|e^{i\phi({h})}
-\)</span><span class="math notranslate nohighlight">\(
-Here, \)</span>|F({h})|<span class="math notranslate nohighlight">\( represents the amplitude (related to the intensity of the diffracted wave), and \)</span>\phi({h})$ is the phase.</p>
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(|F({h})|\)</span> represents the amplitude (related to the intensity of the diffracted wave), and <span class="math notranslate nohighlight">\(\phi({h})\)</span> is the phase.</p>
 <p><strong>Electron Density Calculation</strong>
 Once the structure factors are known, the <strong>electron density</strong> <span class="math notranslate nohighlight">\(\rho({r})\)</span> can be calculated using the inverse Fourier transform:</p>
 <div class="math notranslate nohighlight">

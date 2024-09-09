@@ -108,7 +108,14 @@ Visualizing complaex numbers in polar coordinates.
 - Polar representation expresses complex numbers in terms of radius from origin $r$ and angle of counterclockwise rotation $\phi$. 
 - Using trigonometry we have: $x = r\cos\phi$ and $y = r\sin\phi$ which can be plugged into cartesian representation:
 
+:::{admonition} **Polar Representation via sin and cos**
+:class: important
+
 $$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane.
+:::
 
 - What's the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
 - This dramatic simplification is thanks to "magical" Euler's formula that turns trig functions into exponentss!
@@ -117,6 +124,15 @@ $$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
 :class: important 
 
 $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
+:::
+
+:::{admonition} **Polar Representation via complex exponential**
+:class: important
+
+$$z =  re^{i\phi}$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane.
 :::
 
 #### Converting from Carteisan to Polar
@@ -170,14 +186,7 @@ Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$.  The heli
 :::
 
 
-:::{admonition} **Polar Representation**
-:class: important
 
-$$z =  re^{i\phi}$$
-
-- $r=\sqrt{x^2+y^2}$ distance from origin.
-- $\phi$ rotation angle in complex plane.
-:::
 
 
 :::{admonition} **Proof Euler's formula**
@@ -487,9 +496,11 @@ where:
 - ${r_j}$ is the position of atom $j$ in the unit cell.
 
 The structure factor is complex, with both real and imaginary components:
+
 $$
 F({h}) = |F({h})|e^{i\phi({h})}
 $$
+
 Here, $|F({h})|$ represents the amplitude (related to the intensity of the diffracted wave), and $\phi({h})$ is the phase.
 
 **Electron Density Calculation**
