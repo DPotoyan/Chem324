@@ -487,11 +487,9 @@ where:
 - ${r_j}$ is the position of atom $j$ in the unit cell.
 
 The structure factor is complex, with both real and imaginary components:
-
 $$
 F({h}) = |F({h})|e^{i\phi({h})}
 $$
-
 Here, $|F({h})|$ represents the amplitude (related to the intensity of the diffracted wave), and $\phi({h})$ is the phase.
 
 **Electron Density Calculation**
