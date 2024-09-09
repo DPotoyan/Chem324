@@ -37,7 +37,7 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 
 :::{figure-md} markdown-fig
 
-<img src="images/i-sq.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+<img src="images/i-sq.png" alt="applied photoelectric" class="bg-primary mb-1"  width="40%">
 
 Visualizing complex numbers on cartesian plane
 
@@ -59,7 +59,7 @@ $$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 
 :::{figure-md} markdown-fig
 
-<img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+<img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1"  width="40%">
 
 Complex numbers live in 2D: You must specify real and imaginary components to fully define a complex number
 :::
@@ -79,11 +79,8 @@ Visualizing complaex numbers in cartesian coordinates.
 
 $$z = x+iy$$
 
-- $x$ real component
-- $y$ imaginary component
-- $i$ imaginary number, $i^2=-1$
-- $z$ complex number
-
+- $x=Re(z)$ real component
+- $y=Im(z)$ imaginary component
 :::
 
 
@@ -93,12 +90,12 @@ Find real and imaginary components of the following complex numbers $z_1 = 3 +2$
 
 **Solution**
 
-    - $Re(z_1) = 3$, $Im(z_1)=2$
-    - $Re(z_2) = 0$, $Im(z_2)=-2$
-    - $Re(z_3) = 1.1$, $Im(z_1)=0$
+- $Re(z_1) = 3$, $Im(z_1)=2$
+- $Re(z_2) = 0$, $Im(z_2)=-2$
+- $Re(z_3) = 1.1$, $Im(z_1)=0$
 :::
 
-### Polar vrepresentation
+### Polar representation
 
 :::{figure-md} markdown-fig
 
@@ -168,7 +165,7 @@ $$z = \sqrt{5}e^{4.248i}$$
 
 <img src="images/ComplexHelix.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
-Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$.  The helix is formed by plotting points for various values of $\omega$ and is determined by both the cos and sin components of the formula. One curve represents the real component  $cos$\omega$$ of the formula, while another curve, rotated 90 degrees around the $t$ axis (due to multiplication by  $i$ represents the imaginary component $sin\omega$
+Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$.  The helix is formed by plotting points for various values of $\omega$ and is determined by both the cos and sin components of the formula. One curve represents the real component  $cos\omega$ of the formula, while another curve, rotated 90 degrees around the $t$ axis (due to multiplication by  $i$ represents the imaginary component $sin\omega$
 
 :::
 
