@@ -62,7 +62,6 @@ Complex numbers live in 2D: You must specify real and imaginary components to fu
 ### Cartesian vrepresentation
 
 :::{figure-md} markdown-fig
-align: left
 
 <img src="images/Cart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
@@ -96,7 +95,6 @@ Find real and imaginary components of the following complex numbers $z_1 = 3 +2$
 ### Polar vrepresentation
 
 :::{figure-md} markdown-fig
-align: left
 
 <img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
@@ -161,7 +159,6 @@ $$z = \sqrt{5}e^{4.248i}$$
 
 
 :::{figure-md} markdown-fig
-align: left
 
 <img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
@@ -291,7 +288,7 @@ $$
 
 
 
-### Examples of using complex numbers
+### Applications of complex numbers
 
 :::{admonition} **De Moivre’s Theorem**
 :class: tip, dropdown
