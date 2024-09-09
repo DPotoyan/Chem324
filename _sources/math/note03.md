@@ -3,35 +3,24 @@
 :::{admonition} What you need to know
 :class: note
 
-- **Complex numbers are just as 'real' as any other type of number!** 
-They are not abstract, but essential tools in mathematics and physics.
+- **Complex numbers generalize oridnary 1D numbers to 2D**  To descirbe complex numbers 
+ we need two compoenents called real and imaginary parts. Complex numbers appear naturally in quantum mechanics and are essential part of physics.
 
-- **Complex numbers as roots of polynomial equations.** 
-For example, quadratic equations can have two complex roots, showcasing their relevance in solving equations.
+- **The imaginary unit: $i = \sqrt{-1}$** This symbol, $i$, represents the imaginary component of a complex number, where $i^2 = -1$.
 
-- **Visualizing complex numbers**
-Complex numbers can be represented on a 2D plane, known as the complex plane, much like vectors. The horizontal axis represents the real part, and the vertical axis represents the imaginary part.
-
-- **The imaginary unit: $i = \sqrt{-1}$**
-This symbol, $i$, represents the imaginary component of a complex number, where $i^2 = -1$.
+- **Complex numbers as roots of polynomial equations.**  For example, quadratic equations can have two complex roots, showcasing their relevance in solving equations.
 
 - **Cartesian and polar representations**
 Complex numbers can be expressed in Cartesian form $(x + iy)$ or polar form $(re^{i\phi})$, where $r$ is the magnitude, and $\phi$ is the phase (angle).
 
-- **Euler’s formula: A beautiful and fundamental equation**
-Euler’s equation, $re^{i\phi} = r(\cos \phi + i\sin \phi)$, elegantly connects complex numbers to trigonometric functions. It’s a cornerstone in both mathematics and physics.
-
-- **Simplifying with polar coordinates**
-Euler's equation makes it much easier to manipulate complex numbers, especially in their polar form, simplifying multiplication and division.
+- **Euler’s formula: A beautiful and fundamental equation** $re^{i\phi} = r(\cos \phi + i\sin \phi)$, elegantly connects complex numbers to trigonometric functions. uler's equation makes it much easier to manipulate complex numbers, especially in their polar form, simplifying multiplication and division.
 
 - **Rotation in the complex plane**
 Multiplying by a complex number in polar form corresponds to a rotation. For instance, $re^{i\phi}$ rotates a vector of length $r$ counterclockwise by an angle $\phi$, while $re^{-i\phi}$ rotates it clockwise by $\phi$.
 
-- **Complex conjugate: Flipping the imaginary part**
-The conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$. It’s a useful operation in various calculations.
+- **Complex conjugate: Flipping the imaginary part** The conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$. 
 
-- **Multiplying by the conjugate**
-When you multiply a complex number by its conjugate, $z \cdot z^*$, the result is a real number equal to the square of its distance from the origin in the complex plane: $|z|^2 = x^2 + y^2$.
+- **Multiplying by the conjugate** When you multiply a complex number by its conjugate, $z \cdot z^*$, the result is a real number equal to the square of its distance from the origin in the complex plane: $|z|^2 = x^2 + y^2$.
 :::
 
 
