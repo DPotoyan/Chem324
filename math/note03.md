@@ -53,7 +53,7 @@ $$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 :::{figure-md} markdown-fig
 align: left
 
-<img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+<img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
 Complex numbers live in 2D: You must specify real and imaginary components to fully define a complex number
 :::
@@ -64,7 +64,7 @@ Complex numbers live in 2D: You must specify real and imaginary components to fu
 :::{figure-md} markdown-fig
 align: left
 
-<img src="images/Cart.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+<img src="images/Cart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
 Visualizing complaex numbers in cartesian coordinates. 
 
@@ -93,7 +93,7 @@ $$z = x+iy$$
 :::{figure-md} markdown-fig
 align: left
 
-<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
 Visualizing complaex numbers in polar coordinates. 
 
@@ -120,11 +120,10 @@ $$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
 :::{figure-md} markdown-fig
 align: left
 
-<img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1" style="background-color: white;" width="60%">
+<img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
 Visualization of Euler's formula as a helix in three-dimensional space. The helix is formed by plotting points for various values of $\phi$ and is determined by both the cosine and sine components of the formula. One curve represents the real component  $cos\phi$ of the formula, while another curve, rotated 90 degrees around the z-axis (due to multiplication by 
 $i$ represents the imaginary component $sin\phi$
-
 
 :::
 
