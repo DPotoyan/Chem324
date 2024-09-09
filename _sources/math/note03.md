@@ -229,17 +229,19 @@ $$\bar z = re^{-i\phi}$$
 :::
 
 
-#### Obtaining modulus
+#### Extracting absolute value
 
 - Multiplying complex number by its conjugate always results in positive real number!
 - Geometrically this means rotating back to real axis!
+- Product of complex number and its conjugate returns the distance from the origin in complex plane. 
 
-$$\bar z \cdot z = (x-iy)\cdot (x+iy) = x^2+y^2$$
-$$\bar z \cdot z = re^{-i\phi}\cdot re^{-i\phi}=r^2$$
+$$|z|^2 = \bar z \cdot z = (x-iy)\cdot (x+iy) = x^2+y^2$$
+$$|z|^2 = \bar z \cdot z = re^{-i\phi}\cdot re^{i\phi}=r^2$$
 
 
 #### Expressing sin and cos via complex exponentials
 
+- Using Euler's formula we can take the sum and difference of $z$ and $\bar z$ to express sin and cos in terms of compelx exponentials. 
 - These representations of sin and cos are super powerful in simplifying various integrals and for deriving experssions. 
 
 $$
