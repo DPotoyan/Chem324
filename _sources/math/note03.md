@@ -69,7 +69,7 @@ Complex numbers live in 2D: You must specify real and imaginary components to fu
 
 :::{figure-md} markdown-fig
 
-<img src="images/Cart.png" alt="complex nums on plane" class="bg-primary mb-1"  width="40%">
+<img src="images/Cart.png" alt="complex nums on plane" class="bg-primary mb-1"  width="30%">
 
 Visualizing complaex numbers in cartesian coordinates. 
 :::
@@ -99,7 +99,7 @@ Find real and imaginary components of the following complex numbers $z_1 = 3 +2$
 
 :::{figure-md} markdown-fig
 
-<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="40%">
+<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="30%">
 
 Visualizing complaex numbers in polar coordinates. 
 
@@ -252,6 +252,7 @@ $$
 
 **Conclusion**
 This completes the proof of Euler's formula:
+
 $$
 e^{i\phi} = \cos\phi + i\sin\phi
 $$
