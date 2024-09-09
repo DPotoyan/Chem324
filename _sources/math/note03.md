@@ -35,6 +35,13 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 
 ### Introducing imaginary number $ i $ 
 
+:::{figure-md} markdown-fig
+
+<img src="images/i-sq.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+
+Visualizing complex numbers on cartesian plane
+
+:::
 
 - **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
 
@@ -51,7 +58,6 @@ $$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 - **How does $i$ change what I know about math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
 
 :::{figure-md} markdown-fig
-align: left
 
 <img src="images/SumNums.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
@@ -63,10 +69,9 @@ Complex numbers live in 2D: You must specify real and imaginary components to fu
 
 :::{figure-md} markdown-fig
 
-<img src="images/Cart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+<img src="images/Cart.png" alt="complex nums on plane" class="bg-primary mb-1"  width="40%">
 
 Visualizing complaex numbers in cartesian coordinates. 
-
 :::
 
 :::{admonition} **Cartesian Representation**
@@ -78,6 +83,7 @@ $$z = x+iy$$
 - $y$ imaginary component
 - $i$ imaginary number, $i^2=-1$
 - $z$ complex number
+
 :::
 
 
@@ -96,7 +102,7 @@ Find real and imaginary components of the following complex numbers $z_1 = 3 +2$
 
 :::{figure-md} markdown-fig
 
-<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+<img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="40%">
 
 Visualizing complaex numbers in polar coordinates. 
 
@@ -160,9 +166,9 @@ $$z = \sqrt{5}e^{4.248i}$$
 
 :::{figure-md} markdown-fig
 
-<img src="images/Rising_circular.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+<img src="images/ComplexHelix.gif" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
 
-Visualization of Euler's formula as a helix in three-dimensional space. The helix is formed by plotting points for various values of $\phi$ and is determined by both the cosine and sine components of the formula. One curve represents the real component  $cos\phi$ of the formula, while another curve, rotated 90 degrees around the z-axis (due to multiplication by  $i$ represents the imaginary component $sin\phi$
+Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$.  The helix is formed by plotting points for various values of $\omega$ and is determined by both the cos and sin components of the formula. One curve represents the real component  $cos$\omega$$ of the formula, while another curve, rotated 90 degrees around the $t$ axis (due to multiplication by  $i$ represents the imaginary component $sin\omega$
 
 :::
 
@@ -248,6 +254,15 @@ $$
 
 
 ### Complex Conjugate
+
+
+:::{figure-md} markdown-fig
+
+<img src="images/conj.png" alt="applied photoelectric" class="bg-primary mb-1"  width="60%">
+
+Visualizing conjugate of complex number as a mirror image or rotation backwards
+:::
+
 
 :::{admonition} **Complex Conjugate**
 :class: important 
