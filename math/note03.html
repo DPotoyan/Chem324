@@ -438,11 +438,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-imaginary-number-i">Introducing imaginary number <span class="math notranslate nohighlight">\( i \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-from-carteisan-to-polar">Converting from Carteisan to Polar</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-absolute-value">Extracting absolute value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-sin-and-cos-via-complex-exponentials">Expressing sin and cos via complex exponentials</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-complex-numbers">Examples of using complex numbers</a></li>
@@ -523,36 +525,81 @@ Multiplying by a complex number in polar form corresponds to a rotation. For ins
 <li><p><span class="math notranslate nohighlight">\(z\)</span> complex number</p></li>
 </ul>
 </div>
-<ul class="simple">
-<li><p><strong>Example:</strong> Identify real and imaginary components of the following complex numbers <span class="math notranslate nohighlight">\(z_1 = 3 +2\)</span>, <span class="math notranslate nohighlight">\(z_2 = -2i\)</span>, <span class="math notranslate nohighlight">\(z_3=1.1\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(Re(z_1) = 3\)</span>, <span class="math notranslate nohighlight">\(Im(z_1)=2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Re(z_2) = 0\)</span>, <span class="math notranslate nohighlight">\(Im(z_2)=-2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Re(z_3) = 1.1\)</span>, <span class="math notranslate nohighlight">\(Im(z_1)=0\)</span></p></li>
-</ul>
-</li>
-</ul>
+<div class="admonition-example-identify-real-and-imaginary-parts admonition">
+<p class="admonition-title"><strong>Example: Identify real and imaginary parts</strong></p>
+<p>Find real and imaginary components of the following complex numbers <span class="math notranslate nohighlight">\(z_1 = 3 +2\)</span>, <span class="math notranslate nohighlight">\(z_2 = -2i\)</span>, <span class="math notranslate nohighlight">\(z_3=1.1\)</span></p>
+<p><strong>Solution</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- $Re(z_1) = 3$, $Im(z_1)=2$
+- $Re(z_2) = 0$, $Im(z_2)=-2$
+- $Re(z_3) = 1.1$, $Im(z_1)=0$
+</pre></div>
+</div>
+</div>
 </section>
 <section id="polar-vrepresentation">
 <h2>Polar vrepresentation<a class="headerlink" href="#polar-vrepresentation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Polar representation expresses complex numbers in terms of radius from origin <span class="math notranslate nohighlight">\(r\)</span> and angle of counterclockwise rotation <span class="math notranslate nohighlight">\(\phi\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(x = r\cos\phi\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(y = r\sin\phi\)</span></p></li>
-</ul>
-</li>
+<li><p>Polar representation expresses complex numbers in terms of radius from origin <span class="math notranslate nohighlight">\(r\)</span> and angle of counterclockwise rotation <span class="math notranslate nohighlight">\(\phi\)</span>.</p></li>
+<li><p>Using trigonometry we have: <span class="math notranslate nohighlight">\(x = r\cos\phi\)</span> and <span class="math notranslate nohighlight">\(y = r\sin\phi\)</span> which can be plugged into cartesian representation:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)\]</div>
 <ul class="simple">
-<li><p>What’s the big deal? We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers.</p></li>
-<li><p>This dramatic <a class="reference external" href="http://simplification.is">simplification.is</a> thanks to “magical” Euler’s formula that turns trig functions into exponentss!</p></li>
+<li><p>What’s the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers.</p></li>
+<li><p>This dramatic simplification is thanks to “magical” Euler’s formula that turns trig functions into exponentss!</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Euler’s formula</strong></p>
 <div class="math notranslate nohighlight">
 \[\cos{\phi} + i \sin{\phi} = e^{i\phi}\]</div>
+</div>
+<section id="converting-from-carteisan-to-polar">
+<h3>Converting from Carteisan to Polar<a class="headerlink" href="#converting-from-carteisan-to-polar" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Now having established Euler’s formula we need a recepie to go back and forth between cartesian and polar representations.</p></li>
+<li><p><strong>Extract r</strong> The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the origin.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[r = \sqrt{x^2 + y^2}\]</div>
+<ul class="simple">
+<li><p><strong>Extract <span class="math notranslate nohighlight">\(\phi\)</span></strong> The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of with respect to the real axis.  The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right)\)</span>. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\tan{\phi} = \frac{y}{x}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
+\]</div>
+<div class="admonition-example-convert-to-polar admonition">
+<p class="admonition-title"><strong>Example: Convert to polar</strong></p>
+<p>Write complex number <span class="math notranslate nohighlight">\(z = -1-2i\)</span> in polar form</p>
+<p><strong>Hot Tip</strong> use atan2 or arctan2 in your calculator which correctly identifies quadrant for angle.</p>
+<p><strong>Solution</strong></p>
+<ul class="simple">
+<li><p>We need to extract <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> to write <span class="math notranslate nohighlight">\(z= re^{i\phi}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[r = \sqrt{(-1)^2+(-2)^2} = \sqrt{5}\]</div>
+<div class="math notranslate nohighlight">
+\[\phi = arctan2(-2, -1) \approx -2.034\]</div>
+<ul class="simple">
+<li><p>We can always add <span class="math notranslate nohighlight">\(2\pi\)</span> to angle we get from arctan2 to make angle positive. Reminder that <span class="math notranslate nohighlight">\(\pm 2\pi \)</span> leave trig functions unchanged.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\phi = -2.034\rightarrow -2.034+2\pi = 4.248\]</div>
+<div class="math notranslate nohighlight">
+\[z = \sqrt{5}e^{4.248i}\]</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Polar Representation</strong></p>
+<div class="math notranslate nohighlight">
+\[z =  re^{i\phi}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
+</ul>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Proof Euler’s formula</strong></p>
@@ -608,15 +655,7 @@ $<span class="math notranslate nohighlight">\(
 e^{i\phi} = \cos\phi + i\sin\phi
 \)</span>$</p>
 </div>
-<div class="important admonition">
-<p class="admonition-title"><strong>Polar Representation</strong></p>
-<div class="math notranslate nohighlight">
-\[z =  re^{i\phi}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(r=\sqrt{x^2+y^2}\)</span> distance from origin.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi\)</span> rotation angle in complex plane.</p></li>
-</ul>
-</div>
+</section>
 </section>
 <section id="complex-conjugate">
 <h2>Complex Conjugate<a class="headerlink" href="#complex-conjugate" title="Permalink to this heading">#</a></h2>
@@ -652,25 +691,6 @@ e^{i\phi} = \cos\phi + i\sin\phi
 <div class="math notranslate nohighlight">
 \[
 \sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
-\]</div>
-</section>
-<section id="going-from-carteisan-to-polar">
-<h3>Going From Carteisan to Polar<a class="headerlink" href="#going-from-carteisan-to-polar" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Extract r</strong> The value <span class="math notranslate nohighlight">\(r\)</span> is the Euclidean distance of vector <span class="math notranslate nohighlight">\((x,y)\)</span> from the origin and is equal to the modulus of <span class="math notranslate nohighlight">\(|z|=\sqrt{\bar{z}z}\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[r = |z| = \sqrt{x^2 + y^2}\]</div>
-<ul class="simple">
-<li><p><strong>Extract <span class="math notranslate nohighlight">\(\phi\)</span></strong> The value <span class="math notranslate nohighlight">\(\phi\)</span> is the angle of with respect to the real axis.  The tangent of <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(\left(\frac{y}{x}\right) \)</span>. Therefore using simple trigonometry we can backcalculate angle and sin, cos tan functions from cartesia representatn</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\tan{\phi} = \frac{y}{x}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
 \]</div>
 </section>
 </section>
@@ -1083,11 +1103,13 @@ z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-number-living-in-2d">Complex number living in 2D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-imaginary-number-i">Introducing imaginary number <span class="math notranslate nohighlight">\( i \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-vrepresentation">Cartesian vrepresentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-vrepresentation">Polar vrepresentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-from-carteisan-to-polar">Converting from Carteisan to Polar</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-absolute-value">Extracting absolute value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-sin-and-cos-via-complex-exponentials">Expressing sin and cos via complex exponentials</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-carteisan-to-polar">Going From Carteisan to Polar</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-complex-numbers">Examples of using complex numbers</a></li>
