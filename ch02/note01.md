@@ -68,9 +68,7 @@ $$
 - Wave number $k$: specifies periodicity in space.
 - Angular frequency $\omega$: specifies periodicity in time.
 
-### Complex exponential representation of waves
-
-:::{admonition}
+:::{admonition} **Complex exponential representation of waves**
 :class: warning
 
 u(x,t) = Ae^{ik(x-vt)} = Ae^{i(kx-\omega t)}
