@@ -485,8 +485,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing complex numbers</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-legit-solutions-of-equations">Complex numbers are legit solutions of equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caluclations-with-complex-numbers">Caluclations with complex numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
@@ -519,46 +518,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="complex-numbers-are-legit-solutions-of-equations">
-<h2>Complex numbers are legit solutions of equations<a class="headerlink" href="#complex-numbers-are-legit-solutions-of-equations" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Solving quadratic equation <span class="math notranslate nohighlight">\(ax^2+bx+c=0\)</span> will always have two roots as long as <span class="math notranslate nohighlight">\(a=\neq0\)</span>.</p></li>
-<li><p>Solving quadratic equation <span class="math notranslate nohighlight">\(ax^2+bx+c=0\)</span> can also be seen as the intersection of parabola with <span class="math notranslate nohighlight">\(y=0\)</span></p></li>
-<li><p>Depending on values of <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> a number of situations are possible:</p>
-<ul>
-<li><p>Two distinct real roots. This occurs when <span class="math notranslate nohighlight">\(b^2-4ac &gt;0 \)</span></p></li>
-<li><p>Sometimes roots can be repeated. This occurs when <span class="math notranslate nohighlight">\(b^2-4ac=0\)</span>. In this case, the quadratic equation touches the x-axis at a single point. While it’s essentially one point of contact or one root, it’s algebraically counted as two identical roots.</p></li>
-<li><p>Roots are not in real number space when <span class="math notranslate nohighlight">\(b^2-4ac &gt;0\)</span> These roots are not real numbers but are still valid solutions in the complex number system!</p></li>
-</ul>
-</li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># vary this number and see for yourself</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">p</span> 
-
-
-<span class="c1">### Plotting </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-10.0, 10.0)
-</pre></div>
-</div>
-<img alt="../_images/b4c48a6ff329f5bca631183a4d50a53d5bfaba8f473cbe6594474fbcae53901a.png" src="../_images/b4c48a6ff329f5bca631183a4d50a53d5bfaba8f473cbe6594474fbcae53901a.png" />
-</div>
-</div>
-</section>
-<section id="an-example">
-<h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this heading">#</a></h2>
+<section id="caluclations-with-complex-numbers">
+<h2>Caluclations with complex numbers<a class="headerlink" href="#caluclations-with-complex-numbers" title="Permalink to this heading">#</a></h2>
 <p>Consider the complex number <span class="math notranslate nohighlight">\( z = 1 + \sqrt{3} i \)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -925,7 +886,7 @@ document.write(`
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># Image width and height; parameters for the plot</span>
-<span class="n">im_width</span><span class="p">,</span> <span class="n">im_height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span>
+<span class="n">im_width</span><span class="p">,</span> <span class="n">im_height</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1500</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">)</span>
 
@@ -958,12 +919,15 @@ document.write(`
         <span class="n">ratio</span> <span class="o">=</span> <span class="n">nit</span> <span class="o">/</span> <span class="n">nit_max</span>
         <span class="n">julia</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">]</span> <span class="o">=</span> <span class="n">ratio</span>
 
-<span class="c1">#ax.imshow(julia, interpolation=&#39;nearest&#39;, cmap=cm.hot)  #try cm.jet, cm.hot, cm.rainbow, etc</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">julia</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">)</span>  <span class="c1">#try cm.jet, cm.hot, cm.rainbow, etc</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3a02a8acf668b66b8d2ed0c0e5f9d90b69c13c4c06c49b93cabcdb317bad5651.png" src="../_images/3a02a8acf668b66b8d2ed0c0e5f9d90b69c13c4c06c49b93cabcdb317bad5651.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7754790e2420&gt;
+</pre></div>
+</div>
+<img alt="../_images/960c849096d15a4ac8d2d09346de72d8b52ee61226ef1e15745f812c47257d23.png" src="../_images/960c849096d15a4ac8d2d09346de72d8b52ee61226ef1e15745f812c47257d23.png" />
 </div>
 </div>
 </section>
@@ -1032,8 +996,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing complex numbers</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers-are-legit-solutions-of-equations">Complex numbers are legit solutions of equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caluclations-with-complex-numbers">Caluclations with complex numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-subtracting-and-multiplying-comple-numbers">Adding, subtracting and multiplying comple numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-representation">Cartesian representation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-plot-of-complex-numbers">Polar plot of complex numbers</a></li>
