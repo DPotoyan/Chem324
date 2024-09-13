@@ -439,7 +439,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinding-waves-interference">Combinding waves: interference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
 </ul>
@@ -572,33 +572,69 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 <li><p>We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions.</p></li>
 </ul>
 </section>
-<section id="wave-interference-definition">
-<h2>Wave interference: definition<a class="headerlink" href="#wave-interference-definition" title="Permalink to this heading">#</a></h2>
-<p>Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.</p>
+<section id="combinding-waves-interference">
+<h2>Combinding waves: interference<a class="headerlink" href="#combinding-waves-interference" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We are often interested in the result of multiple waves interacting with one another which can be described mathematically when we add up waves.</p></li>
+<li><p>Combinging waves creates a new wave that again obyes wave equation. This known as the <strong>linear superposition principle</strong>  if waves <span class="math notranslate nohighlight">\(u_A\)</span> and <span class="math notranslate nohighlight">\(u_B\)</span> are both solutions of the wave equation, then so is a wave <span class="math notranslate nohighlight">\(u_C = u_A + u_B\)</span>.</p></li>
+<li><p><strong>Interference</strong> – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.</p></li>
+</ul>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" style="width: 70%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Illustration of wave interference</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are both solutions of the wave equation, then so is a wave <span class="math notranslate nohighlight">\(C = A + B\)</span>.</p>
 <div class="dropdown tip admonition">
 <p class="admonition-title"><strong>Wave interference: derivation</strong></p>
-<p>Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase <span class="math notranslate nohighlight">\(\phi\)</span> (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:</p>
+<p>Consider two waves with the same wave number <span class="math notranslate nohighlight">\(k\)</span> and angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>, but with different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>. These two waves are given by:</p>
 <div class="math notranslate nohighlight">
-\[y_1(x,t)=A \sin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A \sin(kx-\omega t+\phi)\]</div>
-<p>If we sum up the two phase-shifted waves and make use of trigonometric relation:</p>
+\[
+\Psi_1(x,t) = e^{i(kx - \omega t + \phi_1)}
+\]</div>
 <div class="math notranslate nohighlight">
-\[\cos(\alpha) + \cos(\beta) = 2 \cos\left(\frac{\alpha + \beta}{2}\right) \cos\left(\frac{\alpha-\beta}{2}\right)\]</div>
-<p>we get:</p>
+\[
+\Psi_2(x,t) = e^{i(kx - \omega t + \phi_2)}
+\]</div>
+<p>To find the total wave function, we sum these two waves:</p>
 <div class="math notranslate nohighlight">
-\[y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)\]</div>
+\[
+\Psi_{\text{total}}(x,t) = \Psi_1(x,t) + \Psi_2(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
+\]</div>
+<p>We can factor out the common term <span class="math notranslate nohighlight">\(e^{i(kx - \omega t)}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left( e^{i\phi_1} + e^{i\phi_2} \right)
+\]</div>
+<p>Next, we use Euler’s formula to express <span class="math notranslate nohighlight">\(e^{i\phi_1}\)</span> and <span class="math notranslate nohighlight">\(e^{i\phi_2}\)</span> in terms of cosines and sines:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{i\phi_1} = \cos(\phi_1) + i\sin(\phi_1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^{i\phi_2} = \cos(\phi_2) + i\sin(\phi_2)
+\]</div>
+<p>So, the sum becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{i\phi_1} + e^{i\phi_2} = \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right)
+\]</div>
+<p>Thus, the total wave is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left[ \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right) \right]
+\]</div>
+<ul class="simple">
+<li><p>This expression describes the interference of two waves with the same <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> but different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>. The resulting wave depends on the sum of their real and imaginary parts, and the interference pattern is determined by the phase difference <span class="math notranslate nohighlight">\(\Delta \phi = \phi_2 - \phi_1\)</span>.</p></li>
+<li><p>For constructive interference, <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> must be in phase, while destructive interference occurs when they are out of phase.</p></li>
+</ul>
 </div>
 </section>
 <section id="wave-interference-demonstration">
 <h2>Wave interference: demonstration.<a class="headerlink" href="#wave-interference-demonstration" title="Permalink to this heading">#</a></h2>
-<p>When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:</p>
 <ul class="simple">
+<li><p>When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:</p></li>
 <li><p><span class="math notranslate nohighlight">\(\phi=0\)</span> Fully constructive interference <span class="math notranslate nohighlight">\(y(x,t)=2A \cos(kx-\omega t)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\phi=\pi\)</span> Fully destructive interference. <span class="math notranslate nohighlight">\(y(x,t)=0\)</span></p></li>
 </ul>
@@ -681,7 +717,7 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinding-waves-interference">Combinding waves: interference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
 </ul>
