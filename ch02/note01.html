@@ -580,14 +580,20 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 <li><p><strong>Interference</strong> – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.</p></li>
 </ul>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" style="width: 70%;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" style="width: 50%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Illustration of wave interference</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/phasors.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/phasors.gif" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Combining waves produces a new wave. Illlustrated using complex representation and real representation.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="dropdown tip admonition">
 <p class="admonition-title"><strong>Wave interference: derivation</strong></p>
-<p>Consider two waves with the same wave number <span class="math notranslate nohighlight">\(k\)</span> and angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>, but with different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>. These two waves are given by:</p>
+<p>Given the two waves:</p>
 <div class="math notranslate nohighlight">
 \[
 \Psi_1(x,t) = e^{i(kx - \omega t + \phi_1)}
@@ -596,39 +602,56 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 \[
 \Psi_2(x,t) = e^{i(kx - \omega t + \phi_2)}
 \]</div>
-<p>To find the total wave function, we sum these two waves:</p>
+<p>We want to sum them:</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi_{\text{total}}(x,t) = \Psi_1(x,t) + \Psi_2(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
 \]</div>
-<p>We can factor out the common term <span class="math notranslate nohighlight">\(e^{i(kx - \omega t)}\)</span>:</p>
+<p><strong>Step-by-Step Derivation</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Factor out the common exponential term</strong> <span class="math notranslate nohighlight">\(e^{i(kx - \omega t)}\)</span>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 \Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left( e^{i\phi_1} + e^{i\phi_2} \right)
 \]</div>
-<p>Next, we use Euler’s formula to express <span class="math notranslate nohighlight">\(e^{i\phi_1}\)</span> and <span class="math notranslate nohighlight">\(e^{i\phi_2}\)</span> in terms of cosines and sines:</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Use the exponential addition identity</strong>:</p></li>
+</ol>
+<p>We can rewrite the sum of two exponentials with different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
 \[
-e^{i\phi_1} = \cos(\phi_1) + i\sin(\phi_1)
+e^{i\phi_1} + e^{i\phi_2} = e^{i \frac{\phi_1 + \phi_2}{2}} \left( e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} \right)
 \]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Simplify the remaining terms</strong>:</p></li>
+</ol>
+<p>The term in parentheses is a sum of exponentials with opposite signs in the exponents, which is:</p>
 <div class="math notranslate nohighlight">
 \[
-e^{i\phi_2} = \cos(\phi_2) + i\sin(\phi_2)
+e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right)
 \]</div>
-<p>So, the sum becomes:</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Substitute back</strong>:</p></li>
+</ol>
+<p>Substitute this back into the expression for <span class="math notranslate nohighlight">\(\Psi_{\text{total}}(x,t)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-e^{i\phi_1} + e^{i\phi_2} = \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right)
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \cdot 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \frac{\phi_1 + \phi_2}{2}}
 \]</div>
-<p>Thus, the total wave is:</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Combine the exponents</strong>:</p></li>
+</ol>
+<p>Finally, combine the exponents into one:</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left[ \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right) \right]
+\Psi_{\text{total}}(x,t) = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \left( kx - \omega t + \frac{\phi_1 + \phi_2}{2} \right)}
 \]</div>
 <ul class="simple">
-<li><p>This expression describes the interference of two waves with the same <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> but different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>. The resulting wave depends on the sum of their real and imaginary parts, and the interference pattern is determined by the phase difference <span class="math notranslate nohighlight">\(\Delta \phi = \phi_2 - \phi_1\)</span>.</p></li>
-<li><p>For constructive interference, <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> must be in phase, while destructive interference occurs when they are out of phase.</p></li>
+<li><p>note that if phases differe by <span class="math notranslate nohighlight">\(\pi/2\)</span> we get zero complete destructive interference. One the other hand when they match the amplitude is doubled.</p></li>
 </ul>
+<p><strong>Conclusion</strong></p>
+<p>Thus, the sum of two complex exponentials with different phases <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> can be expressed as a single complex exponential with the total phase <span class="math notranslate nohighlight">\(\frac{\phi_1 + \phi_2}{2}\)</span> and an amplitude modulated by <span class="math notranslate nohighlight">\(\cos\left( \frac{\phi_1 - \phi_2}{2} \right)\)</span>.</p>
 </div>
 </section>
 <section id="wave-interference-demonstration">
@@ -638,10 +661,10 @@ e^{i\phi_1} + e^{i\phi_2} = \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left
 <li><p><span class="math notranslate nohighlight">\(\phi=0\)</span> Fully constructive interference <span class="math notranslate nohighlight">\(y(x,t)=2A \cos(kx-\omega t)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\phi=\pi\)</span> Fully destructive interference. <span class="math notranslate nohighlight">\(y(x,t)=0\)</span></p></li>
 </ul>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Constructive vs destructive intereference.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Constructive vs destructive intereference.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
