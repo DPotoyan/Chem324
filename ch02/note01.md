@@ -126,9 +126,14 @@ $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)
 
 - We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
-### Wave interference: definition
+### Combinding waves: interference
 
- Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
+- We are often interested in the result of multiple waves interacting with one another which can be described mathematically when we add up waves. 
+
+- Combinging waves creates a new wave that again obyes wave equation. This known as the **linear superposition principle**  if waves $u_A$ and $u_B$ are both solutions of the wave equation, then so is a wave $u_C = u_A + u_B$.
+
+
+- **Interference** – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
 
 :::{figure-md} markdown-fig
 
@@ -139,30 +144,62 @@ Illustration of wave interference
 
 
 
- This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves $A$ and $B$ are both solutions of the wave equation, then so is a wave $C = A + B$.
-
-
 :::{admonition} **Wave interference: derivation**
 :class: dropdown, tip
 
+Consider two waves with the same wave number $k$ and angular frequency $\omega$, but with different phases $\phi_1$ and $\phi_2$. These two waves are given by:
 
-Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase $\phi$ (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
+$$
+\Psi_1(x,t) = e^{i(kx - \omega t + \phi_1)}
+$$
 
-$$y_1(x,t)=A \sin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A \sin(kx-\omega t+\phi)$$
+$$
+\Psi_2(x,t) = e^{i(kx - \omega t + \phi_2)}
+$$
 
-If we sum up the two phase-shifted waves and make use of trigonometric relation:
- 
-$$\cos(\alpha) + \cos(\beta) = 2 \cos\left(\frac{\alpha + \beta}{2}\right) \cos\left(\frac{\alpha-\beta}{2}\right)$$
- 
-we get:
+To find the total wave function, we sum these two waves:
 
-$$y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)$$
+$$
+\Psi_{\text{total}}(x,t) = \Psi_1(x,t) + \Psi_2(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
+$$
+
+We can factor out the common term $e^{i(kx - \omega t)}$:
+
+$$
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left( e^{i\phi_1} + e^{i\phi_2} \right)
+$$
+
+Next, we use Euler’s formula to express $e^{i\phi_1}$ and $e^{i\phi_2}$ in terms of cosines and sines:
+
+$$
+e^{i\phi_1} = \cos(\phi_1) + i\sin(\phi_1)
+$$
+
+$$
+e^{i\phi_2} = \cos(\phi_2) + i\sin(\phi_2)
+$$
+
+So, the sum becomes:
+
+$$
+e^{i\phi_1} + e^{i\phi_2} = \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right)
+$$
+
+Thus, the total wave is:
+
+$$
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left[ \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right) \right]
+$$
+
+- This expression describes the interference of two waves with the same $k$ and $\omega$ but different phases $\phi_1$ and $\phi_2$. The resulting wave depends on the sum of their real and imaginary parts, and the interference pattern is determined by the phase difference $\Delta \phi = \phi_2 - \phi_1$.
+
+- For constructive interference, $\phi_1$ and $\phi_2$ must be in phase, while destructive interference occurs when they are out of phase.
 
 :::
 
 ### Wave interference: demonstration. 
 
-When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:
+- When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:
 
 - $\phi=0$ Fully constructive interference $y(x,t)=2A \cos(kx-\omega t)$
 - $\phi=\pi$ Fully destructive interference. $y(x,t)=0$
