@@ -89,6 +89,37 @@ $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
 :::
 
+### Periodicity in space and time
+
+Sine and cosine traveling waves are periodic in space and in time. We introduce two quantities that quantify these peridocities. 
+
+- Periodic wave repeats itself at some values $x=\lambda$ which is the definition of wavelength. 
+- Mathemtically this means every wavelength in space wave repeats its pattersn $kx=k\lambda=2\pi$
+
+:::{admonition} **Wavevectors $k$: periodicity in space**
+:class: important
+
+$$k=\frac{2\pi}{\lambda}$$
+
+:::
+
+- Periodic wave repeats itself at regular time periods $t=T$ or frequencies $\nu=1/T$. 
+- Mathemtically this means after every period wave repeats its pattersn $\omega t=\omega T=2\pi$
+
+:::{admonition} **Angular frequency $\omega$: periodicity in time**
+:class: important
+
+$$\omega=\frac{2\pi}{T} = 2\pi\nu$$
+
+:::
+
+
+- The following expression makes it explicit that every multiple of $\lambda$ wave repeats itself in spac. And every multiple of $T$ wave repeats itself in time $t$
+
+$$u(x,t) = Asin\Big[2\pi \Big(\frac{x}{\lambda} - \frac{t}{T}\Big)\Big]$$
+
+
+
 
 ### Wave equation. 
 
@@ -117,7 +148,7 @@ $$u_{xx}^{''} = \frac{1}{v^2}u_{tt}^{''} $$
 - Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to $x$ and $t$ we obtain:
 
 
-:::{admonition}
+:::{admonition} **Classical Wave Equation**
 :class: important
 
 $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$ 
@@ -235,7 +266,37 @@ Constructive vs destructive intereference.
 
 ### Example Problems
 
+#### Problem 1: Traveling or standing
+
+- Which of the these functions can describe a traveling wave $u=(x+t)^2$, $u=cos(x-2t)^2$, $cos(x)sin(t)$ and with what velocity?
+
+:::{admonition} **Solution 1** 
+:class: dropdown
+
+If a function can be cast in the form $f(x\pm vt)$ then it can describe a wave propagating with constant velocity $v$ alogn $x$ axis. 
+
+- $u=(x+t)^2$ describes wave travling in opposite direction to x axis with velocity equal 1.
+
+- $u=cos(x-2t)$ describes a wave travling in the direction to x axis with velocity equal 2.
+- $cos(x)sin(t)$ this describes a standing wave
+:::
 
 
+#### Problem 2: Wavelength and frequency 
 
+Given a traveling sine wave $u(x) = sin(2x-10t+\pi/2)$ extract its wavelength, frequency, velocity and ampltide.
+
+:::{admonition} **Solution 2** 
+:class: dropdown
+
+Traveling waves have $f\big(k(x-v t)\big) = f(kx-\omega t)$ functional form where $k=2\pi/\lambda$ and $\omega =2\pi\nu$
+
+Now we can just read off some of the quantities
+
+- $|v| = 10$ read off from sine argument
+- $A=1$ its the multiplier in front of sine function
+- $k=2$ hence $\lambda = 2\pi/2 = \pi$
+- $\omega = kv = 2\cdot 10 = 20$ hence $\nu = \omega/2\pi = 10/\pi$
+
+:::
 

@@ -438,10 +438,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-waves">Types of Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity-in-space-and-time">Periodicity in space and time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinding-waves-interference">Combinding waves: interference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-traveling-or-standing">Problem 1: Traveling or standing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-wavelength-and-frequency">Problem 2: Wavelength and frequency</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -540,6 +545,33 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 \[u(x,t) = Ae^{i(kx-\omega t)}\]</div>
 </div>
 </section>
+<section id="periodicity-in-space-and-time">
+<h2>Periodicity in space and time<a class="headerlink" href="#periodicity-in-space-and-time" title="Permalink to this heading">#</a></h2>
+<p>Sine and cosine traveling waves are periodic in space and in time. We introduce two quantities that quantify these peridocities.</p>
+<ul class="simple">
+<li><p>Periodic wave repeats itself at some values <span class="math notranslate nohighlight">\(x=\lambda\)</span> which is the definition of wavelength.</p></li>
+<li><p>Mathemtically this means every wavelength in space wave repeats its pattersn <span class="math notranslate nohighlight">\(kx=k\lambda=2\pi\)</span></p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Wavevectors <span class="math notranslate nohighlight">\(k\)</span>: periodicity in space</strong></p>
+<div class="math notranslate nohighlight">
+\[k=\frac{2\pi}{\lambda}\]</div>
+</div>
+<ul class="simple">
+<li><p>Periodic wave repeats itself at regular time periods <span class="math notranslate nohighlight">\(t=T\)</span> or frequencies <span class="math notranslate nohighlight">\(\nu=1/T\)</span>.</p></li>
+<li><p>Mathemtically this means after every period wave repeats its pattersn <span class="math notranslate nohighlight">\(\omega t=\omega T=2\pi\)</span></p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>: periodicity in time</strong></p>
+<div class="math notranslate nohighlight">
+\[\omega=\frac{2\pi}{T} = 2\pi\nu\]</div>
+</div>
+<ul class="simple">
+<li><p>The following expression makes it explicit that every multiple of <span class="math notranslate nohighlight">\(\lambda\)</span> wave repeats itself in spac. And every multiple of <span class="math notranslate nohighlight">\(T\)</span> wave repeats itself in time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[u(x,t) = Asin\Big[2\pi \Big(\frac{x}{\lambda} - \frac{t}{T}\Big)\Big]\]</div>
+</section>
 <section id="wave-equation">
 <h2>Wave equation.<a class="headerlink" href="#wave-equation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -568,6 +600,11 @@ y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 <ul class="simple">
 <li><p>Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> we obtain:</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Classical Wave Equation</strong></p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}\]</div>
+</div>
 <ul class="simple">
 <li><p>We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions.</p></li>
 </ul>
@@ -670,6 +707,36 @@ e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} = 2 \cos\left
 </section>
 <section id="example-problems">
 <h2>Example Problems<a class="headerlink" href="#example-problems" title="Permalink to this heading">#</a></h2>
+<section id="problem-1-traveling-or-standing">
+<h3>Problem 1: Traveling or standing<a class="headerlink" href="#problem-1-traveling-or-standing" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Which of the these functions can describe a traveling wave <span class="math notranslate nohighlight">\(u=(x+t)^2\)</span>, <span class="math notranslate nohighlight">\(u=cos(x-2t)^2\)</span>, <span class="math notranslate nohighlight">\(cos(x)sin(t)\)</span> and with what velocity?</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution 1</strong> </p>
+<p>If a function can be cast in the form <span class="math notranslate nohighlight">\(f(x\pm vt)\)</span> then it can describe a wave propagating with constant velocity <span class="math notranslate nohighlight">\(v\)</span> alogn <span class="math notranslate nohighlight">\(x\)</span> axis.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u=(x+t)^2\)</span> describes wave travling in opposite direction to x axis with velocity equal 1.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u=cos(x-2t)\)</span> describes a wave travling in the direction to x axis with velocity equal 2.</p></li>
+<li><p><span class="math notranslate nohighlight">\(cos(x)sin(t)\)</span> this describes a standing wave</p></li>
+</ul>
+</div>
+</section>
+<section id="problem-2-wavelength-and-frequency">
+<h3>Problem 2: Wavelength and frequency<a class="headerlink" href="#problem-2-wavelength-and-frequency" title="Permalink to this heading">#</a></h3>
+<p>Given a traveling sine wave <span class="math notranslate nohighlight">\(u(x) = sin(2x-10t+\pi/2)\)</span> extract its wavelength, frequency, velocity and ampltide.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution 2</strong> </p>
+<p>Traveling waves have <span class="math notranslate nohighlight">\(f\big(k(x-v t)\big) = f(kx-\omega t)\)</span> functional form where <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span> and <span class="math notranslate nohighlight">\(\omega =2\pi\nu\)</span></p>
+<p>Now we can just read off some of the quantities</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|v| = 10\)</span> read off from sine argument</p></li>
+<li><p><span class="math notranslate nohighlight">\(A=1\)</span> its the multiplier in front of sine function</p></li>
+<li><p><span class="math notranslate nohighlight">\(k=2\)</span> hence <span class="math notranslate nohighlight">\(\lambda = 2\pi/2 = \pi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega = kv = 2\cdot 10 = 20\)</span> hence <span class="math notranslate nohighlight">\(\nu = \omega/2\pi = 10/\pi\)</span></p></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 
@@ -739,10 +806,15 @@ e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} = 2 \cos\left
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-waves">Types of Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity-in-space-and-time">Periodicity in space and time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinding-waves-interference">Combinding waves: interference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-demonstration">Wave interference: demonstration.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-traveling-or-standing">Problem 1: Traveling or standing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-wavelength-and-frequency">Problem 2: Wavelength and frequency</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
