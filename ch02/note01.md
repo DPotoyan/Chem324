@@ -137,17 +137,24 @@ $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)
 
 :::{figure-md} markdown-fig
 
-<img src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+<img src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
 
 Illustration of wave interference
 :::
 
 
+:::{figure-md} markdown-fig
+
+<img src="./images/phasors.gif" alt="applied photoelectric" class="bg-primary mb-1" width="20%">
+
+Combining waves produces a new wave. Illlustrated using complex representation and real representation. 
+:::
+
 
 :::{admonition} **Wave interference: derivation**
 :class: dropdown, tip
 
-Consider two waves with the same wave number $k$ and angular frequency $\omega$, but with different phases $\phi_1$ and $\phi_2$. These two waves are given by:
+Given the two waves:
 
 $$
 \Psi_1(x,t) = e^{i(kx - \omega t + \phi_1)}
@@ -157,43 +164,58 @@ $$
 \Psi_2(x,t) = e^{i(kx - \omega t + \phi_2)}
 $$
 
-To find the total wave function, we sum these two waves:
+We want to sum them:
 
 $$
-\Psi_{\text{total}}(x,t) = \Psi_1(x,t) + \Psi_2(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t + \phi_1)} + e^{i(kx - \omega t + \phi_2)}
 $$
 
-We can factor out the common term $e^{i(kx - \omega t)}$:
+**Step-by-Step Derivation**
+
+1. **Factor out the common exponential term** $e^{i(kx - \omega t)}$:
 
 $$
 \Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left( e^{i\phi_1} + e^{i\phi_2} \right)
 $$
 
-Next, we use Euler’s formula to express $e^{i\phi_1}$ and $e^{i\phi_2}$ in terms of cosines and sines:
+2. **Use the exponential addition identity**:
+
+We can rewrite the sum of two exponentials with different phases $\phi_1$ and $\phi_2$ as follows:
 
 $$
-e^{i\phi_1} = \cos(\phi_1) + i\sin(\phi_1)
+e^{i\phi_1} + e^{i\phi_2} = e^{i \frac{\phi_1 + \phi_2}{2}} \left( e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} \right)
 $$
 
-$$
-e^{i\phi_2} = \cos(\phi_2) + i\sin(\phi_2)
-$$
+3. **Simplify the remaining terms**:
 
-So, the sum becomes:
+The term in parentheses is a sum of exponentials with opposite signs in the exponents, which is:
 
 $$
-e^{i\phi_1} + e^{i\phi_2} = \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right)
+e^{i \frac{\phi_1 - \phi_2}{2}} + e^{-i \frac{\phi_1 - \phi_2}{2}} = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right)
 $$
 
-Thus, the total wave is:
+4. **Substitute back**:
+
+Substitute this back into the expression for $\Psi_{\text{total}}(x,t)$:
 
 $$
-\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \left[ \left( \cos(\phi_1) + \cos(\phi_2) \right) + i \left( \sin(\phi_1) + \sin(\phi_2) \right) \right]
+\Psi_{\text{total}}(x,t) = e^{i(kx - \omega t)} \cdot 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \frac{\phi_1 + \phi_2}{2}}
 $$
 
-- This expression describes the interference of two waves with the same $k$ and $\omega$ but different phases $\phi_1$ and $\phi_2$. The resulting wave depends on the sum of their real and imaginary parts, and the interference pattern is determined by the phase difference $\Delta \phi = \phi_2 - \phi_1$.
+5. **Combine the exponents**:
 
-- For constructive interference, $\phi_1$ and $\phi_2$ must be in phase, while destructive interference occurs when they are out of phase.
+Finally, combine the exponents into one:
+
+$$
+\Psi_{\text{total}}(x,t) = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \left( kx - \omega t + \frac{\phi_1 + \phi_2}{2} \right)}
+$$
+
+- note that if phases differe by $\pi/2$ we get zero complete destructive interference. One the other hand when they match the amplitude is doubled.
+
+**Conclusion**
+
+Thus, the sum of two complex exponentials with different phases $\phi_1$ and $\phi_2$ can be expressed as a single complex exponential with the total phase $\frac{\phi_1 + \phi_2}{2}$ and an amplitude modulated by $\cos\left( \frac{\phi_1 - \phi_2}{2} \right)$.
+
 
 :::
 
