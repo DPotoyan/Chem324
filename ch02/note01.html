@@ -439,7 +439,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal">Classification of waves by orientation: Transverse vs Longitudinal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-appearance-standing-vs-traveling">Classification of waves by appearance: Standing vs Traveling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-waves">Traveling waves.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-derivation">Wave interference: derivation.</a></li>
@@ -461,27 +461,26 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!</p></li>
-<li><p>The wave equation, a partial differential equation (PDE), completely describes waves’ spatial and temporal evolution.</p></li>
-<li><p>Waves can be standing or travelling. Transverse or longitudinal.</p></li>
+<li><p><strong>A wave is a self-propagating disturbance</strong> that transfers energy, momentum, and information through a medium, without transporting matter.</p></li>
+<li><p>In quantum mechanics, waves are fundamental to understanding the behavior of particles at small scales.</p></li>
+<li><p>The behavior of waves is governed by the <strong>wave equation</strong>, a partial differential equation (PDE) that describes their spatial and temporal evolution. This equation allows us to predict how a wave will propagate, oscillate, and interact with its environment.</p></li>
+<li><p>Two major classes of waves we will be examining are <strong>Standing waves</strong> which remain fixed in space, exhibiting nodes and antinodes. <strong>Traveling waves</strong> which propagate through space, transferring energy from one location to another.</p></li>
+<li><p>Additionally, waves can be classified as Transverse, where the disturbance is perpendicular to the direction of propagation, or **Longitudinal, where the disturbance is parallel to the direction of propagation.</p></li>
 </ul>
 </div>
 <section id="types-of-waves">
 <h2>Types of Waves<a class="headerlink" href="#types-of-waves" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Sound Waves.</p></li>
-<li><p>Waves on a guitar string.</p></li>
-<li><p>Waves on the surface of the water.</p></li>
-<li><p>Quantum mechanical waves. E.g electron waves, neutron waves, hydrogen waves, etc.</p></li>
-<li><p>Electromagnetic waves (e.g. light, UV, X-rays)
-– this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave “rolls out its own carpet” hence creating its own medium as it moves forward.</p></li>
-<li><p><span class="xref myst">Gravitational waves traveling through spacetime</span></p></li>
+<li><p><strong>Disturbance of medium</strong> Sound Waves. Waves on a guitar string. Waves propogating on the surface of the water</p></li>
+<li><p><strong>Quantum mechanical waves</strong> They will be described by complex wavefunctions providing us expanation for the wave like behavior electrons and atoms.</p></li>
+<li><p><strong>Electromagnetic waves</strong> (e.g. light, UV, X-rays) this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave “rolls out its own carpet” hence creating its own medium as it moves forward.</p></li>
+<li><p><span class="xref myst"><strong>Gravitational waves traveling through spacetime!</strong></span></p></li>
 </ul>
 </section>
 <section id="classification-of-waves-by-orientation-transverse-vs-longitudinal">
 <h2>Classification of waves by orientation: Transverse vs Longitudinal<a class="headerlink" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif" style="width: 70%;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/og52So0BUmZVe/giphy.gif" style="width: 50%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 34 </span><span class="caption-text">Transverse waves carry distrubance perpendicular to the direction of wave propogation. Longitudinal waves carry disturbance along the direction of wave propogation.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -489,59 +488,86 @@ document.write(`
 </section>
 <section id="classification-of-waves-by-appearance-standing-vs-traveling">
 <h2>Classification of waves by appearance: Standing vs Traveling<a class="headerlink" href="#classification-of-waves-by-appearance-standing-vs-traveling" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Traveling waves move with respect to fixed reference frame.</p></li>
-<li><p>Standing waves move in place.</p></li>
-</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/propage_stand.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/propage_stand.gif" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Visualiziing 1D propagating (or traveling) and standing waves waves. Traveling waves move with respect to a fixed reference frame. Standing waves move in place.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="defining-wave-mathematically">
 <h2>Defining wave mathematically<a class="headerlink" href="#defining-wave-mathematically" title="Permalink to this heading">#</a></h2>
-<p>Since wave is a moving disturbance <span class="math notranslate nohighlight">\(u\)</span>, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span> via:</p>
+<ul class="simple">
+<li><p>Since wave is a moving disturbance <span class="math notranslate nohighlight">\(u\)</span>, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span> via some mathematical function <span class="math notranslate nohighlight">\(f\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[u(x,t) = f(x, t)\]</div>
-<p>Imagine an ocean wave. For an observer standing on a wave (surfer) the wave stands still but for the observer standing on the shore the wave moves away with velocity:</p>
+\[u = f(x, t)\]</div>
+<ul class="simple">
+<li><p>Imagine surfing on an ocean wave. For an observer (surfer) standing on a wave the wave stands still at the same coordinate <span class="math notranslate nohighlight">\(x'\)</span>.</p></li>
+<li><p>For the observer standing on the shore the coordinate x of wave front moves away with a constant velocity:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[x'=x-vt\]</div>
-<p>Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer:</p>
+\[x=x'+vt\]</div>
+<ul class="simple">
+<li><p>Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[f(x,t)=f(x')\]</div>
 <div class="math notranslate nohighlight">
 \[u(x,t) = f(x-vt)\]</div>
 </section>
-<section id="traveling-waves">
-<h2>Traveling waves.<a class="headerlink" href="#traveling-waves" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/lec5_Introwave.jpg" /></p>
-<p>We will be working a lot with periodic waves that have a shape of a sine or cosine, like this one: $<span class="math notranslate nohighlight">\(y(x,t)= A \sin(kx)\)</span>$
-Let us now turn this sinusoidal form into a wave traveling along x axis:</p>
+<section id="periodic-traveling-waves">
+<h2>Periodic traveling waves.<a class="headerlink" href="#periodic-traveling-waves" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/lec5_Introwave.jpg"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/lec5_Introwave.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Wave that is periodic in space and time</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>We will be working a lot with periodic waves that have a periodic shape hence can be described by sine or cosine or their combination. Here is a general expression of sin wave:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y(x,t)= A \sin(kx+\phi)\]</div>
+<ul class="simple">
+<li><p>Let us now turn this sinusoidal form into a wave traveling along x axis:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)
+y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
 \]</div>
 <ul class="simple">
-<li><p>Amplitude <span class="math notranslate nohighlight">\(A\)</span>: specifies maximum disturbance.</p></li>
-<li><p>Wave number <span class="math notranslate nohighlight">\(k\)</span>: specifies periodicity in space.</p></li>
-<li><p>Angular frequency <span class="math notranslate nohighlight">\(\omega\)</span>: specifies periodicity in time.</p></li>
+<li><p><strong>Amplitude</strong> <span class="math notranslate nohighlight">\(A\)</span>: specifies maximum disturbance.</p></li>
+<li><p><strong>Wave number</strong> <span class="math notranslate nohighlight">\(k\)</span>: specifies periodicity in space.</p></li>
+<li><p><strong>Angular frequency</strong> <span class="math notranslate nohighlight">\(\omega=kv\)</span>: specifies periodicity in time.</p></li>
+<li><p><strong>Initial phase</strong> <span class="math notranslate nohighlight">\(\phi\)</span>: initial phase. E.g where does wave start at <span class="math notranslate nohighlight">\(t=0\)</span> <span class="math notranslate nohighlight">\(x=0\)</span>.</p></li>
+<li><p>When describing waves it is much more convenient to work with complex representation. One can always extract real or imaginary part after calculations.</p></li>
 </ul>
 <div class="warning admonition">
 <p class="admonition-title"><strong>Complex exponential representation of waves</strong></p>
-<p>u(x,t) = Ae^{ik(x-vt)} = Ae^{i(kx-\omega t)}</p>
+<div class="math notranslate nohighlight">
+\[u(x,t) = Ae^{i(kx-\omega t)}\]</div>
 </div>
 </section>
 <section id="wave-equation">
 <h2>Wave equation.<a class="headerlink" href="#wave-equation" title="Permalink to this heading">#</a></h2>
-<p>We obtain equation of motion by using the chain rule and taking partial derivatives of <span class="math notranslate nohighlight">\(u\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<p>Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> we obtain:</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }\]</div>
-<p>We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions.</p>
+<ul class="simple">
+<li><p>We obtain equation of motion by using the chain rule and taking partial derivatives of <span class="math notranslate nohighlight">\(u\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> we obtain:</p></li>
+</ul>
+<ul class="simple">
+<li><p>We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions.</p></li>
+</ul>
 </section>
 <section id="wave-interference-definition">
 <h2>Wave interference: definition<a class="headerlink" href="#wave-interference-definition" title="Permalink to this heading">#</a></h2>
 <p>Interference – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Illustration of wave interference</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Illustration of wave interference</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are both solutions of the wave equation, then so is a wave <span class="math notranslate nohighlight">\(C = A + B\)</span>.</p>
@@ -565,10 +591,10 @@ y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)
 <li><p><span class="math notranslate nohighlight">\(\phi=0\)</span> Fully constructive interference <span class="math notranslate nohighlight">\(y(x,t)=2A \cos(kx-\omega t)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\phi=\pi\)</span> Fully destructive interference. <span class="math notranslate nohighlight">\(y(x,t)=0\)</span></p></li>
 </ul>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Constructive vs destructive intereference.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Constructive vs destructive intereference.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -644,7 +670,7 @@ y(x,t)= A \sin(k(x-vt))=A \sin(kx-\omega t)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-orientation-transverse-vs-longitudinal">Classification of waves by orientation: Transverse vs Longitudinal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-waves-by-appearance-standing-vs-traveling">Classification of waves by appearance: Standing vs Traveling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-wave-mathematically">Defining wave mathematically</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-waves">Traveling waves.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-traveling-waves">Periodic traveling waves.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-equation">Wave equation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-definition">Wave interference: definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-interference-derivation">Wave interference: derivation.</a></li>
