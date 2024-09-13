@@ -166,11 +166,12 @@ $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)
 
 - **Interference** – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
 
+
 :::{figure-md} markdown-fig
 
-<img src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
 
-Illustration of wave interference
+Constructive vs destructive intereference of two cosine waves $Acos(kx-\omega t)$ and $Acos(kx-\omega t+\phi)$  differing only in phase $\phi$.  When the waves differ in phase by $\phi=\pi/2$ they completely cancell each other. When waves are fully in phase $\phi=0$ constructive interference results in doubling of amplitude $y(x,t)=2A \cos(kx-\omega t)$
 :::
 
 
@@ -250,19 +251,13 @@ Thus, the sum of two complex exponentials with different phases $\phi_1$ and $\p
 
 :::
 
-### Wave interference: demonstration. 
-
-- When two waves interfere, their amplitude can double (constructive interference) become 0 (destructive interference) or anything in between:
-
-- $\phi=0$ Fully constructive interference $y(x,t)=2A \cos(kx-\omega t)$
-- $\phi=\pi$ Fully destructive interference. $y(x,t)=0$
-
 :::{figure-md} markdown-fig
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Waventerference.gif" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+<img src="https://media.giphy.com/media/F3RijSq6e8fi8/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
 
-Constructive vs destructive intereference. 
+Illustration of wave interference
 :::
+
 
 ### Example Problems
 
