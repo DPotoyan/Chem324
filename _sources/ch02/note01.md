@@ -11,7 +11,7 @@
 
 - Two major classes of waves we will be examining are **Standing waves** which remain fixed in space, exhibiting nodes and antinodes. **Traveling waves** which propagate through space, transferring energy from one location to another.
 
-- Additionally, waves can be classified as Transverse, where the disturbance is perpendicular to the direction of propagation, or **Longitudinal, where the disturbance is parallel to the direction of propagation.
+- Additionally, waves can be classified as **Transverse**, where the disturbance is perpendicular to the direction of propagation, or **Longitudinal**, where the disturbance is parallel to the direction of propagation.
 ```
 
 
@@ -22,7 +22,13 @@
 - **Electromagnetic waves** (e.g. light, UV, X-rays) this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
 - [**Gravitational waves traveling through spacetime!**]((https://www.youtube.com/watch?v=xj6vV3T4ok8)) 
 
-### Classification of waves by orientation: Transverse vs Longitudinal
+
+:::{figure-md} markdown-fig
+
+<img src="./images/propage_stand.gif" alt="applied photoelectric" class="bg-primary mb-1" width="40%">
+
+Visualiziing 1D propagating (or traveling) and standing waves waves. Traveling waves move with respect to a fixed reference frame. Standing waves move in place. 
+:::
 
 :::{figure-md} markdown-fig
 
@@ -32,20 +38,7 @@ Transverse waves carry distrubance perpendicular to the direction of wave propog
 :::
 
 
-### Classification of waves by appearance: Standing vs Traveling
-
-
-:::{figure-md} markdown-fig
-
-<img src="./images/propage_stand.gif" alt="applied photoelectric" class="bg-primary mb-1" width="40%">
-
-Visualiziing 1D propagating (or traveling) and standing waves waves. Traveling waves move with respect to a fixed reference frame. Standing waves move in place. 
-:::
-
 ### Defining wave mathematically  
-
-
-
 
 - Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via some mathematical function $f$: 
 
@@ -85,7 +78,7 @@ $$
 - **Amplitude** $A$: specifies maximum disturbance. 
 - **Wave number** $k$: specifies periodicity in space.
 - **Angular frequency** $\omega=kv$: specifies periodicity in time.
-- **Initial phase** $\phi$: initial phase. E.g where does wave start at $t=0$ $x=0$.
+- **Initial phase** $\phi$: initial phase. E.g where does wave start at $t=0$ $x=0$ often we just set $\phi=0$.
 
 - When describing waves it is much more convenient to work with complex representation. One can always extract real or imaginary part after calculations. 
 
@@ -94,7 +87,6 @@ $$
 
 $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
-
 :::
 
 
@@ -102,7 +94,7 @@ $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
 - We obtain equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
 
-:::{admonition}
+:::{admonition} **Waves satisfy a wave equation**
 :class: dropdown, tip
 
  - take two derivatives with respect to $t$
@@ -150,19 +142,23 @@ Illustration of wave interference
  This follows from the superposition principle to which we will be returning many times later in the class. The principle of superposition states that if waves $A$ and $B$ are both solutions of the wave equation, then so is a wave $C = A + B$.
 
 
-### Wave interference: derivation.
+:::{admonition} **Wave interference: derivation**
+:class: dropdown, tip
 
- Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase $\phi$ (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
 
- $$y_1(x,t)=A \sin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A \sin(kx-\omega t+\phi)$$
+Considering two sinusoidal waves of the same amplitude, wavelength, and direction of propagation but with a slight different phase $\phi$ (e.g sound waves of a song coming from different holes on a wall). The resultant wave would be:
 
- If we sum up the two phase-shifted waves and make use of trigonometric relation:
+$$y_1(x,t)=A \sin(kx-\omega t)\,\,\,\,\,\, y_2(x,t)=A \sin(kx-\omega t+\phi)$$
+
+If we sum up the two phase-shifted waves and make use of trigonometric relation:
  
- $$\cos(\alpha) + \cos(\beta) = 2 \cos\left(\frac{\alpha + \beta}{2}\right) \cos\left(\frac{\alpha-\beta}{2}\right)$$
+$$\cos(\alpha) + \cos(\beta) = 2 \cos\left(\frac{\alpha + \beta}{2}\right) \cos\left(\frac{\alpha-\beta}{2}\right)$$
  
- we get:
+we get:
 
- $$y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)$$
+$$y(x,t)=y_1(x,t)+y_2(x,t)= A \cos\left(kx-\omega t+\frac{\phi}{2}\right) \cos\left(\frac{\phi}{2}\right)$$
+
+:::
 
 ### Wave interference: demonstration. 
 
