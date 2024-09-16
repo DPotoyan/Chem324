@@ -201,7 +201,9 @@ $$
 :::
 
 
-- **Solution for spatial part** Becasue of boundary conditions ($X(x)=X(L)=0$) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number $n$. These terms are called **normal modes** and are visualized below. 
+#### Solution for spatial part
+
+- Becasue of boundary conditions ($X(x)=X(L)=0$) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number $n$. These terms are called **normal modes** and are visualized below. 
 
 $$
 X(x) = B \sin \left(\frac{n \pi}{L} x \right)
@@ -214,8 +216,9 @@ $$
 The first seven solutions (normal modes) of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
 :::
 
+#### Solution for temporal part
 
-- **Solution for temporal part** For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes. 
+-  For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes. 
 
 
 $$
@@ -225,7 +228,7 @@ $$
 - In the second line we esing trig identity to express sum of cosine and sine in terms of cosine. Still we have two constantst o determine 
 - The constants $A_n$ $\phi_n$ in temporal part are determined by **initial codnitions** E.g what should be the amplitude and phase of wave at starting time $t=0$.
 
-### Step 3: Full solution of 1D guitar string: A linear combination of normal modes
+### Step 3 Full solution of 1D guitar string: A linear combination of normal modes
 
 - After solving ODEs for spatial and tempoeral parts we now combine them into a full solution. 
 - The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. 
@@ -274,7 +277,6 @@ Presented are first six solutions from $n=0,1,2,3,4,5$
 Vibrations of 2D membrane. 
 :::
 
-
 - Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.
 
 $$u(x,y,t) =X(x)Y(y)T(t)$$
@@ -282,9 +284,8 @@ $$u(x,y,t) =X(x)Y(y)T(t)$$
 - This time there will be two boundary conditions fo X and Y
 - Boundary on the $X$ edge: $X(0)=X(L)=0$.
 - Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
-
-- Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes. 
-- The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number $k_x$ and $k_y$. 
+- Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes. 
+- **The 2D normal mode is a product of two 1D modes for each coordinate.** Each coordinate has its own independent wave number $k_x$ and $k_y$.
 
 $$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
 
@@ -292,7 +293,146 @@ $$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{
 
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
-- Can you guess what the solution would be fore the 3D case?
+:::{admonition} **Full derivation of 2D rectangular membrane problem**
+
+To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
+
+**Solution for a 2D Rectangular Membrane**
+
+
+Consider a rectangular membrane with dimensions $L_x$ and $L_y$, fixed along its edges. The wave equation for the membrane is:
+
+$$
+\frac{\partial^2 u(x, y, t)}{\partial t^2} = c^2 \left( \frac{\partial^2 u(x, y, t)}{\partial x^2} + \frac{\partial^2 u(x, y, t)}{\partial y^2} \right)
+$$
+
+where $c$ is the wave speed.
+
+**Separation of Variables**
+
+Assume the solution can be written as a product of functions, each depending on only one variable:
+
+$$
+u(x, y, t) = X(x) Y(y) T(t)
+$$
+
+Substitute this into the wave equation:
+
+$$
+\frac{d^2}{dt^2}[X(x) Y(y) T(t)] = c^2 \left( \frac{d^2}{dx^2}[X(x) Y(y) T(t)] + \frac{d^2}{dy^2}[X(x) Y(y) T(t)] \right)
+$$
+
+This simplifies to:
+
+$$
+X(x) Y(y) \frac{d^2 T(t)}{dt^2} = c^2 \left( T(t) \frac{d^2 X(x)}{dx^2} Y(y) + T(t) X(x) \frac{d^2 Y(y)}{dy^2} \right)
+$$
+
+Divide through by $X(x) Y(y) T(t)$:
+
+$$
+\frac{1}{c^2} \frac{1}{T(t)} \frac{d^2 T(t)}{dt^2} = \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2} + \frac{1}{Y(y)} \frac{d^2 Y(y)}{dy^2}
+$$
+
+Since the left side depends only on  $t$ and the right side depends only on  $x$ and $y$, each side must equal a constant, which we denote as $-\lambda$:
+
+$$
+\frac{1}{c^2} \frac{d^2 T(t)}{dt^2} = -\lambda
+$$
+
+$$
+\frac{d^2 X(x)}{dx^2} + \frac{d^2 Y(y)}{dy^2} = -\lambda X(x)
+$$
+
+**Solving for $T(t)$**
+
+The ODE for $T(t)$ is:
+
+$$
+\frac{d^2 T(t)}{dt^2} + \lambda c^2 T(t) = 0
+$$
+
+This has the general solution:
+
+$$
+T(t) = A \cos(\omega t) + B \sin(\omega t)
+$$
+
+where $(\omega = \sqrt{\lambda} c)$.
+
+**Solving for $X$ and $Y$**
+
+To solve the spatial part, we need to separate the problem into two parts:
+
+$$
+\frac{d^2 X(x)}{dx^2} + \frac{d^2 Y(y)}{dy^2} = -\lambda X(x)
+$$
+
+Assume:
+
+$$
+\frac{d^2 X(x)}{dx^2} = -\alpha^2 X(x)
+$$
+
+$$
+\frac{d^2 Y(y)}{dy^2} = -(\lambda - \alpha^2) Y(y)
+$$
+
+where $(\lambda = \alpha^2 + \beta^2)$. 
+
+So, we have:
+
+$$
+\frac{d^2 X(x)}{dx^2} + \alpha^2 X(x) = 0
+$$
+
+$$
+\frac{d^2 Y(y)}{dy^2} + \beta^2 Y(y) = 0
+$$
+
+**Boundary Conditions:**
+
+For a rectangular membrane with boundaries $x = 0$, $x = L_x$, $y = 0$, and $y = L_y$, we apply:
+
+$$
+X(0) = X(L_x) = 0
+$$
+
+$$
+Y(0) = Y(L_y) = 0
+$$
+
+The solutions for \(X(x)\) and \(Y(y)\) are:
+
+$$
+X(x) = C \sin\left(\frac{n \pi x}{L_x}\right)
+$$
+
+$$
+Y(y) = D \sin\left(\frac{m \pi y}{L_y}\right)
+$$
+
+where \(n\) and \(m\) are positive integers, and:
+
+$$
+\alpha = \frac{n \pi}{L_x}, \quad \beta = \frac{m \pi}{L_y}
+$$
+
+So, the general solution for \(u(x, y, t)\) is:
+
+$$
+u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_{nm} t\right) + B_{nm} \sin\left(\omega_{nm} t\right) \right] \sin\left(\frac{n \pi x}{L_x}\right) \sin\left(\frac{m \pi y}{L_y}\right)
+$$
+
+where:
+
+$$
+\omega_{nm} = c \sqrt{\left(\frac{n \pi}{L_x}\right)^2 + \left(\frac{m \pi}{L_y}\right)^2}
+$$
+
+This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of \(n\) and \(m\).
+
+:::
 
 
 ### The sound of music.
