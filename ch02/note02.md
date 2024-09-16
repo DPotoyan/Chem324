@@ -542,7 +542,7 @@ Depending on the discriminant $\beta^2 - \omega^2$, we have three cases:
 :::
 
 
-### Problem 3: ODE with Constant Coefficients
+#### Problem 3: ODE with Constant Coefficients
 
 
 Solve the ODE:
@@ -580,7 +580,7 @@ where $C_1$ and $C_2$ are constants determined by initial conditions.
 
 :::
 
-### Problem 4: Simple 2nd order ODE
+#### Problem 4: Simple 2nd order ODE
 
 Solve the ODE:
 
@@ -618,7 +618,7 @@ where $C_1$ and $C_2$ are constants determined by initial conditions.
 :::
 
 
-### Problem 5: Homogeneous Linear ODE 
+#### Problem 5: Homogeneous Linear ODE 
 
 Solve the ODE:
 
