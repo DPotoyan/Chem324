@@ -176,11 +176,19 @@ $$
 
 :::
 
-- For spatial part we find solution in the form of sine wave. 
+- For spatial part we find solution in the form of sine wave. Where n takes on integer values.
 
 $$
 X(x) = B \sin \left(\frac{n \pi}{L} x \right)
 $$
+
+:::{figure-md} markdown-fig
+
+<img src="./images/modes-x.png" alt="applied photoelectric" class="bg-primary mb-1" width="30%">
+
+The first seven solutions of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
+:::
+
 
 :::{admonition} **Solving temporal part**
 :class: tip, dropdown
@@ -240,6 +248,14 @@ $$
 
 
 ### Interpretation of Solution to the Wave Equation
+
+:::{figure-md} markdown-fig
+
+<img src="./images/Standing_waves_on_a_string.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+
+Presented are first six solutions from $n=0,1,2,3,4,5$
+:::
+
 
 - The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
 
