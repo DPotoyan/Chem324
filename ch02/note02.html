@@ -439,7 +439,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-by-separation-of-variables">Solving Wave Equation by separation of variables.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plug-the-product-of-univariate-functions-into-the-wave-equation">Step 1: Plug the Product of Univariate Functions into the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solve-the-ode-by-considering-cases-for-the-separating-constant">Intermezzo: Solve the ODE by Considering Cases for the Separating Constant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-the-wave-equation">Interpretation of Solution to the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
@@ -564,9 +563,6 @@ u(x, t) = X(x) \cdot T(t)
 \[
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 \]</div>
-</section>
-<section id="intermezzo-solve-the-ode-by-considering-cases-for-the-separating-constant">
-<h2>Intermezzo: Solve the ODE by Considering Cases for the Separating Constant<a class="headerlink" href="#intermezzo-solve-the-ode-by-considering-cases-for-the-separating-constant" title="Permalink to this heading">#</a></h2>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Solving the spatial part: when <span class="math notranslate nohighlight">\(K &gt; 0\)</span></strong></p>
 <ul>
@@ -630,6 +626,13 @@ u(x, t) = X(x) \cdot T(t)
 </li>
 </ul>
 </div>
+<ul class="simple">
+<li><p>For spatial part we find solution in the form of sine wave.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+X(x) = B \sin \left(\frac{n \pi}{L} x \right)
+\]</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Solving temporal part</strong></p>
 <ul class="simple">
@@ -655,9 +658,15 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
 \]</div>
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span>.</p></li>
-<li><p>Since there are no boundary conditions for <span class="math notranslate nohighlight">\(T(t)\)</span>, both sine and cosine terms are present. The integer index <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span> represents the normal modes.</p></li>
 </ul>
 </div>
+<ul class="simple">
+<li><p>For temporal part since we do not have boundary conditions we find solution in the form of linear combination of sine and cosine functions with <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span> and <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span> represents the normal modes.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
+\]</div>
 </section>
 <section id="step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">
 <h2>Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE<a class="headerlink" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde" title="Permalink to this heading">#</a></h2>
@@ -855,7 +864,6 @@ y(t) = C_1 \cos(3t) + C_2 \sin(3t)
 </section>
 <section id="problem-5-homogeneous-linear-ode">
 <h2>Problem 5: Homogeneous Linear ODE<a class="headerlink" href="#problem-5-homogeneous-linear-ode" title="Permalink to this heading">#</a></h2>
-<p><strong>Problem:</strong></p>
 <p>Solve the ODE:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -955,7 +963,6 @@ y(t) = (C_1 + C_2 t) e^{3t}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-by-separation-of-variables">Solving Wave Equation by separation of variables.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plug-the-product-of-univariate-functions-into-the-wave-equation">Step 1: Plug the Product of Univariate Functions into the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intermezzo-solve-the-ode-by-considering-cases-for-the-separating-constant">Intermezzo: Solve the ODE by Considering Cases for the Separating Constant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-combine-the-solutions-of-all-odes-to-obtain-the-solution-of-the-original-pde">Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-the-wave-equation">Interpretation of Solution to the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
