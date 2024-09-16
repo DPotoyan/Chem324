@@ -60,7 +60,7 @@ $$
 u(x, t) = X(x) \cdot T(t)
 $$
 
-- **Principles of superposition:** The wave equation is linear, meaning there $u$ terms appear with first order on both side. that means that linear combination of two solutions $c_1 u_1+c_2u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms
+- **Principle of superposition:** The wave equation is linear which you can see by  $u$ terms appearing with first order on both side. Linearity means that linear combination of two solutions $c_1 u_1+c_2u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms. 
 
 ### Step 1: Plug the Product of Univariate Functions into the Wave Equation
 
@@ -106,7 +106,7 @@ $$
 :::{admonition} **Solving the spatial part: when $K > 0$**
 :class: tip, dropdown
 
-- If $K > 0$, we specify $K = \beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is:
+- If $K > 0$, we specify $K = \beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is represented as linar combination of particular solutions (principle of superposition):
 
   $$
   X(x) = c_1 e^{\beta x} + c_2 e^{-\beta x}
