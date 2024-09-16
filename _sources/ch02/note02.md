@@ -13,127 +13,253 @@
 - Solution of 1D guitar string produces infinite number of periodic solutions parameterized by an integer number $n$.
 ```
 
+### Classical Wave equation
 
-### 1D guitar string, a simple toy example
+- **Wave equation** is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement $u(x,t)$ in time and space.
 
-![](./images/lec5_guitar.jpg)
-
- <iframe src="https://giphy.com/embed/x988dOESRoCeQ" width="480" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animation-physics-x988dOESRoCeQ">via GIPHY</a></p>
-
-- Our objective in the next few pages is to describe motion of guitar string mathematically. That is given arbitrary initial conditions precisely predict the evolution of string in time and space. 
+$$\frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$ 
 
 
-### Solving wave equation by separation of variables. A technique worth remembering!
+:::{figure-md} markdown-fig
 
-- Wave equation is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement $u(x,t)$ in time and space.
+<img src="./images/1D-Wave.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
 
-$$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$ 
+Classical wave equation can describe any complicated wave in space and time given the intitial conditions.
+:::
 
-- In order to solve this equation we need to specify two boundary conditions to obtain solution that is specific to our physical situation: a guitar string attached to two ends. Mathematically we specify boundary conditions by:
+- **Applications of the Classical Wave Equation:** To illustrate the applications of the classical wave equation, we will solve it for a 1D guitar string. This provides a comprehensive mathematical description of the string's behavior.
 
-$$u(0,t)=0 \,\,\,\, | \,\,\,\, u(L,t)=0$$
-
-- A general way of solving such equations is by using the technique of separation of variables: assuming $x$ and $t$ vary independent of each other enables us to write $u$ as a product of two single variable functions.
-
-$$u(x,t)=X(x)T(t)$$
-
-### Step one: plug product of univariate functions into wave equation.
-
- $$\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} =\frac{\partial^2 u(x,t)}{\partial x^2 }$$
-
- Plugging $u(x,t)=X(x)T(t)$ in the above wave equation leads to separation of variables into two independent equations:
-
-  $$\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial t^2} =\frac{\partial^2 X(x)T(t)}{\partial x^2 }$$
-
-  Some rearrangement first
-
-  $$\frac{X(x)}{v^2}\frac{\partial^2 T(t)}{\partial t^2} =T(t)\frac{\partial^2 X(x)}{\partial x^2 }$$
-
-  And voilà, the final product we have two ordinary differential equations (ODEs) as opposed to much harder partial differential equation (PDE). 
-
-$$\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} =\frac{1}{X(x) }\frac{\partial^2 X(x)}{\partial x^2 }=K=const$$
+- **Predicting Evolution:** By specifying arbitrary initial conditions, the wave equation allows us to precisely predict the evolution of the string over time and space.
 
 
-### Step two: After decomposing PDE into ODEs we begin solving each ODE one by one. 
+:::{figure-md} markdown-fig
+
+<img src="./images/lec5_guitar.jpg" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+
+Classical wave equation can describe any complicated wave in space and time given the intitial conditions.
+:::
 
 
-$$\frac{\partial^2 T(t)}{\partial t^2} -KT(t)v^2=0 \,\,\,\,and\,\,\,\,\,\,\,\, \frac{\partial^2 X(x)}{\partial x^2}-K X(x)=0$$
+### Solving Wave Equation by separation of variables. 
 
-### Intermezzo: solve the ODE by considering all cases for the separating constant. Case K>0 
+Here’s a polished version of that part:
 
-- If $K \geq 0$: and we explicitly specify this $K=\beta^2$ via a constant $\beta$.
+- **Boundary Conditions:** To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:
 
-$$X(x)= c_1 e^{\beta x}+c_2 e^{-\beta x}$$
+$$
+u(0, t) = 0 \quad \text{and} \quad u(L, t) = 0
+$$
 
-Applying boundary conditions $X(0)=X(L)=0$ leads to $c_1=c_2=0$. There is simply no other way to make linear combination of two positive numbers equal to zero. We are left with a pretty boring solution $X(x)=0$  implying that string does not move. No music :( 
+where $u(x, t)$ represents the displacement of the string at position $x$ and time $t$.
 
-### Intermezzo: solve the ODE by considering all cases for the separating constant. Case K<0 
+- **Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable:
 
-- If $K < 0$: and we explicitly specify this $K=-\beta^2$ via a constant $\beta$.
-
-$$X(x)= c_1 e^{i\beta x}+c_2 e^{-i\beta x}$$
-
-$$X(x)= c_1 \left[\cos(\beta x)+ i \sin(\beta x)\right] + c_2 [\cos(\beta x) - i \sin(\beta x)]$$
-
-Above we have made use of Euler's relation to clarify things. Now one more rearrangement and we are done here:
-
-$$X(x)= (c_1+ic_2)(\cos(\beta x)+(c_1-ic_2)\sin(\beta x)$$
-
-$$X(x)= A \cos(\beta x)+B \sin(\beta x)$$
-
-Applying boundary conditions leads to $X(0)=0$ hence $A \cdot 1+0=0$. <br>And $X(L)=0=\sin (\beta L)=0$ hence we have a non-trivial solution! 
-
-$$\beta L=n\pi \,\, \rightarrow \,\, \beta=\frac{n\pi}{L} \,\,  \rightarrow \,\,  X(x)=B\sin\left(\frac{n\pi}{L}x\right)$$
+$$
+u(x, t) = X(x) \cdot T(t)
+$$
 
 
-### Intermezzo: Solutions for wave equation are also called normal modes.
 
-We have found solution for $X(x)=B\sin\left(\frac{n\pi}{L}x\right)$. <br>Now it is time to do the same for $T(t)$ by repeating the same steps:
+Here’s a polished version of the text with Markdown LaTeX formatting for centered and inline equations:
 
-$$\frac{\partial^2 T(t)}{\partial t^2 }-K T(t)v^2=0 \,\,\rightarrow \,\, \frac{\partial^2 T(t)}{\partial t^2 }-\beta^2 T(t)v^2=0$$
+---
 
-$$T(t)=D_n \cos(\omega_n t)+E_n \sin(\omega_n t)$$
+### Step 1: Plug the Product of Univariate Functions into the Wave Equation
 
-- Since there are no boundary conditions for T(t), both $\sin$ and $\cos$ terms survived.
-- $\omega_n=\beta \nu=\frac{n\pi}{L} \nu$ are called normal modes.  Integer index $n = 0,1,2,...$ lists normal modes which are simply solutions satisfying our wave equation. 
+- Start with the 1D wave equation that can describe 1D guitar string:
 
-### Step 3: Combine the solutions of all ODEs to obtain the solution of the original PDE. 
+$$
+\frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2} = \frac{\partial^2 u(x,t)}{\partial x^2}
+$$
 
-$$u(x,t)=X(x)T(t)=[D_n \cos(\omega_n t)+E_n \sin(\omega_n t)] B \sin\left(\frac{n\pi}{L}x\right)$$
+- Substitute $u(x, t) = X(x)T(t)$ into the wave equation:
 
-Using trigonometric relation for sum of $\sin$ and $\cos$ functions we arrive at infinite number of solutions for each $n$. 
+$$
+\frac{1}{v^2}\frac{\partial^2 X(x)T(t)}{\partial t^2} = \frac{\partial^2 X(x)T(t)}{\partial x^2}
+$$
 
-$$u(x,t)=X(x)T(t)=A \sin\left(\frac{n\pi}{L}x\right)\cos(\omega_n t+\phi_n)$$
+- After rearranging, we get:
 
-Since for any value of $n$ the above normal mode expression satisfies the wave equation, the most general solution would be a linear combination of all the normal modes. 
+$$
+\frac{X(x)}{v^2}\frac{\partial^2 T(t)}{\partial t^2} = T(t)\frac{\partial^2 X(x)}{\partial x^2}
+$$
 
-$$u(x,t)=\sum_n X_n(x)T_n(t)=\sum_n A_n \sin\left(\frac{n\pi}{L}x\right)\cos(\omega_n t+\phi_n)$$
+- Thus, we obtain two separate ordinary differential equations (ODEs) from the original partial differential equation (PDE):
 
-This general solution describes a time evolution of any 1D guitar string, regardless of how you pluck it. 
+$$
+\frac{1}{T(t)v^2}\frac{\partial^2 T(t)}{\partial t^2} = \frac{1}{X(x)}\frac{\partial^2 X(x)}{\partial x^2} = K
+$$
 
-### Interpretation of solution to wave equation. 
-
-Complete information for describing any vibrational motion is contained in the sum of the normal modes: $X_n(x)$. Depending on where and how fast you pluck the guitar string the terms that contain time, $T_n(t)$ will be different, but normal modes $X_n(x)$ are always the same.
-
-$$\nu_n=\frac{\omega_n}{2\pi}=\frac{n \nu}{2L}$$
-
-- $n = 1$; 0 nodes; fundamental or first harmonic:
-- $n = 2$; 1 node; first overtone or second harmonic:
-- $n = 3$; 2 nodes; second overtone or third harmonic:
-
-### The sound of music.
-
-![](./images/lec4_music.jpg)
+- where $K$ is a constant.
 
 
- - Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of normal modes (in music they call harmonics, overtones) of those musical instruments. 
+### Step 2: Solving Each Ordinary Differential Equation
 
-- The size of the musical instrument reflects the range of frequencies over which the instrument is designed to function. Smaller size implies higher frequencies, larger size implies lower frequencies.
-> Learn more from [this series](https://www.youtube.com/watch?v=jveKIYyafaQ).
+After decomposing the PDE into ODEs, we solve each ODE separately:
+
+$$
+\frac{\partial^2 T(t)}{\partial t^2} - K T(t) v^2 = 0
+$$
+
+and
+
+$$
+\frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
+$$
+
+
+### Intermezzo: Solve the ODE by Considering Cases for the Separating Constant
+
+:::{admonition} **Solving the spatial part: when $K > 0$**
+:class: tip, dropdown
+
+- If $K > 0$, we specify $K = \beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is:
+
+  $$
+  X(x) = c_1 e^{\beta x} + c_2 e^{-\beta x}
+  $$
+
+  Applying the boundary conditions $X(0) = X(L) = 0$ leads to $c_1 = c_2 = 0$. Since a non-trivial linear combination of two exponential functions cannot be zero everywhere, this results in the trivial solution:
+
+  $$
+  X(x) = 0
+  $$
+
+  This implies that the string does not move—no music!
+
+:::
+
+:::{admonition} **Solving the spatial part: when $K < 0$**
+:class: tip, dropdown
+
+- If $K < 0$, we specify $K = -\beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is:
+
+  $$
+  X(x) = c_1 e^{i \beta x} + c_2 e^{-i \beta x}
+  $$
+
+  Using Euler's formula, this can be rewritten as:
+
+  $$
+  X(x) = c_1 (\cos(\beta x) + i \sin(\beta x)) + c_2 (\cos(\beta x) - i \sin(\beta x))
+  $$
+
+  Simplifying further:
+
+  $$
+  X(x) = (c_1 + i c_2) \cos(\beta x) + (c_1 - i c_2) \sin(\beta x)
+  $$
+
+  Let $A = c_1 + i c_2$ and $B = c_1 - i c_2$:
+
+  $$
+  X(x) = A \cos(\beta x) + B \sin(\beta x)
+  $$
+
+  Applying the boundary conditions $X(0) = 0$ and $X(L) = 0$:
+
+  - At $x = 0$: $A \cdot 1 + B \cdot 0 = 0$, so $A = 0$.
+  - At $x = L$: $X(L) = B \sin(\beta L) = 0$.
+
+  For a non-trivial solution, $\sin(\beta L) = 0$, which implies:
+
+  $$
+  \beta L = n \pi \quad \text{where} \quad n = 1, 2, 3, \ldots
+  $$
+
+  Hence:
+
+  $$
+  \beta = \frac{n \pi}{L}
+  $$
+
+  Thus:
+
+  $$
+  X(x) = B \sin \left(\frac{n \pi}{L} x \right)
+  $$
+
+:::
+
+:::{admonition} **Solving temporal part**
+:class: tip, dropdown
+
+
+- Having identified $K<0$ conditions through solution of spatial part we can now solve for $T(t)$:
+
+$$
+\frac{\partial^2 T(t)}{\partial t^2} - K v^2 T(t) = 0 \quad \text{with} \quad K = \beta^2
+$$
+
+- Substitute $K = \beta^2$:
+
+$$
+\frac{\partial^2 T(t)}{\partial t^2} - \beta^2 v^2 T(t) = 0
+$$
+
+- The solution is:
+
+$$
+T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
+$$
+
+- where $\omega_n = \beta v = \frac{n \pi v}{L}$.
+
+- Since there are no boundary conditions for $T(t)$, both sine and cosine terms are present. The integer index $n = 1, 2, 3, \ldots$ represents the normal modes.
+:::
+
+### Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE
+
+- After solving ODEs for spatial adn tempoeral parts we now combine them to obtain the full solution:
+
+$$
+u(x, t) = X(x) T(t) = [D_n \cos(\omega_n t) + E_n \sin(\omega_n t)] \cdot B \sin \left(\frac{n \pi}{L} x \right)
+$$
+
+- Using trig identities, we express the general solution as:
+
+$$
+u(x, t) = A \sin \left(\frac{n \pi}{L} x \right) \cos (\omega_n t + \phi_n)
+$$
+
+- where $A$ and $\phi_n$ are constants which one specifies as part of inititial conditions.
+
+- **The general solution to wave equation is a linear combination of all normal modes**:
+
+$$
+u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t + \phi_n)
+$$
+
+- This general solution describes the time evolution of any 1D guitar string given initital position and velocity encoded by $A$ and $\phi_n$ constants
+
+
+
+### Interpretation of Solution to the Wave Equation
+
+- The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
+
+  $$
+  \nu_n = \frac{\omega_n}{2 \pi} = \frac{n \nu}{2L}
+  $$
+
+  where $\nu_n$ is the frequency of the $n$-th mode, $\omega_n$ is the angular frequency, $n$ is the mode number, $\nu$ is the wave speed, and $L$ is the length of the string.
+
+- **For $n = 1$**: There are 0 nodes (excluding the endpoints). This is called the fundamental frequency or first harmonic.
+
+- **For $n = 2$**: There is 1 node. This is known as the first overtone or second harmonic.
+
+- **For $n = 3$**: There are 2 nodes. This is called the second overtone or third harmonic.
+
 
 ### 2D membrane vibrations.
 
-![](http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif)
+:::{figure-md} markdown-fig
+
+<img src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+
+Vibrations of 2D membrane. 
+:::
+
 
 - Wave function of 2D membrane with fixed edges has two independent variables x and y. 
 - Applying the technique of separation of variables we will get three ordinary differential equations.
@@ -155,5 +281,19 @@ The angular frequency depends on the geometry of the domain and on two integer n
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
 - Can you guess what the solution would be fore the 3D case?
+
+
+### The sound of music.
+
+ - Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of normal modes (in music they call harmonics, overtones) of those musical instruments. 
+- Learn more from [this series](https://www.youtube.com/watch?v=jveKIYyafaQ).
+
+:::{figure-md} markdown-fig
+
+<img src="./images/lec4_music.jpg" class="bg-primary mb-1" width="40%">
+
+The size of the musical instrument reflects the range of frequencies over which the instrument is designed to function. Smaller size implies higher frequencies, larger size implies lower frequencies.
+:::
+
 
 ### Example Problems
