@@ -438,8 +438,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-wave-equation">Classical Wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-the-big-picture">Solving Wave Equation: The big picture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plug-the-product-of-univariate-functions-into-the-wave-equation">Step 1: Plug the Product of Univariate Functions into the Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes">Step 3: Full solution of 1D guitar string: A linear combination of normal modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-spatial-part">Solution for spatial part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-temporal-part">Solution for temporal part</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes">Step 3 Full solution of 1D guitar string: A linear combination of normal modes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
@@ -653,8 +657,10 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
 <li><p>where <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span>.</p></li>
 </ul>
 </div>
+<section id="solution-for-spatial-part">
+<h3>Solution for spatial part<a class="headerlink" href="#solution-for-spatial-part" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Solution for spatial part</strong> Becasue of boundary conditions (<span class="math notranslate nohighlight">\(X(x)=X(L)=0\)</span>) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number <span class="math notranslate nohighlight">\(n\)</span>. These terms are called <strong>normal modes</strong> and are visualized below.</p></li>
+<li><p>Becasue of boundary conditions (<span class="math notranslate nohighlight">\(X(x)=X(L)=0\)</span>) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number <span class="math notranslate nohighlight">\(n\)</span>. These terms are called <strong>normal modes</strong> and are visualized below.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -666,8 +672,11 @@ X(x) = B \sin \left(\frac{n \pi}{L} x \right)
 <p><span class="caption-number">Fig. 42 </span><span class="caption-text">The first seven solutions (normal modes) of spatial part of the wave equation on a length <span class="math notranslate nohighlight">\(L\)</span> with two amplitudes (one positive and one negative).</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="solution-for-temporal-part">
+<h3>Solution for temporal part<a class="headerlink" href="#solution-for-temporal-part" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Solution for temporal part</strong> For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span> and <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span> represents the normal modes.</p></li>
+<li><p>For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span> and <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span> represents the normal modes.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -678,8 +687,9 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi
 <li><p>The constants <span class="math notranslate nohighlight">\(A_n\)</span> <span class="math notranslate nohighlight">\(\phi_n\)</span> in temporal part are determined by <strong>initial codnitions</strong> E.g what should be the amplitude and phase of wave at starting time <span class="math notranslate nohighlight">\(t=0\)</span>.</p></li>
 </ul>
 </section>
+</section>
 <section id="step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes">
-<h2>Step 3: Full solution of 1D guitar string: A linear combination of normal modes<a class="headerlink" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes" title="Permalink to this heading">#</a></h2>
+<h2>Step 3 Full solution of 1D guitar string: A linear combination of normal modes<a class="headerlink" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>After solving ODEs for spatial and tempoeral parts we now combine them into a full solution.</p></li>
 <li><p>The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, <span class="math notranslate nohighlight">\(X_n(x)\)</span>.</p></li>
@@ -715,8 +725,8 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi
 <li><p>This time there will be two boundary conditions fo X and Y</p></li>
 <li><p>Boundary on the <span class="math notranslate nohighlight">\(X\)</span> edge: <span class="math notranslate nohighlight">\(X(0)=X(L)=0\)</span>.</p></li>
 <li><p>Boundary on the <span class="math notranslate nohighlight">\(Y\)</span> edge: <span class="math notranslate nohighlight">\(Y(0)=Y(L)=0\)</span>.</p></li>
-<li><p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes.</p></li>
-<li><p>The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number <span class="math notranslate nohighlight">\(k_x\)</span> and <span class="math notranslate nohighlight">\(k_y\)</span>.</p></li>
+<li><p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes.</p></li>
+<li><p><strong>The 2D normal mode is a product of two 1D modes for each coordinate.</strong> Each coordinate has its own independent wave number <span class="math notranslate nohighlight">\(k_x\)</span> and <span class="math notranslate nohighlight">\(k_y\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} \]</div>
@@ -725,9 +735,119 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi
 </ul>
 <div class="math notranslate nohighlight">
 \[\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} \]</div>
-<ul class="simple">
-<li><p>Can you guess what the solution would be fore the 3D case?</p></li>
-</ul>
+<div class="admonition-full-derivation-of-2d-rectangular-membrane-problem admonition">
+<p class="admonition-title"><strong>Full derivation of 2D rectangular membrane problem</strong></p>
+<p>To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here’s a step-by-step solution for a 2D rectangular membrane:</p>
+<p><strong>Solution for a 2D Rectangular Membrane</strong></p>
+<p>Consider a rectangular membrane with dimensions <span class="math notranslate nohighlight">\(L_x\)</span> and <span class="math notranslate nohighlight">\(L_y\)</span>, fixed along its edges. The wave equation for the membrane is:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2 u(x, y, t)}{\partial t^2} = c^2 \left( \frac{\partial^2 u(x, y, t)}{\partial x^2} + \frac{\partial^2 u(x, y, t)}{\partial y^2} \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is the wave speed.</p>
+<p><strong>Separation of Variables</strong></p>
+<p>Assume the solution can be written as a product of functions, each depending on only one variable:</p>
+<div class="math notranslate nohighlight">
+\[
+u(x, y, t) = X(x) Y(y) T(t)
+\]</div>
+<p>Substitute this into the wave equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2}{dt^2}[X(x) Y(y) T(t)] = c^2 \left( \frac{d^2}{dx^2}[X(x) Y(y) T(t)] + \frac{d^2}{dy^2}[X(x) Y(y) T(t)] \right)
+\]</div>
+<p>This simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+X(x) Y(y) \frac{d^2 T(t)}{dt^2} = c^2 \left( T(t) \frac{d^2 X(x)}{dx^2} Y(y) + T(t) X(x) \frac{d^2 Y(y)}{dy^2} \right)
+\]</div>
+<p>Divide through by <span class="math notranslate nohighlight">\(X(x) Y(y) T(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{c^2} \frac{1}{T(t)} \frac{d^2 T(t)}{dt^2} = \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2} + \frac{1}{Y(y)} \frac{d^2 Y(y)}{dy^2}
+\]</div>
+<p>Since the left side depends only on  <span class="math notranslate nohighlight">\(t\)</span> and the right side depends only on  <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, each side must equal a constant, which we denote as <span class="math notranslate nohighlight">\(-\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{c^2} \frac{d^2 T(t)}{dt^2} = -\lambda
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 X(x)}{dx^2} + \frac{d^2 Y(y)}{dy^2} = -\lambda X(x)
+\]</div>
+<p><strong>Solving for <span class="math notranslate nohighlight">\(T(t)\)</span></strong></p>
+<p>The ODE for <span class="math notranslate nohighlight">\(T(t)\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 T(t)}{dt^2} + \lambda c^2 T(t) = 0
+\]</div>
+<p>This has the general solution:</p>
+<div class="math notranslate nohighlight">
+\[
+T(t) = A \cos(\omega t) + B \sin(\omega t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\((\omega = \sqrt{\lambda} c)\)</span>.</p>
+<p><strong>Solving for <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span></strong></p>
+<p>To solve the spatial part, we need to separate the problem into two parts:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 X(x)}{dx^2} + \frac{d^2 Y(y)}{dy^2} = -\lambda X(x)
+\]</div>
+<p>Assume:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 X(x)}{dx^2} = -\alpha^2 X(x)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 Y(y)}{dy^2} = -(\lambda - \alpha^2) Y(y)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\((\lambda = \alpha^2 + \beta^2)\)</span>.</p>
+<p>So, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 X(x)}{dx^2} + \alpha^2 X(x) = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 Y(y)}{dy^2} + \beta^2 Y(y) = 0
+\]</div>
+<p><strong>Boundary Conditions:</strong></p>
+<p>For a rectangular membrane with boundaries <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(x = L_x\)</span>, <span class="math notranslate nohighlight">\(y = 0\)</span>, and <span class="math notranslate nohighlight">\(y = L_y\)</span>, we apply:</p>
+<div class="math notranslate nohighlight">
+\[
+X(0) = X(L_x) = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y(0) = Y(L_y) = 0
+\]</div>
+<p>The solutions for (X(x)) and (Y(y)) are:</p>
+<div class="math notranslate nohighlight">
+\[
+X(x) = C \sin\left(\frac{n \pi x}{L_x}\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y(y) = D \sin\left(\frac{m \pi y}{L_y}\right)
+\]</div>
+<p>where (n) and (m) are positive integers, and:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = \frac{n \pi}{L_x}, \quad \beta = \frac{m \pi}{L_y}
+\]</div>
+<p>So, the general solution for (u(x, y, t)) is:</p>
+<div class="math notranslate nohighlight">
+\[
+u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_{nm} t\right) + B_{nm} \sin\left(\omega_{nm} t\right) \right] \sin\left(\frac{n \pi x}{L_x}\right) \sin\left(\frac{m \pi y}{L_y}\right)
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{nm} = c \sqrt{\left(\frac{n \pi}{L_x}\right)^2 + \left(\frac{m \pi}{L_y}\right)^2}
+\]</div>
+<p>This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of (n) and (m).</p>
+</div>
 </section>
 <section id="the-sound-of-music">
 <h2>The sound of music.<a class="headerlink" href="#the-sound-of-music" title="Permalink to this heading">#</a></h2>
@@ -945,8 +1065,12 @@ y(t) = (C_1 + C_2 t) e^{3t}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-wave-equation">Classical Wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-wave-equation-the-big-picture">Solving Wave Equation: The big picture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plug-the-product-of-univariate-functions-into-the-wave-equation">Step 1: Plug the Product of Univariate Functions into the Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes">Step 3: Full solution of 1D guitar string: A linear combination of normal modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-solving-each-ordinary-differential-equation">Step 2: Solving Each Ordinary Differential Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-spatial-part">Solution for spatial part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-temporal-part">Solution for temporal part</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-of-1d-guitar-string-a-linear-combination-of-normal-modes">Step 3 Full solution of 1D guitar string: A linear combination of normal modes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
