@@ -285,9 +285,9 @@ $$u(x,y,t) =X(x)Y(y)T(t)$$
 - Boundary on the $X$ edge: $X(0)=X(L)=0$.
 - Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
 - Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes. 
-- **The 2D normal mode is a product of two 1D modes for each coordinate.** Each coordinate has its own independent wave number $k_x$ and $k_y$.
+- **The 2D normal mode is a product of two 1D modes for each coordinate.** Each coordinate has its own independent mode number $n$ and $m$. 
 
-$$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
+$$ u(x,y,t) = \sum_n \sum_m A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
 
 - The angular frequency depends on the geometry of the domain and on two integer numbers $n$ and $m$. 
 
