@@ -99,8 +99,6 @@ $$
 \frac{\partial^2 T(t)}{\partial t^2} - K T(t) v^2 = 0
 $$
 
-and
-
 $$
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 $$
@@ -176,19 +174,6 @@ $$
 
 :::
 
-- For spatial part we find solution in the form of sine wave. Where n takes on integer values.
-
-$$
-X(x) = B \sin \left(\frac{n \pi}{L} x \right)
-$$
-
-:::{figure-md} markdown-fig
-
-<img src="./images/modes-x.png" alt="applied photoelectric" class="bg-primary mb-1" width="30%">
-
-The first seven solutions of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
-:::
-
 
 :::{admonition} **Solving temporal part**
 :class: tip, dropdown
@@ -214,6 +199,21 @@ $$
 
 - where $\omega_n = \beta v = \frac{n \pi v}{L}$.
 :::
+
+
+- For spatial part we find solution in the form of sine wave. Where n takes on integer values.
+
+$$
+X(x) = B \sin \left(\frac{n \pi}{L} x \right)
+$$
+
+:::{figure-md} markdown-fig
+
+<img src="./images/modes-x.png" alt="applied photoelectric" class="bg-primary mb-1" width="30%">
+
+The first seven solutions of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
+:::
+
 
 - For temporal part since we do not have boundary conditions we find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes.
 
@@ -282,8 +282,7 @@ Vibrations of 2D membrane.
 :::
 
 
-- Wave function of 2D membrane with fixed edges has two independent variables x and y. 
-- Applying the technique of separation of variables we will get three ordinary differential equations.
+- Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.
 
 $$u(x,y,t) =X(x)Y(y)T(t)$$
 
@@ -292,12 +291,11 @@ $$u(x,y,t) =X(x)Y(y)T(t)$$
 - Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
 
 - Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of normal modes. 
-
 - The 2D solution is essentially a product of two 1D solutions for each coordinate. Each coordinate has its own independent wave number $k_x$ and $k_y$. 
 
 $$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
 
-The angular frequency depends on the geometry of the domain and on two integer numbers $n$ and $m$. 
+- The angular frequency depends on the geometry of the domain and on two integer numbers $n$ and $m$. 
 
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
@@ -316,12 +314,6 @@ $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 The size of the musical instrument reflects the range of frequencies over which the instrument is designed to function. Smaller size implies higher frequencies, larger size implies lower frequencies.
 :::
 
-
-### Example Problems
-
-Here are a few practice problems and solutions for solving ordinary differential equations (ODEs) using the same Markdown LaTeX format:
-
----
 
 ### Example Problems 
 
