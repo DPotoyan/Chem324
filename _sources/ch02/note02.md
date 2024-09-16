@@ -44,7 +44,7 @@ Classical wave equation can describe any complicated wave in space and time give
 :::
 
 
-### Solving Wave Equation by separation of variables. 
+### Solving Wave Equation: The big picture 
 
 - **Boundary Conditions:** To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:
 
@@ -54,13 +54,13 @@ $$
 
 where $u(x, t)$ represents the displacement of the string at position $x$ and time $t$.
 
-- **Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable:
+- **Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs. 
 
 $$
 u(x, t) = X(x) \cdot T(t)
 $$
 
-
+- **Principles of superposition:** The wave equation is linear, meaning there $u$ terms appear with first order on both side. that means that linear combination of two solutions $c_1 u_1+c_2u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms
 
 ### Step 1: Plug the Product of Univariate Functions into the Wave Equation
 
