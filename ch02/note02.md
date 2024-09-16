@@ -297,3 +297,217 @@ The size of the musical instrument reflects the range of frequencies over which 
 
 
 ### Example Problems
+
+Here are a few practice problems and solutions for solving ordinary differential equations (ODEs) using the same Markdown LaTeX format:
+
+---
+
+### Example Problems 
+
+#### Problem 1: Simple Harmonic Oscillator
+
+**Problem:**
+
+Solve the ODE:
+
+$$
+\frac{d^2 y}{dt^2} + \omega^2 y = 0
+$$
+
+where $\omega$ is a constant.
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+The characteristic equation is:
+
+$$
+r^2 + \omega^2 = 0
+$$
+
+Solving for $r$:
+
+$$
+r = \pm i \omega
+$$
+
+Thus, the general solution is:
+
+$$
+y(t) = C_1 \cos(\omega t) + C_2 \sin(\omega t)
+$$
+
+where $C_1$ and $C_2$ are constants determined by initial conditions.
+
+:::
+
+#### Problem 2: Damped Oscillator
+
+Solve the ODE:
+
+$$
+\frac{d^2 y}{dt^2} + 2 \beta \frac{dy}{dt} + \omega^2 y = 0
+$$
+
+where $\beta$ and $\omega$ are constants. Consider cases of $\beta^2 < \omega^2$, $\beta^2 > \omega^2$ and $\beta^2 = \omega^2$
+
+:::{admonittion} **Solution:**
+:class: dropdown
+
+The characteristic equation is:
+
+$$
+r^2 + 2 \beta r + \omega^2 = 0
+$$
+
+Solving for $r$ using the quadratic formula:
+
+$$
+r = \frac{-2 \beta \pm \sqrt{(2 \beta)^2 - 4 \omega^2}}{2}
+$$
+
+$$
+r = -\beta \pm \sqrt{\beta^2 - \omega^2}
+$$
+
+Depending on the discriminant $\beta^2 - \omega^2$, we have three cases:
+
+1. **Underdamping ($\beta^2 < \omega^2$):**
+
+   $$ 
+   y(t) = e^{-\beta t} [C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t)]
+   $$
+
+   where $\omega_d = \sqrt{\omega^2 - \beta^2}$.
+
+2. **Critical Damping ($\beta^2 = \omega^2$):**
+
+   $$
+   y(t) = (C_1 + C_2 t) e^{-\beta t}
+   $$
+
+3. **Overdamping ($\beta^2 > \omega^2$):**
+
+   $$
+   y(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}
+   $$
+
+   where $r_1$ and $r_2$ are the distinct real roots found from the quadratic formula.
+:::
+
+
+### Problem 3: ODE with Constant Coefficients
+
+
+Solve the ODE:
+
+$$
+\frac{d^2 y}{dt^2} - 4 y = 0
+$$
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+The characteristic equation for this ODE is:
+
+$$
+r^2 - 4 = 0
+$$
+
+Solving for $r$:
+
+$$
+r^2 = 4
+$$
+
+$$
+r = \pm 2
+$$
+
+Thus, the general solution is:
+
+$$
+y(t) = C_1 e^{2t} + C_2 e^{-2t}
+$$
+
+where $C_1$ and $C_2$ are constants determined by initial conditions.
+
+:::
+
+### Problem 4: Simple 2nd order ODE
+
+Solve the ODE:
+
+$$
+\frac{d^2 y}{dt^2} + 9 y = 0
+$$
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+The characteristic equation for this ODE is:
+
+$$
+r^2 + 9 = 0
+$$
+
+Solving for $r$:
+
+$$
+r^2 = -9
+$$
+
+$$
+r = \pm 3i
+$$
+
+Thus, the general solution is:
+
+$$
+y(t) = C_1 \cos(3t) + C_2 \sin(3t)
+$$
+
+where $C_1$ and $C_2$ are constants determined by initial conditions.
+
+:::
+
+
+### Problem 5: Homogeneous Linear ODE 
+
+**Problem:**
+
+Solve the ODE:
+
+$$
+\frac{d^2 y}{dt^2} - 6 \frac{dy}{dt} + 9 y = 0
+$$
+
+:::{admonition} **Solution:**
+:class: dropdown
+
+The characteristic equation for this ODE is:
+
+$$
+r^2 - 6r + 9 = 0
+$$
+
+Factoring:
+
+$$
+(r - 3)^2 = 0
+$$
+
+Thus:
+
+$$
+r = 3 \text{ (repeated root)}
+$$
+
+The general solution for repeated roots is:
+
+$$
+y(t) = (C_1 + C_2 t) e^{3t}
+$$
+
+where $C_1$ and $C_2$ are constants determined by initial conditions.
+:::
