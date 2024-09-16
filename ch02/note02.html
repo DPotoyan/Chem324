@@ -443,8 +443,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-the-wave-equation">Interpretation of Solution to the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
 </ul>
@@ -558,7 +557,6 @@ u(x, t) = X(x) \cdot T(t)
 \[
 \frac{\partial^2 T(t)}{\partial t^2} - K T(t) v^2 = 0
 \]</div>
-<p>and</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
@@ -626,19 +624,6 @@ u(x, t) = X(x) \cdot T(t)
 </li>
 </ul>
 </div>
-<ul class="simple">
-<li><p>For spatial part we find solution in the form of sine wave. Where n takes on integer values.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-X(x) = B \sin \left(\frac{n \pi}{L} x \right)
-\]</div>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/modes-x.png"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/modes-x.png" style="width: 30%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">The first seven solutions of spatial part of the wave equation on a length <span class="math notranslate nohighlight">\(L\)</span> with two amplitudes (one positive and one negative).</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Solving temporal part</strong></p>
 <ul class="simple">
@@ -666,6 +651,19 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
 <li><p>where <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span>.</p></li>
 </ul>
 </div>
+<ul class="simple">
+<li><p>For spatial part we find solution in the form of sine wave. Where n takes on integer values.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+X(x) = B \sin \left(\frac{n \pi}{L} x \right)
+\]</div>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/modes-x.png"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/modes-x.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">The first seven solutions of spatial part of the wave equation on a length <span class="math notranslate nohighlight">\(L\)</span> with two amplitudes (one positive and one negative).</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>For temporal part since we do not have boundary conditions we find solution in the form of linear combination of sine and cosine functions with <span class="math notranslate nohighlight">\(\omega_n = \beta v = \frac{n \pi v}{L}\)</span> and <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span> represents the normal modes.</p></li>
 </ul>
@@ -732,8 +730,7 @@ u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Wave function of 2D membrane with fixed edges has two independent variables x and y.</p></li>
-<li><p>Applying the technique of separation of variables we will get three ordinary differential equations.</p></li>
+<li><p>Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[u(x,y,t) =X(x)Y(y)T(t)\]</div>
@@ -746,7 +743,9 @@ u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t
 </ul>
 <div class="math notranslate nohighlight">
 \[ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} \]</div>
-<p>The angular frequency depends on the geometry of the domain and on two integer numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<ul class="simple">
+<li><p>The angular frequency depends on the geometry of the domain and on two integer numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} \]</div>
 <ul class="simple">
@@ -768,11 +767,6 @@ u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t
 </section>
 <section id="example-problems">
 <h2>Example Problems<a class="headerlink" href="#example-problems" title="Permalink to this heading">#</a></h2>
-<p>Here are a few practice problems and solutions for solving ordinary differential equations (ODEs) using the same Markdown LaTeX format:</p>
-</section>
-<hr class="docutils" />
-<section id="id6">
-<h2>Example Problems<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="problem-1-simple-harmonic-oscillator">
 <h3>Problem 1: Simple Harmonic Oscillator<a class="headerlink" href="#problem-1-simple-harmonic-oscillator" title="Permalink to this heading">#</a></h3>
 <p><strong>Problem:</strong></p>
@@ -979,8 +973,7 @@ y(t) = (C_1 + C_2 t) e^{3t}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-solution-to-the-wave-equation">Interpretation of Solution to the Wave Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
 </ul>
