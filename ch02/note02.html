@@ -451,7 +451,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ode-with-constant-coefficients">Problem 3: ODE with Constant Coefficients</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-simple-2nd-order-ode">Problem 4: Simple 2nd order ODE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-homogeneous-linear-ode">Problem 5: Homogeneous Linear ODE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-when-ode-gives-repeated-roots">Problem 5: When ODE gives repeated roots</a></li>
 </ul>
 </li>
 </ul>
@@ -735,7 +735,7 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi
 </ul>
 <div class="math notranslate nohighlight">
 \[\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} \]</div>
-<div class="admonition-full-derivation-of-2d-rectangular-membrane-problem admonition">
+<div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Full derivation of 2D rectangular membrane problem</strong></p>
 <p>To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here’s a step-by-step solution for a 2D rectangular membrane:</p>
 <p><strong>Solution for a 2D Rectangular Membrane</strong></p>
@@ -866,7 +866,6 @@ u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_
 <h2>Example Problems<a class="headerlink" href="#example-problems" title="Permalink to this heading">#</a></h2>
 <section id="problem-1-simple-harmonic-oscillator">
 <h3>Problem 1: Simple Harmonic Oscillator<a class="headerlink" href="#problem-1-simple-harmonic-oscillator" title="Permalink to this heading">#</a></h3>
-<p><strong>Problem:</strong></p>
 <p>Solve the ODE:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -901,6 +900,46 @@ y(t) = C_1 \cos(\omega t) + C_2 \sin(\omega t)
 \frac{d^2 y}{dt^2} + 2 \beta \frac{dy}{dt} + \omega^2 y = 0
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> are constants. Consider cases of <span class="math notranslate nohighlight">\(\beta^2 &lt; \omega^2\)</span>, <span class="math notranslate nohighlight">\(\beta^2 &gt; \omega^2\)</span> and <span class="math notranslate nohighlight">\(\beta^2 = \omega^2\)</span></p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution:</strong></p>
+<p>The characteristic equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 + 2 \beta r + \omega^2 = 0
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(r\)</span> using the quadratic formula:</p>
+<div class="math notranslate nohighlight">
+\[
+r = \frac{-2 \beta \pm \sqrt{(2 \beta)^2 - 4 \omega^2}}{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+r = -\beta \pm \sqrt{\beta^2 - \omega^2}
+\]</div>
+<p>Depending on the discriminant <span class="math notranslate nohighlight">\(\beta^2 - \omega^2\)</span>, we have three cases:</p>
+<ol class="arabic">
+<li><p><strong>Underdamping (<span class="math notranslate nohighlight">\(\beta^2 &lt; \omega^2\)</span>):</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+   y(t) = e^{-\beta t} [C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t)]
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_d = \sqrt{\omega^2 - \beta^2}\)</span>.</p>
+</li>
+<li><p><strong>Critical Damping (<span class="math notranslate nohighlight">\(\beta^2 = \omega^2\)</span>):</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   y(t) = (C_1 + C_2 t) e^{-\beta t}
+   \]</div>
+</li>
+<li><p><strong>Overdamping (<span class="math notranslate nohighlight">\(\beta^2 &gt; \omega^2\)</span>):</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   y(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span> are the distinct real roots found from the quadratic formula.</p>
+</li>
+</ol>
+</div>
 </section>
 <section id="problem-3-ode-with-constant-coefficients">
 <h3>Problem 3: ODE with Constant Coefficients<a class="headerlink" href="#problem-3-ode-with-constant-coefficients" title="Permalink to this heading">#</a></h3>
@@ -964,8 +1003,8 @@ y(t) = C_1 \cos(3t) + C_2 \sin(3t)
 <p>where <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are constants determined by initial conditions.</p>
 </div>
 </section>
-<section id="problem-5-homogeneous-linear-ode">
-<h3>Problem 5: Homogeneous Linear ODE<a class="headerlink" href="#problem-5-homogeneous-linear-ode" title="Permalink to this heading">#</a></h3>
+<section id="problem-5-when-ode-gives-repeated-roots">
+<h3>Problem 5: When ODE gives repeated roots<a class="headerlink" href="#problem-5-when-ode-gives-repeated-roots" title="Permalink to this heading">#</a></h3>
 <p>Solve the ODE:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1078,7 +1117,7 @@ y(t) = (C_1 + C_2 t) e^{3t}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ode-with-constant-coefficients">Problem 3: ODE with Constant Coefficients</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-simple-2nd-order-ode">Problem 4: Simple 2nd order ODE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-homogeneous-linear-ode">Problem 5: Homogeneous Linear ODE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-when-ode-gives-repeated-roots">Problem 5: When ODE gives repeated roots</a></li>
 </ul>
 </li>
 </ul>

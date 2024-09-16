@@ -294,6 +294,7 @@ $$ u(x,y,t) = A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
 :::{admonition} **Full derivation of 2D rectangular membrane problem**
+:class: tip, dropdown
 
 To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
 
@@ -452,8 +453,6 @@ The size of the musical instrument reflects the range of frequencies over which 
 
 #### Problem 1: Simple Harmonic Oscillator
 
-**Problem:**
-
 Solve the ODE:
 
 $$
@@ -497,7 +496,7 @@ $$
 
 where $\beta$ and $\omega$ are constants. Consider cases of $\beta^2 < \omega^2$, $\beta^2 > \omega^2$ and $\beta^2 = \omega^2$
 
-:::{admonittion} **Solution:**
+:::{admonition} **Solution:**
 :class: dropdown
 
 The characteristic equation is:
@@ -539,6 +538,7 @@ Depending on the discriminant $\beta^2 - \omega^2$, we have three cases:
    $$
 
    where $r_1$ and $r_2$ are the distinct real roots found from the quadratic formula.
+
 :::
 
 
@@ -618,7 +618,7 @@ where $C_1$ and $C_2$ are constants determined by initial conditions.
 :::
 
 
-#### Problem 5: Homogeneous Linear ODE 
+#### Problem 5: When ODE gives repeated roots
 
 Solve the ODE:
 
