@@ -46,8 +46,6 @@ Classical wave equation can describe any complicated wave in space and time give
 
 ### Solving Wave Equation by separation of variables. 
 
-Here’s a polished version of that part:
-
 - **Boundary Conditions:** To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:
 
 $$
@@ -63,10 +61,6 @@ u(x, t) = X(x) \cdot T(t)
 $$
 
 
-
-Here’s a polished version of the text with Markdown LaTeX formatting for centered and inline equations:
-
----
 
 ### Step 1: Plug the Product of Univariate Functions into the Wave Equation
 
