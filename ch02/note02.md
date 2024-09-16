@@ -201,7 +201,7 @@ $$
 :::
 
 
-- For spatial part we find solution in the form of sine wave. Where n takes on integer values.
+- **Solution for spatial part** Becasue of boundary conditions ($X(x)=X(L)=0$) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number $n$. These terms are called **normal modes** and are visualized below. 
 
 $$
 X(x) = B \sin \left(\frac{n \pi}{L} x \right)
@@ -211,43 +211,44 @@ $$
 
 <img src="./images/modes-x.png" alt="applied photoelectric" class="bg-primary mb-1" width="30%">
 
-The first seven solutions of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
+The first seven solutions (normal modes) of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
 :::
 
 
-- For temporal part since we do not have boundary conditions we find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes.
+- **Solution for temporal part** For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes. 
+
 
 $$
-T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
+T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi_n)
 $$
 
-### Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE
+- In the second line we esing trig identity to express sum of cosine and sine in terms of cosine. Still we have two constantst o determine 
+- The constants $A_n$ $\phi_n$ in temporal part are determined by **initial codnitions** E.g what should be the amplitude and phase of wave at starting time $t=0$.
 
-- After solving ODEs for spatial adn tempoeral parts we now combine them to obtain the full solution:
+### Step 3: Full solution of 1D guitar string: A linear combination of normal modes
+
+- After solving ODEs for spatial and tempoeral parts we now combine them into a full solution. 
+- The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. 
+- While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
+- Note that the general solution to wave equation is expressed as **a linear combination of all normal modes**  
+
+:::{admonition}
+:class: important
 
 $$
-u(x, t) = X(x) T(t) = [D_n \cos(\omega_n t) + E_n \sin(\omega_n t)] \cdot B \sin \left(\frac{n \pi}{L} x \right)
+u(x, t) = \sum_n X_n(x) T_n(t)
 $$
-
-- Using trig identities, we express the general solution as:
-
-$$
-u(x, t) = A \sin \left(\frac{n \pi}{L} x \right) \cos (\omega_n t + \phi_n)
-$$
-
-- where $A$ and $\phi_n$ are constants which one specifies as part of inititial conditions.
-
-- **The general solution to wave equation is a linear combination of all normal modes**:
 
 $$
 u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t + \phi_n)
 $$
 
-- This general solution describes the time evolution of any 1D guitar string given initital position and velocity encoded by $A$ and $\phi_n$ constants
+- $x$ spatial profile of wave bounded in region $[0, L]$
+- $t$ time variable is free $(0, \infty$)
+- $n=0,1,2,$ index of normal mode
+- $A_n$ and $\phi_n$ coefficients specified as part of initial conditions
+:::
 
-
-
-### Interpretation of Solution to the Wave Equation
 
 :::{figure-md} markdown-fig
 
@@ -256,14 +257,6 @@ $$
 Presented are first six solutions from $n=0,1,2,3,4,5$
 :::
 
-
-- The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
-
-  $$
-  \nu_n = \frac{\omega_n}{2 \pi} = \frac{n \nu}{2L}
-  $$
-
-  where $\nu_n$ is the frequency of the $n$-th mode, $\omega_n$ is the angular frequency, $n$ is the mode number, $\nu$ is the wave speed, and $L$ is the length of the string.
 
 - **For $n = 1$**: There are 0 nodes (excluding the endpoints). This is called the fundamental frequency or first harmonic.
 
