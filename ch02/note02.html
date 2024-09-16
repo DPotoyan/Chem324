@@ -445,6 +445,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ode-with-constant-coefficients">Problem 3: ODE with Constant Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-simple-2nd-order-ode">Problem 4: Simple 2nd order ODE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-homogeneous-linear-ode">Problem 5: Homogeneous Linear ODE</a></li>
 </ul>
             </nav>
         </div>
@@ -744,6 +752,144 @@ u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t
 </section>
 <section id="example-problems">
 <h2>Example Problems<a class="headerlink" href="#example-problems" title="Permalink to this heading">#</a></h2>
+<p>Here are a few practice problems and solutions for solving ordinary differential equations (ODEs) using the same Markdown LaTeX format:</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>Example Problems<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="problem-1-simple-harmonic-oscillator">
+<h3>Problem 1: Simple Harmonic Oscillator<a class="headerlink" href="#problem-1-simple-harmonic-oscillator" title="Permalink to this heading">#</a></h3>
+<p><strong>Problem:</strong></p>
+<p>Solve the ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dt^2} + \omega^2 y = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega\)</span> is a constant.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution:</strong></p>
+<p>The characteristic equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 + \omega^2 = 0
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(r\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r = \pm i \omega
+\]</div>
+<p>Thus, the general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = C_1 \cos(\omega t) + C_2 \sin(\omega t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are constants determined by initial conditions.</p>
+</div>
+</section>
+<section id="problem-2-damped-oscillator">
+<h3>Problem 2: Damped Oscillator<a class="headerlink" href="#problem-2-damped-oscillator" title="Permalink to this heading">#</a></h3>
+<p>Solve the ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dt^2} + 2 \beta \frac{dy}{dt} + \omega^2 y = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> are constants. Consider cases of <span class="math notranslate nohighlight">\(\beta^2 &lt; \omega^2\)</span>, <span class="math notranslate nohighlight">\(\beta^2 &gt; \omega^2\)</span> and <span class="math notranslate nohighlight">\(\beta^2 = \omega^2\)</span></p>
+</section>
+</section>
+<section id="problem-3-ode-with-constant-coefficients">
+<h2>Problem 3: ODE with Constant Coefficients<a class="headerlink" href="#problem-3-ode-with-constant-coefficients" title="Permalink to this heading">#</a></h2>
+<p>Solve the ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dt^2} - 4 y = 0
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution:</strong></p>
+<p>The characteristic equation for this ODE is:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 - 4 = 0
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(r\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 = 4
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+r = \pm 2
+\]</div>
+<p>Thus, the general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = C_1 e^{2t} + C_2 e^{-2t}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are constants determined by initial conditions.</p>
+</div>
+</section>
+<section id="problem-4-simple-2nd-order-ode">
+<h2>Problem 4: Simple 2nd order ODE<a class="headerlink" href="#problem-4-simple-2nd-order-ode" title="Permalink to this heading">#</a></h2>
+<p>Solve the ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dt^2} + 9 y = 0
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution:</strong></p>
+<p>The characteristic equation for this ODE is:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 + 9 = 0
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(r\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 = -9
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+r = \pm 3i
+\]</div>
+<p>Thus, the general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = C_1 \cos(3t) + C_2 \sin(3t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are constants determined by initial conditions.</p>
+</div>
+</section>
+<section id="problem-5-homogeneous-linear-ode">
+<h2>Problem 5: Homogeneous Linear ODE<a class="headerlink" href="#problem-5-homogeneous-linear-ode" title="Permalink to this heading">#</a></h2>
+<p><strong>Problem:</strong></p>
+<p>Solve the ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dt^2} - 6 \frac{dy}{dt} + 9 y = 0
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution:</strong></p>
+<p>The characteristic equation for this ODE is:</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 - 6r + 9 = 0
+\]</div>
+<p>Factoring:</p>
+<div class="math notranslate nohighlight">
+\[
+(r - 3)^2 = 0
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+r = 3 \text{ (repeated root)}
+\]</div>
+<p>The general solution for repeated roots is:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = (C_1 + C_2 t) e^{3t}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are constants determined by initial conditions.</p>
+</div>
 </section>
 </section>
 
@@ -820,6 +966,14 @@ u(x, t) = \sum_n A_n \sin \left(\frac{n \pi}{L} x \right) \cdot \cos (\omega_n t
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Example Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-damped-oscillator">Problem 2: Damped Oscillator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ode-with-constant-coefficients">Problem 3: ODE with Constant Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-simple-2nd-order-ode">Problem 4: Simple 2nd order ODE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-homogeneous-linear-ode">Problem 5: Homogeneous Linear ODE</a></li>
 </ul>
   </nav></div>
 
