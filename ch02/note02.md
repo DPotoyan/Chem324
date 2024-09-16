@@ -105,9 +105,6 @@ $$
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 $$
 
-
-### Intermezzo: Solve the ODE by Considering Cases for the Separating Constant
-
 :::{admonition} **Solving the spatial part: when $K > 0$**
 :class: tip, dropdown
 
@@ -179,6 +176,12 @@ $$
 
 :::
 
+- For spatial part we find solution in the form of sine wave. 
+
+$$
+X(x) = B \sin \left(\frac{n \pi}{L} x \right)
+$$
+
 :::{admonition} **Solving temporal part**
 :class: tip, dropdown
 
@@ -202,9 +205,13 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
 $$
 
 - where $\omega_n = \beta v = \frac{n \pi v}{L}$.
-
-- Since there are no boundary conditions for $T(t)$, both sine and cosine terms are present. The integer index $n = 1, 2, 3, \ldots$ represents the normal modes.
 :::
+
+- For temporal part since we do not have boundary conditions we find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes.
+
+$$
+T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t)
+$$
 
 ### Step 3: Combine the Solutions of All ODEs to Obtain the Solution of the Original PDE
 
@@ -471,8 +478,6 @@ where $C_1$ and $C_2$ are constants determined by initial conditions.
 
 
 ### Problem 5: Homogeneous Linear ODE 
-
-**Problem:**
 
 Solve the ODE:
 
