@@ -270,13 +270,6 @@ Presented are first six solutions from $n=0,1,2,3,4,5$
 
 ### 2D membrane vibrations.
 
-:::{figure-md} markdown-fig
-
-<img src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
-
-Vibrations of 2D membrane. 
-:::
-
 - Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.
 
 $$u(x,y,t) =X(x)Y(y)T(t)$$
@@ -285,6 +278,8 @@ $$u(x,y,t) =X(x)Y(y)T(t)$$
 - Boundary on the $X$ edge: $X(0)=X(L)=0$.
 - Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
 - Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes. 
+
+
 - **The 2D normal mode is a product of two 1D modes for each coordinate.** Each coordinate has its own independent mode number $n$ and $m$. 
 
 $$ u(x,y,t) = \sum_n \sum_m A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
@@ -297,6 +292,13 @@ $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 :class: tip, dropdown
 
 To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
+
+:::{figure-md} markdown-fig
+
+<img src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+
+Vibrations of 2D membrane. 
+:::
 
 **Solution for a 2D Rectangular Membrane**
 
