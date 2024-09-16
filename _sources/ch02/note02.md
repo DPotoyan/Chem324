@@ -2,16 +2,20 @@
 
 ## Wave equation
 
-```{admonition} What you need to know
+:::{admonition} What you need to know
 :class: note
-- A wave is a self-propagating disturbance in a medium. Waves carry energy, momentum, information, but not matter!
-- The wave equation which takes a form of a partial differential equation (PDE), completely describes waves' spatial and temporal evolution.
-- Wave equation is linear which means that any linear combination of any two solutions is also a solution to wave equation. 
-- Hence to write down the most general solution one has to take linear combination of all possible solutions. 
-- To solve wave equation for a concrete physical system one has to specify boundary conditions: what values wave function takes on physical boundaries $(x=0, x=L)$. One may also specify boundary condition with respect to time (initial condition) $t=0$
-- Solutions of wave equation for a 1D guitar string are found by separating variables, solving resulting ordinary diff equations and then by imposing boundary conditions at two ends.
-- Solution of 1D guitar string produces infinite number of periodic solutions parameterized by an integer number $n$.
-```
+
+- **Wave Equation Overview:** The wave equation, a partial differential equation (PDE), fully describes the spatial and temporal evolution of waves.
+
+- **Linearity of the Wave Equation:** The wave equation is linear, meaning that any linear combination of solutions is also a solution. This allows the most general solution to be expressed as a linear combination of all possible solutions.
+
+- **Boundary and Initial Conditions:** To solve the wave equation for a specific physical system, boundary conditions must be specified. These include the values the wave function takes at the physical boundaries (e.g., $x = 0$ and $x = L$). Initial conditions with respect to time (e.g., at $t = 0$) may also be required.
+
+- **Solution Method for 1D Guitar String:** For a 1D guitar string, the wave equation is solved by separating variables, solving the resulting ordinary differential equations, and then applying boundary conditions at the two ends of the string.
+
+- **Periodic Solutions:** The solution for a 1D guitar string results in an infinite number of periodic solutions, which are parameterized by an integer $n$. 
+
+:::
 
 ### Classical Wave equation
 
