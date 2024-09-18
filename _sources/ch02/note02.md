@@ -288,10 +288,6 @@ $$ u(x,y,t) = \sum_n \sum_m A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}
 
 $$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
 
-:::{admonition} **Full derivation of 2D rectangular membrane problem**
-:class: tip, dropdown
-
-To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
 
 :::{figure-md} markdown-fig
 
@@ -299,6 +295,14 @@ To extend the solution of the 1D guitar string problem to 2D, you can analyze a 
 
 Vibrations of 2D membrane. 
 :::
+
+
+:::{admonition} **Full derivation of 2D rectangular membrane problem**
+:class: tip, dropdown
+
+To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
+
+
 
 **Solution for a 2D Rectangular Membrane**
 
@@ -434,7 +438,6 @@ $$
 $$
 
 This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of \(n\) and \(m\).
-
 :::
 
 
