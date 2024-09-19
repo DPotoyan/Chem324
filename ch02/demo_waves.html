@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -486,7 +486,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing waves</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-and-traveling-waves-in-1d">Standing and traveling waves in 1D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-with-waves">Interact with waves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-wave-functions-interactive">Making wave functions interactive</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a></li>
@@ -514,6 +514,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">Dropdown</span>
+<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 
 <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
@@ -531,51 +533,80 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Okay we are not in Colab just proceed as if nothing happened
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">Dropdown</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="standing-and-traveling-waves-in-1d">
 <h2>Standing and traveling waves in 1D<a class="headerlink" href="#standing-and-traveling-waves-in-1d" title="Permalink to this heading">#</a></h2>
-<p>We begin by plotting a simple periodic function using numpy (np) and matplotlib.pyplot (plt)</p>
+<p>We begin by plotting a simple periodic function using numpy and matplotlib</p>
 <div class="math notranslate nohighlight">
 \[y = \sin(kx)=\sin\left(\frac{2\pi}{\lambda} x\right)\]</div>
+<p>Here are the main steps:</p>
+<ul class="simple">
+<li><p>Generate grid of points for x (lets say 1000 equiditant points between 0 and 1)</p></li>
+<li><p>Calcualte y values on this grid points</p></li>
+<li><p>Plot y vs x</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">0.3</span>            <span class="c1"># Try different wavelengths</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate 1000 points between 0 and 1 for the x-axis</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Calculate the y-values based on the sine wave formula</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1666eec40&gt;]
-</pre></div>
 </div>
-<img alt="../_images/b0a77726734e88abe4226d4a391119896a44732031854a5399152909288d3d32.png" src="../_images/b0a77726734e88abe4226d4a391119896a44732031854a5399152909288d3d32.png" />
-</div>
-</div>
-<p><strong>By putting above example inside a python function will make wavelength exploration convenient</strong></p>
+<p>Now lets package this into a nice little function so we can reuse it in animations!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave1d</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots a 1D sine wave with a specified wavelength.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    L (float): Wavelength of the sine wave. Default is 2 units.</span>
+
+<span class="sd">    The function generates a sine wave of the form y = sin(2πx / L) and </span>
+<span class="sd">    plots it over the domain x = [0, 1]. The plot includes labeled axes, </span>
+<span class="sd">    a title, and a legend showing the value of L (wavelength).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
+    <span class="c1"># Generate 1000 points between 0 and 1 for the x-axis</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="p">)</span>
+    <span class="c1"># Calculate the y-values based on the sine wave formula</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;L=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># Create the plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="c1"># Label the axes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (position)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y (amplitude)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Add a title and legend</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;1D Sine Wave&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sine waves&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Set limits for the y-axis to improve clarity</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Display the plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -593,8 +624,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="interact-with-waves">
-<h2>Interact with waves<a class="headerlink" href="#interact-with-waves" title="Permalink to this heading">#</a></h2>
+<section id="making-wave-functions-interactive">
+<h2>Making wave functions interactive<a class="headerlink" href="#making-wave-functions-interactive" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>By adding <code class="docutils literal notranslate"><span class="pre">&#64;widgets.interact(parameters=(init,final))</span></code> to our functions we can interactively parameters in the function using slider widgets.</p></li>
 </ul>
@@ -611,22 +642,47 @@ document.write(`
 </section>
 <section id="traveling-standing-waves-and-wave-interference">
 <h1>Traveling, standing waves and wave interference<a class="headerlink" href="#traveling-standing-waves-and-wave-interference" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The function generates two waves, <code class="docutils literal notranslate"><span class="pre">wave1</span></code> and <code class="docutils literal notranslate"><span class="pre">wave2</span></code>, and their superposition.</p></li>
+<li><p>The waves are of the form <span class="math notranslate nohighlight">\(y = sin(k(x - vt))\)</span> and <span class="math notranslate nohighlight">\(y = sin(k(x - vt) + \phi)\)</span>.</p></li>
+<li><p>where <span class="math notranslate nohighlight">\(\phi\)</span> is the phase shift between the two. All three waveforms are plotted on the same graph.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wavef2</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots two traveling waves and their superposition.</span>
 
-    <span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    k (float): Wave number (related to wavelength). Default is 10.</span>
+<span class="sd">    t (float): Time at which to evaluate the wave. Default is 0.</span>
+<span class="sd">    phi (float): Phase shift between the two waves. Default is 0.</span>
+<span class="sd">    v (float): Velocity of the waves. Positive velocity moves the wave to the right. </span>
+<span class="sd">               Try flipping the direction of velocity (negative v) to observe standing waves.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">wave1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> 
-    <span class="n">wave2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>    <span class="c1">#try flipping the direction of velocity to get standing wave</span>
+    <span class="c1"># Create 1000 points between 0 and 1 for the x-axis</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="p">,</span>   <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave2</span><span class="p">,</span>   <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="o">+</span><span class="n">wave2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="c1"># Define the first traveling wave</span>
+    <span class="n">wave1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">v</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> 
     
+    <span class="c1"># Define the second traveling wave with a phase shift</span>
+    <span class="n">wave2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">v</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>  <span class="c1"># Flip v to observe a standing wave effect</span>
+    
+    <span class="c1"># Plot the two individual waves and their superposition</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wave 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wave 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wave1</span> <span class="o">+</span> <span class="n">wave2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wave 1 + Wave 2&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set limits for the y-axis</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Wave1&#39;</span><span class="p">,</span><span class="s1">&#39;Wave2&#39;</span><span class="p">,</span><span class="s1">&#39;Wave1+Wave2&#39;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Add a legend and grid for clarity</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Display the plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -698,18 +754,42 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">guitar1d</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Visualizes the 1D normal mode of a vibrating guitar string at a specific time.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    n (int): Mode number (harmonic) of the vibrating string. Default is 1.</span>
+<span class="sd">    t (float): Time at which to evaluate the normal mode. Default is 0.</span>
+<span class="sd">    </span>
+<span class="sd">    The function plots the displacement of the string at time t based on the </span>
+<span class="sd">    normal mode solution y(x, t) = sin(n * pi * x / L) * cos(omega * t), where</span>
+<span class="sd">    L is the length of the string (default is 1) and omega is the angular frequency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">v</span><span class="o">=</span><span class="mi">1</span>
-    <span class="n">L</span><span class="o">=</span><span class="mi">1</span>
-    <span class="n">omega</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">L</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="c1"># Constants</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># Wave speed</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># Length of the string</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">v</span> <span class="o">/</span> <span class="n">L</span>  <span class="c1"># Angular frequency for the fundamental mode (n=1)</span>
     
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="c1"># Spatial grid from 0 to L</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     
+    <span class="c1"># Compute the displacement of the string for mode n and time t</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    
+    <span class="c1"># Plot the displacement of the string</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Normal mode # </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Add title, grid, and axis limits</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Normal Mode #</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> of a 1D Guitar String&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Label the axes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Position along string (x)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Displacement (y)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Display the plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -788,59 +868,79 @@ document.write(`
 <h1>Normal modes of a 2D membrane<a class="headerlink" href="#normal-modes-of-a-2d-membrane" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Load functions for visualizing 2D membrane modes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">membrane2d_mode</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the 2D grid of points (X, Y) and the normal mode displacement (Z) of a vibrating </span>
+<span class="sd">    rectangular membrane at a specific time t.</span>
 
-<span class="k">def</span> <span class="nf">membrane2d_mode</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;The function returns 2D grid of points (X, Y) and the value of membrane normal mode at a time t: Z(X, Y, t)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    n (int): Mode number along the x-direction. Default is 1.</span>
+<span class="sd">    m (int): Mode number along the y-direction. Default is 1.</span>
+<span class="sd">    t (float): Time at which to evaluate the normal mode. Default is 0.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    X, Y, Z (numpy arrays): Grid of points in the X-Y plane and the corresponding </span>
+<span class="sd">                            membrane displacement Z(X, Y, t).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># Constants</span>
     <span class="n">Lx</span><span class="p">,</span> <span class="n">Ly</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>  <span class="c1"># Dimensions of the rectangular region</span>
-    <span class="n">v</span>      <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># wave speed </span>
-    <span class="n">omega</span>  <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">Lx</span> <span class="o">*</span>  <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Angular rate</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mf">0.1</span>            <span class="c1"># Wave speed </span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">Lx</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Angular frequency for the normal mode</span>
     
     <span class="c1"># Create a spatial grid</span>
-    <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Lx</span><span class="p">,</span> <span class="n">Nx</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ly</span><span class="p">,</span> <span class="n">Ny</span><span class="p">)</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1"># Number of grid points in each dimension</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Lx</span><span class="p">,</span> <span class="n">Nx</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ly</span><span class="p">,</span> <span class="n">Ny</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-    <span class="c1"># Compute spatial part of the normal mode</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">Lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">Ly</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="c1"># Compute the spatial part of the normal mode</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">Lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">Ly</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span>
 
 <span class="k">def</span> <span class="nf">viz_membrane2d_plotly</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Normal modes of 2D membrane on a square geometry using Plotly plot&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Visualizes the 2D normal modes of a vibrating membrane on a square geometry using Plotly.</span>
+<span class="sd">    </span>
+<span class="sd">    This function displays both a 2D contour plot and a 3D surface plot of the membrane displacement.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    n (int): Mode number along the x-direction. Default is 1.</span>
+<span class="sd">    m (int): Mode number along the y-direction. Default is 1.</span>
+<span class="sd">    t (float): Time at which to evaluate the normal mode. Default is 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
+    <span class="c1"># Get the membrane displacement at time t</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">membrane2d_mode</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
     
-    <span class="c1"># Create a Plotly subplot with 1 row and 2 columns</span>
+    <span class="c1"># Create a Plotly subplot with 2 views: 2D contour and 3D surface</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span>
-    <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-    <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
-    <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2D Contour Plot&#39;</span><span class="p">,</span> <span class="s1">&#39;3D Surface Plot&#39;</span><span class="p">),</span>
-    <span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;contour&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;surface&quot;</span><span class="p">}]]</span>
+        <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+        <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2D Contour Plot&#39;</span><span class="p">,</span> <span class="s1">&#39;3D Surface Plot&#39;</span><span class="p">),</span>
+        <span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;contour&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;surface&quot;</span><span class="p">}]]</span>
     <span class="p">)</span>
     
     <span class="c1"># Add 2D contour plot to the left side</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
         <span class="n">go</span><span class="o">.</span><span class="n">Contour</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">),</span>
         <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
-        <span class="p">)</span>
+    <span class="p">)</span>
 
     <span class="c1"># Add 3D surface plot to the right side</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
-        <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span>  <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">),</span>
+        <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">),</span>
         <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span>
-        <span class="p">)</span>
+    <span class="p">)</span>
 
-    <span class="c1"># Update layout for better visualization and adjust figure size</span>
+    <span class="c1"># Update the layout for better visualization</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
-    <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;2D Contour and 3D Surface plots of 2D Membrane vibrational normal modes&quot;</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">500</span>
+        <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;2D Contour and 3D Surface Plots of Membrane Vibrational Normal Modes&quot;</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">500</span>
     <span class="p">)</span>
     
+    <span class="c1"># Show the figure</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -925,7 +1025,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DEMO: Visualizing waves</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-and-traveling-waves-in-1d">Standing and traveling waves in 1D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-with-waves">Interact with waves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-wave-functions-interactive">Making wave functions interactive</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#traveling-standing-waves-and-wave-interference">Traveling, standing waves and wave interference</a></li>
