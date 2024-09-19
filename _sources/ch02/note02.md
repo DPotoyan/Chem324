@@ -269,25 +269,37 @@ Presented are first six solutions from $n=0,1,2,3,4,5$
 - Note that the general solution to wave equation is expressed as **a linear combination of all normal modes**  
 
 
-### 2D membrane vibrations.
+### 2D Membrane Vibrations
 
-- Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.
+- The wave function of a 2D membrane with fixed edges depends on two independent spatial variables, $x$ and $y$. By applying the method of separation of variables, we decompose the wave function into three ordinary differential equations.
 
-$$u(x,y,t) =X(x)Y(y)T(t)$$
+$$
+u(x, y, t) = X(x) Y(y) T(t)
+$$
 
-- This time there will be two boundary conditions fo X and Y
-- Boundary on the $X$ edge: $X(0)=X(L)=0$.
-- Boundary on the $Y$ edge: $Y(0)=Y(L)=0$.
-- Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes. 
+- For the spatial components $X(x)$ and $Y(y)$, there are boundary conditions that must be satisfied at the fixed edges:
+  - Boundary condition along the $X$-axis: $X(0) = X(L) = 0$
+  - Boundary condition along the $Y$-axis: $Y(0) = Y(L) = 0$
 
+- Following the same steps as in the 1D case, we arrive at a solution for the 2D membrane vibrations as a linear combination of 2D normal modes.
 
-- **The 2D normal mode is a product of two 1D modes for each coordinate.** Each coordinate has its own independent mode number $n$ and $m$. 
+- **The 2D normal mode is the product of two 1D modes**, one for each spatial coordinate. Each coordinate has its own independent mode number, $n$ for the $x$-direction and $m$ for the $y$-direction:
 
-$$ u(x,y,t) = \sum_n \sum_m A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} $$
+$$
+u(x, y, t) = \sum_n \sum_m A_{nm} \cos(\omega_{nm}t + \phi_{nm}) \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{b}\right)
+$$
 
-- The angular frequency depends on the geometry of the domain and on two integer numbers $n$ and $m$. 
+- The angular frequency $\omega_{nm}$ depends on the geometry of the membrane (with dimensions $a$ and $b$) and the mode numbers $n$ and $m$:
 
-$$\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} $$
+$$
+\omega_{nm} = v\pi \left(\frac{n^2}{a^2} + \frac{m^2}{b^2}\right)^{1/2}
+$$
+
+Where:
+- $v$ is the wave speed,
+- $n$ and $m$ are the mode numbers,
+- $a$ and $b$ are the dimensions of the membrane.
+
 
 
 :::{figure-md} markdown-fig

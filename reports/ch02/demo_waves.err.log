@@ -15,38 +15,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#@title Import libs
+# Generate 1000 points between 0 and 1 for the x-axis
+x = np.linspace(0.0, 1.0, 1000)
 
-import numpy as np  
-import matplotlib.pyplot as plt
-import ipywidgets
-from ipywidgets import interact, interactive, Dropdown
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
+# Calculate the y-values based on the sine wave formula
+y = np.sin(2 * np.pi * x / L)
 
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-%matplotlib inline
-%config InlineBackend.figure_format='retina'
-
-try:
-    from google.colab import output
-    output.enable_custom_widget_manager()
-    print('All good to go')
-except:
-    print('Okay we are not in Colab just proceed as if nothing happened')
+# Create the plot
+plt.plot(x, y, label=f'L = {L}')
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 5[0m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m  
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01mipywidgets[39;00m
-[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mipywidgets[39;00m [38;5;28;01mimport[39;00m interact, interactive, Dropdown
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01manimation[39;00m [38;5;28;01mimport[39;00m FuncAnimation
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 5[0m
+[1;32m      2[0m x [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0.0[39m, [38;5;241m1.0[39m, [38;5;241m1000[39m)
+[1;32m      4[0m [38;5;66;03m# Calculate the y-values based on the sine wave formula[39;00m
+[0;32m----> 5[0m y [38;5;241m=[39m np[38;5;241m.[39msin([38;5;241m2[39m [38;5;241m*[39m np[38;5;241m.[39mpi [38;5;241m*[39m x [38;5;241m/[39m [43mL[49m)
+[1;32m      7[0m [38;5;66;03m# Create the plot[39;00m
+[1;32m      8[0m plt[38;5;241m.[39mplot(x, y, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m'[39m[38;5;124mL = [39m[38;5;132;01m{[39;00mL[38;5;132;01m}[39;00m[38;5;124m'[39m)
 
-[0;31mModuleNotFoundError[0m: No module named 'ipywidgets'
+[0;31mNameError[0m: name 'L' is not defined
 

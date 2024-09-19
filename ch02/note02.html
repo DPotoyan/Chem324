@@ -444,7 +444,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-a-linear-combination-of-normal-modes">Step 3 Full solution: A linear combination of normal modes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D Membrane Vibrations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
@@ -709,26 +709,41 @@ T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi
 </ul>
 </section>
 <section id="d-membrane-vibrations">
-<h2>2D membrane vibrations.<a class="headerlink" href="#d-membrane-vibrations" title="Permalink to this heading">#</a></h2>
+<h2>2D Membrane Vibrations<a class="headerlink" href="#d-membrane-vibrations" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Wave function of 2D membrane with fixed edges has two independent variables x and y. Applying the technique of separation of variables we will get three ordinary differential equations.</p></li>
+<li><p>The wave function of a 2D membrane with fixed edges depends on two independent spatial variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. By applying the method of separation of variables, we decompose the wave function into three ordinary differential equations.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[u(x,y,t) =X(x)Y(y)T(t)\]</div>
+\[
+u(x, y, t) = X(x) Y(y) T(t)
+\]</div>
 <ul class="simple">
-<li><p>This time there will be two boundary conditions fo X and Y</p></li>
-<li><p>Boundary on the <span class="math notranslate nohighlight">\(X\)</span> edge: <span class="math notranslate nohighlight">\(X(0)=X(L)=0\)</span>.</p></li>
-<li><p>Boundary on the <span class="math notranslate nohighlight">\(Y\)</span> edge: <span class="math notranslate nohighlight">\(Y(0)=Y(L)=0\)</span>.</p></li>
-<li><p>Going through exactly the same steps as in 1D case we get full solution expressed as a linear combination of 2D normal modes.</p></li>
-<li><p><strong>The 2D normal mode is a product of two 1D modes for each coordinate.</strong> Each coordinate has its own independent mode number <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<li><p>For the spatial components <span class="math notranslate nohighlight">\(X(x)\)</span> and <span class="math notranslate nohighlight">\(Y(y)\)</span>, there are boundary conditions that must be satisfied at the fixed edges:</p>
+<ul>
+<li><p>Boundary condition along the <span class="math notranslate nohighlight">\(X\)</span>-axis: <span class="math notranslate nohighlight">\(X(0) = X(L) = 0\)</span></p></li>
+<li><p>Boundary condition along the <span class="math notranslate nohighlight">\(Y\)</span>-axis: <span class="math notranslate nohighlight">\(Y(0) = Y(L) = 0\)</span></p></li>
+</ul>
+</li>
+<li><p>Following the same steps as in the 1D case, we arrive at a solution for the 2D membrane vibrations as a linear combination of 2D normal modes.</p></li>
+<li><p><strong>The 2D normal mode is the product of two 1D modes</strong>, one for each spatial coordinate. Each coordinate has its own independent mode number, <span class="math notranslate nohighlight">\(n\)</span> for the <span class="math notranslate nohighlight">\(x\)</span>-direction and <span class="math notranslate nohighlight">\(m\)</span> for the <span class="math notranslate nohighlight">\(y\)</span>-direction:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ u(x,y,t) = \sum_n \sum_m A_{nm} cos(\omega_{nm}t+\phi_{nm}) sin \frac{n\pi x}{a} sin \frac{m\pi y}{b} \]</div>
+\[
+u(x, y, t) = \sum_n \sum_m A_{nm} \cos(\omega_{nm}t + \phi_{nm}) \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{b}\right)
+\]</div>
 <ul class="simple">
-<li><p>The angular frequency depends on the geometry of the domain and on two integer numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<li><p>The angular frequency <span class="math notranslate nohighlight">\(\omega_{nm}\)</span> depends on the geometry of the membrane (with dimensions <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>) and the mode numbers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\omega_{nm} = v\pi \Big(\frac{n^2}{a^2}+ \frac{m^2}{b^2}\Big)^{1/2} \]</div>
+\[
+\omega_{nm} = v\pi \left(\frac{n^2}{a^2} + \frac{m^2}{b^2}\right)^{1/2}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v\)</span> is the wave speed,</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are the mode numbers,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are the dimensions of the membrane.</p></li>
+</ul>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" style="width: 50%;" /></a>
 <figcaption>
@@ -1110,7 +1125,7 @@ y(t) = (C_1 + C_2 t) e^{3t}
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-full-solution-a-linear-combination-of-normal-modes">Step 3 Full solution: A linear combination of normal modes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D membrane vibrations.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-membrane-vibrations">2D Membrane Vibrations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sound-of-music">The sound of music.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problems">Example Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-simple-harmonic-oscillator">Problem 1: Simple Harmonic Oscillator</a></li>
