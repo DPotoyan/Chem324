@@ -228,12 +228,11 @@ $$
 - In the second line we esing trig identity to express sum of cosine and sine in terms of cosine. Still we have two constantst o determine 
 - The constants $A_n$ $\phi_n$ in temporal part are determined by **initial codnitions** E.g what should be the amplitude and phase of wave at starting time $t=0$.
 
-### Step 3 Full solution of 1D guitar string: A linear combination of normal modes
+### Step 3 Full solution: A linear combination of normal modes
 
 - After solving ODEs for spatial and tempoeral parts we now combine them into a full solution. 
 - The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. 
 - While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
-- Note that the general solution to wave equation is expressed as **a linear combination of all normal modes**  
 
 :::{admonition}
 :class: important
@@ -266,6 +265,8 @@ Presented are first six solutions from $n=0,1,2,3,4,5$
 - **For $n = 2$**: There is 1 node. This is known as the first overtone or second harmonic.
 
 - **For $n = 3$**: There are 2 nodes. This is called the second overtone or third harmonic.
+
+- Note that the general solution to wave equation is expressed as **a linear combination of all normal modes**  
 
 
 ### 2D membrane vibrations.
