@@ -277,13 +277,8 @@ $$
 u(x, y, t) = X(x) Y(y) T(t)
 $$
 
-- For the spatial components $X(x)$ and $Y(y)$, there are boundary conditions that must be satisfied at the fixed edges:
-  - Boundary condition along the $X$-axis: $X(0) = X(L) = 0$
-  - Boundary condition along the $Y$-axis: $Y(0) = Y(L) = 0$
-
-- Following the same steps as in the 1D case, we arrive at a solution for the 2D membrane vibrations as a linear combination of 2D normal modes.
-
-- **The 2D normal mode is the product of two 1D modes**, one for each spatial coordinate. Each coordinate has its own independent mode number, $n$ for the $x$-direction and $m$ for the $y$-direction:
+- For the spatial components $X(x)$ and $Y(y)$, there are boundary conditions that must be satisfied at the fixed edges: Boundary condition along the $X$-axis: $X(0) = X(L) = 0$ and Boundary condition along the $Y$-axis: $Y(0) = Y(L) = 0$
+- The 2D normal mode is the product of two 1D mode. Since dimensions are independent we get integer numbers $n$ for the $x$-direction and $m$ for the $y$-direction:
 
 $$
 u(x, y, t) = \sum_n \sum_m A_{nm} \cos(\omega_{nm}t + \phi_{nm}) \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{b}\right)
