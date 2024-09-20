@@ -263,12 +263,9 @@ $$
 
 - As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
 
-- The general solution is written as linear combination of normal modes
-$$u(x,t) = \sum_n c_n u_n(x) f_n(t)$$
+- The general solution was written as linear combination of normal modes. Likewise boundary conditions produce infinite number of  solutions to quantum wave equation discretized by intege numbers $n$: $\hat{H} \psi_n(x)=E_n \psi_n(x)$
 
-- In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels: $\hat{H} \psi_n(x)=E_n \psi_n(x)$
-
-- **The general solution** is again written as linear combination of wave functions:
+- **The general solution** is again written as linear combination of quatnum wave functions **thanks to linearity of schrodinger equation**:
 
 $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 
