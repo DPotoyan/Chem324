@@ -1,37 +1,48 @@
 ## Schrödinger Equation
 
 
-```{admonition} What you need to know
+:::{admonition} **What you need to know**
 :class: note
-- By combining classical wave equation with quantum ideas we arrive at a new equation describing quantum wave functions: Schrödinger's equation (SE).
-- Schrödinger's equation, just like classical wave equation depends on both time and space. 
-- Once again we can use the technique of separation of variables and turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course. 
-- We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form. 
-- Each physical quantity that is measured in experiments (energy, momentum, position, etc) has a corresponding operator in quantum mechanics. 
-- We re-formulate the problem of solving Schrodinger equation into a problem of finding eigenfunctions and eigenvalues corresponding to different operators.  
-```
+
+- By combining the classical wave equation with quantum principles, we derive a new equation that describes quantum wave functions: **Schrödinger's Equation (SE)**.
+  
+- Schrödinger's Equation, like the classical wave equation, depends on both time and space.
+  
+- We can apply the method of **separation of variables** to transform the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation (TI-SE). The time-independent form is especially important in the chemical and biological sciences, and it will be our primary focus for the remainder of the course.
+  
+- We will introduce the **operator notation**, a powerful mathematical framework that allows us to express the equations of quantum mechanics in a concise and elegant form.
+  
+- In quantum mechanics, every physical quantity that can be measured experimentally—such as energy, momentum, or position—has a corresponding **operator**.
+  
+- We will reformulate the process of solving Schrödinger's equation into finding the **eigenfunctions** and **eigenvalues** associated with these operators, which represent measurable quantities in quantum systems.
+
+:::
 
   
 
 ## The exciting journey into the microscopic world.  
 
-- In the next few sections we are going to arrive at Schrödinger equation (SE) which is one of the fundamental laws of physics. The expression "fundamental law" means that SE can only be inferred or guessed from the experiments. It can not be derived. Correctness of SE is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations. 
+- In the next few sections, we will introduce **Schrödinger's Equation (SE)**, one of the fundamental laws of physics. A "fundamental law" means that SE cannot be derived from more basic principles; it can only be inferred or hypothesized based on experimental evidence. Its validity is supported by countless successful quantitative predictions and explanations of experimental observations.
 
-- Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.  
+- It's important to emphasize that there has never been an instance where **quantum mechanics** has failed when applied correctly. The physical world is inherently quantum, especially at small scales. **Quantum mechanics works flawlessly**—at all scales and in all situations where it has been properly applied.
+
 
 :::{figure-md} markdown-fig
+
 <img src="images/SE_intro.jpeg" alt="SE-intro" class="bg-primary mb-1" width="300px">
 
 You are now entering the quantum world. Proceed wih caution 
 :::
 
-### Picking up where classical mechanics has failed
+### What we require from the new quantum theory?
 
-- Let us recall that classical mechanics while valid at large scales totally failed at describing motion at the atomic and molecular scales. A new, correct equation of motion is needed that can explain:
 
-- **Quantized nature of energy** seen in  experiments on blackbody radiation, atomic and molecular spectra.
+- Recall that while **classical mechanics** is valid at large scales, it completely fails to describe motion at the atomic and molecular levels. A new, accurate equation of motion is required to explain phenomena such as:
 
-- **Wave-particle duality** Electron diffraction, Compton scattering, double slit experiments
+  - The **quantized nature of energy**, as observed in experiments involving blackbody radiation and atomic and molecular spectra.
+  
+  - **Wave-particle duality**, demonstrated through electron diffraction, Compton scattering, and double-slit experiments.
+
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro2.gif" alt="SE-intro" class="bg-primary mb-1" width="300px">
@@ -47,68 +58,119 @@ Schrodinger had to make peace with the idea that correct description of electron
 
   $$\frac{\partial^2 \Psi(x,t)}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 \Psi(x,t)}{\partial t^2}$$
 
-- Solution of classical wave equation in general produces traveling waves such as a periodic wave seen in previous sections. 
-
-$$\Psi(x,t) = Acos{(kx-\omega t)}$$
-
-- Or the following more general and mathematically convenient representation of a periodic traveling wave: 
+- The classical wave equation we have seen can produce waves which can be traveling or standing depending on boundary conditions. Lets pick a general periodic traveling wave for instance
 
 $$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
 
-### Arriving at Schrödinger Equation
+- We are going to plug into a wavefunction the two key quantum relations discovered emprically and then see what kind of wave equation can produce 
 
-Now let us combine the following two cornerstone quantum ideas into a periodic wave function:
+  - **Plug wave-particle duality via De Broglie relation:** $p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$
 
-- **De Broglie relation:** Encoding wave-particle duality 
-
-$$p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$$
-
-- **Planck equaton:**   Encoding energy quantization
-
-$$E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$$
-
-- Inserting the two quantum expressions into the classical wave function we now get a quantum wave function:
+  - **Plug energy quantization via Planck equaton:**  $E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$
 
 $$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{\frac{i}{\hbar}(px-E t)}$$
 
-- **What equation can genereate such wave functions?** To find out we need to take derivatives with respect to time and space.
+- **What equation can genereate such wave functions?** 
+  - To find out we need to take derivatives with respect to time and space.
 
 
+Here’s a refined version of your explanation, including details on separating the time and spatial parts of the wave function and expressing the time dependence of the wave function:
 
-### Turning a quantum wave function into quantum wave equation. 
+---
 
-- Taking time derivative we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.
+### Turning a Quantum Wave Function into a Quantum Wave Equation
+
+- **Time Part**: When we take the time derivative of the wave function, we find that the total energy appears as a multiplicative factor. This is significant because, in quantum mechanics, total energy is conserved. The relationship between energy and the time dependence of the wave function is given by:
 
 $$
-\frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)
+\frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
 $$
 
-- We can recover total energy by taking  two spatial derivatives. 
+- This equation suggests that the time evolution of the wave function is directly related to the total energy $E$. The solution to this equation takes the form of an oscillating function, $\Psi(x,t) \propto e^{-iEt/\hbar}$, describing how the wave function evolves in time.
 
-$$ \frac{\partial \Psi(x,t)}{\partial x}=\frac{i}{\hbar}p\Psi(x,t)$$
+- **Spatial Part**: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum $p$ as:
 
-$$ \frac{\partial^2 \Psi(x,t)}{\partial x^2}=-\frac{p^2}{\hbar^2}\Psi(x,t)=-\frac{2m(E-V)}{\hbar^2}\Psi(x,t)$$
+$$
+\frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
+$$
 
-- Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  $E=\frac{p^2}{2m}+V$
+Taking the second derivative with respect to $x$, we obtain:
 
-This last expression we will come to know as the time-independent Schrödinger equation (TI-SE):
+$$
+\frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
+$$
 
-$$\boxed{{\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi=E\Psi}}$$
+Here, we have expressed the kinetic energy as a part of the total energy using the relation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
 
-By connecting spatial and temporal derivatives through total energy we obtain the time-dependent Schrödinger equation (TD-SE):
+:::{admonition} **Time-Independent Schrödinger Equation**
+:class: important
 
-$$\boxed{{\color{red}i\hbar \frac{\partial }{\partial t} \Psi }= {\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi} }$$
+This equation relates the second spatial derivative of the wave function to its total energy:
 
-### The mathematical language of QM: operators
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = E \Psi
+$$
+:::
 
-- Let us introduce some jargon and notation which is going to help us make mathematics and analogies with classical intuition more concise.
- 
-- We define operators via a mathematical act of turning function A into function B. By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc. 
+- **Combining Time and Space**: By linking the energy in both the spatial and temporal parts, we can formulate the **time-dependent Schrödinger equation**. This equation governs the full behavior of a quantum system over time and space:
+
+:::{admonition} **Time-Dependent Schrödinger Equation**
+:class: important
+
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+$$
+:::
+
+This equation connects the spatial evolution of the wave function (through the second derivative with respect to $x$ with its time evolution (through the first derivative with respect to $t$, describing the quantum dynamics of a particle in a potential $V(x)$.
+
+### Note on Separation of Variables in Scrodinger Equation
+
+- By assuming the wave function can be separated into a product of a spatial part and a time part, $\Psi(x,t) = \psi(x) T(t)$, we can solve for each part independently:
+- The time part $T(t)=e^{-iEt/\hbar}$ yields an oscillatory solution related to the total energy.
+- The spatial part $\psi(x)$ satisfies the **time-independent Schrödinger equation**, which we solve to obtain stationary states.
+
+:::{admonition} **Quantum Wave function**
+
+$$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
+
+- The hard part is finding $\psi(x)$ which depends on the system, e.g form of poteantial energy function $V$
+
+:::
+
+- This method is crucial for solving quantum systems, particularly in cases where the potential $V(x)$ does not depend on time.
+
+
+### The Mathematical Language of Quantum Mechanics: Operators
+
+- To streamline our discussion and draw analogies with classical intuition, we need to introduce some essential **notation and terminology**.
+
+- In quantum mechanics, we define **operators** as mathematical entities that transform one function into another. An operator can perform various actions on a function, such as differentiation, integration, addition, multiplication, and more. In this way, operators serve as tools to manipulate wave functions and extract physical information.
+
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro3.jpg" alt="SE-intro" class="bg-primary mb-1" width="300px">
 
 Analogy of operators with ordinary functions.
+:::
+
+:::{admonition} **Example of operators**
+:class: dropdown
+
+- Lets take a function e^{2x} as an example and see how operator notation works:
+
+$$\frac{d^2}{dx^2} e^{2x} = 4e^{2x}$$
+
+$$\hat{A} f =4f$$
+
+-  Where we say that operator $\hat{A}$ acts on function $e^{2x}$ to produce another function which in this case is same function multiplied by 4.
+
+- In general operators can be anything in front of function f(x), here are a few more examples of operators 
+  - $\hat{A}f = x$ multiplies function by x, e.g $\hat{A}e^{2x} = xe^{2x}$
+  - $\hat{A} = -i$ multiplies function by -i, e.g $\hat{A}e^{2x} = -e^{2x}$
+  - $\hat{A} = \sqrt{}$, takes square root, e.g $\hat{A}e^{2x} = e^{x}$
+  - $\hat{A} = (d/dx +x^2)$, takes derivative then adds x^2 multiplication $\hat{A}e^{2x} = 4e^{2x}+x^2e^{2x} = (4+x^2)e^{2x}$
+
 :::
 
 
@@ -120,7 +182,25 @@ $$\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)$$
 
 - Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
 
-- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$      $\hat{A}=\int dx$       $\hat{A}=\sqrt{}$.
+:::{admonition} **Example of linear operators**
+:class: dropdown
+
+- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$,      $\hat{B}=\int dx$       $\hat{C}=\sqrt{}$.
+
+
+- Using rules of calculus we know that derivative and integral acts on each term in the sum:
+
+$$\frac{d}{dx}(c_1f_1+c_2f_2) = c_1\frac{df_1}{dx}+c_2\frac{df_2}{dx}$$
+
+$$\int(c_1f_1+c_2f_2)dx = c_1\int f_1dx+c_2\int f_2dx$$
+
+- For the square root linear property does not hold!
+
+$$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
+
+:::
+
+
 
 
 
@@ -142,57 +222,22 @@ We see that the analog of classical kinetic energy is an a second order partial 
 
 
 
-### From time-dependent to time-independent Schrödinger equation.
-
-As we have learned from lectures on classical wave equation when the spatial and temporal coordinates are independent of each other one can use separation of variables and decouple time and space dependence. 
-
-$$\Psi(x,t)=f(t)\psi(x) $$
-
-Plugging this into time-dependent wave equation we get
-
-$$i\hbar \frac{\partial }{\partial t} f(t)\psi(x) =\hat{H}f(t)\psi(x)$$
-
-Now collecting $x$ and $t$ terms we achieve separation of variables. 
-
-$$\frac{1}{f(t)}i\hbar \frac{\partial }{\partial t} f(t)=\frac{1}{\psi(x) }\hat{H}\psi(x)=E$$
-
-Notice that the hamiltonian operator contains $x$ derivatives hence $f(t)$ can be taken out of the operator expression. In the expression $\frac{\hat{H}\psi(x)}{\psi(x)}$ however one can not cancel $\psi$ becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product! 
-
-The separation constant can be recognized as the total energy as is evident by recalling that the Hamiltonian operator is the analog of Hamilton function.  The temporal part is solved instantly:
-
-$$f(t)=e^{-iEt/\hbar} $$
-
-The spatial part is obtained by solving time-independent Schrödinger equation.
-
-$$\hat{H}\psi(x)=E\psi(x)$$
-
-Once we have a solution to both spatial and temporal parts of the wave function we can put them back into $\psi(x)f(t)$ and obtain full wave function:
-
-$$\boxed{\psi(x,t) = {\color{green}\psi(x)} {\color{red}e^{-\frac{i}{\hbar}Et}} }$$
-
-
-### What about the boundary conditions and normal modes?
+### Linearity and Princle of supersposition
 
 - As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
-
-$$\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x)$$
 
 - The general solution is written as linear combination of normal modes
 $$u(x,t) = \sum_n c_n u_n(x) f_n(t)$$
 
-- In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels! 
+- In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by $n$ where the multiplicative factors are nothing but the discrete energy levels: $\hat{H} \psi_n(x)=E_n \psi_n(x)$
 
-- The wave functions for each $n$ are going to have special significance as gateways to describing the probability profile of finding electrons in different points in space. 
-
-$$\hat{H} \psi_n(x)=E_n \psi_n(x)$$
-
-- The general solution is written as linear combination of wave functions:
+- **The general solution** is again written as linear combination of wave functions:
 
 $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 
 
 
-### Eigenvalue eigenfunction problems
+### Eigenvalues and eigenfunctions
 
 - Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
 
@@ -202,7 +247,7 @@ $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 Eigenvalue/Eigenfunction problem
 :::
 
-E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
+- E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
 
 **The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where eigenfunctions $\psi_n$ are wave-functions and eigenvalues are energies $E_n$.**
 
