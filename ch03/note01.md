@@ -87,29 +87,18 @@ $$
 $$
 
 
-- **Spatial Part**: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum $p$ as:
+- **Spatial Part**: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. 
 
 $$
 \frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
 $$
 
-- Taking the second derivative with respect to $x$, we obtain:
 
 $$
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 $$
-
-- Here, we have expressed the kinetic energy as a part of the total energy using energy conservation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
-
-:::{admonition} **Time-Independent Schrödinger Equation**
-:class: important
-
-$$
--\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = E \Psi
-$$
-:::
-
-- **Combining Time and Space**: By linking the energy in both the spatial and temporal parts, we can formulate the **time-dependent Schrödinger equation**. This equation governs the full behavior of a quantum system over time and space:
+- This equation where variable of time is absent is **time-independent schordinger equation.** We are going to explore in depth later. 
+- **Join time and spatial parts** we have expressed the kinetic energy via difference between total and potential energies $K = E-V$. Then we eliminated energy $E$ from both equations. 
 
 :::{admonition} **Time-Dependent Schrödinger Equation**
 :class: important
@@ -119,9 +108,11 @@ $$
 $$
 :::
 
-This equation connects the spatial evolution of the wave function (through the second derivative with respect to $x$ with its time evolution (through the first derivative with respect to $t$, describing the quantum dynamics of a particle in a potential $V(x)$.
+- This equation connects the spatial evolution of the wave function for a quantum system like an electron or atom in a potential $V(x)$. 
+- Note that unlike classical wave equation there is only single time derivative! The presence of $i$ generates oscillatory solutions in complex planes hence why we call it quantum wave equation. 
+- Note we are focusing on 1D case for simplicity. Generalizing to 3D invlves adding up similiar terms that depend on $y$ and $z$ coordinates of every quantum object. 
 
-### Note on Separation of Variables in Schrodinger Equation
+### Separation of Variables and Time Indepdendent Schrodinger Equation
 
 - By assuming the wave function can be separated into a product of a spatial part and a time part, $\Psi(x,t) = \psi(x) T(t)$, we can solve for each part independently:
 - The time part $T(t)=e^{-iEt/\hbar}$ yields an oscillatory solution related to the total energy.
@@ -137,7 +128,15 @@ $$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
 :::
 
 - This method is crucial for solving quantum systems, particularly in cases where the potential $V(x)$ does not depend on time.
+- Plugging $\psi(x) T(t)$ and cancelling time part we are back to the time-independent equation that we had gotten earlier.  
 
+:::{admonition} **Time-Independent Schrödinger Equation**
+:class: important
+
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
+$$
+:::
 
 ### The Mathematical Language of Quantum Mechanics: Operators
 
