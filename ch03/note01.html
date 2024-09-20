@@ -445,9 +445,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-principle-of-supersposition">Linearity and Principle of supersposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-taking-the-square-of-an-operator">Problem 2: Taking the Square of an Operator</a></li>
@@ -711,23 +711,18 @@ H(x,p) = K + V = \frac{p^2}{2m} + V(x)
 </ul>
 </div>
 <div class="important admonition">
-<p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
+<p class="admonition-title"><strong>Schrödinger Equation in operator form</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \hat{H} \psi = E \psi
 \]</div>
-<ul class="simple">
-<li><p><strong>Hamiltonian Operator</strong>: <span class="math notranslate nohighlight">\(\hat{H}\)</span> It can stand for 1D, 2D, or 3D systems and describe any quantum object from one electron to collection of molecules.</p></li>
-<li><p><strong>Energy</strong>: Describes the possible energy states of the quantum system.</p></li>
-</ul>
-</div>
-<div class="important admonition">
-<p class="admonition-title"><strong>Time-Dependent Schrödinger Equation</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
 \]</div>
 <ul class="simple">
+<li><p><strong>Hamiltonian Operator</strong>: <span class="math notranslate nohighlight">\(\hat{H}\)</span> It can stand for 1D, 2D, or 3D systems and describe any quantum object from one electron to collection of molecules.</p></li>
+<li><p><strong>Energy</strong>: Describes the possible energy states of the quantum system.</p></li>
 <li><p><strong>Energy Operator</strong>: <span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t}\)</span></p></li>
 </ul>
 </div>
@@ -740,43 +735,6 @@ H(x,p) = K + V = \frac{p^2}{2m} + V(x)
 </ul>
 </li>
 </ul>
-</section>
-<section id="linearity-and-principle-of-supersposition">
-<h2>Linearity and Principle of supersposition<a class="headerlink" href="#linearity-and-principle-of-supersposition" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions <span class="math notranslate nohighlight">\(u_n(x)\)</span> discretized by integers <span class="math notranslate nohighlight">\(n=1,2,...\)</span> for each spatial coordinate.</p></li>
-<li><p>The general solution was written as linear combination of normal modes. Likewise boundary conditions produce infinite number of  solutions to quantum wave equation discretized by intege numbers <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\(\hat{H} \psi_n(x)=E_n \psi_n(x)\)</span></p></li>
-<li><p><strong>The general solution</strong> is again written as linear combination of quatnum wave functions <strong>thanks to linearity of schrodinger equation</strong>:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)\]</div>
-</section>
-<section id="eigenvalues-and-eigenfunctions">
-<h2>Eigenvalues and Eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.</p></li>
-</ul>
-<figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro6.jpg"><img alt="eigval-func" class="bg-primary mb-1" src="../_images/SE_intro6.jpg" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Eigenvalue/Eigenfunction problem</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>In general, the action of an operator can change a function, but in quantum mechanics, we are particularly interested in operators that preserve the form of the function, producing only a constant multiplicative factor.</p></li>
-<li><p>The time-independent Schrödinger equation can be viewed as an <strong>eigenfunction-eigenvalue problem,</strong> where the eigenfunctions</p></li>
-</ul>
-<div class="important admonition">
-<p class="admonition-title"><strong>Schordinger Equation as Eigenfunctions/Eigenvalues problem</strong></p>
-<div class="math notranslate nohighlight">
-\[
-\boxed{\hat{H} \psi_n = E_n \psi_n}
-\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\psi_n\)</span> the wavefunctions are the eigenfunctions of Hamitonian operator</p></li>
-<li><p><span class="math notranslate nohighlight">\(E_n\)</span> the energies are the eiganvalues of Hamiltonian operator</p></li>
-</ul>
-</div>
 </section>
 <section id="the-correspondence-principle-of-quantum-mechanics">
 <h2>The correspondence principle of Quantum Mechanics<a class="headerlink" href="#the-correspondence-principle-of-quantum-mechanics" title="Permalink to this heading">#</a></h2>
@@ -821,6 +779,43 @@ H(x,p) = K + V = \frac{p^2}{2m} + V(x)
 </tr>
 </tbody>
 </table>
+</section>
+<section id="linearity-and-principle-of-supersposition">
+<h2>Linearity and Principle of supersposition<a class="headerlink" href="#linearity-and-principle-of-supersposition" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions <span class="math notranslate nohighlight">\(u_n(x)\)</span> discretized by integers <span class="math notranslate nohighlight">\(n=1,2,...\)</span> for each spatial coordinate.</p></li>
+<li><p>The general solution was written as linear combination of normal modes. Likewise boundary conditions produce infinite number of  solutions to quantum wave equation discretized by intege numbers <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\(\hat{H} \psi_n(x)=E_n \psi_n(x)\)</span></p></li>
+<li><p><strong>The general solution</strong> is again written as linear combination of quatnum wave functions <strong>thanks to linearity of schrodinger equation</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)\]</div>
+</section>
+<section id="eigenvalues-and-eigenfunctions">
+<h2>Eigenvalues and Eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.</p></li>
+</ul>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro6.jpg"><img alt="eigval-func" class="bg-primary mb-1" src="../_images/SE_intro6.jpg" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Eigenvalue/Eigenfunction problem</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>In general, the action of an operator can change a function, but in quantum mechanics, we are particularly interested in operators that preserve the form of the function, producing only a constant multiplicative factor.</p></li>
+<li><p>The time-independent Schrödinger equation can be viewed as an <strong>eigenfunction-eigenvalue problem,</strong> where the eigenfunctions</p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Schordinger Equation as Eigenfunctions/Eigenvalues problem</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\hat{H} \psi_n = E_n \psi_n}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\psi_n\)</span> the wavefunctions are the eigenfunctions of Hamitonian operator</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_n\)</span> the energies are the eiganvalues of Hamiltonian operator</p></li>
+</ul>
+</div>
 </section>
 <section id="problems">
 <h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
@@ -1017,9 +1012,9 @@ H(x,p) = K + V = \frac{p^2}{2m} + V(x)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-principle-of-supersposition">Linearity and Principle of supersposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-taking-the-square-of-an-operator">Problem 2: Taking the Square of an Operator</a></li>
