@@ -50,7 +50,7 @@ You are now entering the quantum world. Proceed wih caution
 Schrodinger had to make peace with the idea that correct description of electrons is done via wave functions.
 :::
 
-### From classical to quantum wave equation
+### Quantum wave equation
 
 - In 1925/1926 Erwin Schrödinger, who was an expert on physics of waves, derived a new equation of motion which allows computing, predicting and obtaining from first principles the quantum phenomena such as energy quantization and wave-particle duality.
 
@@ -78,7 +78,7 @@ $$\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}$$
 
 - **What equation can genereate such quantum wave functions?** To find out we need to take derivatives with respect to time and space.
 
-### Turning a Quantum Wave Function into a Quantum Wave Equation
+### From Quantum Wave Function to Quantum Wave Equation
 
 - **Time Part**: When we take the time derivative of the wave function, we find that the total energy appears as a multiplicative factor. This is significant because, in quantum mechanics, total energy is conserved. The relationship between energy and the time dependence of the wave function is given by:
 
