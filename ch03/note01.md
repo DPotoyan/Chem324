@@ -243,24 +243,19 @@ $$
 :::
 
 
-:::{admonition} **Time-Independent Schrödinger Equation**
+:::{admonition} **Schrödinger Equation in operator form**
 :class: important
 
 $$
 \hat{H} \psi = E \psi
 $$
 
-- **Hamiltonian Operator**: $\hat{H}$ It can stand for 1D, 2D, or 3D systems and describe any quantum object from one electron to collection of molecules.
-- **Energy**: Describes the possible energy states of the quantum system.
-:::
-
-:::{admonition} **Time-Dependent Schrödinger Equation**
-:class: important
-
 $$
 \hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
 $$
 
+- **Hamiltonian Operator**: $\hat{H}$ It can stand for 1D, 2D, or 3D systems and describe any quantum object from one electron to collection of molecules.
+- **Energy**: Describes the possible energy states of the quantum system.
 - **Energy Operator**: $i\hbar \frac{\partial}{\partial t}$
 :::
 
@@ -268,6 +263,22 @@ $$
   - $V(x) = 0$ represents a free particle, 
   - $V(x) = kx^2$ describes a particle trapped in a harmonic potential, 
   - $V(x) = \cos(x)$ corresponds to a particle in a periodic potential.
+
+
+### The correspondence principle of Quantum Mechanics
+
+- Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:
+
+|               Observables               |                   Classical                    |                           Quantum                            |
+| :-------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
+|                Position                 |                      $x$                       |                         $\hat{x}=x$                          |
+|                Momentum                 |                     $p=mv$                     |        $\hat{p}=-i\hbar \frac{\partial}{\partial x}$         |
+|            Potential Energy             |                     $V(X)$                     |                        $\hat{V}=V(x)$                        |
+|             Kinetic Energy              |               $K=\frac{p^2}{2m}$               |                $\hat{K}=\frac{\hat{p}^2}{2m}$                |
+|              Total Energy               |          $H(x,p)=\frac{p^2}{2m}+V(x)$          |                  $\hat{H}=\hat{K}+\hat{V}$                   |
+|           Equation of motion            | Newton's law $F=ma$ <br>or Hamiltons equations | $\hat{H}\psi=E\psi$ Or <br>$i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi$ |
+| Quantization and wave-particle duality? |                      N/A                       | Energy quantization and duality are<br> naturally described by $E_n$ and $\psi_n$. |
+
 
 ### Linearity and Principle of supersposition
 
@@ -306,19 +317,6 @@ $$
 
 :::
 
-### The correspondence principle of Quantum Mechanics
-
-- Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:
-
-|               Observables               |                   Classical                    |                           Quantum                            |
-| :-------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
-|                Position                 |                      $x$                       |                         $\hat{x}=x$                          |
-|                Momentum                 |                     $p=mv$                     |        $\hat{p}=-i\hbar \frac{\partial}{\partial x}$         |
-|            Potential Energy             |                     $V(X)$                     |                        $\hat{V}=V(x)$                        |
-|             Kinetic Energy              |               $K=\frac{p^2}{2m}$               |                $\hat{K}=\frac{\hat{p}^2}{2m}$                |
-|              Total Energy               |          $H(x,p)=\frac{p^2}{2m}+V(x)$          |                  $\hat{H}=\hat{K}+\hat{V}$                   |
-|           Equation of motion            | Newton's law $F=ma$ <br>or Hamiltons equations | $\hat{H}\psi=E\psi$ Or <br>$i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi$ |
-| Quantization and wave-particle duality? |                      N/A                       | Energy quantization and duality are<br> naturally described by $E_n$ and $\psi_n$. |
 
 ### Problems
 
