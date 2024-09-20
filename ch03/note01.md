@@ -100,12 +100,10 @@ $$
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 $$
 
-Here, we have expressed the kinetic energy as a part of the total energy using the relation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
+Here, we have expressed the kinetic energy as a part of the total energy using energy conservation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
 
 :::{admonition} **Time-Independent Schrödinger Equation**
 :class: important
-
-This equation relates the second spatial derivative of the wave function to its total energy:
 
 $$
 -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = E \Psi
@@ -131,6 +129,7 @@ This equation connects the spatial evolution of the wave function (through the s
 - The spatial part $\psi(x)$ satisfies the **time-independent Schrödinger equation**, which we solve to obtain stationary states.
 
 :::{admonition} **Quantum Wave function**
+:class: important 
 
 $$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
 
@@ -208,7 +207,7 @@ $$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
 
 - By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
 
-$$i\hbar \frac{\partial }{\partial t} \Psi= \Big[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V \Big]\Psi=\hat{H}\Psi$$
+$$i\hbar \frac{\partial }{\partial t} \Psi= \Big[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V \Big]\Psi$$
 
 - The operator $\hat{H}$ is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian  which is an expression of total energy. 
 
@@ -218,7 +217,22 @@ $$\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)
 
 We see that the analog of classical kinetic energy is an a second order partial differentiation operator. 
 
-- Potential energy has exactly the same appearance: It is a function of spatial coordinates, e.g $V(x)=0$ (free particle) or $V(x)=kx^2$ (particle trapped in harmonic well) or  $V(x)=cos(x)$ (particle subject to periodic potential).
+:::{admonition} **Time Independent Schrodinger equation**
+
+$$\hat{H}\psi = E\psi$$
+
+- **Hamiltonian Operator**: could be 1D, 2D, 3D, can describe one to many electrons
+- **Energy** Described possible energy values of the quantum system.
+:::
+
+:::{admonition} **Time Dependent Schrodinger equation**
+
+$$\hat{H}\psi = i\hbar\frac{\partial \psi}{\partial t}$$
+
+- **Energy Operator**: $i\hbar\frac{\partial }{\partial t}$
+:::
+
+- Note how the totential energy has exactly the same appearance: It is a function of spatial coordinates, e.g $V(x)=0$ (free particle) or $V(x)=kx^2$ (particle trapped in harmonic well) or  $V(x)=cos(x)$ (particle subject to periodic potential).
 
 
 
