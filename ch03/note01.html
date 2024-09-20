@@ -443,7 +443,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
@@ -663,40 +663,64 @@ document.write(`
 \[\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}\]</div>
 </div>
 </section>
-<section id="time-dependent-schrodinger-equation-in-operator-notation">
-<h2>Time-dependent Schrödinger equation in operator notation.<a class="headerlink" href="#time-dependent-schrodinger-equation-in-operator-notation" title="Permalink to this heading">#</a></h2>
+<section id="schrodinger-equation-in-operator-notation">
+<h2>Schrödinger equation in operator notation.<a class="headerlink" href="#schrodinger-equation-in-operator-notation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation</p></li>
+<li><p>By expressing the equation in operator notation, we can start to recognize various terms and see that the Schrödinger equation, like any proper equation of motion, embodies the principle of total energy conservation:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[i\hbar \frac{\partial }{\partial t} \Psi= \Big[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V \Big]\Psi\]</div>
+\[
+i\hbar \frac{\partial }{\partial t} \Psi = \left[ -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \right] \Psi
+\]</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Classical Hamiltonian:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+H(x,p) = K + V = \frac{p^2}{2m} + V(x)
+\]</div>
 <ul class="simple">
-<li><p>The operator <span class="math notranslate nohighlight">\(\hat{H}\)</span> is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian  which is an expression of total energy.</p></li>
+<li><p>Classical Hamiltonian tepresents total energy showing us how kinetic and potential energy change as a function of momentum and position.</p></li>
 </ul>
+</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Quantum Hamiltonian:</strong></p>
 <div class="math notranslate nohighlight">
-\[H(x,p)=K+V = \frac{p^2}{2m}+V(x)\]</div>
-<div class="math notranslate nohighlight">
-\[\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)\]</div>
-<p>We see that the analog of classical kinetic energy is an a second order partial differentiation operator.</p>
+\[
+\hat{H} = \hat{K} + \hat{V} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+\]</div>
+<ul class="simple">
+<li><p>The operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>, known as the Hamiltonian operator, is the quantum mechanical analog of the classical Hamiltonian, which represents the total energy:</p></li>
+</ul>
+</div>
 <div class="admonition-time-independent-schrodinger-equation admonition">
-<p class="admonition-title"><strong>Time Independent Schrodinger equation</strong></p>
+<p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
 <div class="math notranslate nohighlight">
-\[\hat{H}\psi = E\psi\]</div>
+\[
+\hat{H} \psi = E \psi
+\]</div>
 <ul class="simple">
-<li><p><strong>Hamiltonian Operator</strong>: could be 1D, 2D, 3D, can describe one to many electrons</p></li>
-<li><p><strong>Energy</strong> Described possible energy values of the quantum system.</p></li>
+<li><p><strong>Hamiltonian Operator</strong>: Can be 1D, 2D, or 3D, and describe systems with one or many particles.</p></li>
+<li><p><strong>Energy</strong>: Describes the possible energy states of the quantum system.</p></li>
 </ul>
 </div>
 <div class="admonition-time-dependent-schrodinger-equation admonition">
-<p class="admonition-title"><strong>Time Dependent Schrodinger equation</strong></p>
+<p class="admonition-title"><strong>Time-Dependent Schrödinger Equation</strong></p>
 <div class="math notranslate nohighlight">
-\[\hat{H}\psi = i\hbar\frac{\partial \psi}{\partial t}\]</div>
+\[
+\hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
+\]</div>
 <ul class="simple">
-<li><p><strong>Energy Operator</strong>: <span class="math notranslate nohighlight">\(i\hbar\frac{\partial }{\partial t}\)</span></p></li>
+<li><p><strong>Energy Operator</strong>: <span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t}\)</span></p></li>
 </ul>
 </div>
 <ul class="simple">
-<li><p>Note how the totential energy has exactly the same appearance: It is a function of spatial coordinates, e.g <span class="math notranslate nohighlight">\(V(x)=0\)</span> (free particle) or <span class="math notranslate nohighlight">\(V(x)=kx^2\)</span> (particle trapped in harmonic well) or  <span class="math notranslate nohighlight">\(V(x)=cos(x)\)</span> (particle subject to periodic potential).</p></li>
+<li><p>Note how the potential energy term appears in the same form across different systems—it is always a function of spatial coordinates. Some examples of potentials</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(V(x) = 0\)</span> represents a free particle,</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(x) = kx^2\)</span> describes a particle trapped in a harmonic potential,</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(x) = \cos(x)\)</span> corresponds to a particle in a periodic potential.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="linearity-and-princle-of-supersposition">
@@ -876,7 +900,7 @@ Solution<div class="sd-summary-down docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
