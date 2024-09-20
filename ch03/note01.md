@@ -64,19 +64,17 @@ $$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
 
 - We are going to plug into a wavefunction the two key quantum relations discovered emprically and then see what kind of wave equation can produce 
 
-  - **Plug wave-particle duality via De Broglie relation:** $p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$
+  - **Plug wave-particle duality via De Broglie relation:** 
+  
+  $$p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$$
 
-  - **Plug energy quantization via Planck equaton:**  $E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$
+  - **Plug energy quantization via Planck equaton:**  
+  
+  $$E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$$
 
 $$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{\frac{i}{\hbar}(px-E t)}$$
 
-- **What equation can genereate such wave functions?** 
-  - To find out we need to take derivatives with respect to time and space.
-
-
-Here’s a refined version of your explanation, including details on separating the time and spatial parts of the wave function and expressing the time dependence of the wave function:
-
----
+- **What equation can genereate such wave functions?** To find out we need to take derivatives with respect to time and space.
 
 ### Turning a Quantum Wave Function into a Quantum Wave Equation
 
