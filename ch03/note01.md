@@ -203,36 +203,61 @@ $$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
 
 
 
-### Time-dependent Schrödinger equation in operator notation.
+### Schrödinger equation in operator notation.
 
-- By writing the equation in operator notation we may begin to recognize certain terms and appreciate that Schrödinger equation, as any proper equation of motion, reflects the total energy conservation 
+- By expressing the equation in operator notation, we can start to recognize various terms and see that the Schrödinger equation, like any proper equation of motion, embodies the principle of total energy conservation:
 
-$$i\hbar \frac{\partial }{\partial t} \Psi= \Big[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V \Big]\Psi$$
+$$
+i\hbar \frac{\partial }{\partial t} \Psi = \left[ -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \right] \Psi
+$$
 
-- The operator $\hat{H}$ is called a Hamilton operator or hamiltonian. And is an analog of classical Hamiltonian  which is an expression of total energy. 
+:::{admonition} **Classical Hamiltonian:**
+:class: important
 
-$$H(x,p)=K+V = \frac{p^2}{2m}+V(x)$$
+$$
+H(x,p) = K + V = \frac{p^2}{2m} + V(x)
+$$
 
-$$\hat{H}=\hat{K}+\hat{V}=\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)$$
+-  Classical Hamiltonian tepresents total energy showing us how kinetic and potential energy change as a function of momentum and position. 
 
-We see that the analog of classical kinetic energy is an a second order partial differentiation operator. 
-
-:::{admonition} **Time Independent Schrodinger equation**
-
-$$\hat{H}\psi = E\psi$$
-
-- **Hamiltonian Operator**: could be 1D, 2D, 3D, can describe one to many electrons
-- **Energy** Described possible energy values of the quantum system.
 :::
 
-:::{admonition} **Time Dependent Schrodinger equation**
+:::{admonition} **Quantum Hamiltonian:**
+:class: important
 
-$$\hat{H}\psi = i\hbar\frac{\partial \psi}{\partial t}$$
+$$
+\hat{H} = \hat{K} + \hat{V} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+$$
 
-- **Energy Operator**: $i\hbar\frac{\partial }{\partial t}$
+- The operator $\hat{H}$, known as the Hamiltonian operator, is the quantum mechanical analog of the classical Hamiltonian, which represents the total energy:
 :::
 
-- Note how the totential energy has exactly the same appearance: It is a function of spatial coordinates, e.g $V(x)=0$ (free particle) or $V(x)=kx^2$ (particle trapped in harmonic well) or  $V(x)=cos(x)$ (particle subject to periodic potential).
+
+:::{admonition} **Time-Independent Schrödinger Equation**
+
+$$
+\hat{H} \psi = E \psi
+$$
+
+- **Hamiltonian Operator**: Can be 1D, 2D, or 3D, and describe systems with one or many particles.
+- **Energy**: Describes the possible energy states of the quantum system.
+:::
+
+:::{admonition} **Time-Dependent Schrödinger Equation**
+
+$$
+\hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
+$$
+
+- **Energy Operator**: $i\hbar \frac{\partial}{\partial t}$
+:::
+
+- Note how the potential energy term appears in the same form across different systems—it is always a function of spatial coordinates. Some examples of potentials
+  - $V(x) = 0$ represents a free particle, 
+  - $V(x) = kx^2$ describes a particle trapped in a harmonic potential, 
+  - $V(x) = \cos(x)$ corresponds to a particle in a periodic potential.
+
+
 
 
 
