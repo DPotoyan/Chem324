@@ -95,8 +95,8 @@ $$
 $$
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 $$
-- This equation where variable of time is absent is **time-independent schordinger equation.** We are going to explore in depth later. 
-- **Join time and spatial parts** we have expressed the kinetic energy via difference between total and potential energies $K = E-V$. Then we eliminated energy $E$ from both equations. 
+- This equation where variable of time is absent is **time-independent schordinger equation.** Will come back to it shortly. 
+- **Joining time and spatial parts** by expressing the kinetic energy as a difference between total and potential energies $K = E-V$ and eliminating $E$ we get:
 
 :::{admonition} **Time-Dependent Schrödinger Equation**
 :class: important
@@ -106,8 +106,19 @@ $$
 $$
 :::
 
-- This equation connects the spatial evolution of the wave function for a quantum system like an electron or atom in a potential $V(x)$. 
-- Note that unlike classical wave equation there is only single time derivative! The presence of $i$ generates oscillatory solutions in complex planes hence why we call it quantum wave equation. 
+### Quantum vs Classical Wave equation
+
+
+:::{figure-md} markdown-fig
+
+<img src="images/SE-image.png" alt="SE-intro" class="bg-primary mb-1" width="300px">
+
+Diseecting Schordinger Equation (using 1D version for simplicity).
+:::
+
+- Schoridnger equation describes spatial evolution of wave function $\Psi(x,t)$ for a quantum system like an electron or atom in a potential $V(x)$. 
+- Unlike classical wave equation there is only single time derivative! The presence of $i$ generates oscillatory solutions in complex planes hence why we call it quantum wave equation. 
+- What is the meaning of $\Psi(x,t)$? It is generaly complex hence can't stand for any real measruable quantity. Will see how to extract infromation from $\Psi$ later. 
 - Note we are focusing on 1D case for simplicity. Generalizing to 3D invlves adding up similiar terms that depend on $y$ and $z$ coordinates of every quantum object. 
 
 ### Separation of Variables and Time Indepdendent Schrodinger Equation
