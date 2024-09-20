@@ -323,19 +323,19 @@ Confirm that the following wavefunctions are eigenfunctions of linear momentum a
 :::{admonition} **Solution** 
 :class: dropdown
 
-Start by applying linear momentum operator to first function
+Start by applying linear momentum operator to first function:
 
 $$-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar Aa \cos(ax) \nonumber$$
 
-We see that action of operator changed the sin wave function hence sin function can not be an eigenfunction of linear momentum. 
+- We see that action of operator changed the $sin$ function hence sin function can not be an eigenfunction of linear momentum. 
 
-Next we apply kinetic energy operator
+Next we apply kinetic energy operator:
 
 $$
 \begin{align*} -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) &= -\dfrac{\hbar^2}{2m} \dfrac{\partial}{\partial x} Aa \cos(ax) \\[4pt] &= +\dfrac{\hbar^2}{2m} Aa^2 \sin(ax) \end{align*}  \nonumber
 $$
 
-Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator
+- Kinetic energy operator did not modify the function hence s$sin$ function is an eigenfunction for kinetic energy operator
 :::
 
 
@@ -347,21 +347,28 @@ Consider the operator $ \hat{A} = x \frac{d}{dx} $. Find $ \hat{A}^2 $, i.e., $ 
 :class: dropdown
 
 First, apply $ \hat{A} f(x) = x \frac{d}{dx} f(x) $:
-$
+
+$$
 \hat{A} f(x) = x \frac{df}{dx}
-$
+$$
+
 Now, apply $ \hat{A} $ again to the result:
-$
+
+$$
 \hat{A}(\hat{A} f(x)) = \hat{A} \left( x \frac{df}{dx} \right) = x \frac{d}{dx} \left( x \frac{df}{dx} \right)
-$
+$$
+
 Using the product rule:
-$
+
+$$
 \frac{d}{dx} \left( x \frac{df}{dx} \right) = \frac{df}{dx} + x \frac{d^2 f}{dx^2}
-$
+$$
+
 Thus:
-$
+
+$$
 \hat{A}^2 f(x) = x \left( \frac{df}{dx} + x \frac{d^2 f}{dx^2} \right) = x \frac{df}{dx} + x^2 \frac{d^2 f}{dx^2}
-$
+$$
 
 :::
 
@@ -373,17 +380,23 @@ Consider the operator $ \hat{B} = -i\hbar \frac{d}{dx} $ (momentum operator). Ve
 :class: dropdown
 
 Apply $ \hat{B} $ to $ f(x) = e^{ikx} $:
-$
+
+$$
 \hat{B} f(x) = -i\hbar \frac{d}{dx} e^{ikx}
-$
+$$
+
 The derivative of $ e^{ikx} $ is:
-$
+
+$$
 \frac{d}{dx} e^{ikx} = ik e^{ikx}
-$
+$$
+
 Thus:
-$
+
+$$
 \hat{B} f(x) = -i\hbar \cdot ik e^{ikx} = \hbar k e^{ikx}
-$
+$$
+
 Since $ \hat{B} f(x) = \hbar k f(x) $, $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $ with eigenvalue $ \hbar k $.
 
 :::
@@ -395,18 +408,24 @@ Given the operator $ \hat{C} = \frac{d^2}{dx^2} $ (second derivative operator), 
 :::{admonition} **Solution** 
 :class: dropdown
 
-Apply $ \hat{C} = \frac{d^2}{dx^2} $ to $ f(x) = e^{-\alpha x^2} $:
-$
+Apply $\hat{C} = \frac{d^2}{dx^2} $ to $ f(x) = e^{-\alpha x^2} $:
+
+$$
 \frac{d}{dx} e^{-\alpha x^2} = -2\alpha x e^{-\alpha x^2}
-$
+$$
+
 Taking the second derivative:
-$
+
+$$
 \frac{d^2}{dx^2} e^{-\alpha x^2} = \frac{d}{dx} \left( -2\alpha x e^{-\alpha x^2} \right) = -2\alpha e^{-\alpha x^2} + 4\alpha^2 x^2 e^{-\alpha x^2}
-$
+$$
+
 Thus:
-$
+
+$$
 \hat{C} f(x) = \left( -2\alpha + 4\alpha^2 x^2 \right) e^{-\alpha x^2}
-$
+$$
+
 Since this is not proportional to $ f(x) = e^{-\alpha x^2} $, $ f(x) $ is **not** an eigenfunction of $ \hat{C} $.
 
 :::
@@ -419,15 +438,19 @@ Consider the operator $ \hat{D} = x^2 \frac{d}{dx} $. Show whether this operator
 :class: dropdown
 
 First, test linearity by applying $ \hat{D} $ to $ \alpha f(x) + \beta g(x) $:
-$
+
+$$
 \hat{D}(\alpha f(x) + \beta g(x)) = x^2 \frac{d}{dx} (\alpha f(x) + \beta g(x)) = \alpha x^2 \frac{df}{dx} + \beta x^2 \frac{dg}{dx}
-$
+$$
+
 This is $ \alpha \hat{D} f(x) + \beta \hat{D} g(x) $, so $ \hat{D} $ is linear.
 
 Now, apply $ \hat{D} $ to $ f(x) = x^n $:
-$
+
+$$
 \hat{D} f(x) = x^2 \frac{d}{dx} x^n = x^2 \cdot n x^{n-1} = n x^n
-$
+$$
+
 Since the result is proportional to $ f(x) = x^n $, $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $ with eigenvalue $ n $.
 
 :::
