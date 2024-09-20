@@ -440,7 +440,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-schrodinger-equation">Note on Separation of Variables in Schrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables-and-time-indepdendent-schrodinger-equation">Separation of Variables and Time Indepdendent Schrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
@@ -554,31 +554,19 @@ document.write(`
 \frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
 \]</div>
 <ul class="simple">
-<li><p><strong>Spatial Part</strong>: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum <span class="math notranslate nohighlight">\(p\)</span> as:</p></li>
+<li><p><strong>Spatial Part</strong>: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
 \]</div>
-<ul class="simple">
-<li><p>Taking the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>, we obtain:</p></li>
-</ul>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 \]</div>
 <ul class="simple">
-<li><p>Here, we have expressed the kinetic energy as a part of the total energy using energy conservation <span class="math notranslate nohighlight">\(E = \frac{p^2}{2m} + V(x)\)</span>, where <span class="math notranslate nohighlight">\(V\)</span> is the potential energy.</p></li>
-</ul>
-<div class="important admonition">
-<p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
-<div class="math notranslate nohighlight">
-\[
--\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = E \Psi
-\]</div>
-</div>
-<ul class="simple">
-<li><p><strong>Combining Time and Space</strong>: By linking the energy in both the spatial and temporal parts, we can formulate the <strong>time-dependent Schrödinger equation</strong>. This equation governs the full behavior of a quantum system over time and space:</p></li>
+<li><p>This equation where variable of time is absent is <strong>time-independent schordinger equation.</strong> We are going to explore in depth later.</p></li>
+<li><p><strong>Join time and spatial parts</strong> we have expressed the kinetic energy via difference between total and potential energies <span class="math notranslate nohighlight">\(K = E-V\)</span>. Then we eliminated energy <span class="math notranslate nohighlight">\(E\)</span> from both equations.</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Time-Dependent Schrödinger Equation</strong></p>
@@ -587,10 +575,14 @@ document.write(`
 -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
 \]</div>
 </div>
-<p>This equation connects the spatial evolution of the wave function (through the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> with its time evolution (through the first derivative with respect to <span class="math notranslate nohighlight">\(t\)</span>, describing the quantum dynamics of a particle in a potential <span class="math notranslate nohighlight">\(V(x)\)</span>.</p>
+<ul class="simple">
+<li><p>This equation connects the spatial evolution of the wave function for a quantum system like an electron or atom in a potential <span class="math notranslate nohighlight">\(V(x)\)</span>.</p></li>
+<li><p>Note that unlike classical wave equation there is only single time derivative! The presence of <span class="math notranslate nohighlight">\(i\)</span> generates oscillatory solutions in complex planes hence why we call it quantum wave equation.</p></li>
+<li><p>Note we are focusing on 1D case for simplicity. Generalizing to 3D invlves adding up similiar terms that depend on <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> coordinates of every quantum object.</p></li>
+</ul>
 </section>
-<section id="note-on-separation-of-variables-in-schrodinger-equation">
-<h2>Note on Separation of Variables in Schrodinger Equation<a class="headerlink" href="#note-on-separation-of-variables-in-schrodinger-equation" title="Permalink to this heading">#</a></h2>
+<section id="separation-of-variables-and-time-indepdendent-schrodinger-equation">
+<h2>Separation of Variables and Time Indepdendent Schrodinger Equation<a class="headerlink" href="#separation-of-variables-and-time-indepdendent-schrodinger-equation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>By assuming the wave function can be separated into a product of a spatial part and a time part, <span class="math notranslate nohighlight">\(\Psi(x,t) = \psi(x) T(t)\)</span>, we can solve for each part independently:</p></li>
 <li><p>The time part <span class="math notranslate nohighlight">\(T(t)=e^{-iEt/\hbar}\)</span> yields an oscillatory solution related to the total energy.</p></li>
@@ -606,7 +598,15 @@ document.write(`
 </div>
 <ul class="simple">
 <li><p>This method is crucial for solving quantum systems, particularly in cases where the potential <span class="math notranslate nohighlight">\(V(x)\)</span> does not depend on time.</p></li>
+<li><p>Plugging <span class="math notranslate nohighlight">\(\psi(x) T(t)\)</span> and cancelling time part we are back to the time-independent equation that we had gotten earlier.</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
+\]</div>
+</div>
 </section>
 <section id="the-mathematical-language-of-quantum-mechanics-operators">
 <h2>The Mathematical Language of Quantum Mechanics: Operators<a class="headerlink" href="#the-mathematical-language-of-quantum-mechanics-operators" title="Permalink to this heading">#</a></h2>
@@ -1000,7 +1000,7 @@ H(x,p) = K + V = \frac{p^2}{2m} + V(x)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-schrodinger-equation">Note on Separation of Variables in Schrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables-and-time-indepdendent-schrodinger-equation">Separation of Variables and Time Indepdendent Schrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
