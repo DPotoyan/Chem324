@@ -72,9 +72,11 @@ $$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
   
   $$E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$$
 
-$$\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{\frac{i}{\hbar}(px-E t)}$$
+- **Quantum wave function** 
 
-- **What equation can genereate such wave functions?** To find out we need to take derivatives with respect to time and space.
+$$\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}$$
+
+- **What equation can genereate such quantum wave functions?** To find out we need to take derivatives with respect to time and space.
 
 ### Turning a Quantum Wave Function into a Quantum Wave Equation
 
