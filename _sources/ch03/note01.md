@@ -163,11 +163,12 @@ $$\hat{A} f =4f$$
 
 -  Where we say that operator $\hat{A}$ acts on function $e^{2x}$ to produce another function which in this case is same function multiplied by 4.
 
-- In general operators can be anything in front of function f(x), here are a few more examples of operators 
+- In general operators can be anything in front of function $f(x)$, here are a few more examples of operators :
+
   - $\hat{A}f = x$ multiplies function by x, e.g $\hat{A}e^{2x} = xe^{2x}$
-  - $\hat{A} = -i$ multiplies function by -i, e.g $\hat{A}e^{2x} = -e^{2x}$
+  - $\hat{A} = -i$ multiplies function by $-i$, e.g $\hat{A}e^{2x} = -ie^{2x}$
   - $\hat{A} = \sqrt{}$, takes square root, e.g $\hat{A}e^{2x} = e^{x}$
-  - $\hat{A} = (d/dx +x^2)$, takes derivative then adds x^2 multiplication $\hat{A}e^{2x} = 4e^{2x}+x^2e^{2x} = (4+x^2)e^{2x}$
+  - $\hat{A} = (d/dx +x^2)$, takes derivative then adds $x^2$ multiplication $\hat{A}e^{2x} = 4e^{2x}+x^2e^{2x} = (4+x^2)e^{2x}$
 
 :::
 
