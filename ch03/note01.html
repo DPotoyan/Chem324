@@ -440,16 +440,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-schrodinger-equation">Note on Separation of Variables in Schrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-taking-the-square-of-an-operator">Problem 2: Taking the Square of an Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-verifying-eigenfunction-and-eigenvalue">Problem 3: Verifying Eigenfunction and Eigenvalue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-testing-for-an-eigenfunction-and-eigenvalue">Problem 4: Testing for an Eigenfunction and Eigenvalue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-linearity-and-eigenfunction-testing">Problem 5: Linearity and Eigenfunction Testing</a></li>
 </ul>
 </li>
 </ul>
@@ -551,19 +554,22 @@ document.write(`
 \frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
 \]</div>
 <ul class="simple">
-<li><p>This equation suggests that the time evolution of the wave function is directly related to the total energy <span class="math notranslate nohighlight">\(E\)</span>. The solution to this equation takes the form of an oscillating function, <span class="math notranslate nohighlight">\(\Psi(x,t) \propto e^{-iEt/\hbar}\)</span>, describing how the wave function evolves in time.</p></li>
 <li><p><strong>Spatial Part</strong>: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum <span class="math notranslate nohighlight">\(p\)</span> as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
 \]</div>
-<p>Taking the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>, we obtain:</p>
+<ul class="simple">
+<li><p>Taking the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>, we obtain:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 \]</div>
-<p>Here, we have expressed the kinetic energy as a part of the total energy using energy conservation <span class="math notranslate nohighlight">\(E = \frac{p^2}{2m} + V(x)\)</span>, where <span class="math notranslate nohighlight">\(V\)</span> is the potential energy.</p>
+<ul class="simple">
+<li><p>Here, we have expressed the kinetic energy as a part of the total energy using energy conservation <span class="math notranslate nohighlight">\(E = \frac{p^2}{2m} + V(x)\)</span>, where <span class="math notranslate nohighlight">\(V\)</span> is the potential energy.</p></li>
+</ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
 <div class="math notranslate nohighlight">
@@ -583,8 +589,8 @@ document.write(`
 </div>
 <p>This equation connects the spatial evolution of the wave function (through the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> with its time evolution (through the first derivative with respect to <span class="math notranslate nohighlight">\(t\)</span>, describing the quantum dynamics of a particle in a potential <span class="math notranslate nohighlight">\(V(x)\)</span>.</p>
 </section>
-<section id="note-on-separation-of-variables-in-scrodinger-equation">
-<h2>Note on Separation of Variables in Scrodinger Equation<a class="headerlink" href="#note-on-separation-of-variables-in-scrodinger-equation" title="Permalink to this heading">#</a></h2>
+<section id="note-on-separation-of-variables-in-schrodinger-equation">
+<h2>Note on Separation of Variables in Schrodinger Equation<a class="headerlink" href="#note-on-separation-of-variables-in-schrodinger-equation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>By assuming the wave function can be separated into a product of a spatial part and a time part, <span class="math notranslate nohighlight">\(\Psi(x,t) = \psi(x) T(t)\)</span>, we can solve for each part independently:</p></li>
 <li><p>The time part <span class="math notranslate nohighlight">\(T(t)=e^{-iEt/\hbar}\)</span> yields an oscillatory solution related to the total energy.</p></li>
@@ -736,10 +742,8 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 \[\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)\]</div>
 </section>
 <section id="eigenvalues-and-eigenfunctions">
-<h2>Eigenvalues and eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators.</p></li>
-</ul>
+<h2>Eigenvalues and Eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<p>In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro6.jpg"><img alt="eigval-func" class="bg-primary mb-1" src="../_images/SE_intro6.jpg" style="width: 300px;" /></a>
 <figcaption>
@@ -747,15 +751,26 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.</p></li>
+<li><p>In general, the action of an operator can change a function, but in quantum mechanics, we are particularly interested in operators that preserve the form of the function, producing only a constant multiplicative factor.</p></li>
+<li><p>The time-independent Schrödinger equation can be viewed as an <strong>eigenfunction-eigenvalue problem,</strong> where the eigenfunctions</p></li>
 </ul>
-<p><strong>The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where eigenfunctions <span class="math notranslate nohighlight">\(\psi_n\)</span> are wave-functions and eigenvalues are energies <span class="math notranslate nohighlight">\(E_n\)</span>.</strong></p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Schordinger Equation as Eigenfunctions/Eigenvalues problem</strong></p>
 <div class="math notranslate nohighlight">
-\[\boxed{\hat{H} \psi_n=E_n \psi_n}\]</div>
+\[
+\boxed{\hat{H} \psi_n = E_n \psi_n}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\psi_n\)</span> the wavefunctions are the eigenfunctions of Hamitonian operator</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_n\)</span> the energies are the eiganvalues of Hamiltonian operator</p></li>
+</ul>
+</div>
 </section>
 <section id="the-correspondence-principle-of-quantum-mechanics">
 <h2>The correspondence principle of Quantum Mechanics<a class="headerlink" href="#the-correspondence-principle-of-quantum-mechanics" title="Permalink to this heading">#</a></h2>
-<p>Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:</p>
+<ul class="simple">
+<li><p>Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:</p></li>
+</ul>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Observables</p></th>
@@ -804,27 +819,99 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 <li><p><span class="math notranslate nohighlight">\(C sin(ax)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(N e^{-ix/\hbar}\)</span></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Start by applying linear momentum operator to first function</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Start by applying linear momentum operator to first function</p>
 <div class="math notranslate nohighlight">
 \[-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar Aa \cos(ax) \nonumber\]</div>
-<p class="sd-card-text">We see that action of operator changed the sin wave function hence sin function can not be an eigenfunction of linear momentum.</p>
-<p class="sd-card-text">Next we apply kinetic energy operator</p>
+<p>We see that action of operator changed the sin wave function hence sin function can not be an eigenfunction of linear momentum.</p>
+<p>Next we apply kinetic energy operator</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*} -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) &amp;= -\dfrac{\hbar^2}{2m} \dfrac{\partial}{\partial x} Aa \cos(ax) \\[4pt] &amp;= +\dfrac{\hbar^2}{2m} Aa^2 \sin(ax) \end{align*}  \nonumber
 \end{split}\]</div>
-<p class="sd-card-text">Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator</p>
+<p>Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator</p>
 </div>
-</details></section>
-<section id="problem-2">
-<h3>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="problem-2-taking-the-square-of-an-operator">
+<h3>Problem 2: Taking the Square of an Operator<a class="headerlink" href="#problem-2-taking-the-square-of-an-operator" title="Permalink to this heading">#</a></h3>
+<p>Consider the operator <span class="math notranslate nohighlight">\( \hat{A} = x \frac{d}{dx} \)</span>. Find <span class="math notranslate nohighlight">\( \hat{A}^2 \)</span>, i.e., <span class="math notranslate nohighlight">\( \hat{A}(\hat{A}f(x)) \)</span>, and apply it to an arbitrary function <span class="math notranslate nohighlight">\( f(x) \)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>First, apply <span class="math notranslate nohighlight">\( \hat{A} f(x) = x \frac{d}{dx} f(x) \)</span>:
+<span class="math notranslate nohighlight">\(
+\hat{A} f(x) = x \frac{df}{dx}
+\)</span>
+Now, apply <span class="math notranslate nohighlight">\( \hat{A} \)</span> again to the result:
+<span class="math notranslate nohighlight">\(
+\hat{A}(\hat{A} f(x)) = \hat{A} \left( x \frac{df}{dx} \right) = x \frac{d}{dx} \left( x \frac{df}{dx} \right)
+\)</span>
+Using the product rule:
+<span class="math notranslate nohighlight">\(
+\frac{d}{dx} \left( x \frac{df}{dx} \right) = \frac{df}{dx} + x \frac{d^2 f}{dx^2}
+\)</span>
+Thus:
+<span class="math notranslate nohighlight">\(
+\hat{A}^2 f(x) = x \left( \frac{df}{dx} + x \frac{d^2 f}{dx^2} \right) = x \frac{df}{dx} + x^2 \frac{d^2 f}{dx^2}
+\)</span></p>
+</div>
+</section>
+<section id="problem-3-verifying-eigenfunction-and-eigenvalue">
+<h3>Problem 3: Verifying Eigenfunction and Eigenvalue<a class="headerlink" href="#problem-3-verifying-eigenfunction-and-eigenvalue" title="Permalink to this heading">#</a></h3>
+<p>Consider the operator <span class="math notranslate nohighlight">\( \hat{B} = -i\hbar \frac{d}{dx} \)</span> (momentum operator). Verify that <span class="math notranslate nohighlight">\( f(x) = e^{ikx} \)</span> is an eigenfunction of <span class="math notranslate nohighlight">\( \hat{B} \)</span>, and find the corresponding eigenvalue.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Apply <span class="math notranslate nohighlight">\( \hat{B} \)</span> to <span class="math notranslate nohighlight">\( f(x) = e^{ikx} \)</span>:
+<span class="math notranslate nohighlight">\(
+\hat{B} f(x) = -i\hbar \frac{d}{dx} e^{ikx}
+\)</span>
+The derivative of <span class="math notranslate nohighlight">\( e^{ikx} \)</span> is:
+<span class="math notranslate nohighlight">\(
+\frac{d}{dx} e^{ikx} = ik e^{ikx}
+\)</span>
+Thus:
+<span class="math notranslate nohighlight">\(
+\hat{B} f(x) = -i\hbar \cdot ik e^{ikx} = \hbar k e^{ikx}
+\)</span>
+Since <span class="math notranslate nohighlight">\( \hat{B} f(x) = \hbar k f(x) \)</span>, <span class="math notranslate nohighlight">\( f(x) = e^{ikx} \)</span> is an eigenfunction of <span class="math notranslate nohighlight">\( \hat{B} \)</span> with eigenvalue <span class="math notranslate nohighlight">\( \hbar k \)</span>.</p>
+</div>
+</section>
+<section id="problem-4-testing-for-an-eigenfunction-and-eigenvalue">
+<h3>Problem 4: Testing for an Eigenfunction and Eigenvalue<a class="headerlink" href="#problem-4-testing-for-an-eigenfunction-and-eigenvalue" title="Permalink to this heading">#</a></h3>
+<p>Given the operator <span class="math notranslate nohighlight">\( \hat{C} = \frac{d^2}{dx^2} \)</span> (second derivative operator), check if <span class="math notranslate nohighlight">\( f(x) = e^{-\alpha x^2} \)</span> is an eigenfunction of <span class="math notranslate nohighlight">\( \hat{C} \)</span>, and find the eigenvalue if it is.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Apply <span class="math notranslate nohighlight">\( \hat{C} = \frac{d^2}{dx^2} \)</span> to <span class="math notranslate nohighlight">\( f(x) = e^{-\alpha x^2} \)</span>:
+<span class="math notranslate nohighlight">\(
+\frac{d}{dx} e^{-\alpha x^2} = -2\alpha x e^{-\alpha x^2}
+\)</span>
+Taking the second derivative:
+<span class="math notranslate nohighlight">\(
+\frac{d^2}{dx^2} e^{-\alpha x^2} = \frac{d}{dx} \left( -2\alpha x e^{-\alpha x^2} \right) = -2\alpha e^{-\alpha x^2} + 4\alpha^2 x^2 e^{-\alpha x^2}
+\)</span>
+Thus:
+<span class="math notranslate nohighlight">\(
+\hat{C} f(x) = \left( -2\alpha + 4\alpha^2 x^2 \right) e^{-\alpha x^2}
+\)</span>
+Since this is not proportional to <span class="math notranslate nohighlight">\( f(x) = e^{-\alpha x^2} \)</span>, <span class="math notranslate nohighlight">\( f(x) \)</span> is <strong>not</strong> an eigenfunction of <span class="math notranslate nohighlight">\( \hat{C} \)</span>.</p>
+</div>
+</section>
+<section id="problem-5-linearity-and-eigenfunction-testing">
+<h3>Problem 5: Linearity and Eigenfunction Testing<a class="headerlink" href="#problem-5-linearity-and-eigenfunction-testing" title="Permalink to this heading">#</a></h3>
+<p>Consider the operator <span class="math notranslate nohighlight">\( \hat{D} = x^2 \frac{d}{dx} \)</span>. Show whether this operator is linear and check if <span class="math notranslate nohighlight">\( f(x) = x^n \)</span> is an eigenfunction of <span class="math notranslate nohighlight">\( \hat{D} \)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>First, test linearity by applying <span class="math notranslate nohighlight">\( \hat{D} \)</span> to <span class="math notranslate nohighlight">\( \alpha f(x) + \beta g(x) \)</span>:
+<span class="math notranslate nohighlight">\(
+\hat{D}(\alpha f(x) + \beta g(x)) = x^2 \frac{d}{dx} (\alpha f(x) + \beta g(x)) = \alpha x^2 \frac{df}{dx} + \beta x^2 \frac{dg}{dx}
+\)</span>
+This is <span class="math notranslate nohighlight">\( \alpha \hat{D} f(x) + \beta \hat{D} g(x) \)</span>, so <span class="math notranslate nohighlight">\( \hat{D} \)</span> is linear.</p>
+<p>Now, apply <span class="math notranslate nohighlight">\( \hat{D} \)</span> to <span class="math notranslate nohighlight">\( f(x) = x^n \)</span>:
+<span class="math notranslate nohighlight">\(
+\hat{D} f(x) = x^2 \frac{d}{dx} x^n = x^2 \cdot n x^{n-1} = n x^n
+\)</span>
+Since the result is proportional to <span class="math notranslate nohighlight">\( f(x) = x^n \)</span>, <span class="math notranslate nohighlight">\( f(x) = x^n \)</span> is an eigenfunction of <span class="math notranslate nohighlight">\( \hat{D} \)</span> with eigenvalue <span class="math notranslate nohighlight">\( n \)</span>.</p>
+</div>
 </section>
 </section>
 </section>
@@ -897,16 +984,19 @@ Solution<div class="sd-summary-down docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-schrodinger-equation">Note on Separation of Variables in Schrodinger Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-operator-notation">Schrödinger equation in operator notation.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-taking-the-square-of-an-operator">Problem 2: Taking the Square of an Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-verifying-eigenfunction-and-eigenvalue">Problem 3: Verifying Eigenfunction and Eigenvalue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-testing-for-an-eigenfunction-and-eigenvalue">Problem 4: Testing for an Eigenfunction and Eigenvalue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-linearity-and-eigenfunction-testing">Problem 5: Linearity and Eigenfunction Testing</a></li>
 </ul>
 </li>
 </ul>
