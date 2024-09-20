@@ -205,10 +205,10 @@ $$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
 ### Schrödinger equation in operator notation.
 
 - By expressing the equation in operator notation, we can start to recognize various terms and see that the Schrödinger equation, like any proper equation of motion, embodies the principle of total energy conservation:
-
-$$
-i\hbar \frac{\partial }{\partial t} \Psi = \left[ -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \right] \Psi
-$$
+- Lets take Schoridnger equation and denote differntials as operators acting on wavefunction. E.g lets look at two sides of itime dependent schrodinger equation: $
+\left[ -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \right] \Psi
+$ and $i\hbar \frac{\partial }{\partial t} \Psi$
+- The operator of the position part is called **Hamiltonian Operator** and it has a deep connection to energy conservation and Hamiltonian function of classical mechanics
 
 :::{admonition} **Classical Hamiltonian:**
 :class: important
@@ -233,16 +233,18 @@ $$
 
 
 :::{admonition} **Time-Independent Schrödinger Equation**
+:class: important
 
 $$
 \hat{H} \psi = E \psi
 $$
 
-- **Hamiltonian Operator**: Can be 1D, 2D, or 3D, and describe systems with one or many particles.
+- **Hamiltonian Operator**: $\hat{H}$ It can stand for 1D, 2D, or 3D systems and describe any quantum object from one electron to collection of molecules.
 - **Energy**: Describes the possible energy states of the quantum system.
 :::
 
 :::{admonition} **Time-Dependent Schrödinger Equation**
+:class: important
 
 $$
 \hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
@@ -256,11 +258,7 @@ $$
   - $V(x) = kx^2$ describes a particle trapped in a harmonic potential, 
   - $V(x) = \cos(x)$ corresponds to a particle in a periodic potential.
 
-
-
-
-
-### Linearity and Princle of supersposition
+### Linearity and Principle of supersposition
 
 - As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
 
@@ -276,7 +274,7 @@ $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 
 ### Eigenvalues and Eigenfunctions
 
-In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.
+- In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro6.jpg" alt="eigval-func" class="bg-primary mb-1" width="300px">
