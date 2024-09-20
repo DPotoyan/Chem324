@@ -437,16 +437,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Schrödinger Equation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exciting-journey-into-the-microscopic-world">The exciting journey into the microscopic world.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-up-where-classical-mechanics-has-failed">Picking up where classical mechanics has failed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arriving-at-schrodinger-equation">Arriving at Schrödinger Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-quantum-wave-equation">Turning a quantum wave function into quantum wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-qm-operators">The mathematical language of QM: operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-time-dependent-to-time-independent-schrodinger-equation">From time-dependent to time-independent Schrödinger equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
@@ -470,22 +469,22 @@ document.write(`
   <section id="schrodinger-equation">
 <h1>Schrödinger Equation<a class="headerlink" href="#schrodinger-equation" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<p class="admonition-title"><strong>What you need to know</strong></p>
 <ul class="simple">
-<li><p>By combining classical wave equation with quantum ideas we arrive at a new equation describing quantum wave functions: Schrödinger’s equation (SE).</p></li>
-<li><p>Schrödinger’s equation, just like classical wave equation depends on both time and space.</p></li>
-<li><p>Once again we can use the technique of separation of variables and turn the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation  (TI-SE). The later is of special significance for chemical/biological sciences and will be our main focus in the rest of this course.</p></li>
-<li><p>We will learn about the powerful operator notation with the help of which  we can write equations of quantum mechanics in concise form.</p></li>
-<li><p>Each physical quantity that is measured in experiments (energy, momentum, position, etc) has a corresponding operator in quantum mechanics.</p></li>
-<li><p>We re-formulate the problem of solving Schrodinger equation into a problem of finding eigenfunctions and eigenvalues corresponding to different operators.</p></li>
+<li><p>By combining the classical wave equation with quantum principles, we derive a new equation that describes quantum wave functions: <strong>Schrödinger’s Equation (SE)</strong>.</p></li>
+<li><p>Schrödinger’s Equation, like the classical wave equation, depends on both time and space.</p></li>
+<li><p>We can apply the method of <strong>separation of variables</strong> to transform the time-dependent Schrödinger equation (TD-SE) into the time-independent Schrödinger equation (TI-SE). The time-independent form is especially important in the chemical and biological sciences, and it will be our primary focus for the remainder of the course.</p></li>
+<li><p>We will introduce the <strong>operator notation</strong>, a powerful mathematical framework that allows us to express the equations of quantum mechanics in a concise and elegant form.</p></li>
+<li><p>In quantum mechanics, every physical quantity that can be measured experimentally—such as energy, momentum, or position—has a corresponding <strong>operator</strong>.</p></li>
+<li><p>We will reformulate the process of solving Schrödinger’s equation into finding the <strong>eigenfunctions</strong> and <strong>eigenvalues</strong> associated with these operators, which represent measurable quantities in quantum systems.</p></li>
 </ul>
 </div>
 </section>
 <section id="the-exciting-journey-into-the-microscopic-world">
 <h1>The exciting journey into the microscopic world.<a class="headerlink" href="#the-exciting-journey-into-the-microscopic-world" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>In the next few sections we are going to arrive at Schrödinger equation (SE) which is one of the fundamental laws of physics. The expression “fundamental law” means that SE can only be inferred or guessed from the experiments. It can not be derived. Correctness of SE is confirmed by the myriad of successful quantitative predictions and explanations of experimental observations.</p></li>
-<li><p>Let us note that there has not been a single instance when quantum mechanics has failed when used properly! The physical world is quantum which is especially pronounced at small scales. Quantum Mechanics works flawlessly. Always. At all sales.</p></li>
+<li><p>In the next few sections, we will introduce <strong>Schrödinger’s Equation (SE)</strong>, one of the fundamental laws of physics. A “fundamental law” means that SE cannot be derived from more basic principles; it can only be inferred or hypothesized based on experimental evidence. Its validity is supported by countless successful quantitative predictions and explanations of experimental observations.</p></li>
+<li><p>It’s important to emphasize that there has never been an instance where <strong>quantum mechanics</strong> has failed when applied correctly. The physical world is inherently quantum, especially at small scales. <strong>Quantum mechanics works flawlessly</strong>—at all scales and in all situations where it has been properly applied.</p></li>
 </ul>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro.jpeg"><img alt="SE-intro" class="bg-primary mb-1" src="../_images/SE_intro.jpeg" style="width: 300px;" /></a>
@@ -493,12 +492,15 @@ document.write(`
 <p><span class="caption-number">Fig. 46 </span><span class="caption-text">You are now entering the quantum world. Proceed wih caution</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="picking-up-where-classical-mechanics-has-failed">
-<h2>Picking up where classical mechanics has failed<a class="headerlink" href="#picking-up-where-classical-mechanics-has-failed" title="Permalink to this heading">#</a></h2>
+<section id="what-we-require-from-the-new-quantum-theory">
+<h2>What we require from the new quantum theory?<a class="headerlink" href="#what-we-require-from-the-new-quantum-theory" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Let us recall that classical mechanics while valid at large scales totally failed at describing motion at the atomic and molecular scales. A new, correct equation of motion is needed that can explain:</p></li>
-<li><p><strong>Quantized nature of energy</strong> seen in  experiments on blackbody radiation, atomic and molecular spectra.</p></li>
-<li><p><strong>Wave-particle duality</strong> Electron diffraction, Compton scattering, double slit experiments</p></li>
+<li><p>Recall that while <strong>classical mechanics</strong> is valid at large scales, it completely fails to describe motion at the atomic and molecular levels. A new, accurate equation of motion is required to explain phenomena such as:</p>
+<ul>
+<li><p>The <strong>quantized nature of energy</strong>, as observed in experiments involving blackbody radiation and atomic and molecular spectra.</p></li>
+<li><p><strong>Wave-particle duality</strong>, demonstrated through electron diffraction, Compton scattering, and double-slit experiments.</p></li>
+</ul>
+</li>
 </ul>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro2.gif"><img alt="SE-intro" class="bg-primary mb-1" src="../_images/SE_intro2.gif" style="width: 300px;" /></a>
@@ -515,69 +517,97 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\frac{\partial^2 \Psi(x,t)}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 \Psi(x,t)}{\partial t^2}\]</div>
 </li>
-<li><p>Solution of classical wave equation in general produces traveling waves such as a periodic wave seen in previous sections.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\Psi(x,t) = Acos{(kx-\omega t)}\]</div>
-<ul class="simple">
-<li><p>Or the following more general and mathematically convenient representation of a periodic traveling wave:</p></li>
+<li><p>The classical wave equation we have seen can produce waves which can be traveling or standing depending on boundary conditions. Lets pick a general periodic traveling wave for instance</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</div>
-</section>
-<section id="arriving-at-schrodinger-equation">
-<h2>Arriving at Schrödinger Equation<a class="headerlink" href="#arriving-at-schrodinger-equation" title="Permalink to this heading">#</a></h2>
-<p>Now let us combine the following two cornerstone quantum ideas into a periodic wave function:</p>
 <ul class="simple">
-<li><p><strong>De Broglie relation:</strong> Encoding wave-particle duality</p></li>
+<li><p>We are going to plug into a wavefunction the two key quantum relations discovered emprically and then see what kind of wave equation can produce</p>
+<ul>
+<li><p><strong>Plug wave-particle duality via De Broglie relation:</strong> <span class="math notranslate nohighlight">\(p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}\)</span></p></li>
+<li><p><strong>Plug energy quantization via Planck equaton:</strong>  <span class="math notranslate nohighlight">\(E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu\)</span></p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}\]</div>
-<ul class="simple">
-<li><p><strong>Planck equaton:</strong>   Encoding energy quantization</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu\]</div>
-<ul class="simple">
-<li><p>Inserting the two quantum expressions into the classical wave function we now get a quantum wave function:</p></li>
+</li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\Psi(x,t)=Ae^{i(kx-\omega t)}=Ae^{\frac{i}{\hbar}(px-E t)}\]</div>
 <ul class="simple">
-<li><p><strong>What equation can genereate such wave functions?</strong> To find out we need to take derivatives with respect to time and space.</p></li>
+<li><p><strong>What equation can genereate such wave functions?</strong></p>
+<ul>
+<li><p>To find out we need to take derivatives with respect to time and space.</p></li>
 </ul>
+</li>
+</ul>
+<p>Here’s a refined version of your explanation, including details on separating the time and spatial parts of the wave function and expressing the time dependence of the wave function:</p>
 </section>
-<section id="turning-a-quantum-wave-function-into-quantum-wave-equation">
-<h2>Turning a quantum wave function into quantum wave equation.<a class="headerlink" href="#turning-a-quantum-wave-function-into-quantum-wave-equation" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="turning-a-quantum-wave-function-into-a-quantum-wave-equation">
+<h2>Turning a Quantum Wave Function into a Quantum Wave Equation<a class="headerlink" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Taking time derivative we get energy as a multiplicative factor. This is interesting! As you know total energy is conserved hence one wants to find out its relationship with the wave function.</p></li>
+<li><p><strong>Time Part</strong>: When we take the time derivative of the wave function, we find that the total energy appears as a multiplicative factor. This is significant because, in quantum mechanics, total energy is conserved. The relationship between energy and the time dependence of the wave function is given by:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \Psi(x,t)}{\partial t}=-\frac{i}{\hbar}E \Psi(x,t)
+\frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
 \]</div>
 <ul class="simple">
-<li><p>We can recover total energy by taking  two spatial derivatives.</p></li>
+<li><p>This equation suggests that the time evolution of the wave function is directly related to the total energy <span class="math notranslate nohighlight">\(E\)</span>. The solution to this equation takes the form of an oscillating function, <span class="math notranslate nohighlight">\(\Psi(x,t) \propto e^{-iEt/\hbar}\)</span>, describing how the wave function evolves in time.</p></li>
+<li><p><strong>Spatial Part</strong>: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum <span class="math notranslate nohighlight">\(p\)</span> as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial \Psi(x,t)}{\partial x}=\frac{i}{\hbar}p\Psi(x,t)\]</div>
+\[
+\frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
+\]</div>
+<p>Taking the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>, we obtain:</p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial^2 \Psi(x,t)}{\partial x^2}=-\frac{p^2}{\hbar^2}\Psi(x,t)=-\frac{2m(E-V)}{\hbar^2}\Psi(x,t)\]</div>
+\[
+\frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
+\]</div>
+<p>Here, we have expressed the kinetic energy as a part of the total energy using the relation <span class="math notranslate nohighlight">\(E = \frac{p^2}{2m} + V(x)\)</span>, where <span class="math notranslate nohighlight">\(V\)</span> is the potential energy.</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Time-Independent Schrödinger Equation</strong></p>
+<p>This equation relates the second spatial derivative of the wave function to its total energy:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = E \Psi
+\]</div>
+</div>
 <ul class="simple">
-<li><p>Where we have made use of total energy conservation for a free wave by expressing kinetic energy to the total energy.  <span class="math notranslate nohighlight">\(E=\frac{p^2}{2m}+V\)</span></p></li>
+<li><p><strong>Combining Time and Space</strong>: By linking the energy in both the spatial and temporal parts, we can formulate the <strong>time-dependent Schrödinger equation</strong>. This equation governs the full behavior of a quantum system over time and space:</p></li>
 </ul>
-<p>This last expression we will come to know as the time-independent Schrödinger equation (TI-SE):</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Time-Dependent Schrödinger Equation</strong></p>
 <div class="math notranslate nohighlight">
-\[\boxed{{\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi=E\Psi}}\]</div>
-<p>By connecting spatial and temporal derivatives through total energy we obtain the time-dependent Schrödinger equation (TD-SE):</p>
-<div class="math notranslate nohighlight">
-\[\boxed{{\color{red}i\hbar \frac{\partial }{\partial t} \Psi }= {\color{green}-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V(x) \Psi} }\]</div>
+\[
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+\]</div>
+</div>
+<p>This equation connects the spatial evolution of the wave function (through the second derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> with its time evolution (through the first derivative with respect to <span class="math notranslate nohighlight">\(t\)</span>, describing the quantum dynamics of a particle in a potential <span class="math notranslate nohighlight">\(V(x)\)</span>.</p>
 </section>
-<section id="the-mathematical-language-of-qm-operators">
-<h2>The mathematical language of QM: operators<a class="headerlink" href="#the-mathematical-language-of-qm-operators" title="Permalink to this heading">#</a></h2>
+<section id="note-on-separation-of-variables-in-scrodinger-equation">
+<h2>Note on Separation of Variables in Scrodinger Equation<a class="headerlink" href="#note-on-separation-of-variables-in-scrodinger-equation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Let us introduce some jargon and notation which is going to help us make mathematics and analogies with classical intuition more concise.</p></li>
-<li><p>We define operators via a mathematical act of turning function A into function B. By operators we mean anything that can act on a function including but not limited to differentiation, integration, adding, multiplying etc.</p></li>
+<li><p>By assuming the wave function can be separated into a product of a spatial part and a time part, <span class="math notranslate nohighlight">\(\Psi(x,t) = \psi(x) T(t)\)</span>, we can solve for each part independently:</p></li>
+<li><p>The time part <span class="math notranslate nohighlight">\(T(t)=e^{-iEt/\hbar}\)</span> yields an oscillatory solution related to the total energy.</p></li>
+<li><p>The spatial part <span class="math notranslate nohighlight">\(\psi(x)\)</span> satisfies the <strong>time-independent Schrödinger equation</strong>, which we solve to obtain stationary states.</p></li>
+</ul>
+<div class="admonition-quantum-wave-function admonition">
+<p class="admonition-title"><strong>Quantum Wave function</strong></p>
+<div class="math notranslate nohighlight">
+\[\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}\]</div>
+<ul class="simple">
+<li><p>The hard part is finding <span class="math notranslate nohighlight">\(\psi(x)\)</span> which depends on the system, e.g form of poteantial energy function <span class="math notranslate nohighlight">\(V\)</span></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>This method is crucial for solving quantum systems, particularly in cases where the potential <span class="math notranslate nohighlight">\(V(x)\)</span> does not depend on time.</p></li>
+</ul>
+</section>
+<section id="the-mathematical-language-of-quantum-mechanics-operators">
+<h2>The Mathematical Language of Quantum Mechanics: Operators<a class="headerlink" href="#the-mathematical-language-of-quantum-mechanics-operators" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>To streamline our discussion and draw analogies with classical intuition, we need to introduce some essential <strong>notation and terminology</strong>.</p></li>
+<li><p>In quantum mechanics, we define <strong>operators</strong> as mathematical entities that transform one function into another. An operator can perform various actions on a function, such as differentiation, integration, addition, multiplication, and more. In this way, operators serve as tools to manipulate wave functions and extract physical information.</p></li>
 </ul>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/SE_intro3.jpg"><img alt="SE-intro" class="bg-primary mb-1" src="../_images/SE_intro3.jpg" style="width: 300px;" /></a>
@@ -585,6 +615,27 @@ document.write(`
 <p><span class="caption-number">Fig. 48 </span><span class="caption-text">Analogy of operators with ordinary functions.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Example of operators</strong></p>
+<ul class="simple">
+<li><p>Lets take a function e^{2x} as an example and see how operator notation works:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{d^2}{dx^2} e^{2x} = 4e^{2x}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{A} f =4f\]</div>
+<ul class="simple">
+<li><p>Where we say that operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> acts on function <span class="math notranslate nohighlight">\(e^{2x}\)</span> to produce another function which in this case is same function multiplied by 4.</p></li>
+<li><p>In general operators can be anything in front of function f(x), here are a few more examples of operators</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat{A}f = x\)</span> multiplies function by x, e.g <span class="math notranslate nohighlight">\(\hat{A}e^{2x} = xe^{2x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A} = -i\)</span> multiplies function by -i, e.g <span class="math notranslate nohighlight">\(\hat{A}e^{2x} = -e^{2x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A} = \sqrt{}\)</span>, takes square root, e.g <span class="math notranslate nohighlight">\(\hat{A}e^{2x} = e^{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{A} = (d/dx +x^2)\)</span>, takes derivative then adds x^2 multiplication <span class="math notranslate nohighlight">\(\hat{A}e^{2x} = 4e^{2x}+x^2e^{2x} = (4+x^2)e^{2x}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 <section id="linear-operators">
 <h2>Linear operators.<a class="headerlink" href="#linear-operators" title="Permalink to this heading">#</a></h2>
@@ -595,8 +646,23 @@ document.write(`
 \[\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)\]</div>
 <ul class="simple">
 <li><p>Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.</p></li>
-<li><p>Which of the following would be linear operator? <span class="math notranslate nohighlight">\(\hat{A}=\frac{d}{dx}\)</span>      <span class="math notranslate nohighlight">\(\hat{A}=\int dx\)</span>       <span class="math notranslate nohighlight">\(\hat{A}=\sqrt{}\)</span>.</p></li>
 </ul>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Example of linear operators</strong></p>
+<ul class="simple">
+<li><p>Which of the following would be linear operator? <span class="math notranslate nohighlight">\(\hat{A}=\frac{d}{dx}\)</span>,      <span class="math notranslate nohighlight">\(\hat{B}=\int dx\)</span>       <span class="math notranslate nohighlight">\(\hat{C}=\sqrt{}\)</span>.</p></li>
+<li><p>Using rules of calculus we know that derivative and integral acts on each term in the sum:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx}(c_1f_1+c_2f_2) = c_1\frac{df_1}{dx}+c_2\frac{df_2}{dx}\]</div>
+<div class="math notranslate nohighlight">
+\[\int(c_1f_1+c_2f_2)dx = c_1\int f_1dx+c_2\int f_2dx\]</div>
+<ul class="simple">
+<li><p>For the square root linear property does not hold!</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}\]</div>
+</div>
 </section>
 <section id="time-dependent-schrodinger-equation-in-operator-notation">
 <h2>Time-dependent Schrödinger equation in operator notation.<a class="headerlink" href="#time-dependent-schrodinger-equation-in-operator-notation" title="Permalink to this heading">#</a></h2>
@@ -617,51 +683,20 @@ document.write(`
 <li><p>Potential energy has exactly the same appearance: It is a function of spatial coordinates, e.g <span class="math notranslate nohighlight">\(V(x)=0\)</span> (free particle) or <span class="math notranslate nohighlight">\(V(x)=kx^2\)</span> (particle trapped in harmonic well) or  <span class="math notranslate nohighlight">\(V(x)=cos(x)\)</span> (particle subject to periodic potential).</p></li>
 </ul>
 </section>
-<section id="from-time-dependent-to-time-independent-schrodinger-equation">
-<h2>From time-dependent to time-independent Schrödinger equation.<a class="headerlink" href="#from-time-dependent-to-time-independent-schrodinger-equation" title="Permalink to this heading">#</a></h2>
-<p>As we have learned from lectures on classical wave equation when the spatial and temporal coordinates are independent of each other one can use separation of variables and decouple time and space dependence.</p>
-<div class="math notranslate nohighlight">
-\[\Psi(x,t)=f(t)\psi(x) \]</div>
-<p>Plugging this into time-dependent wave equation we get</p>
-<div class="math notranslate nohighlight">
-\[i\hbar \frac{\partial }{\partial t} f(t)\psi(x) =\hat{H}f(t)\psi(x)\]</div>
-<p>Now collecting <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> terms we achieve separation of variables.</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{f(t)}i\hbar \frac{\partial }{\partial t} f(t)=\frac{1}{\psi(x) }\hat{H}\psi(x)=E\]</div>
-<p>Notice that the hamiltonian operator contains <span class="math notranslate nohighlight">\(x\)</span> derivatives hence <span class="math notranslate nohighlight">\(f(t)\)</span> can be taken out of the operator expression. In the expression <span class="math notranslate nohighlight">\(\frac{\hat{H}\psi(x)}{\psi(x)}\)</span> however one can not cancel <span class="math notranslate nohighlight">\(\psi\)</span> becasue what we have in the numerator is differentiation written with the help of an operator, and not just a simple product!</p>
-<p>The separation constant can be recognized as the total energy as is evident by recalling that the Hamiltonian operator is the analog of Hamilton function.  The temporal part is solved instantly:</p>
-<div class="math notranslate nohighlight">
-\[f(t)=e^{-iEt/\hbar} \]</div>
-<p>The spatial part is obtained by solving time-independent Schrödinger equation.</p>
-<div class="math notranslate nohighlight">
-\[\hat{H}\psi(x)=E\psi(x)\]</div>
-<p>Once we have a solution to both spatial and temporal parts of the wave function we can put them back into <span class="math notranslate nohighlight">\(\psi(x)f(t)\)</span> and obtain full wave function:</p>
-<div class="math notranslate nohighlight">
-\[\boxed{\psi(x,t) = {\color{green}\psi(x)} {\color{red}e^{-\frac{i}{\hbar}Et}} }\]</div>
-</section>
-<section id="what-about-the-boundary-conditions-and-normal-modes">
-<h2>What about the boundary conditions and normal modes?<a class="headerlink" href="#what-about-the-boundary-conditions-and-normal-modes" title="Permalink to this heading">#</a></h2>
+<section id="linearity-and-princle-of-supersposition">
+<h2>Linearity and Princle of supersposition<a class="headerlink" href="#linearity-and-princle-of-supersposition" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>As we recall from solving classical wave equation whenever there are boundary conditions imposed on the spatial domain of our PDE we can end up having infinite number of solutions <span class="math notranslate nohighlight">\(u_n(x)\)</span> discretized by integers <span class="math notranslate nohighlight">\(n=1,2,...\)</span> for each spatial coordinate.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\frac{\partial^2 u_n(x)}{\partial x^2}=\beta^2_n u_n(x)\]</div>
-<ul class="simple">
 <li><p>The general solution is written as linear combination of normal modes
 $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\)</span>$</p></li>
-<li><p>In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by <span class="math notranslate nohighlight">\(n\)</span> where the multiplicative factors are nothing but the discrete energy levels!</p></li>
-<li><p>The wave functions for each <span class="math notranslate nohighlight">\(n\)</span> are going to have special significance as gateways to describing the probability profile of finding electrons in different points in space.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\hat{H} \psi_n(x)=E_n \psi_n(x)\]</div>
-<ul class="simple">
-<li><p>The general solution is written as linear combination of wave functions:</p></li>
+<li><p>In the same analogy we are going to have infinite number of  solutions to quantum wave equation discretized by <span class="math notranslate nohighlight">\(n\)</span> where the multiplicative factors are nothing but the discrete energy levels: <span class="math notranslate nohighlight">\(\hat{H} \psi_n(x)=E_n \psi_n(x)\)</span></p></li>
+<li><p><strong>The general solution</strong> is again written as linear combination of wave functions:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)\]</div>
 </section>
-<section id="eigenvalue-eigenfunction-problems">
-<h2>Eigenvalue eigenfunction problems<a class="headerlink" href="#eigenvalue-eigenfunction-problems" title="Permalink to this heading">#</a></h2>
+<section id="eigenvalues-and-eigenfunctions">
+<h2>Eigenvalues and eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators.</p></li>
 </ul>
@@ -671,7 +706,9 @@ $<span class="math notranslate nohighlight">\(u(x,t) = \sum_n c_n u_n(x) f_n(t)\
 <p><span class="caption-number">Fig. 49 </span><span class="caption-text">Eigenvalue/Eigenfunction problem</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.</p>
+<ul class="simple">
+<li><p>E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.</p></li>
+</ul>
 <p><strong>The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where eigenfunctions <span class="math notranslate nohighlight">\(\psi_n\)</span> are wave-functions and eigenvalues are energies <span class="math notranslate nohighlight">\(E_n\)</span>.</strong></p>
 <div class="math notranslate nohighlight">
 \[\boxed{\hat{H} \psi_n=E_n \psi_n}\]</div>
@@ -817,16 +854,15 @@ Solution<div class="sd-summary-down docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Schrödinger Equation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exciting-journey-into-the-microscopic-world">The exciting journey into the microscopic world.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-up-where-classical-mechanics-has-failed">Picking up where classical mechanics has failed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-require-from-the-new-quantum-theory">What we require from the new quantum theory?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-classical-to-quantum-wave-equation">From classical to quantum wave equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arriving-at-schrodinger-equation">Arriving at Schrödinger Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-quantum-wave-equation">Turning a quantum wave function into quantum wave equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-qm-operators">The mathematical language of QM: operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-a-quantum-wave-function-into-a-quantum-wave-equation">Turning a Quantum Wave Function into a Quantum Wave Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-separation-of-variables-in-scrodinger-equation">Note on Separation of Variables in Scrodinger Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematical-language-of-quantum-mechanics-operators">The Mathematical Language of Quantum Mechanics: Operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators">Linear operators.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-schrodinger-equation-in-operator-notation">Time-dependent Schrödinger equation in operator notation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-time-dependent-to-time-independent-schrodinger-equation">From time-dependent to time-independent Schrödinger equation.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-the-boundary-conditions-and-normal-modes">What about the boundary conditions and normal modes?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-eigenfunction-problems">Eigenvalue eigenfunction problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-and-princle-of-supersposition">Linearity and Princle of supersposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correspondence-principle-of-quantum-mechanics">The correspondence principle of Quantum Mechanics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
