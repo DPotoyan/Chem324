@@ -86,7 +86,6 @@ $$
 \frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
 $$
 
-- This equation suggests that the time evolution of the wave function is directly related to the total energy $E$. The solution to this equation takes the form of an oscillating function, $\Psi(x,t) \propto e^{-iEt/\hbar}$, describing how the wave function evolves in time.
 
 - **Spatial Part**: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. By analogy with the time-dependent case, we can relate the spatial derivative to the momentum $p$ as:
 
@@ -94,13 +93,13 @@ $$
 \frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
 $$
 
-Taking the second derivative with respect to $x$, we obtain:
+- Taking the second derivative with respect to $x$, we obtain:
 
 $$
 \frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
 $$
 
-Here, we have expressed the kinetic energy as a part of the total energy using energy conservation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
+- Here, we have expressed the kinetic energy as a part of the total energy using energy conservation $E = \frac{p^2}{2m} + V(x)$, where $V$ is the potential energy.
 
 :::{admonition} **Time-Independent Schrödinger Equation**
 :class: important
@@ -122,7 +121,7 @@ $$
 
 This equation connects the spatial evolution of the wave function (through the second derivative with respect to $x$ with its time evolution (through the first derivative with respect to $t$, describing the quantum dynamics of a particle in a potential $V(x)$.
 
-### Note on Separation of Variables in Scrodinger Equation
+### Note on Separation of Variables in Schrodinger Equation
 
 - By assuming the wave function can be separated into a product of a spatial part and a time part, $\Psi(x,t) = \psi(x) T(t)$, we can solve for each part independently:
 - The time part $T(t)=e^{-iEt/\hbar}$ yields an oscillatory solution related to the total energy.
@@ -275,10 +274,9 @@ $$u(x,t) = \sum_n c_n u_n(x) f_n(t)$$
 $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 
 
+### Eigenvalues and Eigenfunctions
 
-### Eigenvalues and eigenfunctions
-
-- Using the operator notation we see that both classical wave equation and time-independent Schrödinger equation can be framed as a problem of seeking special functions and multiplicative factors which satisfy a special kind of operators. 
+In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.
 
 :::{figure-md} markdown-fig
 <img src="images/SE_intro6.jpg" alt="eigval-func" class="bg-primary mb-1" width="300px">
@@ -286,15 +284,25 @@ $$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
 Eigenvalue/Eigenfunction problem
 :::
 
-- E.g while action of operator can in general change the function in quantum mechanics we are interested in operators which preserve the function witht he constant multi0licative factor.  
+- In general, the action of an operator can change a function, but in quantum mechanics, we are particularly interested in operators that preserve the form of the function, producing only a constant multiplicative factor.
 
-**The time-independent Schrödinger equation can now be seen as an eigenfunction-eigenvalue problem where eigenfunctions $\psi_n$ are wave-functions and eigenvalues are energies $E_n$.**
+- The time-independent Schrödinger equation can be viewed as an **eigenfunction-eigenvalue problem,** where the eigenfunctions 
 
-$$\boxed{\hat{H} \psi_n=E_n \psi_n}$$
+:::{admonition} **Schordinger Equation as Eigenfunctions/Eigenvalues problem**
+:class: important
+
+$$
+\boxed{\hat{H} \psi_n = E_n \psi_n}
+$$
+
+- $\psi_n$ the wavefunctions are the eigenfunctions of Hamitonian operator 
+- $E_n$ the energies are the eiganvalues of Hamiltonian operator
+
+:::
 
 ### The correspondence principle of Quantum Mechanics
 
-Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:
+- Thanks to universality of energy conservation law, for every observable in classical mechanics there can be found a corresponding operator in quantum mechanics! Lets list them here:
 
 |               Observables               |                   Classical                    |                           Quantum                            |
 | :-------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
@@ -316,7 +324,8 @@ Confirm that the following wavefunctions are eigenfunctions of linear momentum a
 
 - $N e^{-ix/\hbar}$
 
-:::{dropdown} Solution 
+:::{admonition} **Solution** 
+:class: dropdown
 
 Start by applying linear momentum operator to first function
 
@@ -333,5 +342,96 @@ $$
 Kinetic energy operator did not modify the function hence sin function is an eigenfunction for kinetic energy operator
 :::
 
-#### Problem 2
 
+#### Problem 2: Taking the Square of an Operator
+
+Consider the operator $ \hat{A} = x \frac{d}{dx} $. Find $ \hat{A}^2 $, i.e., $ \hat{A}(\hat{A}f(x)) $, and apply it to an arbitrary function $ f(x) $.
+
+:::{admonition} **Solution** 
+:class: dropdown
+
+First, apply $ \hat{A} f(x) = x \frac{d}{dx} f(x) $:
+$
+\hat{A} f(x) = x \frac{df}{dx}
+$
+Now, apply $ \hat{A} $ again to the result:
+$
+\hat{A}(\hat{A} f(x)) = \hat{A} \left( x \frac{df}{dx} \right) = x \frac{d}{dx} \left( x \frac{df}{dx} \right)
+$
+Using the product rule:
+$
+\frac{d}{dx} \left( x \frac{df}{dx} \right) = \frac{df}{dx} + x \frac{d^2 f}{dx^2}
+$
+Thus:
+$
+\hat{A}^2 f(x) = x \left( \frac{df}{dx} + x \frac{d^2 f}{dx^2} \right) = x \frac{df}{dx} + x^2 \frac{d^2 f}{dx^2}
+$
+
+:::
+
+#### Problem 3: Verifying Eigenfunction and Eigenvalue
+
+Consider the operator $ \hat{B} = -i\hbar \frac{d}{dx} $ (momentum operator). Verify that $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $, and find the corresponding eigenvalue.
+
+:::{admonition} **Solution** 
+:class: dropdown
+
+Apply $ \hat{B} $ to $ f(x) = e^{ikx} $:
+$
+\hat{B} f(x) = -i\hbar \frac{d}{dx} e^{ikx}
+$
+The derivative of $ e^{ikx} $ is:
+$
+\frac{d}{dx} e^{ikx} = ik e^{ikx}
+$
+Thus:
+$
+\hat{B} f(x) = -i\hbar \cdot ik e^{ikx} = \hbar k e^{ikx}
+$
+Since $ \hat{B} f(x) = \hbar k f(x) $, $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $ with eigenvalue $ \hbar k $.
+
+:::
+
+#### Problem 4: Testing for an Eigenfunction and Eigenvalue
+
+Given the operator $ \hat{C} = \frac{d^2}{dx^2} $ (second derivative operator), check if $ f(x) = e^{-\alpha x^2} $ is an eigenfunction of $ \hat{C} $, and find the eigenvalue if it is.
+
+:::{admonition} **Solution** 
+:class: dropdown
+
+Apply $ \hat{C} = \frac{d^2}{dx^2} $ to $ f(x) = e^{-\alpha x^2} $:
+$
+\frac{d}{dx} e^{-\alpha x^2} = -2\alpha x e^{-\alpha x^2}
+$
+Taking the second derivative:
+$
+\frac{d^2}{dx^2} e^{-\alpha x^2} = \frac{d}{dx} \left( -2\alpha x e^{-\alpha x^2} \right) = -2\alpha e^{-\alpha x^2} + 4\alpha^2 x^2 e^{-\alpha x^2}
+$
+Thus:
+$
+\hat{C} f(x) = \left( -2\alpha + 4\alpha^2 x^2 \right) e^{-\alpha x^2}
+$
+Since this is not proportional to $ f(x) = e^{-\alpha x^2} $, $ f(x) $ is **not** an eigenfunction of $ \hat{C} $.
+
+:::
+
+#### Problem 5: Linearity and Eigenfunction Testing
+
+Consider the operator $ \hat{D} = x^2 \frac{d}{dx} $. Show whether this operator is linear and check if $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $.
+
+:::{admonition} **Solution** 
+:class: dropdown
+
+First, test linearity by applying $ \hat{D} $ to $ \alpha f(x) + \beta g(x) $:
+$
+\hat{D}(\alpha f(x) + \beta g(x)) = x^2 \frac{d}{dx} (\alpha f(x) + \beta g(x)) = \alpha x^2 \frac{df}{dx} + \beta x^2 \frac{dg}{dx}
+$
+This is $ \alpha \hat{D} f(x) + \beta \hat{D} g(x) $, so $ \hat{D} $ is linear.
+
+Now, apply $ \hat{D} $ to $ f(x) = x^n $:
+$
+\hat{D} f(x) = x^2 \frac{d}{dx} x^n = x^2 \cdot n x^{n-1} = n x^n
+$
+Since the result is proportional to $ f(x) = x^n $, $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $ with eigenvalue $ n $.
+
+:::
