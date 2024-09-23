@@ -1,44 +1,82 @@
 ## Wave function  
 
-```{admonition} What you need to know
+:::{admonition} **What you need to know**
 :class: note
-- Quantum world is probabilistic in its nature 
-- Absolute value of wave function squared is a probability distribution function to find quantum object in space and time
-- A simple toy system, like Particle in a Box is introduced to qualitatively explain behavior of electrons bound inside atom and molecules.
-  - On the example of PIB we see **Energetic quantization**. 
-  - **Probabilistic nature of quantum particle.** Having non uniform distributions over position with existence of nodal points. 
-  - **Uncertainty relation.** Inverse relationship between spread in position and momentum values. 
-  - **Existence of zero point energy.** A minimal non-zero kinetic energy. This implies we can never freeze all motion of small particles. 
-  - **Quantum-classical correspondence.** Smooth transition to classical behavior when going larger scales.   
-  - **Degeneracy in energy levels.** How symmetries lead to different wave functions corresponding to the same energy levels. 
-```
+
+1. **The Probabilistic Nature of the Quantum World**  
+   The quantum realm operates on fundamentally probabilistic principles, where certainty is replaced by probabilities.
+
+2. **Wave Function and Probability Distribution**  
+   The absolute square of the wave function, \(|\psi|^2\), represents the probability distribution of finding a quantum particle in space and time.
+
+3. **Particle in a Box (PIB) as a Model System**  
+   The Particle in a Box (PIB) is a simple model that helps illustrate the behavior of electrons confined within atoms and molecules. It serves as a useful tool to introduce key quantum concepts:
+
+   - **Energetic Quantization**: Energy levels in quantum systems are discrete, not continuous, as seen in the PIB model.
+   
+   - **Probabilistic Nature of Quantum Particles**: The probability distribution for the particle's position is non-uniform, with nodal points where the probability is zero, emphasizing the inherent uncertainty in the particle’s exact location.
+   
+   - **Uncertainty Principle**: There is an inverse relationship between the uncertainty in position and momentum, demonstrating the fundamental limit on how precisely both quantities can be known simultaneously.
+   
+   - **Zero-Point Energy**: Quantum particles always possess a minimum kinetic energy, even at absolute zero. This zero-point energy highlights the impossibility of freezing all motion in quantum systems.
+   
+   - **Quantum-Classical Correspondence**: As the system scales up, quantum behavior smoothly transitions to classical behavior, illustrating the correspondence principle.
+
+   - **Degeneracy of Energy Levels**: In systems with symmetries, multiple wave functions can correspond to the same energy level, a phenomenon known as degeneracy.
+
+
+:::
+
+
 ### What is the meaning of a wave-function $\psi$ ? 
 
-- In classical wave equation, wave function has a simple mechanical interpretation: it's just the degree of disturbance of the wave. E.g. elevation of guitar string from a rest position.  
-- In contrast the the quantum wave function is not so intuitive. First wave function by itself is without direct physical meaning as it is generally a complex function. One needs to decide how to extract real quantities which are then connected to observables measurable in the experiments. 
-- It turns out that the absolute value of wave function squared that is 
-$$p(x)=\psi(x) \cdot \psi^{*}(x)$$ 
+- In the classical wave equation, the wave function has a clear mechanical interpretation: it represents the degree of disturbance in the wave. For example, it can describe the elevation of a guitar string from its resting position.
 
-- $p(x)$ is a probability distribution function describing likelihood of quantum objects being at different points $x$. 
+- In contrast, the quantum wave function is less intuitive. The wave function itself does not have direct physical meaning, as it is generally a complex function. To connect it to measurable quantities, we need to extract real values from it that correspond to physical observables.
 
-- For 3D space the analogous expression is 
+- The key insight is that the absolute square of the wave function gives the probability distribution:
 
-$$p(x,y,z)=\psi(x,y,z) \cdot \psi^{*}(x,y,z)$$ 
+:::{admonition} **Probabilistic meaning of quantum wave function (square)**
 
-### The importance of normalization
+  $$p(x) = \psi^{*}(x) \cdot \psi(x) = |\psi(x)|^2$$
+  
+:::
 
-- To be a proper probability distribution, wave-function squared must be normalizable. Otherwise it is only proportional to probability distribution and not equal. 
-- Normalization of $\psi^2$  means that that there is absolute certainty that quantum object exists somehwere in space. Hence in an experiment when you search for quantum particle in an entire space you are going to find it somewhere.
+- $p(x)$ is a **probability distribution function**. It is describing the likelihood of finding a quantum object at a positions x. 
+- $p(x)dx$ gives the probability to find particle in a tiny part of space inside $x, x+dx$ interval.
 
-Normalization in 1D:
+- In three-dimensional space, the analogous expression is:
 
-$$\int^{+\infty}_{-\infty} |\psi(x)|^2 dx= \int^{+\infty}_{-\infty} p(x)dx=1$$ 
+  $$p(x, y, z) = \psi(x, y, z)^{*} \cdot \psi(x, y, z)$$
 
-Normalization of a wave function $\psi'$ is done by multiplying it by a constant  $\psi=N\psi'$ and plugging in the above condition to find the value of $N$. In another words normalization allows determining the constant multiplicative factor in front of wave functions.
 
-Normalization in 3D:
+### Probability refresher
 
-$$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} |\psi(x,y,z)|^2dx dy dz=1$$
+[Watch this video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)
+
+- **Always positive** $p(x)>0$ 
+- **Must sume to one over its domain** $\int p(x)dx=1$
+- **Mean** $\mu = \langle x\cdot \rangle  = \int xp(x)dx$
+- **Variance** $\sigma^2 = \langle x^2\rangle - \langle x\rangle^2$
+- [Probability distribution explorer](https://idiot.computer/probs/)
+
+### Normalization of wavefunction
+
+- For the wave function to represent a proper probability distribution, it must be normalizable. If it is not normalizable, the wave function is only proportional to a probability distribution and not equal to it.
+
+- **Normalization** of $\psi^2$ ensures that there is absolute certainty that the quantum object exists somewhere in space. In an experiment, when searching for a quantum particle across the entire space, normalization guarantees that you will find it somewhere.
+
+- **Normalization in 1D**:
+
+  $$\int^{+\infty}_{-\infty} |\psi(x)|^2 dx = \int^{+\infty}_{-\infty} p(x) dx = 1$$
+
+- To normalize a wave function $\psi'$, multiply it by a constant: $\psi = N\psi'$. The constant $N$ is determined by plugging this expression into the normalization condition. In other words, normalization helps determine the multiplicative factor in front of wave functions.
+
+- **Normalization in 3D**:
+
+  $$\int^{+\infty}_{-\infty} \int^{+\infty}_{-\infty} \int^{+\infty}_{-\infty} |\psi(x, y, z)|^2 dx \, dy \, dz = 1$$
+
+
 
 ### What can we do with probability distribution functions (PDF)? 
 
@@ -49,6 +87,7 @@ $$ \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty}  \int^{+\infty}_{-\infty} 
 - In higher dimensions, e.g. 3D, we can locate particle around volume $dxdydz$ or any finite volume via a similar integration:
 
   $$p(a_x<x<b_x,a_y<y<b_y, a_z<z<b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz$$
+
 
 ### Computing moments of probability distirbution function
 
