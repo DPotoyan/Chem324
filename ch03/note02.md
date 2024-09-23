@@ -37,6 +37,7 @@
 - The key insight is that the absolute square of the wave function gives the probability distribution:
 
 :::{admonition} **Probabilistic meaning of quantum wave function (square)**
+:class: important
 
   $$p(x) = \psi^{*}(x) \cdot \psi(x) = |\psi(x)|^2$$
   
@@ -52,7 +53,7 @@
 
 ### Probability refresher
 
-[Watch this video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)
+- [Watch this video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)
 
 - **Always positive** $p(x)>0$ 
 - **Must sume to one over its domain** $\int p(x)dx=1$
@@ -87,21 +88,6 @@
 - In higher dimensions, e.g. 3D, we can locate particle around volume $dxdydz$ or any finite volume via a similar integration:
 
   $$p(a_x<x<b_x,a_y<y<b_y, a_z<z<b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz$$
-
-
-### Computing moments of probability distirbution function
-
-- Probability distribution function contains lot of information. E.g probability of observing every possible value of $x$.  
-
-- But often we are interested in more reduced descriptions in terms of moments such quantifying average value (first moment) or spread in the distribution (second moment). Below we re-list the definitions of various quantities one can extract from a PDF.
-
-|                      DEFINITION                      | NAME of moment  |
-| :--------------------------------------------------: | :-------------: |
-|         $\langle x \rangle=\int p(x) x dx$         | **1-st moment** |
-|       $\langle x^2 \rangle=\int p(x)x^2 dx$        | **2-nd moment** |
-|       $\langle x^n \rangle=\int p(x)x^n dx$        | **N-th moment** |
-| $\sigma^2=\langle x^2 \rangle-\langle x \rangle^2$   | **Dispersion**  |
-
 
 
 ### What about quantities which correspond to operators?
