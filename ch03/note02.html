@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Particle in a 3D box" href="note02B.html" />
+    <link rel="next" title="Particle in a Box" href="note02A.html" />
     <link rel="prev" title="Schrödinger Equation" href="note01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Schrödinger Equation</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a Box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02B.html">Particle in a 3D box</a></li>
 
 
@@ -440,15 +441,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-of-wavefunction">Normalization of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-pib">Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-1d-particle-in-a-box">Eigenfunctions and eigenvalues of 1D particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
             </nav>
         </div>
@@ -469,17 +461,6 @@ document.write(`
 The quantum realm operates on fundamentally probabilistic principles, where certainty is replaced by probabilities.</p></li>
 <li><p><strong>Wave Function and Probability Distribution</strong><br />
 The absolute square of the wave function, (|\psi|^2), represents the probability distribution of finding a quantum particle in space and time.</p></li>
-<li><p><strong>Particle in a Box (PIB) as a Model System</strong><br />
-The Particle in a Box (PIB) is a simple model that helps illustrate the behavior of electrons confined within atoms and molecules. It serves as a useful tool to introduce key quantum concepts:</p>
-<ul class="simple">
-<li><p><strong>Energetic Quantization</strong>: Energy levels in quantum systems are discrete, not continuous, as seen in the PIB model.</p></li>
-<li><p><strong>Probabilistic Nature of Quantum Particles</strong>: The probability distribution for the particle’s position is non-uniform, with nodal points where the probability is zero, emphasizing the inherent uncertainty in the particle’s exact location.</p></li>
-<li><p><strong>Uncertainty Principle</strong>: There is an inverse relationship between the uncertainty in position and momentum, demonstrating the fundamental limit on how precisely both quantities can be known simultaneously.</p></li>
-<li><p><strong>Zero-Point Energy</strong>: Quantum particles always possess a minimum kinetic energy, even at absolute zero. This zero-point energy highlights the impossibility of freezing all motion in quantum systems.</p></li>
-<li><p><strong>Quantum-Classical Correspondence</strong>: As the system scales up, quantum behavior smoothly transitions to classical behavior, illustrating the correspondence principle.</p></li>
-<li><p><strong>Degeneracy of Energy Levels</strong>: In systems with symmetries, multiple wave functions can correspond to the same energy level, a phenomenon known as degeneracy.</p></li>
-</ul>
-</li>
 </ol>
 </div>
 <section id="what-is-the-meaning-of-a-wave-function-psi">
@@ -568,230 +549,6 @@ The Particle in a Box (PIB) is a simple model that helps illustrate the behavior
 </tbody>
 </table>
 </section>
-<section id="particle-in-a-box-pib">
-<h2>Particle in a Box (PIB):<a class="headerlink" href="#particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Particle in a box is a toy model of electron/atom/molecule trapped in some region of space <span class="math notranslate nohighlight">\([0,L]\)</span>. The positional information of a quantum “particle” is described by a quantum wave function <span class="math notranslate nohighlight">\(\psi(x)\)</span> which is obtained by solving Schrödinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem.</p></li>
-<li><p>Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a “wave”.</p></li>
-</ul>
-</section>
-<section id="classical-vs-quantum-particle-in-a-box">
-<h2>Classical vs Quantum particle in a box<a class="headerlink" href="#classical-vs-quantum-particle-in-a-box" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif"><img alt="PIB-wiki" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/InfiniteSquareWellAnimation.gif" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">The particle in a box (PIB) is a convenient system for illustrating the differences between classical (A) and quantum systems (B-F). The horizontal axis is position, and the vertical axis is the real part (blue) and imaginary part (red) of the wavefunction  <span class="math notranslate nohighlight">\(\psi_n(x)\)</span>. The states (B,C,D) are the eigenfunctions of Hamiltonian <span class="math notranslate nohighlight">\(n=1,2,3\)</span>.  While E and F are not.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="what-are-some-new-ideas-that-we-learn-from-pib">
-<h2>What are some new ideas that we learn from PIB<a class="headerlink" href="#what-are-some-new-ideas-that-we-learn-from-pib" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive <strong>energy levels</strong>.</p></li>
-<li><p>“Particle”  can never have <strong>zero energy</strong>, meaning that the particle can never “sit still”.</p></li>
-<li><p>“Particle” is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as <strong>spatial nodes.</strong></p></li>
-</ol>
-</section>
-<section id="solving-schrodinger-quation-for-particle-in-a-box-pib">
-<h2>Solving Schrödinger quation for Particle in a Box (PIB):<a class="headerlink" href="#solving-schrodinger-quation-for-particle-in-a-box-pib" title="Permalink to this heading">#</a></h2>
-<p>The Schrödinger equation for PIB, as for any system is defined by a Hamiltonian operator which consists of potential energy with infinitely high values at boundaries of the box and zero inside the box. This form of potential energy ensures that  the “particle” stays inside the box where it has acess only to the kinetic energy term.</p>
-<figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg"><img alt="pib1" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" width="300px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Particle in a box subject to infinitely high potential walls</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Mathematically, the potential energy is:</p>
-<div class="math notranslate nohighlight">
-\[V(x=0)=V(x=L)=\infty \,\,\,\,V(0&lt;x&lt;L)=0 \]</div>
-<p>The boundary conditions are:</p>
-<div class="math notranslate nohighlight">
-\[\psi(x=0)=\psi(x=L)=0\]</div>
-<p>Hamiltonian operator accounting for kinetic energy is:</p>
-<div class="math notranslate nohighlight">
-\[\hat{H}= \hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
-<p>We have all the necessary ingeredients to solve Schrödinger equation for 1D PIB <span class="math notranslate nohighlight">\(\hat{H}\psi(x)=E\psi(x)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x)=E\psi(x),\,\,\,\,or\,\,\, \psi''(x)=-k^2 \psi(x)\]</div>
-<p>Where we have defined <span class="math notranslate nohighlight">\(k^2=\frac{2mE}{\hbar^2}\)</span>  as a positive real number</p>
-</section>
-<section id="d-pib-looks-just-like-1d-guitar-string-problem">
-<h2>1D PIB looks just like 1D guitar string problem.<a class="headerlink" href="#d-pib-looks-just-like-1d-guitar-string-problem" title="Permalink to this heading">#</a></h2>
-<p>Mathematically the form of 1D PIB is the same kind fo ODE as the 1D guitar string problem. The differences are in the constant coefficients and the interpretation of wave function!</p>
-<div class="math notranslate nohighlight">
-\[\psi''(x)=-k^2 \psi(x)\]</div>
-<div class="math notranslate nohighlight">
-\[\psi(x)=c_1e^{ikx}+c_2e^{-ikx}=A\cos(kx)+B\sin(kx)\]</div>
-<ul class="simple">
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(0)=0\)</span> we get <span class="math notranslate nohighlight">\(A=0\)</span> and <span class="math notranslate nohighlight">\(\psi(x)=B\sin(kx)\)</span></p></li>
-<li><p>Applying boundary condition <span class="math notranslate nohighlight">\(\psi(L)=B\sin(kL)=0\)</span> we get <span class="math notranslate nohighlight">\(kL=n\pi\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[k=\frac{n\pi}{L}\,\,\, \rightarrow\,\,\, \psi(x)=B \sin(\frac{n\pi}{L}x)\]</div>
-<div class="math notranslate nohighlight">
-\[k^2 = \frac{n^2\pi^2}{L^2}=\frac{2mE}{\hbar^2}\]</div>
-<div class="math notranslate nohighlight">
-\[E_n=\frac{n^2 h^2}{8mL^2}\]</div>
-<p>Quantization results from trapping a wave function in space! This is why bound states have quantized energy.  Atoms, molecules, solids  all have discrete energy levels for very similar reasons.</p>
-</section>
-<section id="wave-functions-must-be-normalized">
-<h2>Wave functions must be normalized<a class="headerlink" href="#wave-functions-must-be-normalized" title="Permalink to this heading">#</a></h2>
-<p>Now we will see how requirement of normalization determines the constant coefficient B.</p>
-<div class="math notranslate nohighlight">
-\[\int^L_0 \psi_n(x)^2 dx=1 \]</div>
-<div class="math notranslate nohighlight">
-\[\psi_n^*(x) \psi_n(x)  = B_n^*B_n \sin^2\frac{n\pi x}{a}\]</div>
-<p>We will make use of <span class="math notranslate nohighlight">\(\sin^2(x)=\frac{1}{2}(1-\cos(2x))\)</span> trig relation to evaluate integral</p>
-<div class="math notranslate nohighlight">
-\[B_n^2 \int^L_0 \sin^2 \left(\frac{n\pi}{L}x\right)=\frac{B_n^2}{2} \int^L_0 \left[ 1-\cos\left(\frac{2n\pi}{L}x\right) \right]=\frac{B_n^2}{2}=1\]</div>
-<div class="math notranslate nohighlight">
-\[B_n=\Big (\frac{2}{L}\Big)^{\frac{1}{2}} \]</div>
-<ul class="simple">
-<li><p>Note that normalization coefficient turned out to be independent of <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
-</ul>
-</section>
-<section id="eigenfunctions-and-eigenvalues-of-1d-particle-in-a-box">
-<h2>Eigenfunctions and eigenvalues of 1D particle in a box<a class="headerlink" href="#eigenfunctions-and-eigenvalues-of-1d-particle-in-a-box" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Obtaining and normalizing wavefunctions we completed solution of Schrodinger equation as an eigenfunction eigenvalue problem <span class="math notranslate nohighlight">\(\hat{H}\psi_n = E_n \psi_n\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\boxed{\psi_n(x) = \Big (\frac{2}{L}\Big)^{\frac{1}{2}} \sin\frac{n\pi x}{L}}\]</div>
-<div class="math notranslate nohighlight">
-\[\boxed{E_n=\frac{n^2 h^2}{8mL^2}}\]</div>
-</section>
-<section id="computing-average-properties-from-a-wave-function">
-<h2>Computing Average Properties from a Wave Function<a class="headerlink" href="#computing-average-properties-from-a-wave-function" title="Permalink to this heading">#</a></h2>
-<p>Because of the probabilistic interpretation of the wave function, average properties can be computed from the wave function.  The general formula is</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-&lt;A&gt; = \int \psi^*(x)\hat{A}\psi(x)dx
-\end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{A}\)</span> is any operator.  This could be momentum, kinetic energy, etc.</p>
-<p>Let’s look at a few examples.</p>
-<ol class="arabic simple">
-<li><p>Compute the probability to find particle in a range <span class="math notranslate nohighlight">\(a&lt;x&lt;b\)</span></p></li>
-<li><p>Compute the average value of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</p></li>
-<li><p>Compute the average energy for a particle in a box</p></li>
-<li><p>Compute the average momentum for a particle in a box</p></li>
-</ol>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Example: Compute the probability of observing the particle in a box being in the domain <span class="math notranslate nohighlight">\(\frac{a}{3} \leq x \leq \frac{2a}{3}\)</span>. </p>
-<p>Since the square of the wave function is a probability function, we can determine the probability of observing a particle in a particular domain using the relationship</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\text{Prob}(x_1 \leq x \leq x_2) = \int_{x_1}^{x_2}P(x)dx = \int_{x_1}^{x_2} \psi^*(x)\psi(x)dx
-\end{equation}\]</div>
-<p>We simply use the above equation and the normalized particle in a box wave function:</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) = \frac{2}{a}\int_{\frac{a}{3}}^{\frac{2a}{3}} \sin^2\frac{n\pi x}{a}dx
-\end{align}\]</div>
-<p>We will use the definite integral of <span class="math notranslate nohighlight">\(\sin^2ax\)</span> from a table:</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\int\sin^2axdx = \frac{x}{2} - \frac{\sin2ax}{4a}
-\end{equation}\]</div>
-<p>Perform <span class="math notranslate nohighlight">\(u = \)</span> substition of the integral above to get into the table form</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\text{Prob}(\frac{a}{3} \leq x \leq \frac{2a}{3}) &amp;= \frac{2}{a}\left[ \frac{x}{2} - \frac{\sin\frac{2n\pi x}{a}}{\frac{4n\pi}{a}}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
-&amp;= \frac{2}{a}\left[ \frac{x}{2} - \frac{a\sin\frac{2n\pi x}{a}}{4n\pi}\right]_{\frac{a}{3}}^{\frac{2a}{3}} \\
-&amp;= \frac{2}{a}\left[ \frac{a}{3} - \frac{a\sin\frac{4n\pi}{3}}{4n\pi} - \frac{a}{6} + \frac{a\sin\frac{2n\pi }{3}}{4n\pi}\right] \\
-&amp;= 2\left[ \frac{1}{6}  + \frac{\sin\frac{2n\pi }{3} - \sin\frac{4n\pi}{3}}{4n\pi}\right]
-\end{align}\end{split}\]</div>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Example: Compute he average of <span class="math notranslate nohighlight">\(x^2\)</span> for a particle in a box</p>
-<p>To compute the average value of <span class="math notranslate nohighlight">\(x^2\)</span> we start by writing the integral expression</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\langle x^2 \rangle = \int \psi^*(x) x^2 \psi(x)dx
-\end{equation}\]</div>
-<p>For the particle in a box, we can limit the domain, and thus the bounds of integration, to <span class="math notranslate nohighlight">\(0\leq x \leq a\)</span>.  We can also set <span class="math notranslate nohighlight">\(\psi_n(x) = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}\)</span>.</p>
-<p>Thus, for a particle in a 1D box of size <span class="math notranslate nohighlight">\(a\)</span> we get</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle x^2 \rangle &amp;= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
-&amp;= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx
-\end{align}\end{split}\]</div>
-<p>From an integral table we find that</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\int x^2\sin^2\alpha xdx = \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2} + C
-\end{equation}\]</div>
-<p>We use this equation with <span class="math notranslate nohighlight">\(\alpha = \frac{n\pi}{a}\)</span> and get</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle x^2 \rangle &amp;= \int_0^a \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right) x^2 \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx \\
-&amp;= \frac{2}{a} \int_0^a x^2 \sin^2\frac{n\pi x}{a}dx \\
-&amp;= \frac{2}{a}\left[ \frac{x^3}{6} - \left(\frac{x^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha x - \frac{x\cos 2\alpha x}{4\alpha^2}\right]_0^a \\
-&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\alpha} - \frac{1}{8\alpha^3}\right)\sin2\alpha a - \frac{a\cos 2\alpha a}{4\alpha^2} \right] \\
-&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \left(\frac{a^2}{4\frac{n\pi}{a}} - \frac{1}{8\left(\frac{n\pi}{a}\right)^3}\right)\sin2\frac{n\pi}{a} a - \frac{a\cos 2\frac{n\pi}{a} a}{4\left(\frac{n\pi}{a}\right)^2} \right] \\
-&amp;= \frac{2}{a}\left[ \frac{a^3}{6} - \frac{a^3}{\left(2n\pi\right)^2} \right] \\
-&amp;=  \frac{a^2}{3} - \frac{a^2}{2\left(n\pi\right)^2} 
-\end{align}\end{split}\]</div>
-<p>This result, combined with the result for <span class="math notranslate nohighlight">\(\langle x \rangle\)</span>, can be used to determine <span class="math notranslate nohighlight">\(\sigma_x\)</span>, the standard deviation of particle deviation:</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} = \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3} -2}
-\end{equation}\]</div>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Example: Compute the average Energy of Particle in a Box</p>
-<p>The average energy of the particle in a box is a special case of computing an average quantity.  We will start by writing out the standard definition of computing and average from a wavefunction</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\langle E \rangle = \int_0^a \psi_n^*(x)\hat{E}\psi_n(x)dx
-\end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{E}\)</span> is the total energy operator.  We know the total energy operator by another symbol, namely <span class="math notranslate nohighlight">\(\hat{E} = \hat{H}\)</span>.  We plug this into the above equation to get</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\langle E \rangle = \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx.
-\end{equation}\]</div>
-<p>We now recognize that, for the particle in a box wavefunctions that we are discussion these were derived from the Schrodinger equation</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\hat{H}\psi_n(x)  = E_n\psi_n(x)
-\end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(E_n\)</span> is a scalar.  Thus, for the average energy we get</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle E \rangle &amp;= \int_0^a \psi_n^*(x)\hat{H}\psi_n(x)dx \\
-&amp;=\int_0^a \psi_n^*(x)E_n\psi_n(x)dx \\
-&amp;=E_n\int_0^a \psi_n^*(x)\psi_n(x)dx \\
-&amp;= E_n
-\end{align}\end{split}\]</div>
-<p>The last equality holding because the wave functions are normalized.</p>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Example: Compute Average momentum</p>
-<p>To compute the average momentum of a particle in a 1D box we start in the usual way</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\langle p \rangle = \int_0^a \psi_n^*(x)\hat{p}\psi_n(x)dx
-\end{equation}\]</div>
-<p>Recall that the momentum operator in one dimension is given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-\hat{p}_x = -i\hbar\frac{d}{dx}
-\end{equation}\]</div>
-<p>We now substitute this into the  above equation and solve</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle p \rangle &amp;= \int_0^a \psi_n^*(x)\left(-i\hbar\frac{d}{dx}\right)\psi_n(x)dx \\
-&amp;= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{d}{dx}\left(\sin\left(\frac{n\pi x}{a}\right)\right)dx \\
-&amp;= -\frac{2i\hbar}{a}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\frac{n\pi}{a}\cos\left(\frac{n\pi x}{a}\right)dx \\
-&amp;= -\frac{2in\pi\hbar}{a^2}\int_0^a \sin\left(\frac{n\pi x}{a}\right)\cos\left(\frac{n\pi x}{a}\right)dx \\
-&amp;= 0
-\end{align}\end{split}\]</div>
-<p>where the last equality can be found in an integral table.</p>
-<p>So the average momentum of a particle in a box is zero.  This is because it is equally probable for the particle to be moving forward and backwards.</p>
-</div>
-</section>
-<section id="problems">
-<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -834,11 +591,11 @@ The Particle in a Box (PIB) is a simple model that helps illustrate the behavior
       </div>
     </a>
     <a class="right-next"
-       href="note02B.html"
+       href="note02A.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Particle in a 3D box</p>
+        <p class="prev-next-title">Particle in a Box</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -862,15 +619,6 @@ The Particle in a Box (PIB) is a simple model that helps illustrate the behavior
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-of-wavefunction">Normalization of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-pib">Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-vs-quantum-particle-in-a-box">Classical vs Quantum particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-new-ideas-that-we-learn-from-pib">What are some new ideas that we learn from PIB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-schrodinger-quation-for-particle-in-a-box-pib">Solving Schrödinger quation for Particle in a Box (PIB):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pib-looks-just-like-1d-guitar-string-problem">1D PIB looks just like 1D guitar string problem.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-must-be-normalized">Wave functions must be normalized</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-1d-particle-in-a-box">Eigenfunctions and eigenvalues of 1D particle in a box</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-average-properties-from-a-wave-function">Computing Average Properties from a Wave Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
   </nav></div>
 
