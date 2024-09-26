@@ -7,7 +7,7 @@
    The quantum realm operates on fundamentally probabilistic principles, where certainty is replaced by probabilities.
 
 2. **Wave Function and Probability Distribution**  
-   The absolute square of the wave function, \(|\psi|^2\), represents the probability distribution of finding a quantum particle in space and time.
+   The absolute square of the wave function, $|\psi|^2$, represents the probability distribution of finding a quantum particle in space and time.
 :::
 
 
@@ -36,13 +36,16 @@
 
 ### Probability refresher
 
-- [Watch this video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)
-
 - **Always positive** $p(x)>0$ 
-- **Must sume to one over its domain** $\int p(x)dx=1$
-- **Mean** $\mu = \langle x\cdot \rangle  = \int xp(x)dx$
+- **Must sum to one over its domain** $\int p(x)dx=1$
+- **Mean** $\mu = \langle x \rangle  = \int xp(x)dx$
 - **Variance** $\sigma^2 = \langle x^2\rangle - \langle x\rangle^2$
+
+---
+
+- [Watch this video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)
 - [Probability distribution explorer](https://idiot.computer/probs/)
+
 
 ### Normalization of wavefunction
 
@@ -75,7 +78,20 @@
 
 ### What about quantities which correspond to operators?
 
-**For quantities like momentum or total energy which are no longer simple functions as in classical mechanics but operators, $\hat{p}$ and $\hat{H}$, we simply have to use operators in the defintion of moments!**
+- Recall that mean value of x is computed by weighting its values by probabilities, e.g think of average mass of box of candies, we multiply probability or fraction of each candy type by its mass and sum. 
+
+$$\langle x \rangle = x_1 p_2+x_2 p_2 + ...$$
+
+$$\langle x \rangle  = \int x\cdot p(x)  dx$$
+
+- Likewise you can compute averge of any function of x, say $x^2$ or $sin(x)$. 
+
+$$\langle f \rangle  = \int f(x)  \cdot  p(x) dx$$
+
+- For quantities like momentum or total energy which are no longer simple functions as in classical mechanics but operators, $\hat{p}$ and $\hat{H}$, we simply have to use operators in the defintion of moments!
+
+$$\langle A \rangle  = \int \hat{A} p(x) \cdot  dx = \int \psi^{*}(x) \cdot \hat{A} \psi(x) \cdot  dx $$
+
 
 |                       Average quantity                       |               Corresponding operator               |
 | :----------------------------------------------------------: | :------------------------------------------------: |
