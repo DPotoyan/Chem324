@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Particle in a 3D box &#8212; Quantum Mechanics for Chemistry</title>
+    <title>Particle in a 3D box, applications &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -205,7 +205,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Wave function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a Box</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle in a 3D box</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle in a 3D box, applications</a></li>
+
 
 
 
@@ -426,7 +427,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Particle in a 3D box</h1>
+    <h1>Particle in a 3D box, applications</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,10 +437,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn-from-1d-pib-model">What did we learn from 1D PIB model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box, applications</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box">Eigenfunctions and eigenvalues of particle in 3D Box</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -452,23 +457,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="particle-in-a-3d-box">
-<h1>Particle in a 3D box<a class="headerlink" href="#particle-in-a-3d-box" title="Permalink to this heading">#</a></h1>
+  <section id="particle-in-a-3d-box-applications">
+<h1>Particle in a 3D box, applications<a class="headerlink" href="#particle-in-a-3d-box-applications" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>Particle in a box is a toy model of electron/atom/molecule trapped in some region of space <span class="math notranslate nohighlight">\([0,L]\)</span>. The positional information of a quantum “particle” is described by a quantum wave function <span class="math notranslate nohighlight">\(\psi(x)\)</span> which is obtained by solving Schrodinger equation a simple PDE/ODE or an eigenfunction-eigenvalue problem.</p></li>
-<li><p>Wave functions are standing waves just like in a guitar on a string problem. With one major difference! Quantum-wave function has a probabilistic meaning and hence has a completely different meaning from a classical notion of a “wave”</p></li>
-</ul>
-</div>
-</section>
-<section id="what-did-we-learn-from-1d-pib-model">
-<h1>What did we learn from 1D PIB model<a class="headerlink" href="#what-did-we-learn-from-1d-pib-model" title="Permalink to this heading">#</a></h1>
-<ol class="arabic simple">
 <li><p>In classical systems  a particle trapped inside a large box can move at any speed within the box and it is no more likely to be found at one position than another. However, when the well becomes very narrow (on the scale of a few nanometers), quantum effects become important. The particle may only occupy certain positive <strong>energy levels</strong>.</p></li>
 <li><p>“Particle”  can never have <strong>zero energy</strong>, meaning that the particle can never “sit still”.</p></li>
 <li><p>“Particle” is more likely to be found at certain positions than at others, depending on its energy level. The particle may never be detected at certain positions, known as <strong>spatial nodes.</strong></p></li>
-</ol>
+</ul>
+</div>
 </section>
 <section id="quantum-pib-in-3d">
 <h1>Quantum PIB in 3D<a class="headerlink" href="#quantum-pib-in-3d" title="Permalink to this heading">#</a></h1>
@@ -484,38 +482,50 @@ document.write(`
 <p>where the solutions <span class="math notranslate nohighlight">\(\psi\)</span> must be normalized:</p>
 <div class="math notranslate nohighlight">
 \[{\int\limits_{-\infty}^{\infty}\int\limits_{-\infty}^{\infty}\int\limits_{-\infty}^{\infty}\left|\psi(x,y,z)\right|^2dxdydz = 1}\]</div>
-<p>Consider a particle in a box with sides of lengths <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(c\)</span> in <span class="math notranslate nohighlight">\(z\)</span>. The potential inside the box is zero and outside the box infinity. Again, the potential term can be treated by boundary conditions (i.e,. infinite potential implies that the wavefunction must be zero there). The above equation can be now written as:</p>
+<ul class="simple">
+<li><p>Consider a particle in a box with sides of lengths <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(c\)</span> in <span class="math notranslate nohighlight">\(z\)</span>. The potential inside the box is zero and outside the box infinity. Again, the potential term can be treated by boundary conditions (i.e,. infinite potential implies that the wavefunction must be zero there). The above equation can be now written as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{-\frac{\hbar^2}{2m}\Delta\psi = E\psi} \\
 {\textnormal{with }\psi(a,y,z) = \psi(x,b,z) = \psi(x,y,c) = 0} \\
 {\textnormal{and }\psi(0,y,z) = \psi(x,0,z) = \psi(x,y,0) = 0}\end{split}\]</div>
-<p>In general, when the potential term can be expressed as a sum of terms that depend separately only on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, the solutions can be written as a product:</p>
+<ul class="simple">
+<li><p>In general, when the potential term can be expressed as a sum of terms that depend separately only on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, the solutions can be written as a product:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\psi(x,y,z) = X(x)Y(y)Z(z)}\]</div>
-<p>By substituting and dividing by <span class="math notranslate nohighlight">\(X(x)Y(y)Z(z)\)</span>, we obtain:</p>
+<ul class="simple">
+<li><p>By substituting and dividing by <span class="math notranslate nohighlight">\(X(x)Y(y)Z(z)\)</span>, we obtain:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{-\frac{\hbar^2}{2m}\left[\frac{1}{X(x)}\frac{d^2X(x)}{dx^2} + \frac{1}{Y(y)}\frac{d^2Y(y)}{dy^2} + \frac{1}{Z(z)}\frac{d^2Z(z)}{dz^2}\right] = E}\]</div>
-<p>The total energy <span class="math notranslate nohighlight">\(E\)</span> consists of a sum of three terms, which each depend separately on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>. Thus we can write <span class="math notranslate nohighlight">\(E = E_x + E_y + E_z\)</span> and separate the equation into three one-dimensional problems:</p>
+<ul class="simple">
+<li><p>The total energy <span class="math notranslate nohighlight">\(E\)</span> consists of a sum of three terms, which each depend separately on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>. Thus we can write <span class="math notranslate nohighlight">\(E = E_x + E_y + E_z\)</span> and separate the equation into three one-dimensional problems:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{-\frac{\hbar^2}{2m}\left[\frac{1}{X(x)}\frac{d^2X(x)}{dx^2}\right] = E_x\textnormal{ with }X(0) = X(a) = 0}\\
 {-\frac{\hbar^2}{2m}\left[\frac{1}{Y(y)}\frac{d^2Y(y)}{dy^2}\right] = E_y\textnormal{ with }Y(0) = Y(b) = 0}\\
 {-\frac{\hbar^2}{2m}\left[\frac{1}{Z(z)}\frac{d^2Z(z)}{dz^2}\right] = E_z\textnormal{ with }Z(0) = Z(c) = 0}\end{split}\]</div>
-<p>Each line in anbove equations corresponds to one-dimensional particle in a box problem:</p>
+<ul class="simple">
+<li><p>Each line in anbove equations corresponds to one-dimensional particle in a box problem:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}{X(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n_x\pi x}{a}\right)}\\
 {Y(y) = \sqrt{\frac{2}{b}}\sin\left(\frac{n_y\pi y}{b}\right)}\\
 {Z(z) = \sqrt{\frac{2}{c}}\sin\left(\frac{n_z\pi z}{c}\right)}\end{split}\]</div>
 <p>Thus the three-dimensional wavefunction  is:</p>
-<div class="math notranslate nohighlight">
-\[{\psi(x,y,z) = X(x)Y(y)Z(z) = \sqrt{\frac{8}{abc}}\sin\left(\frac{n_x\pi x}{a}\right)\sin\left(\frac{n_y\pi y}{b}\right)\sin\left(\frac{n_z\pi z}{c}\right)}\]</div>
-<p>The total energy is given by:</p>
-<div class="math notranslate nohighlight">
-\[{E_{n_x,n_y,n_z} = \frac{h^2}{8m}\left(\frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2}\right)}\]</div>
-<p>Energy is again quantized and when <span class="math notranslate nohighlight">\(a = b = c\)</span>, we the energy levels can also be degenerate (i.e., the same energy with different values of <span class="math notranslate nohighlight">\(n_x, n_y\)</span> and <span class="math notranslate nohighlight">\(n_z\)</span>).</p>
-<p>In most cases, degeneracy in quantum mechanics arises from symmetry. When <span class="math notranslate nohighlight">\(a = b = c\)</span>, the lowest levels have the following degeneracy factors:</p>
+</section>
+<section id="eigenfunctions-and-eigenvalues-of-particle-in-3d-box">
+<h1>Eigenfunctions and eigenvalues of particle in 3D Box<a class="headerlink" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box" title="Permalink to this heading">#</a></h1>
+<p>= Energy is again quantized and when <span class="math notranslate nohighlight">\(a = b = c\)</span>, we the energy levels can also be degenerate (i.e., the same energy with different values of <span class="math notranslate nohighlight">\(n_x, n_y\)</span> and <span class="math notranslate nohighlight">\(n_z\)</span>).</p>
+<ul class="simple">
+<li><p>In most cases, degeneracy in quantum mechanics arises from symmetry. When <span class="math notranslate nohighlight">\(a = b = c\)</span>, the lowest levels have the following degeneracy factors:</p></li>
+</ul>
+<div class="admonition-table-of-energy-levels-for-3d-box admonition">
+<p class="admonition-title"><strong>Table of energy levels for 3D box</strong></p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Quantum Numbers $( n_x, n_y, n_z $)</p></th>
+<tr class="row-odd"><th class="head"><p>Quantum Numbers <span class="math notranslate nohighlight">\(( n_x, n_y, n_z\)</span>)</p></th>
 <th class="head"><p>Energy <span class="math notranslate nohighlight">\(( E_{n_x, n_y, n_z} )\)</span></p></th>
 <th class="head"><p>Degeneracy</p></th>
 </tr>
@@ -603,9 +613,24 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
+</section>
+<section id="applications">
+<h1>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Particle in a box model can be used to explain electronic transitions in conjugated molecules.</p></li>
+</ul>
+<p><img alt="" src="../_images/pib1d-1.jpeg" /></p>
+<p><img alt="" src="../_images/pib-applic2.jpeg" /></p>
+</section>
+<section id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h1>
+<section id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h2>
+<p>Consider an electron in superfluid helium (<span class="math notranslate nohighlight">\(^4\)</span>He) where it forms a solvation cavity with a radius of 18 \AA. Calculate the zero-point energy and the energy difference between the ground and first excited states by approximating the electron by a particle in a 3-dimensional box.</p>
 <div class="tip dropdown admonition">
-<p class="admonition-title">Example: Consider an electron in superfluid helium (<span class="math notranslate nohighlight">\(^4\)</span>He) where it forms a solvation cavity with a radius of 18 \AA. Calculate the zero-point energy and the energy difference between the ground and first excited states by approximating the electron by a particle in a 3-dimensional box.</p>
-<p><strong>Solution</strong> The zero-point energy can be obtained from the lowest state energy (e.g. <span class="math notranslate nohighlight">\(n = 1\)</span>) with <span class="math notranslate nohighlight">\(a = b = c = 36\)</span> \AA. The first excited state is triply degenerate (<span class="math notranslate nohighlight">\(E_{112}, E_{121}\)</span> and <span class="math notranslate nohighlight">\(E_{211}\)</span>). Use Eq. (\ref{eq9.87}):</p>
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>The zero-point energy can be obtained from the lowest state energy (e.g. <span class="math notranslate nohighlight">\(n = 1\)</span>) with <span class="math notranslate nohighlight">\(a = b = c = 36\)</span> \AA. The first excited state is triply degenerate (<span class="math notranslate nohighlight">\(E_{112}, E_{121}\)</span> and <span class="math notranslate nohighlight">\(E_{211}\)</span>). Use Eq. (\ref{eq9.87}):</p>
 <div class="math notranslate nohighlight">
 \[E_{111} = \frac{h^2}{8m_e}\left(\frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2}\right)\]</div>
 <div class="math notranslate nohighlight">
@@ -622,17 +647,6 @@ document.write(`
 <p>The solutions in three dimensions are difficult to visualize. Consider a two-dimensional particle in a box problem. In this case <span class="math notranslate nohighlight">\(\psi = \psi(x, y)\)</span> and we can visualize the solutions:</p>
 </div>
 </section>
-<section id="applications">
-<h1>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Particle in a box model can be used to explain electronic transitions in conjugated molecules.</p></li>
-</ul>
-<p><img alt="" src="ch03/images/pib1d-1.jpeg" /></p>
-<ul class="simple">
-<li><p>Count pi electrons and fill up PIB energy levels.</p></li>
-<li><p>Compute transitions to next excited states.</p></li>
-</ul>
-<p><img alt="" src="ch03/images/pib-applic2.jpeg" /></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -698,10 +712,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn-from-1d-pib-model">What did we learn from 1D PIB model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box, applications</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box">Eigenfunctions and eigenvalues of particle in 3D Box</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
