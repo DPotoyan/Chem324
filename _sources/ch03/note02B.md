@@ -1,5 +1,5 @@
 
-### Particle in a 3D box, applications
+### Applications of PIB model
 
 :::{admonition} What you need to know
 :class: note
