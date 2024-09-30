@@ -66,8 +66,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note02B';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -206,8 +204,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Wave function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a Box</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle in a 3D box, applications</a></li>
-
-
 
 
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
@@ -438,13 +434,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box, applications</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box">Eigenfunctions and eigenvalues of particle in 3D Box</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
 
             </nav>
@@ -468,153 +459,6 @@ document.write(`
 </ul>
 </div>
 </section>
-<section id="quantum-pib-in-3d">
-<h1>Quantum PIB in 3D<a class="headerlink" href="#quantum-pib-in-3d" title="Permalink to this heading">#</a></h1>
-<figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg"><img alt="pib1" class="bg-primary mb-1" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Infinite_potential_well-en.svg" width="300px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Particle in a box subject to infinitely high potential walls</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\,\,\,\,\, -\frac{\hbar^2}{2m}\Delta\psi(x,y,z) + V(x,y,z)\psi(x,y,z) = E\psi(x,y,z)} \\ 
-{\textnormal{OR}\,\,\,\,\,}{-\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2} + \frac{\partial^2\psi}{\partial y^2} + \frac{\partial^2\psi}{\partial z^2}\right) + V\psi = E\psi}\end{split}\]</div>
-<p>where the solutions <span class="math notranslate nohighlight">\(\psi\)</span> must be normalized:</p>
-<div class="math notranslate nohighlight">
-\[{\int\limits_{-\infty}^{\infty}\int\limits_{-\infty}^{\infty}\int\limits_{-\infty}^{\infty}\left|\psi(x,y,z)\right|^2dxdydz = 1}\]</div>
-<ul class="simple">
-<li><p>Consider a particle in a box with sides of lengths <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(c\)</span> in <span class="math notranslate nohighlight">\(z\)</span>. The potential inside the box is zero and outside the box infinity. Again, the potential term can be treated by boundary conditions (i.e,. infinite potential implies that the wavefunction must be zero there). The above equation can be now written as:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{-\frac{\hbar^2}{2m}\Delta\psi = E\psi} \\
-{\textnormal{with }\psi(a,y,z) = \psi(x,b,z) = \psi(x,y,c) = 0} \\
-{\textnormal{and }\psi(0,y,z) = \psi(x,0,z) = \psi(x,y,0) = 0}\end{split}\]</div>
-<ul class="simple">
-<li><p>In general, when the potential term can be expressed as a sum of terms that depend separately only on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, the solutions can be written as a product:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\psi(x,y,z) = X(x)Y(y)Z(z)}\]</div>
-<ul class="simple">
-<li><p>By substituting and dividing by <span class="math notranslate nohighlight">\(X(x)Y(y)Z(z)\)</span>, we obtain:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{-\frac{\hbar^2}{2m}\left[\frac{1}{X(x)}\frac{d^2X(x)}{dx^2} + \frac{1}{Y(y)}\frac{d^2Y(y)}{dy^2} + \frac{1}{Z(z)}\frac{d^2Z(z)}{dz^2}\right] = E}\]</div>
-<ul class="simple">
-<li><p>The total energy <span class="math notranslate nohighlight">\(E\)</span> consists of a sum of three terms, which each depend separately on <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>. Thus we can write <span class="math notranslate nohighlight">\(E = E_x + E_y + E_z\)</span> and separate the equation into three one-dimensional problems:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{-\frac{\hbar^2}{2m}\left[\frac{1}{X(x)}\frac{d^2X(x)}{dx^2}\right] = E_x\textnormal{ with }X(0) = X(a) = 0}\\
-{-\frac{\hbar^2}{2m}\left[\frac{1}{Y(y)}\frac{d^2Y(y)}{dy^2}\right] = E_y\textnormal{ with }Y(0) = Y(b) = 0}\\
-{-\frac{\hbar^2}{2m}\left[\frac{1}{Z(z)}\frac{d^2Z(z)}{dz^2}\right] = E_z\textnormal{ with }Z(0) = Z(c) = 0}\end{split}\]</div>
-<ul class="simple">
-<li><p>Each line in anbove equations corresponds to one-dimensional particle in a box problem:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{X(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n_x\pi x}{a}\right)}\\
-{Y(y) = \sqrt{\frac{2}{b}}\sin\left(\frac{n_y\pi y}{b}\right)}\\
-{Z(z) = \sqrt{\frac{2}{c}}\sin\left(\frac{n_z\pi z}{c}\right)}\end{split}\]</div>
-<p>Thus the three-dimensional wavefunction  is:</p>
-</section>
-<section id="eigenfunctions-and-eigenvalues-of-particle-in-3d-box">
-<h1>Eigenfunctions and eigenvalues of particle in 3D Box<a class="headerlink" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box" title="Permalink to this heading">#</a></h1>
-<p>= Energy is again quantized and when <span class="math notranslate nohighlight">\(a = b = c\)</span>, we the energy levels can also be degenerate (i.e., the same energy with different values of <span class="math notranslate nohighlight">\(n_x, n_y\)</span> and <span class="math notranslate nohighlight">\(n_z\)</span>).</p>
-<ul class="simple">
-<li><p>In most cases, degeneracy in quantum mechanics arises from symmetry. When <span class="math notranslate nohighlight">\(a = b = c\)</span>, the lowest levels have the following degeneracy factors:</p></li>
-</ul>
-<div class="admonition-table-of-energy-levels-for-3d-box admonition">
-<p class="admonition-title"><strong>Table of energy levels for 3D box</strong></p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Quantum Numbers <span class="math notranslate nohighlight">\(( n_x, n_y, n_z\)</span>)</p></th>
-<th class="head"><p>Energy <span class="math notranslate nohighlight">\(( E_{n_x, n_y, n_z} )\)</span></p></th>
-<th class="head"><p>Degeneracy</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>(1,1,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{3\hbar^2}{2mL^2} )  \)</span></p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>(1,1,2), (1,2,1), (2,1,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{6\hbar^2}{2mL^2} )  \)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(1,1,3), (1,3,1), (3,1,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{11\hbar^2}{2mL^2} ) \)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(1,2,2), (2,1,2), (2,2,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{9\hbar^2}{2mL^2} )  \)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{14\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>6</p></td>
-</tr>
-<tr class="row-odd"><td><p>(1,3,3), (3,1,3), (3,3,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{19\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(2,2,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{12\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>(2,2,3), (2,3,2), (3,2,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{17\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(2,3,3), (3,2,3), (3,3,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{22\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(3,3,3)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{27\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>(1,1,4), (1,4,1), (4,1,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{18\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(1,2,4), (1,4,2), (2,1,4), (2,4,1), (4,1,2), (4,2,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{21\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>6</p></td>
-</tr>
-<tr class="row-even"><td><p>(1,3,4), (1,4,3), (3,1,4), (3,4,1), (4,1,3), (4,3,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{26\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>6</p></td>
-</tr>
-<tr class="row-odd"><td><p>(1,4,4), (4,1,4), (4,4,1)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{33\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(2,2,4), (2,4,2), (4,2,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{24\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(2,3,4), (2,4,3), (3,2,4), (3,4,2), (4,2,3), (4,3,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{29\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>6</p></td>
-</tr>
-<tr class="row-even"><td><p>(2,4,4), (4,2,4), (4,4,2)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{36\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(3,3,4), (3,4,3), (4,3,3)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{34\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>(3,4,4), (4,3,4), (4,4,3)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{39\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>(4,4,4)</p></td>
-<td><p><span class="math notranslate nohighlight">\(( \frac{48\hbar^2}{2mL^2} )\)</span></p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="applications">
 <h1>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
@@ -625,28 +469,6 @@ document.write(`
 </section>
 <section id="problems">
 <h1>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h1>
-<section id="problem-1">
-<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h2>
-<p>Consider an electron in superfluid helium (<span class="math notranslate nohighlight">\(^4\)</span>He) where it forms a solvation cavity with a radius of 18 \AA. Calculate the zero-point energy and the energy difference between the ground and first excited states by approximating the electron by a particle in a 3-dimensional box.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title"><strong>Solution</strong></p>
-<p>The zero-point energy can be obtained from the lowest state energy (e.g. <span class="math notranslate nohighlight">\(n = 1\)</span>) with <span class="math notranslate nohighlight">\(a = b = c = 36\)</span> \AA. The first excited state is triply degenerate (<span class="math notranslate nohighlight">\(E_{112}, E_{121}\)</span> and <span class="math notranslate nohighlight">\(E_{211}\)</span>). Use Eq. (\ref{eq9.87}):</p>
-<div class="math notranslate nohighlight">
-\[E_{111} = \frac{h^2}{8m_e}\left(\frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2}\right)\]</div>
-<div class="math notranslate nohighlight">
-\[= \frac{(6.626076\times 10^{-34}\textnormal{ Js})^2}{8(9.109390\times 10^{-31}\textnormal{ kg})}\left(\frac{1}{(36\times 10^{-10}\textnormal{ m})^2} + \frac{1}{(36\times 10^{-10}\textnormal{ m})^2} + \frac{1}{(36\times 10^{-10}\textnormal{ m})^2}\right)\]</div>
-<div class="math notranslate nohighlight">
-\[= 1.39\times10^{-20}\textnormal{ J} = 87.0\textnormal{ meV}\]</div>
-<div class="math notranslate nohighlight">
-\[E_{211} = E_{121} = E_{112} = \frac{(6.626076\times 10^{-34}\textnormal{ Js})^2}{8(9.109390\times 10^{-31}\textnormal{ kg})}\]</div>
-<div class="math notranslate nohighlight">
-\[\times\left(\frac{2^2}{(36\times 10^{-10}\textnormal{ m})^2} + \frac{1^2}{(36\times 10^{-10}\textnormal{ m})^2} + \frac{1^2}{(36\times 10^{-10}\textnormal{ m})^2}\right)\]</div>
-<div class="math notranslate nohighlight">
-\[= 2.79\times 10^{-20}\textnormal{ J} = 174\textnormal{ meV} \Rightarrow \Delta E = 87\textnormal{ meV}\]</div>
-<p>(Experimental value: 105 meV; Phys. Rev. B 41, 6366 (1990))</p>
-<p>The solutions in three dimensions are difficult to visualize. Consider a two-dimensional particle in a box problem. In this case <span class="math notranslate nohighlight">\(\psi = \psi(x, y)\)</span> and we can visualize the solutions:</p>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -713,13 +535,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Particle in a 3D box, applications</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-pib-in-3d">Quantum PIB in 3D</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eigenvalues-of-particle-in-3d-box">Eigenfunctions and eigenvalues of particle in 3D Box</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
 
   </nav></div>
