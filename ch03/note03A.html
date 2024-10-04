@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Wavefunction behaviour and particle in finite box &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note03A';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operators" href="note04.html" />
+    <link rel="prev" title="Postulates" href="note03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Quantum Mechanics for Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Quantum Mechanics for Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Atomic spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note05.html">Wave-particle duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/demo_waves.html">DEMO: Visualizing waves</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch02/bonus_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Schordinger Equation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02A.html">Particle in a Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02B.html">Applications of Particle in a Box Model</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wavefunction behaviour and particle in finite box</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="note04.html">Operators</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note06.html">Time dependence</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_operators.html">DEMO: Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bonus_quantum_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note01.html">Molecular degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03A.html">Harmonic Oscillator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03B.html">Molecular Vibrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04A.html">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04B.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/demo_ho.html">DEMO: Harmonic Oscillator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note05.html">Spin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/bonus_H.html">Bonus: Atomic Orbitals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note01.html">Perturbation Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note02.html">Variational Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/lin_var.html">Linear Variational Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/demo_lin_var.html">DEMO: Solving QM problems with Variational method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note01.html">Helium atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Multi-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note04.html">Atomic terms and selection rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch08/index.html">8. Molecules</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note01.html">BO approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note02.html">The hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note04.html">Molecular orbital description of hydrogen molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note05.html">Orbitals of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note07.html">Huckel molecular orbital theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note08.html">Dipole moments and ionic bonding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/index.html">A. Math</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/note01.html">Integrals</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note03.html">Complex numbers</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Equation sheet</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2py.html">Python3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2viz.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/sympy.html">Sympy</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/ch03/note03A.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch03/note03A.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wavefunction behaviour and particle in finite box</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Wavefunction behaviour and particle in finite box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-finite-depth-box">Particle in a Finite Depth Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-function">Potential Energy Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation">Schrödinger Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-i-decaying-behaviour-x-a">Region I, decaying behaviour: <span class="math notranslate nohighlight">\(x &lt; -a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-ii-and-oscillatory-behavior-a-leq-x-leq-a">Region II and Oscillatory behavior: <span class="math notranslate nohighlight">\(-a \leq x \leq a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-iii-decaying-behaviour-x-a">Region III, Decaying behaviour: <span class="math notranslate nohighlight">\(x &gt; a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions-and-continuity-of-wavefunctions">Boundary Conditions and Continuity of Wavefunctions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-quantization">Energy Quantization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bound-vs-unbound-states">Bound vs unbound states</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-conservation">Energy Conservation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-qualitative-trends-in-wavefunction-beahviour">General qualitative trends in wavefunction beahviour</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="wavefunction-behaviour-and-particle-in-finite-box">
+<h1>Wavefunction behaviour and particle in finite box<a class="headerlink" href="#wavefunction-behaviour-and-particle-in-finite-box" title="Permalink to this heading">#</a></h1>
+<div class="admonition-what-you-need-to-know admonition">
+<p class="admonition-title"><strong>What you need to know</strong></p>
+<ul class="simple">
+<li><p>The <strong>finite depth box</strong> is a more realistic model compared to the infinite potential well, as it allows for the possibility of quantum tunneling, where the particle has a non-zero probability of being found outside the well.</p></li>
+<li><p>The potential energy function is finite in the central region and zero outside. The time-independent Schrödinger equation is solved in three regions, with different forms of wavefunctions in each. - Bound states are possible due to the confinement of the particle, but the energy levels are determined by matching the wavefunction and its derivative at the boundaries, leading to transcendental equations.</p></li>
+<li><p>Unlike the infinite well, the number of bound states is finite, and the wavefunctions extend slightly outside the well, illustrating the quantum tunneling effect.</p></li>
+<li><p>Understanding the <strong>boundary conditions</strong> and the <strong>behavior of the wavefunctions</strong> in each region is key to solving this problem.</p></li>
+</ul>
+</div>
+</section>
+<section id="particle-in-a-finite-depth-box">
+<h1>Particle in a Finite Depth Box<a class="headerlink" href="#particle-in-a-finite-depth-box" title="Permalink to this heading">#</a></h1>
+<p>In quantum mechanics, the <strong>finite potential well</strong> (or finite depth box) describes a particle confined within a potential well where the potential energy is finite in some regions and zero (or a constant) elsewhere. This is a more realistic model compared to the infinite potential well, as it allows the particle to have a non-zero probability of being found outside the box, representing tunneling.</p>
+</section>
+<section id="potential-energy-function">
+<h1>Potential Energy Function<a class="headerlink" href="#potential-energy-function" title="Permalink to this heading">#</a></h1>
+<p>The potential energy for a finite potential well is typically defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+V(x) = 
+\begin{cases} 
+0 &amp; x &lt; -a \\
+V_0 &amp; -a \leq x \leq a \\
+0 &amp; x &gt; a 
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(V_0\)</span> is the depth of the well, and <span class="math notranslate nohighlight">\(2a\)</span> is the width of the well.</p>
+</section>
+<section id="schrodinger-equation">
+<h1>Schrödinger Equation<a class="headerlink" href="#schrodinger-equation" title="Permalink to this heading">#</a></h1>
+<p>The time-independent Schrödinger equation for a particle of mass <span class="math notranslate nohighlight">\(m\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} \psi(x) = E \psi(x)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{H}\)</span> is the Hamiltonian operator. In one dimension, this becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{\hbar^2}{2m} \frac{d^2 \psi(x)}{dx^2} + V(x)\psi(x) = E\psi(x)
+\]</div>
+<p>We solve this equation in three regions:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(x &lt; -a\)</span> (Region I)</p></li>
+<li><p><span class="math notranslate nohighlight">\(-a \leq x \leq a\)</span> (Region II)</p></li>
+<li><p><span class="math notranslate nohighlight">\(x &gt; a\)</span> (Region III)</p></li>
+</ol>
+</section>
+<section id="region-i-decaying-behaviour-x-a">
+<h1>Region I, decaying behaviour: <span class="math notranslate nohighlight">\(x &lt; -a\)</span><a class="headerlink" href="#region-i-decaying-behaviour-x-a" title="Permalink to this heading">#</a></h1>
+<p>For <span class="math notranslate nohighlight">\(x &lt; -a\)</span>, the potential <span class="math notranslate nohighlight">\(V(x) = V_0\)</span>, and the Schrödinger equation simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{\hbar^2}{2m} \frac{d^2 \psi(x)}{dx^2}+V_0\psi(x) = E\psi(x)
+\]</div>
+<p>The general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi_I(x) = A e^{\kappa x}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\kappa = \frac{\sqrt{2m(V_0-E)}}{\hbar}\]</div>
+<p>and we discard the growing exponential due to boundary conditions (the wavefunction must remain finite as <span class="math notranslate nohighlight">\(x \to -\infty\)</span>).</p>
+</section>
+<section id="region-ii-and-oscillatory-behavior-a-leq-x-leq-a">
+<h1>Region II and Oscillatory behavior: <span class="math notranslate nohighlight">\(-a \leq x \leq a\)</span><a class="headerlink" href="#region-ii-and-oscillatory-behavior-a-leq-x-leq-a" title="Permalink to this heading">#</a></h1>
+<p>For <span class="math notranslate nohighlight">\(-a \leq x \leq a\)</span>, the potential <span class="math notranslate nohighlight">\(V(x)=0\)</span>, so the Schrödinger equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{\hbar^2}{2m} \frac{d^2 \psi(x)}{dx^2} = E \psi(x)
+\]</div>
+<p>This simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 \psi(x)}{dx^2} = k^2 \psi(x)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k = \frac{\sqrt{-2m(E)}}{\hbar}\)</span>, with the general solution:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi_{II}(x) = B \sin(kx) + C \cos(kx)
+\]</div>
+</section>
+<section id="region-iii-decaying-behaviour-x-a">
+<h1>Region III, Decaying behaviour: <span class="math notranslate nohighlight">\(x &gt; a\)</span><a class="headerlink" href="#region-iii-decaying-behaviour-x-a" title="Permalink to this heading">#</a></h1>
+<p>For <span class="math notranslate nohighlight">\(x &gt; a\)</span>, <span class="math notranslate nohighlight">\(V(x) = V_0\)</span>, and the Schrödinger equation is the same as in Region I. The solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi_{III}(x) = D e^{-\kappa x}
+\]</div>
+<p>Again, we discard the growing exponential for the same reason as in Region I.</p>
+</section>
+<section id="boundary-conditions-and-continuity-of-wavefunctions">
+<h1>Boundary Conditions and Continuity of Wavefunctions<a class="headerlink" href="#boundary-conditions-and-continuity-of-wavefunctions" title="Permalink to this heading">#</a></h1>
+<p>To find the allowed energy levels <span class="math notranslate nohighlight">\(E\)</span>, we apply the following boundary conditions:</p>
+<ol class="arabic simple">
+<li><p>Continuity of <span class="math notranslate nohighlight">\(\psi(x)\)</span> and <span class="math notranslate nohighlight">\(\frac{d\psi(x)}{dx}\)</span> at <span class="math notranslate nohighlight">\(x = -a\)</span> and <span class="math notranslate nohighlight">\(x = a\)</span>.</p></li>
+<li><p>The wavefunctions and their derivatives must match at the boundaries. This leads to transcendental equations that can be solved numerically for <span class="math notranslate nohighlight">\(E\)</span>.</p></li>
+<li><p>The wavefunctions in each region, normalized, represent the particle’s probability of being found in different parts of the potential well.</p></li>
+<li><p>The solutions indicate that there is a non-zero probability of finding the particle outside the well <strong>(tunneling effect)</strong>, a characteristic feature of the finite well that is absent in the infinite well case.</p></li>
+</ol>
+</section>
+<section id="energy-quantization">
+<h1>Energy Quantization<a class="headerlink" href="#energy-quantization" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/fin_pib.png"><img alt="pib1" class="bg-primary mb-1" src="../_images/fin_pib.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Allowed energy levels and correspond- ing eigenfunctions for a finite depth box. The yellow areas are classically forbidden because <span class="math notranslate nohighlight">\(E&lt;V_0\)</span></span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The energy eigenvalues are not easily expressible in closed form due to the transcendental nature of the equations, but the solutions generally depend on both the depth <span class="math notranslate nohighlight">\(V_0\)</span> and the width <span class="math notranslate nohighlight">\(2a\)</span> of the well. As <span class="math notranslate nohighlight">\(V_0 \to \infty\)</span>, the solution approaches that of the infinite potential well:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \frac{n^2 \pi^2 \hbar^2}{2m(2a)^2}
+\]</div>
+<p>For finite <span class="math notranslate nohighlight">\(V_0\)</span>, there are a finite number of bound states, each corresponding to a specific energy eigenvalue.</p>
+</section>
+<section id="bound-vs-unbound-states">
+<h1>Bound vs unbound states<a class="headerlink" href="#bound-vs-unbound-states" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The falloff of wavefunction is not the same for all wavefunctions.</p></li>
+<li><p>For lower energy states, or more tightly bound states of electron wavefunction decays more rapidly</p></li>
+<li><p>For higher eneergy states or more loosely bound states decay becomes slower and slower</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/decay_psi.png"><img alt="pib1" class="bg-primary mb-1" src="../_images/decay_psi.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Decrease of the amplitude of the eigen- functions as a function of distance from the center of the box. All eigenfunctions have been normalized to the value one
+at x = 5.00 * 10-10 m for purposes of comparison.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="energy-conservation">
+<h1>Energy Conservation<a class="headerlink" href="#energy-conservation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Quantum tunneling and the presence of the particle in classically forbidden regions do not violate energy conservation. Even though the particle “exists” in these regions, its total energy is still conserved. The key point is that energy conservation applies to the average (expectation) value of the energy in quantum mechanics, and the particle’s energy remains constant throughout.</p></li>
+<li><p>In the classically forbidden region, the particle’s kinetic energy is effectively negative in the quantum mechanical framework (since <span class="math notranslate nohighlight">\(E - V(x) &lt; 0\)</span>), but this doesn’t represent a physical violation. Instead, it’s a reflection of the fact that the wavefunction is not oscillatory but decaying, meaning the particle is less likely to be found there. Hence, quantum mechanics allows for the existence of the particle in regions where classical mechanics would forbid it, without violating any fundamental laws such as energy conservation.</p></li>
+</ul>
+</section>
+<section id="general-qualitative-trends-in-wavefunction-beahviour">
+<h1>General qualitative trends in wavefunction beahviour<a class="headerlink" href="#general-qualitative-trends-in-wavefunction-beahviour" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gen_psi1.png"><img alt="pib1" class="bg-primary mb-1" src="../_images/gen_psi1.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Judging by the signs of the various terms of schrodinger equation we can predict qualtiatively how wavefunction would beahave.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gen_psi2.png"><img alt="pib1" class="bg-primary mb-1" src="../_images/gen_psi2.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Example of a stepped potential and expected behaviour of the wavefunction.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Postulates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Operators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Wavefunction behaviour and particle in finite box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-finite-depth-box">Particle in a Finite Depth Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-function">Potential Energy Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation">Schrödinger Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-i-decaying-behaviour-x-a">Region I, decaying behaviour: <span class="math notranslate nohighlight">\(x &lt; -a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-ii-and-oscillatory-behavior-a-leq-x-leq-a">Region II and Oscillatory behavior: <span class="math notranslate nohighlight">\(-a \leq x \leq a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#region-iii-decaying-behaviour-x-a">Region III, Decaying behaviour: <span class="math notranslate nohighlight">\(x &gt; a\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions-and-continuity-of-wavefunctions">Boundary Conditions and Continuity of Wavefunctions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-quantization">Energy Quantization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bound-vs-unbound-states">Bound vs unbound states</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-conservation">Energy Conservation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-qualitative-trends-in-wavefunction-beahviour">General qualitative trends in wavefunction beahviour</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
