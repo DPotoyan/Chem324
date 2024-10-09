@@ -1,4 +1,4 @@
-## Operators
+# P2 Operators
 
 :::{admonition} What you need to know
 :class: note
@@ -12,9 +12,10 @@
 
 ### Operators: A reminder
 
-We have already seen examples of operators. For short, operators are deonted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
+Operators are denoted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
 
 $${\hat{p}_x = -i\hbar\frac{d}{dx}}$$
+
 - When this operates on a function, it does the following: differentiate the function with respect to $x$ and then  multiply the result from by $-i\hbar$. 
 
 - The quantum mechanical momentum operator of position is:
@@ -24,13 +25,17 @@ $$\hat{x} = x$$
 - When this operates on a function, it does the following: multiply function by x. 
 
 ### Linearity of operators
+
 Operators in quantum mechanics are *linear*, which means that they fulfill the following rules:
 
 $${\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}$$
 
-$${\hat{A}\left(c\psi\right) = c\hat{A}\psi\textnormal{ where \textit{c} is a constant}}$$
+$${\hat{A}\left(c\psi\right) = c\hat{A}\psi}$$
 
-and $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Linear_operators). Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to $\hat{A}_1 + \hat{A}_2$. Multiplication corresponds to them operating one after another.
+- $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Linear_operators). 
+
+- Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to $\hat{A}_1 + \hat{A}_2$. 
+- Multiplication corresponds to them operating one after another, e.g denoting first order difernetiation operator $D_1$, second order operator is $D^2_1$
 
 :::{admonition} **Example** Apply the following operators on the given functions:
 :class: note

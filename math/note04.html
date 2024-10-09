@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Linear Algebra 1: basics &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/note04';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Algebra 2: Enter The Matrix" href="note05.html" />
+    <link rel="prev" title="Complex numbers" href="note03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Quantum Mechanics for Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Quantum Mechanics for Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Atomic spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note05.html">Wave-particle duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/demo_waves.html">DEMO: Visualizing waves</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch02/bonus_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02.html">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02A.html">Particle in a Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02B.html">Applications of Particle in a Box Model</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03.html">Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note04.html">P2 Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note05.html">P3 Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note06.html">P4,P5 Expectation and Time dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_PIB.html">DEMO: Particle in a box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_operators.html">DEMO: Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/bonus_quantum_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note01.html">Molecular degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03A.html">Harmonic Oscillator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note03B.html">Molecular Vibrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04A.html">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/note04B.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch04/demo_ho.html">DEMO: Harmonic Oscillator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note05.html">Spin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/bonus_H.html">Bonus: Atomic Orbitals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note01.html">Perturbation Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note02.html">Variational Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/lin_var.html">Linear Variational Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/demo_lin_var.html">DEMO: Solving QM problems with Variational method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note01.html">Helium atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Multi-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note04.html">Atomic terms and selection rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch08/index.html">8. Molecules</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note01.html">BO approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note02.html">The hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note04.html">Molecular orbital description of hydrogen molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note05.html">Orbitals of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note07.html">Huckel molecular orbital theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note08.html">Dipole moments and ionic bonding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">A. Math</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Integrals</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03.html">Complex numbers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Algebra 1: basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">Linear Algebra 2: Enter The Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note06.html">Linear Algebra 3: Inner products</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Equation sheet</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2py.html">Python3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2viz.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/sympy.html">Sympy</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/math/note04.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/math/note04.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Algebra 1: basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-or-subtraction">1. Addition or Subtraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-by-a-scalar">2. Multiplication by a Scalar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-1-basics">
+<h1>Linear Algebra 1: basics<a class="headerlink" href="#linear-algebra-1-basics" title="Permalink to this heading">#</a></h1>
+<section id="vectors-what-are-they">
+<h2>Vectors, what are they?<a class="headerlink" href="#vectors-what-are-they" title="Permalink to this heading">#</a></h2>
+<html>
+<iframe width="300 height="300" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen>
+</iframe>
+</html></section>
+<section id="vectors-as-arrays-of-numbers">
+<h2>Vectors as Arrays of Numbers<a class="headerlink" href="#vectors-as-arrays-of-numbers" title="Permalink to this heading">#</a></h2>
+<p>A <strong>vector</strong> is an ordered collection of numbers that can describe various properties of physical or mathematical systems. Some examples include:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a = (-2, 8)\)</span>: A 2D vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(b = (1.34, 4.23, 5.98)\)</span>: A 3D vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c = (1, -2, 4i, 3 + 2i)\)</span>: A 4D vector with complex components.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f = (1, 2, 3, 4, 5, 6, \ldots, \infty)\)</span>: An infinite-dimensional vector with integer components.</p></li>
+</ul>
+<p><strong>Note</strong>: Vectors can belong to real or complex spaces, depending on their components.</p>
+</section>
+<section id="vectors-defined-with-respect-to-a-basis">
+<h2>Vectors Defined with Respect to a Basis<a class="headerlink" href="#vectors-defined-with-respect-to-a-basis" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>In classical physics, vectors are often visualized as arrows in space, with both <strong>magnitude</strong> and <strong>direction</strong>. A vector is typically defined with respect to a <strong>basis</strong>, where unit vectors (<span class="math notranslate nohighlight">\(\vec{e_i}\)</span>) span the space. For instance, in 3D Euclidean space, the standard basis is:</p>
+<div class="math notranslate nohighlight">
+\[e_1 = (1, 0, 0), \,\, e_2 = (0, 1, 0), \,\, e_3 = (0, 0, 1)\]</div>
+</li>
+<li><p>In a different coordinate system or basis, the same vector will have different components, but its intrinsic properties remain unchanged. This flexibility in representation is a fundamental concept in quantum mechanics and linear algebra.</p></li>
+</ul>
+</section>
+<section id="example-vector-expressed-in-two-different-basis">
+<h2>Example: Vector expressed in two different basis<a class="headerlink" href="#example-vector-expressed-in-two-different-basis" title="Permalink to this heading">#</a></h2>
+<p>Let’s take a 2D vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> in the standard Cartesian basis:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}
+\end{split}\]</div>
+<p>This can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v} = 2 \mathbf{e_1} + 3 \mathbf{e_2}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{e_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{e_2} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span></p></li>
+</ul>
+<p>Now, suppose we switch to a new basis, where each new basis vector is a scalar multiple of the standard basis vectors. Let’s define the new basis vectors as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b_1} = 2 \mathbf{e_1} = \begin{pmatrix} 2 \\ 0 \end{pmatrix}, \quad \mathbf{b_2} = 2 \mathbf{e_2} = \begin{pmatrix} 0 \\ 2 \end{pmatrix}
+\end{split}\]</div>
+<p>in the new basis, the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is represented as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}_{\text{new}} = 1 \mathbf{b_1} + 3/2 \mathbf{b_2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_{\text{new}} = \begin{pmatrix} 1 \\ \frac{3}{2} \end{pmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>This shows that when moving to a new basis the components of the vector change accordingly, but the vector itself remains the same geometrically!</p></li>
+</ul>
+</section>
+<section id="vector-notation">
+<h2>Vector Notation<a class="headerlink" href="#vector-notation" title="Permalink to this heading">#</a></h2>
+<p>Depending on the context, we may emphasize the basis or omit it when the basis is implied:</p>
+<ul class="simple">
+<li><p>In terms of a coordinate basis:<br />
+$<span class="math notranslate nohighlight">\(\vec{a} = 2\vec{e_i} + 3\vec{e_j}\)</span>$</p></li>
+<li><p>As an ordered tuple of components:<br />
+$<span class="math notranslate nohighlight">\(a = (2, 3)\)</span>$</p></li>
+<li><p>Using Dirac notation (common in quantum mechanics):<br />
+$<span class="math notranslate nohighlight">\(\mid a \rangle = 2 \mid e_i \rangle + 3 \mid e_j \rangle\)</span>$</p></li>
+</ul>
+<p>Vectors can represent a wide range of phenomena, such as the position of a particle in space, the population of countries, or temperature variations in different regions of a forest.</p>
+</section>
+<section id="vector-operations">
+<h2>Vector Operations<a class="headerlink" href="#vector-operations" title="Permalink to this heading">#</a></h2>
+<p>What defines vectors in a mathematical framework are the operations performed on them. Let’s illustrate these operations using a simple 2D vector as an example:</p>
+<div class="math notranslate nohighlight">
+\[\mid a \rangle = a_1 \mid e_1 \rangle + a_2 \mid e_2 \rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\mid b \rangle = b_1 \mid e_1 \rangle + b_2 \mid e_2 \rangle\]</div>
+<section id="addition-or-subtraction">
+<h3>1. Addition or Subtraction<a class="headerlink" href="#addition-or-subtraction" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Component-wise addition</strong>:
+$<span class="math notranslate nohighlight">\(a + b = \begin{pmatrix}
+  2\\
+  3
+\end{pmatrix} + \begin{pmatrix}
+  1\\
+  1
+\end{pmatrix} = \begin{pmatrix}
+  3\\
+  4
+\end{pmatrix}\)</span>$</p></li>
+<li><p><strong>In Dirac notation</strong>:
+$<span class="math notranslate nohighlight">\(\mid a \rangle \pm \mid b \rangle = (a_1 \pm b_1)\mid e_1 \rangle + (a_2 \pm b_2)\mid e_2 \rangle\)</span>$</p></li>
+</ul>
+</section>
+<section id="multiplication-by-a-scalar">
+<h3>2. Multiplication by a Scalar<a class="headerlink" href="#multiplication-by-a-scalar" title="Permalink to this heading">#</a></h3>
+<p>Multiplying a vector by a scalar <span class="math notranslate nohighlight">\(\alpha\)</span> scales the vector’s magnitude without changing its direction. For example, with <span class="math notranslate nohighlight">\(\alpha = 10\)</span>:</p>
+<ul class="simple">
+<li><p><strong>Component-wise scalar multiplication</strong>:
+$<span class="math notranslate nohighlight">\(\alpha \cdot a = 10 \begin{pmatrix}
+  2\\
+  3
+\end{pmatrix} = \begin{pmatrix}
+  20\\
+  30
+\end{pmatrix}\)</span>$</p></li>
+<li><p><strong>In Dirac notation</strong>:
+$<span class="math notranslate nohighlight">\(\alpha \mid a \rangle = \alpha a_1 \mid e_1 \rangle + \alpha a_2 \mid e_2 \rangle\)</span>$</p></li>
+</ul>
+</section>
+</section>
+<section id="system-of-linear-equations-as-matrix-operations">
+<h2>System of Linear Equations as Matrix Operations<a class="headerlink" href="#system-of-linear-equations-as-matrix-operations" title="Permalink to this heading">#</a></h2>
+<p>A system of linear equations can be interpreted as a matrix operating on a vector to produce another vector. For example, consider the system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a_{11}x_1 + a_{12}x_2 &amp;= b_1 \\
+a_{21}x_1 + a_{22}x_2 &amp;= b_2
+\end{aligned}
+\end{split}\]</div>
+<p>This system can be written compactly in matrix form as:</p>
+<div class="math notranslate nohighlight">
+\[
+A \mathbf{x} = \mathbf{b}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is a matrix containing the coefficients of the system,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the vector of unknowns, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is the vector of constants (right-hand side).</p></li>
+</ul>
+<p>For a 2D system, this becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+b_1 \\
+b_2
+\end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="matrix-multiplication">
+<h2>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h2>
+<p><strong>Row by column product rule</strong></p>
+<p>Matrix multiplication operates by taking the dot product of the rows of the matrix <span class="math notranslate nohighlight">\(A\)</span> with the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. For the above example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A \mathbf{x} = \begin{pmatrix}
+a_{11}x_1 + a_{12}x_2 \\
+a_{21}x_1 + a_{22}x_2
+\end{pmatrix}
+\end{split}\]</div>
+<p>This shows how the system of equations is equivalent to multiplying the matrix by the vector.</p>
+</section>
+<section id="lower-level-definition-of-matrix-multiplication">
+<h2>Lower level definition of Matrix Multiplication<a class="headerlink" href="#lower-level-definition-of-matrix-multiplication" title="Permalink to this heading">#</a></h2>
+<p>In general, if <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is a vector of dimension <span class="math notranslate nohighlight">\(n\)</span>, the matrix-vector multiplication <span class="math notranslate nohighlight">\(A \mathbf{x}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(a_{ij}\)</span> are the elements of matrix <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(x_j\)</span> are the components of vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complex numbers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Algebra 2: Enter The Matrix</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-or-subtraction">1. Addition or Subtraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-by-a-scalar">2. Multiplication by a Scalar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

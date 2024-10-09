@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Operators &#8212; Quantum Mechanics for Chemistry</title>
+    <title>P2 Operators &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -71,8 +71,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note04';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Eigenvalues" href="note05.html" />
-    <link rel="prev" title="Characteristics of Quantum Wavefunctions" href="note03A.html" />
+    <link rel="next" title="P3 Eigenvalues" href="note05.html" />
+    <link rel="prev" title="P1 Characteristics of Quantum Wavefunctions" href="note03A.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -215,12 +215,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03A.html">Characteristics of Quantum Wavefunctions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Operators</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Eigenvalues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note06.html">Time dependence</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P2 Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">P3 Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note06.html">P4,P5 Expectation and Time dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_operators.html">DEMO: Postulates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
@@ -279,6 +277,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/note03.html">Complex numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note04.html">Linear Algebra 1: basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note05.html">Linear Algebra 2: Enter The Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note06.html">Linear Algebra 3: Inner products</a></li>
 </ul>
 </li>
 </ul>
@@ -432,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Operators</h1>
+    <h1>P2 Operators</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,7 +443,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Operators</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
@@ -456,14 +456,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -474,8 +471,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="operators">
-<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="p2-operators">
+<h1>P2 Operators<a class="headerlink" href="#p2-operators" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
@@ -489,7 +486,7 @@ document.write(`
 </div>
 <section id="operators-a-reminder">
 <h2>Operators: A reminder<a class="headerlink" href="#operators-a-reminder" title="Permalink to this heading">#</a></h2>
-<p>We have already seen examples of operators. For short, operators are deonted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:</p>
+<p>Operators are denoted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{p}_x = -i\hbar\frac{d}{dx}}\]</div>
 <ul class="simple">
@@ -508,8 +505,12 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[{\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}\]</div>
 <div class="math notranslate nohighlight">
-\[{\hat{A}\left(c\psi\right) = c\hat{A}\psi\textnormal{ where \textit{c} is a constant}}\]</div>
-<p>and <span class="math notranslate nohighlight">\(\hat{A}\)</span> is a <a class="reference external" href="http://en.wikipedia.org/wiki/Operator#Linear_operators">linear operator</a>. Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to <span class="math notranslate nohighlight">\(\hat{A}_1 + \hat{A}_2\)</span>. Multiplication corresponds to them operating one after another.</p>
+\[{\hat{A}\left(c\psi\right) = c\hat{A}\psi}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{A}\)</span> is a <a class="reference external" href="http://en.wikipedia.org/wiki/Operator#Linear_operators">linear operator</a>.</p></li>
+<li><p>Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to <span class="math notranslate nohighlight">\(\hat{A}_1 + \hat{A}_2\)</span>.</p></li>
+<li><p>Multiplication corresponds to them operating one after another, e.g denoting first order difernetiation operator <span class="math notranslate nohighlight">\(D_1\)</span>, second order operator is <span class="math notranslate nohighlight">\(D^2_1\)</span></p></li>
+</ul>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong> Apply the following operators on the given functions:</p>
 <ol class="arabic simple">
@@ -672,9 +673,8 @@ document.write(`
 \[{\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}\]</div>
 </section>
 </section>
-</section>
 <section id="commutability-measurements">
-<h1>Commutability measurements<a class="headerlink" href="#commutability-measurements" title="Permalink to this heading">#</a></h1>
+<h2>Commutability measurements<a class="headerlink" href="#commutability-measurements" title="Permalink to this heading">#</a></h2>
 <p>We have seen previously that operators may not always commute (i.e., <span class="math notranslate nohighlight">\([A, B] \ne 0\)</span>). An example of such operator pair is position <span class="math notranslate nohighlight">\(\hat{x}\)</span> and momentum <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{p}_x\hat{x}\psi(x) = \hat{p}_x\left(x\psi(x)\right) = \left(\frac{\hbar}{i}\frac{d}{dx}\right)\left(x\psi(x)\right) = \frac{\hbar x}{i}\frac{d\psi(x)}{dx} + \frac{\hbar}{i}\psi(x)}\]</div>
@@ -711,7 +711,7 @@ document.write(`
 \[\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}\]</div>
 </div>
 <section id="commuting-operators-share-eigenfunctions">
-<h2>Commuting operators share eigenfunctions<a class="headerlink" href="#commuting-operators-share-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<h3>Commuting operators share eigenfunctions<a class="headerlink" href="#commuting-operators-share-eigenfunctions" title="Permalink to this heading">#</a></h3>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
 <p>Show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p>
@@ -733,6 +733,7 @@ document.write(`
 \[\Rightarrow \left[\hat{A},\hat{B}\right] = 0\]</div>
 <p>Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -772,7 +773,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Characteristics of Quantum Wavefunctions</p>
+        <p class="prev-next-title">P1 Characteristics of Quantum Wavefunctions</p>
       </div>
     </a>
     <a class="right-next"
@@ -780,7 +781,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Eigenvalues</p>
+        <p class="prev-next-title">P3 Eigenvalues</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -799,7 +800,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Operators</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
@@ -813,14 +813,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

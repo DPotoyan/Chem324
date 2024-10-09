@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Time dependence &#8212; Quantum Mechanics for Chemistry</title>
+    <title>P4,P5 Expectation and Time dependence &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DEMO: Particle in a box" href="demo_PIB.html" />
-    <link rel="prev" title="Eigenvalues" href="note05.html" />
+    <link rel="prev" title="P3 Eigenvalues" href="note05.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -215,12 +215,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note03A.html">Characteristics of Quantum Wavefunctions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note04.html">Operators</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="note05.html">Eigenvalues</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Time dependence</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04.html">P2 Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">P3 Eigenvalues</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P4,P5 Expectation and Time dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_operators.html">DEMO: Postulates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
@@ -279,6 +277,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/note03.html">Complex numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note04.html">Linear Algebra 1: basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note05.html">Linear Algebra 2: Enter The Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note06.html">Linear Algebra 3: Inner products</a></li>
 </ul>
 </li>
 </ul>
@@ -432,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Time dependence</h1>
+    <h1>P4,P5 Expectation and Time dependence</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,15 +443,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Time dependence</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wave-function">Time dependence of a wave function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -461,8 +458,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="time-dependence">
-<h1>Time dependence<a class="headerlink" href="#time-dependence" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="p4-p5-expectation-and-time-dependence">
+<h1>P4,P5 Expectation and Time dependence<a class="headerlink" href="#p4-p5-expectation-and-time-dependence" title="Permalink to this heading">#</a></h1>
 <section id="time-dependence-of-a-wave-function">
 <h2>Time dependence of a wave function<a class="headerlink" href="#time-dependence-of-a-wave-function" title="Permalink to this heading">#</a></h2>
 <p>So far we have completely ignored time dependence in our discussions. This is becasuse we have mainly focused on pure eigenfunction states <span class="math notranslate nohighlight">\(\psi_n(x,t)\)</span> which show no time dependent behaviour for any quantity. It is easy to see why:</p>
@@ -503,9 +500,8 @@ document.write(`
 \[\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)t}\delta_{kn} =\sum_n \mid c_n \mid^2=1\]</div>
 <p>Where the last line used the fact that eigenfunctions <span class="math notranslate nohighlight">\(\langle n \mid k\rangle=0\)</span> are orthogonal hence cross terms in the sum where <span class="math notranslate nohighlight">\(k\neq n\)</span> are all zero and only diagonal terms <span class="math notranslate nohighlight">\(n=k\)</span> survie.</p>
 </section>
-</section>
 <section id="constants-of-motion">
-<h1>Constants of motion<a class="headerlink" href="#constants-of-motion" title="Permalink to this heading">#</a></h1>
+<h2>Constants of motion<a class="headerlink" href="#constants-of-motion" title="Permalink to this heading">#</a></h2>
 <p>Quantities which are conserved over time are called <strong>constants of motion</strong>. In  QM we generaly have expectations or averages instead of sharply defined values. The principle of conservation of energy, however, dictates that the average of total energy must be one of the conserved quantities. To find out weather a quantity of interest will depend on time we  take a time derivative of the expectation:</p>
 <div class="math notranslate nohighlight">
 \[\langle A \rangle =\langle \psi \mid A\mid \psi \rangle\]</div>
@@ -527,6 +523,7 @@ document.write(`
 <ul class="simple">
 <li><p>Hamiltonian commutes with itself and does not depend on time <span class="math notranslate nohighlight">\(\frac{\partial}{\partial t}\langle E\rangle =0\)</span></p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -565,7 +562,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Eigenvalues</p>
+        <p class="prev-next-title">P3 Eigenvalues</p>
       </div>
     </a>
     <a class="right-next"
@@ -592,15 +589,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Time dependence</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wave-function">Time dependence of a wave function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
