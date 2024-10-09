@@ -9,6 +9,28 @@
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of quantum states. 
 :::
 
+### Reminer of Eigenfuncton-eigenvalue problem
+
+$${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
+
+- This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
+
+:::{note} **Example** 
+:class: note
+
+What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
+:::
+
+:::{note} **Solution**
+:class: dropdown
+
+Start with the eigenvalue equation:
+
+$${\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx}$$ 
+$$\ln(f) = kx + c$$ 
+$${f_k = e^ce^{kx} = c'e^{kx}}$$
+:::
+
 
 ### Eigenfunctions of Hermitian operators form complete basis set
 
