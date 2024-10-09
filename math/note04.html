@@ -730,6 +730,55 @@ a_{21}x_1 + a_{22}x_2
 b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(a_{ij}\)</span> are the elements of matrix <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(x_j\)</span> are the components of vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the coefficients matrix A and the right-hand side vector b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solving Ax=b via matrix inversion&#39;</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Calculate the inverse of matrix A</span>
+<span class="n">A_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Solve for the unknown vector x using matrix inversion: x = A_inv * b</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A_inv</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution using matrix inversion:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solving Ax=b via matrix inversion
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Define the coefficients matrix A and the right-hand side vector b</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solving Ax=b via matrix inversion&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-action-of-a-matrix-on-a-vector">
 <h2>Visualizing Action of a Matrix on a Vector<a class="headerlink" href="#visualizing-action-of-a-matrix-on-a-vector" title="Permalink to this heading">#</a></h2>
@@ -838,9 +887,6 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" src="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" />
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -885,11 +931,6 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b7ceed8ae3614b618d401b80699e5326"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.matrix_transform(a=1, b=0, c=0, d=1)&gt;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="commuting-and-non-commuting-matrices">
@@ -970,21 +1011,6 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">AB_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">AB_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A * B Vector&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;AB_vector&#39; is not defined
-</pre></div>
-</div>
-<img alt="../_images/cb7d287b1650019c59a53bd8991a221020033c008e7506842c10c0647bb38342.png" src="../_images/cb7d287b1650019c59a53bd8991a221020033c008e7506842c10c0647bb38342.png" />
-</div>
 </div>
 </section>
 </section>

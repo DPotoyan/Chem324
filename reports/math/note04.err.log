@@ -15,83 +15,40 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Redefine non-commuting matrices for more distinct transformations
-C = np.array([[0, -1], [1, 0]])  # 90-degree rotation matrix
-D = np.array([[1, 2], [0, 1]])  # Horizontal shear
+# Define the coefficients matrix A and the right-hand side vector b
+print('Solving Ax=b via matrix inversion')
 
-# Compute the products C*D and D*C (non-commuting case)
-CD = C @ D
-DC = D @ C
+A = np.array([[2, 3],
+              [1, -2]])
 
-# Apply the transformations
-CD_vector = CD @ vector
-DC_vector = DC @ vector
+b = np.array([7, 1])
 
-# Create subplots for commuting and non-commuting cases
-fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+print('A', A)
+print('b', b)
 
-# Plot 1: A * B (commuting matrices)
-axs[0, 0].axhline(0, color='black',linewidth=0.5)
-axs[0, 0].axvline(0, color='black',linewidth=0.5)
-axs[0, 0].quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, color='blue', label='Original Vector')
-axs[0, 0].quiver(0, 0, AB_vector[0], AB_vector[1], angles='xy', scale_units='xy', scale=1, color='red', label='A * B Vector')
-axs[0, 0].set_xlim(-10, 10)
-axs[0, 0].set_ylim(-10, 10)
-axs[0, 0].set_title('Commuting: A * B')
-axs[0, 0].legend()
-axs[0, 0].grid(True)
-axs[0, 0].set_aspect('equal', adjustable='box')
+# Calculate the inverse of matrix A
+A_inv = np.linalg.inv(A)
 
-# Plot 2: B * A (commuting matrices)
-axs[0, 1].axhline(0, color='black',linewidth=0.5)
-axs[0, 1].axvline(0, color='black',linewidth=0.5)
-axs[0, 1].quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, color='blue', label='Original Vector')
-axs[0, 1].quiver(0, 0, BA_vector[0], BA_vector[1], angles='xy', scale_units='xy', scale=1, color='green', label='B * A Vector')
-axs[0, 1].set_xlim(-10, 10)
-axs[0, 1].set_ylim(-10, 10)
-axs[0, 1].set_title('Commuting: B * A')
-axs[0, 1].legend()
-axs[0, 1].grid(True)
-axs[0, 1].set_aspect('equal', adjustable='box')
+# Solve for the unknown vector x using matrix inversion: x = A_inv * b
+x = np.dot(A_inv, b)
 
-# Plot 3: C * D (non-commuting matrices)
-axs[1, 0].axhline(0, color='black',linewidth=0.5)
-axs[1, 0].axvline(0, color='black',linewidth=0.5)
-axs[1, 0].quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, color='blue', label='Original Vector')
-axs[1, 0].quiver(0, 0, CD_vector[0], CD_vector[1], angles='xy', scale_units='xy', scale=1, color='purple', label='C * D Vector')
-axs[1, 0].set_xlim(-10, 10)
-axs[1, 0].set_ylim(-10, 10)
-axs[1, 0].set_title('Non-Commuting: C * D')
-axs[1, 0].legend()
-axs[1, 0].grid(True)
-axs[1, 0].set_aspect('equal', adjustable='box')
-
-# Plot 4: D * C (non-commuting matrices)
-axs[1, 1].axhline(0, color='black',linewidth=0.5)
-axs[1, 1].axvline(0, color='black',linewidth=0.5)
-axs[1, 1].quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, color='blue', label='Original Vector')
-axs[1, 1].quiver(0, 0, DC_vector[0], DC_vector[1], angles='xy', scale_units='xy', scale=1, color='orange', label='D * C Vector')
-axs[1, 1].set_xlim(-10, 10)
-axs[1, 1].set_ylim(-10, 10)
-axs[1, 1].set_title('Non-Commuting: D * C')
-axs[1, 1].legend()
-axs[1, 1].grid(True)
-axs[1, 1].set_aspect('equal', adjustable='box')
-
-# Display the plots
-plt.show()
-
+print("Solution using matrix inversion:")
+print("x =", x)
 ------------------
 
+----- stdout -----
+Solving Ax=b via matrix inversion
+------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[3], line 20[0m
-[1;32m     18[0m axs[[38;5;241m0[39m, [38;5;241m0[39m][38;5;241m.[39maxvline([38;5;241m0[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mblack[39m[38;5;124m'[39m,linewidth[38;5;241m=[39m[38;5;241m0.5[39m)
-[1;32m     19[0m axs[[38;5;241m0[39m, [38;5;241m0[39m][38;5;241m.[39mquiver([38;5;241m0[39m, [38;5;241m0[39m, vector[[38;5;241m0[39m], vector[[38;5;241m1[39m], angles[38;5;241m=[39m[38;5;124m'[39m[38;5;124mxy[39m[38;5;124m'[39m, scale_units[38;5;241m=[39m[38;5;124m'[39m[38;5;124mxy[39m[38;5;124m'[39m, scale[38;5;241m=[39m[38;5;241m1[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mOriginal Vector[39m[38;5;124m'[39m)
-[0;32m---> 20[0m axs[[38;5;241m0[39m, [38;5;241m0[39m][38;5;241m.[39mquiver([38;5;241m0[39m, [38;5;241m0[39m, [43mAB_vector[49m[[38;5;241m0[39m], AB_vector[[38;5;241m1[39m], angles[38;5;241m=[39m[38;5;124m'[39m[38;5;124mxy[39m[38;5;124m'[39m, scale_units[38;5;241m=[39m[38;5;124m'[39m[38;5;124mxy[39m[38;5;124m'[39m, scale[38;5;241m=[39m[38;5;241m1[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mA * B Vector[39m[38;5;124m'[39m)
-[1;32m     21[0m axs[[38;5;241m0[39m, [38;5;241m0[39m][38;5;241m.[39mset_xlim([38;5;241m-[39m[38;5;241m10[39m, [38;5;241m10[39m)
-[1;32m     22[0m axs[[38;5;241m0[39m, [38;5;241m0[39m][38;5;241m.[39mset_ylim([38;5;241m-[39m[38;5;241m10[39m, [38;5;241m10[39m)
+Cell [0;32mIn[1], line 4[0m
+[1;32m      1[0m [38;5;66;03m# Define the coefficients matrix A and the right-hand side vector b[39;00m
+[1;32m      2[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;124mSolving Ax=b via matrix inversion[39m[38;5;124m'[39m)
+[0;32m----> 4[0m A [38;5;241m=[39m [43mnp[49m[38;5;241m.[39marray([[[38;5;241m2[39m, [38;5;241m3[39m],
+[1;32m      5[0m               [[38;5;241m1[39m, [38;5;241m-[39m[38;5;241m2[39m]])
+[1;32m      7[0m b [38;5;241m=[39m np[38;5;241m.[39marray([[38;5;241m7[39m, [38;5;241m1[39m])
+[1;32m      9[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;124mA[39m[38;5;124m'[39m, A)
 
-[0;31mNameError[0m: name 'AB_vector' is not defined
+[0;31mNameError[0m: name 'np' is not defined
 
