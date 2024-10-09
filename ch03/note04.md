@@ -24,24 +24,6 @@ $$\hat{x} = x$$
 
 - When this operates on a function, it does the following: multiply function by x.
 
-:::{admonition} **Example** Apply the following operators on the given functions:
-:class: note
-1. Operator $\hat{A} = d/dx$ and function $x^2$
-2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$
-3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$
-4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$
-5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$
-:::
-
-:::{dropdown} **Solution**
-:class: note
-
--  $\hat{A}\left(x^2\right) = \frac{d}{dx}x^2 = 2x$.
-- $\hat{A}\left(4x^2\right) = \frac{d^2}{dx^2}\left(4x^2\right) = 8$.
-- $\hat{A}\left(xy^2\right) = \left(\frac{\partial}{\partial y}\left(xy^2\right)\right)_x = 2xy$. Note that $x$ is a constant.
--  $\hat{A}\left(e^{-ikx}\right) = -i\hbar\frac{d}{dx}\left(e^{-ikx}\right) = -\hbar ke^{-ikx}$.
-- $\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}$
-:::
 
 ### Linearity of operators: A reminder
 
@@ -51,129 +33,41 @@ $${\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}$$
 
 $${\hat{A}\left(c\psi\right) = c\hat{A}\psi}$$
 
-- $\hat{A}$ is a [linear operator](http://en.wikipedia.org/wiki/Operator\#Linear_operators). 
-
-- Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to $\hat{A}_1 + \hat{A}_2$. 
-- Multiplication corresponds to them operating one after another, e.g denoting first order difernetiation operator $D_1$, second order operator is $D^2_1$
-
 
 ### Exepctation expression: A reminder
+
+- **Expectation of an bservable** Operators are used to compute average quantities called expectations for the corresponding quantity. E.g average energy, momentum, position. 
 
 $$
 {\left < {A}\right> = \int\psi^*\hat{A}\psi d\tau}
 $$
 
-
-- If $\psi$ is an eigenfunction of $\hat{A}$ then the expectation value is equal to the corresponding eigenvalue ($a$):
+- **Special case when wavefunction $\psi$  is an eigenfunction of an operator $\hat{A}$**
 
 $$
 {\hat{A}\psi = a\psi \Rightarrow \left<{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
 $$
 
-- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
-- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
-- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
-
-
-### Why matrix mulitplication order matters
-
-- In linear algebra, matrix multiplication is generally **not commutative**, meaning that for two matrices $A$ and $B$, it's usually the case that:
-
-$$
-A B \neq B A
-$$
-
-To illustrate why this happens, let’s consider an example with 2D matrices.
-
-### Example: Non-commuting Matrices
-
-Let’s define two 2D matrices $A$ and $B$:
-
-$$
-A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
-$$
-
-We will compute $AB$ and $BA$ to show that they are not equal.
-
-#### Compute $AB$
-
-First, let's multiply $A$ by $B$:
-
-$$
-AB = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
-$$
-
-Performing the matrix multiplication:
-
-$$
-AB = \begin{pmatrix}
-(1 \cdot 0 + 2 \cdot 1) & (1 \cdot 1 + 2 \cdot 0) \\
-(0 \cdot 0 + 1 \cdot 1) & (0 \cdot 1 + 1 \cdot 0)
-\end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}
-$$
-
-#### Compute $BA$
-
-Now, let's multiply $B$ by $A$:
-
-$$
-BA = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}
-$$
-
-Performing the matrix multiplication:
-
-$$
-BA = \begin{pmatrix}
-(0 \cdot 1 + 1 \cdot 0) & (0 \cdot 2 + 1 \cdot 1) \\
-(1 \cdot 1 + 0 \cdot 0) & (1 \cdot 2 + 0 \cdot 1)
-\end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 2 \end{pmatrix}
-$$
-
-#### Compare $AB$ and $BA$
-
-We now have:
-
-$$
-AB = \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}, \quad BA = \begin{pmatrix} 0 & 1 \\ 1 & 2 \end{pmatrix}
-$$
-
-Clearly, $AB \neq BA$.
-
-### Why Don’t Matrices Commute?
-
-- The reason matrix multiplication is not commutative generally lies in how matrix multiplication is performed. Matrix multiplication involves combining rows of the first matrix with columns of the second matrix. 
-
-- These operations usually yield different results because the effect of applying transformations in different orders changes the outcome. 
-
-
-- For example: One matrix might represent a shear transformation and another a rotation. Applying the shear first and then the rotation will generally give a different result than applying the rotation first and then the shear.
-
-### Special Cases
-
-There are some special cases where matrices do commute:
-
-- **Diagonal matrices**: If $A$ and $B$ are both diagonal matrices, then $AB = BA$  because each entry in the diagonal simply scales the corresponding entry in the other matrix.
-- **Identity matrix**: The identity matrix $I$ commutes with any matrix $A$, i.e., $IA = AI = A$, because multiplying by the identity matrix leaves the original matrix unchanged.
-
-
 
 ### Commutations of operators
 
-The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ on some function f are defined as follows:
+- From linear algebra we know that order of matrix multiplicaiton matters and that $AB\neq BA$ for two matrices $A$ and B$
+
+- Thus we also ecpect  $\hat{A}\hat{B} \neq \hat{B}\hat{A}$ for two operators acting on some function:
 
 $$
 {\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
 $$
 
-In practice, this means that we first operate with $\hat{B}$ and then with $\hat{A}$. Note that the order of multiplication is important because they may not commute ($\hat{A}\hat{B} \ne \hat{B}\hat{A}$; just like for matrices). The commutator of two operators $\hat{A}$ and $\hat{B}$ is defined as:
+- **The commutator of two operators $[\hat{A}, \hat{B}]$** is defined as:
 
-:::{admonition} **Commutator of operators A and B**
+:::{admonition} **Commutator of operators $\hat{A}$ and $\hat{B}$**
 :class: important
 
 $${\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}$$
 :::
 
-If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. 
+- If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. 
 
 
 :::{admonition} **Example**
@@ -251,17 +145,23 @@ $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
 :::
 
 
-### Commuting operators share eigenfunctions
+### Commuting operators and simultaneous measurments
 
-:::{admonition} **Example**  
-:class: note
+:::{admonition} **Commuting operators share eigenfunction**
+:class: important
 
-Show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
+$$[\hat{A},\hat{B}]=0$$
+
+$$\hat{A}\phi_k = a_k \phi_k$$
+
+$$\hat{B}\phi_k = b_k \phi_k$$
+
 :::
 
+:::{admonition} **Proof**
+:class: doprdown
 
-:::{admonition} **Solution** 
-:class: dropdown
+- We will show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 
 Denote the eigenvalues of $\hat{A}$ and $\hat{B}$ by $a_i$ and $b_i$ and the common eigenfunctions by $\psi_i$. For both operators we have then:
 
@@ -278,7 +178,23 @@ $$\Rightarrow \left[\hat{A},\hat{B}\right] = 0$$
 Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!
 :::
 
+- If opertors commute that means we can **simultaneously measure corresponding observables in a single experiment**. 
+
+- For instance operatos of kinetic energy and momentum commute. We can measure momentum and kinetic energy. But we can not do the same for momentum and position. 
+
+- If we measure observables $A$ and $B$ desribed by a common eigenfunction $\phi_k$ we find the observables to be the corresponding eigenvalues $a_k$ and $b_k$
+
 ### Hermitian property of operators 
+
+
+:::{admonition} **Hermitian Matrix**
+:class: important
+
+$$a_{jk} = a^{*}_{kj}$$
+
+:::
+
+
 
 :::{admonition} **Hermitian Operator**
 :class: important
@@ -290,18 +206,18 @@ $$
 :::
 
 
-:::{admonition} **Hermitian Matrix**
-:class: important
 
-$$a_{ij} = a^{*}_{ji}$$
-
-:::
 
 - *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
 
-- In general most operators are not hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
+- In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
 
-- **Eigenvalues of hermitian operators are real** The symmetry of Hermitian operators forces eigenvalues to be real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+### Eigenvalues of hermitian operators are real  
+
+- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
+- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
+- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
+- The symmetry of Hermitian operators forces eigenvalues to be real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
 
 $$\int\psi^*\hat{A}\psi d\tau = a$$ 
 
@@ -324,7 +240,8 @@ $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\r
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
 :::
 
-#### Orthogonality of eigenfunctions 
+
+#### Eigenfunction of Hermitian operator are orthogonal 
 
 The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
 
