@@ -75,6 +75,87 @@ $$
 - When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
 
 
+### Why matrix mulitplication order matters
+
+- In linear algebra, matrix multiplication is generally **not commutative**, meaning that for two matrices $A$ and $B$, it's usually the case that:
+
+$$
+A B \neq B A
+$$
+
+To illustrate why this happens, let’s consider an example with 2D matrices.
+
+### Example: Non-commuting Matrices
+
+Let’s define two 2D matrices $A$ and $B$:
+
+$$
+A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+$$
+
+We will compute $AB$ and $BA$ to show that they are not equal.
+
+#### Compute $AB$
+
+First, let's multiply $A$ by $B$:
+
+$$
+AB = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+$$
+
+Performing the matrix multiplication:
+
+$$
+AB = \begin{pmatrix}
+(1 \cdot 0 + 2 \cdot 1) & (1 \cdot 1 + 2 \cdot 0) \\
+(0 \cdot 0 + 1 \cdot 1) & (0 \cdot 1 + 1 \cdot 0)
+\end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}
+$$
+
+#### Compute $BA$
+
+Now, let's multiply $B$ by $A$:
+
+$$
+BA = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}
+$$
+
+Performing the matrix multiplication:
+
+$$
+BA = \begin{pmatrix}
+(0 \cdot 1 + 1 \cdot 0) & (0 \cdot 2 + 1 \cdot 1) \\
+(1 \cdot 1 + 0 \cdot 0) & (1 \cdot 2 + 0 \cdot 1)
+\end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 2 \end{pmatrix}
+$$
+
+#### Compare $AB$ and $BA$
+
+We now have:
+
+$$
+AB = \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}, \quad BA = \begin{pmatrix} 0 & 1 \\ 1 & 2 \end{pmatrix}
+$$
+
+Clearly, $AB \neq BA$.
+
+### Why Don’t Matrices Commute?
+
+- The reason matrix multiplication is not commutative generally lies in how matrix multiplication is performed. Matrix multiplication involves combining rows of the first matrix with columns of the second matrix. 
+
+- These operations usually yield different results because the effect of applying transformations in different orders changes the outcome. 
+
+
+- For example: One matrix might represent a shear transformation and another a rotation. Applying the shear first and then the rotation will generally give a different result than applying the rotation first and then the shear.
+
+### Special Cases
+
+There are some special cases where matrices do commute:
+
+- **Diagonal matrices**: If $A$) and $B$ are both diagonal matrices, then $AB = BA  because each entry in the diagonal simply scales the corresponding entry in the other matrix.
+- **Identity matrix**: The identity matrix $I$ commutes with any matrix $A$, i.e., $IA = AI = A$, because multiplying by the identity matrix leaves the original matrix unchanged.
+
+
 
 ### Commutations of operators
 
@@ -86,11 +167,13 @@ $$
 
 In practice, this means that we first operate with $\hat{B}$ and then with $\hat{A}$. Note that the order of multiplication is important because they may not commute ($\hat{A}\hat{B} \ne \hat{B}\hat{A}$; just like for matrices). The commutator of two operators $\hat{A}$ and $\hat{B}$ is defined as:
 
+:::{admonition} **Commutator of operators A and B**
+:class: important
+
 $${\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}$$
+:::
 
-If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. Operator multiplication is [associative](http://en.wikipedia.org/wiki/Associativity):
-
-$${\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}$$
+If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. 
 
 
 :::{admonition} **Example**
@@ -119,7 +202,7 @@ $${\left[A,B\right] = -\left[B,A\right]}$$
 
 $${\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}$$
 
-## Commutability measurements
+## Commutators and experimental measurements
 
 We have seen previously that operators may not always commute (i.e., $[A, B] \ne 0$). An example of such operator pair is position $\hat{x}$ and momentum $\hat{p}_x$:
 
@@ -195,7 +278,7 @@ $$\Rightarrow \left[\hat{A},\hat{B}\right] = 0$$
 Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!
 :::
 
-### Hermitian property of operators and matrices
+### Hermitian property of operators 
 
 :::{admonition} **Hermitian Operator**
 :class: important
