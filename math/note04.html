@@ -505,6 +505,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-a-hopfield-network">Components of a Hopfield Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-simple-hopfield-network">Example: Simple Hopfield Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-state">Initial State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-neurons">Update Neurons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-state">New State</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-patterns-and-energy">Storing Patterns and Energy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -695,6 +705,123 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(a_{ij}\)</span> are the elements of matrix <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(x_j\)</span> are the components of vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 </section>
+<section id="application-hopfield-neural-networks">
+<h2>Application: Hopfield Neural Networks<a class="headerlink" href="#application-hopfield-neural-networks" title="Permalink to this heading">#</a></h2>
+<p>A <strong>Hopfield network</strong> is a type of recurrent neural network where all neurons are connected to each other. It is commonly used for <strong>associative memory</strong>—storing and recalling patterns. The network evolves to a stable state, recalling a stored pattern when given noisy or incomplete input. We can understand its behavior using matrix and vector operations.</p>
+<hr class="docutils" />
+</section>
+<section id="components-of-a-hopfield-network">
+<h2>Components of a Hopfield Network<a class="headerlink" href="#components-of-a-hopfield-network" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Neurons (States)</strong>:
+Each neuron has a binary state, either <span class="math notranslate nohighlight">\(1\)</span> (active) or <span class="math notranslate nohighlight">\(-1\)</span> (inactive). The state of all neurons is represented by a vector <span class="math notranslate nohighlight">\(\mathbf{s}\)</span>. For a network of 3 neurons, the state vector might be:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \mathbf{s} = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}
+   \end{split}\]</div>
+</li>
+<li><p><strong>Weights (Connections)</strong>:
+Neurons are connected by weights, represented by a symmetric matrix <span class="math notranslate nohighlight">\(W\)</span>. For a 3-neuron network, the weight matrix might look like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   W = \begin{pmatrix}
+   0 &amp; w_{12} &amp; w_{13} \\
+   w_{21} &amp; 0 &amp; w_{23} \\
+   w_{31} &amp; w_{32} &amp; 0
+   \end{pmatrix}
+   \end{split}\]</div>
+<p>The diagonal elements are zero because a neuron does not connect to itself.</p>
+</li>
+<li><p><strong>Update Rule</strong>:
+To update the state of neuron <span class="math notranslate nohighlight">\(i\)</span>, we calculate the weighted sum of inputs from all other neurons:</p>
+<div class="math notranslate nohighlight">
+\[
+   h_i = \sum_{j} w_{ij} s_j = (W \mathbf{s})_i
+   \]</div>
+<p>If <span class="math notranslate nohighlight">\(h_i &gt; 0\)</span>, the neuron becomes active (<span class="math notranslate nohighlight">\(s_i = 1\)</span>). If <span class="math notranslate nohighlight">\(h_i &lt; 0\)</span>, the neuron becomes inactive (<span class="math notranslate nohighlight">\(s_i = -1\)</span>).</p>
+</li>
+</ol>
+<hr class="docutils" />
+</section>
+<section id="example-simple-hopfield-network">
+<h2>Example: Simple Hopfield Network<a class="headerlink" href="#example-simple-hopfield-network" title="Permalink to this heading">#</a></h2>
+<p>Let’s consider a 3-neuron Hopfield network with the following weight matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+W = \begin{pmatrix}
+0 &amp; 1 &amp; -1 \\
+1 &amp; 0 &amp; 1 \\
+-1 &amp; 1 &amp; 0
+\end{pmatrix}
+\end{split}\]</div>
+<section id="initial-state">
+<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this heading">#</a></h3>
+<p>Assume the initial state of the network is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{s} = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="update-neurons">
+<h3>Update Neurons<a class="headerlink" href="#update-neurons" title="Permalink to this heading">#</a></h3>
+<p>We update each neuron based on the weighted inputs:</p>
+<ol class="arabic">
+<li><p><strong>Neuron 1</strong>:
+The input to neuron 1 is:</p>
+<div class="math notranslate nohighlight">
+\[
+   h_1 = W_{11}s_1 + W_{12}s_2 + W_{13}s_3 = 0 \cdot 1 + 1 \cdot (-1) + (-1) \cdot 1 = -2
+   \]</div>
+<p>Since <span class="math notranslate nohighlight">\(h_1 &lt; 0\)</span>, the new state of neuron 1 is <span class="math notranslate nohighlight">\(s_1 = -1\)</span>.</p>
+</li>
+<li><p><strong>Neuron 2</strong>:
+The input to neuron 2 is:</p>
+<div class="math notranslate nohighlight">
+\[
+   h_2 = W_{21}s_1 + W_{22}s_2 + W_{23}s_3 = 1 \cdot 1 + 0 \cdot (-1) + 1 \cdot 1 = 2
+   \]</div>
+<p>Since <span class="math notranslate nohighlight">\(h_2 &gt; 0\)</span>, the new state of neuron 2 is <span class="math notranslate nohighlight">\(s_2 = 1\)</span>.</p>
+</li>
+<li><p><strong>Neuron 3</strong>:
+The input to neuron 3 is:</p>
+<div class="math notranslate nohighlight">
+\[
+   h_3 = W_{31}s_1 + W_{32}s_2 + W_{33}s_3 = (-1) \cdot 1 + 1 \cdot (-1) + 0 \cdot 1 = -2
+   \]</div>
+<p>Since <span class="math notranslate nohighlight">\(h_3 &lt; 0\)</span>, the new state of neuron 3 is <span class="math notranslate nohighlight">\(s_3 = -1\)</span>.</p>
+</li>
+</ol>
+</section>
+<section id="new-state">
+<h3>New State<a class="headerlink" href="#new-state" title="Permalink to this heading">#</a></h3>
+<p>After one round of updates, the new state of the network is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{s} = \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix}
+\end{split}\]</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="storing-patterns-and-energy">
+<h2>Storing Patterns and Energy<a class="headerlink" href="#storing-patterns-and-energy" title="Permalink to this heading">#</a></h2>
+<p>A Hopfield network stores specific patterns by adjusting the weights, and it evolves to minimize its <strong>energy</strong>. The energy of the network is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j = -\frac{1}{2} \mathbf{s}^T W \mathbf{s}
+\]</div>
+<p>As the network updates, it reduces its energy until it reaches a stable state, which corresponds to one of the stored patterns.</p>
+<hr class="docutils" />
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Neurons</strong> are represented by a state vector <span class="math notranslate nohighlight">\(\mathbf{s}\)</span>.</p></li>
+<li><p><strong>Weights</strong> between neurons are represented by a matrix <span class="math notranslate nohighlight">\(W\)</span>.</p></li>
+<li><p>Neurons update their states based on the weighted sum of inputs, which is a matrix-vector multiplication.</p></li>
+<li><p>The network evolves to stable patterns by minimizing its energy function.</p></li>
+</ul>
+<p>This is a basic introduction to the Hopfield network using matrix and vector operations.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -773,6 +900,16 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-a-hopfield-network">Components of a Hopfield Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-simple-hopfield-network">Example: Simple Hopfield Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-state">Initial State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-neurons">Update Neurons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-state">New State</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-patterns-and-energy">Storing Patterns and Energy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
 

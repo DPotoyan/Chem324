@@ -446,13 +446,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators-a-reminder">Linearity of operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation-expression-a-reminder">Exepctation expression: A reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-matrix-mulitplication-order-matters">Why matrix mulitplication order matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-non-commuting-matrices">Example: Non-commuting Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ab">Compute <span class="math notranslate nohighlight">\(AB\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ba">Compute <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-ab-and-ba">Compare <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-experimental-measurements">Commutators and experimental measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators-and-matrices">Hermitian property of operators and matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian property of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-eigenfunctions">Orthogonality of eigenfunctions</a></li>
 </ul>
 </li>
@@ -539,6 +548,83 @@ document.write(`
 <li><p>When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values.</p></li>
 </ul>
 </section>
+<section id="why-matrix-mulitplication-order-matters">
+<h2>Why matrix mulitplication order matters<a class="headerlink" href="#why-matrix-mulitplication-order-matters" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In linear algebra, matrix multiplication is generally <strong>not commutative</strong>, meaning that for two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, it’s usually the case that:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A B \neq B A
+\]</div>
+<p>To illustrate why this happens, let’s consider an example with 2D matrices.</p>
+</section>
+<section id="example-non-commuting-matrices">
+<h2>Example: Non-commuting Matrices<a class="headerlink" href="#example-non-commuting-matrices" title="Permalink to this heading">#</a></h2>
+<p>Let’s define two 2D matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix}, \quad B = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
+\end{split}\]</div>
+<p>We will compute <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span> to show that they are not equal.</p>
+<section id="compute-ab">
+<h3>Compute <span class="math notranslate nohighlight">\(AB\)</span><a class="headerlink" href="#compute-ab" title="Permalink to this heading">#</a></h3>
+<p>First, let’s multiply <span class="math notranslate nohighlight">\(A\)</span> by <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+AB = \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
+\end{split}\]</div>
+<p>Performing the matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+AB = \begin{pmatrix}
+(1 \cdot 0 + 2 \cdot 1) &amp; (1 \cdot 1 + 2 \cdot 0) \\
+(0 \cdot 0 + 1 \cdot 1) &amp; (0 \cdot 1 + 1 \cdot 0)
+\end{pmatrix} = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="compute-ba">
+<h3>Compute <span class="math notranslate nohighlight">\(BA\)</span><a class="headerlink" href="#compute-ba" title="Permalink to this heading">#</a></h3>
+<p>Now, let’s multiply <span class="math notranslate nohighlight">\(B\)</span> by <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+BA = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix}
+\end{split}\]</div>
+<p>Performing the matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+BA = \begin{pmatrix}
+(0 \cdot 1 + 1 \cdot 0) &amp; (0 \cdot 2 + 1 \cdot 1) \\
+(1 \cdot 1 + 0 \cdot 0) &amp; (1 \cdot 2 + 0 \cdot 1)
+\end{pmatrix} = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="compare-ab-and-ba">
+<h3>Compare <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span><a class="headerlink" href="#compare-ab-and-ba" title="Permalink to this heading">#</a></h3>
+<p>We now have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}
+\end{split}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(AB \neq BA\)</span>.</p>
+</section>
+</section>
+<section id="why-dont-matrices-commute">
+<h2>Why Don’t Matrices Commute?<a class="headerlink" href="#why-dont-matrices-commute" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The reason matrix multiplication is not commutative generally lies in how matrix multiplication is performed. Matrix multiplication involves combining rows of the first matrix with columns of the second matrix.</p></li>
+<li><p>These operations usually yield different results because the effect of applying transformations in different orders changes the outcome.</p></li>
+<li><p>For example: One matrix might represent a shear transformation and another a rotation. Applying the shear first and then the rotation will generally give a different result than applying the rotation first and then the shear.</p></li>
+</ul>
+</section>
+<section id="special-cases">
+<h2>Special Cases<a class="headerlink" href="#special-cases" title="Permalink to this heading">#</a></h2>
+<p>There are some special cases where matrices do commute:</p>
+<ul class="simple">
+<li><p><strong>Diagonal matrices</strong>: If <span class="math notranslate nohighlight">\(A\)</span>) and <span class="math notranslate nohighlight">\(B\)</span> are both diagonal matrices, then $AB = BA  because each entry in the diagonal simply scales the corresponding entry in the other matrix.</p></li>
+<li><p><strong>Identity matrix</strong>: The identity matrix <span class="math notranslate nohighlight">\(I\)</span> commutes with any matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e., <span class="math notranslate nohighlight">\(IA = AI = A\)</span>, because multiplying by the identity matrix leaves the original matrix unchanged.</p></li>
+</ul>
+</section>
 <section id="commutations-of-operators">
 <h2>Commutations of operators<a class="headerlink" href="#commutations-of-operators" title="Permalink to this heading">#</a></h2>
 <p>The product <span class="math notranslate nohighlight">\(\hat{A}\hat{B}\)</span> of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> on some function f are defined as follows:</p>
@@ -547,11 +633,12 @@ document.write(`
 {\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
 \]</div>
 <p>In practice, this means that we first operate with <span class="math notranslate nohighlight">\(\hat{B}\)</span> and then with <span class="math notranslate nohighlight">\(\hat{A}\)</span>. Note that the order of multiplication is important because they may not commute (<span class="math notranslate nohighlight">\(\hat{A}\hat{B} \ne \hat{B}\hat{A}\)</span>; just like for matrices). The commutator of two operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is defined as:</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Commutator of operators A and B</strong></p>
 <div class="math notranslate nohighlight">
 \[{\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}\]</div>
-<p>If the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. Operator multiplication is <a class="reference external" href="http://en.wikipedia.org/wiki/Associativity">associative</a>:</p>
-<div class="math notranslate nohighlight">
-\[{\hat{A}\hat{B}\hat{C} = \left(\hat{A}\hat{B}\right)\hat{C} = \hat{A}\left(\hat{B}\hat{C}\right)}\]</div>
+</div>
+<p>If the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed.</p>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
 <p>Prove that operators <span class="math notranslate nohighlight">\(\hat{A} = x\)</span> and <span class="math notranslate nohighlight">\(\hat{B} = d/dx\)</span> do not commute (i.e., <span class="math notranslate nohighlight">\(\left[\hat{A}, \hat{B}\right] \ne 0\)</span>).</p>
@@ -578,8 +665,8 @@ document.write(`
 \[{\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}\]</div>
 </section>
 </section>
-<section id="commutability-measurements">
-<h2>Commutability measurements<a class="headerlink" href="#commutability-measurements" title="Permalink to this heading">#</a></h2>
+<section id="commutators-and-experimental-measurements">
+<h2>Commutators and experimental measurements<a class="headerlink" href="#commutators-and-experimental-measurements" title="Permalink to this heading">#</a></h2>
 <p>We have seen previously that operators may not always commute (i.e., <span class="math notranslate nohighlight">\([A, B] \ne 0\)</span>). An example of such operator pair is position <span class="math notranslate nohighlight">\(\hat{x}\)</span> and momentum <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\hat{p}_x\hat{x}\psi(x) = \hat{p}_x\left(x\psi(x)\right) = \left(\frac{\hbar}{i}\frac{d}{dx}\right)\left(x\psi(x)\right) = \frac{\hbar x}{i}\frac{d\psi(x)}{dx} + \frac{\hbar}{i}\psi(x)}\]</div>
@@ -639,8 +726,8 @@ document.write(`
 <p>Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!</p>
 </div>
 </section>
-<section id="hermitian-property-of-operators-and-matrices">
-<h3>Hermitian property of operators and matrices<a class="headerlink" href="#hermitian-property-of-operators-and-matrices" title="Permalink to this heading">#</a></h3>
+<section id="hermitian-property-of-operators">
+<h3>Hermitian property of operators<a class="headerlink" href="#hermitian-property-of-operators" title="Permalink to this heading">#</a></h3>
 <div class="important admonition">
 <p class="admonition-title"><strong>Hermitian Operator</strong></p>
 <div class="math notranslate nohighlight">
@@ -761,13 +848,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators-a-reminder">Linearity of operators: A reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation-expression-a-reminder">Exepctation expression: A reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-matrix-mulitplication-order-matters">Why matrix mulitplication order matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-non-commuting-matrices">Example: Non-commuting Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ab">Compute <span class="math notranslate nohighlight">\(AB\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ba">Compute <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-ab-and-ba">Compare <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutability-measurements">Commutability measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-experimental-measurements">Commutators and experimental measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-share-eigenfunctions">Commuting operators share eigenfunctions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators-and-matrices">Hermitian property of operators and matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian property of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-eigenfunctions">Orthogonality of eigenfunctions</a></li>
 </ul>
 </li>
