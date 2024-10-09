@@ -152,7 +152,7 @@ Clearly, $AB \neq BA$.
 
 There are some special cases where matrices do commute:
 
-- **Diagonal matrices**: If $A$) and $B$ are both diagonal matrices, then $AB = BA  because each entry in the diagonal simply scales the corresponding entry in the other matrix.
+- **Diagonal matrices**: If $A$ and $B$ are both diagonal matrices, then $AB = BA$  because each entry in the diagonal simply scales the corresponding entry in the other matrix.
 - **Identity matrix**: The identity matrix $I$ commutes with any matrix $A$, i.e., $IA = AI = A$, because multiplying by the identity matrix leaves the original matrix unchanged.
 
 
