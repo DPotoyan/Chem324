@@ -278,6 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note02.html">Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Complex numbers</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Algebra 1: basics</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Linear Algebra 2: Enter The Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note06.html">Linear Algebra 3: Inner products</a></li>
 </ul>
@@ -492,6 +493,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Algebra 1: basics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
@@ -505,7 +507,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-action-of-matrix-on-a-vector">Visualizing action of matrix on a vector</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-a-hopfield-network">Components of a Hopfield Network</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-simple-hopfield-network">Example: Simple Hopfield Network</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-state">Initial State</a></li>
@@ -516,6 +521,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-patterns-and-energy">Storing Patterns and Energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -593,13 +601,19 @@ document.write(`
 <section id="vector-notation">
 <h2>Vector Notation<a class="headerlink" href="#vector-notation" title="Permalink to this heading">#</a></h2>
 <p>Depending on the context, we may emphasize the basis or omit it when the basis is implied:</p>
-<ul class="simple">
-<li><p>In terms of a coordinate basis:<br />
-$<span class="math notranslate nohighlight">\(\vec{a} = 2\vec{e_i} + 3\vec{e_j}\)</span>$</p></li>
-<li><p>As an ordered tuple of components:<br />
-$<span class="math notranslate nohighlight">\(a = (2, 3)\)</span>$</p></li>
-<li><p>Using Dirac notation (common in quantum mechanics):<br />
-$<span class="math notranslate nohighlight">\(\mid a \rangle = 2 \mid e_i \rangle + 3 \mid e_j \rangle\)</span>$</p></li>
+<ul>
+<li><p>In terms of a coordinate basis:</p>
+<div class="math notranslate nohighlight">
+\[\vec{a} = 2\vec{e_i} + 3\vec{e_j}\]</div>
+</li>
+<li><p>As an ordered tuple of components:</p>
+<div class="math notranslate nohighlight">
+\[a = (2, 3)\]</div>
+</li>
+<li><p>Using Dirac notation (common in quantum mechanics):</p>
+<div class="math notranslate nohighlight">
+\[\mid a \rangle = 2 \mid e_i \rangle + 3 \mid e_j \rangle\]</div>
+</li>
 </ul>
 <p>Vectors can represent a wide range of phenomena, such as the position of a particle in space, the population of countries, or temperature variations in different regions of a forest.</p>
 </section>
@@ -612,36 +626,44 @@ $<span class="math notranslate nohighlight">\(\mid a \rangle = 2 \mid e_i \rangl
 \[\mid b \rangle = b_1 \mid e_1 \rangle + b_2 \mid e_2 \rangle\]</div>
 <section id="addition-or-subtraction">
 <h3>1. Addition or Subtraction<a class="headerlink" href="#addition-or-subtraction" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Component-wise addition</strong>:
-$<span class="math notranslate nohighlight">\(a + b = \begin{pmatrix}
-  2\\
-  3
-\end{pmatrix} + \begin{pmatrix}
-  1\\
-  1
-\end{pmatrix} = \begin{pmatrix}
-  3\\
-  4
-\end{pmatrix}\)</span>$</p></li>
-<li><p><strong>In Dirac notation</strong>:
-$<span class="math notranslate nohighlight">\(\mid a \rangle \pm \mid b \rangle = (a_1 \pm b_1)\mid e_1 \rangle + (a_2 \pm b_2)\mid e_2 \rangle\)</span>$</p></li>
+<ul>
+<li><p><strong>Component-wise addition</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a + b = \begin{pmatrix}
+    2\\
+    3
+  \end{pmatrix} + \begin{pmatrix}
+    1\\
+    1
+  \end{pmatrix} = \begin{pmatrix}
+    3\\
+    4
+  \end{pmatrix}\end{split}\]</div>
+</li>
+<li><p><strong>In Dirac notation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\mid a \rangle \pm \mid b \rangle = (a_1 \pm b_1)\mid e_1 \rangle + (a_2 \pm b_2)\mid e_2 \rangle\]</div>
+</li>
 </ul>
 </section>
 <section id="multiplication-by-a-scalar">
 <h3>2. Multiplication by a Scalar<a class="headerlink" href="#multiplication-by-a-scalar" title="Permalink to this heading">#</a></h3>
 <p>Multiplying a vector by a scalar <span class="math notranslate nohighlight">\(\alpha\)</span> scales the vector’s magnitude without changing its direction. For example, with <span class="math notranslate nohighlight">\(\alpha = 10\)</span>:</p>
-<ul class="simple">
-<li><p><strong>Component-wise scalar multiplication</strong>:
-$<span class="math notranslate nohighlight">\(\alpha \cdot a = 10 \begin{pmatrix}
-  2\\
-  3
-\end{pmatrix} = \begin{pmatrix}
-  20\\
-  30
-\end{pmatrix}\)</span>$</p></li>
-<li><p><strong>In Dirac notation</strong>:
-$<span class="math notranslate nohighlight">\(\alpha \mid a \rangle = \alpha a_1 \mid e_1 \rangle + \alpha a_2 \mid e_2 \rangle\)</span>$</p></li>
+<ul>
+<li><p><strong>Component-wise scalar multiplication</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\alpha \cdot a = 10 \begin{pmatrix}
+    2\\
+    3
+  \end{pmatrix} = \begin{pmatrix}
+    20\\
+    30
+  \end{pmatrix}\end{split}\]</div>
+</li>
+<li><p><strong>In Dirac notation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\beta \mid a \rangle = \beta a_1 \mid e_1 \rangle + \beta a_2 \mid e_2 \rangle\]</div>
+</li>
 </ul>
 </section>
 </section>
@@ -705,11 +727,122 @@ b_i = (A \mathbf{x})_i = \sum_{j=1}^{n} a_{ij} x_j
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(a_{ij}\)</span> are the elements of matrix <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(x_j\)</span> are the components of vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 </section>
-<section id="application-hopfield-neural-networks">
-<h2>Application: Hopfield Neural Networks<a class="headerlink" href="#application-hopfield-neural-networks" title="Permalink to this heading">#</a></h2>
-<p>A <strong>Hopfield network</strong> is a type of recurrent neural network where all neurons are connected to each other. It is commonly used for <strong>associative memory</strong>—storing and recalling patterns. The network evolves to a stable state, recalling a stored pattern when given noisy or incomplete input. We can understand its behavior using matrix and vector operations.</p>
-<hr class="docutils" />
+<section id="visualizing-action-of-matrix-on-a-vector">
+<h2>Visualizing action of matrix on a vector<a class="headerlink" href="#visualizing-action-of-matrix-on-a-vector" title="Permalink to this heading">#</a></h2>
+<p>These transformations illustrate different ways of modifying vectors and geometric shapes through scaling, shearing, and identity operations. We use 2D vector and matrices as an example</p>
+<ol class="arabic simple">
+<li><p><strong>Shearing and Scaling</strong>.<span class="math notranslate nohighlight">\(\begin{bmatrix} 2 &amp; 1 \\ 0 &amp; 0.5 \end{bmatrix}\)</span></p>
+<ul class="simple">
+<li><p>This matrix scales the <span class="math notranslate nohighlight">\(x\)</span>-direction by 2 and the <span class="math notranslate nohighlight">\(y\)</span>-direction by 0.5. Additionally, it applies a horizontal shear (displacement) along the <span class="math notranslate nohighlight">\(x\)</span>-axis by an amount proportional to the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. This results in a combination of scaling and shearing, altering both the size and shape of objects.</p></li>
+</ul>
+</li>
+<li><p><strong>Scaling</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 0.5 \end{bmatrix}\)</span></p>
+<ul class="simple">
+<li><p>This matrix scales the <span class="math notranslate nohighlight">\(x\)</span>-direction by 2 and the <span class="math notranslate nohighlight">\(y\)</span>-direction by 0.5. It changes the size of the object, expanding it in the <span class="math notranslate nohighlight">\(x\)</span>-direction and compressing it in the <span class="math notranslate nohighlight">\(y\)</span>-direction, while keeping its shape intact that is without any angular distortion.</p></li>
+</ul>
+</li>
+<li><p><strong>Stretching</strong> <span class="math notranslate nohighlight">\(\begin{bmatrix} 3 &amp; 0 \\ 0 &amp; 0.75 \end{bmatrix}\)</span></p>
+<ul class="simple">
+<li><p>This matrix stretches the object by a factor of 3 along the <span class="math notranslate nohighlight">\(x\)</span>-axis and compresses it by a factor of 0.75 along the <span class="math notranslate nohighlight">\(y\)</span>-axis. This operation changes the proportions of the object without distorting angles, stretching it non-uniformly.</p></li>
+</ul>
+</li>
+<li><p><strong>Identity (No Change)</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span></p>
+<ul class="simple">
+<li><p>The identity matrix leaves the object unchanged. Applying this transformation results in the same object without any alteration to its size, shape, or orientation.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the original vector</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Define the transformation matrices</span>
+<span class="n">shear_scale_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">scaling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">stretching_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]])</span>
+<span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Apply the transformations</span>
+<span class="n">transformed_vector</span> <span class="o">=</span> <span class="n">shear_scale_matrix</span> <span class="o">@</span> <span class="n">vector</span>
+<span class="n">scaled_vector</span> <span class="o">=</span> <span class="n">scaling_matrix</span> <span class="o">@</span> <span class="n">vector</span>
+<span class="n">stretched_vector</span> <span class="o">=</span> <span class="n">stretching_matrix</span> <span class="o">@</span> <span class="n">vector</span>
+<span class="n">identity_vector</span> <span class="o">=</span> <span class="n">identity_matrix</span> <span class="o">@</span> <span class="n">vector</span>
+
+<span class="c1"># Create subplots for the four transformations</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Shearing and Scaling Transformation</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">transformed_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">transformed_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sheared &amp; Scaled Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Shearing and Scaling Transformation&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 2: Scaling Transformation</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">scaled_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scaled_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Scaled Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scaling Transformation&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 3: Stretching Transformation</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stretched_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stretched_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stretched Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stretching Transformation&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 4: Identity Transformation</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">identity_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">identity_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Identity Vector (No Change)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Identity Transformation (No Change)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" src="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" />
+</div>
+</div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="application-hopfield-neural-networks">
+<h1>Application: Hopfield Neural Networks<a class="headerlink" href="#application-hopfield-neural-networks" title="Permalink to this heading">#</a></h1>
+<p>A <strong>Hopfield network</strong> is a type of recurrent neural network where all neurons are connected to each other. It is commonly used for <strong>associative memory</strong>—storing and recalling patterns. The network evolves to a stable state, recalling a stored pattern when given noisy or incomplete input. We can understand its behavior using matrix and vector operations.</p>
 <section id="components-of-a-hopfield-network">
 <h2>Components of a Hopfield Network<a class="headerlink" href="#components-of-a-hopfield-network" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
@@ -887,6 +1020,7 @@ E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j = -\frac{1}{2} \mathbf{s}^T W \mathbf
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Algebra 1: basics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
@@ -900,7 +1034,10 @@ E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j = -\frac{1}{2} \mathbf{s}^T W \mathbf
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-definition-of-matrix-multiplication">Lower level definition of Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-action-of-matrix-on-a-vector">Visualizing action of matrix on a vector</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#application-hopfield-neural-networks">Application: Hopfield Neural Networks</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-a-hopfield-network">Components of a Hopfield Network</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-simple-hopfield-network">Example: Simple Hopfield Network</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-state">Initial State</a></li>
@@ -911,6 +1048,9 @@ E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j = -\frac{1}{2} \mathbf{s}^T W \mathbf
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-patterns-and-energy">Storing Patterns and Energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
