@@ -22,9 +22,28 @@ $${\hat{p}_x = -i\hbar\frac{d}{dx}}$$
 
 $$\hat{x} = x$$
 
-- When this operates on a function, it does the following: multiply function by x. 
+- When this operates on a function, it does the following: multiply function by x.
 
-### Linearity of operators
+:::{admonition} **Example** Apply the following operators on the given functions:
+:class: note
+1. Operator $\hat{A} = d/dx$ and function $x^2$
+2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$
+3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$
+4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$
+5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$
+:::
+
+:::{dropdown} **Solution**
+:class: note
+
+-  $\hat{A}\left(x^2\right) = \frac{d}{dx}x^2 = 2x$.
+- $\hat{A}\left(4x^2\right) = \frac{d^2}{dx^2}\left(4x^2\right) = 8$.
+- $\hat{A}\left(xy^2\right) = \left(\frac{\partial}{\partial y}\left(xy^2\right)\right)_x = 2xy$. Note that $x$ is a constant.
+-  $\hat{A}\left(e^{-ikx}\right) = -i\hbar\frac{d}{dx}\left(e^{-ikx}\right) = -\hbar ke^{-ikx}$.
+- $\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}$
+:::
+
+### Linearity of operators: A reminder
 
 Operators in quantum mechanics are *linear*, which means that they fulfill the following rules:
 
@@ -37,51 +56,8 @@ $${\hat{A}\left(c\psi\right) = c\hat{A}\psi}$$
 - Operator algebra defines how operators are added, multiplied, etc. For example, adding two operators is equivalent to $\hat{A}_1 + \hat{A}_2$. 
 - Multiplication corresponds to them operating one after another, e.g denoting first order difernetiation operator $D_1$, second order operator is $D^2_1$
 
-:::{admonition} **Example** Apply the following operators on the given functions:
-:class: note
-1. Operator $\hat{A} = d/dx$ and function $x^2$
-2. Operator $\hat{A} = d^2/dx^2$ and function $4x^2$
-3. Operator $\hat{A} = \left(\partial / \partial y\right)_x$ and function $xy^2$
-4. Operator $\hat{A} = -i\hbar d/dx$ and function $\exp(-ikx)$
-5. Operator $\hat{A} = -\hbar^2 d^2/dx^2$ and function $\exp(-ikx)$
-:::
 
-:::{dropdown} **Solution**
--  $\hat{A}\left(x^2\right) = \frac{d}{dx}x^2 = 2x$.
-- $\hat{A}\left(4x^2\right) = \frac{d^2}{dx^2}\left(4x^2\right) = 8$.
-- $\hat{A}\left(xy^2\right) = \left(\frac{\partial}{\partial y}\left(xy^2\right)\right)_x = 2xy$. Note that $x$ is a constant.
--  $\hat{A}\left(e^{-ikx}\right) = -i\hbar\frac{d}{dx}\left(e^{-ikx}\right) = -\hbar ke^{-ikx}$.
-- $\hat{A}\left(e^{-ikx}\right) = -\hbar^2\frac{d^2}{dx^2}e^{-ikx} = i\hbar^2k\frac{d}{dx}e^{-ikx} = \hbar^2k^2e^{-ikx}$
-:::
-
-
-
-### Eigenvalue problem
-
-$${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
-
-- This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
-
-:::{note} **Example** 
-:class: note
-
-What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
-:::
-
-:::{note} **Solution**
-:class: dropdown
-
-Start with the eigenvalue equation:
-
-$${\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx { (integrate both sides)}}$$ 
-$$\ln(f) = kx + c$$ 
-$${f_k = e^ce^{kx} = c'e^{kx}}$$
-:::
-
-
-### Exepctation
-
-- The eigenfunctions are $f_k(x)$ with the corresponding eigenvalue given by $k$. In general, for operator $\hat{A}$, the expectation value (quantum mechanical average) is defined as:
+### Exepctation expression: A reminder
 
 $$
 {\left < {A}\right> = \int\psi^*\hat{A}\psi d\tau}
@@ -94,69 +70,14 @@ $$
 {\hat{A}\psi = a\psi \Rightarrow \left<{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
 $$
 
-- Note that operators and eigenfunctions may be complex valued; however, eigenvalues of quantum mechanical operators must be real because they correspond to values obtained from measurements. 
+- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
 - By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
 - When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
 
-### Hermitian property
 
-### Real eigenvalues
-
-- Operator $\hat{A}$ is [Hermitian](http://en.wikipedia.org/wiki/Hermitian_operator) if it fulfills the following condition for *all* well-behaved functions $\psi_j$ and $\psi_k$:
-
-$$
-{\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
-$$
-
-- *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
-
-- In general most operators are not hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
-
-- This symmetry implies that the eigenvalues are real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
-
-$$\int\psi^*\hat{A}\psi d\tau = a$$ 
-
-$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
-
-Hence $a = a^*$, which means that $a$ must be real!
-
-:::{admonition} **Example** 
-:class: note
-
-Prove that the momentum operator (in one dimension) is Hermitian.
-:::
-
-:::{admonition} **Solution**
-:class: dropdown
-
-${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
-$ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
-
-Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
-:::
-
-#### Orthogonality of eigenfunctions 
-
-The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
-
-$$
-{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}
-$$
-
-$$
-{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}
-$$
-
-
-Here Hermiticity requires LHS = RHS. If $a_j \ne a_k$, then we are dealing with:
-
-$$
-{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
-$$
-
-Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
 
 ### Commutations of operators
+
 The product $\hat{A}\hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ on some function f are defined as follows:
 
 $$
@@ -273,5 +194,72 @@ $$\Rightarrow \left[\hat{A},\hat{B}\right] = 0$$
 
 Note that the commutation relation must apply to all well-behaved functions and not just for some given subset of functions!
 :::
+
+### Hermitian property of operators and matrices
+
+:::{admonition} **Hermitian Operator**
+:class: important
+
+$$
+{\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
+$$
+
+:::
+
+
+:::{admonition} **Hermitian Matrix**
+:class: important
+
+$$a_{ij} = a^{*}_{ji}$$
+
+:::
+
+- *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
+
+- In general most operators are not hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
+
+- **Eigenvalues of hermitian operators are real** The symmetry of Hermitian operators forces eigenvalues to be real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+
+$$\int\psi^*\hat{A}\psi d\tau = a$$ 
+
+$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
+
+Hence $a = a^*$, which means that $a$ must be real!
+
+:::{admonition} **Example** 
+:class: note
+
+Prove that the momentum operator (in one dimension) is Hermitian.
+:::
+
+:::{admonition} **Solution**
+:class: dropdown
+
+${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
+$ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
+
+Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
+:::
+
+#### Orthogonality of eigenfunctions 
+
+The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
+
+$$
+{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}
+$$
+
+$$
+{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}
+$$
+
+
+Here Hermiticity requires LHS = RHS. If $a_j \ne a_k$, then we are dealing with:
+
+$$
+{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
+$$
+
+Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
 
 
