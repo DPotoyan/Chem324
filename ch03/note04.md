@@ -159,7 +159,7 @@ $$\hat{B}\phi_k = b_k \phi_k$$
 :::
 
 :::{admonition} **Proof**
-:class: doprdown
+:class: dropdown
 
 - We will show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
 
@@ -206,26 +206,42 @@ $$
 :::
 
 
-
-
 - *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
 
 - In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
 
-### Eigenvalues of hermitian operators are real  
+:::{admonition} **Example of Hermitian Matrix** 
+:class: note
 
-- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
-- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
-- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
-- The symmetry of Hermitian operators forces eigenvalues to be real: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+Which of these matricies is Hermitian?
 
-$$\int\psi^*\hat{A}\psi d\tau = a$$ 
+$\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}$, $\begin{pmatrix}
+i & 0 \\
+0 & 1
+\end{pmatrix}$, $\begin{pmatrix}
+-1 & -3i \\
+3i & 8
+\end{pmatrix}$, $\begin{pmatrix}
+1 & 2i \\
+2i & 3
+\end{pmatrix}$
+:::
 
-$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
+:::{admonition} **Solution**
+:class: dropdown
 
-Hence $a = a^*$, which means that $a$ must be real!
+- For the first matrix we have $a_{12}=2\neq a^{*}_{21}=3$, non-Hermitian
+- For the second matrix $a_{12}= a^{*}_{21}=0$, Hermitian
+- For the third matrix  $a_{12}=-3i =a^{*}_{21} = (3i)^{*}=-3i$, Hermitian
+- For the fourth matrix  $a_{12}=2i \neq a^{*}_{21} = (2i)^{*} = -2i$, Hermitian
 
-:::{admonition} **Example** 
+:::
+
+
+:::{admonition} **Example of Hermitian Operator** 
 :class: note
 
 Prove that the momentum operator (in one dimension) is Hermitian.
@@ -239,6 +255,24 @@ $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\r
 
 Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
 :::
+
+
+### Two conseqeuences of Hermitian property
+
+#### Eigenvalues of Hermitian operator are real  
+
+- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
+- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
+- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
+- **Proof** Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+
+$$\int\psi^*\hat{A}\psi d\tau = a$$ 
+
+$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
+
+$$a = a^*$$
+
+
 
 
 #### Eigenfunction of Hermitian operator are orthogonal 
