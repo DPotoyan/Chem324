@@ -496,11 +496,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation-unifies-vectors-and-functions">Dirac notation unifies vectors and functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-qm-are-seen-as-matrices">Operators in QM are seen as Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-derivative-as-a-matrix">Example: First Derivative as a Matrix</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-difference-approximation">Centered Difference approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix">Second Derivative as a Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-difference-approximation">Centered Difference approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix-centered-difference">Second Derivative as a Matrix (Centered Difference)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
@@ -544,7 +542,7 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><strong>Ket</strong> <span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..)\\ \)</span> <strong>Bra</strong> <span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p><strong>Ket</strong> <span class="math notranslate nohighlight">\(\mid a \rangle =(a_1,a_2,..) \\ \)</span> <strong>Bra</strong> <span class="math notranslate nohighlight">\(\bra{a} = \begin{pmatrix}a_1 \\ a_2 \\  ...\\ \end{pmatrix}\)</span></p></td>
 <td class="text-center"><p><strong>Ket</strong> <span class="math notranslate nohighlight">\(\mid \psi\rangle=\psi(x)\\\)</span> <span class="math notranslate nohighlight">\(\\\)</span> <strong>Bra</strong> <span class="math notranslate nohighlight">\(\langle \psi \mid=\psi(x)^*\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p><strong>Example</strong> <span class="math notranslate nohighlight">\(\\ \mid a \rangle =(1, 2i)\)</span> <span class="math notranslate nohighlight">\(\\\bra{a} =\begin{pmatrix} 1 \\ -2i \\ \end{pmatrix}\)</span></p></td>
@@ -584,9 +582,8 @@ D_1 = \frac{1}{h}
 <li><p>For a function represented as a vector <span class="math notranslate nohighlight">\(\psi = (\psi(x_1), \psi(x_2), \dots, \psi(x_5))\)</span>, applying this matrix gives the derivative at each point (except the boundary).</p></li>
 </ul>
 </section>
-</section>
 <section id="numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">
-<h2>Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span><a class="headerlink" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2" title="Permalink to this heading">#</a></h2>
+<h3>Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span><a class="headerlink" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2" title="Permalink to this heading">#</a></h3>
 <p>Let’s consider the function <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span> sampled at 5 points <span class="math notranslate nohighlight">\(x = (0, 1, 2, 3, 4)\)</span>, giving us:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \psi = \begin{pmatrix}
@@ -673,13 +670,25 @@ Exact derivative of x^2:
 </div>
 </section>
 <section id="centered-difference-approximation">
-<h2>Centered Difference approximation<a class="headerlink" href="#centered-difference-approximation" title="Permalink to this heading">#</a></h2>
+<h3>Centered Difference approximation<a class="headerlink" href="#centered-difference-approximation" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>A much better approximation is obtained by using centered difference.</p></li>
+<li><p>A much better approximation is obtained by using centered difference (difference between one point to the left and one point to the right from a give point)</p></li>
 <li><p>And taking care of boundary points via higher order evaluation of derivatives.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[ \frac{d\psi}{dx} \approx \frac{\psi(x_{i+1}) - \psi(x_{i-1})}{2h} \]</div>
+<p>This operation can be represented by a matrix. For <span class="math notranslate nohighlight">\(n = 5\)</span> grid points, with improved boundary handling, the first derivative matrix <span class="math notranslate nohighlight">\(D_1\)</span> using the centered difference method looks like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D_1 = \frac{1}{2h}
+\begin{pmatrix}
+-3 &amp; 4 &amp; -1 &amp; 0 &amp; 0 \\
+-1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; -4 &amp; 3
+\end{pmatrix}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -721,69 +730,36 @@ Exact derivative of x^2:
 </div>
 </div>
 </div>
-<section id="second-derivative-as-a-matrix">
-<h3>Second Derivative as a Matrix<a class="headerlink" href="#second-derivative-as-a-matrix" title="Permalink to this heading">#</a></h3>
-<p>Similarly, the second derivative can be approximated by a central difference formula:</p>
+</section>
+<section id="second-derivative-as-a-matrix-centered-difference">
+<h3>Second Derivative as a Matrix (Centered Difference)<a class="headerlink" href="#second-derivative-as-a-matrix-centered-difference" title="Permalink to this heading">#</a></h3>
+<p>Similarly, the second derivative can be approximated by a <strong>centered difference formula</strong> for interior points:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{d^2\psi}{dx^2} \approx \frac{\psi(x_{i+1}) - 2\psi(x_i) + \psi(x_{i-1})}{h^2} \]</div>
-<p>The corresponding second derivative matrix <span class="math notranslate nohighlight">\(D_2\)</span> for <span class="math notranslate nohighlight">\(n = 5\)</span> grid points is:</p>
+<p>At the <strong>boundaries</strong>, we use one-sided difference formulas to maintain accuracy:</p>
+<ul>
+<li><p>At the first point <span class="math notranslate nohighlight">\(x_1\)</span>, we approximate using:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d^2\psi}{dx^2} \bigg|_{x_1} \approx \frac{\psi(x_1) - 2\psi(x_2) + \psi(x_3)}{h^2} \]</div>
+</li>
+<li><p>At the last point <span class="math notranslate nohighlight">\(x_n\)</span>, we approximate using:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d^2\psi}{dx^2} \bigg|_{x_n} \approx \frac{\psi(x_{n-2}) - 2\psi(x_{n-1}) + \psi(x_n)}{h^2} \]</div>
+</li>
+</ul>
+<p>The corresponding second derivative matrix <span class="math notranslate nohighlight">\(D_2\)</span> for <span class="math notranslate nohighlight">\(n = 5\)</span> grid points, with this improved boundary handling, is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 D_2 = \frac{1}{h^2}
 \begin{pmatrix}
--2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
 1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
 0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 \\
 0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 1 &amp; -2
+0 &amp; 0 &amp; 1 &amp; -2 &amp; 1
 \end{pmatrix}
 \end{split}\]</div>
-<p>Applying this matrix to the vector <span class="math notranslate nohighlight">\(\psi\)</span> gives the second derivative of the function at each point.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Define the grid points and function</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># Grid points from 0 to 4</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Spacing between points</span>
-
-<span class="n">psi</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># Function psi(x) = x^2</span>
-
-<span class="c1"># Define the first derivative matrix D_1</span>
-<span class="n">D_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative matrix </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative of x^2 </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="nd">@x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second derivative matrix 
- [[ 1. -2.  1.  0.  0.]
- [ 0.  1. -2.  1.  0.]
- [ 0.  0.  1. -2.  1.]
- [ 0.  0.  0.  1. -1.]
- [ 0.  0.  0.  0.  0.]]
-second derivative of x^2 
- [ 0.  0.  0. -1.  0.]
-</pre></div>
-</div>
-</div>
-</div>
+<p>Applying this matrix to the vector <span class="math notranslate nohighlight">\(\psi\)</span> gives the second derivative of the function at each point, including the boundary points with improved accuracy.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -819,7 +795,7 @@ second derivative of x^2
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">D_2_centered</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -1090,11 +1066,9 @@ AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pma
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation-unifies-vectors-and-functions">Dirac notation unifies vectors and functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-qm-are-seen-as-matrices">Operators in QM are seen as Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-derivative-as-a-matrix">Example: First Derivative as a Matrix</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-difference-approximation">Centered Difference approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix">Second Derivative as a Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-difference-approximation">Centered Difference approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix-centered-difference">Second Derivative as a Matrix (Centered Difference)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
