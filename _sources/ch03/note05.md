@@ -9,13 +9,15 @@
 - With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of quantum states. 
 :::
 
-### Reminer of Eigenfuncton-eigenvalue problem
+### Reminer: Eigenfuncton-eigenvalue problem
+
+**For operators**
 
 $${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
 
-- This is an eigenvalue problem where one needs to determine the eigenfunctions $\psi_i$ and the eigenvalues $E_i$. If $\psi_i$ is an eigenfunction of $\hat{H}$, operating with $\hat{H}$ on it must yield a constant times $\psi_i$.
+- This is an eigenvalue problem solution of which yields $n = 1,2,3,...$ number of eigenfunctions $\psi_i$ and the eigenvalues $E_i$. Depending on boundary conditions there could be finite or infinite number of solutions. 
 
-:::{note} **Example** 
+:::{note} **Example: find eigenvalues and eigenfunctions of momentum operator** 
 :class: note
 
 What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
@@ -24,12 +26,55 @@ What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
 :::{note} **Solution**
 :class: dropdown
 
-Start with the eigenvalue equation:
+Finding eigenfunctions/eigenvalue of differnetial operators analytically involves solving differnetial equations
 
 $${\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx}$$ 
 $$\ln(f) = kx + c$$ 
 $${f_k = e^ce^{kx} = c'e^{kx}}$$
 :::
+
+**For operators written in matrix form**
+
+- In applied numerical work operators are converted into matrices and one solves eigenvalue-eigenfunction problem of finding eigenvectors $v$ and eigenvalues $\lambda$. 
+- For matri with $N$ dimensions there may be at most $N$ eigenvalues!
+
+$$Av = \lambda v$$
+
+:::{note} **Example: finding eigenvalues of a matrix** 
+:class: note
+
+$$\begin{pmatrix}
+1 & 2 \\
+2 & 4
+\end{pmatrix}\begin{pmatrix}
+v_1 \\
+v_2
+\end{pmatrix} = \lambda \begin{pmatrix}
+v_1 \\
+v_2
+\end{pmatrix}$$
+::: 
+
+::::{admonition}
+
+```python
+import numpy as np
+
+# Define the matrix
+matrix = np.array([[1, 2], [2, 4]])
+
+# Compute the eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(matrix)
+
+# Display the eigenvalues and eigenvectors
+eigenvalues, eigenvectors
+```
+::::
+
+
+
+
+
 
 
 ### Eigenfunctions of Hermitian operators form complete basis set
@@ -52,7 +97,7 @@ $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
 $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
-The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
+- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 ### Wave function as a linear superoposition of eigenfunctions
 

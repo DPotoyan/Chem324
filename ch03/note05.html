@@ -443,7 +443,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-of-eigenfuncton-eigenvalue-problem">Reminer of Eigenfuncton-eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
@@ -473,28 +473,51 @@ document.write(`
 <li><p>With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  <strong>Schrödinger’s cat</strong> and the <strong>double slit experiments</strong> to illustrate the strange nature of quantum states.</p></li>
 </ul>
 </div>
-<section id="reminer-of-eigenfuncton-eigenvalue-problem">
-<h2>Reminer of Eigenfuncton-eigenvalue problem<a class="headerlink" href="#reminer-of-eigenfuncton-eigenvalue-problem" title="Permalink to this heading">#</a></h2>
+<section id="reminer-eigenfuncton-eigenvalue-problem">
+<h2>Reminer: Eigenfuncton-eigenvalue problem<a class="headerlink" href="#reminer-eigenfuncton-eigenvalue-problem" title="Permalink to this heading">#</a></h2>
+<p><strong>For operators</strong></p>
 <div class="math notranslate nohighlight">
 \[{\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}\]</div>
 <ul class="simple">
-<li><p>This is an eigenvalue problem where one needs to determine the eigenfunctions <span class="math notranslate nohighlight">\(\psi_i\)</span> and the eigenvalues <span class="math notranslate nohighlight">\(E_i\)</span>. If <span class="math notranslate nohighlight">\(\psi_i\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{H}\)</span>, operating with <span class="math notranslate nohighlight">\(\hat{H}\)</span> on it must yield a constant times <span class="math notranslate nohighlight">\(\psi_i\)</span>.</p></li>
+<li><p>This is an eigenvalue problem solution of which yields <span class="math notranslate nohighlight">\(n = 1,2,3,...\)</span> number of eigenfunctions <span class="math notranslate nohighlight">\(\psi_i\)</span> and the eigenvalues <span class="math notranslate nohighlight">\(E_i\)</span>. Depending on boundary conditions there could be finite or infinite number of solutions.</p></li>
 </ul>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p><strong>Example</strong></p>
+<p><strong>Example: find eigenvalues and eigenfunctions of momentum operator</strong></p>
 <p>What are the eigenfunctions and eigenvalues of an operator <span class="math notranslate nohighlight">\(\hat{A} = d/dx\)</span></p>
 </div>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Solution</strong></p>
-<p>Start with the eigenvalue equation:</p>
+<p>Finding eigenfunctions/eigenvalue of differnetial operators analytically involves solving differnetial equations</p>
 <div class="math notranslate nohighlight">
 \[{\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx}\]</div>
 <div class="math notranslate nohighlight">
 \[\ln(f) = kx + c\]</div>
 <div class="math notranslate nohighlight">
 \[{f_k = e^ce^{kx} = c'e^{kx}}\]</div>
+</div>
+<p><strong>For operators written in matrix form</strong></p>
+<ul class="simple">
+<li><p>In applied numerical work operators are converted into matrices and one solves eigenvalue-eigenfunction problem of finding eigenvectors <span class="math notranslate nohighlight">\(v\)</span> and eigenvalues <span class="math notranslate nohighlight">\(\lambda\)</span>.</p></li>
+<li><p>For matri with <span class="math notranslate nohighlight">\(N\)</span> dimensions there may be at most <span class="math notranslate nohighlight">\(N\)</span> eigenvalues!</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Av = \lambda v\]</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><strong>Example: finding eigenvalues of a matrix</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; 4
+\end{pmatrix}\begin{pmatrix}
+v_1 \\
+v_2
+\end{pmatrix} = \lambda \begin{pmatrix}
+v_1 \\
+v_2
+\end{pmatrix}\end{split}\]</div>
 </div>
 </section>
 <section id="eigenfunctions-of-hermitian-operators-form-complete-basis-set">
@@ -519,7 +542,9 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[\mid f\rangle = \sum_i c_i \mid \psi_i \rangle\]</div>
-<p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p>
+<ul class="simple">
+<li><p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p></li>
+</ul>
 </section>
 <section id="wave-function-as-a-linear-superoposition-of-eigenfunctions">
 <h2>Wave function as a linear superoposition of eigenfunctions<a class="headerlink" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions" title="Permalink to this heading">#</a></h2>
@@ -722,7 +747,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-of-eigenfuncton-eigenvalue-problem">Reminer of Eigenfuncton-eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition">Quantum states as linear superposition.</a></li>
