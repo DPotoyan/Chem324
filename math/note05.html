@@ -677,7 +677,9 @@ Exact derivative of x^2:
 </ul>
 <div class="math notranslate nohighlight">
 \[ \frac{d\psi}{dx} \approx \frac{\psi(x_{i+1}) - \psi(x_{i-1})}{2h} \]</div>
-<p>This operation can be represented by a matrix. For <span class="math notranslate nohighlight">\(n = 5\)</span> grid points, with improved boundary handling, the first derivative matrix <span class="math notranslate nohighlight">\(D_1\)</span> using the centered difference method looks like:</p>
+<ul class="simple">
+<li><p>This operation can be represented by a matrix. For <span class="math notranslate nohighlight">\(n = 5\)</span> grid points, with improved boundary handling, the first derivative matrix <span class="math notranslate nohighlight">\(D_1\)</span> using the centered difference method looks like:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 D_1 = \frac{1}{2h}
@@ -689,6 +691,9 @@ D_1 = \frac{1}{2h}
 0 &amp; 0 &amp; 1 &amp; -4 &amp; 3
 \end{pmatrix}
 \end{split}\]</div>
+<ul class="simple">
+<li><p>The coefficients <span class="math notranslate nohighlight">\(-3,4,-1\)</span> come from applying a Taylor series expansion to derive a higher-order accurate one-sided difference approximation for the derivative at the boundary point.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
