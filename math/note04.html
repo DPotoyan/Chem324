@@ -934,7 +934,10 @@ A = \left[ \begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span> 
 
 <span class="n">A_coords</span> <span class="o">=</span> <span class="n">A</span><span class="nd">@coords</span>
 
@@ -965,7 +968,7 @@ A = \left[ \begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7efd70f5ab80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f498c710d90&gt;
 </pre></div>
 </div>
 <img alt="../_images/2f36d0e9a4eb1ab817034add91cef3c3a394b19337cc10816b6c9cd6a4ac6dc7.png" src="../_images/2f36d0e9a4eb1ab817034add91cef3c3a394b19337cc10816b6c9cd6a4ac6dc7.png" />
@@ -976,8 +979,8 @@ A = \left[ \begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 <h3>Rotation matrix R<a class="headerlink" href="#rotation-matrix-r" title="Permalink to this heading">#</a></h3>
 <p>To rotate vectors in the plane, we choose an angle <span class="math notranslate nohighlight">\(\theta\)</span> and write down the matrix that represents the rotation counterclockwise by an angle <span class="math notranslate nohighlight">\(\theta\)</span>.  Basic trigonometry can be used to calculate the columns in this case.</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-500c5157-2319-486f-8b46-8b817f5e78ad">
-<span class="eqno">(25)<a class="headerlink" href="#equation-500c5157-2319-486f-8b46-8b817f5e78ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-28515f5b-05e9-4e6f-927b-4076a516a743">
+<span class="eqno">(25)<a class="headerlink" href="#equation-28515f5b-05e9-4e6f-927b-4076a516a743" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{array}\right]
 \end{equation}\]</div>
 <div class="cell tag_hide-input docutils container">
@@ -987,7 +990,10 @@ R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \c
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mi">6</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
 <span class="n">R_coords</span> <span class="o">=</span> <span class="n">R</span><span class="nd">@coords</span>
 
@@ -1019,12 +1025,14 @@ R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \c
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">R_coords</span> <span class="o">=</span> <span class="n">R</span><span class="nd">@coords</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">R_coords</span> <span class="o">=</span> <span class="n">R</span><span class="nd">@coords</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">x_LT3</span> <span class="o">=</span> <span class="n">R_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
 
-<span class="ne">NameError</span>: name &#39;pi&#39; is not defined
+<span class="ne">NameError</span>: name &#39;cos&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1054,10 @@ S= \left[ \begin{array}{cc} 1 &amp; 2 \\ 0 &amp; 1 \end{array}\right]
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">S_coords</span> <span class="o">=</span> <span class="n">S</span><span class="nd">@coords</span>
 
 <span class="n">x_LT4</span> <span class="o">=</span> <span class="n">S_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>

@@ -496,19 +496,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation-unifies-vectors-and-functions">Dirac notation unifies vectors and functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-qm-are-seen-as-matrices">Operators in QM are seen as Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-derivative-as-a-matrix">Example: First Derivative as a Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-second-derivative-as-a-matrix">Example: Second Derivative as a Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-example-applying-the-derivative-matrix-for-psi-x-x-2">Numeric Example: Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix">Second Derivative as a Matrix</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-matrix-mulitplication-order-matters">Why matrix mulitplication order matters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-non-commuting-matrices">Example: Non-commuting Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ab">Compute <span class="math notranslate nohighlight">\(AB\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ba">Compute <span class="math notranslate nohighlight">\(BA\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-ab-and-ba">Compare <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
@@ -575,28 +577,9 @@ D_1 = \frac{1}{h}
 \end{split}\]</div>
 <p>For a function represented as a vector <span class="math notranslate nohighlight">\(\psi = (\psi(x_1), \psi(x_2), \dots, \psi(x_5))\)</span>, applying this matrix gives the derivative at each point (except the boundary).</p>
 </section>
-<section id="example-second-derivative-as-a-matrix">
-<h3>Example: Second Derivative as a Matrix<a class="headerlink" href="#example-second-derivative-as-a-matrix" title="Permalink to this heading">#</a></h3>
-<p>Similarly, the second derivative can be approximated by a central difference formula:</p>
-<div class="math notranslate nohighlight">
-\[ \frac{d^2\psi}{dx^2} \approx \frac{\psi(x_{i+1}) - 2\psi(x_i) + \psi(x_{i-1})}{h^2} \]</div>
-<p>The corresponding second derivative matrix <span class="math notranslate nohighlight">\(D_2\)</span> for <span class="math notranslate nohighlight">\(n = 5\)</span> grid points is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-D_2 = \frac{1}{h^2}
-\begin{pmatrix}
--2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
-1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 1 &amp; -2
-\end{pmatrix}
-\end{split}\]</div>
-<p>Applying this matrix to the vector <span class="math notranslate nohighlight">\(\psi\)</span> gives the second derivative of the function at each point.</p>
 </section>
-</section>
-<section id="numeric-example-applying-the-derivative-matrix-for-psi-x-x-2">
-<h2>Numeric Example: Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span><a class="headerlink" href="#numeric-example-applying-the-derivative-matrix-for-psi-x-x-2" title="Permalink to this heading">#</a></h2>
+<section id="numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">
+<h2>Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span><a class="headerlink" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2" title="Permalink to this heading">#</a></h2>
 <p>Let’s consider the function <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span> sampled at 5 points <span class="math notranslate nohighlight">\(x = (0, 1, 2, 3, 4)\)</span>, giving us:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \psi = \begin{pmatrix}
@@ -664,16 +647,131 @@ D_1 \cdot \psi = \frac{1}{1}
 <span class="c1"># Apply the first derivative matrix to the function vector</span>
 <span class="n">derivative_psi</span> <span class="o">=</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">psi</span>
 
-<span class="n">psi</span><span class="p">,</span> <span class="n">derivative_psi</span>  <span class="c1"># Display the original function an</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;derivative of x^2&#39;</span><span class="p">,</span> <span class="n">derivative_psi</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0.,  1.,  4.,  9., 16.]), array([1., 3., 5., 7., 0.]))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>derivative of x^2 [1. 3. 5. 7. 0.]
 </pre></div>
 </div>
 </div>
 </div>
+<section id="second-derivative-as-a-matrix">
+<h3>Second Derivative as a Matrix<a class="headerlink" href="#second-derivative-as-a-matrix" title="Permalink to this heading">#</a></h3>
+<p>Similarly, the second derivative can be approximated by a central difference formula:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d^2\psi}{dx^2} \approx \frac{\psi(x_{i+1}) - 2\psi(x_i) + \psi(x_{i-1})}{h^2} \]</div>
+<p>The corresponding second derivative matrix <span class="math notranslate nohighlight">\(D_2\)</span> for <span class="math notranslate nohighlight">\(n = 5\)</span> grid points is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D_2 = \frac{1}{h^2}
+\begin{pmatrix}
+-2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -2
+\end{pmatrix}
+\end{split}\]</div>
+<p>Applying this matrix to the vector <span class="math notranslate nohighlight">\(\psi\)</span> gives the second derivative of the function at each point.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the grid points and function</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># Grid points from 0 to 4</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Spacing between points</span>
+
+<span class="n">psi</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># Function psi(x) = x^2</span>
+
+<span class="c1"># Define the first derivative matrix D_1</span>
+<span class="n">D_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative matrix </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative of x^2 </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="nd">@x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second derivative matrix 
+ [[ 1. -2.  1.  0.  0.]
+ [ 0.  1. -2.  1.  0.]
+ [ 0.  0.  1. -2.  1.]
+ [ 0.  0.  0.  1. -1.]
+ [ 0.  0.  0.  0.  0.]]
+second derivative of x^2 
+ [ 0.  0.  0. -1.  0.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the grid points and function</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># Grid points from 0 to 4</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Spacing between points</span>
+
+<span class="n">psi</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># Function psi(x) = x^2</span>
+<span class="c1"># Define the centered difference approximation for the second derivative matrix</span>
+<span class="n">D_2_centered</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># Calculate the second derivative of x^2 using the centered difference method</span>
+<span class="n">second_derivative_centered</span> <span class="o">=</span> <span class="n">D_2_centered</span> <span class="o">@</span> <span class="n">psi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative of x^2 by using centered difference </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="nd">@x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">D_2_centered</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># Calculate the second derivative of x^2 using the centered difference method</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">second_derivative_centered</span> <span class="o">=</span> <span class="n">D_2_centered</span> <span class="o">@</span> <span class="n">psi</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second derivative of x^2 by using centered difference </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">D_1</span> <span class="o">@</span> <span class="n">D_1</span><span class="nd">@x</span><span class="p">)</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 100 is different from 5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="matrix-multiplication">
 <h2>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h2>
@@ -748,14 +846,14 @@ AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pma
 \end{split}\]</div>
 <p>Clearly, <span class="math notranslate nohighlight">\(AB \neq BA\)</span>.</p>
 </section>
-</section>
 <section id="why-dont-matrices-commute">
-<h2>Why Don’t Matrices Commute?<a class="headerlink" href="#why-dont-matrices-commute" title="Permalink to this heading">#</a></h2>
+<h3>Why Don’t Matrices Commute?<a class="headerlink" href="#why-dont-matrices-commute" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The reason matrix multiplication is not commutative generally lies in how matrix multiplication is performed. Matrix multiplication involves combining rows of the first matrix with columns of the second matrix.</p></li>
 <li><p>These operations usually yield different results because the effect of applying transformations in different orders changes the outcome.</p></li>
 <li><p>For example: One matrix might represent a shear transformation and another a rotation. Applying the shear first and then the rotation will generally give a different result than applying the rotation first and then the shear.</p></li>
 </ul>
+</section>
 </section>
 <section id="special-cases">
 <h2>Special Cases<a class="headerlink" href="#special-cases" title="Permalink to this heading">#</a></h2>
@@ -773,6 +871,8 @@ AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pma
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># Define two commuting matrices (scaling matrices)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
@@ -851,20 +951,6 @@ AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pma
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">DC</span> <span class="o">=</span> <span class="n">D</span> <span class="o">@</span> <span class="n">C</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="c1"># Apply the transformations</span>
-<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">CD_vector</span> <span class="o">=</span> <span class="n">CD</span> <span class="o">@</span> <span class="n">vector</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">DC_vector</span> <span class="o">=</span> <span class="n">DC</span> <span class="o">@</span> <span class="n">vector</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="c1"># Create subplots for commuting and non-commuting cases</span>
-
-<span class="ne">NameError</span>: name &#39;vector&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="conclusion">
@@ -940,19 +1026,21 @@ AB = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad BA = \begin{pma
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation-unifies-vectors-and-functions">Dirac notation unifies vectors and functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-qm-are-seen-as-matrices">Operators in QM are seen as Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-derivative-as-a-matrix">Example: First Derivative as a Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-second-derivative-as-a-matrix">Example: Second Derivative as a Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-example-applying-the-derivative-matrix-for-psi-x-x-2">Numeric Example: Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-applying-the-derivative-matrix-for-psi-x-x-2">Numerical example of Applying the Derivative Matrix for <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-derivative-as-a-matrix">Second Derivative as a Matrix</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-matrix-mulitplication-order-matters">Why matrix mulitplication order matters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-non-commuting-matrices">Example: Non-commuting Matrices</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ab">Compute <span class="math notranslate nohighlight">\(AB\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ba">Compute <span class="math notranslate nohighlight">\(BA\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-ab-and-ba">Compare <span class="math notranslate nohighlight">\(AB\)</span> and <span class="math notranslate nohighlight">\(BA\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dont-matrices-commute">Why Don’t Matrices Commute?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special Cases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
