@@ -453,7 +453,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-experimental-measurements">Commutators and experimental measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-and-simultaneous-measurments">Commuting operators and simultaneous measurments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian property of operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operators-are-real">Eigenvalues of hermitian operators are real</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-conseqeuences-of-hermitian-property">Two conseqeuences of Hermitian property</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operator-are-real">Eigenvalues of Hermitian operator are real</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunction-of-hermitian-operator-are-orthogonal">Eigenfunction of Hermitian operator are orthogonal</a></li>
 </ul>
 </li>
@@ -618,7 +619,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\hat{B}\phi_k = b_k \phi_k\]</div>
 </div>
-<div class="doprdown admonition">
+<div class="dropdown admonition">
 <p class="admonition-title"><strong>Proof</strong></p>
 <ul class="simple">
 <li><p>We will show that if all eigenfunctions of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> are identical, <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute with each other.</p></li>
@@ -662,22 +663,34 @@ document.write(`
 <li><p><em>Note the symmetry between complex conjugate pair of wavefunctions:</em> The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair.</p></li>
 <li><p>In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below</p></li>
 </ul>
-</section>
-<section id="eigenvalues-of-hermitian-operators-are-real">
-<h3>Eigenvalues of hermitian operators are real<a class="headerlink" href="#eigenvalues-of-hermitian-operators-are-real" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Note that operators and eigenfunctions may be complex valued; however, <strong>eigenvalues</strong> of quantum mechanical operators <strong>must be real</strong> because they correspond to real values obtained from measurements.</p></li>
-<li><p>By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’)</p></li>
-<li><p>When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values.</p></li>
-<li><p>The symmetry of Hermitian operators forces eigenvalues to be real: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then we can write the result of the left and right hand side of hermitian condition:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\int\psi^*\hat{A}\psi d\tau = a\]</div>
-<div class="math notranslate nohighlight">
-\[\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\]</div>
-<p>Hence <span class="math notranslate nohighlight">\(a = a^*\)</span>, which means that <span class="math notranslate nohighlight">\(a\)</span> must be real!</p>
 <div class="note admonition">
-<p class="admonition-title"><strong>Example</strong></p>
+<p class="admonition-title"><strong>Example of Hermitian Matrix</strong> </p>
+<p>Which of these matricies is Hermitian?</p>
+<p><span class="math notranslate nohighlight">\(\begin{pmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{pmatrix}\)</span>, <span class="math notranslate nohighlight">\(\begin{pmatrix}
+i &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}\)</span>, <span class="math notranslate nohighlight">\(\begin{pmatrix}
+-1 &amp; -3i \\
+3i &amp; 8
+\end{pmatrix}\)</span>, <span class="math notranslate nohighlight">\(\begin{pmatrix}
+1 &amp; 2i \\
+2i &amp; 3
+\end{pmatrix}\)</span></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<ul class="simple">
+<li><p>For the first matrix we have <span class="math notranslate nohighlight">\(a_{12}=2\neq a^{*}_{21}=3\)</span>, non-Hermitian</p></li>
+<li><p>For the second matrix <span class="math notranslate nohighlight">\(a_{12}= a^{*}_{21}=0\)</span>, Hermitian</p></li>
+<li><p>For the third matrix  <span class="math notranslate nohighlight">\(a_{12}=-3i =a^{*}_{21} = (3i)^{*}=-3i\)</span>, Hermitian</p></li>
+<li><p>For the fourth matrix  <span class="math notranslate nohighlight">\(a_{12}=2i \neq a^{*}_{21} = (2i)^{*} = -2i\)</span>, Hermitian</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example of Hermitian Operator</strong> </p>
 <p>Prove that the momentum operator (in one dimension) is Hermitian.</p>
 </div>
 <div class="dropdown admonition">
@@ -686,6 +699,24 @@ document.write(`
 <span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
 <p>Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Green's_identities">Green identities</a>.</p>
 </div>
+</section>
+<section id="two-conseqeuences-of-hermitian-property">
+<h3>Two conseqeuences of Hermitian property<a class="headerlink" href="#two-conseqeuences-of-hermitian-property" title="Permalink to this heading">#</a></h3>
+<section id="eigenvalues-of-hermitian-operator-are-real">
+<h4>Eigenvalues of Hermitian operator are real<a class="headerlink" href="#eigenvalues-of-hermitian-operator-are-real" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Note that operators and eigenfunctions may be complex valued; however, <strong>eigenvalues</strong> of quantum mechanical operators <strong>must be real</strong> because they correspond to real values obtained from measurements.</p></li>
+<li><p>By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity’’)</p></li>
+<li><p>When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values.</p></li>
+<li><p><strong>Proof</strong> Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then we can write the result of the left and right hand side of hermitian condition:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int\psi^*\hat{A}\psi d\tau = a\]</div>
+<div class="math notranslate nohighlight">
+\[\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*\]</div>
+<div class="math notranslate nohighlight">
+\[a = a^*\]</div>
+</section>
 <section id="eigenfunction-of-hermitian-operator-are-orthogonal">
 <h4>Eigenfunction of Hermitian operator are orthogonal<a class="headerlink" href="#eigenfunction-of-hermitian-operator-are-orthogonal" title="Permalink to this heading">#</a></h4>
 <p>The Hermitian property can also be used to show that the eigenfunctions (<span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>), which have different eigenvalues (i.e., <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> with <span class="math notranslate nohighlight">\(a_j \ne a_k\)</span>; ``non-degenerate’’), are orthogonal to each other:</p>
@@ -781,7 +812,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutators-and-experimental-measurements">Commutators and experimental measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-and-simultaneous-measurments">Commuting operators and simultaneous measurments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian property of operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operators-are-real">Eigenvalues of hermitian operators are real</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-conseqeuences-of-hermitian-property">Two conseqeuences of Hermitian property</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operator-are-real">Eigenvalues of Hermitian operator are real</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunction-of-hermitian-operator-are-orthogonal">Eigenfunction of Hermitian operator are orthogonal</a></li>
 </ul>
 </li>
