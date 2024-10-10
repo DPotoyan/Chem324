@@ -495,6 +495,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-vectors-vs-column-vector">Row vectors vs column vector</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
@@ -532,14 +533,14 @@ document.write(`
 </html></section>
 <section id="vectors-as-arrays-of-numbers">
 <h2>Vectors as Arrays of Numbers<a class="headerlink" href="#vectors-as-arrays-of-numbers" title="Permalink to this heading">#</a></h2>
-<p>A <strong>vector</strong> is an ordered collection of numbers that can describe various properties of physical or mathematical systems. Some examples include:</p>
+<p>We will define <strong>vector</strong>  as an ordered collection of numbers which describes states of physical systems.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a = (-2, 8)\)</span>: A 2D vector.</p></li>
 <li><p><span class="math notranslate nohighlight">\(b = (1.34, 4.23, 5.98)\)</span>: A 3D vector.</p></li>
 <li><p><span class="math notranslate nohighlight">\(c = (1, -2, 4i, 3 + 2i)\)</span>: A 4D vector with complex components.</p></li>
 <li><p><span class="math notranslate nohighlight">\(f = (1, 2, 3, 4, 5, 6, \ldots, \infty)\)</span>: An infinite-dimensional vector with integer components.</p></li>
+<li><p><strong>Note</strong>: Vectors can belong to real or complex spaces, depending on their components.</p></li>
 </ul>
-<p><strong>Note</strong>: Vectors can belong to real or complex spaces, depending on their components.</p>
 </section>
 <section id="vectors-defined-with-respect-to-a-basis">
 <h2>Vectors Defined with Respect to a Basis<a class="headerlink" href="#vectors-defined-with-respect-to-a-basis" title="Permalink to this heading">#</a></h2>
@@ -555,21 +556,31 @@ document.write(`
 <li><p>In a different coordinate system or basis, the same vector will have different components, but its intrinsic properties remain unchanged. This flexibility in representation is a fundamental concept in quantum mechanics and linear algebra.</p></li>
 </ul>
 </section>
+<section id="row-vectors-vs-column-vector">
+<h2>Row vectors vs column vector<a class="headerlink" href="#row-vectors-vs-column-vector" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We will defined row and column vectors which are related to one another by operation of transpose. They describe the same physical state or coordinate of a system.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = (a_1, a_2)^{T}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>However row vectors live with their own universe of row vectors and column vectors in their own universe of column vectors.</p></li>
+<li><p>Later we will see that to take scalar or dot product row vector needs to be hit with column and vice versa.</p></li>
+</ul>
+</section>
 <section id="example-vector-expressed-in-two-different-basis">
 <h2>Example: Vector expressed in two different basis<a class="headerlink" href="#example-vector-expressed-in-two-different-basis" title="Permalink to this heading">#</a></h2>
-<p>Let’s take a 2D vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> in the standard Cartesian basis:</p>
+<p>Let’s take a 2D vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> in the standard Cartesian unit basis:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{v} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}
 \end{split}\]</div>
-<p>This can be written as:</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{v} = 2 \mathbf{e_1} + 3 \mathbf{e_2}
-\]</div>
-<ul class="simple">
-<li><p>Where: <span class="math notranslate nohighlight">\( \mathbf{e_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span>  and <span class="math notranslate nohighlight">\(\mathbf{e_2} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span></p></li>
-</ul>
+\[\begin{split}
+\mathbf{v} = 2 \mathbf{e_1} + 3 \mathbf{e_2} = 2\begin{pmatrix} 1 \\ 0 \end{pmatrix}+3\begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{split}\]</div>
 <p>Now, suppose we switch to a new basis, where each new basis vector is a scalar multiple of the standard basis vectors. Let’s define the new basis vectors as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -604,12 +615,12 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\mid a \rangle = 2 \mid e_i \rangle + 3 \mid e_j \rangle\]</div>
 </li>
+<li><p>Vectors can represent a wide range of phenomena, such as the position of a particle in space, the population of countries, or temperature variations in different regions of a forest.</p></li>
 </ul>
-<p>Vectors can represent a wide range of phenomena, such as the position of a particle in space, the population of countries, or temperature variations in different regions of a forest.</p>
 </section>
 <section id="vector-operations">
 <h2>Vector Operations<a class="headerlink" href="#vector-operations" title="Permalink to this heading">#</a></h2>
-<p>What defines vectors in a mathematical framework are the operations performed on them. Let’s illustrate these operations using a simple 2D vector as an example:</p>
+<p>What defines vectors in a mathematical framework are the operations performed on them. Let’s illustrate these operations using a simple 2D vectors <span class="math notranslate nohighlight">\(a = (3, 2)\)</span> and <span class="math notranslate nohighlight">\(b=(1,1)\)</span> as an example.</p>
 <section id="addition-or-subtraction">
 <h3>1. Addition or Subtraction<a class="headerlink" href="#addition-or-subtraction" title="Permalink to this heading">#</a></h3>
 <ul>
@@ -667,7 +678,7 @@ a_{21}x_1 + a_{22}x_2 &amp;= b_2
 \end{aligned}
 \end{split}\]</div>
 <p>This system can be written compactly in matrix form as:</p>
-<div class="admonition-a-system-of-linear-equation-as-matrix-vector-product admonition">
+<div class="important admonition">
 <p class="admonition-title"><strong>A system of linear equation as matrix vector product</strong></p>
 <div class="math notranslate nohighlight">
 \[
@@ -772,12 +783,12 @@ x = [2.42857143 0.71428571]
 <li><p>This matrix scales the <span class="math notranslate nohighlight">\(x\)</span>-direction by 2 and the <span class="math notranslate nohighlight">\(y\)</span>-direction by 0.75. Additionally, it applies both horizontal and vertical shear, distorting the object by shifting the <span class="math notranslate nohighlight">\(x\)</span>-coordinate in proportion to the <span class="math notranslate nohighlight">\(y\)</span>-coordinate and the <span class="math notranslate nohighlight">\(y\)</span>-coordinate in proportion to the <span class="math notranslate nohighlight">\(x\)</span>-coordinate. This results in a combination of scaling and shearing, altering both the size and shape of objects.</p></li>
 </ul>
 </li>
-<li><p><strong>Scaling</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 0.5 \end{bmatrix}\)</span></p>
+<li><p><strong>Stretch</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 1.5 \end{bmatrix}\)</span></p>
 <ul class="simple">
-<li><p>This matrix scales the <span class="math notranslate nohighlight">\(x\)</span>-direction by 2 and the <span class="math notranslate nohighlight">\(y\)</span>-direction by 0.5. It changes the size of the object, expanding it in the <span class="math notranslate nohighlight">\(x\)</span>-direction and compressing it in the <span class="math notranslate nohighlight">\(y\)</span>-direction, while keeping its shape intact without any angular distortion.</p></li>
+<li><p>This matrix stretches the <span class="math notranslate nohighlight">\(x\)</span>-direction by 2 and compresses <span class="math notranslate nohighlight">\(y\)</span>-direction by 1.5. It changes the size of the object, expanding it in the <span class="math notranslate nohighlight">\(x\)</span>-direction <span class="math notranslate nohighlight">\(y\)</span>-direction, while keeping its shape intact without any angular distortion.</p></li>
 </ul>
 </li>
-<li><p><strong>Stretching</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 3 &amp; 0 \\ 0 &amp; 0.75 \end{bmatrix}\)</span></p>
+<li><p><strong>Stretch/compress</strong>. <span class="math notranslate nohighlight">\(\begin{bmatrix} 3 &amp; 0 \\ 0 &amp; 0.75 \end{bmatrix}\)</span></p>
 <ul class="simple">
 <li><p>This matrix stretches the object by a factor of 3 along the <span class="math notranslate nohighlight">\(x\)</span>-axis and compresses it by a factor of 0.75 along the <span class="math notranslate nohighlight">\(y\)</span>-axis. This operation changes the proportions of the object without distorting angles, stretching it non-uniformly.</p></li>
 </ul>
@@ -803,7 +814,7 @@ x = [2.42857143 0.71428571]
 
 <span class="c1"># Define the transformation matrices</span>
 <span class="n">shear_scale_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
-<span class="n">scaling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">scaling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]])</span>
 <span class="n">stretching_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]])</span>
 <span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
@@ -871,7 +882,7 @@ x = [2.42857143 0.71428571]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" src="../_images/84af675cc326c5b74e8f4d81e09cc1222cf41d42c41d342705439781177819db.png" />
+<img alt="../_images/a5a48c39ecaa48e5e4a31fc4dbc2962394f898b008a088eb4915f67b02377139.png" src="../_images/a5a48c39ecaa48e5e4a31fc4dbc2962394f898b008a088eb4915f67b02377139.png" />
 </div>
 </div>
 </section>
@@ -968,7 +979,7 @@ A = \left[ \begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f498c710d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f991e368cd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2f36d0e9a4eb1ab817034add91cef3c3a394b19337cc10816b6c9cd6a4ac6dc7.png" src="../_images/2f36d0e9a4eb1ab817034add91cef3c3a394b19337cc10816b6c9cd6a4ac6dc7.png" />
@@ -978,9 +989,8 @@ A = \left[ \begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 <section id="rotation-matrix-r">
 <h3>Rotation matrix R<a class="headerlink" href="#rotation-matrix-r" title="Permalink to this heading">#</a></h3>
 <p>To rotate vectors in the plane, we choose an angle <span class="math notranslate nohighlight">\(\theta\)</span> and write down the matrix that represents the rotation counterclockwise by an angle <span class="math notranslate nohighlight">\(\theta\)</span>.  Basic trigonometry can be used to calculate the columns in this case.</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28515f5b-05e9-4e6f-927b-4076a516a743">
-<span class="eqno">(25)<a class="headerlink" href="#equation-28515f5b-05e9-4e6f-927b-4076a516a743" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67070b34-1e7c-4d3d-a398-778aa3a16a39">
+<span class="eqno">(25)<a class="headerlink" href="#equation-67070b34-1e7c-4d3d-a398-778aa3a16a39" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{array}\right]
 \end{equation}\]</div>
 <div class="cell tag_hide-input docutils container">
@@ -1157,6 +1167,7 @@ S= \left[ \begin{array}{cc} 1 &amp; 2 \\ 0 &amp; 1 \end{array}\right]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-vectors-vs-column-vector">Row vectors vs column vector</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
