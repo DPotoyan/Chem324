@@ -458,6 +458,14 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-orthogonal">Eigenfunctions of Hermitian Operators Are Orthogonal</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-is-xd-dx-operator-hermitian">Problem-1: Is <span class="math notranslate nohighlight">\(xd/dx\)</span> operator Hermitian</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-is-d-2-dx-2-operator-hermitian">Problem-2: Is <span class="math notranslate nohighlight">\(d^2/dx^2\)</span> operator Hermitian?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-is-id-2-dx-2-operator-hermitian">Problem-3: Is <span class="math notranslate nohighlight">\(id^2/dx^2\)</span> operator Hermitian?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-identify-hermitian-matrices">Problem-4: Identify Hermitian Matrices</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-momentum-matrix">Problem-5 Momentum Matrix</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -787,6 +795,234 @@ a = a^*
 </ul>
 </section>
 </section>
+<section id="problems">
+<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h3>
+<section id="problem-1-is-xd-dx-operator-hermitian">
+<h4>Problem-1: Is <span class="math notranslate nohighlight">\(xd/dx\)</span> operator Hermitian<a class="headerlink" href="#problem-1-is-xd-dx-operator-hermitian" title="Permalink to this heading">#</a></h4>
+<p>Check weather the operator <span class="math notranslate nohighlight">\(\hat{A} = xd/dx\)</span> is Hermitian.</p>
+<ul class="simple">
+<li><p>You can test weather the following condition holds:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( x \frac{d}{dx} \psi_1(x) \right)^* \psi_2(x) \, dx
+\]</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p><strong>Step 1: Left-hand side</strong></p>
+<p>The left-hand side is:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx
+\]</div>
+<p><strong>Step 2: Integration by parts</strong></p>
+<p>We apply integration by parts to simplify this expression. Using the product rule for differentiation, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx
+\]</div>
+<p>The boundary term ( \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} ) can be discarded if the wavefunctions vanish at the boundaries (such as in the case of bound states in a box).</p>
+<p>Now, for the remaining integral, we apply the derivative to the product ( x \psi_1^*(x) ):</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx = \int_{a}^{b} \left( \psi_1^*(x) + x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+\]</div>
+<p>Thus, the left-hand side becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \psi_2(x) \, dx + \int_{a}^{b} x \frac{d}{dx} \psi_1^*(x) \psi_2(x) \, dx
+\]</div>
+<p><strong>Step 3: Right-hand side</strong></p>
+<p>The right-hand side is:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \left( x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+\]</div>
+<p><strong>Step 4: Comparison</strong></p>
+<p>Now, we compare the two expressions. The left-hand side contains the extra term:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \psi_2(x) \, dx
+\]</div>
+<p>which is not present in the right-hand side. This means:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx \neq \int_{a}^{b} \left( x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+\]</div>
+<ul class="simple">
+<li><p>Since the two sides are not equal, we conclude that the operator <span class="math notranslate nohighlight">\(x \frac{d}{dx}\)</span> <strong>is non-Hermitian.</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="problem-2-is-d-2-dx-2-operator-hermitian">
+<h4>Problem-2: Is <span class="math notranslate nohighlight">\(d^2/dx^2\)</span> operator Hermitian?<a class="headerlink" href="#problem-2-is-d-2-dx-2-operator-hermitian" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>You can test weather the following condition holds</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx
+\]</div>
+<ul class="simple">
+<li><p>Note how complec conjugation applies to an expression with operator inside. but since our operator contains no imaginary numbers it will only apply to wavefunction</p></li>
+</ul>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>To show that the operator <span class="math notranslate nohighlight">\(\hat{A} = \frac{d^2}{dx^2}\)</span> is Hermitian, we need to check whether the following condition holds:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1(x) \right)^* \psi_2(x) \, dx
+\]</div>
+<p class="rubric">Step 1: Left-hand side</p>
+<p>The left-hand side is:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx
+\]</div>
+<p class="rubric">Step 2: Integration by parts</p>
+<p>We apply integration by parts twice. First, applying integration by parts to the term <span class="math notranslate nohighlight">\(\psi_1^*(x) \frac{d^2}{dx^2} \psi_2(x)\)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \left[ \psi_1^*(x) \frac{d}{dx} \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d}{dx} \psi_1^*(x) \frac{d}{dx} \psi_2(x) \, dx
+\]</div>
+<p>The boundary term <span class="math notranslate nohighlight">\(\left[ \psi_1^*(x) \frac{d}{dx} \psi_2(x) \right]_{a}^{b}\)</span> can be discarded if the wavefunctions vanish at the boundaries (as for bound states in a box).</p>
+<p>We now apply integration by parts again to the remaining term:</p>
+<div class="math notranslate nohighlight">
+\[
+-\int_{a}^{b} \frac{d}{dx} \psi_1^*(x) \frac{d}{dx} \psi_2(x) \, dx = \left[ \frac{d}{dx} \psi_1^*(x) \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d^2}{dx^2} \psi_1^*(x) \psi_2(x) \, dx
+\]</div>
+<p>Again, the boundary term <span class="math notranslate nohighlight">\(\left[ \frac{d}{dx} \psi_1^*(x) \psi_2(x) \right]_{a}^{b} \)</span> vanishes if the wavefunctions vanish at the boundaries. This leaves us with:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1^*(x) \right) \psi_2(x) \, dx
+\]</div>
+<p><strong>Step 3: Conclusion</strong></p>
+<p>Since the two sides are equal, we conclude that the operator <span class="math notranslate nohighlight">\(\frac{d^2}{dx^2}\)</span> is Hermitian:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1(x) \right)^* \psi_2(x) \, dx
+\]</div>
+</div>
+</section>
+<section id="problem-3-is-id-2-dx-2-operator-hermitian">
+<h4>Problem-3: Is <span class="math notranslate nohighlight">\(id^2/dx^2\)</span> operator Hermitian?<a class="headerlink" href="#problem-3-is-id-2-dx-2-operator-hermitian" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>You can test weather the following condition holds</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx
+\]</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Fro the last problem we learned that the following condition holds which makes second derivative operator <span class="math notranslate nohighlight">\(d^2/dx^2\)</span> hermitian.</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1^*(x) \right)  \, dx
+\]</div>
+<ul class="simple">
+<li><p>Now if we have <span class="math notranslate nohighlight">\(id^2/dx^2\)</span> the complex conjugate part will prduce minus sign which breaks the Hermitian equality</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int_{a}^{b} \psi_1^*(x) \left( i\frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( i\frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx = -\int_{a}^{b} \psi_2(x)\left( i\frac{d^2}{dx^2} \psi_1(x)^* \right)
+\]</div>
+</div>
+</section>
+<section id="problem-4-identify-hermitian-matrices">
+<h4>Problem-4: Identify Hermitian Matrices<a class="headerlink" href="#problem-4-identify-hermitian-matrices" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; 3
+\end{pmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B = \begin{pmatrix}
+i &amp; 1 \\
+-1 &amp; -i
+\end{pmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \begin{pmatrix}
+2 &amp; i \\
+-i &amp; 2
+\end{pmatrix}
+\end{split}\]</div>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p><strong>A Matrix</strong></p>
+<p>To check if a matrix is Hermitian, it must satisfy the condition <span class="math notranslate nohighlight">\(A = A^\dagger \), where \)</span>A^\dagger<span class="math notranslate nohighlight">\( is the conjugate transpose of \)</span>A$. Since this matrix has real entries, the conjugate transpose is just the transpose.</p>
+<p>The transpose of <span class="math notranslate nohighlight">\(A\)</span> is:</p>
+<p><span class="math notranslate nohighlight">\(
+A^\dagger = \begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; 3
+\end{pmatrix}
+\)</span></p>
+<p>Since <span class="math notranslate nohighlight">\(A = A^\dagger\)</span>, matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>Hermitian</strong>.</p>
+<p><strong>B Matrix</strong>
+Now, let’s compute the conjugate transpose of <span class="math notranslate nohighlight">\(B\)</span>. We first take the transpose and then take the complex conjugate of each entry:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B^\dagger = \begin{pmatrix}
+-i &amp; -1 \\
+1 &amp; i
+\end{pmatrix}
+\end{split}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(B \neq B^\dagger\)</span>, so matrix <span class="math notranslate nohighlight">\(B\)</span> is <strong>not Hermitian</strong>.</p>
+<p><strong>C Matrix</strong></p>
+<p>The conjugate transpose of <span class="math notranslate nohighlight">\(C\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C^\dagger = \begin{pmatrix}
+2 &amp; -i \\
+i &amp; 2
+\end{pmatrix}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(C = C^\dagger\)</span>, matrix <span class="math notranslate nohighlight">\(C\)</span> is <strong>Hermitian</strong>.</p>
+</div>
+</section>
+<section id="problem-5-momentum-matrix">
+<h4>Problem-5 Momentum Matrix<a class="headerlink" href="#problem-5-momentum-matrix" title="Permalink to this heading">#</a></h4>
+<p>Show how the momentum operator looks in matrix form using a finite-dimensional example where you evaluate wavefunction onf 4 points which will correspond to <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<ul class="simple">
+<li><p>We can represent the momentum operator <span class="math notranslate nohighlight">\(\hat{p} = -i \hbar \frac{d}{dx}\)</span> in a discrete basis, such as using a position basis. In this case, the matrix elements of the momentum operator can be approximated using finite differences.</p></li>
+<li><p>For simplicity, let’s assume we are working in a discrete system, where we approximate the derivative <span class="math notranslate nohighlight">\(\frac{d}{dx}\)</span> with finite differences. The finite difference approximation for the derivative at point <span class="math notranslate nohighlight">\(x_n\)</span> is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{d \psi(x)}{dx} \approx \frac{\psi(x_{n+1}) - \psi(x_{n-1})}{2 \Delta x}
+\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the spacing between the discrete points.</p></li>
+<li><p>The corresponding momentum operator matrix in this finite-dimensional space can be written as a skew-symmetric matrix that captures this finite difference behavior.</p></li>
+<li><p>Here is an example of a <span class="math notranslate nohighlight">\(4 \times 4\)</span> momentum operator matrix <span class="math notranslate nohighlight">\(P\)</span>, assuming $\hbar = 1$ for simplicity:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \frac{i}{2 \Delta x} \begin{pmatrix}
+0 &amp; -1 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; -1 \\
+-1 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\end{split}\]</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p>The non-diagonal entries correspond to the finite difference approximation of the derivative.</p></li>
+<li><p>The factor of <span class="math notranslate nohighlight">\(\frac{i}{2 \Delta x}\)</span> ensures that the momentum operator reflects the correct dimensionality.</p></li>
+<li><p>The matrix is anti-Hermitian (i.e., <span class="math notranslate nohighlight">\(P^\dagger = -P\)</span>), as expected for the momentum operator.</p></li>
+<li><p>This <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix represents the momentum operator in a discrete system with 4 grid points. The matrix elements link neighboring points, reflecting the nature of the derivative approximation.</p></li>
+</ul>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -866,6 +1102,14 @@ a = a^*
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-consequences-of-hermitian-property">Two Consequences of Hermitian Property</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operators-are-real">Eigenvalues of Hermitian Operators Are Real</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-orthogonal">Eigenfunctions of Hermitian Operators Are Orthogonal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-is-xd-dx-operator-hermitian">Problem-1: Is <span class="math notranslate nohighlight">\(xd/dx\)</span> operator Hermitian</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-is-d-2-dx-2-operator-hermitian">Problem-2: Is <span class="math notranslate nohighlight">\(d^2/dx^2\)</span> operator Hermitian?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-is-id-2-dx-2-operator-hermitian">Problem-3: Is <span class="math notranslate nohighlight">\(id^2/dx^2\)</span> operator Hermitian?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-identify-hermitian-matrices">Problem-4: Identify Hermitian Matrices</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-momentum-matrix">Problem-5 Momentum Matrix</a></li>
 </ul>
 </li>
 </ul>
