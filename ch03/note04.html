@@ -443,9 +443,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators-a-reminder">Linearity of operators: A reminder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation-expression-a-reminder">Exepctation expression: A reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A Reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-value-a-reminder">Expectation Value: A Reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>
@@ -484,66 +484,83 @@ document.write(`
 <li><p>Commuting operators share eignefunctions, non-commuiting operators have different eigenfunctions.</p></li>
 </ul>
 </div>
+<p>Certainly! Here’s the revised version using single dollar signs for inline equations:</p>
+<hr class="docutils" />
 <section id="operators-a-reminder">
-<h2>Operators: A reminder<a class="headerlink" href="#operators-a-reminder" title="Permalink to this heading">#</a></h2>
-<p>Operators are denoted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:</p>
+<h2>Operators: A Reminder<a class="headerlink" href="#operators-a-reminder" title="Permalink to this heading">#</a></h2>
+<p>In quantum mechanics, <strong>operators</strong> represent physical observables and are denoted by a hat symbol (<span class="math notranslate nohighlight">\(\hat{}\)</span>), which indicates a mathematical operation on functions.</p>
+<ul>
+<li><p>For example, the momentum operator is differentiating the function with respect to <span class="math notranslate nohighlight">\(x\)</span>, then multiplies the result by <span class="math notranslate nohighlight">\(-i\hbar\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[{\hat{p}_x = -i\hbar\frac{d}{dx}}\]</div>
-<ul class="simple">
-<li><p>When this operates on a function, it does the following: differentiate the function with respect to <span class="math notranslate nohighlight">\(x\)</span> and then  multiply the result from by <span class="math notranslate nohighlight">\(-i\hbar\)</span>.</p></li>
-<li><p>The quantum mechanical momentum operator of position is:</p></li>
-</ul>
+\[
+  \hat{p}_x = -i\hbar\frac{d}{dx}
+  \]</div>
+<p>When this operates on a function, it</p>
+</li>
+<li><p>The position operator simply multiplies the function by <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\hat{x} = x\]</div>
-<ul class="simple">
-<li><p>When this operates on a function, it does the following: multiply function by x.</p></li>
+\[
+  \hat{x} = x
+  \]</div>
+</li>
 </ul>
 </section>
-<section id="linearity-of-operators-a-reminder">
-<h2>Linearity of operators: A reminder<a class="headerlink" href="#linearity-of-operators-a-reminder" title="Permalink to this heading">#</a></h2>
-<p>Operators in quantum mechanics are <em>linear</em>, which means that they fulfill the following rules:</p>
-<div class="math notranslate nohighlight">
-\[{\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}\]</div>
-<div class="math notranslate nohighlight">
-\[{\hat{A}\left(c\psi\right) = c\hat{A}\psi}\]</div>
-</section>
-<section id="exepctation-expression-a-reminder">
-<h2>Exepctation expression: A reminder<a class="headerlink" href="#exepctation-expression-a-reminder" title="Permalink to this heading">#</a></h2>
+<section id="linearity-of-operators">
+<h2>Linearity of Operators<a class="headerlink" href="#linearity-of-operators" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Expectation of an bservable</strong> Operators are used to compute average quantities called expectations for the corresponding quantity. E.g average energy, momentum, position.</p></li>
+<li><p>Operators in quantum mechanics are <strong>linear</strong>, meaning they satisfy:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-{\left &lt; {A}\right&gt; = \int\psi^*\hat{A}\psi d\tau}
+\hat{A}(\psi_1 + \psi_2) = \hat{A}\psi_1 + \hat{A}\psi_2
 \]</div>
-<ul class="simple">
-<li><p><strong>Special case when wavefunction <span class="math notranslate nohighlight">\(\psi\)</span>  is an eigenfunction of an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span></strong></p></li>
-</ul>
 <div class="math notranslate nohighlight">
 \[
-{\hat{A}\psi = a\psi \Rightarrow \left&lt;{A}\right&gt;=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
+\hat{A}(c\psi) = c\hat{A}\psi
 \]</div>
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(c\)</span> is a constant, and <span class="math notranslate nohighlight">\(\psi_1\)</span>, <span class="math notranslate nohighlight">\(\psi_2\)</span>, and <span class="math notranslate nohighlight">\(\psi\)</span> are wavefunctions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{x}\)</span>, <span class="math notranslate nohighlight">\(\hat{p_x}\)</span>, <span class="math notranslate nohighlight">\(\hat{H}\)</span> all satisfy this property</p></li>
+</ul>
+</section>
+<section id="expectation-value-a-reminder">
+<h2>Expectation Value: A Reminder<a class="headerlink" href="#expectation-value-a-reminder" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>The <strong>expectation value</strong> of an observable <span class="math notranslate nohighlight">\(\hat{A}\)</span>, which gives the average outcome of measurements, is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle A \rangle = \int \psi^* \hat{A} \psi \, d\tau
+  \]</div>
+</li>
+<li><p><strong>Special Case</strong>: If the wavefunction <span class="math notranslate nohighlight">\(\psi\)</span> is an eigenfunction of the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \hat{A}\psi = a\psi
+  \]</div>
+<p>Then the expectation value simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle A \rangle = \int \psi^* a \psi \, d\tau = a \int \psi^*\psi \, d\tau = a
+  \]</div>
+<p>Since <span class="math notranslate nohighlight">\(\int \psi^*\psi \, d\tau = 1\)</span> (normalization), the expectation value is simply the eigenvalue <span class="math notranslate nohighlight">\(a\)</span>.</p>
+</li>
+</ul>
 </section>
 <section id="commutations-of-operators">
 <h2>Commutations of operators<a class="headerlink" href="#commutations-of-operators" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>From linear algebra we know that order of matrix multiplicaiton matters and that <span class="math notranslate nohighlight">\(AB\neq BA\)</span> for two matrices <span class="math notranslate nohighlight">\(A\)</span> and B$</p></li>
-<li><p>Thus we also ecpect  <span class="math notranslate nohighlight">\(\hat{A}\hat{B} \neq \hat{B}\hat{A}\)</span> for two operators acting on some function:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
-\]</div>
-<ul class="simple">
-<li><p><strong>The commutator of two operators <span class="math notranslate nohighlight">\([\hat{A}, \hat{B}]\)</span></strong> is defined as:</p></li>
+<li><p>From linear algebra we know that order of matrix multiplicaiton matters and that <span class="math notranslate nohighlight">\(AB\neq BA\)</span> for two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span></p></li>
+<li><p>Thus we generally ecpect  <span class="math notranslate nohighlight">\(\hat{A}\hat{B} \neq \hat{B}\hat{A}\)</span>.</p></li>
+<li><p>We can quantify relationship between two operators by computing the <strong>Commutator</strong>:</p></li>
 </ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>Commutator of operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span></strong></p>
+<p class="admonition-title"><strong>Commutator <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span></strong></p>
 <div class="math notranslate nohighlight">
 \[{\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}\]</div>
 </div>
 <ul class="simple">
-<li><p>If the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed.</p></li>
+<li><p>If the commutator is zero, it means that order in multiplication of operators or matrices can be changed.</p></li>
+<li><p>If the commutator is non-zero, the order matters and can not be changed!</p></li>
 </ul>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
@@ -802,9 +819,9 @@ i &amp; 0 \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A reminder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators-a-reminder">Linearity of operators: A reminder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exepctation-expression-a-reminder">Exepctation expression: A reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-a-reminder">Operators: A Reminder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-operators">Linearity of Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-value-a-reminder">Expectation Value: A Reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutations-of-operators">Commutations of operators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-rules-for-commutators">Simple rules for commutators</a></li>
 </ul>

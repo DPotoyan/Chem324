@@ -10,64 +10,85 @@
 - Commuting operators share eignefunctions, non-commuiting operators have different eigenfunctions.
 :::
 
-### Operators: A reminder
+Certainly! Here’s the revised version using single dollar signs for inline equations:
 
-Operators are denoted by a hat symbol which implies that they encode a mathematical operations that can be carried out on functions. For example, the quantum mechanical momentum operator is:
+---
 
-$${\hat{p}_x = -i\hbar\frac{d}{dx}}$$
+### Operators: A Reminder
 
-- When this operates on a function, it does the following: differentiate the function with respect to $x$ and then  multiply the result from by $-i\hbar$. 
+In quantum mechanics, **operators** represent physical observables and are denoted by a hat symbol ($\hat{}$), which indicates a mathematical operation on functions.
 
-- The quantum mechanical momentum operator of position is:
+- For example, the momentum operator is differentiating the function with respect to $x$, then multiplies the result by $-i\hbar$.
 
-$$\hat{x} = x$$
+  $$
+  \hat{p}_x = -i\hbar\frac{d}{dx}
+  $$
 
-- When this operates on a function, it does the following: multiply function by x.
+  When this operates on a function, it 
+
+- The position operator simply multiplies the function by $x$.
+
+  $$
+  \hat{x} = x
+  $$
 
 
-### Linearity of operators: A reminder
+### Linearity of Operators
 
-Operators in quantum mechanics are *linear*, which means that they fulfill the following rules:
-
-$${\hat{A}\left(\psi_1 + \psi_2\right) = \hat{A}\psi_1 + \hat{A}\psi_2}$$
-
-$${\hat{A}\left(c\psi\right) = c\hat{A}\psi}$$
-
-
-### Exepctation expression: A reminder
-
-- **Expectation of an bservable** Operators are used to compute average quantities called expectations for the corresponding quantity. E.g average energy, momentum, position. 
-
-$$
-{\left < {A}\right> = \int\psi^*\hat{A}\psi d\tau}
-$$
-
-- **Special case when wavefunction $\psi$  is an eigenfunction of an operator $\hat{A}$**
+- Operators in quantum mechanics are **linear**, meaning they satisfy:
 
 $$
-{\hat{A}\psi = a\psi \Rightarrow \left<{A}\right>=\int\psi^*\underbrace{\hat{A}\psi}_{a\psi} d\tau = a\underbrace{\int\psi^*\psi d\tau}_{=1} = a}
+\hat{A}(\psi_1 + \psi_2) = \hat{A}\psi_1 + \hat{A}\psi_2
 $$
+
+$$
+\hat{A}(c\psi) = c\hat{A}\psi
+$$
+
+- Where $c$ is a constant, and $\psi_1$, $\psi_2$, and $\psi$ are wavefunctions.
+- $\hat{x}$, $\hat{p_x}$, $\hat{H}$ all satisfy this property 
+
+
+
+### Expectation Value: A Reminder
+
+- The **expectation value** of an observable $\hat{A}$, which gives the average outcome of measurements, is computed as:
+
+  $$
+  \langle A \rangle = \int \psi^* \hat{A} \psi \, d\tau
+  $$
+
+- **Special Case**: If the wavefunction $\psi$ is an eigenfunction of the operator $\hat{A}$, with eigenvalue $a$:
+
+  $$
+  \hat{A}\psi = a\psi
+  $$
+
+  Then the expectation value simplifies to:
+
+  $$
+  \langle A \rangle = \int \psi^* a \psi \, d\tau = a \int \psi^*\psi \, d\tau = a
+  $$
+
+  Since $\int \psi^*\psi \, d\tau = 1$ (normalization), the expectation value is simply the eigenvalue $a$.
+
 
 
 ### Commutations of operators
 
-- From linear algebra we know that order of matrix multiplicaiton matters and that $AB\neq BA$ for two matrices $A$ and B$
+- From linear algebra we know that order of matrix multiplicaiton matters and that $AB\neq BA$ for two matrices $A$ and $B$
 
-- Thus we also ecpect  $\hat{A}\hat{B} \neq \hat{B}\hat{A}$ for two operators acting on some function:
+- Thus we generally ecpect  $\hat{A}\hat{B} \neq \hat{B}\hat{A}$.
+- We can quantify relationship between two operators by computing the **Commutator**:
 
-$$
-{\hat{A}\hat{B}f = \hat{A}\left(\hat{B}f\right)}
-$$
-
-- **The commutator of two operators $[\hat{A}, \hat{B}]$** is defined as:
-
-:::{admonition} **Commutator of operators $\hat{A}$ and $\hat{B}$**
+:::{admonition} **Commutator $\hat{A}$ and $\hat{B}$**
 :class: important
 
 $${\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}$$
 :::
 
-- If the commutator of $\hat{A}$ and $\hat{B}$ is zero, it means that their order in multiplication (or the operation order, in other words) may be changed. If the commutator is non-zero, the order may not be changed. 
+- If the commutator is zero, it means that order in multiplication of operators or matrices can be changed. 
+- If the commutator is non-zero, the order matters and can not be changed! 
 
 
 :::{admonition} **Example**
