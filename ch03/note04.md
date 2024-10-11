@@ -10,9 +10,6 @@
 - Commuting operators share eignefunctions, non-commuiting operators have different eigenfunctions.
 :::
 
-Certainly! Here’s the revised version using single dollar signs for inline equations:
-
----
 
 ### Operators: A Reminder
 
