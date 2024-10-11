@@ -254,10 +254,10 @@ i & 0 \\
 :::{admonition} **Solution**
 :class: dropdown
 
-- For the first matrix we have $a_{12}=2\neq a^{*}_{21}=3$, non-Hermitian
-- For the second matrix $a_{11}\neq a^{*}_{11}=0$, non-Hermitian
-- For the third matrix  $a_{12}=-3i =a^{*}_{21} = (3i)^{*}=-3i$, Hermitian
-- For the fourth matrix  $a_{12}=2i \neq a^{*}_{21} = (2i)^{*} = -2i$, Hermitian
+- For the first matrix we have $a_{12}=2\neq a^{*}_{21}=3$, **non-Hermitian**
+- For the second matrix $a_{11}\neq a^{*}_{11}=0$, **non-Hermitian**
+- For the third matrix  $a_{12}=-3i =a^{*}_{21} = (3i)^{*}=-3i$, **Hermitian**
+- For the fourth matrix  $a_{12}=2i \neq a^{*}_{21} = (2i)^{*} = -2i$, **non-Hermitian**
 
 :::
 
@@ -517,8 +517,6 @@ C = \begin{pmatrix}
 -i & 2
 \end{pmatrix}
 $$
-
-
 
 :::{admonition} **Solution** 
 :class: note, dropdown
