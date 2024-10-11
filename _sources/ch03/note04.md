@@ -73,19 +73,18 @@ $$
 
 ### Commutations of operators
 
-- From linear algebra we know that order of matrix multiplicaiton matters and that $AB\neq BA$ for two matrices $A$ and $B$
-
-- Thus we generally ecpect  $\hat{A}\hat{B} \neq \hat{B}\hat{A}$.
-- We can quantify relationship between two operators by computing the **Commutator**:
-
 :::{admonition} **Commutator $\hat{A}$ and $\hat{B}$**
 :class: important
 
 $${\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f}$$
 :::
 
-- If the commutator is zero, it means that order in multiplication of operators or matrices can be changed. 
-- If the commutator is non-zero, the order matters and can not be changed! 
+- From linear algebra we know that order of matrix multiplicaiton matters and that $AB\neq BA$ for two matrices $A$ and $B$
+- Thus we also generally ecpect  $\hat{A}\hat{B} \neq \hat{B}\hat{A}$ for any two operators. 
+
+- We can quantify relationship between two operators by computing the **Commutator**
+    - If the commutator is zero, it means that order in multiplication of operators or matrices can be changed. 
+    - If the commutator is non-zero, the order matters and can not be changed! 
 
 
 :::{admonition} **Example**
@@ -144,23 +143,16 @@ In general, it turns out that for operators $\hat{A}$ and $\hat{B}$ that do not 
 $${\Delta A\Delta B \ge \frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\right>\right|}$$
 
 
-:::{admonition} **Example**  
-:class: note
+- Let's check this relation on the example of momentum and position operators
 
-Obtain the position/momentum uncertainty principle 
-:::
-
-:::{admonition} **Solution**
-:class: dropdown
-
-Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
-
+- Denote $\hat{A} = \hat{x}$ and $\hat{B} = \hat{p}_x$. 
 
 $$\frac{1}{2}\left|\left<\left[\hat{A},\hat{B}\right]\right>\right| = \frac{1}{2}\left|\left<\left[\hat{x},\hat{p}_x\right]\right>\right| = \frac{1}{2}\left|\left<\frac{\hbar}{i}\right>\right|
 = \frac{1}{2}\left|\left<\psi\left|\frac{\hbar}{i}\right|\psi\right>\right| = \frac{1}{2}\left|\frac{\hbar}{i}\underbrace{\left<\psi\left|\psi\right.\right>}_{=1}\right| = \frac{\hbar}{2}$$
 
 $$\Rightarrow \Delta x\Delta p_x \ge \frac{\hbar}{2}$$
-:::
+
+-  We find that we can not measure precise values of position or momentum simulatneously. 
 
 
 ### Commuting operators and simultaneous measurments
@@ -208,8 +200,11 @@ Note that the commutation relation must apply to all well-behaved functions and 
 :::{admonition} **Hermitian Matrix**
 :class: important
 
+$$A = A^\dagger$$
+
 $$a_{jk} = a^{*}_{kj}$$
 
+- $A^\dagger$ is called **conjugate transpose of matrix** where one trasposes elements and replaces with complex conjugate elements
 :::
 
 
@@ -217,15 +212,23 @@ $$a_{jk} = a^{*}_{kj}$$
 :::{admonition} **Hermitian Operator**
 :class: important
 
+$$A = A^\dagger$$
+
 $$
-{\int {\color{blue} \psi^*_j} {\color{green}\hat{A} \psi_k} d\tau = \int { \color{green} \psi_k} {\color{blue} (\hat{A}\psi_j)^{*} } d\tau}
+\int {\color{blue} \psi^*_j} \hat{A} {\color{green}\psi_k} d\tau = \int { \color{green} \psi_k} \hat{A}^\dagger {\color{blue}\psi_j^{*} } d\tau= \int { \color{green} \psi_k} \hat{A} {\color{blue}\psi_j^{*} } d\tau
 $$
 
+**In Dirac Notation**
+
+$$ \langle j| \hat{A}|k\rangle = \langle k| \hat{A} | j \rangle^{*}$$
 :::
 
 
-- *Note the symmetry between complex conjugate pair of wavefunctions:* The expression remains the same wether the same operator acts on wavefunction or its complex conjugate pair. 
 
+
+- On the left, $\hat{A}$ acts on $\psi_k$, and the result is integrated against $\psi_j^*$.
+- On the right, $\hat{A}^\dagger$ acts on $\psi_j^*$, and the result is integrated against $\psi_k$. 
+- **For Hermitian operators** we have special case when $\hat{A} = \hat{A}^\dagger$ and this equation becomes symmetric.
 - In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
 
 :::{admonition} **Example of Hermitian Matrix** 
@@ -252,12 +255,15 @@ i & 0 \\
 :class: dropdown
 
 - For the first matrix we have $a_{12}=2\neq a^{*}_{21}=3$, non-Hermitian
-- For the second matrix $a_{12}= a^{*}_{21}=0$, Hermitian
+- For the second matrix $a_{11}\neq a^{*}_{11}=0$, non-Hermitian
 - For the third matrix  $a_{12}=-3i =a^{*}_{21} = (3i)^{*}=-3i$, Hermitian
 - For the fourth matrix  $a_{12}=2i \neq a^{*}_{21} = (2i)^{*} = -2i$, Hermitian
 
 :::
 
+- To see that Differentiation operators are Hermitian requires a little more work. - A trick that helps see it is integration by parts where the constant term is zero because wavefunction decays to zero at boundaries (postulate 1, keeping probability finite)!
+
+$$\int \psi_1 d\psi_2 =- \int \psi_2d\psi_1 + \psi_1\psi_2\Big|_{x_{min}}^{x_{max}} =- \int \psi_2d\psi_1$$
 
 :::{admonition} **Example of Hermitian Operator** 
 :class: note
@@ -271,47 +277,65 @@ Prove that the momentum operator (in one dimension) is Hermitian.
 ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
 
-Note that the wavefunctions approach zero at infinity and thus the boundary term in the integration by parts does not contribute. In 3-D, one would have to use the [Green identities](http://en.wikipedia.org/wiki/Green's_identities).
+
 :::
 
 
-### Two conseqeuences of Hermitian property
 
-#### Eigenvalues of Hermitian operator are real  
+### Two Consequences of Hermitian Property
 
-- Note that operators and eigenfunctions may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to real values obtained from measurements. 
-- By allowing wavefunctions to be complex, it is merely possible to store more information in it (i.e., both the real and imaginary parts or ``density and velocity'')
-- When computing experimental quantities complex conjugate pair of wavefunctions must be combined to yield real values. 
-- **Proof** Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left and right hand side of hermitian condition:
+#### Eigenvalues of Hermitian Operators Are Real
 
-$$\int\psi^*\hat{A}\psi d\tau = a$$ 
-
-$$\int\psi\left(\hat{A}\psi\right)^*d\tau = a^*$$ 
-
-$$a = a^*$$
-
-
-
-
-#### Eigenfunction of Hermitian operator are orthogonal 
-
-The Hermitian property can also be used to show that the eigenfunctions ($\psi_j$ and $\psi_k$), which have different eigenvalues (i.e., $a_j$ and $a_k$ with $a_j \ne a_k$; ``non-degenerate''), are orthogonal to each other:
+- Operators and eigenfunctions in quantum mechanics may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to the real values obtained from measurements.
+- By allowing wavefunctions to be complex, it is possible to store more information (i.e., both the real and imaginary parts, or "density and velocity").
+- When computing experimental quantities, the complex conjugate pair of wavefunctions must be combined to yield real values.
+  
+- **Proof**: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left-hand and right-hand sides of the Hermitian condition:
 
 $$
-{\textnormal{LHS: }\int\psi_j^*\hat{A}\psi_kd\tau = \int\psi_j^*a_k\psi_kd\tau = a_k\int\psi_j^*\psi_kd\tau}
+\int \psi^* \hat{A} \psi \, d\tau = a
 $$
 
 $$
-{\textnormal{RHS: }\int\psi_k\left(\hat{A}\psi_j\right)^*d\tau = \int\psi_k\left(a_j\psi_j\right)^*d\tau = a_j\int\psi_j^*\psi_kd\tau}
+\int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
 $$
 
-
-Here Hermiticity requires LHS = RHS. If $a_j \ne a_k$, then we are dealing with:
+- Since the operator is Hermitian, this leads to the conclusion:
 
 $$
-{{\left(a_k - a_j\right)}{\ne 0}\int\psi^*_j\psi_kd\tau = 0}
+a = a^*
 $$
 
-Note that if $a_j = a_k$, meaning that the values are [degenerate](http://en.wikipedia.org/wiki/Degenerate_energy_level), this result does not hold.
+- Thus, the eigenvalue $a$ must be real.
+
+
+
+#### Eigenfunctions of Hermitian Operators Are Orthogonal
+
+The Hermitian property can also be used to show that eigenfunctions $\psi_j$ and $\psi_k$, corresponding to different eigenvalues $a_j$ and $a_k$ (with $a_j \neq a_k$, i.e., "non-degenerate"), are orthogonal to each other:
+
+$$
+\textnormal{LHS: } \int \psi_j^* \hat{A} \psi_k \, d\tau = \int \psi_j^* a_k \psi_k \, d\tau = a_k \int \psi_j^* \psi_k \, d\tau
+$$
+
+$$
+\textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
+$$
+
+Since the operator is Hermitian, we require that LHS = RHS. This results in:
+
+$$
+\left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
+$$
+
+If $a_j \neq a_k$, then we have:
+
+$$
+\int \psi_j^* \psi_k \, d\tau = 0
+$$
+
+This shows that $\psi_j$ and $\psi_k$ are orthogonal. 
+
+- **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold. Degeneracy refers to eigenstates having the same eigenvalue, and in that case, orthogonality may not apply without further specification.
 
 
