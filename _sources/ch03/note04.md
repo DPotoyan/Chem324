@@ -349,6 +349,9 @@ $$
 \int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( x \frac{d}{dx} \psi_1(x) \right)^* \psi_2(x) \, dx
 $$
 
+- Note how complex conjugation applies to an expression with an operator inside! 
+- But since our operator contains no imaginary number complex conjugation only applies to the wavefunction
+
 
 :::{admonition} **Solution** 
 :class: note, dropdown
@@ -370,9 +373,9 @@ $$
 \int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx
 $$
 
-The boundary term \( \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} \) can be discarded if the wavefunctions vanish at the boundaries (such as in the case of bound states in a box).
+The boundary term $\left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b}$ can be discarded if the wavefunctions vanish at the boundaries (such as in the case of bound states in a box).
 
-Now, for the remaining integral, we apply the derivative to the product \( x \psi_1^*(x) \):
+Now, for the remaining integral, we apply the derivative to the product $x \psi_1^*(x)$:
 
 $$
 \int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx = \int_{a}^{b} \left( \psi_1^*(x) + x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
