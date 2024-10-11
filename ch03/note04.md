@@ -276,8 +276,6 @@ Prove that the momentum operator (in one dimension) is Hermitian.
 
 ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}$
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
-
-
 :::
 
 
@@ -339,3 +337,268 @@ This shows that $\psi_j$ and $\psi_k$ are orthogonal.
 - **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold. Degeneracy refers to eigenstates having the same eigenvalue, and in that case, orthogonality may not apply without further specification.
 
 
+### Problems
+
+#### Problem-1: Is $xd/dx$ operator Hermitian
+
+Check weather the operator $\hat{A} = xd/dx$ is Hermitian. 
+
+- You can test weather the following condition holds:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( x \frac{d}{dx} \psi_1(x) \right)^* \psi_2(x) \, dx
+$$
+
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+
+**Step 1: Left-hand side**
+
+The left-hand side is:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx
+$$
+
+**Step 2: Integration by parts**
+
+We apply integration by parts to simplify this expression. Using the product rule for differentiation, we get:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx = \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx
+$$
+
+The boundary term \( \left[ x \psi_1^*(x) \psi_2(x) \right]_{a}^{b} \) can be discarded if the wavefunctions vanish at the boundaries (such as in the case of bound states in a box).
+
+Now, for the remaining integral, we apply the derivative to the product \( x \psi_1^*(x) \):
+
+$$
+\int_{a}^{b} \frac{d}{dx} \left( x \psi_1^*(x) \right) \psi_2(x) \, dx = \int_{a}^{b} \left( \psi_1^*(x) + x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+$$
+
+Thus, the left-hand side becomes:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \psi_2(x) \, dx + \int_{a}^{b} x \frac{d}{dx} \psi_1^*(x) \psi_2(x) \, dx
+$$
+
+**Step 3: Right-hand side**
+
+The right-hand side is:
+
+$$
+\int_{a}^{b} \left( x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+$$
+
+**Step 4: Comparison**
+
+Now, we compare the two expressions. The left-hand side contains the extra term:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \psi_2(x) \, dx
+$$
+
+which is not present in the right-hand side. This means:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( x \frac{d}{dx} \psi_2(x) \right) \, dx \neq \int_{a}^{b} \left( x \frac{d}{dx} \psi_1^*(x) \right) \psi_2(x) \, dx
+$$
+
+- Since the two sides are not equal, we conclude that the operator $x \frac{d}{dx}$ **is non-Hermitian.**
+:::
+
+#### Problem-2: Is $d^2/dx^2$ operator Hermitian?
+
+- You can test weather the following condition holds
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx
+$$
+
+- Note how complec conjugation applies to an expression with operator inside. but since our operator contains no imaginary numbers it will only apply to wavefunction
+
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+To show that the operator $\hat{A} = \frac{d^2}{dx^2}$ is Hermitian, we need to check whether the following condition holds:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1(x) \right)^* \psi_2(x) \, dx
+$$
+
+### Step 1: Left-hand side
+
+The left-hand side is:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx
+$$
+
+### Step 2: Integration by parts
+
+We apply integration by parts twice. First, applying integration by parts to the term $\psi_1^*(x) \frac{d^2}{dx^2} \psi_2(x)$, we get:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \left[ \psi_1^*(x) \frac{d}{dx} \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d}{dx} \psi_1^*(x) \frac{d}{dx} \psi_2(x) \, dx
+$$
+
+The boundary term $\left[ \psi_1^*(x) \frac{d}{dx} \psi_2(x) \right]_{a}^{b}$ can be discarded if the wavefunctions vanish at the boundaries (as for bound states in a box).
+
+We now apply integration by parts again to the remaining term:
+
+$$
+-\int_{a}^{b} \frac{d}{dx} \psi_1^*(x) \frac{d}{dx} \psi_2(x) \, dx = \left[ \frac{d}{dx} \psi_1^*(x) \psi_2(x) \right]_{a}^{b} - \int_{a}^{b} \frac{d^2}{dx^2} \psi_1^*(x) \psi_2(x) \, dx
+$$
+
+Again, the boundary term $\left[ \frac{d}{dx} \psi_1^*(x) \psi_2(x) \right]_{a}^{b} $ vanishes if the wavefunctions vanish at the boundaries. This leaves us with:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1^*(x) \right) \psi_2(x) \, dx
+$$
+
+**Step 3: Conclusion**
+
+Since the two sides are equal, we conclude that the operator $\frac{d^2}{dx^2}$ is Hermitian:
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \left( \frac{d^2}{dx^2} \psi_1(x) \right)^* \psi_2(x) \, dx
+$$
+
+:::
+
+
+#### Problem-3: Is $id^2/dx^2$ operator Hermitian? 
+
+- You can test weather the following condition holds
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx
+$$
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+Fro the last problem we learned that the following condition holds which makes second derivative operator $d^2/dx^2$ hermitian. 
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( \frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( \frac{d^2}{dx^2} \psi_1^*(x) \right)  \, dx
+$$
+
+- Now if we have $id^2/dx^2$ the complex conjugate part will prduce minus sign which breaks the Hermitian equality
+
+$$
+\int_{a}^{b} \psi_1^*(x) \left( i\frac{d^2}{dx^2} \psi_2(x) \right) \, dx = \int_{a}^{b} \psi_2(x)\left( i\frac{d^2}{dx^2} \psi_1(x) \right)^*  \, dx = -\int_{a}^{b} \psi_2(x)\left( i\frac{d^2}{dx^2} \psi_1(x)^* \right)
+$$
+
+:::
+
+#### Problem-4: Identify Hermitian Matrices
+
+$$
+A = \begin{pmatrix}
+1 & 2 \\
+2 & 3
+\end{pmatrix}
+$$
+
+$$
+B = \begin{pmatrix}
+i & 1 \\
+-1 & -i
+\end{pmatrix}
+$$
+
+$$
+C = \begin{pmatrix}
+2 & i \\
+-i & 2
+\end{pmatrix}
+$$
+
+
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+**A Matrix**
+
+To check if a matrix is Hermitian, it must satisfy the condition $A = A^\dagger \), where $A^\dagger$ is the conjugate transpose of $A$. Since this matrix has real entries, the conjugate transpose is just the transpose.
+
+The transpose of $A$ is:
+
+$
+A^\dagger = \begin{pmatrix}
+1 & 2 \\
+2 & 3
+\end{pmatrix}
+$
+
+Since $A = A^\dagger$, matrix $A$ is **Hermitian**.
+
+**B Matrix**
+Now, let's compute the conjugate transpose of $B$. We first take the transpose and then take the complex conjugate of each entry:
+
+$$
+B^\dagger = \begin{pmatrix}
+-i & -1 \\
+1 & i
+\end{pmatrix}
+$$
+
+Clearly, $B \neq B^\dagger$, so matrix $B$ is **not Hermitian**.
+
+**C Matrix**
+
+The conjugate transpose of $C$ is:
+
+$$
+C^\dagger = \begin{pmatrix}
+2 & -i \\
+i & 2
+\end{pmatrix}
+$$
+
+Since $C = C^\dagger$, matrix $C$ is **Hermitian**.
+
+:::
+
+#### Problem-5 Momentum Matrix
+
+Show how the momentum operator looks in matrix form using a finite-dimensional example where you evaluate wavefunction onf 4 points which will correspond to $4 \times 4$ matrix. 
+
+:::{admonition} **Solution** 
+:class: note, dropdown
+
+- We can represent the momentum operator $\hat{p} = -i \hbar \frac{d}{dx}$ in a discrete basis, such as using a position basis. In this case, the matrix elements of the momentum operator can be approximated using finite differences.
+
+- For simplicity, let's assume we are working in a discrete system, where we approximate the derivative $\frac{d}{dx}$ with finite differences. The finite difference approximation for the derivative at point $x_n$ is:
+
+$$
+\frac{d \psi(x)}{dx} \approx \frac{\psi(x_{n+1}) - \psi(x_{n-1})}{2 \Delta x}
+$$
+
+- where $\Delta x$ is the spacing between the discrete points.
+
+- The corresponding momentum operator matrix in this finite-dimensional space can be written as a skew-symmetric matrix that captures this finite difference behavior.
+
+- Here is an example of a $4 \times 4$ momentum operator matrix $P$, assuming \$\hbar = 1$ for simplicity:
+
+$$
+P = \frac{i}{2 \Delta x} \begin{pmatrix}
+0 & -1 & 0 & 1 \\
+1 & 0 & -1 & 0 \\
+0 & 1 & 0 & -1 \\
+-1 & 0 & 1 & 0
+\end{pmatrix}
+$$
+
+**Explanation:**
+- The non-diagonal entries correspond to the finite difference approximation of the derivative.
+- The factor of $\frac{i}{2 \Delta x}$ ensures that the momentum operator reflects the correct dimensionality.
+- The matrix is anti-Hermitian (i.e., $P^\dagger = -P$), as expected for the momentum operator.
+
+- This $4 \times 4$ matrix represents the momentum operator in a discrete system with 4 grid points. The matrix elements link neighboring points, reflecting the nature of the derivative approximation.
+:::
