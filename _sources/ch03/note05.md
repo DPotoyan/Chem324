@@ -1,17 +1,17 @@
 ## P3 Eigenvalues
 
-:::{admonition} What you need to know
+:::{admonition} **What you need to know**
 :class: note
 
 
-- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of **basis set**  and  **linear superpositions**.  
-- We will then show how **Dirac notation** can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying physics. 
-- With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  **Schrödinger's cat** and the **double slit experiments** to illustrate the strange nature of quantum states. 
+- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. 
+- Concepts of **basis set, orthogonality, linear superpositions**  underly logic of quantum mechanics. 
+- **Dirac notation** liberates you from explicit and awkward looking coordinate representations which may obscure the underlying picture. 
+- **Schrödinger's cat** and the **double slit experiments** are explained using quantum superpsoition of orthognal states. 
 :::
 
 ### Reminer: Eigenfuncton-eigenvalue problem
 
-**For operators**
 
 $${\hat{A}\psi_n = A_n\psi_n}$$
 
@@ -20,17 +20,24 @@ $${\hat{A}\psi_n = A_n\psi_n}$$
 :::{admonition} **Example: find eigenvalues and eigenfunctions of momentum operator** 
 :class: note
 
-What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
+What are the eigenfunctions and eigenvalues of an operator $\hat{p_x} = -i\hbar d/dx$
 :::
 
-:::{{admonition}  **Solution**
+:::{admonition}  **Solution**
 :class: dropdown
 
-Finding eigenfunctions/eigenvalue of differnetial operators analytically involves solving differnetial equations
+$$\hat{p} f = p f $$
 
-$${\frac{d}{dx}f = kf(x) \Rightarrow \frac{df(x)}{f(x)} = kdx}$$ 
-$$\ln(f) = kx + c$$ 
-$${f_k = e^ce^{kx} = c'e^{kx}}$$
+$$-i\hbar \frac{df}{dx} = p$$
+
+Lets use the only trick we knowwhen solving ODEs $f=e^{kx}$
+
+$$-i\hbar k = p\rightarrow k=\frac{ip}{\hbar}$$
+
+$$f = e^{ipx/\hbar}$$
+
+- Periodic plane waves are the eigenfunctions of momentum!
+
 :::
 
 **For operators written in matrix form**
@@ -98,7 +105,6 @@ $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \ph
 ::::
 
 
-
 - **Eigenvalues are real**: 
 
 $$\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
@@ -149,27 +155,26 @@ $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(
 
 
 
-### Quantum states as linear superposition. 
+### Probabilistic meaning of linear superposition. 
 
-- What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
+:::{admonition} **Coefficients describe probability of observing distinct states**
 
+- Wavefunction can be written as linear superposition of eigenfunctions any QM operator $\hat{A}$.
 
-
-
+$$|\psi\rangle  = \sum_n c_n |\phi_n\rangle $$
 
 - Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.
 
 $$p_n=\mid c_n \mid^2$$
 
-Probabilites sum to one.
-
 $$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
 
-  
 
 ### Averages are probability weighted sums of eigenvalues.
 
-- Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
+- Quantum objects an exist in any supersposition states. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. 
+
+- Wavefunction must be normalizable
 
 $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
 
@@ -235,18 +240,23 @@ $$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{
 
 ### Quantum states as linear superposition of mutually exclusive states.
 
-It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition "collapses" to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics. 
-
 $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
-- Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability $\mid c_n \mid^2$
+- In an experimetn one always obtain one of the eigenvalues (see Postulates) corresponding to $\phi_n$
+
+- In other words the system described by a **wavefunction of superoposition "collapses" to one of the eigenfunctions** when experiment is carried out. 
 
   $$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
+
+- Differnet eigenvalues are observed doing experiments with probability $\mid c_n \mid^2$
+- The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics. 
 
 - Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2 
 
   $$\langle \phi_1 \mid \phi_2 \rangle=0$$
 
+
+### Copenhagen Interpretation
 
 - The [Copenhagen interpretation](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1) is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.
 
@@ -266,15 +276,15 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
 ### Schordinger's cat
 
+- Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
+
+- The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
+
 <html>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
 </iframe>
 </html>
-
-- Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
-
-- The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
 
 
 ### Double slit Experiment

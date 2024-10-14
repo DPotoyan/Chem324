@@ -460,16 +460,16 @@ document.write(`
   <section id="p3-eigenvalues">
 <h1>P3 Eigenvalues<a class="headerlink" href="#p3-eigenvalues" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<p class="admonition-title"><strong>What you need to know</strong></p>
 <ul class="simple">
-<li><p>Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. On the example of simple and familiar 2D-3D vectors we will illustrate the concepts of <strong>basis set</strong>  and  <strong>linear superpositions</strong>.</p></li>
-<li><p>We will then show how <strong>Dirac notation</strong> can liberate  one from coordinate representations and explicit intergrals which may obscure the underlying physics.</p></li>
-<li><p>With an abstract formalism we are able to fully appreciate the strange nature of quantum states which exist in a superoposition of states! We will touch upon  <strong>Schrödinger’s cat</strong> and the <strong>double slit experiments</strong> to illustrate the strange nature of quantum states.</p></li>
+<li><p>Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms.</p></li>
+<li><p>Concepts of <strong>basis set, orthogonality, linear superpositions</strong>  underly logic of quantum mechanics.</p></li>
+<li><p><strong>Dirac notation</strong> liberates you from explicit and awkward looking coordinate representations which may obscure the underlying picture.</p></li>
+<li><p><strong>Schrödinger’s cat</strong> and the <strong>double slit experiments</strong> are explained using quantum superpsoition of orthognal states.</p></li>
 </ul>
 </div>
 <section id="reminer-eigenfuncton-eigenvalue-problem">
 <h2>Reminer: Eigenfuncton-eigenvalue problem<a class="headerlink" href="#reminer-eigenfuncton-eigenvalue-problem" title="Permalink to this heading">#</a></h2>
-<p><strong>For operators</strong></p>
 <div class="math notranslate nohighlight">
 \[{\hat{A}\psi_n = A_n\psi_n}\]</div>
 <ul class="simple">
@@ -477,7 +477,22 @@ document.write(`
 </ul>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example: find eigenvalues and eigenfunctions of momentum operator</strong> </p>
-<p>What are the eigenfunctions and eigenvalues of an operator <span class="math notranslate nohighlight">\(\hat{A} = d/dx\)</span></p>
+<p>What are the eigenfunctions and eigenvalues of an operator <span class="math notranslate nohighlight">\(\hat{p_x} = -i\hbar d/dx\)</span></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<div class="math notranslate nohighlight">
+\[\hat{p} f = p f \]</div>
+<div class="math notranslate nohighlight">
+\[-i\hbar \frac{df}{dx} = p\]</div>
+<p>Lets use the only trick we knowwhen solving ODEs <span class="math notranslate nohighlight">\(f=e^{kx}\)</span></p>
+<div class="math notranslate nohighlight">
+\[-i\hbar k = p\rightarrow k=\frac{ip}{\hbar}\]</div>
+<div class="math notranslate nohighlight">
+\[f = e^{ipx/\hbar}\]</div>
+<ul class="simple">
+<li><p>Periodic plane waves are the eigenfunctions of momentum!</p></li>
+</ul>
 </div>
 <p><strong>For operators written in matrix form</strong></p>
 <ul class="simple">
@@ -601,19 +616,25 @@ Dirac Notation</div>
 </div>
 </div>
 </div>
-<p class="rubric">Quantum states as linear superposition.</p>
+<p class="rubric">Probabilistic meaning of linear superposition.</p>
+<div class="admonition-coefficients-describe-probability-of-observing-distinct-states admonition">
+<p class="admonition-title"><strong>Coefficients describe probability of observing distinct states</strong></p>
 <ul class="simple">
-<li><p>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ?</p></li>
+<li><p>Wavefunction can be written as linear superposition of eigenfunctions any QM operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[|\psi\rangle  = \sum_n c_n |\phi_n\rangle \]</div>
+<ul class="simple">
 <li><p>Absolue values of coeficients <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span> are equal to probabilities <span class="math notranslate nohighlight">\(p_n\)</span> of finding system in a state <span class="math notranslate nohighlight">\(n\)</span> described by eigenvalue <span class="math notranslate nohighlight">\(A_n\)</span> and eigenfunction <span class="math notranslate nohighlight">\(\mid \phi_n \rangle\)</span> of the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[p_n=\mid c_n \mid^2\]</div>
-<p>Probabilites sum to one.</p>
 <div class="math notranslate nohighlight">
 \[\sum_n \mid c_n \mid^2 =\sum_n p_n=1\]</div>
 <p class="rubric">Averages are probability weighted sums of eigenvalues.</p>
 <ul class="simple">
-<li><p>Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket.</p></li>
+<li><p>Quantum objects an exist in any supersposition states. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities.</p></li>
+<li><p>Wavefunction must be normalizable</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle\]</div>
@@ -631,6 +652,7 @@ Dirac Notation</div>
 <li><p>Write down the wavefunction in terms of Hamiltonian operators eigenfunctions.</p></li>
 <li><p>Compute the average energy</p></li>
 </ul>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title"><strong>Solution</strong></p>
@@ -667,18 +689,23 @@ Dirac Notation</div>
 \[ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}\]</div>
 </div>
 <p class="rubric">Quantum states as linear superposition of mutually exclusive states.</p>
-<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics.</p>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
 <ul>
-<li><p>Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p>
+<li><p>In an experimetn one always obtain one of the eigenvalues (see Postulates) corresponding to <span class="math notranslate nohighlight">\(\phi_n\)</span></p></li>
+<li><p>In other words the system described by a <strong>wavefunction of superoposition “collapses” to one of the eigenfunctions</strong> when experiment is carried out.</p>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</div>
 </li>
+<li><p>Differnet eigenvalues are observed doing experiments with probability <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p></li>
+<li><p>The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics.</p></li>
 <li><p>Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2</p>
 <div class="math notranslate nohighlight">
 \[\langle \phi_1 \mid \phi_2 \rangle=0\]</div>
 </li>
+</ul>
+<p class="rubric">Copenhagen Interpretation</p>
+<ul class="simple">
 <li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">Copenhagen interpretation</a> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.</p></li>
 <li><p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results.</p></li>
 <li><p>The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p></li>
@@ -689,14 +716,14 @@ Dirac Notation</div>
 </iframe>
 </html>
 <p class="rubric">Schordinger’s cat</p>
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
-</iframe>
-</html>
 <ul class="simple">
 <li><p>Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes.</p></li>
 <li><p>The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states.</p></li>
 </ul>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
+</iframe>
+</html>
 <p class="rubric">Double slit Experiment</p>
 <html>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
