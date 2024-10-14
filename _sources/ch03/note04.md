@@ -197,7 +197,7 @@ Note that the commutation relation must apply to all well-behaved functions and 
 ### Hermitian property of operators 
 
 - What would be an analog of complex conjugate for matrices? 
-- This leads us to defined **adjoint of an operator matrix/operator $A^{\dag}$** which is obtained by swapping indices and taking complex conjugate of all elements. 
+- This leads us to defined **adjoint of an operator matrix/operator $A^{\dagger}$** which is obtained by swapping indices and taking complex conjugate of all elements. 
 - With same analogy when matrix is equal to its adjoint its eigenvalues are real!
 - Such matrices are called Hermitian or self-adjoint. 
 
@@ -271,7 +271,9 @@ i & 0 \\
 
 :::
 
-- To see that Differentiation operators are Hermitian requires a little more work. - A trick that helps see it is integration by parts where the constant term is zero because wavefunction decays to zero at boundaries (postulate 1, keeping probability finite)!
+- To see that Differentiation operators are Hermitian requires a little more work.
+
+- A trick that helps see it is integration by parts where the constant term is zero because wavefunction decays to zero at boundaries (postulate 1, keeping probability finite)!
 
 $$\int \psi_1 d\psi_2 =- \int \psi_2d\psi_1 + \psi_1\psi_2\Big|_{x_{min}}^{x_{max}} =- \int \psi_2d\psi_1$$
 
@@ -308,13 +310,13 @@ $$
 \int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
 $$
 
-- Since the operator is Hermitian, this leads to the conclusion:
+- Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.
 
 $$
 a = a^*
 $$
 
-- Thus, the eigenvalue $a$ must be real.
+
 
 
 
@@ -330,21 +332,21 @@ $$
 \textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
 $$
 
-Since the operator is Hermitian, we require that LHS = RHS. This results in:
+- Since the operator is Hermitian, we require that LHS = RHS. This results in:
 
 $$
 \left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
 $$
 
-If $a_j \neq a_k$, then we have:
+- If $a_j \neq a_k$, then we have:
 
 $$
 \int \psi_j^* \psi_k \, d\tau = 0
 $$
 
-This shows that $\psi_j$ and $\psi_k$ are orthogonal. 
+- This shows that $\psi_j$ and $\psi_k$ are orthogonal. 
 
-- **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold. Degeneracy refers to eigenstates having the same eigenvalue, and in that case, orthogonality may not apply without further specification.
+- **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold.
 
 
 ### Problems
@@ -536,7 +538,7 @@ $$
 
 **A Matrix**
 
-To check if a matrix is Hermitian, it must satisfy the condition $A = A^\dagger \), where $A^\dagger$ is the conjugate transpose of $A$. Since this matrix has real entries, the conjugate transpose is just the transpose.
+To check if a matrix is Hermitian, it must satisfy the condition $A = A^\dagger$, where $A^\dagger$ is the conjugate transpose of $A$. Since this matrix has real entries, the conjugate transpose is just the transpose.
 
 The transpose of $A$ is:
 

@@ -672,7 +672,7 @@ document.write(`
 <h3>Hermitian property of operators<a class="headerlink" href="#hermitian-property-of-operators" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>What would be an analog of complex conjugate for matrices?</p></li>
-<li><p>This leads us to defined <strong>adjoint of an operator matrix/operator <span class="math notranslate nohighlight">\(A^{\dag}\)</span></strong> which is obtained by swapping indices and taking complex conjugate of all elements.</p></li>
+<li><p>This leads us to defined <strong>adjoint of an operator matrix/operator <span class="math notranslate nohighlight">\(A^{\dagger}\)</span></strong> which is obtained by swapping indices and taking complex conjugate of all elements.</p></li>
 <li><p>With same analogy when matrix is equal to its adjoint its eigenvalues are real!</p></li>
 <li><p>Such matrices are called Hermitian or self-adjoint.</p></li>
 </ul>
@@ -736,7 +736,8 @@ i &amp; 0 \\
 </ul>
 </div>
 <ul class="simple">
-<li><p>To see that Differentiation operators are Hermitian requires a little more work. - A trick that helps see it is integration by parts where the constant term is zero because wavefunction decays to zero at boundaries (postulate 1, keeping probability finite)!</p></li>
+<li><p>To see that Differentiation operators are Hermitian requires a little more work.</p></li>
+<li><p>A trick that helps see it is integration by parts where the constant term is zero because wavefunction decays to zero at boundaries (postulate 1, keeping probability finite)!</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\int \psi_1 d\psi_2 =- \int \psi_2d\psi_1 + \psi_1\psi_2\Big|_{x_{min}}^{x_{max}} =- \int \psi_2d\psi_1\]</div>
@@ -769,15 +770,12 @@ i &amp; 0 \\
 \int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
 \]</div>
 <ul class="simple">
-<li><p>Since the operator is Hermitian, this leads to the conclusion:</p></li>
+<li><p>Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 a = a^*
 \]</div>
-<ul class="simple">
-<li><p>Thus, the eigenvalue <span class="math notranslate nohighlight">\(a\)</span> must be real.</p></li>
-</ul>
 </section>
 <section id="eigenfunctions-of-hermitian-operators-are-orthogonal">
 <h4>Eigenfunctions of Hermitian Operators Are Orthogonal<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-are-orthogonal" title="Permalink to this heading">#</a></h4>
@@ -790,19 +788,23 @@ a = a^*
 \[
 \textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
 \]</div>
-<p>Since the operator is Hermitian, we require that LHS = RHS. This results in:</p>
+<ul class="simple">
+<li><p>Since the operator is Hermitian, we require that LHS = RHS. This results in:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
 \]</div>
-<p>If <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, then we have:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, then we have:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \int \psi_j^* \psi_k \, d\tau = 0
 \]</div>
-<p>This shows that <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span> are orthogonal.</p>
 <ul class="simple">
-<li><p><strong>Note</strong>: If <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning the eigenvalues are degenerate, this result does not hold. Degeneracy refers to eigenstates having the same eigenvalue, and in that case, orthogonality may not apply without further specification.</p></li>
+<li><p>This shows that <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span> are orthogonal.</p></li>
+<li><p><strong>Note</strong>: If <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning the eigenvalues are degenerate, this result does not hold.</p></li>
 </ul>
 </section>
 </section>
@@ -970,7 +972,7 @@ C = \begin{pmatrix}
 <div class="note dropdown admonition">
 <p class="admonition-title"><strong>Solution</strong></p>
 <p><strong>A Matrix</strong></p>
-<p>To check if a matrix is Hermitian, it must satisfy the condition <span class="math notranslate nohighlight">\(A = A^\dagger \), where \)</span>A^\dagger<span class="math notranslate nohighlight">\( is the conjugate transpose of \)</span>A$. Since this matrix has real entries, the conjugate transpose is just the transpose.</p>
+<p>To check if a matrix is Hermitian, it must satisfy the condition <span class="math notranslate nohighlight">\(A = A^\dagger\)</span>, where <span class="math notranslate nohighlight">\(A^\dagger\)</span> is the conjugate transpose of <span class="math notranslate nohighlight">\(A\)</span>. Since this matrix has real entries, the conjugate transpose is just the transpose.</p>
 <p>The transpose of <span class="math notranslate nohighlight">\(A\)</span> is:</p>
 <p><span class="math notranslate nohighlight">\(
 A^\dagger = \begin{pmatrix}
