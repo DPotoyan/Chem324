@@ -13,17 +13,17 @@
 
 **For operators**
 
-$${\hat{A}\psi_i(x,y,z) = A_n\psi_i(x,y,z)}$$
+$${\hat{A}\psi_n = A_n\psi_n}$$
 
-- This is an eigenvalue problem solution of which yields $n = 1,2,3,...$ number of eigenfunctions $\psi_i$ and the eigenvalues $E_i$. Depending on boundary conditions there could be finite or infinite number of solutions. 
+- This is an eigenvalue problem solution of which yields $n = 1,2,3,...$ number of eigenfunctions $\psi_n$ and the eigenvalues $E_i$. Depending on boundary conditions there could be finite or infinite number of solutions. 
 
-:::{note} **Example: find eigenvalues and eigenfunctions of momentum operator** 
+:::{admonition} **Example: find eigenvalues and eigenfunctions of momentum operator** 
 :class: note
 
 What are the eigenfunctions and eigenvalues of an operator $\hat{A} = d/dx$
 :::
 
-:::{note} **Solution**
+:::{{admonition}  **Solution**
 :class: dropdown
 
 Finding eigenfunctions/eigenvalue of differnetial operators analytically involves solving differnetial equations
@@ -40,7 +40,7 @@ $${f_k = e^ce^{kx} = c'e^{kx}}$$
 
 $$Av = \lambda v$$
 
-:::{note} **Example: finding eigenvalues of a matrix** 
+:::{admonition} **Example: finding eigenvalues of a matrix** 
 :class: note
 
 $$\begin{pmatrix}
@@ -55,9 +55,9 @@ v_2
 \end{pmatrix}$$
 ::: 
 
-::::{admonition}
+:::{admonition}
 
-```python
+:::python
 import numpy as np
 
 # Define the matrix
@@ -68,12 +68,9 @@ eigenvalues, eigenvectors = np.linalg.eig(matrix)
 
 # Display the eigenvalues and eigenvectors
 eigenvalues, eigenvectors
-```
-::::
+:::
 
-
-
-
+:::
 
 
 
@@ -81,23 +78,41 @@ eigenvalues, eigenvectors
 
 The three crucial consequences of Hermitian property of operators  
 
+::::{grid}
+:gutter: 2
+
+:::{grid-item-card} Integral Notation
+
+$$\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx$$
+
+:::
+
+:::{grid-item-card} Dirac Notation
+
 $$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$$
 
-- Eigenvalues  are real: 
+:::
+
+
+::::
+
+
+
+- **Eigenvalues are real**: 
 
 $$\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
 
 $$E_n=E^*_n$$
 
-- Eigenfunctions are orthogonal (and can also be normalized)
+- **Eigenfunctions are orthogonal** 
 
 $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
-- Eigenfunctions form a complete basis set! 
+- **Eigenfunctions form a complete basis set!**
 
 $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
-- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  That is a function can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
+- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 ### Wave function as a linear superoposition of eigenfunctions
 
