@@ -55,22 +55,24 @@ v_2
 \end{pmatrix}$$
 ::: 
 
-:::{admonition}
+````{admonition} **Solving eignefunction eigenvalue problems numerically**
+:class: note, dropdown
 
-:::python
+```python
 import numpy as np
 
 # Define the matrix
-matrix = np.array([[1, 2], [2, 4]])
+matrix = np.array([ [1, 2], 
+                    [2, 4]   ] )
 
 # Compute the eigenvalues and eigenvectors
 eigenvalues, eigenvectors = np.linalg.eig(matrix)
 
 # Display the eigenvalues and eigenvectors
 eigenvalues, eigenvectors
-:::
+```
 
-:::
+````
 
 
 
@@ -83,16 +85,15 @@ The three crucial consequences of Hermitian property of operators
 
 :::{grid-item-card} Integral Notation
 
-$$\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx$$
+$\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx$
 
 :::
 
 :::{grid-item-card} Dirac Notation
 
-$$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$$
+$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$
 
 :::
-
 
 ::::
 
@@ -116,32 +117,43 @@ $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
 ### Wave function as a linear superoposition of eigenfunctions
 
-This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, We can always express it in terms of the energy eigenfucntions or the position eigenfunctions or any other complete set of functions.
+- We can express wavefunctions $\mid \psi \rangle$ describign states of quantum object in terms of superpsoition of **any eigenfunctions of Hermtian operators** be in energy momentum, position or other operators. 
 
-- Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
+$$\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle$$
 
-  - In Dirac notation: $f=\sum_n c_n \mid n\rangle$ 
-  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
+$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
-  
-- How do we find the coefficients $c_n$? Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
+- Here is an example of expressiing wavefunction for particle in a box in terms fo energy eigenfuntions. 
 
-  - In Dirac notation: $c_k = \braket{k \mid f}$
+::::{grid}
+:gutter: 2
 
-  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
+:::{grid-item-card} Integral Notation
+
+$$\psi=\sum_n c_n \mid n\rangle$$
+
+$$c_n = \braket{n \mid \psi}$$
+
+:::
+
+:::{grid-item-card} Dirac Notation
+
+$$f\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$$
+
+$$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(x) dx$$
+:::
+
 
     
-- Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
+
 
 
 
 ### Quantum states as linear superposition. 
 
-Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.<br>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
+- What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
 
-$$\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle$$
 
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
 
 

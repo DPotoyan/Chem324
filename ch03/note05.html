@@ -444,6 +444,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 </ul>
             </nav>
         </div>
@@ -498,21 +500,94 @@ v_1 \\
 v_2
 \end{pmatrix}\end{split}\]</div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="note dropdown admonition">
+<p class="admonition-title"><strong>Solving eignefunction eigenvalue problems numerically</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="c1"># Define the matrix</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="p">]</span> <span class="p">)</span>
 
-### Eigenfunctions of Hermitian operators form complete basis set
+<span class="c1"># Compute the eigenvalues and eigenvectors</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 
-The three crucial consequences of Hermitian property of operators  
-
-::::{grid}
-:gutter: 2
-
-:::{grid-item-card} Integral Notation
-
-$$\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx$$
-
+<span class="c1"># Display the eigenvalues and eigenvectors</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span>
 </pre></div>
+</div>
+</div>
+</section>
+<section id="eigenfunctions-of-hermitian-operators-form-complete-basis-set">
+<h2>Eigenfunctions of Hermitian operators form complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set" title="Permalink to this heading">#</a></h2>
+<p>The three crucial consequences of Hermitian property of operators</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Integral Notation</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx\)</span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Dirac Notation</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Eigenvalues are real</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle\]</div>
+<div class="math notranslate nohighlight">
+\[E_n=E^*_n\]</div>
+<ul class="simple">
+<li><p><strong>Eigenfunctions are orthogonal</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}\]</div>
+<ul class="simple">
+<li><p><strong>Eigenfunctions form a complete basis set!</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mid f\rangle = \sum_i c_i \mid \psi_i \rangle\]</div>
+<ul class="simple">
+<li><p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p></li>
+</ul>
+</section>
+<section id="wave-function-as-a-linear-superoposition-of-eigenfunctions">
+<h2>Wave function as a linear superoposition of eigenfunctions<a class="headerlink" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We can express wavefunctions <span class="math notranslate nohighlight">\(\mid \psi \rangle\)</span> describign states of quantum object in terms of superpsoition of <strong>any eigenfunctions of Hermtian operators</strong> be in energy momentum, position or other operators.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
+<ul class="simple">
+<li><p>Here is an example of expressiing wavefunction for particle in a box in terms fo energy eigenfuntions.</p></li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Integral Notation</div>
+<div class="math notranslate nohighlight">
+\[\psi=\sum_n c_n \mid n\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[c_n = \braket{n \mid \psi}\]</div>
+</div>
+</div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
@@ -520,190 +595,114 @@ $$\int \phi^* \hat{H}\psi dx = \int \psi (\hat{H}\phi)^*dx$$
 <div class="sd-card-title sd-font-weight-bold docutils">
 Dirac Notation</div>
 <div class="math notranslate nohighlight">
-\[\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\]</div>
+\[f\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )\]</div>
+<div class="math notranslate nohighlight">
+\[c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(x) dx\]</div>
 </div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-
-- **Eigenvalues are real**: 
-
-$$\hat{H} \mid \psi_n \rangle=E_n \mid \psi_n \rangle$$
-
-$$E_n=E^*_n$$
-
-- **Eigenfunctions are orthogonal** 
-
-$$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
-
-- **Eigenfunctions form a complete basis set!**
-
-$$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
-
-- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
-
-### Wave function as a linear superoposition of eigenfunctions
-
-This is where we see the power and beautfy of Dirac notation. Reagardless of how the function $f$ looks like, We can always express it in terms of the energy eigenfucntions or the position eigenfunctions or any other complete set of functions.
-
-- Express $f(x)$ function in terms of eigenfunctions of $\hat{H} \mid n\rangle=E_n \mid n \rangle$. 
-
-  - In Dirac notation: $f=\sum_n c_n \mid n\rangle$ 
-  - In explicit notation: $f(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$
-
-  
-- How do we find the coefficients $c_n$? Thanks to orthogonality of eigenfunctions any coeficient $k$, just like component of a vector can be found by projecting our function (vectors) on eigenfunction $k$ (unit basis vector $k$). 
-
-  - In Dirac notation: $c_k = \braket{k \mid f}$
-
-  - In explicit notation: $c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )f(x) dx$
-
-    
-- Thus any wave function in quantum mechanics say $f(x)=x^2$ on $[0,L]$ for particle in a 1D Box, can be expanded in terms of eigenfunctions of operators by plugging the function in above expression and finding the coefficeients which are what define the expansion. This is a mahematical fact. The next question is what is the physical signficance and meaning for the coefficeints and expansion. 
-
-
-
-### Quantum states as linear superposition. 
-
-Schrodinger equation as a linear differential equation admits as a general solution ithe linear superposition of eigenfunctions. This is a mathematical fact.&lt;br&gt;What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ? 
-
-$$\hat{A}\mid \phi_n \rangle = A_n \mid \phi_n \rangle$$
-
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
-
-
-
-- Absolue values of coeficients $\mid c_n \mid^2$ are equal to probabilities $p_n$ of finding system in a state $n$ described by eigenvalue $A_n$ and eigenfunction $\mid \phi_n \rangle$ of the operator $\hat{A}$.
-
-$$p_n=\mid c_n \mid^2$$
-
-Probabilites sum to one.
-
-$$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
-
-  
-
-### Averages are probability weighted sums of eigenvalues.
-
-- Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket. 
-
-$$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
-
-$$\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1$$
-
-- The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment. 
-
- $$\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2$$
-
-
-:::{admonition} **Example**  
-:class: note
-
-Particle in a box is described as a supperopistion of 1-st and 5-th states. 
-- Write down the wavefunction in terms of Hamiltonian operators eigenfunctions.
-- Compute the average energy
-:::
-
-:::{admonition} **Solution**  
-:class: dropdown
-
-$$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}$$ 
-
-This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. 
-
-The average of energy will be given by
-
-$$\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}$$
-:::
-
-
-
-:::{admonition} **Example**  
-:class: note
-
-Consider a particle in a quantum state $\psi$ that is a superposition of two eigenfunctions $\phi_1$ and $\phi_2$, with energy eigenvalues $E_1$ and $E_2$ of operator $\hat{H}$  ($E_1 \ne E_2$):
-
-$$\psi = c_1\phi_1 + c_2\phi_2$$
-
-- If one attempts to measure energy of such state, what will be the outcome? 
-- What will be the average energy and the standard deviation in energy?
-:::
-
-:::{admonition} **Solution**  
-:class: dropdown
-
-Since $\psi$ is normalized and $\phi_1$ and $\phi_2$ are orthogonal, we have $\left|c_1\right|^2 + \left|c_2\right|^2 = 1$. The probability of measuring $E_1$ is $\left|c_1\right|^2$ and $E_2$ is $\left|c_2\right|^2$. The average energy is given by:
-
-
-$$\left&lt;\hat{H}\right&gt; = \left&lt;\psi\left|\hat{H}\right|\psi\right&gt; = \left|c_1\right|^2\left&lt;\phi_1\left|\hat{H}\right|\phi_1\right&gt; + c_1^*c_2\left&lt;\phi_1\left|\hat{H}\right|\phi_2\right&gt; + c_2^*c_1\left&lt;\phi_2\left|\hat{H}\right|\phi_1\right&gt;$$
-$$ + \left|c_2\right|^2\left&lt;\phi_2\left|\hat{H}\right|\phi_2\right&gt; = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left&lt;\phi_1\left|\phi_2\right.\right&gt;}_{= 0} + c_2^*c_1E_1\underbrace{\left&lt;\phi_2\left|\phi_1\right.\right&gt;}_{= 0} + \left|c_2\right|^2E_2$$
-$$= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2$$
-
-
- The standard deviation is given by : $\sigma_{\hat{H}} = \sqrt{\left&lt;\hat{H}^2\right&gt; - \left&lt;\hat{H}\right&gt;^2}$. We have already calculated $\left&lt;\hat{H}\right&gt;$ above and need to calculate $\left&lt;\hat{H}^2\right&gt;$ (use the eigenvalue equation and orthogonality):
-
-$$\left&lt;\hat{H}^2\right&gt; = \left&lt;\psi\left|\hat{H}^2\right|\psi\right&gt; = \left&lt;\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right&gt; = \left&lt;c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right&gt;$$
-$$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}$$
-
-:::
-
-
-
-### Quantum states as linear superposition of mutually exclusive states.
-
-It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition &quot;collapses&quot; to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics. 
-
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
-
-- Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability $\mid c_n \mid^2$
-
-  $$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
-
-- Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2 
-
-  $$\langle \phi_1 \mid \phi_2 \rangle=0$$
-
-
-- The [Copenhagen interpretation](https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1) is an expression of the meaning of [quantum mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics) that was largely devised from 1925 to 1927 by [Niels Bohr](https://en.wikipedia.org/wiki/Niels_Bohr) and [Werner Heisenberg](https://en.wikipedia.org/wiki/Werner_Heisenberg). It is one of the oldest of numerous proposed [interpretations of quantum mechanics](https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics), and remains one of the most commonly taught.
-
-- According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement&#39;s possible results. 
-- The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse).&quot;
-
-
-
-### Quantum superopsition of atom. 
-
-&lt;html&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/7B1llCxVdkE&quot; frameborder=&quot;0&quot; allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;/html&gt;
-
-
-### Schordinger&#39;s cat
-
-&lt;html&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/UjaAxUO6-Uw&quot; frameborder=&quot;0&quot; allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;/html&gt;
-
-- Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes. 
-
-- The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states. 
-
-
-### Double slit Experiment
-
-&lt;html&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Xmq_FJd1oUQ&quot; frameborder=&quot;0&quot; allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;/html&gt;
-
-
-
-</pre></div>
+<p class="rubric">Quantum states as linear superposition.</p>
+<ul class="simple">
+<li><p>What is the physical meaning of solutions written as linear superpositions of eigenfunctions of some operator ?</p></li>
+<li><p>Absolue values of coeficients <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span> are equal to probabilities <span class="math notranslate nohighlight">\(p_n\)</span> of finding system in a state <span class="math notranslate nohighlight">\(n\)</span> described by eigenvalue <span class="math notranslate nohighlight">\(A_n\)</span> and eigenfunction <span class="math notranslate nohighlight">\(\mid \phi_n \rangle\)</span> of the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[p_n=\mid c_n \mid^2\]</div>
+<p>Probabilites sum to one.</p>
+<div class="math notranslate nohighlight">
+\[\sum_n \mid c_n \mid^2 =\sum_n p_n=1\]</div>
+<p class="rubric">Averages are probability weighted sums of eigenvalues.</p>
+<ul class="simple">
+<li><p>Superposition is a legitimate stae in which quantum objects can exist. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. Such a state is descibred by a normalized ket.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle \psi \mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\mid 1\rangle + c_2 \mid 2\rangle\Big] =\\ = \mid c_1 \mid^2 \langle 1 \mid 1 \rangle+(c^*_1 c_2\langle 1 \mid 2 \rangle+c_1 c^*_2\langle 2 \mid 1 \rangle)+\mid c_2\mid^2   = c_1^2+c^2_2=p_1+p_2=1\end{split}\]</div>
+<ul class="simple">
+<li><p>The meaning of expectation becomes more transparent as an average over all eigenvalues obtained in the experiment.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle E\rangle= \langle \psi \mid \hat{H}\mid \psi \rangle = \Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1\hat{H}\mid 1\rangle + c_2 \hat{H}\mid 2\rangle\Big] =\Big[c^*_1\langle 1\mid +c^*_2 \langle 2\mid \Big]\Big[c_1E_1\mid 1\rangle + c_2 E_2\mid 2\rangle\Big] = \\ = c_1^2E_1+c^2_2 E_2=p_1E_1+p_2 E_2\end{split}\]</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Particle in a box is described as a supperopistion of 1-st and 5-th states.</p>
+<ul class="simple">
+<li><p>Write down the wavefunction in terms of Hamiltonian operators eigenfunctions.</p></li>
+<li><p>Compute the average energy</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<div class="math notranslate nohighlight">
+\[\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}\]</div>
+<p>This means that when we measure  energy we are going to obtain only two values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_5\)</span> with equal probabilities <span class="math notranslate nohighlight">\(p_1=p_2=(1/\sqrt{2})^2\)</span>.</p>
+<p>The average of energy will be given by</p>
+<div class="math notranslate nohighlight">
+\[\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}\]</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Consider a particle in a quantum state <span class="math notranslate nohighlight">\(\psi\)</span> that is a superposition of two eigenfunctions <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span>, with energy eigenvalues <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> of operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>  (<span class="math notranslate nohighlight">\(E_1 \ne E_2\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\psi = c_1\phi_1 + c_2\phi_2\]</div>
+<ul class="simple">
+<li><p>If one attempts to measure energy of such state, what will be the outcome?</p></li>
+<li><p>What will be the average energy and the standard deviation in energy?</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>Since <span class="math notranslate nohighlight">\(\psi\)</span> is normalized and <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> are orthogonal, we have <span class="math notranslate nohighlight">\(\left|c_1\right|^2 + \left|c_2\right|^2 = 1\)</span>. The probability of measuring <span class="math notranslate nohighlight">\(E_1\)</span> is <span class="math notranslate nohighlight">\(\left|c_1\right|^2\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> is <span class="math notranslate nohighlight">\(\left|c_2\right|^2\)</span>. The average energy is given by:</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{H}\right&gt; = \left&lt;\psi\left|\hat{H}\right|\psi\right&gt; = \left|c_1\right|^2\left&lt;\phi_1\left|\hat{H}\right|\phi_1\right&gt; + c_1^*c_2\left&lt;\phi_1\left|\hat{H}\right|\phi_2\right&gt; + c_2^*c_1\left&lt;\phi_2\left|\hat{H}\right|\phi_1\right&gt;\]</div>
+<div class="math notranslate nohighlight">
+\[ + \left|c_2\right|^2\left&lt;\phi_2\left|\hat{H}\right|\phi_2\right&gt; = \left|c_1\right|^2E_1 + c_1^*c_2E_2\underbrace{\left&lt;\phi_1\left|\phi_2\right.\right&gt;}_{= 0} + c_2^*c_1E_1\underbrace{\left&lt;\phi_2\left|\phi_1\right.\right&gt;}_{= 0} + \left|c_2\right|^2E_2\]</div>
+<div class="math notranslate nohighlight">
+\[= \left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\]</div>
+<p>The standard deviation is given by : <span class="math notranslate nohighlight">\(\sigma_{\hat{H}} = \sqrt{\left&lt;\hat{H}^2\right&gt; - \left&lt;\hat{H}\right&gt;^2}\)</span>. We have already calculated <span class="math notranslate nohighlight">\(\left&lt;\hat{H}\right&gt;\)</span> above and need to calculate <span class="math notranslate nohighlight">\(\left&lt;\hat{H}^2\right&gt;\)</span> (use the eigenvalue equation and orthogonality):</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{H}^2\right&gt; = \left&lt;\psi\left|\hat{H}^2\right|\psi\right&gt; = \left&lt;\psi\left|\hat{H}\right|E_1c_1\phi_1 + E_2c_2\phi_2\right&gt; = \left&lt;c_1\phi_1 + c_2\phi_2\left|E_1^2c_1\phi_1 + E_2^2c_2\phi_2\right.\right&gt;\]</div>
+<div class="math notranslate nohighlight">
+\[ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}\]</div>
+</div>
+<p class="rubric">Quantum states as linear superposition of mutually exclusive states.</p>
+<p>It is important to emphasize that postulates of quantum mechanics that in an experimetn we always obtain one of the eigenvalues in other words the system described by a superoposition “collapses” to one of the eigenfunctions. The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics.</p>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
+<ul>
+<li><p>Act of an exeperimentation interferes with superposition state collapsing it to a particular eigenfunction with probability <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</div>
+</li>
+<li><p>Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2</p>
+<div class="math notranslate nohighlight">
+\[\langle \phi_1 \mid \phi_2 \rangle=0\]</div>
+</li>
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">Copenhagen interpretation</a> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.</p></li>
+<li><p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results.</p></li>
+<li><p>The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p></li>
+</ul>
+<p class="rubric">Quantum superopsition of atom.</p>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+<p class="rubric">Schordinger’s cat</p>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+<ul class="simple">
+<li><p>Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes.</p></li>
+<li><p>The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states.</p></li>
+</ul>
+<p class="rubric">Double slit Experiment</p>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
+</iframe>
+</html>
+</div>
 </div>
 </section>
 </section>
@@ -772,6 +771,8 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
 </ul>
   </nav></div>
 
