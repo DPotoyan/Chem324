@@ -13,7 +13,7 @@
 
 **For operators**
 
-$${\hat{H}\psi_i(x,y,z) = E_i\psi_i(x,y,z)}$$
+$${\hat{A}\psi_i(x,y,z) = A_n\psi_i(x,y,z)}$$
 
 - This is an eigenvalue problem solution of which yields $n = 1,2,3,...$ number of eigenfunctions $\psi_i$ and the eigenvalues $E_i$. Depending on boundary conditions there could be finite or infinite number of solutions. 
 
