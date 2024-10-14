@@ -196,6 +196,12 @@ Note that the commutation relation must apply to all well-behaved functions and 
 
 ### Hermitian property of operators 
 
+- What would be an analog of complex conjugate for matrices? 
+- This leads us to defined **adjoint of an operator matrix/operator $A^{\dag}$** which is obtained by swapping indices and taking complex conjugate of all elements. 
+- With same analogy when matrix is equal to its adjoint its eigenvalues are real!
+- Such matrices are called Hermitian or self-adjoint. 
+
+
 
 :::{admonition} **Hermitian Matrix**
 :class: important
@@ -209,21 +215,25 @@ $$a_{jk} = a^{*}_{kj}$$
 
 
 
+- For an operator, the **adjoint** can be understood as an operation analogous to swapping the roles of functions in an inner product expression, followed by taking the complex conjugate. 
+- Specifically, in a "sandwich" form like $a_{jk}=\langle \psi_j | \hat{A} | \psi_k \rangle$, taking the adjoint involves exchanging the functions and complex conjugating the operator resulting in $a^{*}_{kj}$. 
+- Essentially, the operator enters the realm of complex conjugate functions. When an operator is **Hermitian**, it is equal to its adjoint  $a_{jk} = a^{*}_{kj}$
+
+
+
 :::{admonition} **Hermitian Operator**
 :class: important
 
-$$A = A^\dagger$$
+$$\hat{A} = \hat{A}^\dagger$$
 
 $$
-\int {\color{blue} \psi^*_j} \hat{A} {\color{green}\psi_k} d\tau = \int { \color{green} \psi_k} \hat{A}^\dagger {\color{blue}\psi_j^{*} } d\tau= \int { \color{green} \psi_k} \hat{A} {\color{blue}\psi_j^{*} } d\tau
+\int {\color{blue} \psi^*_j}  {\color{green}\hat{A}\psi_k} d\tau = \int { \color{green} \psi_k}  {\color{blue}\hat{A}^\dagger\psi_j^{*} } d\tau= \int { \color{green} \psi_k} { {\color{blue}(\hat{A}\psi_j)}^{*}}  d\tau
 $$
 
 **In Dirac Notation**
 
 $$ \langle j| \hat{A}|k\rangle = \langle k| \hat{A} | j \rangle^{*}$$
 :::
-
-
 
 
 - On the left, $\hat{A}$ acts on $\psi_k$, and the result is integrated against $\psi_j^*$.
