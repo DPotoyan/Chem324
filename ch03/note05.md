@@ -155,8 +155,6 @@ $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(
 
 ### Probabilistic meaning of linear superposition
 
-:::{admonition} **Coefficients describe probability of observing distinct states**
-
 - Wavefunction can be written as linear superposition of eigenfunctions any QM operator $\hat{A}$.
 
 $$|\psi\rangle  = \sum_n c_n |\phi_n\rangle $$
