@@ -222,6 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bonus_quantum_waves.html">DEMO: Bonus challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fourier_transform.html">Fourier Transforms and Quantu Mechanics</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch04/index.html">4. Model systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -446,6 +447,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-meaning-of-linear-superposition">Probabilistic meaning of linear superposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
             </nav>
         </div>
@@ -534,7 +542,6 @@ v_2
 </section>
 <section id="eigenfunctions-of-hermitian-operators-form-complete-basis-set">
 <h2>Eigenfunctions of Hermitian operators form complete basis set<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set" title="Permalink to this heading">#</a></h2>
-<p>The three crucial consequences of Hermitian property of operators</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
 <div class="sd-col sd-d-flex-row docutils">
@@ -557,6 +564,7 @@ Dirac Notation</div>
 </div>
 </div>
 </div>
+<p>The three crucial consequences of Hermitian property of operators:</p>
 <ul class="simple">
 <li><p><strong>Eigenvalues are real</strong>:</p></li>
 </ul>
@@ -575,7 +583,8 @@ Dirac Notation</div>
 <div class="math notranslate nohighlight">
 \[\mid f\rangle = \sum_i c_i \mid \psi_i \rangle\]</div>
 <ul class="simple">
-<li><p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p></li>
+<li><p>The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.</p></li>
+<li><p>Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.</p></li>
 </ul>
 </section>
 <section id="wave-function-as-a-linear-superoposition-of-eigenfunctions">
@@ -610,15 +619,17 @@ Integral Notation</div>
 <div class="sd-card-title sd-font-weight-bold docutils">
 Dirac Notation</div>
 <div class="math notranslate nohighlight">
-\[f\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )\]</div>
+\[\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )\]</div>
 <div class="math notranslate nohighlight">
 \[c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(x) dx\]</div>
 </div>
 </div>
 </div>
-<p class="rubric">Probabilistic meaning of linear superposition.</p>
-<div class="admonition-coefficients-describe-probability-of-observing-distinct-states admonition">
-<p class="admonition-title"><strong>Coefficients describe probability of observing distinct states</strong></p>
+</div>
+</div>
+</section>
+<section id="probabilistic-meaning-of-linear-superposition">
+<h2>Probabilistic meaning of linear superposition<a class="headerlink" href="#probabilistic-meaning-of-linear-superposition" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Wavefunction can be written as linear superposition of eigenfunctions any QM operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>.</p></li>
 </ul>
@@ -631,10 +642,12 @@ Dirac Notation</div>
 \[p_n=\mid c_n \mid^2\]</div>
 <div class="math notranslate nohighlight">
 \[\sum_n \mid c_n \mid^2 =\sum_n p_n=1\]</div>
-<p class="rubric">Averages are probability weighted sums of eigenvalues.</p>
+</section>
+<section id="averages-are-probability-weighted-sums-of-eigenvalues">
+<h2>Averages are probability weighted sums of eigenvalues.<a class="headerlink" href="#averages-are-probability-weighted-sums-of-eigenvalues" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Quantum objects an exist in any supersposition states. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities.</p></li>
-<li><p>Wavefunction must be normalizable</p></li>
+<li><p>From normalization condition imposed on wavfunction we see the true meaning of coeficients in linear superopositions</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle\]</div>
@@ -653,13 +666,13 @@ Dirac Notation</div>
 <li><p>Compute the average energy</p></li>
 </ul>
 </div>
-</div>
 <div class="dropdown admonition">
 <p class="admonition-title"><strong>Solution</strong></p>
 <div class="math notranslate nohighlight">
 \[\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}\]</div>
-<p>This means that when we measure  energy we are going to obtain only two values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_5\)</span> with equal probabilities <span class="math notranslate nohighlight">\(p_1=p_2=(1/\sqrt{2})^2\)</span>.</p>
-<p>The average of energy will be given by</p>
+<ul class="simple">
+<li><p>This means that when we measure  energy we are going to obtain only two values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_5\)</span> with equal probabilities <span class="math notranslate nohighlight">\(p_1=p_2=(1/\sqrt{2})^2\)</span>. The average of energy will be given by</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}\]</div>
 </div>
@@ -688,7 +701,9 @@ Dirac Notation</div>
 <div class="math notranslate nohighlight">
 \[ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{H}} = \sqrt{\left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 - \left(\left|c_1\right|^2E_1 + \left|c_2\right|^2E_2\right)^2}\]</div>
 </div>
-<p class="rubric">Quantum states as linear superposition of mutually exclusive states.</p>
+</section>
+<section id="quantum-states-as-linear-superposition-of-mutually-exclusive-states">
+<h2>Quantum states as linear superposition of mutually exclusive states.<a class="headerlink" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle \]</div>
 <ul>
@@ -697,25 +712,31 @@ Dirac Notation</div>
 <div class="math notranslate nohighlight">
 \[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</div>
 </li>
-<li><p>Differnet eigenvalues are observed doing experiments with probability <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p></li>
+<li><p>In experiments on only observes different eigenvalues with probability given by squared coefficients: <span class="math notranslate nohighlight">\(\mid c_n \mid^2\)</span></p></li>
 <li><p>The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics.</p></li>
-<li><p>Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2</p>
+<li><p><strong>Orthogonal of eigenfunctions</strong> means <strong>mutually exclusive</strong> states. E.g system can only be in either state 1 or 2 but not both.</p>
 <div class="math notranslate nohighlight">
 \[\langle \phi_1 \mid \phi_2 \rangle=0\]</div>
 </li>
 </ul>
-<p class="rubric">Copenhagen Interpretation</p>
+</section>
+<section id="copenhagen-interpretation">
+<h2>Copenhagen Interpretation<a class="headerlink" href="#copenhagen-interpretation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Copenhagen_interpretation#cite_note-Siddiqui2017-1">Copenhagen interpretation</a> is an expression of the meaning of <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a> that was largely devised from 1925 to 1927 by <a class="reference external" href="https://en.wikipedia.org/wiki/Niels_Bohr">Niels Bohr</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a>. It is one of the oldest of numerous proposed <a class="reference external" href="https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics">interpretations of quantum mechanics</a>, and remains one of the most commonly taught.</p></li>
 <li><p>According to the Copenhagen interpretation, physical systems generally do not have definite properties prior to being measured, and quantum mechanics can only predict the probability distribution of a given measurement’s possible results.</p></li>
 <li><p>The act of measurement affects the system, causing the set of probabilities to reduce to only one of the possible values immediately after the measurement. This feature is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_function_collapse">wave function collapse</a>.”</p></li>
 </ul>
-<p class="rubric">Quantum superopsition of atom.</p>
+</section>
+<section id="quantum-superopsition-of-atom">
+<h2>Quantum superopsition of atom.<a class="headerlink" href="#quantum-superopsition-of-atom" title="Permalink to this heading">#</a></h2>
 <html>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7B1llCxVdkE" frameborder="0" allowfullscreen>
 </iframe>
 </html>
-<p class="rubric">Schordinger’s cat</p>
+</section>
+<section id="schordingers-cat">
+<h2>Schordinger’s cat<a class="headerlink" href="#schordingers-cat" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Schrödinger created a thought experiment to illustrate bizarre nature of quantum superpositions, in which a quantum system such as an atom or photon can exist as a combination of multiple states corresponding to different possible outcomes.</p></li>
 <li><p>The thought Experiment puts cat in a box with a single radioactive atom whose state dictates weather it decays thereby breaking the poisonous chamber in the box that kills the cat or does not decay and cat stays alive. So Schrodinger argued kitty must be thought of simultaneously dead and alive until experiment is done and cat is found in one of the two states.</p></li>
@@ -724,13 +745,13 @@ Dirac Notation</div>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UjaAxUO6-Uw" frameborder="0" allowfullscreen>
 </iframe>
 </html>
-<p class="rubric">Double slit Experiment</p>
+</section>
+<section id="double-slit-experiment">
+<h2>Double slit Experiment<a class="headerlink" href="#double-slit-experiment" title="Permalink to this heading">#</a></h2>
 <html>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
 </iframe>
 </html>
-</div>
-</div>
 </section>
 </section>
 
@@ -800,6 +821,13 @@ Dirac Notation</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminer-eigenfuncton-eigenvalue-problem">Reminer: Eigenfuncton-eigenvalue problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-form-complete-basis-set">Eigenfunctions of Hermitian operators form complete basis set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-function-as-a-linear-superoposition-of-eigenfunctions">Wave function as a linear superoposition of eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-meaning-of-linear-superposition">Probabilistic meaning of linear superposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-are-probability-weighted-sums-of-eigenvalues">Averages are probability weighted sums of eigenvalues.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states-as-linear-superposition-of-mutually-exclusive-states">Quantum states as linear superposition of mutually exclusive states.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
   </nav></div>
 
