@@ -150,13 +150,10 @@ $$\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \
 $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(x) dx$$
 :::
 
-
-    
-
+::::
 
 
-
-### Probabilistic meaning of linear superposition. 
+### Probabilistic meaning of linear superposition
 
 :::{admonition} **Coefficients describe probability of observing distinct states**
 
