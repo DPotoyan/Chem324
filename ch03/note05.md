@@ -85,7 +85,6 @@ eigenvalues, eigenvectors
 
 ### Eigenfunctions of Hermitian operators form complete basis set
 
-The three crucial consequences of Hermitian property of operators  
 
 ::::{grid}
 :gutter: 2
@@ -104,6 +103,7 @@ $\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \ph
 
 ::::
 
+The three crucial consequences of Hermitian property of operators:
 
 - **Eigenvalues are real**: 
 
@@ -119,7 +119,8 @@ $$\langle \psi_n \mid  \psi_m\rangle=\delta_{nm}$$
 
 $$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
 
-- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
+- The last two properties imply that eigenfunctions of Hermitian opeartors  play the same role for functions as the unit vectors for  vectors.  
+- Thus a wavefunction can be expressed in terms of the eigenfunctions of an opearators which can act on the function.
 
 ### Wave function as a linear superoposition of eigenfunctions
 
@@ -144,7 +145,7 @@ $$c_n = \braket{n \mid \psi}$$
 
 :::{grid-item-card} Dirac Notation
 
-$$f\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$$
+$$\psi(x) = \sum_n c_n \Big(\frac{2}{L}\Big )^{1/2} sin \Big (\frac{n\pi x}{L} \Big )$$
 
 $$c_k = \Big(\frac{2}{L}\Big )^{1/2} \int sin \Big (\frac{k\pi x}{L} \Big )\psi(x) dx$$
 :::
@@ -174,7 +175,7 @@ $$\sum_n \mid c_n \mid^2 =\sum_n p_n=1$$
 
 - Quantum objects an exist in any supersposition states. For instance an atom can be in a superposition of ground and next excited states with 50% probabilities. 
 
-- Wavefunction must be normalizable
+- From normalization condition imposed on wavfunction we see the true meaning of coeficients in linear superopositions
 
 $$\mid \psi \rangle=c_1 \mid 1 \rangle+c_2 \mid 2\rangle$$ 
 
@@ -198,9 +199,7 @@ Particle in a box is described as a supperopistion of 1-st and 5-th states.
 
 $$\psi(x)=\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{\pi x}{L}+\frac{1}{\sqrt{2}}\cdot \Big(\frac{2}{L} \Big )^{1/2}sin\frac{5\pi x}{L}$$ 
 
-This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. 
-
-The average of energy will be given by
+- This means that when we measure  energy we are going to obtain only two values $E_1$ and $E_5$ with equal probabilities $p_1=p_2=(1/\sqrt{2})^2$. The average of energy will be given by
 
 $$\langle E \rangle =p_1 E_1+p_2 E_2 = \frac{1}{2}\frac{1^2 h^2}{8mL^2}+\frac{1}{2}\frac{5^2 h^2}{8mL^2}$$
 :::
@@ -248,10 +247,11 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 
   $$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
 
-- Differnet eigenvalues are observed doing experiments with probability $\mid c_n \mid^2$
+- In experiments on only observes different eigenvalues with probability given by squared coefficients: $\mid c_n \mid^2$
+
 - The idea of a quantum system randomly collapsing into distinct and mutuallye esclusive states has trubled many physicsis, who were at the frontiers of development of quantum mechanics. 
 
-- Orthogonality of eigenfunctions implies mutual exclusivity of system being in state 1 vs state 2 
+- **Orthogonal of eigenfunctions** means **mutually exclusive** states. E.g system can only be in either state 1 or 2 but not both.
 
   $$\langle \phi_1 \mid \phi_2 \rangle=0$$
 
