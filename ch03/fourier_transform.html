@@ -496,8 +496,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-series">Fourier Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-function-and-gibbs-phenomenon">Square function and Gibbs phenomenon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform">Fourier Transform</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retriving-signals">Retriving signals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transoform-and-uncertainty-relation">Fourier transoform and uncertainty relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis-of-time-series-data">Fourier analysis of time-series data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-data">Periodic data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-periodic-data">Noisy periodic data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-non-periodic-data">Noisy non-periodic data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transoform-and-the-uncertainty-relation">Fourier transoform and the uncertainty relation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transforms-of-gaussian-functions">Fourier transforms of Gaussian functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-function">Delta Function</a></li>
 </ul>
@@ -526,7 +531,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[b_n = \frac{1}{\pi} \int_{-{\pi}}^{\pi} f(x)\sin(nx)dx \,\,\,\,n=1, 2, ...\]</div>
 </div>
-<div class="admonition-fourier-coeffiecients-and-orthogonality-of-sin-and-cos-functions admonition">
+<div class="info dropdown admonition">
 <p class="admonition-title"><strong>Fourier coeffiecients and orthogonality of sin and cos functions</strong></p>
 <ul class="simple">
 <li><p>Using the orthogonality property of the cos and sin functions we can determine an expression for the coefficients of the Fourier Series. By integrating the Fourier Series over the interval [-<span class="math notranslate nohighlight">\({\pi}\)</span>,<span class="math notranslate nohighlight">\({\pi}\)</span>], we can determine an expression for <span class="math notranslate nohighlight">\(a_0\)</span>. Over this interval, the sums will vanish, as we are intergrating the <span class="math notranslate nohighlight">\(\sin\)</span> and <span class="math notranslate nohighlight">\(\cos\)</span> functions over one period. Thus, we are left with</p></li>
@@ -566,7 +571,7 @@ f(x) = \left\{
         0 &amp; \mbox{if } \ -{\pi} \leq x &lt; 0 \\
         1 &amp; \mbox{if } \ 0 &lt; x &lt; {\pi},\\
     \end{array}
-\right.
+    \right
 \end{split}\]</div>
 <p>Let’s plot this function.</p>
 <div class="cell tag_hide-input docutils container">
@@ -623,8 +628,13 @@ a_n = \frac{1}{\pi} \int_{0}^{\pi} \cos(nx)dx = 0, \,\,\,\,n\geq 1,\end{split}\]
     \end{array}
 \right.
 \end{split}\]</div>
-<p>Now let’s formulate the Fourier Series for the positive square wave. First let’s define the Fourier Series and its terms:</p>
-<div class="cell docutils container">
+<p>Now let’s plot the Fourier Series for <span class="math notranslate nohighlight">\( n=10, n=50,\)</span> and <span class="math notranslate nohighlight">\(n=100\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the cos and sin terms of the Fourier series</span>
 <span class="k">def</span> <span class="nf">cosTerm</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -648,19 +658,8 @@ a_n = \frac{1}{\pi} \int_{0}^{\pi} \cos(nx)dx = 0, \,\,\,\,n\geq 1,\end{split}\]
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="nb">sum</span> <span class="o">+=</span> <span class="n">sinTerm</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">cosTerm</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">sum</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now let’s plot the Fourier Series for <span class="math notranslate nohighlight">\( n=10, n=50,\)</span> and <span class="math notranslate nohighlight">\(n=100\)</span>.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Loop over each subplot</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]):</span>
@@ -722,14 +721,21 @@ f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(k) \mathrm{e}^{i k x} d k
 \]</div>
 </div>
 </section>
-<section id="retriving-signals">
-<h2>Retriving signals<a class="headerlink" href="#retriving-signals" title="Permalink to this heading">#</a></h2>
+<section id="fourier-analysis-of-time-series-data">
+<h2>Fourier analysis of time-series data<a class="headerlink" href="#fourier-analysis-of-time-series-data" title="Permalink to this heading">#</a></h2>
+<section id="periodic-data">
+<h3>Periodic data<a class="headerlink" href="#periodic-data" title="Permalink to this heading">#</a></h3>
 <p>We’re going to construct an array of time points. Then we’ll set up a function with two sine waves:</p>
 <div class="math notranslate nohighlight">
 \[
 y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 \]</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of sample points</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -746,13 +752,20 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/ff7fe265edcf49869b02e79d2badb60279c1155693095a267ecdeb41293a353e.png" src="../_images/ff7fe265edcf49869b02e79d2badb60279c1155693095a267ecdeb41293a353e.png" />
 </div>
 </div>
-<p>Seems suitably complicated.</p>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">scipy.fftpack</span></code> to perform the “fast Fourier transform” (FFT). The resulting “x” variable will be in frequency - so the limit is defined by the <span class="math notranslate nohighlight">\(dt\)</span> we had. We cannot find a higher frequency than that time resolution. (In short, if we expected to have GHz signals, we’d need short time resolution.)</p>
-<div class="cell docutils container">
+<ul class="simple">
+<li><p>Seems suitably complicated. We can use <code class="docutils literal notranslate"><span class="pre">scipy.fftpack</span></code> to perform the “fast Fourier transform” (FFT). The resulting “x” variable will be in frequency - so the limit is defined by the <span class="math notranslate nohighlight">\(dt\)</span> we had. We cannot find a higher frequency than that time resolution. (In short, if we expected to have GHz signals, we’d need short time resolution.)</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.fftpack</span>
 
@@ -765,6 +778,7 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/6ee794165013737c88270b1b03c227b356f1ab0066810b754463cf3608ae0bef.png" src="../_images/6ee794165013737c88270b1b03c227b356f1ab0066810b754463cf3608ae0bef.png" />
 </div>
@@ -773,6 +787,9 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <li><p>Notice it’s not a <em>perfect</em> reconstruction. We only put in two specific frequencies, so we’d expect to see two different lines. But if we don’t have exactly perfect waves when we cut off the time signal, there will be a bit of peak width.</p></li>
 <li><p>The time-domain signal can be as complicated as we want. Here’s an example with 4 frequencies - note that it doesn’t matter the <em>phase</em> indicated by sine or cosine functions - they’re both periodic.</p></li>
 </ul>
+</section>
+<section id="noisy-periodic-data">
+<h3>Noisy periodic data<a class="headerlink" href="#noisy-periodic-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">30.0</span> <span class="o">*</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">50.0</span> <span class="o">*</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
@@ -803,8 +820,13 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <img alt="../_images/db76b1657e913a33f3086b8b4932679f78b37af396167d1d25cc69b3ec6c689a.png" src="../_images/db76b1657e913a33f3086b8b4932679f78b37af396167d1d25cc69b3ec6c689a.png" />
 </div>
 </div>
-<p>Whatever signals we put into our time function will come out from our FFT … at least given the time resolution we start with. (We can’t find 800 Hz frequencies in this example).</p>
-<p>Also, the time signal doesn’t need to be completely periodic… a “chirp” can also work where the signal intensity drops over time.</p>
+</section>
+<section id="noisy-non-periodic-data">
+<h3>Noisy non-periodic data<a class="headerlink" href="#noisy-non-periodic-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Whatever signals we put into our time function will come out from our FFT … at least given the time resolution we start with. (We can’t find 800 Hz frequencies in this example).</p></li>
+<li><p>Also, the time signal doesn’t need to be completely periodic… a “chirp” can also work where the signal intensity drops over time.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
@@ -834,10 +856,13 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <img alt="../_images/aad0201936bd170e03a5ca3bb5df16bdcf39fa191d43b0d3482e4ac4ebb5753c.png" src="../_images/aad0201936bd170e03a5ca3bb5df16bdcf39fa191d43b0d3482e4ac4ebb5753c.png" />
 </div>
 </div>
-<p>Notice that while the peak heights changed a bit, the relative intensities and peak areas remain unchanged. So if you’re doing spectroscopy, you’ll need a few wave repeats, but it doesn’t need to be a “continuous wave” spectra - useful if you’re worried about applying a high-intensity beam (e.g. x-ray, etc.)</p>
+<ul class="simple">
+<li><p>Notice that while the peak heights changed a bit, the relative intensities and peak areas remain unchanged. So if you’re doing spectroscopy, you’ll need a few wave repeats, but it doesn’t need to be a “continuous wave” spectra - useful if you’re worried about applying a high-intensity beam (e.g. x-ray, etc.)</p></li>
+</ul>
 </section>
-<section id="fourier-transoform-and-uncertainty-relation">
-<h2>Fourier transoform and uncertainty relation<a class="headerlink" href="#fourier-transoform-and-uncertainty-relation" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="fourier-transoform-and-the-uncertainty-relation">
+<h2>Fourier transoform and the uncertainty relation<a class="headerlink" href="#fourier-transoform-and-the-uncertainty-relation" title="Permalink to this heading">#</a></h2>
 <p><strong>Define the Square Function to represent <span class="math notranslate nohighlight">\(\psi(x)\)</span></strong>: Start with a square function (or rectangular pulse) that has a width <span class="math notranslate nohighlight">\(w\)</span> and height 1, centered around zero. This function can be represented as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -849,20 +874,23 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <p><strong>Fourier Transform gives us <span class="math notranslate nohighlight">\(\psi(p)\)</span></strong>: The Fourier transform <span class="math notranslate nohighlight">\(\hat{f}(k)\)</span> of a square function is a sinc function:</p>
 <div class="math notranslate nohighlight">
 \[
-   \hat{f}(k) = w \, \text{sinc}(kw/2)
+   \hat{\psi}(k) = w \, \text{sinc}(kw/2)
    \]</div>
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\text{sinc}(x) = \frac{\sin(x)}{x}\)</span>. This shows how the Fourier transform spreads out as the width of the square function changes.</p></li>
 </ul>
-<p><strong>Uncertainty Relation</strong>: The uncertainty principle states that the product of the standard deviations of a function and its Fourier transform (in this case, position and momentum space) is bounded by a minimum value:</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Uncertainty Relation</strong></p>
 <div class="math notranslate nohighlight">
 \[
    \Delta x \Delta k \geq \frac{1}{2}
    \]</div>
+</div>
 <ul class="simple">
+<li><p>The uncertainty principle states that the product of the <strong>standard deviations</strong> of a <strong>function and its Fourier transform</strong> is <strong>bounded by a minimum value</strong>!</p></li>
 <li><p>Here, <span class="math notranslate nohighlight">\(\Delta x\)</span> is the width of the function (related to the spread in position), and <span class="math notranslate nohighlight">\( \Delta k\)</span> is the spread of the Fourier transform (momentum space). As the width <span class="math notranslate nohighlight">\(w\)</span> of the square function decreases, the sinc function’s spread in the Fourier domain increases, demonstrating the uncertainty relation.</p></li>
+<li><p>In quantum mechanics using De Broglie relation we can recover uncertaintly relation <span class="math notranslate nohighlight">\(k=2\pi/\lambda = 2\pi p/h = p/\hbar\)</span></p></li>
 </ul>
-<p><strong>Illustration</strong>: Plot the square function for different widths and its corresponding Fourier transform (sinc function). You can visualize how, as you decrease the width of the square function, the sinc function spreads wider, illustrating the trade-off between the precision in position and momentum.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -932,7 +960,9 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="n">g1</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">g1</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -973,16 +1003,8 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">g1</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">g1</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;signal&#39; is not defined
-</pre></div>
-</div>
+<img alt="../_images/9778935498785511a56a7d3eb3310e3a9910af98bfdb8311e9595e81d0f4a8c7.png" src="../_images/9778935498785511a56a7d3eb3310e3a9910af98bfdb8311e9595e81d0f4a8c7.png" />
+<img alt="../_images/4199e0b6fb25b12ae1a537eeb34eb231d44b0319b6d6838236522b9fb60bc5d2.png" src="../_images/4199e0b6fb25b12ae1a537eeb34eb231d44b0319b6d6838236522b9fb60bc5d2.png" />
 </div>
 </div>
 </section>
@@ -991,18 +1013,23 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <p>The delta function, <span class="math notranslate nohighlight">\(\delta(t)\)</span>, is defined as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-{\delta}(t) = \left\{
-    \begin{array}\\
-        0 &amp;  \  t \neq 0, \\
-        \infty &amp; t = 0.\\
+\delta(t) = \left\{
+    \begin{array}{ll}
+        0 &amp; \text{if } t \neq 0, \\
+        \infty &amp; \text{if } t = 0.
     \end{array}
-\right
+\right.
 \end{split}\]</div>
 <p>Carrying out the transform we see that Fourier Transform of the delta function is actually a constant, such that</p>
 <div class="math notranslate nohighlight">
 \[ \mathcal{F}[{\delta}(t)] = 1 \]</div>
 <p>Let’s plot the function and its transform.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
 <span class="n">imp</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">unit_impulse</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;mid&#39;</span><span class="p">)</span> <span class="c1"># creates the delta function</span>
@@ -1023,6 +1050,10 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/faa4e5ffcde1f2d4fa40176b5408f50ab82f6ef7ea1b644ff70199019261138a.png" src="../_images/faa4e5ffcde1f2d4fa40176b5408f50ab82f6ef7ea1b644ff70199019261138a.png" />
 </div>
 </div>
 </section>
@@ -1094,8 +1125,13 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-series">Fourier Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-function-and-gibbs-phenomenon">Square function and Gibbs phenomenon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform">Fourier Transform</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retriving-signals">Retriving signals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transoform-and-uncertainty-relation">Fourier transoform and uncertainty relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis-of-time-series-data">Fourier analysis of time-series data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-data">Periodic data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-periodic-data">Noisy periodic data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-non-periodic-data">Noisy non-periodic data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transoform-and-the-uncertainty-relation">Fourier transoform and the uncertainty relation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transforms-of-gaussian-functions">Fourier transforms of Gaussian functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-function">Delta Function</a></li>
 </ul>
