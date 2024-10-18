@@ -120,6 +120,21 @@ Here’s a polished version of your note on constants of motion:
   $$\frac{\partial}{\partial t}\langle E \rangle = 0,$$  
  
 
+### Quantum Dynamics
+
+:::{figure-md} markdown-fig
+<img src="./images/gaussian_potential.gif" alt="pib1" class="bg-primary mb-1" width="300px">
+
+Dynamics of wavefunction in the presence of gaussian potential. Show are square fo wavefunction along with its Real and imaginary components.
+:::
+
+:::{figure-md} markdown-fig
+
+<video src="./images/schrodinger_barrier.mp4"></video>
+
+Quantum tunneling in the presence of high potential barrier
+:::
+
 
 ### Double slit Experiment
 
