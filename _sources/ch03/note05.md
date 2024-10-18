@@ -1,13 +1,17 @@
-## P3 Eigenvalues
+## P3-4 Eigenvalues and Expectation
 
 :::{admonition} **What you need to know**
 :class: note
 
 
-- Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms. 
-- Concepts of **basis set, orthogonality, linear superpositions**  underly logic of quantum mechanics. 
-- **Dirac notation** liberates you from explicit and awkward looking coordinate representations which may obscure the underlying picture. 
-- **Schrödinger's cat** and the **double slit experiments** are explained using quantum superpsoition of orthognal states. 
+- Mastering the abstract mathematical formalism brings **simplicity, unity, and clarity** to the relationships in quantum mechanics.
+- Key concepts like **basis sets, orthogonality, and linear superpositions** form the logical foundation of quantum mechanics.
+- **Dirac notation** frees you from the limitations of explicit coordinate representations, which can obscure the underlying physics.
+- **Eigenvalues** correspond to the only observable quantities measured in experiments.
+- Quantum states, represented as linear superpositions of the eigenfunctions of an operator $\hat{A}$, yield different eigenvalues of $\hat{A}$, with probabilities given by the **square of the coefficients** in the superposition.
+- The expectation value $\langle \psi |\hat{A}|\psi \rangle$, when expressed in terms of a linear superposition of eigenfunctions, simplifies to a **probability-weighted sum of eigenvalues**.
+- Phenomena like **Schrödinger's cat** and the **double slit experiment** are explained through the concept of quantum superposition involving orthogonal states.
+
 :::
 
 ### Reminer: Eigenfuncton-eigenvalue problem
@@ -281,13 +285,6 @@ $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$
 </iframe>
 </html>
 
-
-### Double slit Experiment
-
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
-</iframe>
-</html>
 
 
 

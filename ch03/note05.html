@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>P3 Eigenvalues &#8212; Quantum Mechanics for Chemistry</title>
+    <title>P3-4 Eigenvalues and Expectation &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch03/note05';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="P4,P5 Expectation and Time dependence" href="note06.html" />
+    <link rel="next" title="P5 Time dependence" href="note06.html" />
     <link rel="prev" title="P2 Operators" href="note04.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -217,8 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">P2 Operators</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">P3 Eigenvalues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note06.html">P4,P5 Expectation and Time dependence</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P3-4 Eigenvalues and Expectation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note06.html">P5 Time dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fourier_transform.html">Fourier Transforms and Quantum Mechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
@@ -434,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>P3 Eigenvalues</h1>
+    <h1>P3-4 Eigenvalues and Expectation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -453,7 +453,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
             </nav>
         </div>
@@ -465,15 +464,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="p3-eigenvalues">
-<h1>P3 Eigenvalues<a class="headerlink" href="#p3-eigenvalues" title="Permalink to this heading">#</a></h1>
+  <section id="p3-4-eigenvalues-and-expectation">
+<h1>P3-4 Eigenvalues and Expectation<a class="headerlink" href="#p3-4-eigenvalues-and-expectation" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title"><strong>What you need to know</strong></p>
 <ul class="simple">
-<li><p>Learning the abstract mathematical formalism brings simplicity, unity and clairty to the relationships in quantum mechanisms.</p></li>
-<li><p>Concepts of <strong>basis set, orthogonality, linear superpositions</strong>  underly logic of quantum mechanics.</p></li>
-<li><p><strong>Dirac notation</strong> liberates you from explicit and awkward looking coordinate representations which may obscure the underlying picture.</p></li>
-<li><p><strong>Schrödinger’s cat</strong> and the <strong>double slit experiments</strong> are explained using quantum superpsoition of orthognal states.</p></li>
+<li><p>Mastering the abstract mathematical formalism brings <strong>simplicity, unity, and clarity</strong> to the relationships in quantum mechanics.</p></li>
+<li><p>Key concepts like <strong>basis sets, orthogonality, and linear superpositions</strong> form the logical foundation of quantum mechanics.</p></li>
+<li><p><strong>Dirac notation</strong> frees you from the limitations of explicit coordinate representations, which can obscure the underlying physics.</p></li>
+<li><p><strong>Eigenvalues</strong> correspond to the only observable quantities measured in experiments.</p></li>
+<li><p>Quantum states, represented as linear superpositions of the eigenfunctions of an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, yield different eigenvalues of <span class="math notranslate nohighlight">\(\hat{A}\)</span>, with probabilities given by the <strong>square of the coefficients</strong> in the superposition.</p></li>
+<li><p>The expectation value <span class="math notranslate nohighlight">\(\langle \psi |\hat{A}|\psi \rangle\)</span>, when expressed in terms of a linear superposition of eigenfunctions, simplifies to a <strong>probability-weighted sum of eigenvalues</strong>.</p></li>
+<li><p>Phenomena like <strong>Schrödinger’s cat</strong> and the <strong>double slit experiment</strong> are explained through the concept of quantum superposition involving orthogonal states.</p></li>
 </ul>
 </div>
 <section id="reminer-eigenfuncton-eigenvalue-problem">
@@ -746,13 +748,6 @@ Dirac Notation</div>
 </iframe>
 </html>
 </section>
-<section id="double-slit-experiment">
-<h2>Double slit Experiment<a class="headerlink" href="#double-slit-experiment" title="Permalink to this heading">#</a></h2>
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Xmq_FJd1oUQ" frameborder="0" allowfullscreen>
-</iframe>
-</html>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -799,7 +794,7 @@ Dirac Notation</div>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">P4,P5 Expectation and Time dependence</p>
+        <p class="prev-next-title">P5 Time dependence</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -827,7 +822,6 @@ Dirac Notation</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copenhagen-interpretation">Copenhagen Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-superopsition-of-atom">Quantum superopsition of atom.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schordingers-cat">Schordinger’s cat</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
   </nav></div>
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>P4,P5 Expectation and Time dependence &#8212; Quantum Mechanics for Chemistry</title>
+    <title>P5 Time dependence &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fourier Transforms and Quantum Mechanics" href="fourier_transform.html" />
-    <link rel="prev" title="P3 Eigenvalues" href="note05.html" />
+    <link rel="prev" title="P3-4 Eigenvalues and Expectation" href="note05.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -217,8 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Postulates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">P2 Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note05.html">P3 Eigenvalues</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">P4,P5 Expectation and Time dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note05.html">P3-4 Eigenvalues and Expectation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P5 Time dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fourier_transform.html">Fourier Transforms and Quantum Mechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_PIB.html">DEMO: Particle in a box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
@@ -434,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>P4,P5 Expectation and Time dependence</h1>
+    <h1>P5 Time dependence</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -444,10 +444,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wave-function">Time dependence of a wave function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wavefunction">Time Dependence of a Wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalized-wavefunction-remains-normalized-over-time">A Normalized Wavefunction Remains Normalized Over Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of Motion</a></li>
 </ul>
             </nav>
         </div>
@@ -459,29 +459,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="p4-p5-expectation-and-time-dependence">
-<h1>P4,P5 Expectation and Time dependence<a class="headerlink" href="#p4-p5-expectation-and-time-dependence" title="Permalink to this heading">#</a></h1>
-<section id="time-dependence-of-a-wave-function">
-<h2>Time dependence of a wave function<a class="headerlink" href="#time-dependence-of-a-wave-function" title="Permalink to this heading">#</a></h2>
-<p>So far we have completely ignored time dependence in our discussions. This is becasuse we have mainly focused on pure eigenfunction states <span class="math notranslate nohighlight">\(\psi_n(x,t)\)</span> which show no time dependent behaviour for any quantity. It is easy to see why:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="p5-time-dependence">
+<h1>P5 Time dependence<a class="headerlink" href="#p5-time-dependence" title="Permalink to this heading">#</a></h1>
+<div class="admonition-what-you-need-to-know admonition">
+<p class="admonition-title"><strong>What you need to know</strong></p>
+<ul class="simple">
+<li><p>The <strong>time-dependent Schrödinger equation</strong> governs the evolution of quantum systems over time, linking energy and time through the Hamiltonian operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>.</p></li>
+<li><p>A system’s state, represented by the wavefunction <span class="math notranslate nohighlight">\(\psi(x,t)\)</span>, evolves smoothly in time according to the equation:<br />
+$<span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H}\psi(x,t).\)</span>$</p></li>
+<li><p><strong>Stationary states</strong> are solutions where the wavefunction takes the form of a product of a spatial part and a time-dependent phase factor:<br />
+$<span class="math notranslate nohighlight">\(\psi(x,t) = \psi(x) e^{-i E t / \hbar}.\)</span>$<br />
+These states have definite energy and their probability distributions are <strong>time-independent</strong>.</p></li>
+<li><p>In more general situations, the wavefunction can be expressed as a <strong>linear superposition of energy eigenstates</strong>, with time evolution given by the phase factors of the eigenstates:<br />
+$<span class="math notranslate nohighlight">\(\psi(x,t) = \sum_n c_n \psi_n(x) e^{-i E_n t / \hbar}.\)</span>$<br />
+This superposition leads to <strong>time-dependent probabilities</strong> as different eigenstates interfere.</p></li>
+<li><p>The time-dependence of quantum states is key to understanding <strong>quantum dynamics</strong>, such as oscillations between states in <strong>two-level systems</strong> or time evolution of <strong>quantum superpositions</strong>.</p></li>
+</ul>
+</div>
+<section id="time-dependence-of-a-wavefunction">
+<h2>Time Dependence of a Wavefunction<a class="headerlink" href="#time-dependence-of-a-wavefunction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Until now, we have largely ignored the time dependence of quantum systems. This is because we have primarily focused on pure eigenfunction states, <span class="math notranslate nohighlight">\(\psi_n(x,t)\)</span>, which exhibit no time-dependent behavior for observable quantities. The reason for this is straightforward:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\psi_n(x,t) =\psi_n(x) \psi_n(x) e^{-\frac{i}{\hbar}E_n t}\]</div>
-<p>When we do any kind of probabilistic calcualtion the time dependence dissapears because all the expressions involve square of wave functions and absolute value of complex temporal phase ends up as unity.</p>
+\[\psi_n(x,t) = \psi_n(x) e^{-\frac{i}{\hbar}E_n t}\]</div>
+<ul class="simple">
+<li><p>In any probabilistic calculation, the time dependence vanishes because the expressions involve the square of the wavefunction. The absolute value of the complex time-dependent phase factor equals unity:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x) e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t}=\mid \psi_n(x)\mid^2\]</div>
+\[\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x) e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t} = \mid \psi_n(x) \mid^2\]</div>
+<ul class="simple">
+<li><p>Similarly, for the expectation value of an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, the time-dependent phases cancel out, leaving only the spatial part:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\langle A \rangle = \int \psi_n^*(x)e^{+\frac{i}{\hbar}E_n t} \hat{A} \psi_n(x)e^{-\frac{i}{\hbar}E_n t}dx = \int \psi_n^*(x) \hat{A} \psi_n(x)dx\]</div>
-<p>Will we always hae this lucky cancelation of time? The answer is no, when the states are described as linear superpositions time dependence does enter into picture.</p>
+\[\langle A \rangle = \int \psi_n^*(x) e^{+\frac{i}{\hbar}E_n t} \hat{A} \psi_n(x) e^{-\frac{i}{\hbar}E_n t} dx = \int \psi_n^*(x) \hat{A} \psi_n(x) dx\]</div>
+<ul class="simple">
+<li><p>Will we always have this fortunate cancellation of time dependence? The answer is no. When the system is described as a <strong>linear superposition</strong> of eigenstates, time dependence reappears in a significant way.</p></li>
+</ul>
 </section>
 <section id="time-depenendece-in-superposition-states">
 <h2>Time depenendece in superposition states<a class="headerlink" href="#time-depenendece-in-superposition-states" title="Permalink to this heading">#</a></h2>
-<p>Let us start with a superposition state of two energy eigenfunctions  at time t=0:</p>
+<ul class="simple">
+<li><p>Let us start with a superposition state of two energy eigenfunctions  at time t=0:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\mid \psi(0) \rangle =c_1\mid 1 \rangle + c_2 \mid 2 \rangle\]</div>
-<p>What would the state be after some time t? By the virute of speration of variables we add the time dependence as a multiplicative factor for each eigenfunction:</p>
+<ul class="simple">
+<li><p>What would the state be after some time t? By the virute of speration of variables we add the time dependence as a multiplicative factor for each eigenfunction:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\mid \psi(t) \rangle =c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2 \rangle= c_1(t)\mid 1\rangle+c_2(t) \mid 2 \rangle\]</div>
-<p>Thus we see that the coefficients change over time. This means our state vector moves in functional space spanned by fixed orthogonal eigenfunctions! We can verify that the expression satisfies time-dependent Schrodinger equation by plugging it and getting identity:</p>
+<ul class="simple">
+<li><p>Thus we see that the coefficients change over time. This means our state vector moves in functional space spanned by fixed orthogonal eigenfunctions! We can verify that the expression satisfies time-dependent Schrodinger equation by plugging it</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Show that linear supersposition of energy eigenfunctions satisfies time-dependent Schrodinger equation</strong></p>
 <div class="math notranslate nohighlight">
 \[  i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\psi(t)\rangle \]</div>
 <p><em>Left hand side :</em></p>
@@ -490,40 +522,74 @@ document.write(`
 <p><em>Right hand side:</em></p>
 <div class="math notranslate nohighlight">
 \[c_1 e^{-\frac{i}{\hbar}E_1 t}\hat{H}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\hat{H} \mid 2 \rangle = E_1 c_1(t)\mid 1 \rangle +E_2 c_2(t)\mid 2 \rangle \]</div>
+</div>
 </section>
-<section id="normalized-wave-function-stays-normalized-over-time">
-<h2>Normalized wave function stays normalized over time<a class="headerlink" href="#normalized-wave-function-stays-normalized-over-time" title="Permalink to this heading">#</a></h2>
-<p>Some quantities, however will be invariant to time evolution. For instance it is reasonable to expect that normalization will not depend on time e.g particle is bound to be somwhere inside box at any moment of time.</p>
+<section id="a-normalized-wavefunction-remains-normalized-over-time">
+<h2>A Normalized Wavefunction Remains Normalized Over Time<a class="headerlink" href="#a-normalized-wavefunction-remains-normalized-over-time" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Certain quantities remain invariant under time evolution. For instance, it is natural to expect that normalization does not change over time—e.g., the particle must always be located somewhere within the box at any given moment.</p></li>
+<li><p>The time-dependent wavefunction can be written as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\mid \psi(t)\rangle=\sum_n c_n e^{-\frac{i}{\hbar}E_n t}\mid n\rangle\]</div>
-<p><em>Note how the bra-ket prodcut involves product of two independent sums indexed by n and k. We will be seeing expressions like this often later on.</em></p>
+\[\mid \psi(t)\rangle = \sum_n c_n e^{-\frac{i}{\hbar}E_n t} \mid n\rangle\]</div>
+<ul class="simple">
+<li><p><em>Note that the bra-ket product involves two independent sums, indexed by <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(k\)</span>. You will encounter expressions like this frequently in later discussions.</em></p></li>
+<li><p>The normalization condition is expressed as:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n\mid c^*_n e^{\frac{i}{\hbar}E_n t}  \cdot  c_k e^{-\frac{i}{\hbar}E_k t}\mid k\rangle = \sum_n \sum_k c^*_n c_ke^{-\frac{i}{\hbar}(E_k-E_n)t}\delta_{kn} =\sum_n \mid c_n \mid^2=1\]</div>
-<p>Where the last line used the fact that eigenfunctions <span class="math notranslate nohighlight">\(\langle n \mid k\rangle=0\)</span> are orthogonal hence cross terms in the sum where <span class="math notranslate nohighlight">\(k\neq n\)</span> are all zero and only diagonal terms <span class="math notranslate nohighlight">\(n=k\)</span> survie.</p>
+\[\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k \langle n \mid c^*_n e^{\frac{i}{\hbar}E_n t} \cdot c_k e^{-\frac{i}{\hbar}E_k t} \mid k\rangle = \sum_n \sum_k c^*_n c_k e^{-\frac{i}{\hbar}(E_k - E_n)t} \delta_{kn} = \sum_n \mid c_n \mid^2 = 1\]</div>
+<ul class="simple">
+<li><p>In the final step, we use the fact that the eigenfunctions are orthogonal, meaning <span class="math notranslate nohighlight">\(\langle n \mid k \rangle = 0\)</span> for (n \neq k), so the cross terms vanish and only the diagonal terms, where (n = k), survive.</p></li>
+</ul>
+<p>Here’s a polished version of your note on constants of motion:</p>
 </section>
 <section id="constants-of-motion">
-<h2>Constants of motion<a class="headerlink" href="#constants-of-motion" title="Permalink to this heading">#</a></h2>
-<p>Quantities which are conserved over time are called <strong>constants of motion</strong>. In  QM we generaly have expectations or averages instead of sharply defined values. The principle of conservation of energy, however, dictates that the average of total energy must be one of the conserved quantities. To find out weather a quantity of interest will depend on time we  take a time derivative of the expectation:</p>
-<div class="math notranslate nohighlight">
-\[\langle A \rangle =\langle \psi \mid A\mid \psi \rangle\]</div>
-<div class="math notranslate nohighlight">
-\[\frac{\partial}{\partial t}\langle A \rangle = \langle \frac{\partial \psi}{\partial t} \mid A\mid \psi \rangle + \langle \psi \mid A\mid  \frac{\partial \psi}{\partial t} \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle\]</div>
-<p>Now we making use of time dependent Schrodinger equation <span class="math notranslate nohighlight">\(i\hbar \frac{\partial }{\partial t}\mid \psi \rangle=\hat{H}\mid \psi\rangle\)</span> to express time derivatives of bras and kets:</p>
+<h2>Constants of Motion<a class="headerlink" href="#constants-of-motion" title="Permalink to this heading">#</a></h2>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\langle \frac{\partial \psi}{\partial t}\mid = -\frac{1}{i\hbar} \hat{H}\langle \psi \mid\]</div>
-</li>
-<li><div class="math notranslate nohighlight">
-\[\mid \frac{\partial \psi}{\partial t}\rangle = \frac{1}{i\hbar} \hat{H}\mid \psi \rangle\]</div>
-</li>
-</ul>
-<p>Plugging this into time derivative of expectation we get:</p>
+<li><p>Quantities that remain conserved over time are called <strong>constants of motion</strong>. In quantum mechanics, we typically deal with expectations or averages rather than sharply defined values. However, the principle of energy conservation dictates that the <strong>average total energy</strong> must be a conserved quantity. To determine whether a particular quantity depends on time, we take the time derivative of the expectation value:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\frac{\partial}{\partial t}\langle A \rangle =\frac{1}{i\hbar}\langle \psi \mid \hat{A}\hat{H}\mid \psi \rangle-\frac{1}{i\hbar}\langle \psi \mid \hat{H}\hat{A}\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle = \\ = \frac{1}{i\hbar}\langle \psi \mid [\hat{A},\hat{H}]\mid \psi \rangle+\langle \psi \mid \frac{\partial \hat{A}}{\partial t}\mid  \psi \rangle\end{split}\]</div>
-<p>This imporatat relationship shows that if an operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> itself does not depend on time <span class="math notranslate nohighlight">\(\frac{\hat{A}}{t}=0\)</span> then the quantites which commute with hamiltonian <span class="math notranslate nohighlight">\([\hat{A},\hat{H}]=0\)</span> will be constants of motion and those that don’t <span class="math notranslate nohighlight">\([\hat{A},\hat{H}]\neq0\)</span> will evolve over time!</p>
-<ul class="simple">
-<li><p>Hamiltonian commutes with itself and does not depend on time <span class="math notranslate nohighlight">\(\frac{\partial}{\partial t}\langle E\rangle =0\)</span></p></li>
+\[\langle A \rangle = \langle \psi \mid \hat{A} \mid \psi \rangle\]</div>
+<p>The time derivative of this expectation value is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial t}\langle A \rangle = \langle \frac{\partial \psi}{\partial t} \mid \hat{A} \mid \psi \rangle + \langle \psi \mid \hat{A} \mid \frac{\partial \psi}{\partial t} \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle\]</div>
+</li>
+<li><p>Now, using the time-dependent Schrödinger equation,<br />
+$<span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t} \mid \psi \rangle = \hat{H} \mid \psi \rangle,\)</span>$<br />
+we can express the time derivatives of the bras and kets as:</p>
+<div class="math notranslate nohighlight">
+\[\langle \frac{\partial \psi}{\partial t} \mid = -\frac{1}{i\hbar} \langle \psi \mid \hat{H},\]</div>
+<div class="math notranslate nohighlight">
+\[\mid \frac{\partial \psi}{\partial t} \rangle = \frac{1}{i\hbar} \hat{H} \mid \psi \rangle.\]</div>
+</li>
+<li><p>Substituting these into the time derivative of the expectation value, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid \hat{A}\hat{H} \mid \psi \rangle - \frac{1}{i\hbar} \langle \psi \mid \hat{H}\hat{A} \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle\]</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Time dependence of expectation</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle.
+\]</div>
+</div>
+</li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+- This important relationship shows that if the operator $\hat{A}$ does not explicitly depend on time, i.e., $\frac{\partial \hat{A}}{\partial t} = 0$, then quantities that **commute with the Hamiltonian** $[\hat{A}, \hat{H}] = 0$ will be constants of motion. Those that do not commute, $[\hat{A}, \hat{H}] \neq 0$, will evolve over time.
+
+- Since the Hamiltonian commutes with itself and does not depend on time  meaning that the **energy** is conserved. 
+
+  $$\frac{\partial}{\partial t}\langle E \rangle = 0,$$  
+ 
+
+
+### Double slit Experiment
+
+&lt;html&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Xmq_FJd1oUQ&quot; frameborder=&quot;0&quot; allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -563,7 +629,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">P3 Eigenvalues</p>
+        <p class="prev-next-title">P3-4 Eigenvalues and Expectation</p>
       </div>
     </a>
     <a class="right-next"
@@ -590,10 +656,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wave-function">Time dependence of a wave function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependence-of-a-wavefunction">Time Dependence of a Wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-wave-function-stays-normalized-over-time">Normalized wave function stays normalized over time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalized-wavefunction-remains-normalized-over-time">A Normalized Wavefunction Remains Normalized Over Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of Motion</a></li>
 </ul>
   </nav></div>
 
