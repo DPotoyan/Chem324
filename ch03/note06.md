@@ -4,12 +4,12 @@
 
 - The **time-dependent Schrödinger equation** governs the evolution of quantum systems over time, linking energy and time through the Hamiltonian operator $\hat{H}$.
 - A system’s state, represented by the wavefunction $\psi(x,t)$, evolves smoothly in time according to the equation:  
-  $$i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H}\psi(x,t).$$
+  $i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H}\psi(x,t).$
 - **Stationary states** are solutions where the wavefunction takes the form of a product of a spatial part and a time-dependent phase factor:  
-  $$\psi(x,t) = \psi(x) e^{-i E t / \hbar}.$$  
+  $\psi(x,t) = \psi(x) e^{-i E t / \hbar}$  
   These states have definite energy and their probability distributions are **time-independent**.
 - In more general situations, the wavefunction can be expressed as a **linear superposition of energy eigenstates**, with time evolution given by the phase factors of the eigenstates:  
-  $$\psi(x,t) = \sum_n c_n \psi_n(x) e^{-i E_n t / \hbar}.$$  
+  $\psi(x,t) = \sum_n c_n \psi_n(x) e^{-i E_n t / \hbar}$ 
   This superposition leads to **time-dependent probabilities** as different eigenstates interfere.
 - The time-dependence of quantum states is key to understanding **quantum dynamics**, such as oscillations between states in **two-level systems** or time evolution of **quantum superpositions**.
 
@@ -104,8 +104,8 @@ Here’s a polished version of your note on constants of motion:
 
   $$\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid \hat{A}\hat{H} \mid \psi \rangle - \frac{1}{i\hbar} \langle \psi \mid \hat{H}\hat{A} \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle$$
   
-  :::{admonition} **Time dependence of expectation**
-  :class: important
+:::{admonition} **Time dependence of expectation**
+:class: important
 
   $$
   \frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle.
