@@ -448,6 +448,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalized-wavefunction-remains-normalized-over-time">A Normalized Wavefunction Remains Normalized Over Time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of Motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-dynamics">Quantum Dynamics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
             </nav>
@@ -467,12 +468,12 @@ document.write(`
 <ul class="simple">
 <li><p>The <strong>time-dependent Schrödinger equation</strong> governs the evolution of quantum systems over time, linking energy and time through the Hamiltonian operator <span class="math notranslate nohighlight">\(\hat{H}\)</span>.</p></li>
 <li><p>A system’s state, represented by the wavefunction <span class="math notranslate nohighlight">\(\psi(x,t)\)</span>, evolves smoothly in time according to the equation:<br />
-$<span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H}\psi(x,t).\)</span>$</p></li>
+<span class="math notranslate nohighlight">\(i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H}\psi(x,t).\)</span></p></li>
 <li><p><strong>Stationary states</strong> are solutions where the wavefunction takes the form of a product of a spatial part and a time-dependent phase factor:<br />
-$<span class="math notranslate nohighlight">\(\psi(x,t) = \psi(x) e^{-i E t / \hbar}.\)</span>$<br />
+<span class="math notranslate nohighlight">\(\psi(x,t) = \psi(x) e^{-i E t / \hbar}\)</span><br />
 These states have definite energy and their probability distributions are <strong>time-independent</strong>.</p></li>
 <li><p>In more general situations, the wavefunction can be expressed as a <strong>linear superposition of energy eigenstates</strong>, with time evolution given by the phase factors of the eigenstates:<br />
-$<span class="math notranslate nohighlight">\(\psi(x,t) = \sum_n c_n \psi_n(x) e^{-i E_n t / \hbar}.\)</span>$<br />
+<span class="math notranslate nohighlight">\(\psi(x,t) = \sum_n c_n \psi_n(x) e^{-i E_n t / \hbar}\)</span>
 This superposition leads to <strong>time-dependent probabilities</strong> as different eigenstates interfere.</p></li>
 <li><p>The time-dependence of quantum states is key to understanding <strong>quantum dynamics</strong>, such as oscillations between states in <strong>two-level systems</strong> or time evolution of <strong>quantum superpositions</strong>.</p></li>
 </ul>
@@ -565,41 +566,41 @@ we can express the time derivatives of the bras and kets as:</p>
 <li><p>Substituting these into the time derivative of the expectation value, we obtain:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid \hat{A}\hat{H} \mid \psi \rangle - \frac{1}{i\hbar} \langle \psi \mid \hat{H}\hat{A} \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle\]</div>
+</li>
+</ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Time dependence of expectation</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle.
-\]</div>
+  \frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle.
+  \]</div>
 </div>
+<ul>
+<li><p>This important relationship shows that if the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> does not explicitly depend on time, i.e., <span class="math notranslate nohighlight">\(\frac{\partial \hat{A}}{\partial t} = 0\)</span>, then quantities that <strong>commute with the Hamiltonian</strong> <span class="math notranslate nohighlight">\([\hat{A}, \hat{H}] = 0\)</span> will be constants of motion. Those that do not commute, <span class="math notranslate nohighlight">\([\hat{A}, \hat{H}] \neq 0\)</span>, will evolve over time.</p></li>
+<li><p>Since the Hamiltonian commutes with itself and does not depend on time  meaning that the <strong>energy</strong> is conserved.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial t}\langle E \rangle = 0,\]</div>
 </li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-- This important relationship shows that if the operator $\hat{A}$ does not explicitly depend on time, i.e., $\frac{\partial \hat{A}}{\partial t} = 0$, then quantities that **commute with the Hamiltonian** $[\hat{A}, \hat{H}] = 0$ will be constants of motion. Those that do not commute, $[\hat{A}, \hat{H}] \neq 0$, will evolve over time.
-
-- Since the Hamiltonian commutes with itself and does not depend on time  meaning that the **energy** is conserved. 
-
-  $$\frac{\partial}{\partial t}\langle E \rangle = 0,$$  
- 
-
-### Quantum Dynamics
-
-:::{figure-md} markdown-fig
-&lt;img src=&quot;./images/gaussian_potential.gif&quot; alt=&quot;pib1&quot; class=&quot;bg-primary mb-1&quot; width=&quot;300px&quot;&gt;
-
-Dynamics of wavefunction in the presence of gaussian potential. Show are square fo wavefunction along with its Real and imaginary components.
-</pre></div>
-</div>
+</section>
+<section id="quantum-dynamics">
+<h2>Quantum Dynamics<a class="headerlink" href="#quantum-dynamics" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/barrier_potential.gif"><img alt="pib1" class="bg-primary mb-1" src="../_images/barrier_potential.gif" style="width: 300px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gaussian_potential.gif"><img alt="pib1" class="bg-primary mb-1" src="../_images/gaussian_potential.gif" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Dynamics of wavefunction in the presence of barrier potential. Show are square fo wavefunction along with its Real and imaginary components.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Dynamics of wavefunction in the presence of gaussian potential. Show are square fo wavefunction along with its Real and imaginary components.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/barrier_potential.gif"><img alt="pib1" class="bg-primary mb-1" src="../_images/barrier_potential.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Dynamics of wavefunction in the presence of barrier potential. Show are square fo wavefunction along with its Real and imaginary components.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="ch03/images/step_potential.gif"><img alt="pib1" class="bg-primary mb-1" src="ch03/images/step_potential.gif" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Dynamics of wavefunction in the presence of step potential. Show are square fo wavefunction along with its Real and imaginary components.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Dynamics of wavefunction in the presence of step potential. Show are square fo wavefunction along with its Real and imaginary components.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -678,6 +679,7 @@ Dynamics of wavefunction in the presence of gaussian potential. Show are square 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-depenendece-in-superposition-states">Time depenendece in superposition states</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalized-wavefunction-remains-normalized-over-time">A Normalized Wavefunction Remains Normalized Over Time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants-of-motion">Constants of Motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-dynamics">Quantum Dynamics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-slit-experiment">Double slit Experiment</a></li>
 </ul>
   </nav></div>
