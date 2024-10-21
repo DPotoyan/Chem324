@@ -1,0 +1,145 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+from matplotlib import rc
+from scipy.special import factorial
+import matplotlib.pyplot as plt
+import logging
+
+# Use Mathtext instead of full LaTeX
+rc('text', usetex=False)  # Use Mathtext instead of LaTeX
+# Suppress specific warnings
+warnings.filterwarnings("ignore")
+
+# Suppress matplotlib font warnings specifically
+logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
+
+
+# PLOT_PROB=False plots the wavefunction, psi; PLOT_PROB=True plots |psi|^2
+PLOT_PROB = False
+
+# Maximum vibrational quantum number to calculate wavefunction for
+VMAX = 6
+
+# Some appearance settings
+# Pad the q-axis on each side of the maximum turning points by this fraction
+QPAD_FRAC = 1.3
+# Scale the wavefunctions by this much so they don't overlap
+SCALING = 0.7
+# Colours of the positive and negative parts of the wavefunction
+COLOUR1 = (0.6196, 0.0039, 0.2588, 1.0)
+COLOUR2 = (0.3686, 0.3098, 0.6353, 1.0)
+
+# Normalization constant and energy for vibrational state v
+N = lambda v: 1./np.sqrt(np.sqrt(np.pi)*2**v*factorial(v))
+get_E = lambda v: v + 0.5
+
+def make_Hr():
+    """Return a list of np.poly1d objects representing Hermite polynomials."""
+
+    # Define the Hermite polynomials up to order VMAX by recursion:
+    # H_[v] = 2qH_[v-1] - 2(v-1)H_[v-2]
+    Hr = [None] * (VMAX + 1)
+    Hr[0] = np.poly1d([1.,])
+    Hr[1] = np.poly1d([2., 0.])
+    for v in range(2, VMAX+1):
+        Hr[v] = Hr[1]*Hr[v-1] - 2*(v-1)*Hr[v-2]
+    return Hr
+
+Hr = make_Hr()
+
+def get_psi(v, q):
+    """Return the harmonic oscillator wavefunction for level v on grid q."""
+    return N(v)*Hr[v](q)*np.exp(-q*q/2.)
+
+def get_turning_points(v):
+    """Return the classical turning points for state v."""
+    qmax = np.sqrt(2. * get_E(v + 0.5))
+    return -qmax, qmax
+
+def get_potential(q):
+    """Return potential energy on scaled oscillator displacement grid q."""
+    return q**2 / 2
+
+
+fig, ax = plt.subplots()
+qmin, qmax = get_turning_points(VMAX)
+xmin, xmax = QPAD_FRAC * qmin, QPAD_FRAC * qmax
+q = np.linspace(qmin, qmax, 500)
+V = get_potential(q)
+
+def plot_func(ax, f, scaling=1, yoffset=0):
+    """Plot f*scaling with offset yoffset.
+
+    The curve above the offset is filled with COLOUR1; the curve below is
+    filled with COLOUR2.
+
+    """
+    ax.plot(q, f*scaling + yoffset, color=COLOUR1)
+    ax.fill_between(q, f*scaling + yoffset, yoffset, f > 0.,
+                    color=COLOUR1, alpha=0.5)
+    ax.fill_between(q, f*scaling + yoffset, yoffset, f < 0.,
+                    color=COLOUR2, alpha=0.5)
+
+# Plot the potential, V(q).
+ax.plot(q, V, color='k', linewidth=1.5)
+
+# Plot each of the wavefunctions (or probability distributions) up to VMAX.
+for v in range(VMAX+1):
+    psi_v = get_psi(v, q)
+    E_v = get_E(v)
+    if PLOT_PROB:
+        plot_func(ax, psi_v**2, scaling=SCALING*1.5, yoffset=E_v)
+    else:
+        plot_func(ax, psi_v, scaling=SCALING, yoffset=E_v)
+    # The energy, E = (v+0.5).hbar.omega.
+    ax.text(s=r'$\frac{{{}}}{{2}}\hbar\omega$'.format(2*v+1), x=qmax+0.2,
+            y=E_v, va='center')
+    # Label the vibrational levels.
+    ax.text(s=r'$v={}$'.format(v), x=qmin-0.2, y=E_v, va='center', ha='right')
+
+# The top of the plot, plus a bit.
+ymax = E_v+0.5
+
+if PLOT_PROB:
+    ylabel = r'$|\psi(q)|^2$'
+else:
+    ylabel = r'$\psi(q)$'
+ax.text(s=ylabel, x=0, y=ymax, va='bottom', ha='center')
+
+ax.set_xlabel('$q$')
+ax.set_xlim(xmin, xmax)
+ax.set_ylim(0, ymax)
+ax.spines['left'].set_position('center')
+ax.set_yticks([])
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[1], line 10[0m
+[1;32m      8[0m rc([38;5;124m'[39m[38;5;124mtext[39m[38;5;124m'[39m, usetex[38;5;241m=[39m[38;5;28;01mFalse[39;00m)  [38;5;66;03m# Use Mathtext instead of LaTeX[39;00m
+[1;32m      9[0m [38;5;66;03m# Suppress specific warnings[39;00m
+[0;32m---> 10[0m [43mwarnings[49m[38;5;241m.[39mfilterwarnings([38;5;124m"[39m[38;5;124mignore[39m[38;5;124m"[39m)
+[1;32m     12[0m [38;5;66;03m# Suppress matplotlib font warnings specifically[39;00m
+[1;32m     13[0m logging[38;5;241m.[39mgetLogger([38;5;124m'[39m[38;5;124mmatplotlib.font_manager[39m[38;5;124m'[39m)[38;5;241m.[39msetLevel(logging[38;5;241m.[39mERROR)
+
+[0;31mNameError[0m: name 'warnings' is not defined
+
