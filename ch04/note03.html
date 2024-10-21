@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Quantum harmonic oscillator &#8212; Quantum Mechanics for Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch04/note03';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Molecular Vibrations" href="note03B.html" />
+    <link rel="prev" title="Harmonic Oscillator" href="note02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cat.jpeg" class="logo__image only-light" alt="Quantum Mechanics for Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/cat.jpeg" class="logo__image only-dark" alt="Quantum Mechanics for Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note04.html">Atomic spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note05.html">Wave-particle duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note01.html">Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/note02.html">Wave equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/demo_waves.html">DEMO: Visualizing waves</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch02/bonus_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch03/index.html">3. Schordinger Equation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note01.html">Schrödinger Equation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02.html">Wave function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02A.html">Particle in a Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note02B.html">Applications of Particle in a Box Model</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03.html">Postulates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note03A.html">P1 Characteristics of Quantum Wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note04.html">P2 Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note05.html">P3-4 Eigenvalues and Expectation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/note06.html">P5 Time dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/fourier_transform.html">Fourier Transforms and Quantum Mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_PIB.html">DEMO: Particle in a box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/demo_quantum_waves.html">DEMO: Quantum Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch03/bonus_quantum_waves.html">DEMO: Bonus challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4. Model systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="note01.html">Molecular degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note02.html">Harmonic Oscillator</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quantum harmonic oscillator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note03B.html">Molecular Vibrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04A.html">Angular momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note04B.html">Rigid Rotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_ho.html">DEMO: Harmonic Oscillator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch05/index.html">5. Hydrogen Atom</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/note05.html">Spin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch05/bonus_H.html">Bonus: Atomic Orbitals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch06/index.html">6. Approximations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note01.html">Perturbation Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/note02.html">Variational Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch06/lin_var.html">Linear Variational Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../ch06/demo_lin_var.html">DEMO: Solving QM problems with Variational method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/index.html">7. Multielectron atoms</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note01.html">Helium atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note02.html">Multi-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note03.html">Angular momentum of many-electron atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/note04.html">Atomic terms and selection rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch08/index.html">8. Molecules</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note01.html">BO approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note02.html">The hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note03.html">Energy of the hydrogen molecule ion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note04.html">Molecular orbital description of hydrogen molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note05.html">Orbitals of homonuclear diatomic molecules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note06.html">Electronic structure of polyatomic molecules: the valece bond method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note07.html">Huckel molecular orbital theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note08.html">Dipole moments and ionic bonding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/note09.html">Intermolecular forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch08/demo_h2plus.html">DEMO: Solving <span class="math notranslate nohighlight">\(H^{+}_2\)</span> via Variational Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/index.html">A. Math</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/note01.html">Integrals</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../math/note02.html">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note03.html">Complex numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note04.html">Linear Algebra 1: Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note05.html">Linear Algebra 2: Enter The Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note06.html">Linear Algebra 3: Inner products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/note08.html">Application: Hopfield Neural Networks</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra stuff</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../scratch.html">Scratchpad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Equation sheet</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../demos/index.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2py.html">Python3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/intro2viz.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/sympy.html">Sympy</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/ch04/note03.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch04/note03.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quantum harmonic oscillator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamitlonian-of-harmonic-oscillator">Hamitlonian of Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials">Hermite Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-harmonic-oscillator">
+<h1>Quantum harmonic oscillator<a class="headerlink" href="#quantum-harmonic-oscillator" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Quantization of Vibrations in Molecules:</strong> Vibrational degrees of freedom are quantized, with important implications for infrared and Raman spectroscopies, as well as molecular bonding.</p></li>
+<li><p><strong>Existence of Zero-Point Energy and Tunneling:</strong> Energy is non-zero even at absolute zero temperature, which we will understand as a consequence of the uncertainty principle.</p></li>
+<li><p><strong>Hermite Polynomials as Eigenfunctions:</strong> We will explore how Hermite polynomials serve as the eigenfunctions of the quantum harmonic oscillator.</p></li>
+<li><p><strong>Effects of Anharmonicity:</strong> Moving beyond the harmonic approximation, we will examine how anharmonicity impacts energy levels in oscillators.</p></li>
+<li><p><strong>Raising and Lowering Operators:</strong> These operators offer an elegant method for solving the harmonic oscillator problem, marking our first introduction to a powerful tool used throughout quantum mechanics.</p></li>
+</ul>
+<section id="hamitlonian-of-harmonic-oscillator">
+<h2>Hamitlonian of Harmonic Oscillator<a class="headerlink" href="#hamitlonian-of-harmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Taking the classical Hamiltonian for a harmonic oscillator is given by:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{H =  \frac{1}{2\mu}p_x^2 + \frac{1}{2}kx^2}\]</div>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator">quantum mechanicalm harmonic oscillator</a> is obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 }\]</div>
+<ul class="simple">
+<li><p>Note that the potential term may be expressed in terms of three parameters becasue of <span class="math notranslate nohighlight">\(k=\frac{\mu}{\omega}\)</span> and <span class="math notranslate nohighlight">\(\omega=2\pi \nu\)</span> relations</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head"><p>Force constant (kg <span class="math notranslate nohighlight">\(s^{-2}\)</span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\omega\)</span></p></td>
+<td><p>Angular frequency (<span class="math notranslate nohighlight">\(\omega = 2\pi\nu\)</span>; Hz)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\nu\)</span></p></td>
+<td><p>Frequency (Hz; do not confuse this with quantum number <span class="math notranslate nohighlight">\(v\)</span>)</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Depending on the context any of these constants may be used to specify the harmonic potential.</p></li>
+</ul>
+</section>
+<section id="eigenfunctions-and-eiganvalues">
+<h2>Eigenfunctions and Eiganvalues<a class="headerlink" href="#eigenfunctions-and-eiganvalues" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\hat{H}\psi_v = E_v\psi_v\]</div>
+<ul class="simple">
+<li><p>The solutions to this equation produce eiganvalues (Energies)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E_v = \left(v + \frac{1}{2}\right)h\nu = \left(v + \frac{1}{2}\right)\hbar\omega\textnormal{ where }v=0,1,2,3...}\]</div>
+<ul class="simple">
+<li><p>Eigenfunctions  (position wavefunctions)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\psi_v = N_v\times\overbrace{H_v\left(\sqrt{\alpha}x\right)}^{\textnormal{Hermite polynomial}}\times e^{-\alpha x^2/2}\textnormal{ where }\alpha = \sqrt{\frac{k\mu}{\hbar^2}}}\]</div>
+<ul class="simple">
+<li><p>Normalization factor <span class="math notranslate nohighlight">\({N_v = \frac{1}{\sqrt{2^vv!}}\left(\frac{\alpha}{\pi}\right)^{1/4}}\)</span></p></li>
+<li><p>where <span class="math notranslate nohighlight">\(H_v\)</span>’s are called <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomials</a>.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>n</p></th>
+<th class="head"><p>Hermite Polynomial <span class="math notranslate nohighlight">\(( H_n(x))\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(2x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(4x^2 - 2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(8x^3 - 12x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(16x^4 - 48x^2 + 12\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, the wavefunctions for the two lowest states are:</p>
+<div class="math notranslate nohighlight">
+\[{\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4} x e^{-\alpha x^2/2}}\]</div>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png"><img alt="ho1" class="bg-primary mb-1" src="https://miro.medium.com/v2/resize:fit:1400/1*cn1pToIWATO5Am2bAv8b8Q.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Eigenfunctions and Eigenvalues of Harmonic Oscillator</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="interpreting-solutions">
+<h2>Interpreting solutions<a class="headerlink" href="#interpreting-solutions" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/classical_quantum_ho.gif"><img alt="ho2" class="bg-primary mb-1" src="../_images/classical_quantum_ho.gif" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Classical vs quantum probabilities of finding oscillating particle at position x</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Some of the lowest state solutions to the harmonic oscillator (HO) problem are displayed below:</p>
+<ul class="simple">
+<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 0, 2, 4, ...\)</span> are even: <span class="math notranslate nohighlight">\(\psi_v(x) = \psi_v(-x)\)</span>.</p></li>
+<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 1, 3, 5, ...\)</span> are odd: <span class="math notranslate nohighlight">\(\psi_v(x) = -\psi_v(-x)\)</span>.</p></li>
+<li><p>Integral of an odd function from <span class="math notranslate nohighlight">\(-a\)</span> to <span class="math notranslate nohighlight">\(a\)</span> (<span class="math notranslate nohighlight">\(a\)</span> may be <span class="math notranslate nohighlight">\(\infty\)</span>) is zero.</p></li>
+<li><p>The tails of the wavefunctions penetrate into the potential barrier deeper than the classical physics would allow. This phenomenon is called quantum mechanical tunneling.</p></li>
+</ul>
+</section>
+<section id="hermite-polynomials">
+<h2>Hermite Polynomials<a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
+<p>The following realtions are useful when working with <a class="reference external" href="http://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomials</a>:</p>
+<div class="math notranslate nohighlight">
+\[{H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0\textnormal{ (characteristic equation)}}\]</div>
+<div class="math notranslate nohighlight">
+\[{H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)\textnormal{ (recursion relation)}}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{matrix}
+0, &amp; \textnormal{ if }v' \ne v\\
+\sqrt{\pi}2^vv!, &amp; \textnormal{ if }v' = v\\
+\end{matrix}\right.
+}\end{split}\]</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Show that the lowest level of Harmonic oscillator obeys the uncertainty principle.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<div class="math notranslate nohighlight">
+\[\Delta x = \sigma_x = \sqrt{\left&lt;\hat{x}^2\right&gt; - \left&lt;\hat{x}\right&gt;^2}\textnormal{ and }\Delta p_x = \sigma_{p_x} = \sqrt{\left&lt;\hat{p}_x^2\right&gt; - \left&lt;\hat{p}_x\right&gt;^2}\]</div>
+<p>First we calculate <span class="math notranslate nohighlight">\(\left&lt;\hat{x}\right&gt;\)</span> (<span class="math notranslate nohighlight">\(\psi_0\)</span> is an even function, <span class="math notranslate nohighlight">\(x\)</span> is odd, the integrand is odd overall):</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{x}\right&gt; = \int\limits_{-\infty}^{\infty} \psi_0(x)x\psi_0(x)dx = 0\]</div>
+<p>For <span class="math notranslate nohighlight">\(\left&lt;\hat{x}^2\right&gt;\)</span> we have (integration by parts or tablebook):</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{x}^2\right&gt; = \int\limits_{-\infty}^{\infty} \psi_0(x)x^2\psi_0(x)dx = \left(\frac{\alpha}{\pi}\right)^{1/2}\int\limits_{-\infty}^{\infty}x^2e^{-\alpha x^2}dx = \left(\frac{\alpha}{\pi}\right)^{1/2} \left[\frac{1}{2\alpha}\left(\frac{\pi}{\alpha}\right)^{1/2}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[= \frac{1}{2\alpha} = \frac{1}{2}\frac{\hbar}{\sqrt{\mu k}} \Rightarrow \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\left&lt;\hat{p}_x\right&gt;\)</span> we have again by symmetry:</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{p}_x\right&gt; = \int\limits_{-\infty}^{\infty} \underbrace{\psi_0(x)}_{\textnormal{even}} \underbrace{\left(-i\hbar\frac{d}{d x}\right) \underbrace{\psi_0(x)}_{\textnormal{even}}}_{\textnormal{odd}} dx = 0\]</div>
+<p>Note that derivative of an even function is an odd function. For <span class="math notranslate nohighlight">\(\left&lt;\hat{p}_x^2\right&gt;\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[\left&lt;\hat{p}_x^2\right&gt; = \int\limits_{-\infty}^{\infty} \psi_0(x)p_x^2\psi_0(x)dx = -\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\int\limits_{-\infty}^{\infty} e^{-\alpha x^2/2} \frac{d^2}{dx^2} e^{-\alpha x^2/2} dx\]</div>
+<div class="math notranslate nohighlight">
+\[= \hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2} \int\limits_{-\infty}^{\infty} (\alpha - \alpha^2 x^2)e^{-\alpha x^2}dx = \left[\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[\times\left(\alpha\int\limits_{-\infty}^{\infty} e^{-\alpha x^2}dx - \alpha^2\int\limits_{-\infty}^{\infty}x^2e^{-\alpha x^2}dx\right)\]</div>
+<div class="math notranslate nohighlight">
+\[ = \underbrace{\left[\hbar^2\left(\frac{\alpha}{\pi}\right)^{1/2}\right]\times \left(\alpha\sqrt{\frac{\pi}{\alpha}} - \alpha^2 \frac{\sqrt{\pi}}{2\alpha^{3/2}}\right)}_{\textnormal{\href{http://en.wikipedia.org/wiki/Gaussian_integral}{\underline{tablebook}}}}\]</div>
+<div class="math notranslate nohighlight">
+\[ = \left[\hbar^2\sqrt{\frac{\alpha}{\pi}}\right]\times\left(\sqrt{\pi\alpha} - \frac{\sqrt{\pi\alpha}}{2}\right) = \frac{\hbar^2\alpha}{2} = \frac{\hbar\sqrt{\mu k}}{2} \Rightarrow \Delta p_x = \sqrt{\frac{\hbar\sqrt{\mu k}}{2}}\]</div>
+<p>Finally, we can calculate <span class="math notranslate nohighlight">\(\Delta x\Delta p_x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\Delta x\Delta p_x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\times \sqrt{\frac{\hbar\sqrt{\mu k}}{2}} = \sqrt{\frac{\hbar^2}{4}} = \frac{\hbar}{2}\]</div>
+<p>Recall that the uncertainty principle stated that: <span class="math notranslate nohighlight">\(\Delta x\Delta p_x \ge \frac{\hbar}{2}\)</span></p>
+<p>Thus we can conclude that <span class="math notranslate nohighlight">\(\psi_0\)</span> fulfills the Heisenberg uncertainty principle.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Example</strong></p>
+<p>Quantization of nuclear motion. <a class="reference external" href="http://en.wikipedia.org/wiki/Molecular_vibration">Molecular vibration</a> in a diatomic molecule can be approximated by the quantum mechanical harmonic oscillator model. There <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass as given previously and the variable <span class="math notranslate nohighlight">\(x\)</span> is the distance between the atoms in the molecule (or more exactly, the deviation from the equilibrium bond length <span class="math notranslate nohighlight">\(R_e\)</span>).</p>
+<ul class="simple">
+<li><p>a. Derive the expression for the standard deviation of the bond length in a diatomic molecule when it is in its ground vibrational state.</p></li>
+<li><p>b. What percentage of the equilibrium bond length is this standard deviation for carbon monoxide in its ground vibrational state? For <span class="math notranslate nohighlight">\(^{12}C^{16}O\)</span>, we have:
+<span class="math notranslate nohighlight">\(\tilde{v}\)</span> = 2170 cm<span class="math notranslate nohighlight">\(^{-1}\)</span> (vibrational frequency) and <span class="math notranslate nohighlight">\(R_e\)</span> = 113 pm (equilibrium bond length)</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Solution</strong></p>
+<p>The harmonic vibration frequency is given in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span>). This must be converted according to: <span class="math notranslate nohighlight">\(\nu = c\tilde{v}\)</span>. The previous example gives expression for <span class="math notranslate nohighlight">\(\sigma_x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_x = \Delta x = \sqrt{\frac{1}{2}\frac{\hbar}{\sqrt{\mu k}}}\]</div>
+<p>In considering spectroscopic data, it is convenient to express this in terms of <span class="math notranslate nohighlight">\(\tilde{v}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[k = \left(2\pi c\tilde{v}\right)^2\mu\textnormal{ and }\Delta x = \sigma_x = \sqrt{\frac{\hbar}{4\pi c\tilde{v}\mu}}\]</div>
+<p>In part (b) we have to apply the above expression to find out the standard deviation for carbon monoxide bond length in its ground vibrational state. First we need the reduced mass:</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{m_1m_2}{m_1 + m_2} = \frac{(12\times 10^{-3}\textnormal{ kg mol}^{-1})(15.995\times 10^{-3}\textnormal{ kg mol}^{-1})}
+{((12 + 15.995)\times 10^{-3}\textnormal{ kg mol}^{-1})\underbrace{(6.022\times 10^{23}\textnormal{ mol}^{-1})}_{\textnormal{Avogadro's constant}}}\]</div>
+<div class="math notranslate nohighlight">
+\[ = 1.139\times 10^{-26}\textnormal{ kg}\]</div>
+<p>The standard deviation is now:</p>
+<div class="math notranslate nohighlight">
+\[\Delta x = \sigma_x = \left[\frac{1.055\times 10^{-34}\textnormal{ Js}}{4\pi\underbrace{\left(2.998\times 10^{10}\textnormal{ cm s}^{-1}\right)}_{\textnormal{speed of light}}\left(2170\textnormal{ cm}^{-1}\right)\left(1.139\times 10^{-26}\textnormal{ kg}\right)}\right]^{1/2}\]</div>
+<div class="math notranslate nohighlight">
+\[ = 3.37\textnormal{ pm} \Rightarrow \textnormal{\% of deviation} = 100\%\times\frac{3.37\textnormal{ pm}}{113\textnormal{ pm}} = 2.98\%\]</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Harmonic Oscillator in 3D</strong></p>
+<ul class="simple">
+<li><p>In a three-dimensional harmonic oscillator the potential energy term now can have different spring constants corresponding to deformation along each axis:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[V(x,y,z) = \frac{1}{2}k_xx^2 + \frac{1}{2}k_yy^2 + \frac{1}{2}k_zz^2\]</div>
+<ul class="simple">
+<li><p>the separation of variables technique similar to the three-dimensional particle in a box problem can be used here. The result is once again eigenfunctions that are product of 1D eigenfunctions and eigenvalues that are sum of 1D eigenvalues:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{E = \left(v_x + \frac{1}{2}\right)h\nu_x + \left(v_y + \frac{1}{2}\right)h\nu_y + \left(v_z + \frac{1}{2}\right)h\nu_z}\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi(x,y,z) = \psi_{v_x}(x)\psi(y)_{v_y}\psi(z)_{v_z} = N_{v_x}H_{v_x}\left(\sqrt{\alpha_x}x\right)e^{-\alpha_xx^2/2}}
+{ \times N_{v_y}H_{v_y}\left(\sqrt{\alpha_y}y\right)e^{-\alpha_yy^2/2} \times N_{v_z}H_{v_z}\left(\sqrt{\alpha_z}z\right)e^{-\alpha_zz^2/2}}\]</div>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(N\)</span>, and <span class="math notranslate nohighlight">\(H\)</span> are defined in above and the <span class="math notranslate nohighlight">\(v\)</span>’s are the quantum numbers along the Cartesian coordinates.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DPotoyan/Chem324",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="note02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Harmonic Oscillator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="note03B.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Molecular Vibrations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamitlonian-of-harmonic-oscillator">Hamitlonian of Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials">Hermite Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Davit Potoyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

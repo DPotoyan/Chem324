@@ -2,14 +2,15 @@
 
 ## Molecular degrees of freedom
 
-```{admonition} What you need to know
+:::{admonition} **What you need to know**
 :class: note
+
 Having found that the energy of bound systems is quantized our next goal is to invesitaget differen tmanifestations of these quantization and ways of probing it in experiments via spectroscopy. On the example of exactly solvable simple toy systems  we will study the specifics of quantization of different **degrees of freedom (DOF)** found in molecules. Degrees of freedom of molecule fall into **translational, rotational, vibrational and electronic motion.** 
 
 - **Particle in a box.** (quantization of translational DOF)
 - **Harmonic oscillator** (quantization of vibrational DOF)
 - **Rigid rotor.**  (quantization of rotational DOF)
-```
+:::
 
 ###  Energies of molecules
 
