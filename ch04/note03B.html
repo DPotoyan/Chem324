@@ -342,6 +342,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/ch04/note03B.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -350,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch04/note03B.md" target="_blank"
+      <li><a href="../_sources/ch04/note03B.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -360,7 +409,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -444,7 +493,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-approximation">Harmonic Oscillator approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-potential-and-dissociation-energy">Morse potential and dissociation energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
@@ -466,28 +515,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="molecular-vibrations">
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-vibrations">
 <h1>Molecular Vibrations<a class="headerlink" href="#molecular-vibrations" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<p class="admonition-title"><strong>What you need to know</strong></p>
 <ul class="simple">
 <li><p><strong>Quantization of vibrations in molecules.</strong> Vibrational degrees of freedom are quantized in molecules. This which implications for infrared and raman spectroscopies.</p></li>
 <li><p><strong>Existence of Selection rules.</strong> Not all vibrational transitions are observed. Quantum mechanics predicts that for transition to occur the trasnition probability needs to be non zero which is quantified via transition dipole moment.</p></li>
 <li><p><strong>Effects of unharmonicity.</strong> Harmonic osccilator approximation captures the dominant transition frequency but is not fully accurate becasue harmonic shape of the potential descrimed the vicinity of potential energy minima which tends to become less accurate for excited vibrational states of molecules.</p></li>
 </ul>
 </div>
-<section id="harmonic-oscillator">
-<h2>Harmonic Oscillator<a class="headerlink" href="#harmonic-oscillator" title="Permalink to this heading">#</a></h2>
+<section id="harmonic-oscillator-approximation">
+<h2>Harmonic Oscillator approximation<a class="headerlink" href="#harmonic-oscillator-approximation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>First let us write harmonic oscillator energies in a format used for spectroscopic analysis. This means converting to wavenumber units <span class="math notranslate nohighlight">\(\tilde{\nu}=\frac{1}{\lambda}\)</span>:</p></li>
 </ul>
+<div class="imporant admonition">
+<p class="admonition-title"><strong>Harmonic oscillator and spectroscopuc units</strong></p>
 <div class="math notranslate nohighlight">
 \[{\tilde{E}_v = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right)}\]</div>
 <ul class="simple">
-<li><p><strong>The vibrational quantum number</strong> is denoted as <span class="math notranslate nohighlight">\(v\)</span></p></li>
-<li><p><strong>The vibrational frequency</strong> expressed in wavenumber units <span class="math notranslate nohighlight">\(cm^{-1}\)</span> units is <span class="math notranslate nohighlight">\(\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}\)</span></p></li>
+<li><p><strong>The vibrational quantum number</strong>  <span class="math notranslate nohighlight">\(v=0,1,2,...\)</span></p></li>
+<li><p><strong>The vibrational frequency</strong>  <span class="math notranslate nohighlight">\(\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}\)</span>, <span class="math notranslate nohighlight">\(cm^{-1}\)</span></p></li>
 <li><p><strong>Reduced mass of the diatomic molecule</strong> <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
-<li><p>Note that <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> look very similar but have different meaning!  A typical value for vibrational frequency would be around  <span class="math notranslate nohighlight">\(500 - 4000cm^{-1}\)</span>. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Note that <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> look very similar but have different meaning!</p></li>
+<li><p>A typical value for vibrational frequency would be around  <span class="math notranslate nohighlight">\(500 - 4000cm^{-1}\)</span>. Small values are associated with weak bonds whereas strong bonds have larger vibrational frequencies.</p></li>
 </ul>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example</strong></p>
@@ -565,7 +620,12 @@ document.write(`
 </section>
 <section id="overtone-transitions">
 <h2>Overtone transitions<a class="headerlink" href="#overtone-transitions" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/vib_modes.jpeg" /></p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/vib_modes.jpeg"><img alt="DeD0" class="bg-primary mb-1" src="../_images/vib_modes.jpeg" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Illustration of overtone transitions</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>The higher order terms are small but they give rise to overtone transitions with <span class="math notranslate nohighlight">\(\Delta v = \pm 2, \pm 3, ...\)</span> with rapidly decreasing intensities.</p></li>
 </ul>
@@ -610,10 +670,10 @@ document.write(`
 <section id="vibrational-modes-of-molecules">
 <h2>Vibrational modes of molecules<a class="headerlink" href="#vibrational-modes-of-molecules" title="Permalink to this heading">#</a></h2>
 <p>A molecule has translational and rotational motion as a whole while each atom has it’s own motion. The vibrational modes can be IR or Raman active. For a mode to be observed in the IR spectrum, changes must occur in the permanent dipole (i.e. not diatomic molecules). Diatomic molecules are observed in the Raman spectra but not in the IR spectra. This is due to the fact that diatomic molecules have one band and no permanent dipole, and therefore one single vibration. An example of this would be <span class="math notranslate nohighlight">\(O_2\)</span> or <span class="math notranslate nohighlight">\(N_2\)</span>.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/CO2_modes.jpg"><img alt="co2-mode" class="bg-primary mb-1" src="../_images/CO2_modes.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Normal modes of <span class="math notranslate nohighlight">\(CO_2\)</span> with associated vibrational frequencies</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Normal modes of <span class="math notranslate nohighlight">\(CO_2\)</span> with associated vibrational frequencies</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -624,18 +684,6 @@ document.write(`
 <h2>Calculating number of modes<a class="headerlink" href="#calculating-number-of-modes" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The degrees of vibrational modes for linear molecules can be calculated using the formula:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[3N−5\]</div>
-<ul class="simple">
-<li><p>The degrees of freedom for nonlinear molecules can be calculated using the formula:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[3N−6\]</div>
-<ul class="simple">
-<li><p>Determine if the molecule is linear or nonlinear (i.e. Draw out molecule using VSEPR). If linear, use Equation 1 If nonlinear, use Equation 2
-Calculate how many atoms are in your molecule. This is your N value.
-Plug in your N value and solve.</p></li>
 </ul>
 </section>
 <section id="selection-rules">
@@ -660,10 +708,10 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 </section>
 <section id="application-of-selection-rules">
 <h2>Application of selection rules<a class="headerlink" href="#application-of-selection-rules" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/selection_rule.jpg"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/selection_rule.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -674,16 +722,16 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 </section>
 <section id="ir-spectra">
 <h2>IR spectra<a class="headerlink" href="#ir-spectra" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/IR-sp.png"><img alt="ir spectra" class="bg-primary mb-1" src="../_images/IR-sp.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 66 </span><span class="caption-text">IR spectral frequencies observed due to different vibrational frequencies of bonds in organic molecules.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">IR spectral frequencies observed due to different vibrational frequencies of bonds in organic molecules.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/amide_modes.png"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/amide_modes.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -752,7 +800,7 @@ Symmetry considerations, especially in molecules, come from group theory, which 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator">Harmonic Oscillator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-approximation">Harmonic Oscillator approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-harmonic-approximation">Going beyond harmonic approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-potential-and-dissociation-energy">Morse potential and dissociation energy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>

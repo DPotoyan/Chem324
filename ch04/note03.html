@@ -596,30 +596,74 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p>Hermite polynomials obey the following relations which are useful when evaluating integrals. Check that table above obeys these relations</p></li>
-</ul>
+<p>Hermite polynomials obey the following relations which are useful when evaluating integrals.</p>
+<p><strong>Characteristic Equation</strong></p>
 <div class="math notranslate nohighlight">
-\[{H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0\textnormal{ (characteristic equation)}}\]</div>
+\[{H_v''(y) - 2yH_v'(y) + 2vH_v(y) = 0}\]</div>
+<p><strong>Recursion Relation</strong></p>
 <div class="math notranslate nohighlight">
-\[{H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)\textnormal{ (recursion relation)}}\]</div>
+\[{H_{v+1}(y) = 2yH_v(y) - 2vH_{v-1}(y)}\]</div>
+<p><strong>Orthogonality and Normalization</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{matrix}
 0, &amp; \textnormal{ if }v' \ne v\\
 \sqrt{\pi}2^vv!, &amp; \textnormal{ if }v' = v\\
 \end{matrix}\right.
 }\end{split}\]</div>
-</section>
-<section id="odd-even-symmetry-of-wavefunctions">
-<h2>Odd/even symmetry of wavefunctions<a class="headerlink" href="#odd-even-symmetry-of-wavefunctions" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 0, 2, 4, ...\)</span> are even: <span class="math notranslate nohighlight">\(\psi_v(x) = \psi_v(-x)\)</span>.</p></li>
-<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 1, 3, 5, ...\)</span> are odd: <span class="math notranslate nohighlight">\(\psi_v(x) = -\psi_v(-x)\)</span>.</p></li>
-</ul>
-<p><strong>Conseqeuences for evaluating integrals</strong></p>
-<ul class="simple">
-<li><p>Integral of an odd function from <span class="math notranslate nohighlight">\(-a\)</span> to <span class="math notranslate nohighlight">\(a\)</span> (<span class="math notranslate nohighlight">\(a\)</span> may be <span class="math notranslate nohighlight">\(\infty\)</span>) is zero.</p></li>
-</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">hermite</span><span class="p">,</span> <span class="n">factorial</span>
+
+<span class="c1"># Hermite polynomial H_v(y)</span>
+<span class="k">def</span> <span class="nf">H_v</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hermite</span><span class="p">(</span><span class="n">v</span><span class="p">)(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Harmonic oscillator wavefunction ψ_v(y)</span>
+<span class="k">def</span> <span class="nf">psi_v</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">norm_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">v</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">norm_factor</span> <span class="o">*</span> <span class="n">H_v</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Define the y values</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plot the first three Hermite polynomials</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Hermite polynomials H_0, H_1, H_2</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">H_v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_0(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">H_v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_1(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">H_v</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_2(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;First Three Hermite Polynomials&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$H_v(y)$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Harmonic oscillator wavefunctions ψ_0, ψ_1, ψ_2</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">psi_v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\psi_0(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">psi_v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\psi_1(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">psi_v</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_values</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\psi_2(y)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;First Three Harmonic Oscillator Wavefunctions&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\psi_v(y)$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6d78d9d8442ae0587bb3c49b76df1cb0440bcef612a90eaad89fdd43914b00c0.png" src="../_images/6d78d9d8442ae0587bb3c49b76df1cb0440bcef612a90eaad89fdd43914b00c0.png" />
+</div>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -635,12 +679,15 @@ document.write(`
 <span class="n">VMAX</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">QPAD_FRAC</span> <span class="o">=</span> <span class="mf">1.3</span>
 <span class="n">SCALING</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">COLOUR1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6196</span><span class="p">,</span> <span class="mf">0.0039</span><span class="p">,</span> <span class="mf">0.2588</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">COLOUR2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3686</span><span class="p">,</span> <span class="mf">0.3098</span><span class="p">,</span> <span class="mf">0.6353</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">COLOUR1</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+<span class="n">COLOUR2</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
 
 <span class="c1"># Normalization constant and energy for vibrational state v</span>
-<span class="n">N</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="mf">1.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="n">v</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">get_E</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="k">def</span> <span class="nf">N</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">v</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">get_E</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span>
 
 <span class="c1"># Generate Hermite polynomials</span>
 <span class="k">def</span> <span class="nf">make_Hr</span><span class="p">():</span>
@@ -656,7 +703,7 @@ document.write(`
     <span class="k">return</span> <span class="n">N</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">Hr</span><span class="p">[</span><span class="n">v</span><span class="p">](</span><span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">get_turning_points</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-    <span class="n">qmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">get_E</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">qmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">get_E</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">qmax</span><span class="p">,</span> <span class="n">qmax</span>
 
 <span class="c1"># Get potential energy</span>
@@ -680,21 +727,23 @@ document.write(`
 
 <span class="c1"># Plot potential and wavefunctions for both psi and |psi|^2</span>
 <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">prob_plot</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Potential $V(q)$&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">VMAX</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">psi_v</span> <span class="o">=</span> <span class="n">get_psi</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
         <span class="n">E_v</span> <span class="o">=</span> <span class="n">get_E</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
         <span class="n">plot_func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">psi_v</span><span class="o">**</span><span class="mi">2</span> <span class="k">if</span> <span class="n">prob_plot</span> <span class="k">else</span> <span class="n">psi_v</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="n">SCALING</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.5</span> <span class="k">if</span> <span class="n">prob_plot</span> <span class="k">else</span> <span class="mi">1</span><span class="p">),</span> <span class="n">yoffset</span><span class="o">=</span><span class="n">E_v</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;v=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">qmin</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">E_v</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$E_</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">E_v</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">qmax</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">E_v</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">E_v</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># Draw energy levels as dashed lines</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">E_v</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$q$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$q$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
     <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\psi(q)|^2$&#39;</span> <span class="k">if</span> <span class="n">prob_plot</span> <span class="k">else</span> <span class="sa">r</span><span class="s1">&#39;$\psi(q)$&#39;</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -703,7 +752,81 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/84073b9c3a5537f900508cdfc7100e3c6671358e23e89b50721545f883ffd9b8.png" src="../_images/84073b9c3a5537f900508cdfc7100e3c6671358e23e89b50721545f883ffd9b8.png" />
+<img alt="../_images/1c7bebe61eb1e7765f8213b8203d1fc0cc13594cb273d1a143e2cd79fd5f6049.png" src="../_images/1c7bebe61eb1e7765f8213b8203d1fc0cc13594cb273d1a143e2cd79fd5f6049.png" />
+</div>
+</div>
+</section>
+<section id="odd-even-symmetry-of-wavefunctions">
+<h2>Odd/even symmetry of wavefunctions<a class="headerlink" href="#odd-even-symmetry-of-wavefunctions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 0, 2, 4, ...\)</span> are even: <span class="math notranslate nohighlight">\(\psi_v(x) = \psi_v(-x)\)</span>.</p></li>
+<li><p>Solutions <span class="math notranslate nohighlight">\(\psi_v\)</span> with <span class="math notranslate nohighlight">\(v = 1, 3, 5, ...\)</span> are odd: <span class="math notranslate nohighlight">\(\psi_v(x) = -\psi_v(-x)\)</span>.</p></li>
+</ul>
+<p><strong>Conseqeuences for evaluating integrals</strong></p>
+<ul class="simple">
+<li><p>Integral of an odd function from <span class="math notranslate nohighlight">\(-a\)</span> to <span class="math notranslate nohighlight">\(a\)</span> (<span class="math notranslate nohighlight">\(a\)</span> may be <span class="math notranslate nohighlight">\(\infty\)</span>) is zero.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">hermite</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+
+<span class="c1"># Hermite polynomial H_v(y) function</span>
+<span class="k">def</span> <span class="nf">H_v</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hermite</span><span class="p">(</span><span class="n">v</span><span class="p">)(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Function to compute the product of H_v and H_v&#39; for orthogonality check</span>
+<span class="k">def</span> <span class="nf">integrand</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">H_v</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">H_v</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Compute orthogonality integral</span>
+<span class="k">def</span> <span class="nf">check_orthogonality</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="c1"># Integral of the product of two Hermite polynomials with exp(-y^2)</span>
+    <span class="n">integral</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">integrand</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Using finite limits for stability</span>
+    <span class="k">return</span> <span class="n">integral</span>
+
+<span class="c1"># Define the y range for plotting</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plot and check orthogonality for different pairs</span>
+<span class="k">def</span> <span class="nf">plot_orthogonality</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="n">H1</span> <span class="o">=</span> <span class="n">H_v</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">y_values</span><span class="p">)</span>
+    <span class="n">H2</span> <span class="o">=</span> <span class="n">H_v</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">y_values</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">H1</span> <span class="o">*</span> <span class="n">H2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y_values</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Product $H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y) H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v2</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y) e^</span><span class="se">{{</span><span class="s1">-y^2</span><span class="se">}}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">product</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Positive area&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">product</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Negative area&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Orthogonality integral</span>
+    <span class="n">integral_value</span> <span class="o">=</span> <span class="n">check_orthogonality</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Orthogonality Check: $H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y)$ and $H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v2</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y)$ </span><span class="se">\n</span><span class="s1"> Integral Value = </span><span class="si">{</span><span class="n">integral_value</span><span class="si">:</span><span class="s1">.2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y) H_</span><span class="se">{{</span><span class="si">{</span><span class="n">v2</span><span class="si">}</span><span class="se">}}</span><span class="s1">(y) e^</span><span class="se">{{</span><span class="s1">-y^2</span><span class="se">}}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot orthogonality for different cases</span>
+<span class="n">plot_orthogonality</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Odd vs Even: H_1(y) and H_2(y)</span>
+<span class="n">plot_orthogonality</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Even vs Even: H_0(y) and H_2(y)</span>
+<span class="n">plot_orthogonality</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Odd vs Odd: H_1(y) and H_3(y)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9fbf69bc1974f6403ae0e7fe0b73a30a582496352aa3e03af57c2aae4639f589.png" src="../_images/9fbf69bc1974f6403ae0e7fe0b73a30a582496352aa3e03af57c2aae4639f589.png" />
+<img alt="../_images/225c96aad4c448d5f1d7c0a9b50ada05f17e6985daa1270665229b4b80c608d0.png" src="../_images/225c96aad4c448d5f1d7c0a9b50ada05f17e6985daa1270665229b4b80c608d0.png" />
+<img alt="../_images/7bdb4bb39708f60d529970b84964d2df35ff455dcc35853d8735c91bf07f3b17.png" src="../_images/7bdb4bb39708f60d529970b84964d2df35ff455dcc35853d8735c91bf07f3b17.png" />
 </div>
 </div>
 </section>
@@ -797,7 +920,11 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/821ac9be82612946dcd5c3dbfe6ced0bd67505774aa8c3794facb15c8efc9e08.png" src="../_images/821ac9be82612946dcd5c3dbfe6ced0bd67505774aa8c3794facb15c8efc9e08.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2187/1302744920.py:38: RuntimeWarning: divide by zero encountered in divide
+  return 1 / (np.pi * np.sqrt(qmax**2 - q**2))
+</pre></div>
+</div>
+<img alt="../_images/b0ad6d5de5724a70941a0d0fe9dce557a76e93d7f0de620dbedb4d472c0ebaf9.png" src="../_images/b0ad6d5de5724a70941a0d0fe9dce557a76e93d7f0de620dbedb4d472c0ebaf9.png" />
 </div>
 </div>
 </section>
