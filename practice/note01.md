@@ -22,5 +22,11 @@
 
 11. You made a measuerment of two components of momentum and found their values. What can we say about Operators corresponding to these observables?
 
-12. 
+12. What is $\langle 1|\psi\rangle$ equal for a quantum state described by  $|\psi\rangle$ which is characterized by superpsoition of frist four states of harmonic oscillator with equal probabilities.
+
+13. Which ground state of electron will be lower if it is placed in box $L_x=2L_y=3L_z$ vs $L_x=3L_y=2L_z$
+
+14. Calculate Energy of a 3D symmetric harmonic oscillator in ground state. Take $\hbar\omega=1$ for all dimensions. 
+
+15. Given operator $d/dx$ and its two eigenfunctions $|0>$ and $|1>$ will $\langle 0|1\rangle$ be zero? 
 
