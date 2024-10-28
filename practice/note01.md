@@ -30,3 +30,5 @@
 
 15. Given operator $d/dx$ and its two eigenfunctions $|0>$ and $|1>$ will $\langle 0|1\rangle$ be zero? 
 
+16. In units of m=1, h=1, L=1 the 3D particle in a box has energy $E=112$ determine degeneracy of the energy level and list all quantum numbers. 
+
