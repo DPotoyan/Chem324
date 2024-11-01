@@ -88,6 +88,7 @@ $$
 - Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $M_J$ quantum number. 
 
 :::{admonition} **Eigenvalues of rotational states**
+:class: important
 
 $$
 {E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1)}
@@ -182,7 +183,7 @@ Rigid rotor model predicts evenlys spaced spectral lines
 
 
 :::{admonition} **Population of rotational states**
-:class: info
+:class: info, dropdown
 
 Another factor that affects the line intensities in a rotational spectrum is related to the thermal population of the rotational levels. Thermal populations of the rotational levels is given by the Boltzmann distribution (for a collection of molecules):
 
@@ -223,7 +224,6 @@ The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.
 
 ### Ro-vibrational spectra, R, P and Q branches
 
-
 :::{figure-md} markdown-fig
 <img src="./images/P_Q_R_branch.png" alt="DeD0" class="bg-primary mb-1" width="400px">
 
@@ -246,8 +246,6 @@ $$
  - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} + 2\tilde{B}(J+1)$
  - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} - 2\tilde{B}(J+1)$
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
-
-
 
 
 ### Beyond rigid rotor 1
