@@ -167,6 +167,7 @@ $$\boxed{\Delta J = J' - J = \pm 1}$$
 $${\tilde{\nu_J} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
 
 :::{admonition} **Spacing of adjacent spectral lines**
+:class: important
 
 $$\tilde{\nu}_{J+1} - \tilde{\nu_J} = 2\tilde{B}$$
 
