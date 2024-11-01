@@ -452,8 +452,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-angular-momentum-do-not-commute">Components of angular momentum do not commute!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctions-and-eigenvalues-of-l-and-l-z">Eignefunctions and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-spherical-harmonics">Visualizing spherical harmonics</a></li>
 </ul>
@@ -470,11 +470,12 @@ document.write(`
   <section id="angular-momentum">
 <h1>Angular momentum<a class="headerlink" href="#angular-momentum" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<p class="admonition-title">What You Need to Know</p>
 <ul class="simple">
-<li><p>Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact orangeuces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more.</p></li>
-<li><p>Similarly, in quantum mechanics, angular momentum plays a central role in understanding the structure of atoms, as well as other quantum problems that involve rotational symmetry. Like other observable quantities, angular momentum is described in QM by an operator. This is in fact a vector operator, similar to momentum operator. However, contrary to the linear momentum operator, the three components of the angular momentum operator do not commute!</p></li>
-<li><p>In QM, there are several angular momentum operators: the total angular momentum (usually denoted by <span class="math notranslate nohighlight">\(J\)</span>), the orbital angular momentum (usually denoted by <span class="math notranslate nohighlight">\(L\)</span> ) and the intrinsic, or spin angular momentum (denoted by <span class="math notranslate nohighlight">\(S\)</span>). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.</p></li>
+<li><p><strong>Angular momentum</strong> is essential in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (along with energy and linear momentum). This conservation law simplifies calculations for systems such as planetary orbits, rotations of rigid bodies, and many other dynamic systems.</p></li>
+<li><p>In <strong>quantum mechanics</strong>, angular momentum is similarly fundamental, especially in understanding atomic structure and other systems with rotational symmetry.</p></li>
+<li><p>Angular momentum in QM is represented by an operator—a vector operator, to be specific, much like the momentum operator.</p></li>
+<li><p>However, unlike the linear momentum operator, the three components of the angular momentum operator <strong>do not commute</strong>.</p></li>
 </ul>
 </div>
 <section id="l-vs-p-overview">
@@ -542,19 +543,18 @@ p_x &amp; p_y &amp; p_z\\
 \end{vmatrix}= \left(yp_z - zp_y\right)\vec{i} + \left(zp_x - xp_z\right)\vec{j} + \left(xp_y - yp_x\right)\vec{k}}\end{split}\]</div>
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span> denote <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_vector">unit vectors</a> along the <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> axes. <span class="math notranslate nohighlight">\(p_x\)</span> and <span class="math notranslate nohighlight">\(L_x\)</span> are components of linear and angular momentum respectively</p></li>
-<li><p><strong>The Cartesian components of angular momentum</strong> can be identified as:</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>The Cartesian components of angular momentum</strong></p>
 <div class="math notranslate nohighlight">
 \[{L_x = yp_z - zp_y}\]</div>
 <div class="math notranslate nohighlight">
 \[{L_y = zp_x - xp_z}\]</div>
 <div class="math notranslate nohighlight">
 \[{L_z = xp_y - yp_x}\]</div>
-<ul class="simple">
-<li><p><strong>The square of the angular momentum</strong> is given by:</p></li>
-</ul>
 <div class="math notranslate nohighlight">
 \[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
+</div>
 </section>
 <section id="spherical-coordinates">
 <h2>Spherical coordinates<a class="headerlink" href="#spherical-coordinates" title="Permalink to this heading">#</a></h2>
@@ -664,30 +664,34 @@ Polar</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="commutation-relations">
-<h2>Commutation relations<a class="headerlink" href="#commutation-relations" title="Permalink to this heading">#</a></h2>
-<p>The following commutation relations can be shown to hold:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\
-{\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
-\end{split}\]</div>
+<section id="components-of-angular-momentum-do-not-commute">
+<h2>Components of angular momentum do not commute!<a class="headerlink" href="#components-of-angular-momentum-do-not-commute" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p></li>
+<li><p>Unlike linear momentum components of angular momentum do not commute!</p></li>
+<li><p>This implies that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p></li>
+</ul>
+<ul class="simple">
+<li><p>Note the cyclical nature of commutations between components</p></li>
 </ul>
 </section>
-<section id="eignefunctins-and-eigenvalues-of-l-and-l-z">
-<h2>Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span><a class="headerlink" href="#eignefunctins-and-eigenvalues-of-l-and-l-z" title="Permalink to this heading">#</a></h2>
-<p>It is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. It can be shown that for <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> the eigenfunctions and eigenvalues are:</p>
-<div class="math notranslate nohighlight">
-\[\boxed{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}\]</div>
-<div class="math notranslate nohighlight">
-\[\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}\]</div>
+<section id="eignefunctions-and-eigenvalues-of-l-and-l-z">
+<h2>Eignefunctions and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span><a class="headerlink" href="#eignefunctions-and-eigenvalues-of-l-and-l-z" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Wavefunction:</strong> <span class="math notranslate nohighlight">\(\psi_{l,m} = Y_l^m(\theta,\phi)\)</span></p></li>
+<li><p>Since operators of component and angular momentum square commute is possible to find functions that are eigenfunctions of both <span class="math notranslate nohighlight">\(\vec{\hat{L}}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>.</p></li>
+</ul>
+<div class="imporant admonition">
+<p class="admonition-title">Eignefunctions and eigenvalues of angular momentum</p>
+<div class="math notranslate nohighlight">
+\[{{\hat{L}}^2 Y_l^m(\theta,\phi) = \hbar^2 l(l+1)\cdot Y_l^m(\theta,\phi)}\]</div>
+<div class="math notranslate nohighlight">
+\[{\hat{L}_zY^m_l(\theta,\phi) = m\hbar \cdot Y_l^m(\theta,\phi)}\]</div>
+<ul class="simple">
+<li><p><strong>Eigenfunctions:</strong> <span class="math notranslate nohighlight">\(Y_l^m(\theta,\phi) \)</span></p></li>
 <li><p><strong>Angular quantum number:</strong> <span class="math notranslate nohighlight">\(l = 0,1,2,3...\)</span></p></li>
 <li><p><strong>Magnetic quantum number:</strong> <span class="math notranslate nohighlight">\(|m| = 0,1,2,3,...l\)</span></p></li>
-<li><p>These eigenvalues are often denoted by <span class="math notranslate nohighlight">\(L_z\)</span> (<span class="math notranslate nohighlight">\(= m\hbar\)</span>). Note that specification of both <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> provides all the information we can have about the system.</p></li>
+</ul>
+</div>
+<ul class="simple">
 <li><p>Note that here <span class="math notranslate nohighlight">\(m\)</span> has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum.</p></li>
 <li><p>Functions <span class="math notranslate nohighlight">\(Y_l^m\)</span> are called <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. Examples of spherical harmonics with various values of <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are given below (with <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">Condon-Shortley</a>  <a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_harmonics#Condon-Shortley_phase">phase convention</a></p></li>
 </ul>
@@ -814,8 +818,8 @@ Polar</label><div class="sd-tab-content docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commutation-relations">Commutation relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctins-and-eigenvalues-of-l-and-l-z">Eignefunctins and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-angular-momentum-do-not-commute">Components of angular momentum do not commute!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eignefunctions-and-eigenvalues-of-l-and-l-z">Eignefunctions and eigenvalues of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-harmonics">Spherical harmonics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-spherical-harmonics">Visualizing spherical harmonics</a></li>
 </ul>

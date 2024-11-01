@@ -1,14 +1,16 @@
 ## Angular momentum  
 
-```{admonition} What you need to know
+:::{admonition} What You Need to Know
 :class: note
-- Angular momentum plays a central role in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (as well as energy and linear momentum); this fact orangeuces considerably the amount of work required in calculating trajectories of planets, rotation of rigid bodies, and many more. 
-- Similarly, in quantum mechanics, angular momentum plays a central role in understanding the structure of atoms, as well as other quantum problems that involve rotational symmetry. Like other observable quantities, angular momentum is described in QM by an operator. This is in fact a vector operator, similar to momentum operator. However, contrary to the linear momentum operator, the three components of the angular momentum operator do not commute!
-- In QM, there are several angular momentum operators: the total angular momentum (usually denoted by $J$), the orbital angular momentum (usually denoted by $L$ ) and the intrinsic, or spin angular momentum (denoted by $S$). This spin has no classical analogue! Confusingly, the term “angular momentum” can refer to either the total angular momentum, or to the orbital angular momentum.
-```
+
+- **Angular momentum** is essential in both classical and quantum mechanics. In classical mechanics, all isolated systems conserve angular momentum (along with energy and linear momentum). This conservation law simplifies calculations for systems such as planetary orbits, rotations of rigid bodies, and many other dynamic systems.
+- In **quantum mechanics**, angular momentum is similarly fundamental, especially in understanding atomic structure and other systems with rotational symmetry. 
+- Angular momentum in QM is represented by an operator—a vector operator, to be specific, much like the momentum operator. 
+- However, unlike the linear momentum operator, the three components of the angular momentum operator **do not commute**.
+
+:::
 
 ### L vs p Overview
-
 
 | Property                  | Linear Momentum              | Angular Momentum             |
 |---------------------------|-----------------------------|------------------------------|
@@ -20,8 +22,6 @@
 | QM operators              | $\hat{p_x}=-i\hbar\frac{\partial}{\partial x}$           | ${\hat{L_x} = yp_z - zp_y}$           |
 | Conservation Principle    | Law of Conservation of Linear Momentum | Law of Conservation of Angular Momentum |
 | Conservation Condition    | No net external force acting on a closed system | No net external torque acting on a closed system |
-
-
 
 
 ### Classical angular momentum 
@@ -44,7 +44,8 @@ p_x & p_y & p_z\\
 
 - where $\vec{i}, \vec{j}$ and $\vec{k}$ denote [unit vectors](http://en.wikipedia.org/wiki/Unit_vector) along the $x, y$ and $z$ axes. $p_x$ and $L_x$ are components of linear and angular momentum respectively 
 
-- **The Cartesian components of angular momentum** can be identified as:
+:::{admonition} **The Cartesian components of angular momentum**
+:class: important
 
 $${L_x = yp_z - zp_y}$$
 
@@ -52,9 +53,8 @@ $${L_y = zp_x - xp_z}$$
 
 $${L_z = xp_y - yp_x}$$
 
-- **The square of the angular momentum** is given by:
-
 $${\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}$$
+:::
 
 
 ### Spherical coordinates
@@ -170,40 +170,42 @@ $${\vec{\hat{L}}^2 = -\hbar^2\underbrace{\left[\frac{1}{\sin(\theta)}\frac{\part
 
 
 
-### Commutation relations
+### Components of angular momentum do not commute!
 
-The following commutation relations can be shown to hold:
+- Unlike linear momentum components of angular momentum do not commute! 
+- This implies that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).
+
+:::{admonition}
+:class: important
 
 $$
 {\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\
 {\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
 $$
 
+:::
 
-- Note that equations imply that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).
+- Note the cyclical nature of commutations between components
 
-### Eignefunctins and eigenvalues of $L$ and $L_z$
 
-It is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. It can be shown that for $\vec{\hat{L}}^2$ the eigenfunctions and eigenvalues are:
+### Eignefunctions and eigenvalues of $L$ and $L_z$
 
-$$\boxed{\vec{\hat{L}}^2\psi_{l,m}(\theta,\phi) = l(l+1)\hbar^2\psi_{l,m}(\theta,\phi)}$$
+- Since operators of component and angular momentum square commute is possible to find functions that are eigenfunctions of both $\vec{\hat{L}}^2$ and $\hat{L}_z$. 
 
-$$\boxed{\hat{L}_zY^m_l(\theta,\phi) = m\hbar Y_l^m(\theta,\phi)}$$
+:::{admonition} Eignefunctions and eigenvalues of angular momentum
+:class: imporant 
 
-- **Wavefunction:** $\psi_{l,m} = Y_l^m(\theta,\phi)$
+$${{\hat{L}}^2 Y_l^m(\theta,\phi) = \hbar^2 l(l+1)\cdot Y_l^m(\theta,\phi)}$$
+
+$${\hat{L}_zY^m_l(\theta,\phi) = m\hbar \cdot Y_l^m(\theta,\phi)}$$
+
+- **Eigenfunctions:** $Y_l^m(\theta,\phi) $
 - **Angular quantum number:** $l = 0,1,2,3...$ 
 - **Magnetic quantum number:** $|m| = 0,1,2,3,...l$
-
-
-
-
-- These eigenvalues are often denoted by $L_z$ ($= m\hbar$). Note that specification of both $L^2$ and $L_z$ provides all the information we can have about the system.
+:::
 
 - Note that here $m$ has nothing to do with magnetism but the name originates from the fact that (electron or nuclear) spins follow the same laws of angular momentum. 
 - Functions $Y_l^m$ are called [spherical harmonics](http://en.wikipedia.org/wiki/Spherical_harmonics). Examples of spherical harmonics with various values of $l$ and $m$ are given below (with [Condon-Shortley](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)  [phase convention](http://en.wikipedia.org/wiki/Spherical_harmonics\#Condon-Shortley_phase)
-
-
-
 
 ### Spherical harmonics
 
