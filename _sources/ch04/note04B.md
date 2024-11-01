@@ -139,7 +139,8 @@ This rotational spacing can be, for example, observed in gas phase infrared spec
 
 - Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). The rotational energies expressed in wavenumbers are given by:
 
-:::{admonition} **Eigenvalues of rotational states in spectroscopic units**
+:::{admonition} **Rotaitonal energies in spectroscopic units**
+:class: important
 
 $${\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
 
