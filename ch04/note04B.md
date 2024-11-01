@@ -134,39 +134,23 @@ $$\boxed{\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
 
 $${\tilde{B} = \frac{h}{8\pi^2Ic}}$$
 
-### Selection rules
-
-The rotational constant defines the rotational energy levels for a rigid diatomic molecule.
-When the molecule is in electronic state $e$ and vibrational state $v$, the total wavefunction is written as $\psi = \psi_e\psi_v\psi_{J,M}$. The **transition moment** between two different rotational levels $J,M$ and $J',M'$:
-
-$${\int\int\int\psi_e^*\psi_v^*\psi_{J',M'}\hat{\mu}\psi_e\psi_v\psi_{J,M}d\tau_ed\tau_{rot}d\tau_{vib}}$$
-
-where $\hat{\mu}$ is the transition dipole operator and only the rotational wavefunction has change. The electronic part gives the permanent dipole moment:
-
-$${\mu_0^{(e)} = \int\psi_e^*\hat{\mu}\psi_ed\tau_e}$$
-
-Therefore we can reduce the last equation to:
-
-$${\int\int\psi_v^*\psi^*_{J',M'}\mu_0^{(e)}\psi_v\psi_{J,M}d\tau_{rot}d\tau_{vib}}$$
-
-The vibrational part just gives the dipole moment for the molecule in vibrational state $v$ and we can write:
-
-$${\int\psi_{J',M'}^*\mu_0\psi_{J,M}d\tau_{rot}}$$
-
-- The rotational transition can only occur if this integral has a non-zero value. Clearly $\mu_0$ must be non-zero for the transition to occur, which means that the molecule must have a permanent dipole moment for the rotational transition to occur. 
-
-- For example, homonuclear diatomic molecules like $H_2$ and $O_2$ will not show pure rotational spectra. Heteronuclear molecules show pure rotational spectra.
+### Selection rules 
 
 
 Using the known properties for spherical harmonics, one can show the following selection rule holds for the rigid rotor model:
 
+:::{admonition} **Selection rules for rigid rotor model**
+:class:important
+
 $$\boxed{\Delta J = J' - J = \pm 1}$$
 
-Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
+:::
+
+- Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
 
 $${\tilde{\nu} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
 
-The successive line positions in the rotational spectrum are given by $2\tilde{B}, 4\tilde{B}, 6\tilde{B},...$. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.
+- The successive line positions in the rotational spectrum are given by $2\tilde{B}, 4\tilde{B}, 6\tilde{B},...$. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.
 
 :::{figure-md} markdown-fig
 <img src="./images/wqual_space.png" alt="DeD0" class="bg-primary mb-1" width="350px">
@@ -175,7 +159,8 @@ Rigid rotor model predicts evenlys spaced spectral lines
 :::
 
 
-### Population of states
+:::{admonition} **Population of rotational states**
+:class: info
 
 Another factor that affects the line intensities in a rotational spectrum is related to the thermal population of the rotational levels. Thermal populations of the rotational levels is given by the Boltzmann distribution (for a collection of molecules):
 
@@ -184,8 +169,8 @@ $${f_J = \frac{g_Je^{-hc\tilde{E}_r(J) / (k_B T)}}{\sum\limits_{J'}g_{J'}e^{-hc\
 - The  $q$ is called the *partition function* and $g_J = 2J + 1$ corresponds to the degeneracy count of state $J$. A useful comparison of thermal energy is given by $kT$ and if the energy of a state is much higher than this, it will not be thermally populated. 
 - one expects the intensities to first increase as a function of the initial state $J$, reach a maximum, and then decrease because the thermal populations decrease. In an absorption experiment, one can see the thermal populations of the initial rotational levels.
 
-> Note: For systems, where the rotational degrees of freedom may exchange identical nuclei, an additional complication arises from the symmetry requirement for the nuclear wavefunction. Recall that bosons must have symmetric wavefunctions and fermions antisymmetric. We will not discuss this in more detail here.
-
+- Note: For systems, where the rotational degrees of freedom may exchange identical nuclei, an additional complication arises from the symmetry requirement for the nuclear wavefunction. Recall that bosons must have symmetric wavefunctions and fermions antisymmetric. We will not discuss this in more detail here.
+:::
 
 :::{admonition} **Example** 
 :class: note
@@ -214,7 +199,7 @@ The same way one can get the relative populations as: 1.00, 2.71, 3.70, 3.84, 3.
 :::  
 
 
-### Ro-vibrational spectra, R, P and Q branches**
+### Ro-vibrational spectra, R, P and Q branches
 
 
 :::{figure-md} markdown-fig
@@ -231,9 +216,11 @@ $$
 
 - Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground (v=0) and the first excited (v=1) vibrational states.
 - Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states  
- $$
+
+$$
 \tilde{\nu}_{\Delta J=\pm1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
 $$
+
  - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} + 2\tilde{B}(J+1)$
  - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} - 2\tilde{B}(J+1)$
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
@@ -294,6 +281,7 @@ The centrifugal distortion constant can obtained by comparing the above equation
 
 $$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 :::
+
 
 ### Rovibronic coupling
 
