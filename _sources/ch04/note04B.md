@@ -250,7 +250,7 @@ $$
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
 
-### Beyond rigid rotor 1
+### Beyond rigid rotor
 
 :::{figure-md} markdown-fig
 <img src="./images/ideal.png" alt="DeD0" class="bg-primary mb-1" width="300px">
@@ -324,6 +324,7 @@ $$
 $$
 
 **The P brnach with rovibronic coupling**:
+
 $$
 \tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
 $$
