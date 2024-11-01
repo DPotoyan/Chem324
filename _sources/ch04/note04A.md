@@ -236,14 +236,6 @@ $${\int\limits_0^{\pi}\int\limits_0^{2\pi}Y_{l'}^{m'*}(\theta,\phi)Y_l^m(\theta,
 
 
 
-### Visualizing spherical harmonics 
-
-- Mathematically, the spherical harmonics contain alternating odd and even pairs of Legendre polynomials similar to Hermite polynomials. 
-- Visually, the spherical harmonics clearly show nodal lines with increasing quantum numbers, a pattern that we have seen on the examples of a particle in a box and harmonic oscillator. 
-- Using the symmetry argument, one can already tell that the product of any two different spherical harmonics integrated over the sphere will be zero!
-
-![](https://upload.wikimedia.org/wikipedia/commons/1/12/Rotating_spherical_harmonics.gif)
-
 
 
 
