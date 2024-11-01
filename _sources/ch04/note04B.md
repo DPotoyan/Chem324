@@ -1,16 +1,23 @@
 ## Rigid Rotor  
 
-:::{admonition} What you need to know
+
+:::{admonition} What You Need to Know
 :class: note
 
-- The rigid rotator system is introduced as a prototype for the quantization of rotational degrees of freedom in molecules. The spherical coordinate system is introduced out of the necessity of taking advantage of the spherical symmetry of the problem, which leads to a reduction of dimensionality.
-- Solving the Schrodinger equation in spherical coordinates results in eigenfunctions in the form of spherical harmonics. Energy eigenvalues are found to be degenerate for one of the quantum numbers. 
-- To compute rotational spectra we need to know moment of inertia of a molecules which for diatomics takes simple form $I=\mu r^2$ where $\mu$ is reduced mass and $r$ is distance.
-- For polyatomic molecules may require more elaborate calculations to account for spatial mass distribution.
-- Connection with microwave spectroscopy is shown where spectral lines are predicted to occur in equal intervals equal $2\tilde{B}$. 
-- The selection rule is established via the recursion relation of spherical harmonics and is $\Delta J\pm 1$ and $M_J =0, \pm 1$.
-- Coupling of vibrational degrees leads to rovibronic transitions and necessitates the inclusion of vibrational quantum numbers for a more accurate account of transitions. 
-- Rotatioal motion can lead to change in bond length, this is known as centrifugal effect and can be accounted for by adding an extra centrifgual correction term to rigid rotor model. 
+- The **rigid rotor model** serves as a prototype for understanding the quantization of rotational degrees of freedom in molecules. We use a spherical coordinate system to exploit the spherical symmetry of the problem, effectively reducing the system's dimensionality.
+
+- Solving the Schrödinger equation in spherical coordinates yields eigenfunctions in the form of **spherical harmonics**. The resulting energy eigenvalues exhibit degeneracy with respect to one of the quantum numbers.
+
+- To compute **rotational spectra**, the **moment of inertia** of the molecule must be known. For diatomic molecules, this is simply $I = \mu r^2 $, where $\mu $ is the reduced mass and $r $ is the bond distance. For polyatomic molecules, the calculation is more complex, as it must account for the spatial distribution of mass.
+
+- **Microwave spectroscopy** is directly connected to this model, with spectral lines predicted to occur at equal intervals of $2\tilde{B} $.
+
+- The **selection rule** is established through the recursion relation of spherical harmonics and requires $\Delta J = \pm 1 $ and $\Delta M_J = 0, \pm 1 $.
+
+- **Coupling with vibrational modes** leads to rovibronic transitions, necessitating the inclusion of vibrational quantum numbers for a comprehensive description of transition frequencies.
+
+- Rotational motion can cause slight changes in bond length, known as the **centrifugal distortion effect**. This effect can be accounted for by adding a centrifugal correction term to the rigid rotor model.
+
 :::
 
 
@@ -24,13 +31,13 @@ Conservation of angular momentum: In the absence of torque angular momentum of c
 :::
 
 
-The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation: 
+- The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation: 
 
 $$
 K=\frac{m_1 v_1^2}{2}+\frac{m_2 v_2^2}{2}=\frac{m_1 r_1^2+m_2 r^2_2}{2}\omega^2
 $$
 
-Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocities of rotation of two masses rotating with frequency $\omega$. The classical mechanical problem of two masses is once again reducible to a single reduced mass $\mu$ rotating around constant radius $r=r_1+r_2$ rotating around center of mass $m_1 r_1=m_2 r_2$.
+- Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocities of rotation of two masses rotating with frequency $\omega$. The classical mechanical problem of two masses is once again reducible to a single reduced mass $\mu$ rotating around constant radius $r=r_1+r_2$ rotating around center of mass $m_1 r_1=m_2 r_2$.
 
 
 
@@ -39,7 +46,7 @@ K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
 $$
 
 
-Where $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia and $\mu=\frac{m_1 m_2}{m_1+m_2}$
+- here $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia and $\mu=\frac{m_1 m_2}{m_1+m_2}$
 
 
 
@@ -80,10 +87,13 @@ $$
 
 - Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $M_J$ quantum number. 
 
+:::{admonition} **Eigenvalues of rotational states**
 
 $$
-\boxed{E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1)}
+{E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1)}
 $$
+
+:::
 
 - Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
 - Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
@@ -128,7 +138,11 @@ This rotational spacing can be, for example, observed in gas phase infrared spec
 
 - Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). The rotational energies expressed in wavenumbers are given by:
 
-$$\boxed{\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
+:::{admonition} **Eigenvalues of rotational states in spectroscopic units**
+
+$${\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
+
+:::
 
 - Where the *rotational constant* is usually expressed in $cm^{-1}$ units and is given by:
 
@@ -148,9 +162,17 @@ $$\boxed{\Delta J = J' - J = \pm 1}$$
 
 - Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
 
-$${\tilde{\nu} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
+
+$${\tilde{\nu_J} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
+
+:::{admonition} **Spacing of adjacent spectral lines**
+
+$$\tilde{\nu}_{J+1} - \tilde{\nu_J} = 2\tilde{B}$$
+
+:::
 
 - The successive line positions in the rotational spectrum are given by $2\tilde{B}, 4\tilde{B}, 6\tilde{B},...$. Note that molecules with different atomic isotopes have different moments of inertia and hence different positions for the rotational lines.
+
 
 :::{figure-md} markdown-fig
 <img src="./images/wqual_space.png" alt="DeD0" class="bg-primary mb-1" width="350px">
