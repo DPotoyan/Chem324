@@ -246,10 +246,11 @@ $$
 \tilde{\nu}_{\Delta J=\pm1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
 $$
 
- - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} + 2\tilde{B}(J+1)$
- - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=+}=\tilde{\omega} - 2\tilde{B}(J+1)$
+ - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+1}=\tilde{\omega} + 2\tilde{B}(J+1)$
+ - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=-1}=\tilde{\omega} - 2\tilde{B}(J+1)$
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
+> The $J = 0,1,2...$ **always refers to the initial rotational state**. For instane one often writes R(0) and R(1) to represent R branches for $0->1$ and $1->2$ transitions.
 
 ### Beyond rigid rotor
 
