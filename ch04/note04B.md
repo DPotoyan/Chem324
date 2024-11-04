@@ -63,6 +63,7 @@ $$
 
 
 - Where $I=\mu r^2$ is the moment of inertia and where identified  the angular momentum operator as:
+
 $$
 \hat{L}= -i\hbar \nabla_{\theta,\phi}
 $$
