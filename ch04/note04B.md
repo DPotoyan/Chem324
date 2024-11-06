@@ -256,6 +256,9 @@ $$\tilde{\nu} = \frac{E_{1,J'} - E_{0,J}}{hc} $$
 
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
+  $$\tilde{\nu}_{\Delta J=0}=\tilde
+ {\omega}$$
+
 - The $J = 0,1,2...$ **always refers to the initial rotational state**. For instane one often writes R(0) and R(1) to represent R branches for $0\rightarrow1$ and $1\rightarrow2$ transitions.
 
 ### Beyond rigid rotor
