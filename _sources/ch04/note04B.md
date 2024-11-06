@@ -236,14 +236,14 @@ A cartoon depiction of a ideal rovibrational spectrum.
 - Often times we are interested in transitions among rotational levels that accompany excitation from ground vibrational state $v=0\rightarrow v=1 $. This can be described by combing rigid rotor and harmonic oscillator models:
 
 $$
-E_{v,J} = \tilde{\omega}(v+1/2)+\tilde{B}J(J+1)
+\tilde{E}_{v, J} = \tilde{\omega}(v+1/2)+\tilde{B}J(J+1)
 $$
 
 - Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground (v=0) and the first excited (v=1) vibrational states.
 
 - Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states $J$ and $J'$.
 
-$$\tilde{\nu} = \frac{E_{1,J'} - E_{0,J}}{hc} $$
+$$\tilde{\nu}_{\Delta J} = {\tilde{E}_{1,J'} - \tilde{E}_{0,J}} $$
 
  - **The transitions with $\Delta J=+1$ are called R branch**: 
  
