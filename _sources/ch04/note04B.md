@@ -240,17 +240,23 @@ E_{v,J} = \tilde{\omega}(v+1/2)+\tilde{B}J(J+1)
 $$
 
 - Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground (v=0) and the first excited (v=1) vibrational states.
-- Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states  
 
-$$
-\tilde{\nu}_{\Delta J=\pm1} = E_{v+1,J\pm1} - E_{v,J} = \tilde{\omega} \pm 2\tilde{B}(J+1)
-$$
+- Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states $J$ and $J'$.
 
- - **The transitions with $\Delta J=+1$ are called R branch**: $\tilde{\nu}_{\Delta J=+1}=\tilde{\omega} + 2\tilde{B}(J+1)$
- - **The transitions with $\Delta J=-1$ are called P branch:** $\tilde{\nu}_{\Delta J=-1}=\tilde{\omega} - 2\tilde{B}(J+1)$
+$$\tilde{\nu} = \frac{E_{1,J'} - E_{0,J}}{hc} $$
+
+ - **The transitions with $\Delta J=+1$ are called R branch**: 
+ 
+ $$\tilde{\nu}_{\Delta J=+1}=\tilde{\omega} + 2\tilde{B}(J+1)$$
+
+ - **The transitions with $\Delta J=-1$ are called P branch:** 
+ 
+ $$\tilde{\nu}_{\Delta J=-1}=\tilde
+ {\omega} - 2\tilde{B}J$$
+
  - **The Q-branch $\Delta J =0$** is predicted to be absent because it is forbidden by the selection rule of the rigid rotor model. 
 
-> The $J = 0,1,2...$ **always refers to the initial rotational state**. For instane one often writes R(0) and R(1) to represent R branches for $0->1$ and $1->2$ transitions.
+- The $J = 0,1,2...$ **always refers to the initial rotational state**. For instane one often writes R(0) and R(1) to represent R branches for $0\rightarrow1$ and $1\rightarrow2$ transitions.
 
 ### Beyond rigid rotor
 
