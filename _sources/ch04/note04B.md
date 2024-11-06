@@ -239,11 +239,9 @@ $$
 \tilde{E}_{v, J} = \tilde{\omega}(v+1/2)+\tilde{B}J(J+1)
 $$
 
-- Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground (v=0) and the first excited (v=1) vibrational states.
+- Since at room temperatures molecules mostly occupy vibrational ground state we are interested in rotational transitions taking place between ground ($v=0$) and the first excited ($v=1$) vibrational states.
 
-- Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states $J$ and $J'$.
-
-$$\tilde{\nu}_{\Delta J} = {\tilde{E}_{1,J'} - \tilde{E}_{0,J}} $$
+- Rigid rotor model predicts different frequencies for absorption and emission transitions between any two rotational states $J$ and $J'$ given by $\tilde{\nu}_{\Delta J} = {\tilde{E}_{1,J'} - \tilde{E}_{0,J}}$ where the $J = 0,1,2...$ refers to the initial rotational state and $J'$ is the final state. 
 
  - **The transitions with $\Delta J=+1$ are called R branch**: 
  
@@ -259,9 +257,8 @@ $$\tilde{\nu}_{\Delta J} = {\tilde{E}_{1,J'} - \tilde{E}_{0,J}} $$
   $$\tilde{\nu}_{\Delta J=0}=\tilde
  {\omega}$$
 
-- The $J = 0,1,2...$ **always refers to the initial rotational state**. For instane one often writes R(0) and R(1) to represent R branches for $0\rightarrow1$ and $1\rightarrow2$ transitions.
 
-### Beyond rigid rotor
+### Rigid rotor and real microwave spectra
 
 :::{figure-md} markdown-fig
 <img src="./images/ideal.png" alt="DeD0" class="bg-primary mb-1" width="300px">
@@ -276,6 +273,38 @@ A cartoon depiction of a ideal rovibrational spectrum.
 A cartoon depiction of a real rovibrational spectrum.
 :::
 
+:::{figure-md} markdown-fig
+<img src="./images/co_micr.png" alt="DeD0" class="bg-primary mb-1" width="300px">
+
+A high-resolution spectrum for CO. The P and R branches are resolved into the individual rotational transitions.
+:::
+
+### Rovibronic coupling
+
+- As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
+
+- The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
+
+$$
+B_v = B_e-\alpha_e(v+1/2)
+$$
+
+- Where $B_e$ is the rotational constant for a rigid rotor and $\alpha_e$ is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
+
+**The R branch with rovibronic coupling**:
+
+$$
+\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
+
+**The P brnach with rovibronic coupling**:
+
+$$
+\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+$$
+
+
+Note that when $B_0=B_1$ we recover the rigid-rotor harmonic oscillator expresisons as expected. 
 
 ### Centrifugal distortion
 
@@ -316,28 +345,79 @@ $$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 :::
 
 
-### Rovibronic coupling
 
-- As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
 
-- The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
+### Problems
+
+#### Problem -1
+
+Consider a diatomic molecule with the following constants:
+
+- Vibrational constant: $\omega_e = 2100 \, \text{cm}^{-1}$
+- Rotational constant: $B_e = 1.4 \, \text{cm}^{-1}$
+  
+The molecule undergoes a transition from the vibrational ground state ($v = 0$) to the first excited vibrational state ($v = 1$). 
+
+1. **Calculate the wavenumbers** of the $P$-branch transitions for $J = 1$ and $J = 2$ in the $v = 0 \rightarrow v = 1$ transition.
+2. **Calculate the wavenumbers** of the $R$-branch transitions for $J = 0$ and $J = 1$ in the $v = 0 \rightarrow v = 1$ transition.
+3. Explain the nature of the $P$- and $R$-branches in the context of rotational-vibrational spectroscopy and how they appear in the spectrum.
+
+
+
+:::{admonition} **Solution**
+:class: dropdown
+
+**Part 1: $P$-Branch Transitions**
+
+The $P$-branch corresponds to transitions where $\Delta J = -1$. For a $v = 0 \rightarrow v = 1$ vibrational transition, the wavenumber of the $P$-branch transition from a state with rotational quantum number $J$ is given by:
 
 $$
-B_v = B_e-\alpha_e(v+1/2)
+\tilde{\nu}_{P(J)} = \omega_e - B_e \left[ J (J - 1) \right]
 $$
 
-- Where $B_e$ is the rotational constant for a rigid rotor and $\alpha_e$ is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
+1. **For $J = 1$:**
+   $$
+   \tilde{\nu}_{P(1)} = \omega_e - B_e \cdot 1 \cdot (1 - 1) = \omega_e - B_e \cdot 0 = 2100 - 0 = 2100 \, \text{cm}^{-1}
+   $$
 
-**The R branch with rovibronic coupling**:
+2. **For $J = 2$:**
+   $$
+   \tilde{\nu}_{P(2)} = \omega_e - B_e \cdot 2 \cdot (2 - 1) = 2100 - 1.4 \cdot 2 = 2100 - 2.8 = 2097.2 \, \text{cm}^{-1}
+   $$
+
+So, the wavenumbers for the $P$-branch transitions are:
+- $J = 1 \rightarrow J = 0$: $2100 \, \text{cm}^{-1}$
+- $J = 2 \rightarrow J = 1$: $2097.2 \, \text{cm}^{-1}$
+
+**Part 2: $R$-Branch Transitions**
+
+The $R$-branch corresponds to transitions where $\Delta J = +1$. For a $v = 0 \rightarrow v = 1$ vibrational transition, the wavenumber of the $R$-branch transition from a state with rotational quantum number $J$ is given by:
 
 $$
-\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\tilde{\nu}_{R(J)} = \omega_e + B_e \left[ (J + 1)(J + 2) \right]
 $$
 
-**The P brnach with rovibronic coupling**:
+1. **For $J = 0$:**
+   $$
+   \tilde{\nu}_{R(0)} = \omega_e + B_e \cdot (0 + 1)(0 + 2) = 2100 + 1.4 \cdot 2 = 2100 + 2.8 = 2102.8 \, \text{cm}^{-1}
+   $$
 
-$$
-\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
-$$
+2. **For $J = 1$:**
+   $$
+   \tilde{\nu}_{R(1)} = \omega_e + B_e \cdot (1 + 1)(1 + 2) = 2100 + 1.4 \cdot 6 = 2100 + 8.4 = 2108.4 \, \text{cm}^{-1}
+   $$
 
-- When $B_0=B_1$ we recover rigid-rotor harmonic oscillator predictions.
+So, the wavenumbers for the $R$-branch transitions are:
+- $J = 0 \rightarrow J = 1$: $2102.8 \, \text{cm}^{-1}$
+- $J = 1 \rightarrow J = 2$: $2108.4 \, \text{cm}^{-1}$
+
+**Part 3: Nature of the $P$- and $R$-Branches**
+
+In rotational-vibrational spectroscopy:
+
+- The **$P$-branch** consists of transitions where the rotational quantum number decreases by 1 ($\Delta J = -1$). These transitions appear at wavenumbers lower than the vibrational transition frequency $\omega_e$, creating a series of lines that shift progressively to lower energies as $J$ increases.
+  
+- The **$R$-branch** consists of transitions where the rotational quantum number increases by 1 ($\Delta J = +1$). These transitions appear at wavenumbers higher than $\omega_e$, resulting in a series of lines at progressively higher energies as $J$ increases.
+
+In a spectrum, the $P$-branch lines appear on the lower wavenumber side of the fundamental vibrational frequency, while the $R$-branch lines appear on the higher wavenumber side. These branches provide a characteristic double-sided pattern centered around $\omega_e$, reflecting the rotational structure superimposed on the vibrational transition.
+:::
