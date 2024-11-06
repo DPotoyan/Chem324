@@ -317,39 +317,15 @@ When the centrifugal distortion is taken into account, the rotational transition
 
 $${\tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J) = 2\tilde{B}(J+1) - 4\tilde{D}(J+1)^3\textnormal{ where }J=0,1,2,...}$$
 
-:::{admonition} **Example**
-:class: note
-
-Measurement of pure rotational spectrum of H$^{35}$Cl molecule gave the following positions for the absorption lines:
-
-$$\tilde{\nu} = \left(20.794\textnormal{cm}^{-1}\right)\left(J+1\right) - \left(0.000164\textnormal{cm}^{-1}\right)\left(J+1\right)^3$$
-
-What is the equilibrium bond length and what is the value of the centrifugal distortion constant?
-:::
-
-:::{admonition} **Solution**
-:class: note, dropdown
-
-We first write the expression for $\tilde{B}$ and then use the definition of the moment of inertia $I$:
-
-$$\tilde{B} = \frac{h}{8\pi^2cI} = \frac{h}{8\pi^2c\mu R_0^2}$$
-
-where $\mu$ is the reduced mass for the molecule and $R_0$ is the equilibrium bond length. Solving for $R_0$ gives:
-
-$$R_0 = \sqrt{\frac{h}{8\pi^2c\mu\tilde{B}}} = 129\textnormal{ pm}$$
 
 
-The centrifugal distortion constant can obtained by comparing the above equation with the equation for rovibronic coupling
-
-$$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
-:::
 
 
 
 
 ### Problems
 
-#### Problem -1
+#### Problem 1
 
 Consider a diatomic molecule with the following constants:
 
@@ -420,4 +396,30 @@ In rotational-vibrational spectroscopy:
 - The **$R$-branch** consists of transitions where the rotational quantum number increases by 1 ($\Delta J = +1$). These transitions appear at wavenumbers higher than $\omega_e$, resulting in a series of lines at progressively higher energies as $J$ increases.
 
 In a spectrum, the $P$-branch lines appear on the lower wavenumber side of the fundamental vibrational frequency, while the $R$-branch lines appear on the higher wavenumber side. These branches provide a characteristic double-sided pattern centered around $\omega_e$, reflecting the rotational structure superimposed on the vibrational transition.
+:::
+
+#### Problem 2
+
+Measurement of pure rotational spectrum of H$^{35}$Cl molecule gave the following positions for the absorption lines:
+
+$$\tilde{\nu} = \left(20.794\textnormal{cm}^{-1}\right)\left(J+1\right) - \left(0.000164\textnormal{cm}^{-1}\right)\left(J+1\right)^3$$
+
+What is the equilibrium bond length and what is the value of the centrifugal distortion constant?
+
+
+:::{admonition} **Solution**
+:class: dropdown
+
+We first write the expression for $\tilde{B}$ and then use the definition of the moment of inertia $I$:
+
+$$\tilde{B} = \frac{h}{8\pi^2cI} = \frac{h}{8\pi^2c\mu R_0^2}$$
+
+where $\mu$ is the reduced mass for the molecule and $R_0$ is the equilibrium bond length. Solving for $R_0$ gives:
+
+$$R_0 = \sqrt{\frac{h}{8\pi^2c\mu\tilde{B}}} = 129\textnormal{ pm}$$
+
+
+The centrifugal distortion constant can obtained by comparing the above equation with the equation for rovibronic coupling
+
+$$\tilde{D} = 4.1\times 10^{-5}\textnormal{ cm}^{-1}$$
 :::
