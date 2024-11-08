@@ -283,7 +283,7 @@ Determine the microstates of l=1 and l=2 resulting from spin-orbit coupling.
 In the presence of magnetic field the spectral lines are split further into levels described by $m_J$.
 :::
 
-- When magnetic field is applied to $H$ atom the external field $B$ now interacts with the total combined angular momentum $J$ which results in splitting of energy values of each level with distinct $J$. That is $^2P_{3/2}$ is split into $2\cdot(3/2+1)=5$ lines and $^2P_{1/2}$ is split into $2(1/2+1)=3$ lines. 
+- When magnetic field is applied to $H$ atom the external field $B$ now interacts with the total combined angular momentum $J$ which results in splitting of energy values of each level with distinct $J$. That is $^2P_{3/2}$ is split into $2\cdot 3/2+1=4$ lines and $^2P_{1/2}$ is split into $2\cdot 1/2+1=2$ lines. 
 
 :::{figure-md} markdown-fig
 <img src="./images/Zeeman.png" alt="anomalus zeeman" class="bg-primary mb-1" width="300px">
