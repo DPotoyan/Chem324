@@ -254,6 +254,12 @@ Determining the values of total angular momentum $j=l+s$ by using the fact that 
 $$^{2S+1}L_J$$
 
 
+:::{figure-md} markdown-fig
+<img src="./images/tot_j.png" alt="spin-ornit coupling" class="bg-primary mb-1" width="300px">
+
+Allowed values of the total angular momentum $j$
+:::
+
 
 :::{admonition} **Example:** 
 :class: note
