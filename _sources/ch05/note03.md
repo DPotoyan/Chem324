@@ -4,48 +4,50 @@
 :::{admonition} What you need to know
 :class: note
 
-- A wavefunction for a one-electron system is called an orbital. For an atomic system such as H (hydrogen atom), it is called an [atomic](http://en.wikipedia.org/wiki/Atomic_orbital).
+- **A wavefunction for a one-electron system is called an orbital**. For an atomic system such as H (hydrogen atom), it is called an [atomic](http://en.wikipedia.org/wiki/Atomic_orbital).
 - The orbital plots demonstrated the shapes of the orbitals but this does not tell us anything about the radial extent (i.e., how far the orbital reaches).
 -  As the value of $Z$ is increased, the radial extent decreases. This indicates that for higher nuclear charge, the electrons will reside closer to the nucleus.
-- The radial functions have $n - l - 1$ zero values (nodes) between distances from zero to infinity.
-- The existence of the nodes makes the wavefunctions orthogonal. For example, $\psi_{1s}$ and $\psi_{2s}$ in hydrogenlike atoms are orthogonal.
+- **The radial wavefunctions have $n - l - 1$ nodes** between distances from zero to infinity.
+- **The angular part of wavefunctions ahve $l$ nodes**
+- **The total number of nodes is $n-1$**
 :::
 
 
 ### Radial profiles of atomic orbitals
 
-When visualizing the radial probabilities, it is possible to do directly plot the square of the radial wavefunction ($R_{nl}^2$) or the radial probability density ($P_{nl}$):
+- When visualizing the radial probabilities, it is possible to do directly plot the square of the radial wavefunction ($R_{nl}^2$) or the radial probability density ($P_{nl}$):
 
 $${P_{nl}(r) = r^2N_{nl}^2R_{nl}^2(r)}$$
 
 ![](images/AO_0.png)
 
-According to this expression, the most probable radius for an electron on hydrogen atom $1s$ orbital is $a_0$ (the Bohr radius). Previous figures showed examples of $R_{nl}$ and $P_{nl}$. Probability densities are useful, for example, in understanding charge distributions in atoms and molecules.
+- According to this expression, the most probable radius for an electron on hydrogen atom $1s$ orbital is $a_0$ (the Bohr radius). Previous figures showed examples of $R_{nl}$ and $P_{nl}$. Probability densities are useful, for example, in understanding charge distributions in atoms and molecules.
 
 ![](images/AO2.jpg)
-As the principal quantum number $n$ increases, the electron moves out to greater distances from the nucleus. The average distance for an electron in a given orbital (with quantum numbers $n$ and $l$) is given by (this is \textit{not} the expectation value):
+
+- As the principal quantum number $n$ increases, the electron moves out to greater distances from the nucleus. The average distance for an electron in a given orbital (with quantum numbers $n$ and $l$) is given by (this is \textit{not} the expectation value):
 
 $${\langle r\rangle_{nl} = \int_0^\infty r\times P_{nl}(r)dr}{= \frac{n^2a_0}{Z}\lbrace 1 + \frac{1}{2}\lbrack  1 - \frac{l(l+1)}{n^2}\rbrack\rbrace}$$
 
-Note that the expectation value of $r$ and the most probable value for $r$ are not equal. The expectation value can be thought of like *an average* and the most probable value like a *maximum value*.
+- Note that the expectation value of $r$ and the most probable value for $r$ are not equal. The expectation value can be thought of like *an average* and the most probable value like a *maximum value*.
 
 
-The probability density (including the angular variables) for the electron in a hydrogenlike atom is given by:
+- The probability density (including the angular variables) for the electron in a hydrogenlike atom is given by:
 
 $${\psi^*_{nlm}(r,\theta,\phi)\psi_{nlm}(r,\theta,\phi) = |N_{nl}R_{nl}(r)Y_l^m(\theta,\phi)|^2}$$
 
-This function depends on three variables and is difficult to plot directly. Previously, we have seen that it is convenient to plot contour levels, which contain the electron with, for example, 90\% probability.
+- This function depends on three variables and is difficult to plot directly. Previously, we have seen that it is convenient to plot contour levels, which contain the electron with, for example, 90\% probability.
 
 
 
 ### 3D shapes of orbitals
 
 
-For degenerate states with $l > 0$, we have an additional degree of freedom in choosing how to represent the orbitals. In fact, any linear combination of given $3l$ orthogonal eigenfunctions corresponding to a degenerate set with orbital angular momentum $l$, is also a solution to the Schr\"odinger equation.
+- For degenerate states with $l > 0$, we have an additional degree of freedom in choosing how to represent the orbitals. In fact, any linear combination of given $3l$ orthogonal eigenfunctions corresponding to a degenerate set with orbital angular momentum $l$, is also a solution to the Schr\"odinger equation.
 
 ![](images/AO.png)
 
-Two commonly used representations are the Cartesian form, which are real valued functions and have been, in the case of $l = 1$, denoted by $p_x$, $p_y$ and $p_z$, and the eigenfunctions of the angular momentum ($L^2$ and $L_z$), which are complex valued and are denoted by $p_{-1}$, $p_0$ and $p_{+1}$. The relation between the representations is:
+- Two commonly used representations are the Cartesian form, which are real valued functions and have been, in the case of $l = 1$, denoted by $p_x$, $p_y$ and $p_z$, and the eigenfunctions of the angular momentum ($L^2$ and $L_z$), which are complex valued and are denoted by $p_{-1}$, $p_0$ and $p_{+1}$. The relation between the representations is:
 
 
 
@@ -90,12 +92,13 @@ $${d_{x^2 - y^2} = \frac{1}{\sqrt{2}} \left(d_{+2} + d_{-2}\right)\textnormal{, 
 - What are the energies of these states?
 - Consider several values for n, and show that the number of orbitals for each $n$ is $n^2$
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution**
+:class: dropdown
 
 If  n=3 the allowed values of l are 0, 1, and 2. 
-- If  l=0; m=0 (1 state)
-- If  l=1; m=−1,0,1 (3 states);
-- If  l=2; m=−2,−1,0,1,2 (5 states). 
+- If  $l=0;\, m=0$ (1 state)
+- If  $l=1;\, m=−1,0,1$ (3 states);
+- If  $l=2;\, m=−2,−1,0,1,2$ (5 states). 
 
 In total, there are 1 + 3 + 5 = 9 allowed states. This confirms that number of orbitals for H-atom is $n^2$
 
@@ -115,7 +118,8 @@ $$
 - What are the possible orientations for the angular momentum vector?
 
 
-:::{dropdown} **Hint**
+:::{admonition} **Hint**
+:class: dropdown
 
 - 3d orbital corresponds to n=1 and l=2. A number of $m_l$ values are possible
 - Orientation of $L_z$. with respect to L is defined by $cos\theta = L_z/L$
@@ -130,7 +134,8 @@ $$
 \psi_{3p_z} = \frac{1}{81}\sqrt{\frac{2}{\pi}}\left(\frac{1}{a_0}\right)^{3/2}\left(6\frac{r}{a_0} - \frac{r^2}{a^2_0}\right) e^{-r/3a_0}	{cos}(\theta)
 $$
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution**
+:class: dropdown
 
 - $3p_z$ corresponds to $n=3$, $l=1$ and $m_l=0$
 
@@ -147,7 +152,8 @@ $$
 - Calculate probabiltiy to find the electron within first Bohr raidus $a_0.$
 - calcualte the most probable value of r to find the electron. 
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution**
+:class: dropdown
 
 - Ground state is 1s;
 
@@ -192,7 +198,8 @@ Carrying out the derivative we find that $r_max=a_0$
 
 Show that $|210\rangle$ is normalized and orthogoanal to $|200\rangle$
 
-:::{dropdown} Hint
+:::{admonition} Hint
+:class: dropdown
 
 - This problem is solved in Chapter 7 of McQuarrie's book. Page 326
 :::
@@ -201,7 +208,8 @@ Show that $|210\rangle$ is normalized and orthogoanal to $|200\rangle$
 
 Calculate average potential energy of H-atom in its ground and first excited states.
 
-:::{dropdown} Hint
+:::{admonition} Hint
+:class: dropdown
 
 - This problem is solved in Chapter 7 of McQuarrie's book. Page 3332
 :::

@@ -470,14 +470,15 @@ document.write(`
                   
   <section id="hydrogenlike-atoms">
 <h1>Hydrogenlike atoms<a class="headerlink" href="#hydrogenlike-atoms" title="Permalink to this heading">#</a></h1>
-<div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<div class="admonition-what-you-need-to-know admonition">
+<p class="admonition-title"><strong>What you need to know</strong></p>
+<p>:class: note</p>
 <ul class="simple">
-<li><p>Hydrogen atom is the simplest atom for which Schrodinger equation can be solved exactly. He atom which only has one more electron already proves to be impossible to solve exactly.</p></li>
-<li><p>The solution of the Schrödinger equation for H atom uses the fact that the Coulomb potential produced by the nucleus is isotropic: it is radially symmetric in space and only depends on the distance to the nucleus. This symmetry gives rise to degenercaies in energy levels.</p></li>
-<li><p>Although the resulting energy eigenfunctions (the orbitals) are not necessarily isotropic themselves, their dependence on the angular coordinates follows completely generally from this isotropy of the underlying potential.</p></li>
-<li><p>The angular momentum is conserved, therefore, the energy eigenvalues may be classified by two angular momentum quantum numbers, ℓ and m (both are integers) and quantize mangitude and projection of angular momentum.</p></li>
-<li><p>Atomic orbitals are introduced which are used for also describing multi-electron atoms and molecules.</p></li>
+<li><p>The <strong>hydrogen atom</strong> is the simplest atom for which the Schrödinger equation can be solved exactly. In contrast, helium—though only having one additional electron—cannot be solved exactly due to the complexity introduced by electron-electron interactions.</p></li>
+<li><p>Solving the Schrödinger equation for the hydrogen atom leverages the fact that the <strong>Coulomb potential from the nucleus is isotropic</strong>: it is radially symmetric and depends solely on the distance from the nucleus. This <strong>symmetry leads to degeneracies in the energy levels</strong>.</p></li>
+<li><p>While the resulting energy eigenfunctions (atomic orbitals) are not necessarily isotropic, their dependence on angular coordinates arises fundamentally from the isotropy of the underlying potential.</p></li>
+<li><p>Because angular momentum is conserved, energy eigenvalues can be classified by two angular momentum quantum numbers, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> (both integers), which quantize the magnitude and projection of angular momentum.</p></li>
+<li><p><strong>Atomic orbitals</strong> derived for hydrogen are also foundational in describing the structure of multi-electron atoms and molecules.</p></li>
 </ul>
 </div>
 <section id="schrodinger-equation-for-hydrogenlike-atoms">
@@ -486,20 +487,23 @@ document.write(`
 <li><p>Consider one electron and one nucleus with charge <span class="math notranslate nohighlight">\(Ze\)</span> where <span class="math notranslate nohighlight">\(e\)</span> is the magnitude of the electron charge (1.6021773 <span class="math notranslate nohighlight">\(\times\)</span> <span class="math notranslate nohighlight">\(10^{-19}\)</span> C) and <span class="math notranslate nohighlight">\(Z\)</span> is the atomic number. Examples of such systems are: H, <span class="math notranslate nohighlight">\(He^+\)</span>, <span class="math notranslate nohighlight">\(Li^{2+}\)</span></p></li>
 <li><p>We can reduce the two body problem to one body problem of electron with reduced mass moving with respect to fixed nucleus. Since electron is might lighter compared to the nucleus we can use electron mass instead of reduced mass <span class="math notranslate nohighlight">\(\mu\approx m_e\)</span></p></li>
 <li><p>We have a porblem of one particle moving in a symmetric potential field in 3D. Expect to get 3 quantum numbers, anticipate some degenreacies due to this raidal symmetry.</p></li>
-<li><p><strong>Potential energy</strong> operator consists of one coulomb term encoding the electrostatic attraction between nucleus and electron:</p></li>
+<li><p><strong>Kinetic energy operator</strong> in 3D is the same as in the particle in a box in 3D:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{\hbar^2}{2m_e}\nabla^2\]</div>
+<ul class="simple">
+<li><p><strong>Potential energy operator</strong> operator consists of one coulomb term encoding the electrostatic attraction between nucleus and electron:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[V= - \frac{Ze^2}{4\pi\epsilon_0 r}\]</div>
 <ul class="simple">
 <li><p>Where <span class="math notranslate nohighlight">\(m_e\)</span> is the electron mass,  <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permittivity">vacuum permitivity</a>.</p></li>
-<li><p><strong>Kinetic energy operator</strong> in 3D is the same as in the particle in a box in 3D:
-$<span class="math notranslate nohighlight">\(\frac{\hbar^2}{2m_e}\nabla^2\)</span>$</p></li>
 </ul>
 </section>
 <section id="h-atom-in-spherical-coordinates-system">
 <h2>H-atom in spherical coordinates system<a class="headerlink" href="#h-atom-in-spherical-coordinates-system" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Because of the spherical symmetry of the <a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb's_law">Coulomb potential</a>it is convenient to work in spherical coordinates:</p></li>
+<li><p>Because of the spherical symmetry of the <a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb's_law">Coulomb potential</a> it is convenient to work in spherical coordinates:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}\]</div>
@@ -550,12 +554,13 @@ $<span class="math notranslate nohighlight">\(\frac{\hbar^2}{2m_e}\nabla^2\)</sp
 <li><p>The eigenvalues <span class="math notranslate nohighlight">\(E_{nl}\)</span> and and the radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ with }n = 1,2,3...{ (independent of }l,l&lt;n{)}}\]</div>
+\[{E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ \,\,\, }n = 1,2,3...{ (independent\, of\, }l,\,\,\,l&lt;n{)}}\]</div>
 <div class="math notranslate nohighlight">
-\[{R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho){exp}\left(-\frac{\rho}{2}\right){ with }\rho = \frac{2Zr}{na_0}{ and }
-a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
+\[R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}\]</div>
 <ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(L_{n+l}^{2l+1}(\rho)\)</span> are <a class="reference external" href="http://en.wikipedia.org/wiki/Laguerre_polynomials">Laguerre polynomials</a>. The constant <span class="math notranslate nohighlight">\(a_0\)</span> is called the <a class="reference external" href="http://en.wikipedia.org/wiki/Bohr_radius">Bohr radius</a>. Some of the first radial wavefunctions are listed on the next page.Some of the electronic energy levels of hydrogen atom are shown below.</p></li>
+<li><p><strong>Bohr radius:</strong> <span class="math notranslate nohighlight">\(a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}\)</span></p></li>
+<li><p><strong>Dimensionless distance defined via ratio of Bohr radius:</strong> <span class="math notranslate nohighlight">\(\rho = \frac{2Zr}{na_0}\)</span></p></li>
+<li><p><strong><a class="reference external" href="http://en.wikipedia.org/wiki/Laguerre_polynomials">Laguerre polynomials</a> <span class="math notranslate nohighlight">\(L_{n+l}^{2l+1}(\rho)\)</span></strong></p></li>
 </ul>
 <section id="examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">
 <h3>Examples of the radial wavefunctions for hydrogenlike atoms<a class="headerlink" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms" title="Permalink to this heading">#</a></h3>
@@ -625,33 +630,36 @@ a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}\]</div>
 </section>
 <section id="quantum-numbers-n-l-and-m">
 <h2>Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span><a class="headerlink" href="#quantum-numbers-n-l-and-m" title="Permalink to this heading">#</a></h2>
-<p>The quantum numbers in hydrogenlike atoms take on the following values dicated by the solution of Schrodinger equation with boundary conditions imposed respective radial and anuglar parts:</p>
+<p>The quantum numbers in hydrogenlike atoms take on the following values dicated by the solution of Schrodinger equation with boundary conditions imposed respective radial and anuglar parts</p>
+<div class="admonition-quantum-numbers-of-hydrogen-atom admonition">
+<p class="admonition-title"><strong>Quantum numbers of Hydrogen Atom</strong></p>
 <div class="math notranslate nohighlight">
 \[{n = 1, 2, 3, ...}\]</div>
 <div class="math notranslate nohighlight">
 \[{l = 0, 1, 2, ..., n-1}\]</div>
 <div class="math notranslate nohighlight">
 \[{m = 0, \pm 1, \pm 2,...,\pm l}\]</div>
+<div class="math notranslate nohighlight">
+\[{m_s = \pm 1/2}\]</div>
+</div>
 <ul class="simple">
-<li><p>For a given value of <span class="math notranslate nohighlight">\(n\)</span>, the level is <span class="math notranslate nohighlight">\(n^2\)</span> times degenerate.</p></li>
 <li><p>For historical reasons, the following letters are used to express the value of <span class="math notranslate nohighlight">\(l\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\phantom{{symbo}}l = 0, 1, 2, 3, ...}{{symbol} = s, p, d, f, ...}\]</div>
 <ul class="simple">
-<li><p>Recall that the wavefunctions for hydrogenlike atoms are <span class="math notranslate nohighlight">\(R_{nl}(r)Y_l^m(\theta,\phi)\)</span> with <span class="math notranslate nohighlight">\(l &lt; n\)</span>. For the first shell we have only one wavefunction: <span class="math notranslate nohighlight">\(R_{10}(r)Y_0^0(\theta,\phi)\)</span>. This state is usually labeled as <span class="math notranslate nohighlight">\(1s\)</span>, where 1 indicates the <a class="reference external" href="http://en.wikipedia.org/wiki/Electron_shell">shell number</a> (<span class="math notranslate nohighlight">\(n\)</span>) and <span class="math notranslate nohighlight">\(s\)</span> corresponds to orbital angular momentum <span class="math notranslate nohighlight">\(l\)</span> being zero. For <span class="math notranslate nohighlight">\(n = 2\)</span>, we have several possibilities: <span class="math notranslate nohighlight">\(l = 0\)</span> or <span class="math notranslate nohighlight">\(l = 1\)</span>. The former is labeled as <span class="math notranslate nohighlight">\(2s\)</span>. The latter is <span class="math notranslate nohighlight">\(2p\)</span> state and consists of three degenerate states: (for example, <span class="math notranslate nohighlight">\(2p_x\)</span>, <span class="math notranslate nohighlight">\(2p_y\)</span>, <span class="math notranslate nohighlight">\(2p_z\)</span> or <span class="math notranslate nohighlight">\(2p_{+1}\)</span>, <span class="math notranslate nohighlight">\(2p_0\)</span>, <span class="math notranslate nohighlight">\(2p_{-1}\)</span>). In the latter notation the values for <span class="math notranslate nohighlight">\(m\)</span> have been indicated as subscripts.</p></li>
-<li><p>There is one more quantum number that has not been discussed yet: <a class="reference external" href="http://en.wikipedia.org/wiki/Spin_quantum_number">Spin quantum number</a> For one-electron systems this can have values <span class="math notranslate nohighlight">\(\pm\frac{1}{2}\)</span> (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is <span class="math notranslate nohighlight">\(2n^2\)</span>.</p></li>
+<li><p>For the <span class="math notranslate nohighlight">\(n=1\)</span> we have only one wavefunction: <span class="math notranslate nohighlight">\(R_{10}(r)Y_0^0(\theta,\phi)\)</span>. This state is usually labeled as <span class="math notranslate nohighlight">\(1s\)</span>, where 1 indicates the <a class="reference external" href="http://en.wikipedia.org/wiki/Electron_shell">shell number</a> (<span class="math notranslate nohighlight">\(n\)</span>) and <span class="math notranslate nohighlight">\(s\)</span> corresponds to orbital angular momentum <span class="math notranslate nohighlight">\(l\)</span> being zero.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n = 2\)</span>, we have several possibilities: <span class="math notranslate nohighlight">\(l = 0\)</span> or <span class="math notranslate nohighlight">\(l = 1\)</span>. The former is labeled as <span class="math notranslate nohighlight">\(2s\)</span>. The latter is <span class="math notranslate nohighlight">\(2p\)</span> state and consists of three degenerate states: (for example, <span class="math notranslate nohighlight">\(2p_x\)</span>, <span class="math notranslate nohighlight">\(2p_y\)</span>, <span class="math notranslate nohighlight">\(2p_z\)</span> or <span class="math notranslate nohighlight">\(2p_{+1}\)</span>, <span class="math notranslate nohighlight">\(2p_0\)</span>, <span class="math notranslate nohighlight">\(2p_{-1}\)</span>). In the latter notation the values for <span class="math notranslate nohighlight">\(m\)</span> have been indicated as subscripts.</p></li>
+<li><p>There is one more quantum number that has not been discussed yet: <a class="reference external" href="http://en.wikipedia.org/wiki/Spin_quantum_number">Spin quantum number</a> <span class="math notranslate nohighlight">\(m_s=\pm 1/2\)</span></p></li>
+<li><p>For one-electron systems this can have values <span class="math notranslate nohighlight">\(\pm\frac{1}{2}\)</span> (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is <span class="math notranslate nohighlight">\(2n^2\)</span>.</p></li>
 </ul>
 </section>
 <section id="total-wave-function">
 <h2>Total wave function<a class="headerlink" href="#total-wave-function" title="Permalink to this heading">#</a></h2>
 <p>The total wavefunction for a hydrogenlike atom is (<span class="math notranslate nohighlight">\(m\)</span> is usually denoted by <span class="math notranslate nohighlight">\(m_l\)</span>):</p>
-<div class="math notranslate nohighlight">
-\[{\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}R_{nl}(r)Y_l^{m_l}(\theta,\phi)}\]</div>
+<p>Where the normalization factor is:</p>
 <div class="math notranslate nohighlight">
 \[{N_{nl} = \sqrt{\left(\frac{2Z}{na_0}\right)^3\frac{(n - l - 1)!}{2n\left[(n + l)!\right]}}}\]</div>
-<div class="math notranslate nohighlight">
-\[R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}\]</div>
 </section>
 <section id="table-of-wavefunctions-in-cartesian-coordinates">
 <h2>Table of Wavefunctions in cartesian coordinates<a class="headerlink" href="#table-of-wavefunctions-in-cartesian-coordinates" title="Permalink to this heading">#</a></h2>
