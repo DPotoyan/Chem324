@@ -1,13 +1,15 @@
 ## Hydrogenlike atoms
 
-```{admonition} What you need to know
+:::{admonition} **What you need to know**
+
 :class: note
-- Hydrogen atom is the simplest atom for which Schrodinger equation can be solved exactly. He atom which only has one more electron already proves to be impossible to solve exactly. 
-- The solution of the Schrödinger equation for H atom uses the fact that the Coulomb potential produced by the nucleus is isotropic: it is radially symmetric in space and only depends on the distance to the nucleus. This symmetry gives rise to degenercaies in energy levels. 
-- Although the resulting energy eigenfunctions (the orbitals) are not necessarily isotropic themselves, their dependence on the angular coordinates follows completely generally from this isotropy of the underlying potential.
-- The angular momentum is conserved, therefore, the energy eigenvalues may be classified by two angular momentum quantum numbers, ℓ and m (both are integers) and quantize mangitude and projection of angular momentum. 
-- Atomic orbitals are introduced which are used for also describing multi-electron atoms and molecules. 
-```
+
+- The **hydrogen atom** is the simplest atom for which the Schrödinger equation can be solved exactly. In contrast, helium—though only having one additional electron—cannot be solved exactly due to the complexity introduced by electron-electron interactions.
+- Solving the Schrödinger equation for the hydrogen atom leverages the fact that the **Coulomb potential from the nucleus is isotropic**: it is radially symmetric and depends solely on the distance from the nucleus. This **symmetry leads to degeneracies in the energy levels**.
+- While the resulting energy eigenfunctions (atomic orbitals) are not necessarily isotropic, their dependence on angular coordinates arises fundamentally from the isotropy of the underlying potential.
+- Because angular momentum is conserved, energy eigenvalues can be classified by two angular momentum quantum numbers, $l$ and $m$ (both integers), which quantize the magnitude and projection of angular momentum.
+- **Atomic orbitals** derived for hydrogen are also foundational in describing the structure of multi-electron atoms and molecules.
+:::
 
 
  ### Schrodinger equation for hydrogenlike atoms
@@ -18,20 +20,23 @@
 
 - We have a porblem of one particle moving in a symmetric potential field in 3D. Expect to get 3 quantum numbers, anticipate some degenreacies due to this raidal symmetry. 
 
-- **Potential energy** operator consists of one coulomb term encoding the electrostatic attraction between nucleus and electron: 
+- **Kinetic energy operator** in 3D is the same as in the particle in a box in 3D: 
+
+$$\frac{\hbar^2}{2m_e}\nabla^2$$
+
+- **Potential energy operator** operator consists of one coulomb term encoding the electrostatic attraction between nucleus and electron: 
 
 $$V= - \frac{Ze^2}{4\pi\epsilon_0 r}$$
 
 - Where $m_e$ is the electron mass,  $\epsilon_0$ is the [vacuum permitivity](http://en.wikipedia.org/wiki/Vacuum_permittivity).
 
-- **Kinetic energy operator** in 3D is the same as in the particle in a box in 3D: 
-$$\frac{\hbar^2}{2m_e}\nabla^2$$
+
 
 
 
 ### H-atom in spherical coordinates system
 
-- Because of the spherical symmetry of the [Coulomb potential](http://en.wikipedia.org/wiki/Coulomb's_law)it is convenient to work in spherical coordinates:
+- Because of the spherical symmetry of the [Coulomb potential](http://en.wikipedia.org/wiki/Coulomb's_law) it is convenient to work in spherical coordinates:
 
 
 $${\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}$$
@@ -78,14 +83,16 @@ $$V_{eff} = - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2} $$
 
 - The eigenvalues $E_{nl}$ and and the radial eigenfunctions $R_{nl}$ can be written as (derivations are lengthy but standard math):
 
-$${E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ with }n = 1,2,3...{ (independent of }l,l<n{)}}$$
+$${E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ \,\,\, }n = 1,2,3...{ (independent\, of\, }l,\,\,\,l<n{)}}$$
 
-$${R_{nl}(r) = \rho^lL^{2l+1}_{n+l}(\rho){exp}\left(-\frac{\rho}{2}\right){ with }\rho = \frac{2Zr}{na_0}{ and }
-a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}}$$
-
-- where $L_{n+l}^{2l+1}(\rho)$ are [Laguerre polynomials](http://en.wikipedia.org/wiki/Laguerre_polynomials). The constant $a_0$ is called the [Bohr radius](http://en.wikipedia.org/wiki/Bohr_radius). Some of the first radial wavefunctions are listed on the next page.Some of the electronic energy levels of hydrogen atom are shown below.
+$$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
 
 
+- **Bohr radius:** $a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}$
+
+- **Dimensionless distance defined via ratio of Bohr radius:** $\rho = \frac{2Zr}{na_0}$
+
+- **[Laguerre polynomials](http://en.wikipedia.org/wiki/Laguerre_polynomials) $L_{n+l}^{2l+1}(\rho)$** 
 
 #### Examples of the radial wavefunctions for hydrogenlike atoms
 
@@ -121,33 +128,47 @@ $${E_i = R_HZ^2\left(\frac{1}{1^2} - \frac{1}{\infty}\right)}$$
 
 ### Quantum numbers $n$, $l$ and $m$
 
-The quantum numbers in hydrogenlike atoms take on the following values dicated by the solution of Schrodinger equation with boundary conditions imposed respective radial and anuglar parts: 
+The quantum numbers in hydrogenlike atoms take on the following values dicated by the solution of Schrodinger equation with boundary conditions imposed respective radial and anuglar parts
+
+:::{admonition} **Quantum numbers of Hydrogen Atom**
 
 $${n = 1, 2, 3, ...}$$
 $${l = 0, 1, 2, ..., n-1}$$
 $${m = 0, \pm 1, \pm 2,...,\pm l}$$
+$${m_s = \pm 1/2}$$
+:::
 
-- For a given value of $n$, the level is $n^2$ times degenerate. 
 
 - For historical reasons, the following letters are used to express the value of $l$:
 
 $${\phantom{{symbo}}l = 0, 1, 2, 3, ...}{{symbol} = s, p, d, f, ...}$$
 
 
-- Recall that the wavefunctions for hydrogenlike atoms are $R_{nl}(r)Y_l^m(\theta,\phi)$ with $l < n$. For the first shell we have only one wavefunction: $R_{10}(r)Y_0^0(\theta,\phi)$. This state is usually labeled as $1s$, where 1 indicates the [shell number](http://en.wikipedia.org/wiki/Electron_shell) ($n$) and $s$ corresponds to orbital angular momentum $l$ being zero. For $n = 2$, we have several possibilities: $l = 0$ or $l = 1$. The former is labeled as $2s$. The latter is $2p$ state and consists of three degenerate states: (for example, $2p_x$, $2p_y$, $2p_z$ or $2p_{+1}$, $2p_0$, $2p_{-1}$). In the latter notation the values for $m$ have been indicated as subscripts.
+- For the $n=1$ we have only one wavefunction: $R_{10}(r)Y_0^0(\theta,\phi)$. This state is usually labeled as $1s$, where 1 indicates the [shell number](http://en.wikipedia.org/wiki/Electron_shell) ($n$) and $s$ corresponds to orbital angular momentum $l$ being zero. 
+- For $n = 2$, we have several possibilities: $l = 0$ or $l = 1$. The former is labeled as $2s$. The latter is $2p$ state and consists of three degenerate states: (for example, $2p_x$, $2p_y$, $2p_z$ or $2p_{+1}$, $2p_0$, $2p_{-1}$). In the latter notation the values for $m$ have been indicated as subscripts.
 
-- There is one more quantum number that has not been discussed yet: [Spin quantum number](http://en.wikipedia.org/wiki/Spin_quantum_number) For one-electron systems this can have values $\pm\frac{1}{2}$ (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is $2n^2$.
+- There is one more quantum number that has not been discussed yet: [Spin quantum number](http://en.wikipedia.org/wiki/Spin_quantum_number) $m_s=\pm 1/2$
+
+- For one-electron systems this can have values $\pm\frac{1}{2}$ (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is $2n^2$.
 
 ### Total wave function
 
 The total wavefunction for a hydrogenlike atom is ($m$ is usually denoted by $m_l$):
 
+:::{admonition}
+:class: important:
 
-$${\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}R_{nl}(r)Y_l^{m_l}(\theta,\phi)}$$
+$${\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}\cdot R_{nl}(r)\cdot Y_{l, m_l}(\theta,\phi)}$$
+
+$$|n, l, m\rangle$$
+
+:::
+
+Where the normalization factor is:
 
 $${N_{nl} = \sqrt{\left(\frac{2Z}{na_0}\right)^3\frac{(n - l - 1)!}{2n\left[(n + l)!\right]}}}$$
 
-$$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
+
 
 ### Table of Wavefunctions in cartesian coordinates
 
