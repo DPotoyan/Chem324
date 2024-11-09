@@ -457,6 +457,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-moment-due-to-spin">Mangetic moment due to spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-depends-on-spin-operator">Hamiltonian depends on spin operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-total-angular-momentum-values-for-h-atom">Determine total angular momentum values for H atom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term Symbols</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-for-electronic-transitions">Selection rules for electronic transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-spin-and-angular-momentum">Summary of spin and angular momentum</a></li>
@@ -647,29 +649,133 @@ E=E_n +\hbar m_l \frac{e}{2m_e} B=E_n+m_l\beta_B B
 <section id="eigenfunctions-of-spin">
 <h2>Eigenfunctions of spin<a class="headerlink" href="#eigenfunctions-of-spin" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The corresponding operators are denoted by <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> and <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>. How about the eigenfunctions? The eigenfunctions are denoted by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> and we don’t write down their specific forms. The following relations apply for these eigenfunctions:</p></li>
+<li><p>The corresponding operators for electron spin are denoted by <span class="math notranslate nohighlight">\( \hat{S}_z \)</span> and <span class="math notranslate nohighlight">\( \hat{S}^2 \)</span>. What about the eigenfunctions? The eigenfunctions of spin are denoted by <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>, and we generally do not specify their explicit forms. The following relations apply to these eigenfunctions:</p></li>
 </ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>eigenfunctions of spin <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span></strong></p>
+<p class="admonition-title"><strong>Eigenfunctions of Spin <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span></strong></p>
 <div class="math notranslate nohighlight">
-\[{\hat{S}^2|\alpha\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\alpha = \frac{3}{4}\hbar^2|\alpha\rangle}\]</div>
+\[
+\hat{S}^2 |\alpha\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
+\]</div>
 <div class="math notranslate nohighlight">
-\[{\hat{S}^2|\beta\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\beta = \frac{3}{4}\hbar^2|\beta\rangle}\]</div>
+\[
+\hat{S}^2 |\beta\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
+\]</div>
 <div class="math notranslate nohighlight">
-\[{\hat{S}_z|\alpha\rangle =  +\frac{1}{2}\hbar |\alpha\rangle}\]</div>
+\[
+\hat{S}_z |\alpha\rangle = +\frac{1}{2} \hbar |\alpha\rangle
+\]</div>
 <div class="math notranslate nohighlight">
-\[{\hat{S}_z|\beta\rangle =  -\frac{1}{2}\hbar |\beta\rangle}\]</div>
+\[
+\hat{S}_z |\beta\rangle = -\frac{1}{2} \hbar |\beta\rangle
+\]</div>
 </div>
 <ul class="simple">
-<li><p>Note that all the following operators commute: <span class="math notranslate nohighlight">\(\hat{H}\)</span>, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>, <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>, and <span class="math notranslate nohighlight">\(\hat{S}_z\)</span>. This means that they all can be specified simultaneously. The spin eigenfunctions are taken to be orthonormal:</p></li>
+<li><p>Note that the following operators commute: <span class="math notranslate nohighlight">\( \hat{H} \)</span>, <span class="math notranslate nohighlight">\( \hat{L}^2 \)</span>, <span class="math notranslate nohighlight">\( \hat{L}_z \)</span>, <span class="math notranslate nohighlight">\( \hat{S}^2 \)</span>, and <span class="math notranslate nohighlight">\( \hat{S}_z \)</span>. This implies that all these quantities can be specified simultaneously. The spin eigenfunctions <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span> are taken to be orthonormal:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\int\alpha^*\alpha d\sigma\equiv\langle\alpha|\alpha\rangle = \int\beta^*\beta d\sigma\equiv\langle\beta|\beta\rangle = 1}\]</div>
+\[
+\int \alpha^* \alpha \, d\sigma \equiv \langle \alpha | \alpha \rangle = \int \beta^* \beta \, d\sigma \equiv \langle \beta | \beta \rangle = 1
+\]</div>
 <div class="math notranslate nohighlight">
-\[{\int\alpha^*\beta d\sigma\equiv\langle\alpha|\beta\rangle = \int\beta^*\alpha d\sigma\equiv\langle\beta|\alpha\rangle = 0}\]</div>
+\[
+\int \alpha^* \beta \, d\sigma \equiv \langle \alpha | \beta \rangle = \int \beta^* \alpha \, d\sigma \equiv \langle \beta | \alpha \rangle = 0
+\]</div>
 <ul class="simple">
-<li><p>where the integrations are over variables that the spin eigenfunctions depend on. Note that we have not specified the actual forms these eigenfunctions. We have only stated that they follow from the rules of angular momentum. A complete wavefunction for a hydrogen like atom must specify also the spin part. The total wavefunction is then a product of the spatial wavefunction and the spin part.</p></li>
+<li><p>Here, the integrations are over the variables that the spin eigenfunctions depend on. Notice that we have not specified the explicit forms of these eigenfunctions; instead, we rely on the principles of angular momentum.</p></li>
+<li><p>To completely describe a hydrogen-like atom, the wavefunction must include the spin component. Thus, the total wavefunction is a product of the spatial wavefunction and the spin part.</p></li>
 </ul>
+<div class="info dropdown admonition">
+<p class="admonition-title"><strong>Action of Spin Operators on Eigenstates</strong></p>
+<p>In quantum mechanics, the spin of an electron is represented by the spin operator <span class="math notranslate nohighlight">\( \vec{S} \)</span>, which has components <span class="math notranslate nohighlight">\( S_x \)</span>, <span class="math notranslate nohighlight">\( S_y \)</span>, and <span class="math notranslate nohighlight">\( S_z \)</span>. For spin-<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> particles, these operators are represented by the Pauli matrices <span class="math notranslate nohighlight">\( \sigma_x \)</span>, <span class="math notranslate nohighlight">\( \sigma_y \)</span>, and <span class="math notranslate nohighlight">\( \sigma_z \)</span> (multiplied by <span class="math notranslate nohighlight">\(\frac{\hbar}{2}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+S_x = \frac{\hbar}{2} \sigma_x, \quad S_y = \frac{\hbar}{2} \sigma_y, \quad S_z = \frac{\hbar}{2} \sigma_z
+\]</div>
+<p>The Pauli matrices are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_x = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}
+\end{split}\]</div>
+<p>The spin eigenstates <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span> correspond to the “spin-up” and “spin-down” states along the <span class="math notranslate nohighlight">\( z \)</span>-axis and are represented as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad \beta = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{split}\]</div>
+<ol class="arabic">
+<li><p><strong><span class="math notranslate nohighlight">\( S_z \)</span> Operator:</strong></p>
+<p>Applying <span class="math notranslate nohighlight">\( S_z \)</span> to <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_z \alpha = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \alpha
+   \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_z \beta = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = -\frac{\hbar}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = -\frac{\hbar}{2} \beta
+   \end{split}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\( S_z \)</span> acts on <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span> as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( S_z \alpha = \frac{\hbar}{2} \alpha \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( S_z \beta = -\frac{\hbar}{2} \beta \)</span></p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( S_x \)</span> Operator:</strong></p>
+<p>Applying <span class="math notranslate nohighlight">\( S_x \)</span> to <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_x \alpha = \frac{\hbar}{2} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \beta
+   \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_x \beta = \frac{\hbar}{2} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \alpha
+   \end{split}\]</div>
+<p>So, <span class="math notranslate nohighlight">\( S_x \)</span> acts on <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span> as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( S_x \alpha = \frac{\hbar}{2} \beta \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( S_x \beta = \frac{\hbar}{2} \alpha \)</span></p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( S_y \)</span> Operator:</strong></p>
+<p>Applying <span class="math notranslate nohighlight">\( S_y \)</span> to <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_y \alpha = \frac{\hbar}{2} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 0 \\ i \end{pmatrix} = \frac{i \hbar}{2} \beta
+   \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   S_y \beta = \frac{\hbar}{2} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} -i \\ 0 \end{pmatrix} = -\frac{i \hbar}{2} \alpha
+   \end{split}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\( S_y \)</span> acts on <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span> as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( S_y \alpha = \frac{i \hbar}{2} \beta \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( S_y \beta = -\frac{i \hbar}{2} \alpha \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Summary Table</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\( \alpha \)</span> (Spin-Up)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\( \beta \)</span> (Spin-Down)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( S_z \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{\hbar}{2} \alpha \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( -\frac{\hbar}{2} \beta \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( S_x \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{\hbar}{2} \beta \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{\hbar}{2} \alpha \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( S_y \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{i \hbar}{2} \beta \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( -\frac{i \hbar}{2} \alpha \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="mangetic-moment-due-to-spin">
 <h2>Mangetic moment due to spin<a class="headerlink" href="#mangetic-moment-due-to-spin" title="Permalink to this heading">#</a></h2>
@@ -726,6 +832,66 @@ and electron Zeeman terms, we have the total Hamiltonian:</p></li>
 <p><span class="caption-number">Fig. 84 </span><span class="caption-text">Determining the values of total angular momentum <span class="math notranslate nohighlight">\(j=l+s\)</span> by using the fact that projections <span class="math notranslate nohighlight">\(m_j\)</span> are given as scalar sum of projections of angular and spin quantum numbers <span class="math notranslate nohighlight">\(m_j=m_l+m_s\)</span> and that <span class="math notranslate nohighlight">\(j\)</span> values follow the anuglar momentum quantization and assume <span class="math notranslate nohighlight">\(2j+1\)</span> values. Shown is the example of determining microstates for <span class="math notranslate nohighlight">\(l=1\)</span> state of H-atom (<span class="math notranslate nohighlight">\(2p^1\)</span>) orbital which gives rise to <span class="math notranslate nohighlight">\(^2P_{3/2}\)</span> and <span class="math notranslate nohighlight">\(^2P_{1/2}\)</span> microstates.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="determine-total-angular-momentum-values-for-h-atom">
+<h2>Determine total angular momentum values for H atom<a class="headerlink" href="#determine-total-angular-momentum-values-for-h-atom" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Understand Angular Momentum Coupling</strong>:
+In a hydrogen atom, the total angular momentum <span class="math notranslate nohighlight">\( \vec{J} \)</span> is the vector sum of the orbital angular momentum <span class="math notranslate nohighlight">\( \vec{L} \)</span> and the spin angular momentum <span class="math notranslate nohighlight">\( \vec{S} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \vec{J} = \vec{L} + \vec{S}
+   \]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( l \)</span> is the orbital angular momentum quantum number, which takes integer values <span class="math notranslate nohighlight">\( l = 0, 1, 2, \dots \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( s \)</span> is the spin quantum number. For an electron, <span class="math notranslate nohighlight">\( s = \frac{1}{2} \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Determine Possible <span class="math notranslate nohighlight">\( j \)</span> Values</strong>:</p>
+<p>The quantum number <span class="math notranslate nohighlight">\( j \)</span> represents the magnitude of the total angular momentum <span class="math notranslate nohighlight">\( \vec{J} \)</span>. The possible values of <span class="math notranslate nohighlight">\( j \)</span> are given by the range:</p>
+<div class="math notranslate nohighlight">
+\[
+   j = |l - s|, |l - s| + 1, \dots, (l + s)
+   \]</div>
+<p>This range includes all integer or half-integer steps from <span class="math notranslate nohighlight">\( |l - s| \)</span> up to <span class="math notranslate nohighlight">\( l + s \)</span>.</p>
+</li>
+<li><p><strong>Calculate <span class="math notranslate nohighlight">\( j \)</span> Values Based on <span class="math notranslate nohighlight">\( l \)</span> and <span class="math notranslate nohighlight">\( s \)</span></strong>:</p>
+<p>Since <span class="math notranslate nohighlight">\( s = \frac{1}{2} \)</span> for a single electron, the possible values of <span class="math notranslate nohighlight">\( j \)</span> will depend on the specific value of <span class="math notranslate nohighlight">\( l \)</span> as follows:</p>
+<ul>
+<li><p><strong>If <span class="math notranslate nohighlight">\( l = 0 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     j = |0 - \frac{1}{2}| = \frac{1}{2}
+     \]</div>
+<p>So, the only possible value for <span class="math notranslate nohighlight">\( j \)</span> is <span class="math notranslate nohighlight">\( j = \frac{1}{2} \)</span>.</p>
+</li>
+<li><p><strong>If <span class="math notranslate nohighlight">\( l = 1 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     j = |1 - \frac{1}{2}| = \frac{1}{2} \quad \text{and} \quad j = 1 + \frac{1}{2} = \frac{3}{2}
+     \]</div>
+<p>Thus, the possible values for <span class="math notranslate nohighlight">\( j \)</span> are <span class="math notranslate nohighlight">\( j = \frac{1}{2} \)</span> and <span class="math notranslate nohighlight">\( j = \frac{3}{2} \)</span>.</p>
+</li>
+<li><p><strong>If <span class="math notranslate nohighlight">\( l = 2 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     j = |2 - \frac{1}{2}| = \frac{3}{2} \quad \text{and} \quad j = 2 + \frac{1}{2} = \frac{5}{2}
+     \]</div>
+<p>The possible values for <span class="math notranslate nohighlight">\( j \)</span> are <span class="math notranslate nohighlight">\( j = \frac{3}{2} \)</span> and <span class="math notranslate nohighlight">\( j = \frac{5}{2} \)</span>.</p>
+</li>
+<li><p><strong>In General</strong>:</p>
+<p>For any integer <span class="math notranslate nohighlight">\( l \)</span>, the possible values of <span class="math notranslate nohighlight">\( j \)</span> will be <span class="math notranslate nohighlight">\( l \pm \frac{1}{2} \)</span>.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Interpretation of <span class="math notranslate nohighlight">\( j \)</span> Values</strong>:
+These <span class="math notranslate nohighlight">\( j \)</span> values correspond to the quantized total angular momentum for the hydrogen atom. The total angular momentum <span class="math notranslate nohighlight">\( J \)</span> has a magnitude of <span class="math notranslate nohighlight">\( \sqrt{j(j+1)} \hbar \)</span>. The <span class="math notranslate nohighlight">\( j \)</span> values determine the energy level splitting in the presence of fine structure interactions, where the spin-orbit coupling affects the energy depending on <span class="math notranslate nohighlight">\( j \)</span>.</p></li>
+<li><p><strong>To Summarize</strong> Given an orbital angular momentum quantum number <span class="math notranslate nohighlight">\( l \)</span> and electron spin <span class="math notranslate nohighlight">\( s = \frac{1}{2} \)</span>, the possible values of <span class="math notranslate nohighlight">\( j \)</span> are <span class="math notranslate nohighlight">\( j = l \pm \frac{1}{2} \)</span>. This derivation is crucial in understanding fine structure in hydrogen atoms and the splitting of spectral lines due to spin-orbit coupling.</p></li>
+</ol>
+</section>
+<section id="term-symbols">
+<h2>Term Symbols<a class="headerlink" href="#term-symbols" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Becsue of spint orbit coupling the energy levels are no longer diescribed by <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(s\)</span> separetely. This is why one introduces term sybols to describe new states with total spin multiplicity <span class="math notranslate nohighlight">\((2S+1)\)</span> and anuglar momentum <span class="math notranslate nohighlight">\(L\)</span> and total angular momentum <span class="math notranslate nohighlight">\(J=L+S\)</span>. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed. For H-atom <span class="math notranslate nohighlight">\(S=1/2\)</span> and <span class="math notranslate nohighlight">\(L=l\)</span></p></li>
 </ul>
@@ -932,6 +1098,8 @@ and electron Zeeman terms, we have the total Hamiltonian:</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-moment-due-to-spin">Mangetic moment due to spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-depends-on-spin-operator">Hamiltonian depends on spin operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-orbit-coupling">Spin-Orbit coupling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-total-angular-momentum-values-for-h-atom">Determine total angular momentum values for H atom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols">Term Symbols</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomalous-zeeman-effect">“Anomalous” Zeeman Effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-for-electronic-transitions">Selection rules for electronic transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-spin-and-angular-momentum">Summary of spin and angular momentum</a></li>

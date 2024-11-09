@@ -178,28 +178,129 @@ $${S_z = m_s\hbar\textnormal{ with }m_s = \pm\frac{1}{2}}$$
 
 ### Eigenfunctions of spin
 
-- The corresponding operators are denoted by $\hat{S}_z$ and $\hat{S}^2$. How about the eigenfunctions? The eigenfunctions are denoted by $\alpha$ and $\beta$ and we don't write down their specific forms. The following relations apply for these eigenfunctions:
 
-:::{admonition} **eigenfunctions of spin $\alpha$ and $\beta$**
+- The corresponding operators for electron spin are denoted by $ \hat{S}_z $ and $ \hat{S}^2 $. What about the eigenfunctions? The eigenfunctions of spin are denoted by $ \alpha $ and $ \beta $, and we generally do not specify their explicit forms. The following relations apply to these eigenfunctions:
+
+:::{admonition} **Eigenfunctions of Spin $ \alpha $ and $ \beta $**
 :class: important
 
-$${\hat{S}^2|\alpha\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\alpha = \frac{3}{4}\hbar^2|\alpha\rangle}$$
+$$
+\hat{S}^2 |\alpha\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
+$$
 
-$${\hat{S}^2|\beta\rangle = \frac{1}{2}\left(\frac{1}{2} + 1\right)\hbar^2\beta = \frac{3}{4}\hbar^2|\beta\rangle}$$
+$$
+\hat{S}^2 |\beta\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
+$$
 
-$${\hat{S}_z|\alpha\rangle =  +\frac{1}{2}\hbar |\alpha\rangle}$$
+$$
+\hat{S}_z |\alpha\rangle = +\frac{1}{2} \hbar |\alpha\rangle
+$$
 
-$${\hat{S}_z|\beta\rangle =  -\frac{1}{2}\hbar |\beta\rangle}$$
+$$
+\hat{S}_z |\beta\rangle = -\frac{1}{2} \hbar |\beta\rangle
+$$
 
 :::
 
-- Note that all the following operators commute: $\hat{H}$, $\hat{L}^2$, $\hat{L}_z$, $\hat{S}^2$, and $\hat{S}_z$. This means that they all can be specified simultaneously. The spin eigenfunctions are taken to be orthonormal:
+- Note that the following operators commute: $ \hat{H} $, $ \hat{L}^2 $, $ \hat{L}_z $, $ \hat{S}^2 $, and $ \hat{S}_z $. This implies that all these quantities can be specified simultaneously. The spin eigenfunctions $ \alpha $ and $ \beta $ are taken to be orthonormal:
 
-$${\int\alpha^*\alpha d\sigma\equiv\langle\alpha|\alpha\rangle = \int\beta^*\beta d\sigma\equiv\langle\beta|\beta\rangle = 1}$$
+$$
+\int \alpha^* \alpha \, d\sigma \equiv \langle \alpha | \alpha \rangle = \int \beta^* \beta \, d\sigma \equiv \langle \beta | \beta \rangle = 1
+$$
 
-$${\int\alpha^*\beta d\sigma\equiv\langle\alpha|\beta\rangle = \int\beta^*\alpha d\sigma\equiv\langle\beta|\alpha\rangle = 0}$$
+$$
+\int \alpha^* \beta \, d\sigma \equiv \langle \alpha | \beta \rangle = \int \beta^* \alpha \, d\sigma \equiv \langle \beta | \alpha \rangle = 0
+$$
 
-- where the integrations are over variables that the spin eigenfunctions depend on. Note that we have not specified the actual forms these eigenfunctions. We have only stated that they follow from the rules of angular momentum. A complete wavefunction for a hydrogen like atom must specify also the spin part. The total wavefunction is then a product of the spatial wavefunction and the spin part.
+- Here, the integrations are over the variables that the spin eigenfunctions depend on. Notice that we have not specified the explicit forms of these eigenfunctions; instead, we rely on the principles of angular momentum. 
+
+- To completely describe a hydrogen-like atom, the wavefunction must include the spin component. Thus, the total wavefunction is a product of the spatial wavefunction and the spin part.
+
+
+
+:::{admonition} **Action of Spin Operators on Eigenstates**
+:class: info, dropdown
+
+In quantum mechanics, the spin of an electron is represented by the spin operator $ \vec{S} $, which has components $ S_x $, $ S_y $, and $ S_z $. For spin-$\frac{1}{2}$ particles, these operators are represented by the Pauli matrices $ \sigma_x $, $ \sigma_y $, and $ \sigma_z $ (multiplied by $\frac{\hbar}{2}$):
+
+$$
+S_x = \frac{\hbar}{2} \sigma_x, \quad S_y = \frac{\hbar}{2} \sigma_y, \quad S_z = \frac{\hbar}{2} \sigma_z
+$$
+
+The Pauli matrices are:
+
+$$
+\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+$$
+
+The spin eigenstates $ \alpha $ and $ \beta $ correspond to the "spin-up" and "spin-down" states along the $ z $-axis and are represented as:
+
+$$
+\alpha = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad \beta = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+$$
+
+
+1. **$ S_z $ Operator:**
+
+   Applying $ S_z $ to $ \alpha $ and $ \beta $:
+
+   $$
+   S_z \alpha = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \alpha
+   $$
+
+   $$
+   S_z \beta = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = -\frac{\hbar}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = -\frac{\hbar}{2} \beta
+   $$
+
+   Thus, $ S_z $ acts on $ \alpha $ and $ \beta $ as follows:
+
+   - $ S_z \alpha = \frac{\hbar}{2} \alpha $
+   - $ S_z \beta = -\frac{\hbar}{2} \beta $
+
+2. **$ S_x $ Operator:**
+
+   Applying $ S_x $ to $ \alpha $ and $ \beta $:
+
+   $$
+   S_x \alpha = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \beta
+   $$
+
+   $$
+   S_x \beta = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \alpha
+   $$
+
+   So, $ S_x $ acts on $ \alpha $ and $ \beta $ as:
+
+   - $ S_x \alpha = \frac{\hbar}{2} \beta $
+   - $ S_x \beta = \frac{\hbar}{2} \alpha $
+
+3. **$ S_y $ Operator:**
+
+   Applying $ S_y $ to $ \alpha $ and $ \beta $:
+
+   $$
+   S_y \alpha = \frac{\hbar}{2} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 0 \\ i \end{pmatrix} = \frac{i \hbar}{2} \beta
+   $$
+
+   $$
+   S_y \beta = \frac{\hbar}{2} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} -i \\ 0 \end{pmatrix} = -\frac{i \hbar}{2} \alpha
+   $$
+
+   Thus, $ S_y $ acts on $ \alpha $ and $ \beta $ as follows:
+
+   - $ S_y \alpha = \frac{i \hbar}{2} \beta $
+   - $ S_y \beta = -\frac{i \hbar}{2} \alpha $
+
+**Summary Table**
+
+| Operator | $ \alpha $ (Spin-Up)              | $ \beta $ (Spin-Down)             |
+|----------|------------------------------------|------------------------------------|
+| $ S_z $  | $ \frac{\hbar}{2} \alpha $        | $ -\frac{\hbar}{2} \beta $       |
+| $ S_x $  | $ \frac{\hbar}{2} \beta $         | $ \frac{\hbar}{2} \alpha $       |
+| $ S_y $  | $ \frac{i \hbar}{2} \beta $       | $ -\frac{i \hbar}{2} \alpha $    |
+
+:::
+
 
 ### Mangetic moment due to spin
 
@@ -233,6 +334,7 @@ $${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hb
 ### Spin-Orbit coupling
 
 - Having two source of mangeitc fields in atoms one due to orbtial momentum and another due to spin there arises a possibility that these microscopic magnets can interact. 
+
 - And such a possibility is indeed realized and known as **spin-orbit coupling!** A new term is added to hamitlonian to account for this fact.
 
 $$\hat{H} = \hat{H}_0 + \frac{A}{r^3} \cdot \hat{L}\hat{S}$$
@@ -248,6 +350,68 @@ $$\hat{H} = \hat{H}_0 + \frac{A}{r^3} \cdot \hat{L}\hat{S}$$
 Determining the values of total angular momentum $j=l+s$ by using the fact that projections $m_j$ are given as scalar sum of projections of angular and spin quantum numbers $m_j=m_l+m_s$ and that $j$ values follow the anuglar momentum quantization and assume $2j+1$ values. Shown is the example of determining microstates for $l=1$ state of H-atom ($2p^1$) orbital which gives rise to $^2P_{3/2}$ and $^2P_{1/2}$ microstates. 
 :::
 
+### Determine total angular momentum values for H atom
+
+1. **Understand Angular Momentum Coupling**:
+   In a hydrogen atom, the total angular momentum $ \vec{J} $ is the vector sum of the orbital angular momentum $ \vec{L} $ and the spin angular momentum $ \vec{S} $:
+
+   $$
+   \vec{J} = \vec{L} + \vec{S}
+   $$
+
+   Here:
+   - $ l $ is the orbital angular momentum quantum number, which takes integer values $ l = 0, 1, 2, \dots $
+   - $ s $ is the spin quantum number. For an electron, $ s = \frac{1}{2} $.
+
+2. **Determine Possible $ j $ Values**:
+
+   The quantum number $ j $ represents the magnitude of the total angular momentum $ \vec{J} $. The possible values of $ j $ are given by the range:
+
+   $$
+   j = |l - s|, |l - s| + 1, \dots, (l + s)
+   $$
+
+   This range includes all integer or half-integer steps from $ |l - s| $ up to $ l + s $.
+
+3. **Calculate $ j $ Values Based on $ l $ and $ s $**:
+
+   Since $ s = \frac{1}{2} $ for a single electron, the possible values of $ j $ will depend on the specific value of $ l $ as follows:
+
+   - **If $ l = 0 $**:
+     
+     $$
+     j = |0 - \frac{1}{2}| = \frac{1}{2}
+     $$
+
+     So, the only possible value for $ j $ is $ j = \frac{1}{2} $.
+
+   - **If $ l = 1 $**:
+     
+     $$
+     j = |1 - \frac{1}{2}| = \frac{1}{2} \quad \text{and} \quad j = 1 + \frac{1}{2} = \frac{3}{2}
+     $$
+
+     Thus, the possible values for $ j $ are $ j = \frac{1}{2} $ and $ j = \frac{3}{2} $.
+
+   - **If $ l = 2 $**:
+
+     $$
+     j = |2 - \frac{1}{2}| = \frac{3}{2} \quad \text{and} \quad j = 2 + \frac{1}{2} = \frac{5}{2}
+     $$
+
+     The possible values for $ j $ are $ j = \frac{3}{2} $ and $ j = \frac{5}{2} $.
+
+   - **In General**:
+
+     For any integer $ l $, the possible values of $ j $ will be $ l \pm \frac{1}{2} $.
+
+4. **Interpretation of $ j $ Values**:
+   These $ j $ values correspond to the quantized total angular momentum for the hydrogen atom. The total angular momentum $ J $ has a magnitude of $ \sqrt{j(j+1)} \hbar $. The $ j $ values determine the energy level splitting in the presence of fine structure interactions, where the spin-orbit coupling affects the energy depending on $ j $.
+
+
+5.  **To Summarize** Given an orbital angular momentum quantum number $ l $ and electron spin $ s = \frac{1}{2} $, the possible values of $ j $ are $ j = l \pm \frac{1}{2} $. This derivation is crucial in understanding fine structure in hydrogen atoms and the splitting of spectral lines due to spin-orbit coupling.
+
+###  Term Symbols
 
 - Becsue of spint orbit coupling the energy levels are no longer diescribed by $l$ and $s$ separetely. This is why one introduces term sybols to describe new states with total spin multiplicity $(2S+1)$ and anuglar momentum $L$ and total angular momentum $J=L+S$. The word total will take more meaning when we discuss multi electorn atoms where angular moenta are summed. For H-atom $S=1/2$ and $L=l$
 
