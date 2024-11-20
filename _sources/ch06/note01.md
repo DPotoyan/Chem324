@@ -81,7 +81,7 @@ $$
 
 ### Pertubation equations of order $0$, $1$ and $2$.
 
-Opening the brackets and collecting different orders of $\lambda$ we have  0, 1 and 2nd order perturbation equations:
+- Opening the brackets and collecting different orders of $\lambda$ we have  0, 1 and 2nd order perturbation equations:
 
 
 $$
@@ -100,22 +100,42 @@ $$
 
 
 
-- Note how the sum of  upstairs index determines the order of perturbation expansion		
-- Note that 0 order is just the exact solution.
-- Note that hamitonian only has first order expansion while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems. 
+- Note how **the sum of  upstairs indeces determines** the order of perturbation expansion		
+- The **0 order is just the exact solution.**
+- **Hamitonian only has first order expansion** while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems. 
 
 
 ### Computing pertrubation correction to energy levels 
 
+:::{admonition} **Perturbation Approximation to Energies**
+:class: important
+
 $$
-\boxed{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
+{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
 $$
 
-- **matrix elements**. The terms $H_{nk}=\langle n^0\mid H^1\mid k^0\rangle$ are matrix elements of the hamiltonian perturbation $\hat{H}^1$.
+- **$n$ and $k$:  Quantum numbers running from groun to excited states, e.g $n=0,1,2...$
 
-- **1st order correction** requires computing diagonal matrix elements only $H_{nn}$. For instance the correction to ground state we must compute $H_{00} = \langle 0|\hat{H}^1|0\rangle$
+- **Matrix Elements of pertrubation**
 
-- **2nd order correction** requires calculating off diagonal elements $H_{nk}$.Note how the energy in the denominator of 2nd order term involves difference between energy of a given state $E_n$ from all other states $E_k$ denoted by k the summation index. 
+$$\color{red} H_{nk}=\langle n^0\mid H^1\mid k^0\rangle$$
+
+$$\color{blue} H_{nn}=\langle n^0\mid H^1\mid n^0\rangle$$
+
+:::
+
+### First and second order corrections to the ground state
+
+- **The first order correction to the ground state** requires computing **diagonal** matrix elements only: 
+
+$$E_0^{(1)}  = \langle 0|\hat{H}^1|0\rangle$$
+
+- **2nd order correction to the ground state** requires calculating **off-diagonal** elements $H_{0k}$ where $n=0$ and k runs over all excited states. 
+
+$$E_0^{(2)} = {\sum_{k \neq 0} \frac{\mid H_{0k}\mid^2}{E^0_0-E^0_k}}$$
+
+- Note how the energy in the denominator of 2nd order term involves difference between energy of a given state $E_n$ from all other states $E_k$ denoted by k the summation index. 
+
 - **Key insight** If the matrix elements are of comparable magnitude the neighbouring energy levels make larger contributions to pertrubation expression.
 
 ### Derivations of 1st and 2nd order corrections
@@ -272,7 +292,7 @@ $$
 ### Applications 
 
 :::{admonition} **Example-1: Estimate ground state with second order pertrubation**
-:class: note 
+:class: info
 
 Write second order correction explicitely for the ground state for some exactly solvable hamiltonian $\hat{H^0}$ pertrubed by $\hat{H^1}$
 
@@ -291,7 +311,7 @@ $$
 :::
 
 :::{admonition} **Example-2: Magnetic field**
-:class: note 
+:class: info
 
 Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom to which we have added a small pertrubation in the form of interation with magnetic field. 
 
@@ -326,7 +346,7 @@ $$
 
 
 :::{admonition} **Example-3: Perturbing particle in a box**
-:class: note
+:class: info
 
 Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:
 
@@ -339,7 +359,7 @@ $$
 V(x) = +\infty  \,\,\, x \leq -\infty,\,\,\,\ x \geq \infty
 $$
 
----
+
 
 This problem can be seen as a particle in a box pertrubed by the presence of a potential energy $V_0$
 
@@ -359,10 +379,10 @@ $$
 :::
 
 
-:::{admonition} **Example-4 Unharmonic oscillator**
+:::{admonition} **Example-4 Anharmonic oscillator**
 :class: note
 
-Unharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:
+- Anharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:
 
 $$
 \hat{H} = \hat{K}+ \frac{kx^2}{2} +\gamma x^3 = \hat{H}_0+\gamma x^3

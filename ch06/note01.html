@@ -451,6 +451,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-just-like-taylor-expansions">It’s just like Taylor expansions!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pertubation-equations-of-order-0-1-and-2">Pertubation equations of order <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pertrubation-correction-to-energy-levels">Computing pertrubation correction to energy levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-and-second-order-corrections-to-the-ground-state">First and second order corrections to the ground state</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivations-of-1st-and-2nd-order-corrections">Derivations of 1st and 2nd order corrections</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
 </ul>
@@ -533,7 +534,9 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 </section>
 <section id="pertubation-equations-of-order-0-1-and-2">
 <h2>Pertubation equations of order <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.<a class="headerlink" href="#pertubation-equations-of-order-0-1-and-2" title="Permalink to this heading">#</a></h2>
-<p>Opening the brackets and collecting different orders of <span class="math notranslate nohighlight">\(\lambda\)</span> we have  0, 1 and 2nd order perturbation equations:</p>
+<ul class="simple">
+<li><p>Opening the brackets and collecting different orders of <span class="math notranslate nohighlight">\(\lambda\)</span> we have  0, 1 and 2nd order perturbation equations:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \color{green}{\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle}
@@ -547,21 +550,43 @@ E_n ={\color{green}E^0_n}+{\color{red}\lambda E^1_n}+{\color{blue}\lambda^2 E^2_
 \color{blue}{\hat{H^0}\mid n^2\rangle+\hat{H^1}\mid n^1\rangle = E^0_n\mid n^2 \rangle + E^1_n\mid n^1 \rangle+E^2_n\mid n^0 \rangle}
 \]</div>
 <ul class="simple">
-<li><p>Note how the sum of  upstairs index determines the order of perturbation expansion</p></li>
-<li><p>Note that 0 order is just the exact solution.</p></li>
-<li><p>Note that hamitonian only has first order expansion while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems.</p></li>
+<li><p>Note how <strong>the sum of  upstairs indeces determines</strong> the order of perturbation expansion</p></li>
+<li><p>The <strong>0 order is just the exact solution.</strong></p></li>
+<li><p><strong>Hamitonian only has first order expansion</strong> while eigenfunctions and eigenvalues are expanded to infinite terms. Usually going to second order is enough for most problems.</p></li>
 </ul>
 </section>
 <section id="computing-pertrubation-correction-to-energy-levels">
 <h2>Computing pertrubation correction to energy levels<a class="headerlink" href="#computing-pertrubation-correction-to-energy-levels" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title"><strong>Perturbation Approximation to Energies</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\boxed{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
+{E_n = \color{green}{E^0_n} + \color{red}{H_{nn}} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
 \]</div>
 <ul class="simple">
-<li><p><strong>matrix elements</strong>. The terms <span class="math notranslate nohighlight">\(H_{nk}=\langle n^0\mid H^1\mid k^0\rangle\)</span> are matrix elements of the hamiltonian perturbation <span class="math notranslate nohighlight">\(\hat{H}^1\)</span>.</p></li>
-<li><p><strong>1st order correction</strong> requires computing diagonal matrix elements only <span class="math notranslate nohighlight">\(H_{nn}\)</span>. For instance the correction to ground state we must compute <span class="math notranslate nohighlight">\(H_{00} = \langle 0|\hat{H}^1|0\rangle\)</span></p></li>
-<li><p><strong>2nd order correction</strong> requires calculating off diagonal elements <span class="math notranslate nohighlight">\(H_{nk}\)</span>.Note how the energy in the denominator of 2nd order term involves difference between energy of a given state <span class="math notranslate nohighlight">\(E_n\)</span> from all other states <span class="math notranslate nohighlight">\(E_k\)</span> denoted by k the summation index.</p></li>
+<li><p>**<span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(k\)</span>:  Quantum numbers running from groun to excited states, e.g <span class="math notranslate nohighlight">\(n=0,1,2...\)</span></p></li>
+<li><p><strong>Matrix Elements of pertrubation</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\color{red} H_{nk}=\langle n^0\mid H^1\mid k^0\rangle\]</div>
+<div class="math notranslate nohighlight">
+\[\color{blue} H_{nn}=\langle n^0\mid H^1\mid n^0\rangle\]</div>
+</div>
+</section>
+<section id="first-and-second-order-corrections-to-the-ground-state">
+<h2>First and second order corrections to the ground state<a class="headerlink" href="#first-and-second-order-corrections-to-the-ground-state" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>The first order correction to the ground state</strong> requires computing <strong>diagonal</strong> matrix elements only:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E_0^{(1)}  = \langle 0|\hat{H}^1|0\rangle\]</div>
+<ul class="simple">
+<li><p><strong>2nd order correction to the ground state</strong> requires calculating <strong>off-diagonal</strong> elements <span class="math notranslate nohighlight">\(H_{0k}\)</span> where <span class="math notranslate nohighlight">\(n=0\)</span> and k runs over all excited states.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E_0^{(2)} = {\sum_{k \neq 0} \frac{\mid H_{0k}\mid^2}{E^0_0-E^0_k}}\]</div>
+<ul class="simple">
+<li><p>Note how the energy in the denominator of 2nd order term involves difference between energy of a given state <span class="math notranslate nohighlight">\(E_n\)</span> from all other states <span class="math notranslate nohighlight">\(E_k\)</span> denoted by k the summation index.</p></li>
 <li><p><strong>Key insight</strong> If the matrix elements are of comparable magnitude the neighbouring energy levels make larger contributions to pertrubation expression.</p></li>
 </ul>
 </section>
@@ -686,7 +711,7 @@ c_k = \frac{ \langle k^0 \mid \hat{H}^1 \mid n^0\rangle}{E^0_n-E^0_k}=\frac{H_{n
 </section>
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
-<div class="note admonition">
+<div class="info admonition">
 <p class="admonition-title"><strong>Example-1: Estimate ground state with second order pertrubation</strong></p>
 <p>Write second order correction explicitely for the ground state for some exactly solvable hamiltonian <span class="math notranslate nohighlight">\(\hat{H^0}\)</span> pertrubed by <span class="math notranslate nohighlight">\(\hat{H^1}\)</span></p>
 <div class="math notranslate nohighlight">
@@ -701,7 +726,7 @@ E_0 =E^0_0+ H_{00} + \frac{\mid H_{01}\mid^2}{E^0_0-E^0_1}+\frac{\mid H_{02}\mid
 <li><p>Notice that for the ground state the second order correction thereofre will always be negative because <span class="math notranslate nohighlight">\(\Delta E_{0k}=E_0-E_k&lt;0\)</span></p></li>
 </ul>
 </div>
-<div class="note admonition">
+<div class="info admonition">
 <p class="admonition-title"><strong>Example-2: Magnetic field</strong></p>
 <p>Hydrogen atom in magnetic field problem can be seen as as a hamitonian of H atom to which we have added a small pertrubation in the form of interation with magnetic field.</p>
 <div class="math notranslate nohighlight">
@@ -728,7 +753,7 @@ E_0=E^0_0 + \langle 0\mid \hat{H}^1 \mid 0\rangle = -\frac{R_H}{n^2}+m_l \beta_B
 E=E_0+ A_{SO} \langle 0 \mid \hat{L} \hat{S}\mid 0 \rangle
 \]</div>
 </div>
-<div class="note admonition">
+<div class="info admonition">
 <p class="admonition-title"><strong>Example-3: Perturbing particle in a box</strong></p>
 <p>Estimate the energy of the ground-state and first excited-state wavefunction within first-order perturbation theory of a system with the following potential energy:</p>
 <div class="math notranslate nohighlight">
@@ -739,7 +764,6 @@ V(x) = V_0\,\,\,\, 0 \leq x \leq \infty
 \[
 V(x) = +\infty  \,\,\, x \leq -\infty,\,\,\,\ x \geq \infty
 \]</div>
-<hr class="docutils" />
 <p>This problem can be seen as a particle in a box pertrubed by the presence of a potential energy <span class="math notranslate nohighlight">\(V_0\)</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -752,8 +776,10 @@ E_n = E^0_n+E^1_n \approx \frac{n^2 h^2}{8mL^2}+V_0
 \]</div>
 </div>
 <div class="note admonition">
-<p class="admonition-title"><strong>Example-4 Unharmonic oscillator</strong></p>
-<p>Unharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:</p>
+<p class="admonition-title"><strong>Example-4 Anharmonic oscillator</strong></p>
+<ul class="simple">
+<li><p>Anharmonic oscillator problem can be seen as a problem fo harmonic oscillator + pertrubation in the form of unharmonic term:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \hat{H} = \hat{K}+ \frac{kx^2}{2} +\gamma x^3 = \hat{H}_0+\gamma x^3
@@ -849,6 +875,7 @@ E_0=E_0+E_1+E_2 = \frac{\hbar \omega}{2} + 0 + \frac{H^2_{01}}{\hbar \omega}+\fr
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-just-like-taylor-expansions">It’s just like Taylor expansions!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pertubation-equations-of-order-0-1-and-2">Pertubation equations of order <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pertrubation-correction-to-energy-levels">Computing pertrubation correction to energy levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-and-second-order-corrections-to-the-ground-state">First and second order corrections to the ground state</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivations-of-1st-and-2nd-order-corrections">Derivations of 1st and 2nd order corrections</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
 </ul>
