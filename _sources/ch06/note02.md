@@ -1,15 +1,29 @@
 
 ## Variational Method
 
-:::{admonition} What you need to know
+:::{admonition} **What you need to know**
 :class: note
 
+1. **Analytical Solutions of the Schrödinger Equation**  
+   - The Schrödinger equation can be solved analytically only for simple systems.  
+   - For atomic systems, the hydrogen atom represents the most complex case with an analytical solution.  
+   - For systems with multiple interacting electrons, such as the helium atom or other multi-electron systems, analytical solutions become intractable.  
 
-- The Schrodinger equation can only be solved analytically for simple systems, which consist of just one particle. When many particles interact e.g He atom and other mulit-electron systems,  analytic solution is not possible. 
-- It is important to develop approximate methods for finding the solutions and to be able to evaluate how close the approximate solution is to the correct one.
-- Variational method provides a powerful tool to make systematic  approximations and quantiatively measure convergence of predictions towards true values.
-- In variational method one first makes an "educated" guess by picking trial functions for the hamiltonian. One then minimizes parameters of the trial function to get solutions closer to the truth.
-- Variational method, when applied to linear combination of trial functions can turn hard QM problem into an easier linear algebra task: solution of systems of linear equations. Instead of solving differentiation equations for eignefunctions/eigenvalues we instead are solving for matrix eigevnalues and eigenvectors.
+2. **Need for Approximation Methods**  
+   - Approximation methods are essential for finding solutions to complex quantum systems.  
+   - These methods enable us to estimate solutions and evaluate how close the approximate results are to the true values.  
+
+3. **The Variational Method**  
+   - The variational method provides a systematic approach for making approximations.  
+   - It allows for a quantitative assessment of the convergence of predictions towards exact values.  
+
+4. **Core Idea of the Variational Method**  
+   - Begin with an "educated guess" by selecting a trial function to represent the wavefunction of the system.  
+   - Adjust the parameters of the trial function to minimize the energy, bringing the solution closer to the exact value.  
+
+5. **Advantages of the Variational Method**  
+   - By using a linear combination of trial functions, the variational method transforms a difficult quantum mechanics problem into a more tractable linear algebra task.  
+   - Instead of solving differential equations to find eigenfunctions and eigenvalues, we solve for the eigenvalues and eigenvectors of a matrix.  
 :::
 
 
@@ -18,21 +32,31 @@
 
 - The variational method states, that for any trial function $\mid \phi \rangle$ The energy computed will always be greater or equal to exact (or true) energy.
 
+::::{admonition}
+:class: important
+
 $$
 E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
 $$
 
-- Where $\hat{H}$ is the Hamiltonian and $E_0$ is the true ground-state energy. Note that the trial function is not generally normalized. The expression simplifies when trial function is normalized beforehand $\langle \phi \mid \phi\rangle=1$
+- $\hat{H}$ is the Hamiltonian of the problem we want to solve
+- $|\phi\rangle$ is a trial wavefunction with unkown parameters we want to determine
+- $E_0$ is the true ground-state energy which generally not known to us
+
+:::
+
+- Note that when we have a trail wavefunction we do not have it normalized hence the need to divide by $\langle \phi \mid \phi\rangle$.
+- The expression simplifies when trial function is normalized beforehand $\langle \phi \mid \phi\rangle=1$
 
 -  If the true ground-state wavefunction $\psi_0$ is inserted in place of $\psi_t$, the equality is reached. For all other wavefunctions (often called trial wavefunctions) the energy expectation value (i.e. the left side) will always be larger. The ratio on the first line is also called the ``Rayleigh ratio''.
 
-**Consequences of Variational theorem**
+### Consequences of Variational theorem
 
-1. Ground state energy is the lowest possible energy for the system.
+1. **Ground state energy is the lowest possible energy for the system.**
 
-2. By minimizing the energy functions we can make most accurate prediction for a given trail function.
+2. **By minimizing the energy functions we can make most accurate prediction for a given trail function.**
 
-3. More parameters give us more handles to vary and get more acurate solutions.
+3. **More parameters give us more handles to vary and get more acurate solutions.**
 
 
 :::{admonition} **Example**
@@ -68,7 +92,7 @@ As indicated above, this gives an upper limit for the ground state energy $E_1$.
 :::
 
 :::{admonition} **Solution**
-:class: note
+:class: note, dropdown
 
 - plug the trial function into energy expression computing energy as a function of a parmater $\alpha$
 
@@ -151,12 +175,15 @@ $${\psi(r_1)\psi(r_2) = \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}e^{-
 =\frac{1}{\pi}\left(\frac{Z}{a_0}\right)^3e^{-Z(r_1 + r_2)/a_0}}$$
 
 ### Consequences of independent electron approximation
+
 - For a ground state He atom both electron reside on the lowest energy orbital and therefore the total wavefunction is $\psi(r_1,r_2) = \psi(r_1)\psi(r_2) = \psi(1)\psi(2) = 1s(1)1s(2)$. The energy obtained from this approximation is not sufficiently accurate (missing electron -- electron repulsion) but the wavefunction can be used for qualitative analysis. The variational principle  gives a systematic way to asses how good our approximation is. 
+
 - The exact ground state energy has been found (very extensive analytic \& numerical calculations) as -79.0 eV. By using the approximate wavefunction, we can calculate the expectation value for energy. This yields -74.8 eV and thus the error in energy for this wavefunction is -5.2 eV. Note that the approximate value is, in accordance with the variational principle, higher than the true energy.
 
 ### A better approximation
 
 - We can take the wavefunction from the previous step and use the nuclear charge $Z$ as a variational parameter. The variational principle states that minimization of the energy expectation value with respect to $Z$ should approach the true value from above (but obviously will not reach it). 
+
 - By judging the energy, we can say that this new wavefunction is better than the previous wavefunction. The obtained value of $Z$ is less than the true $Z$ (= 2). This can be understood in terms of electrons shielding the nucleus from each other and hence giving a reduced nuclear charge. 
 
 $${E = \langle\psi |\hat{H}|\psi\rangle = ... = \left[ Z^2 - \frac{27Z}{8}\right]\frac{e^2}{4\pi\epsilon_0a_0}}$$
@@ -197,7 +224,9 @@ $$\Gamma\left[\frac{1}{2}\right] = \sqrt{\pi}$$
 
 
 
-:::{dropdown} **Solution**
+:::{admonition} **Solution**
+:class: dropdown
+
 Use the variational principle and employ spherical coordinates in integrations:\\
 
 $E = \frac{\int\psi^*_{trial}H\psi_{trial}d\tau}{\int\psi^*_{trial}\psi_{trial}d\tau}$

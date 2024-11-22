@@ -496,9 +496,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Variational Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearizing-the-pproblem">Linearizing the pproblem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearizing-the-problem">Linearizing the problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smallest-example">Smallest example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue Problem</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a><ul class="visible nav section-nav flex-column">
@@ -520,20 +520,24 @@ document.write(`
   <section id="linear-variational-method">
 <h1>Linear Variational Method<a class="headerlink" href="#linear-variational-method" title="Permalink to this heading">#</a></h1>
 <div class="note admonition">
-<p class="admonition-title">What you need to know</p>
+<p class="admonition-title"><strong>What You Need to Know</strong></p>
 <ul class="simple">
-<li><p>The variational method is a powerful method that can be used to determine upper bounds and approximations for ground state energies of numerous quantum mechanical problems.</p></li>
-<li><p>The variational method is used heavily in electronic structure theories such as Hartree Fock.</p></li>
-<li><p>The linear varaation method is seeking solutions to Schrodinger equation by expressing trial wavefunctions as linear combinations of easy to compute functions like gaussians or exponential.</p></li>
-<li><p>The linear variational method converts Schrodinger equation into linear algebra problem of finding eigenvalues (energies) and eigenvectors (coefficients in linear combination)</p></li>
+<li><p>The variational method is a powerful tool for estimating upper bounds and approximations for ground-state energies in a wide range of quantum mechanical problems.</p></li>
+<li><p>It plays a key role in electronic structure theories, such as Hartree-Fock.</p></li>
+<li><p>The <strong>linear variational method</strong> seeks solutions to the Schrödinger equation by representing trial wavefunctions as linear combinations of simple, computationally efficient functions, such as Gaussians or exponentials.</p></li>
+<li><p>By applying the linear variational method, the Schrödinger equation is transformed into a linear algebra problem, where the goal is to find eigenvalues (representing energies) and eigenvectors (providing coefficients for the linear combination).</p></li>
 </ul>
 </div>
-<section id="linearizing-the-pproblem">
-<h2>Linearizing the pproblem<a class="headerlink" href="#linearizing-the-pproblem" title="Permalink to this heading">#</a></h2>
-<p>How does this help us in practice?  In a typical QM problem, we are attempting to solve for the wavefunction(s) and energy(ies) for a given Hamiltonian.  If the Hamiltonian is such that solving the problem exactly is too challenging (e.g. any two or more electron problem) we can expand the wavefunction in a basis and attempt to solve the problem that way.  We start with</p>
+<section id="linearizing-the-problem">
+<h2>Linearizing the problem<a class="headerlink" href="#linearizing-the-problem" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How does linearization help us in practice?  In a typical QM problem, we are attempting to solve for the wavefunction(s) and energy(ies) for a given Hamiltonian.  If the Hamiltonian is such that solving the problem exactly is too challenging (e.g. any two or more electron problem) we can expand the wavefunction in a basis and attempt to solve the problem that way.  We start with</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\psi \approx \phi = \sum_n^N c_nf_n\]</div>
-<p>Truncating this expansion at any finite <span class="math notranslate nohighlight">\(n\)</span> leads to an approximate solution.  Also, what the variational principle tells us is that we can minimize the energy with respect to variational paramters <span class="math notranslate nohighlight">\({c_n}\)</span> and still have <span class="math notranslate nohighlight">\(E_\phi \geq E_0\)</span>.</p>
+<ul class="simple">
+<li><p>Truncating this expansion at any finite <span class="math notranslate nohighlight">\(n\)</span> leads to an approximate solution.  Also, what the variational principle tells us is that we can minimize the energy with respect to variational paramters <span class="math notranslate nohighlight">\({c_n}\)</span> and still have <span class="math notranslate nohighlight">\(E_\phi \geq E_0\)</span>.</p></li>
+</ul>
 </section>
 <section id="smallest-example">
 <h2>Smallest example<a class="headerlink" href="#smallest-example" title="Permalink to this heading">#</a></h2>
@@ -546,75 +550,47 @@ document.write(`
 <li><p>There is currently no need to define these functions explicitly so we will leave them as generic functions <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span>.  We now solve for the energy</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[E_\phi = \frac{\langle\phi|\hat{H}|\phi\rangle}{\langle\phi|\phi\rangle}\]</div>
-<div class="math notranslate nohighlight">
-\[ = \frac{\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle}{\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle}\]</div>
-<ul class="simple">
-<li><p>Let’s investigate the numerator and denomenator separately.  We start with the numerator</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle = \langle c_1f_1|\hat{H}|c_1f_1\rangle + \langle c_1f_1|\hat{H}|c_2f_2\rangle +\langle c_2f_2|\hat{H}|c_1f_1\rangle + \langle c_2f_2|\hat{H}|c_2f_2\rangle\]</div>
-<div class="math notranslate nohighlight">
-\[ = c_1^*c_1\langle f_1|\hat{H}|f_1\rangle + c_1^*c_2\langle f_1|\hat{H}|f_2\rangle +c_2^*c_1\langle f_2|\hat{H}|f_1\rangle + c_2^*c_2\langle f_2|\hat{H}|f_2\rangle\]</div>
-<ul class="simple">
-<li><p>We note that <span class="math notranslate nohighlight">\(c_i\)</span> are real and thus <span class="math notranslate nohighlight">\(c_1^*c_1=c_1^2\)</span> and <span class="math notranslate nohighlight">\(c_1c_2=c_2c_1\)</span> thus</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Numerator = c_1^2 \langle f_1|\hat{H}|f_1\rangle + c_1c_2\langle f_1|\hat{H}|f_2\rangle +c_2c_1\langle f_2|\hat{H}|f_1\rangle + c_2^2\langle f_2|\hat{H}|f_2\rangle\]</div>
-<ul class="simple">
-<li><p>Finally we recognize that since <span class="math notranslate nohighlight">\(\hat{H}\)</span> is Hermitian, we have <span class="math notranslate nohighlight">\(\langle f_2|\hat{H}|f_1\rangle = \langle f_1|\hat{H}|f_2\rangle\)</span> yielding</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Numerator = c_1^2 \langle f_1|\hat{H}|f_1\rangle + 2c_1c_2\langle f_1|\hat{H}|f_2\rangle + c_2^2\langle f_2|\hat{H}|f_2\rangle\]</div>
-<ul class="simple">
-<li><p>We will refer to the integrals above as <em>matrix elements</em> with, generically, <span class="math notranslate nohighlight">\(H_{ij} = \langle f_i|\hat{H}|f_j\rangle\)</span>. We now consider the denominator of the energy equation above and we utilize similar algebra for the numerator to get</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle = c_1^2S_{11} + 2c_1c_2S_{12} + c_2^2S_{22}\]</div>
-<div class="math notranslate nohighlight">
-\[S_{ij} = \langle f_i|f_j\rangle\]</div>
-<p>where <span class="math notranslate nohighlight">\(S_{ij}\)</span> is another matrix element but this time referred to as the basis function overlap.Now we have that the energy of the trial wavefunction is</p>
+\[E_\phi = \frac{\langle\phi|\hat{H}|\phi\rangle}{\langle\phi|\phi\rangle} = \frac{\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle}{\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle}\]</div>
 <div class="math notranslate nohighlight">
 \[E_\phi = \frac{c_1^2 H_{11} + 2c_1c_2H_{12} + c_2^2H_{22}}{c_1^2S_{11} + 2c_1c_2S_{12} + c_2^2S_{22}}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_{ij} = \langle f_i |\hat{H}|f_j\rangle\)</span>  <strong>Hamiltonian matrix element expressed in basis of <span class="math notranslate nohighlight">\(f\)</span></strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{ij} = \langle f_i|f_j\rangle\)</span>   <strong>S matrix element or overlap integral expressed in basis of <span class="math notranslate nohighlight">\(f\)</span></strong>. This one measures how similiar <span class="math notranslate nohighlight">\(f_i\)</span> is to <span class="math notranslate nohighlight">\(f_j\)</span>.</p></li>
+</ul>
 </section>
 <section id="eigenvalue-problem">
-<h2>Eigenvalue problem<a class="headerlink" href="#eigenvalue-problem" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Since <span class="math notranslate nohighlight">\(E_\phi \geq E_0\)</span> for any function <span class="math notranslate nohighlight">\(\phi\)</span> we can minimize the energy, <span class="math notranslate nohighlight">\(E_\phi\)</span>, with respect to variational paramters <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>.  We start by minimizing with respect to <span class="math notranslate nohighlight">\(c_1\)</span> which equates to differentiating the energy with respect to <span class="math notranslate nohighlight">\(c_1\)</span> and setting that derivative to zero</p></li>
-</ul>
+<h2>Eigenvalue Problem<a class="headerlink" href="#eigenvalue-problem" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Since <span class="math notranslate nohighlight">\(E_\phi \geq E_0\)</span> for any trial function <span class="math notranslate nohighlight">\(\phi\)</span>, we can minimize the energy <span class="math notranslate nohighlight">\(E_\phi\)</span> by varying the parameters <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>.</p></li>
+<li><p>To minimize with respect to <span class="math notranslate nohighlight">\(c_1\)</span>, we differentiate <span class="math notranslate nohighlight">\(E_\phi\)</span> with respect to <span class="math notranslate nohighlight">\(c_1\)</span> and set the derivative equal to zero:</p>
 <div class="math notranslate nohighlight">
-\[\frac{\partial E_\phi}{\partial c_1} = 0 = c_1(H_{11}-ES_{11}) + c_2(H_{12}-ES_{12})\]</div>
-<ul class="simple">
-<li><p>Similarly, minimizing with respect to <span class="math notranslate nohighlight">\(c_2\)</span> we get</p></li>
-</ul>
+\[\frac{\partial E_\phi}{\partial c_1} = 0 = c_1(H_{11} - ES_{11}) + c_2(H_{12} - ES_{12})\]</div>
+</li>
+<li><p>Similarly, minimizing with respect to <span class="math notranslate nohighlight">\(c_2\)</span> gives:</p>
 <div class="math notranslate nohighlight">
-\[\frac{\partial E_\phi}{\partial c_2} = 0 = c_1(H_{12}-ES_{12}) + c_2(H_{22}-ES_{22})\]</div>
-<ul class="simple">
-<li><p>We can rewrite the above two coupled linear equations as a matrix equation</p></li>
-</ul>
+\[\frac{\partial E_\phi}{\partial c_2} = 0 = c_1(H_{12} - ES_{12}) + c_2(H_{22} - ES_{22})\]</div>
+</li>
+<li><p>These two coupled linear equations can be expressed compactly as a matrix equation:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} H_{11}-ES_{11} &amp; H_{12}-ES_{12} \\ H_{12}-ES_{12} &amp; H_{22}-ES_{22} \end{bmatrix}\begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0\end{split}\]</div>
-<ul class="simple">
-<li><p>We can rewrite the left most matrix as a difference of two matrices and then add to both sides:</p></li>
-</ul>
+\[\begin{split}\begin{bmatrix} H_{11} - ES_{11} &amp; H_{12} - ES_{12} \\ H_{12} - ES_{12} &amp; H_{22} - ES_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0\end{split}\]</div>
+</li>
+<li><p>The matrix on the left can be rewritten as the difference between two matrices:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\left(\begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} - \begin{bmatrix} ES_{11} &amp; ES_{12} \\ ES_{12} &amp; ES_{22} \end{bmatrix} \right) \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0\end{split}\]</div>
+\[\begin{split}\left(\begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} - E \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_{22} \end{bmatrix} \right) \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0\end{split}\]</div>
+</li>
+<li><p>Rearranging, we can write:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\Rightarrow \begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = \begin{bmatrix} ES_{11} &amp; ES_{12} \\ ES_{12} &amp; ES_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} \end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = E\begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} \end{split}\]</div>
-<ul class="simple">
-<li><p>or, written in more general matrix notation,</p></li>
-</ul>
+\[\begin{split}\begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = E \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}\end{split}\]</div>
+</li>
+<li><p>In more compact matrix notation, this becomes:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c}\]</div>
-<ul class="simple">
-<li><p>If we now left multiply both sides of the above equation by <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\)</span> we see that we have an eigenvalue-eigenvector problem</p></li>
-</ul>
+</li>
+<li><p>By left-multiplying both sides by <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\)</span>, we transform this into a standard eigenvalue problem:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}\]</div>
-<ul class="simple">
-<li><p>Thus the minimum energies are the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> and the variational parameters that minimize the energies are the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span>.</p></li>
+</li>
+<li><p>Therefore, the minimum energies correspond to the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span>, and the variational parameters that minimize the energies are the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span>.</p></li>
 </ul>
 </section>
 </section>
@@ -813,9 +789,9 @@ First eigenvector: [-0.66168489 -0.74978204]
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Variational Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearizing-the-pproblem">Linearizing the pproblem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearizing-the-problem">Linearizing the problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smallest-example">Smallest example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem">Eigenvalue Problem</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-particle-in-a-box">Example: Particle in a Box</a><ul class="visible nav section-nav flex-column">
