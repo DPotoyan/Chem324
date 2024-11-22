@@ -582,16 +582,64 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix} H_{11} &amp; H_{12} \\ H_{12} &amp; H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = E \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}\end{split}\]</div>
 </li>
-<li><p>In more compact matrix notation, this becomes:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c}\]</div>
-</li>
+<li><p>In more compact matrix notation, this becomes:</p></li>
+</ul>
+<ul>
 <li><p>By left-multiplying both sides by <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\)</span>, we transform this into a standard eigenvalue problem:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}\]</div>
 </li>
 <li><p>Therefore, the minimum energies correspond to the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span>, and the variational parameters that minimize the energies are the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span>.</p></li>
 </ul>
+<div class="tip collapse admonition">
+<p class="admonition-title"><strong>Breaking problem down to matrix eigenvalue eigenvector problem</strong></p>
+<p>In the equation</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c},\]</div>
+<p><strong><span class="math notranslate nohighlight">\(\mathbf{I}\)</span></strong> represents the identity matrix. Its role in this context is essential to express the equation as a <strong>standard eigenvalue problem</strong>.</p>
+<ol class="arabic">
+<li><p><strong>Eigenvalue Problem Form</strong>:</p>
+<p>In linear algebra, a standard eigenvalue problem is written as:<br />
+$<span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{v} = \lambda \mathbf{I}\mathbf{v},\)</span>$<br />
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a square matrix,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar eigenvalue,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the identity matrix, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is the corresponding eigenvector.</p></li>
+</ul>
+<p>The identity matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> ensures that <span class="math notranslate nohighlight">\(\lambda\)</span> scales the eigenvector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> without altering its direction. The eigenvalue problem is about finding the values of <span class="math notranslate nohighlight">\(\lambda\)</span> and their associated <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
+</li>
+<li><p><strong>Connecting to <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}\)</span></strong>:<br />
+Here, <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> acts as the operator <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> in the standard eigenvalue problem.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> is a matrix resulting from left-multiplying <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> by the inverse of <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{c}\)</span> represents the eigenvector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\)</span> is the eigenvalue (corresponding to the energy in the quantum mechanical system).</p></li>
+</ul>
+<p>The identity matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is explicitly included to highlight that <span class="math notranslate nohighlight">\(E\)</span> is a scalar multiplying the vector <span class="math notranslate nohighlight">\(\mathbf{c}\)</span>. This ensures that the left-hand side (a matrix operation) matches the right-hand side (a scaled vector).</p>
+</li>
+<li><p><strong>Why <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\)</span> Appears</strong>:<br />
+Initially, we had:<br />
+$<span class="math notranslate nohighlight">\(\mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c},\)</span><span class="math notranslate nohighlight">\(  
+which cannot directly be interpreted as an eigenvalue problem because of the presence of \)</span>\mathbf{S}<span class="math notranslate nohighlight">\( (the overlap matrix). To transform this into a standard form, we pre-multiply both sides by \)</span>\mathbf{S}^{-1}<span class="math notranslate nohighlight">\(:  
+\)</span><span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{S}^{-1}\mathbf{S}\mathbf{c}.\)</span><span class="math notranslate nohighlight">\(  
+Since \)</span>\mathbf{S}^{-1}\mathbf{S} = \mathbf{I}<span class="math notranslate nohighlight">\(, this simplifies to:  
+\)</span><span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}.\)</span>$</p></li>
+<li><p><strong>How to Interpret This as an Eigenvalue Problem</strong>:<br />
+The equation now has the form of a standard eigenvalue problem:<br />
+$<span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{v} = \lambda \mathbf{I}\mathbf{v},\)</span>$<br />
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{S}^{-1}\mathbf{H}\)</span> is the effective matrix to diagonalize,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda = E\)</span> are the eigenvalues, corresponding to the energy levels,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{c}\)</span> are the eigenvectors, containing the coefficients of the trial wavefunctions.</p></li>
+</ul>
+</li>
+<li><p><strong>Physical Interpretation</strong>:<br />
+Solving the eigenvalue problem <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}\)</span> gives the approximate energies (<span class="math notranslate nohighlight">\(E\)</span>) of the quantum system as eigenvalues and the corresponding variational parameters (<span class="math notranslate nohighlight">\(\mathbf{c}\)</span>) as eigenvectors. The identity matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is crucial for preserving the standard form of the eigenvalue problem, ensuring proper mathematical and physical interpretation.</p></li>
+</ol>
+</div>
 </section>
 </section>
 <section id="example-particle-in-a-box">
@@ -599,7 +647,7 @@ document.write(`
 <p>Let’s consider a free particle in 1D bounded to <span class="math notranslate nohighlight">\(0\leq x\leq a\)</span>.  The Hamiltonian for such a system is simply the kinetic energy operator</p>
 <div class="math notranslate nohighlight">
 \[\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
-<p>While we can (/have) solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating <span class="math notranslate nohighlight">\(\psi(x)\)</span> as an expansion in two basis functions</p>
+<p>While we can have solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating <span class="math notranslate nohighlight">\(\psi(x)\)</span> as an expansion in two basis functions</p>
 <div class="math notranslate nohighlight">
 \[\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2\]</div>
 <p>where the basis functions are <span class="math notranslate nohighlight">\(f_1(x) = x(a-x)\)</span> and <span class="math notranslate nohighlight">\(f_2(x) = x^2(a-x)^2\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the variational parameters (/linear coefficients of basis functions).  In order to solve for the variational energies and wavefunctions given this expansion we must construct the Hamiltonian matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span>, and the basis function overlap matrix, <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>.  We will then compute and diagonlize the <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> matrix.  Recall,</p>
