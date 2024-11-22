@@ -32,7 +32,7 @@
 
 - The variational method states, that for any trial function $\mid \phi \rangle$ The energy computed will always be greater or equal to exact (or true) energy.
 
-::::{admonition}
+:::{admonition}
 :class: important
 
 $$
