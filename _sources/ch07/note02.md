@@ -190,7 +190,7 @@ $$\Rightarrow\textnormal{ }\hat{S}_{z,tot}|\psi\rangle = \left(\hat{S}_{z_1} + \
 
 - Previously we had both electrons on $1s$ orbital with opposite spins. If the electrons reside on two different orbitals, for example, $1s$ and $2s$, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.). 
 
-- The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
+-The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
 
 $${\psi_{sym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) + 1s(2)2s(1)\right)\textnormal{ (symmetric)}}$$
 
