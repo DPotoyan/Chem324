@@ -12,7 +12,8 @@ introduced can have exceptions.
 ## Orbital Approximation
 
 - The Schrödinger equation for hydrogenic atoms can be solved exactly.
-- For many-electron atoms, the wavefunction depends on multiple variables:
+- For many-electron atoms, the wavefunction depends on coordinates of multiple electonrs, hence we can not separate variables and solve problem exactly. 
+- We can however approximate multi-electorn wavefunction as product of single electron wavefunctions to be determined via variational method. 
 
 :::{admonition}
 :class: important
@@ -26,24 +27,14 @@ $$
 
 :::
 
-- Exact solutions are not possible due to electron-electron interactions. We use approximations based on hydrogenic orbitals.
-
-
 ### Helium wavefunction
 
-- For the helium atom, we make orbital approximation:
+- For instance for the helium atom we first the orbital approximation:
 
 $$\Psi(r_1, r_2) \approx \phi_1(r_1)\phi_2(r_2)$$
 
-- This approximation neglects electron interactions:
-$$
-\hat{H} \approx \hat{H}_1 + \hat{H}_2
-$$
-Where:
-$$
-\hat{H}_1 = -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{Ze^2}{4\pi\epsilon_0 r_1}, \quad
-\hat{H}_2 = -\frac{\hbar^2}{2m}\nabla_2^2 - \frac{Ze^2}{4\pi\epsilon_0 r_2}
-$$
+- With this approximation, as we will see shortly we ignore **electron-electron correlation** which can lead to quantiatively poor prediction of electronic energies. 
+
 
 
 ### Issue 1: Antisymmetry Requirement
@@ -118,6 +109,8 @@ $${\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\
 
 - A generalization of antisimmetric wavefunctions for N electrons was proposed by Slater in 1929:
 
+- The Slater determinant automatically ensures that the total wavefunction is antisymmetric. Note that from the mathematical point of view the antisymmetry requirement restricts the allowed solutions to the Schr\"odinger equation. The lowest energy solutions are typically symmetric and the antisymmetric states correspond to higher energy. 
+
 $${
 \psi(r_1,...,r_n) = \frac{1}{\sqrt{n!}}
 \begin{vmatrix}
@@ -128,6 +121,10 @@ $${
 \end{vmatrix}
 }$$
 
+- However, one must be careful with terminology here because only the antisymmetric states exist for electrons (Fermions) and as such they are the lowest energy (ground state) solutions for them. Particles that have symmetric wavefunctions are called Bosons (for example, $^4$He atoms).
+- In general, particles with half-integral spin ($s = \frac{1}{2}, \frac{3}{2}, ...$) are Fermions (Fermi-Dirac statistics) and particles with integral spin ($s = 0, 1, 2, ...$) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when {spin-orbit} interaction is included (will be discussed later).
+
+- For the ground state of He the Slater determinant is:
 
 $${
 \psi(r_1,r_2) = \frac{1}{\sqrt{2}}\begin{vmatrix}
@@ -135,13 +132,6 @@ $${
 1s(2)\alpha(2) & 1s(2)\beta(2)\\
 \end{vmatrix}
 }$$
-
-
-- The Slater determinant automatically ensures that the total wavefunction is antisymmetric. Note that from the mathematical point of view the antisymmetry requirement restricts the allowed solutions to the Schr\"odinger equation. The lowest energy solutions are typically symmetric and the antisymmetric states correspond to higher energy. 
-- However, one must be careful with terminology here because only the antisymmetric states exist for electrons (Fermions) and as such they are the lowest energy (ground state) solutions for them. Particles that have symmetric wavefunctions are called Bosons (for example, $^4$He atoms).
-
-
-- In general, particles with half-integral spin ($s = \frac{1}{2}, \frac{3}{2}, ...$) are Fermions (Fermi-Dirac statistics) and particles with integral spin ($s = 0, 1, 2, ...$) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when {spin-orbit} interaction is included (will be discussed later).
 
 
 :::{admonition} **Slater determinant for ground state of Li**
@@ -196,9 +186,11 @@ $$\Rightarrow\textnormal{ }\hat{S}_{z,tot}|\psi\rangle = \left(\hat{S}_{z_1} + \
 :::
 
 
-### Singlet vs Triplet states
+### Singlet vs Triplet states of He atom
 
-- Previously we had both electrons on $1s$ orbital with opposite spins. If the electrons reside on two different orbitals, for example, $1s$ and $2s$, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.). The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
+- Previously we had both electrons on $1s$ orbital with opposite spins. If the electrons reside on two different orbitals, for example, $1s$ and $2s$, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.). 
+
+- The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
 
 $${\psi_{sym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) + 1s(2)2s(1)\right)\textnormal{ (symmetric)}}$$
 
@@ -220,7 +212,10 @@ $$
 \left.\phi_4 = \frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \beta(1)\alpha(2)\right)\right\rbrace\textnormal{ Singlet state}
 $$
 
-Before we can combine the spatial and spin wavefunctions, we must consider the symmetries of these functions. Remember that the total wavefunction must be antisymmetric. Thus the allowed combinations are: symmetric (spatial) $\times$ antisymmetric (spin) or antisymmetric (spatial) $\times$ symmetric (spin). The total wavefunction for the triplet state is therefore:
+
+- Before we can combine the spatial and spin wavefunctions, we must consider the symmetries of these functions. Remember that the total wavefunction must be antisymmetric. Thus the allowed combinations are: symmetric (spatial) $\times$ antisymmetric (spin) or antisymmetric (spatial) $\times$ symmetric (spin). 
+
+- **Triplet state of He** 
 
 $${\psi_1 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\alpha(1)\alpha(2)}$$
 
@@ -229,9 +224,12 @@ $${\psi_2 = \frac{1}{2}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\left(\alpha(1)\beta(
 $${\psi_3 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\beta(1)\beta(2)}$$
 
 
-- For the singlet state we have:
+- **Singlet state of He** 
 
 $${\psi_4 = \frac{1}{2}\left(1s(1)2s(2) + 2s(1)1s(2)\right)\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}$$
+
+
+### Action of spin operator on Singlet and Triplet state
 
 - Singlet and triplet states have been named after the number of spin degenerate levels they posses. The total spin $\hat{S}^2$ and $\hat{S}_z$ operators for these states yield:
 
