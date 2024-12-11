@@ -461,8 +461,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-excited-state-should-we-pick">Which Excited State should we pick?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-configuration-matters">Spin configuration matters!</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-states-of-helium-1s2s">Excited States of Helium <span class="math notranslate nohighlight">\(1s2s\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule">Hund’s rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-principle">Aufbau principle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-aufbau-principle">Hund’s rule and Aufbau principle</a></li>
 </ul>
 </li>
 </ul>
@@ -490,7 +489,12 @@ introduced can have exceptions.</p></li>
 </div>
 <section id="orbital-approximation">
 <h2>Orbital Approximation<a class="headerlink" href="#orbital-approximation" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../_images/HvsHe.png" /></p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/HvsHe.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/HvsHe.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The difference between H and He Hamiltonians that makes the probelm unsolvable analytically.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Unlike H atom for <strong>many-electron atoms</strong>, the Hamiltoninan and wavefunction depends on coordinates of multiple electonrs which can not be separated. Hence problem does not admit exact solution.</p></li>
 <li><p>We can, however approximate multi-electorn wavefunction as product of <strong>single electron wavefunctions called Orbitals.</strong></p></li>
@@ -745,11 +749,12 @@ g_-(x, y) = f(x, y) - f(y, x)
 <li><p>The total energy of a system of two electrons includes contributions from both Coulomb and exchange interactions. For singlet and triplet states, we use specific forms of the wavefunctions to evaluate these terms.</p></li>
 </ul>
 <ol class="arabic">
-<li><p><strong>Hamiltonian</strong>:
-$<span class="math notranslate nohighlight">\(
-\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_{12}
-\)</span>$
-where:</p>
+<li><p><strong>Hamiltonian</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_{12}
+   \]</div>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\hat{H}_1 = -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{Ze^2}{4\pi\epsilon_0 r_1}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{H}_2 = -\frac{\hbar^2}{2m}\nabla_2^2 - \frac{Ze^2}{4\pi\epsilon_0 r_2}\)</span></p></li>
@@ -772,15 +777,16 @@ where:</p>
 </li>
 </ul>
 </li>
-<li><p><strong>Energy Expression</strong>:
-The energy contribution is:
-$<span class="math notranslate nohighlight">\(
-E = \int \Psi^*(r_1, r_2) \hat{H} \Psi(r_1, r_2) \, d\tau_1 d\tau_2
-\)</span><span class="math notranslate nohighlight">\(
-Breaking it into terms:
-\)</span><span class="math notranslate nohighlight">\(
-E = \langle \Psi | \hat{H}_1 | \Psi \rangle + \langle \Psi | \hat{H}_2 | \Psi \rangle + \langle \Psi | \hat{H}_{12} | \Psi \rangle
-\)</span>$</p></li>
+<li><p><strong>Energy Expression</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   E = \int \Psi^*(r_1, r_2) \hat{H} \Psi(r_1, r_2) \, d\tau_1 d\tau_2
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   E = \langle \Psi | \hat{H}_1 | \Psi \rangle + \langle \Psi | \hat{H}_2 | \Psi \rangle + \langle \Psi | \hat{H}_{12} | \Psi \rangle
+   \]</div>
+</li>
 </ol>
 <section id="coulomb-and-exchange-contributions">
 <h3>Coulomb and Exchange Contributions<a class="headerlink" href="#coulomb-and-exchange-contributions" title="Permalink to this heading">#</a></h3>
@@ -877,16 +883,53 @@ E = I(1s) + I(2s) +J(1s,1s)
 </li>
 </ul>
 </section>
-<section id="hunds-rule">
-<h3>Hund’s rule<a class="headerlink" href="#hunds-rule" title="Permalink to this heading">#</a></h3>
+<section id="hunds-rule-and-aufbau-principle">
+<h3>Hund’s rule and Aufbau principle<a class="headerlink" href="#hunds-rule-and-aufbau-principle" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/aufbau.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/aufbau.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The Aufbau principle dictates how electron configurations are built starting from the lowest energy orbitals and moving to higher energy orbitals.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>The triplet state of the <span class="math notranslate nohighlight">\(1s\,2s\)</span> configuration is lower in energy than the singlet state due to the stabilizing effect of the exchange integral <span class="math notranslate nohighlight">\(K\)</span>. This behavior is almost universal and contributes to <strong>Hund’s Rule</strong>.</p></li>
+<li><p><strong>Definition of Aufbau Principle</strong>: The Aufbau principle (German for “building up”) describes the process of filling atomic orbitals with electrons in a stepwise manner, starting from the lowest energy orbitals and moving to higher energy orbitals.</p></li>
+<li><p><strong>Pauli Exclusion Principle</strong>: The Pauli Exclusion Principle states that no two electrons in an atom can have the same set of four quantum numbers (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(m_l\)</span>, <span class="math notranslate nohighlight">\(m_s\)</span>).</p>
+<ul>
+<li><p>As a result, each orbital can hold a maximum of <strong>two electrons</strong> with opposite spins (<span class="math notranslate nohighlight">\(m_s = +\frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(m_s = -\frac{1}{2}\)</span>).</p></li>
+<li><p>This constraint determines how many electrons can occupy each subshell and thus influences how orbitals are filled according to the Aufbau principle.</p></li>
 </ul>
-<p><img alt="" src="../_images/Hund1.png" /></p>
-</section>
-<section id="aufbau-principle">
-<h3>Aufbau principle<a class="headerlink" href="#aufbau-principle" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="../_images/aufbau.png" /></p>
+</li>
+</ul>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/Hund1.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/Hund1.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The triplet state of the <span class="math notranslate nohighlight">\(1s\,2s\)</span> configuration is lower in energy than the singlet state due to the stabilizing effect of the exchange integral <span class="math notranslate nohighlight">\(K\)</span>. This behavior is almost universal and contributes to <strong>Hund’s Rule</strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Hund’s Rules</strong>: Hund’s Rules state that for orbitals of the same energy (degenerate orbitals), electrons fill them singly first with parallel spins before pairing up.</p>
+<ul>
+<li><p>This minimizes electron-electron repulsion and stabilizes the system.</p></li>
+<li><p>When applying the Aufbau principle, this means that electrons will occupy different orbitals within the same subshell before pairing, which is why orbitals like the <strong>p, d, and f</strong> subshells are first filled with one electron in each orbital before pairing occurs.</p></li>
+</ul>
+</li>
+<li><p><strong>Orbital Filling Order</strong>: Orbitals are filled according to the increasing energy sequence: <strong>1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p</strong>, and so on.</p>
+<ul>
+<li><p>The order is determined by the <strong>n + l rule</strong>, with orbitals of lower <strong>n + l</strong> value being filled first. For orbitals with the same <strong>n + l</strong> value, the one with the lower <strong>n</strong> value is filled first.</p></li>
+</ul>
+</li>
+<li><p><strong>Significance in Electronic Configurations</strong>: The Aufbau principle allows for the prediction of <strong>ground-state electronic configurations</strong> for atoms and ions.</p>
+<ul>
+<li><p>For example, the electron configuration of <strong>oxygen (O)</strong> is <strong>1s² 2s² 2p⁴</strong>, which follows the Aufbau principle, Pauli exclusion principle, and Hund’s rule.</p></li>
+<li><p>Deviations from the Aufbau principle, like those seen in <strong>transition metals</strong> (e.g., Cr: [Ar] 3d⁵ 4s¹ instead of [Ar] 3d⁴ 4s²), arise due to additional stability from half-filled and fully filled subshells.</p></li>
+</ul>
+</li>
+<li><p><strong>Role in Chemical Bonding and Reactivity</strong>:  The Aufbau principle explains the arrangement of valence electrons, which are crucial for understanding <strong>bonding, ionization energy, and reactivity</strong>.</p>
+<ul>
+<li><p>For example, the chemical behavior of <strong>alkali metals</strong> (like Na) is directly related to their valence configuration (e.g., <strong>[Ne] 3s¹</strong>) predicted by the Aufbau principle.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 </section>
@@ -970,8 +1013,7 @@ E = I(1s) + I(2s) +J(1s,1s)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-excited-state-should-we-pick">Which Excited State should we pick?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-configuration-matters">Spin configuration matters!</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-states-of-helium-1s2s">Excited States of Helium <span class="math notranslate nohighlight">\(1s2s\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule">Hund’s rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-principle">Aufbau principle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-aufbau-principle">Hund’s rule and Aufbau principle</a></li>
 </ul>
 </li>
 </ul>
