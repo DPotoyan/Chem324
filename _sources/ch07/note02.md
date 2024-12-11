@@ -30,20 +30,33 @@ $$
 :::
 
 
-
 ### Helium wavefunction
 
 - For instance for the helium atom we first the orbital approximation:
 
 $$\Psi(r_1, r_2) \approx \phi_1(r_1)\phi_2(r_2)$$
 
-- With this approximation, as we will see shortly we ignore **electron-electron correlation** which can lead to quantiatively poor prediction of electronic energies. 
+- But there are are some big problems with this wavefunction. 
+
+1. **Electrons are fundmanentaly indistinguishable** Yet wavefunction says electron one is housed in orbtial 1 and electron 2 in orbtial 2. 
+
+2. **Spin component of wavefunction is missing** We will see that spins put some constrains on the spatial part of wavefunction. 
+
+3. **Electron-electron correlations** are ignored. That is each electron is "unaware of what the others are doing!. This can lead to quantiatively poor prediction of electronic energies. But here are techniques to account for correlation. 
 
 
 
-### Issue 1: Antisymmetry Requirement
+### Issue 1: Indistinguishability and Antisymmetry Requirement
 
-- Electrons are fermions; their wavefunction must be antisymmetric under interchange of electrons
+- **Subatomic particles are indistingusihable** this means wavefunction square must remain the same if we swap coordnates of those "particles". E.g 
+
+$$|\psi(r_1, r_2)|^2 = |\psi(r_2, r_1)|^2$$
+
+$$\psi(r_1, r_2) = \pm \psi(r_2, r_1)$$
+
+- This leads to two possibilities for wavefunction to be symmetric or antisymmetric. Which one to pick?
+
+- Electrons are fermions; Pauli have found that only by requiring **wavefunction of electrons must to be antisymmetric** (under interchange of electrons) does one get results in full agreement with experiments. We acept this as another QM postulate. 
 
 :::{admonition} **antisymmetry of electronic wavefunctions**
 :class: important 
@@ -54,7 +67,7 @@ $$
 
 :::
 
-- As an example let u take a function with two arguments $f(x,y)$ and make it symmetric and antisymmetric with respect to arguments $x$ and $y$
+- **How to make a function antisymmetric** As an example let u take a function with two arguments $f(x,y)$ and make it symmetric and antisymmetric with respect to arguments $x$ and $y$
 
 - **Symmetrized functions:**
 
@@ -68,7 +81,7 @@ $$
 g_-(x, y) = f(x, y) - f(y, x)
 $$
 
-- For helium:
+- For Helium we can fix one of the issues by making wavefunction antisymmetric
 
 $$
 \Psi(r_1, r_2) \propto \phi_1(r_1)\phi_2(r_2) - \phi_1(r_2)\phi_2(r_1)
@@ -77,7 +90,8 @@ $$
 
 ### Issue 2: Spin Requirement
 
-- Electrons have spin $\alpha$ or $\beta$. Spin factors must be included in the wavefunction:
+- Electrons have spin $\alpha$ or $\beta$. Spin factors must be included in the wavefunction. 
+- And depending on their symmetry cordinate part can be iether symmetric or anti-symmetric to make **the total wavefunction anti-symmetric**
 
 $$
 \Psi(r_1, r_2) \propto \phi_1(r_1)\phi_2(r_2)\alpha(1)\beta(2)
@@ -103,11 +117,11 @@ $${\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) + \alpha(2)\beta(1)\right)\textnorm
 $${\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)\textnormal{ (antisymmetric)}}$$
 
 
-- In 1926 Pauli showed that the wavefunction must be antisymmetric with respect to exchange of the electron indices. This applies also for systems with more than two electrons. An outcome of this principle is that **no two electrons can have exactly the same quantum numbers.** 
+- An important consequence of anti-symmetry requirement is **Pauli Exclusion Principle: No two electrons can have exactly the same quantum numbers.** 
 
 - In order to construct a complete wavefunction for the ground state of He atom, we need to tag on the spin part to the wavefunction making sure that total wavefunction is anti-sysmetric
 
-$${\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}$$
+$${\psi = \frac{1}{\sqrt{2}}[1s(1)1s(2)+1s(2)1s(1)]\times\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}$$
 
 ### Slater Determinants
 

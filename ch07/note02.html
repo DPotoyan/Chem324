@@ -447,7 +447,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium wavefunction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-antisymmetry-requirement">Issue 1: Antisymmetry Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry-requirement">Issue 1: Indistinguishability and Antisymmetry Requirement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli exclusion principle</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
@@ -515,13 +515,26 @@ introduced can have exceptions.</p></li>
 <div class="math notranslate nohighlight">
 \[\Psi(r_1, r_2) \approx \phi_1(r_1)\phi_2(r_2)\]</div>
 <ul class="simple">
-<li><p>With this approximation, as we will see shortly we ignore <strong>electron-electron correlation</strong> which can lead to quantiatively poor prediction of electronic energies.</p></li>
+<li><p>But there are are some big problems with this wavefunction.</p></li>
 </ul>
+<ol class="arabic simple">
+<li><p><strong>Electrons are fundmanentaly indistinguishable</strong> Yet wavefunction says electron one is housed in orbtial 1 and electron 2 in orbtial 2.</p></li>
+<li><p><strong>Spin component of wavefunction is missing</strong> We will see that spins put some constrains on the spatial part of wavefunction.</p></li>
+<li><p><strong>Electron-electron correlations</strong> are ignored. That is each electron is “unaware of what the others are doing!. This can lead to quantiatively poor prediction of electronic energies. But here are techniques to account for correlation.</p></li>
+</ol>
 </section>
-<section id="issue-1-antisymmetry-requirement">
-<h3>Issue 1: Antisymmetry Requirement<a class="headerlink" href="#issue-1-antisymmetry-requirement" title="Permalink to this heading">#</a></h3>
+<section id="issue-1-indistinguishability-and-antisymmetry-requirement">
+<h3>Issue 1: Indistinguishability and Antisymmetry Requirement<a class="headerlink" href="#issue-1-indistinguishability-and-antisymmetry-requirement" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Electrons are fermions; their wavefunction must be antisymmetric under interchange of electrons</p></li>
+<li><p><strong>Subatomic particles are indistingusihable</strong> this means wavefunction square must remain the same if we swap coordnates of those “particles”. E.g</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[|\psi(r_1, r_2)|^2 = |\psi(r_2, r_1)|^2\]</div>
+<div class="math notranslate nohighlight">
+\[\psi(r_1, r_2) = \pm \psi(r_2, r_1)\]</div>
+<ul class="simple">
+<li><p>This leads to two possibilities for wavefunction to be symmetric or antisymmetric. Which one to pick?</p></li>
+<li><p>Electrons are fermions; Pauli have found that only by requiring <strong>wavefunction of electrons must to be antisymmetric</strong> (under interchange of electrons) does one get results in full agreement with experiments. We acept this as another QM postulate.</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>antisymmetry of electronic wavefunctions</strong></p>
@@ -531,7 +544,7 @@ introduced can have exceptions.</p></li>
 \]</div>
 </div>
 <ul class="simple">
-<li><p>As an example let u take a function with two arguments <span class="math notranslate nohighlight">\(f(x,y)\)</span> and make it symmetric and antisymmetric with respect to arguments <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p></li>
+<li><p><strong>How to make a function antisymmetric</strong> As an example let u take a function with two arguments <span class="math notranslate nohighlight">\(f(x,y)\)</span> and make it symmetric and antisymmetric with respect to arguments <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p></li>
 <li><p><strong>Symmetrized functions:</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -546,7 +559,7 @@ g_+(x, y) = f(x, y) + f(y, x)
 g_-(x, y) = f(x, y) - f(y, x)
 \]</div>
 <ul class="simple">
-<li><p>For helium:</p></li>
+<li><p>For Helium we can fix one of the issues by making wavefunction antisymmetric</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -556,7 +569,8 @@ g_-(x, y) = f(x, y) - f(y, x)
 <section id="issue-2-spin-requirement">
 <h3>Issue 2: Spin Requirement<a class="headerlink" href="#issue-2-spin-requirement" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Electrons have spin <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>. Spin factors must be included in the wavefunction:</p></li>
+<li><p>Electrons have spin <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>. Spin factors must be included in the wavefunction.</p></li>
+<li><p>And depending on their symmetry cordinate part can be iether symmetric or anti-symmetric to make <strong>the total wavefunction anti-symmetric</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -583,11 +597,11 @@ g_-(x, y) = f(x, y) - f(y, x)
 <div class="math notranslate nohighlight">
 \[{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)\textnormal{ (antisymmetric)}}\]</div>
 <ul class="simple">
-<li><p>In 1926 Pauli showed that the wavefunction must be antisymmetric with respect to exchange of the electron indices. This applies also for systems with more than two electrons. An outcome of this principle is that <strong>no two electrons can have exactly the same quantum numbers.</strong></p></li>
+<li><p>An important consequence of anti-symmetry requirement is <strong>Pauli Exclusion Principle: No two electrons can have exactly the same quantum numbers.</strong></p></li>
 <li><p>In order to construct a complete wavefunction for the ground state of He atom, we need to tag on the spin part to the wavefunction making sure that total wavefunction is anti-sysmetric</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\psi = 1s(1)1s(2)\times\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
+\[{\psi = \frac{1}{\sqrt{2}}[1s(1)1s(2)+1s(2)1s(1)]\times\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
 </section>
 <section id="slater-determinants">
 <h3>Slater Determinants<a class="headerlink" href="#slater-determinants" title="Permalink to this heading">#</a></h3>
@@ -942,7 +956,7 @@ E = I(1s) + I(2s) +J(1s,1s)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium wavefunction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-antisymmetry-requirement">Issue 1: Antisymmetry Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry-requirement">Issue 1: Indistinguishability and Antisymmetry Requirement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli exclusion principle</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
