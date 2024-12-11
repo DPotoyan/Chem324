@@ -11,21 +11,25 @@ introduced can have exceptions.
 
 ## Orbital Approximation
 
-- The Schrödinger equation for hydrogenic atoms can be solved exactly.
-- For many-electron atoms, the wavefunction depends on coordinates of multiple electonrs, hence we can not separate variables and solve problem exactly. 
-- We can however approximate multi-electorn wavefunction as product of single electron wavefunctions to be determined via variational method. 
+![](./images/HvsHe.png)
 
-:::{admonition}
+- Unlike H atom for **many-electron atoms**, the Hamiltoninan and wavefunction depends on coordinates of multiple electonrs which can not be separated. Hence problem does not admit exact solution. 
+- We can, however approximate multi-electorn wavefunction as product of **single electron wavefunctions called Orbitals.**
+- Orbitals are determined computationally by choosing trial wavefunctions and finding parameters via variational method. 
+
+
+:::{admonition} **Orbital Approximation**
 :class: important
 
 $$
 \Psi(r_1, r_2, \ldots, r_n) \approx \phi_1(r_1)\phi_2(r_2)\ldots\phi_n(r_n)
 $$
 
-- $\Psi$ multielectron wavefunction descirbing probabilities of finding electrons in different parts of space. 
-- $\phi_j(r_n)$ **Atomic ortbital** $n$ housing the electron $i$
-
+- $\Psi$ multielectron wavefunction describing probabilities of finding electrons in different parts of space. 
+- $\phi_j(r_n)$ **Atomic ortbital** $n$ housing an electron $i$
 :::
+
+
 
 ### Helium wavefunction
 
@@ -190,7 +194,7 @@ $$\Rightarrow\textnormal{ }\hat{S}_{z,tot}|\psi\rangle = \left(\hat{S}_{z_1} + \
 
 - Previously we had both electrons on $1s$ orbital with opposite spins. If the electrons reside on two different orbitals, for example, $1s$ and $2s$, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.). 
 
--The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
+- The spatial part of the wavefunction is $\psi = 1s(1)2s(2)$. It could as well be $\psi = 2s(1)1s(2)$ as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):
 
 $${\psi_{sym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) + 1s(2)2s(1)\right)\textnormal{ (symmetric)}}$$
 
