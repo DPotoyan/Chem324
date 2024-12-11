@@ -11,7 +11,13 @@ introduced can have exceptions.
 
 ## Orbital Approximation
 
-![](./images/HvsHe.png)
+
+:::{figure-md} markdown-fig
+<img src="./images/HvsHe.png" alt="ladd" class="bg-primary mb-1" width="400px">
+
+The difference between H and He Hamiltonians that makes the probelm unsolvable analytically. 
+:::
+
 
 - Unlike H atom for **many-electron atoms**, the Hamiltoninan and wavefunction depends on coordinates of multiple electonrs which can not be separated. Hence problem does not admit exact solution. 
 - We can, however approximate multi-electorn wavefunction as product of **single electron wavefunctions called Orbitals.**
@@ -274,9 +280,11 @@ $${
 
 
 1. **Hamiltonian**:
+
    $$
    \hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_{12}
    $$
+
    where:
    - $\hat{H}_1 = -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{Ze^2}{4\pi\epsilon_0 r_1}$
    - $\hat{H}_2 = -\frac{\hbar^2}{2m}\nabla_2^2 - \frac{Ze^2}{4\pi\epsilon_0 r_2}$
@@ -298,15 +306,15 @@ $${
      $$
 
 3. **Energy Expression**:
-   The energy contribution is:
+
    $$
    E = \int \Psi^*(r_1, r_2) \hat{H} \Psi(r_1, r_2) \, d\tau_1 d\tau_2
    $$
-   Breaking it into terms:
+   
+
    $$
    E = \langle \Psi | \hat{H}_1 | \Psi \rangle + \langle \Psi | \hat{H}_2 | \Psi \rangle + \langle \Psi | \hat{H}_{12} | \Psi \rangle
    $$
-
 
 
 ### Coulomb and Exchange Contributions
@@ -410,13 +418,45 @@ $$E_{\pm} = \langle \Psi_{\pm}(1, 2) |\hat{H}|\Psi_{\pm}(1, 2)\rangle$$
   $$
 
 
-### Hund's rule
-
-- The triplet state of the $1s\,2s$ configuration is lower in energy than the singlet state due to the stabilizing effect of the exchange integral $K$. This behavior is almost universal and contributes to **Hund’s Rule**.
 
 
-![](./images/Hund1.png)
 
-### Aufbau principle
 
-![](./images/aufbau.png)
+### Hund's rule and Aufbau principle
+
+:::{figure-md} markdown-fig
+<img src="./images/aufbau.png" alt="ladd" class="bg-primary mb-1" width="400px">
+
+The Aufbau principle dictates how electron configurations are built starting from the lowest energy orbitals and moving to higher energy orbitals. 
+:::
+
+- **Definition of Aufbau Principle**: The Aufbau principle (German for "building up") describes the process of filling atomic orbitals with electrons in a stepwise manner, starting from the lowest energy orbitals and moving to higher energy orbitals. 
+  
+
+- **Pauli Exclusion Principle**: The Pauli Exclusion Principle states that no two electrons in an atom can have the same set of four quantum numbers ($n$, $l$, $m_l$, $m_s$). 
+  - As a result, each orbital can hold a maximum of **two electrons** with opposite spins ($m_s = +\frac{1}{2}$ and $m_s = -\frac{1}{2}$). 
+  - This constraint determines how many electrons can occupy each subshell and thus influences how orbitals are filled according to the Aufbau principle.
+
+:::{figure-md} markdown-fig
+<img src="./images/Hund1.png" alt="ladd" class="bg-primary mb-1" width="400px">
+
+The triplet state of the $1s\,2s$ configuration is lower in energy than the singlet state due to the stabilizing effect of the exchange integral $K$. This behavior is almost universal and contributes to **Hund’s Rule**.
+:::
+
+- **Hund's Rules**: Hund's Rules state that for orbitals of the same energy (degenerate orbitals), electrons fill them singly first with parallel spins before pairing up. 
+  - This minimizes electron-electron repulsion and stabilizes the system. 
+  - When applying the Aufbau principle, this means that electrons will occupy different orbitals within the same subshell before pairing, which is why orbitals like the **p, d, and f** subshells are first filled with one electron in each orbital before pairing occurs.
+
+- **Orbital Filling Order**: Orbitals are filled according to the increasing energy sequence: **1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p**, and so on. 
+  - The order is determined by the **n + l rule**, with orbitals of lower **n + l** value being filled first. For orbitals with the same **n + l** value, the one with the lower **n** value is filled first.
+
+- **Significance in Electronic Configurations**: The Aufbau principle allows for the prediction of **ground-state electronic configurations** for atoms and ions. 
+  - For example, the electron configuration of **oxygen (O)** is **1s² 2s² 2p⁴**, which follows the Aufbau principle, Pauli exclusion principle, and Hund's rule. 
+  - Deviations from the Aufbau principle, like those seen in **transition metals** (e.g., Cr: [Ar] 3d⁵ 4s¹ instead of [Ar] 3d⁴ 4s²), arise due to additional stability from half-filled and fully filled subshells.
+
+- **Role in Chemical Bonding and Reactivity**:  The Aufbau principle explains the arrangement of valence electrons, which are crucial for understanding **bonding, ionization energy, and reactivity**. 
+  - For example, the chemical behavior of **alkali metals** (like Na) is directly related to their valence configuration (e.g., **[Ne] 3s¹**) predicted by the Aufbau principle.
+
+
+
+
