@@ -495,14 +495,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts"><strong>2. Key Concepts</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunction"><strong>Wavefunction</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hartree-fock-equations"><strong>Hartree-Fock Equations</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fock-operator"><strong>Fock Operator</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-consistent-field-scf-method"><strong>Self-Consistent Field (SCF) Method</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunction"><strong>Wavefunction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hartree-fock-equations"><strong>Hartree-Fock Equations</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fock-operator"><strong>Fock Operator</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-consistent-field-scf-method"><strong>Self-Consistent Field (SCF) Method</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-energy-of-the-system"><strong>3. Total Energy of the System</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths-and-limitations"><strong>4. Strengths and Limitations</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths"><strong>Strengths</strong></a></li>
@@ -527,24 +523,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hartree-fock">
 <h1>Hartree-Fock<a class="headerlink" href="#hartree-fock" title="Permalink to this heading">#</a></h1>
-<section id="introduction">
-<h2><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Objective</strong>: Approximate the electronic structure of atoms and molecules by treating electrons as independent particles in an average field created by all other electrons.</p></li>
 <li><p><strong>Motivation</strong>: The Schrödinger equation for multi-electron systems is too complex to solve exactly.</p></li>
 </ul>
-</section>
-<section id="key-concepts">
-<h2><strong>2. Key Concepts</strong><a class="headerlink" href="#key-concepts" title="Permalink to this heading">#</a></h2>
 <section id="wavefunction">
-<h3><strong>Wavefunction</strong><a class="headerlink" href="#wavefunction" title="Permalink to this heading">#</a></h3>
+<h2><strong>Wavefunction</strong><a class="headerlink" href="#wavefunction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The total wavefunction <span class="math notranslate nohighlight">\(\Psi(1, 2, \cdots, N)\)</span> is approximated as a single Slater determinant to satisfy the Pauli exclusion principle.
 $<span class="math notranslate nohighlight">\( \Psi(1, 2, \cdots, N) = \frac{1}{\sqrt{N!}} \begin{vmatrix} \psi_1(1) &amp; \psi_2(1) &amp; \cdots &amp; \psi_N(1) \\ \psi_1(2) &amp; \psi_2(2) &amp; \cdots &amp; \psi_N(2) \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \psi_1(N) &amp; \psi_2(N) &amp; \cdots &amp; \psi_N(N) \end{vmatrix} \)</span>$</p></li>
 </ul>
 </section>
 <section id="hartree-fock-equations">
-<h3><strong>Hartree-Fock Equations</strong><a class="headerlink" href="#hartree-fock-equations" title="Permalink to this heading">#</a></h3>
+<h2><strong>Hartree-Fock Equations</strong><a class="headerlink" href="#hartree-fock-equations" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Each molecular orbital (MO) <span class="math notranslate nohighlight">\(\psi_i\)</span> satisfies the self-consistent field (SCF) equation:
 $<span class="math notranslate nohighlight">\( \hat{F} \psi_i = \varepsilon_i \psi_i \)</span><span class="math notranslate nohighlight">\(
@@ -552,11 +543,12 @@ where \)</span>\hat{F}<span class="math notranslate nohighlight">\( is the **Foc
 </ul>
 </section>
 <section id="fock-operator">
-<h3><strong>Fock Operator</strong><a class="headerlink" href="#fock-operator" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>The Fock operator <span class="math notranslate nohighlight">\(\hat{F}\)</span> is a sum of the one-electron Hamiltonian and a mean-field potential:
-$<span class="math notranslate nohighlight">\( \hat{F} = \hat{h} + \sum_{j} \left( \hat{J}_j - \hat{K}_j \right) \)</span>$</p>
+<h2><strong>Fock Operator</strong><a class="headerlink" href="#fock-operator" title="Permalink to this heading">#</a></h2>
 <ul>
+<li><p>The Fock operator <span class="math notranslate nohighlight">\(\hat{F}\)</span> is a sum of the one-electron Hamiltonian and a mean-field potential:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{F} = \hat{h} + \sum_{j} \left( \hat{J}_j - \hat{K}_j \right) \]</div>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\hat{h}\)</span>: Kinetic energy and nuclear attraction operators.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{J}_j\)</span>: Coulomb operator (electron-electron repulsion).</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{K}_j\)</span>: Exchange operator (arises from antisymmetry requirement of the wavefunction).</p></li>
@@ -565,7 +557,7 @@ $<span class="math notranslate nohighlight">\( \hat{F} = \hat{h} + \sum_{j} \lef
 </ul>
 </section>
 <section id="self-consistent-field-scf-method">
-<h3><strong>Self-Consistent Field (SCF) Method</strong><a class="headerlink" href="#self-consistent-field-scf-method" title="Permalink to this heading">#</a></h3>
+<h2><strong>Self-Consistent Field (SCF) Method</strong><a class="headerlink" href="#self-consistent-field-scf-method" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Guess</strong> initial molecular orbitals <span class="math notranslate nohighlight">\(\psi_i\)</span>.</p></li>
 <li><p><strong>Construct</strong> the Fock operator <span class="math notranslate nohighlight">\(\hat{F}\)</span> using the current <span class="math notranslate nohighlight">\(\psi_i\)</span>.</p></li>
@@ -573,13 +565,13 @@ $<span class="math notranslate nohighlight">\( \hat{F} = \hat{h} + \sum_{j} \lef
 <li><p><strong>Repeat</strong> steps 2-3 until convergence (orbitals do not change significantly).</p></li>
 </ol>
 </section>
-</section>
 <section id="total-energy-of-the-system">
 <h2><strong>3. Total Energy of the System</strong><a class="headerlink" href="#total-energy-of-the-system" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Total electronic energy <span class="math notranslate nohighlight">\(E_{HF}\)</span> in the Hartree-Fock approximation:
-$<span class="math notranslate nohighlight">\( E_{HF} = \sum_{i} \langle \psi_i | \hat{h} | \psi_i \rangle + \frac{1}{2} \sum_{i,j} \left( J_{ij} - K_{ij} \right) \)</span>$</p>
 <ul>
+<li><p>Total electronic energy <span class="math notranslate nohighlight">\(E_{HF}\)</span> in the Hartree-Fock approximation:</p>
+<div class="math notranslate nohighlight">
+\[ E_{HF} = \sum_{i} \langle \psi_i | \hat{h} | \psi_i \rangle + \frac{1}{2} \sum_{i,j} \left( J_{ij} - K_{ij} \right) \]</div>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(J_{ij}\)</span>: Coulomb integral.</p></li>
 <li><p><span class="math notranslate nohighlight">\(K_{ij}\)</span>: Exchange integral.</p></li>
 </ul>
@@ -848,14 +840,10 @@ $<span class="math notranslate nohighlight">\( E_{HF} = \sum_{i} \langle \psi_i 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts"><strong>2. Key Concepts</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunction"><strong>Wavefunction</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hartree-fock-equations"><strong>Hartree-Fock Equations</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fock-operator"><strong>Fock Operator</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-consistent-field-scf-method"><strong>Self-Consistent Field (SCF) Method</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunction"><strong>Wavefunction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hartree-fock-equations"><strong>Hartree-Fock Equations</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fock-operator"><strong>Fock Operator</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-consistent-field-scf-method"><strong>Self-Consistent Field (SCF) Method</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-energy-of-the-system"><strong>3. Total Energy of the System</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths-and-limitations"><strong>4. Strengths and Limitations</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths"><strong>Strengths</strong></a></li>
