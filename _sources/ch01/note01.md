@@ -8,6 +8,7 @@
 :::
 
 :::{figure-md} markdown-fig
+
 <img src="./images/qm.png" alt="qm-whomi" class="bg-primary mb-1" width="100%">
 
 Quantum mechanics provides the framework to understand, describe, and predict the behavior of the smallest particles—so long as they don’t travel near light speed.
@@ -21,6 +22,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 - Saying QM is “weird” is an understatement. Don’t just take my word for it—consider Richard Feynman:  
 
 :::{figure-md} markdown-fig
+
 <img src="./images/feynman.png" alt="ch1-feynman" class="bg-primary mb-1" width="300px">
 
 [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), Nobel Prize in Physics (1965) for his groundbreaking work on quantum electrodynamics.  
@@ -42,7 +44,6 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 <img src="./images/qm-joke1.jpg" alt="qm-mechanic-joke" class="bg-primary mb-1" width="300px">
 
 “There are no quantum mechanicians. Electrons don’t break down, but your car does!” 
-
 :::
 
 Even though discovered by physicists, QM isn’t just “another” physical theory like electromagnetism or relativity.  
@@ -60,8 +61,7 @@ In the usual hierarchy of sciences (biology → chemistry → physics → math),
 
 <img src="./images/qc-applied.png" alt="qm-apps" class="bg-primary mb-1" width="300px">
 
-Applications in **Quantum Chemistry**  
-
+Applications in Quantum Chemistry 
 :::
 
 - Chemical bonds, molecular structure, reactivity, color, material properties  
@@ -73,8 +73,7 @@ Applications in **Quantum Chemistry**
 
 <img src="./images/qcomp-applied.jpg" alt="qcomp-apps" class="bg-primary mb-1" width="300px">
 
-Applications in **Quantum Computing**  
-
+Applications in Quantum Computing
 ::: 
 
 - Quantum algorithms and simulation  
