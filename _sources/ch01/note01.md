@@ -3,7 +3,7 @@
 :::{admonition} What you need to know
 :class: note
 - **Quantum mechanics is the fundamental theory of nature**, governing atoms, molecules, and subatomic particles.  
-- Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**—and they’ve never failed an experimental test since their discovery.  
+- Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**. And they’ve never failed an experimental test since their discovery!  
 - Predictions of quantum mechanics have been verified to an **astonishing degree of accuracy**.  
 :::
 
