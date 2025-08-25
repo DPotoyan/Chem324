@@ -143,6 +143,46 @@ aside.sidebar {
   justify-content: center;
 }
 
+
+/* --- Fix blue/tinted backgrounds behind images --- */
+
+/* Force a white background for all images by default */
+img,
+.md-typeset img,
+.bd-content img,
+.cell_output img,
+.jp-OutputArea-output img,
+div.output_png img,
+.figure img,
+div.figure img {
+  background: #fff !important;
+}
+
+/* Also cover inline SVGs (many plots export as SVG) */
+svg {
+  background: #fff !important;
+}
+
+/* Notebook output containers that sometimes carry tinted backgrounds */
+.cell_output,
+.jp-OutputArea-output,
+div.output_png,
+div.output_svg,
+.figure,
+.bd-figure,
+.sd-figure,
+.plot-directive {
+  background: #fff !important;
+}
+
+/* If you intentionally want transparency for a specific image,
+   add class="transparent-ok" to that image in your markdown/HTML */
+img.transparent-ok,
+svg.transparent-ok {
+  background: transparent !important;
+}
+
+/* Fix small typo in your CSS usage */
 div.output .text_html {
-  overlfow-x: auto;
+  overflow-x: auto; /* was overlfow-x */
 }

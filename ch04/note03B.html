@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/base.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -177,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/index.html">1.  Intro to Quantum Mechanics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/note01.html">Why Quantum Mechanics?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ch01/note02.html">The need for quantization</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../ch01/note03.html">Photoelectric effect</a></li>
@@ -595,7 +595,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/De.png"><img alt="Comparison of Harmonic and Morse Potentials" class="bg-primary mb-1" src="../_images/De.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">It is important to distinguish between two types of dissociation energies: the <strong>equilibrium dissociation energy</strong> <span class="math notranslate nohighlight">\(D_e\)</span> and the <strong>spectroscopic dissociation energy</strong> <span class="math notranslate nohighlight">\(D_0\)</span>. Shown are the harmonic and Morse potentials for comparison.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">It is important to distinguish between two types of dissociation energies: the <strong>equilibrium dissociation energy</strong> <span class="math notranslate nohighlight">\(D_e\)</span> and the <strong>spectroscopic dissociation energy</strong> <span class="math notranslate nohighlight">\(D_0\)</span>. Shown are the harmonic and Morse potentials for comparison.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -618,18 +618,18 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">u</span>
-<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">genlaguerre</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">factorial</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">genlaguerre</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">factorial</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="c1"># Factor for conversion from cm-1 to J</span>
 <span class="n">FAC</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span>
 
-<span class="k">class</span> <span class="nc">Morse</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Morse</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing the Morse oscillator model of a diatomic.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mA</span><span class="p">,</span> <span class="n">mB</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">Te</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mA</span><span class="p">,</span> <span class="n">mB</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">Te</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Morse model for a diatomic molecule.</span>
 
 <span class="sd">        mA, mB are the atom masses (atomic mass units).</span>
@@ -657,7 +657,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">make_rgrid</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vmorse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">make_rgrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">rmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_rgrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">rmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Make a suitable grid of internuclear separations.&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">rmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rmax</span> <span class="o">=</span> <span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span>
@@ -674,7 +674,7 @@ document.write(`
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dr</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span>
 
-    <span class="k">def</span> <span class="nf">calc_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the Morse parameter, a.</span>
 
 <span class="sd">        Returns the Morse parameter, a, from the equilibrium</span>
@@ -686,7 +686,7 @@ document.write(`
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">we</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">De</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span>
                 <span class="n">c</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">Vmorse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Vmorse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the Morse potential, V(r).</span>
 
 <span class="sd">        Returns the Morse potential at r (in m) for parameters De</span>
@@ -696,7 +696,7 @@ document.write(`
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">De</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">re</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span>
 
-    <span class="k">def</span> <span class="nf">Emorse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Emorse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the energy of a Morse oscillator in state v.</span>
 
 <span class="sd">        Returns the energy of a Morse oscillator parameterized by</span>
@@ -707,7 +707,7 @@ document.write(`
         <span class="n">vphalf</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">we</span> <span class="o">*</span> <span class="n">vphalf</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">wexe</span> <span class="o">*</span> <span class="n">vphalf</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">FAC</span>
 
-    <span class="k">def</span> <span class="nf">calc_turning_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">E</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_turning_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">E</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the classical turning points at energy E.</span>
 
 <span class="sd">        Returns rm and rp, the classical turning points of the Morse</span>
@@ -719,7 +719,7 @@ document.write(`
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">calc_psi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">psi_max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_psi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">psi_max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the Morse oscillator wavefunction, psi_v.</span>
 
 <span class="sd">        Returns the Morse oscillator wavefunction at vibrational</span>
@@ -737,7 +737,7 @@ document.write(`
         <span class="n">psi</span> <span class="o">*=</span> <span class="n">psi_max</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">psi</span>
 
-    <span class="k">def</span> <span class="nf">calc_psi_z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_psi_z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
         <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="n">psi</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">-</span><span class="n">v</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span>
                <span class="n">genlaguerre</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)(</span><span class="n">z</span><span class="p">))</span>
@@ -745,17 +745,17 @@ document.write(`
                      <span class="n">gamma</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">-</span> <span class="n">v</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">Nv</span> <span class="o">*</span> <span class="n">psi</span>
 
-    <span class="k">def</span> <span class="nf">plot_V</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_V</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the Morse potential on Axes ax.&quot;&quot;&quot;</span>
 
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">*</span><span class="mf">1.e10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">/</span> <span class="n">FAC</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Te</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_vmax</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_vmax</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the maximum vibrational quantum number.&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">we</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">wexe</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">draw_Elines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_Elines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw lines on Axes ax representing the energy level(s) in vlist.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vlist</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -765,7 +765,7 @@ document.write(`
             <span class="n">rm</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_turning_pts</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">FAC</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Te</span><span class="p">,</span> <span class="n">rm</span><span class="o">*</span><span class="mf">1.e10</span><span class="p">,</span> <span class="n">rp</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">label_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">label_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vlist</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">vlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">vlist</span><span class="p">]</span>
 
@@ -775,7 +775,7 @@ document.write(`
             <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$v=</span><span class="si">{}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">rp</span><span class="o">*</span><span class="mf">1e10</span> <span class="o">+</span> <span class="mf">0.6</span><span class="p">,</span>
                     <span class="n">y</span><span class="o">=</span><span class="n">E</span> <span class="o">/</span> <span class="n">FAC</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Te</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">plot_psi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">r_plot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_psi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlist</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">r_plot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the Morse wavefunction(s) in vlist on Axes ax.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vlist</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">vlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">vlist</span><span class="p">]</span>
@@ -842,7 +842,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/vib_modes.jpeg"><img alt="DeD0" class="bg-primary mb-1" src="../_images/vib_modes.jpeg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Illustration of overtone transitions</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Illustration of overtone transitions</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -894,7 +894,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/CO2_modes.jpg"><img alt="co2-mode" class="bg-primary mb-1" src="../_images/CO2_modes.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Normal modes of <span class="math notranslate nohighlight">\(CO_2\)</span> with associated vibrational frequencies</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Normal modes of <span class="math notranslate nohighlight">\(CO_2\)</span> with associated vibrational frequencies</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -903,13 +903,13 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/watervib.gif"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/watervib.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Vibrational modes of water</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Vibrational modes of water</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/protein.gif"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/protein.gif" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Showing the slowest vibrational mode in protein which is linked with its catalytic function</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Showing the slowest vibrational mode in protein which is linked with its catalytic function</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -959,7 +959,7 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/selection_rule.jpg"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/selection_rule.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -973,13 +973,13 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/IR-sp.png"><img alt="ir spectra" class="bg-primary mb-1" src="../_images/IR-sp.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">IR spectral frequencies observed due to different vibrational frequencies of bonds in organic molecules.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">IR spectral frequencies observed due to different vibrational frequencies of bonds in organic molecules.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/amide_modes.png"><img alt="amide-ir" class="bg-primary mb-1" src="../_images/amide_modes.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Example of 2D IR spectorsocpy used to study protein by detecting amide group <span class="math notranslate nohighlight">\(C=0\)</span> vibrations in different parts of the molecules.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
