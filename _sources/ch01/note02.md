@@ -286,11 +286,12 @@ As a result, the scattered light that fills the sky appears predominantly **blue
 ### Problems
 
 #### Conceptual question
+
 ::::{admonition} **Conceptual Question**  
 :class: note
 
 If hotter objects radiate more strongly at shorter wavelengths, why does the **daytime sky appear blue** instead of violet (or even ultraviolet)?  
-:::
+
 
 :::{admonition} **Answer**  
 :class: dropdown
@@ -316,7 +317,7 @@ A blackbody has temperature $T = 3000 \,\text{K}$. According to Wien’s law, wh
 2. Green  
 3. Blue  
 4. Ultraviolet
-:::
+
 
 :::{admonition} **Answer**  
 :class: dropdown
@@ -324,6 +325,7 @@ A blackbody has temperature $T = 3000 \,\text{K}$. According to Wien’s law, wh
 Using $\lambda_{\max} = \dfrac{2.898 \times 10^{-3}}{3000} \approx 9.7 \times 10^{-7}\,\text{m} = 970 \,\text{nm}$, the peak is in the **infrared**, but the visible portion is dominated by the **red/orange** end.  
 **Correct choice: (1) Red/Orange.**
 :::
+
 ::::
 
 
