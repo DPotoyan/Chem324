@@ -249,9 +249,14 @@ $$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4 $$
 
 - **Connecting temperature of black body with wavelength or frequency**. The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law. You can derive it by evaluating $d\rho(\lambda)/d\lambda=0$. 
 
+:::{admonition} **Wien's displacement law: Connecting Temp of an object to its Color.**
+:class: important
+
 $$\lambda_{max} = \frac{b}{T}$$
 
-- $ b=2.8977729 \cdot 10^{-3} m·K$ is called Wien's displacement constant.  
+- $ b=2.8977729 \cdot 10^{-3} m·K$.  
+
+:::
 
 ### Explore black body radiation
 
