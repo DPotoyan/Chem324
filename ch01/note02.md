@@ -1,21 +1,22 @@
 
 ## The need for quantization
 
-```{admonition} What you need to know
+:::{admonition} **What you will learn.**
 :class: note
 
 - The energies of atoms, molecules, and light are **quantized**. This means that energy can only assume specific, **discrete values** rather than a continuous range.
 - Energy quantization is a fundamental principle of our physical reality, consistently observed in quantum experiments. Quantum mechanics provides a comprehensive explanation and accurate predictions of this phenomenon.
 - Key historical developments leading to the emergence of quantum mechanics include **black body radiation, the double slit experiment, and the photoelectric effect**.
 - Several macroscopic phenomena, such as the red glow of hot metals, the heat capacity of solids at low temperatures, and the colors of materials, are all manifestations of quantum effects.
-```
+:::
 
 ## What is the nature of light?
 
 :::{figure-md} markdown-fig
+
 <img src="./images/EM-Wave.gif" alt="EM" class="bg-primary mb-1" width="300px">
 
-Electromagneitc radiation has perpendicular electric and magnetic components which propogate with a speed of light. Unlike other forms of waves (water, sounds) light needs to medium and can travel in vaccum! 
+Electromagneitc radiation has a perpendicular electric and magnetic components which propogate with a speed of light. Unlike other forms of waves (water, sounds) light needs to medium and can travel in vaccum! 
 :::
 
 
