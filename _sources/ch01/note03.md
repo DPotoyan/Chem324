@@ -200,7 +200,6 @@ $$
 ::::
 
 
-
 #### Problem 3
 
 ::::{admonition} **Photoelectric Current and Light Intensity**  
