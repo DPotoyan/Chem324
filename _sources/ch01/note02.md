@@ -247,14 +247,17 @@ $$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4 $$
 
 ### Wien's displacement law
 
-- **Connecting temperature of black body with wavelength or frequency**. The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. This relationship is described by Wien's displacement law. You can derive it by evaluating $d\rho(\lambda)/d\lambda=0$. 
+- **Connecting temperature of black body with wavelength or frequency**. The energy density peaks at a wavelength $\lambda_{max} $ which is inversely proportional to the temperature. 
 
-:::{admonition} **Wien's displacement law: Connecting Temp of an object to its Color.**
+- This relationship is described by Wien's displacement law. You can derive it by evaluating derivative $d\rho(\lambda)/d\lambda=0$ giving you the value of wavelength at the peak of the distribution. 
+
+:::{admonition} **Wien's displacement law**
 :class: important
 
 $$\lambda_{max} = \frac{b}{T}$$
 
 - $ b=2.8977729 \cdot 10^{-3} m·K$.  
+- This approximate relation connecting temperature $T$ of an object to its color quantified by $\lambda_{max}$
 
 :::
 
@@ -275,7 +278,7 @@ The black body is used as a standard with which the absorption of real bodies is
 
 :::
 
-### Aside: Rayleigh Scattering and the Color of the Sky
+### Rayleigh Scattering and the Color of the Sky
 
 :::{admonition} **Rayleigh Scattering**
 :class: tip
@@ -287,6 +290,11 @@ When light passes through Earth’s atmosphere, it interacts with gas molecules 
 As a result, the scattered light that fills the sky appears predominantly **blue**.
 :::
 
+:::{figure-md} markdown-fig
+<img src="./images/BlueSky.png" alt="planets" class="bg-primary mb-1" width="70%">
+
+Selectively scattered frequencies bias the color of sky towards bluish. 
+:::
 
 ### Problems
 
