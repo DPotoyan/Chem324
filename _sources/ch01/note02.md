@@ -84,11 +84,10 @@ Black body radiation guide from PhDcomics!
 :::{admonition} **Definition of black body**
 :class: tip
 
-A black body is a model, an idealized system just like an ideal gas model in thermodynamics. Black body is assumed to be in thermodynamic equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation
+A black body is a model, an idealized system just like an ideal gas model in thermodynamics. Black body is assumed to be in thermodynamic equilibrium, maintained at some constant Temperature T which both absorbs and emits every wavelength of electromagnetic radiation. 
 :::
 
-- Equilibrium condition in thermodynamics means that the system emits as much energy as it absorbs. In other words outflux = influx. 
-- The reason its called black body is that it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. 
+- The reason this model is called black body is becasue it absorbs every wavelength that hits the surface, therefore, appearing as 100% perfect black object. 
 - If an object has a color, it is because it is reflecting certain wavelengths of light which then gets detected by our eye retina. The distribution of wavelengths, which is emitted by a blackbody, is determined only by its temperature!
 
 :::{figure-md} markdown-fig
@@ -344,10 +343,10 @@ Using $\lambda_{\max} = \dfrac{2.898 \times 10^{-3}}{3000} \approx 9.7 \times 10
 
 #### Problem 2
 
-::::{admonition} **Calculating the Wavelength of a Photon Using Planck's Equation**  
+::::{admonition} **Calculating the Wavelength of Radiation Using Planck's Equation**  
 :class: note
 
-A photon is emitted with an energy of $3.5 \, \text{eV}$. Calculate the wavelength of this photon. Use Planck's equation to relate the energy of the photon to its wavelength. The values of constants are:
+For a monochromatic (means single wavelength) radiation with an energy of $3.5 \, \text{eV}$ calculate the wavelength. Use Planck's equation to relate the energy of radiation to its wavelength. The values of constants are:
 - Planck's constant, $h = 6.626 \times 10^{-34} \, \text{J} \cdot \text{s}$
 - Speed of light, $c = 3.00 \times 10^8 \, \text{m/s}$
 - $1 \, \text{eV} = 1.602 \times 10^{-19} \, \text{J}$
@@ -355,7 +354,7 @@ A photon is emitted with an energy of $3.5 \, \text{eV}$. Calculate the waveleng
 :::{admonition} **Solution:**
 :class: dropdown
 
-First, convert the energy of the photon from electron volts (eV) to joules (J):
+First, convert the energy of the radiation from electron volts (eV) to joules (J):
 
 $$
 E = 3.5 \, \text{eV} \times 1.602 \times 10^{-19} \, \text{J/eV} = 5.607 \times 10^{-19} \, \text{J}
@@ -383,7 +382,7 @@ $$
 \lambda = \frac{1.988 \times 10^{-25} \, \text{J} \cdot \text{m}}{5.607 \times 10^{-19} \, \text{J}} \approx 3.55 \times 10^{-7} \, \text{m} = 355 \, \text{nm}
 $$
 
-The wavelength of the photon is approximately $355 \, \text{nm}$, which is in the ultraviolet range of the electromagnetic spectrum.
+The wavelength of the radiation is approximately $355 \, \text{nm}$, which is in the ultraviolet range of the electromagnetic spectrum.
 :::
 
 ::::
