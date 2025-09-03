@@ -1,42 +1,46 @@
 
 ## Atomic spectra
 
-::: {admonition} **What You Need to Know**
+:::{admonition} **What you will learn**
 :class: note
 
-- **Atomic Spectroscopy** measures the frequencies or wavelengths of radiation absorbed or emitted by atoms.
-- **Spectra of Atoms** show discrete lines, indicating that atoms absorb or emit only specific, few frequencies.
-In other words, the energies of atoms are quantized.
-- **Bohr's Theory:** Bohr attempted to explain atomic spectra by combining classical mechanics with the concept of quantization. For the simplest hydrogen atom, Bohr's theory worked perfectly, providing a closed formula that explains all the spectral lines of the hydrogen atom.
-- **Limitation of Bohr's Theory:** However, for atoms with more than one electron, Bohr's theory fails to generalize, leading scientists to develop a more rigorous theory—Quantum Mechanics.
+- The energies of atoms, molecules, and light are **quantized**—they can only take on specific, **discrete values** rather than a continuous spectrum.  
+- This quantization is a cornerstone of physical reality, confirmed by countless experiments and rigorously explained by quantum mechanics.  
+- Pivotal historical discoveries—such as **blackbody radiation, the photoelectric effect, and the double-slit experiment**—laid the foundation for quantum theory.  
+- Everyday macroscopic phenomena, including the red glow of heated metals, the heat capacity of solids at low temperatures, and the characteristic colors of materials, all originate from quantum effects.  
 :::
 
 
+### Spectroscopy of Atoms
 
-### Spectroscopy of atoms
 
-- When heated or subjected to electrical discharge, atoms emit radiation of characteristic frequencies.  The spectrum from each atom is unique. 
-
-:::{figure-md} markdown-fig
-
-<img src="images/lec1_AtomicSpectrum.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
-
-Atomic spectorscopy of hydrogen atom. hydrogen in gas discharge tube radiates discrete wavelengts which can be detected as discrete lines by passing the radiation through prism.
-:::
+- **Spectroscopy** is the study of the interaction between matter and electromagnetic radiation.  
+- By analyzing the emitted or absorbed light, spectroscopy reveals information about the **structure and composition** of atoms and molecules.  
+- When heated or subjected to electrical discharge, atoms emit radiation at characteristic frequencies. The resulting spectrum is **unique for each element**, serving as a kind of atomic fingerprint.  
 
 
 :::{figure-md} markdown-fig
 
-<img src="images/spectra.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+<img src="images/lec1_AtomicSpectrum.png" alt="Hydrogen atomic spectrum" class="bg-primary mb-1" width="70%">
 
-Using spectorscopy one could detect presence of different elements in the sun. 
+**Atomic spectroscopy of the hydrogen atom.**  
+Hydrogen in a gas-discharge tube emits light at discrete wavelengths, which appear as distinct spectral lines when passed through a prism.  
 :::
+
+:::{figure-md} markdown-fig
+
+<img src="images/spectra.png" alt="Solar spectra" class="bg-primary mb-1" width="70%">
+
+**Spectroscopy of the Sun.**  
+By analyzing spectral lines, one can identify the presence of different elements in the solar atmosphere.  
+:::
+
 
 ### Spectral lines and Rydberg's formula
 
 - The existance of discrete spectral lines are impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
-$$v = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
+$$\tilde{\nu} = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
 
 where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
 
@@ -44,7 +48,7 @@ where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to accoun
 :class: important
 
 
-$$\tilde{v} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
+$$\tilde{\nu} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
 
 where 
 - $R_H = 1.097 \times 10^7 \ \text{m}^{-1}$ is the Rydberg constant.
@@ -63,129 +67,224 @@ Atomic spectral lines are named after their disocerers. Each series contains all
 :::
 
 
-### Bohr's model of H atom
+### Bohr's Model of the Hydrogen Atom
 
 :::{figure-md} markdown-fig
 
-<img src="images/evolution_atom.png" alt="applied photoelectric" class="bg-primary mb-1" width="70%">
+<img src="images/evolution_atom.png" alt="Evolution of atomic models" class="bg-primary mb-1" width="70%">
 
-Evolution of atomic model from pre-quantum to present day complete quantum theory of atoms.
+**Evolution of atomic models.**  
+From pre-quantum pictures of atoms to the modern quantum mechanical description.  
 :::
 
-- In 1911, Niels Bohr proposed a model for the hydrogen atom that was able to recapitulate the hydrogen atom spectrum. 
-- The model consists of an electron orbiting a proton in circular orbits.  The proton is considered to be fixed in space because it is so much more massive than the electron.  
-- Most importantly Bohr had to introduce new ad-hoc requirements to keep the electron stable. Namely the electron demonstrates wavelike characteristics which has an integer number $n=1,2,3,...$ of modes around the circular orbit.  
-- Thanks to this quantization rule expression for the H atom energy is obtained which is a function of an integer number $n=1,2,3,...$
-
+- In 1913, Niels Bohr proposed a model of the hydrogen atom that successfully explained its **discrete emission spectrum**.  
+- The atom was pictured as an electron moving in **circular orbits** around a central proton. Because the proton is far more massive than the electron, it was treated as fixed in space.  
+- To prevent the electron from spiraling into the nucleus, Bohr introduced a new **quantization rule**: the electron’s orbital motion must accommodate an integer number of standing wave modes, $n = 1, 2, 3, \ldots$  
+- This postulate leads directly to an expression for the allowed **energy levels of hydrogen**, each labeled by a principal quantum number $n$.  
 
 :::{figure-md} markdown-fig
 
-<img src="images/bohring.png" alt="FrigginBohr" class="bg-primary mb-1" width="20%">
+<img src="images/bohring.png" alt="Niels Bohr horseshoe anecdote" class="bg-primary mb-1" width="20%">
 
-A man goes to visit Niels Bohr, and sees a horseshoe hanging over Bohr's door (a scandinavian superstition).
-The man says, "But Niels, you are a scientist! Surely you do not believe in this superstition?"
-Niels replies, "Of course I don't believe in it!"
-The man is confused. "Why do you have it if you don't believe in it?"
-Bohr replies, "It is supposed to work, even if you don't believe in it!"
+**Anecdote about Niels Bohr.**  
+A visitor once noticed a horseshoe (a Scandinavian good-luck charm) hanging above Bohr’s door:  
+
+*"But Niels, you are a scientist! Surely you don’t believe in this superstition?"*  
+
+*"Of course I don’t,"* Bohr replied. *"But I am told it works even if you don’t believe in it!"*  
 :::
 
-### Quantizes states of electron
+
+### Quantizing the States of the Electron in the Hydrogen Atom
 
 :::{figure-md} markdown-fig
 
-<img src="images/quantization_orbits.jpeg" alt="applied photoelectric" class="bg-primary mb-1" width="60%">
+<img src="images/quantization_orbits.jpeg" alt="Quantized orbits of the electron" class="bg-primary mb-1" width="60%">
 
-One could rationalize discrete Bohr's orbits by the integer number of wavelengths one could fit into the orbit.  
-
+Bohr rationalized discrete orbits by requiring that an integer number of electron wavelengths fit around the circumference of the orbit.  
 :::
 
-Restricitng waves with wavelength $\lambda$ to sit around orbit separated by integer number yields
+- Imposing this condition gives the relation  
 
-$$\begin{equation}
-2\pi r = n\lambda_e \quad n=1,2,3,...
-\end{equation}$$
-
-where $\lambda_e$ is the deBroglie wavelength of an electron and can be written as
-
-$$\begin{equation}
-\lambda_e = \frac{h}{m_ev}.
-\end{equation}$$
-
-Plugging the deBroglie wavelength equation we get first equation that electron in H atom should satisfy. 
-
-$$\begin{equation}
-m_evr = \frac{nh}{2\pi} = n\hbar,
-\end{equation}$$
-
-We have introduce $\hbar = \frac{h}{2\pi}$ as a short-hand because it comes up frequently in quantum mechanics. The term on the left-hand side of the last equation, $m_evr$, is the angular momentum of the electron.  Thus Bohr 's model demonstrates a quantization of the angular momentum of the electron.
-
-### Force balance
-
-After introducing ad-hoc quantization rule, Bohr's model then resorts to classical mechanics to obtain energy function. Bohr posited that for stationary states of the electron the electrostatic force between the proton and electron must match centrifugal force
-
-**Electrostatic force**
-
-$$\begin{equation}
-f_{el} = \frac{e^2}{4\pi\varepsilon_0r^2}
-\end{equation}$$
-
-- where $4\pi\varepsilon_0$ is present to achieve SI units.
-
-**Fentrifugal force**
-
-$$\begin{equation}
-f_{cf} = \frac{m_ev^2}{r}
-\end{equation}$$
-
-- where $m_e$ is the mass and $v$ is the velocity of the electron.  Equating these two forces yields
-
-$$\begin{equation}
-\frac{e^2}{4\pi\varepsilon_0r^2} = \frac{m_ev^2}{r}.
-\end{equation}$$
-
-- The combination of the force balance equation and the quantized angular momentum equation quantizes the values of $r$, the radius of the electron's circular orbit, that can be taken.  To demonstrate this we solve the quantized angular momentum equation for $v$ and plug the result into the force balance equation and solve for $r$:
-
-$$\begin{align}
-\frac{e^2}{4\pi\varepsilon_0r^2} &= \frac{m_e\left( \frac{n\hbar}{m_er}\right)^2}{r} \\
-\Rightarrow \frac{e^2}{4\pi\varepsilon_0} &= \frac{(n\hbar)^2}{m_er} \\
-\Rightarrow e^2m_er &= 4\pi\varepsilon_0(n\hbar)^2 \\
-\Rightarrow r &= \frac{4\pi\varepsilon_0(n\hbar)^2}{e^2m_e} = n^2 \cdot a_0 \quad n=1,2,3,...
-\end{align}$$
-
-- The radius of the first Bohr orbit is denoted $a_0 = \frac{4\pi\varepsilon_0\hbar^2}{e^2m_e}$ or units of Bohr.  
-
-### Energy of H atom 
-
-The energy of the system can is a sum of the Coulomb attraction between the electron and the proton and the kinetic energy of the electron:
-
-$$\begin{equation}
-E(r) = \frac{1}{2}m_ev^2 - \frac{e^2}{4\pi\varepsilon_0r}
-\end{equation}$$
-
-To determine the energy of an electron that is limited to be in the circular wavelike orbits described above, we must use the force balance relationship.  We do that by substituting $m_ev^2 = \frac{e^2}{4\pi\varepsilon_0r}$ into the energy equation to yield
-
-$$\begin{align}
-E(r) &= \frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} - \frac{e^2}{4\pi\varepsilon_0r} \\
-    &= -\frac{1}{2}\frac{e^2}{4\pi\varepsilon_0r} \\
-    &= -\frac{1}{2}\frac{e^2}{4\pi\varepsilon_0}\frac{e^2m_e}{4\pi\varepsilon_0(n\hbar)^2} \\
-    &= -\frac{m_ee^4}{32\pi^2\varepsilon_0\hbar^2}\frac{1}{n^2} \\
-    &= -\frac{m_ee^4}{8\varepsilon_0^2h^2}\frac{1}{n^2} \quad n=1,2,3,...
-\end{align}$$
-
-where we plugged in the quantized values for $r$ derived from the for balance relationship.   Taking differences in energy between two energy levels, $n_1$ and $n_2>n_1$, yields
-
-$$\begin{equation}
-\Delta E = \frac{m_ee^4}{8\varepsilon_0^2h^2}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}
+$$
+2\pi r = n \lambda_e, \quad n = 1, 2, 3, \ldots
 $$
 
-Equating this to the frequency (use $E = h\nu$ and $\tilde{\nu} = \frac{\nu}{c}$) of emitted light yields:
+- Here, $\lambda_e$ is the **de Broglie wavelength** of the electron:  
 
-$$\begin{equation}
-\tilde{v} = \frac{m_ee^4}{8\varepsilon_0^2ch^3}\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right) = R_H \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
-\end{equation}$$
+$$
+\lambda_e = \frac{h}{m_e v}.
+$$
 
-We see that this yields an expression for the Rydberg constant in terms of fundamental constants $R_H = \frac{m_ee^4}{8\varepsilon_0^2ch^3}$
+- Substituting this expression for $\lambda_e$ into the quantization condition yields  
+
+$$
+m_e v r = \frac{n h}{2\pi} = n \hbar.
+$$
+
+- We introduce the shorthand $\hbar = \tfrac{h}{2\pi}$ because it appears frequently in quantum mechanics. The left-hand side, $m_e v r$, represents the **angular momentum** of the electron.  
+- Thus, Bohr’s model predicts that the electron’s angular momentum is **quantized** in integer multiples of $\hbar$.  
+
+
+### Force Balance
+
+After introducing his quantization rule, Bohr turned back to **classical mechanics** to determine the allowed electron energies. He assumed that, in a stationary orbit, the **electrostatic attraction** between the proton and electron is exactly balanced by the **centrifugal force** of the orbiting electron.  
+
+**Electrostatic force**  
+
+$$
+f_{\text{el}} = \frac{e^2}{4\pi\varepsilon_0 r^2},
+$$  
+
+where $e$ is the elementary charge and the factor $4\pi \varepsilon_0$ ensures SI units.  
+
+**Centrifugal force**  
+
+$$
+f_{\text{cf}} = \frac{m_e v^2}{r},
+$$  
+
+where $m_e$ is the electron mass and $v$ its orbital velocity.  
+
+Equating these two forces gives  
+
+$$
+\frac{e^2}{4\pi\varepsilon_0 r^2} = \frac{m_e v^2}{r}.
+$$  
+
+---
+
+The **force-balance equation** together with the **quantized angular momentum condition** restricts the allowed radii $r$ of electron orbits. Solving step by step:  
+
+1. From angular momentum quantization:  
+   $$
+   m_e v r = n\hbar \quad \Rightarrow \quad v = \frac{n\hbar}{m_e r}.
+   $$  
+
+2. Substituting into the force-balance equation:  
+   $$
+   \frac{e^2}{4\pi\varepsilon_0 r^2} = \frac{m_e}{r} \left( \frac{n\hbar}{m_e r} \right)^2.
+   $$  
+
+3. Simplifying:  
+   $$
+   \frac{e^2}{4\pi\varepsilon_0} = \frac{(n\hbar)^2}{m_e r}.
+   $$  
+
+4. Solving for $r$:  
+   $$
+   r = \frac{4\pi \varepsilon_0 (n\hbar)^2}{m_e e^2} = n^2 a_0, \quad n = 1, 2, 3, \ldots
+   $$  
+
+where the constant $z_0$ is the **Bohr radius**, corresponding to the size of the ground-state orbit.  
+
+$$
+a_0 = \frac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}
+$$  
+
+
+
+:::{admonition} **Bohr radius**,
+:class: tip
+
+$a_0 \approx 0.529 \,\text{Å}$
+
+- We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics.
+:::
+
+
+### Energy of the Hydrogen Atom
+
+The total energy of the electron–proton system is the sum of the electron’s **kinetic energy** and the **Coulomb potential energy**:  
+
+$$
+E(r) = \tfrac{1}{2} m_e v^2 - \frac{e^2}{4\pi\varepsilon_0 r}.
+$$  
+
+Using the force-balance relation  
+
+$$
+m_e v^2 = \frac{e^2}{4\pi\varepsilon_0 r},
+$$  
+
+we substitute into the energy expression:  
+
+$$
+\begin{align}
+E(r) &= \tfrac{1}{2}\frac{e^2}{4\pi\varepsilon_0 r} - \frac{e^2}{4\pi\varepsilon_0 r} \\
+     &= -\tfrac{1}{2}\frac{e^2}{4\pi\varepsilon_0 r}.
+\end{align}
+$$  
+
+Next, inserting the quantized orbital radius  
+
+$$
+r = \frac{4\pi \varepsilon_0 (n\hbar)^2}{m_e e^2},
+$$  
+
+gives the **Bohr energy levels**:  
+
+$$
+E_n = -\frac{m_e e^4}{8 \varepsilon_0^2 h^2} \cdot \frac{1}{n^2}, 
+\quad n = 1, 2, 3, \ldots
+$$  
+
+
+:::{admonition} **Bohr Energy formula**
+:class: important
+
+$$
+E_n = -13.6\frac{ 1}{n^2} \,\,\,[eV]
+$$  
+
+- This is the most useful form for problem solving. You can quickly compute the energy of any hydrogenic level just by inserting the principal quantum number $n$.  
+
+- Ionization energy corresponds to taking the electron from $n=1$ to $n \to \infty$, requiring exactly 13.6 eV.  
+:::
+
+
+
+### Spectral lines and the Rydberg constant  
+
+The energy difference between two levels $n_1$ and $n_2$ is  
+
+$$
+\Delta E = \frac{m_e e^4}{8 \varepsilon_0^2 h^2}
+\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right).
+$$  
+
+Relating this to photon energy $E = h\nu$ and the wavenumber $\tilde{\nu} = \nu/c$ gives  
+
+$$
+\tilde{\nu} = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
+\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)
+= R_H \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right),
+$$  
+
+Where $R_H$ is the **Rydberg constant** which we know expressedin fundmamental constants as opposed to obtaining as a result of an experimental fit! 
+
+$$
+R_H = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
+$$  
+
+
+:::{admonition} **A note about wavenumbers and $cm^{-1}$ units**
+:class: tip
+
+- Wavenumbers $\tilde{\nu}$ in **cm⁻¹** are standard in spectroscopy.  
+- To convert to wavelength: $\lambda = 1 / \tilde{\nu}$ (with $\tilde{\nu}$ in cm⁻¹, $\lambda$ will come out in cm).  
+
+
+$$
+\tilde{\nu}\ \text{(cm}^{-1}\text{)} 
+= R_H \left( \frac{1}{n_1^2} - \frac{1}{n_2^2} \right),
+\quad n_2 > n_1,
+$$  
+
+- $R_H = 1.097 \times 10^5 \ \text{cm}^{-1}$   is the Rydberg constant in spectroscopic units 
+:::
+
+
 
 ### Problems 
 
