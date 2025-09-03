@@ -157,21 +157,25 @@ $$
 The **force-balance equation** together with the **quantized angular momentum condition** restricts the allowed radii $r$ of electron orbits. Solving step by step:  
 
 1. From angular momentum quantization:  
+
    $$
    m_e v r = n\hbar \quad \Rightarrow \quad v = \frac{n\hbar}{m_e r}.
    $$  
 
 2. Substituting into the force-balance equation:  
+
    $$
    \frac{e^2}{4\pi\varepsilon_0 r^2} = \frac{m_e}{r} \left( \frac{n\hbar}{m_e r} \right)^2.
    $$  
 
 3. Simplifying:  
+
    $$
    \frac{e^2}{4\pi\varepsilon_0} = \frac{(n\hbar)^2}{m_e r}.
    $$  
 
 4. Solving for $r$:  
+
    $$
    r = \frac{4\pi \varepsilon_0 (n\hbar)^2}{m_e e^2} = n^2 a_0, \quad n = 1, 2, 3, \ldots
    $$  
@@ -187,7 +191,7 @@ $$
 :::{admonition} **Bohr radius**,
 :class: tip
 
-$a_0 \approx 0.529 \,\text{Å}$
+$$a_0 \approx 0.529 \,\text{Å}$$
 
 - We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics.
 :::
