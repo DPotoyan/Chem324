@@ -52,11 +52,26 @@ Example of light refracting when passing through a prism.
 Example of light refracting when passing through a prism. 
 :::
 
-- Maxima and minima in the interference patters are dictated by simple geometric  argument captured in Bragg’s formula: 
 
-$$\boxed{2d sin\theta = n\lambda}$$
+**Maxima and minima in interference patterns** arise from simple geometry, as captured by **Bragg’s law**:
 
-- One expects waves like X-rays to show interference patterns according to this formula. Interference was thought to be a purely a wave like phenomenon. 
+:::{admonition} **Bragg’s law**:
+:class: tip
+
+$$
+\boxed{2d \sin\theta = n\lambda}
+$$
+
+:::
+
+* $d$: spacing between atomic planes in the lattice
+
+* $\lambda$: wavelength of the radiation
+
+* $n$: order of diffraction. For $n=1$, the extra path length is one wavelength; for $n=2$, it is two wavelengths, and so on. Higher-order reflections ($n > 1$) occur at larger angles and are usually weaker, so in practice most analyses focus on $n=1$.
+
+* Waves such as X-rays produce interference patterns according to this relation. Historically, such interference was regarded as a hallmark of wave-like behavior.
+
 
 ### Both X-rays and electrons show diffraction patterns. 
 
