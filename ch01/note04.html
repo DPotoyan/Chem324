@@ -184,11 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Photoelectric effect</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Atomic spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Wave-particle duality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo_bohr.html">DEMO: Quantum phenomena</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="demo_bohr.html">DEMO: Black Body radiation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -456,6 +455,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-balance">Force Balance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-hydrogen-atom">Energy of the Hydrogen Atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-and-the-rydberg-constant">Spectral lines and the Rydberg constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-like-atoms">Hydrogen like atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>
@@ -635,17 +635,20 @@ f_{\text{cf}} = \frac{m_e v^2}{r},
    \]</div>
 </li>
 </ol>
-<p>where the constant <span class="math notranslate nohighlight">\(z_0\)</span> is the <strong>Bohr radius</strong>, corresponding to the size of the ground-state orbit.</p>
+<ul class="simple">
+<li><p>where the constant <span class="math notranslate nohighlight">\(a_0\)</span> is the <strong>Bohr radius</strong>, corresponding to the size of the ground-state orbit.</p></li>
+<li><p>We see clearly that radius of an orbit grows with increasing quantum number <span class="math notranslate nohighlight">\(n=1,2,3\)</span></p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Bohr radius</strong></p>
 <div class="math notranslate nohighlight">
 \[
 a_0 = \frac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}
 \]</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Bohr radius</strong>,</p>
 <div class="math notranslate nohighlight">
 \[a_0 \approx 0.529 \,\text{Å}\]</div>
 <ul class="simple">
-<li><p>We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics.</p></li>
+<li><p>We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics!</p></li>
 </ul>
 </div>
 </section>
@@ -689,6 +692,7 @@ E_n = -13.6\frac{ 1}{n^2} \,\,\,[eV]
 <ul class="simple">
 <li><p>This is the most useful form for problem solving. You can quickly compute the energy of any hydrogenic level just by inserting the principal quantum number <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <li><p>Ionization energy corresponds to taking the electron from <span class="math notranslate nohighlight">\(n=1\)</span> to <span class="math notranslate nohighlight">\(n \to \infty\)</span>, requiring exactly 13.6 eV.</p></li>
+<li><p>You can compute energy (or frequency) of photon to jump from state <span class="math notranslate nohighlight">\(n\)</span> to <span class="math notranslate nohighlight">\(m\)</span> by taking difference betwen energy levels <span class="math notranslate nohighlight">\(\Delta E_{n\rightarrow m} = -19.6 (1/m^2-1/n^2) = h\nu\)</span></p></li>
 </ul>
 </div>
 </section>
@@ -728,6 +732,19 @@ R_H = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
 <li><p><span class="math notranslate nohighlight">\(R_H = 1.097 \times 10^5 \ \text{cm}^{-1}\)</span>   is the Rydberg constant in spectroscopic units</p></li>
 </ul>
 </div>
+</section>
+<section id="hydrogen-like-atoms">
+<h2>Hydrogen like atoms<a class="headerlink" href="#hydrogen-like-atoms" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>For atoms with one electron <span class="math notranslate nohighlight">\(He^{+}\)</span>, <span class="math notranslate nohighlight">\(Li^{2+}\)</span> Bohr model still works but we have to account for increased charge of the nucleus <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E_n = -13.6 \frac{Z^2}{n^2}, [eV]
+\]</div>
+<ul class="simple">
+<li><p>E.g for <span class="math notranslate nohighlight">\(H\)</span> atom <span class="math notranslate nohighlight">\(Z=1\)</span> for <span class="math notranslate nohighlight">\(He^{+}\)</span> <span class="math notranslate nohighlight">\(Z =2\)</span> etc.</p></li>
+</ul>
 </section>
 <section id="problems">
 <h2>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h2>
@@ -1013,6 +1030,7 @@ r_4 = \frac{4^2 \times 5.29 \times 10^{-11} \ \text{m}}{1} = 16 \times 5.29 \tim
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-balance">Force Balance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-hydrogen-atom">Energy of the Hydrogen Atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-and-the-rydberg-constant">Spectral lines and the Rydberg constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogen-like-atoms">Hydrogen like atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1">Problem 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2">Problem 2</a></li>

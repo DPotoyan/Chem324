@@ -180,20 +180,20 @@ The **force-balance equation** together with the **quantized angular momentum co
    r = \frac{4\pi \varepsilon_0 (n\hbar)^2}{m_e e^2} = n^2 a_0, \quad n = 1, 2, 3, \ldots
    $$  
 
-where the constant $z_0$ is the **Bohr radius**, corresponding to the size of the ground-state orbit.  
+- where the constant $a_0$ is the **Bohr radius**, corresponding to the size of the ground-state orbit.  
+- We see clearly that radius of an orbit grows with increasing quantum number $n=1,2,3$
+
+
+:::{admonition} **Bohr radius**
+:class: tip
 
 $$
 a_0 = \frac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}
 $$  
 
-
-
-:::{admonition} **Bohr radius**,
-:class: tip
-
 $$a_0 \approx 0.529 \,\text{Å}$$
 
-- We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics.
+- We will encounter the Bohr radius many times. It sets the fundamental length scale for atomic physics!
 :::
 
 
@@ -244,6 +244,9 @@ $$
 - This is the most useful form for problem solving. You can quickly compute the energy of any hydrogenic level just by inserting the principal quantum number $n$.  
 
 - Ionization energy corresponds to taking the electron from $n=1$ to $n \to \infty$, requiring exactly 13.6 eV.  
+
+- You can compute energy (or frequency) of photon to jump from state $n$ to $m$ by taking difference betwen energy levels $\Delta E_{n\rightarrow m} = -19.6 (1/m^2-1/n^2) = h\nu$  
+
 :::
 
 
@@ -288,7 +291,15 @@ $$
 - $R_H = 1.097 \times 10^5 \ \text{cm}^{-1}$   is the Rydberg constant in spectroscopic units 
 :::
 
+### Hydrogen like atoms
 
+- For atoms with one electron $He^{+}$, $Li^{2+}$ Bohr model still works but we have to account for increased charge of the nucleus $Z$. 
+
+$$
+E_n = -13.6 \frac{Z^2}{n^2}, [eV]
+$$
+
+- E.g for $H$ atom $Z=1$ for $He^{+}$ $Z =2$ etc.  
 
 ### Problems 
 

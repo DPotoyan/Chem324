@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>DEMO: Black Body radiation &#8212; Quantum Mechanics for Chemistry</title>
+    <title>DEMO: Quantum phenomena &#8212; Quantum Mechanics for Chemistry</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch01/demo_bohr';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Waves and wave equation" href="../ch02/index.html" />
-    <link rel="prev" title="DEMO: Visualizing complex numbers" href="demo_complex_nums.html" />
+    <link rel="next" title="DEMO: Visualizing complex numbers" href="demo_complex_nums.html" />
+    <link rel="prev" title="Wave-particle duality" href="note05.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,11 +182,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Photoelectric effect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Atomic spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note05.html">Wave-particle duality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="BlackBody.html">DEMO: Black Body radiation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DEMO: Quantum phenomena</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_complex_nums.html">DEMO: Visualizing complex numbers</a></li>
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">DEMO: Black Body radiation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/index.html">2. Waves and wave equation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -486,7 +485,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DEMO: Black Body radiation</h1>
+    <h1>DEMO: Quantum phenomena</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -496,7 +495,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wavelength-of-an-electron">Calculate wavelength of an electron</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sepctral-transitions">Plot sepctral transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-black-body-radiation-curves">Plot Black Body radiation curves</a></li>
 </ul>
             </nav>
         </div>
@@ -508,8 +509,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="demo-black-body-radiation">
-<h1>DEMO: Black Body radiation<a class="headerlink" href="#demo-black-body-radiation" title="Permalink to this heading">#</a></h1>
+  <section id="demo-quantum-phenomena">
+<h1>DEMO: Quantum phenomena<a class="headerlink" href="#demo-quantum-phenomena" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -530,7 +531,7 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;e =&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h =&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s2">&quot;J·s&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ε0 =&quot;</span><span class="p">,</span> <span class="n">epsilon0</span><span class="p">,</span> <span class="s2">&quot;F/m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ε0 =&quot;</span><span class="p">,</span> <span class="n">epsilon_0</span><span class="p">,</span> <span class="s2">&quot;F/m&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m_e =&quot;</span><span class="p">,</span> <span class="n">m_e</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R_H =&quot;</span><span class="p">,</span> <span class="n">R_H_cm</span><span class="p">,</span> <span class="s2">&quot;cm^-1&quot;</span><span class="p">)</span>
 </pre></div>
@@ -540,31 +541,34 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e = 1.602176634e-19 C
 h = 6.62607015e-34 J·s
 c = 299792458.0 m/s
+ε0 = 8.8541878128e-12 F/m
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h =&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s2">&quot;J·s&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ε0 =&quot;</span><span class="p">,</span> <span class="n">epsilon0</span><span class="p">,</span> <span class="s2">&quot;F/m&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m_e =&quot;</span><span class="p">,</span> <span class="n">m_e</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ε0 =&quot;</span><span class="p">,</span> <span class="n">epsilon_0</span><span class="p">,</span> <span class="s2">&quot;F/m&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m_e =&quot;</span><span class="p">,</span> <span class="n">m_e</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R_H =&quot;</span><span class="p">,</span> <span class="n">R_H_cm</span><span class="p">,</span> <span class="s2">&quot;cm^-1&quot;</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;epsilon0&#39; is not defined
+<span class="ne">NameError</span>: name &#39;m_e&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rydberg_cm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>  <span class="c1"># returns cm^-1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rydberg_cm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># returns cm^-1</span>
 
-    <span class="k">return</span> <span class="n">R_H_cm</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">n2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">R_H_cm</span> <span class="o">*</span> <span class="n">Z</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">n2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<section id="calculate-wavelength-of-an-electron">
+<h2>Calculate wavelength of an electron<a class="headerlink" href="#calculate-wavelength-of-an-electron" title="Permalink to this heading">#</a></h2>
+</section>
 <section id="plot-sepctral-transitions">
 <h2>Plot sepctral transitions<a class="headerlink" href="#plot-sepctral-transitions" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -594,6 +598,75 @@ c = 299792458.0 m/s
 
 <span class="n">plot_hydrogen_energy_levels</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-black-body-radiation-curves">
+<h2>Plot Black Body radiation curves<a class="headerlink" href="#plot-black-body-radiation-curves" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">planck</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Planck&#39;s Law to calculate the spectral radiance of black body radiation at temperature T.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - wavelength (float): Wavelength in meters.</span>
+<span class="sd">    - T (float): Absolute temperature in Kelvin.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - (float): Spectral radiance in W/(m^2*sr*m).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+   
+    <span class="n">exponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+    
+    <span class="n">exponent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>  <span class="c1"># Clip values of exponent at 700 to avoid numerical overflow</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_black_body</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the black body radiation spectrum for a given temperature T.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Lets pick some beautiful colors</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">cm</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">cycler</span><span class="w"> </span><span class="kn">import</span> <span class="n">cycler</span>
+    <span class="n">magma</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;magma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10 discrete colors, feel free to change</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">magma</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">magma</span><span class="o">.</span><span class="n">N</span><span class="p">)])</span>
+
+    <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-9</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Wavelength range from 1 nm to 3 um</span>
+    <span class="n">intensities</span> <span class="o">=</span> <span class="n">planck</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">intensities</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Convert wavelength to nm for plotting</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Intensity (W/m^2)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">max_int</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">planck</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span> <span class="c1"># lets limit y axis to 5000</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_int</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span> <span class="c1"># show is needed for interactive plots</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">200</span><span class="p">):</span>
+    <span class="n">plot_black_body</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">plot_black_body</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -632,20 +705,20 @@ c = 299792458.0 m/s
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="demo_complex_nums.html"
+       href="note05.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DEMO: Visualizing complex numbers</p>
+        <p class="prev-next-title">Wave-particle duality</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ch02/index.html"
+       href="demo_complex_nums.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2. Waves and wave equation</p>
+        <p class="prev-next-title">DEMO: Visualizing complex numbers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -664,7 +737,9 @@ c = 299792458.0 m/s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wavelength-of-an-electron">Calculate wavelength of an electron</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sepctral-transitions">Plot sepctral transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-black-body-radiation-curves">Plot Black Body radiation curves</a></li>
 </ul>
   </nav></div>
 
