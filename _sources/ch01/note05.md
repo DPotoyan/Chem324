@@ -47,6 +47,7 @@ Example of light refracting when passing through a prism.
 
 
 :::{figure-md} markdown-fig
+
 <img src="./images/lec3_Xscatter2.png" alt="compton" class="bg-primary mb-1" width="400px">
 
 Example of light refracting when passing through a prism. 
