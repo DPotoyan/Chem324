@@ -22,34 +22,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Rydberg constant in spec units
-
-R_H_cm = Rydberg * 1e-2 # cm^-1
-
-# Print to check
-print("e =", e, "C")
-print("h =", h, "J·s")
-print("c =", c, "m/s")
-print("ε0 =", epsilon_0, "F/m")
-print("m_e =", m_e, "kg")
-print("R_H =", R_H_cm, "cm^-1")
-
+zc=z.conj()
 ------------------
 
------ stdout -----
-e = 1.602176634e-19 C
-h = 6.62607015e-34 J·s
-c = 299792458.0 m/s
-ε0 = 8.8541878128e-12 F/m
-------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[2], line 10[0m
-[1;32m      8[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mc =[39m[38;5;124m"[39m, c, [38;5;124m"[39m[38;5;124mm/s[39m[38;5;124m"[39m)
-[1;32m      9[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mε0 =[39m[38;5;124m"[39m, epsilon_0, [38;5;124m"[39m[38;5;124mF/m[39m[38;5;124m"[39m)
-[0;32m---> 10[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mm_e =[39m[38;5;124m"[39m, [43mm_e[49m, [38;5;124m"[39m[38;5;124mkg[39m[38;5;124m"[39m)
-[1;32m     11[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mR_H =[39m[38;5;124m"[39m, R_H_cm, [38;5;124m"[39m[38;5;124mcm^-1[39m[38;5;124m"[39m)
+Cell [0;32mIn[9], line 1[0m
+[0;32m----> 1[0m zc[38;5;241m=[39m[43mz[49m[38;5;241m.[39mconj()
 
-[0;31mNameError[0m: name 'm_e' is not defined
+[0;31mNameError[0m: name 'z' is not defined
 
