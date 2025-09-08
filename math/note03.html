@@ -697,61 +697,6 @@ e^{ix} = \cos x + i \sin x.
 <li><p>In summary, the complex exponential function elegantly describes both rotation and scaling in the complex plane, and its derivative gives insight into the velocity of rotation, always perpendicular to the position vector.</p></li>
 </ul>
 </div>
-<div class="tip dropdown admonition">
-<p class="admonition-title"><strong>Proof Euler’s formula</strong></p>
-<p>We will prove this by using the Taylor series expansions of the exponential function, cosine, and sine.</p>
-<p><strong>Step 1: Taylor Series Expansion of <span class="math notranslate nohighlight">\(e^x\)</span></strong></p>
-<p>The Taylor series expansion of <span class="math notranslate nohighlight">\(e^x\)</span> around <span class="math notranslate nohighlight">\(x = 0\)</span> is:</p>
-<div class="math notranslate nohighlight">
-\[
-e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots
-\]</div>
-<p>For <span class="math notranslate nohighlight">\(e^{i\phi}\)</span>, substitute <span class="math notranslate nohighlight">\(x = i\phi\)</span> into the series:</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i\phi} = 1 + i\phi + \frac{(i\phi)^2}{2!} + \frac{(i\phi)^3}{3!} + \frac{(i\phi)^4}{4!} + \cdots
-\]</div>
-<p><strong>Step 2: Simplifying Powers of <span class="math notranslate nohighlight">\(i\)</span></strong>
-We know that powers of <span class="math notranslate nohighlight">\(i\)</span> cycle as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-i^1 = i, \quad i^2 = -1, \quad i^3 = -i, \quad i^4 = 1, \quad \text{and so on}.
-\]</div>
-<p>Using these identities, we simplify each term in the series:</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i\phi} = 1 + i\phi - \frac{\phi^2}{2!} - i\frac{\phi^3}{3!} + \frac{\phi^4}{4!} + i\frac{\phi^5}{5!} - \cdots
-\]</div>
-<p><strong>Step 3: Grouping Real and Imaginary Terms</strong>
-Now, we group the real and imaginary terms separately:</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i\phi} = \left(1 - \frac{\phi^2}{2!} + \frac{\phi^4}{4!} - \cdots\right) + i\left(\phi - \frac{\phi^3}{3!} + \frac{\phi^5}{5!} - \cdots\right)
-\]</div>
-<p><strong>Step 4: Recognizing Taylor Series for <span class="math notranslate nohighlight">\(\cos\phi\)</span> and <span class="math notranslate nohighlight">\(\sin\phi\)</span></strong></p>
-<p>The Taylor series for <span class="math notranslate nohighlight">\(\cos\phi\)</span> is:</p>
-<div class="math notranslate nohighlight">
-\[
-\cos\phi = 1 - \frac{\phi^2}{2!} + \frac{\phi^4}{4!} - \cdots
-\]</div>
-<p>And the Taylor series for <span class="math notranslate nohighlight">\(\sin\phi\)</span> is:</p>
-<div class="math notranslate nohighlight">
-\[
-\sin\phi = \phi - \frac{\phi^3}{3!} + \frac{\phi^5}{5!} - \cdots
-\]</div>
-<p><strong>Step 5: Substituting the Series Back</strong>
-We see that the real part of the series matches <span class="math notranslate nohighlight">\(\cos\phi\)</span>, and the imaginary part matches <span class="math notranslate nohighlight">\(i\sin\phi\)</span>. Therefore:</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i\phi} = \cos\phi + i\sin\phi
-\]</div>
-<p><strong>Conclusion</strong>
-This completes the proof of Euler’s formula:</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i\phi} = \cos\phi + i\sin\phi
-\]</div>
-</div>
 </section>
 </section>
 <section id="complex-conjugate">
