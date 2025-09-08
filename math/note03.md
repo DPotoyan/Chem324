@@ -156,6 +156,36 @@ $$z =  re^{i\phi}$$
 - $\phi$ rotation angle in complex plane.
 :::
 
+
+:::{admonition} **Proof of Euler’s Formula**
+:class: tip, dropdown
+
+Consider the exponential and trigonometric Taylor expansions:
+
+$$
+e^{ix} = 1 + \frac{ix}{1!} + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots
+$$
+
+Expanding powers of $i$:
+
+$$
+= 1 + i\frac{x}{1!} - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + \cdots
+$$
+
+Now separate into real and imaginary parts:
+
+$$
+= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots\right) \;+\; i\left(\frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\right)
+$$
+
+But these are exactly the Taylor series of $\cos x$ and $\sin x$. Hence:
+
+$$
+e^{ix} = \cos x + i \sin x.
+$$
+
+:::
+
 #### Converting from Carteisan to Polar
 
 - Now having established Euler's formula we need a recepie to go back and forth between cartesian and polar representations.
