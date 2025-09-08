@@ -43,7 +43,7 @@ Visualizing complex numbers on cartesian plane
 
 :::
 
-- **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have numbers of roots equal to the highest power. E.g quadratic must have two roots. Complex numbers ensure the existence of roots for polynomials.
+- **Fundamental theorem of algebra.** says that polynomial equations like quadratic, cubic, quartic etc must have $n$ numbers of roots equal to the $n$th highest power of the equation. E.g quadratic must have two roots, cubic three, etc.  Complex numbers ensure the existence of roots for polynomials.
 
 - This equation must have two solutions/roots. How do we visualize them?
 
@@ -56,6 +56,26 @@ $$x_{1,2}= \pm\sqrt{-1} = \pm i$$
 - **What is the definition of $ i $?** The imaginary number $ i $ is defined solely by the property that its square is $−1$, that is: $i\cdot i=-1$. 
 
 - **How does $i$ change what I know about math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
+
+:::{admonition} **Quadratic Equation Solutions**
+:class: tip, dropdown
+
+For a quadratic equation of the form
+
+$$ax^2 + bx + c = 0,$$
+
+the solutions are given by the **quadratic formula**:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+$$
+
+- The term under the square root, $\Delta = b^2 - 4ac$, is called the **discriminant**.  
+- If $\Delta > 0$: two distinct real roots.  
+- If $\Delta = 0$: one repeated real root.  
+- If $\Delta < 0$: two complex conjugate roots.
+
+:::
 
 :::{figure-md} markdown-fig
 
@@ -97,6 +117,9 @@ Find real and imaginary components of the following complex numbers $z_1 = 3 +2$
 
 ### Polar representation
 
+- What's the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
+- This dramatic simplification is thanks to "magical" Euler's formula that turns trig functions into exponentss!
+
 :::{figure-md} markdown-fig
 
 <img src="images/PolCart.png" alt="applied photoelectric" class="bg-primary mb-1"  width="30%">
@@ -117,8 +140,6 @@ $$z= x+iy = rcos\phi + ri\sin\phi =r(cos\phi+isin\phi)$$
 - $\phi$ rotation angle in complex plane.
 :::
 
-- What's the big deal with this polar representation?  We will find that life is much much easier in polar represnation when deriving new expressions or manipulating complex numbers. 
-- This dramatic simplification is thanks to "magical" Euler's formula that turns trig functions into exponentss!
 
 :::{admonition} **Euler’s formula**
 :class: important 
