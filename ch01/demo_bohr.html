@@ -495,6 +495,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wavelength-of-an-electron">Calculate wavelength of an electron</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-to-make-calculations-easier">Write a function to make calculations easier</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sepctral-transitions">Plot sepctral transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-black-body-radiation-curves">Plot Black Body radiation curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-complex-numbers">Dealing with complex numbers</a><ul class="nav section-nav flex-column">
@@ -518,12 +519,17 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interactive</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">N_A</span><span class="p">,</span> <span class="n">m_e</span><span class="p">,</span> <span class="n">epsilon_0</span><span class="p">,</span> <span class="n">Rydberg</span> 
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">m_e</span><span class="p">,</span> <span class="n">epsilon_0</span><span class="p">,</span> <span class="n">Rydberg</span> 
 </pre></div>
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/constants.html">See all the availible constants here</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rydberg constant in spec units</span>
@@ -551,6 +557,11 @@ R_H = 109737.3156816 cm^-1
 </div>
 </div>
 </div>
+<section id="calculate-wavelength-of-an-electron">
+<h2>Calculate wavelength of an electron<a class="headerlink" href="#calculate-wavelength-of-an-electron" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="write-a-function-to-make-calculations-easier">
+<h2>Write a function to make calculations easier<a class="headerlink" href="#write-a-function-to-make-calculations-easier" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rydberg_cm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># returns cm^-1</span>
@@ -560,8 +571,6 @@ R_H = 109737.3156816 cm^-1
 </div>
 </div>
 </div>
-<section id="calculate-wavelength-of-an-electron">
-<h2>Calculate wavelength of an electron<a class="headerlink" href="#calculate-wavelength-of-an-electron" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="plot-sepctral-transitions">
 <h2>Plot sepctral transitions<a class="headerlink" href="#plot-sepctral-transitions" title="Permalink to this heading">#</a></h2>
@@ -661,21 +670,48 @@ R_H = 109737.3156816 cm^-1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2214/3339301199.py:28: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2201/3339301199.py:28: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
   magma = cm.get_cmap(&#39;magma&#39;, 10)  # 10 discrete colors, feel free to change
 </pre></div>
 </div>
-<img alt="../_images/a9330354ed7c14568e83db6e614f0416f8937078ca7e1be841c637bfdf69d2ca.png" src="../_images/a9330354ed7c14568e83db6e614f0416f8937078ca7e1be841c637bfdf69d2ca.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">200</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">plot_black_body</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 32,</span> in <span class="ni">plot_black_body</span><span class="nt">(T, show)</span>
+<span class="nn">     29 plt.rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=[magma(i) for i</span> in <span class="ni">range</span><span class="nt">(magma.N)])</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-9</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Wavelength range from 1 nm to 3 um</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">intensities</span> <span class="o">=</span> <span class="n">planck</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">intensities</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Convert wavelength to nm for plotting</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 13,</span> in <span class="ni">planck</span><span class="nt">(wavelength, T)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">planck</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd">     Planck&#39;s Law to calculate the spectral radiance of black body radiation at temperature T.</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd">     </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd">     - (float): Spectral radiance in W/(m^2*sr*m).</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">exponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">exponent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>  <span class="c1"># Clip values of exponent at 700 to avoid numerical overflow</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">return</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavelength</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;k&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interactive</span><span class="p">(</span><span class="n">plot_black_body</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interactive</span>
+
+<span class="n">interactive</span><span class="p">(</span><span class="n">plot_black_body</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "445f900d0dcb4727b14c50c76ae10782"}</script></div>
 </div>
 </section>
 <section id="dealing-with-complex-numbers">
@@ -690,22 +726,24 @@ R_H = 109737.3156816 cm^-1
 </div>
 </div>
 </div>
-<p>z=1+np.sqrt(3)*1j
-z</p>
-<p>z.real, z.imag</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zc</span><span class="o">=</span><span class="n">z</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
+<span class="n">z</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">zc</span><span class="o">=</span><span class="n">z</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;z&#39; is not defined
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zc</span><span class="o">=</span><span class="n">z</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -916,6 +954,7 @@ z</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wavelength-of-an-electron">Calculate wavelength of an electron</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-to-make-calculations-easier">Write a function to make calculations easier</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-sepctral-transitions">Plot sepctral transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-black-body-radiation-curves">Plot Black Body radiation curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-complex-numbers">Dealing with complex numbers</a><ul class="nav section-nav flex-column">

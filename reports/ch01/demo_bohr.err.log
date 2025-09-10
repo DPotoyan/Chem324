@@ -22,14 +22,39 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-zc=z.conj()
+for T in range(3000, 5000, 200):
+    plot_black_body(T)
 ------------------
 
+----- stderr -----
+/tmp/ipykernel_2201/3339301199.py:28: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+  magma = cm.get_cmap('magma', 10)  # 10 discrete colors, feel free to change
+------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[9], line 1[0m
-[0;32m----> 1[0m zc[38;5;241m=[39m[43mz[49m[38;5;241m.[39mconj()
+Cell [0;32mIn[6], line 2[0m
+[1;32m      1[0m [38;5;28;01mfor[39;00m T [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;241m3000[39m, [38;5;241m5000[39m, [38;5;241m200[39m):
+[0;32m----> 2[0m     [43mplot_black_body[49m[43m([49m[43mT[49m[43m)[49m
 
-[0;31mNameError[0m: name 'z' is not defined
+Cell [0;32mIn[5], line 32[0m, in [0;36mplot_black_body[0;34m(T, show)[0m
+[1;32m     29[0m plt[38;5;241m.[39mrcParams[[38;5;124m'[39m[38;5;124maxes.prop_cycle[39m[38;5;124m'[39m] [38;5;241m=[39m cycler(color[38;5;241m=[39m[magma(i) [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m(magma[38;5;241m.[39mN)])
+[1;32m     31[0m wavelengths [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m1e-9[39m, [38;5;241m5e-6[39m, [38;5;241m1000[39m)  [38;5;66;03m# Wavelength range from 1 nm to 3 um[39;00m
+[0;32m---> 32[0m intensities [38;5;241m=[39m [43mplanck[49m[43m([49m[43mwavelengths[49m[43m,[49m[43m [49m[43mT[49m[43m)[49m
+[1;32m     34[0m plt[38;5;241m.[39mplot(wavelengths[38;5;241m*[39m[38;5;241m1e9[39m, intensities, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m'[39m[38;5;124mT=[39m[38;5;132;01m{[39;00mT[38;5;132;01m}[39;00m[38;5;124m'[39m, lw[38;5;241m=[39m[38;5;241m3[39m)  [38;5;66;03m# Convert wavelength to nm for plotting[39;00m
+[1;32m     36[0m plt[38;5;241m.[39mxlabel([38;5;124m'[39m[38;5;124mWavelength (nm)[39m[38;5;124m'[39m)
+
+Cell [0;32mIn[5], line 13[0m, in [0;36mplanck[0;34m(wavelength, T)[0m
+[1;32m      1[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mplanck[39m(wavelength, T):
+[1;32m      2[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m      3[0m [38;5;124;03m    Planck's Law to calculate the spectral radiance of black body radiation at temperature T.[39;00m
+[1;32m      4[0m [38;5;124;03m    [39;00m
+[0;32m   (...)[0m
+[1;32m     10[0m [38;5;124;03m    - (float): Spectral radiance in W/(m^2*sr*m).[39;00m
+[1;32m     11[0m [38;5;124;03m    """[39;00m
+[0;32m---> 13[0m     exponent [38;5;241m=[39m (h[38;5;241m*[39mc) [38;5;241m/[39m (wavelength[38;5;241m*[39m[43mk[49m[38;5;241m*[39mT)
+[1;32m     15[0m     exponent [38;5;241m=[39m np[38;5;241m.[39mclip(exponent, [38;5;28;01mNone[39;00m, [38;5;241m700[39m)  [38;5;66;03m# Clip values of exponent at 700 to avoid numerical overflow[39;00m
+[1;32m     17[0m     [38;5;28;01mreturn[39;00m ([38;5;241m2.0[39m[38;5;241m*[39mh[38;5;241m*[39mc[38;5;241m*[39m[38;5;241m*[39m[38;5;241m2[39m) [38;5;241m/[39m (wavelength[38;5;241m*[39m[38;5;241m*[39m[38;5;241m5[39m [38;5;241m*[39m (np[38;5;241m.[39mexp(exponent) [38;5;241m-[39m [38;5;241m1[39m))
+
+[0;31mNameError[0m: name 'k' is not defined
 
