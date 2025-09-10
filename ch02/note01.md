@@ -5,13 +5,10 @@
 :class: note
 
 - **A wave is a self-propagating disturbance** that transfers energy, momentum, and information through a medium, without transporting matter. 
-- In quantum mechanics, waves are fundamental to understanding the behavior of particles at small scales.
+- The behavior of waves is governed by the **wave equation**, a partial differential equation (PDE) that describes their spatial and temporal evolution. 
+- Two major classes of waves we will be examining are **Standing waves** which remain fixed in space, exhibiting nodes and antinodes. 
+- **Traveling waves** which propagate through space, transferring energy from one location to another.
 
-- The behavior of waves is governed by the **wave equation**, a partial differential equation (PDE) that describes their spatial and temporal evolution. This equation allows us to predict how a wave will propagate, oscillate, and interact with its environment.
-
-- Two major classes of waves we will be examining are **Standing waves** which remain fixed in space, exhibiting nodes and antinodes. **Traveling waves** which propagate through space, transferring energy from one location to another.
-
-- Additionally, waves can be classified as **Transverse**, where the disturbance is perpendicular to the direction of propagation, or **Longitudinal**, where the disturbance is parallel to the direction of propagation.
 ```
 
 
@@ -55,6 +52,8 @@ $$f(x,t)=f(x')$$
 
 $$u(x,t) = f(x-vt)$$
 
+
+- To see why $f(x-vt)$ implies motion to the right take a constant front of the wave $x-vt=const$ which shows that $x = vt +const$ and vice versa for $f(x+vt)$
 
 ### Periodic traveling waves.
 
