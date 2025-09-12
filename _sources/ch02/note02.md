@@ -21,7 +21,8 @@
 
 - **Wave equation** is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement $u(x,t)$ in time and space.
 
-$$\frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$ 
+$$
+\frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$ 
 
 
 :::{figure-md} markdown-fig
@@ -46,21 +47,26 @@ Classical wave equation can describe any complicated wave in space and time give
 
 ### Solving Wave Equation: The big picture 
 
-- **Boundary Conditions:** To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:
+- **1. Boundary Conditions:** To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:
 
 $$
 u(0, t) = 0 \quad \text{and} \quad u(L, t) = 0
 $$
 
-where $u(x, t)$ represents the displacement of the string at position $x$ and time $t$.
 
-- **Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs. 
+- where $u(x, t)$ represents the displacement of the string at position $x$ and time $t$.
+
+- **2. Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs. 
 
 $$
 u(x, t) = X(x) \cdot T(t)
 $$
 
-- **Principle of superposition:** The wave equation is linear which you can see by  $u$ terms appearing with first order on both side. Linearity means that linear combination of two solutions $c_1 u_1+c_2u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms. 
+- **3. Principle of superposition:** The wave equation is linear which you can see by  $u$ terms appearing with first order on both side. Linearity means that linear combination of two solutions $u_1$ and $u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms. 
+
+$$
+u = c_1 u_1+c_2u_2
+$$
 
 ### Step 1: Plug the Product of Univariate Functions into the Wave Equation
 
@@ -102,6 +108,33 @@ $$
 $$
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 $$
+
+:::{admonition} **Solving simple liner and homogenuous ODEs**
+:class: tip, dropdown
+
+- To solve linear and homogenuous ODEs we plug exponential and turn roblem from differential to algebraic one. In this case to a simple quadratic equation. 
+
+$$
+\frac{d^2 y}{dx^2} +4=0
+$$
+
+- For instnace if we plug $y=e^{kx}$ in the following equation and cancel exponents on both sides we will get algebraic equation in terms of k. 
+
+$$
+k^2 +4 = 0
+$$
+
+- We get two solutions (could be complex real, repeated) which we then use to write general solution in the form of a superposition. 
+
+$$
+k=\pm 2i
+$$
+
+$$
+y=c_1e^{+2i} + c_2e^{-2i}
+$$
+
+:::
 
 :::{admonition} **Solving the spatial part: when $K > 0$**
 :class: tip, dropdown
@@ -417,7 +450,7 @@ $$
 Y(0) = Y(L_y) = 0
 $$
 
-The solutions for \(X(x)\) and \(Y(y)\) are:
+The solutions for $X(x)$ and $Y(y)$ are:
 
 $$
 X(x) = C \sin\left(\frac{n \pi x}{L_x}\right)
@@ -427,13 +460,13 @@ $$
 Y(y) = D \sin\left(\frac{m \pi y}{L_y}\right)
 $$
 
-where \(n\) and \(m\) are positive integers, and:
+where $n$ and $m$ are positive integers, and:
 
 $$
 \alpha = \frac{n \pi}{L_x}, \quad \beta = \frac{m \pi}{L_y}
 $$
 
-So, the general solution for \(u(x, y, t)\) is:
+So, the general solution for $u(x, y, t)$ is:
 
 $$
 u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_{nm} t\right) + B_{nm} \sin\left(\omega_{nm} t\right) \right] \sin\left(\frac{n \pi x}{L_x}\right) \sin\left(\frac{m \pi y}{L_y}\right)
@@ -445,7 +478,7 @@ $$
 \omega_{nm} = c \sqrt{\left(\frac{n \pi}{L_x}\right)^2 + \left(\frac{m \pi}{L_y}\right)^2}
 $$
 
-This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of \(n\) and \(m\).
+This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of $n$ and $m$.
 :::
 
 

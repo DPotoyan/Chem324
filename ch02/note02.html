@@ -499,7 +499,8 @@ document.write(`
 <li><p><strong>Wave equation</strong> is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement <span class="math notranslate nohighlight">\(u(x,t)\)</span> in time and space.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}\]</div>
+\[
+\frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}\]</div>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/1D-Wave.gif"><img alt="applied photoelectric" class="bg-primary mb-1" src="../_images/1D-Wave.gif" style="width: 50%;" /></a>
 <figcaption>
@@ -520,23 +521,27 @@ document.write(`
 <section id="solving-wave-equation-the-big-picture">
 <h2>Solving Wave Equation: The big picture<a class="headerlink" href="#solving-wave-equation-the-big-picture" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Boundary Conditions:</strong> To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:</p></li>
+<li><p><strong>1. Boundary Conditions:</strong> To solve the wave equation for a specific physical situation, such as a guitar string fixed at both ends, we need to specify two boundary conditions. Mathematically, these are:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 u(0, t) = 0 \quad \text{and} \quad u(L, t) = 0
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(u(x, t)\)</span> represents the displacement of the string at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <ul class="simple">
-<li><p><strong>Separation of Variables:</strong> A common method to solve such equations is the technique of separation of variables. This technique assumes that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> vary independently of each other, allowing us to express <span class="math notranslate nohighlight">\(u(x, t)\)</span> as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs.</p></li>
+<li><p>where <span class="math notranslate nohighlight">\(u(x, t)\)</span> represents the displacement of the string at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><strong>2. Separation of Variables:</strong> A common method to solve such equations is the technique of separation of variables. This technique assumes that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span> vary independently of each other, allowing us to express <span class="math notranslate nohighlight">\(u(x, t)\)</span> as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 u(x, t) = X(x) \cdot T(t)
 \]</div>
 <ul class="simple">
-<li><p><strong>Principle of superposition:</strong> The wave equation is linear which you can see by  <span class="math notranslate nohighlight">\(u\)</span> terms appearing with first order on both side. Linearity means that linear combination of two solutions <span class="math notranslate nohighlight">\(c_1 u_1+c_2u_2\)</span> is also a solution. If you have <span class="math notranslate nohighlight">\(n\)</span> particular solutions than you write general solution as linear combination of n terms.</p></li>
+<li><p><strong>3. Principle of superposition:</strong> The wave equation is linear which you can see by  <span class="math notranslate nohighlight">\(u\)</span> terms appearing with first order on both side. Linearity means that linear combination of two solutions <span class="math notranslate nohighlight">\(u_1\)</span> and <span class="math notranslate nohighlight">\(u_2\)</span> is also a solution. If you have <span class="math notranslate nohighlight">\(n\)</span> particular solutions than you write general solution as linear combination of n terms.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+u = c_1 u_1+c_2u_2
+\]</div>
 </section>
 <section id="step-1-plug-the-product-of-univariate-functions-into-the-wave-equation">
 <h2>Step 1: Plug the Product of Univariate Functions into the Wave Equation<a class="headerlink" href="#step-1-plug-the-product-of-univariate-functions-into-the-wave-equation" title="Permalink to this heading">#</a></h2>
@@ -583,6 +588,34 @@ u(x, t) = X(x) \cdot T(t)
 \[
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 \]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Solving simple liner and homogenuous ODEs</strong></p>
+<ul class="simple">
+<li><p>To solve linear and homogenuous ODEs we plug exponential and turn roblem from differential to algebraic one. In this case to a simple quadratic equation.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2 y}{dx^2} +4=0
+\]</div>
+<ul class="simple">
+<li><p>For instnace if we plug <span class="math notranslate nohighlight">\(y=e^{kx}\)</span> in the following equation and cancel exponents on both sides we will get algebraic equation in terms of k.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+k^2 +4 = 0
+\]</div>
+<ul class="simple">
+<li><p>We get two solutions (could be complex real, repeated) which we then use to write general solution in the form of a superposition.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+k=\pm 2i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+y=c_1e^{+2i} + c_2e^{-2i}
+\]</div>
+</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title"><strong>Solving the spatial part: when <span class="math notranslate nohighlight">\(K &gt; 0\)</span></strong></p>
 <ul>
@@ -847,7 +880,7 @@ X(0) = X(L_x) = 0
 \[
 Y(0) = Y(L_y) = 0
 \]</div>
-<p>The solutions for (X(x)) and (Y(y)) are:</p>
+<p>The solutions for <span class="math notranslate nohighlight">\(X(x)\)</span> and <span class="math notranslate nohighlight">\(Y(y)\)</span> are:</p>
 <div class="math notranslate nohighlight">
 \[
 X(x) = C \sin\left(\frac{n \pi x}{L_x}\right)
@@ -856,12 +889,12 @@ X(x) = C \sin\left(\frac{n \pi x}{L_x}\right)
 \[
 Y(y) = D \sin\left(\frac{m \pi y}{L_y}\right)
 \]</div>
-<p>where (n) and (m) are positive integers, and:</p>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are positive integers, and:</p>
 <div class="math notranslate nohighlight">
 \[
 \alpha = \frac{n \pi}{L_x}, \quad \beta = \frac{m \pi}{L_y}
 \]</div>
-<p>So, the general solution for (u(x, y, t)) is:</p>
+<p>So, the general solution for <span class="math notranslate nohighlight">\(u(x, y, t)\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
 u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_{nm} t\right) + B_{nm} \sin\left(\omega_{nm} t\right) \right] \sin\left(\frac{n \pi x}{L_x}\right) \sin\left(\frac{m \pi y}{L_y}\right)
@@ -871,7 +904,7 @@ u(x, y, t) = \sum_{n=1}^\infty \sum_{m=1}^\infty \left[ A_{nm} \cos\left(\omega_
 \[
 \omega_{nm} = c \sqrt{\left(\frac{n \pi}{L_x}\right)^2 + \left(\frac{m \pi}{L_y}\right)^2}
 \]</div>
-<p>This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of (n) and (m).</p>
+<p>This solution describes the vibration modes of a 2D rectangular membrane, with each mode characterized by different integer values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p>
 </div>
 </section>
 <section id="the-sound-of-music">
