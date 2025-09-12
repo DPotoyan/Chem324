@@ -299,7 +299,7 @@ Where:
 
 :::{figure-md} markdown-fig
 
-<img src="http://giphygifs.s3.amazonaws.com/media/10qqg7K1HIv2OQ/giphy.gif" alt="applied photoelectric" class="bg-primary mb-1" width="50%">
+<img src="./images/2dmemvib.gif" alt="membrane vibrations" class="bg-primary mb-1" width="50%">
 
 Vibrations of 2D membrane. 
 :::
