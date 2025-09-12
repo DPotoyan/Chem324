@@ -110,9 +110,21 @@ $$
 $$
 
 :::{admonition} **Solving simple liner and homogenuous ODEs**
-:class: tip, dropdown
+:class: tip
 
-- To solve linear and homogenuous ODEs we plug exponential and turn roblem from differential to algebraic one. In this case to a simple quadratic equation. 
+**Going from ODE to algebraic equations**
+
+- To solve linear and homogenuous ODEs we plug exponential function, e.g $e^{kx}$ and turn roblem from differential to algebraic one solving for parameter $k$. In our case of second order wave equation we will be dealing with simple quadratic equations. 
+
+$$ax^2 + bx + c = 0,$$
+
+The solutions of which are given as:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+$$
+
+**Example ODE**
 
 $$
 \frac{d^2 y}{dx^2} +4=0
@@ -135,6 +147,9 @@ y=c_1e^{+2i} + c_2e^{-2i}
 $$
 
 :::
+
+
+
 
 :::{admonition} **Solving the spatial part: when $K > 0$**
 :class: tip, dropdown
