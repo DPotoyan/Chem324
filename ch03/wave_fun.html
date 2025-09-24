@@ -510,6 +510,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-of-wavefunction">Normalization of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-using-probabilsitic-calculations-in-qm">Example of using probabilsitic calculations in QM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-probability-in-a-region-1d">Example 1 — Probability in a region (1D)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3d-slice-probability-separable-state">Example 2 — 3D slice probability (separable state)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-averages-and-variance-from-a-pdf">Example 3 — Averages and variance from a PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-operator-expectations-momentum-energy-in-a-box">Example 4 — Operator expectations (momentum/energy in a box)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -799,7 +806,7 @@ p(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/9a4445079980d00ae75a1d6ecae48adbb5e8a583fd8f6245f20182bec0a2a928.png" src="../_images/9a4445079980d00ae75a1d6ecae48adbb5e8a583fd8f6245f20182bec0a2a928.png" />
+<img alt="../_images/ed3ad467867b082318f0fd7d2d3d3a17cc2b04d5e002164a55bf4b3dd0c8256c.png" src="../_images/ed3ad467867b082318f0fd7d2d3d3a17cc2b04d5e002164a55bf4b3dd0c8256c.png" />
 </div>
 </div>
 </section>
@@ -960,6 +967,97 @@ $$
 </tbody>
 </table>
 </section>
+<section id="example-of-using-probabilsitic-calculations-in-qm">
+<h2>Example of using probabilsitic calculations in QM<a class="headerlink" href="#example-of-using-probabilsitic-calculations-in-qm" title="Permalink to this heading">#</a></h2>
+<section id="example-1-probability-in-a-region-1d">
+<h3>Example 1 — Probability in a region (1D)<a class="headerlink" href="#example-1-probability-in-a-region-1d" title="Permalink to this heading">#</a></h3>
+<p>Take the normalized wavefunction on <span class="math notranslate nohighlight">\([0,1]\)</span>: <span class="math notranslate nohighlight">\(\psi(x)=\sqrt{3}\,x\)</span>. Then <span class="math notranslate nohighlight">\(p(x)=|\psi(x)|^2=3x^2\)</span>.</p>
+<ul class="simple">
+<li><p>Probability that the particle lies in <span class="math notranslate nohighlight">\([a,b]\subset[0,1]\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P(a&lt;x&lt;b)=\int_a^b 3x^2\,dx= \left[x^3\right]_a^b=b^3-a^3.
+\]</div>
+<ul class="simple">
+<li><p>Concrete numbers, say <span class="math notranslate nohighlight">\([0.3,0.6]\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P(0.3&lt;x&lt;0.6)=0.6^3-0.3^3=0.216-0.027=0.189.
+\]</div>
+</section>
+<section id="example-2-3d-slice-probability-separable-state">
+<h3>Example 2 — 3D slice probability (separable state)<a class="headerlink" href="#example-2-3d-slice-probability-separable-state" title="Permalink to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\psi(x,y,z)=\sqrt{27}\,xyz\)</span> on the unit cube <span class="math notranslate nohighlight">\([0,1]^3\)</span> (this is normalized since <span class="math notranslate nohighlight">\(|\psi|^2=27x^2y^2z^2\)</span> and <span class="math notranslate nohighlight">\(\int_0^1 x^2dx=\tfrac13\)</span>, so <span class="math notranslate nohighlight">\(27(\tfrac13)^3=1\)</span>).</p>
+<ul class="simple">
+<li><p>Probability the particle is inside the rectangular box <span class="math notranslate nohighlight">\([a_x,b_x]\times[a_y,b_y]\times[a_z,b_z]\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P=\int_{a_x}^{b_x}\!\!\int_{a_y}^{b_y}\!\!\int_{a_z}^{b_z}27x^2y^2z^2\,dz\,dy\,dx
+= \big(b_x^3-a_x^3\big)\big(b_y^3-a_y^3\big)\big(b_z^3-a_z^3\big).
+\]</div>
+</section>
+<section id="example-3-averages-and-variance-from-a-pdf">
+<h3>Example 3 — Averages and variance from a PDF<a class="headerlink" href="#example-3-averages-and-variance-from-a-pdf" title="Permalink to this heading">#</a></h3>
+<p>For <span class="math notranslate nohighlight">\(\psi(x)=\sqrt{3}\,x\)</span> on <span class="math notranslate nohighlight">\([0,1]\)</span> (so <span class="math notranslate nohighlight">\(p(x)=3x^2\)</span>):</p>
+<ul class="simple">
+<li><p>Mean position:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle x\rangle=\int_0^1 x\,3x^2\,dx=3\int_0^1 x^3dx=\tfrac34.
+\]</div>
+<ul class="simple">
+<li><p>Mean square position:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle x^2\rangle=\int_0^1 x^2\,3x^2\,dx=3\int_0^1 x^4dx=\tfrac35.
+\]</div>
+<ul class="simple">
+<li><p>Variance and standard deviation:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Var}(x)=\langle x^2\rangle-\langle x\rangle^2=\tfrac35-\Big(\tfrac34\Big)^2=\tfrac{3}{80},\qquad
+\sigma_x=\sqrt{\tfrac{3}{80}}\approx 0.1937.
+\]</div>
+</section>
+<section id="example-4-operator-expectations-momentum-energy-in-a-box">
+<h3>Example 4 — Operator expectations (momentum/energy in a box)<a class="headerlink" href="#example-4-operator-expectations-momentum-energy-in-a-box" title="Permalink to this heading">#</a></h3>
+<p>Operator rules:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \hat{p}=-i\hbar\,\dfrac{d}{dx}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \hat{H}=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}+V(x)\)</span>.</p></li>
+</ul>
+<p>Use the infinite square well on <span class="math notranslate nohighlight">\([0,1]\)</span> with <span class="math notranslate nohighlight">\(V(x)=0\)</span> inside and <span class="math notranslate nohighlight">\(\psi_n(x)=\sqrt{2}\sin(n\pi x)\)</span>, which is normalized.</p>
+<ul class="simple">
+<li><p>Momentum expectation:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle p\rangle=\int_0^1\psi_n^*(-i\hbar)\psi_n'\,dx=0
+\]</div>
+<p>(the integrand is odd over a full sine half-wave, or integrate by parts with vanishing boundary terms).</p>
+<ul class="simple">
+<li><p>Momentum squared:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle p^2\rangle=\int_0^1\psi_n^*(-\hbar^2)\psi_n''\,dx
+=(n\pi\hbar)^2.
+\]</div>
+<ul class="simple">
+<li><p>Energy (since <span class="math notranslate nohighlight">\(\hat{H}=\hat{p}^2/2m\)</span> inside the well):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle E\rangle=\frac{\langle p^2\rangle}{2m}=\frac{(n\pi\hbar)^2}{2m}.
+\]</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1035,6 +1133,13 @@ $$
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-of-wavefunction">Normalization of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-do-with-probability-distribution-functions-pdf">What can we do with probability distribution functions (PDF)?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-quantities-which-correspond-to-operators">What about quantities which correspond to operators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-using-probabilsitic-calculations-in-qm">Example of using probabilsitic calculations in QM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-probability-in-a-region-1d">Example 1 — Probability in a region (1D)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3d-slice-probability-separable-state">Example 2 — 3D slice probability (separable state)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-averages-and-variance-from-a-pdf">Example 3 — Averages and variance from a PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-operator-expectations-momentum-energy-in-a-box">Example 4 — Operator expectations (momentum/energy in a box)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
