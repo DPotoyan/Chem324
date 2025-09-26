@@ -1,0 +1,169 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from math import erf, sqrt
+
+# ----- Parameters -----
+sigma = 1.0  # width of the Gaussian (harmonic oscillator ground state)
+x0, x1 = -1.0, 1.0  # interval to integrate over
+
+# ----- Define |psi(x)|^2 for a normalized Gaussian -----
+def prob_density(x, sigma):
+    # |psi(x)|^2 = (1/(sqrt(2*pi)*sigma)) * exp(-x^2/(2*sigma^2))
+    return (1.0/(np.sqrt(2*np.pi)*sigma)) * np.exp(-x**2/(2*sigma**2))
+
+# Probability via the error function (analytic CDF of a normal distribution)
+def interval_probability(a, b, sigma):
+    return 0.5*(erf(b/(sqrt(2)*sigma)) - erf(a/(sqrt(2)*sigma)))
+
+P = interval_probability(x0, x1, sigma)
+
+# ----- Plot -----
+xs = np.linspace(-4*sigma, 4*sigma, 800)
+ys = prob_density(xs, sigma)
+
+fig = plt.figure(figsize=(10, 5))
+
+# Title with the integral expression
+plt.title(r"$P_{x_0<x<x_1}=\int_{x_0}^{x_1}|\psi(x)|^2\,dx$" + 
+          f"\nSelected interval: [{x0:.2f}, {x1:.2f}]",
+          loc="left")
+
+# Curve
+plt.plot(xs, ys, linewidth=3)
+
+# Shade between x0 and x1 under the curve
+mask = (xs >= x0) & (xs <= x1)
+plt.fill_between(xs[mask], ys[mask], 0, alpha=0.25)
+
+# Mark the boundaries with vertical dashed lines
+plt.axvline(x0, linestyle="--", linewidth=2)
+plt.axvline(x1, linestyle="--", linewidth=2)
+
+# Tick marks and labels
+plt.xlabel("x")
+plt.ylabel(r"$|\psi(x)|^2$")
+
+# Annotate the probability
+plt.text(0.02, 0.90, rf"$P_{{{x0:.2f}<x<{x1:.2f}}} = {P:.3f}$",
+         transform=plt.gca().transAxes, fontsize=16)
+
+plt.xlim(xs.min(), xs.max())
+plt.ylim(bottom=0)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+
+out_path = "/mnt/data/interval_probability_demo.png"
+plt.savefig(out_path, dpi=200)
+plt.show()
+
+out_path
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[6], line 56[0m
+[1;32m     53[0m plt[38;5;241m.[39mtight_layout()
+[1;32m     55[0m out_path [38;5;241m=[39m [38;5;124m"[39m[38;5;124m/mnt/data/interval_probability_demo.png[39m[38;5;124m"[39m
+[0;32m---> 56[0m [43mplt[49m[38;5;241;43m.[39;49m[43msavefig[49m[43m([49m[43mout_path[49m[43m,[49m[43m [49m[43mdpi[49m[38;5;241;43m=[39;49m[38;5;241;43m200[39;49m[43m)[49m
+[1;32m     57[0m plt[38;5;241m.[39mshow()
+[1;32m     59[0m out_path
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/pyplot.py:1023[0m, in [0;36msavefig[0;34m(*args, **kwargs)[0m
+[1;32m   1020[0m [38;5;129m@_copy_docstring_and_deprecators[39m(Figure[38;5;241m.[39msavefig)
+[1;32m   1021[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21msavefig[39m([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m   1022[0m     fig [38;5;241m=[39m gcf()
+[0;32m-> 1023[0m     res [38;5;241m=[39m [43mfig[49m[38;5;241;43m.[39;49m[43msavefig[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1024[0m     fig[38;5;241m.[39mcanvas[38;5;241m.[39mdraw_idle()  [38;5;66;03m# Need this if 'transparent=True', to reset colors.[39;00m
+[1;32m   1025[0m     [38;5;28;01mreturn[39;00m res
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/figure.py:3378[0m, in [0;36mFigure.savefig[0;34m(self, fname, transparent, **kwargs)[0m
+[1;32m   3374[0m     [38;5;28;01mfor[39;00m ax [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39maxes:
+[1;32m   3375[0m         stack[38;5;241m.[39menter_context(
+[1;32m   3376[0m             ax[38;5;241m.[39mpatch[38;5;241m.[39m_cm_set(facecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124mnone[39m[38;5;124m'[39m, edgecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124mnone[39m[38;5;124m'[39m))
+[0;32m-> 3378[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcanvas[49m[38;5;241;43m.[39;49m[43mprint_figure[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py:2366[0m, in [0;36mFigureCanvasBase.print_figure[0;34m(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)[0m
+[1;32m   2362[0m [38;5;28;01mtry[39;00m:
+[1;32m   2363[0m     [38;5;66;03m# _get_renderer may change the figure dpi (as vector formats[39;00m
+[1;32m   2364[0m     [38;5;66;03m# force the figure dpi to 72), so we need to set it again here.[39;00m
+[1;32m   2365[0m     [38;5;28;01mwith[39;00m cbook[38;5;241m.[39m_setattr_cm([38;5;28mself[39m[38;5;241m.[39mfigure, dpi[38;5;241m=[39mdpi):
+[0;32m-> 2366[0m         result [38;5;241m=[39m [43mprint_method[49m[43m([49m
+[1;32m   2367[0m [43m            [49m[43mfilename[49m[43m,[49m
+[1;32m   2368[0m [43m            [49m[43mfacecolor[49m[38;5;241;43m=[39;49m[43mfacecolor[49m[43m,[49m
+[1;32m   2369[0m [43m            [49m[43medgecolor[49m[38;5;241;43m=[39;49m[43medgecolor[49m[43m,[49m
+[1;32m   2370[0m [43m            [49m[43morientation[49m[38;5;241;43m=[39;49m[43morientation[49m[43m,[49m
+[1;32m   2371[0m [43m            [49m[43mbbox_inches_restore[49m[38;5;241;43m=[39;49m[43m_bbox_inches_restore[49m[43m,[49m
+[1;32m   2372[0m [43m            [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   2373[0m [38;5;28;01mfinally[39;00m:
+[1;32m   2374[0m     [38;5;28;01mif[39;00m bbox_inches [38;5;129;01mand[39;00m restore_bbox:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py:2232[0m, in [0;36mFigureCanvasBase._switch_canvas_and_return_print_method.<locals>.<lambda>[0;34m(*args, **kwargs)[0m
+[1;32m   2228[0m     optional_kws [38;5;241m=[39m {  [38;5;66;03m# Passed by print_figure for other renderers.[39;00m
+[1;32m   2229[0m         [38;5;124m"[39m[38;5;124mdpi[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mfacecolor[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124medgecolor[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124morientation[39m[38;5;124m"[39m,
+[1;32m   2230[0m         [38;5;124m"[39m[38;5;124mbbox_inches_restore[39m[38;5;124m"[39m}
+[1;32m   2231[0m     skip [38;5;241m=[39m optional_kws [38;5;241m-[39m {[38;5;241m*[39minspect[38;5;241m.[39msignature(meth)[38;5;241m.[39mparameters}
+[0;32m-> 2232[0m     print_method [38;5;241m=[39m functools[38;5;241m.[39mwraps(meth)([38;5;28;01mlambda[39;00m [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs: [43mmeth[49m[43m([49m
+[1;32m   2233[0m [43m        [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m{[49m[43mk[49m[43m:[49m[43m [49m[43mv[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mk[49m[43m,[49m[43m [49m[43mv[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mkwargs[49m[38;5;241;43m.[39;49m[43mitems[49m[43m([49m[43m)[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mk[49m[43m [49m[38;5;129;43;01mnot[39;49;00m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mskip[49m[43m}[49m[43m)[49m)
+[1;32m   2234[0m [38;5;28;01melse[39;00m:  [38;5;66;03m# Let third-parties do as they see fit.[39;00m
+[1;32m   2235[0m     print_method [38;5;241m=[39m meth
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py:509[0m, in [0;36mFigureCanvasAgg.print_png[0;34m(self, filename_or_obj, metadata, pil_kwargs)[0m
+[1;32m    462[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mprint_png[39m([38;5;28mself[39m, filename_or_obj, [38;5;241m*[39m, metadata[38;5;241m=[39m[38;5;28;01mNone[39;00m, pil_kwargs[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m    463[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m    464[0m [38;5;124;03m    Write the figure to a PNG file.[39;00m
+[1;32m    465[0m 
+[0;32m   (...)[0m
+[1;32m    507[0m [38;5;124;03m        *metadata*, including the default 'Software' key.[39;00m
+[1;32m    508[0m [38;5;124;03m    """[39;00m
+[0;32m--> 509[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_print_pil[49m[43m([49m[43mfilename_or_obj[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mpng[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mpil_kwargs[49m[43m,[49m[43m [49m[43mmetadata[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py:458[0m, in [0;36mFigureCanvasAgg._print_pil[0;34m(self, filename_or_obj, fmt, pil_kwargs, metadata)[0m
+[1;32m    453[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[1;32m    454[0m [38;5;124;03mDraw the canvas, then save it using `.image.imsave` (to which[39;00m
+[1;32m    455[0m [38;5;124;03m*pil_kwargs* and *metadata* are forwarded).[39;00m
+[1;32m    456[0m [38;5;124;03m"""[39;00m
+[1;32m    457[0m FigureCanvasAgg[38;5;241m.[39mdraw([38;5;28mself[39m)
+[0;32m--> 458[0m [43mmpl[49m[38;5;241;43m.[39;49m[43mimage[49m[38;5;241;43m.[39;49m[43mimsave[49m[43m([49m
+[1;32m    459[0m [43m    [49m[43mfilename_or_obj[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mbuffer_rgba[49m[43m([49m[43m)[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[43mfmt[49m[43m,[49m[43m [49m[43morigin[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mupper[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    460[0m [43m    [49m[43mdpi[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfigure[49m[38;5;241;43m.[39;49m[43mdpi[49m[43m,[49m[43m [49m[43mmetadata[49m[38;5;241;43m=[39;49m[43mmetadata[49m[43m,[49m[43m [49m[43mpil_kwargs[49m[38;5;241;43m=[39;49m[43mpil_kwargs[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/image.py:1689[0m, in [0;36mimsave[0;34m(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)[0m
+[1;32m   1687[0m pil_kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mformat[39m[38;5;124m"[39m, [38;5;28mformat[39m)
+[1;32m   1688[0m pil_kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mdpi[39m[38;5;124m"[39m, (dpi, dpi))
+[0;32m-> 1689[0m [43mimage[49m[38;5;241;43m.[39;49m[43msave[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mpil_kwargs[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/PIL/Image.py:2563[0m, in [0;36mImage.save[0;34m(self, fp, format, **params)[0m
+[1;32m   2561[0m         fp [38;5;241m=[39m builtins[38;5;241m.[39mopen(filename, [38;5;124m"[39m[38;5;124mr+b[39m[38;5;124m"[39m)
+[1;32m   2562[0m     [38;5;28;01melse[39;00m:
+[0;32m-> 2563[0m         fp [38;5;241m=[39m [43mbuiltins[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mfilename[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mw+b[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m   2564[0m [38;5;28;01melse[39;00m:
+[1;32m   2565[0m     fp [38;5;241m=[39m cast(IO[[38;5;28mbytes[39m], fp)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/mnt/data/interval_probability_demo.png'
+
