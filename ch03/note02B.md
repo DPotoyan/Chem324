@@ -1,7 +1,7 @@
 
 ### Applications of Particle in a Box Model
 
-:::{admonition} What you need to know
+:::{admonition} **What you will learn**
 :class: note
 
 - The particle in a box (PIB) model is a simplified quantum mechanical system that can be applied to explain electronic transitions in conjugated molecules, such as those with alternating single and double bonds.
@@ -75,19 +75,21 @@ Where:
 
 By determining $\Delta E$, you can find the corresponding wavelength of light absorbed by the molecule when an electron transitions between energy levels.
 
-### Application
 
-This approach is used to estimate the energies associated with electronic transitions in $\pi$-conjugated systems like butadiene, which can be experimentally observed through their absorption spectra. This also helps in understanding how molecular size and electron count affect electronic properties.
+
+- This approach is used to estimate the energies associated with electronic transitions in $\pi$-conjugated systems like butadiene, which can be experimentally observed through their absorption spectra. This also helps in understanding how molecular size and electron count affect electronic properties.
 
 
 
 ### Problems
 
-**Problem 1:**
+#### Problem 1
+
 A conjugated diene molecule (e.g., butadiene) has a total conjugation length of 5 Å, approximated by the distance between the end carbons in the conjugated chain. Using the 1D particle in a box model, calculate the wavelength of light absorbed when a π-electron is excited from the ground state ($n = 1$) to the first excited state ($n = 2$). Assume the electron behaves as a particle of mass $m = 9.109 \times 10^{-31} \, \text{kg}$ and Planck’s constant is $h = 6.626 \times 10^{-34} \, \text{J s}$.
 
 :::{admonition} **Solution 1**
-:class :dropdown
+:class: dropdown
+
 The energy difference between the ground state ($n = 1$) and the first excited state ($n = 2$) in a 1D particle in a box is given by:
 
 $$
@@ -105,12 +107,13 @@ to find the wavelength $\lambda$ of the absorbed light.
 :::
 
 
-**Problem 2:**
+#### Problem 2
+
 Consider a polyene chain of 6 alternating single and double bonds, where each C=C bond length is approximately 1.35 Å and each C–C bond length is approximately 1.45 Å. Calculate the total conjugation length of the polyene molecule and the wavelength of light required to excite a π-electron from the $n = 1$ to $n = 2$ state using the 1D particle in a box model.
 
 
 :::{admonition} **Solution 2**
-:class :dropdown
+:class: dropdown
 
 First, calculate the total conjugation length by adding up the bond lengths:
 
@@ -132,12 +135,14 @@ $$
 
 :::
 
-**Problem 3:**
+#### Problem 3
+
 A linear conjugated molecule has 8 alternating single and double carbon-carbon bonds. The bond lengths are given as 1.40 Å for single bonds and 1.35 Å for double bonds. Use the particle in a box model to calculate the wavelength of light absorbed during a transition from the $n = 1$ state to the $n = 3$ state. 
 
 
 :::{admonition} **Solution 3**
-:class :dropdown
+:class: dropdown
+
 Calculate the total length of the conjugated chain by adding the single and double bond lengths. For an 8-bond system, you have 4 double bonds and 4 single bonds, so:
 
 $$
@@ -154,11 +159,12 @@ Finally, find $\lambda$ using $\Delta E = \frac{hc}{\lambda}$.
 
 :::
 
-**Problem 4:**
+#### Problem 4
+
 A conjugated triene molecule has a total conjugation length of 7.5 Å, derived from three alternating single and double carbon-carbon bonds. Calculate the wavelength of light absorbed when a π-electron transitions from the ground state ($n = 1$) to the second excited state ($n = 3$) in the 1D particle in a box model. Use the same constants as above.
 
 :::{admonition} **Solution 4**
-:class :dropdown
+:class: dropdown
 
 Using $L = 7.5 \times 10^{-10} \, \text{m}$, calculate the energy difference between $n = 1$ and $n = 3$:
 
@@ -170,11 +176,12 @@ Use this to find the wavelength of the absorbed light.
 
 :::
 
-**Problem 5:**
+#### Problem 5
+
 A conjugated polyene chain consists of 10 carbon atoms connected by alternating single and double bonds. Each C=C bond is 1.34 Å, and each C–C bond is 1.54 Å. Find the total length of the conjugated system, and use this to calculate the wavelength of the transition from the $n = 2$ to the $n = 3$ energy level. Assume all π-electrons are delocalized over the entire length of the molecule.
 
 :::{admonition} **Solution 5**
-:class :dropdown
+:class: dropdown
 
 Calculate the total length of the polyene:
 
@@ -193,8 +200,14 @@ Finally, use the relation $\Delta E = \frac{hc}{\lambda}$ to calculate the wavel
 
 :::
 
-**Problem 6:**
+##### Problem 6
+
 Consider an electron in a 2D particle in a box, representing the π-electrons in a graphene-like fragment with dimensions $L_x = 2 \, \text{nm}$ and $L_y = 1 \, \text{nm}$. Calculate the energy of the electron for the quantum numbers $n_x = 1$ and $n_y = 2$
+
+
+
+:::{admonition} **Solution 6**
+:class: dropdown
 
 The energy for a 2D particle in a box is given by:
 
@@ -202,16 +215,54 @@ $$
 E_{n_x,n_y} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} \right)
 $$
 
-Using $h = 6.626 \times 10^{-34} \, \text{J s}$, $m = 9.109 \times 10^{-31} \, \text{kg}$, $L_x = 2 \times 10^{-9} \, \text{m}$, and $L_y = 1 \times 10^{-9} \, \text{m}$, we calculate the energy as:
+Using $h = 6.626 \times 10^{-34}{J \cdot s}$ $\,$, $m = 9.109 \times 10^{-31} \, \text{kg}$, $L_x = 2 \times 10^{-9} \, \text{m}$, and $L_y = 1 \times 10^{-9} \, \text{m}$, we calculate: 
 
 $$
-E_{1,2} = \frac{6.626^2}{8 \times 9.109} \left( \frac{1^2}{(2 \times 10^{-9})^2} + \frac{2^2}{(1 \times 10^{-9})^2} \right)
+E_{1,2} = \frac{(6.626 \times 10^{-34})^2}{8 \times 9.109 \times 10^{-31}}
+\left( \frac{1^2}{(2 \times 10^{-9})^2} + \frac{2^2}{(1 \times 10^{-9})^2} \right)
 $$
 
-Simplifying, you can calculate the energy in joules.
+First, compute each term:
 
-:::{admonition} **Solution 6**
-:class :dropdown
+- $\displaystyle \frac{1^2}{(2 \times 10^{-9})^2} = \frac{1}{4 \times 10^{-18}} = 2.5 \times 10^{17}$
+- $\displaystyle \frac{2^2}{(1 \times 10^{-9})^2} = \frac{4}{1 \times 10^{-18}} = 4.0 \times 10^{18}$
+
+So,
+
+$$
+\left( \frac{1^2}{(2 \times 10^{-9})^2} + \frac{2^2}{(1 \times 10^{-9})^2} \right)
+= 2.5 \times 10^{17} + 4.0 \times 10^{18}
+= 4.25 \times 10^{18}
+$$
+
+Now calculate the prefactor:
+
+$$
+\frac{h^2}{8m} = \frac{(6.626 \times 10^{-34})^2}{8 \times 9.109 \times 10^{-31}}
+= \frac{4.39 \times 10^{-67}}{7.287 \times 10^{-30}}
+\approx 6.02 \times 10^{-38}
+$$
+
+Therefore,
+
+$$
+E_{1,2} \approx (6.02 \times 10^{-38})(4.25 \times 10^{18})
+= 2.56 \times 10^{-19} \, \text{J}
+$$
+
+Convert to electronvolts:
+
+$$
+E_{1,2} = \frac{2.56 \times 10^{-19}}{1.602 \times 10^{-19}} \approx 1.60 \, \text{eV}
+$$
+
+The energy of the electron in the 2D box for $n_x = 1$ and $n_y = 2$ is:
+
+$$
+E_{1,2} \approx 2.56 \times 10^{-19} \, \text{J} \quad \text{or} \quad 1.60 \, \text{eV}.
+$$
+
+:::
 
 
 
