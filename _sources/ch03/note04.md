@@ -11,9 +11,9 @@
 :::
 
 
-### Operators: A Reminder
+### Operators
 
-In quantum mechanics, **operators** represent physical observables and are denoted by a hat symbol ($\hat{}$), which indicates a mathematical operation on functions.
+- In quantum mechanics, **operators** represent physical observables and are denoted by a hat symbol ($\hat{}$), which indicates a mathematical operation on functions.
 
 - For example, the momentum operator is differentiating the function with respect to $x$, then multiplies the result by $-i\hbar$.
 
@@ -21,13 +21,15 @@ In quantum mechanics, **operators** represent physical observables and are denot
   \hat{p}_x = -i\hbar\frac{d}{dx}
   $$
 
-  When this operates on a function, it 
+- When this operates on a function, it 
 
 - The position operator simply multiplies the function by $x$.
 
   $$
   \hat{x} = x
   $$
+
+- In quantum mechanics we use **a simple recepie to find operators**: Take expressions from classical mechancis and replace positions and momentum by their respective operator expressions. 
 
 
 ### Linearity of Operators
@@ -44,30 +46,6 @@ $$
 
 - Where $c$ is a constant, and $\psi_1$, $\psi_2$, and $\psi$ are wavefunctions.
 - $\hat{x}$, $\hat{p_x}$, $\hat{H}$ all satisfy this property 
-
-
-
-### Expectation Value: A Reminder
-
-- The **expectation value** of an observable $\hat{A}$, which gives the average outcome of measurements, is computed as:
-
-  $$
-  \langle A \rangle = \int \psi^* \hat{A} \psi \, d\tau
-  $$
-
-- **Special Case**: If the wavefunction $\psi$ is an eigenfunction of the operator $\hat{A}$, with eigenvalue $a$:
-
-  $$
-  \hat{A}\psi = a\psi
-  $$
-
-  Then the expectation value simplifies to:
-
-  $$
-  \langle A \rangle = \int \psi^* a \psi \, d\tau = a \int \psi^*\psi \, d\tau = a
-  $$
-
-  Since $\int \psi^*\psi \, d\tau = 1$ (normalization), the expectation value is simply the eigenvalue $a$.
 
 
 
@@ -109,11 +87,14 @@ $$
 
 $${\left[A,A\right] = \left[A,A^n\right] = \left[A^n,A\right] = 0}$$
 
+- This shows that operators always commuts with itself and its power. Now lets apply this. Would kinetic operator commute with the momentum operator? 
+
 $${\left[A,B\right] = -\left[B,A\right]}$$
 
-$${\left[A,B^2\right] = \left[A,B\right]B + B\left[A,B\right]}$$
+- This shows that in comutator order is important. You swap the oeprators in places the sign changes. 
 
-## Commutators and experimental measurements
+
+### Commutators and experimental measurements
 
 We have seen previously that operators may not always commute (i.e., $[A, B] \ne 0$). An example of such operator pair is position $\hat{x}$ and momentum $\hat{p}_x$:
 
@@ -168,7 +149,7 @@ $$\hat{B}\phi_k = b_k \phi_k$$
 
 :::
 
-:::{admonition} **Proof**
+:::{admonition} **Proof that commutation implie shared eigenfunctions**
 :class: dropdown
 
 - We will show that if all eigenfunctions of operators $\hat{A}$ and $\hat{B}$ are identical, $\hat{A}$ and $\hat{B}$ commute with each other. 
@@ -194,30 +175,97 @@ Note that the commutation relation must apply to all well-behaved functions and 
 
 - If we measure observables $A$ and $B$ desribed by a common eigenfunction $\phi_k$ we find the observables to be the corresponding eigenvalues $a_k$ and $b_k$
 
-### Hermitian property of operators 
-
-- What would be an analog of complex conjugate for matrices? 
-- This leads us to defined **adjoint of an operator matrix/operator $A^{\dagger}$** which is obtained by swapping indices and taking complex conjugate of all elements. 
-- With same analogy when matrix is equal to its adjoint its eigenvalues are real!
-- Such matrices are called Hermitian or self-adjoint. 
 
 
+### Expectation expression
+
+- The **expectation value** of an observable $\hat{A}$, which gives the average outcome of measurements, is computed as:
+
+  $$
+  \langle A \rangle = \int \psi^* \hat{A} \psi \, d\tau
+  $$
+
+- **Special Case**: If the wavefunction $\psi$ is an eigenfunction of the operator $\hat{A}$, with eigenvalue $a$:
+
+  $$
+  \hat{A}\psi = a\psi
+  $$
+
+  Then the expectation value simplifies to:
+
+  $$
+  \langle A \rangle = \int \psi^* a \psi \, d\tau = a \int \psi^*\psi \, d\tau = a
+  $$
+
+  Since $\int \psi^*\psi \, d\tau = 1$ (normalization), the expectation value is simply the eigenvalue $a$.
+
+
+
+### Dirac Notation
+
+To express quantum states and operators more compactly, we use **Dirac (bra–ket) notation**.
+
+* A **state** is written as a *ket*, $|\psi\rangle$, and its complex conjugate (dual) is the *bra*, $\langle\psi|$.
+* The **inner product** between two states corresponds to the integral over space:
+  
+$$
+  \langle \phi | \psi \rangle = \int \phi^*(r), \psi(r), d\tau
+$$
+
+* In this notation, the **expectation value** of an operator $\hat{A}$ becomes simply:
+  
+$$
+  \langle A \rangle = \langle \psi | \hat{A} | \psi \rangle
+$$
+  
+* This form is elegant and general—it applies to all quantum systems, independent of the particular representation (position, momentum, etc.).
+
+
+### Hermitian Property of Operators
+
+* In classical algebra, we often take the **complex conjugate** of a number.
+  For matrices, the analog operation is the **adjoint (or conjugate transpose)**.
+
+* The **adjoint** of a matrix or operator $\hat{A}$, denoted $\hat{A}^\dagger$, is obtained by **transposing** the matrix (swapping rows and columns) and **taking the complex conjugate** of each element.
+
+* When a matrix (or operator) is **equal to its own adjoint**, all its **eigenvalues are real**.
+  Such matrices or operators are called **Hermitian** (or *self-adjoint*).
 
 :::{admonition} **Hermitian Matrix**
 :class: important
 
 $$A = A^\dagger$$
 
-$$a_{jk} = a^{*}_{kj}$$
+$$a_{jk} = a^*_{kj}$$
 
-- $A^\dagger$ is called **conjugate transpose of matrix** where one trasposes elements and replaces with complex conjugate elements
+Here, $A^\dagger$ is the **conjugate transpose**: first transpose the matrix, then take the complex conjugate of every element.
 :::
 
+* In operator language, the adjoint is defined through the **inner product**:
+  
+$$
+  \langle \phi | \hat{A} \psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle
+$$
+  
+This means taking the adjoint is like “moving the operator to the other side” of the inner product and **taking a complex conjugate**.
+
+* In the **matrix element form**,
+  
+$$
+a_{jk} = \langle \psi_j | \hat{A} | \psi_k \rangle
+$$
+  
+taking the adjoint gives
+
+$$
+  a^*_{kj} = \langle \psi_k | \hat{A}^\dagger | \psi_j \rangle.
+$$
+
+- Thus, when $\hat{A}$ is Hermitian we have 
+
+$$a_{jk} = a^*_{kj}$$
 
 
-- For an operator, the **adjoint** can be understood as an operation analogous to swapping the roles of functions in an inner product expression, followed by taking the complex conjugate. 
-- Specifically, in a "sandwich" form like $a_{jk}=\langle \psi_j | \hat{A} | \psi_k \rangle$, taking the adjoint involves exchanging the functions and complex conjugating the operator resulting in $a^{*}_{kj}$. 
-- Essentially, the operator enters the realm of complex conjugate functions. When an operator is **Hermitian**, it is equal to its adjoint  $a_{jk} = a^{*}_{kj}$
 
 
 
