@@ -459,10 +459,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-and-simultaneous-measurments">Commuting operators and simultaneous measurments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-expression">Expectation expression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation">Dirac Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian Property of Operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-consequences-of-hermitian-property">Two Consequences of Hermitian Property</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operators-are-real">Eigenvalues of Hermitian Operators Are Real</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-orthogonal">Eigenfunctions of Hermitian Operators Are Orthogonal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian Property of Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-adjoint-conjugate-transpose">The Adjoint (Conjugate Transpose)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-self-adjoint-operators">Hermitian (Self-Adjoint) Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-hermitian-operators-matter">Why Hermitian Operators Matter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">
@@ -704,63 +704,147 @@ document.write(`
 <section id="hermitian-property-of-operators">
 <h2>Hermitian Property of Operators<a class="headerlink" href="#hermitian-property-of-operators" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>In classical algebra, we often take the <strong>complex conjugate</strong> of a number.
-For matrices, the analog operation is the <strong>adjoint (or conjugate transpose)</strong>.</p></li>
-<li><p>The <strong>adjoint</strong> of a matrix or operator <span class="math notranslate nohighlight">\(\hat{A}\)</span>, denoted <span class="math notranslate nohighlight">\(\hat{A}^\dagger\)</span>, is obtained by <strong>transposing</strong> the matrix (swapping rows and columns) and <strong>taking the complex conjugate</strong> of each element.</p></li>
-<li><p>When a matrix (or operator) is <strong>equal to its own adjoint</strong>, all its <strong>eigenvalues are real</strong>.
-Such matrices or operators are called <strong>Hermitian</strong> (or <em>self-adjoint</em>).</p></li>
+<li><p>In quantum mechanics, operators often act on <strong>complex-valued functions</strong>, so we need a notion of “complex conjugate” that applies not just to numbers, but to operators.
+This leads to the concept of the <strong>adjoint operator</strong>.</p></li>
+</ul>
+<section id="the-adjoint-conjugate-transpose">
+<h3>The Adjoint (Conjugate Transpose)<a class="headerlink" href="#the-adjoint-conjugate-transpose" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For complex numbers we take the <strong>complex conjugate</strong>:
+<span class="math notranslate nohighlight">\((3 + 2i)^* = 3 - 2i\)</span>.</p></li>
+<li><p>For matrices or linear operators, the corresponding operation is the <strong>adjoint</strong>, denoted by the dagger symbol <span class="math notranslate nohighlight">\((\dagger)\)</span>.</p></li>
 </ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>Hermitian Matrix</strong></p>
-<div class="math notranslate nohighlight">
-\[A = A^\dagger\]</div>
-<div class="math notranslate nohighlight">
-\[a_{jk} = a^*_{kj}\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(A^\dagger\)</span> is the <strong>conjugate transpose</strong>: first transpose the matrix, then take the complex conjugate of every element.</p>
-</div>
+<p class="admonition-title"><strong>Definition of Adjoint</strong></p>
 <ul class="simple">
-<li><p>In operator language, the adjoint is defined through the <strong>inner product</strong>:</p></li>
+<li><p>For an <strong>operator</strong>, the adjoint is defined through the <strong>inner product</strong>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-  \langle \phi | \hat{A} \psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle
+\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle.
 \]</div>
-<p>This means taking the adjoint is like “moving the operator to the other side” of the inner product and <strong>taking a complex conjugate</strong>.</p>
 <ul class="simple">
-<li><p>In the <strong>matrix element form</strong>,</p></li>
+<li><p>This means that moving an operator from one side of an inner product to the other requires taking its adjoint (and thus a complex conjugate).</p></li>
 </ul>
+<ul class="simple">
+<li><p>For a <strong>matrix</strong>, the adjoint is its <strong>conjugate transpose</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A^\dagger = (A^T)^*
+\]</div>
+<p>That is, swap rows and columns, then take the complex conjugate of every entry:</p>
+<div class="math notranslate nohighlight">
+\[
+(A^\dagger)_{jk} = A_{kj}^*.
+\]</div>
+</div>
+<p>In matrix element form taking the adjoint generates different elements</p>
 <div class="math notranslate nohighlight">
 \[
 a_{jk} = \langle \psi_j | \hat{A} | \psi_k \rangle
+\quad \Rightarrow \quad
+a^*_{kj} = \langle \psi_k | \hat{A}^\dagger | \psi_j \rangle.
 \]</div>
-<p>taking the adjoint gives</p>
+</section>
+<section id="hermitian-self-adjoint-operators">
+<h3>Hermitian (Self-Adjoint) Operators<a class="headerlink" href="#hermitian-self-adjoint-operators" title="Permalink to this heading">#</a></h3>
+<p>An operator is <strong>Hermitian</strong> if it equals its own adjoint:</p>
 <div class="math notranslate nohighlight">
 \[
-  a^*_{kj} = \langle \psi_k | \hat{A}^\dagger | \psi_j \rangle.
+\hat{A} = \hat{A}^\dagger.
 \]</div>
-<ul class="simple">
-<li><p>Thus, when <span class="math notranslate nohighlight">\(\hat{A}\)</span> is Hermitian we have</p></li>
-</ul>
+<p>This means the operator behaves the same way when acting on either side of the inner product.</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Hermitian Matrix</strong></p>
 <div class="math notranslate nohighlight">
-\[a_{jk} = a^*_{kj}\]</div>
+\[
+A = A^\dagger, \quad a_{jk} = a_{kj}^*.
+\]</div>
+</div>
 <div class="important admonition">
 <p class="admonition-title"><strong>Hermitian Operator</strong></p>
 <div class="math notranslate nohighlight">
-\[\hat{A} = \hat{A}^\dagger\]</div>
+\[
+\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}\phi | \psi \rangle,
+\qquad \text{or equivalently,} \qquad
+\langle j| \hat{A}|k\rangle = \langle k| \hat{A}|j\rangle^*.
+\]</div>
+<p>In integral form:</p>
 <div class="math notranslate nohighlight">
 \[
-\int {\color{blue} \psi^*_j}  {\color{green}\hat{A}\psi_k} d\tau = \int { \color{green} \psi_k}  {\color{blue}\hat{A}^\dagger\psi_j^{*} } d\tau= \int { \color{green} \psi_k} { {\color{blue}(\hat{A}\psi_j)}^{*}}  d\tau
+\int \psi_j^*(x), [\hat{A}\psi_k(x)],dx
+= \int \psi_k(x), [\hat{A}\psi_j(x)]^*,dx.
 \]</div>
-<p><strong>In Dirac Notation</strong></p>
-<div class="math notranslate nohighlight">
-\[ \langle j| \hat{A}|k\rangle = \langle k| \hat{A} | j \rangle^{*}\]</div>
 </div>
+</section>
+<section id="why-hermitian-operators-matter">
+<h3>Why Hermitian Operators Matter<a class="headerlink" href="#why-hermitian-operators-matter" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Eigenvalues are real</strong>: Observables in quantum mechanics (energy, momentum, position, etc.) are represented by <strong>Hermitian operators</strong>, ensuring all measurement outcomes are real numbers.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+  \hat{A}|\psi\rangle = a|\psi\rangle \implies a \in \mathbb{R}.
+  \]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Proof of real eigenvalues</strong></p>
 <ul class="simple">
-<li><p>On the left, <span class="math notranslate nohighlight">\(\hat{A}\)</span> acts on <span class="math notranslate nohighlight">\(\psi_k\)</span>, and the result is integrated against <span class="math notranslate nohighlight">\(\psi_j^*\)</span>.</p></li>
-<li><p>On the right, <span class="math notranslate nohighlight">\(\hat{A}^\dagger\)</span> acts on <span class="math notranslate nohighlight">\(\psi_j^*\)</span>, and the result is integrated against <span class="math notranslate nohighlight">\(\psi_k\)</span>.</p></li>
-<li><p><strong>For Hermitian operators</strong> we have special case when <span class="math notranslate nohighlight">\(\hat{A} = \hat{A}^\dagger\)</span> and this equation becomes symmetric.</p></li>
-<li><p>In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then we can write the result of the left-hand and right-hand sides of the Hermitian condition:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\int \psi^* \hat{A} \psi \, d\tau = a
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
+\]</div>
+<ul class="simple">
+<li><p>Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+a = a^*
+\]</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Eigenfunctions are orthogonal</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+  \langle \psi_m | \psi_n \rangle = 0 \quad (m \ne n).
+  \]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Proof of orthogonal eigenfunctions</strong></p>
+<p>The Hermitian property can also be used to show that eigenfunctions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>, corresponding to different eigenvalues <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> (with <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, i.e., “non-degenerate”), are orthogonal to each other:</p>
+<div class="math notranslate nohighlight">
+\[
+\textnormal{LHS: } \int \psi_j^* \hat{A} \psi_k \, d\tau = \int \psi_j^* a_k \psi_k \, d\tau = a_k \int \psi_j^* \psi_k \, d\tau
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
+\]</div>
+<ul class="simple">
+<li><p>Since the operator is Hermitian, we require that LHS = RHS. This results in:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, then we have:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int \psi_j^* \psi_k \, d\tau = 0
+\]</div>
+<ul class="simple">
+<li><p>This shows that <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span> are orthogonal.</p></li>
+<li><p><strong>Note</strong>: If <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning the eigenvalues are degenerate, this result does not hold.</p></li>
+</ul>
+</div>
 <div class="note admonition">
 <p class="admonition-title"><strong>Example of Hermitian Matrix</strong> </p>
 <p>Which of these matricies is Hermitian?</p>
@@ -802,62 +886,7 @@ i &amp; 0 \\
 <p><span class="math notranslate nohighlight">\({\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\right)dx} = -i\hbar\int\limits_{-\infty}^{\infty}\psi_j^*(x)\frac{d\psi_k(x)}{dx}dx = \\ \overbrace{\int\limits_{-\infty}^{\infty}\psi_k(x)\left(i\hbar\frac{d\psi_j^*(x)}{dx}\right)dx}^{{integration\, by\, parts}}\)</span>
 <span class="math notranslate nohighlight">\( = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}\)</span>.</p>
 </div>
-</section>
-<section id="two-consequences-of-hermitian-property">
-<h2>Two Consequences of Hermitian Property<a class="headerlink" href="#two-consequences-of-hermitian-property" title="Permalink to this heading">#</a></h2>
-<section id="eigenvalues-of-hermitian-operators-are-real">
-<h3>Eigenvalues of Hermitian Operators Are Real<a class="headerlink" href="#eigenvalues-of-hermitian-operators-are-real" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Operators and eigenfunctions in quantum mechanics may be complex valued; however, <strong>eigenvalues</strong> of quantum mechanical operators <strong>must be real</strong> because they correspond to the real values obtained from measurements.</p></li>
-<li><p>By allowing wavefunctions to be complex, it is possible to store more information (i.e., both the real and imaginary parts, or “density and velocity”).</p></li>
-<li><p>When computing experimental quantities, the complex conjugate pair of wavefunctions must be combined to yield real values.</p></li>
-<li><p><strong>Proof</strong>: Let <span class="math notranslate nohighlight">\(\psi\)</span> be an eigenfunction of <span class="math notranslate nohighlight">\(\hat{A}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(a\)</span>. Choose <span class="math notranslate nohighlight">\(\psi_j = \psi_k = \psi\)</span>. Then we can write the result of the left-hand and right-hand sides of the Hermitian condition:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\int \psi^* \hat{A} \psi \, d\tau = a
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
-\]</div>
-<ul class="simple">
-<li><p>Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-a = a^*
-\]</div>
-</section>
-<section id="eigenfunctions-of-hermitian-operators-are-orthogonal">
-<h3>Eigenfunctions of Hermitian Operators Are Orthogonal<a class="headerlink" href="#eigenfunctions-of-hermitian-operators-are-orthogonal" title="Permalink to this heading">#</a></h3>
-<p>The Hermitian property can also be used to show that eigenfunctions <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span>, corresponding to different eigenvalues <span class="math notranslate nohighlight">\(a_j\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> (with <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, i.e., “non-degenerate”), are orthogonal to each other:</p>
-<div class="math notranslate nohighlight">
-\[
-\textnormal{LHS: } \int \psi_j^* \hat{A} \psi_k \, d\tau = \int \psi_j^* a_k \psi_k \, d\tau = a_k \int \psi_j^* \psi_k \, d\tau
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
-\]</div>
-<ul class="simple">
-<li><p>Since the operator is Hermitian, we require that LHS = RHS. This results in:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
-\]</div>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(a_j \neq a_k\)</span>, then we have:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\int \psi_j^* \psi_k \, d\tau = 0
-\]</div>
-<ul class="simple">
-<li><p>This shows that <span class="math notranslate nohighlight">\(\psi_j\)</span> and <span class="math notranslate nohighlight">\(\psi_k\)</span> are orthogonal.</p></li>
-<li><p><strong>Note</strong>: If <span class="math notranslate nohighlight">\(a_j = a_k\)</span>, meaning the eigenvalues are degenerate, this result does not hold.</p></li>
-</ul>
+<p><strong>Geometric Intuition</strong> Hermitian operators are the analog of <strong>symmetric matrices</strong> in real vector spaces. They represent linear transformations that <strong>do not rotate vectors into complex directions</strong>—only stretch or compress them along real axes.</p>
 </section>
 </section>
 <section id="problems">
@@ -1167,10 +1196,10 @@ P = \frac{i}{2 \Delta x} \begin{pmatrix}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-operators-and-simultaneous-measurments">Commuting operators and simultaneous measurments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-expression">Expectation expression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation">Dirac Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian Property of Operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-consequences-of-hermitian-property">Two Consequences of Hermitian Property</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-hermitian-operators-are-real">Eigenvalues of Hermitian Operators Are Real</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-of-hermitian-operators-are-orthogonal">Eigenfunctions of Hermitian Operators Are Orthogonal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-property-of-operators">Hermitian Property of Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-adjoint-conjugate-transpose">The Adjoint (Conjugate Transpose)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-self-adjoint-operators">Hermitian (Self-Adjoint) Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-hermitian-operators-matter">Why Hermitian Operators Matter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a><ul class="nav section-nav flex-column">

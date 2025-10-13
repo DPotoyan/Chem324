@@ -223,71 +223,156 @@ $$
 
 ### Hermitian Property of Operators
 
-* In classical algebra, we often take the **complex conjugate** of a number.
-  For matrices, the analog operation is the **adjoint (or conjugate transpose)**.
 
-* The **adjoint** of a matrix or operator $\hat{A}$, denoted $\hat{A}^\dagger$, is obtained by **transposing** the matrix (swapping rows and columns) and **taking the complex conjugate** of each element.
+- In quantum mechanics, operators often act on **complex-valued functions**, so we need a notion of “complex conjugate” that applies not just to numbers, but to operators.
+This leads to the concept of the **adjoint operator**.
 
-* When a matrix (or operator) is **equal to its own adjoint**, all its **eigenvalues are real**.
-  Such matrices or operators are called **Hermitian** (or *self-adjoint*).
+#### The Adjoint (Conjugate Transpose)
+
+- For complex numbers we take the **complex conjugate**:
+$(3 + 2i)^* = 3 - 2i$.
+
+- For matrices or linear operators, the corresponding operation is the **adjoint**, denoted by the dagger symbol $(\dagger)$.
+
+:::{admonition} **Definition of Adjoint**
+:class: important
+
+* For an **operator**, the adjoint is defined through the **inner product**:
+
+$$
+\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle.
+$$
+
+- This means that moving an operator from one side of an inner product to the other requires taking its adjoint (and thus a complex conjugate).
+
+* For a **matrix**, the adjoint is its **conjugate transpose**:
+
+$$
+A^\dagger = (A^T)^*
+$$
+
+That is, swap rows and columns, then take the complex conjugate of every entry:
+
+$$
+(A^\dagger)_{jk} = A_{kj}^*.
+$$
+
+
+:::
+
+In matrix element form taking the adjoint generates different elements
+
+$$
+a_{jk} = \langle \psi_j | \hat{A} | \psi_k \rangle
+\quad \Rightarrow \quad
+a^*_{kj} = \langle \psi_k | \hat{A}^\dagger | \psi_j \rangle.
+$$
+
+
+
+#### Hermitian (Self-Adjoint) Operators
+
+An operator is **Hermitian** if it equals its own adjoint:
+
+$$
+\hat{A} = \hat{A}^\dagger.
+$$
+
+This means the operator behaves the same way when acting on either side of the inner product.
 
 :::{admonition} **Hermitian Matrix**
 :class: important
 
-$$A = A^\dagger$$
-
-$$a_{jk} = a^*_{kj}$$
-
-Here, $A^\dagger$ is the **conjugate transpose**: first transpose the matrix, then take the complex conjugate of every element.
+$$
+A = A^\dagger, \quad a_{jk} = a_{kj}^*.
+$$
 :::
-
-* In operator language, the adjoint is defined through the **inner product**:
-  
-$$
-  \langle \phi | \hat{A} \psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle
-$$
-  
-This means taking the adjoint is like “moving the operator to the other side” of the inner product and **taking a complex conjugate**.
-
-* In the **matrix element form**,
-  
-$$
-a_{jk} = \langle \psi_j | \hat{A} | \psi_k \rangle
-$$
-  
-taking the adjoint gives
-
-$$
-  a^*_{kj} = \langle \psi_k | \hat{A}^\dagger | \psi_j \rangle.
-$$
-
-- Thus, when $\hat{A}$ is Hermitian we have 
-
-$$a_{jk} = a^*_{kj}$$
-
-
-
-
 
 :::{admonition} **Hermitian Operator**
 :class: important
 
-$$\hat{A} = \hat{A}^\dagger$$
+$$
+\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}\phi | \psi \rangle,
+\qquad \text{or equivalently,} \qquad
+\langle j| \hat{A}|k\rangle = \langle k| \hat{A}|j\rangle^*.
+$$
+
+In integral form:
 
 $$
-\int {\color{blue} \psi^*_j}  {\color{green}\hat{A}\psi_k} d\tau = \int { \color{green} \psi_k}  {\color{blue}\hat{A}^\dagger\psi_j^{*} } d\tau= \int { \color{green} \psi_k} { {\color{blue}(\hat{A}\psi_j)}^{*}}  d\tau
+\int \psi_j^*(x), [\hat{A}\psi_k(x)],dx
+= \int \psi_k(x), [\hat{A}\psi_j(x)]^*,dx.
 $$
-
-**In Dirac Notation**
-
-$$ \langle j| \hat{A}|k\rangle = \langle k| \hat{A} | j \rangle^{*}$$
 :::
 
 
-- On the left, $\hat{A}$ acts on $\psi_k$, and the result is integrated against $\psi_j^*$.
-- On the right, $\hat{A}^\dagger$ acts on $\psi_j^*$, and the result is integrated against $\psi_k$. 
-- **For Hermitian operators** we have special case when $\hat{A} = \hat{A}^\dagger$ and this equation becomes symmetric.
-- In general most matrices/operators in mathematics are not Hermitian. Meaning you get different result when you feed complex conjugate function to the same operator. Some examples are below
+
+#### Why Hermitian Operators Matter
+
+
+1. **Eigenvalues are real**: Observables in quantum mechanics (energy, momentum, position, etc.) are represented by **Hermitian operators**, ensuring all measurement outcomes are real numbers.
+
+  $$
+  \hat{A}|\psi\rangle = a|\psi\rangle \implies a \in \mathbb{R}.
+  $$
+
+:::{admonition} **Proof of real eigenvalues**
+:class: tip, dropdown
+
+- Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left-hand and right-hand sides of the Hermitian condition:
+
+$$
+\int \psi^* \hat{A} \psi \, d\tau = a
+$$
+
+$$
+\int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
+$$
+
+- Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.
+
+$$
+a = a^*
+$$
+
+:::
+
+2. **Eigenfunctions are orthogonal**:
+
+  $$
+  \langle \psi_m | \psi_n \rangle = 0 \quad (m \ne n).
+  $$
+
+:::{admonition} **Proof of orthogonal eigenfunctions**
+:class: tip, dropdown
+
+The Hermitian property can also be used to show that eigenfunctions $\psi_j$ and $\psi_k$, corresponding to different eigenvalues $a_j$ and $a_k$ (with $a_j \neq a_k$, i.e., "non-degenerate"), are orthogonal to each other:
+
+$$
+\textnormal{LHS: } \int \psi_j^* \hat{A} \psi_k \, d\tau = \int \psi_j^* a_k \psi_k \, d\tau = a_k \int \psi_j^* \psi_k \, d\tau
+$$
+
+$$
+\textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
+$$
+
+- Since the operator is Hermitian, we require that LHS = RHS. This results in:
+
+$$
+\left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
+$$
+
+- If $a_j \neq a_k$, then we have:
+
+$$
+\int \psi_j^* \psi_k \, d\tau = 0
+$$
+
+- This shows that $\psi_j$ and $\psi_k$ are orthogonal. 
+
+- **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold.
+
+:::
 
 :::{admonition} **Example of Hermitian Matrix** 
 :class: note
@@ -338,63 +423,7 @@ ${\int\limits_{-\infty}^{\infty}\psi_j^*(x)\left(-i\hbar\frac{d\psi_k(x)}{dx}\ri
 $ = {\int\limits_{-\infty}^{\infty}\psi_k(x)\left(-i\hbar\frac{d\psi_j(x)}{dx}\right)^*dx} \Rightarrow \hat{p}_x\textnormal{ is Hermitian}$.
 :::
 
-
-
-### Two Consequences of Hermitian Property
-
-#### Eigenvalues of Hermitian Operators Are Real
-
-- Operators and eigenfunctions in quantum mechanics may be complex valued; however, **eigenvalues** of quantum mechanical operators **must be real** because they correspond to the real values obtained from measurements.
-- By allowing wavefunctions to be complex, it is possible to store more information (i.e., both the real and imaginary parts, or "density and velocity").
-- When computing experimental quantities, the complex conjugate pair of wavefunctions must be combined to yield real values.
-  
-- **Proof**: Let $\psi$ be an eigenfunction of $\hat{A}$ with eigenvalue $a$. Choose $\psi_j = \psi_k = \psi$. Then we can write the result of the left-hand and right-hand sides of the Hermitian condition:
-
-$$
-\int \psi^* \hat{A} \psi \, d\tau = a
-$$
-
-$$
-\int \psi \left(\hat{A} \psi\right)^* \, d\tau = a^*
-$$
-
-- Since the operator is Hermitian, this leads to equality ensuring real nature of eigenvalues.
-
-$$
-a = a^*
-$$
-
-
-
-
-
-#### Eigenfunctions of Hermitian Operators Are Orthogonal
-
-The Hermitian property can also be used to show that eigenfunctions $\psi_j$ and $\psi_k$, corresponding to different eigenvalues $a_j$ and $a_k$ (with $a_j \neq a_k$, i.e., "non-degenerate"), are orthogonal to each other:
-
-$$
-\textnormal{LHS: } \int \psi_j^* \hat{A} \psi_k \, d\tau = \int \psi_j^* a_k \psi_k \, d\tau = a_k \int \psi_j^* \psi_k \, d\tau
-$$
-
-$$
-\textnormal{RHS: } \int \psi_k \left(\hat{A} \psi_j \right)^* \, d\tau = \int \psi_k \left(a_j \psi_j \right)^* \, d\tau = a_j \int \psi_j^* \psi_k \, d\tau
-$$
-
-- Since the operator is Hermitian, we require that LHS = RHS. This results in:
-
-$$
-\left(a_k - a_j \right) \int \psi_j^* \psi_k \, d\tau = 0
-$$
-
-- If $a_j \neq a_k$, then we have:
-
-$$
-\int \psi_j^* \psi_k \, d\tau = 0
-$$
-
-- This shows that $\psi_j$ and $\psi_k$ are orthogonal. 
-
-- **Note**: If $a_j = a_k$, meaning the eigenvalues are degenerate, this result does not hold.
+**Geometric Intuition** Hermitian operators are the analog of **symmetric matrices** in real vector spaces. They represent linear transformations that **do not rotate vectors into complex directions**—only stretch or compress them along real axes.
 
 
 ### Problems
