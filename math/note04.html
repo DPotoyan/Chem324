@@ -499,24 +499,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-vectors-vs-column-vector">Row vectors vs column vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-or-subtraction">1. Addition or Subtraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-by-a-scalar">2. Multiplication by a Scalar</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-and-column-vectors">Row and Column Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-orthogonality">Inner products and orthogonality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">Matrix vector Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-eigenvalues">Finding Eigenvalues</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-meaning">Geometric Meaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-action-of-a-matrix-on-a-vector">Visualizing Action of a Matrix on a Vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-orthogonality">Inner products and orthogonality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 </ul>
             </nav>
         </div>
@@ -609,139 +600,161 @@ $$</p>
 </section>
 <section id="vectors-as-arrays-of-numbers">
 <h2>Vectors as Arrays of Numbers<a class="headerlink" href="#vectors-as-arrays-of-numbers" title="Permalink to this heading">#</a></h2>
-<p>We will define <strong>vector</strong>  as an ordered collection of numbers which describes states of physical systems.</p>
+<p>A <strong>vector</strong> is an ordered collection of numbers that represents the state or configuration of a physical system.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(a = (-2, 8)\)</span>: A 2D vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(b = (1.34, 4.23, 5.98)\)</span>: A 3D vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(c = (1, -2, 4i, 3 + 2i)\)</span>: A 4D vector with complex components.</p></li>
-<li><p><span class="math notranslate nohighlight">\(f = (1, 2, 3, 4, 5, 6, \ldots, \infty)\)</span>: An infinite-dimensional vector with integer components.</p></li>
-<li><p><strong>Note</strong>: Vectors can belong to real or complex spaces, depending on their components.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a = (-2, 8)\)</span> — a 2D vector</p></li>
+<li><p><span class="math notranslate nohighlight">\(e_1\)</span> = (1,0) - a unit vector along x axis and <span class="math notranslate nohighlight">\(e_2 = (0,1)\)</span> a unit vector along y axis</p></li>
+<li><p><span class="math notranslate nohighlight">\(b = (1.34, 4.23, 5.98)\)</span> — a 3D vector</p></li>
+<li><p><span class="math notranslate nohighlight">\(c = (1, -2, 4i, 3 + 2i)\)</span> — a 4D vector with complex components</p></li>
+<li><p><span class="math notranslate nohighlight">\(f = (1, 2, 3, 4, 5, 6, \ldots)\)</span> — an infinite-dimensional vector (e.g., a sequence)</p></li>
 </ul>
-</section>
-<section id="vectors-defined-with-respect-to-a-basis">
-<h2>Vectors Defined with Respect to a Basis<a class="headerlink" href="#vectors-defined-with-respect-to-a-basis" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>In classical physics, vectors are often visualized as arrows in space, with both <strong>magnitude</strong> and <strong>direction</strong>. A vector is typically defined with respect to a <strong>basis</strong>, where unit vectors (<span class="math notranslate nohighlight">\(\vec{e_i}\)</span>) span the space. For instance, in 3D Euclidean space, the standard basis is:</p>
-<div class="math notranslate nohighlight">
-\[e_1 = (1, 0, 0), \,\, e_2 = (0, 1, 0), \,\, e_3 = (0, 0, 1)\]</div>
-</li>
-<li><p>Here is an example of vector <span class="math notranslate nohighlight">\(v\)</span> in terms of unit vectors of euclidean space.</p>
-<div class="math notranslate nohighlight">
-\[v = (2,3,4) = 2e_1+3e_2+4e_3\]</div>
-</li>
-<li><p>In a different coordinate system or basis, the same vector will have different components, but its intrinsic properties remain unchanged. This flexibility in representation is a fundamental concept in quantum mechanics and linear algebra.</p></li>
-</ul>
-</section>
-<section id="row-vectors-vs-column-vector">
-<h2>Row vectors vs column vector<a class="headerlink" href="#row-vectors-vs-column-vector" title="Permalink to this heading">#</a></h2>
+<p><strong>Note:</strong> Vectors may belong to <em>real</em> or <em>complex</em> vector spaces depending on the nature of their components.</p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Vector Space</strong></p>
 <ul class="simple">
-<li><p>We will defined row and column vectors which are related to one another by operation of transpose. They describe the same physical state or coordinate of a system.</p></li>
+<li><p>Any vector in an <span class="math notranslate nohighlight">\(N\)</span>-dimensional space can be written as a <strong>linear combination</strong> of <span class="math notranslate nohighlight">\(N\)</span> linearly independent basis vectors.</p></li>
+<li><p>For instance, in 2D space, we can choose two perpendicular unit vectors <span class="math notranslate nohighlight">\(e_1\)</span> and <span class="math notranslate nohighlight">\(e_2\)</span> to form a convenient basis:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = (a_1, a_2)^{T}
+\vec{a} = a_1 e_1 + a_2 e_2 = \begin{pmatrix}
+    a_1\\
+    a_2\\
+    \end{pmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}a= \begin{pmatrix}
+    2\\
+    3\\
+    \end{pmatrix} = 2\begin{pmatrix}
+    1\\
+    0\\
+    \end{pmatrix}+3 \begin{pmatrix}
+    0\\
+    1\\
+    \end{pmatrix}
 \end{split}\]</div>
 <ul class="simple">
-<li><p>However row vectors live with their own universe of row vectors and column vectors in their own universe of column vectors.</p></li>
-<li><p>Later we will see that to take scalar or dot product row vector needs to be hit with column and vice versa.</p></li>
+<li><p>If we choose a rotated basis <span class="math notranslate nohighlight">\(e'_1\)</span>, <span class="math notranslate nohighlight">\(e'_2\)</span> (e.g choose basis vectors with length 2), the components change, but the <strong>vector itself remains the same</strong>:</p></li>
 </ul>
-</section>
-<section id="example-vector-expressed-in-two-different-basis">
-<h2>Example: Vector expressed in two different basis<a class="headerlink" href="#example-vector-expressed-in-two-different-basis" title="Permalink to this heading">#</a></h2>
-<p>Let’s take a 2D vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> in the standard Cartesian unit basis:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{v} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{v} = 2 \mathbf{e_1} + 3 \mathbf{e_2} = 2\begin{pmatrix} 1 \\ 0 \end{pmatrix}+3\begin{pmatrix} 0 \\ 1 \end{pmatrix}
-\end{split}\]</div>
-<p>Now, suppose we switch to a new basis, where each new basis vector is a scalar multiple of the standard basis vectors. Let’s define the new basis vectors as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{b_1} = 2 \mathbf{e_1} = \begin{pmatrix} 2 \\ 0 \end{pmatrix}, \quad \mathbf{b_2} = 2 \mathbf{e_2} = \begin{pmatrix} 0 \\ 2 \end{pmatrix}
-\end{split}\]</div>
-<p>in the new basis, the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is represented as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{v}_{\text{new}} = 1 \mathbf{b_1} + 3/2 \mathbf{b_2}
+\vec{a} = a'_1 e'_1 + a'_2 e'_2 = (a'_1, a'_2)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}a= \begin{pmatrix}
+    2\\
+    3\\
+    \end{pmatrix} = 1\begin{pmatrix}
+    2\\
+    0\\
+    \end{pmatrix}+\frac{3}{2} \begin{pmatrix}
+    0\\
+    2\\
+    \end{pmatrix}
+\end{split}\]</div>
+</div>
+</section>
+<section id="row-and-column-vectors">
+<h2>Row and Column Vectors<a class="headerlink" href="#row-and-column-vectors" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In linear algebra and quantum mechanics, we distinguish between <strong>column vectors</strong> (kets) and <strong>row vectors</strong> (bras), which are related by the <strong>transpose</strong> (and, in complex spaces, by the <strong>Hermitian conjugate</strong>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle a | =
+\begin{pmatrix}
+a_1 \
+a_2
+\end{pmatrix}
 \]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{v}_{\text{new}} = \begin{pmatrix} 1 \\ \frac{3}{2} \end{pmatrix}
+|b\rangle =  \begin{pmatrix}
+    b_1\\
+    b_2\\
+    \end{pmatrix}
 \end{split}\]</div>
 <ul class="simple">
-<li><p>This shows that when moving to a new basis the components of the vector change accordingly, but the vector itself remains the same geometrically!</p></li>
+<li><p>Although they describe the same state or object, bras and kets “live” in dual spaces — column vectors form one space, while row vectors belong to its dual space. Their interaction through the inner product <span class="math notranslate nohighlight">\(\langle b | a \rangle\)</span> gives a scalar quantity.</p></li>
 </ul>
 </section>
-<section id="vector-notation">
-<h2>Vector Notation<a class="headerlink" href="#vector-notation" title="Permalink to this heading">#</a></h2>
-<p>Depending on the context, we may emphasize the basis or omit it when the basis is implied:</p>
-<ul>
-<li><p>In terms of a coordinate basis:</p>
-<div class="math notranslate nohighlight">
-\[\vec{a} = 2\vec{e_i} + 3\vec{e_j}\]</div>
-</li>
-<li><p>As an ordered tuple of components:</p>
-<div class="math notranslate nohighlight">
-\[a = (2, 3)\]</div>
-</li>
-<li><p>Using Dirac notation (common in quantum mechanics):</p>
-<div class="math notranslate nohighlight">
-\[\mid a \rangle = 2 \mid e_i \rangle + 3 \mid e_j \rangle\]</div>
-</li>
-<li><p>Vectors can represent a wide range of phenomena, such as the position of a particle in space, the population of countries, or temperature variations in different regions of a forest.</p></li>
+<section id="inner-products-and-orthogonality">
+<h2>Inner products and orthogonality<a class="headerlink" href="#inner-products-and-orthogonality" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Dot product  <span class="math notranslate nohighlight">\(\langle a\mid b \rangle\)</span></strong> quantifies the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> and vice-versa. That is, how much <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> have in common in terms of direction in space!</p></li>
 </ul>
-</section>
-<section id="vector-operations">
-<h2>Vector Operations<a class="headerlink" href="#vector-operations" title="Permalink to this heading">#</a></h2>
-<p>What defines vectors in a mathematical framework are the operations performed on them. Let’s illustrate these operations using a simple 2D vectors <span class="math notranslate nohighlight">\(a = (3, 2)\)</span> and <span class="math notranslate nohighlight">\(b=(1,1)\)</span> as an example.</p>
-<section id="addition-or-subtraction">
-<h3>1. Addition or Subtraction<a class="headerlink" href="#addition-or-subtraction" title="Permalink to this heading">#</a></h3>
-<ul>
-<li><p><strong>Component-wise addition</strong>:</p>
+<div class="important admonition">
+<p class="admonition-title"><strong>Dot product: geometric definition</strong></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a + b = \begin{pmatrix}
-    2\\
-    3
-  \end{pmatrix} + \begin{pmatrix}
+\[
+\langle a\mid b \rangle = |a| |b| cos\theta
+\]</div>
+</div>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(\theta\)</span> measures angle between a and b. If vectors are perpendicular like unit vectors in cartesian system we call them <strong>orthogonal</strong></p></li>
+<li><p><strong>Orthonormal vectors</strong> are both normalized and orthogonal.  We denote orthornamilty condition with the convenient Kornecker symbol: <span class="math notranslate nohighlight">\(\delta_{ij}=0\)</span>  when <span class="math notranslate nohighlight">\(i\neq j\)</span> and <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(i=j\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle e_i \mid e_j \rangle =\delta_{ij}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  (1,0)\begin{pmatrix}
+    0\\
     1\\
-    1
-  \end{pmatrix} = \begin{pmatrix}
-    2+1\\
-    3+1
-  \end{pmatrix} = \begin{pmatrix}
-    3\\
-    4
-  \end{pmatrix}\end{split}\]</div>
-</li>
-<li><p><strong>In Dirac notation</strong>:</p>
-<div class="math notranslate nohighlight">
-\[|a \rangle + |b \rangle = (2 + 1)\mid e_1 \rangle + (3 + 1)\mid e_2 \rangle\]</div>
-</li>
+    \end{pmatrix}=1\cdot 0+0\cdot 1=0
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Norm of a vector <span class="math notranslate nohighlight">\(\mid a\mid\)</span></strong> Is project of the vector onto itself and quantifies the length of the vector. When the norm is <span class="math notranslate nohighlight">\(\mid a \mid=1\)</span>, we say that the vector is normalized.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\langle a \mid a\rangle= \big(a_1\langle e_1| + a_2 \langle e_2|\big) \cdot \big (a_1 |e_1\rangle + a_2 |e_2 \rangle \big ) = a_1^2+a_2^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mid a \mid =\sqrt{a_1^2+a_2^2}
+\]</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Inner product between two vectors</strong></p>
+<div class="math notranslate nohighlight">
+\[\vec{a} \cdot \vec{b} = \langle a| b \rangle = a_1 b_1+ a_2b_2+ ... \]</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title"><strong>Use inner product to defiine components</strong></p>
+<div class="math notranslate nohighlight">
+\[\vec{a_1} = a_1 e_1 + a_2 \vec{e}_2+ ...\]</div>
+<div class="math notranslate nohighlight">
+\[\vec{e_1} \cdot \vec{a} = a_1\]</div>
+<div class="math notranslate nohighlight">
+\[\langle e_1 | a_1\rangle  = a_1\]</div>
+</div>
 </section>
-<section id="multiplication-by-a-scalar">
-<h3>2. Multiplication by a Scalar<a class="headerlink" href="#multiplication-by-a-scalar" title="Permalink to this heading">#</a></h3>
-<p>Multiplying a vector by a scalar <span class="math notranslate nohighlight">\(\beta=10\)</span> scales the vector’s magnitude without changing its direction.</p>
-<ul>
-<li><p><strong>Component-wise scalar multiplication</strong>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}10\cdot a = 10 \begin{pmatrix}
-    2\\
-    3
-  \end{pmatrix} = \begin{pmatrix}
-    20\\
-    30
-  \end{pmatrix}\end{split}\]</div>
-</li>
-<li><p><strong>In Dirac notation</strong>:</p>
-<div class="math notranslate nohighlight">
-\[10\mid a \rangle = 20 \mid e_1 \rangle + 30 \mid e_2 \rangle\]</div>
-</li>
+<section id="decomposition-of-functions-into-orthogonal-components">
+<h2>Decomposition of functions into orthogonal components<a class="headerlink" href="#decomposition-of-functions-into-orthogonal-components" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a <strong>Hilbert space</strong>, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.</p></li>
 </ul>
-</section>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Vectors</p></th>
+<th class="head text-center"><p>Functions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}\)</span></p></td>
+<td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>Linear superposition</strong>  <span class="math notranslate nohighlight">\(\\ \mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle\)</span></p></td>
+<td class="text-center"><p><strong>Linear superposition</strong> <span class="math notranslate nohighlight">\(\\ \mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>Projections</strong>  <span class="math notranslate nohighlight">\(\\ \langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  \)</span></p></td>
+<td class="text-center"><p><strong>Projections</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="system-of-linear-equations-as-matrix-operations">
 <h2>System of Linear Equations as Matrix Operations<a class="headerlink" href="#system-of-linear-equations-as-matrix-operations" title="Permalink to this heading">#</a></h2>
@@ -1024,110 +1037,6 @@ A \mathbf{v} = \lambda \mathbf{v},
 </div>
 </div>
 </section>
-<section id="inner-products-and-orthogonality">
-<h2>Inner products and orthogonality<a class="headerlink" href="#inner-products-and-orthogonality" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Dot product  <span class="math notranslate nohighlight">\(\langle a\mid b \rangle\)</span></strong> quantifies the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> and vice-versa. That is, how much <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> have in common with each other in terms of direction in space.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\langle e_i \mid e_j \rangle =\delta_{ij}
-\]</div>
-<ul class="simple">
-<li><p><strong>Norm of a vector <span class="math notranslate nohighlight">\(\mid a\mid\)</span></strong> Is project of the vector onto itself and quantifies the length of the vector. When the norm is <span class="math notranslate nohighlight">\(\mid a \mid=1\)</span>, we say that the vector is normalized.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\langle a \mid a\rangle= a_1^2+a_2^2
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\mid a \mid =\sqrt{a_1^2+a_2^2}
-\]</div>
-<ul class="simple">
-<li><p><strong>Orthogonality</strong> If the projection of vector <span class="math notranslate nohighlight">\(a\)</span> on <span class="math notranslate nohighlight">\(b\)</span> is zero we say that the vectors are orthogonal.  Example of the orthogonal vectors are unit vectors of cartesian coordinate system.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  (1,0)\begin{pmatrix}
-    0\\
-    1\\
-    \end{pmatrix}=1\cdot 0+0\cdot 1=0
-\end{split}\]</div>
-<ul class="simple">
-<li><p><strong>Orthonormal vectors</strong> are both normalized and orthogonal.  We denote orthornamilty condition with the convenient Kornecker symbol: <span class="math notranslate nohighlight">\(\delta_{ij}=0\)</span>  when <span class="math notranslate nohighlight">\(i\neq j\)</span> and <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(i=j\)</span>.</p></li>
-</ul>
-<blockquote>
-<div><p>To normalize a vector is to divide the vector by its norm. <span class="math notranslate nohighlight">\(\mid E_1\rangle = (4,0,0,0)\)</span> is not normalized since <span class="math notranslate nohighlight">\(\langle E_1\mid E_1\rangle = 4\)</span> hence we divide by norm and obtain a normalized vector <span class="math notranslate nohighlight">\(\mid e_1\rangle=\frac{1}{4}\mid E_1\rangle=(1,0,0,0)\)</span>. And now <span class="math notranslate nohighlight">\(\langle E_1 \mid  E_1\rangle=1\)</span>.</p>
-</div></blockquote>
-</section>
-<section id="basis-set-and-linear-independence">
-<h2>Basis set and linear independence.<a class="headerlink" href="#basis-set-and-linear-independence" title="Permalink to this heading">#</a></h2>
-<p><strong>1. Every <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector can be uniquely represented as a linear combination of <span class="math notranslate nohighlight">\(N\)</span> orthogonal vectors.</strong> And vice-versa: if a vector can be represented by <span class="math notranslate nohighlight">\(N\)</span> orthogonal vectors, it means that the vector is <span class="math notranslate nohighlight">\(N\)</span>-dimensional. A set of vectors in terms of which an arbitrary <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector is expressed is called a <strong>basis set.</strong></p>
-<div class="math notranslate nohighlight">
-\[
-\mid v\rangle = \sum^{i=N}_{i=1} \mid e_i\rangle
-\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}a= \begin{pmatrix}
-    2\\
-    3\\
-    \end{pmatrix} = 2\begin{pmatrix}
-    1\\
-    0\\
-    \end{pmatrix}+3 \begin{pmatrix}
-    0\\
-    1\\
-    \end{pmatrix}
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}a= \begin{pmatrix}
-    -1\\
-    5\\ 8\\ \end{pmatrix} = -1\begin{pmatrix}
-    1\\
-    0\\ 0\\
-    \end{pmatrix}+5 \begin{pmatrix}
-    0\\
-    1\\ 0\\
-    \end{pmatrix}+8 \begin{pmatrix}
-    0\\
-    0\\ 1\\
-    \end{pmatrix}
-\end{split}\]</div>
-<p><strong>2. Orthogonal vectors are linearly independent.</strong> This means that no member of a set of vectors can be expressed in terms of the others.  Linear independence is exprsessed mathematically by having coefficients of the linear combination of 3D (4D, ND, etc) vectors to zero <span class="math notranslate nohighlight">\(\alpha_1=\alpha_2=\alpha_3=0\)</span> as the only way to satify zero vector equality:</p>
-<div class="math notranslate nohighlight">
-\[
-  \alpha_1 \mid e_1\rangle +\alpha_1 \mid e_2\rangle+\alpha_3 \mid e_3\rangle=0
-  \]</div>
-<p>The converse, when one of the coefificent <span class="math notranslate nohighlight">\(\alpha_i\)</span>can be non-zero immeaditely implies linear depenence,  because one can divide by that coeficient <span class="math notranslate nohighlight">\(\alpha_i\)</span> and express the unit vector <span class="math notranslate nohighlight">\(\mid e_i\rangle\)</span> in terms of the others.</p>
-</section>
-<section id="decomposition-of-functions-into-orthogonal-components">
-<h2>Decomposition of functions into orthogonal components<a class="headerlink" href="#decomposition-of-functions-into-orthogonal-components" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Writing a vector in terms of its orthogonal unit vectors is a powerful mathematical technique which permeates much of quantum mechanics. The role of finite dimensional vectors in QM play the  infinite dimensional functions. In analogy with sequence vectors which can live in 2D, 3D or ND spaces, the inifinite dimensional space of functions in quantum mathematics is known as a <strong>Hilbert space</strong>, named after famous mathematician David Hilbert. We will not go too much in depth about functional spaces other than listing some powerful analogies with simple sequence vectors.</p></li>
-</ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>Vectors</p></th>
-<th class="head text-center"><p>Functions</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle x\mid y \rangle = \sum^{i=N}_{i=1} x_i y_i=\delta_{xy}\)</span></p></td>
-<td class="text-center"><p><strong>Orthonormality</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_i \mid \phi_j \rangle = \int^{+\infty}_{-\infty} \phi_i(x) \phi_j(x)dx=\delta_{ij}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><strong>Linear superposition</strong>  <span class="math notranslate nohighlight">\(\\ \mid A \rangle = A_x \mid x\rangle+A_y\mid y\rangle\)</span></p></td>
-<td class="text-center"><p><strong>Linear superposition</strong> <span class="math notranslate nohighlight">\(\\ \mid f\rangle = c_1 \mid\phi_1\rangle+c_2\mid\phi_2\rangle\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><strong>Projections</strong>  <span class="math notranslate nohighlight">\(\\ \langle e_x\mid A\rangle=A_x \langle x\mid x \rangle +A_y \langle x\mid y \rangle=A_x  \)</span></p></td>
-<td class="text-center"><p><strong>Projections</strong> <span class="math notranslate nohighlight">\(\\ \langle \phi_1\mid \Psi\rangle=c_1 \langle \Psi \mid\phi_1 \rangle +c_2 \langle \Psi \mid\phi_2 \rangle=c_1\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<ul class="simple">
-<li><p>In the first column we decompose a vectors in terms of two orthogonal components <span class="math notranslate nohighlight">\(A_i\)</span> or projections of vector <span class="math notranslate nohighlight">\(A\)</span> along the orthonormal vectors <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.  In the second column similiar decomposition where the dot product, due to infinite dimension, is given by an integral!</p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1195,24 +1104,15 @@ A \mathbf{v} = \lambda \mathbf{v},
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-what-are-they">Vectors, what are they?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-as-arrays-of-numbers">Vectors as Arrays of Numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-defined-with-respect-to-a-basis">Vectors Defined with Respect to a Basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-vectors-vs-column-vector">Row vectors vs column vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-vector-expressed-in-two-different-basis">Example: Vector expressed in two different basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-notation">Vector Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-or-subtraction">1. Addition or Subtraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-by-a-scalar">2. Multiplication by a Scalar</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#row-and-column-vectors">Row and Column Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-orthogonality">Inner products and orthogonality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations-as-matrix-operations">System of Linear Equations as Matrix Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">Matrix vector Multiplication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-eigenvalues">Finding Eigenvalues</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-meaning">Geometric Meaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-action-of-a-matrix-on-a-vector">Visualizing Action of a Matrix on a Vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-orthogonality">Inner products and orthogonality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-and-linear-independence">Basis set and linear independence.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-of-functions-into-orthogonal-components">Decomposition of functions into orthogonal components</a></li>
 </ul>
   </nav></div>
 
