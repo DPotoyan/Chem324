@@ -137,8 +137,5 @@ Dynamics of wavefunction in the presence of gaussian potential. Show are square 
 Dynamics of wavefunction in the presence of barrier potential. Show are square fo wavefunction along with its Real and imaginary components.
 :::
 
-:::{figure-md} markdown-fig
-<img src="./images/step_potential.gif" alt="pib1" class="bg-primary mb-1" width="300px">
 
-Dynamics of wavefunction in the presence of step potential. Show are square fo wavefunction along with its Real and imaginary components.
-:::
+
