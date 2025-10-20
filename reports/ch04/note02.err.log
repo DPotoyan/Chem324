@@ -1,0 +1,93 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+from pathlib import Path
+
+def sho_anim(m, k=1.0, A=0.9, phi=0.0, duration=4.0, fps=30):
+    ω = np.sqrt(k/m)
+    t = np.linspace(0, duration, int(fps*duration))
+    x = A*np.sin(ω*t + phi)
+
+    fig, axes = plt.subplots(1, 2, figsize=(8, 2.5))
+    ax_mass, ax_wave = axes
+
+    # --- left: oscillating mass ---
+    ax_mass.set_xlim(-1.2, 1.2)
+    ax_mass.set_ylim(-0.5, 0.5)
+    ax_mass.axis("off")
+    ax_mass.set_title(f"Mass–Spring (m={m:g})")
+    (mass_point,) = ax_mass.plot([], [], "o", ms=12)
+    (trace_line,) = ax_mass.plot([], [], lw=2)
+
+    # --- right: sinusoidal wave ---
+    ax_wave.set_xlim(0, duration)
+    ax_wave.set_ylim(-1.2*A, 1.2*A)
+    ax_wave.set_xlabel("time t")
+    ax_wave.set_ylabel("x(t)")
+    ax_wave.grid(True, ls="--", alpha=0.4)
+    ax_wave.set_title("x(t) = A sin (ωt + φ)")
+    (wave_line,) = ax_wave.plot([], [], lw=2)
+    (wave_point,) = ax_wave.plot([], [], "o")
+
+    def init():
+        for line in (mass_point, trace_line, wave_line, wave_point):
+            line.set_data([], [])
+        return mass_point, trace_line, wave_line, wave_point
+
+    def update(i):
+        xi = x[i]
+        mass_point.set_data([xi], [0])
+        trace_line.set_data(x[:i+1], np.zeros(i+1))
+        wave_line.set_data(t[:i+1], x[:i+1])
+        wave_point.set_data([t[i]], [xi])
+        return mass_point, trace_line, wave_line, wave_point
+
+    return FuncAnimation(fig, update, init_func=init, frames=len(t), interval=1000/fps, blit=True)
+
+# --- Two animations: normal mass and heavier mass ---
+anim1 = sho_anim(m=1.0, duration=10.0)
+anim2 = sho_anim(m=10.0, duration=10.0)  # slower oscillation
+
+# Inline display in Jupyter / Jupyter Book
+plt.close(fig)  # Prevents static display of the last frame
+HTML(anim1.to_jshtml() + "<br><hr><br>" + anim2.to_jshtml())
+
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[1], line 53[0m
+[1;32m     50[0m anim2 [38;5;241m=[39m sho_anim(m[38;5;241m=[39m[38;5;241m10.0[39m, duration[38;5;241m=[39m[38;5;241m10.0[39m)  [38;5;66;03m# slower oscillation[39;00m
+[1;32m     52[0m [38;5;66;03m# Inline display in Jupyter / Jupyter Book[39;00m
+[0;32m---> 53[0m plt[38;5;241m.[39mclose([43mfig[49m)  [38;5;66;03m# Prevents static display of the last frame[39;00m
+[1;32m     54[0m HTML(anim1[38;5;241m.[39mto_jshtml() [38;5;241m+[39m [38;5;124m"[39m[38;5;124m<br><hr><br>[39m[38;5;124m"[39m [38;5;241m+[39m anim2[38;5;241m.[39mto_jshtml())
+
+[0;31mNameError[0m: name 'fig' is not defined
+
