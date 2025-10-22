@@ -503,7 +503,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-number-of-modes">Calculating number of modes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole-moment-expansion-in-terms-of-x">Dipole Moment Expansion in Terms of <span class="math notranslate nohighlight">\(x\)</span></a></li>
 </ul>
@@ -547,8 +546,8 @@ document.write(`
 <ul class="simple">
 <li><p><strong>The vibrational quantum number</strong>  <span class="math notranslate nohighlight">\(v=0,1,2,...\)</span></p></li>
 <li><p><strong>Reduced mass of the diatomic molecule</strong> <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
-<li><p><strong>Spring constant k</strong></p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> frequency of photon equal to vibrational frequency both expressed in <span class="math notranslate nohighlight">\(cm^{-1}\)</span> units.</strong></p></li>
+<li><p><strong>Spring constant k</strong> measures strength of bonds</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> frequency of photon (equal to freq of mol vibrations) <span class="math notranslate nohighlight">\(cm^{-1}\)</span> units.</strong></p></li>
 </ul>
 </div>
 <ul class="simple">
@@ -802,7 +801,7 @@ document.write(`
 <span class="n">X</span><span class="o">.</span><span class="n">make_rgrid</span><span class="p">()</span>
 <span class="n">X</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">Vmorse</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
 <span class="n">X</span><span class="o">.</span><span class="n">plot_V</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 
 <span class="n">X</span><span class="o">.</span><span class="n">draw_Elines</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">vmax</span><span class="p">),</span> <span class="n">ax</span><span class="p">)</span>
@@ -913,12 +912,19 @@ document.write(`
 <p><span class="caption-number">Fig. 65 </span><span class="caption-text">Showing the slowest vibrational mode in protein which is linked with its catalytic function</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="calculating-number-of-modes">
-<h2>Calculating number of modes<a class="headerlink" href="#calculating-number-of-modes" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">**Vibrational degrees of freedom in molecules **</p>
 <ul class="simple">
-<li><p>The degrees of vibrational modes for linear molecules can be calculated using the formula:</p></li>
+<li><p><strong>Linear</strong> Molecules with N atoms:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[N_{modes} = 3N−5\]</div>
+<ul class="simple">
+<li><p><strong>Non-linear</strong> molecules with N atoms</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[N_{modes} = 3N−6\]</div>
+</div>
 </section>
 <section id="selection-rules">
 <h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
@@ -928,7 +934,7 @@ document.write(`
 Symmetry considerations, especially in molecules, come from group theory, which helps in predicting whether a certain vibrational mode will be IR or Raman active.</p></li>
 <li><p>Not all diatomic molecules have vibrational absorption spectrum. To see this, we have to calculate the electric dipole transition moment. We will learn more about whu To proceed, we expand <span class="math notranslate nohighlight">\(\mu_0^{(e)}\)</span> in a Taylor series about <span class="math notranslate nohighlight">\(R = R_e\)</span>:</p></li>
 </ul>
-<p>To express (\mu_z(x)) as a Taylor expansion in terms of (x = R - R_e), we rewrite the dipole moment expansion and matrix elements as follows:</p>
+<p>To express <span class="math notranslate nohighlight">\(\mu_z(x)\)</span> as a Taylor expansion in terms of <span class="math notranslate nohighlight">\(x = R - R_e\)</span>, we rewrite the dipole moment expansion and matrix elements as follows:</p>
 <section id="dipole-moment-expansion-in-terms-of-x">
 <h3>Dipole Moment Expansion in Terms of <span class="math notranslate nohighlight">\(x\)</span><a class="headerlink" href="#dipole-moment-expansion-in-terms-of-x" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
@@ -1055,7 +1061,6 @@ Symmetry considerations, especially in molecules, come from group theory, which 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unharmonic-oscillator">Unharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-number-of-modes">Calculating number of modes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole-moment-expansion-in-terms-of-x">Dipole Moment Expansion in Terms of <span class="math notranslate nohighlight">\(x\)</span></a></li>
 </ul>
