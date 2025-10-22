@@ -501,7 +501,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-harmonic-oscillator-problem">Solving harmonic oscillator problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-harmonic-oscillator">Energy of the harmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diatomic-molecules-and-two-body-problem">Diatomic molecules and two-body problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beads-and-springs-model-of-molecules">Beads and springs model of molecules</a></li>
 </ul>
             </nav>
         </div>
@@ -559,11 +558,13 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/harm-osc1.png"><img alt="compton" class="bg-primary mb-1" src="../_images/harm-osc1.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Illustration of harmonic motion governed by Hook’s law. Any deviation from equilibrium (resting) position is met with restoring force. In the absence of friction the bead keeps oscillating around equilibrium position.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Illustration of harmonic motion governed by Hook’s law. Any deviation from equilibrium (resting) position is met with restoring force. In the absence of friction the bead keeps oscillating around equilibrium position.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
-\[F=-kx\]</div>
+\[
+F=-kx
+\]</div>
 <ul class="simple">
 <li><p>This is <strong>Hooke’s law</strong>, where minus sign indicates that the direction of force is always towards restoring equilibrium location.</p></li>
 <li><p>The constant k characterizes stiffness of the spring and is called <strong>spring constant.</strong></p></li>
@@ -604,7 +605,6 @@ x(t)= A sin(\omega t+\phi)
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sho_anim</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
     <span class="n">ω</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
@@ -652,7 +652,7 @@ x(t)= A sin(\omega t+\phi)
 <span class="n">anim2</span> <span class="o">=</span> <span class="n">sho_anim</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>  <span class="c1"># slower oscillation</span>
 
 <span class="c1"># Inline display in Jupyter / Jupyter Book</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>  <span class="c1"># Prevents static display of the last frame</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Prevents static display of the last frame</span>
 <span class="n">HTML</span><span class="p">(</span><span class="n">anim1</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&quot;</span> <span class="o">+</span> <span class="n">anim2</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -660,35 +660,176 @@ x(t)= A sin(\omega t+\phi)
 </details>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">53</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="n">anim2</span> <span class="o">=</span> <span class="n">sho_anim</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>  <span class="c1"># slower oscillation</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="c1"># Inline display in Jupyter / Jupyter Book</span>
-<span class="ne">---&gt; </span><span class="mi">53</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>  <span class="c1"># Prevents static display of the last frame</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim1</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&quot;</span> <span class="o">+</span> <span class="n">anim2</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># Inline display in Jupyter / Jupyter Book</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Prevents static display of the last frame</span>
+<span class="ne">---&gt; </span><span class="mi">53</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim1</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&quot;</span> <span class="o">+</span> <span class="n">anim2</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
 
-<span class="ne">NameError</span>: name &#39;fig&#39; is not defined
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/animation.py:1352,</span> in <span class="ni">Animation.to_jshtml</span><span class="nt">(self, fps, embed_frames, default_mode)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1348</span>         <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.html&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1349</span>         <span class="n">writer</span> <span class="o">=</span> <span class="n">HTMLWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="n">fps</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1350</span>                             <span class="n">embed_frames</span><span class="o">=</span><span class="n">embed_frames</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1351</span>                             <span class="n">default_mode</span><span class="o">=</span><span class="n">default_mode</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1352</span>         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_html_representation</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_html_representation</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/animation.py:1103,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">new_saved_frame_seq</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">all_anim</span><span class="p">]):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>     <span class="k">for</span> <span class="n">anim</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_anim</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1102</span>         <span class="c1"># TODO: See if turning off blit is really necessary</span>
+<span class="ne">-&gt; </span><span class="mi">1103</span>         <span class="n">anim</span><span class="o">.</span><span class="n">_draw_next_frame</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1104</span>         <span class="k">if</span> <span class="n">progress_callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1105</span>             <span class="n">progress_callback</span><span class="p">(</span><span class="n">frame_number</span><span class="p">,</span> <span class="n">total_frames</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/animation.py:1139,</span> in <span class="ni">Animation._draw_next_frame</span><span class="nt">(self, framedata, blit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1137</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pre_draw</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="n">blit</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1138</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draw_frame</span><span class="p">(</span><span class="n">framedata</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1139</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_draw</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="n">blit</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/animation.py:1164,</span> in <span class="ni">Animation._post_draw</span><span class="nt">(self, framedata, blit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1162</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_blit_draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_drawn_artists</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1163</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1164</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py:2082,</span> in <span class="ni">FigureCanvasBase.draw_idle</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2080</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_idle_drawing</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2081</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idle_draw_cntx</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">2082</span>         <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py:400,</span> in <span class="ni">FigureCanvasAgg.draw</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span> <span class="c1"># Acquire a lock on the shared font cache.</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">with</span> <span class="n">RendererAgg</span><span class="o">.</span><span class="n">lock</span><span class="p">,</span> \
+<span class="g g-Whitespace">    </span><span class="mi">398</span>      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">_wait_cursor_for_draw_cm</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span>
+<span class="g g-Whitespace">    </span><span class="mi">399</span>       <span class="k">else</span> <span class="n">nullcontext</span><span class="p">()):</span>
+<span class="ne">--&gt; </span><span class="mi">400</span>     <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">401</span>     <span class="c1"># A GUI class may be need to update a window using this draw, so</span>
+<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="c1"># don&#39;t forget to call the superclass.</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/artist.py:95,</span> in <span class="ni">_finalize_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">def</span><span class="w"> </span><span class="nf">draw_wrapper</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">if</span> <span class="n">renderer</span><span class="o">.</span><span class="n">_rasterizing</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">stop_rasterizing</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/artist.py:72,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/figure.py:3175,</span> in <span class="ni">Figure.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3172</span>         <span class="c1"># ValueError can occur when resizing a window.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3174</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3175</span> <span class="n">mimage</span><span class="o">.</span><span class="n">_draw_list_compositing_images</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3176</span>     <span class="n">renderer</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">artists</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">suppressComposite</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3178</span> <span class="k">for</span> <span class="n">sfig</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subfigs</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3179</span>     <span class="n">sfig</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/image.py:131,</span> in <span class="ni">_draw_list_compositing_images</span><span class="nt">(renderer, parent, artists, suppress_composite)</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span> <span class="k">if</span> <span class="n">not_composite</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">has_images</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">131</span>         <span class="n">a</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1"># Composite any adjacent images together</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">image_group</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/artist.py:72,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axes/_base.py:3028,</span> in <span class="ni">_AxesBase.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3025</span>     <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">3026</span>         <span class="n">artists</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">spine</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3028</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_title_position</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3030</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">axison</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3031</span>     <span class="k">for</span> <span class="n">_axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_axis_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axes/_base.py:2972,</span> in <span class="ni">_AxesBase._update_title_position</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2970</span> <span class="n">top</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">bb</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2971</span> <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">2972</span>     <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>  <span class="c1"># update offsetText</span>
+<span class="g g-Whitespace">   </span><span class="mi">2973</span>     <span class="k">if</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">offsetText</span><span class="o">.</span><span class="n">get_text</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">2974</span>         <span class="n">bb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">offsetText</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axis.py:1337,</span> in <span class="ni">Axis.get_tightbbox</span><span class="nt">(self, renderer, for_layout_only)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1334</span>     <span class="n">renderer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">_get_renderer</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1335</span> <span class="n">ticks_to_draw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_ticks</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1337</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_label_position</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1339</span> <span class="c1"># go back to just this axis&#39;s tick labels</span>
+<span class="g g-Whitespace">   </span><span class="mi">1340</span> <span class="n">tlb1</span><span class="p">,</span> <span class="n">tlb2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ticklabel_bboxes</span><span class="p">(</span><span class="n">ticks_to_draw</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axis.py:2619,</span> in <span class="ni">YAxis._update_label_position</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2617</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2618</span>     <span class="n">spine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">2619</span>     <span class="n">spinebbox</span> <span class="o">=</span> <span class="n">spine</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2620</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2621</span>     <span class="c1"># use Axes if spine doesn&#39;t exist</span>
+<span class="g g-Whitespace">   </span><span class="mi">2622</span>     <span class="n">spinebbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">bbox</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/spines.py:158,</span> in <span class="ni">Spine.get_window_extent</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="k">return</span> <span class="n">bb</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">bb</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">158</span> <span class="n">drawn_ticks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">_update_ticks</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="n">major_tick</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">({</span><span class="o">*</span><span class="n">drawn_ticks</span><span class="p">}</span> <span class="o">&amp;</span> <span class="p">{</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">}),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="n">minor_tick</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">({</span><span class="o">*</span><span class="n">drawn_ticks</span><span class="p">}</span> <span class="o">&amp;</span> <span class="p">{</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">minorTicks</span><span class="p">}),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axis.py:1277,</span> in <span class="ni">Axis._update_ticks</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span> <span class="n">major_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">major</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">format_ticks</span><span class="p">(</span><span class="n">major_locs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span> <span class="n">major_ticks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_major_ticks</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">major_locs</span><span class="p">))</span>
+<span class="ne">-&gt; </span><span class="mi">1277</span> <span class="bp">self</span><span class="o">.</span><span class="n">major</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">set_locs</span><span class="p">(</span><span class="n">major_locs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1278</span> <span class="k">for</span> <span class="n">tick</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">major_ticks</span><span class="p">,</span> <span class="n">major_locs</span><span class="p">,</span> <span class="n">major_labels</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1279</span>     <span class="n">tick</span><span class="o">.</span><span class="n">update_position</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/ticker.py:701,</span> in <span class="ni">ScalarFormatter.set_locs</span><span class="nt">(self, locs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_useOffset</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">701</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_compute_offset</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_set_order_of_magnitude</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_set_format</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/ticker.py:714,</span> in <span class="ni">ScalarFormatter._compute_offset</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span>     <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="k">return</span>
+<span class="ne">--&gt; </span><span class="mi">714</span> <span class="n">lmin</span><span class="p">,</span> <span class="n">lmax</span> <span class="o">=</span> <span class="n">locs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">locs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1"># Only use offset if there are at least two ticks and every tick has</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span> <span class="c1"># the same sign.</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span> <span class="k">if</span> <span class="n">lmin</span> <span class="o">==</span> <span class="n">lmax</span> <span class="ow">or</span> <span class="n">lmin</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">lmax</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/numpy/core/_methods.py:45,</span> in <span class="ni">_amin</span><span class="nt">(a, axis, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span><span class="w"> </span><span class="nf">_amin</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>           <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="k">return</span> <span class="n">umr_minimum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="../_images/641cc3b64922882ab2ace66c4c9627d1d6ed9db417a762c4729cc3bdb39d04d4.png" src="../_images/641cc3b64922882ab2ace66c4c9627d1d6ed9db417a762c4729cc3bdb39d04d4.png" />
-<img alt="../_images/1023a8201f1e5338a4c7a8981eec12a031bc9fb94995dabb5b905c2e4560d519.png" src="../_images/1023a8201f1e5338a4c7a8981eec12a031bc9fb94995dabb5b905c2e4560d519.png" />
+<img alt="../_images/8a1c099983adf0e983baf93ca188b443247c9cc3971ec1b3031ea5a6504306a9.png" src="../_images/8a1c099983adf0e983baf93ca188b443247c9cc3971ec1b3031ea5a6504306a9.png" />
 </div>
 </div>
 </section>
 <section id="energy-of-the-harmonic-oscillator">
 <h2>Energy of the harmonic oscillator<a class="headerlink" href="#energy-of-the-harmonic-oscillator" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>In classical mechanics the force and the potential energy of a conservative system are related via the formula:</p></li>
+<li><p>In classical mechanics when we have a conservative system (no frictions, energy conserved) the <strong>force is a gradient of a potential energy</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[F = - \frac{\partial V(x)}{\partial x} \]</div>
+\[F = - \frac{\partial V(x)}{\partial x}\]</div>
 <ul class="simple">
-<li><p>This means the steeper the potential the higher the force and minus sign indicates that force is restoring the equilibrium position. The potential energy can be obtained by integrating:</p></li>
+<li><p>This means the steeper the potential the higher the force and minus sign indicates that force is restoring system to its equilibrium position.</p></li>
+<li><p>The potential energy can be obtained by integrating:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[ V(x)= - \int F dx = - \int (-kx) dx =\frac{kx^2}{2}+C\]</div>
 <ul class="simple">
-<li><p>Thus the potential energy for a simple harmoncin oscillator is a parabolic function of displacement. It is  convenient  to set <span class="math notranslate nohighlight">\(C=0\)</span> and measure potential energy relative to equilibrium state <span class="math notranslate nohighlight">\(V(x=0)=0\)</span></p></li>
+<li><p>Thus the potential energy for a simple harmonic oscillator is a parabolic function of displacement. It is  convenient  to set <span class="math notranslate nohighlight">\(C=0\)</span> and measure potential energy relative to equilibrium state <span class="math notranslate nohighlight">\(V(x=0)=0\)</span></p></li>
 <li><p>The total energy consisting of kinetic and potential enregies will be used to obtain Schordinger equation.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -696,7 +837,7 @@ x(t)= A sin(\omega t+\phi)
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://www.physicslens.com/wp-content/uploads/2021/11/simple-harmonic-motion-graphs.gif"><img alt="compton" class="bg-primary mb-1" src="https://www.physicslens.com/wp-content/uploads/2021/11/simple-harmonic-motion-graphs.gif" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">The harmonic oscilator (in a vacuum) is a conservative system becasue the kinetic and potential energies keep being interconverted with no amount of total energy being dissipated into the environment. Oscillations go on forever with position <span class="math notranslate nohighlight">\(x(t)\)</span> velocity <span class="math notranslate nohighlight">\(v=\dot{x}(t)\)</span> and acceleration <span class="math notranslate nohighlight">\(a=\ddot{x(t)}\)</span> with same constant frequency <span class="math notranslate nohighlight">\(\omega\)</span> but with different amplitudes.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">The harmonic oscilator (in a vacuum) is a conservative system becasue the kinetic and potential energies keep being interconverted with no amount of total energy being dissipated into the environment. Oscillations go on forever with position <span class="math notranslate nohighlight">\(x(t)\)</span> velocity <span class="math notranslate nohighlight">\(v=\dot{x}(t)\)</span> and acceleration <span class="math notranslate nohighlight">\(a=\ddot{x(t)}\)</span> with same constant frequency <span class="math notranslate nohighlight">\(\omega\)</span> but with different amplitudes.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -720,20 +861,21 @@ x(t)= A sin(\omega t+\phi)
 <ul class="simple">
 <li><p>This equation looks identical to the probem of bead anchored to wall with a spring. We have thus managed to reduce the two body probelm to a one modey problem by replacing masses of bodies with a reduced mass:  <span class="math notranslate nohighlight">\(\mu=\frac{1}{m_1}+\frac{1}{m_2}=\frac{m_1 m_2}{m_1+m_2}\)</span></p></li>
 </ul>
-</section>
-<section id="beads-and-springs-model-of-molecules">
-<h2>Beads and springs model of molecules<a class="headerlink" href="#beads-and-springs-model-of-molecules" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down? For an aribtarry potential energy funciton of x we can carry out Taylor’s expansion around equilibrium bond length <span class="math notranslate nohighlight">\(x_0\)</span> obtaining infinitey series.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[U(x) = U(x_0)+U'(x_0)(x-x_0)+\frac{1}{2!}U''(x_0)(x-x_0)^2+\frac{1}{3!}U'''(x_0)(x-x_0)^3+...\]</div>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/harm_approx.png"><img alt="harmls" class="bg-primary mb-1" src="../_images/harm_approx.png" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Deviation from simple harmonic potential approximation (red curve) of true/exact potential (blue curve) with cubic term (green)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+### Beads and springs model of molecules
+
+- Before discussing the harmonic oscillator approximation let us reflect on when this would be a good approximation and uner which cirumstances it will break down? For an aribtarry potential energy funciton of x we can carry out Taylor&#39;s expansion around equilibrium bond length $x_0$ obtaining infinitey series. 
+
+$$U(x) = U(x_0)+U&#39;(x_0)(x-x_0)+\frac{1}{2!}U&#39;&#39;(x_0)(x-x_0)^2+\frac{1}{3!}U&#39;&#39;&#39;(x_0)(x-x_0)^3+...$$
+
+
+:::{figure-md} markdown-fig
+
+&lt;img src=&quot;images/harm_approx.png&quot; alt=&quot;harmls&quot; class=&quot;bg-primary mb-1&quot; width=&quot;300px&quot;&gt;
+
+Deviation from simple harmonic potential approximation (red curve) of true/exact potential (blue curve) with cubic term (green)
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>Setting energy scale to be relative to  <span class="math notranslate nohighlight">\(U(x_0)=0\)</span> and recongizing that first derivative vanishes at minima <span class="math notranslate nohighlight">\(x_0\)</span> we have</p></li>
 </ul>
@@ -880,7 +1022,6 @@ x(t)= A sin(\omega t+\phi)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-harmonic-oscillator-problem">Solving harmonic oscillator problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-harmonic-oscillator">Energy of the harmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diatomic-molecules-and-two-body-problem">Diatomic molecules and two-body problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beads-and-springs-model-of-molecules">Beads and springs model of molecules</a></li>
 </ul>
   </nav></div>
 

@@ -501,7 +501,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials-show-nodal-and-symmetry-features-of-wavefunctions">Hermite polynomials show nodal and symmetry features of wavefunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-even-symmetry-of-wavefunctions">Odd/even symmetry of wavefunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-and-quantum-to-classical-behaviour">Tunneling and quantum to classical behaviour</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
             </nav>
@@ -534,7 +534,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[{H =  \frac{1}{2\mu}p_x^2 + \frac{1}{2}kx^2}\]</div>
 <ul class="simple">
-<li><p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator">quantum mechanicalm harmonic oscillator</a> is obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators</p></li>
+<li><p>The quatnum harmonic oscillatoris obtained by replacing the classical position and momentum by the corresponding quantum mechanical operators</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2 }\]</div>
@@ -545,9 +545,9 @@ document.write(`
 \[\hat{H}\psi_v(x) = E_v \psi_v(x) \]</div>
 <p><strong>Parameters of the Hamiltonian</strong></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(k=\frac{\mu}{\omega}\)</span> Spring constant</p></li>
-<li><p>Angular frequency of vibrations <span class="math notranslate nohighlight">\(\omega=2\pi \nu\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\nu\)</span>,  Frequency (Hz; do not confuse this with quantum number <span class="math notranslate nohighlight">\(v\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(k=\frac{\mu}{\omega}\)</span> Spring constant, measures stiffness of the spring</p></li>
+<li><p>Angular frequency of vibrations <span class="math notranslate nohighlight">\(\omega=2\pi \nu\)</span> of atoms</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu\)</span>,  Frequency (Hz; do not confuse this with quantum number <span class="math notranslate nohighlight">\(v\)</span>) of vibrating atoms</p></li>
 </ul>
 </section>
 <section id="eigenfunctions-and-eiganvalues">
@@ -771,12 +771,28 @@ document.write(`
 <li><p>Integral of an odd function from <span class="math notranslate nohighlight">\(-a\)</span> to <span class="math notranslate nohighlight">\(a\)</span> (<span class="math notranslate nohighlight">\(a\)</span> may be <span class="math notranslate nohighlight">\(\infty\)</span>) is zero.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\langle x_n \rangle = \langle n|x |\rangle =0\]</div>
+\[\langle x_n \rangle = \langle n|x |n\rangle =0\]</div>
 <ul class="simple">
 <li><p>This holds for all <span class="math notranslate nohighlight">\(n\)</span> values</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\langle x^2_n\rangle \neq 0\]</div>
+<ul class="simple">
+<li><p>When you take a derivative of odd (even) function you make it even (odd). E.g take derivative of odd function <span class="math notranslate nohighlight">\(x^3\)</span> we get <span class="math notranslate nohighlight">\(3x^2\)</span> an even function.</p></li>
+<li><p>As a result we can set the following integral to be zero:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle p \rangle  = \langle n | \hat{p_x}|n\rangle = 0
+\]</div>
+<ul class="simple">
+<li><p>And just like for x if we have two derivatives the the expression of expectation always returns an even function</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle p^2 \rangle  = \langle n | \hat{p^2_x}|n\rangle \neq 0
+\]</div>
+<p><strong>Visual illustration of orthogonality of eigenfunctions for quantum harmonic oscillator</strong></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -841,8 +857,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="interpreting-solutions">
-<h2>Interpreting solutions<a class="headerlink" href="#interpreting-solutions" title="Permalink to this heading">#</a></h2>
+<section id="tunneling-and-quantum-to-classical-behaviour">
+<h2>Tunneling and quantum to classical behaviour<a class="headerlink" href="#tunneling-and-quantum-to-classical-behaviour" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The tails of the wavefunctions penetrate into the potential barrier deeper than the classical physics would allow. This phenomenon is called <strong>tunneling.</strong></p></li>
 <li><p>As we excite the system to higher levels probability distribution accumulates near edges thereby approaching classical prediction.</p></li>
@@ -931,7 +947,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2608/1302744920.py:38: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2599/1302744920.py:38: RuntimeWarning: divide by zero encountered in divide
   return 1 / (np.pi * np.sqrt(qmax**2 - q**2))
 </pre></div>
 </div>
@@ -1076,7 +1092,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenfunctions-and-eiganvalues">Eigenfunctions and Eiganvalues</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials-show-nodal-and-symmetry-features-of-wavefunctions">Hermite polynomials show nodal and symmetry features of wavefunctions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-even-symmetry-of-wavefunctions">Odd/even symmetry of wavefunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-solutions">Interpreting solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-and-quantum-to-classical-behaviour">Tunneling and quantum to classical behaviour</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
 </ul>
   </nav></div>
