@@ -19,8 +19,14 @@ Molecules conssiting of N nuclei and n electrons are descibed by wave functions 
 $$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
 
+:::{figure-md} markdown-fig
 
-![](./images/Levels1.gif)
+<img src="./images/Levels1.gif" alt="mol deg freed" class="bg-primary mb-1" width="500px">
+
+Illustration of energetic levels associated with different "motions"/ degrees of freedom in molecules. 
+
+:::
+
 
 
 
@@ -30,7 +36,14 @@ $$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
 $${\hat{H} = \sum\limits_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_{R_i}^2 + E(R_1, R_2, ..., R_N)}$$
 
-![](./images/mol-DOF.jpg)
+
+:::{figure-md} markdown-fig
+
+<img src="./images/mol-DOF.jpg" alt="mol deg freed" class="bg-primary mb-1" width="500px">
+
+Illustration of different "motions"/ degrees of freedom in molecules. 
+
+:::
 
 
 - In the absence of external electric or magnetic fields, the potential term $E$ depends only on the relative positions of the nuclei, as shown above, and not on the overall position of the molecule or its orientation in space. The above hamiltonian $H$ can often be approximately written as a sum of the following terms:
