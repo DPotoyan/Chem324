@@ -503,8 +503,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anharmonic-oscillator">Anharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-dipole-moment">Transition Dipole Moment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-and-transition-dipole-moment">Selection rules and Transition Dipole Moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-selection-rules">Application of selection rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectra">IR spectra</a></li>
 </ul>
@@ -908,7 +907,7 @@ document.write(`
 </figcaption>
 </figure>
 <div class="important admonition">
-<p class="admonition-title">**Vibrational degrees of freedom in molecules **</p>
+<p class="admonition-title"><strong>Vibrational degrees of freedom in molecules</strong></p>
 <ul class="simple">
 <li><p><strong>Linear</strong> Molecules with N atoms:</p></li>
 </ul>
@@ -921,45 +920,42 @@ document.write(`
 \[N_{modes} = 3N−6\]</div>
 </div>
 </section>
-<section id="selection-rules">
-<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+<section id="selection-rules-and-transition-dipole-moment">
+<h2>Selection rules and Transition Dipole Moment<a class="headerlink" href="#selection-rules-and-transition-dipole-moment" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Selection rules in spectroscopy are fundamental principles that dictate whether a transition is allowed or forbidden during the absorption or emission of electromagnetic radiation, such as infrared (IR) or Raman spectroscopy. The origins of these rules lie in the quantum mechanical description of molecular vibrations and the interactions of molecules with electromagnetic radiation. Meaning is that the light can induce coupling between the initial and final quantum states</p></li>
-<li><p>Molecular symmetry plays a crucial role in determining the allowed transitions.
-Symmetry considerations, especially in molecules, come from group theory, which helps in predicting whether a certain vibrational mode will be IR or Raman active.</p></li>
-<li><p>Not all diatomic molecules have vibrational absorption spectrum becasue of <strong>the selection rules</strong></p></li>
+<li><p>In spectroscopy, <strong>allowed transitions</strong> are those with a <strong>non-zero transition dipole moment</strong> between the initial and final states.</p></li>
+<li><p>Mathematically, the molecular dipole moment can be expanded around its equilibrium geometry <span class="math notranslate nohighlight">\(R_e\)</span>. Here we will use dispacelent from equilibrum geometry <span class="math notranslate nohighlight">\(x = R - R_e\)</span> for convenience,</p></li>
 </ul>
-</section>
-<section id="transition-dipole-moment">
-<h2>Transition Dipole Moment<a class="headerlink" href="#transition-dipole-moment" title="Permalink to this heading">#</a></h2>
-<p>In spectroscopy, <strong>allowed transitions</strong> are those with a <strong>non-zero transition dipole moment</strong> between the initial and final states.</p>
-<p>Mathematically, the molecular dipole moment can be expanded around its equilibrium geometry ( R_e ):</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\mu_z(R) = \mu_e\\\cdot \left( \frac{\partial \mu}{\partial R} \right)_{R_e} (R - R_e)
-\cdot \frac{1}{2} \left( \frac{\partial^2 \mu}{\partial R^2} \right)_{R_e} (R - R_e)^2 + \dots
-  \end{aligned}\end{align} \]</div>
-<p>Using <span class="math notranslate nohighlight">\(x = R - R_e\)</span> for convenience, the transition dipole matrix element between vibrational states <span class="math notranslate nohighlight">\(|v\rangle\)</span> and <span class="math notranslate nohighlight">\(|v'\rangle\)</span> becomes:</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\langle v | \mu_z | v' \rangle
-= \mu_e \langle v | v' \rangle\\\cdot \left( \frac{\partial \mu}{\partial R} \right)_{R_e} \langle v | x | v' \rangle
-\cdot \frac{1}{2} \left( \frac{\partial^2 \mu}{\partial R^2} \right)_{R_e} \langle v | x^2 | v' \rangle
-\cdot \dots
-  \end{aligned}\end{align} \]</div>
-<p>Each term corresponds to an <strong>expectation value</strong> of powers of ( x ) in the vibrational basis.
-We can interpret these terms as follows:</p>
+\[
+\mu_z(x) = \mu_e + \left( \frac{\partial \mu}{\partial x} \right)_{R_e} x+
+\cdot \frac{1}{2} \left( \frac{\partial^2 \mu}{\partial x^2} \right)_{R_e} x^2 + \dots
+  \]</div>
 <ul class="simple">
+<li><p>the transition dipole matrix element between vibrational states <span class="math notranslate nohighlight">\(|v\rangle\)</span> and <span class="math notranslate nohighlight">\(|v'\rangle\)</span> becomes:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\langle v | \mu_z | v' \rangle = \mu_e \langle v | v' \rangle + \cdot \left( \frac{\partial \mu}{\partial x} \right)_{R_e} \langle v | x | v' \rangle
++  \frac{1}{2} \left( \frac{\partial^2 \mu}{\partial x^2} \right)_{R_e} \langle v | x^2 | v' \rangle
++ \dots
+  \]</div>
+<ul class="simple">
+<li><p>Each term corresponds to an <strong>expectation value</strong> of powers of ( x ) in the vibrational basis. We can interpret these terms as follows:</p>
+<ul>
 <li><p><strong>First term:</strong> <span class="math notranslate nohighlight">\(\mu_e \langle v | v' \rangle = 0 \)</span> for <span class="math notranslate nohighlight">\(v \neq v'\)</span> because the vibrational wavefunctions are orthogonal.</p></li>
-<li><p><strong>Second term:</strong> The term involving <span class="math notranslate nohighlight">\(\langle v | x | v' \rangle\)</span> can be nonzero <strong>only if</strong> the dipole moment changes with internuclear distance, i.e., <span class="math notranslate nohighlight">\(\frac{\partial \mu}{\partial R} \neq 0\)</span>.</p></li>
+<li><p><strong>Second term:</strong> The term involving <span class="math notranslate nohighlight">\(\langle v | x | v' \rangle\)</span> can be nonzero <strong>only if</strong> the dipole moment changes with internuclear distance, i.e., <span class="math notranslate nohighlight">\(\frac{\partial \mu}{\partial x} \neq 0\)</span>.</p></li>
 <li><p><strong>Higher-order terms:</strong> Usually small, but can contribute to overtones (<span class="math notranslate nohighlight">\(\Delta v = 2, 3, \dots \)</span>) when <span class="math notranslate nohighlight">\(\mu(R)\)</span>  is strongly anharmonic.</p></li>
+</ul>
+</li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Selection Rule</strong></p>
 <p>A <strong>vibrational transition is allowed</strong> only if the molecular dipole moment <strong>changes with the bond length</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\left( \frac{\partial \mu}{\partial R} \right)_{R_e} \neq 0.
+\left( \frac{\partial \mu}{\partial x} \right)_{R_e} \neq 0.
 \]</div>
 <div class="math notranslate nohighlight">
 \[P_{v\rightarrow v'} \sim \langle v | x | v' \rangle \]</div>
@@ -1073,8 +1069,7 @@ We can interpret these terms as follows:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anharmonic-oscillator">Anharmonic oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overtone-transitions">Overtone transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-modes-of-molecules">Vibrational modes of molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-dipole-moment">Transition Dipole Moment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-and-transition-dipole-moment">Selection rules and Transition Dipole Moment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-selection-rules">Application of selection rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectra">IR spectra</a></li>
 </ul>
