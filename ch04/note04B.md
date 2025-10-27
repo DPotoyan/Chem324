@@ -21,32 +21,6 @@
 :::
 
 
-### Classical picture: Rotating dumbbell
-
-
-:::{figure-md} markdown-fig
-<img src="./images/conserv_L.png" alt="DeD0" class="bg-primary mb-1" width="300px">
-
-Conservation of angular momentum: In the absence of torque angular momentum of conservative system remains constant. This has implications for rotational motion, for instance you can rotate faster if you decreese moment of inertia and vice versa.
-:::
-
-
-- The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation: 
-
-$$
-K=\frac{m_1 v_1^2}{2}+\frac{m_2 v_2^2}{2}=\frac{m_1 r_1^2+m_2 r^2_2}{2}\omega^2
-$$
-
-- Where we have plugged in $v_1=\omega r_1$ and $v_2=\omega_2 r$ velocities of rotation of two masses rotating with frequency $\omega$. The classical mechanical problem of two masses is once again reducible to a single reduced mass $\mu$ rotating around constant radius $r=r_1+r_2$ rotating around center of mass $m_1 r_1=m_2 r_2$.
-
-
-
-$$
-K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
-$$
-
-
-- here $L=I \omega$ is the angular momentum, the $I=\mu r^2$ is moment of inertia and $\mu=\frac{m_1 m_2}{m_1+m_2}$
 
 
 
