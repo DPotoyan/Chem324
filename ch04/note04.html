@@ -497,8 +497,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-angular-momentum-do-not-commute">Components of angular momentum do not commute!</a></li>
@@ -538,51 +538,132 @@ document.write(`
 <li><p>However, unlike the linear momentum operator, the three components of the angular momentum operator <strong>do not commute</strong>.</p></li>
 </ul>
 </div>
-<section id="l-vs-p-overview">
-<h2>L vs p Overview<a class="headerlink" href="#l-vs-p-overview" title="Permalink to this heading">#</a></h2>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Property</p></th>
-<th class="head"><p>Linear Momentum</p></th>
-<th class="head"><p>Angular Momentum</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Property</strong></p></th>
+<th class="head"><p><strong>Linear Momentum</strong></p></th>
+<th class="head"><p><strong>Angular Momentum</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Nature</p></td>
-<td><p>Linear motion in a straight line</p></td>
-<td><p>Rotational motion around an axis</p></td>
+<tr class="row-even"><td><p><strong>Physical nature</strong></p></td>
+<td><p>Motion along a straight line</p></td>
+<td><p>Rotation about an axis</p></td>
 </tr>
-<tr class="row-odd"><td><p>Vector   form</p></td>
-<td><p><span class="math notranslate nohighlight">\(\vec{p} = m \cdot \vec{v}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\vec{L} = \vec{p}\times\vec{r}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Vector form</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\vec{p} = m\vec{v}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\vec{L} = \vec{r} \times \vec{p}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p>Scalar form</p></td>
-<td><p><span class="math notranslate nohighlight">\( |\vec{p}| = m \cdot v\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( |\vec{L}| = I \cdot \omega\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Mass for point particles</p></td>
+<tr class="row-even"><td><p><strong>Effective mass</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(I=mr^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I = m r^2\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p>Kinetic Energy</p></td>
-<td><p><span class="math notranslate nohighlight">\(\frac{p^2}{2m}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\frac{L^2}{2I}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Velocity</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega=\frac{v}{r}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>QM operators</p></td>
-<td><p><span class="math notranslate nohighlight">\(\hat{p_x}=-i\hbar\frac{\partial}{\partial x}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\({\hat{L_x} = yp_z - zp_y}\)</span></p></td>
+<tr class="row-even"><td><p><strong>Magnitude (scalar form)</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mid\vec{p}\mid   = m v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mid\vec{L}\mid  = I \omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p>Conservation Principle</p></td>
-<td><p>Law of Conservation of Linear Momentum</p></td>
-<td><p>Law of Conservation of Angular Momentum</p></td>
+<tr class="row-odd"><td><p><strong>Kinetic energy</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_k = \dfrac{p^2}{2m}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\text{rot} = \dfrac{L^2}{2I}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>Conservation Condition</p></td>
-<td><p>No net external force acting on a closed system</p></td>
-<td><p>No net external torque acting on a closed system</p></td>
+<tr class="row-even"><td><p><strong>Quantum operator</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p}_x = -i\hbar\dfrac{\partial}{\partial x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{L}_x = \hat{y}\hat{p}_z - \hat{z}\hat{p}_y\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Conservation law</strong></p></td>
+<td><p>Conserved if no net <strong>external force</strong> acts</p></td>
+<td><p>Conserved if no net <strong>external torque</strong> acts</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Conservation condition</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum \vec{F}_\text{ext} = 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum \vec{\tau}_\text{ext} = 0\)</span></p></td>
 </tr>
 </tbody>
 </table>
-</section>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>veloctiy vs angular velocity</strong></p>
+<p>In circular motion, <strong>angular velocity</strong> (<span class="math notranslate nohighlight">\(\omega\)</span>) measures how fast the angle changes, while <strong>linear velocity</strong> (<span class="math notranslate nohighlight">\(v\)</span>) measures how fast the object moves along the circular path.</p>
+<p>For a full rotation, the <strong>arc length</strong> traveled is related to the <strong>angle</strong> by</p>
+<div class="math notranslate nohighlight">
+\[s = r\theta.\]</div>
+<p>Differentiating with respect to time gives</p>
+<div class="math notranslate nohighlight">
+\[\frac{ds}{dt} = r\frac{d\theta}{dt},\]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight">
+\[v = r\omega \quad \Rightarrow \quad \omega = \frac{v}{r}.\]</div>
+<p>Thus, angular velocity is the <strong>rate of rotation per unit radius</strong>—objects farther from the axis move faster linearly for the same angular speed.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Moment of inertia</strong></p>
+<p>Consider a rigid body rotating about a fixed axis with <strong>angular velocity</strong> <span class="math notranslate nohighlight">\(\omega\)</span>.
+Each particle <span class="math notranslate nohighlight">\(i\)</span> of mass <span class="math notranslate nohighlight">\(m_i\)</span> at distance <span class="math notranslate nohighlight">\(r_i\)</span> from the axis moves with <strong>linear velocity</strong></p>
+<div class="math notranslate nohighlight">
+\[
+v_i = r_i \omega.
+\]</div>
+<p>The <strong>kinetic energy</strong> of that particle is</p>
+<div class="math notranslate nohighlight">
+\[
+E_i = \tfrac{1}{2} m_i v_i^2 = \tfrac{1}{2} m_i (r_i \omega)^2 = \tfrac{1}{2} m_i r_i^2 \omega^2.
+\]</div>
+<p>For the whole body, total rotational kinetic energy is the sum over all particles:</p>
+<div class="math notranslate nohighlight">
+\[
+E_\text{rot} = \sum_i E_i = \tfrac{1}{2} \omega^2 \sum_i m_i r_i^2.
+\]</div>
+<p>We define the term in parentheses as the <strong>moment of inertia</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+I = \sum_i m_i r_i^2,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E_\text{rot} = \tfrac{1}{2} I \omega^2.
+\]</div>
+<p><strong>Interpretation</strong></p>
+<p>The <span class="math notranslate nohighlight">\(r_i^2\)</span> factor naturally appears from the <strong>kinetic energy</strong> of rotational motion—it weights each mass element by how far it lies from the axis, determining its contribution to rotational inertia.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Conservation of momenta</strong></p>
+<ul class="simple">
+<li><p><strong>Linear momentum</strong> is defined as <span class="math notranslate nohighlight">\(\vec{p} = m\vec{v}\)</span></p></li>
+</ul>
+<p>From Newton’s second law,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\vec{p}}{dt} = \sum \vec{F}*\text{ext}.
+\]</div>
+<p>Thus, when <strong>no external force</strong> acts on a system,</p>
+<div class="math notranslate nohighlight">
+\[
+  \sum \vec{F}*\text{ext} = 0 ;\Rightarrow; \frac{d\vec{p}}{dt} = 0,
+\]</div>
+<p>meaning <strong>linear momentum is conserved</strong>.</p>
+<ul>
+<li><p><strong>Angular momentum</strong> is defined as ( \vec{L} = \vec{r} \times \vec{p} ).</p>
+<p>Taking the time derivative gives
+$<span class="math notranslate nohighlight">\(
+\frac{d\vec{L}}{dt} = \vec{r} \times \frac{d\vec{p}}{dt} = \sum \vec{\tau}*\text{ext}.
+\)</span>$
+Therefore, when <strong>no external torque</strong> acts on the system,</p>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  \sum \vec{\tau}*\text{ext} = 0 ;\Rightarrow; \frac{d\vec{L}}{dt} = 0,
+\]</div>
+<p>so <strong>angular momentum is conserved</strong>.</p>
+<p><strong>Summary:</strong></p>
+<ul class="simple">
+<li><p>No external <strong>force</strong> → <strong>linear momentum</strong> conserved.</p></li>
+<li><p>No external <strong>torque</strong> → <strong>angular momentum</strong> conserved.</p></li>
+</ul>
+</div>
 <section id="classical-angular-momentum">
 <h2>Classical angular momentum<a class="headerlink" href="#classical-angular-momentum" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="markdown-fig">
@@ -616,16 +697,42 @@ p_x &amp; p_y &amp; p_z\\
 \[{\vec{L}^2 = \vec{L}\cdot\vec{L} = L_x^2 + L_y^2 + L_z^2}\]</div>
 </div>
 </section>
+<section id="classical-picture-rotating-dumbbell">
+<h2>Classical picture: Rotating dumbbell<a class="headerlink" href="#classical-picture-rotating-dumbbell" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/conserv_L.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/conserv_L.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Conservation of angular momentum: In the absence of torque angular momentum of conservative system remains constant. This has implications for rotational motion, for instance you can rotate faster if you decreese moment of inertia and vice versa.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The rigid rotor is a model of a rotating dumbbell: two unequal masses held together via a rigid stick.  The system is not acted upon by any external potential; hence the only energy is the kinetic energy of rotation:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+K=\frac{m_1 v_1^2}{2}+\frac{m_2 v_2^2}{2}=\frac{m_1 r_1^2+m_2 r^2_2}{2}\omega^2
+\]</div>
+<ul class="simple">
+<li><p>Where we have plugged in <span class="math notranslate nohighlight">\(v_1=\omega r_1\)</span> and <span class="math notranslate nohighlight">\(v_2=\omega_2 r\)</span> velocities of rotation of two masses rotating with frequency <span class="math notranslate nohighlight">\(\omega\)</span>. The classical mechanical problem of two masses is once again reducible to a single reduced mass <span class="math notranslate nohighlight">\(\mu\)</span> rotating around constant radius <span class="math notranslate nohighlight">\(r=r_1+r_2\)</span> rotating around center of mass <span class="math notranslate nohighlight">\(m_1 r_1=m_2 r_2\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+K=\frac{I \omega^2}{2}=\frac{L^2}{2I}
+\]</div>
+<ul class="simple">
+<li><p>here <span class="math notranslate nohighlight">\(L=I \omega\)</span> is the angular momentum, the <span class="math notranslate nohighlight">\(I=\mu r^2\)</span> is moment of inertia and <span class="math notranslate nohighlight">\(\mu=\frac{m_1 m_2}{m_1+m_2}\)</span></p></li>
+</ul>
+</section>
 <section id="spherical-coordinates">
 <h2>Spherical coordinates<a class="headerlink" href="#spherical-coordinates" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Spherical coordinates are more convenient for rotational problems where we replace <span class="math notranslate nohighlight">\((x,y,z)\)</span> by <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>.</p></li>
 <li><p>For instance when considering rotation with fixed orbit <span class="math notranslate nohighlight">\(r=const\)</span> we are able to eliminate one degree of freedom associated with radial direction.</p></li>
 </ul>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/spherical_coord.png"><img alt="DeD0" class="bg-primary mb-1" src="../_images/spherical_coord.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Spherical coordinate system is defined by radial coordinate <span class="math notranslate nohighlight">\(r\)</span>, azimuthal angle  <span class="math notranslate nohighlight">\(\phi\)</span> and polar angle <span class="math notranslate nohighlight">\(\theta\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Spherical coordinate system is defined by radial coordinate <span class="math notranslate nohighlight">\(r\)</span>, azimuthal angle  <span class="math notranslate nohighlight">\(\phi\)</span> and polar angle <span class="math notranslate nohighlight">\(\theta\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="important admonition">
@@ -733,25 +840,15 @@ Polar</label><div class="sd-tab-content docutils">
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title"><strong>Solution</strong></p>
-<p>To solve the eigenvalue problem for <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, we write:</p>
+<p>The eigenvalue equation is:</p>
 <div class="math notranslate nohighlight">
 \[\hat{L}_z f(\phi) = a f(\phi)\]</div>
-<p>Substituting <span class="math notranslate nohighlight">\(\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}\)</span>:</p>
+<p>Substituting the operator gives</p>
 <div class="math notranslate nohighlight">
-\[-i\hbar \frac{\partial f}{\partial \phi} = a f\]</div>
-<p>Rearranging, we find:</p>
+\[-i\hbar\frac{df}{d\phi} = a f(\phi)\]</div>
 <div class="math notranslate nohighlight">
-\[\frac{1}{f} \frac{\partial f}{\partial \phi} = \frac{a}{-i\hbar}\]</div>
-<p>This equation can be solved by recognizing that <span class="math notranslate nohighlight">\(\frac{\partial \ln f}{\partial \phi} = \frac{a}{-i\hbar}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[f(\phi) = e^{\frac{a}{-i\hbar} \phi} = e^{im\phi}\]</div>
-<p>where (m) is an integer for the function <span class="math notranslate nohighlight">\(f(\phi)\)</span> to be single-valued over <span class="math notranslate nohighlight">\(0 \leq \phi &lt; 2\pi\)</span>.</p>
-<p>Thus, we identify the eigenvalues <span class="math notranslate nohighlight">\(a = \hbar m\)</span>, giving:</p>
-<div class="math notranslate nohighlight">
-\[a = \hbar m \quad \text{and} \quad f(\phi) = e^{im\phi}\]</div>
-<p>where <span class="math notranslate nohighlight">\(m\)</span> is the quantum number associated with the angular momentum eigenvalue.</p>
-<div class="math notranslate nohighlight">
-\[\hat{L}_z f(\phi) = \hbar m \cdot f(\phi)\]</div>
+\[f(\phi) = e^{im\phi}, \quad a = \hbar m\]</div>
+<p>Thus, the eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> are <span class="math notranslate nohighlight">\(e^{im\phi}\)</span> and the corresponding eigenvalues are <span class="math notranslate nohighlight">\(\hbar m\)</span>, where <span class="math notranslate nohighlight">\(m\)</span> is an integer quantum number.</p>
 </div>
 </section>
 <section id="components-of-angular-momentum-do-not-commute">
@@ -760,6 +857,13 @@ Polar</label><div class="sd-tab-content docutils">
 <li><p>Unlike linear momentum components of angular momentum do not commute!</p></li>
 <li><p>This implies that it is not possible to measure any of the Cartesian angular momentum pairs simultaneously with an infinite precision (the Heisenberg uncertainty relation).</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Commutation relations of angular momentum</strong></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+{\left[\hat{L}_x,\hat{L}_y\right] = i\hbar\hat{L}_z, \left[\hat{L}_y,\hat{L}_z\right] = i\hbar\hat{L}_x,\left[\hat{L}_z,\hat{L}_x\right] = i\hbar\hat{L}_y} \\ \end{split}\\{\left[\hat{L}_x,\vec{\hat{L}}^2\right] = \left[\hat{L}_y,\vec{\hat{L}}^2\right] = \left[\hat{L}_z,\vec{\hat{L}}^2\right] = 0}
+\end{aligned}\end{align} \]</div>
+</div>
 <ul class="simple">
 <li><p>Note the cyclical nature of commutations between components</p></li>
 </ul>
@@ -1366,8 +1470,8 @@ Polar</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-vs-p-overview">L vs p Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-angular-momentum">Quantum angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-angular-momentum-do-not-commute">Components of angular momentum do not commute!</a></li>
