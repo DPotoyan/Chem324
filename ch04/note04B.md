@@ -143,18 +143,19 @@ $${\tilde{B} = \frac{h}{8\pi^2Ic}}$$
 
 ### Selection rules 
 
-
-- Using the known properties for spherical harmonics, one can show the following selection rule holds for the rigid rotor model:
-
 :::{admonition} **Selection rules for rigid rotor model**
-:class:important
+:class: important
 
 $$\boxed{\Delta J = J' - J = \pm 1}$$
 
+- The molecule must posess permanent dipole moment!
+- $\Delta J =0$ transitions are forbidden
 :::
 
 - Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
 
+
+### Spectral lines and rotational constant determination 
 
 $${\tilde{\nu_J} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
 
