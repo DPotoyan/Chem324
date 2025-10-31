@@ -26,7 +26,9 @@
 
 ### Quantum rigid rotor and angular momentum operator 
 
-- The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
+- The hamiltonian for the rigid rotor model is the kinetic energy operator of an effective mass $\mu$ wchih rotates around sphere of radius $r=const$. 
+
+- To incorporate constraint $r=const$ it is more convenient to adopt spherical coordinates $(x,y,z)\rightarrow (r,\theta,\phi)$. To the full laplacian in spherical coordinates is:
 
 - In spherical coordinates Hamitlonian is more conveniently expressed in terms of angular momentum operator as opposed to linear momentum operator:
 
@@ -46,7 +48,9 @@ $$
 
 ### Quantum numbers $(J,M_J)$ for quantizing $(\theta,\phi)$ coordiante pair. 
 
-- Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. The eigenfunctions turn out to be well known special functions called spherical harmonics $Y(\theta,\phi)$:
+- Having written down hamitlonain we now solve it anticipating two quantum numbers for two coordinates. 
+
+- The eigenfunctions turn out to be well known special functions called spherical harmonics $Y(\theta,\phi)$:
 
 
 $$
@@ -60,22 +64,34 @@ $$
 
 ### Rotational states of molecules are quantized
 
-- Solving a rigid rotor problem, we find that eigenvalues depend only on the quantum number $J$. This makes each energy level degenerate with respect to $2J+1$ values assumed by $M_J$ quantum number. 
 
-:::{admonition} **Eigenvalues of rotational states**
+:::{admonition} **Eigenvalues of Rotational States**
 :class: important
 
 $$
-{E_J = \frac{\hbar^2}{2I}J(J+1)=BJ(J+1)}
+E_J = \frac{\hbar^2}{2I}J(J+1) = BJ(J+1)
 $$
 
+* The **rotational constant** (has units of energy) is defined 
+
+$$
+B = \frac{h^2}{8\pi^2 I},
+$$
+  
 :::
 
-- Where we have defined $B=\frac{h^2}{8\pi^2 I}$ rotational constant with units of energy. 
-- Quantization in this equation arises from the cyclic boundary condition rather than the potential energy, which is identically zero.
-- There is no rotational zero-point energy ($J = 0$ is allowed). 
-- The ground state rotational wavefunction has equal probability amplitudes for each orientation.
+* Solving the rigid rotor problem reveals that **rotational energy eigenvalues depend only on the quantum number $J$**. 
+* Each energy level is therefore **$(2J + 1)$-fold degenerate**, corresponding to the allowed values of the magnetic quantum number $M_J$.
 
+* The **quantization** of rotational motion arises from the **cyclic boundary condition** rather than from any potential energy term (which is zero for a free rotor).
+
+  $$
+  \Phi(0) = \Phi(2\pi),
+  $$
+
+* There is **no rotational zero-point energy**, since the $J = 0$ state is allowed.
+
+* The **ground-state rotational wavefunction** corresponds to an isotropic distribution—equal probability for all orientations.
 
 
 :::{admonition} **Example**
@@ -128,7 +144,7 @@ $${\tilde{B} = \frac{h}{8\pi^2Ic}}$$
 ### Selection rules 
 
 
-Using the known properties for spherical harmonics, one can show the following selection rule holds for the rigid rotor model:
+- Using the known properties for spherical harmonics, one can show the following selection rule holds for the rigid rotor model:
 
 :::{admonition} **Selection rules for rigid rotor model**
 :class:important
@@ -253,44 +269,70 @@ A cartoon depiction of a real rovibrational spectrum.
 A high-resolution spectrum for CO. The P and R branches are resolved into the individual rotational transitions.
 :::
 
-### Rovibronic coupling
 
-- As a diatomic molecule vibrates, its bond length changes. Since the moment of inertia is dependent on the bond length, it too changes and, in turn, changes the rotational constant B. We assumed above that B of R(0) and B of P(1) were equal, however they differ because of this phenomenon.
 
-- The v dependence is captured via the following expression showing that rotational constant is a linearly decreasing function of v!
+### Rovibronic Coupling
+
+* As a diatomic molecule **vibrates**, its **bond length** oscillates. Because the **moment of inertia** depends on the bond length, it also changes during vibration, leading to a variation in the **rotational constant** $B$.
+
+* In earlier approximations, we assumed that the rotational constants of the $R(0)$ and $P(1)$ transitions were identical. In reality, they differ due to this **rovibrational coupling**.
+
+* The dependence of $B$ on the vibrational quantum number $v$ can be expressed as:
+
+  $$
+  B_v = B_e - \alpha_e (v + \tfrac{1}{2}),
+  $$
+
+  where $B_e$ is the equilibrium rotational constant (for a rigid rotor), and $\alpha_e$ is the **rotation–vibration coupling constant**.
+  From observed band spectra, one can determine $B_0$, $B_1$, and $\alpha_e$ using **combination differences**.
+
+
+
+**R branch (ΔJ = +1) with rovibronic coupling:**
 
 $$
-B_v = B_e-\alpha_e(v+1/2)
+\tilde{\nu}_{R} = \tilde{\omega} + 2\tilde{B}_1 + (3\tilde{B}_1 - \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 $$
 
-- Where $B_e$ is the rotational constant for a rigid rotor and $\alpha_e$ is the rotational-vibrational coupling constant. The information in the band can be used to determine $B_0$ and $B_1$ of the two different energy states as well as the rotational-vibrational coupling constant, which can be found by the method of combination differences.
-
-**The R branch with rovibronic coupling**:
+**P branch (ΔJ = −1) with rovibronic coupling:**
 
 $$
-\tilde{\nu}_{\Delta J=+1} = \tilde{\omega} + 2\tilde{B_1}+(3\tilde{B_1}-\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
+\tilde{\nu}_{P} = \tilde{\omega} - (\tilde{B}_1 + \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 $$
 
-**The P brnach with rovibronic coupling**:
-
-$$
-\tilde{\nu}_{\Delta J=-1} = \tilde{\omega} - (\tilde{B_1}+\tilde{B}_0)J+(\tilde{B_1}-\tilde{B}_0)J^2
-$$
+When  $B_0 = B_1$, these reduce to the **rigid-rotor–harmonic-oscillator** expressions, as expected.
 
 
-Note that when $B_0=B_1$ we recover the rigid-rotor harmonic oscillator expresisons as expected. 
 
-### Centrifugal distortion
+### Centrifugal Distortion
 
-In reality molecules are not rigid rotors and one must consider the coupling between $H_{rot}$ and $H_{vib}$. Classically thinking, with increasing rotational motion, the chemical bond stretches due to centrifugal forces, which increases the moment of inertia, and consequently, the rotational energy levels come closer together. It can be shown that this can be accounted for by including an additional term the energy expresison for rigid rotor:
+* Real molecules are **not perfectly rigid**. As rotational speed increases, the **centrifugal force** stretches the bond, increasing the moment of inertia and **reducing the energy spacing** between rotational levels.
 
-$${\tilde{E}_r(J) = \tilde{B}J(J+1) - \tilde{D}J^2(J+1)^2}$$
+* This effect represents another type of **rotation–vibration coupling**, but it arises from the **centrifugal stretching** of the bond rather than from vibrational averaging of $B$.
 
-- The $\tilde{D}$ is the *centrifugal distortion constant* ($cm^{-1}$). Note that both $\tilde{B}$ and $\tilde{D}$ are positive.
-When the centrifugal distortion is taken into account, the rotational transition frequencies are given by:
+* The correction is introduced by adding a **centrifugal distortion term** to the rigid-rotor energy expression:
 
-$${\tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J) = 2\tilde{B}(J+1) - 4\tilde{D}(J+1)^3\textnormal{ where }J=0,1,2,...}$$
+  $$
+  \tilde{E}_r(J) = \tilde{B} J(J+1) - \tilde{D} J^2 (J+1)^2,
+  $$
 
+  where ( \tilde{D} ) is the **centrifugal distortion constant** (in cm(^{-1})), and both ( \tilde{B} ) and ( \tilde{D} ) are positive.
+
+* The corresponding **rotational transition frequencies** become:
+
+  $$
+  \tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J)
+  = 2\tilde{B}(J+1) - 4\tilde{D}(J+1)^3, \qquad J = 0, 1, 2, \ldots
+  $$
+
+
+
+#### Key Difference in two rovibronic couplings
+
+| Effect                     | Physical Origin                                               | Depends on                       | Typical Signature                              |
+| :------------------------- | :------------------------------------------------------------ | :------------------------------- | :--------------------------------------------- |
+| **Rovibronic coupling**    | Vibrational averaging of ( B ) due to bond-length oscillation | Vibrational quantum number $v$ | Causes $B_v$ to decrease linearly with $v$ |
+| **Centrifugal distortion** | Bond stretching at high rotational speeds                     | Rotational quantum number 4J$  | Causes energy levels to crowd at large $J$   |
 
 
 
