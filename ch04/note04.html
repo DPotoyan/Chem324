@@ -497,6 +497,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-momentum-is-due-to-symmetry">Conservation of momentum is due to symmetry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
@@ -628,41 +629,24 @@ E_\text{rot} = \tfrac{1}{2} I \omega^2.
 <p><strong>Interpretation</strong></p>
 <p>The <span class="math notranslate nohighlight">\(r_i^2\)</span> factor naturally appears from the <strong>kinetic energy</strong> of rotational motion—it weights each mass element by how far it lies from the axis, determining its contribution to rotational inertia.</p>
 </div>
-<div class="tip dropdown admonition">
-<p class="admonition-title"><strong>Conservation of momenta</strong></p>
+<section id="conservation-of-momentum-is-due-to-symmetry">
+<h2>Conservation of momentum is due to symmetry<a class="headerlink" href="#conservation-of-momentum-is-due-to-symmetry" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Noether’s beautiful theorem</strong></p>
 <ul class="simple">
-<li><p><strong>Linear momentum</strong> is defined as <span class="math notranslate nohighlight">\(\vec{p} = m\vec{v}\)</span></p></li>
+<li><p>Noether’s theorem is one of the most profound connections between <strong>symmetry</strong> and <strong>conservation laws</strong> in physics. It states that:</p></li>
 </ul>
-<p>From Newton’s second law,</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{d\vec{p}}{dt} = \sum \vec{F}*\text{ext}.
-\]</div>
-<p>Thus, when <strong>no external force</strong> acts on a system,</p>
-<div class="math notranslate nohighlight">
-\[
-  \sum \vec{F}\cdot \text{ext} = 0 ;\Rightarrow; \frac{d\vec{p}}{dt} = 0,
-\]</div>
-<p>meaning <strong>linear momentum is conserved</strong>.</p>
+<blockquote>
+<div><p><strong>Every continuous symmetry of the laws of physics corresponds to a conserved quantity.</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>In quantum mechanics, this means that if a system’s Hamiltonian is unchanged (invariant) under a certain transformation, there exists a corresponding conserved observable:</p>
 <ul>
-<li><p><strong>Angular momentum</strong> is defined as <span class="math notranslate nohighlight">\(\vec{L} = \vec{r} \times \vec{p}\)</span>.</p>
-<p>Taking the time derivative gives</p>
-<div class="math notranslate nohighlight">
-\[
-  \frac{d\vec{L}}{dt} = \vec{r} \times \frac{d\vec{p}}{dt} = \sum \vec{\tau}*\text{ext}.
-  \]</div>
-</li>
+<li><p><strong>Translational symmetry</strong> → conservation of <strong>momentum</strong></p></li>
+<li><p><strong>Rotational symmetry</strong> → conservation of <strong>angular momentum</strong></p></li>
+<li><p><strong>Time-translation symmetry</strong> → conservation of <strong>energy</strong></p></li>
 </ul>
-<p>Therefore, when <strong>no external torque</strong> acts on the system,</p>
-<div class="math notranslate nohighlight">
-\[
-  \sum \vec{\tau}*\text{ext} = 0 ;\Rightarrow; \frac{d\vec{L}}{dt} = 0,
-\]</div>
-<p>so <strong>angular momentum is conserved</strong>.</p>
-<p><strong>Summary:</strong></p>
-<ul class="simple">
-<li><p>No external <strong>force</strong> → <strong>linear momentum</strong> conserved.</p></li>
-<li><p>No external <strong>torque</strong> → <strong>angular momentum</strong> conserved.</p></li>
+</li>
 </ul>
 </div>
 <figure class="align-default" id="markdown-fig">
@@ -671,6 +655,44 @@ E_\text{rot} = \tfrac{1}{2} I \omega^2.
 <p><span class="caption-number">Fig. 69 </span><span class="caption-text">Emily Noether a german mathematician who made important contirbutions to mathematics and physics. She also proved Noether’s first and second theorems, which are fundamental in mathematical physics. See more about her <a class="reference external" href="https://en.wikipedia.org/wiki/Emmy_Noether">here</a></span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title"><strong>Conservation of momenta</strong></p>
+<ul class="simple">
+<li><p><strong>Linear momentum</strong> is defined as <span class="math notranslate nohighlight">\(\vec{p} = m\vec{v}\)</span></p></li>
+</ul>
+<p>From Newton’s second law,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\vec{p}}{dt} = \sum \vec{F}_\text{ext}.
+\]</div>
+<p>Thus, when <strong>no external force</strong> acts on a system,</p>
+<div class="math notranslate nohighlight">
+\[
+  \sum \vec{F}_\text{ext} = 0 ;\Rightarrow; \frac{d\vec{p}}{dt} = 0,
+\]</div>
+<p>meaning <strong>linear momentum is conserved</strong>.</p>
+<ul>
+<li><p><strong>Angular momentum</strong> is defined as <span class="math notranslate nohighlight">\(\vec{L} = \vec{r} \times \vec{p}\)</span>.</p>
+<p>Taking the time derivative gives</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{d\vec{L}}{dt} = \vec{r} \times \frac{d\vec{p}}{dt} = \sum \vec{\tau}_\text{ext}.
+  \]</div>
+</li>
+</ul>
+<p>Therefore, when <strong>no external torque</strong> acts on the system,</p>
+<div class="math notranslate nohighlight">
+\[
+  \sum \vec{\tau}_\text{ext} = 0 ;\Rightarrow; \frac{d\vec{L}}{dt} = 0,
+\]</div>
+<p>so <strong>angular momentum is conserved</strong>.</p>
+<p><strong>Summary:</strong></p>
+<ul class="simple">
+<li><p>No external <strong>force</strong> → <strong>linear momentum</strong> conserved.</p></li>
+<li><p>No external <strong>torque</strong> → <strong>angular momentum</strong> conserved.</p></li>
+</ul>
+</div>
+</section>
 <section id="classical-angular-momentum">
 <h2>Classical angular momentum<a class="headerlink" href="#classical-angular-momentum" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id1">
@@ -973,7 +995,7 @@ Polar</label><div class="sd-tab-content docutils">
 <li><p>For <span class="math notranslate nohighlight">\( m = \pm 1 \)</span>, a single azimuthal node occurs (e.g., <span class="math notranslate nohighlight">\( Y_{1-1} \)</span>, <span class="math notranslate nohighlight">\( Y_{2-1} \)</span>), and for <span class="math notranslate nohighlight">\( m = \pm 2 \)</span>, two azimuthal nodes appear (e.g., <span class="math notranslate nohighlight">\( Y_{2-2} \)</span>).</p></li>
 </ul>
 </li>
-<li><p><strong>Total Nodes:</strong> equal to sum of nodes coming from polar and longitudinal nodes and are exactly equal to <span class="math notranslate nohighlight">\(l\)</span>. E. gl=0 no nodes, l=4 four nodes.</p></li>
+<li><p><strong>Total Nodes:</strong> equal to sum of nodes coming from polar and longitudinal nodes and are exactly equal to <span class="math notranslate nohighlight">\(l\)</span>. For instance <span class="math notranslate nohighlight">\(l=0\)</span> no nodes, <span class="math notranslate nohighlight">\(l=4\)</span> four nodes.</p></li>
 </ol>
 </section>
 <section id="orthogonality-of-spherical-harmonics">
@@ -1490,6 +1512,7 @@ Polar</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-momentum-is-due-to-symmetry">Conservation of momentum is due to symmetry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-angular-momentum">Classical angular momentum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-picture-rotating-dumbbell">Classical picture: Rotating dumbbell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical coordinates</a></li>
