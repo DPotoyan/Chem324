@@ -128,20 +128,20 @@ This rotational spacing can be, for example, observed in gas phase infrared spec
 
 - We assume that the molecule is a rigid rotor, which means that the molecular geometry does not change during molecular rotation. We have solved this problem already 
 
-- Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). The rotational energies expressed in wavenumbers are given by:
+- Energies are typically expressed in wavenumber units ($cm^{-1}$ although the basic SI unit is $m^{-1}$) by dividing $E$ by $hc$. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., $\tilde{\nu}$). 
+
+- Within rigid rotor approximation we could derive selection rules by computing transition dipole moment using properties of spherical harmonics. 
 
 :::{admonition} **Rotaitonal energies in spectroscopic units**
 :class: important
 
 $${\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}$$
 
-:::
-
-- Where the *rotational constant* is usually expressed in $cm^{-1}$ units and is given by:
+- *rotational constant* expressed in $cm^{-1}$ units and is given by:
 
 $${\tilde{B} = \frac{h}{8\pi^2Ic}}$$
+:::
 
-### Selection rules 
 
 :::{admonition} **Selection rules for rigid rotor model**
 :class: important
@@ -157,11 +157,11 @@ $$\boxed{\Delta J = J' - J = \pm 1}$$
 
 :::
 
-- Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by ($J = 0,1,2,...$):
-
 
 
 ### Spectral lines and rotational constant determination 
+
+- When we compute energy spacing we see that it depends linearly on quantum level J. This means we could take one more difference and easily eliminate it getting a constant:
 
 $${\tilde{\nu_J} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}$$
 
@@ -290,24 +290,23 @@ A high-resolution spectrum for CO. The P and R branches are resolved into the in
   B_v = B_e - \alpha_e (v + \tfrac{1}{2}),
   $$
 
-  where $B_e$ is the equilibrium rotational constant (for a rigid rotor), and $\alpha_e$ is the **rotation–vibration coupling constant**.
-  From observed band spectra, one can determine $B_0$, $B_1$, and $\alpha_e$ using **combination differences**.
+- where $B_e$ is the equilibrium rotational constant (for a rigid rotor), and $\alpha_e$ is the **rotation–vibration coupling constant**. From observed band spectra, one can determine $B_0$, $B_1$, and $\alpha_e$ using **combination differences**.
 
 
 
-**R branch (ΔJ = +1) with rovibronic coupling:**
+- **R branch (ΔJ = +1) with rovibronic coupling:**
 
 $$
 \tilde{\nu}_{R} = \tilde{\omega} + 2\tilde{B}_1 + (3\tilde{B}_1 - \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 $$
 
-**P branch (ΔJ = −1) with rovibronic coupling:**
+- **P branch (ΔJ = −1) with rovibronic coupling:**
 
 $$
 \tilde{\nu}_{P} = \tilde{\omega} - (\tilde{B}_1 + \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 $$
 
-When  $B_0 = B_1$, these reduce to the **rigid-rotor–harmonic-oscillator** expressions, as expected.
+- When  $B_0 = B_1$, these reduce to the **rigid-rotor–harmonic-oscillator** expressions, as expected.
 
 
 
@@ -323,9 +322,9 @@ When  $B_0 = B_1$, these reduce to the **rigid-rotor–harmonic-oscillator** exp
   \tilde{E}_r(J) = \tilde{B} J(J+1) - \tilde{D} J^2 (J+1)^2,
   $$
 
-  where ( \tilde{D} ) is the **centrifugal distortion constant** (in cm(^{-1})), and both ( \tilde{B} ) and ( \tilde{D} ) are positive.
+  where $\tilde{D}$  is the **centrifugal distortion constant** in $cm(^{-1}$, and both $\tilde{B}$ and $\tilde{D}$ are positive.
 
-* The corresponding **rotational transition frequencies** become:
+* The corresponding rotational transition frequencies become:
 
   $$
   \tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J)

@@ -452,7 +452,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-j-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,M_J)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-spectra-of-diatomic-molecules">Rotational spectra of diatomic molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-and-rotational-constant-determination">Spectral lines and rotational constant determination</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rigid-rotor-and-real-microwave-spectra">Rigid rotor and real microwave spectra</a></li>
@@ -581,21 +580,19 @@ B = \frac{h^2}{8\pi^2 I},
 <h2>Rotational spectra of diatomic molecules<a class="headerlink" href="#rotational-spectra-of-diatomic-molecules" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We assume that the molecule is a rigid rotor, which means that the molecular geometry does not change during molecular rotation. We have solved this problem already</p></li>
-<li><p>Energies are typically expressed in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span> although the basic SI unit is <span class="math notranslate nohighlight">\(m^{-1}\)</span>) by dividing <span class="math notranslate nohighlight">\(E\)</span> by <span class="math notranslate nohighlight">\(hc\)</span>. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span>). The rotational energies expressed in wavenumbers are given by:</p></li>
+<li><p>Energies are typically expressed in wavenumber units (<span class="math notranslate nohighlight">\(cm^{-1}\)</span> although the basic SI unit is <span class="math notranslate nohighlight">\(m^{-1}\)</span>) by dividing <span class="math notranslate nohighlight">\(E\)</span> by <span class="math notranslate nohighlight">\(hc\)</span>. The use of wavenumber units is denoted by including a tilde sign above the variable (e.g., <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span>).</p></li>
+<li><p>Within rigid rotor approximation we could derive selection rules by computing transition dipole moment using properties of spherical harmonics.</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Rotaitonal energies in spectroscopic units</strong></p>
 <div class="math notranslate nohighlight">
 \[{\tilde{E}_r(J) = \frac{E_r}{hc} = \tilde{B} J(J+1)}\]</div>
-</div>
 <ul class="simple">
-<li><p>Where the <em>rotational constant</em> is usually expressed in <span class="math notranslate nohighlight">\(cm^{-1}\)</span> units and is given by:</p></li>
+<li><p><em>rotational constant</em> expressed in <span class="math notranslate nohighlight">\(cm^{-1}\)</span> units and is given by:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\tilde{B} = \frac{h}{8\pi^2Ic}}\]</div>
-</section>
-<section id="selection-rules">
-<h2>Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h2>
+</div>
 <div class="important admonition">
 <p class="admonition-title"><strong>Selection rules for rigid rotor model</strong></p>
 <ul class="simple">
@@ -609,12 +606,12 @@ B = \frac{h^2}{8\pi^2 I},
 <div class="math notranslate nohighlight">
 \[\boxed{\Delta J = J' - J = \pm 1}\]</div>
 </div>
-<ul class="simple">
-<li><p>Since photons have one unit of angular momentum, the above rule can be understood in terms of angular momentum transfer. The transition frequencies between the rotational levels are given by (<span class="math notranslate nohighlight">\(J = 0,1,2,...\)</span>):</p></li>
-</ul>
 </section>
 <section id="spectral-lines-and-rotational-constant-determination">
 <h2>Spectral lines and rotational constant determination<a class="headerlink" href="#spectral-lines-and-rotational-constant-determination" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>When we compute energy spacing we see that it depends linearly on quantum level J. This means we could take one more difference and easily eliminate it getting a constant:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[{\tilde{\nu_J} = \tilde{E}_r(J + 1) - \tilde{E}_r(J) = \left((J+1)(J+2) - J(J+1)\right)\tilde{B} = 2\tilde{B}(J+1)}\]</div>
 <div class="important admonition">
@@ -728,21 +725,26 @@ B = \frac{h^2}{8\pi^2 I},
 \[
   B_v = B_e - \alpha_e (v + \tfrac{1}{2}),
   \]</div>
-<p>where <span class="math notranslate nohighlight">\(B_e\)</span> is the equilibrium rotational constant (for a rigid rotor), and <span class="math notranslate nohighlight">\(\alpha_e\)</span> is the <strong>rotation–vibration coupling constant</strong>.
-From observed band spectra, one can determine <span class="math notranslate nohighlight">\(B_0\)</span>, <span class="math notranslate nohighlight">\(B_1\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> using <strong>combination differences</strong>.</p>
 </li>
 </ul>
-<p><strong>R branch (ΔJ = +1) with rovibronic coupling:</strong></p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(B_e\)</span> is the equilibrium rotational constant (for a rigid rotor), and <span class="math notranslate nohighlight">\(\alpha_e\)</span> is the <strong>rotation–vibration coupling constant</strong>. From observed band spectra, one can determine <span class="math notranslate nohighlight">\(B_0\)</span>, <span class="math notranslate nohighlight">\(B_1\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> using <strong>combination differences</strong>.</p></li>
+<li><p><strong>R branch (ΔJ = +1) with rovibronic coupling:</strong></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \tilde{\nu}_{R} = \tilde{\omega} + 2\tilde{B}_1 + (3\tilde{B}_1 - \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 \]</div>
-<p><strong>P branch (ΔJ = −1) with rovibronic coupling:</strong></p>
+<ul class="simple">
+<li><p><strong>P branch (ΔJ = −1) with rovibronic coupling:</strong></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \tilde{\nu}_{P} = \tilde{\omega} - (\tilde{B}_1 + \tilde{B}_0)J + (\tilde{B}_1 - \tilde{B}_0)J^2
 \]</div>
-<p>When  <span class="math notranslate nohighlight">\(B_0 = B_1\)</span>, these reduce to the <strong>rigid-rotor–harmonic-oscillator</strong> expressions, as expected.</p>
+<ul class="simple">
+<li><p>When  <span class="math notranslate nohighlight">\(B_0 = B_1\)</span>, these reduce to the <strong>rigid-rotor–harmonic-oscillator</strong> expressions, as expected.</p></li>
+</ul>
 </section>
 <section id="centrifugal-distortion">
 <h2>Centrifugal Distortion<a class="headerlink" href="#centrifugal-distortion" title="Permalink to this heading">#</a></h2>
@@ -754,9 +756,9 @@ From observed band spectra, one can determine <span class="math notranslate nohi
 \[
   \tilde{E}_r(J) = \tilde{B} J(J+1) - \tilde{D} J^2 (J+1)^2,
   \]</div>
-<p>where ( \tilde{D} ) is the <strong>centrifugal distortion constant</strong> (in cm(^{-1})), and both ( \tilde{B} ) and ( \tilde{D} ) are positive.</p>
+<p>where <span class="math notranslate nohighlight">\(\tilde{D}\)</span>  is the <strong>centrifugal distortion constant</strong> in <span class="math notranslate nohighlight">\(cm(^{-1}\)</span>, and both <span class="math notranslate nohighlight">\(\tilde{B}\)</span> and <span class="math notranslate nohighlight">\(\tilde{D}\)</span> are positive.</p>
 </li>
-<li><p>The corresponding <strong>rotational transition frequencies</strong> become:</p>
+<li><p>The corresponding rotational transition frequencies become:</p>
 <div class="math notranslate nohighlight">
 \[
   \tilde{\nu} = \tilde{E}_r(J+1) - \tilde{E}_r(J)
@@ -946,7 +948,6 @@ $<span class="math notranslate nohighlight">\(
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-j-m-j-for-quantizing-theta-phi-coordiante-pair">Quantum numbers <span class="math notranslate nohighlight">\((J,M_J)\)</span> for quantizing <span class="math notranslate nohighlight">\((\theta,\phi)\)</span> coordiante pair.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-states-of-molecules-are-quantized">Rotational states of molecules are quantized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotational-spectra-of-diatomic-molecules">Rotational spectra of diatomic molecules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-lines-and-rotational-constant-determination">Spectral lines and rotational constant determination</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-vibrational-spectra-r-p-and-q-branches">Ro-vibrational spectra, R, P and Q branches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rigid-rotor-and-real-microwave-spectra">Rigid rotor and real microwave spectra</a></li>
