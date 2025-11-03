@@ -451,13 +451,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-atom-in-spherical-coordinates-system">H-atom in spherical coordinates system</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radial-wavefunctions">Radial wavefunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">Examples of the radial wavefunctions for hydrogenlike atoms</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-quantum-solution-of-h-atom">Full quantum solution of H-atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-h-atom">Spectrum of H atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-n-l-and-m">Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wave-function">Total wave function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-wavefunctions-in-cartesian-coordinates">Table of Wavefunctions in cartesian coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computationals-with-wavefunctions">Computationals with wavefunctions</a></li>
 </ul>
@@ -473,9 +473,8 @@ document.write(`
                   
   <section id="hydrogenlike-atoms">
 <h1>Hydrogenlike atoms<a class="headerlink" href="#hydrogenlike-atoms" title="Permalink to this heading">#</a></h1>
-<div class="admonition-what-you-need-to-know admonition">
+<div class="note admonition">
 <p class="admonition-title"><strong>What you need to know</strong></p>
-<p>:class: note</p>
 <ul class="simple">
 <li><p>The <strong>hydrogen atom</strong> is the simplest atom for which the Schrödinger equation can be solved exactly. In contrast, helium—though only having one additional electron—cannot be solved exactly due to the complexity introduced by electron-electron interactions.</p></li>
 <li><p>Solving the Schrödinger equation for the hydrogen atom leverages the fact that the <strong>Coulomb potential from the nucleus is isotropic</strong>: it is radially symmetric and depends solely on the distance from the nucleus. This <strong>symmetry leads to degeneracies in the energy levels</strong>.</p></li>
@@ -506,26 +505,28 @@ document.write(`
 <section id="h-atom-in-spherical-coordinates-system">
 <h2>H-atom in spherical coordinates system<a class="headerlink" href="#h-atom-in-spherical-coordinates-system" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
+<li><p>Schrodinger equation for H atom is a problem in full three dimensions with kinetic and potential energy terms. We also expect to get infinite  eigenfunctions and eigenvalues since we have bounded electron.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[{\left[ -\frac{\hbar^2}{2m_e}\nabla^2 - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)}\]</div>
+<ul class="simple">
 <li><p>Because of the spherical symmetry of the <a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb's_law">Coulomb potential</a> it is convenient to work in spherical coordinates:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}\]</div>
-<ul class="simple">
-<li><p>Subscripts for <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(E\)</span> signify the fact that there are multiple (<span class="math notranslate nohighlight">\(\psi_i\)</span>, <span class="math notranslate nohighlight">\(E_i\)</span>) combinations. The <span class="math notranslate nohighlight">\(\Delta\)</span> is expressed in spherical coordinates:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2{sin}(\theta)}
-\frac{\partial}{\partial\theta}\left({sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}\]</div>
+\[\nabla^2 = \nabla_r^2 +\frac{1}{r^2}\nabla_{\theta, \phi}^2\]</div>
 <ul class="simple">
 <li><p>Note that the Coulomb potential term above depends only on <span class="math notranslate nohighlight">\(r\)</span> (and not on <span class="math notranslate nohighlight">\(\theta\)</span> or <span class="math notranslate nohighlight">\(\phi\)</span>). The Laplacian can be written in terms of the angular momentum operator <span class="math notranslate nohighlight">\(\hat{L}\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\Delta = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}
-= \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}}\]</div>
-<p>By substituting this into  and multiplying both sides by <span class="math notranslate nohighlight">\(2m_er^2\)</span>, we get:</p>
+\[\nabla^2= \nabla_r^2- \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2} \]</div>
+<ul class="simple">
+<li><p>By substituting this into  and multiplying both sides by <span class="math notranslate nohighlight">\(2m_er^2\)</span>, we get:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\left[\frac{-\hbar^2}{2m_e}\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{\hat{L}^2}{2m_e r^2}\right]\psi_i(r,\theta,\phi) = \psi_i(r,\theta,\phi)\]</div>
-<p>Since the operator can be split into <span class="math notranslate nohighlight">\(r\)</span> and angle dependent parts, the solution can be written as a product of the radial and angular parts</p>
+\[\left[\frac{-\hbar^2}{2m_e}\nabla^2_r - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{\hat{L}^2}{2m_e r^2}\right]\psi_i(r,\theta,\phi) = \psi_i(r,\theta,\phi)\]</div>
+<ul class="simple">
+<li><p>Since the operator can be split into <span class="math notranslate nohighlight">\(r\)</span> and angle dependent parts, the solution can be written as a product of the radial and angular parts</p></li>
+</ul>
 </section>
 <section id="separation-of-variables">
 <h2>Separation of variables<a class="headerlink" href="#separation-of-variables" title="Permalink to this heading">#</a></h2>
@@ -551,13 +552,11 @@ document.write(`
 <li><p>The first repuslive term more rapidly with <span class="math notranslate nohighlight">\(r\)</span> than the Coulomb potential, it dominates at small distances if <span class="math notranslate nohighlight">\(l\neq0\)</span>. Both terms approach zero for large values of r. The resultant potential is repulsive at short distances for <span class="math notranslate nohighlight">\(l&gt;0\)</span> and is more repulsive the greater the value of <span class="math notranslate nohighlight">\(l\)</span>. The net result of this repulsive centrifugal potential is to force the electrons in orbitals with l <span class="math notranslate nohighlight">\(l&gt;0\)</span> on average farther from the nucleus than l = 0.</p></li>
 </ul>
 </section>
-<section id="eigenvalues-and-eigenfunctions">
-<h2>Eigenvalues and Eigenfunctions<a class="headerlink" href="#eigenvalues-and-eigenfunctions" title="Permalink to this heading">#</a></h2>
+<section id="radial-wavefunctions">
+<h2>Radial wavefunctions<a class="headerlink" href="#radial-wavefunctions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The eigenvalues <span class="math notranslate nohighlight">\(E_{nl}\)</span> and and the radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p></li>
+<li><p>The  radial eigenfunctions <span class="math notranslate nohighlight">\(R_{nl}\)</span> can be written as (derivations are lengthy but standard math):</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[{E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ \,\,\, }n = 1,2,3...{ (independent\, of\, }l,\,\,\,l&lt;n{)}}\]</div>
 <div class="math notranslate nohighlight">
 \[R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}\]</div>
 <ul class="simple">
@@ -610,6 +609,35 @@ document.write(`
 </table>
 </section>
 </section>
+<section id="full-quantum-solution-of-h-atom">
+<h2>Full quantum solution of H-atom<a class="headerlink" href="#full-quantum-solution-of-h-atom" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The complete solution of H-atom problem is proided by writing down all eigenfunctions and eigenvalues of hamiltonian;</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} |n, l, m_l\rangle = E_n |n, l, m_l\rangle
+\]</div>
+<ul class="simple">
+<li><p>We notice that while wavefunction depends on three quantum numbers (coming from quantization of radial and angular coordinates), energy only depends on principal quantum number <span class="math notranslate nohighlight">\(n\)</span>. This is another example of <strong>energetic degeneracy</strong> that is due to <strong>special spherical symmetry</strong> of the H-atom.</p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Eigenfunctions and Eigenvalues of H-atom</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} \psi_{n,l,m_l}(r,\theta,\phi) = E_n \psi_{n,l,m_l}(r,\theta,\phi)
+\]</div>
+<div class="math notranslate nohighlight">
+\[E_n =  -\frac{m_e e^4}{8 \varepsilon_0^2 h^2} \cdot \frac{1}{n^2}, 
+\quad n = 1, 2, 3, \ldots
+\]</div>
+<div class="math notranslate nohighlight">
+\[{\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}\cdot R_{nl}(r)\cdot Y_{l, m_l}(\theta,\phi)}\]</div>
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(N_{nl}\)</span> is a normalization factor</p></li>
+</ul>
+</div>
+</section>
 <section id="spectrum-of-h-atom">
 <h2>Spectrum of H atom<a class="headerlink" href="#spectrum-of-h-atom" title="Permalink to this heading">#</a></h2>
 <p>Equation of hydroen atom energy can be expressed in units (<span class="math notranslate nohighlight">\(m^{-1}\)</span>; usually <span class="math notranslate nohighlight">\(cm^{-1}\)</span> is used):</p>
@@ -656,13 +684,6 @@ document.write(`
 <li><p>There is one more quantum number that has not been discussed yet: <a class="reference external" href="http://en.wikipedia.org/wiki/Spin_quantum_number">Spin quantum number</a> <span class="math notranslate nohighlight">\(m_s=\pm 1/2\)</span></p></li>
 <li><p>For one-electron systems this can have values <span class="math notranslate nohighlight">\(\pm\frac{1}{2}\)</span> (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is <span class="math notranslate nohighlight">\(2n^2\)</span>.</p></li>
 </ul>
-</section>
-<section id="total-wave-function">
-<h2>Total wave function<a class="headerlink" href="#total-wave-function" title="Permalink to this heading">#</a></h2>
-<p>The total wavefunction for a hydrogenlike atom is (<span class="math notranslate nohighlight">\(m\)</span> is usually denoted by <span class="math notranslate nohighlight">\(m_l\)</span>):</p>
-<p>Where the normalization factor is:</p>
-<div class="math notranslate nohighlight">
-\[{N_{nl} = \sqrt{\left(\frac{2Z}{na_0}\right)^3\frac{(n - l - 1)!}{2n\left[(n + l)!\right]}}}\]</div>
 </section>
 <section id="table-of-wavefunctions-in-cartesian-coordinates">
 <h2>Table of Wavefunctions in cartesian coordinates<a class="headerlink" href="#table-of-wavefunctions-in-cartesian-coordinates" title="Permalink to this heading">#</a></h2>
@@ -842,13 +863,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-for-hydrogenlike-atoms">Schrodinger equation for hydrogenlike atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-atom-in-spherical-coordinates-system">H-atom in spherical coordinates system</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-variables">Separation of variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenfunctions">Eigenvalues and Eigenfunctions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radial-wavefunctions">Radial wavefunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-the-radial-wavefunctions-for-hydrogenlike-atoms">Examples of the radial wavefunctions for hydrogenlike atoms</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-quantum-solution-of-h-atom">Full quantum solution of H-atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-h-atom">Spectrum of H atom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-n-l-and-m">Quantum numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wave-function">Total wave function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-wavefunctions-in-cartesian-coordinates">Table of Wavefunctions in cartesian coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computationals-with-wavefunctions">Computationals with wavefunctions</a></li>
 </ul>

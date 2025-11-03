@@ -1,7 +1,6 @@
 ## Hydrogenlike atoms
 
 :::{admonition} **What you need to know**
-
 :class: note
 
 - The **hydrogen atom** is the simplest atom for which the Schrödinger equation can be solved exactly. In contrast, helium—though only having one additional electron—cannot be solved exactly due to the complexity introduced by electron-electron interactions.
@@ -36,29 +35,27 @@ $$V= - \frac{Ze^2}{4\pi\epsilon_0 r}$$
 
 ### H-atom in spherical coordinates system
 
+- Schrodinger equation for H atom is a problem in full three dimensions with kinetic and potential energy terms. We also expect to get infinite  eigenfunctions and eigenvalues since we have bounded electron. 
+
+$${\left[ -\frac{\hbar^2}{2m_e}\nabla^2 - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)}$$
+
 - Because of the spherical symmetry of the [Coulomb potential](http://en.wikipedia.org/wiki/Coulomb's_law) it is convenient to work in spherical coordinates:
 
 
-$${\left[ -\frac{\hbar^2}{2m_e}\Delta - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi_i(r,\theta,\phi) = E_i\psi(r,\theta,\phi)}$$
 
-
-- Subscripts for $\psi$ and $E$ signify the fact that there are multiple ($\psi_i$, $E_i$) combinations. The $\Delta$ is expressed in spherical coordinates:
-
-$${\Delta\equiv\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2{sin}(\theta)}
-\frac{\partial}{\partial\theta}\left({sin}(\theta)\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2{sin}^2(\theta)}\frac{\partial^2}{\partial\phi^2}}$$
-
+$$\nabla^2 = \nabla_r^2 +\frac{1}{r^2}\nabla_{\theta, \phi}^2$$
 
 - Note that the Coulomb potential term above depends only on $r$ (and not on $\theta$ or $\phi$). The Laplacian can be written in terms of the angular momentum operator $\hat{L}$:
 
-$${\Delta = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{\partial}{\partial r}\right) - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}
-= \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} - \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2}}$$
+
+$$\nabla^2= \nabla_r^2- \frac{1}{r^2}\frac{\hat{L}^2}{\hbar^2} $$
 
 
-By substituting this into  and multiplying both sides by $2m_er^2$, we get:
+- By substituting this into  and multiplying both sides by $2m_er^2$, we get:
 
-$$\left[\frac{-\hbar^2}{2m_e}\left(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r}\right) - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{\hat{L}^2}{2m_e r^2}\right]\psi_i(r,\theta,\phi) = \psi_i(r,\theta,\phi)$$
+$$\left[\frac{-\hbar^2}{2m_e}\nabla^2_r - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{\hat{L}^2}{2m_e r^2}\right]\psi_i(r,\theta,\phi) = \psi_i(r,\theta,\phi)$$
 
-Since the operator can be split into $r$ and angle dependent parts, the solution can be written as a product of the radial and angular parts 
+- Since the operator can be split into $r$ and angle dependent parts, the solution can be written as a product of the radial and angular parts 
 
 ### Separation of variables
 
@@ -79,14 +76,11 @@ $$V_{eff} = - \frac{Ze^2}{4\pi\epsilon_0r}+ \frac{l(l+1)\hbar^2}{2m_er^2} $$
 
 - The first repuslive term more rapidly with $r$ than the Coulomb potential, it dominates at small distances if $l\neq0$. Both terms approach zero for large values of r. The resultant potential is repulsive at short distances for $l>0$ and is more repulsive the greater the value of $l$. The net result of this repulsive centrifugal potential is to force the electrons in orbitals with l $l>0$ on average farther from the nucleus than l = 0.
 
-### Eigenvalues and Eigenfunctions
+### Radial wavefunctions
 
-- The eigenvalues $E_{nl}$ and and the radial eigenfunctions $R_{nl}$ can be written as (derivations are lengthy but standard math):
-
-$${E_{nl} = -\frac{m_ee^4Z^2}{32\pi^2\epsilon_0^2\hbar^2n^2}{ \,\,\, }n = 1,2,3...{ (independent\, of\, }l,\,\,\,l<n{)}}$$
+- The  radial eigenfunctions $R_{nl}$ can be written as (derivations are lengthy but standard math):
 
 $$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
-
 
 - **Bohr radius:** $a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}$
 
@@ -105,6 +99,37 @@ $$R_{nl}(r) = \rho^le^{-\rho/2}{L_{n-l-1}^{2l+1}(\rho)}$$
 | 3s      | 3   | 0   | $\frac{1}{9\sqrt{3}}\left(\frac{Z}{a_0}\right)^{3/2}(6 - 6\rho - \rho^2)e^{-\rho/2}$ |
 | 3p      | 3   | 1   | $\frac{1}{9\sqrt{6}}\left(\frac{Z}{a_0}\right)^{3/2}(4 - \rho)\rho e^{-\rho/2}$      |
 | 3d      | 3   | 2   | $\frac{1}{9\sqrt{30}}\left(\frac{Z}{a_0}\right)^{3/2}\rho^2 e^{-\rho/2}$             |
+
+
+### Full quantum solution of H-atom
+
+- The complete solution of H-atom problem is proided by writing down all eigenfunctions and eigenvalues of hamiltonian; 
+
+$$
+\hat{H} |n, l, m_l\rangle = E_n |n, l, m_l\rangle
+$$
+
+- We notice that while wavefunction depends on three quantum numbers (coming from quantization of radial and angular coordinates), energy only depends on principal quantum number $n$. This is another example of **energetic degeneracy** that is due to **special spherical symmetry** of the H-atom. 
+
+:::{admonition} **Eigenfunctions and Eigenvalues of H-atom**
+:class: important
+
+$$
+\hat{H} \psi_{n,l,m_l}(r,\theta,\phi) = E_n \psi_{n,l,m_l}(r,\theta,\phi)
+$$
+
+$$E_n =  -\frac{m_e e^4}{8 \varepsilon_0^2 h^2} \cdot \frac{1}{n^2}, 
+\quad n = 1, 2, 3, \ldots
+$$ 
+
+$${\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}\cdot R_{nl}(r)\cdot Y_{l, m_l}(\theta,\phi)}$$
+
+- Where $N_{nl}$ is a normalization factor
+
+:::
+
+
+
 
 
 ### Spectrum of H atom
@@ -151,22 +176,7 @@ $${\phantom{{symbo}}l = 0, 1, 2, 3, ...}{{symbol} = s, p, d, f, ...}$$
 
 - For one-electron systems this can have values $\pm\frac{1}{2}$ (will be discussed in more detail later). In absence of magnetic fields the spin levels are degenerate and therefore the total degeneracy of the levels is $2n^2$.
 
-### Total wave function
 
-The total wavefunction for a hydrogenlike atom is ($m$ is usually denoted by $m_l$):
-
-:::{admonition}
-:class: important:
-
-$${\psi_{n,l,m_l}(r,\theta,\phi) = N_{nl}\cdot R_{nl}(r)\cdot Y_{l, m_l}(\theta,\phi)}$$
-
-$$|n, l, m\rangle$$
-
-:::
-
-Where the normalization factor is:
-
-$${N_{nl} = \sqrt{\left(\frac{2Z}{na_0}\right)^3\frac{(n - l - 1)!}{2n\left[(n + l)!\right]}}}$$
 
 
 
