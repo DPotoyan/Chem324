@@ -13,7 +13,7 @@
 :::
 
 
-:::admonition **Definition of Atomic Orbital**
+:::{admonition} **Definition of Atomic Orbital**
 :class: important
 
 * **Atomic orbital (AO):** single–electron wavefunction (exact for H‐like atoms)
