@@ -13,6 +13,48 @@
 :::
 
 
+:::admonition **Definition of Atomic Orbital**
+:class: important
+
+* **Atomic orbital (AO):** single–electron wavefunction (exact for H‐like atoms)
+
+$$
+\psi_{n\ell m_\ell}(r,\theta,\phi)=R_{n\ell}(r),Y_{\ell m_\ell}(\theta,\phi)
+$$
+
+* **Principal quantum number:** $n=1,2,3,\ldots$
+* **Orbital angular momentum:** $\ell=0,1,2,\ldots,n-1$
+* **Magnetic quantum number:** $m_\ell=-\ell,-\ell+1,\ldots,\ell$
+
+**Probability distribution (full 3D):**
+
+$$
+|\psi|^2 dV = \big|R_{n\ell}(r)\big|^2 \cdot \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2 \cdot r^2\sin\theta dr d\theta d\phi
+$$
+
+**Radial probability distribution**
+
+$$
+P_r(r)= r^2\big|R_{n\ell}(r)\big|^2
+\quad\text{with}\quad \int_{0}^{\infty} P_r(r)  dr = 1
+$$
+
+**Angular probability density**
+
+$$
+P_\Omega(\theta,\phi)= \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2
+\quad\text{with}\quad \int_{0}^{2\pi}\int_{0}^{\pi} P_\Omega \sin \theta  d \theta d\phi = 1
+$$
+
+*Notes:*
+
+* $s$ orbitals $\ell=0$ are isotropic: $P_\Omega=\tfrac{1}{4\pi}$.
+* $p,d,\ldots$ show angular nodes where $Y_{\ell m_\ell}=0$, setting orbital shapes.
+  :::
+
+
+
+
 ### Radial profiles of atomic orbitals
 
 - When visualizing the radial probabilities, it is possible to do directly plot the square of the radial wavefunction ($R_{nl}^2$) or the radial probability density ($P_{nl}$):
