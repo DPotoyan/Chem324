@@ -452,7 +452,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-moment-of-electron">Magnetic moment of  electron</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the Hamiltonian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeeman-effect">Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disocvering-spin">Disocvering Spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin">Eigenvalues of spin</a></li>
@@ -505,7 +505,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>A moving charge interacts with an external magnetic field.</p></li>
+<li><p>A moving charge generates magnetic moment which interacts with an external magnetic field.</p></li>
 <li><p>When an electron is in a state with <span class="math notranslate nohighlight">\(l &gt; 0\)</span>, one can think of a circular motion of charge (of the wavefunction describing electron) around the nucleus and generate its own magnetic field.</p></li>
 <li><p>Note that this motion is not classical but here we are just trying to obtain a wire frame model based on classical interpretation.</p></li>
 </ul>
@@ -547,6 +547,13 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[{U = -\mu_z B = \frac{eB}{2m_e}L_z}\]</div>
+<ul class="simple">
+<li><p>In quantum mechanics to get the hamilotnian term or interaction with magnetic field we simply need to replace classical angular momentum with corresponding operator</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{H}_{mag} = \frac{eB}{2m_e}\hat{L}_z
+\]</div>
 </section>
 <section id="effect-of-magnetic-field-on-atoms">
 <h2>Effect of magnetic field on atoms<a class="headerlink" href="#effect-of-magnetic-field-on-atoms" title="Permalink to this heading">#</a></h2>
@@ -583,36 +590,30 @@ document.write(`
 \[\hat{L}_z\mid n,l, m_l\rangle = \hbar m_l \mid n,l, m_l\rangle\]</div>
 <div class="math notranslate nohighlight">
 \[\hat{H}_0\mid n,l, m_l\rangle =E_n\mid n,l, m_l\rangle\]</div>
-<ul class="simple">
-<li><p>The eigenvalues are (derivation not shown):</p></li>
-</ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>H-atom in magneitic field</strong></p>
 <div class="math notranslate nohighlight">
-\[{E_{nlm} = -\frac{m_ee^4Z^2}{2(4\pi\epsilon_0)^2n^2\hbar^2} + \mu_Bm_lB}\]</div>
+\[{E_{nlm} = E_n + \mu_Bm_lB}\]</div>
 <ul class="simple">
-<li><p>Where <span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span>; <span class="math notranslate nohighlight">\(l = 0, 1, ..., n - 1\)</span>; and <span class="math notranslate nohighlight">\(m_l = -l, ..., 0, ..., +l\)</span>. In the presence of magnetic field, the <span class="math notranslate nohighlight">\((2l + 1)\)</span> degenerate levels have been split (i.e., the degeneracy is lifted). This is called the orbital Zeeman effect.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 1, 2, ...\)</span>; determines energy levels in absence of magnetic field <span class="math notranslate nohighlight">\(E_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_B = \frac{\hbar e}{2 m_e}\)</span> constant we call Bohr’s magneton.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_l = -l, ..., 0, ..., +l\)</span>.</p></li>
 </ul>
+</div>
 </section>
-<section id="the-zeeman-effect">
-<h2>The  Zeeman effect<a class="headerlink" href="#the-zeeman-effect" title="Permalink to this heading">#</a></h2>
+<section id="zeeman-effect">
+<h2>Zeeman effect<a class="headerlink" href="#zeeman-effect" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Energy levels are affected by the external magnetic field witht the energy now depending on magnetic quantum number <span class="math notranslate nohighlight">\(m_l\)</span> (do not confuse with mass!)</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-E=E_n +\hbar m_l \frac{e}{2m_e} B=E_n+m_l\beta_B B
-\]</div>
-<ul class="simple">
-<li><p>Where we have introduce the Boh’r magneton <span class="math notranslate nohighlight">\(\beta_B = \frac{\hbar e}{2 m_e}\)</span>. The energy expression predicts removal of degeneracy with respect to <span class="math notranslate nohighlight">\(m_l\)</span> generating splitting energy levels into <span class="math notranslate nohighlight">\(2l+1\)</span> lines. For instance the 2p level of hydrogen atom will split into 3 levels <span class="math notranslate nohighlight">\(-\beta_B B, 0,+\beta_B\)</span></p></li>
+<li><p>We seee that quantum magnetic field now enters in the expression determining energy levels in presence o mag field.</p></li>
+<li><p>Mag ield now splits <span class="math notranslate nohighlight">\((2l + 1)\)</span> degenerate levels. This is called the orbital <strong>Zeeman effect.</strong></p></li>
+<li><p>For instance the 2p level of hydrogen atom will split into 3 levels <span class="math notranslate nohighlight">\(-\beta_B B, 0,+\beta_B\)</span></p></li>
 </ul>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/zeeman2.png"><img alt="electro-moment" class="bg-primary mb-1" src="../_images/zeeman2.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">When an external magnetic field is applied, sharp spectral lines hydrogen split into multiple closely spaced lines. Shown are the splitting of the degenerate energy levels of 2p into three states differing in <span class="math notranslate nohighlight">\(m_l=-1, 0, +1\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text"><strong>Zeeman effect</strong> When an external magnetic field is applied, sharp spectral lines hydrogen split into multiple closely spaced lines. Shown are the splitting of the degenerate energy levels of 2p into three states differing in <span class="math notranslate nohighlight">\(m_l=-1, 0, +1\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p>When an external magnetic field is applied, sharp spectral lines like the <span class="math notranslate nohighlight">\(n=3\rightarrow 2\)</span> transition of hydrogen split into multiple closely spaced lines. First observed by Pieter Zeeman, this splitting is attributed to the interaction between the magnetic field and the magnetic dipole moment associated with the orbital angular momentum. In the absence of the magnetic field, the hydrogen energies depend only upon the principal quantum number n , and the emissions occur at a single wavelength.</p></li>
-</ul>
 </section>
 <section id="disocvering-spin">
 <h2>Disocvering Spin<a class="headerlink" href="#disocvering-spin" title="Permalink to this heading">#</a></h2>
@@ -790,8 +791,6 @@ S_x = \frac{\hbar}{2} \sigma_x, \quad S_y = \frac{\hbar}{2} \sigma_y, \quad S_z 
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(g_e\)</span> is the free electron <span class="math notranslate nohighlight">\(g\)</span>-factor (2.002322 from quantum electrodynamics). The <span class="math notranslate nohighlight">\(z\)</span>-component of the spin magnetic moment is (<span class="math notranslate nohighlight">\(z\)</span> is the quantiziation axis):</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[{\hat{\mu}_z = -\frac{g_ee}{2m_e}\hat{S}_z}\]</div>
 </section>
 <section id="hamiltonian-depends-on-spin-operator">
 <h2>Hamiltonian depends on spin operator<a class="headerlink" href="#hamiltonian-depends-on-spin-operator" title="Permalink to this heading">#</a></h2>
@@ -815,7 +814,7 @@ and electron Zeeman terms, we have the total Hamiltonian:</p></li>
 <li><p>The eigenvalues of this operator are (derivation not shown):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hbar}{2m_e}\left(m_l + g_em_s\right)}\]</div>
+\[{E_{n,m_l,m_s} = E_n + \frac{eB\hbar}{2m_e}\left(m_l + g_em_s\right)}\]</div>
 </section>
 <section id="spin-orbit-coupling">
 <h2>Spin-Orbit coupling<a class="headerlink" href="#spin-orbit-coupling" title="Permalink to this heading">#</a></h2>
@@ -1093,7 +1092,7 @@ These <span class="math notranslate nohighlight">\( j \)</span> values correspon
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-moment-of-electron">Magnetic moment of  electron</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-magnetic-field-on-atoms">Effect of magnetic field on atoms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-field-modifies-the-hamiltonian">Mangetic field modifies the Hamiltonian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeeman-effect">The  Zeeman effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeeman-effect">Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disocvering-spin">Disocvering Spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-spin">Eigenvalues of spin</a></li>
