@@ -23,7 +23,7 @@ A GIF demonstrating the existence of a magnetic field around a current carrying 
 :::
 
 
--  A moving charge interacts with an external magnetic field. 
+-  A moving charge generates magnetic moment which interacts with an external magnetic field. 
 - When an electron is in a state with $l > 0$, one can think of a circular motion of charge (of the wavefunction describing electron) around the nucleus and generate its own magnetic field. 
 - Note that this motion is not classical but here we are just trying to obtain a wire frame model based on classical interpretation.
 
@@ -60,6 +60,11 @@ External magnetic field exerts torque on magnet. The energy of itneraction betwe
 
 $${U = -\mu_z B = \frac{eB}{2m_e}L_z}$$
 
+- In quantum mechanics to get the hamilotnian term or interaction with magnetic field we simply need to replace classical angular momentum with corresponding operator  
+
+$$
+\hat{H}_{mag} = \frac{eB}{2m_e}\hat{L}_z
+$$
 
 
 
@@ -101,32 +106,32 @@ $$\hat{L}_z\mid n,l, m_l\rangle = \hbar m_l \mid n,l, m_l\rangle$$
 $$\hat{H}_0\mid n,l, m_l\rangle =E_n\mid n,l, m_l\rangle$$
 
 
-- The eigenvalues are (derivation not shown):
-
-$${E_{nlm} = -\frac{m_ee^4Z^2}{2(4\pi\epsilon_0)^2n^2\hbar^2} + \mu_Bm_lB}$$
-
-- Where $n = 1, 2, ...$; $l = 0, 1, ..., n - 1$; and $m_l = -l, ..., 0, ..., +l$. In the presence of magnetic field, the $(2l + 1)$ degenerate levels have been split (i.e., the degeneracy is lifted). This is called the orbital Zeeman effect.
+:::{admonition} **H-atom in magneitic field**
+:class: important
 
 
-
-### The  Zeeman effect 
-
-- Energy levels are affected by the external magnetic field witht the energy now depending on magnetic quantum number $m_l$ (do not confuse with mass!)
-
-$$
-E=E_n +\hbar m_l \frac{e}{2m_e} B=E_n+m_l\beta_B B
-$$
+$${E_{nlm} = E_n + \mu_Bm_lB}$$
 
 
-- Where we have introduce the Boh'r magneton $\beta_B = \frac{\hbar e}{2 m_e}$. The energy expression predicts removal of degeneracy with respect to $m_l$ generating splitting energy levels into $2l+1$ lines. For instance the 2p level of hydrogen atom will split into 3 levels $-\beta_B B, 0,+\beta_B$
+- $n = 1, 2, ...$; determines energy levels in absence of magnetic field $E_n$
+- $\beta_B = \frac{\hbar e}{2 m_e}$ constant we call Bohr's magneton.
+- $m_l = -l, ..., 0, ..., +l$. 
 
+:::
+
+### Zeeman effect
+
+- We seee that quantum magnetic field now enters in the expression determining energy levels in presence o mag field.
+- Mag ield now splits $(2l + 1)$ degenerate levels. This is called the orbital **Zeeman effect.**
+- For instance the 2p level of hydrogen atom will split into 3 levels $-\beta_B B, 0,+\beta_B$
+
+  
 :::{figure-md} markdown-fig
 <img src="./images/zeeman2.png" alt="electro-moment" class="bg-primary mb-1" width="300px">
 
-When an external magnetic field is applied, sharp spectral lines hydrogen split into multiple closely spaced lines. Shown are the splitting of the degenerate energy levels of 2p into three states differing in $m_l=-1, 0, +1$
+**Zeeman effect** When an external magnetic field is applied, sharp spectral lines hydrogen split into multiple closely spaced lines. Shown are the splitting of the degenerate energy levels of 2p into three states differing in $m_l=-1, 0, +1$
 :::
 
-- When an external magnetic field is applied, sharp spectral lines like the $n=3\rightarrow 2$ transition of hydrogen split into multiple closely spaced lines. First observed by Pieter Zeeman, this splitting is attributed to the interaction between the magnetic field and the magnetic dipole moment associated with the orbital angular momentum. In the absence of the magnetic field, the hydrogen energies depend only upon the principal quantum number n , and the emissions occur at a single wavelength.
 
 
 ### Disocvering Spin
@@ -310,7 +315,14 @@ $${\vec{\hat{\mu}}_S = -\frac{g_ee}{2m_e}\vec{\hat{S}}}$$
 
 - where $g_e$ is the free electron $g$-factor (2.002322 from quantum electrodynamics). The $z$-component of the spin magnetic moment is ($z$ is the quantiziation axis):
 
+:::{admoniton} **Spin magnetic moment**
+:class: important
+
 $${\hat{\mu}_z = -\frac{g_ee}{2m_e}\hat{S}_z}$$
+
+- $g_e\approx 2$ for electrons. THis is explained by relativistic quantum theory. 
+
+:::
 
 ### Hamiltonian depends on spin operator 
 
@@ -329,7 +341,8 @@ $${\hat{H} = \hat{H}_0 + \frac{eB}{2m_e}\hat{L}_z + \frac{g_eeB}{2m_e}\hat{S}_z 
 
 - The eigenvalues of this operator are (derivation not shown):
 
-$${E_{n,m_l,m_s} = -\frac{m_ee^4Z^2}{2(2\pi\epsilon_0)^2\hbar n^2} + \frac{eB\hbar}{2m_e}\left(m_l + g_em_s\right)}$$
+
+$${E_{n,m_l,m_s} = E_n + \frac{eB\hbar}{2m_e}\left(m_l + g_em_s\right)}$$
 
 ### Spin-Orbit coupling
 
