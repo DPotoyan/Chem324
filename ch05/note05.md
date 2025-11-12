@@ -169,25 +169,26 @@ $${E_{nlm} = E_n + \mu_Bm_lB}$$
 
 
 
-### Eigenvalues of spin
+### Eigenvalues amd eigenvalues of spin
 
-- To summarize the experiments desicovering electron spin we can write down eigenvalues of spin. We know only two values are observed in the experiments hence we must have two eigenfunctions and two eigenvalues. 
-- We use analogy with the angular momentum to write downt the two expressions for the mangitude and projection of spin.   
+- Experiments show that we **only observe two values of spin**. Hence there must only be **two eigenfunctions and two eigenvalues**. 
+- We use analogy with the angular momentum to write down the two expressions for the mangitude and projection of spin.   
 
-$${S^2 = s(s+1)\hbar^2 = \frac{3}{4}\hbar^2\textnormal{ (since }s = \frac{1}{2}\textnormal{)}}$$
+- The corresponding operators for electron spin are denoted by $ \hat{S}_z $ and $ \hat{S}^2 $. 
 
-$${S_z = m_s\hbar\textnormal{ with }m_s = \pm\frac{1}{2}}$$
+- The eigenfunctions of spin are denoted by $ \alpha $ and $ \beta $:
 
-
-
-
-### Eigenfunctions of spin
-
-
-- The corresponding operators for electron spin are denoted by $ \hat{S}_z $ and $ \hat{S}^2 $. What about the eigenfunctions? The eigenfunctions of spin are denoted by $ \alpha $ and $ \beta $, and we generally do not specify their explicit forms. The following relations apply to these eigenfunctions:
 
 :::{admonition} **Eigenfunctions of Spin $ \alpha $ and $ \beta $**
 :class: important
+
+- **Spin is an intrinsic angular momentum with a fixed eigenvalue**
+
+$$S = \frac{1}{2}$$
+
+$$S^2 = S(S+1)\hbar^2 = \frac{3}{4}\hbar^2$$
+
+- **Spin eigenfunctions and eigenvalues**
 
 $$
 \hat{S}^2 |\alpha\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
@@ -207,7 +208,13 @@ $$
 
 :::
 
-- Note that the following operators commute: $ \hat{H} $, $ \hat{L}^2 $, $ \hat{L}_z $, $ \hat{S}^2 $, and $ \hat{S}_z $. This implies that all these quantities can be specified simultaneously. The spin eigenfunctions $ \alpha $ and $ \beta $ are taken to be orthonormal:
+
+### Orthogonality and normalization of spin part of wavefunction
+
+
+- Note that the following operators commute: $ \hat{H} $, $ \hat{L}^2 $, $ \hat{L}_z $, $ \hat{S}^2 $, and $ \hat{S}_z $. This implies that all these quantities can be specified simultaneously. 
+
+- The spin eigenfunctions $ \alpha $ and $ \beta $ are as expected orthonormal:
 
 $$
 \int \alpha^* \alpha \, d\sigma \equiv \langle \alpha | \alpha \rangle = \int \beta^* \beta \, d\sigma \equiv \langle \beta | \beta \rangle = 1
@@ -217,16 +224,23 @@ $$
 \int \alpha^* \beta \, d\sigma \equiv \langle \alpha | \beta \rangle = \int \beta^* \alpha \, d\sigma \equiv \langle \beta | \alpha \rangle = 0
 $$
 
-- Here, the integrations are over the variables that the spin eigenfunctions depend on. Notice that we have not specified the explicit forms of these eigenfunctions; instead, we rely on the principles of angular momentum. 
+
 
 - To completely describe a hydrogen-like atom, the wavefunction must include the spin component. Thus, the total wavefunction is a product of the spatial wavefunction and the spin part.
 
+$$
+|n,l, m_l, m_s\rangle = \psi_{l, m_l, m_s}(r, \theta, \phi) \sigma(s),\,\,\,\, where ,\,\,\, \sigma=\alpha\,\, or\,\, \beta
+$$
+
+- Wavefuncctions differing in spin part will be orthogonal!
+
+$$ \langle 1, 0,0,+1/2| 1, 0,0, -1/2\rangle $$
 
 
 :::{admonition} **Action of Spin Operators on Eigenstates**
 :class: info, dropdown
 
-In quantum mechanics, the spin of an electron is represented by the spin operator $ \vec{S} $, which has components $ S_x $, $ S_y $, and $ S_z $. For spin-$\frac{1}{2}$ particles, these operators are represented by the Pauli matrices $ \sigma_x $, $ \sigma_y $, and $ \sigma_z $ (multiplied by $\frac{\hbar}{2}$):
+In quantum mechanics, the spin of an electron is represented by the spin operator $ \vec{S} $, which has components $ S_x $, $ S_y $, and $ S_z $. For spin-$\frac{1}{2}$ particles, these operators are represented by the **Pauli matrices** $ S_x $, $ \sigma_y $, and $ \sigma_z $ (multiplied by $\frac{\hbar}{2}$):
 
 $$
 S_x = \frac{\hbar}{2} \sigma_x, \quad S_y = \frac{\hbar}{2} \sigma_y, \quad S_z = \frac{\hbar}{2} \sigma_z
@@ -478,11 +492,16 @@ Anomalous Zeeman effect. (left) The spectral lines are split into multiple micro
 
 - Just like with energetic transitions of other model systems for H-atom probability of transition is given by transition moment or its z-projection $\langle n,l,m_l, m_s |z|n,l,m_l, m_s \rangle$. Evaluating the expression using properties of special functions we get the following selection rules
 
+:::{admonition} **Selection rules for electronic transitions in H atom**
+:class: important
+
 $$\Delta L=\pm 1$$
 
 $$\Delta S= 0$$
 
 $$\Delta J=0, \pm 1\,\,(0\rightarrow 0\,\, forbidden)$$
+
+:::
 
 ### Summary of spin and angular momentum
 
