@@ -169,14 +169,28 @@ $${E_{nlm} = E_n + \mu_Bm_lB}$$
 
 
 
-### Eigenvalues amd eigenvalues of spin
+### Quantum numbers and eigenfunctions of spins
 
-- Experiments show that we **only observe two values of spin**. Hence there must only be **two eigenfunctions and two eigenvalues**. 
-- We use analogy with the angular momentum to write down the two expressions for the mangitude and projection of spin.   
+- Spin and its projection, $S$, $S_z$ have the same properties as the angular momentum  $L$, $L_z$. Quantum mechanics requires the number of allowed spin projections to be:
 
-- The corresponding operators for electron spin are denoted by $ \hat{S}_z $ and $ \hat{S}^2 $. 
+$$
+2s+1
+$$
 
-- The eigenfunctions of spin are denoted by $ \alpha $ and $ \beta $:
+- Experiments show that we **only observe two values of spin**.
+
+$$
+2s+1=2 \quad \Rightarrow \quad s=\frac{1}{2}
+$$
+
+- Projections are determined by **quantum number $m_s$** which is an analog of $m_l$
+
+$$
+m_s = -s, +s = +1/2, -1/2
+$$
+
+
+- We expect two eigenfunctons for two outcomes and denote the eigenfunctions of $S_z$ as $ \alpha $ and $ \beta $:
 
 
 :::{admonition} **Eigenfunctions of Spin $ \alpha $ and $ \beta $**
@@ -184,18 +198,18 @@ $${E_{nlm} = E_n + \mu_Bm_lB}$$
 
 - **Spin is an intrinsic angular momentum with a fixed eigenvalue**
 
-$$S = \frac{1}{2}$$
+$$S = \frac{1}{2}\hbar$$
 
-$$S^2 = S(S+1)\hbar^2 = \frac{3}{4}\hbar^2$$
+$$S_z = \pm \frac{1}{2}\hbar$$
 
 - **Spin eigenfunctions and eigenvalues**
 
 $$
-\hat{S}^2 |\alpha\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
+\hat{S}^2 |\alpha\rangle =  \hbar^2  S(S+1) |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
 $$
 
 $$
-\hat{S}^2 |\beta\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
+\hat{S}^2 |\beta\rangle = \hbar^2  S(S+1) |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
 $$
 
 $$

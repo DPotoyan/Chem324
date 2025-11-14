@@ -455,7 +455,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeeman-effect">Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disocvering-spin">Disocvering Spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-amd-eigenvalues-of-spin">Eigenvalues amd eigenvalues of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-and-eigenfunctions-of-spins">Quantum numbers and eigenfunctions of spins</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-and-normalization-of-spin-part-of-wavefunction">Orthogonality and normalization of spin part of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-moment-due-to-spin">Mangetic moment due to spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-depends-on-spin-operator">Hamiltonian depends on spin operator</a></li>
@@ -639,13 +639,31 @@ document.write(`
 <li><p>Fortunately, spin can be incorporated into the Schrödinger equation once we recognize its existence. We simply add an additional quantum number, <span class="math notranslate nohighlight">\(s\)</span>, which behaves similarly to angular momentum <span class="math notranslate nohighlight">\(l\)</span>.</p></li>
 </ul>
 </section>
-<section id="eigenvalues-amd-eigenvalues-of-spin">
-<h2>Eigenvalues amd eigenvalues of spin<a class="headerlink" href="#eigenvalues-amd-eigenvalues-of-spin" title="Permalink to this heading">#</a></h2>
+<section id="quantum-numbers-and-eigenfunctions-of-spins">
+<h2>Quantum numbers and eigenfunctions of spins<a class="headerlink" href="#quantum-numbers-and-eigenfunctions-of-spins" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Experiments show that we <strong>only observe two values of spin</strong>. Hence there must only be <strong>two eigenfunctions and two eigenvalues</strong>.</p></li>
-<li><p>We use analogy with the angular momentum to write down the two expressions for the mangitude and projection of spin.</p></li>
-<li><p>The corresponding operators for electron spin are denoted by <span class="math notranslate nohighlight">\( \hat{S}_z \)</span> and <span class="math notranslate nohighlight">\( \hat{S}^2 \)</span>.</p></li>
-<li><p>The eigenfunctions of spin are denoted by <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>:</p></li>
+<li><p>Spin and its projection, <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(S_z\)</span> have the same properties as the angular momentum  <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(L_z\)</span>. Quantum mechanics requires the number of allowed spin projections to be:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+2s+1
+\]</div>
+<ul class="simple">
+<li><p>Experiments show that we <strong>only observe two values of spin</strong>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+2s+1=2 \quad \Rightarrow \quad s=\frac{1}{2}
+\]</div>
+<ul class="simple">
+<li><p>Projections are determined by <strong>quantum number <span class="math notranslate nohighlight">\(m_s\)</span></strong> which is an analog of <span class="math notranslate nohighlight">\(m_l\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+m_s = -s, +s = +1/2, -1/2
+\]</div>
+<ul class="simple">
+<li><p>We expect two eigenfunctons for two outcomes and denote the eigenfunctions of <span class="math notranslate nohighlight">\(S_z\)</span> as <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span>:</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Eigenfunctions of Spin <span class="math notranslate nohighlight">\( \alpha \)</span> and <span class="math notranslate nohighlight">\( \beta \)</span></strong></p>
@@ -653,19 +671,19 @@ document.write(`
 <li><p><strong>Spin is an intrinsic angular momentum with a fixed eigenvalue</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[S = \frac{1}{2}\]</div>
+\[S = \frac{1}{2}\hbar\]</div>
 <div class="math notranslate nohighlight">
-\[S^2 = S(S+1)\hbar^2 = \frac{3}{4}\hbar^2\]</div>
+\[S_z = \pm \frac{1}{2}\hbar\]</div>
 <ul class="simple">
 <li><p><strong>Spin eigenfunctions and eigenvalues</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\hat{S}^2 |\alpha\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
+\hat{S}^2 |\alpha\rangle =  \hbar^2  S(S+1) |\alpha\rangle = \frac{3}{4} \hbar^2 |\alpha\rangle
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\hat{S}^2 |\beta\rangle = \frac{1}{2} \left(\frac{1}{2} + 1\right) \hbar^2 |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
+\hat{S}^2 |\beta\rangle = \hbar^2  S(S+1) |\beta\rangle = \frac{3}{4} \hbar^2 |\beta\rangle
 \]</div>
 <div class="math notranslate nohighlight">
 \[
@@ -1112,7 +1130,7 @@ These <span class="math notranslate nohighlight">\( j \)</span> values correspon
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeeman-effect">Zeeman effect</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disocvering-spin">Disocvering Spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-as-a-tiny-magnet">Spin as a tiny magnet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-amd-eigenvalues-of-spin">Eigenvalues amd eigenvalues of spin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-numbers-and-eigenfunctions-of-spins">Quantum numbers and eigenfunctions of spins</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-and-normalization-of-spin-part-of-wavefunction">Orthogonality and normalization of spin part of wavefunction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mangetic-moment-due-to-spin">Mangetic moment due to spin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-depends-on-spin-operator">Hamiltonian depends on spin operator</a></li>
