@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Variational Method" href="lin_var.html" />
-    <link rel="prev" title="Perturbation Method" href="note01.html" />
+    <link rel="prev" title="Time-Dependent Perturbation Theory and Selection Rules" href="note01B.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -247,6 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">6. Approximations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="note01.html">Perturbation Method</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="note01B.html">Time-Dependent Perturbation Theory and Selection Rules</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Variational Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lin_var.html">Linear Variational Method</a></li>
 
@@ -510,8 +511,20 @@ document.write(`
 <section id="variational-theorem">
 <h2>Variational theorem<a class="headerlink" href="#variational-theorem" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The variational method states, that for any trial function <span class="math notranslate nohighlight">\(\mid \phi \rangle\)</span> The energy computed will always be greater or equal to exact (or true) energy.</p></li>
+<li><p>The variational method states, that for any trial (approximate) function <span class="math notranslate nohighlight">\(\mid \phi \rangle\)</span> we use the computed energy  will always come out to be greater or equal to exact (or true) energy.</p></li>
 </ul>
+<div class="important admonition">
+<p class="admonition-title"><strong>Variational Theorem of Quantum Mechanics</strong></p>
+<div class="math notranslate nohighlight">
+\[
+E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{H}\)</span> is the Hamiltonian of the problem we want to solve</p></li>
+<li><p><span class="math notranslate nohighlight">\(|\phi\rangle\)</span> is a trial wavefunction with unkown parameters we want to determine</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_0\)</span> is the true ground-state energy which generally not known to us</p></li>
+</ul>
+</div>
 <ul class="simple">
 <li><p>Note that when we have a trail wavefunction we do not have it normalized hence the need to divide by <span class="math notranslate nohighlight">\(\langle \phi \mid \phi\rangle\)</span>.</p></li>
 <li><p>The expression simplifies when trial function is normalized beforehand <span class="math notranslate nohighlight">\(\langle \phi \mid \phi\rangle=1\)</span></p></li>
@@ -657,9 +670,7 @@ E_{trial}(\alpha_{min}) = -0.424
 <div class="math notranslate nohighlight">
 \[{\frac{dE}{dZ} = \left(2Z - \frac{27}{8}\right)\frac{e^2}{4\pi\epsilon_0a_0} = 0}\]</div>
 <ul class="simple">
-<li><p>The above equation gives <span class="math notranslate nohighlight">\(Z = 27/16 \approx 1.7\)</span> and <span class="math notranslate nohighlight">\(E \approx -77.5\)</span> eV (previous -74.8 eV and exact -79.0 eV). This result could be improved by adding more terms and variables into
-the trial wavefunction. For example, higher hydrogenlike atom orbitals with appropriate variational coefficients would yield a much better result.</p></li>
-<li><p>Another type of approximate method is based on \underline{perturbation theory}, which would typically assume that the electron – electron repulsion is treated as an additional (small) perturbation to case 1) above.</p></li>
+<li><p>The above equation gives <span class="math notranslate nohighlight">\(Z = 27/16 \approx 1.7\)</span> and <span class="math notranslate nohighlight">\(E \approx -77.5\)</span> eV (previous -74.8 eV and exact -79.0 eV). This result could be improved by adding more terms and variables intothe trial wavefunction. For example, higher hydrogenlike atom orbitals with appropriate variational coefficients would yield a much better result.</p></li>
 </ul>
 </section>
 <section id="problems">
@@ -830,12 +841,12 @@ is better.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note01.html"
+       href="note01B.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Perturbation Method</p>
+        <p class="prev-next-title">Time-Dependent Perturbation Theory and Selection Rules</p>
       </div>
     </a>
     <a class="right-next"

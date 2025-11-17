@@ -30,9 +30,9 @@
 
 ### Variational theorem
 
-- The variational method states, that for any trial function $\mid \phi \rangle$ The energy computed will always be greater or equal to exact (or true) energy.
+- The variational method states, that for any trial (approximate) function $\mid \phi \rangle$ we use the computed energy  will always come out to be greater or equal to exact (or true) energy.
 
-:::{admonition}
+:::{admonition} **Variational Theorem of Quantum Mechanics**
 :class: important
 
 $$
@@ -194,11 +194,9 @@ $${E = \langle\psi |\hat{H}|\psi\rangle = ... = \left[ Z^2 - \frac{27Z}{8}\right
 $${\frac{dE}{dZ} = \left(2Z - \frac{27}{8}\right)\frac{e^2}{4\pi\epsilon_0a_0} = 0}$$
 
 
-- The above equation gives $Z = 27/16 \approx 1.7$ and $E \approx -77.5$ eV (previous -74.8 eV and exact -79.0 eV). This result could be improved by adding more terms and variables into
-the trial wavefunction. For example, higher hydrogenlike atom orbitals with appropriate variational coefficients would yield a much better result.
+- The above equation gives $Z = 27/16 \approx 1.7$ and $E \approx -77.5$ eV (previous -74.8 eV and exact -79.0 eV). This result could be improved by adding more terms and variables intothe trial wavefunction. For example, higher hydrogenlike atom orbitals with appropriate variational coefficients would yield a much better result.
 
 
-- Another type of approximate method is based on \underline{perturbation theory}, which would typically assume that the electron -- electron repulsion is treated as an additional (small) perturbation to case 1) above.
 
 ### Problems
 
