@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch06/var2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DEMO: Pertrubation Theory" href="demo_pert.html" />
+    <link rel="next" title="Perturbation Method" href="perturb.html" />
     <link rel="prev" title="Variational Method" href="var.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -248,6 +248,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="var.html">Variational Method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Variational Method</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="perturb.html">Perturbation Method</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="perturb2.html">Time-Dependent Perturbation Theory and Selection Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_pert.html">DEMO: Pertrubation Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo_lin_var.html">DEMO: Solving QM problems with Variational method</a></li>
 </ul>
@@ -695,18 +698,26 @@ Solving the eigenvalue problem <span class="math notranslate nohighlight">\(\mat
 </section>
 <section id="example-particle-in-a-box">
 <h1>Example: Particle in a Box<a class="headerlink" href="#example-particle-in-a-box" title="Permalink to this heading">#</a></h1>
-<p>Let’s consider a free particle in 1D bounded to <span class="math notranslate nohighlight">\(0\leq x\leq a\)</span>.  The Hamiltonian for such a system is simply the kinetic energy operator</p>
+<ul class="simple">
+<li><p>Let’s consider a free particle in 1D bounded to <span class="math notranslate nohighlight">\(0\leq x\leq a\)</span>.  The Hamiltonian for such a system is simply the kinetic energy operator</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</div>
-<p>While we can have solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating <span class="math notranslate nohighlight">\(\psi(x)\)</span> as an expansion in two basis functions</p>
+<ul class="simple">
+<li><p>While we can have solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating <span class="math notranslate nohighlight">\(\psi(x)\)</span> as an expansion in two basis functions <span class="math notranslate nohighlight">\(f_1=x(a-x)\)</span> and <span class="math notranslate nohighlight">\(f_2=x^2(a-x)^2\)</span></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2\]</div>
-<p>where the basis functions are <span class="math notranslate nohighlight">\(f_1(x) = x(a-x)\)</span> and <span class="math notranslate nohighlight">\(f_2(x) = x^2(a-x)^2\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the variational parameters (/linear coefficients of basis functions).  In order to solve for the variational energies and wavefunctions given this expansion we must construct the Hamiltonian matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span>, and the basis function overlap matrix, <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>.  We will then compute and diagonlize the <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> matrix.  Recall,</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the variational parameters to find them we first construct the Hamiltonian matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span>, and the basis function overlap matrix, <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[H_{ij} = \langle f_i|\hat{H}|f_j\rangle\]</div>
-<p>and</p>
 <div class="math notranslate nohighlight">
 \[S_{ij} = \langle f_i|f_j\rangle \]</div>
+<ul class="simple">
+<li><p>We will then compute and diagonlize the <span class="math notranslate nohighlight">\(\mathbf{S}^{-1}\mathbf{H}\)</span> matrix.</p></li>
+</ul>
 <ul class="simple">
 <li><p>We have obtaind all matrix elements in previous section and are now ready to obtain eigenvalues</p></li>
 </ul>
@@ -750,10 +761,7 @@ First eigenvector: [-0.66168489 -0.74978204]
 <p>So we see that the smallest energy in this basis is</p>
 <div class="math notranslate nohighlight">
 \[E_\phi = 4.9349 \frac{\hbar^2}{m}\]</div>
-<p>How does this compare to the analytic solution?  We need to recall that for particle in a box we have:</p>
-<div class="math notranslate nohighlight">
-\[E_n = \frac{n^2\pi^2\hbar^2}{2ma^2} \]</div>
-<p>Plugging in for the ground state, <span class="math notranslate nohighlight">\(n=1\)</span>, and <span class="math notranslate nohighlight">\(a=1\)</span> since that is what we used numerically above we get</p>
+<p>How does this compare to the analytic solution?  Plugging in for the ground state, <span class="math notranslate nohighlight">\(n=1\)</span>, and <span class="math notranslate nohighlight">\(a=1\)</span> we get</p>
 <div class="math notranslate nohighlight">
 \[E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \frac{\hbar^2}{m} \]</div>
 <p>So we can see that our variational solution worked out well for the energy.  Now how about the wavefunction?</p>
@@ -777,6 +785,8 @@ First eigenvector: [-0.66168489 -0.74978204]
 <span class="n">psi1Var</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">integrate</span><span class="o">.</span><span class="n">simps</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">psi1Var</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">psi1Var</span><span class="o">/</span><span class="n">norm</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Variational&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$P(x)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -831,11 +841,11 @@ First eigenvector: [-0.66168489 -0.74978204]
       </div>
     </a>
     <a class="right-next"
-       href="demo_pert.html"
+       href="perturb.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DEMO: Pertrubation Theory</p>
+        <p class="prev-next-title">Perturbation Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
