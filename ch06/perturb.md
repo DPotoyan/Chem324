@@ -124,7 +124,9 @@ $$\color{blue} H_{nn}=\langle n^0\mid H^1\mid n^0\rangle$$
 
 :::
 
-### First and second order corrections to the ground state
+
+:::{admonition} **Example: First and second order corrections to the ground state**
+:class: tip, dropdown
 
 - **The first order correction to the ground state** requires computing **diagonal** matrix elements only: 
 
@@ -137,6 +139,8 @@ $$E_0^{(2)} = {\sum_{k \neq 0} \frac{\mid H_{0k}\mid^2}{E^0_0-E^0_k}}$$
 - Note how the energy in the denominator of 2nd order term involves difference between energy of a given state $E_n$ from all other states $E_k$ denoted by k the summation index. 
 
 - **Key insight** If the matrix elements are of comparable magnitude the neighbouring energy levels make larger contributions to pertrubation expression.
+
+:::
 
 ### Derivations of 1st and 2nd order corrections
 
@@ -281,12 +285,6 @@ $$
 \boxed{E_n = \color{green}{E^0_n} + \color{red}{\langle n^0\mid H^1\mid n^0\rangle} + \color{blue}{\sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n-E^0_k}}}
 $$
 :::
-
-
-
-
-
-
 
 
 ### Applications 
