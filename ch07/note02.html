@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Angular momentum of many-electron atoms" href="note03.html" />
-    <link rel="prev" title="Helium atom" href="note01.html" />
+    <link rel="prev" title="7. Multielectron atoms" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -256,8 +256,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7. Multielectron atoms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="note01.html">Helium atom</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-electron atoms</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="note03.html">Angular momentum of many-electron atoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note04.html">Hartree-Fock</a></li>
 </ul>
@@ -449,26 +449,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium wavefunction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry-requirement">Issue 1: Indistinguishability and Antisymmetry Requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli exclusion principle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singlet-vs-triplet-states-of-he-atom">Singlet vs Triplet states of He atom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-of-spin-operator-on-singlet-and-triplet-state">Action of spin operator on Singlet and Triplet state</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multi-electron atoms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium Wavefunction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry">Issue 1: Indistinguishability and Antisymmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli Exclusion Principle</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-total-energy-with-multi-electron-wavefunctions">Computing total energy with multi-electron wavefunctions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coulomb-and-exchange-contributions">Coulomb and Exchange Contributions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-of-he-1s-2">Ground state of He, <span class="math notranslate nohighlight">\(1s^2\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-excited-state-should-we-pick">Which Excited State should we pick?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-configuration-matters">Spin configuration matters!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-states-of-helium-1s2s">Excited States of Helium <span class="math notranslate nohighlight">\(1s2s\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-aufbau-principle">Hund’s rule and Aufbau principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singlet-and-triplet-states-of-helium">Singlet and Triplet States of Helium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-of-spin-operators">Action of Spin Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-multi-electron-states">Energies of Multi-Electron States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-integrals">Useful Integrals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-1s2s-singlet-and-triplet">Energies of <span class="math notranslate nohighlight">\(1s2s\)</span> Singlet and Triplet</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-the-aufbau-principle">Hund’s Rule and the Aufbau Principle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-principle">Aufbau Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pauli Exclusion Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule">Hund’s Rule</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -482,459 +488,282 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="multi-electron-atoms">
 <h1>Multi-electron atoms<a class="headerlink" href="#multi-electron-atoms" title="Permalink to this heading">#</a></h1>
 <div class="admonition-what-you-need-to-know admonition">
-<p class="admonition-title"><strong>What you need to know</strong></p>
+<p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>We use the exact solutions of hydrogenic Schrödinger equation or orbitals to construct
-<strong>an approximate wave function of a manyelectron atom</strong>, the helium and heavier atoms.</p></li>
-<li><p>Unlike the hydrogenic atom, the discussion here is approximate and some rules
-introduced can have exceptions.</p></li>
-<li><p><strong>Spins and antisymmetry</strong> put some constraints on the form of multielectron wavefunctions</p></li>
+<li><p>We approximate many-electron wavefunctions using <strong>hydrogenic orbitals</strong> as building blocks.</p></li>
+<li><p>Unlike the hydrogen atom, <strong>multi-electron problems do not separate</strong> and therefore do not admit exact analytical solutions.</p></li>
+<li><p><strong>Spin and antisymmetry</strong> impose strict constraints on allowed electronic wavefunctions.</p></li>
 </ul>
 </div>
 <section id="orbital-approximation">
 <h2>Orbital Approximation<a class="headerlink" href="#orbital-approximation" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/HvsHe.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/HvsHe.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The difference between H and He Hamiltonians that makes the probelm unsolvable analytically.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <ul class="simple">
-<li><p>Unlike H atom for <strong>many-electron atoms</strong>, the Hamiltoninan and wavefunction depends on coordinates of multiple electonrs which can not be separated. Hence problem does not admit exact solution.</p></li>
-<li><p>We can, however approximate multi-electorn wavefunction as product of <strong>single electron wavefunctions called Orbitals.</strong></p></li>
-<li><p>Orbitals are determined computationally by choosing trial wavefunctions and finding parameters via variational method.</p></li>
+<li><p>For multi-electron atoms, the Hamiltonian depends on the coordinates of all electrons. The coordinates <strong>cannot be separated</strong>, so the Schrödinger equation is not analytically solvable.</p></li>
+<li><p>A practical approximation is to represent the wavefunction as a product of <strong>single-electron orbitals</strong>:</p>
+<ul>
+<li><p>These orbitals are obtained computationally (e.g., variationally).</p></li>
+</ul>
+</li>
 </ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>Orbital Approximation</strong></p>
+<p class="admonition-title">Orbital Approximation</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi(r_1, r_2, \ldots, r_n) \approx \phi_1(r_1)\phi_2(r_2)\ldots\phi_n(r_n)
+\Psi(r_1, r_2, \ldots, r_n) \approx \phi_1(r_1)\phi_2(r_2)\cdots\phi_n(r_n)
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Psi\)</span> multielectron wavefunction describing probabilities of finding electrons in different parts of space.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi_j(r_n)\)</span> <strong>Atomic ortbital</strong> <span class="math notranslate nohighlight">\(n\)</span> housing an electron <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Psi\)</span> is the multi-electron wavefunction.</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\(\phi_i(r)\)</span> is an <strong>atomic orbital</strong> occupied by one electron.</p></li>
 </ul>
 </div>
+</section>
 <section id="helium-wavefunction">
-<h3>Helium wavefunction<a class="headerlink" href="#helium-wavefunction" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>For instance for the helium atom we first the orbital approximation:</p></li>
-</ul>
+<h2>Helium Wavefunction<a class="headerlink" href="#helium-wavefunction" title="Permalink to this heading">#</a></h2>
+<p>For helium, the simplest guess would be</p>
 <div class="math notranslate nohighlight">
-\[\Psi(r_1, r_2) \approx \phi_1(r_1)\phi_2(r_2)\]</div>
-<ul class="simple">
-<li><p>But there are are some big problems with this wavefunction.</p></li>
-</ul>
+\[
+\Psi(r_1, r_2) \approx \phi_1(r_1)\phi_2(r_2).
+\]</div>
+<p>This form, however, suffers from three fundamental issues:</p>
 <ol class="arabic simple">
-<li><p><strong>Electrons are fundmanentaly indistinguishable</strong> Yet wavefunction says electron one is housed in orbtial 1 and electron 2 in orbtial 2.</p></li>
-<li><p><strong>Spin component of wavefunction is missing</strong> We will see that spins put some constrains on the spatial part of wavefunction.</p></li>
-<li><p><strong>Electron-electron correlations</strong> are ignored. That is each electron is “unaware of what the others are doing!. This can lead to quantiatively poor prediction of electronic energies. But here are techniques to account for correlation.</p></li>
+<li><p><strong>Indistinguishability</strong>
+Electrons are identical; the wavefunction cannot assign “electron 1” to “orbital 1” and “electron 2” to “orbital 2.”</p></li>
+<li><p><strong>Missing spin information</strong>
+The spatial wavefunction must combine with a spin function so that the <strong>total wavefunction is antisymmetric</strong>.</p></li>
+<li><p><strong>Neglect of electron–electron correlation</strong>
+The product form assumes electrons move independently, which leads to quantitative errors in energies.</p></li>
 </ol>
 </section>
-<section id="issue-1-indistinguishability-and-antisymmetry-requirement">
-<h3>Issue 1: Indistinguishability and Antisymmetry Requirement<a class="headerlink" href="#issue-1-indistinguishability-and-antisymmetry-requirement" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Subatomic particles are indistingusihable</strong> this means wavefunction square must remain the same if we swap coordnates of those “particles”. E.g</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[|\psi(r_1, r_2)|^2 = |\psi(r_2, r_1)|^2\]</div>
-<div class="math notranslate nohighlight">
-\[\psi(r_1, r_2) = \pm \psi(r_2, r_1)\]</div>
-<ul class="simple">
-<li><p>This leads to two possibilities for wavefunction to be symmetric or antisymmetric. Which one to pick?</p></li>
-<li><p>Electrons are fermions; Pauli have found that only by requiring <strong>wavefunction of electrons must to be antisymmetric</strong> (under interchange of electrons) does one get results in full agreement with experiments. We acept this as another QM postulate.</p></li>
-</ul>
-<div class="important admonition">
-<p class="admonition-title"><strong>antisymmetry of electronic wavefunctions</strong></p>
+<section id="issue-1-indistinguishability-and-antisymmetry">
+<h2>Issue 1: Indistinguishability and Antisymmetry<a class="headerlink" href="#issue-1-indistinguishability-and-antisymmetry" title="Permalink to this heading">#</a></h2>
+<p>Particles such as electrons are indistinguishable. Therefore the probability density must remain unchanged upon interchange:</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi(\ldots, r_m, \ldots, r_n, \ldots) = -\Psi(\ldots, r_n, \ldots, r_m, \ldots)
+|\Psi(r_1,r_2)|^2 = |\Psi(r_2,r_1)|^2,
+\]</div>
+<p>which implies</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi(r_1,r_2) = \pm \Psi(r_2,r_1).
+\]</div>
+<p>Electrons are <strong>fermions</strong>, and Pauli’s principle dictates that their total wavefunction must be <strong>antisymmetric</strong>:</p>
+<div class="important admonition">
+<p class="admonition-title">Antisymmetry Requirement</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi(\ldots, r_m, \ldots, r_n, \ldots)
+= -\Psi(\ldots, r_n, \ldots, r_m, \ldots).
 \]</div>
 </div>
-<ul class="simple">
-<li><p><strong>How to make a function antisymmetric</strong> As an example let u take a function with two arguments <span class="math notranslate nohighlight">\(f(x,y)\)</span> and make it symmetric and antisymmetric with respect to arguments <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p></li>
-<li><p><strong>Symmetrized functions:</strong></p></li>
-</ul>
+<p>A simple way to generate symmetric/antisymmetric forms for a two-variable function <span class="math notranslate nohighlight">\(f(x,y)\)</span>:</p>
+<ul>
+<li><p>Symmetric:</p>
 <div class="math notranslate nohighlight">
 \[
-g_+(x, y) = f(x, y) + f(y, x)
-\]</div>
-<ul class="simple">
-<li><p><strong>Antisymmetrized functions:</strong></p></li>
-</ul>
+  g_+(x,y) = f(x,y) + f(y,x)
+  \]</div>
+</li>
+<li><p>Antisymmetric:</p>
 <div class="math notranslate nohighlight">
 \[
-g_-(x, y) = f(x, y) - f(y, x)
-\]</div>
-<ul class="simple">
-<li><p>For Helium we can fix one of the issues by making wavefunction antisymmetric</p></li>
+  g_-(x,y) = f(x,y) - f(y,x)
+  \]</div>
+</li>
 </ul>
+<p>For helium, the antisymmetrized spatial wavefunction is</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi(r_1, r_2) \propto \phi_1(r_1)\phi_2(r_2) - \phi_1(r_2)\phi_2(r_1)
+\Psi(r_1,r_2) \propto \phi_1(r_1)\phi_2(r_2) - \phi_1(r_2)\phi_2(r_1).
 \]</div>
 </section>
 <section id="issue-2-spin-requirement">
-<h3>Issue 2: Spin Requirement<a class="headerlink" href="#issue-2-spin-requirement" title="Permalink to this heading">#</a></h3>
+<h2>Issue 2: Spin Requirement<a class="headerlink" href="#issue-2-spin-requirement" title="Permalink to this heading">#</a></h2>
+<p>Electrons have two spin states, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>. The <strong>total wavefunction</strong> (spatial × spin) must be antisymmetric:</p>
 <ul class="simple">
-<li><p>Electrons have spin <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>. Spin factors must be included in the wavefunction.</p></li>
-<li><p>And depending on their symmetry cordinate part can be iether symmetric or anti-symmetric to make <strong>the total wavefunction anti-symmetric</strong></p></li>
+<li><p>If spatial part is <strong>symmetric</strong>, spin part must be <strong>antisymmetric</strong>.</p></li>
+<li><p>If spatial part is <strong>antisymmetric</strong>, spin part must be <strong>symmetric</strong>.</p></li>
 </ul>
+<p>Possible two-electron spin combinations:</p>
+<ul>
+<li><p>Symmetric:</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi(r_1, r_2) \propto \phi_1(r_1)\phi_2(r_2)\alpha(1)\beta(2)
+  \alpha(1)\alpha(2)
+  \]</div>
+<div class="math notranslate nohighlight">
+\[
+  \beta(1)\beta(2)
+  \]</div>
+<div class="math notranslate nohighlight">
+\[
+  \frac{1}{\sqrt{2}}\left[\alpha(1)\beta(2) + \alpha(2)\beta(1)\right]
+  \]</div>
+</li>
+<li><p>Antisymmetric:</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{1}{\sqrt{2}}\left[\alpha(1)\beta(2) - \alpha(2)\beta(1)\right]
+  \]</div>
+</li>
+</ul>
+<section id="pauli-exclusion-principle">
+<h3>Pauli Exclusion Principle<a class="headerlink" href="#pauli-exclusion-principle" title="Permalink to this heading">#</a></h3>
+<p>A key result of antisymmetry is the <strong>Pauli Exclusion Principle</strong>:</p>
+<blockquote>
+<div><p><strong>No two electrons can possess identical sets of quantum numbers.</strong></p>
+</div></blockquote>
+<p>For helium’s ground state (<span class="math notranslate nohighlight">\(1s^2\)</span>), the properly antisymmetrized total wavefunction is</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi = \frac{1}{\sqrt{2}}
+\left[1s(1)1s(2) + 1s(2)1s(1)\right]
+\left[\alpha(1)\beta(2) - \alpha(2)\beta(1)\right].
 \]</div>
 </section>
-<section id="pauli-exclusion-principle">
-<h3>Pauli exclusion principle<a class="headerlink" href="#pauli-exclusion-principle" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Our previous wavefunction for He atom did not include electron spin. For two electrons, the spin functions can be written as products:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\alpha(1)\alpha(2)\textnormal{, }\beta(1)\alpha(2)\textnormal{, }\alpha(1)\beta(2)\textnormal{ or  }\beta(1)\beta(2)}\]</div>
-<ul class="simple">
-<li><p>Where, for example, <span class="math notranslate nohighlight">\(\alpha(1)\)</span> indicates that electron 1 has spin <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
-<li><p><strong>Electrons are indistinguishable</strong> and therefore it makes no sense to try to use the two middle terms alone but combine them as:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\alpha(1)\alpha(2)\textnormal{ (symmetric)}}\]</div>
-<div class="math notranslate nohighlight">
-\[{\beta(1)\beta(2)\textnormal{ (symmetric)}}\]</div>
-<div class="math notranslate nohighlight">
-\[{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) + \alpha(2)\beta(1)\right)\textnormal{ (symmetric)}}\]</div>
-<div class="math notranslate nohighlight">
-\[{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)\textnormal{ (antisymmetric)}}\]</div>
-<ul class="simple">
-<li><p>An important consequence of anti-symmetry requirement is <strong>Pauli Exclusion Principle: No two electrons can have exactly the same quantum numbers.</strong></p></li>
-<li><p>In order to construct a complete wavefunction for the ground state of He atom, we need to tag on the spin part to the wavefunction making sure that total wavefunction is anti-sysmetric</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\psi = \frac{1}{\sqrt{2}}[1s(1)1s(2)+1s(2)1s(1)]\times\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
 </section>
 <section id="slater-determinants">
-<h3>Slater Determinants<a class="headerlink" href="#slater-determinants" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>A generalization of antisimmetric wavefunctions for N electrons was proposed by Slater in 1929:</p></li>
-<li><p>The Slater determinant automatically ensures that the total wavefunction is antisymmetric. Note that from the mathematical point of view the antisymmetry requirement restricts the allowed solutions to the Schr”odinger equation. The lowest energy solutions are typically symmetric and the antisymmetric states correspond to higher energy.</p></li>
-</ul>
+<h2>Slater Determinants<a class="headerlink" href="#slater-determinants" title="Permalink to this heading">#</a></h2>
+<p>Slater introduced a compact representation of antisymmetric wavefunctions:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}{
-\psi(r_1,...,r_n) = \frac{1}{\sqrt{n!}}
+\[
+\Psi(r_1,\ldots, r_n)
+= \frac{1}{\sqrt{n!}}
 \begin{vmatrix}
-1s(1)\alpha(1) &amp; 1s(1)\beta(1) &amp; 2s(1)\alpha(1) &amp; ... \\
-1s(2)\alpha(2) &amp; 1s(2)\beta(2) &amp; 2s(2)\alpha(2) &amp; ... \\
-1s(3)\alpha(3) &amp; ... &amp; ... &amp; ...\\
-... &amp; ... &amp; ... &amp; ...\\
-\end{vmatrix}
-}\end{split}\]</div>
-<ul class="simple">
-<li><p>However, one must be careful with terminology here because only the antisymmetric states exist for electrons (Fermions) and as such they are the lowest energy (ground state) solutions for them. Particles that have symmetric wavefunctions are called Bosons (for example, <span class="math notranslate nohighlight">\(^4\)</span>He atoms).</p></li>
-<li><p>In general, particles with half-integral spin (<span class="math notranslate nohighlight">\(s = \frac{1}{2}, \frac{3}{2}, ...\)</span>) are Fermions (Fermi-Dirac statistics) and particles with integral spin (<span class="math notranslate nohighlight">\(s = 0, 1, 2, ...\)</span>) are Bosons (Bose-Einstein statistics). Note that electron spin enters the Hamiltonian only when external fields are present or when {spin-orbit} interaction is included (will be discussed later).</p></li>
-<li><p>For the ground state of He the Slater determinant is:</p></li>
-</ul>
+\chi_1(1) &amp; \chi_2(1) &amp; \cdots \
+\chi_1(2) &amp; \chi_2(2) &amp; \cdots \
+\vdots &amp; \vdots &amp; \ddots
+\end{vmatrix},
+\]</div>
+<p>where each <span class="math notranslate nohighlight">\(\chi_i\)</span> is an <strong>orbital × spin</strong> function. For helium ground state:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}{
-\psi(r_1,r_2) = \frac{1}{\sqrt{2}}\begin{vmatrix}
-1s(1)\alpha(1) &amp; 1s(1)\beta(1)\\
-1s(2)\alpha(2) &amp; 1s(2)\beta(2)\\
-\end{vmatrix}
-}\end{split}\]</div>
-<div class="note dropdown admonition">
-<p class="admonition-title"><strong>Slater determinant for ground state of Li</strong></p>
-<ul class="simple">
-<li><p>For helium atom the singlet/triplet consideration is only relevant for the excited states but for atoms with more electrons this may have to be considered in order to determine the ground state.</p></li>
-<li><p>When more electrons are added, the wavefunction becomes more complicated. For example, the Slater determinant for Li can be written as:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\psi = \frac{1}{\sqrt{6}}
+\[
+\Psi = \frac{1}{\sqrt{2}}
 \begin{vmatrix}
-1s(1)\alpha(1) &amp; 1s(1)\beta(1) &amp; 2s(1)\alpha(1)\\
-1s(2)\alpha(2) &amp; 1s(2)\beta(2) &amp; 2s(2)\alpha(2)\\
-1s(3)\alpha(3) &amp; 1s(3)\beta(3) &amp; 2s(3)\alpha(3)\\
-\end{vmatrix}
-}\end{split}\]</div>
-<ul class="simple">
-<li><p>Note that the last column could have been labeled as <span class="math notranslate nohighlight">\(\beta\)</span> as well (degeneracy).</p></li>
-</ul>
-</div>
-<div class="note admonition">
-<p class="admonition-title"><strong>Example</strong></p>
-<p>Show that the Slater determinant in for the ground state helium atom is an eigenfunction of the total spin operator <span class="math notranslate nohighlight">\(\hat{S}_{z,tot} = \hat{S}_{z_1} + \hat{S}_{z_2}\)</span>, where 1 and 2 refer to the two electrons.</p>
-</div>
-<div class="note dropdown admonition">
-<p class="admonition-title"><strong>solution</strong></p>
-<ul class="simple">
-<li><p>irst we recall how <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> operates on electron spin as follows:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\hat{S}_z|\alpha\rangle = +\frac{\hbar}{2}|\alpha\rangle\textnormal{ and }\hat{S}_z|\beta\rangle = -\frac{\hbar}{2}|\beta\rangle\]</div>
-<ul class="simple">
-<li><p>Next, we expand the Slater determinant:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\psi = \overbrace{1s(1)1s(2)}^{\textnormal{symmetric}}\times\overbrace{\frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}^{\textnormal{antisymmetric}}\]</div>
-<p>Operate on this by <span class="math notranslate nohighlight">\(\hat{S}_{z_1}\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_{z_2}\)</span>. They operate only on the spin-part and on the corresponding electron only:</p>
-<div class="math notranslate nohighlight">
-\[\hat{S}_{z_1}|\psi\rangle = |1s(1)1s(2)\rangle\times\frac{1}{\sqrt{2}}\left(\frac{\hbar}{2}|\alpha(1)\beta(2)\rangle + \frac{\hbar}{2}|\beta(1)\alpha(2)\rangle\right)\]</div>
-<div class="math notranslate nohighlight">
-\[\hat{S}_{z_2}|\psi\rangle = |1s(1)1s(2)\rangle\times\frac{1}{\sqrt{2}}\left(-\frac{\hbar}{2}|\alpha(1)\beta(2)\rangle - \frac{\hbar}{2}|\beta(1)\alpha(2)\rangle\right)\]</div>
-<div class="math notranslate nohighlight">
-\[\Rightarrow\textnormal{ }\hat{S}_{z,tot}|\psi\rangle = \left(\hat{S}_{z_1} + \hat{S}_{z_2}\right)|\psi\rangle = \hat{S}_{z_1}|\psi\rangle + \hat{S}_{z_2}|\psi\rangle = 0\]</div>
-<ul class="simple">
-<li><p>Note that the two terms are equal in magnitude but have opposite signs and they cancel. Thus the eigenvalue of the <span class="math notranslate nohighlight">\(z\)</span>-component of the total spin is zero. It can also be shown that <span class="math notranslate nohighlight">\(S^2 = 0\)</span>. This kind of electronic configuration is called a singlet state (i.e. the two electrons have opposite spins).</p></li>
-</ul>
-</div>
+1s(1)\alpha(1) &amp; 1s(1)\beta(1) \
+1s(2)\alpha(2) &amp; 1s(2)\beta(2)
+\end{vmatrix}.
+\]</div>
 </section>
-<section id="singlet-vs-triplet-states-of-he-atom">
-<h3>Singlet vs Triplet states of He atom<a class="headerlink" href="#singlet-vs-triplet-states-of-he-atom" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Previously we had both electrons on <span class="math notranslate nohighlight">\(1s\)</span> orbital with opposite spins. If the electrons reside on two different orbitals, for example, <span class="math notranslate nohighlight">\(1s\)</span> and <span class="math notranslate nohighlight">\(2s\)</span>, we would have an excited helium atom. Such state can be created experimentally by a suitable high-energy process (laser induced break-down etc.).</p></li>
-<li><p>The spatial part of the wavefunction is <span class="math notranslate nohighlight">\(\psi = 1s(1)2s(2)\)</span>. It could as well be <span class="math notranslate nohighlight">\(\psi = 2s(1)1s(2)\)</span> as we cannot distinguish the electrons from each other. Obviously we must form a linear combination of these so that both electrons appear identical (two possibilities):</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\psi_{sym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) + 1s(2)2s(1)\right)\textnormal{ (symmetric)}}\]</div>
-<div class="math notranslate nohighlight">
-\[{\psi_{asym} = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 1s(2)2s(1)\right)\textnormal{ (antisymmetric)}}\]</div>
-<ul class="simple">
-<li><p>Note that these two states may have different energies. Next, we consider adding the spin part to these wavefunctions. Because the electrons are on two different orbitals, we have the following four possibilities:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\left.\begin{matrix}
-\phi_1 = \alpha(1)\alpha(2)\textnormal{ (symmetric)}\\
-\phi_2 = \beta(1)\beta(2)\textnormal{ (symmetric)}\\
-\phi_3 = \frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) + \beta(1)\alpha(2)\right)\textnormal{ (symmetric)}\\
-\end{matrix}\right\rbrace\textnormal{ Triplet state}
-\end{split}\]</div>
+<section id="singlet-and-triplet-states-of-helium">
+<h2>Singlet and Triplet States of Helium<a class="headerlink" href="#singlet-and-triplet-states-of-helium" title="Permalink to this heading">#</a></h2>
+<p>For an excited configuration (e.g., <span class="math notranslate nohighlight">\(1s,2s\)</span>), the symmetric and antisymmetric spatial combinations are:</p>
 <div class="math notranslate nohighlight">
 \[
-\left.\phi_4 = \frac{1}{\sqrt{2}}\left(\alpha(1)\beta(2) - \beta(1)\alpha(2)\right)\right\rbrace\textnormal{ Singlet state}
+\Psi_{\text{sym}} = \frac{1}{\sqrt{2}}\left[1s(1)2s(2) + 1s(2)2s(1)\right],
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Psi_{\text{antisym}} = \frac{1}{\sqrt{2}}\left[1s(1)2s(2) - 1s(2)2s(1)\right].
+\]</div>
+<p>Combining with spin symmetries:</p>
+<ul class="simple">
+<li><p>Triplet (symmetric spin)</p></li>
+<li><p>Singlet (antisymmetric spin)</p></li>
+</ul>
+<section id="action-of-spin-operators">
+<h3>Action of Spin Operators<a class="headerlink" href="#action-of-spin-operators" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Triplet:</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{S}_z|\psi_1\rangle = +\hbar|\psi_1\rangle,
+\qquad
+\hat{S}_z|\psi_2\rangle = 0,
+\qquad
+\hat{S}_z|\psi_3\rangle = -\hbar|\psi_3\rangle,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{S}^2|\psi_i\rangle = 2\hbar^2|\psi_i\rangle.
 \]</div>
 <ul class="simple">
-<li><p>Before we can combine the spatial and spin wavefunctions, we must consider the symmetries of these functions. Remember that the total wavefunction must be antisymmetric. Thus the allowed combinations are: symmetric (spatial) <span class="math notranslate nohighlight">\(\times\)</span> antisymmetric (spin) or antisymmetric (spatial) <span class="math notranslate nohighlight">\(\times\)</span> symmetric (spin).</p></li>
-<li><p><strong>Triplet state of He</strong></p></li>
+<li><p><strong>Singlet:</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\psi_1 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\alpha(1)\alpha(2)}\]</div>
-<div class="math notranslate nohighlight">
-\[{\psi_2 = \frac{1}{2}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\left(\alpha(1)\beta(2) + \beta(1)\alpha(2)\right)}\]</div>
-<div class="math notranslate nohighlight">
-\[{\psi_3 = \frac{1}{\sqrt{2}}\left(1s(1)2s(2) - 2s(1)1s(2)\right)\beta(1)\beta(2)}\]</div>
-<ul class="simple">
-<li><p><strong>Singlet state of He</strong></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[{\psi_4 = \frac{1}{2}\left(1s(1)2s(2) + 2s(1)1s(2)\right)\left(\alpha(1)\beta(2) - \alpha(2)\beta(1)\right)}\]</div>
+\[
+\hat{S}_z|\psi_4\rangle = 0,
+\qquad
+\hat{S}^2|\psi_4\rangle = 0.
+\]</div>
 </section>
-<section id="action-of-spin-operator-on-singlet-and-triplet-state">
-<h3>Action of spin operator on Singlet and Triplet state<a class="headerlink" href="#action-of-spin-operator-on-singlet-and-triplet-state" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Singlet and triplet states have been named after the number of spin degenerate levels they posses. The total spin <span class="math notranslate nohighlight">\(\hat{S}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> operators for these states yield:</p></li>
-</ul>
+<section id="energies-of-multi-electron-states">
+<h3>Energies of Multi-Electron States<a class="headerlink" href="#energies-of-multi-electron-states" title="Permalink to this heading">#</a></h3>
+<p>The Hamiltonian is</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}{
-\textnormal{Triplet: }\left\lbrace\begin{matrix}
-\hat{S}_z|\psi_1\rangle = +\hbar|\psi_1\rangle\textnormal{, }\hat{S}_z|\psi_2\rangle = 0|\psi_2\rangle\textnormal{, }\hat{S}_z|\psi_3\rangle = -\hbar|\psi_3\rangle\\
-\hat{S}^2|\psi_i\rangle = 2\hbar^2|\psi_i\rangle\textnormal{ where }i=1,2,3.\\
-\end{matrix}\right.
-}\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}{
-\textnormal{Singlet: }\left\lbrace\begin{matrix}
-\hat{S}_z|\psi_4\rangle = 0|\psi_4\rangle\\
-\hat{S}^2|\psi_4\rangle = 0|\psi_4\rangle\\
-\end{matrix}\right.
-}\end{split}\]</div>
+\[
+\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_{12},
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\hat{H}_{12}\)</span> corresponding to electron–electron repulsion.</p>
 </section>
-</section>
-<section id="computing-total-energy-with-multi-electron-wavefunctions">
-<h2>Computing total energy with multi-electron wavefunctions<a class="headerlink" href="#computing-total-energy-with-multi-electron-wavefunctions" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>The total energy of a system of two electrons includes contributions from both Coulomb and exchange interactions. For singlet and triplet states, we use specific forms of the wavefunctions to evaluate these terms.</p></li>
-</ul>
-<ol class="arabic">
-<li><p><strong>Hamiltonian</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_{12}
-   \]</div>
-<p>where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat{H}_1 = -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{Ze^2}{4\pi\epsilon_0 r_1}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{H}_2 = -\frac{\hbar^2}{2m}\nabla_2^2 - \frac{Ze^2}{4\pi\epsilon_0 r_2}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{H}_{12} = \frac{e^2}{4\pi\epsilon_0 r_{12}}\)</span> (electron-electron repulsion)</p></li>
-</ul>
-</li>
-<li><p><strong>Wavefunctions</strong>:</p>
-<ul>
-<li><p><strong>Singlet State</strong> (symmetric spatial, antisymmetric spin):</p>
-<div class="math notranslate nohighlight">
-\[
-     \Psi_{\text{singlet}}(r_1, r_2) = \frac{1}{\sqrt{2}} \left[\phi_1(r_1)\phi_2(r_2) + \phi_1(r_2)\phi_2(r_1)\right] \cdot \frac{1}{\sqrt{2}} \left[\alpha(1)\beta(2) - \beta(1)\alpha(2)\right]
-     \]</div>
-</li>
-<li><p><strong>Triplet State</strong> (antisymmetric spatial, symmetric spin):</p>
-<div class="math notranslate nohighlight">
-\[
-     \Psi_{\text{triplet}}(r_1, r_2) = \frac{1}{\sqrt{2}} \left[\phi_1(r_1)\phi_2(r_2) - \phi_1(r_2)\phi_2(r_1)\right] \cdot \text{spin combinations (e.g., } \alpha(1)\alpha(2))
-     \]</div>
-</li>
-</ul>
-</li>
-<li><p><strong>Energy Expression</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   E = \int \Psi^*(r_1, r_2) \hat{H} \Psi(r_1, r_2) \, d\tau_1 d\tau_2
-   \]</div>
-<div class="math notranslate nohighlight">
-\[
-   E = \langle \Psi | \hat{H}_1 | \Psi \rangle + \langle \Psi | \hat{H}_2 | \Psi \rangle + \langle \Psi | \hat{H}_{12} | \Psi \rangle
-   \]</div>
-</li>
-</ol>
-<section id="coulomb-and-exchange-contributions">
-<h3>Coulomb and Exchange Contributions<a class="headerlink" href="#coulomb-and-exchange-contributions" title="Permalink to this heading">#</a></h3>
+<section id="useful-integrals">
+<h3>Useful Integrals<a class="headerlink" href="#useful-integrals" title="Permalink to this heading">#</a></h3>
 <div class="important admonition">
-<p class="admonition-title"><strong>single electron energy <span class="math notranslate nohighlight">\(I\)</span></strong></p>
+<p class="admonition-title"><strong>Single-electron energy</strong></p>
 <div class="math notranslate nohighlight">
 \[
-I(a) = \int \phi_a^*(r) \left[ -\frac{\hbar^2}{2m} \nabla^2 - \frac{Z e^2}{4\pi \epsilon_0 r} \right] \phi_a(r) \, d\tau
+I(a) = \int \phi_a^*(r)
+\left[
+-\frac{\hbar^2}{2m}\nabla^2
+- \frac{Ze^2}{4\pi\epsilon_0 r}
+\right]
+\phi_a(r)\, d\tau
 \]</div>
 </div>
 <div class="important admonition">
-<p class="admonition-title"><strong>Coulomb Integral (<span class="math notranslate nohighlight">\(J\)</span>)</strong></p>
+<p class="admonition-title"><strong>Coulomb Integral</strong></p>
 <div class="math notranslate nohighlight">
 \[
-J_{ij} = \int |\phi_i(r_1)|^2 \frac{e^2}{4\pi\epsilon_0 r_{12}} |\phi_j(r_2)|^2 \, d^3r_1 \, d^3r_2
+J_{ij} =
+\int |\phi_i(r_1)|^2
+\frac{e^2}{4\pi\epsilon_0 r_{12}}
+|\phi_j(r_2)|^2
+, d^3r_1, d^3r_2,
 \]</div>
+<p>always <strong>positive</strong>.</p>
 </div>
-<ul class="simple">
-<li><p>Describes <strong>direct electron-electron repulsion</strong> and is always positive
-$<span class="math notranslate nohighlight">\(
-J&gt;0
-\)</span>$</p></li>
-</ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>Exchange Integral (<span class="math notranslate nohighlight">\(K\)</span>)</strong></p>
+<p class="admonition-title"><strong>Exchange Integral</strong></p>
 <div class="math notranslate nohighlight">
 \[
-K_{ij} = \int \phi_i^*(r_1)\phi_j^*(r_2) \frac{e^2}{4\pi\epsilon_0 r_{12}} \phi_j(r_1)\phi_i(r_2) \, d^3r_1 \, d^3r_2
+K_{ij} =
+\int \phi_i^*(r_1)\phi_j^*(r_2)
+\frac{e^2}{4\pi\epsilon_0 r_{12}}
+\phi_j(r_1)\phi_i(r_2),
+d^3r_1, d^3r_2.
 \]</div>
+<p>Positive, but leads to <strong>energy lowering</strong> for triplet states.</p>
 </div>
-<ul class="simple">
-<li><p>Purely quantum terms. Arises because electrons with parallel spins (in a triplet state) avoid occupying the same spatial region.</p></li>
-<li><p>This reduces their Coulomb repulsion, effectively creating a stabilizing effect even though <span class="math notranslate nohighlight">\(K\)</span> tself is positive</p></li>
-</ul>
+</section>
+<section id="energies-of-1s2s-singlet-and-triplet">
+<h3>Energies of <span class="math notranslate nohighlight">\(1s2s\)</span> Singlet and Triplet<a class="headerlink" href="#energies-of-1s2s-singlet-and-triplet" title="Permalink to this heading">#</a></h3>
+<p>Triplet (antisymmetric spatial):</p>
 <div class="math notranslate nohighlight">
 \[
-K&gt;0
+E_{\text{triplet}} = I(1s) + I(2s) + J(1s,2s) - K(1s,2s)
 \]</div>
-</section>
-<section id="ground-state-of-he-1s-2">
-<h3>Ground state of He, <span class="math notranslate nohighlight">\(1s^2\)</span><a class="headerlink" href="#ground-state-of-he-1s-2" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Denoting spin part by <span class="math notranslate nohighlight">\(\sigma_{s, ms}\)</span> compact notation where <span class="math notranslate nohighlight">\(s\)</span> denotes total spin and <span class="math notranslate nohighlight">\(m_s\)</span> possible spin projections we have the triplet and singlet state wavefunctions:</p></li>
-</ul>
+<p>Singlet (symmetric spatial):</p>
 <div class="math notranslate nohighlight">
 \[
-\Psi(1, 2) = \frac{1}{\sqrt{2}} \psi_{1s}(1)\psi_{1s}(2) \cdot \sigma_{0,0}(1, 2)
+E_{\text{singlet}} = I(1s) + I(2s) + J(1s,2s) + K(1s,2s)
 \]</div>
-<p>Plugging in symmetric wavefunction into energy expression we get</p>
-<div class="math notranslate nohighlight">
-\[
-E = I(1s) + I(2s) +J(1s,1s)
-\]</div>
+<p>Thus the triplet state is <strong>lower in energy</strong> due to exchange stabilization.</p>
 </section>
-<section id="which-excited-state-should-we-pick">
-<h3>Which Excited State should we pick?<a class="headerlink" href="#which-excited-state-should-we-pick" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="../_images/He_exc1.png" /></p>
 </section>
-<section id="spin-configuration-matters">
-<h3>Spin configuration matters!<a class="headerlink" href="#spin-configuration-matters" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="../_images/He_exc2.png" /></p>
 </section>
-<section id="excited-states-of-helium-1s2s">
-<h3>Excited States of Helium <span class="math notranslate nohighlight">\(1s2s\)</span><a class="headerlink" href="#excited-states-of-helium-1s2s" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
-\Psi_+(1, 2) = \frac{1}{\sqrt{2}} \left[ \psi_{1s}(1)\psi_{2s}(2) + \psi_{2s}(1)\psi_{1s}(2) \right] \sigma_{0,0}(1, 2)
-\]</div>
-<ul class="simple">
-<li><p>The three triplet states are given by:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\Psi_-(1, 2) = \frac{1}{\sqrt{2}} \left[ \psi_{1s}(1)\psi_{2s}(2) - \psi_{2s}(1)\psi_{1s}(2) \right] 
-\]</div>
-<ul class="simple">
-<li><p>with three spin functions: <span class="math notranslate nohighlight">\(\{\sigma_{1,1}(1, 2), \sigma_{1,0}(1, 2), \sigma_{1,-1}(1, 2)\}\)</span></p></li>
-<li><p>Next we plug in the singlet and triplet states into energy expression:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[E_{\pm} = \langle \Psi_{\pm}(1, 2) |\hat{H}|\Psi_{\pm}(1, 2)\rangle\]</div>
-<ul>
-<li><p>The <strong>triplet sate</strong> gets stabilized becasue of the exchange integral</p>
-<div class="math notranslate nohighlight">
-\[
-  E_{\text{triplet}} = I(1s) + I(2s) + J(1s, 2s) - K(1s, 2s)
-  \]</div>
-</li>
-<li><p>The <strong>singlet state</strong>, of He <span class="math notranslate nohighlight">\(1s2s\)</span> configuration get destabilized because of the exchange integral</p>
-<div class="math notranslate nohighlight">
-\[
-  E_{\text{singlet}} = I(1s) + I(2s) + J(1s, 2s) + K(1s, 2s)
-  \]</div>
-</li>
-</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="hunds-rule-and-the-aufbau-principle">
+<h1>Hund’s Rule and the Aufbau Principle<a class="headerlink" href="#hunds-rule-and-the-aufbau-principle" title="Permalink to this heading">#</a></h1>
+<section id="aufbau-principle">
+<h2>Aufbau Principle<a class="headerlink" href="#aufbau-principle" title="Permalink to this heading">#</a></h2>
+<p>Electrons fill orbitals in order of increasing energy.</p>
 </section>
-<section id="hunds-rule-and-aufbau-principle">
-<h3>Hund’s rule and Aufbau principle<a class="headerlink" href="#hunds-rule-and-aufbau-principle" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/aufbau.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/aufbau.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The Aufbau principle dictates how electron configurations are built starting from the lowest energy orbitals and moving to higher energy orbitals.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p><strong>Definition of Aufbau Principle</strong>: The Aufbau principle (German for “building up”) describes the process of filling atomic orbitals with electrons in a stepwise manner, starting from the lowest energy orbitals and moving to higher energy orbitals.</p></li>
-<li><p><strong>Pauli Exclusion Principle</strong>: The Pauli Exclusion Principle states that no two electrons in an atom can have the same set of four quantum numbers (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(m_l\)</span>, <span class="math notranslate nohighlight">\(m_s\)</span>).</p>
-<ul>
-<li><p>As a result, each orbital can hold a maximum of <strong>two electrons</strong> with opposite spins (<span class="math notranslate nohighlight">\(m_s = +\frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(m_s = -\frac{1}{2}\)</span>).</p></li>
-<li><p>This constraint determines how many electrons can occupy each subshell and thus influences how orbitals are filled according to the Aufbau principle.</p></li>
-</ul>
-</li>
-</ul>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/Hund1.png"><img alt="ladd" class="bg-primary mb-1" src="../_images/Hund1.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">The triplet state of the <span class="math notranslate nohighlight">\(1s\,2s\)</span> configuration is lower in energy than the singlet state due to the stabilizing effect of the exchange integral <span class="math notranslate nohighlight">\(K\)</span>. This behavior is almost universal and contributes to <strong>Hund’s Rule</strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p><strong>Hund’s Rules</strong>: Hund’s Rules state that for orbitals of the same energy (degenerate orbitals), electrons fill them singly first with parallel spins before pairing up.</p>
-<ul>
-<li><p>This minimizes electron-electron repulsion and stabilizes the system.</p></li>
-<li><p>When applying the Aufbau principle, this means that electrons will occupy different orbitals within the same subshell before pairing, which is why orbitals like the <strong>p, d, and f</strong> subshells are first filled with one electron in each orbital before pairing occurs.</p></li>
-</ul>
-</li>
-<li><p><strong>Orbital Filling Order</strong>: Orbitals are filled according to the increasing energy sequence: <strong>1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p</strong>, and so on.</p>
-<ul>
-<li><p>The order is determined by the <strong>n + l rule</strong>, with orbitals of lower <strong>n + l</strong> value being filled first. For orbitals with the same <strong>n + l</strong> value, the one with the lower <strong>n</strong> value is filled first.</p></li>
-</ul>
-</li>
-<li><p><strong>Significance in Electronic Configurations</strong>: The Aufbau principle allows for the prediction of <strong>ground-state electronic configurations</strong> for atoms and ions.</p>
-<ul>
-<li><p>For example, the electron configuration of <strong>oxygen (O)</strong> is <strong>1s² 2s² 2p⁴</strong>, which follows the Aufbau principle, Pauli exclusion principle, and Hund’s rule.</p></li>
-<li><p>Deviations from the Aufbau principle, like those seen in <strong>transition metals</strong> (e.g., Cr: [Ar] 3d⁵ 4s¹ instead of [Ar] 3d⁴ 4s²), arise due to additional stability from half-filled and fully filled subshells.</p></li>
-</ul>
-</li>
-<li><p><strong>Role in Chemical Bonding and Reactivity</strong>:  The Aufbau principle explains the arrangement of valence electrons, which are crucial for understanding <strong>bonding, ionization energy, and reactivity</strong>.</p>
-<ul>
-<li><p>For example, the chemical behavior of <strong>alkali metals</strong> (like Na) is directly related to their valence configuration (e.g., <strong>[Ne] 3s¹</strong>) predicted by the Aufbau principle.</p></li>
-</ul>
-</li>
-</ul>
+<section id="id1">
+<h2>Pauli Exclusion Principle<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Each orbital holds at most two electrons with opposite spins.</p>
 </section>
+<section id="hunds-rule">
+<h2>Hund’s Rule<a class="headerlink" href="#hunds-rule" title="Permalink to this heading">#</a></h2>
+<p>Electrons occupy <strong>degenerate orbitals singly with parallel spins</strong> before pairing. This reflects exchange stabilization.</p>
 </section>
 </section>
 
@@ -969,12 +798,12 @@ E = I(1s) + I(2s) +J(1s,1s)
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="note01.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Helium atom</p>
+        <p class="prev-next-title">7. Multielectron atoms</p>
       </div>
     </a>
     <a class="right-next"
@@ -1001,26 +830,32 @@ E = I(1s) + I(2s) +J(1s,1s)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium wavefunction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry-requirement">Issue 1: Indistinguishability and Antisymmetry Requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli exclusion principle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singlet-vs-triplet-states-of-he-atom">Singlet vs Triplet states of He atom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-of-spin-operator-on-singlet-and-triplet-state">Action of spin operator on Singlet and Triplet state</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multi-electron atoms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orbital-approximation">Orbital Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helium-wavefunction">Helium Wavefunction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-indistinguishability-and-antisymmetry">Issue 1: Indistinguishability and Antisymmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-spin-requirement">Issue 2: Spin Requirement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pauli-exclusion-principle">Pauli Exclusion Principle</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-total-energy-with-multi-electron-wavefunctions">Computing total energy with multi-electron wavefunctions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coulomb-and-exchange-contributions">Coulomb and Exchange Contributions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-of-he-1s-2">Ground state of He, <span class="math notranslate nohighlight">\(1s^2\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-excited-state-should-we-pick">Which Excited State should we pick?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-configuration-matters">Spin configuration matters!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-states-of-helium-1s2s">Excited States of Helium <span class="math notranslate nohighlight">\(1s2s\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-aufbau-principle">Hund’s rule and Aufbau principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-determinants">Slater Determinants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singlet-and-triplet-states-of-helium">Singlet and Triplet States of Helium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-of-spin-operators">Action of Spin Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-multi-electron-states">Energies of Multi-Electron States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-integrals">Useful Integrals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-of-1s2s-singlet-and-triplet">Energies of <span class="math notranslate nohighlight">\(1s2s\)</span> Singlet and Triplet</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule-and-the-aufbau-principle">Hund’s Rule and the Aufbau Principle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-principle">Aufbau Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pauli Exclusion Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunds-rule">Hund’s Rule</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
