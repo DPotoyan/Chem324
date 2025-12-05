@@ -173,6 +173,8 @@ $$
 
 
 
+
+
 ## Singlet and Triplet States of Helium
 
 For an excited configuration (e.g., $1s,2s$), the symmetric and antisymmetric spatial combinations are:
@@ -191,6 +193,7 @@ Combining with spin symmetries:
 * Singlet (antisymmetric spin)
 
 
+![](./images/He_exc1.png)
 
 ### Action of Spin Operators
 
@@ -291,12 +294,16 @@ $$
 
 Thus the triplet state is **lower in energy** due to exchange stabilization.
 
+![](./images/He_exc2.png)
 
 
 # Hund’s Rule and the Aufbau Principle
 
-:::{figure-md} markdown-fig <img src="./images/aufbau.png" alt="Aufbau" class="bg-primary mb-1" width="400px">
+:::{figure-md} markdown-fig 
+
+<img src="./images/aufbau.png" alt="Aufbau" class="bg-primary mb-1" width="400px">
 Aufbau filling pattern for atomic orbitals.
+
 :::
 
 ### Aufbau Principle
@@ -311,7 +318,10 @@ Each orbital holds at most two electrons with opposite spins.
 
 Electrons occupy **degenerate orbitals singly with parallel spins** before pairing. This reflects exchange stabilization.
 
-:::{figure-md} markdown-fig <img src="./images/Hund1.png" alt="Hund" class="bg-primary mb-1" width="400px">
+:::{figure-md} markdown-fig 
+
+<img src="./images/Hund1.png" alt="Hund" class="bg-primary mb-1" width="400px">
+
 Exchange stabilization in the triplet state underlies Hund’s rule.
 :::
 
