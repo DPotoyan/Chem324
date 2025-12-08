@@ -505,9 +505,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths-and-limitations"><strong>4. Strengths and Limitations</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths"><strong>Strengths</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations"><strong>Limitations</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary"><strong>5. Summary</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-hartree-fock">Overview of Hartree Fock</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hf-on-example-of-he-atom">HF on example of He atom</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-use-of-hf">Practical use of HF</a></li>
 </ul>
@@ -525,23 +523,32 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hartree-fock">
 <h1>Hartree-Fock<a class="headerlink" href="#hartree-fock" title="Permalink to this heading">#</a></h1>
+<div class="admonition-what-you-need-to-know admonition">
+<p class="admonition-title"><strong>What you need to know</strong></p>
 <ul class="simple">
-<li><p><strong>Objective</strong>: Approximate the electronic structure of atoms and molecules by treating electrons as independent particles in an average field created by all other electrons.</p></li>
-<li><p><strong>Motivation</strong>: The Schrödinger equation for multi-electron systems is too complex to solve exactly.</p></li>
+<li><p>The Schrödinger equation for multi-electron systems cannot be solved exactly due to complex electron–electron interactions.</p></li>
+<li><p>The <strong>Hartree–Fock</strong> method provides an approximate approach by treating each electron as moving in the <strong>average (mean-field) potential</strong> created by all the others.</p></li>
+<li><p>Antisymmetry of the total wavefunction is enforced using <strong>Slater determinants</strong>, introducing the <strong>exchange interaction</strong> — a purely quantum effect with no classical analogue.</p></li>
+<li><p>The solution is obtained <strong>self-consistently</strong>: the orbitals define the mean field, and the mean field determines the orbitals (the SCF procedure).</p></li>
 </ul>
+</div>
 <section id="wavefunction">
 <h2><strong>Wavefunction</strong><a class="headerlink" href="#wavefunction" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>The total wavefunction <span class="math notranslate nohighlight">\(\Psi(1, 2, \cdots, N)\)</span> is approximated as a single Slater determinant to satisfy the Pauli exclusion principle.
-$<span class="math notranslate nohighlight">\( \Psi(1, 2, \cdots, N) = \frac{1}{\sqrt{N!}} \begin{vmatrix} \psi_1(1) &amp; \psi_2(1) &amp; \cdots &amp; \psi_N(1) \\ \psi_1(2) &amp; \psi_2(2) &amp; \cdots &amp; \psi_N(2) \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \psi_1(N) &amp; \psi_2(N) &amp; \cdots &amp; \psi_N(N) \end{vmatrix} \)</span>$</p></li>
+<ul>
+<li><p>The total wavefunction <span class="math notranslate nohighlight">\(\Psi(1, 2, \cdots, N)\)</span> is approximated as a single Slater determinant to satisfy the Pauli exclusion principle.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \Psi(1, 2, \cdots, N) = \frac{1}{\sqrt{N!}} \begin{vmatrix} \psi_1(1) &amp; \psi_2(1) &amp; \cdots &amp; \psi_N(1) \\ \psi_1(2) &amp; \psi_2(2) &amp; \cdots &amp; \psi_N(2) \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \psi_1(N) &amp; \psi_2(N) &amp; \cdots &amp; \psi_N(N) \end{vmatrix}\end{split}\]</div>
+</li>
 </ul>
 </section>
 <section id="hartree-fock-equations">
 <h2><strong>Hartree-Fock Equations</strong><a class="headerlink" href="#hartree-fock-equations" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Each molecular orbital (MO) <span class="math notranslate nohighlight">\(\psi_i\)</span> satisfies the self-consistent field (SCF) equation:
-$<span class="math notranslate nohighlight">\( \hat{F} \psi_i = \varepsilon_i \psi_i \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\hat{F}<span class="math notranslate nohighlight">\( is the **Fock operator** and \)</span>\varepsilon_i$ are the orbital energies.</p></li>
+<ul>
+<li><p>Each molecular orbital (MO) <span class="math notranslate nohighlight">\(\psi_i\)</span> satisfies the self-consistent field (SCF) equation:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{F} \psi_i = \varepsilon_i \psi_i \]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{F}\)</span> is the <strong>Fock operator</strong> and <span class="math notranslate nohighlight">\(\varepsilon_i\)</span> are the orbital energies.</p>
+</li>
 </ul>
 </section>
 <section id="fock-operator">
@@ -596,9 +603,8 @@ where \)</span>\hat{F}<span class="math notranslate nohighlight">\( is the **Foc
 <li><p><strong>Post-Hartree-Fock methods</strong>: Needed for more accurate energy calculations (e.g., MP2, CCSD).</p></li>
 </ul>
 </section>
-</section>
-<section id="summary">
-<h2><strong>5. Summary</strong><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<section id="overview-of-hartree-fock">
+<h3>Overview of Hartree Fock<a class="headerlink" href="#overview-of-hartree-fock" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Hartree-Fock approximates the multi-electron wavefunction as a Slater determinant.</p></li>
 <li><p>The Fock operator accounts for one-electron and mean-field electron-electron interactions.</p></li>
@@ -625,11 +631,11 @@ where \)</span>\hat{F}<span class="math notranslate nohighlight">\( is the **Foc
 </li>
 </ol>
 <p><img alt="" src="../_images/HF1.png" /></p>
+</section>
 <section id="hf-on-example-of-he-atom">
 <h3>HF on example of He atom<a class="headerlink" href="#hf-on-example-of-he-atom" title="Permalink to this heading">#</a></h3>
 <p><img alt="" src="../_images/HF_He.png" /></p>
 <p><img alt="" src="../_images/V_eff.png" /></p>
-<p><img alt="" src="../_images/HF2.png" /></p>
 <p><img alt="" src="../_images/HF_slater.png" /></p>
 <p><img alt="" src="../_images/HF_orb_e.png" /></p>
 </section>
@@ -850,9 +856,7 @@ where \)</span>\hat{F}<span class="math notranslate nohighlight">\( is the **Foc
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths-and-limitations"><strong>4. Strengths and Limitations</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strengths"><strong>Strengths</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations"><strong>Limitations</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary"><strong>5. Summary</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-hartree-fock">Overview of Hartree Fock</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hf-on-example-of-he-atom">HF on example of He atom</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-use-of-hf">Practical use of HF</a></li>
 </ul>
