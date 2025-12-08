@@ -10,8 +10,12 @@
 
 ## Orbital Approximation
 
-:::{figure-md} markdown-fig <img src="./images/HvsHe.png" alt="H vs He" class="bg-primary mb-1" width="500px">
+:::{figure-md} markdown-fig 
+
+<img src="./images/HvsHe.png" alt="H vs He" class="bg-primary mb-1" width="500px">
+
 Difference between the hydrogen and helium Hamiltonians that makes multi-electron atoms analytically unsolvable.
+
 :::
 
 * For multi-electron atoms, the Hamiltonian depends on the coordinates of all electrons. The coordinates **cannot be separated**, so the Schrödinger equation is not analytically solvable.
@@ -106,9 +110,8 @@ Electrons have two spin states, $\alpha$ and $\beta$. The **total wavefunction**
 * If spatial part is **symmetric**, spin part must be **antisymmetric**.
 * If spatial part is **antisymmetric**, spin part must be **symmetric**.
 
-Possible two-electron spin combinations:
 
-* Symmetric:
+* **Symmetric spin part:**
 
   $$
   \alpha(1)\alpha(2)
@@ -122,7 +125,7 @@ Possible two-electron spin combinations:
   \frac{1}{\sqrt{2}}\left[\alpha(1)\beta(2) + \alpha(2)\beta(1)\right]
   $$
 
-* Antisymmetric:
+* **Antisymmetric spin part**:
 
   $$
   \frac{1}{\sqrt{2}}\left[\alpha(1)\beta(2) - \alpha(2)\beta(1)\right]
@@ -146,78 +149,170 @@ $$
 
 
 
-## Slater Determinants
+### Slater Determinants
 
-Slater introduced a compact representation of antisymmetric wavefunctions:
+- Slater introduced a compact and universally applicable way to construct **antisymmetric** many-electron wavefunctions:
+
+  - A determinant expands into an antisymmetric sum of products of one-electron spin-orbitals
+  - Any exchange of two electrons flips the sign of the wavefunction
+  - This guarantees the Pauli exclusion principle is satisfied automatically
+
+:::{admonition} **Slater Determinant**
+:class: important
 
 $$
 \Psi(r_1,\ldots, r_n)
 = \frac{1}{\sqrt{n!}}
 \begin{vmatrix}
-\chi_1(1) & \chi_2(1) & \cdots \
-\chi_1(2) & \chi_2(2) & \cdots \
-\vdots & \vdots & \ddots
-\end{vmatrix},
+\chi_1(1) & \chi_2(1) & \cdots & \chi_n(1) \\
+\chi_1(2) & \chi_2(2) & \cdots & \chi_n(2) \\
+\vdots    & \vdots    & \ddots & \vdots    \\
+\chi_1(n) & \chi_2(n) & \cdots & \chi_n(n)
+\end{vmatrix}
 $$
 
-where each $\chi_i$ is an **orbital × spin** function. For helium ground state:
+* $\chi_j(i)$ is a **spin-orbital**, i.e., orbital × spin function, describing electron i) in spin-orbital $j$
+* The factor $1/\sqrt{n!}$ ensures proper normalization of the determinant
+
+:::
+
+
+- For example helium ground state Slater determinant looks like this
 
 $$
-\Psi = \frac{1}{\sqrt{2}}
+\Psi_{He} = \frac{1}{\sqrt{2}}
 \begin{vmatrix}
-1s(1)\alpha(1) & 1s(1)\beta(1) \
+1s(1)\alpha(1) & 1s(1)\beta(1) \\
 1s(2)\alpha(2) & 1s(2)\beta(2)
-\end{vmatrix}.
+\end{vmatrix}
+$$
+
+- For Lithium ground state Slater determinant looks like this
+
+$$
+\Psi_{\text{Li}} = \frac{1}{\sqrt{3!}}
+\begin{vmatrix}
+1s(1)\alpha(1) & 1s(1)\beta(1) & 2s(1)\alpha(1) \\
+1s(2)\alpha(2) & 1s(2)\beta(2) & 2s(2)\alpha(2) \\
+1s(3)\alpha(3) & 1s(3)\beta(3) & 2s(3)\alpha(3)
+\end{vmatrix}
+$$
+
+
+
+### Singlet and Triplet Excited States of Helium
+
+When one electron occupies (1s) and the other (2s), their spatial wavefunctions can be combined as:
+
+**Spatial states**
+
+$$
+\Psi_{\text{S}}(1,2)
+= \frac{1}{\sqrt{2}}\left[1s(1)2s(2) + 1s(2)2s(1)\right]
+\qquad\text{(symmetric)},
+$$
+
+$$
+\Psi_{\text{A}}(1,2)
+= \frac{1}{\sqrt{2}}\left[1s(1)2s(2) - 1s(2)2s(1)\right]
+\qquad\text{(antisymmetric)}.
+$$
+
+- Because electrons are fermions, the **total** wavefunction must be antisymmetric:
+
+$$
+\underbrace{\text{(spatial symmetry)}}_{\Psi_{S/A}}
+\times
+\underbrace{\text{(spin symmetry)}}_{\chi_{S/A}}
+= \text{antisymmetric}
+$$
+
+- The total two-electron wavefunction must be antisymmetric:
+
+$$
+\Psi_{\text{total}}(1,2) = \Psi_{\text{spatial}}(1,2)\,\chi_{\text{spin}}(1,2).
+$$
+
+
+### Triplet states ($S=1$ and symmetric spin)
+
+- Must pair with the **antisymmetric** spatial part $\Psi_A(1,2)$.
+
+**Spin functions:**
+
+$$
+\begin{aligned}
+\chi_{+1} &= \alpha(1)\alpha(2) \\
+\chi_{0} &= \frac{1}{\sqrt{2}}\!\left[\alpha(1)\beta(2)+\beta(1)\alpha(2)\right] \\
+\chi_{-1} &= \beta(1)\beta(2)
+\end{aligned}
+$$
+
+**Total wavefunctions:**
+
+$$
+|\psi_{+1}\rangle = \Psi_A(1,2)\,\chi_{+1}
+$$
+
+$$
+|\psi_{0}\rangle = \Psi_A(1,2)\,\chi_{0}
+$$
+
+$$
+|\psi_{-1}\rangle = \Psi_A(1,2)\,\chi_{-1}
+$$
+
+### Singlet state ($S=0$, antisymmetric spin)
+
+Must pair with the **symmetric** spatial part $\Psi_S(1,2)$.
+
+- **Spin function:**
+
+$$
+\chi_{\text{singlet}} = \frac{1}{\sqrt{2}}\!\left[\alpha(1)\beta(2) - \beta(1)\alpha(2)\right]
+$$
+
+- **Total wavefunction:**
+
+$$
+|\psi_{\text{singlet}}\rangle = \Psi_S(1,2)\,\chi_{\text{singlet}}
+$$
+
+### Action of Spin Operators
+
+Triplets:
+
+$$
+\hat{S}_z|\psi_{+1}\rangle = +\hbar|\psi_{+1}\rangle,\quad
+\hat{S}_z|\psi_{0}\rangle = 0,\quad
+\hat{S}_z|\psi_{-1}\rangle = -\hbar|\psi_{-1}\rangle
+$$
+
+$$
+\hat{S}^2|\psi_{+1,0,-1}\rangle = 2\hbar^2|\psi_{+1,0,-1}\rangle
+$$
+
+Singlet:
+
+$$
+\hat{S}_z|\psi_{\text{singlet}}\rangle = 0,\qquad
+\hat{S}^2|\psi_{\text{singlet}}\rangle = 0
 $$
 
 
 
 
+### Which is lower in energy?
 
+* **Triplet** has electrons **spatially antisymmetric** → they avoid each other → **less Coulomb repulsion** → **lower energy**
+* **Singlet** is spatially symmetric → electrons more overlapping → **higher energy**
 
-## Singlet and Triplet States of Helium
+- *This is the origin of exchange stabilization.*
 
-For an excited configuration (e.g., $1s,2s$), the symmetric and antisymmetric spatial combinations are:
-
-$$
-\Psi_{\text{sym}} = \frac{1}{\sqrt{2}}\left[1s(1)2s(2) + 1s(2)2s(1)\right],
-$$
-
-$$
-\Psi_{\text{antisym}} = \frac{1}{\sqrt{2}}\left[1s(1)2s(2) - 1s(2)2s(1)\right].
-$$
-
-Combining with spin symmetries:
-
-* Triplet (symmetric spin)
-* Singlet (antisymmetric spin)
 
 
 ![](./images/He_exc1.png)
 
-### Action of Spin Operators
-
-- **Triplet:**
-
-$$
-\hat{S}_z|\psi_1\rangle = +\hbar|\psi_1\rangle,
-\qquad
-\hat{S}_z|\psi_2\rangle = 0,
-\qquad
-\hat{S}_z|\psi_3\rangle = -\hbar|\psi_3\rangle,
-$$
-
-$$
-\hat{S}^2|\psi_i\rangle = 2\hbar^2|\psi_i\rangle.
-$$
-
-- **Singlet:**
-
-$$
-\hat{S}_z|\psi_4\rangle = 0,
-\qquad
-\hat{S}^2|\psi_4\rangle = 0.
-$$
 
 
 
@@ -297,11 +392,12 @@ Thus the triplet state is **lower in energy** due to exchange stabilization.
 ![](./images/He_exc2.png)
 
 
-# Hund’s Rule and the Aufbau Principle
+### Hund’s Rule and the Aufbau Principle
 
 :::{figure-md} markdown-fig 
 
 <img src="./images/aufbau.png" alt="Aufbau" class="bg-primary mb-1" width="400px">
+
 Aufbau filling pattern for atomic orbitals.
 
 :::
