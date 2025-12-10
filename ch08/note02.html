@@ -450,7 +450,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The hydrogen molecule ion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-from-aos">Constructing MOs from AOs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap Integral</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonding-vs-antibonding-orbitals">Bonding vs antibonding orbitals</a></li>
 </ul>
 </li>
@@ -465,7 +465,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-hamiltonian">Setting up Hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-for-hydrogen-molecule">Constructing MOs for hydrogen molecule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-upon-simple-mo-approximation">Improving upon simple MO approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols-for-diatomic-molecules">Term symbols for diatomic molecules</a></li>
 </ul>
 </li>
 </ul>
@@ -485,9 +484,10 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">What you need to know</p>
 <ul class="simple">
-<li><p>We construct trial wavefunction of the molecule from atomic orbitals.</p></li>
-<li><p>Applying variational method we find the two MOs to have distinct spatial profiles with one increasing probability of electron between the two nuclei and the other depleating.</p></li>
-<li><p>These MOs are called bonding and anibonding orbitals. They lower and raise eneryg of molecule relative to two separated atoms.</p></li>
+<li><p>We can construct an approximate trial wavefunction for a molecule using atomic orbitals to gain intuition about chemical bonding.</p></li>
+<li><p>Applying the variational method leads to two molecular orbitals (MOs) with distinct spatial character:  one increases electron probability density between the nuclei <strong>(bonding)</strong>, while the other decreases it <strong>(antibonding)</strong>.</p></li>
+<li><p>These <strong>bonding and antibonding MOs</strong> respectively lower and raise the energy of the molecule relative to two separated atoms.</p></li>
+<li><p>More accurate quantum chemical methods do not rely directly on atomic orbitals, but instead use abstract linear combinations of <strong>Gaussian basis sets</strong> to represent molecular orbitals.</p></li>
 </ul>
 </div>
 <section id="constructing-mos-from-aos">
@@ -499,39 +499,93 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>The electronic Schrodinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> can be solved exactly because the equation contains only one particle. However, the  involved math is very complicated and here we take another simpler but  approximate approach. This method will reveal all the important features of chemical bond. An approximate (trial) wavefunction is written as (real functions):</p></li>
+<li><p>The electronic Schrödinger equation for H<span class="math notranslate nohighlight">\(_2^+\)</span> can be solved exactly because the system contains only a single electron. However, the analytical solution involves quite challenging mathematics. Instead, we will adopt a simpler approximate approach that still captures the essential physics of chemical bonding.</p></li>
 </ul>
+<p>We construct a trial (approximate) molecular wavefunction as a real linear combination of hydrogen 1s atomic orbitals:</p>
 <div class="math notranslate nohighlight">
-\[{\psi_\pm(\vec{r}_1) = c_11s_A(\vec{r}_1) \pm c_21s_B(\vec{r}_1)}\]</div>
+\[
+\psi_{\pm}(\vec{r}_1) = c_1\,1s_A(\vec{r}_1) \; \pm \; c_2\,1s_B(\vec{r}_1)
+\]</div>
 <ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(1s_A\)</span> and <span class="math notranslate nohighlight">\(1s_B\)</span> are hydrogen atom wavefunctions centered at nucleus A
-and B, respectively, and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are constants. This function is
-essentially a linear combination of the atomic orbitals (LCAO molecular
-orbitals).</p></li>
-<li><p>Because the two protons are identical, we must have <span class="math notranslate nohighlight">\(c_1 = c_2 \equiv c\)</span> (also <span class="math notranslate nohighlight">\(c &gt; 0\)</span>).</p></li>
-<li><p>The <span class="math notranslate nohighlight">\(\pm\)</span> notation indicates that two different wavefunctions can be
-constructed, one with + sign and the other with <span class="math notranslate nohighlight">\(-\)</span> sign. Normalization of the wavefunction requires:</p></li>
+<li><p>Here, <span class="math notranslate nohighlight">\(1s_A\)</span> and <span class="math notranslate nohighlight">\(1s_B\)</span> are hydrogen 1s orbitals centered on nuclei A and B, respectively, and <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are coefficients (constants).</p></li>
+<li><p>This form is known as the <strong>Linear Combination of Atomic Orbitals (LCAO)</strong> approximation for constructing molecular orbitals.</p></li>
+<li><p>Because the two nuclei are identical, symmetry requires <span class="math notranslate nohighlight">\(c_1 = c_2 \equiv c\)</span> (and we choose <span class="math notranslate nohighlight">\(c &gt; 0\)</span>).</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(\pm\)</span> sign indicates that two distinct molecular orbitals can be formed:</p>
+<ul>
+<li><p>the <strong>bonding</strong> combination (<span class="math notranslate nohighlight">\(+\)</span>), which enhances electron density between the nuclei</p></li>
+<li><p>the <strong>antibonding</strong> combination (<span class="math notranslate nohighlight">\(-\)</span>), which decreases electron density between the nuclei</p></li>
+</ul>
+</li>
+<li><p>Normalization of the molecular wavefunction requires:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[{\int{\psi_\pm^*\psi_\pm d\tau} = 1}\]</div>
 </section>
 <section id="overlap-integral">
-<h2>Overlap integral<a class="headerlink" href="#overlap-integral" title="Permalink to this heading">#</a></h2>
-<p>In the following, we consider the wavefunction with a ``+‘’ sign and evaluate the normalization integral (<span class="math notranslate nohighlight">\(S\)</span> = overlap integral, which depends on <span class="math notranslate nohighlight">\(R\)</span>):</p>
+<h2>Overlap Integral<a class="headerlink" href="#overlap-integral" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We now consider the <strong>bonding</strong> molecular orbital (the “+” combination) and evaluate the normalization condition.</p></li>
+<li><p>Here, <span class="math notranslate nohighlight">\(S\)</span> is the <strong>overlap integral</strong>, which depends on the internuclear distance <span class="math notranslate nohighlight">\(R\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\begin{split}1 = c^2\int{(1s_A + 1s_B)(1s_A + 1s_B)d \tau}= \\ c^2\int{1s_A^2d \tau} = 1 + c^2{\int{1s_B^2d}\tau}\end{split}\]</div>
+\[
+1 = \int |\psi_+|^2 \, d\tau
+= c^2 \int (1s_A + 1s_B)(1s_A + 1s_B) \, d\tau
+\]</div>
+<ul class="simple">
+<li><p>Expanding the integrand:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[+ c^2{\int{1s_A1s_Bd\tau}}{= S}+ c^2{\int{1s_B1s_Ad\tau}}{= S}= c^2(2 + 2S)\]</div>
-<p>This can be rewritten as:</p>
+\[\begin{split}
+\begin{aligned}
+1 &amp;= c^2 \int \left(1s_A^2 + 1s_B^2 + 2\,1s_A\,1s_B \right) d\tau \\
+  &amp;= c^2 \left( \int 1s_A^2 d\tau + \int 1s_B^2 d\tau + 2\int 1s_A\,1s_B\, d\tau \right)
+\end{aligned}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Normalized atomic orbitals satisfy:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{1 = c^2(2 + 2S) \Rightarrow c = \frac{1}{\sqrt{2 + 2S}}}\]</div>
-<p>and the complete ``+‘’ wavefunction is then:</p>
+\[
+\int 1s_A^2 d\tau = \int 1s_B^2 d\tau = 1
+\]</div>
+<ul class="simple">
+<li><p>Defining the overlap integral:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{\psi_+ \equiv \psi_g = \frac{1}{\sqrt{2(1 + S)}}(1s_A + 1s_B)}\]</div>
-<p>In exactly the same way, we can get the <span class="math notranslate nohighlight">\(-\)</span> wavefunction:</p>
+\[
+S = \int 1s_A(\vec{r})\,1s_B(\vec{r})\, d\tau
+\]</div>
+<ul class="simple">
+<li><p>we obtain:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[{\psi_- \equiv \psi_u = \frac{1}{\sqrt{2(1 - S)}}(1s_A - 1s_B)}\]</div>
-<p>Note that the antibonding orbital has \underline{zero} electron density between the nuclei.</p>
+\[
+1 = c^2(2 + 2S)
+\quad \Rightarrow \quad 
+c = \frac{1}{\sqrt{2(1 + S)}}
+\]</div>
+<ul class="simple">
+<li><p>Thus, the normalized <strong>bonding</strong> molecular orbital is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\psi_{+} \equiv \psi_g
+= \frac{1}{\sqrt{2(1+S)}}
+\left( 1s_A + 1s_B \right)
+\]</div>
+<ul class="simple">
+<li><p>Normalization of the <strong>antibonding</strong> combination yields:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\psi_{-} \equiv \psi_u
+= \frac{1}{\sqrt{2(1-S)}}
+\left( 1s_A - 1s_B \right)
+\]</div>
+<ul class="simple">
+<li><p>Note that the antibonding orbital has a <strong>node between the nuclei</strong>, resulting in <strong>zero electron density</strong> in that region.</p></li>
+</ul>
 </section>
 <section id="bonding-vs-antibonding-orbitals">
 <h2>Bonding vs antibonding orbitals<a class="headerlink" href="#bonding-vs-antibonding-orbitals" title="Permalink to this heading">#</a></h2>
@@ -546,8 +600,8 @@ constructed, one with + sign and the other with <span class="math notranslate no
 <li><p>When a molecule has a center of symmetry (here at the half-way between the
 nuclei), the wavefunction may or may not change sign when it is inverted
 through the center of symmetry. If the origin is placed at the center of
-symmetry then we can assign symmetry labels <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(u\)</span> to the wavefunctions.
-If <span class="math notranslate nohighlight">\(\psi(x, y, z) = \psi(-x, -y, -z)\)</span> then the symmetry label is
+symmetry then we can assign symmetry labels <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(u\)</span> to the wavefunctions.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\psi(x, y, z) = \psi(-x, -y, -z)\)</span> then the symmetry label is
 <span class="math notranslate nohighlight">\(g\)</span> (even parity) and for <span class="math notranslate nohighlight">\(\psi(x, y, z) = -\psi(-x, -y, -z)\)</span> we have <span class="math notranslate nohighlight">\(u\)</span> label
 (odd parity).</p></li>
 <li><p>According to this notation the <span class="math notranslate nohighlight">\(g\)</span> symmetry orbital is the
@@ -662,8 +716,8 @@ nuclei:</p></li>
 <h2>Comparison of MO energies with experiments<a class="headerlink" href="#comparison-of-mo-energies-with-experiments" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>These values can be compared with experimental results. The calculated
-ground state equilibrium bond length is 132 pm whereas the experimental value is 106 pm. The binding energy is 170 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span> whereas the experimental value is 258 kJ  mol<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p></li>
-<li><p>The excited state (labeled with <span class="math notranslate nohighlight">\(u\)</span>) leads to repulsive behavior at all bond lengths <span class="math notranslate nohighlight">\(R\)</span> (i.e. antibonding). Because the <span class="math notranslate nohighlight">\(u\)</span> state lies higher in energy than the <span class="math notranslate nohighlight">\(g\)</span> state, the <span class="math notranslate nohighlight">\(u\)</span> state is an excited state of H<span class="math notranslate nohighlight">\(_2^+\)</span>.</p></li>
+ground state equilibrium bond length is 132 pm whereas the experimental value is 106 pm. The binding energy is 170 kJ mol <span class="math notranslate nohighlight">\(^{-1}\)</span> whereas the experimental value is 258 kJ  <span class="math notranslate nohighlight">\(mol^{-1}\)</span>.</p></li>
+<li><p>The excited state (labeled with <span class="math notranslate nohighlight">\(u\)</span>) leads to repulsive behavior at all bond lengths <span class="math notranslate nohighlight">\(R\)</span> (i.e. antibonding). Because the <span class="math notranslate nohighlight">\(u\)</span> state lies higher in energy than the <span class="math notranslate nohighlight">\(g\)</span> state, the <span class="math notranslate nohighlight">\(u\)</span> state is an excited state of <span class="math notranslate nohighlight">\(H_2^+\)</span>.</p></li>
 <li><p>This calculation can be made more accurate by adding more than two terms to
 the linear combination. This procedure would also yield more excited state
 solutions. These would correspond <span class="math notranslate nohighlight">\(u\)</span>/<span class="math notranslate nohighlight">\(g\)</span> combinations of <span class="math notranslate nohighlight">\(2s\)</span>, <span class="math notranslate nohighlight">\(2p_x\)</span>,
@@ -695,14 +749,16 @@ the amount of angular momentum about the molecular axis (for <span class="math n
 </figure>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\pi\)</span> orbitals. When two <span class="math notranslate nohighlight">\(p_{x,y}\)</span> orbitals interact, a <span class="math notranslate nohighlight">\(\pi\)</span> molecular orbital forms. <span class="math notranslate nohighlight">\(\pi\)</span>-orbitals are doubly degenerate: <span class="math notranslate nohighlight">\(\pi_{+1}\)</span> and <span class="math notranslate nohighlight">\(\pi_{-1}\)</span> (or alternatively <span class="math notranslate nohighlight">\(\pi_x\)</span> and <span class="math notranslate nohighlight">\(\pi_y\)</span>), where the <span class="math notranslate nohighlight">\(+1/-1\)</span> refer to the eigenvalue of the <span class="math notranslate nohighlight">\(L_z\)</span> operator (<span class="math notranslate nohighlight">\(\lambda = \pm1\)</span>). In many-electron systems a bonding <span class="math notranslate nohighlight">\(\pi\)</span>-orbital can therefore hold a maximum of 4 electrons (i.e. both <span class="math notranslate nohighlight">\(\pi_{+1}\)</span> and <span class="math notranslate nohighlight">\(\pi_{-1}\)</span> each can hold two electrons). The same holds for the antibonding <span class="math notranslate nohighlight">\(\pi\)</span> orbitals. Note that only the atomic orbitals of the same symmetry mix to form molecular orbitals (for example, <span class="math notranslate nohighlight">\(p_z - p_z\)</span>, <span class="math notranslate nohighlight">\(p_x -  p_x\)</span> and <span class="math notranslate nohighlight">\(p_y - p_y\)</span>). When atomic <span class="math notranslate nohighlight">\(d\)</span> orbitals mix to form molecular orbitals, <span class="math notranslate nohighlight">\(\sigma (\lambda = 0)\)</span>, <span class="math notranslate nohighlight">\(\pi (\lambda = \pm 1)\)</span> and <span class="math notranslate nohighlight">\(\delta (\lambda = \pm 2)\)</span> MOs form.</p></li>
-<li><p>Excited state energies of <span class="math notranslate nohighlight">\(H_2^+\)</span> resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.</p></li>
 </ul>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/MO_summary.png"><img alt="electro" class="bg-primary mb-1" src="../_images/MO_summary.png" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/MO_summary.png"><img alt="electro" class="bg-primary mb-1" src="../_images/MO_summary.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Mo diagram of homonuclear molecules follows similiar pattern with alternating bonding and anti-bonding MOs.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">MO diagram of homonuclear molecules follows similiar pattern with alternating bonding and anti-bonding MOs.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p>Excited state energies of <span class="math notranslate nohighlight">\(H_2^+\)</span> resulting from a calculation employing an extended basis set (e.g. more terms in the LCAO) are shown on the left below. The MO energy diagram, which includes the higher energy molecular orbitals, is shown on the right hand side. Note that the energy order of the MOs depends on the molecule.</p></li>
+</ul>
 </section>
 </section>
 <section id="molecular-orbital-description-of-hydrogen-molecule">
@@ -741,11 +797,11 @@ the wavefunction is expressed as antisymmetrized product (e.g. a Slater determin
 <li><p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> denote the electron spin. The Slater determinant can be expanded as follows:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[{\psi_{MO}^{(1\sigma_g)^2} = \frac{1}{\sqrt{2}} 
+\[\begin{split}{\psi_{MO}^{(1\sigma_g)^2} = \frac{1}{\sqrt{2}} 
  (1\sigma_g(1)1\sigma_g(2)\alpha (1)\beta (2) 
-- 1\sigma_g(1)1\sigma_g(2)\beta (1)\alpha (2))}
+- 1\sigma_g(1)1\sigma_g(2)\beta (1)\alpha (2))} = \\
 {= \frac{1}{2\sqrt{2}(1 + S_{AB})}(1s_A(1) + 1s_B(1))(1s_A(2) + 1s_B(2))
-(\alpha (1)\beta (2) - \alpha (2)\beta (1))}\]</div>
+(\alpha (1)\beta (2) - \alpha (2)\beta (1))}\end{split}\]</div>
 <ul class="simple">
 <li><p>Note that this wavefunction is only approximate and is definitely not an  eigenfunction of the H<span class="math notranslate nohighlight">\(_2\)</span> electronic Hamiltonian. Thus we must calculate the  electronic energy by taking an expectation value of this wavefunction with the Hamiltonian (the actual calculation not shown):</p></li>
 </ul>
@@ -777,56 +833,18 @@ own variational parameters <span class="math notranslate nohighlight">\(c_1\)</s
 \[{\psi_{\textnormal{covalent}} = 1s_A(1)1s_B(2) + 1s_A(2)1s_B(1)}\]</div>
 <div class="math notranslate nohighlight">
 \[{\psi_{\textnormal{ionic}} = 1s_A(1)1s_A(2) + 1s_B(1)1s_B(2)}\]</div>
-<p>Note that the variational constants <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> depend on the
+<ul class="simple">
+<li><p>Note that the variational constants <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> depend on the
 internuclear distance <span class="math notranslate nohighlight">\(R\)</span>. Minimization of the energy expectation value with
 respect to these constants gives <span class="math notranslate nohighlight">\(R_e\)</span> = 74.9 pm (experiment 74.1 pm) and <span class="math notranslate nohighlight">\(D_e\)</span>
-= 386 kJ <span class="math notranslate nohighlight">\(mol^{-1}\)</span> (experiment 458 kJ <span class="math notranslate nohighlight">\(mol^{-1}\)</span>). Further improvement could
-be achieved by adding higher atomic orbitals into the wavefunction. The
-previously discussed Hartree-Fock method provides an efficient way for
+= 386 kJ <span class="math notranslate nohighlight">\(mol^{-1}\)</span> (experiment 458 kJ <span class="math notranslate nohighlight">\(mol^{-1}\)</span>).</p></li>
+<li><p>Further improvement could  be achieved by adding higher atomic orbitals into the wavefunction. The  previously discussed Hartree-Fock method provides an efficient way for
 solving the problem. Recall that this method is only approximate as it ignores
 the electron-electron correlation effects completely. The full treatment
 requires use of configuration interaction methods, which can yield essentially
 exact results: <span class="math notranslate nohighlight">\(D_e\)</span> = 36117.8 <span class="math notranslate nohighlight">\(cm^{-1}\)</span> (CI) vs. <span class="math notranslate nohighlight">\(36117.3\pm1.0\, cm^{-1}\)</span>
-(exp) and <span class="math notranslate nohighlight">\(R_e\)</span> = 74.140 pm vs. 74.139 pm (exp).</p>
-</section>
-<section id="term-symbols-for-diatomic-molecules">
-<h2>Term symbols for diatomic molecules<a class="headerlink" href="#term-symbols-for-diatomic-molecules" title="Permalink to this heading">#</a></h2>
-<p>In diatomic (and linear) molecules, the quantization axis is chosen along the
-molecule. When spin-orbit interaction is negligible, this allows us to define
-the total orbital and spin angular momenta about the molecular axis:</p>
-<div class="math notranslate nohighlight">
-\[{\Lambda = \left|\lambda_1 + \lambda_2 + ...\right|}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda_i = 0\)</span> for a <span class="math notranslate nohighlight">\(\sigma\)</span> orbital, <span class="math notranslate nohighlight">\(\lambda_i = \pm 1\)</span> for a <span class="math notranslate nohighlight">\(\pi\)</span> orbital,
-<span class="math notranslate nohighlight">\(\lambda_i = \pm 2\)</span> for a <span class="math notranslate nohighlight">\(\delta\)</span> orbital, etc. The value of <span class="math notranslate nohighlight">\(\Lambda\)</span> is
-expressed using the following capital Greek letters (just like we had <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(d\)</span> for
-atoms):</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\Lambda\)</span></p></th>
-<th class="head"><p>=</p></th>
-<th class="head"><p>0</p></th>
-<th class="head"><p>1</p></th>
-<th class="head"><p>2</p></th>
-<th class="head"><p>3</p></th>
-<th class="head"><p>…</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Symbol</p></td>
-<td><p>=</p></td>
-<td><p><span class="math notranslate nohighlight">\(\Sigma\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\Pi\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\Delta\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\Phi\)</span></p></td>
-<td><p>…</p></td>
-</tr>
-</tbody>
-</table>
-<ul class="simple">
-<li><p>The state multiplicity is given by <span class="math notranslate nohighlight">\(2S + 1\)</span> where <span class="math notranslate nohighlight">\(S\)</span> is the sum of the electron spins in the molecule. The term symbol for a diatomic molecule is represented by:</p></li>
+(exp) and <span class="math notranslate nohighlight">\(R_e\)</span> = 74.140 pm vs. 74.139 pm (exp).</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[{^{2S+1}\Lambda}\]</div>
 </section>
 </section>
 
@@ -895,7 +913,7 @@ atoms):</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The hydrogen molecule ion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-from-aos">Constructing MOs from AOs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-integral">Overlap Integral</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonding-vs-antibonding-orbitals">Bonding vs antibonding orbitals</a></li>
 </ul>
 </li>
@@ -910,7 +928,6 @@ atoms):</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-hamiltonian">Setting up Hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-mos-for-hydrogen-molecule">Constructing MOs for hydrogen molecule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-upon-simple-mo-approximation">Improving upon simple MO approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-symbols-for-diatomic-molecules">Term symbols for diatomic molecules</a></li>
 </ul>
 </li>
 </ul>
