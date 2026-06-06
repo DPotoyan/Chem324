@@ -1,13 +1,13 @@
 # Why Quantum Mechanics?
 
-:::{admonition} What you need to know
-:class: note
+:::{note} What you need to know
 - **Quantum mechanics is the fundamental theory of nature**, governing atoms, molecules, and subatomic particles.  
 - Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**. And they’ve never failed an experimental test since their discovery!  
 - Predictions of quantum mechanics have been verified to an **astonishing degree of accuracy**.  
 :::
 
 :::{figure} ./images/qm.png
+:label: fig-why-quantum-mechanics-1
 :alt: qm-whomi
 :width: 100%
 
@@ -22,6 +22,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 - Saying QM is “weird” is an understatement. Don’t just take my word for it, consider Richard Feynman:  
 
 :::{figure} ./images/feynman.png
+:label: fig-why-quantum-mechanics-2
 :alt: ch1-feynman
 :width: 300px
 
@@ -40,6 +41,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 ### How Does Quantum Mechanics Compare to Other Theories?  
 
 :::{figure} ./images/qm-joke1.jpg
+:label: fig-why-quantum-mechanics-3
 :alt: qm-mechanic-joke
 :width: 300px
 
@@ -58,6 +60,7 @@ In the usual hierarchy of sciences (biology → chemistry → physics → math),
 ### Where is Quantum Mechanics Applied?  
 
 :::{figure} ./images/qc-applied.png
+:label: fig-why-quantum-mechanics-4
 :alt: qm-apps
 :width: 300px
 
@@ -70,6 +73,7 @@ Applications in Quantum Chemistry
 - Condensed matter physics  
 
 :::{figure} ./images/qcomp-applied.jpg
+:label: fig-why-quantum-mechanics-5
 :alt: qcomp-apps
 :width: 300px
 
@@ -101,6 +105,7 @@ Studying quantum mechanics will arm you with tools beyond physics:
 If none of the above convinces you, remember: studying quantum mechanics also upgrades your meme game.  
 
 :::{figure} ./images/qm_meme.jpeg
+:label: fig-why-quantum-mechanics-6
 :alt: qm-meme
 :width: 300px
 

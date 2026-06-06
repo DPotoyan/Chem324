@@ -1,8 +1,7 @@
 
 # Atomic spectra
 
-:::{admonition} **What you will learn**
-:class: note
+:::{note} **What you will learn**
 
 - The energies of atoms, molecules, and light are **quantized**, and they can only take on specific, **discrete values** rather than a continuous spectrum.  
 - This quantization is a cornerstone of physical reality, confirmed by countless experiments and rigorously explained by quantum mechanics.  
@@ -20,6 +19,7 @@
 
 
 :::{figure} images/lec1_AtomicSpectrum.png
+:label: fig-atomic-spectra-1
 :alt: Hydrogen atomic spectrum
 :width: 70%
 
@@ -28,6 +28,7 @@ Hydrogen in a gas-discharge tube emits light at discrete wavelengths, which appe
 :::
 
 :::{figure} images/spectra.png
+:label: fig-atomic-spectra-2
 :alt: Solar spectra
 :width: 70%
 
@@ -44,8 +45,7 @@ $$\tilde{\nu} = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
 
 where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
 
-:::{admonition} **Rydberg formula**
-:class: important
+:::{important} **Rydberg formula**
 
 
 $$\tilde{\nu} = R_H\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$
@@ -60,6 +60,7 @@ where
 
 
 :::{figure} images/Lymann.jpeg
+:label: fig-atomic-spectra-3
 :alt: atomic series
 :width: 30%
 
@@ -70,6 +71,7 @@ Atomic spectral lines are named after their disocerers. Each series contains all
 ### Bohr's Model of the Hydrogen Atom
 
 :::{figure} images/evolution_atom.png
+:label: fig-atomic-spectra-4
 :alt: Evolution of atomic models
 :width: 70%
 
@@ -83,6 +85,7 @@ From pre-quantum pictures of atoms to the modern quantum mechanical description.
 - This postulate leads directly to an expression for the allowed **energy levels of hydrogen**, each labeled by a principal quantum number $n$.  
 
 :::{figure} images/bohring.png
+:label: fig-atomic-spectra-5
 :alt: Niels Bohr horseshoe anecdote
 :width: 20%
 
@@ -98,6 +101,7 @@ A visitor once noticed a horseshoe (a Scandinavian good-luck charm) hanging abov
 ### Quantizing the States of the Electron in the Hydrogen Atom
 
 :::{figure} images/quantization_orbits.jpeg
+:label: fig-atomic-spectra-6
 :alt: Quantized orbits of the electron
 :width: 60%
 
@@ -184,8 +188,7 @@ The **force-balance equation** together with the **quantized angular momentum co
 - We see clearly that radius of an orbit grows with increasing quantum number $n=1,2,3$
 
 
-:::{admonition} **Bohr radius**
-:class: tip
+:::{tip} **Bohr radius**
 
 $$
 a_0 = \frac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}
@@ -234,8 +237,7 @@ E_n = -\frac{m_e e^4}{8 \varepsilon_0^2 h^2} \cdot \frac{1}{n^2},
 $$  
 
 
-:::{admonition} **Bohr Energy formula**
-:class: important
+:::{important} **Bohr Energy formula**
 
 $$
 E_n = -13.6\frac{ 1}{n^2} \,\,\,[eV]
@@ -275,8 +277,7 @@ R_H = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
 $$  
 
 
-:::{admonition} **A note about wavenumbers and $cm^{-1}$ units**
-:class: tip
+:::{tip} **A note about wavenumbers and $cm^{-1}$ units**
 
 - Wavenumbers $\tilde{\nu}$ in **cm⁻¹** are standard in spectroscopy.  
 - To convert to wavelength: $\lambda = 1 / \tilde{\nu}$ (with $\tilde{\nu}$ in cm⁻¹, $\lambda$ will come out in cm).  
@@ -307,8 +308,8 @@ $$
 
 The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 **A** We can use the Rydberg equation  to calculate the wavelength for the Lyman series, $n_1 = 1$.
 
@@ -344,8 +345,8 @@ This emission line is called Lyman alpha and is the strongest atomic emission li
 - B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
 
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 **A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^2}$ to calculate energy of a photon. 
 
@@ -358,8 +359,8 @@ $$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.937
 
 Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 The Rydberg formula is given by:
 
 $$
@@ -413,8 +414,8 @@ So, the first three wavelengths of the Lyman series are approximately $121.57$ n
 
 A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 We are given a wavelength $\lambda = 1.03 \times 10^{-7} \ \text{m}$ and asked to find the original level $n_2$ of the electron in the Lyman series (where $n_1 = 1$).
 
@@ -472,8 +473,8 @@ Thus, the original level of the electron is $n_2 = 3$.
 
 Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 The ionization energy is the energy required to remove an electron from its ground state to infinity. Using Bohr's theory, the energy of an electron in an orbit is given by:
 
@@ -510,8 +511,8 @@ Therefore, the ionization energy of singly ionized helium $He^+$ is $54.4 \ \tex
 
 - (Optional) Using python plot $r_n$ vs $n$
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 The radius of the Bohr orbit is given by the formula:
 

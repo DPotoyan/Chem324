@@ -17,6 +17,7 @@
 ### Photoelectric effect challanges classical mechanical thinking.
 
 :::{figure} ./images/lect2_Eflying.png
+:label: fig-photoelectric-effect-1
 :alt: applied photoelectric
 :width: 70%
 
@@ -35,8 +36,7 @@ Shown are different effects of radiation on material depending on frequency. Fro
 
 - Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
 
-:::{admonition} **Energy of Photon**
-:class: important
+:::{important} **Energy of Photon**
 
 $$
 E_{photon} = h\nu = \frac{hc}{\lambda}
@@ -53,6 +53,7 @@ $$
 
 
 :::{figure} ./images/photoel1.png
+:label: fig-photoelectric-effect-2
 :alt: applied photoelectric
 :width: 70%
 
@@ -72,6 +73,7 @@ Shown are dependece of electron kinetic energy on frequency of radiation that hi
 ### Electric current: frequency vs intensity
 
 :::{figure} ./images/photoel2.png
+:label: fig-photoelectric-effect-3
 :alt: applied photoelectric
 :width: 70%
 
@@ -93,8 +95,7 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 - **Particular nature of light** 1 photon can "collide" with 1 electron and eject it if photon has sufficient energy.
 
 
-:::{admonition} **Energy of photon = work function + kinetic energy of electron**
-:class: important
+:::{important} **Energy of photon = work function + kinetic energy of electron**
 
 $${E_{photon} = W_0 + KE}$$
 
@@ -111,6 +112,7 @@ $${h\nu = h\nu_0 + \frac{mv_e^2}{2}}$$
 ### Applications of photoelectric effect
 
 :::{figure} ./images/lec2_applic.jpg
+:label: fig-photoelectric-effect-4
 :alt: applied photoelectric
 :width: 70%
 
@@ -137,7 +139,7 @@ Besides its historical role in the establishment of QM photoelectric effect has 
 A certain metal has a work function of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
 
 :::{admonition} **Solution:**
-:class: dropdown
+:class: dropdown solution
 
 The threshold frequency $\nu_0$ is related to the work function $\phi$ by the equation:
 
@@ -169,7 +171,7 @@ $$
 Ultraviolet light with a wavelength of 250 nm is incident on a metal surface with a work function of 3.0 eV. Calculate the maximum kinetic energy of the emitted photoelectrons.
 
 :::{admonition} **Solution:**
-:class: dropdown
+:class: dropdown solution
 
 First, calculate the energy of the incident photons:
 
@@ -210,7 +212,7 @@ $$
 Explain how the intensity of incident light affects the photoelectric current, assuming the frequency of the light is above the threshold frequency.
 
 :::{admonition} **Solution:**
-:class: dropdown
+:class: dropdown solution
 
 In the photoelectric effect, the intensity of the incident light is proportional to the number of photons striking the metal surface per unit time. If the frequency of the light is above the threshold frequency, each photon has sufficient energy to eject an electron.
 
