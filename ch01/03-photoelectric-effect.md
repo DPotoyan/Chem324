@@ -1,5 +1,5 @@
 
-## Photoelectric effect
+# Photoelectric effect
 
 
 ::: {admonition} **What You Will Learn.**

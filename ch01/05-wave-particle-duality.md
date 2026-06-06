@@ -1,6 +1,6 @@
 
 
-## Wave-particle duality
+# Wave-particle duality
 
 
 :::{admonition} What you need to know

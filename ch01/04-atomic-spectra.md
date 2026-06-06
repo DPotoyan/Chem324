@@ -1,5 +1,5 @@
 
-## Atomic spectra
+# Atomic spectra
 
 :::{admonition} **What you will learn**
 :class: note

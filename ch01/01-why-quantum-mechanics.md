@@ -1,4 +1,4 @@
-## Why Quantum Mechanics?
+# Why Quantum Mechanics?
 
 :::{admonition} What you need to know
 :class: note

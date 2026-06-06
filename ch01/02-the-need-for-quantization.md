@@ -1,5 +1,5 @@
 
-## The need for quantization
+# The need for quantization
 
 :::{admonition} **What you will learn.**
 :class: note
