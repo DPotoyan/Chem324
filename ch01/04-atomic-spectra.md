@@ -4,9 +4,9 @@
 :::{admonition} **What you will learn**
 :class: note
 
-- The energies of atoms, molecules, and light are **quantized**—they can only take on specific, **discrete values** rather than a continuous spectrum.  
+- The energies of atoms, molecules, and light are **quantized**, and they can only take on specific, **discrete values** rather than a continuous spectrum.  
 - This quantization is a cornerstone of physical reality, confirmed by countless experiments and rigorously explained by quantum mechanics.  
-- Pivotal historical discoveries—such as **blackbody radiation, the photoelectric effect, and the double-slit experiment**—laid the foundation for quantum theory.  
+- Pivotal historical discoveries, such as **blackbody radiation, the photoelectric effect, and the double-slit experiment**, laid the foundation for quantum theory.  
 - Everyday macroscopic phenomena, including the red glow of heated metals, the heat capacity of solids at low temperatures, and the characteristic colors of materials, all originate from quantum effects.  
 :::
 

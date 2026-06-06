@@ -12,7 +12,7 @@
 
 - The relationship between wave-like and particle-like characteristics is inversely proportional and is quantified by the de Broglie relation: $\lambda = \frac{h}{p}$, where $\lambda$ is the wavelength, $h$ is Planck's constant, and $p$ is momentum.
 
-- Therefore, all quantum objects can behave as both waves and particles! The dominant behavior—wave-like or particle-like—depends on the specific experimental conditions.
+- Therefore, all quantum objects can behave as both waves and particles! The dominant behavior, wave-like or particle-like, depends on the specific experimental conditions.
 :::
 
 ### Diffraction, interfernece and Double Slit experiment 

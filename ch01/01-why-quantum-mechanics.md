@@ -11,7 +11,7 @@
 :alt: qm-whomi
 :width: 100%
 
-Quantum mechanics provides the framework to understand, describe, and predict the behavior of the smallest particles—so long as they don’t travel near light speed.
+Quantum mechanics provides the framework to understand, describe, and predict the behavior of the smallest particles, so long as they don’t travel near light speed.
 :::
 
 
@@ -19,7 +19,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 
 ### Beware: Quantum Mechanics is Weird 🤯  
 
-- Saying QM is “weird” is an understatement. Don’t just take my word for it—consider Richard Feynman:  
+- Saying QM is “weird” is an understatement. Don’t just take my word for it, consider Richard Feynman:  
 
 :::{figure} ./images/feynman.png
 :alt: ch1-feynman
@@ -28,11 +28,11 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), Nobel Prize in Physics (1965) for his groundbreaking work on quantum electrodynamics.  
 :::
 
-> “I think I can safely say that nobody understands quantum mechanics.” — Richard Feynman  
+> “I think I can safely say that nobody understands quantum mechanics.” (Richard Feynman)  
 
-- Be prepared to let go of the comforting notion that “things make sense.” In quantum land, they often don’t! But that doesn’t stop us from **mastering the logic** of quantum mechanics and applying it everywhere—from chemistry to computing.  
+- Be prepared to let go of the comforting notion that “things make sense.” In quantum land, they often don’t! But that doesn’t stop us from **mastering the logic** of quantum mechanics and applying it everywhere, from chemistry to computing.  
 
-> Bottom line: if you feel you don’t fully understand QM, don’t worry—you’re in good company… with *everyone else*!  
+> Bottom line: if you feel you don’t fully understand QM, don’t worry, you’re in good company… with *everyone else*!  
 
 
 
@@ -48,7 +48,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 
 Even though discovered by physicists, QM isn’t just “another” physical theory like electromagnetism or relativity.  
 
-In the usual hierarchy of sciences (biology → chemistry → physics → math), quantum mechanics sits in a unique position—like the **operating system** on which other theories run as “apps.” Translating a theory into this OS is what physicists call *quantization*.  
+In the usual hierarchy of sciences (biology → chemistry → physics → math), quantum mechanics sits in a unique position, like the **operating system** on which other theories run as “apps.” Translating a theory into this OS is what physicists call *quantization*.  
 
 > Scott Aaronson, *Quantum Computing Since Democritus* (2013)  
 
