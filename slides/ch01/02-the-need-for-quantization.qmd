@@ -1,0 +1,166 @@
+---
+title: "The Need for Quantization"
+subtitle: "Chem 3240 · Lecture 1.2"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch01/images
+---
+
+## What is the nature of light?
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch01/images/EM-Wave.gif){width="90%"}
+:::
+::: {.column width="50%"}
+- Light as a **traveling electromagnetic wave**
+- Perpendicular **electric** and **magnetic** components
+- Needs **no medium**, travels in vacuum at speed $c$
+- This wave picture is **not the whole story**
+:::
+::::
+
+## The electromagnetic spectrum
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../ch01/images/lec1_EMspec.jpg){width="95%"}
+:::
+::: {.column width="45%"}
+- **Visible light** is a narrow band
+- **High frequency** carries **more energy** (X-rays, gamma)
+- **Low frequency** carries **less energy** (microwave, radio)
+- Clear link between an object's **temperature** and its radiation
+:::
+::::
+
+## Frequency, wavelength, speed of light
+
+::: {.fragment}
+$$\lambda \nu = c$$
+:::
+
+::: {.fragment}
+- **Speed of light**: $c = 3 \cdot 10^8 \, m/s$ (fundamental constant)
+:::
+::: {.fragment}
+- **Frequency** $\nu$: cycles per second, $1\,Hz = 1\,s^{-1}$
+:::
+::: {.fragment}
+- **Wavelength** $\lambda$: distance between successive peaks
+:::
+::: {.fragment}
+- Key question: how does **energy** $E$ relate to **frequency** $\nu$?
+:::
+
+## The black body
+
+:::: {.columns}
+::: {.column width="45%"}
+![](../../ch01/images/lec1_bb.png){width="95%"}
+:::
+::: {.column width="55%"}
+- **Idealized model**: absorbs and emits **every wavelength**
+- In thermal equilibrium at temperature $T$
+- Emitted spectrum set **only by** $T$
+- Heating up: (1) **intensity rises**, (2) peak **shifts to higher** $\nu$, (3) color **red to yellow to blue**
+:::
+::::
+
+## The classical picture
+
+:::: {.columns}
+::: {.column width="45%"}
+![](../../ch01/images/phonons.gif){width="95%"}
+:::
+::: {.column width="55%"}
+- Heated atoms vibrate like **springs**, radiating at frequency $\nu$
+- More **short-wavelength** modes fit in a box than long ones:
+$$dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu$$
+- **Equipartition**: each oscillator gets the same energy
+$$\langle E\rangle = k_BT$$
+:::
+::::
+
+## The ultraviolet catastrophe
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch01/images/lec1_UVcat.jpg){width="90%"}
+:::
+::: {.column width="50%"}
+- Classical radiation distribution:
+$$\rho({\nu}) = k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
+- **Shoots to infinity** at high $\nu$
+- Total radiation would be **infinite**: a light bulb could destroy the universe
+- **Classical physics fails**
+:::
+::::
+
+## Planck's trick: quantization
+
+::: {.fragment}
+In 1900 Planck postulated that only **discrete** energy values are allowed:
+:::
+
+::: {.fragment}
+$$\boxed{E= h\nu}$$
+:::
+
+::: {.fragment}
+- Planck's constant: $h = 6.63 \cdot 10^{-34} \, \text{J} \cdot \text{s}$
+:::
+::: {.fragment}
+- Atoms absorb and emit radiation in **quanta**, multiples of $h\nu$
+:::
+::: {.fragment}
+- $h$ is tiny, so quantization is **invisible** at the macro scale (classical limit $h \to 0$)
+:::
+
+## Planck's radiation law
+
+::: {.fragment}
+Quantized oscillators give a **frequency-dependent** average energy:
+$$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}$$
+:::
+
+::: {.fragment}
+This yields a distribution that **vanishes** at high frequency:
+$$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{1}{e^{\frac{h\nu}{kT}} - 1}$$
+:::
+
+::: {.fragment}
+- Integrating over all $\nu$ gives a **finite** total: $\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4$
+- No more catastrophe!
+:::
+
+## Wien's displacement law
+
+:::: {.columns}
+::: {.column width="45%"}
+![](../../ch01/images/Black_body_rad.jpg){width="95%"}
+:::
+::: {.column width="55%"}
+- Peak wavelength is **inversely proportional** to temperature:
+$$\lambda_{max} = \frac{b}{T}$$
+- $b = 2.898 \cdot 10^{-3} \, m \cdot K$
+- Connects an object's **temperature** to its **color**
+- Hotter object: **shorter** $\lambda_{max}$ (bluer)
+:::
+::::
+
+# Takeaway {.center}
+
+> Energy is **quantized**: by postulating $E = h\nu$, Planck cured the ultraviolet catastrophe and gave birth to quantum mechanics.
