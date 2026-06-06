@@ -1,10 +1,9 @@
 
 
-## Wave-particle duality
+# Wave-particle duality
 
 
-:::{admonition} What you need to know
-:class: note
+:::{note} What you need to know
 
 - Compton scattering and electron diffraction experiments have demonstrated that the concepts of particles and waves are not mutually exclusive.
 
@@ -12,13 +11,14 @@
 
 - The relationship between wave-like and particle-like characteristics is inversely proportional and is quantified by the de Broglie relation: $\lambda = \frac{h}{p}$, where $\lambda$ is the wavelength, $h$ is Planck's constant, and $p$ is momentum.
 
-- Therefore, all quantum objects can behave as both waves and particles! The dominant behavior—wave-like or particle-like—depends on the specific experimental conditions.
+- Therefore, all quantum objects can behave as both waves and particles! The dominant behavior, wave-like or particle-like, depends on the specific experimental conditions.
 :::
 
 ### Diffraction, interfernece and Double Slit experiment 
 
 
 :::{figure} images/ext_double_slit.gif
+:label: fig-wave-particle-duality-1
 :alt: compton
 :width: 300px
 
@@ -34,6 +34,7 @@ Waves passing throw two slits and creating diffraction pattern on the screen.
 ### Refraction and prisms
 
 :::{figure} images/ext_light_dispersion.gif
+:label: fig-wave-particle-duality-2
 :alt: compton
 :width: 300px
 
@@ -49,6 +50,7 @@ Example of light refracting when passing through a prism.
 
 
 :::{figure} ./images/lec3_Xscatter2.png
+:label: fig-wave-particle-duality-3
 :alt: compton
 :width: 400px
 
@@ -58,8 +60,7 @@ Example of light refracting when passing through a prism.
 
 **Maxima and minima in interference patterns** arise from simple geometry, as captured by **Bragg’s law**:
 
-:::{admonition} **Bragg’s law**:
-:class: tip
+:::{tip} **Bragg’s law**:
 
 $$
 \boxed{2d \sin\theta = n\lambda}
@@ -80,6 +81,7 @@ $$
 
 
 :::{figure} ./images/lec3_DavisonGermer.png
+:label: fig-wave-particle-duality-4
 :alt: compton
 :width: 500px
 
@@ -93,6 +95,7 @@ Demonstration of electron diffraction.
 ### Compton scattering
 
 :::{figure} ./images/lec3_compton.jpeg
+:label: fig-wave-particle-duality-5
 :alt: compton
 :width: 300px
 
@@ -113,8 +116,7 @@ Compton scattering: A phenomenon where photons scatter off electrons the same wa
 - The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
 
 
-:::{admonition} **De Broglie relation**
-:class: important
+:::{important} **De Broglie relation**
 
 $$\boxed{\lambda = \frac{h}{p}}$$
 
@@ -151,6 +153,7 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 </div>
 
 :::{figure} images/ext_wave_particle_duality.gif
+:label: fig-wave-particle-duality-6
 :alt: compton
 :width: 400px
 
@@ -165,6 +168,7 @@ interfere with each other (i.e. constructive and deconstructive interference)
 the holes at once, we still observe the interference effect.
 
 :::{figure} ./images/double_slit1.png
+:label: fig-wave-particle-duality-7
 :alt: compton
 :width: 400px
 
@@ -178,6 +182,7 @@ Expectation of where electrons would fall based on classical vs quantum theories
 
 
 :::{figure} ./images/double_slit2.png
+:label: fig-wave-particle-duality-8
 :alt: compton
 :width: 300px
 
@@ -193,6 +198,7 @@ Placing a detector that fires off photons to determine electron position exiting
 - The principle states that the more precisely the position is known, the more uncertain the momentum is, and vice versa. For example, if we know everything about where a particle is located, we know nothing about its momentum.
 
 :::{figure} images/ext_uncertainty_momentum.gif
+:label: fig-wave-particle-duality-9
 :alt: compton
 :width: 400px
 
@@ -202,8 +208,7 @@ Demonstration of uncertainty principle. When electron position is localized by m
 
 - Mathematically uncertainly relation is expressed in terms of standard deviations of position $\sigma_x$ and momenta $\sigma_p$ which are quantified by doing repeat experiments measuring positions, momenta followed by quantifying the spread via standard deviation.
 
-:::{admonition} **Heisenberg's uncertainty principle** 
-:class: warning
+:::{warning} **Heisenberg's uncertainty principle**
 
 $$
 \sigma_x \sigma_p \geq \hbar/2
@@ -219,8 +224,8 @@ Estimate the wavelength of electrons that have been accelerated from
 rest through a potential difference of $V = 40 kV$. 
 - Note that potential energy difference that the electrons experience is simply $e×V$ where e is the magnitude of electron charge and $V$ potential difference.
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 In order to calculate the de Broglie wavelength, we need to calculate the linear momentum of the electrons.
 At the end of the acceleration, all the acquired energy is in the form of kinetic energy ($p^2 / 2m_e$).
@@ -239,8 +244,8 @@ $$
 If you would consider yourself as a particle moving at $2 m/s$, what would be your de Broglie wavelength? 
 Would it make sense to use quantum mechanics in this case?
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 - A. If you consider yourself as a particle moving at $2 \, {m/s}$, we can calculate your de Broglie wavelength using the de Broglie relation:
 
@@ -275,8 +280,8 @@ $$
 
 Quantify uncertainty in position of electron in the ground state of H atom by using Bohr's model. 
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 To quantify the uncertainty in the position of an electron in the ground state of a hydrogen atom using Bohr's model, we begin by recalling that the electron orbits the nucleus at a distance equal to the Bohr radius $a_0$ in the ground state. The Bohr radius is given by:
 
@@ -337,8 +342,8 @@ This result suggests that the electron’s position is spread out over a region 
 
 Quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 eV$
 
-:::{admonition} **Solution** 
-:class: dropdown
+:::{admonition} **Solution**
+:class: dropdown solution
 
 To quantify the uncertainty in the position of an electron traveling freely with a kinetic energy of 3 eV, we can use the Heisenberg uncertainty principle:
 
