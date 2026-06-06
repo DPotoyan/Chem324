@@ -1,1 +1,0 @@
-# 2. Waves and wave equation
