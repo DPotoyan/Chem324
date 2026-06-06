@@ -1,0 +1,207 @@
+---
+title: "Molecular Vibrations"
+subtitle: "Chem 3240 · Lecture 4.4"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch04/images
+---
+
+## Bonds as Springs
+
+A vibrating bond is a **quantized harmonic oscillator**.
+
+::: {.fragment}
+- Energy levels are **evenly spaced**:
+$$\tilde{E}_v = \tilde{\nu}\left(v + \frac{1}{2}\right), \qquad v = 0,1,2,\dots$$
+:::
+
+::: {.fragment}
+- A single transition energy, the **fundamental**:
+$$\Delta \tilde{E}_v = \tilde{E}_{v+1} - \tilde{E}_{v} = \tilde{\nu}$$
+:::
+
+::: {.fragment}
+> Vibrations are **quantized**: this underlies infrared and Raman spectroscopy.
+:::
+
+## Frequency, Mass, and Bond Strength
+
+$$\tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}$$
+
+::: {.fragment}
+- **Force constant** $k$: stiffness of the bond
+- **Reduced mass** $\mu$ of the diatomic
+:::
+
+::: {.fragment}
+- Typical range **500 to 4000 cm$^{-1}$**
+- **Strong, stiff bonds** vibrate at higher frequency
+- **Heavy atoms** vibrate at lower frequency
+:::
+
+## Harmonic Approximation
+
+:::: {.columns}
+::: {.column width="48%"}
+![](../../ch04/images/De.png){width="90%"}
+:::
+::: {.column width="52%"}
+A parabola near the **equilibrium** bond length $R_e$:
+
+$$E(R) = \frac{1}{2}k(R - R_e)^2$$
+
+::: {.fragment}
+- It is the **Taylor expansion** of the true curve truncated at second order
+:::
+
+::: {.fragment}
+- Good near the bottom of the well, but it **never dissociates**
+:::
+:::
+::::
+
+## The Morse Potential
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch04/images/unharm.png){width="95%"}
+:::
+::: {.column width="50%"}
+A realistic curve that **dissociates**:
+
+$$V(R)=D_e\left(1-e^{-a(R-R_e)}\right)^2$$
+
+::: {.fragment}
+- $D_e$: well depth from the **minimum**
+- $D_0 = D_e - \tfrac{1}{2}h\nu$: from the **ground level**
+:::
+
+::: {.fragment}
+- Levels **converge** as $v$ grows
+:::
+:::
+::::
+
+## Anharmonic Energy Levels
+
+Add higher-order terms so levels are **no longer evenly spaced**:
+
+$$\tilde{E}_v = \tilde{\nu}_e\left(v + \tfrac{1}{2}\right) - \tilde{\nu}_e x_e\left(v + \tfrac{1}{2}\right)^2 + \dots$$
+
+::: {.fragment}
+- $\tilde{\nu}_e$: vibrational wavenumber, $x_e$: **anharmonicity constant**
+:::
+
+::: {.fragment}
+- Transition energies **shrink** with $v$:
+$$\tilde{\nu}_{v\rightarrow v+1} = \tilde{\nu}_e\left[1 - 2x_e(v+1)\right]$$
+:::
+
+## Normal Modes
+
+:::: {.columns}
+::: {.column width="48%"}
+![](../../ch04/images/CO2_modes.jpg){width="95%"}
+:::
+::: {.column width="52%"}
+A polyatomic molecule's motion resolves into **independent normal modes**.
+
+::: {.fragment}
+- **Linear** molecules:
+$$N_{modes} = 3N - 5$$
+- **Nonlinear** molecules:
+$$N_{modes} = 3N - 6$$
+:::
+
+::: {.fragment}
+- Subtract translations and rotations from $3N$
+:::
+:::
+::::
+
+## IR Selection Rule
+
+A transition is **allowed** only if the **dipole changes** with bond length:
+
+$$\left( \frac{\partial \mu}{\partial x} \right)_{R_e} \neq 0$$
+
+::: {.fragment}
+- And the quantum number changes by one:
+$$\Delta v = \pm 1$$
+:::
+
+::: {.fragment}
+> The transition probability $P_{v\rightarrow v'} \sim \langle v | x | v' \rangle$ vanishes unless both conditions hold.
+:::
+
+## IR-Active vs Inactive
+
+:::: {.columns}
+::: {.column width="48%"}
+![](../../ch04/images/selection_rule.jpg){width="95%"}
+:::
+::: {.column width="52%"}
+- **Heteronuclear** (HCl, CO): dipole changes, **IR-active**
+
+::: {.fragment}
+- **Homonuclear** (H$_2$, O$_2$, N$_2$): zero dipole, **IR-inactive**
+:::
+
+::: {.fragment}
+- IR-inactive stretches can still appear in the **Raman** spectrum
+:::
+:::
+::::
+
+## Overtones
+
+::: {.fragment}
+- Anharmonicity makes **weak overtones** appear: $\Delta v = \pm 2, \pm 3, \dots$
+:::
+
+::: {.fragment}
+$$\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot v - \tilde{\nu}_e x_e \cdot v(v+1)$$
+:::
+
+::: {.fragment}
+- Intensities **fall off rapidly** with each higher overtone
+:::
+
+::: {.fragment}
+- At room temperature almost all molecules sit in $v=0$, so only the **fundamental** dominates the spectrum
+:::
+
+## Reading an IR Spectrum
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../ch04/images/IR-sp.png){width="100%"}
+:::
+::: {.column width="45%"}
+- Each bond type absorbs in a **characteristic region**
+
+::: {.fragment}
+- Stiff bonds and light atoms sit at **high wavenumber**
+:::
+
+::: {.fragment}
+- A spectrum is a **fingerprint** of functional groups
+:::
+:::
+::::
+
+# Takeaway {.center}
+
+> Bonds vibrate as quantized harmonic oscillators with $\tilde{E}_v = \tilde{\nu}(v+\tfrac{1}{2})$; polyatomics split into $3N-6$ (or $3N-5$) normal modes; a mode is IR-active only if the dipole changes, with $\Delta v = \pm 1$; and the Morse potential captures the anharmonicity that lets molecules dissociate.
