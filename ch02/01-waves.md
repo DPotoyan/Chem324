@@ -8,19 +8,19 @@ kernelspec:
 
 :::{note} **What you will learn**
 
-- **A wave is a self-propagating disturbance** that transfers energy, momentum, and information through a medium, without transporting matter. 
+- **A wave is a self-propagating disturbance** that transfers energy, momentum, and information through a medium without transporting matter. 
 - The behavior of waves is governed by the **wave equation**, a partial differential equation (PDE) that describes their spatial and temporal evolution. 
-- Two major classes of waves we will be examining are **Standing waves** which remain fixed in space, exhibiting nodes and antinodes. 
-- **Traveling waves** which propagate through space, transferring energy from one location to another.
+- One major class of waves we will examine is **standing waves**, which remain fixed in space, exhibiting nodes and antinodes. 
+- The other is **traveling waves**, which propagate through space, transferring energy from one location to another.
 
 :::
 
 
 ### Types of Waves
 
-- **Disturbance of medium** Sound Waves. Waves on a guitar string. Waves propogating on the surface of the water
-- **Quantum mechanical waves** They will be described by complex wavefunctions providing us expanation for the wave like behavior electrons and atoms. 
-- **Electromagnetic waves** (e.g. light, UV, X-rays) this is the only kind of wave which does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet” hence creating its own medium as it moves forward. 
+- **Disturbance of a medium**: sound waves, waves on a guitar string, waves propagating on the surface of water.
+- **Quantum mechanical waves**: described by complex wavefunctions, which explain the wave-like behavior of electrons and atoms. 
+- **Electromagnetic waves** (e.g. light, UV, X-rays): the only kind of wave that does not require a medium! EM waves can travel in vacuum. In a sense, an EM wave "rolls out its own carpet," creating its own medium as it moves forward. 
 - [**Gravitational waves traveling through spacetime!**]((https://www.youtube.com/watch?v=xj6vV3T4ok8)) 
 
 :::{figure} ./images/propage_stand.gif
@@ -28,7 +28,7 @@ kernelspec:
 :alt: applied photoelectric
 :width: 40%
 
-Visualiziing 1D propagating (or traveling) and standing waves waves. Traveling waves move with respect to a fixed reference frame. Standing waves move in place. 
+1D traveling and standing waves. Traveling waves move with respect to a fixed reference frame, while standing waves oscillate in place. 
 :::
 
 :::{figure} images/ext_transverse_longitudinal.gif
@@ -36,28 +36,28 @@ Visualiziing 1D propagating (or traveling) and standing waves waves. Traveling w
 :alt: applied photoelectric
 :width: 50%
 
-Transverse waves carry distrubance perpendicular to the direction of wave propogation. Longitudinal waves carry disturbance along the direction of wave propogation. 
+Transverse waves carry a disturbance perpendicular to the direction of propagation. Longitudinal waves carry a disturbance along the direction of propagation. 
 :::
 
-### Defining wave mathematically  
+### Defining a wave mathematically  
 
-- Since wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) by specifying change of disturbance as a function of space $x$ and time $t$ via some mathematical function $f$: 
+- Since a wave is a moving disturbance $u$, we describe this disturbance (e.g. vertical displacement) as a function of space $x$ and time $t$ via some mathematical function $f$: 
 
 $$u = f(x, t)$$
 
-- Imagine surfing on an ocean wave. For an observer (surfer) standing on a wave the wave stands still at the same coordinate $x'$. 
-- For the observer standing on the shore the coordinate x of wave front moves away with a constant velocity: 
+- Imagine surfing on an ocean wave. For an observer (surfer) standing on the wave, the wave stays still at the same coordinate $x'$. 
+- For an observer standing on the shore, the coordinate $x$ of the wave front moves away with a constant velocity: 
 
 $$x=x'+vt$$
 
-- Assuming that shape of the wave stays the same we can express the motion of wave in the reference frame of the still observer: 
+- Assuming that the shape of the wave stays the same, we can express the motion of the wave in the reference frame of the stationary observer: 
 
 $$f(x,t)=f(x')$$
 
 $$u(x,t) = f(x-vt)$$
 
 
-- To see why $f(x-vt)$ implies motion to the right take a constant front of the wave $x-vt=const$ which shows that $x = vt +const$ and vice versa for $f(x+vt)$
+- To see why $f(x-vt)$ implies motion to the right, take a constant front of the wave $x-vt=const$, which shows that $x = vt +const$; the same reasoning applied to $f(x+vt)$ gives motion to the left.
 
 ```{code-cell} python
 import numpy as np
@@ -104,21 +104,21 @@ display(HTML(ani.to_jshtml()))
 plt.close(fig)
 ```
 
-### Periodic traveling waves.
+### Periodic traveling waves
 
 :::{figure} ./images/lec5_Introwave.jpg
 :label: fig-waves-3
 :alt: applied photoelectric
 :width: 50%
 
-Wave that is periodic in space and time
+A wave that is periodic in both space and time.
 :::
 
-- We will be working a lot with periodic waves that have a periodic shape hence can be described by sine or cosine or their combination. Here is a general expression of sin wave: 
+- We will work a lot with periodic waves, whose periodic shape can be described by a sine, a cosine, or their combination. Here is a general expression for a sine wave: 
 
 $$y(x,t)= A \sin(kx+\phi)$$
 
-- Let us now turn this sinusoidal form into a wave traveling along x axis:
+- Let us now turn this sinusoidal form into a wave traveling along the $x$ axis:
 
 $$
 y(x,t)= A \sin(k(x-vt)+\phi)=A \sin(kx-\omega t+\phi)
@@ -127,9 +127,9 @@ $$
 - **Amplitude** $A$: specifies maximum disturbance. 
 - **Wave number** $k$: specifies periodicity in space.
 - **Angular frequency** $\omega=kv$: specifies periodicity in time.
-- **Initial phase** $\phi$: initial phase. E.g where does wave start at $t=0$ $x=0$ often we just set $\phi=0$.
+- **Initial phase** $\phi$: where the wave starts at $t=0$, $x=0$. Often we just set $\phi=0$.
 
-- When describing waves it is much more convenient to work with complex representation. One can always extract real or imaginary part after calculations. 
+- When describing waves, it is much more convenient to work with the complex representation. One can always extract the real or imaginary part after the calculations. 
 
 
 :::{tip} **Complex exponential representation of waves**
@@ -138,7 +138,7 @@ $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
 :::
 
-- We can visualize sin and cos components on complex exponential and also visualize **the phasor** which is the change of exponential driven by chaneg of $t$ for any fixed value $x$.
+- We can visualize the sine and cosine components of the complex exponential and also visualize **the phasor**, the change of the exponential driven by the change in $t$ for any fixed value of $x$.
 
 ```{code-cell} python
 import numpy as np
@@ -212,10 +212,10 @@ plt.close(fig)
 
 ### Periodicity in space and time
 
-Sine and cosine traveling waves are periodic in space and in time. We introduce two quantities that quantify these peridocities. 
+Sine and cosine traveling waves are periodic in space and in time. We introduce two quantities that quantify these periodicities. 
 
-- Periodic wave repeats itself at some values $x=\lambda$ which is the definition of wavelength. 
-- Mathemtically this means every wavelength in space wave repeats its pattersn $kx=k\lambda=2\pi$
+- A periodic wave repeats itself at intervals $x=\lambda$, which is the definition of the wavelength. 
+- Mathematically this means that every wavelength in space the wave repeats its pattern: $kx=k\lambda=2\pi$.
 
 :::{important} **Wavevectors $k$: periodicity in space**
 
@@ -223,8 +223,8 @@ $$k=\frac{2\pi}{\lambda}$$
 
 :::
 
-- Periodic wave repeats itself at regular time periods $t=T$ or frequencies $\nu=1/T$. 
-- Mathemtically this means after every period wave repeats its pattersn $\omega t=\omega T=2\pi$
+- A periodic wave repeats itself at regular time periods $t=T$ or frequencies $\nu=1/T$. 
+- Mathematically this means that after every period the wave repeats its pattern: $\omega t=\omega T=2\pi$.
 
 :::{important} **Angular frequency $\omega$: periodicity in time**
 
@@ -235,26 +235,26 @@ $$\omega=\frac{2\pi}{T} = 2\pi\nu$$
 
 
 
-- The following expression makes it explicit that every multiple of $\lambda$ wave repeats itself in spac. And every multiple of $T$ wave repeats itself in time $t$
+- The following expression makes it explicit that the wave repeats itself in space at every multiple of $\lambda$, and in time at every multiple of $T$:
 
 $$u(x,t) = Asin\Big[2\pi \Big(\frac{x}{\lambda} - \frac{t}{T}\Big)\Big]$$
 
-### Wave equation. 
+### Wave equation
 
-- We obtain equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
+- We obtain the equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
 
 :::{tip} **Waves satisfy a wave equation**
 :class: dropdown
 
- - take two derivatives with respect to $t$
+ - take two derivatives with respect to $x$
 
 $$u_{xx}^{''} = (ik)^2 u = -k^2u$$
 
-- take two derivatives with respect to $x$
+- take two derivatives with respect to $t$
 
 $$u_{tt}^{''} = (-i\omega)^2 u= -\omega^2u$$
 
-- Now take the ration to replace u:
+- Now take the ratio to eliminate $u$:
 
 
 $$\frac{u_{xx}^{''}}{u_{tt}^{''}}  = \frac{k^2}{\omega^2} = \frac{1}{v^2}$$
@@ -263,7 +263,7 @@ $$u_{xx}^{''} = \frac{1}{v^2}u_{tt}^{''} $$
 
 :::
 
-- Just as in classical mechanics we need to take second derivative in order to get the equation of motion that is determined by initial position and velocity. By using the chain rule and taking one more derivative with respect to $x$ and $t$ we obtain:
+- Just as in classical mechanics, we need to take a second derivative in order to get the equation of motion, which is determined by the initial position and velocity. By using the chain rule and taking one more derivative with respect to $x$ and $t$, we obtain:
 
 
 :::{important} **Classical Wave Equation**
@@ -272,18 +272,18 @@ $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)
 
 :::
 
-- We just obtained a 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
+- We just obtained the 1D classical wave equation. Solutions of this equation are functions of time and space called wave functions. 
 
 
 
-### Combinding waves: interference
+### Combining waves: interference
 
-- We are often interested in the result of multiple waves interacting with one another which can be described mathematically when we add up waves. 
+- We are often interested in the result of multiple waves interacting with one another, which can be described mathematically by adding up the waves. 
 
-- Combinging waves creates a new wave that again obyes wave equation. This known as the **linear superposition principle**  if waves $u_A$ and $u_B$ are both solutions of the wave equation, then so is a wave $u_C = u_A + u_B$.
+- Combining waves creates a new wave that again obeys the wave equation. This is known as the **linear superposition principle**: if waves $u_A$ and $u_B$ are both solutions of the wave equation, then so is the wave $u_C = u_A + u_B$.
 
 
-- **Interference** – a phenomenon of combining waves which results in a new wave of greater, lower, or the same amplitude.
+- **Interference**: a phenomenon of combining waves that results in a new wave of greater, lower, or the same amplitude.
 
 
 :::{figure} images/ext_wave_interference.gif
@@ -291,7 +291,7 @@ $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)
 :alt: applied photoelectric
 :width: 70%
 
-Constructive vs destructive intereference of two cosine waves $Acos(kx-\omega t)$ and $Acos(kx-\omega t+\phi)$  differing only in phase $\phi$.  When the waves differ in phase by $\phi=\pi/2$ they completely cancell each other. When waves are fully in phase $\phi=0$ constructive interference results in doubling of amplitude $y(x,t)=2A \cos(kx-\omega t)$
+Constructive vs. destructive interference of two cosine waves $Acos(kx-\omega t)$ and $Acos(kx-\omega t+\phi)$ differing only in phase $\phi$. When the waves differ in phase by $\phi=\pi/2$, they completely cancel each other. When the waves are fully in phase ($\phi=0$), constructive interference doubles the amplitude: $y(x,t)=2A \cos(kx-\omega t)$.
 :::
 
 
@@ -300,7 +300,7 @@ Constructive vs destructive intereference of two cosine waves $Acos(kx-\omega t)
 :alt: applied photoelectric
 :width: 20%
 
-Combining waves produces a new wave. Illlustrated using complex representation and real representation. 
+Combining waves produces a new wave, shown in both the complex and real representations. 
 :::
 
 
@@ -363,7 +363,7 @@ $$
 \Psi_{\text{total}}(x,t) = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \left( kx - \omega t + \frac{\phi_1 + \phi_2}{2} \right)}
 $$
 
-- note that if phases differe by $\pi/2$ we get zero complete destructive interference. One the other hand when they match the amplitude is doubled.
+- Note that if the phases differ by $\pi/2$ we get zero amplitude (complete destructive interference). On the other hand, when they match, the amplitude is doubled.
 
 **Conclusion**
 
@@ -377,40 +377,40 @@ Thus, the sum of two complex exponentials with different phases $\phi_1$ and $\p
 :alt: applied photoelectric
 :width: 50%
 
-Illustration of wave interference
+Illustration of wave interference.
 :::
 
 ### Problems
 
 #### Problem 1: Traveling or standing
 
-- Which of the these functions can describe a traveling wave $u=(x+t)^2$, $u=cos(x-2t)^2$, $cos(x)sin(t)$ and with what velocity?
+- Which of these functions can describe a traveling wave: $u=(x+t)^2$, $u=cos(x-2t)^2$, $cos(x)sin(t)$, and with what velocity?
 
 :::{admonition} **Solution 1**
 :class: dropdown solution
 
-If a function can be cast in the form $f(x\pm vt)$ then it can describe a wave propagating with constant velocity $v$ alogn $x$ axis. 
+If a function can be cast in the form $f(x\pm vt)$, then it can describe a wave propagating with constant velocity $v$ along the $x$ axis. 
 
-- $u=(x+t)^2$ describes wave travling in opposite direction to x axis with velocity equal 1.
+- $u=(x+t)^2$ describes a wave traveling in the direction opposite to the $x$ axis with velocity equal to 1.
 
-- $u=cos(x-2t)$ describes a wave travling in the direction to x axis with velocity equal 2.
-- $cos(x)sin(t)$ this describes a standing wave
+- $u=cos(x-2t)$ describes a wave traveling in the direction of the $x$ axis with velocity equal to 2.
+- $cos(x)sin(t)$ describes a standing wave.
 :::
 
 
 #### Problem 2: Wavelength and frequency 
 
-Given a traveling sine wave $u(x) = sin(2x-10t+\pi/2)$ extract its wavelength, frequency, velocity and ampltide.
+Given a traveling sine wave $u(x) = sin(2x-10t+\pi/2)$, extract its wavelength, frequency, velocity, and amplitude.
 
 :::{admonition} **Solution 2**
 :class: dropdown solution
 
-Traveling waves have $f\big(k(x-v t)\big) = f(kx-\omega t)$ functional form where $k=2\pi/\lambda$ and $\omega =2\pi\nu$
+Traveling waves have the functional form $f\big(k(x-v t)\big) = f(kx-\omega t)$, where $k=2\pi/\lambda$ and $\omega =2\pi\nu$.
 
-Now we can just read off some of the quantities
+Now we can just read off the quantities:
 
-- $|v| = 10$ read off from sine argument
-- $A=1$ its the multiplier in front of sine function
+- $|v| = 10$ read off from the sine argument
+- $A=1$, the multiplier in front of the sine function
 - $k=2$ hence $\lambda = 2\pi/2 = \pi$
 - $\omega = kv = 2\cdot 10 = 20$ hence $\nu = \omega/2\pi = 10/\pi$
 

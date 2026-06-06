@@ -16,13 +16,13 @@ kernelspec:
 
 - **Solution Method for 1D Guitar String:** For a 1D guitar string, the wave equation is solved by separating variables, solving the resulting ordinary differential equations, and then applying boundary conditions at the two ends of the string.
 
-- **Periodic Solutions:** The solution for a 1D guitar string results in an infinite number of periodic solutions, which are parameterized by an integer $n$. 
+- **Periodic Solutions:** The solution for a 1D guitar string yields an infinite number of periodic solutions, parameterized by an integer $n$. 
 
 :::
 
 ### Classical Wave equation
 
-- **Wave equation** is an example of a second order PDE (partial differential equation). This PDE governs behavior of displacement $u(x,t)$ in time and space.
+- The **wave equation** is an example of a second-order PDE (partial differential equation). This PDE governs the behavior of the displacement $u(x,t)$ in time and space.
 
 $$
 \frac{\partial^2 u(x,t)}{\partial x^2 }= \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$ 
@@ -33,7 +33,7 @@ $$
 :alt: applied photoelectric
 :width: 50%
 
-Classical wave equation can describe any complicated wave in space and time given the intitial conditions.
+The classical wave equation describes any complicated wave in space and time, given the initial conditions.
 :::
 
 - **Applications of the Classical Wave Equation:** To illustrate the applications of the classical wave equation, we will solve it for a 1D guitar string. This provides a comprehensive mathematical description of the string's behavior.
@@ -46,7 +46,7 @@ Classical wave equation can describe any complicated wave in space and time give
 :alt: applied photoelectric
 :width: 50%
 
-Classical wave equation can describe any complicated wave in space and time given the intitial conditions.
+A plucked guitar string is a classic system governed by the 1D wave equation.
 :::
 
 ### Solving Wave Equation: The big picture 
@@ -60,13 +60,13 @@ $$
 
 - where $u(x, t)$ represents the displacement of the string at position $x$ and time $t$.
 
-- **2. Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable. This allows us to decompose PDE into Ordinary Differnetial Equations ODEs. 
+- **2. Separation of Variables:** A common method to solve such equations is the technique of separation of variables. This technique assumes that $x$ and $t$ vary independently of each other, allowing us to express $u(x, t)$ as a product of two functions, each depending on only one variable. This lets us decompose the PDE into ordinary differential equations (ODEs). 
 
 $$
 u(x, t) = X(x) \cdot T(t)
 $$
 
-- **3. Principle of superposition:** The wave equation is linear which you can see by  $u$ terms appearing with first order on both side. Linearity means that linear combination of two solutions $u_1$ and $u_2$ is also a solution. If you have $n$ particular solutions than you write general solution as linear combination of n terms. 
+- **3. Principle of superposition:** The wave equation is linear, which you can see from the $u$ terms appearing to first order on both sides. Linearity means that a linear combination of two solutions $u_1$ and $u_2$ is also a solution. If you have $n$ particular solutions, then you write the general solution as a linear combination of those $n$ terms. 
 
 $$
 u = c_1 u_1+c_2u_2
@@ -113,13 +113,13 @@ $$
 \frac{\partial^2 X(x)}{\partial x^2} - K X(x) = 0
 $$
 
-:::{tip} **Solving simple liner and homogenuous ODEs**
+:::{tip} **Solving simple linear and homogeneous ODEs**
 
 **Going from ODE to algebraic equations**
 
-- To solve **linear** (no powers of y) and **homogenuous** (no constants, right hand side is zero) ODEs we plug exponential function, e.g $y(x) \rightarrow e^{kx}$.
-- What this does to ODE is turn it into simple  algebraic equation where the only variable is$k$.
-- In our case of second order wave equation we will be dealing with simple quadratic equations: 
+- To solve **linear** (no powers of $y$) and **homogeneous** (no constants, right-hand side is zero) ODEs, we plug in an exponential function, e.g. $y(x) \rightarrow e^{kx}$.
+- This turns the ODE into a simple algebraic equation in which the only variable is $k$.
+- In our case of the second-order wave equation, we will be dealing with simple quadratic equations: 
 
 $$a y^{''} + by^{'} + cy = 0$$
 
@@ -131,7 +131,7 @@ $$
 k_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
 $$
 
-- The most general solution is then written in terms of linear combination. We need extra info to determine c_1 and c_2 (e.g boundary or initial conditions)
+- The most general solution is then written as a linear combination. We need extra information to determine $c_1$ and $c_2$ (e.g. boundary or initial conditions).
 
 $$y = c_1e^{k_1}+c_2 e^{k_2}$$
 
@@ -141,13 +141,13 @@ $$
 \frac{d^2 y}{dx^2} +4y = 0
 $$
 
-- For instnace if we plug $y=e^{kx}$ in the following equation and cancel exponents on both sides we will get algebraic equation in terms of k. 
+- For instance, if we plug $y=e^{kx}$ into the following equation and cancel the exponentials on both sides, we get an algebraic equation in terms of $k$. 
 
 $$
 k^2 +4 = 0
 $$
 
-- We get two solutions (could be complex real, repeated) which we then use to write general solution in the form of a superposition. 
+- We get two solutions (which could be complex, real, or repeated), which we then use to write the general solution in the form of a superposition. 
 
 $$
 k=\pm 2i
@@ -162,7 +162,7 @@ $$
 :::{tip} **Solving the spatial part: when $K > 0$**
 :class: dropdown
 
-- If $K > 0$, we specify $K = \beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is represented as linar combination of particular solutions (principle of superposition):
+- If $K > 0$, we specify $K = \beta^2$, where $\beta$ is a constant. The general solution for $X(x)$ is represented as a linear combination of particular solutions (principle of superposition):
 
   $$
   X(x) = c_1 e^{\beta x} + c_2 e^{-\beta x}
@@ -233,7 +233,7 @@ $$
 :class: dropdown
 
 
-- Having identified $K<0$ conditions through solution of spatial part we can now solve for $T(t)$:
+- Having identified the $K<0$ condition through the solution of the spatial part, we can now solve for $T(t)$:
 
 $$
 \frac{\partial^2 T(t)}{\partial t^2} - K v^2 T(t) = 0 \quad \text{with} \quad K = \beta^2
@@ -258,7 +258,7 @@ $$\omega_n = \beta v = \frac{n \pi v}{L}$$
 
 #### Solution for spatial part
 
-- Becasue of boundary conditions ($X(x)=X(L)=0$) imposed at the ends of guitar string we found infinite number of solutions indexed by an integer number $n$. These terms are called **normal modes** and are visualized below. 
+- Because of the boundary conditions ($X(x)=X(L)=0$) imposed at the ends of the guitar string, we found an infinite number of solutions indexed by an integer $n$. These terms are called **normal modes** and are visualized below. 
 
 $$
 X(x) = B \sin \left(\frac{n \pi}{L} x \right)
@@ -269,7 +269,7 @@ $$
 :alt: applied photoelectric
 :width: 30%
 
-The first seven solutions (normal modes) of spatial part of the wave equation on a length $L$ with two amplitudes (one positive and one negative).
+The first seven solutions (normal modes) of the spatial part of the wave equation on a string of length $L$, shown at positive and negative amplitude.
 :::
 
 ```{code-cell} python
@@ -300,19 +300,19 @@ fig.tight_layout(rect=[0, 0, 1, 0.96])
 
 #### Solution for temporal part
 
--  For temporal part since we do not have boundary conditions! Time is allowed to march forward into infinity.  We find solution in the form of linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$ and $n = 1, 2, 3, \ldots$ represents the normal modes. 
+- For the temporal part, we do not have boundary conditions! Time is allowed to march forward into infinity. We find the solution in the form of a linear combination of sine and cosine functions with $\omega_n = \beta v = \frac{n \pi v}{L}$, where $n = 1, 2, 3, \ldots$ indexes the normal modes. 
 
 
 $$
 T(t) = D_n \cos(\omega_n t) + E_n \sin(\omega_n t) = A_n \cos (\omega_n t + \phi_n)
 $$
 
-- In the second line we esing trig identity to express sum of cosine and sine in terms of cosine. Still we have two constantst o determine 
-- The constants $A_n$ $\phi_n$ in temporal part are determined by **initial codnitions** E.g what should be the amplitude and phase of wave at starting time $t=0$.
+- In the second line we use a trig identity to express the sum of cosine and sine in terms of a single cosine. We still have two constants to determine.
+- The constants $A_n$ and $\phi_n$ in the temporal part are determined by **initial conditions**, e.g. what the amplitude and phase of the wave should be at the starting time $t=0$.
 
 ### Step 3 Full solution: A linear combination of normal modes
 
-- After solving ODEs for spatial and tempoeral parts we now combine them into a full solution. 
+- After solving the ODEs for the spatial and temporal parts, we now combine them into a full solution. 
 - The complete description of any vibrational motion of the guitar string is given by the sum of the normal modes, $X_n(x)$. 
 - While the terms involving time, $T_n(t)$, depend on how and where the string is plucked, the normal modes $X_n(x)$ remain the same for a given string.
 
@@ -335,7 +335,7 @@ $$
 
 #### About nodes 
 
-Places where guitar string is at the resting position at 0 are called **nodes.** We notice that number of nodal points increases with n. 
+Places where the guitar string stays at the resting position of 0 are called **nodes.** We notice that the number of nodal points increases with $n$. 
 
 - **For $n = 1$**: There are 0 nodes (excluding the endpoints). This is called the fundamental frequency or first harmonic.
 
@@ -426,7 +426,7 @@ u(x, y, t) = X(x) Y(y) T(t)
 $$
 
 - For the spatial components $X(x)$ and $Y(y)$, there are boundary conditions that must be satisfied at the fixed edges: Boundary condition along the $X$-axis: $X(0) = X(L) = 0$ and Boundary condition along the $Y$-axis: $Y(0) = Y(L) = 0$
-- The 2D normal mode is the product of two 1D mode. Since dimensions are independent we get integer numbers $n$ for the $x$-direction and $m$ for the $y$-direction:
+- The 2D normal mode is the product of two 1D modes. Since the dimensions are independent, we get integers $n$ for the $x$-direction and $m$ for the $y$-direction:
 
 $$
 u(x, y, t) = \sum_n \sum_m A_{nm} \cos(\omega_{nm}t + \phi_{nm}) \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{b}\right)
@@ -450,14 +450,14 @@ Where:
 :alt: membrane vibrations
 :width: 50%
 
-Vibrations of 2D membrane. 
+Vibrations of a 2D membrane.
 :::
 
 
 :::{tip} **Full derivation of 2D rectangular membrane problem**
 :class: dropdown
 
-To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D  vibrating membrane, such as a rectangular or circular drumhead. Here's a step-by-step solution for a 2D rectangular membrane:
+To extend the solution of the 1D guitar string problem to 2D, you can analyze a 2D vibrating membrane, such as a rectangular or circular drumhead. Here is a step-by-step solution for a 2D rectangular membrane:
 
 
 
@@ -688,14 +688,14 @@ interact(viz_membrane2d_plotly, n=(1,1), m=(2,3), t=(0,100))
 
 ### The sound of music.
 
- - Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of normal modes (in music they call harmonics, overtones) of those musical instruments. 
+ - Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of the normal modes (called harmonics or overtones in music) of those instruments. 
 - Learn more from [this series](https://www.youtube.com/watch?v=jveKIYyafaQ).
 
 :::{figure} ./images/lec4_music.jpg
 :label: fig-the-wave-equation-5
 :width: 40%
 
-The size of the musical instrument reflects the range of frequencies over which the instrument is designed to function. Smaller size implies higher frequencies, larger size implies lower frequencies.
+The size of a musical instrument reflects the range of frequencies it is designed to produce: smaller instruments produce higher frequencies, larger instruments lower frequencies.
 :::
 
 ### Example Problems 

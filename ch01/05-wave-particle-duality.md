@@ -14,7 +14,7 @@
 - Therefore, all quantum objects can behave as both waves and particles! The dominant behavior, wave-like or particle-like, depends on the specific experimental conditions.
 :::
 
-### Diffraction, interfernece and Double Slit experiment 
+### Diffraction, interference and the double-slit experiment
 
 
 :::{figure} images/ext_double_slit.gif
@@ -22,14 +22,14 @@
 :alt: compton
 :width: 300px
 
-Waves passing throw two slits and creating diffraction pattern on the screen. 
+Waves passing through two slits create a diffraction pattern on the screen.
 :::
 
 - **Diffraction:** spreading of waves around obstacles or through small openings. Diffraction can occur with any type of wave, including light, sound, radio, and water.
 
-- **Interference:** when two waves meet one another their intensities either go up or go down if the two waves are in phase or out of phase, respectively.
+- **Interference:** when two waves meet, their combined intensity goes up or down depending on whether the waves are in phase or out of phase, respectively.
 
-- **Double slit experiment** light waves (or water waves) are passing through a wall with two slits which results in wave-like interference patterns or bands on the detector screen.
+- **Double-slit experiment:** light waves (or water waves) pass through a wall with two slits, which results in wave-like interference patterns, or bands, on the detector screen.
 
 ### Refraction and prisms
 
@@ -38,13 +38,13 @@ Waves passing throw two slits and creating diffraction pattern on the screen.
 :alt: compton
 :width: 300px
 
-Example of light refracting when passing through a prism. 
+Light refracting as it passes through a prism.
 :::
 
 - **Refraction:** change in direction of propagation of any wave as a result of its traveling at different speeds at different points along the wave front.
-- For example, light bends when it travels from air to glass. The bending of light by refraction makes it possible for us to have lenses, magnifying glasses, prisms, and rainbows. Even our eyes depend upon this bending of light
+- For example, light bends when it travels from air to glass. The bending of light by refraction makes it possible for us to have lenses, magnifying glasses, prisms, and rainbows. Even our eyes depend upon this bending of light.
 
-### Bragg's formula for diffraction. 
+### Bragg's formula for diffraction
 
 - X-rays interact with the atoms in a crystal. The phase shift upon scattering off of atoms causes constructive (left figure) or destructive (right figure) interferences.
 
@@ -54,7 +54,7 @@ Example of light refracting when passing through a prism.
 :alt: compton
 :width: 400px
 
-Example of light refracting when passing through a prism. 
+X-rays scattering off atoms in a crystal: constructive interference (left) and destructive interference (right).
 :::
 
 
@@ -77,7 +77,7 @@ $$
 * Waves such as X-rays produce interference patterns according to this relation. Historically, such interference was regarded as a hallmark of wave-like behavior.
 
 
-### Both X-rays and electrons show diffraction patterns. 
+### Both X-rays and electrons show diffraction patterns
 
 
 :::{figure} ./images/lec3_DavisonGermer.png
@@ -99,7 +99,7 @@ Demonstration of electron diffraction.
 :alt: compton
 :width: 300px
 
-Compton scattering: A phenomenon where photons scatter off electrons the same way other particles with mass do.
+Compton scattering: photons scatter off electrons just as massive particles do.
 :::
 
 
@@ -110,7 +110,7 @@ Compton scattering: A phenomenon where photons scatter off electrons the same wa
 
 ### De Broglie wavelength and wave-particle duality
 
-- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality.  Sometimes we only see one side of the duality because under some conditions, either wave or particle characteristics are more pronounced. 
+- Light is a wave and a particle. An electron is also a particle and a wave. Is everything a wave and a particle? The answer is YES! This is what is meant by wave-particle duality. Sometimes we only see one side of the duality because, under certain conditions, either the wave or the particle characteristics are more pronounced.
 
 
 - The wave-like and particle-like characteristics of a physical entity are inversely proportional to each other as described by the de Broglie relationship.
@@ -141,11 +141,11 @@ If we substitute de Broglie's expression for momentum we get:
 
 $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 
-- This equation shows that the de Broglie wavelength for particle like electron with constant total energy $E$ would change as it moves into a region with different potential energy. 
-- This has implications of chemical bonding where electrons experience different fields in atoms and molecules. 
+- This equation shows that the de Broglie wavelength of a particle such as an electron with constant total energy $E$ changes as it moves into a region with different potential energy.
+- This has implications for chemical bonding, where electrons experience different fields in atoms and molecules.
 
 
-### Double Slit experiment  
+### Double-slit experiment
 
 
 <div style="text-align: center;">
@@ -157,22 +157,22 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 :alt: compton
 :width: 400px
 
-Example of light refracting when passing through a prism. 
+Wave-particle duality in the double-slit experiment.
 :::
 
-**Electron displays wave like interference**
+**Electron displays wave-like interference**
 
-- The interference pattern would arise only if we consider electrons as waves, which
-interfere with each other (i.e. constructive and deconstructive interference)
+- The interference pattern arises only if we consider electrons as waves that
+interfere with each other (i.e., constructive and destructive interference).
 - When the experiment is carried out many times with only one electron going through
-the holes at once, we still observe the interference effect.
+the slits at a time, we still observe the interference effect.
 
 :::{figure} ./images/double_slit1.png
 :label: fig-wave-particle-duality-7
 :alt: compton
 :width: 400px
 
-Expectation of where electrons would fall based on classical vs quantum theories.
+Where electrons are expected to land according to classical versus quantum theory.
 :::
 
 **But which slit did the electron go through??**
@@ -186,14 +186,14 @@ Expectation of where electrons would fall based on classical vs quantum theories
 :alt: compton
 :width: 300px
 
-Placing a detector that fires off photons to determine electron position exiting from slits. 
+A detector fires photons to determine which slit each electron exits from.
 :::
 
 
 
 ### Uncertainty relation
 
-- The uncertainty principle, also known as Heisenberg's Uncertainty Principle, states that it is impossible to measure the exact position and momentum of a particle at the same time. This principle is based on the wave-particle duality of matter
+- The uncertainty principle, also known as Heisenberg's uncertainty principle, states that it is impossible to measure the exact position and momentum of a particle at the same time. This principle is based on the wave-particle duality of matter.
 
 - The principle states that the more precisely the position is known, the more uncertain the momentum is, and vice versa. For example, if we know everything about where a particle is located, we know nothing about its momentum.
 
@@ -202,11 +202,11 @@ Placing a detector that fires off photons to determine electron position exiting
 :alt: compton
 :width: 400px
 
-Demonstration of uncertainty principle. When electron position is localized by making the hole smaller its momentum becomes more unpredictable resulting in electrons hitting the detector over wider range.  
+Demonstration of the uncertainty principle. As the electron's position is localized by narrowing the slit, its momentum becomes more unpredictable, so the electrons hit the detector over a wider range.
 :::
 
 
-- Mathematically uncertainly relation is expressed in terms of standard deviations of position $\sigma_x$ and momenta $\sigma_p$ which are quantified by doing repeat experiments measuring positions, momenta followed by quantifying the spread via standard deviation.
+- Mathematically, the uncertainty relation is expressed in terms of the standard deviations of position $\sigma_x$ and momentum $\sigma_p$, which are obtained by repeating the experiment, measuring positions and momenta, and quantifying the spread via the standard deviation.
 
 :::{warning} **Heisenberg's uncertainty principle**
 
@@ -222,7 +222,7 @@ $$
 
 Estimate the wavelength of electrons that have been accelerated from
 rest through a potential difference of $V = 40 kV$. 
-- Note that potential energy difference that the electrons experience is simply $e×V$ where e is the magnitude of electron charge and $V$ potential difference.
+- Note that the potential energy difference the electrons experience is simply $e×V$, where $e$ is the magnitude of the electron charge and $V$ is the potential difference.
 
 :::{admonition} **Solution**
 :class: dropdown solution
@@ -241,13 +241,13 @@ $$
 
 #### Problem 2
 
-If you would consider yourself as a particle moving at $2 m/s$, what would be your de Broglie wavelength? 
+If you considered yourself a particle moving at $2 m/s$, what would your de Broglie wavelength be?
 Would it make sense to use quantum mechanics in this case?
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-- A. If you consider yourself as a particle moving at $2 \, {m/s}$, we can calculate your de Broglie wavelength using the de Broglie relation:
+- A. If you consider yourself a particle moving at $2 \, {m/s}$, we can calculate your de Broglie wavelength using the de Broglie relation:
 
 $$
 \lambda = \frac{h}{p}
@@ -278,7 +278,7 @@ $$
 
 #### Problem 3
 
-Quantify uncertainty in position of electron in the ground state of H atom by using Bohr's model. 
+Quantify the uncertainty in the position of an electron in the ground state of the H atom using Bohr's model.
 
 :::{admonition} **Solution**
 :class: dropdown solution
@@ -340,7 +340,7 @@ This result suggests that the electron’s position is spread out over a region 
 
 #### Problem 4
 
-Quantify uncertainty in the position of electron traveling freely with kinetic energy of $3 eV$
+Quantify the uncertainty in the position of an electron traveling freely with a kinetic energy of $3 eV$.
 
 :::{admonition} **Solution**
 :class: dropdown solution

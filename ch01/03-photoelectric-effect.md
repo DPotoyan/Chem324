@@ -7,34 +7,34 @@
 
 - **Photoelectric Effect:** Electrons are ejected from the surface of a material when it is exposed to radiation with a frequency exceeding a specific threshold frequency.
 - **Threshold Frequency:** No electrons are ejected if the radiation's frequency is below this threshold, regardless of the light's intensity (brightness).
-- **Classical vs. Quantum** The photoelectric effect cannot be explained using classical mechanics, where energy is thought to increase continuously with light intensity. However, in quantum mechanics, energy is quantized. Radiation is treated as a stream of photons, which are discrete packets of energy.
+- **Classical vs. Quantum:** The photoelectric effect cannot be explained using classical mechanics, where energy is thought to increase continuously with light intensity. However, in quantum mechanics, energy is quantized. Radiation is treated as a stream of photons, which are discrete packets of energy.
 - **Photon-Electron Interaction:** A single photon can eject a single electron if the photon has sufficient energy. Any excess energy is converted into the kinetic energy of the ejected electron, causing it to move faster.
 - **Insufficient Energy:** Photons with energy below the threshold will not eject electrons; instead, they scatter off the material.
 - **High-Intensity Light:** Even high-intensity light, which means more photons per unit area per unit time, cannot eject electrons if the photons lack sufficient energy.
 :::
 
 
-### Photoelectric effect challanges classical mechanical thinking.
+### Photoelectric effect challenges classical mechanical thinking.
 
 :::{figure} ./images/lect2_Eflying.png
 :label: fig-photoelectric-effect-1
 :alt: applied photoelectric
 :width: 70%
 
-Shown are different effects of radiation on material depending on frequency. From left to right frequency of radiation is increasing. 
+Effect of radiation on a material depending on frequency. Frequency increases from left to right.
 :::
 
-- When you shine a radiation on a metal surface after a some **threshold frequency** electrons will start flying off the surface. 
-- Below this frequency no electrons are not ejected regardless of the intensity of radiation. 
-- This experiment challanged classical way of thinking about radiation according to which energy of radiation is proportional to amplitude of wave which is its intensity or brightness of the light. 
+- When you shine radiation on a metal surface, above some **threshold frequency** electrons start flying off the surface. 
+- Below this frequency no electrons are ejected, regardless of the intensity of the radiation. 
+- This experiment challenged the classical way of thinking about radiation, according to which the energy of radiation is proportional to the amplitude of the wave, that is, its intensity or the brightness of the light. 
 
 ### Introducing Photon
 
-- Recall that to reconcile experiment with theory Planck was already forced to introduce quantization of black bodies modleed as spings that can only assume discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$ giving off radiation with same frequencies! 
+- Recall that to reconcile experiment with theory, Planck was already forced to introduce quantization of black bodies modeled as springs that can only assume discrete energies: $0, h\nu, 2h\nu, 3h\nu, …$ giving off radiation with the same frequencies! 
 
-- At that time this discreteness introduced by Placnk was thought to be nothing more than a temporary mathematical trick to fit experimental curve. 
+- At that time, this discreteness introduced by Planck was thought to be nothing more than a temporary mathematical trick to fit the experimental curve. 
 
-- Einstein, on the other hand, was more imaginative and saw in Plank’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete countable energy packets which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
+- Einstein, on the other hand, was more imaginative and saw in Planck’s prescription more than just a math trick. He suggested that light can behave like a stream of particles with discrete, countable energy packets, which he called photons. This view was instrumental in making sense of the photoelectric experiment. 
 
 :::{important} **Energy of Photon**
 
@@ -47,7 +47,7 @@ $$
 
 :::
 
-- Thus we see that both matter and radiation is quantized and given by the same relation of frequency times Planck constant.
+- Thus we see that both matter and radiation are quantized and given by the same relation of frequency times the Planck constant.
 
 ### Kinetic energy: frequency vs intensity
 
@@ -57,16 +57,16 @@ $$
 :alt: applied photoelectric
 :width: 70%
 
-Shown are dependece of electron kinetic energy on frequency of radiation that hits the surface of material (left plot) and on intensity of light for frequencies below and above threoshold (right plot).
+Dependence of electron kinetic energy on the frequency of radiation hitting the material surface (left) and on the intensity of light for frequencies below and above threshold (right).
 :::
 
 
-1. Frequency $\nu$ determines weather electrons will be ejected: $\nu>\nu_0$ but does not affect the number of electrons (current)
+1. Frequency $\nu$ determines whether electrons will be ejected: $\nu>\nu_0$, but it does not affect the number of electrons (current)
 
 
 2. Kinetic energy of an ejected electron is a linearly increasing function of the frequency of light with no dependence on the intensity: $KE\sim \nu$ 
    
-3.  Contrary to wave theory of light increasing intensity (brighter) of light does not eject electrons when frequency is below the threshold $\nu < \nu_0$
+3.  Contrary to the wave theory of light, increasing the intensity (brightness) of light does not eject electrons when the frequency is below the threshold $\nu < \nu_0$
 
    
 
@@ -77,12 +77,12 @@ Shown are dependece of electron kinetic energy on frequency of radiation that hi
 :alt: applied photoelectric
 :width: 70%
 
-Shown are dependece of electron current on frequency of radiation that hits the surface of material (left plot) and on intensity of light for some frequency above threoshold (right plot).  
+Dependence of electron current on the frequency of radiation hitting the material surface (left) and on the intensity of light for a frequency above threshold (right).
 :::
 
-1. Once threoshold is reached $\nu>\nu_0$  frequency has no effect on electron current (number of electrons)
+1. Once the threshold is reached $\nu>\nu_0$, frequency has no effect on electron current (number of electrons)
 
-2. Once threoshold is reached $\nu>\nu_0$ Increasing intensity of light on the other hand increases the current linearly.
+2. Once the threshold is reached $\nu>\nu_0$, increasing the intensity of light, on the other hand, increases the current linearly.
 
 
 
@@ -91,8 +91,8 @@ Shown are dependece of electron current on frequency of radiation that hits the 
 - **Light consists of photons**: tiny packets of energy carrying $E_{photon}=h\nu$ energy. 
 - **Intensity of light**  quantifies number of photons. 
 - **Frequency of light**  quantifies energy of photons. 
-- If light radiates $n$ number of photons per second, then the total energy radiated per second is $nh\nu$
-- **Particular nature of light** 1 photon can "collide" with 1 electron and eject it if photon has sufficient energy.
+- If light radiates $n$ photons per second, then the total energy radiated per second is $nh\nu$
+- **Particle nature of light:** 1 photon can "collide" with 1 electron and eject it if the photon has sufficient energy.
 
 
 :::{important} **Energy of photon = work function + kinetic energy of electron**
@@ -101,9 +101,9 @@ $${E_{photon} = W_0 + KE}$$
 
 $${h\nu = h\nu_0 + \frac{mv_e^2}{2}}$$
 
-- **The work function $W_0=h\nu_0$** is the minimum amount of energy needed to remove an electron from a metal's surface which has different values for different materials. 
-- The $\nu_0$ is **threshold frequency:** minimum frequecny needed to eject electron. If frequency is lower than threshold photon does not transfer any energy to the electron! 
-- Any extra energy gets converted into kinetic energy $KE=mv_e^2/2$ of the ejected electron, where $v_e$ is the mangniture of ejected electron velcotiy. 
+- **The work function $W_0=h\nu_0$** is the minimum amount of energy needed to remove an electron from a metal's surface, and it has different values for different materials. 
+- The $\nu_0$ is the **threshold frequency:** the minimum frequency needed to eject an electron. If the frequency is lower than the threshold, the photon does not transfer any energy to the electron! 
+- Any extra energy gets converted into kinetic energy $KE=mv_e^2/2$ of the ejected electron, where $v_e$ is the magnitude of the ejected electron's velocity. 
 :::
 
 
@@ -116,7 +116,7 @@ $${h\nu = h\nu_0 + \frac{mv_e^2}{2}}$$
 :alt: applied photoelectric
 :width: 70%
 
-Besides its historical role in the establishment of QM photoelectric effect has many practical applications. It is relevant for the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, etc. ! 
+Besides its historical role in the establishment of QM, the photoelectric effect has many practical applications. It is relevant to the design of solar cells, photovoltaics, photoelectron spectroscopy, night vision, and more.
 :::
 
 
@@ -216,8 +216,7 @@ Explain how the intensity of incident light affects the photoelectric current, a
 
 In the photoelectric effect, the intensity of the incident light is proportional to the number of photons striking the metal surface per unit time. If the frequency of the light is above the threshold frequency, each photon has sufficient energy to eject an electron.
 
-As the intensity increases, more photons hit the surface, leading to the emission of more photoelectrons. Consequently, the photoelectric current, which is proportional to the number of emitted electrons, increases with the intensity of the incident light. However, the kinetic energy of the emitted electrons remains the same and is determined by the energy of the individual photons, not the intensity of the light. \, \text{eV}
-$$
+As the intensity increases, more photons hit the surface, leading to the emission of more photoelectrons. Consequently, the photoelectric current, which is proportional to the number of emitted electrons, increases with the intensity of the incident light. However, the kinetic energy of the emitted electrons remains the same and is determined by the energy of the individual photons, not the intensity of the light.
 
 :::
 

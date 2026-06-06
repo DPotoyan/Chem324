@@ -2,7 +2,7 @@
 
 :::{note} What you need to know
 - **Quantum mechanics is the fundamental theory of nature**, governing atoms, molecules, and subatomic particles.  
-- Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**. And they’ve never failed an experimental test since their discovery!  
+- Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**, and they’ve never failed an experimental test since their discovery!  
 - Predictions of quantum mechanics have been verified to an **astonishing degree of accuracy**.  
 :::
 
@@ -11,7 +11,7 @@
 :alt: qm-whomi
 :width: 100%
 
-Quantum mechanics provides the framework to understand, describe, and predict the behavior of the smallest particles, so long as they don’t travel near light speed.
+Quantum mechanics describes and predicts the behavior of the smallest particles, so long as they don’t travel near the speed of light.
 :::
 
 
@@ -26,7 +26,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 :alt: ch1-feynman
 :width: 300px
 
-[Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), Nobel Prize in Physics (1965) for his groundbreaking work on quantum electrodynamics.  
+[Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), awarded the 1965 Nobel Prize in Physics for his work on quantum electrodynamics.  
 :::
 
 > “I think I can safely say that nobody understands quantum mechanics.” (Richard Feynman)  
@@ -50,7 +50,7 @@ Quantum mechanics provides the framework to understand, describe, and predict th
 
 Even though discovered by physicists, QM isn’t just “another” physical theory like electromagnetism or relativity.  
 
-In the usual hierarchy of sciences (biology → chemistry → physics → math), quantum mechanics sits in a unique position, like the **operating system** on which other theories run as “apps.” Translating a theory into this OS is what physicists call *quantization*.  
+In the usual hierarchy of sciences (biology → chemistry → physics → math), quantum mechanics occupies a unique position, like the **operating system** on which other theories run as “apps.” Translating a theory into this OS is what physicists call *quantization*.  
 
 > Scott Aaronson, *Quantum Computing Since Democritus* (2013)  
 

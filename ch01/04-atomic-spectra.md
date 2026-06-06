@@ -24,7 +24,7 @@
 :width: 70%
 
 **Atomic spectroscopy of the hydrogen atom.**  
-Hydrogen in a gas-discharge tube emits light at discrete wavelengths, which appear as distinct spectral lines when passed through a prism.  
+Hydrogen in a gas-discharge tube emits light at discrete wavelengths, which appear as distinct spectral lines when passed through a prism.
 :::
 
 :::{figure} images/spectra.png
@@ -39,7 +39,7 @@ By analyzing spectral lines, one can identify the presence of different elements
 
 ### Spectral lines and Rydberg's formula
 
-- The existance of discrete spectral lines are impossible to describe with classical mechanics.  In 1885, Johann Blamer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
+- The existence of discrete spectral lines is impossible to describe with classical mechanics.  In 1885, Johann Balmer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
 $$\tilde{\nu} = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
 
@@ -64,7 +64,7 @@ where
 :alt: atomic series
 :width: 30%
 
-Atomic spectral lines are named after their disocerers. Each series contains all transitions to a distinct ground or excited state level $n=1,2,3$. 
+Atomic spectral lines are named after their discoverers. Each series contains all transitions to a distinct lower level $n=1,2,3$.
 :::
 
 
@@ -105,7 +105,7 @@ A visitor once noticed a horseshoe (a Scandinavian good-luck charm) hanging abov
 :alt: Quantized orbits of the electron
 :width: 60%
 
-Bohr rationalized discrete orbits by requiring that an integer number of electron wavelengths fit around the circumference of the orbit.  
+Bohr rationalized discrete orbits by requiring that an integer number of electron wavelengths fit around the circumference of each orbit.
 :::
 
 - Imposing this condition gives the relation  
@@ -185,7 +185,7 @@ The **force-balance equation** together with the **quantized angular momentum co
    $$  
 
 - where the constant $a_0$ is the **Bohr radius**, corresponding to the size of the ground-state orbit.  
-- We see clearly that radius of an orbit grows with increasing quantum number $n=1,2,3$
+- We see clearly that the radius of an orbit grows with increasing quantum number $n=1,2,3$.
 
 
 :::{tip} **Bohr radius**
@@ -247,7 +247,7 @@ $$
 
 - Ionization energy corresponds to taking the electron from $n=1$ to $n \to \infty$, requiring exactly 13.6 eV.  
 
-- You can compute energy (or frequency) of photon to jump from state $n$ to $m$ by taking difference betwen energy levels $\Delta E_{n\rightarrow m} = -19.6 (1/m^2-1/n^2) = h\nu$  
+- You can compute the energy (or frequency) of the photon for a jump from state $n$ to $m$ by taking the difference between energy levels: $\Delta E_{n\rightarrow m} = -19.6 (1/m^2-1/n^2) = h\nu$  
 
 :::
 
@@ -270,7 +270,7 @@ $$
 = R_H \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right),
 $$  
 
-Where $R_H$ is the **Rydberg constant** which we know expressedin fundmamental constants as opposed to obtaining as a result of an experimental fit! 
+where $R_H$ is the **Rydberg constant**, which we now know expressed in fundamental constants rather than obtained as the result of an experimental fit!
 
 $$
 R_H = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
@@ -289,18 +289,18 @@ $$
 \quad n_2 > n_1,
 $$  
 
-- $R_H = 1.097 \times 10^5 \ \text{cm}^{-1}$   is the Rydberg constant in spectroscopic units 
+- $R_H = 1.097 \times 10^5 \ \text{cm}^{-1}$ is the Rydberg constant in spectroscopic units.
 :::
 
-### Hydrogen like atoms
+### Hydrogen-like atoms
 
-- For atoms with one electron $He^{+}$, $Li^{2+}$ Bohr model still works but we have to account for increased charge of the nucleus $Z$. 
+- For one-electron atoms such as $He^{+}$ and $Li^{2+}$, the Bohr model still works, but we have to account for the increased nuclear charge $Z$.
 
 $$
 E_n = -13.6 \frac{Z^2}{n^2}, [eV]
 $$
 
-- E.g for $H$ atom $Z=1$ for $He^{+}$ $Z =2$ etc.  
+- E.g. for the $H$ atom $Z=1$, for $He^{+}$ $Z=2$, etc.
 
 ### Problems 
 
@@ -317,7 +317,7 @@ $$
 \dfrac{1}{\lambda }=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right )
 $$
 
-The lowest energy results from a transition from or to nearest energy level hence $n_2 = n_1+1$
+The lowest energy results from a transition to or from the nearest energy level, hence $n_2 = n_1+1$.
 
 $$
 \begin{align*} \dfrac{1}{\lambda } &=R_H \left ( \dfrac{1}{n_{1}^{2}} - \dfrac{1}{n_{2}^{2}}\right ) \\[4pt] &=1.097 \times 10^{7}\, m^{-1}\left ( \dfrac{1}{1}-\dfrac{1}{4} \right )\\[4pt] &= 8.228 \times 10^{6}\; m^{-1} \end{align*}
@@ -334,30 +334,30 @@ and
 
 $$\lambda = 1.215 \times 10^{−7}\; m = 122 \,\,nm$$
 
-This emission line is called Lyman alpha and is the strongest atomic emission line from the sun and drives the chemistry of the upper atmosphere of all the planets producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules to O atoms which react with other O2 molecules to form stratospheric ozone
+This emission line is called Lyman alpha. It is the strongest atomic emission line from the Sun and drives the chemistry of the upper atmosphere of all the planets, producing ions by stripping electrons from atoms and molecules. It is completely absorbed by oxygen in the upper stratosphere, dissociating O2 molecules into O atoms, which react with other O2 molecules to form stratospheric ozone.
 
 **B** This wavelength is in the UV region of the spectrum.
 :::
 
 #### Problem 2
 
-- A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with  n=4 to and orbit with  $n=1$
-- B. What happens to the energy of the photon as the initial value of  $n$ approaches infinity?
+- A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with $n=4$ to an orbit with $n=1$.
+- B. What happens to the energy of the photon as the initial value of $n$ approaches infinity?
 
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-**A.**  We will use the Bohr's formula in units of electron $E_n = -19.6 \frac{1}{n^2}$ to calculate energy of a photon. 
+**A.**  We will use Bohr's formula in electron volts, $E_n = -19.6 \frac{1}{n^2}$, to calculate the energy of a photon.
 
 $$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.9375 = 18.375\,\, ev$$
 
-**B.** Energy of a photon goes up as we excite electron to higher and higher level. As $n_2\rightarrow \infty$ we end up with a photon that has sufficient energy to ionize the atom. $E = 19.6 \cdot ( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 19.6 ev$
+**B.** The energy of the photon goes up as we excite the electron to higher and higher levels. As $n_2\rightarrow \infty$ we end up with a photon that has sufficient energy to ionize the atom. $E = 19.6 \cdot ( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 19.6 ev$
 :::
 
 #### Problem 3
 
-Use Rydberg's formula to calculate firs few lines of Lymann series ($n_1=1$)
+Use Rydberg's formula to calculate the first few lines of the Lyman series ($n_1=1$).
 
 :::{admonition} **Solution**
 :class: dropdown solution
@@ -412,7 +412,7 @@ So, the first three wavelengths of the Lyman series are approximately $121.57$ n
 
 #### Problem 4
 
-A line in the  Lymann series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$ Find the original level of the electron.
+A line in the Lyman series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$. Find the original level of the electron.
 
 :::{admonition} **Solution**
 :class: dropdown solution

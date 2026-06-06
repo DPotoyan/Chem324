@@ -1,10 +1,10 @@
 # Quantum Mechanics for Chemistry
 
-Welcome to the lecture notes for **Chem 3240 — Quantum Mechanics for Chemistry**.
+Welcome to the lecture notes for **Chem 3240: Quantum Mechanics for Chemistry**.
 
-These notes follow the historical path into quantum theory — from the puzzles of
+These notes follow the historical path into quantum theory: from the puzzles of
 classical physics through the birth of quantization, wave–particle duality, and the
-Schrödinger equation — and build toward the quantum description of atoms and molecules.
+Schrödinger equation, building toward the quantum description of atoms and molecules.
 
 :::{note}
 These notes are written to be read alongside lecture, and they contain runnable
