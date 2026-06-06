@@ -1,0 +1,62 @@
+/* ============================================================
+   Chem 3240 — Iowa State theme for the MyST book-theme
+   Brand: Cardinal #C8102E · Gold #F1BE48
+   (Avenir on Apple devices; Mulish — a close match — everywhere else)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --isu-cardinal: #c8102e;
+  --isu-gold: #f1be48;
+}
+
+/* ---- Typography ----------------------------------------------- */
+html, body, button, input, select, textarea {
+  font-family: 'Avenir', 'Avenir Next', 'Mulish', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Avenir', 'Avenir Next', 'Mulish', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  letter-spacing: -0.012em;
+  font-weight: 700;
+}
+
+/* Comfortable reading size & line rhythm in the article body */
+main, article {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+/* ---- Branded content links (cardinal text, gold hover) --------
+   The theme styles links with high-specificity utility classes,
+   so these overrides need !important to win. */
+main a, article a {
+  color: var(--isu-cardinal) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+main a:hover, article a:hover {
+  background: var(--isu-gold) !important;
+  border-radius: 0.2em;
+  color: #1a1a1a !important;
+}
+
+/* ---- ISU gold text selection ---------------------------------- */
+::selection      { background: var(--isu-gold); color: #1a1a1a; }
+::-moz-selection { background: var(--isu-gold); color: #1a1a1a; }
+
+/* ---- Keep the logo tidy in the header ------------------------- */
+header img[src*="isu-logo"] { max-height: 38px; width: auto; }
+
+/* ---- Dark mode: gold links for contrast ----------------------- */
+:is(html.dark, html[data-theme="dark"]) main a,
+:is(html.dark, html[data-theme="dark"]) article a {
+  color: var(--isu-gold) !important;
+}
+:is(html.dark, html[data-theme="dark"]) main a:hover,
+:is(html.dark, html[data-theme="dark"]) article a:hover {
+  color: #1a1a1a !important;
+  background: var(--isu-gold) !important;
+}
