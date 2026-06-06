@@ -1,0 +1,139 @@
+---
+title: "Eigenvalues and Expectation Values"
+subtitle: "Chem 3240 · Lecture 3.7"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch03/images
+---
+
+## The Eigenvalue Equation
+
+An operator acting on its **eigenfunction** returns the same function, scaled.
+
+$$\hat{A}\psi_n = A_n\psi_n$$
+
+::: {.fragment}
+- $\psi_n$: **eigenfunctions**
+- $A_n$: **eigenvalues**
+:::
+
+::: {.fragment}
+Boundary conditions fix how many solutions exist: **finite or infinite**.
+:::
+
+## In Matrix Form
+
+Numerically, operators become **matrices**, eigenfunctions become **eigenvectors**.
+
+$$Av = \lambda v$$
+
+::: {.fragment}
+- $v$: eigenvector, $\lambda$: eigenvalue
+- An $N \times N$ matrix has **at most $N$ eigenvalues**
+:::
+
+## Eigenvalues Are What We Measure
+
+**Hermitian operators** describe observables.
+
+$$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$$
+
+::: {.fragment}
+Three consequences:
+- **Eigenvalues are real**: $\;E_n = E_n^*$
+- **Eigenfunctions are orthogonal**: $\;\langle \psi_n \mid \psi_m\rangle = \delta_{nm}$
+- **Eigenfunctions form a complete basis**
+:::
+
+## A Complete Basis Set
+
+Eigenfunctions of a Hermitian operator span the space, like **unit vectors**.
+
+$$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
+
+::: {.fragment}
+Any wavefunction can be **expanded** in the eigenfunctions of any observable.
+:::
+
+## Wavefunction as Superposition
+
+A state is a **linear superposition** of the eigenfunctions of $\hat{A}$.
+
+$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle$$
+
+::: {.fragment}
+The coefficients are **projections** onto each eigenfunction:
+
+$$c_n = \langle n \mid \psi \rangle$$
+:::
+
+## Probabilistic Meaning
+
+The **squared coefficients** are probabilities.
+
+$$p_n = \mid c_n \mid^2$$
+
+::: {.fragment}
+$$\sum_n \mid c_n \mid^2 = \sum_n p_n = 1$$
+:::
+
+::: {.fragment}
+Measuring $\hat{A}$ yields eigenvalue $A_n$ with probability $p_n$.
+:::
+
+## Expectation Value
+
+The average is a **probability-weighted sum of eigenvalues**.
+
+$$\langle E\rangle = \langle \psi \mid \hat{H}\mid \psi \rangle$$
+
+::: {.fragment}
+For $\mid \psi \rangle = c_1\mid 1\rangle + c_2\mid 2\rangle$:
+
+$$\langle E\rangle = \mid c_1\mid^2 E_1 + \mid c_2\mid^2 E_2 = p_1 E_1 + p_2 E_2$$
+:::
+
+## Measurement and Collapse
+
+In any single experiment you obtain **one** eigenvalue.
+
+$$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
+
+::: {.fragment}
+The superposition **collapses** to a single eigenfunction.
+:::
+
+::: {.fragment}
+**Orthogonality** means **mutually exclusive** outcomes:
+
+$$\langle \phi_1 \mid \phi_2 \rangle = 0$$
+:::
+
+## Schrödinger's Cat
+
+A radioactive atom in **superposition** of decayed and not-decayed.
+
+::: {.fragment}
+- Atom decay triggers poison
+- Cat is **alive and dead at once** until observed
+:::
+
+::: {.fragment}
+Measurement forces the system into **one** mutually exclusive state.
+:::
+
+# Takeaway {.center}
+
+> A quantum state is a superposition of eigenfunctions; measurement returns a single eigenvalue with probability $\mid c_n\mid^2$, and the expectation value is the probability-weighted average of those eigenvalues.

@@ -1,0 +1,190 @@
+---
+title: "Operators"
+subtitle: "Chem 3240 · Lecture 3.6"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch03/images
+---
+
+## Observables become operators
+
+Every measurable quantity has a **corresponding operator** (the hat $\hat{}$).
+
+::: {.fragment}
+**Position** multiplies by $x$:
+$$\hat{x} = x$$
+:::
+
+::: {.fragment}
+**Momentum** differentiates, then scales by $-i\hbar$:
+$$\hat{p}_x = -i\hbar\frac{d}{dx}$$
+:::
+
+::: {.fragment}
+**Recipe:** take the classical expression, replace $x$ and $p$ by their operators.
+:::
+
+## Operators are linear
+
+Inherited from the linear Schrodinger equation.
+
+::: {.fragment}
+$$\hat{A}(\psi_1 + \psi_2) = \hat{A}\psi_1 + \hat{A}\psi_2$$
+:::
+
+::: {.fragment}
+$$\hat{A}(c\psi) = c\hat{A}\psi$$
+:::
+
+::: {.fragment}
+$\hat{x}$, $\hat{p}_x$, and $\hat{H}$ all satisfy this.
+:::
+
+## The commutator
+
+Order of operations matters, just like matrices ($AB \neq BA$).
+
+::: {.fragment}
+$$\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f$$
+:::
+
+::: {.fragment}
+- **Zero** commutator: order does not matter.
+- **Non-zero** commutator: order matters.
+:::
+
+::: {.fragment}
+$$\left[A,A^n\right] = 0, \qquad \left[A,B\right] = -\left[B,A\right]$$
+:::
+
+## The canonical commutator
+
+Position and momentum **do not commute**.
+
+::: {.fragment}
+$$\hat{p}_x\hat{x}\psi = \frac{\hbar x}{i}\frac{d\psi}{dx} + \frac{\hbar}{i}\psi, \qquad \hat{x}\hat{p}_x\psi = \frac{\hbar x}{i}\frac{d\psi}{dx}$$
+:::
+
+::: {.fragment}
+$$\left[\hat{p}_x,\hat{x}\right] = \frac{\hbar}{i} \qquad\Longleftrightarrow\qquad \left[\hat{x},\hat{p}_x\right] = i\hbar$$
+:::
+
+::: {.fragment}
+This single line drives the uncertainty principle.
+:::
+
+## Commutators set measurement limits
+
+For any non-commuting $\hat{A}$ and $\hat{B}$:
+
+::: {.fragment}
+$$\Delta A\,\Delta B \ge \frac{1}{2}\left|\left\langle\left[\hat{A},\hat{B}\right]\right\rangle\right|$$
+:::
+
+::: {.fragment}
+Apply it to $\hat{x}$ and $\hat{p}_x$:
+$$\Delta x\,\Delta p_x \ge \frac{\hbar}{2}$$
+:::
+
+::: {.fragment}
+**Position and momentum cannot be measured precisely at once.**
+:::
+
+## Commuting operators share eigenfunctions
+
+$$[\hat{A},\hat{B}]=0 \;\Longrightarrow\; \hat{A}\phi_k = a_k\phi_k,\quad \hat{B}\phi_k = b_k\phi_k$$
+
+::: {.fragment}
+Both observables measured **simultaneously** in one experiment.
+:::
+
+::: {.fragment}
+$\hat{T}$ and $\hat{p}_x$ commute (measure together):
+$$\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = 0$$
+:::
+
+::: {.fragment}
+But $\hat{x}$ and $\hat{p}_x$ do **not**.
+:::
+
+## Expectation values
+
+Average outcome of many measurements.
+
+::: {.fragment}
+$$\langle A \rangle = \int \psi^* \hat{A}\,\psi \, d\tau$$
+:::
+
+::: {.fragment}
+If $\psi$ is an eigenfunction, $\hat{A}\psi = a\psi$, then
+$$\langle A \rangle = a\int \psi^*\psi\,d\tau = a$$
+:::
+
+::: {.fragment}
+The expectation value collapses to the **eigenvalue**.
+:::
+
+## Dirac notation
+
+A compact, representation-free language.
+
+::: {.fragment}
+**Ket** $|\psi\rangle$, **bra** $\langle\psi|$, inner product
+$$\langle \phi | \psi \rangle = \int \phi^*(r)\,\psi(r)\,d\tau$$
+:::
+
+::: {.fragment}
+Expectation value becomes one symbol:
+$$\langle A \rangle = \langle \psi | \hat{A} | \psi \rangle$$
+:::
+
+## Adjoint and Hermitian operators
+
+The **adjoint** $\hat{A}^\dagger$ is defined through the inner product:
+
+::: {.fragment}
+$$\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle$$
+:::
+
+::: {.fragment}
+For matrices, the adjoint is the **conjugate transpose**, $(A^\dagger)_{jk} = A_{kj}^*$.
+:::
+
+::: {.fragment}
+An operator is **Hermitian** (self-adjoint) when
+$$\hat{A} = \hat{A}^\dagger, \qquad \langle \phi | \hat{A}\psi \rangle = \langle \hat{A}\phi | \psi \rangle$$
+:::
+
+## Why Hermitian operators matter
+
+Observables are represented by **Hermitian operators**.
+
+::: {.fragment}
+**Real eigenvalues** (only real numbers can be measured):
+$$\hat{A}|\psi\rangle = a|\psi\rangle \implies a \in \mathbb{R}$$
+:::
+
+::: {.fragment}
+**Orthogonal eigenfunctions** for distinct eigenvalues:
+$$\langle \psi_m | \psi_n \rangle = 0 \quad (m \ne n)$$
+:::
+
+::: {.fragment}
+The quantum analog of symmetric matrices.
+:::
+
+# Takeaway {.center}
+
+> Observables are linear Hermitian operators with real eigenvalues, and their commutators decide which quantities can be known at once: $[\hat{x},\hat{p}_x]=i\hbar$ forbids sharp position and momentum together.

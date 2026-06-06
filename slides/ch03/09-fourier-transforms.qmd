@@ -1,0 +1,155 @@
+---
+title: "Fourier Transforms"
+subtitle: "Chem 3240 · Lecture 3.9"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch03/images
+---
+
+## Why Fourier?
+
+Any signal can be built from **waves**.
+
+::: {.fragment}
+- **Fourier series**: periodic functions as sums of sines and cosines
+:::
+
+::: {.fragment}
+- **Fourier transform**: extends the idea to non-periodic functions
+:::
+
+::: {.fragment}
+- Connects **position** and **momentum**, **time** and **frequency**
+:::
+
+## Fourier Series
+
+A periodic $f(x)$ is a weighted sum of $\sin$ and $\cos$:
+
+$$f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}a_n \cos(nx) + \sum_{n=1}^{\infty}b_n \sin(nx)$$
+
+::: {.fragment}
+$\sin$ and $\cos$ form a **complete orthogonal basis**.
+:::
+
+## The Coefficients
+
+Orthogonality picks out each coefficient:
+
+$$a_n = \frac{1}{\pi} \int_{-{\pi}}^{\pi} f(x)\cos(nx)\,dx$$
+
+$$b_n = \frac{1}{\pi} \int_{-{\pi}}^{\pi} f(x)\sin(nx)\,dx$$
+
+::: {.fragment}
+The $\frac{a_0}{2}$ term is the **mean** of $f(x)$ over the period.
+:::
+
+## Complex Form
+
+Euler's formula folds $\sin$ and $\cos$ into exponentials:
+
+$$f(x)=\sum_{n=0}^{\infty} c_{n} \exp\left(i \frac{2 \pi n x}{L}\right)$$
+
+::: {.fragment}
+Introduce the **wave number**
+
+$$k_{n}=\frac{2 \pi n}{L} = \frac{2 \pi}{\lambda}$$
+:::
+
+## From Series to Transform
+
+Let the period $L \to \infty$: the discrete sum becomes an integral.
+
+$$\Delta k_{n}=\frac{2 \pi n}{L} \rightarrow d k$$
+
+::: {.fragment}
+Discrete modes $\to$ a **continuum** of wave numbers.
+:::
+
+## The Transform Pair
+
+$$F(k)=\int_{-\infty}^{\infty} f(x)\, \mathrm{e}^{-i k x}\, d x$$
+
+::: {.fragment}
+**Inverse** transform rebuilds the original:
+
+$$f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(k)\, \mathrm{e}^{i k x}\, d k$$
+:::
+
+::: {.fragment}
+$f(x)$ and $F(k)$ are **two views of the same object**.
+:::
+
+## Narrow in x, Broad in k
+
+Square pulse of width $w$:
+
+$$\psi(x) = \begin{cases} 1, & |x| \leq \frac{w}{2} \\ 0, & |x| > \frac{w}{2} \end{cases}$$
+
+::: {.fragment}
+Its transform is a **sinc**:
+
+$$\hat{\psi}(k) = w \, \text{sinc}(kw/2)$$
+:::
+
+::: {.fragment}
+Shrink $w$ in space $\Rightarrow$ the sinc **spreads** in $k$.
+:::
+
+## The Uncertainty Relation
+
+$$\Delta x \, \Delta k \geq \frac{1}{2}$$
+
+::: {.fragment}
+A function and its transform **cannot both be sharp**.
+:::
+
+::: {.fragment}
+With de Broglie $k = p/\hbar$, this becomes position vs **momentum** uncertainty.
+:::
+
+## Gaussian to Gaussian
+
+A Gaussian transforms into another Gaussian:
+
+$$f(t) = \exp\left(- \frac{t^2}{2\sigma^2}\right)$$
+
+$$\mathcal{F}[f(t)] = \sqrt{2\pi}\, \exp\left(- \frac{\omega^2\sigma^2}{2}\right)$$
+
+::: {.fragment}
+Broad in $t$ $\Rightarrow$ **narrow** in $\omega$. The minimum-uncertainty shape.
+:::
+
+## Plane Wave and Delta Duality
+
+Expand in momentum eigenstates:
+
+$$\psi(x) = \frac{1}{\sqrt{2\pi}} \int \phi(k)\, e^{ikx}\, dk$$
+
+::: {.fragment}
+- Definite momentum $k_0$: $\;\phi(k)=\delta(k-k_0) \Rightarrow \psi(x)=e^{ik_0 x}$
+:::
+
+::: {.fragment}
+- Localized at $x_0$: $\;\psi(x)=\delta(x-x_0) \Rightarrow \phi(k)=\frac{1}{\sqrt{2\pi}}e^{-ikx_0}$
+:::
+
+::: {.fragment}
+A **plane wave** is one momentum spread over all space; a **spike** in space is all momenta at once.
+:::
+
+# Takeaway {.center}
+
+> A function and its Fourier transform are conjugate views: sharpening one always blurs the other, and that trade-off **is** the uncertainty principle.
