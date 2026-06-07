@@ -471,11 +471,7 @@ plt.ylim(bottom=0)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
 
-out_path = "/mnt/data/interval_probability_demo.png"
-plt.savefig(out_path, dpi=200)
 plt.show()
-
-out_path
 ```
 
 ### Examples of using probabilistic calculations in QM
