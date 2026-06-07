@@ -428,7 +428,7 @@ Thus we can see that as the Gaussian function gets broader, its Fourier transfor
 ```{code-cell} python
 from scipy import signal
 
-g1 = signal.gaussian(100, std = 10)
+g1 = signal.windows.gaussian(100, std = 10)
 t = np.linspace(-10, 10, len(g1))
 
 plt.subplot(1,2,1)
@@ -447,7 +447,7 @@ plt.title('Fourier Transform')
 plt.tight_layout()
 plt.show()
 
-g2 = signal.gaussian(100, std = 1)
+g2 = signal.windows.gaussian(100, std = 1)
 t = np.linspace(-10,10, len(g2))
 
 plt.subplot(1,2,1)

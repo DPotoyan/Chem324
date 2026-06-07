@@ -273,7 +273,7 @@ X = Morse(mA, mB, X_we, X_wexe, X_re, X_Te)
 X.make_rgrid()
 X.V = X.Vmorse(X.r)
 
-fig, ax = plt.subplots(figsize=(11, 11)))
+fig, ax = plt.subplots(figsize=(11, 11))
 X.plot_V(ax, color='k')
 
 X.draw_Elines(range(X.vmax), ax)
