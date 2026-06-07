@@ -87,6 +87,7 @@ $${\int\limits_{-\infty}^{\infty}H_{v'}(y)H_v(y)e^{-y^2}dy = \left\lbrace\begin{
 }$$
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import hermite, factorial
@@ -129,6 +130,7 @@ plt.show()
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import factorial
@@ -240,6 +242,7 @@ $$
 **Visual illustration of orthogonality of eigenfunctions for quantum harmonic oscillator**
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import hermite
@@ -294,6 +297,7 @@ plot_orthogonality(1, 3)  # Odd vs Odd: H_1(y) and H_3(y)
 - As we excite the system to higher levels, the probability distribution accumulates near the edges, thereby approaching the classical prediction. 
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import factorial

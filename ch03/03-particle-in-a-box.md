@@ -191,6 +191,7 @@ $$\Psi(x,t) = \sum_n c_n \psi_n(x, t)$$
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -276,6 +277,7 @@ $$E_{n+1} - E_n = (2n+1)\frac{h^2}{8mL^2}$$
 - Thus quantum effects are more pronounced when an electron is bound in smaller regions of space.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -340,6 +342,7 @@ plt.show()
     - For instance, the $n=4$ nodes are at $L/4$, $2L/4$, and $3L/4$.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -418,6 +421,7 @@ $$|\psi_n(x,t)|^2 =  \psi_n(x,t)^{*}\cdot\psi_n(x,t) = \psi(x)e^{-iE_nt/\hbar}\c
 - Below we visualize the wavefunction and its square for $n=2$.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -533,6 +537,7 @@ This consists of:
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -691,6 +696,7 @@ $$
 - In most cases, **degeneracy in quantum mechanics arises from symmetry**. When $a = b = c$, the first excited state has triple degeneracy. When only $a=b\neq c$, the first excited state has double degeneracy.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
@@ -925,6 +931,7 @@ Thus, the particle's average position is always at the midpoint of the box, inde
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 # Visual proof that the positive and negative areas cancel:
 # ∫_0^L x cos(2 n π x / L) dx = 0
 

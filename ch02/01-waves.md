@@ -60,6 +60,7 @@ $$u(x,t) = f(x-vt)$$
 - To see why $f(x-vt)$ implies motion to the right, take a constant front of the wave $x-vt=const$, which shows that $x = vt +const$; the same reasoning applied to $f(x+vt)$ gives motion to the left.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -141,6 +142,7 @@ $$u(x,t) = Ae^{i(kx-\omega t)}$$
 - We can visualize the sine and cosine components of the complex exponential and also visualize **the phasor**, the change of the exponential driven by the change in $t$ for any fixed value of $x$.
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation

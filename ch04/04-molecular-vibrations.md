@@ -90,6 +90,7 @@ $$V(R)=D_e(1-e^{-a(R-R_e)^2})$$
 $$D_0 = D_e-\frac{1}{2}h\nu$$
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 from scipy.constants import h, hbar, c, u
 from scipy.special import genlaguerre, gamma, factorial

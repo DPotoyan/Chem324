@@ -454,6 +454,7 @@ $$
 $$
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 from scipy.special import sph_harm
 from scipy.integrate import dblquad
@@ -496,6 +497,7 @@ print(f"∫ Y(2,0) * Y(2,-1)* = {orthogonality_test(2, 0, 2, -1):.5f} (should be
 - **Azimuthal nodes** depend on $ |m| $ and create longitudinal nodes based on $ e^{im\phi} $.
 
 ```{code-cell} python
+:tags: [hide-input]
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
@@ -536,6 +538,7 @@ def generate_spherical_harmonic_data(l, m):
 #### $l=1$ harmonics
 
 ```{code-cell} python
+:tags: [hide-input]
 # Define the range of m and l values for the first three spherical harmonics
 harmonics = [(0, 1), (1, 1), (-1, 1)]  # List of (m, l) pairs to plot
 
@@ -565,6 +568,7 @@ plt.show()
 #### $l=2$ harmonics
 
 ```{code-cell} python
+:tags: [hide-input]
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
@@ -602,6 +606,7 @@ plt.show()
 #### Total number of nodes =  $l$
 
 ```{code-cell} python
+:tags: [hide-input]
 import plotly.io as pio
 pio.renderers.default = "plotly_mimetype"   # interactive in Jupyter-Book
 import numpy as np
@@ -654,6 +659,7 @@ fig.show()
 - For instance, to visualize $Y_{1,-1}\sim cos(\theta)$ we could either plot its values on a unit sphere, or we could plot how $\cos(\theta)$ changes as we move around in space. 
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -733,6 +739,7 @@ fig.show()
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots

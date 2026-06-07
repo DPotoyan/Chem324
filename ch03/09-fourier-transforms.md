@@ -67,6 +67,7 @@ $$
 Let's plot this function.
 
 ```{code-cell} python
+:tags: [hide-input]
 # Define a function to create a square wave
 import numpy as np
 import matplotlib.pyplot as plt
@@ -113,6 +114,7 @@ $$
 Now let's plot the Fourier series for $ n=10, n=50,$ and $n=100$.
 
 ```{code-cell} python
+:tags: [hide-input]
 # Define the cos and sin terms of the Fourier series
 def cosTerm(n):
     # Always zero except for n=0
@@ -210,6 +212,7 @@ $$
 - We can use `scipy.fftpack` to perform the "fast Fourier transform" (FFT). The resulting "x" variable is in frequency, so its limit is set by the $dt$ we used. We cannot find a frequency higher than that time resolution allows. (In short, if we expected GHz signals, we would need a short time resolution.)
 
 ```{code-cell} python
+:tags: [hide-input]
 import scipy.fftpack
 
 # Number of sample points
@@ -254,6 +257,7 @@ plt.show()
 #### Noisy periodic data
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.fftpack import fft
@@ -295,6 +299,7 @@ plt.show()
 - Also, the time signal need not be completely periodic. A "chirp," where the signal intensity drops over time, also works.
 
 ```{code-cell} python
+:tags: [hide-input]
 # Apply the exponential decay to the time domain signal
 y = y * np.exp(-2 * t)
 
@@ -355,6 +360,7 @@ $$
 - In quantum mechanics, using the de Broglie relation, we can recover the uncertainty relation since $k=2\pi/\lambda = 2\pi p/h = p/\hbar$.
 
 ```{code-cell} python
+:tags: [hide-input]
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
@@ -426,6 +432,7 @@ $$ \mathcal{F}[f(t)] = \sqrt{2\pi}\, \exp\left(- \frac{\omega^2\sigma^2}{2}\righ
 Thus we can see that as the Gaussian function gets broader, its Fourier transform gets narrower. To illustrate this, let's plot the Gaussian and its transform for two different standard deviations.
 
 ```{code-cell} python
+:tags: [hide-input]
 from scipy import signal
 
 g1 = signal.windows.gaussian(100, std = 10)
@@ -487,6 +494,7 @@ $$ \mathcal{F}[{\delta}(t)] = 1 $$
 Let's plot the function and its transform.
 
 ```{code-cell} python
+:tags: [hide-input]
 from scipy import signal
 imp = signal.unit_impulse(100, 'mid') # creates the delta function
 t = np.linspace(-5, 5, 100)

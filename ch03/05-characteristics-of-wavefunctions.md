@@ -56,6 +56,7 @@ From the signs of the terms in the Schrödinger equation, we can predict qualita
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 ###############################################################################################
 #
 #  The cell contains all of the libraries used in the notebook, either run all cells or
@@ -293,6 +294,7 @@ $$(fsw_even_sol_equ)
 ## Finding the energy eigenvalues graphically 
 
 ```{code-cell} python
+:tags: [hide-input]
 #a better (tidier!!) way of finding the energy eigen values in the finite square well. 
 
 #define the equations we wish to find the roots of
@@ -333,6 +335,7 @@ def find_state_energies(Vo,L,step=0.01):
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 # plot the odd and even solutions, identify the intercepts with an energy label. 
 
 def solve_finite_square_well(Vo, L):
@@ -413,6 +416,7 @@ Here are some questions to think about:
 - Now that we know the energy eigenvalues, we can use them to find expressions for the wavefunctions and probability densities. This may help you understand some of the choices we made up to this point. Take a look at the figure and consider again the choice of wavefunction in regions I and III, and why we split the wavefunction into odd and even functions inside the well.
 
 ```{code-cell} python
+:tags: [hide-input]
 #set the potential depth and width
 Vo=5
 L=10
@@ -553,6 +557,7 @@ $$
 - We can calculate $P(-L/2>x>L/2)$, i.e. the size of the shaded green area as a percentage of the total area:
 
 ```{code-cell} python
+:tags: [hide-input]
 #@title  { vertical-output: true, form-width: "60%", display-mode: "form" }
 print ("\nThe tunneling probabilities are:")
 for n in range(1,nstates+1):
@@ -578,6 +583,7 @@ for n in range(1,nstates+1):
 These values confirm what we have already deduced: the closer the state is to the top of the potential, the more easily it spreads outside the well. How does this affect the energy levels? Lower in the potential, the wavelength of the wavefunction is more closely tied to the width of the well than it is higher up. Compare the infinite and finite square wells of the same width below.
 
 ```{code-cell} python
+:tags: [hide-input]
 h=6.62607e-34    #planck's constant in joules
 me=9.1093837e-31  # mass of an electron in kg
 

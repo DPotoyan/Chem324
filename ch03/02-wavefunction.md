@@ -185,6 +185,7 @@ $$
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -200,6 +201,7 @@ plt.show()
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 # Continuous uniform distribution on [a,b]
 a, b = 0, 1
 x = np.linspace(-0.2, 1.2, 200)
@@ -214,6 +216,7 @@ plt.show()
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 from scipy.stats import norm
 
 x = np.linspace(-4, 4, 200)
@@ -229,6 +232,7 @@ plt.show()
 ```
 
 ```{code-cell} python
+:tags: [hide-input]
 # -----------------------------
 # Correct sampling for H-atom 1s
 # -----------------------------
@@ -337,6 +341,7 @@ $$
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -417,6 +422,7 @@ $$\langle A \rangle  = \int \hat{A} p(x) \cdot  dx = \int \psi^{*}(x) \cdot \hat
 | $\langle p^2 \rangle=\int \psi^{*}(x) \hat{p}^2 \psi(x)  dx$ |        $\hat{p}^2=-\hbar^2\frac{d^2}{dx^2}$        |
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from math import erf, sqrt

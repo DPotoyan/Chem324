@@ -273,6 +273,7 @@ The first seven solutions (normal modes) of the spatial part of the wave equatio
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -346,6 +347,7 @@ Places where the guitar string stays at the resting position of 0 are called **n
 - Note that the general solution to wave equation is expressed as **a linear combination of all normal modes**  
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -598,6 +600,7 @@ This solution describes the vibration modes of a 2D rectangular membrane, with e
 :::
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np  
 import matplotlib.pyplot as plt
 import ipywidgets

@@ -74,6 +74,7 @@ $$
 - The two constants are: $A$, the **amplitude of oscillations**, and $\phi$, a constant specifying the initial position of the bead. 
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -222,6 +223,7 @@ $$U(x) = \frac{1}{2!}k(x-x_0)^2+\frac{1}{3!}\gamma(x-x_0)^3+...$$
 - Hence we see that the harmonic approximation keeps only the first non-vanishing term! Furthermore, the spring constant $k$ and the subsequent anharmonicity constants such as $\gamma$ are higher-order derivatives of the potential energy. That is, the more nonlinear the potential, the larger the contribution of these terms. Conversely, the closer the potential is to a quadratic form, the more accurate the harmonic assumption. 
 
 ```{code-cell} python
+:tags: [hide-input]
 import numpy as np
 import matplotlib.pyplot as plt
 
