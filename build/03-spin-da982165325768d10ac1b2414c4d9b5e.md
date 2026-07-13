@@ -431,19 +431,54 @@ $$\Delta J = 0, \pm 1 \quad (0 \rightarrow 0 \text{ forbidden})$$
 
 ### Problems
 
-::::{admonition} **Problem 1: Why $|s, m_s\rangle$ is enough**
+These problems span the whole chapter, from hydrogen orbitals and their quantum numbers to electron spin, Zeeman splitting, and spin-orbit coupling.
+
+::::{admonition} **Problem 1: Counting states for $n = 3$**
 :class: note
 
-Why is it sufficient to specify $|s, m_s\rangle$ to describe spin states?
+- For the hydrogen atom, how many possible quantum states correspond to the principal quantum number $n = 3$?
+- What are the energies of these states?
+- Consider several values of $n$ and show that the number of orbitals for each $n$ is $n^2$.
 
 :::{admonition} **Solution:**
 :class: dropdown solution
 
-By analogy with orbital angular momentum, the spin state is a simultaneous eigenstate of the two commuting operators $\hat{S}^2$ and $\hat{S}_z$. The eigenvalue of $\hat{S}^2$ is fixed by $s$ (which is always $1/2$ for an electron) and the eigenvalue of $\hat{S}_z$ is fixed by $m_s$. Since $\hat{S}_x$ and $\hat{S}_y$ do not commute with $\hat{S}_z$, they cannot be specified simultaneously, so $|s, m_s\rangle$ is the maximal set of compatible labels and completely specifies the spin state.
+If $n = 3$, the allowed values of $l$ are $0$, $1$, and $2$.
+
+- If $l = 0$, then $m = 0$ (1 state).
+- If $l = 1$, then $m = -1, 0, 1$ (3 states).
+- If $l = 2$, then $m = -2, -1, 0, 1, 2$ (5 states).
+
+In total there are $1 + 3 + 5 = 9$ allowed states. This confirms that the number of orbitals for the H-atom is $n^2$.
+
+Because the total energy depends only on the principal quantum number $n = 3$, the energy of each of these states is:
+
+$$
+E_n = -13.6 \cdot \frac{1}{n^2} \, [\text{eV}]
+$$
 :::
 ::::
 
-::::{admonition} **Problem 2: The four quantum numbers of the H-atom**
+::::{admonition} **Problem 2: Nodes of the $3p_z$ orbital**
+:class: note
+
+Locate the nodes (and nodal surfaces) of the $3p_z$ orbital:
+
+$$
+\psi_{3p_z} = \frac{1}{81}\sqrt{\frac{2}{\pi}}\left(\frac{1}{a_0}\right)^{3/2}\left(6\frac{r}{a_0} - \frac{r^2}{a_0^2}\right) e^{-r/3a_0}\cos(\theta)
+$$
+
+:::{admonition} **Solution:**
+:class: dropdown solution
+
+- $3p_z$ corresponds to $n = 3$, $l = 1$, and $m_l = 0$.
+- The radial part is zero at $r = 0$ and $r = 6a_0$. The first is part of the boundary condition and not a node, because the wavefunction does not change sign there. Hence there is 1 radial node.
+- The angular part has one nodal surface from $\cos\theta = 0$, which occurs at $\theta = \frac{\pi}{2}$ (the $xy$-plane).
+- We thus have 2 nodes for the $3p_z$ orbital. The total number of nodes is $n - 1$, made up of $l$ angular nodes and $n - l - 1$ radial nodes.
+:::
+::::
+
+::::{admonition} **Problem 3: The four quantum numbers of the H-atom**
 :class: note
 
 - Why do we use four quantum numbers $n$, $l$, $m_l$, $m_s$ to specify H-atom states such as $|1, 0, 0, +1/2\rangle$?
@@ -457,7 +492,7 @@ By analogy with orbital angular momentum, the spin state is a simultaneous eigen
 :::
 ::::
 
-::::{admonition} **Problem 3: Microstates of an $l = 4$ electron**
+::::{admonition} **Problem 4: Microstates of an $l = 4$ electron**
 :class: note
 
 Determine the term symbols (microstates) of the H-atom corresponding to $l = 4$.
@@ -469,20 +504,26 @@ For $l = 4$ ($g$ electron) and $s = 1/2$, the total angular momentum takes the v
 :::
 ::::
 
-::::{admonition} **Problem 4: Zeeman splitting of a $2p$ electron**
+::::{admonition} **Problem 5: Zeeman splitting of a $2p$ electron**
 :class: note
 
 A hydrogen atom in a $2p$ state is placed in a magnetic field of $B = 2.0$ T. Ignoring spin, into how many levels does the orbital Zeeman effect split the $2p$ level, and what is the energy spacing between adjacent levels?
 ::::
 
-::::{admonition} **Problem 5: Magnitude versus projection of spin**
+::::{admonition} **Problem 6: Magnitude versus projection of spin**
 :class: note
 
 For an electron, compute the magnitude $|\vec{S}|$ of the spin angular momentum and the allowed projections $S_z$. Explain why $|\vec{S}|$ is larger than the maximum value of $S_z$.
 ::::
 
-::::{admonition} **Problem 6: Spin-orbit and the sodium doublet**
+::::{admonition} **Problem 7: Spin-orbit and the sodium doublet**
 :class: note
 
 Sodium's bright yellow emission is a closely spaced doublet (the $D$ lines) arising from the $3p \rightarrow 3s$ transition. Using the selection rules and the term symbols of a single $p$ electron, explain why this line is a doublet rather than a single line.
+::::
+
+::::{admonition} **Problem 8: Average potential energy of the H-atom**
+:class: note
+
+Calculate the average potential energy of the hydrogen atom in its ground and first excited states, using $\langle V \rangle = -\frac{Ze^2}{4\pi\epsilon_0}\langle r^{-1}\rangle$ with $\langle r^{-1}\rangle_{n} = \frac{Z}{a_0 n^2}$. Show that your result satisfies the virial relation $\langle V \rangle = 2E_n$.
 ::::
