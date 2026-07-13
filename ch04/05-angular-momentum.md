@@ -456,7 +456,7 @@ $$
 ```{code-cell} python
 :tags: [hide-input]
 import numpy as np
-from scipy.special import sph_harm
+from scipy.special import sph_harm_y
 from scipy.integrate import dblquad
 
 def orthogonality_test(l1, m1, l2, m2):
@@ -472,8 +472,8 @@ def orthogonality_test(l1, m1, l2, m2):
     """
     # Define the integrand for the orthogonality condition
     def integrand(theta, phi):
-        Y_lm1 = sph_harm(m1, l1, phi, theta)
-        Y_lm2 = sph_harm(m2, l2, phi, theta)
+        Y_lm1 = sph_harm_y(l1, m1, theta, phi)
+        Y_lm2 = sph_harm_y(l2, m2, theta, phi)
         return np.real(Y_lm1 * np.conj(Y_lm2)) * np.sin(theta)
     
     # Perform the integration over theta (0 to pi) and phi (0 to 2*pi)
@@ -501,7 +501,7 @@ print(f"∫ Y(2,0) * Y(2,-1)* = {orthogonality_test(2, 0, 2, -1):.5f} (should be
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
-from scipy.special import sph_harm
+from scipy.special import sph_harm_y
 from mpl_toolkits.mplot3d import Axes3D
 
 def generate_spherical_harmonic_data(l, m):
@@ -529,7 +529,7 @@ def generate_spherical_harmonic_data(l, m):
     z = np.cos(phi)
 
     # Calculate the spherical harmonic Y(l, m) and normalize it to [-1, 1] for color mapping
-    fcolors = sph_harm(m, l, theta, phi).real
+    fcolors = sph_harm_y(l, m, phi, theta).real
     fcolors_normalized = (fcolors - fcolors.min()) / (fcolors.max() - fcolors.min())
     
     return x, y, z, fcolors_normalized
@@ -572,7 +572,7 @@ plt.show()
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
-from scipy.special import sph_harm
+from scipy.special import sph_harm_y
 from mpl_toolkits.mplot3d import Axes3D
 
 # Define l and the range of m values for spherical harmonics with l=2
@@ -611,7 +611,7 @@ import plotly.io as pio
 pio.renderers.default = "plotly_mimetype"   # interactive in Jupyter-Book
 import numpy as np
 import plotly.graph_objects as go
-from scipy.special import sph_harm
+from scipy.special import sph_harm_y
 
 # Define the range of m and l values for the first three spherical harmonics
 harmonics = [(1, 1), (1, 2), (2, 3)]  # List of (m, l) pairs to plot
@@ -663,7 +663,7 @@ fig.show()
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from scipy.special import sph_harm
+from scipy.special import sph_harm_y
 
 # Set up the subplots with two side-by-side 3D plots
 fig = make_subplots(rows=1, cols=2, specs=[[{'is_3d': True}, {'is_3d': True}]])
@@ -768,7 +768,7 @@ for i in range(len(theta) - 1):
             r=[r_values[i], r_values[i + 1]],
             theta=[np.degrees(theta[i]), np.degrees(theta[i + 1])],
             mode="lines",
-            line=dict(color=f"rgba{cmap(norm(Y_1m1_values[i]))}", width=5),
+            line=dict(color=matplotlib.colors.to_hex(cmap(norm(Y_1m1_values[i]))), width=5),
             showlegend=False
         ),
         row=1, col=1
@@ -781,7 +781,7 @@ for i in range(len(theta) - 1):
             r=[1, 1],  # Fixed radius for unit circle
             theta=[np.degrees(theta[i]), np.degrees(theta[i + 1])],
             mode="lines",
-            line=dict(color=f"rgba{cmap(norm(Y_1m1_values[i]))}", width=5),
+            line=dict(color=matplotlib.colors.to_hex(cmap(norm(Y_1m1_values[i]))), width=5),
             showlegend=False
         ),
         row=1, col=2

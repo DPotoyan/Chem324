@@ -947,7 +947,7 @@ x = np.linspace(0, L, 1500)
 f = x * np.cos(2 * np.pi * n * x / L)
 
 # Numerical integral for confirmation
-num_int = np.trapz(f, x)
+num_int = np.trapezoid(f, x)
 
 # Create plot
 plt.figure(figsize=(8, 4.5))

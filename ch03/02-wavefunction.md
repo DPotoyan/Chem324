@@ -357,8 +357,8 @@ psi_norm = np.sqrt(3) * x
 psi2_norm = psi_norm**2
 
 # Compute integrals for annotation
-area_unnorm = np.trapz(psi2_unnorm, x)
-area_norm = np.trapz(psi2_norm, x)
+area_unnorm = np.trapezoid(psi2_unnorm, x)
+area_norm = np.trapezoid(psi2_norm, x)
 
 # Create the figure and axes
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))

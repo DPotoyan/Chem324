@@ -35,17 +35,17 @@ jobs:
           uv venv .venv --python 3.13
           uv pip install --python .venv/bin/python jupyter-book-marimo
 
+      - name: Install Python deps for cell execution
+        # Kernel environment for `--execute`: lecture {code-cell} blocks and demo
+        # notebooks run at build time so the site shows their outputs. Notebooks
+        # that cannot run headless carry `execute: skip: true` frontmatter.
+        run: pip install -r requirements.txt
+
       - name: Build HTML
         env:
           # Served at https://dpotoyan.github.io/Chem324/ -> assets need the /Chem324 prefix.
           BASE_URL: /Chem324
-        run: myst build --html
-        # To render demo-notebook outputs on the site, install the Python deps and
-        # add `--execute` above:
-        #   - uses: actions/setup-python@v5
-        #     with: { python-version: '3.11' }
-        #   - run: pip install -r requirements.txt
-        #   run: myst build --html --execute
+        run: myst build --html --execute
 
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
