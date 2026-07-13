@@ -1,0 +1,168 @@
+---
+title: "Perturbation Theory"
+subtitle: "Chem 3240 · Lecture 6.2"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch06/images
+---
+
+## The Big Idea
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch06/images/perturb1.png)
+:::
+::: {.column width="50%"}
+- Most real problems are **not exactly solvable**.
+- Split the Hamiltonian into a **solvable** part plus a **small** correction.
+
+::: {.fragment}
+- Quantum analog of a **Taylor expansion**.
+- The art is finding the **small parameter**.
+:::
+:::
+::::
+
+## Splitting the Hamiltonian
+
+- Start from an **exactly solvable** problem (box, oscillator, ...):
+
+::: {.fragment}
+$$\hat{H}^0 \mid n^0\rangle = E^0_n \mid n^0\rangle$$
+:::
+
+::: {.fragment}
+- Add a **small perturbation** $\hat{H}^1$, switched by $\lambda$:
+$$\hat{H} = \hat{H}^0 + \lambda \hat{H}^1$$
+:::
+
+::: {.fragment}
+- "Small" means level shifts stay **below the level spacing**.
+:::
+
+## Expand Like a Taylor Series
+
+- Energies and states become **power series** in $\lambda$:
+
+::: {.fragment}
+$$E_n = E^0_n + \lambda E^1_n + \lambda^2 E^2_n + \dots$$
+:::
+
+::: {.fragment}
+$$\mid n\rangle = \mid n^0\rangle + \lambda \mid n^1\rangle + \lambda^2 \mid n^2\rangle + \dots$$
+:::
+
+::: {.fragment}
+- Plug into $\hat{H}\mid n\rangle = E_n\mid n\rangle$ and **collect powers** of $\lambda$.
+:::
+
+## Order by Order
+
+- Each power of $\lambda$ gives one equation:
+
+::: {.fragment}
+$$\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle$$
+:::
+
+::: {.fragment}
+$$\hat{H}^0\mid n^1\rangle + \hat{H}^1\mid n^0\rangle = E^0_n\mid n^1 \rangle + E^1_n\mid n^0 \rangle$$
+:::
+
+::: {.fragment}
+- **Zeroth order** is just the exact solution.
+- The **sum of superscripts** sets the order.
+:::
+
+## The Master Formula
+
+::: {.fragment}
+$$E_n = E^0_n + H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}$$
+:::
+
+::: {.fragment}
+- Everything is built from the **solved** eigenstates and eigenvalues.
+- **Matrix elements** of the perturbation:
+$$H_{nk} = \langle n^0\mid \hat{H}^1\mid k^0\rangle$$
+:::
+
+## First Order: a Diagonal Average
+
+- The first-order shift is the **diagonal** matrix element:
+
+::: {.fragment}
+$$E_n^1 = \langle n^0 \mid \hat{H}^1\mid n^0 \rangle$$
+:::
+
+::: {.fragment}
+- Looks like an **expectation value**, but the **solved** states sandwich the perturbation.
+- $\hat{H}^0$ and $\hat{H}^1$ in general do **not** share eigenfunctions.
+:::
+
+## Second Order: Mixing in Other States
+
+::: {.fragment}
+$$E_n^2 = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}$$
+:::
+
+::: {.fragment}
+- Built from **off-diagonal** elements $H_{nk}$.
+- **Nearby levels** dominate: small denominators **amplify** their terms.
+:::
+
+::: {.fragment}
+- For the **ground state** every denominator is negative, so $E_0^2 < 0$: mixing pushes it **down**.
+:::
+
+## Particle in a Box, Shifted Up
+
+- Add a constant potential $V_0$ across the whole box.
+
+::: {.fragment}
+$$E_n^1 = \langle n \mid V_0 \mid n \rangle = V_0 \cdot \frac{2}{L}\int_0^L \sin^2\frac{n\pi x}{L}\,dx = V_0$$
+:::
+
+::: {.fragment}
+- **Every level** rises by the same $V_0$.
+- Spacings are **unchanged** to first order.
+:::
+
+## Anharmonic Oscillator
+
+- Oscillator plus a **cubic** kick: $\hat{H} = \hat{H}_0 + \gamma x^3$.
+
+::: {.fragment}
+$$E_n^1 = \langle n\mid \gamma x^3 \mid n\rangle = 0$$
+:::
+
+::: {.fragment}
+- **First order vanishes**: $x^3$ is odd, $|\psi_n|^2$ is even.
+- The shift appears only at **second order**, from odd $k$ terms.
+:::
+
+## Where It Shows Up
+
+- **Hydrogen in a magnetic field**: $\hat{H}^1 = \frac{e}{2m_e}B\,\hat{L}_z$, shift $m_l\,\beta_B B$.
+
+::: {.fragment}
+- **Spin-orbit coupling**: $\hat{H}^1 = A_{SO}\,\hat{L}\hat{S}$.
+:::
+
+::: {.fragment}
+- **Anharmonic vibrations**, a **shifted box**, and a perturbative view of **bonding**.
+:::
+
+# Takeaway {.center}
+
+> Perturbation theory turns a hard problem into a **solvable one plus a small correction**, expanding the energy as $E_n = E^0_n + H_{nn} + \sum_{k\neq n}\frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}$. The **first-order** shift is a diagonal average; the **second-order** shift mixes in other states, with **nearby levels** dominating.

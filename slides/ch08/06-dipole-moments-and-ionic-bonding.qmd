@@ -1,0 +1,162 @@
+---
+title: "Dipole Moments and Ionic Bonding"
+subtitle: "Chem 3240 · Lecture 8.6"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch08/images
+---
+
+## The Electric Dipole Moment
+
+- A dipole measures the **asymmetry** of a charge distribution.
+
+::: {.fragment}
+$$\vec{\mu} = \sum_{i=1}^{N} Q_i\,\vec{r_i}$$
+:::
+
+::: {.fragment}
+- A **vector** pointing from negative to positive charge.
+- SI units of **C m**; often quoted in **debye** (D).
+:::
+
+## Dipole as an Expectation Value
+
+- For a molecule, take the **expectation value** of the dipole operator.
+
+::: {.fragment}
+$$\hat{\mu}_x = \sum_{i=1}^{N} Q_i x_i, \quad \hat{\mu}_y = \sum_{i=1}^{N} Q_i y_i, \quad \hat{\mu}_z = \sum_{i=1}^{N} Q_i z_i$$
+:::
+
+::: {.fragment}
+$$\left\langle \vec{\hat{\mu}} \right\rangle = \int \psi^* \, \vec{\hat{\mu}} \, \psi \, d\tau$$
+:::
+
+## Ionic versus Covalent
+
+- **Similar** electronegativity: orbitals spread evenly, a **covalent** bond.
+
+::: {.fragment}
+- **Different** electronegativity: orbitals lopsided, **ionic** character and a permanent dipole.
+:::
+
+::: {.fragment}
+- Neither **pure ionic** nor **pure covalent** bonds truly exist.
+:::
+
+## When Is a Bond Ionic? (LiF)
+
+- Compare the cost of **electron transfer**.
+
+::: {.fragment}
+- Li ionization energy $\approx 5.4$ eV, F electron affinity $\approx 3.5$ eV.
+- Difference of only **1.9 eV**, so ionic bonding is favorable.
+:::
+
+::: {.fragment}
+- Contrast the **C-H** bond: the gap exceeds **10 eV**, so it stays covalent.
+:::
+
+## The Ionic Binding Curve
+
+:::: {.columns}
+::: {.column width="48%"}
+![](../../ch08/images/Energies.png)
+:::
+::: {.column width="52%"}
+- **Coulomb attraction** at long range pulls the ions together.
+
+::: {.fragment}
+$$E(R) = \frac{Q_1 Q_2}{4\pi\epsilon_0 R} + b\,e^{-aR}$$
+:::
+
+::: {.fragment}
+- Short-range **Pauli repulsion** sets the minimum at $R_e$.
+:::
+:::
+::::
+
+## Why the Short-Range Repulsion?
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch08/images/b_vs_u.png)
+:::
+::: {.column width="50%"}
+- Close in, filled orbitals **overlap**.
+
+::: {.fragment}
+- Both **bonding and antibonding** orbitals fill.
+- Antibonding repulsion **outweighs** bonding attraction.
+:::
+
+::: {.fragment}
+- This is the **Pauli repulsion** term $b\,e^{-aR}$.
+:::
+:::
+::::
+
+## Dissociation Goes to Atoms
+
+- An **avoided crossing** switches ionic to covalent on the way out.
+
+::: {.fragment}
+- The molecule breaks into **neutral atoms**, not ions.
+:::
+
+::: {.fragment}
+$$D_e(\text{MX} \to \text{M} + \text{X}) = D_e(\text{MX} \to \text{M}^+ + \text{X}^-) - E_{ea}(\text{X})$$
+:::
+
+## Intermolecular Forces
+
+- Even with **no chemical bond**, molecules attract weakly.
+
+::: {.fragment}
+- Three weak attractions, **all** scaling as $1/R^6$:
+  - **Dipole-dipole** (Keesom)
+  - **Dipole-induced-dipole**
+  - **Dispersion** (London)
+:::
+
+::: {.fragment}
+- Balanced by **Pauli repulsion** at short range.
+:::
+
+## The Three $1/R^6$ Attractions
+
+- **Dipole-dipole**, thermally averaged:
+$$\langle V \rangle_{dd} = -\frac{2}{3kT}\left(\frac{\mu_A \mu_B}{4\pi\epsilon_0}\right)^2 \frac{1}{R^6}$$
+
+::: {.fragment}
+- **Dispersion** needs no permanent dipole:
+$$\langle V \rangle_{disp} = -\frac{3}{2}\left(\frac{E_A E_B}{E_A + E_B}\right)\frac{\alpha_A \alpha_B}{(4\pi\epsilon_0)^2}\frac{1}{R^6}$$
+:::
+
+## The Lennard-Jones Potential
+
+- Combine $1/R^6$ attraction with a steep repulsion.
+
+::: {.fragment}
+$$V(R) = 4\epsilon\left[\left(\frac{\sigma}{R}\right)^{12} - \left(\frac{\sigma}{R}\right)^{6}\right]$$
+:::
+
+::: {.fragment}
+- $R^{-12}$ is **Pauli repulsion**, $R^{-6}$ is **van der Waals** binding.
+- Well depth $\epsilon$ sits at $R_e = 2^{1/6}\sigma$.
+:::
+
+# Takeaway {.center}
+
+> A **dipole** is the expectation value of $\sum_i Q_i \vec{r_i}$; an **ionic bond** is Coulomb attraction $Q_1 Q_2/4\pi\epsilon_0 R$ tamed by **Pauli repulsion**, and weak $1/R^6$ forces plus that repulsion give the **Lennard-Jones** potential $4\epsilon[(\sigma/R)^{12} - (\sigma/R)^{6}]$.

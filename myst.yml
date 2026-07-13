@@ -5,6 +5,12 @@ project:
   authors:
     - name: Davit Potoyan
   github: https://github.com/DPotoyan/Chem324
+  bibliography:
+    - references.bib
+  # marimo pilot: renders {marimo} directives as reactive in-browser islands
+  plugins:
+    - type: executable
+      path: .venv/bin/jupyter-book-marimo
   # Math macros available in every page
   math:
     '\bra': '\left\langle #1 \right|'
@@ -44,6 +50,7 @@ project:
         - file: ch03/10-demo-particle-in-a-box.ipynb
         - file: ch03/11-demo-quantum-waves.ipynb
         - file: ch03/12-demo-bonus-quantum-waves.ipynb
+        - file: ch03/13-demo-numerical-schrodinger.md
     - title: "Chapter 4: Model Systems"
       children:
         - file: ch04/01-molecular-degrees-of-freedom.md

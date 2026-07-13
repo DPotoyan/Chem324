@@ -22,6 +22,19 @@ jobs:
       - name: Install MyST
         run: npm install -g mystmd
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install marimo plugin
+        # myst.yml registers an executable plugin at .venv/bin/jupyter-book-marimo;
+        # it renders {marimo} directives and shells out to uv to execute the cells
+        # at build time (deps come from each page's pyproject block).
+        run: |
+          pip install uv
+          uv venv .venv --python 3.13
+          uv pip install --python .venv/bin/python jupyter-book-marimo
+
       - name: Build HTML
         env:
           # Served at https://dpotoyan.github.io/Chem324/ -> assets need the /Chem324 prefix.

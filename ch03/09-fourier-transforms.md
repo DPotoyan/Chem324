@@ -8,7 +8,7 @@ kernelspec:
 
 ### Fourier Series
 
-The Fourier series enables us to represent _periodic_ functions as infinite sums. In particular, it represents a function as a sum of weighted $\sin$ and $\cos$ functions.
+The Fourier series enables us to represent *periodic* functions as infinite sums. In particular, it represents a function as a sum of weighted $\sin$ and $\cos$ functions.
 
 This is possible because the $\sin$ and $\cos$ functions form a complete orthogonal set (**basis functions**). The Fourier series for a function $f(x)$ with a period of $2{\pi}$ is given by:
 
@@ -22,10 +22,9 @@ $$b_n = \frac{1}{\pi} \int_{-{\pi}}^{\pi} f(x)\sin(nx)dx \,\,\,\,n=1, 2, ...$$
 
 :::
 
-:::{admonition} **Fourier coefficients and orthogonality of sin and cos functions**
-:class: info, dropdown
+:::{admonition} **Fourier coefficients and orthogonality of sin and cos functions** :class: info, dropdown
 
-- Using the orthogonality property of the $\cos$ and $\sin$ functions, we can determine an expression for the coefficients of the Fourier series. By integrating the Fourier series over the interval [-${\pi}$, ${\pi}$], we can determine an expression for $a_0$. Over this interval the sums vanish, since we are integrating the $\sin$ and $\cos$ functions over one period. Thus, we are left with
+- Using the orthogonality property of the $\cos$ and $\sin$ functions, we can determine an expression for the coefficients of the Fourier series. By integrating the Fourier series over the interval \[-${\pi}$, ${\pi}$\], we can determine an expression for $a_0$. Over this interval the sums vanish, since we are integrating the $\sin$ and $\cos$ functions over one period. Thus, we are left with
 
 $$\int_{-{\pi}}^{\pi} f(x)dx = \int_{-{\pi}}^{\pi}\frac{a_0}{2}dx.$$
 
@@ -53,48 +52,36 @@ $$b_n = \frac{1}{\pi} \int_{-{\pi}}^{\pi} f(x)\sin(nx)dx \,\,\,\,n=1, 2, ...$$
 
 Now that we have introduced the Fourier series, let's look at an example: the positive square wave. This is defined as
 
-$$
-f(x) = \left\{
+$$f(x) = \left\{
     \begin{array}{ll}
         0 & \text{if } -\pi \leq x < 0, \\
         1 & \text{if } 0 \leq x < \pi, \\
     \end{array}
-    \right.
-$$
-
-
+    \right.$$
 
 Let's plot this function.
 
-```{code-cell} python
-:tags: [hide-input]
-# Define a function to create a square wave
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
+\`\`\`{code-cell} python :tags: \[hide-input\] \# Define a function to create a square wave import numpy as np import matplotlib.pyplot as plt import matplotlib
 
 def square(x, period):
-    
-    # Create array with zeros
-    y = np.zeros(len(x))
-    
-    # Change zeros to 1 based on a given period
-    # in radians (e.g. 2pi, 3pi)
-    for i in range(len(x)):
-        if (x[i]/(period)) % 1 < 0.50:
-            y[i] = 1.0
-    return y
 
-N = 1000 # Number of points
-x = np.linspace(-10.0, 10.0, N)
+```         
+# Create array with zeros
+y = np.zeros(len(x))
 
-plt.figure(figsize=(7,4))
-plt.plot(x, square(x, 2*np.pi))
-plt.grid(True)
-plt.ylim(-0.2, 1.2)
-plt.xlabel('x')
-plt.show()
+# Change zeros to 1 based on a given period
+# in radians (e.g. 2pi, 3pi)
+for i in range(len(x)):
+    if (x[i]/(period)) % 1 < 0.50:
+        y[i] = 1.0
+return y
 ```
+
+N = 1000 \# Number of points x = np.linspace(-10.0, 10.0, N)
+
+plt.figure(figsize=(7,4)) plt.plot(x, square(x, 2\*np.pi)) plt.grid(True) plt.ylim(-0.2, 1.2) plt.xlabel('x') plt.show()
+
+```         
 
 Now let's try to express the square wave as a Fourier series. First, we calculate the coefficients using the expressions above. Carrying out the calculations, we find
 
@@ -157,46 +144,32 @@ plt.show()
 
 Recall that Euler's formula expresses $e^{ix}$ in terms of sines and cosines, so we can also write the Fourier series using complex numbers:
 
-$$
-f(x)=\sum_{n=0}^{\infty} c_{n} \exp \left(i \frac{2 \pi n x}{L}\right)
-$$
+$$f(x)=\sum_{n=0}^{\infty} c_{n} \exp \left(i \frac{2 \pi n x}{L}\right)$$
 
 And the coefficients would then be:
 
-$$
-c_{n}=\frac{1}{L} \int_{-\frac{L}{2}}^{\frac{L}{2}} f(x) \exp \left(-i \frac{2 \pi n x}{L}\right) d x
-$$
+$$c_{n}=\frac{1}{L} \int_{-\frac{L}{2}}^{\frac{L}{2}} f(x) \exp \left(-i \frac{2 \pi n x}{L}\right) d x$$
 
 We might not like the use of complex numbers, but it is clearly the same Fourier series. We can also simplify the notation a bit by introducing the "wave number"
 
-$$
-k_{n}=\frac{2 \pi n}{L} = \frac{2 \pi}{\lambda}
-$$
+$$k_{n}=\frac{2 \pi n}{L} = \frac{2 \pi}{\lambda}$$
 
 where $\lambda$ is the wavelength. If we let the length $L$ go to infinity, then:
 
-$$
-\Delta k_{n}=\frac{2 \pi n}{L} \rightarrow d k
-$$
+$$\Delta k_{n}=\frac{2 \pi n}{L} \rightarrow d k$$
 
 the coefficients are:
 
-$$
-c(k)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} f(x) \mathrm{e}^{-i k x} d x
-$$
+$$c(k)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} f(x) \mathrm{e}^{-i k x} d x$$
 
 :::{important} **Fourier transform**:
 
-$$
-F(k)=\int_{-\infty}^{\infty} f(x) \mathrm{e}^{-i k x} d x
-$$
+$$F(k)=\int_{-\infty}^{\infty} f(x) \mathrm{e}^{-i k x} d x$$
 
 The original $f(x)$ is the **inverse Fourier transform**:
 
-$$
-f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(k) \mathrm{e}^{i k x} d k
-$$
-    
+$$f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(k) \mathrm{e}^{i k x} d k$$
+
 :::
 
 ### Fourier analysis of time-series data
@@ -205,50 +178,45 @@ $$
 
 - We're going to construct an array of time points. Then we'll set up a function with two sine waves:
 
-$$
-y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
-$$
+$$y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)$$
 
 - We can use `scipy.fftpack` to perform the "fast Fourier transform" (FFT). The resulting "x" variable is in frequency, so its limit is set by the $dt$ we used. We cannot find a frequency higher than that time resolution allows. (In short, if we expected GHz signals, we would need a short time resolution.)
 
-```{code-cell} python
-:tags: [hide-input]
-import scipy.fftpack
+\`\`\`{code-cell} python :tags: \[hide-input\] import scipy.fftpack
 
 # Number of sample points
-N = 1000
-# Sample spacing
-delta = 1.0 / 1000.0
+
+N = 1000 \# Sample spacing delta = 1.0 / 1000.0
 
 # Time array
-t = np.linspace(0.0, delta * N, N)
+
+t = np.linspace(0.0, delta \* N, N)
 
 # Time domain signal
-y = np.sin(30.0 * 2.0 * np.pi * t) + 0.5 * np.sin(50.0 * 2.0 * np.pi * t)
+
+y = np.sin(30.0 \* 2.0 \* np.pi \* t) + 0.5 \* np.sin(50.0 \* 2.0 \* np.pi \* t)
 
 # Compute the Fourier Transform
-xf = np.linspace(0.0, 1.0 / (2.0 * delta), N // 2)
-yf = scipy.fftpack.fft(y)
+
+xf = np.linspace(0.0, 1.0 / (2.0 \* delta), N // 2) yf = scipy.fftpack.fft(y)
 
 # Plot both time domain and frequency domain side by side
+
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
 # Time domain plot
-ax1.plot(t, y)
-ax1.set_xlabel("Time")
-ax1.set_ylabel("Amplitude")
-ax1.set_title("Time Domain Signal")
+
+ax1.plot(t, y) ax1.set_xlabel("Time") ax1.set_ylabel("Amplitude") ax1.set_title("Time Domain Signal")
 
 # Frequency domain plot
-ax2.plot(xf, 2.0 / N * np.abs(yf[:N // 2]))
-ax2.set_xlabel("Frequency")
-ax2.set_ylabel("Amplitude")
-ax2.set_title("Frequency Domain Signal")
+
+ax2.plot(xf, 2.0 / N \* np.abs(yf\[:N // 2\])) ax2.set_xlabel("Frequency") ax2.set_ylabel("Amplitude") ax2.set_title("Frequency Domain Signal")
 
 # Show the plots
-plt.tight_layout()
-plt.show()
-```
+
+plt.tight_layout() plt.show()
+
+```         
 
 - Notice that it is not a *perfect* reconstruction. We only put in two specific frequencies, so we would expect to see two sharp lines. But if the waves are not exactly periodic when we cut off the time signal, the peaks acquire a bit of width.
 
@@ -298,33 +266,29 @@ plt.show()
 
 - Also, the time signal need not be completely periodic. A "chirp," where the signal intensity drops over time, also works.
 
-```{code-cell} python
-:tags: [hide-input]
-# Apply the exponential decay to the time domain signal
-y = y * np.exp(-2 * t)
+\`\`\`{code-cell} python :tags: \[hide-input\] \# Apply the exponential decay to the time domain signal y = y \* np.exp(-2 \* t)
 
 # Compute the Fourier Transform after the decay
+
 yf = fft(y)
 
 # Plot both time domain and frequency domain side by side
+
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
 # Time domain plot after exponential decay
-ax1.plot(t, y)
-ax1.set_xlabel("Time")
-ax1.set_ylabel("Amplitude")
-ax1.set_title("Time Domain Signal with Exponential Decay")
+
+ax1.plot(t, y) ax1.set_xlabel("Time") ax1.set_ylabel("Amplitude") ax1.set_title("Time Domain Signal with Exponential Decay")
 
 # Frequency domain plot after exponential decay
-ax2.plot(xf, 2.0 / N * np.abs(yf[:N//2]))
-ax2.set_xlabel("Frequency")
-ax2.set_ylabel("Amplitude")
-ax2.set_title("Frequency Domain Signal with Exponential Decay")
+
+ax2.plot(xf, 2.0 / N \* np.abs(yf\[:N//2\])) ax2.set_xlabel("Frequency") ax2.set_ylabel("Amplitude") ax2.set_title("Frequency Domain Signal with Exponential Decay")
 
 # Show the plots
-plt.tight_layout()
-plt.show()
-```
+
+plt.tight_layout() plt.show()
+
+```         
 
 - Notice that while the peak heights changed a bit, the relative intensities and peak areas remain unchanged. So if you are doing spectroscopy, you need a few wave repeats, but it need not be a "continuous wave" spectrum. This is useful if you are worried about applying a high-intensity beam (e.g. an x-ray).
 
@@ -421,7 +385,7 @@ HTML(ani.to_jshtml())
 
 ### Fourier transforms of Gaussian functions
 
-A Gaussian function is defined as 
+A Gaussian function is defined as
 
 $$ f(t) = \exp\left(- \frac{t^2}{2{\sigma^2}}\right), $$
 
@@ -431,47 +395,25 @@ $$ \mathcal{F}[f(t)] = \sqrt{2\pi}\, \exp\left(- \frac{\omega^2\sigma^2}{2}\righ
 
 Thus we can see that as the Gaussian function gets broader, its Fourier transform gets narrower. To illustrate this, let's plot the Gaussian and its transform for two different standard deviations.
 
-```{code-cell} python
-:tags: [hide-input]
-from scipy import signal
+\`\`\`{code-cell} python :tags: \[hide-input\] from scipy import signal
 
-g1 = signal.windows.gaussian(100, std = 10)
-t = np.linspace(-10, 10, len(g1))
+g1 = signal.windows.gaussian(100, std = 10) t = np.linspace(-10, 10, len(g1))
 
-plt.subplot(1,2,1)
-plt.plot(t, g1)
-plt.title('Gaussian Function, std = 10')
+plt.subplot(1,2,1) plt.plot(t, g1) plt.title('Gaussian Function, std = 10')
 
+FT_omega = np.fft.fftfreq(len(g1), t\[1\] - t\[0\]) FT = np.fft.fft(g1) FT_omega = np.fft.fftshift(FT_omega) FT = np.fft.fftshift(FT)
 
-FT_omega = np.fft.fftfreq(len(g1), t[1] - t[0])
-FT = np.fft.fft(g1)
-FT_omega = np.fft.fftshift(FT_omega)
-FT = np.fft.fftshift(FT)
+plt.subplot(1,2,2) plt.plot(FT_omega, abs((FT))) plt.title('Fourier Transform') plt.tight_layout() plt.show()
 
-plt.subplot(1,2,2)
-plt.plot(FT_omega, abs((FT)))
-plt.title('Fourier Transform')
-plt.tight_layout()
-plt.show()
+g2 = signal.windows.gaussian(100, std = 1) t = np.linspace(-10,10, len(g2))
 
-g2 = signal.windows.gaussian(100, std = 1)
-t = np.linspace(-10,10, len(g2))
+plt.subplot(1,2,1) plt.plot(t, g2) plt.title('Gaussian Function, std = 1')
 
-plt.subplot(1,2,1)
-plt.plot(t, g2)
-plt.title('Gaussian Function, std = 1')
+FT_omega = np.fft.fftfreq(len(g2), t\[1\] - t\[0\]) FT = np.fft.fft(g2) FT_omega = np.fft.fftshift(FT_omega) FT = np.fft.fftshift(FT)
 
-FT_omega = np.fft.fftfreq(len(g2), t[1] - t[0])
-FT = np.fft.fft(g2)
-FT_omega = np.fft.fftshift(FT_omega)
-FT = np.fft.fftshift(FT)
+plt.subplot(1,2,2) plt.plot(FT_omega, abs((FT))) plt.title('Fourier Transform') plt.tight_layout() plt.show()
 
-plt.subplot(1,2,2)
-plt.plot(FT_omega, abs((FT)))
-plt.title('Fourier Transform')
-plt.tight_layout()
-plt.show()
-```
+```         
 
 ### Delta Function
 
@@ -518,33 +460,22 @@ plt.show()
 
 - A general wavefunction can be expanded as a superposition of momentum eigenstates:
 
-$$
-\psi(x) = \frac{1}{\sqrt{2\pi}} \int \phi(k), e^{ikx}, dk,
-$$
+$$\psi(x) = \frac{1}{\sqrt{2\pi}} \int \phi(k), e^{ikx}, dk,$$
 
-where $e^{ikx}$ are eigenfunctions of the free-particle Hamiltonian and form a complete orthogonal basis.
-The coefficient $\phi(k)$ gives the amplitude of each momentum mode.
+where $e^{ikx}$ are eigenfunctions of the free-particle Hamiltonian and form a complete orthogonal basis. The coefficient $\phi(k)$ gives the amplitude of each momentum mode.
 
-* For a **localized particle**, $ \phi(k)$ is broad: many momenta combine to form a narrow spatial peak.
-* For a **free electron** with definite momentum $k_0$,
+- For a **localized particle**, \$ \phi(k)\$ is broad: many momenta combine to form a narrow spatial peak.
 
-  $$
-  \phi(k) = \delta(k - k_0),
-  $$
+- For a **free electron** with definite momentum $k_0$,
+
+  $$\phi(k) = \delta(k - k_0),$$
 
   so that
 
-  $$
-  \psi(x) = e^{ik_0x}.
-  $$
+  $$\psi(x) = e^{ik_0x}.$$
 
+  - Conversely, for a **localized particle** at $x_0$:
 
-  * Conversely, for a **localized particle** at $x_0$:
+  $$\psi(x) = \delta(x - x_0) ;\Rightarrow; \phi(k) = \frac{1}{\sqrt{2\pi}} e^{-ikx_0}.$$
 
-  $$
-  \psi(x) = \delta(x - x_0) ;\Rightarrow; \phi(k) = \frac{1}{\sqrt{2\pi}} e^{-ikx_0}.
-  $$
-
-
-- Thus, a free electron (plane wave) is a *single momentum component* spread uniformly in space, while a localized delta function in space is an *infinite superposition* of plane waves.
-This Fourier duality expresses the position-momentum uncertainty relationship.
+- Thus, a free electron (plane wave) is a *single momentum component* spread uniformly in space, while a localized delta function in space is an *infinite superposition* of plane waves. This Fourier duality expresses the position-momentum uncertainty relationship.

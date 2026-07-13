@@ -1,0 +1,208 @@
+---
+title: "Variational Method"
+subtitle: "Chem 3240 · Lecture 6.1"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    embed-resources: true
+    slide-number: true
+    incremental: true
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+  beamer:
+    aspectratio: 169
+resources:
+  - ../../ch06/images
+---
+
+## Why We Need Approximations
+
+- The Schrodinger equation is solvable **exactly** only for a handful of systems.
+
+::: {.fragment}
+- The **hydrogen atom** is the most complex atom with a closed form.
+:::
+
+::: {.fragment}
+- **Helium** and any multi-electron system are **intractable**.
+:::
+
+::: {.fragment}
+- We need a systematic way to **approximate** and to **rank** approximations.
+:::
+
+## The Core Idea
+
+- Begin with an **educated guess**: a trial wavefunction $|\phi\rangle$.
+
+::: {.fragment}
+- The guess carries **adjustable parameters**.
+:::
+
+::: {.fragment}
+- **Tune** the parameters to **minimize the energy**, driving the answer toward the exact value.
+:::
+
+## The Variational Theorem
+
+For **any** trial function, the computed energy is an **upper bound**.
+
+::: {.fragment}
+$$E_{\phi} = \frac{\langle \phi \mid \hat{H} \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0$$
+:::
+
+::: {.fragment}
+- $\hat{H}$ is the Hamiltonian of the problem.
+- $|\phi\rangle$ is the trial function with unknown parameters.
+- $E_0$ is the **true** ground-state energy (usually unknown).
+:::
+
+## What the Theorem Buys Us
+
+- The ground state is the **lowest possible** energy.
+
+::: {.fragment}
+- **Minimizing** the energy functional gives the best answer for a given trial form.
+:::
+
+::: {.fragment}
+- **More parameters** mean more handles, hence more accuracy.
+:::
+
+::: {.fragment}
+- Equality holds **only** when $\phi$ equals the exact ground state.
+:::
+
+## Example: Particle in a Box
+
+Trial function obeying $\psi_t(0) = \psi_t(a) = 0$:
+
+::: {.fragment}
+$$\psi_t(x) = \frac{\sqrt{30}}{a^{5/2}}\,x(a - x)$$
+:::
+
+::: {.fragment}
+- Plug into $\hat{H} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}$ and integrate.
+:::
+
+::: {.fragment}
+$$E_\phi = \frac{5\hbar^2}{a^2 m} \;\geq\; E_1$$
+:::
+
+::: {.fragment}
+- A clean **upper bound** from a crude parabola guess.
+:::
+
+## Example: Hydrogen with a Gaussian
+
+- Trial function $\phi = e^{-\alpha r^2}$ for the **1s** ground state.
+
+::: {.fragment}
+$$E_{trial}(\alpha) = \frac{3\hbar^2 \alpha}{2m_e} - \frac{e^2 \alpha^{1/2}}{\sqrt{2}\,\epsilon_0 \pi^{3/2}}$$
+:::
+
+::: {.fragment}
+- Minimize: $\dfrac{\partial E_{trial}}{\partial \alpha} = 0$.
+:::
+
+::: {.fragment}
+$$E_0 = -0.5\,h, \qquad E_{trial}(\alpha_{min}) = -0.424\,h$$
+:::
+
+::: {.fragment}
+- About **15% error**. A Gaussian lacks the exponential's cusp.
+:::
+
+## The Helium Atom Is Tough
+
+$$\hat{H} = -\frac{\hbar^2}{2m_e}(\Delta_1 + \Delta_2) - \frac{1}{4\pi\epsilon_0}\left(\frac{Ze^2}{r_1} + \frac{Ze^2}{r_2} - \frac{e^2}{r_{12}}\right)$$
+
+::: {.fragment}
+- The **electron-electron** term $\dfrac{e^2}{r_{12}}$ blocks any analytic solution.
+:::
+
+::: {.fragment}
+- Drop it and $\hat{H}$ separates into **two hydrogen-like atoms**.
+:::
+
+## Helium: From Crude to Variational
+
+- **Independent electrons** ($1s(1)\,1s(2)$): $E = -74.8$ eV.
+
+::: {.fragment}
+- Now treat the nuclear charge $Z$ as a **variational parameter**:
+$$E(Z) = \left[Z^2 - \frac{27Z}{8}\right]\frac{e^2}{4\pi\epsilon_0 a_0}$$
+:::
+
+::: {.fragment}
+- Minimizing gives $Z = \dfrac{27}{16} \approx 1.7$ and $E \approx -77.5$ eV.
+:::
+
+::: {.fragment}
+- $Z < 2$: each electron **shields** the nucleus. Exact is $-79.0$ eV.
+:::
+
+## The Linear Variational Method
+
+- Expand the trial function in a **basis set** $f_n$:
+
+::: {.fragment}
+$$\phi(r) = \sum_n^N c_n f_n(r)$$
+:::
+
+::: {.fragment}
+- Minimize over the **coefficients** $c_n$, not over a functional form.
+:::
+
+::: {.fragment}
+- Turns a hard **differential equation** into **linear algebra**.
+:::
+
+::: {.fragment}
+- This idea underlies **Hartree-Fock** and modern electronic structure.
+:::
+
+## The Generalized Eigenvalue Problem
+
+$$\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$$
+
+::: {.fragment}
+$$\begin{bmatrix} H_{11} & H_{12} \\ H_{12} & H_{22} \end{bmatrix}
+\begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
+= E
+\begin{bmatrix} S_{11} & S_{12} \\ S_{12} & S_{22} \end{bmatrix}
+\begin{bmatrix} c_1 \\ c_2 \end{bmatrix}$$
+:::
+
+::: {.fragment}
+- $H_{ij} = \langle f_i|\hat{H}|f_j\rangle$, $\quad S_{ij} = \langle f_i|f_j\rangle$.
+- **Lowest eigenvalue** is the energy estimate; its eigenvector gives the best $\mathbf{c}$.
+:::
+
+## The Secular Determinant
+
+A nontrivial solution exists only when
+
+::: {.fragment}
+$$\det(\mathbf{H} - E\,\mathbf{S}) = 0$$
+:::
+
+::: {.fragment}
+- Solving this determinant yields the **variational energies**.
+:::
+
+::: {.fragment}
+- For an **orthonormal** basis ($\mathbf{S} = \mathbf{I}$) it reduces to
+$$\mathbf{H}\mathbf{c} = E\mathbf{c}$$
+:::
+
+::: {.fragment}
+- Box example with two functions: $E_\phi = 4.9349\,\tfrac{\hbar^2}{m}$ vs exact $4.9348\,\tfrac{\hbar^2}{m}$.
+:::
+
+# Takeaway {.center}
+
+> Any trial wavefunction gives an energy that is an **upper bound** on the true ground state, $E_\phi \geq E_0$. **Minimizing over parameters** sharpens the estimate, and expanding in a **basis set** turns the search into a **generalized eigenvalue problem** $\mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c}$, the foundation of electronic-structure theory.
