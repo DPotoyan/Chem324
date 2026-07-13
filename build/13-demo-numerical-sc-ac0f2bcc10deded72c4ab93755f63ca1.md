@@ -85,6 +85,8 @@ pyproject: |
 We need only the course's standard scientific stack: NumPy for arrays, SciPy for the tridiagonal eigensolver, and Matplotlib for plots.
 
 ```{marimo} python
+:hide-code: true
+
 import time
 
 import marimo as mo
@@ -115,6 +117,8 @@ def solve_box(v0, n_grid=1500, n_states=4, width=0.25):
 Drag the slider to raise or lower the barrier. Everything below it reacts.
 
 ```{marimo} python
+:hide-code: true
+
 barrier = mo.ui.slider(
     start=0,
     stop=100,
@@ -127,6 +131,8 @@ barrier
 ```
 
 ```{marimo} python
+:hide-code: true
+
 x_now, v_now, e_now, psi_now = solve_box(barrier.value * E1)
 
 fig_psi, ax_psi = plt.subplots(figsize=(7, 4.3))
@@ -168,6 +174,8 @@ mo.md(
 The correlation diagram replots instantly when you move the slider, because only the cheap plotting cell reruns, not the sweep.
 
 ```{marimo} python
+:hide-code: true
+
 fig_corr, ax_corr = plt.subplots(figsize=(7, 4.3))
 for n_idx in range(sweep.shape[1]):
     ax_corr.plot(heights, sweep[:, n_idx], lw=1.8, label=f"n = {n_idx + 1}")
