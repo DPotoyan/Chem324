@@ -6,6 +6,25 @@ kernelspec:
 
 # Plotting and Visualization
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
 ```{code-cell} python
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
@@ -124,6 +143,17 @@ fig.colorbar(surf)
 plt.show()
 ```
 
+```{marimo} python
+:editor: true
+
+t = np.linspace(0, 10, 60)
+fig2, ax2 = plt.subplots(figsize=(6.5, 3))
+ax2.plot(t, np.exp(-t / 3) * np.sin(2 * t), "o--", color="seagreen", ms=4, label="damped")
+ax2.legend()
+ax2.set_xlabel("t")
+fig2
+```
+
 ### Create interactive plots using Plotly 
 
 - For instance the previous 3D plot is generated using **Plotly** allowing you to rotate and interact with the surface
@@ -225,29 +255,14 @@ Matplotlib has a huge scientific user base. This means that you can always find 
 The slider and the code below run **in your browser**. Move the slider, then edit the code (try `np.cos`, add a second curve, change colors) and press play.
 :::
 
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "matplotlib",
-  ]
----
-```
 
 ```{marimo} python
-import marimo as mo
-
 freq = mo.ui.slider(1, 10, step=1, value=3, show_value=True, label="frequency")
 freq
 ```
 
 ```{marimo} python
 :editor: true
-
-import numpy as np
-import matplotlib.pyplot as plt
 
 x = np.linspace(0, 2 * np.pi, 400)
 fig, ax = plt.subplots(figsize=(7, 3.5))

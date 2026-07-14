@@ -6,6 +6,22 @@ kernelspec:
 
 # Symbolic Math with SymPy
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "sympy",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import sympy as sp
+```
+
 - SymPy is the main library in the SciPy ecosystem for performing symbolic mathematics, and it is suitable for a wide audience from high school students to scientific researchers. 
 - SymPy like a free, open source Mathematica substitute that is built on Python and is arguably more accessible in terms of cost and ease of acquisition. All of the following SymPy code relies on the following import which makes all of the SymPy modules available.
 - Before SymPy will accept a variable as a symbol, the variable must first be defined as a SymPy symbol using the `symbols()` function. It takes one or more symbols at a time and attaches them to variables.
@@ -123,6 +139,13 @@ I**2
 ```{code-cell} python
 
 (x * I + 1)**2
+```
+
+```{marimo} python
+:editor: true
+
+y = sp.symbols("y")
+sp.solve(y**2 - 5*y + 6, y)   # sp is sympy, already imported on this page
 ```
 
 ### Taylor Series
@@ -266,6 +289,13 @@ Products work much the same way:
 Product(n, (n, 1, 10)) # 10!
 ```
 
+```{marimo} python
+:editor: true
+
+u = sp.symbols("u")
+sp.diff(sp.exp(-u**2) * sp.sin(u), u)   # differentiate anything
+```
+
 ### Physics functions
 
 - [Sympy Physics functions](https://docs.sympy.org/latest/reference/public/physics/index.html)
@@ -400,20 +430,9 @@ The radius is in Bohrs ($a_0$) which is equal to approximately 0.53 angstroms.
 A symbolic scratchpad that runs **in your browser**: edit the integral (or swap in `sp.diff`, `sp.series`, `sp.solve`) and press play. Results render as typeset math.
 :::
 
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "sympy",
-  ]
----
-```
 
 ```{marimo} python
 :editor: true
-
-import sympy as sp
 
 x = sp.symbols("x")
 sp.integrate(sp.sin(x) ** 2, (x, 0, sp.pi))   # try your own integral

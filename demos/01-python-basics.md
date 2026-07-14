@@ -6,6 +6,14 @@ kernelspec:
 
 # Python Basics
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = []
+---
+```
+
 ```{image} images/py-popular2.png
 :class: bg-primary mb-1
 :width: 400px
@@ -219,6 +227,14 @@ print(''.join(' A B C '))
 print('A B C'.split())
 ```
 
+```{marimo} python
+:editor: true
+
+element = "Helium"
+symbol = element[:2]
+f"{element} -> {symbol}, {len(element)} letters"
+```
+
 ## Containers
 
 Python includes several built-in container types: **lists, dictionaries, sets, and tuples.** Lists will be the most useful for our objectives in this course so we only cover lists.
@@ -359,6 +375,13 @@ In Python 3, `range()` generates the numbers on demand. When you use `range()` i
 
 To get the same efficient behaviour in Python 2, use `xrange()` instead of `range()`.
 
+```{marimo} python
+:editor: true
+
+evens = [n for n in range(20) if n % 2 == 0]
+evens[2:6]   # try different slices or conditions
+```
+
 ### Control Flow and the if-then-else statement
 
 The `if statement` allows you to execute a block of code optionally, if certain conditions are met. An expression which evaluates to True or False, called the *conditional statement*, must be in the parentheses following the `if` keyword.
@@ -466,6 +489,14 @@ d3.values()
 d3.items()
 ```
 
+```{marimo} python
+:editor: true
+
+masses = {"H": 1.008, "He": 4.003, "Li": 6.94}
+masses["C"] = 12.011   # add more elements
+sorted(masses.items())
+```
+
 ## Functions
 
 Python functions are defined using the `def` keyword. For example let us write a polynomial function 
@@ -531,6 +562,15 @@ print(harm_osc(2,10))
 print(harm_osc(2,k=10))
 
 print(harm_osc(2,k=10,x0=0.5))
+```
+
+```{marimo} python
+:editor: true
+
+def kinetic_energy(m, v):
+    return 0.5 * m * v**2
+
+kinetic_energy(9.109e-31, 2.19e6)   # electron at Bohr speed, joules
 ```
 
 ## Exercises
@@ -723,13 +763,6 @@ for a in range(5):
 This cell runs **in your browser**. Edit the code and press the play button (or Ctrl-Enter). The value of the last line is what gets displayed, so end your experiments with an expression.
 :::
 
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = []
----
-```
 
 ```{marimo} python
 :editor: true

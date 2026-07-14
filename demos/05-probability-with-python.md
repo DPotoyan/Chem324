@@ -6,6 +6,25 @@ kernelspec:
 
 # Probability with Python
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
 ```{code-cell} python
 # Load the libs for numiercs and plotting
 import numpy as np
@@ -76,6 +95,13 @@ def plot_gauss(mu, sigma):
     plt.plot(x, y, lw=5)
 ```
 
+```{marimo} python
+:editor: true
+
+rolls = np.random.default_rng(7).integers(1, 7, size=1000)
+np.bincount(rolls)[1:]   # counts of faces 1..6
+```
+
 ### Uniform distribution
 
 $$p(x) = \frac{1}{b-a} \quad \text{for } x \in [a,b]$$
@@ -132,29 +158,14 @@ def plot_uniform(b):
 Draw random samples **in your browser**: move the slider to change the sample size, and edit the code to try other distributions (`rng.exponential(1.0, ...)`, `rng.uniform(-1, 1, ...)`).
 :::
 
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "matplotlib",
-  ]
----
-```
 
 ```{marimo} python
-import marimo as mo
-
 n_samples = mo.ui.slider(100, 10000, step=100, value=1000, show_value=True, label="number of samples")
 n_samples
 ```
 
 ```{marimo} python
 :editor: true
-
-import numpy as np
-import matplotlib.pyplot as plt
 
 rng = np.random.default_rng(3240)
 samples = rng.normal(0.0, 1.0, n_samples.value)
