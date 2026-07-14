@@ -1,0 +1,657 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
+# Complex Numbers
+
+:::{note} **What you will learn**
+
+- **Complex numbers generalize ordinary 1D numbers to 2D.** To describe complex numbers we need two components, called the real and imaginary parts. Complex numbers appear naturally in quantum mechanics and are an essential part of physics.
+- **The imaginary unit $i = \sqrt{-1}$.** This symbol, $i$, represents the imaginary component of a complex number, where $i^2 = -1$.
+- **Complex numbers as roots of polynomial equations.** For example, quadratic equations can have two complex roots, showcasing their relevance in solving equations.
+- **Cartesian and polar representations.** Complex numbers can be expressed in Cartesian form $(x + iy)$ or polar form $(re^{i\phi})$, where $r$ is the magnitude and $\phi$ is the phase (angle).
+- **Euler's formula: a beautiful and fundamental equation.** $re^{i\phi} = r(\cos \phi + i\sin \phi)$ elegantly connects complex numbers to trigonometric functions. Euler's formula makes it much easier to manipulate complex numbers, especially in their polar form, simplifying multiplication and division.
+- **Rotation in the complex plane.** Multiplying by a complex number in polar form corresponds to a rotation. For instance, $re^{i\phi}$ rotates a vector of length $r$ counterclockwise by an angle $\phi$, while $re^{-i\phi}$ rotates it clockwise by $\phi$.
+- **Complex conjugate: flipping the imaginary part.** The conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$.
+- **Multiplying by the conjugate.** When you multiply a complex number by its conjugate, $z \cdot z^*$, the result is a real number equal to the square of its distance from the origin in the complex plane: $|z|^2 = x^2 + y^2$.
+:::
+
+### Complex numbers live in 2D
+
+- A complex number $z$ is a kind of 2D number that lives in 2D space and requires two components for its full specification. Watch the video to get a visual feel for why we need complex numbers.
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T647CGsuOVU?si=Q2QdaM1jhy4SEdkx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+### Introducing the imaginary number $i$
+
+:::{figure} images/i-sq.png
+:alt: Visualizing the imaginary unit on the Cartesian plane
+:width: 40%
+
+Fig.1 Visualizing complex numbers on the Cartesian plane.
+:::
+
+- **Fundamental theorem of algebra.** A polynomial equation (quadratic, cubic, quartic, and so on) must have $n$ roots, equal to the $n$th highest power of the equation. For example, a quadratic must have two roots, a cubic three, and so on. Complex numbers ensure the existence of roots for polynomials.
+- The equation below must have two solutions/roots. How do we visualize them?
+
+$$x^2+1=0$$
+
+$$x_{1,2}= \pm\sqrt{-1} = \pm i$$
+
+- The answer: we will need two dimensions, quantifying how much real and how much imaginary component the number has.
+- **What is the definition of $i$?** The imaginary number $i$ is defined solely by the property that its square is $-1$, that is: $i\cdot i=-1$.
+- **How does $i$ change what I know about the math of real variables?** Imaginary numbers extend the real number system $\mathbb{R}$ to the complex number system $\mathbb{C}$.
+
+:::{tip} **Quadratic Equation Solutions**
+:class: dropdown
+
+For a quadratic equation of the form
+
+$$ax^2 + bx + c = 0,$$
+
+the solutions are given by the **quadratic formula**:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+$$
+
+- The term under the square root, $\Delta = b^2 - 4ac$, is called the **discriminant**.
+- If $\Delta > 0$: two distinct real roots.
+- If $\Delta = 0$: one repeated real root.
+- If $\Delta < 0$: two complex conjugate roots.
+:::
+
+:::{figure} images/SumNums.png
+:alt: Complex numbers live in 2D
+:width: 40%
+
+Fig.2 Complex numbers live in 2D: you must specify real and imaginary components to fully define a complex number.
+:::
+
+### Cartesian representation
+
+:::{figure} images/Cart.png
+:alt: Complex numbers on the Cartesian plane
+:width: 30%
+
+Fig.3 Visualizing complex numbers in Cartesian coordinates.
+:::
+
+:::{important} **Cartesian Representation**
+
+$$z = x+iy$$
+
+- $x=Re(z)$ real component
+- $y=Im(z)$ imaginary component
+:::
+
+:::{note} **Example: Identify real and imaginary parts**
+
+Find the real and imaginary components of the following complex numbers: $z_1 = 3 +2i$, $z_2 = -2i$, $z_3=1.1$.
+
+**Solution**
+
+- $Re(z_1) = 3$, $Im(z_1)=2$
+- $Re(z_2) = 0$, $Im(z_2)=-2$
+- $Re(z_3) = 1.1$, $Im(z_3)=0$
+:::
+
+### Polar representation
+
+- What is the big deal with this polar representation? We will find that life is much easier in the polar representation when deriving new expressions or manipulating complex numbers.
+- This dramatic simplification is thanks to the "magical" Euler's formula that turns trig functions into exponentials!
+
+:::{figure} images/PolCart.png
+:alt: Complex numbers in polar coordinates
+:width: 30%
+
+Fig.4 Visualizing complex numbers in polar coordinates.
+:::
+
+- The polar representation expresses complex numbers in terms of the radius from the origin $r$ and the angle of counterclockwise rotation $\phi$.
+- Using trigonometry we have $x = r\cos\phi$ and $y = r\sin\phi$, which can be plugged into the Cartesian representation:
+
+:::{important} **Polar Representation via sin and cos**
+
+$$z= x+iy = r\cos\phi + ri\sin\phi = r(\cos\phi+i\sin\phi)$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane.
+:::
+
+:::{important} **Euler's formula**
+
+$$\cos{\phi} + i \sin{\phi} = e^{i\phi}$$
+:::
+
+:::{important} **Polar Representation via complex exponential**
+
+$$z =  re^{i\phi}$$
+
+- $r=\sqrt{x^2+y^2}$ distance from origin.
+- $\phi$ rotation angle in complex plane.
+:::
+
+:::{tip} **Proof of Euler's Formula**
+:class: dropdown
+
+Consider the exponential and trigonometric Taylor expansions:
+
+$$
+e^{ix} = 1 + \frac{ix}{1!} + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots
+$$
+
+Expanding powers of $i$:
+
+$$
+= 1 + i\frac{x}{1!} - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + \cdots
+$$
+
+Now separate into real and imaginary parts:
+
+$$
+= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots\right) \;+\; i\left(\frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\right)
+$$
+
+But these are exactly the Taylor series of $\cos x$ and $\sin x$. Hence:
+
+$$
+e^{ix} = \cos x + i \sin x.
+$$
+:::
+
+#### Converting from Cartesian to polar
+
+- Now that we have established Euler's formula, we need a recipe to go back and forth between the Cartesian and polar representations.
+- **Extract $r$.** The value $r$ is the Euclidean distance of the vector $(x,y)$ from the origin.
+
+$$r = \sqrt{x^2 + y^2}$$
+
+- **Extract $\phi$.** The value $\phi$ is the angle with respect to the real axis. The tangent of $\phi$ is $\left(\frac{y}{x}\right)$. Therefore, using simple trigonometry, we can back-calculate the angle and the sin, cos, and tan functions from the Cartesian representation.
+
+$$
+\tan{\phi} = \frac{y}{x}
+$$
+
+$$
+\phi = \tan^{-1} \Big(\frac{y}{x} \Big)
+$$
+
+:::{note} **Example: Convert to polar**
+
+Write the complex number $z = -1-2i$ in polar form.
+
+**Hot Tip:** use atan2 or arctan2 in your calculator, which correctly identifies the quadrant for the angle.
+
+**Solution**
+
+- We need to extract $r$ and $\phi$ to write $z= re^{i\phi}$.
+
+$$r = \sqrt{(-1)^2+(-2)^2} = \sqrt{5}$$
+
+$$\phi = \mathrm{arctan2}(-2, -1) \approx -2.034$$
+
+- We can always add $2\pi$ to the angle we get from arctan2 to make the angle positive. Recall that adding $\pm 2\pi$ leaves the trig functions unchanged.
+
+$$\phi = -2.034\rightarrow -2.034+2\pi = 4.248$$
+
+$$z = \sqrt{5}e^{4.248i}$$
+:::
+
+:::{figure} images/ComplexHelix.gif
+:alt: Visualization of Euler's formula as a helix
+:width: 60%
+
+Fig.5 Visualization of Euler's formula $e^{i\omega t}$ as a function of $t$. The helix is formed by plotting points for various values of $\omega$ and is determined by both the cos and sin components of the formula. One curve represents the real component $\cos\omega$ of the formula, while another curve, rotated 90 degrees around the $t$ axis (due to multiplication by $i$), represents the imaginary component $\sin\omega$.
+:::
+
+:::{tip} **Physical analogy to rotation**
+:class: dropdown
+
+- Imagine $e^{i\phi}$ as a spinning wheel where we are rotating the angle $\phi$.
+- The velocity is given by the first derivative with respect to $t$ and is equal to $ie^{i\phi}$.
+- Multiplication by $i$, as we know, is rotation by 90 degrees. Hence the velocity is perpendicular, or tangential, to the spinning wheel.
+- The magnitude of the velocity is $|ie^{i\phi}|=1$, hence the wheel is spinning with constant velocity.
+- The velocity is always tangential to the circular motion, reflecting the nature of rotational movement in the complex plane.
+- In summary, the complex exponential function elegantly describes both rotation and scaling in the complex plane, and its derivative gives insight into the velocity of rotation, always perpendicular to the position vector.
+:::
+
+### Complex Conjugate
+
+:::{figure} images/conj.png
+:alt: Complex conjugate as a mirror image
+:width: 60%
+
+Fig.6 Visualizing the conjugate of a complex number as a mirror image, or a rotation backwards.
+:::
+
+:::{important} **Complex Conjugate**
+
+$$\bar z = x-iy$$
+
+$$\bar z = re^{-i\phi}$$
+:::
+
+#### Extracting the absolute value
+
+- Multiplying a complex number by its conjugate always results in a positive real number!
+- Geometrically this means rotating back to the real axis.
+- The product of a complex number and its conjugate returns the distance from the origin in the complex plane.
+
+$$|z|^2 = \bar z \cdot z = (x-iy)\cdot (x+iy) = x^2+y^2$$
+$$|z|^2 = \bar z \cdot z = re^{-i\phi}\cdot re^{i\phi}=r^2$$
+
+#### Expressing sin and cos via complex exponentials
+
+- Using Euler's formula we can take the sum and difference of $z$ and $\bar z$ to express sin and cos in terms of complex exponentials.
+- These representations of sin and cos are very powerful for simplifying various integrals and for deriving expressions.
+
+$$
+\cos{\phi} = \frac{e^{i\phi} + e^{-i\phi}}{2}
+$$
+
+$$
+\sin{\phi} = \frac{e^{i\phi} - e^{-i\phi}}{2i}
+$$
+
+### Applications of complex numbers
+
+:::{tip} **De Moivre's Theorem**
+:class: dropdown
+
+[De Moivre's theorem](https://en.wikipedia.org/wiki/De_Moivre%27s_formula) states that:
+
+$$
+z^n=(r(\cos{\theta} + i \sin{\theta}))^n =
+r^n e^{in\theta} =
+r^n(\cos{n\theta} + i \sin{n\theta})
+$$
+
+We raised the complex number to power $n$, used the polar representation, and realized that the exponent raised to power $n$ simply multiplies the polar angle by $n$. Note that de Moivre's theorem allows relating trigonometric functions of angle $\theta$ raised to power $n$ to trigonometric functions of angle $n\theta$ of power one:
+
+$$
+r^n(\cos{\theta} + i \sin{\theta})^n = r^n (\cos{n\theta} + i \sin{n\theta})
+$$
+
+$$
+(\cos{\theta} + i \sin{\theta})^n = (\cos{n\theta} + i \sin{n\theta})
+$$
+
+The proof of de Moivre's theorem can be done via [induction](https://en.wikipedia.org/wiki/De_Moivre%27s_formula); for example, one can expand the parentheses and assert the equality for the cases $n=2$, $n=3$, and so on.
+:::
+
+:::{tip} **Deriving Pythagoras' theorem**
+:class: dropdown
+
+We can use de Moivre's theorem to show that $ r = \sqrt{x^2 + y^2} $.
+
+We have
+
+$$
+\begin{aligned}
+1 &= e^{i\theta} e^{-i\theta} \\
+&= (\cos{\theta} + i \sin{\theta})(\cos{(-\theta)} + i \sin{(-\theta)}) \\
+&= (\cos{\theta} + i \sin{\theta})(\cos{\theta} - i \sin{\theta}) \\
+&= \cos^2{\theta} + \sin^2{\theta} \\
+&= \frac{x^2}{r^2} + \frac{y^2}{r^2}
+\end{aligned}
+$$
+
+and thus
+
+$$
+x^2 + y^2 = r^2
+$$
+
+We recognize this as a theorem of **Pythagoras**.
+:::
+
+:::{tip} **Deriving Trigonometric Identities**
+:class: dropdown
+
+We can obtain a complete suite of trigonometric identities by appropriately manipulating polar forms of complex numbers.
+
+We will get many of them by deducing implications of the equality
+
+$$e^{i(\omega + \theta)} = e^{i\omega} e^{i\theta}$$
+
+For example, we will calculate identities for $\cos{(\omega + \theta)}$ and $\sin{(\omega + \theta)}$.
+
+Using the sine and cosine formulas presented earlier, we have:
+
+$$\begin{aligned}
+\cos{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} + e^{-i(\omega + \theta)}}{2} \\
+\sin{(\omega + \theta)} = \frac{e^{i(\omega + \theta)} - e^{-i(\omega + \theta)}}{2i}
+\end{aligned}$$
+
+We can also obtain the trigonometric identities as follows:
+
+$$
+\begin{aligned}
+\cos{(\omega + \theta)} + i \sin{(\omega + \theta)}
+&= e^{i(\omega + \theta)} \\
+&= e^{i\omega} e^{i\theta} \\
+&= (\cos{\omega} + i \sin{\omega})(\cos{\theta} + i \sin{\theta}) \\
+&= (\cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta}) +
+i (\cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta})
+\end{aligned}
+$$
+
+Since both the real and imaginary parts of the above formula should be equal, we get:
+
+$$
+\begin{aligned}
+\cos{(\omega + \theta)} = \cos{\omega}\cos{\theta} - \sin{\omega}\sin{\theta} \\
+\sin{(\omega + \theta)} = \cos{\omega}\sin{\theta} + \sin{\omega}\cos{\theta}
+\end{aligned}
+$$
+
+The equations above are also known as the **angle sum identities**.
+:::
+
+:::{tip} **Evaluating Trigonometric Integrals**
+:class: dropdown
+
+We can also compute trigonometric integrals using polar forms of complex numbers.
+
+For example, we want to solve the following integral:
+
+$$\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega$$
+
+Using Euler's formula, we have:
+
+$$\begin{aligned}
+\int \cos(\omega) \sin(\omega) \, d\omega
+&=
+\int
+\frac{(e^{i\omega} + e^{-i\omega})}{2}
+\frac{(e^{i\omega} - e^{-i\omega})}{2i}
+\, d\omega  \\
+&=
+\frac{1}{4i}
+\int
+e^{2i\omega} - e^{-2i\omega}
+\, d\omega  \\
+&=
+\frac{1}{4i}
+\bigg( \frac{-i}{2} e^{2i\omega} - \frac{i}{2} e^{-2i\omega} + C_1 \bigg) \\
+&=
+-\frac{1}{8}
+\bigg[ \bigg(e^{i\omega}\bigg)^2 + \bigg(e^{-i\omega}\bigg)^2 - 2 \bigg] + C_2 \\
+&=
+-\frac{1}{8}  (e^{i\omega} - e^{-i\omega})^2  + C_2 \\
+&=
+\frac{1}{2} \bigg( \frac{e^{i\omega} - e^{-i\omega}}{2i} \bigg)^2 + C_2 \\
+&= \frac{1}{2} \sin^2(\omega) + C_2
+\end{aligned}$$
+
+and thus:
+
+$$
+\int_{-\pi}^{\pi} \cos(\omega) \sin(\omega) \, d\omega =
+\frac{1}{2}\sin^2(\pi) - \frac{1}{2}\sin^2(-\pi) = 0
+$$
+:::
+
+:::{tip} **Applications to X-ray diffraction and crystallography**
+:class: dropdown
+
+Complex numbers play a significant role in various chemistry problems, especially in the context of **X-ray diffraction** and **crystallography**. These applications are crucial for determining the atomic structures of molecules and solids.
+
+**X-ray Diffraction and the Phase Problem**
+
+In X-ray crystallography, a crystal is bombarded with X-rays, which are diffracted by the electrons in the crystal. The resulting diffraction pattern contains crucial information about the crystal's structure. However, to reconstruct the atomic arrangement from the diffraction pattern, we must solve two key problems: the **magnitude** of the diffracted waves (intensity) and the **phase** of those waves.
+
+- The **phase problem** refers to the challenge of determining the phase of the diffracted X-rays, which is not directly observable from the diffraction pattern. The phase is necessary to accurately reconstruct the electron density of the crystal.
+
+**Complex Numbers in Diffraction**
+
+To solve this, we model the diffracted waves as complex numbers. Each wave can be described in terms of a complex number:
+
+$$
+A(k) = |A(k)|e^{i\phi(k)}
+$$
+
+where:
+
+- $|A(k)|$ is the magnitude of the diffraction wave, corresponding to the intensity of the observed diffraction pattern.
+- $\phi(k)$ is the phase of the wave, which contains essential structural information but is not directly measurable.
+
+By representing diffraction waves as complex numbers, we can manipulate and combine them to solve for the electron density in the crystal.
+
+**Structure Factor: The Key to Electron Density**
+
+The **structure factor** is a complex quantity that relates the electron density in a crystal to the observed diffraction pattern. The structure factor $F({h})$ is given by:
+
+$$
+F({h}) = \sum_{j} f_j e^{i{h} \cdot {r_j}}
+$$
+
+where:
+
+- ${h}$ is the reciprocal lattice vector, representing the direction of diffraction.
+- $f_j$ is the scattering factor for atom $j$ (how much it scatters X-rays).
+- ${r_j}$ is the position of atom $j$ in the unit cell.
+
+The structure factor is complex, with both real and imaginary components:
+
+$$
+F({h}) = |F({h})|e^{i\phi({h})}
+$$
+
+Here, $|F({h})|$ represents the amplitude (related to the intensity of the diffracted wave), and $\phi({h})$ is the phase.
+
+**Electron Density Calculation**
+
+Once the structure factors are known, the **electron density** $\rho({r})$ can be calculated using the inverse Fourier transform:
+
+$$
+\rho({r}) = \frac{1}{V} \sum_{{h}} F({h}) e^{-i{h} \cdot {r}}
+$$
+
+where $V$ is the volume of the unit cell, and the sum is over all reciprocal lattice points ${h}$.
+
+In this equation:
+
+- The structure factor $F({h})$ is complex, and complex numbers allow for the combination of the magnitudes and phases of the diffracted waves to accurately reconstruct the electron density.
+- The result is a 3D map of the electron density within the crystal, which reveals the positions of atoms.
+
+**Solving the Phase Problem**
+
+The phase problem is addressed using various techniques, such as:
+
+- **Direct methods**: mathematical techniques that estimate phases based on probabilistic relationships between structure factors.
+- **Molecular replacement**: using a known structure of a related molecule to estimate phases.
+- **Anomalous dispersion**: utilizing the scattering of X-rays at different wavelengths to provide phase information.
+
+In all these methods, complex numbers are central to solving for the electron density and, thus, determining the molecular structure.
+
+**Conclusion**
+
+In chemistry, particularly in X-ray diffraction and crystallography, complex numbers provide a powerful framework for solving the phase problem and calculating structure factors. They allow for the accurate modeling and manipulation of waves, which are essential for determining the atomic structures of molecules and materials.
+:::
+
+### Problems
+
+#### Problem 1: Multiplication
+
+Multiply the two complex numbers $z_1 = 3 + 4i$ and $z_2 = 1 - 2i$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+To multiply complex numbers, we use the distributive property:
+
+$$
+z_1 \cdot z_2 = (3 + 4i)(1 - 2i)
+$$
+
+Expanding:
+
+$$
+z_1 \cdot z_2 = 3(1) + 3(-2i) + 4i(1) + 4i(-2i)
+$$
+
+$$
+= 3 - 6i + 4i - 8i^2
+$$
+
+Since $i^2 = -1$:
+
+$$
+= 3 - 6i + 4i + 8 = 11 - 2i
+$$
+:::
+
+#### Problem 2: Find conjugate
+
+Find the complex conjugate of $z = -3 + 5i$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+The complex conjugate of a complex number $z = x + iy$ is given by $z^* = x - iy$. For $z = -3 + 5i$, the conjugate is:
+
+$$
+z^* = -3 - 5i
+$$
+:::
+
+#### Problem 3: From polar to Cartesian
+
+Convert the complex number $z = 5e^{i\frac{\pi}{4}}$ to its Cartesian form.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+Using Euler's formula:
+
+$$
+z = r(\cos\phi + i\sin\phi)
+$$
+
+For $z = 5e^{i\frac{\pi}{4}}$, we have $r = 5$ and $\phi = \frac{\pi}{4}$, so:
+
+$$
+z = 5\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)
+$$
+
+Since $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}$, we get:
+
+$$
+z = 5\left(\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = \frac{5\sqrt{2}}{2} + i\frac{5\sqrt{2}}{2}
+$$
+:::
+
+#### Problem 4: Division
+
+Divide the complex numbers $z_1 = 3 + 4i$ by $z_2 = 1 - 2i$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+To divide complex numbers, multiply both the numerator and denominator by the conjugate of the denominator:
+
+$$
+\frac{z_1}{z_2} = \frac{3 + 4i}{1 - 2i} \times \frac{1 + 2i}{1 + 2i}
+$$
+
+First, multiply the numerator:
+
+$$
+(3 + 4i)(1 + 2i) = 3(1) + 3(2i) + 4i(1) + 4i(2i) = 3 + 6i + 4i - 8 = -5 + 10i
+$$
+
+Next, multiply the denominator:
+
+$$
+(1 - 2i)(1 + 2i) = 1^2 - (2i)^2 = 1 + 4 = 5
+$$
+
+Now, divide the result:
+
+$$
+\frac{-5 + 10i}{5} = -1 + 2i
+$$
+
+Thus, $\frac{z_1}{z_2} = -1 + 2i$.
+:::
+
+#### Problem 5: Find modulus
+
+Find the modulus of the complex number $z = 7 + 24i$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+The modulus of a complex number $z = x + iy$ is given by:
+
+$$
+|z| = \sqrt{x^2 + y^2}
+$$
+
+For $z = 7 + 24i$, we have $x = 7$ and $y = 24$:
+
+$$
+|z| = \sqrt{7^2 + 24^2} = \sqrt{49 + 576} = \sqrt{625} = 25
+$$
+
+Thus, the modulus of $z$ is 25.
+:::
+
+#### Problem 6: Multiplication in polar form
+
+Multiply the complex numbers $z_1 = 2e^{i\frac{\pi}{6}}$ and $z_2 = 3e^{i\frac{\pi}{3}}$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+To multiply two complex numbers in polar form, multiply their magnitudes and add their angles:
+
+$$
+z_1 \cdot z_2 = (2e^{i\frac{\pi}{6}})(3e^{i\frac{\pi}{3}}) = 6e^{i(\frac{\pi}{6} + \frac{\pi}{3})}= 6e^{i\frac{\pi}{2}}
+$$
+
+Thus, the product is:
+
+$$
+z_1 \cdot z_2 = 6e^{i\frac{\pi}{2}} = 6i
+$$
+:::
+
+#### Problem 7: From Cartesian to polar
+
+Express the complex number $z = -4 + 4i$ in polar form.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+1. **Modulus**:
+
+   $$
+   r = \sqrt{x^2 + y^2} = \sqrt{(-4)^2 + 4^2} = \sqrt{16 + 16} = \sqrt{32} = 4\sqrt{2}
+   $$
+
+2. **Argument**:
+
+   $$
+   \phi = \tan^{-1}\left(\frac{y}{x}\right) = \tan^{-1}\left(\frac{4}{-4}\right) = \tan^{-1}(-1)
+   $$
+
+   Since $z$ is in the second quadrant:
+
+   $$
+   \phi = \frac{3\pi}{4}
+   $$
+
+Thus, the polar form of $z$ is:
+
+$$
+z = 4\sqrt{2}e^{i\frac{3\pi}{4}}
+$$
+:::
+</content>
