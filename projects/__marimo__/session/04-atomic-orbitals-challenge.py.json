@@ -1,0 +1,126 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.14",
+    "script_metadata_hash": "c878078764aac0a4ab68309311d6230c"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "2b5a8cdc7f014b03adb21df792712b99",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"project-4-atomic-orbitals\">Project 4: Atomic Orbitals</h1>\n<span class=\"paragraph\"><strong>Prerequisites</strong></span>\n<ul>\n<li>The <a href=\"https://dpotoyan.github.io/Chem324/demo-hydrogen-wavefunctions\" rel=\"noopener noreferrer\" target=\"_blank\">hydrogen wavefunctions demo</a>\n  and the <a href=\"https://dpotoyan.github.io/Chem324/demo-spherical-harmonics\" rel=\"noopener noreferrer\" target=\"_blank\">spherical harmonics demo</a>:\n  the plotting functions there are your starting points.</li>\n</ul>\n<span class=\"paragraph\"><strong>How to submit</strong>: add your code below each problem, then File &gt; Download the <code>.py</code>\nfile and upload it to Canvas. Download your work at the end of every session.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "57ad052535edba5c6da457777bc1c164",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "5fc28384d8fe02faed4858d0b302da73",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"provided-the-radial-function\">Provided: the radial function</h2>\n<marimo-tex class=\"arithmatex\">||[R_{nl}(r) = \\sqrt{\\Big(\\frac{2}{n a_0}\\Big)^3 \\frac{(n-l-1)!}{2n\\,(n+l)!}}\\;\ne^{-r/n a_0} \\Big(\\frac{2r}{n a_0}\\Big)^{l} L^{2l+1}_{n-l-1}\\Big(\\frac{2r}{n a_0}\\Big)||]</marimo-tex><span class=\"paragraph\">with <marimo-tex class=\"arithmatex\">||(a_0 = 1||)</marimo-tex> (Hartree atomic units). Note for the angular part: scipy's\n<code>sph_harm_y(l, m, theta, phi)</code> takes the <strong>polar</strong> angle <marimo-tex class=\"arithmatex\">||(\\theta||)</marimo-tex> first and the\n<strong>azimuthal</strong> angle <marimo-tex class=\"arithmatex\">||(\\phi||)</marimo-tex> second.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "e4c1be974ff9f85d44751bc48fe0962a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "46f71984c74731a056742c76448b4265",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"problem-1-radial-part-of-atomic-orbitals\">Problem 1: Radial part of atomic orbitals</h2>\n<ul>\n<li>Using a few radial functions of the H atom, show that they are normalized and\n  orthogonal (numerical integrals with <code>np.trapezoid</code>; remember the volume element\n  <marimo-tex class=\"arithmatex\">||(r^2\\,dr||)</marimo-tex>).</li>\n<li>Compute and plot the probability of finding the electron within the first Bohr\n  radius as a function of the quantum number <marimo-tex class=\"arithmatex\">||(n||)</marimo-tex>.</li>\n<li>Compute <marimo-tex class=\"arithmatex\">||(\\langle 1/r \\rangle||)</marimo-tex> numerically as a function of <marimo-tex class=\"arithmatex\">||(n||)</marimo-tex> and compare with\n  the analytical expression from the book.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "70e136a49e856f8ae5ff43a94e6cc0e6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "76b082614a9ecb42d02037f55c3745f8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"problem-2-angular-part-of-atomic-orbitals\">Problem 2: Angular part of atomic orbitals</h2>\n<marimo-tex class=\"arithmatex\">||[Y_{l}^{m}(\\theta,\\phi) = \\sqrt{\\frac{2l+1}{4\\pi}\\frac{(l-m)!}{(l+m)!}}\\;\nP_{l}^{m}(\\cos\\theta)\\, e^{i m \\phi}||]</marimo-tex><ul>\n<li>Show that spherical harmonics are normalized and orthogonal (the angular volume\n  element is <marimo-tex class=\"arithmatex\">||(\\sin\\theta \\, d\\theta \\, d\\phi||)</marimo-tex>).</li>\n<li>Modify the plotting function from the demo to use <strong>real</strong> combinations of\n  <marimo-tex class=\"arithmatex\">||(Y_l^m||)</marimo-tex> and reproduce the three <marimo-tex class=\"arithmatex\">||(p||)</marimo-tex> orbitals and all five <marimo-tex class=\"arithmatex\">||(d||)</marimo-tex> orbitals familiar\n  to chemists.</li>\n<li>Visualize a linear combination of one <marimo-tex class=\"arithmatex\">||(s||)</marimo-tex> and one <marimo-tex class=\"arithmatex\">||(p_z||)</marimo-tex> orbital with equal weights.</li>\n<li>Visualize a linear combination of <marimo-tex class=\"arithmatex\">||(s||)</marimo-tex>, <marimo-tex class=\"arithmatex\">||(p_x||)</marimo-tex> and <marimo-tex class=\"arithmatex\">||(p_y||)</marimo-tex> orbitals with equal weights.</li>\n<li>Visualize a linear combination of <marimo-tex class=\"arithmatex\">||(s||)</marimo-tex> and all three <marimo-tex class=\"arithmatex\">||(p||)</marimo-tex> orbitals with equal weights.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "52f9fca6258f37bff591565fae82e217",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

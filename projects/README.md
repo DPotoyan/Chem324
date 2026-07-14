@@ -8,6 +8,9 @@ and submit it on Canvas.
 | project | open |
 |---|---|
 | Project 1: Particle in a Box | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/01-particle-in-a-box.py) |
+| Project 2: Waves, Normal Modes and Interference | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/02-waves-challenge.py) |
+| Project 3: Quantum Waves | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/03-quantum-waves-challenge.py) |
+| Project 4: Atomic Orbitals | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/04-atomic-orbitals-challenge.py) |
 
 To preview a project locally instead:
 
