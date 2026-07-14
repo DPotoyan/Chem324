@@ -7,6 +7,10 @@
 #     "plotly",
 #     "sympy",
 # ]
+#
+# [tool.marimo.runtime]
+# auto_instantiate = true
+# on_cell_change = "autorun"
 # ///
 
 import marimo
