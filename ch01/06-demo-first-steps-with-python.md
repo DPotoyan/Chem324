@@ -39,6 +39,8 @@ import sympy as sp
 ```
 
 ```{marimo} python
+:hide-code: true
+
 mo.md(f"""
 | constant | symbol | value |
 |---|---|---|
@@ -84,8 +86,12 @@ E_green
 Joules are inconvenient at the atomic scale, so chemists quote photon energies in **electron volts** (divide by the electron charge) or **kJ/mol** (multiply by Avogadro's number). Unit conversion is just arithmetic:
 
 ```{marimo} python
-ev_green = E_green / const.e
-kjmol_green = E_green * const.N_A / 1000
+ev_green = E_green / const.e                # joules -> electron volts
+kjmol_green = E_green * const.N_A / 1000    # per photon -> kJ per mole
+```
+
+```{marimo} python
+:hide-code: true
 
 mo.md(
     f"one green photon carries **{E_green:.3e} J**, i.e. **{ev_green:.2f} eV**, "
@@ -137,8 +143,12 @@ Notice the chemistry hiding in this toy: visible light cannot touch a C-C bond, 
 The same calculator settles a chapter question: why do electrons diffract but baseballs do not? Compute $\lambda = h / mv$ for both. For the electron we use its speed in the ground state of the Bohr model [@bohr1913], $v \approx 2.19 \times 10^6$ m/s:
 
 ```{marimo} python
-lam_electron = const.h / (const.m_e * 2.19e6)
+lam_electron = const.h / (const.m_e * 2.19e6)    # electron at Bohr-orbit speed
 lam_baseball = const.h / (0.145 * 40.0)          # 145 g fastball at 40 m/s
+```
+
+```{marimo} python
+:hide-code: true
 
 mo.md(
     f"electron: **{lam_electron*1e9:.3f} nm**, about the size of an atom; "
@@ -267,30 +277,46 @@ shape = x_s**5 / (sp.exp(x_s) - 1)   # Planck's law in x = hc/(lam kB T)
 
 dshape = sp.diff(shape, x_s)         # calculus, done symbolically
 x_star = sp.solve(dshape, x_s)[0]    # solved exactly, no numerics
+
+x_star
+```
+
+That output is not a decimal: `sympy` solved the transcendental equation **exactly**, in terms of the Lambert W function. Turned into numbers, it hands us Wien's constant:
+
+```{marimo} python
+:hide-code: true
+
 wien_b = const.h * const.c / (const.k * float(x_star))
 
 mo.md(
-    f"exact peak: $x^* = {sp.latex(x_star)} = {float(x_star):.4f}$, "
-    f"so the derived Wien constant is $b = hc / x^* k_B$ = **{wien_b:.4e} m K** "
-    f"(scipy tabulates {const.Wien:.4e}), which puts the 5800 K peak at "
-    f"**{wien_b / 5800 * 1e9:.0f} nm**"
+    f"numerically $x^* = {float(x_star):.4f}$, so the derived Wien constant is "
+    f"$b = hc / x^* k_B$ = **{wien_b:.4e} m K** (scipy tabulates {const.Wien:.4e}), "
+    f"which puts the 5800 K peak at **{wien_b / 5800 * 1e9:.0f} nm**"
 )
 ```
 
-Look at the first line of output: `sympy` did not just crunch a number, it solved the transcendental equation **exactly**, in terms of the Lambert W function, then evaluated it. The result matches the dashed line in the plot above and scipy's tabulated constant to four digits. You will use the same maximize-by-differentiating trick later to locate maxima of probability densities.
+The result matches the dashed line in the plot above and scipy's tabulated constant to four digits. You will use the same maximize-by-differentiating trick later to locate maxima of probability densities.
 
 ### Complex numbers: a 30-second preview
 
 Quantum wavefunctions are complex-valued, so Python treats complex numbers as first-class citizens (`1j` is the imaginary unit). Take $z = 1 + \sqrt{3}\,i$:
 
 ```{marimo} python
-z = 1 + np.sqrt(3) * 1j
+z = 1 + np.sqrt(3) * 1j    # 1j is the imaginary unit
+
+z_conj = z.conjugate()
+z_mod = abs(z)
+z_phase = np.angle(z)
+```
+
+```{marimo} python
+:hide-code: true
 
 mo.md(
     f"$z = {z.real:.0f} + {z.imag:.3f}\\,i$, with conjugate "
-    f"$z^* = {z.real:.0f} - {abs(z.imag):.3f}\\,i$, modulus "
-    f"$|z| = \\sqrt{{z z^*}} = {abs(z):.3f}$, and polar form "
-    f"$r = {abs(z):.3f}$, $\\varphi = {np.angle(z)/np.pi:.3f}\\,\\pi$"
+    f"$z^* = {z_conj.real:.0f} - {abs(z_conj.imag):.3f}\\,i$, modulus "
+    f"$|z| = \\sqrt{{z z^*}} = {z_mod:.3f}$, and polar form "
+    f"$r = {z_mod:.3f}$, $\\varphi = {z_phase/np.pi:.3f}\\,\\pi$"
 )
 ```
 
