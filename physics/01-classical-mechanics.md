@@ -155,7 +155,7 @@ $$
 $$
 :::
 
-This single non-zero commutator is the seed of the uncertainty principle: because $\hat x$ and $\hat p$ do not commute, no state can have a definite position and a definite momentum at the same time. The [operators and differential equations](../math/04-operators-and-differential-equations.md) page showed why non-commuting operators behave this way; here we see where that particular commutator comes from.
+This single non-zero commutator is the seed of the uncertainty principle: because $\hat x$ and $\hat p$ do not commute, no state can have a definite position and a definite momentum at the same time. The [operators as matrices](../math/04-operators-and-matrices.md) page showed why non-commuting operators behave this way; here we see where that particular commutator comes from.
 
 :::{note} **Example: the harmonic oscillator, classical to quantum**
 
