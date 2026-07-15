@@ -28,7 +28,7 @@ Instead of guessing a functional form for $\psi(x)$, we store its values $\psi_1
 \frac{d^2\psi}{dx^2}\bigg|_{x_j} \approx \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{\Delta x^2}
 ```
 
-:::{figure} images/fd-grid.png
+:::{figure} ../ch03/images/fd-grid.png
 :label: fig-fd-grid
 :alt: A smooth wavefunction sampled at evenly spaced grid points between two hard walls
 :width: 85%
