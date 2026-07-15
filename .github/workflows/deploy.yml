@@ -25,6 +25,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Cache page execution results
+        # myst's execute/transform caches are content-hashed per page: restoring
+        # the previous run's cache means only changed pages re-execute (pyscf,
+        # marimo sandboxes, plots). A requirements.txt change invalidates all.
+        uses: actions/cache@v4
+        with:
+          path: |
+            _build/execute
+            _build/cache
+          key: myst-build-${{ hashFiles('requirements.txt') }}-${{ github.sha }}
+          restore-keys: |
+            myst-build-${{ hashFiles('requirements.txt') }}-
+
+      - name: Cache uv packages
+        # marimo pages resolve their pyproject deps through uv at build time
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ github.sha }}
+          restore-keys: |
+            uv-
 
       - name: Install marimo plugin
         # myst.yml registers an executable plugin at .venv/bin/jupyter-book-marimo;
