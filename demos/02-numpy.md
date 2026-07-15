@@ -408,6 +408,49 @@ counts = np.random.default_rng(11).integers(0, 100, size=(4, 6))
 counts.mean(axis=0).round(1)   # try axis=1, .max(), .argsort()
 ```
 
+### Quick plots: visualizing your arrays
+
+Numbers in an array are hard to read; a picture is not. A handful of matplotlib patterns cover almost everything in this course: a line plot for a function, several curves with a legend, a scatter of points, and a histogram of samples. Import `matplotlib.pyplot` once and reuse it.
+
+```{code-cell} python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 200)
+plt.plot(x, np.sin(x))
+plt.xlabel("x")
+plt.ylabel("sin(x)")
+plt.title("A line plot of an array")
+```
+
+For anything beyond a single curve it is cleaner to create `fig` and `ax` objects: `ax` styles the plot, `fig` holds the whole figure. Multiple curves plus a legend:
+
+```{code-cell} python
+fig, ax = plt.subplots(figsize=(6, 3.5))
+ax.plot(x, np.sin(x), label="sin")
+ax.plot(x, np.cos(x), label="cos")
+ax.set_xlabel("x")
+ax.set_ylabel("value")
+ax.legend()
+```
+
+Scatter plots show individual points (useful for noisy data), and histograms show how samples are distributed, the picture behind every probability density in quantum mechanics:
+
+```{code-cell} python
+rng = np.random.default_rng(0)
+noisy = np.sin(x) + 0.15 * rng.standard_normal(x.size)
+samples = rng.normal(0.0, 1.0, 1000)
+
+fig, ax = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].scatter(x, noisy, s=8)
+ax[0].set_title("scatter of noisy points")
+ax[1].hist(samples, bins=30)
+ax[1].set_title("histogram of 1000 samples")
+fig.tight_layout()
+```
+
+That trio (line, scatter, histogram) is enough to visualize essentially every array you will build in this course. For a wider gallery see the [Matplotlib examples](https://matplotlib.org/stable/gallery/index.html).
+
 ### Pandas
 
 You may thinkg of numpy as enhancing functionality of lists for numerical computations. In the same vein you can think of pandas as enahcnign dicitonaires to deal with heteogenuous categorical data. 
