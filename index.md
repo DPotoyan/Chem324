@@ -7,8 +7,7 @@ classical physics through the birth of quantization, wave–particle duality, an
 Schrödinger equation, building toward the quantum description of atoms and molecules.
 
 :::{note}
-These notes are written to be read alongside lecture, and they contain runnable
-Python demos. Use the launch buttons on interactive pages to experiment yourself.
+These notes are written to be read alongside lecture, and they contain runnable Python demos. Use the launch buttons on interactive pages to experiment yourself.
 :::
 
 ## How to use these notes
