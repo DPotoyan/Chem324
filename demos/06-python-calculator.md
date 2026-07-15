@@ -280,6 +280,64 @@ fig_o
 
 At $d = 0$ the orbitals coincide and $S = 1$; by $d \approx 8\,a_0$ the overlap is essentially gone. The window where $S$ is a few tenths is exactly where [chemical bonds live](../ch08/02-hydrogen-molecule-ion.md).
 
+### 7. One-dimensional Schrödinger solver
+
+Pick a potential and get its bound states instantly: energies as horizontal lines, wavefunctions drawn at their own energy (units: $\hbar = m = 1$, hard walls at $x = \pm 4$). To see how the solver works inside, open the [numerical Schrödinger lab](07-demo-numerical-schrodinger.md).
+
+```{marimo} python
+:hide-code: true
+
+pot1 = mo.ui.dropdown(
+    options={
+        "infinite box, V = 0": "box",
+        "linear well, V = a|x|": "linear",
+        "harmonic, V = a x^2 / 2": "harmonic",
+        "double well, V = a((x/2)^2 - 1)^2": "double",
+    },
+    value="harmonic, V = a x^2 / 2", label="potential",
+)
+amp1 = mo.ui.slider(0.5, 30.0, step=0.5, value=4.0, show_value=True, label="strength a")
+nst1 = mo.ui.slider(2, 8, step=1, value=5, show_value=True, label="states to show")
+mo.hstack([pot1, amp1, nst1], justify="start", gap=1.5)
+```
+
+```{marimo} python
+:hide-code: true
+
+from scipy.linalg import eigh_tridiagonal
+
+x1 = np.linspace(-4, 4, 802)[1:-1]
+dx1 = x1[1] - x1[0]
+if pot1.value == "box":
+    v1 = np.zeros_like(x1)
+elif pot1.value == "linear":
+    v1 = amp1.value * np.abs(x1)
+elif pot1.value == "harmonic":
+    v1 = 0.5 * amp1.value * x1**2
+else:
+    v1 = amp1.value * ((x1 / 2) ** 2 - 1) ** 2
+
+en1, vec1 = eigh_tridiagonal(
+    1.0 / dx1**2 + v1, np.full(len(x1) - 1, -0.5 / dx1**2),
+    select="i", select_range=(0, nst1.value - 1),
+)
+wf1 = vec1 / np.sqrt(dx1)
+
+fig1, ax1 = plt.subplots(figsize=(7, 4.6))
+ax1.plot(x1, v1, color="0.35", lw=1.8)
+span1 = max(en1.max() - en1.min(), 1.0)
+for e1, psi1 in zip(en1, wf1.T):
+    ax1.axhline(e1, color="0.85", lw=0.7)
+    ax1.plot(x1, e1 + psi1 * span1 * 0.12, lw=1.6)
+ax1.set_xlabel("x")
+ax1.set_ylabel("energy")
+ax1.set_ylim(min(v1.min(), en1.min()) - 0.05 * span1, en1.max() + 0.35 * span1)
+ax1.set_title(f"{pot1.value}:  E = " + ", ".join(f"{e:.2f}" for e in en1[:4]) + (" ..." if len(en1) > 4 else ""), fontsize=10)
+fig1
+```
+
+Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets.
+
 :::{tip} Want more room?
 The molab button at the top opens this whole page as an editable notebook where you can add as many cells as you like. For guided tutorials, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
 :::
