@@ -6,6 +6,9 @@ kernelspec:
 
 # Visualizing the Particle in a Box
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-particle-in-a-box.ipynb)
+
+
 The particle-in-a-box is one of the simplest systems for which we can solve the Schrodinger equation analytically. However, it is also one of the simplest systems which demonstrates some of the peculiarities of quantum mechanics, including energy quantization and wavefunction nodes.
 
 ### System set-up

@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: Solving $H^{+}_2$ via Variational Method
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-h2plus.ipynb)
+
+
 ## Populating the $H$ and $S$ Matrices
 
 To determine the variationally optimal energy and wave function, we need to determine the variationally optimal linear coefficients $c_1$ and $c_2$ of the trial wave function.  The procedure for this is to:

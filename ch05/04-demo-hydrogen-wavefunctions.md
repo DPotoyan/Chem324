@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: H wavefunctions
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-hydrogen-wavefunctions.ipynb)
+
+
 ```{marimo-config}
 ---
 pyproject: |

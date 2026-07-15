@@ -1,5 +1,6 @@
 # DEMO: Numerical Schrödinger Solver
 
+
 :::{note} **What you need to know**
 
 - Only a handful of potentials (particle in a box, harmonic oscillator, hydrogen atom) can be solved with pencil and paper. Every other Schrödinger equation in chemistry is solved **numerically**.

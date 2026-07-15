@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: Particle in a box
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-particle-in-a-box.ipynb)
+
+
 ```{marimo-config}
 ---
 pyproject: |

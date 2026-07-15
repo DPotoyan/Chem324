@@ -1,5 +1,6 @@
 # DEMO: First Steps with Python
 
+
 :::{note} **What you need to know**
 
 - You do not need to install anything. The Python cells on this page run **live in your browser**: move a slider and every result that depends on it recomputes.

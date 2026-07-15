@@ -6,6 +6,9 @@ kernelspec:
 
 # Visualizing Spherical harmonics
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-spherical-harmonics.ipynb)
+
+
 ```{marimo-config}
 ---
 pyproject: |

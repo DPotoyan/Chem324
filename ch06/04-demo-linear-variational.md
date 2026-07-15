@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: Linear Variational Method
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-linear-variational.ipynb)
+
+
 :::{admonition} **What You Need to Know**
 :class: note
 

@@ -6,6 +6,9 @@ kernelspec:
 
 # Animations with Matplotlib
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-animations.ipynb)
+
+
 ```{code-cell} python
 %matplotlib inline
 

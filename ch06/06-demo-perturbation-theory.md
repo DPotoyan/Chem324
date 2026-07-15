@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: Perturbation Theory
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-perturbation-theory.ipynb)
+
+
 #### 1. **Energy Levels**
 
 - The **unperturbed energy levels** are given by:

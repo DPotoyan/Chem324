@@ -6,6 +6,9 @@ kernelspec:
 
 # DEMO: HF calculations on small organic molecules by PySCF
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-benzene.ipynb)
+
+
 * This demo uses the following libraries (already installed for the site build; on your own machine, `pip install pyscf py3Dmol plotly`)
   * [PySCF](https://pyscf.org/) (for the quantum chemistry)
   * [py3DMol](https://3dmol.csb.pitt.edu/) for visualizing the molecule
