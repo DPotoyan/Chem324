@@ -11,9 +11,11 @@
 - Everything here uses the physics of this chapter: photons, the hydrogen spectrum, and blackbody radiation.
 :::
 
-### Python as a scientific calculator
+The page has five stations, and each one introduces exactly one library at the moment it becomes useful: physical constants, then arrays and plots, then symbolic math.
 
-Five lines set up the entire toolkit. The star is `scipy.constants`, which knows every physical constant so you never mistype one ([full list](https://docs.scipy.org/doc/scipy/reference/constants.html)).
+### 1. Python as a scientific calculator
+
+Our first import: `scipy.constants` knows every physical constant, so you never mistype one ([full list](https://docs.scipy.org/doc/scipy/reference/constants.html)). One line of code, and $h$, $c$, $e$, $k_B$, $N_A$ are all at your fingertips:
 
 ```{marimo-config}
 ---
@@ -30,12 +32,13 @@ pyproject: |
 ```
 
 ```{marimo} python
+:hide-code: true
+
 import marimo as mo
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import to_hex
+```
+
+```{marimo} python
 import scipy.constants as const
-import sympy as sp
 ```
 
 ```{marimo} python
@@ -54,6 +57,8 @@ mo.md(f"""
 
 ```{marimo} python
 :hide-code: true
+
+from matplotlib.colors import to_hex
 
 def wavelength_to_rgb(nm):
     """Rough RGB color of a visible wavelength; gray outside 380 to 750 nm."""
@@ -138,7 +143,7 @@ mo.vstack([
 
 Notice the chemistry hiding in this toy: visible light cannot touch a C-C bond, but ultraviolet light below roughly 345 nm can. That is why UV radiation damages molecules and sunscreen exists.
 
-#### The de Broglie wavelength, in three lines
+### 2. The de Broglie wavelength, in three lines
 
 The same calculator settles a chapter question: why do electrons diffract but baseballs do not? Compute $\lambda = h / mv$ for both. For the electron we use its speed in the ground state of the Bohr model [@bohr1913], $v \approx 2.19 \times 10^6$ m/s:
 
@@ -156,7 +161,7 @@ mo.md(
 )
 ```
 
-### Functions: the hydrogen spectrum
+### 3. Functions: the hydrogen spectrum
 
 When a formula gets used more than once, wrap it in a **function**. The Rydberg formula predicts every line hydrogen emits when an electron falls from level $n_{hi}$ to $n_{lo}$:
 
@@ -231,7 +236,14 @@ fig_lev
 
 Gray arrows mean the photon lies outside the visible window. Only the Balmer series lands in it, which is why hydrogen discharge tubes glow red-pink: you are looking mostly at the 656 nm line you computed above.
 
-### Plotting: blackbody radiation
+### 4. Plotting: blackbody radiation
+
+Two more imports, and they are the workhorses of all scientific Python: `numpy` handles arrays of numbers, and `matplotlib` turns them into figures.
+
+```{marimo} python
+import numpy as np
+import matplotlib.pyplot as plt
+```
 
 Planck's law [@planck1901] started quantum mechanics. Typed as code, it is three lines:
 
@@ -277,7 +289,13 @@ fig_bb
 
 The default 5800 K is the surface of the Sun: its peak sits right in the visible band (evolution is not a coincidence). Cool the slider to 3000 K, a light bulb filament, and watch the peak slide into the infrared, which is why incandescent bulbs waste most of their energy as heat.
 
-### Symbolic math: let the computer do calculus
+### 5. Symbolic math: let the computer do calculus
+
+Our final import is `sympy`, an entire computer algebra system:
+
+```{marimo} python
+import sympy as sp
+```
 
 The dashed "peak" line obeys **Wien's law**, $\lambda_{max} T = b$. In 1900 deriving it took real work; `sympy` differentiates Planck's law and finds the root for you. One standard physics trick first: substitute the dimensionless variable $x = hc / \lambda k_B T$, so Planck's law becomes a clean scale-free shape $x^5 / (e^x - 1)$ and every temperature collapses onto one curve:
 
@@ -307,7 +325,7 @@ mo.md(
 
 The result matches the dashed line in the plot above and scipy's tabulated constant to four digits. You will use the same maximize-by-differentiating trick later to locate maxima of probability densities.
 
-### Complex numbers: a 30-second preview
+### 6. Complex numbers: a 30-second preview
 
 Quantum wavefunctions are complex-valued, so Python treats complex numbers as first-class citizens (`1j` is the imaginary unit). Take $z = 1 + \sqrt{3}\,i$:
 
