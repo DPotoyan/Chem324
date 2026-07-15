@@ -217,3 +217,7 @@ Starting from the Lennard-Jones potential $V(R) = 4\epsilon\left[(\sigma/R)^{12}
 The ionization energy of sodium is $5.14$ eV and the electron affinity of chlorine is $3.62$ eV. Using the reasoning applied to LiF in the lecture, argue whether NaCl is expected to be predominantly ionic or covalent, and identify what additional energetic contribution makes the ionic molecule bound despite the unfavorable electron-transfer balance.
 
 ::::
+
+:::{seealso} Chapter demos
+Run this chapter's interactive Python demos: [H2+ molecular ion](../demos/17-demo-h2plus.md) · [Benzene by PySCF](../demos/18-demo-benzene.md)
+:::

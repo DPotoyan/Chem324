@@ -6,11 +6,11 @@ kernelspec:
 
 # DEMO: Visualizing waves  
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-visualizing-waves.ipynb)
 
 
 ```{marimo-config}
 ---
+echo: true
 pyproject: |
   requires-python = ">=3.10"
   dependencies = [
@@ -28,17 +28,11 @@ import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-```
-
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
-
-import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 ```
+
 
 ### Standing and traveling waves in 1D
 
@@ -52,7 +46,7 @@ Here are the main steps:
 - Calcualte y values on this grid points
 - Plot y vs x
 
-```{code-cell} python
+```{marimo} python
 # Generate 1000 points between 0 and 1 for the x-axis
 x = np.linspace(0.0, 1.0, 1000)
 
@@ -66,9 +60,7 @@ plt.plot(x, y, label=f'L = {L}')
 
 #### Now lets package this into a nice little function so we can reuse it in animations!
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 def wave1d(L=2):
     """
     Plots a 1D sine wave with a specified wavelength.
@@ -105,7 +97,7 @@ def wave1d(L=2):
     plt.show()
 ```
 
-```{code-cell} python
+```{marimo} python
 # Change wavelength
 wave1d(L=0.5)
 ```
@@ -140,9 +132,7 @@ fig_w1
 - The waves are of the form $y = sin(k(x - vt))$ and $y = sin(k(x - vt) + \phi)$.
 - where $\phi$ is the phase shift between the two. All three waveforms are plotted on the same graph.
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 def wavef2(k=10, t=0, phi=0, v=1):
     """
     Plots two traveling waves and their superposition.
@@ -206,9 +196,7 @@ ax_sup.grid(True, ls="--", alpha=0.5)
 fig_sup
 ```
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 #@title Animate traveling wave in 3D
 
 def wave_x_t(A=1, k=1.0, omega=1, phi=0):
@@ -258,9 +246,7 @@ fig.show()
 
 ## Normal modes of 1D guitar string
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 def guitar1d(n=1, t=0):
     """
     Visualizes the 1D normal mode of a vibrating guitar string at a specific time.
@@ -331,9 +317,7 @@ $$u(x,t) = c_1 u_1 + c_2 u_2 +c_3 u_3 + ...$$
  - $u_n = sin(n \pi x / L) \cdot cos(n \pi  v t / L)$, normal modes
  - $c_n=0-1$ coeficients of modes
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 #@title Animate mode combinations
 
 def create_animation(modes, coefficients):
@@ -368,7 +352,7 @@ def create_animation(modes, coefficients):
     return HTML(ani.to_jshtml())
 ```
 
-```{code-cell} python
+```{marimo} python
 modes = [1, 2, 3]       # Change mode  numbers (from 1 to 10)
 coefficients = [1, 1, 1] # Change their coefficients (from 0-1)
 
@@ -377,9 +361,7 @@ create_animation(modes, coefficients)
 
 ## Normal modes of a 2D membrane
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 def membrane2d_mode(n=1, m=1, t=0):
     """
     Calculates the 2D grid of points (X, Y) and the normal mode displacement (Z) of a vibrating 

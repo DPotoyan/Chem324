@@ -6,11 +6,11 @@ kernelspec:
 
 # DEMO: Particle in a box
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-particle-in-a-box.ipynb)
 
 
 ```{marimo-config}
 ---
+echo: true
 pyproject: |
   requires-python = ">=3.10"
   dependencies = [
@@ -28,15 +28,11 @@ import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+from sympy import symbols, sqrt, sin, pi, diff, integrate, simplify, pprint, init_printing
 ```
 
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go
-```
 
-```{code-cell} python
+```{marimo} python
 #@title load particle in a box wavefunctions and energies for 1D and 2D
 
 h, m = 1, 1 
@@ -96,7 +92,7 @@ def psi_ener(nx, ny, nz, lx, ly, lz):
 
 ### Interactive exploration of 1D quantum particle in a box
 
-```{code-cell} python
+```{marimo} python
 def plot_energy_levels(L=1, max_n=1):
     
     fig, (ax, ax2) = plt.subplots(figsize=(8, 6), ncols=2)
@@ -176,7 +172,7 @@ fig1d
 
 ### Particle in 3D Box
 
-```{code-cell} python
+```{marimo} python
 def pib3d_plotly(nx=1, ny=1, nz=1, lx=10, ly=10, lz=10):
   '''Displays and saves isosurface of 3D PIB wavefunction.
   Args:
@@ -255,7 +251,7 @@ fig3d
 
 ### Visualize energy levels of 3D PIB
 
-```{code-cell} python
+```{marimo} python
 def plot_energy_levels(nx_max=10, ny_max=10, nz_max=10, lx=1, ly=1, lz=1):
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -321,9 +317,7 @@ fig_lad
 
 ### Symbolic evaluations of Paritcle in a box integrals
 
-```{code-cell} python
-from sympy import symbols, sqrt, sin, pi, diff, integrate, simplify, pprint, init_printing
-
+```{marimo} python
 # Initialize pretty printing
 init_printing()
 
@@ -333,7 +327,7 @@ x, L, n, hbar = symbols('x L n hbar', real=True, positive=True)
 
 #### Step 1: Define the wavefunction
 
-```{code-cell} python
+```{marimo} python
 psi_n = sqrt(2/L) * sin(n * pi * x / L)
 
 print("Wavefunction ψ_n(x):")
@@ -343,7 +337,7 @@ pprint(psi_n)
 
 #### Step 2: Compute the second derivative of ψ_n(x)
 
-```{code-cell} python
+```{marimo} python
 d2psi_dx2 = diff(psi_n, x, x)
 
 print("Second derivative d²ψ_n/dx²:")
@@ -353,30 +347,27 @@ pprint(d2psi_dx2)
 
 #### Step 3: Apply the momentum squared operator: -ħ² d²ψ_n/dx²
 
-```{code-cell} python
+```{marimo} python
 op_psi = -hbar**2 * d2psi_dx2
 
 print("Momentum operator applied to ψ_n(x): -ħ² d²ψ_n/dx²:")
 
 pprint(op_psi)
-
 ```
 
 #### Step 4: Compute the integrand ψ_n(x) * op_ψ_n(x)
 
-```{code-cell} python
-
+```{marimo} python
 integrand = psi_n * op_psi
 
 print("Integrand ψ_n(x) * (-ħ² d²ψ_n/dx²):")
 
 pprint(integrand)
-
 ```
 
 #### Step 5: Compute the expectation value ⟨p²⟩
 
-```{code-cell} python
+```{marimo} python
 expectation = integrate(integrand, (x, 0, L))
 
 print("Expectation value ⟨p²⟩ before simplification:")
@@ -386,7 +377,7 @@ pprint(expectation)
 
 #### Step 6: Simplify the result
 
-```{code-cell} python
+```{marimo} python
 expectation_simplified = simplify(expectation)
 
 print("Simplified expectation value ⟨p²⟩:")

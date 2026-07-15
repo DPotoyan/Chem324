@@ -6,21 +6,33 @@ kernelspec:
 
 # DEMO: Quantum Waves
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-quantum-waves.ipynb)
 
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
 
-```{code-cell} python
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
 from ipywidgets.widgets import interact, interactive
-
-%matplotlib inline
-%config InlineBackend.figure_format = 'retina'
 ```
+
+
 
 ### Linear superspositions and time dependence 
 
-```{code-cell} python
+```{marimo} python
 def psi_n(x, n):
     """Time-independent wavefunction for a particle in a box."""
     L = 1 # set box length
@@ -43,7 +55,7 @@ def psi_combined(x, t, L, c1=1, c2=1, n1=1, n2=2):
 
 ### Plot time dependent quantum wavefunctions
 
-```{code-cell} python
+```{marimo} python
 def plot_wavefunction(t=0, c1=1, c2=1, n1=1, n2=1):
 
     L = 1.0
@@ -61,16 +73,13 @@ def plot_wavefunction(t=0, c1=1, c2=1, n1=1, n2=1):
     plt.show()
 ```
 
-```{code-cell} python
+```{marimo} python
 plot_wavefunction(t=1, c1=1, c2=1, n1=1, n2=1)
 ```
 
-```{code-cell} python
+```{marimo} python
 interact(plot_wavefunction, t=(0, 10, 0.1), c1=(-1.5, 1.5, 0.1), c2=(-1.5, 1.5, 0.1), n1=(1,5), n2=(1,5))
 ```
 
 ### Fourier Transforms
 
-```{code-cell} python
-
-```

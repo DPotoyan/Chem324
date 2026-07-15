@@ -334,3 +334,7 @@ Determine the ground-state term symbol of the oxygen atom, valence configuration
 A $2p^4$ configuration has the same terms as $2p^2$ (a "hole" picture), namely $^1$S, $^1$D, and $^3$P, so the ground term is $^3$P with $S = 1$, $L = 1$. The possible $J$ values are $J = L+S, \ldots, |L-S| = 2, 1, 0$. Because the $2p$ subshell is more than half-filled (4 of 6 electrons), Hund's third rule selects the **largest** $J$, so $J = 2$. The ground-state term symbol is $^3$P$_2$.
 :::
 ::::
+
+:::{seealso} Chapter demos
+Run this chapter's interactive Python demos: [Hartree-Fock with PySCF](../demos/16-demo-hartree-fock.md)
+:::

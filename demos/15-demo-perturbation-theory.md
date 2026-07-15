@@ -6,7 +6,29 @@ kernelspec:
 
 # DEMO: Perturbation Theory
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-perturbation-theory.ipynb)
+
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+from ipywidgets import interact
+```
+
 
 
 #### 1. **Energy Levels**
@@ -68,12 +90,7 @@ kernelspec:
 
 ### Define the problem
 
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import quad
-from ipywidgets import interact
-
+```{marimo} python
 # Constants
 L = 1  # Length of the box
 hbar = 1  # Reduced Planck's constant
@@ -102,8 +119,7 @@ def V_mn(m, n, a):
 
 ### First-order correction 
 
-```{code-cell} python
-
+```{marimo} python
 # First-order correction to energy
 def first_order_correction(n, a):
     return V_mn(n, n, a)
@@ -122,7 +138,7 @@ def psi_1_correction(x, n, a):
 
 ### Second-order correction 
 
-```{code-cell} python
+```{marimo} python
 def second_order_correction(n, a):
     correction = 0
     E_n0 = E_n_0(n)
@@ -152,7 +168,7 @@ def psi_2_correction(x, n, a):
 
 ### Visualizing corrections
 
-```{code-cell} python
+```{marimo} python
 # Interactive plot function
 def plot_energy_and_wavefunctions(a=1, n=1):
     x = np.linspace(0, L, 1000)  # Position grid
@@ -201,7 +217,7 @@ interact(plot_energy_and_wavefunctions, a=(0, 25, 1), n=(1, 5, 1))
 
 ### Insights into Molecular Orbtials and Bonding from pertrubation theory perspective
 
-```{code-cell} python
+```{marimo} python
 def molecular_orbital_energies(E_A, E_B, H_AB):
     """
     Compute molecular orbital energies using perturbation theory.
@@ -234,18 +250,14 @@ plt.ylabel('Molecular Orbital Energy')
 plt.title('Molecular Orbital Formation via Perturbation Theory')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.gcf()
 ```
 
 **Roles of Bonding and Antibonding**:
    - Bonding energy $ E_- $: Stabilized by $ -|H_{AB}|^2 / \Delta E $.
    - Antibonding energy $E_+$: Destabilized by $ +|H_{AB}|^2 / \Delta E$.
 
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-from ipywidgets import interact
-
+```{marimo} python
 def molecular_orbital_energies(E_A, E_B, H_AB):
     """
     Compute molecular orbital energies using second-order perturbation theory.

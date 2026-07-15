@@ -6,7 +6,30 @@ kernelspec:
 
 # DEMO: Linear Variational Method
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-linear-variational.ipynb)
+
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+from scipy.linalg import eig, inv, eigh
+import matplotlib.pyplot as plt
+from scipy import integrate
+```
+
 
 
 :::{admonition} **What You Need to Know**
@@ -286,12 +309,7 @@ $$\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} & \frac{a^2}{30}
 
 $$\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} & \frac{a^2}{14}\\ \frac{a^2}{14} & \frac{a^4}{63} \end{bmatrix}$$
 
-```{code-cell} python
-:tags: [hide-input]
-
-import numpy as np
-from scipy.linalg import eig, inv, eigh
-
+```{marimo} python
 # Lets adopt simpler units
 a = 1.0
 hbar = 1.0
@@ -316,13 +334,8 @@ $$E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \frac{\hbar^2}{m} $$
 
 So we can see that our variational solution worked out well for the energy.  Now how about the wavefunction?
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 # plot wavefunction
-import matplotlib.pyplot as plt
-from scipy import integrate
-%matplotlib inline
 # x values
 x = np.arange(0,1,0.01)
 # exact wavefunction

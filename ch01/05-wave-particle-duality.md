@@ -398,3 +398,7 @@ Thus, the uncertainty in the position of the electron traveling with a kinetic e
 This is on the order of atomic scales, which indicates that quantum effects are relevant in this case.
 
 :::
+
+:::{seealso} Chapter demos
+Run this chapter's interactive Python demos: [First steps with Python](../demos/07-demo-first-steps-with-python.md)
+:::

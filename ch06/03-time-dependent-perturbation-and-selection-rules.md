@@ -191,3 +191,7 @@ $$
 - If the dipole matrix element is zero by symmetry, the transition is forbidden.
 - For electric-dipole transitions in atoms: $\Delta l = \pm 1$, $\Delta m_l = 0, \pm 1$, and the parity changes.
 :::
+
+:::{seealso} Chapter demos
+Run this chapter's interactive Python demos: [Linear variational method](../demos/13-demo-linear-variational.md) · [Variational method](../demos/14-demo-variational-method.md) · [Perturbation theory](../demos/15-demo-perturbation-theory.md)
+:::

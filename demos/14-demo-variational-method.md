@@ -6,19 +6,36 @@ kernelspec:
 
 # DEMO: Variational Method
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-variational-method.ipynb)
 
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+  ]
+---
+```
 
-```{code-cell} python
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
 import numpy as np
 import scipy as sp
 from scipy.linalg import eigh
 import matplotlib.pyplot as plt
 ```
 
+
+
+
 ### Harmonic Oscillator 
 
-```{code-cell} python
+```{marimo} python
 def psi0(x):
     '''Normalized ground state wavefunction of harmonic oscillator
      The following units used; hbar=1, mu=1, k=1
@@ -35,7 +52,7 @@ def E0(n):
 
 ### Write functions to compute matrix elements 
 
-```{code-cell} python
+```{marimo} python
 def basis_functions(x, n, alpha=0.1, beta=0):
     '''Define any 1D trial function you like.
     n: is a parameter that defines basis functions in a linear combination, n=1,2,3,...
@@ -65,7 +82,7 @@ def KE(f, dx):
     return -0.5*df2dx2
 ```
 
-```{code-cell} python
+```{marimo} python
 x = np.linspace(-10, 10, 10000)
 
 for n in range(4):
@@ -77,7 +94,7 @@ plt.legend()
 
 ### Test for numerical accuracy
 
-```{code-cell} python
+```{marimo} python
 x = np.linspace(-10, 10, 10000)
 dx=x[1]-x[0]
 
@@ -93,7 +110,7 @@ print(Hii)
 
 ### Solve eigenvalue problem
 
-```{code-cell} python
+```{marimo} python
 # Define the number of basis functions and the range of x
 num_basis_functions = 2
 
@@ -123,7 +140,7 @@ print(f"Ground-State Wavefunction Coefficients: {ground_state_wavefunction}")
 
 ### Visualize Eigenfunctions and eigenvalues
 
-```{code-cell} python
+```{marimo} python
 psi = 0 # trial function
 k   = 0 # eigenvector 
 

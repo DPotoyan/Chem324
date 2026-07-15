@@ -6,11 +6,11 @@ kernelspec:
 
 # DEMO: H wavefunctions
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-hydrogen-wavefunctions.ipynb)
 
 
 ```{marimo-config}
 ---
+echo: true
 pyproject: |
   requires-python = ">=3.10"
   dependencies = [
@@ -43,19 +43,12 @@ def radial_m(r, n=1, l=0):
 
 #### Requirements | Importing libraries
 
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go
-from scipy.special import sph_harm_y, genlaguerre, factorial
-```
 
 #### 1. Describing a radial function $R_{nl}(r)$
 
 $$R_{nl} = \sqrt{ \Big( \frac{2}{n a_0} \Big)^3 \frac{(n-l-1)!}{2n(n+l)!}} \cdot e^{-\frac{r}{n a_0}} \cdot \Big( \frac{2 r}{n a_0} \Big)^l \cdot L^{2l+1}_{n-l-1}\Big( \frac{2 r}{n a_0} \Big)$$
 
-```{code-cell} python
-
+```{marimo} python
 def radial_function(r, 
                     n=1, 
                     l=0):
@@ -77,7 +70,7 @@ def radial_function(r,
     return  prefactor * np.exp(-p / 2) * (p ** l) * laguerre(p)
 ```
 
-```{code-cell} python
+```{marimo} python
 r = np.linspace(0, 20, 1000)
 
 Rnl = radial_function(r, n=2, l=0)
@@ -91,7 +84,7 @@ plt.ylabel(r'$R_nl(r) r^2$')
 
 **Check properties of radial distributon functions**
 
-```{code-cell} python
+```{marimo} python
 r = np.linspace(0, 100, 10000)
 dr = r[1]-r[0]
 
@@ -105,7 +98,7 @@ norm = np.trapezoid(pr * dr) # Check normalizaton
 print(norm)
 ```
 
-```{code-cell} python
+```{marimo} python
 np.trapezoid(pr*r*dr)
 ```
 
@@ -153,11 +146,11 @@ $$
 Y_{lm}(\phi,\theta) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!} } P_{lm}(cos \phi) \cdot e^{im\theta}
 $$
 
-```{code-cell} python
+```{marimo} python
 sph_harm_y(0, 0, np.pi, np.pi) # test a few spherical harmonics
 ```
 
-```{code-cell} python
+```{marimo} python
 def plot_Yml(l, m):
     '''Visualizing spherical harmonics using sph_harm funcion from Scipy special function library
      Note that the name of angles is different from the notation adopted in QM textbooks!
@@ -194,7 +187,7 @@ def plot_Yml(l, m):
     fig.show()
 ```
 
-```{code-cell} python
+```{marimo} python
 plot_Yml(l=1, m=0)
 ```
 
@@ -202,8 +195,7 @@ plot_Yml(l=1, m=0)
 
 $$\psi_{nlm} = R_{nl}(r) \cdot Y_{l}^{m}(\theta, \varphi)$$
 
-```{code-cell} python
-
+```{marimo} python
 def normalized_wavefunction(n, 
                             l, 
                             m):
@@ -236,7 +228,7 @@ def normalized_wavefunction(n,
     ax.set_ylim(-max_r, max_r)
 ```
 
-```{code-cell} python
+```{marimo} python
 normalized_wavefunction(n=3, 
                             l=2, 
                             m=1)
@@ -244,7 +236,7 @@ normalized_wavefunction(n=3,
 
 ### Full Atomic orbitals in 3D
 
-```{code-cell} python
+```{marimo} python
 xyz = np.linspace(-10, 10, 51)
 x,y,z = np.meshgrid(xyz, xyz, xyz, sparse=False)
 
@@ -256,7 +248,7 @@ n,l,m=4,1,0
 psi = radial_function(r, n, l) * sph_harm_y(l, m, theta, phi) 
 ```
 
-```{code-cell} python
+```{marimo} python
 fig= go.Figure(data=go.Isosurface(
     x=x.flatten(),
     y=y.flatten(),

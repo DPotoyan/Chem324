@@ -907,3 +907,7 @@ $$
 
 where $C_1$ and $C_2$ are constants determined by initial conditions.
 :::
+
+:::{seealso} Chapter demos
+Run this chapter's interactive Python demos: [Visualizing waves](../demos/08-demo-visualizing-waves.md)
+:::

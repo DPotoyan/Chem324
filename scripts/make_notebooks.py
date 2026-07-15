@@ -7,8 +7,8 @@ notebooks/<name>.ipynb (jupytext) with marimo cells stripped, and keep an
 """
 import re, glob, os, subprocess, tempfile, json
 
-PAGES = sorted(glob.glob("ch0*/[0-9][0-9]-demo-*.md")) + sorted(glob.glob("demos/0*.md"))
-PYSCF_PAGES = {"ch07/05-demo-hartree-fock.md", "ch08/08-demo-benzene.md"}
+PAGES = sorted(glob.glob("ch0*/[0-9][0-9]-demo-*.md")) + sorted(glob.glob("demos/[0-9]*.md"))
+PYSCF_PAGES = {"demos/16-demo-hartree-fock.md", "demos/18-demo-benzene.md"}
 MARIMO_BLOCK = re.compile(r"```\{marimo-config\}.*?```\n|```\{marimo\}.*?```\n", re.S)
 BADGE_LINE = re.compile(r"\n?\[!\[Open in Colab\]\([^)]*\)\]\([^)]*\)\n", re.M)
 

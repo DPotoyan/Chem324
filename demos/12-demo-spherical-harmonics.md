@@ -6,11 +6,11 @@ kernelspec:
 
 # Visualizing Spherical harmonics
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-spherical-harmonics.ipynb)
 
 
 ```{marimo-config}
 ---
+echo: true
 pyproject: |
   requires-python = ">=3.10"
   dependencies = [
@@ -30,19 +30,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from scipy.special import sph_harm_y
-```
-
-```{code-cell} python
-import matplotlib.pyplot as plt
-import numpy as np
 from matplotlib import cm, colors
 ```
 
+
 ### Import [spherical harmonics](https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.sph_harm.html#scipy.special.sph_harm) from scipy [special functions collection](https://docs.scipy.org/doc/scipy/reference/special.html)
 
-```{code-cell} python
+```{marimo} python
 #Import spherical harmonics
-from scipy.special import sph_harm_y
 ```
 
 $$
@@ -63,7 +58,7 @@ Azimuthal (longitudinal) coordinate; must be in $[0, 2\pi]$.
 - **$\phi$ array_like**
 Polar (colatitudinal) coordinate; must be in $[0, \pi]$.
 
-```{code-cell} python
+```{marimo} python
 # Create 2D grid of angular variables
 
 phi = np.linspace(0, np.pi, 100)
@@ -76,7 +71,7 @@ y = np.sin(phi) * np.sin(theta)
 z = np.cos(phi)
 ```
 
-```{code-cell} python
+```{marimo} python
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
 

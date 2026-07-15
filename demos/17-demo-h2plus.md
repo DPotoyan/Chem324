@@ -6,7 +6,35 @@ kernelspec:
 
 # DEMO: Solving $H^{+}_2$ via Variational Method
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/demo-h2plus.ipynb)
+
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm, colors
+from scipy.special import sph_harm_y
+from scipy.special import eval_genlaguerre
+from scipy.special import lpmv
+from scipy.special import factorial
+from scipy.optimize import root
+```
+
 
 
 ## Populating the $H$ and $S$ Matrices
@@ -51,14 +79,9 @@ S_{12} = e^{-R}\left(1+R+\frac{R^2}{3}\right)
 
 We note the $S_{12}$ is a function of nuclear separation $R$.  This makes sense as the degree of overlap between the two 1s function will depend on then separation distance between the nuclei.  We should expect no overlap when the nuclei are infinitely separated and maximal overlap when the nuclei are sitting on top of each other.  Below is a plot of $S_{12}(R)$.
 
-```{code-cell} python
-:tags: [hide-input]
-
-import numpy as np
+```{marimo} python
 def S12(R):
     return np.exp(-R)*(1+R+R**2/3)
-import matplotlib.pyplot as plt
-%matplotlib inline
 R = np.arange(0,8,0.01)
 plt.figure(figsize=(8,5),dpi= 80, facecolor='w', edgecolor='k')
 plt.tick_params(axis='both',labelsize=20)
@@ -75,11 +98,7 @@ S(2.5) = \begin{bmatrix} 1 & 0.458 \\0.458 & 1 \end{bmatrix}
 
 Below is a code snippet to populate this matrix.
 
-```{code-cell} python
-:tags: [hide-input]
-
-import numpy as np
-
+```{marimo} python
 def S(R):
     return np.array([[1,S12(R)],[S12(R),1]])
 
@@ -156,11 +175,7 @@ H(R=2.5) = \begin{bmatrix} -0.491 & -0.333 \\ -0.333 & -0.491\end{bmatrix}
 \end{equation}
 Below is the code to compute this.
 
-```{code-cell} python
-:tags: [hide-input]
-
-import numpy as np
-
+```{marimo} python
 def H(R):
     J = np.exp(-2*R)*(1+1/R)- 1/R
     K = -np.exp(-R)*(1+R)
@@ -198,9 +213,7 @@ c_1 &= -0.707 \\
 c_2 &= -0.707
 \end{align}
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 print("S^{-1}H(2.5) = ", np.dot(np.linalg.inv(S(2.5)),H(2.5)))
 e, v = np.linalg.eig(np.dot(np.linalg.inv(S(2.5)),H(2.5)))
 print("Eigenvalues:", e)
@@ -226,12 +239,7 @@ In order to investigate things such as the predicted bond length and bonding ene
 
 Below I make a plot of energies as a function of $R$ for this model of the H$_2^+$ molecule.
 
-```{code-cell} python
-:tags: [hide-input]
-
-import matplotlib.pyplot as plt
-%matplotlib inline
-import numpy as np
+```{marimo} python
 R = np.arange(1,8,0.001)
 plt.figure(figsize=(8,6),dpi= 80, facecolor='w', edgecolor='k')
 plt.tick_params(axis='both',labelsize=20)
@@ -251,9 +259,7 @@ plt.legend(fontsize=20)
 plt.title(r'LCAO Variational Solution to the H$_2^+$ Molecule',fontsize=16);
 ```
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 min_index = np.argmin(E)
 print("Bonding energy:", np.round(E[min_index]+0.5,5), "Hartree or ", np.round(627.5895*(E[min_index]+0.5),5), "kcal/mol")
 print("Bonding distance:", np.round(R[min_index],5), "Bohr")
@@ -270,20 +276,8 @@ We could get better agreement in a number of ways.  These include:
 
 ## Orbital/Electron Densities
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 # make two plots of the same spherical harmonic
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm, colors
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.special import sph_harm_y
-from scipy.special import eval_genlaguerre
-from scipy.special import lpmv
-from scipy.special import factorial
-%matplotlib inline
-from scipy.optimize import root
 
 a0 = 1.0 # radial unit of Bohr!   
 
@@ -386,9 +380,7 @@ def plot_h2plus_anti_prob_xz_projection(r_nuc, ax_obj):
     return c
 ```
 
-```{code-cell} python
-:tags: [hide-input]
-
+```{marimo} python
 fig, ax = plt.subplots(5,2,figsize=(8,12),dpi= 80, facecolor='w', edgecolor='k') 
 R = np.array([6.0,3.5,3.0,2.5,2.0])
 for i, r in enumerate(R):
