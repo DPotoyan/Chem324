@@ -338,6 +338,43 @@ fig1
 
 Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets.
 
+### 8. Numerical integral
+
+Define any function and limits in the pad; the plot shades area above the axis in green and below in red, and the value comes from `np.trapezoid`, the same tool your homework uses:
+
+```{marimo} python
+:editor: true
+
+def f(x):
+    return np.sin(3 * x) * np.exp(-x / 4)   # edit me
+
+a, b = 0.0, 10.0                             # integration limits
+```
+
+```{marimo} python
+:hide-code: true
+
+xg2 = np.linspace(a, b, 2000)
+yg2 = f(xg2)
+val2 = np.trapezoid(yg2, xg2)
+pos2 = np.trapezoid(np.clip(yg2, 0, None), xg2)
+neg2 = np.trapezoid(np.clip(yg2, None, 0), xg2)
+
+fig2, ax2 = plt.subplots(figsize=(7, 3.8))
+ax2.plot(xg2, yg2, lw=2, color="0.25")
+ax2.fill_between(xg2, yg2, 0, where=yg2 >= 0, color="seagreen", alpha=0.45)
+ax2.fill_between(xg2, yg2, 0, where=yg2 < 0, color="crimson", alpha=0.45)
+ax2.axhline(0, color="0.6", lw=0.8)
+ax2.set_xlabel("x")
+ax2.set_title(
+    f"integral = {val2:.4f}   (positive area {pos2:.4f}, negative area {neg2:.4f})",
+    fontsize=11,
+)
+fig2
+```
+
+The green and red areas fight each other: an integral is a **signed** sum. For probability densities like $|\psi|^2$ the red never appears, which is exactly why they can be interpreted as probabilities.
+
 :::{tip} Want more room?
 The molab button at the top opens this whole page as an editable notebook where you can add as many cells as you like. For guided tutorials, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
 :::
