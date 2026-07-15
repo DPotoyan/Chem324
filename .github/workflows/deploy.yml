@@ -47,17 +47,30 @@ jobs:
           BASE_URL: /Chem324
         run: myst build --html --execute
 
+      - name: Cache rendered slide decks
+        # Decks are ~200 MB rendered, so they are never committed; instead the
+        # rendered htmls are cached keyed on the deck sources. Only an edit to
+        # a .qmd or the theme triggers a re-render.
+        id: slides-cache
+        uses: actions/cache@v4
+        with:
+          path: slides/**/*.html
+          key: slides-html-${{ hashFiles('slides/**/*.qmd', 'slides/theme.scss') }}
+
       - name: Set up Quarto
+        if: steps.slides-cache.outputs.cache-hit != 'true'
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render lecture slide decks
-        # One self-contained reveal.js html per lecture (embed-resources: true),
-        # copied into the built site under /slides/ and linked from slides-index.
+        if: steps.slides-cache.outputs.cache-hit != 'true'
         run: |
           for f in slides/ch0*/*.qmd; do
             quarto render "$f" --to revealjs --quiet
           done
-          mkdir -p _build/html/slides
+
+      - name: Copy slide decks into site
+        # One self-contained reveal.js html per lecture, served under /slides/.
+        run: |
           for d in slides/ch0*; do
             mkdir -p "_build/html/$d"
             cp "$d"/*.html "_build/html/$d/" 2>/dev/null || true
