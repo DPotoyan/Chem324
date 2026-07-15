@@ -400,5 +400,5 @@ This is on the order of atomic scales, which indicates that quantum effects are 
 :::
 
 :::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [First steps with Python](../demos/07-demo-first-steps-with-python.md)
+Run this chapter's interactive Python demos: [Python Calculator](../demos/06-python-calculator.md)
 :::

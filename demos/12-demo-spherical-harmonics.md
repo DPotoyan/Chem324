@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Visualizing Spherical harmonics
+# DEMO: Visualizing Spherical Harmonics
 
 
 
