@@ -8,20 +8,58 @@ kernelspec:
 
 :::{note} **What you will learn**
 
-- **Functions as vectors, operators as matrices.** Sampling a function at $N$ points turns it into a vector, and a differential operator becomes a finite-difference matrix acting on that vector.
+- **Functions are vectors and operators are matrices.** This is the central structural fact of quantum mechanics: under the calculus, it is all linear algebra. Wavefunctions are vectors, operators are matrices, and $\hat H\psi = E\psi$ is an eigenvalue problem.
 - **Finite-difference derivatives.** Forward and centered differences approximate first and second derivatives on a grid.
 - **Why operator order matters.** Matrix multiplication generally does not commute, the algebraic root of the uncertainty principle.
 - **Ordinary differential equations.** First-order decay and second-order oscillation, the two ODEs behind most of chemistry and physics.
 - **Partial differential equations and separation of variables.** The technique that reduces the wave and Schrodinger equations to ODEs.
 :::
 
-Quantum mechanics is written in the language of operators and differential equations. The Schrodinger equation is a differential equation, its operators are derivatives, and solving it on a computer means turning those operators into matrices. This page connects the three ideas: functions as vectors, operators as matrices, and the differential equations they act in.
+Quantum mechanics is written in the language of operators and differential equations. But underneath that calculus lies a simpler and more powerful truth: **quantum mechanics is linear algebra**. Wavefunctions are vectors, operators are matrices, and the Schrodinger equation is the eigenvalue problem $A\mathbf{v} = \lambda\mathbf{v}$ in disguise. Undergraduate courses often bury this under derivatives and integrals; this page brings it to the surface first, then returns to the differential equations as the tools for working in one particular basis.
 
-## Operators as matrices
+## Functions are vectors, operators are matrices
 
-### Functions as vectors
+### A function is a vector with one component per point
 
-Take any function and evaluate it at $N$ points $x = (x_1, x_2, \ldots, x_N)$. The list of values is a vector with $N$ components. For example $f(x) = x^2$ sampled at $x = (0,1,2,3,4)$ becomes the vector $(0,1,4,9,16)$. In quantum mechanics a wavefunction sampled on a grid is exactly this kind of vector, and an **operator** that acts on the function becomes a **matrix** that acts on the vector.
+Take any function and evaluate it at $N$ points $x = (x_1, x_2, \ldots, x_N)$. The list of values is a vector with $N$ components. For example $f(x) = x^2$ sampled at $x = (0,1,2,3,4)$ becomes the vector $(0,1,4,9,16)$.
+
+Now let the grid get finer, $N\to\infty$ with spacing $h\to 0$. The vector gains a component for **every** point $x$, and in that limit the function *is* an infinite-dimensional vector. The value $\psi(x)$ plays the role of "the component at $x$," exactly as $v_i$ is the component of $\mathbf{v}$ along basis direction $i$.
+
+### The inner product becomes an integral
+
+This is the link that makes the analogy precise. The dot product of two vectors sums the products of matching components. For function-vectors, that sum over grid points, weighted by the spacing $h$, is a Riemann sum, and in the fine-grid limit it becomes an **integral**:
+
+$$
+\langle f \mid g \rangle = \sum_i f^*(x_i)\,g(x_i)\,h
+\;\xrightarrow[h\to 0]{}\;
+\int f^*(x)\,g(x)\,dx.
+$$
+
+So the quantum-mechanical inner product $\langle\psi\mid\phi\rangle = \int\psi^*\phi\,dx$ is nothing more than the dot product from the [previous page](03-vectors-and-linear-algebra.md), carried to infinite dimensions. Everything built on the dot product carries over verbatim: **normalization** $\int|\psi|^2\,dx = 1$ is just $|\psi| = 1$, and **orthogonal wavefunctions** ($\int\psi_m^*\psi_n\,dx = 0$) are just perpendicular vectors.
+
+### An operator is a matrix
+
+A **linear operator** takes a function and returns a function, that is, it takes a vector and returns a vector. Any linear map on vectors is a matrix, so every quantum operator is a matrix acting on the function-vector. The derivative operator, for instance, becomes the finite-difference matrix built in the next section. This gives the full dictionary between the linear algebra you already know and the quantum mechanics ahead:
+
+| Linear algebra (finite dimensions) | Quantum mechanics (functions) |
+|---|---|
+| vector $\mathbf{v}$ | wavefunction $\psi(x)$ |
+| component $v_i$ | value $\psi(x)$ |
+| dot product $\langle \mathbf{a}\mid\mathbf{b}\rangle = \sum_i a_i^* b_i$ | inner product $\langle\psi\mid\phi\rangle = \int\psi^*\phi\,dx$ |
+| normalized $\lvert\mathbf{v}\rvert = 1$ | normalized $\int\lvert\psi\rvert^2 dx = 1$ |
+| orthonormal basis $\mathbf{e}_i$ | orthonormal functions $\phi_n(x)$ |
+| matrix $A$ | operator $\hat A$ (such as $\hat x$, $\hat p$, $\hat H$) |
+| eigenvector equation $A\mathbf{v} = \lambda\mathbf{v}$ | eigenfunction equation $\hat A\psi = a\psi$ |
+| eigenvalue $\lambda$ | measured value $a$ (energy, momentum) |
+| symmetric / Hermitian matrix | Hermitian operator (real eigenvalues) |
+| expansion $\mathbf{v} = \sum_i c_i\mathbf{e}_i$ | superposition $\psi = \sum_n c_n\phi_n$ |
+
+:::{important} **The one idea to carry through the whole course**
+
+Under the hood, quantum mechanics is linear algebra in an infinite-dimensional space. A wavefunction is a vector, an operator is a matrix, and the time-independent Schrodinger equation $\hat H\psi = E\psi$ is the eigenvalue problem $A\mathbf{v} = \lambda\mathbf{v}$. The allowed energies are eigenvalues and the stationary states are eigenvectors. The calculus and differential equations are simply how we do this linear algebra in the **position basis**; the eigenvalue structure is what is really going on.
+:::
+
+The rest of this page makes the "operator is a matrix" half concrete: we build the derivative as an explicit matrix, see why operator order matters, and then meet the differential equations that these operators live in.
 
 ### The derivative as a finite-difference matrix
 

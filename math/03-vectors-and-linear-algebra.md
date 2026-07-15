@@ -177,7 +177,7 @@ $$
 \det(A - \lambda I) = 0.
 $$
 
-The sign and size of $\lambda$ say what happens to the eigenvector: $\lambda > 1$ stretches it, $0 < \lambda < 1$ compresses it, $\lambda < 0$ flips it, and $\lambda = 0$ collapses it. In quantum mechanics this exact structure reappears for **operators acting on wavefunctions**: eigenvalues are the measurable observables (energies, momenta) and eigenvectors are the states with definite outcomes.
+The sign and size of $\lambda$ say what happens to the eigenvector: $\lambda > 1$ stretches it, $0 < \lambda < 1$ compresses it, $\lambda < 0$ flips it, and $\lambda = 0$ collapses it. In quantum mechanics this exact structure reappears for **operators acting on wavefunctions**: eigenvalues are the measurable observables (energies, momenta) and eigenvectors are the states with definite outcomes. The [next page](04-operators-and-differential-equations.md) makes that leap explicit, showing that a function is just a vector with infinitely many components and the Schrodinger equation $\hat H\psi = E\psi$ is this same eigenvalue problem $A\mathbf{v}=\lambda\mathbf{v}$.
 
 ```{code-cell} python
 import numpy as np
