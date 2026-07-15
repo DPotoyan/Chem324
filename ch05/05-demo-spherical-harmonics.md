@@ -94,14 +94,22 @@ ax.set_axis_off()
 :hide-code: true
 
 l_s = mo.ui.slider(0, 8, step=1, value=3, show_value=True, label="l")
-m_s = mo.ui.slider(-8, 8, step=1, value=0, show_value=True, label="m (clamped to |m| <= l)")
-mo.hstack([l_s, m_s], justify="start", gap=2)
+l_s
 ```
 
 ```{marimo} python
 :hide-code: true
 
-m_eff5 = max(-l_s.value, min(l_s.value, m_s.value))
+m_s = mo.ui.dropdown(
+    options={str(v): v for v in range(-l_s.value, l_s.value + 1)}, value="0", label="m"
+)
+m_s
+```
+
+```{marimo} python
+:hide-code: true
+
+m_eff5 = m_s.value
 ph_m = np.linspace(0, np.pi, 90)
 th_m = np.linspace(0, 2 * np.pi, 90)
 ph_m, th_m = np.meshgrid(ph_m, th_m)

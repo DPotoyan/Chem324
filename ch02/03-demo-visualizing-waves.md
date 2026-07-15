@@ -109,7 +109,8 @@ wave1d(L=0.5)
 
 ### Making wave functions interactive
 
-- By adding ``@widgets.interact(parameters=(init,final))`` to our functions we can interactively parameters in the function using slider widgets.
+- On this site, interactive controls are [marimo](https://marimo.io) elements: creating a slider takes one line, `L = mo.ui.slider(0.1, 2.0)`, and every cell that reads `L.value` recomputes automatically when you drag it.
+- The slider below does exactly that for the wavelength. The same pattern powers all interactive demos in this course and your computational projects.
 
 ```{marimo} python
 :hide-code: true

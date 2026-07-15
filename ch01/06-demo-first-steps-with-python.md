@@ -183,15 +183,25 @@ series_pick = mo.ui.dropdown(
     value="Balmer (down to n=2)",
     label="series",
 )
-n_upper = mo.ui.slider(start=2, stop=10, step=1, value=3, show_value=True, label="upper level n")
-mo.hstack([series_pick, n_upper], justify="start", gap=2)
+series_pick
+```
+
+```{marimo} python
+:hide-code: true
+
+n_upper = mo.ui.slider(
+    start=series_pick.value + 1, stop=series_pick.value + 8, step=1,
+    value=series_pick.value + 1, show_value=True,
+    label=f"upper level n (lowest allowed: {series_pick.value + 1})",
+)
+n_upper
 ```
 
 ```{marimo} python
 :hide-code: true
 
 n_lo_sel = series_pick.value
-n_hi_sel = max(n_upper.value, n_lo_sel + 1)
+n_hi_sel = n_upper.value
 lam_line = rydberg_nm(n_lo_sel, n_hi_sel)
 ry_ev = const.Rydberg * const.h * const.c / const.e   # 13.606 eV
 

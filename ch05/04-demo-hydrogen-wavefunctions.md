@@ -110,14 +110,22 @@ np.trapezoid(pr*r*dr)
 :hide-code: true
 
 n_r = mo.ui.slider(1, 6, step=1, value=2, show_value=True, label="n")
-l_r = mo.ui.slider(0, 5, step=1, value=0, show_value=True, label="l (clamped to l < n)")
-mo.hstack([n_r, l_r], justify="start", gap=2)
+n_r
 ```
 
 ```{marimo} python
 :hide-code: true
 
-l_eff = min(l_r.value, n_r.value - 1)
+l_r = mo.ui.dropdown(
+    options={str(v): v for v in range(n_r.value)}, value="0", label="l"
+)
+l_r
+```
+
+```{marimo} python
+:hide-code: true
+
+l_eff = l_r.value
 r_g = np.linspace(1e-6, 12 * n_r.value, 900)
 R_g = radial_m(r_g, n_r.value, l_eff)
 
@@ -270,16 +278,32 @@ Pick quantum numbers and rotate the resulting orbital. Blue and red surfaces are
 :hide-code: true
 
 n_o = mo.ui.slider(1, 5, step=1, value=3, show_value=True, label="n")
-l_o = mo.ui.slider(0, 4, step=1, value=2, show_value=True, label="l (clamped to l < n)")
-m_o = mo.ui.slider(-4, 4, step=1, value=0, show_value=True, label="m (clamped to |m| <= l)")
-mo.hstack([n_o, l_o, m_o], justify="start", gap=2)
+n_o
 ```
 
 ```{marimo} python
 :hide-code: true
 
-l_o_eff = min(l_o.value, n_o.value - 1)
-m_o_eff = max(-l_o_eff, min(l_o_eff, m_o.value))
+l_o = mo.ui.dropdown(
+    options={str(v): v for v in range(n_o.value)}, value=str(n_o.value - 1), label="l"
+)
+l_o
+```
+
+```{marimo} python
+:hide-code: true
+
+m_o = mo.ui.dropdown(
+    options={str(v): v for v in range(-l_o.value, l_o.value + 1)}, value="0", label="m"
+)
+m_o
+```
+
+```{marimo} python
+:hide-code: true
+
+l_o_eff = l_o.value
+m_o_eff = m_o.value
 
 ext = 6.0 * n_o.value
 g_o = np.linspace(-ext, ext, 45)
