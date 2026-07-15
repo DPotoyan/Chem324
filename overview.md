@@ -23,6 +23,57 @@
 | $hartree$ | $43.60 \cdot 10^{-19}$ | $27.2107$ | $219474.63$ | $1$ | $6.57966 \cdot 10^{15}$ |
 | $Hz$ | $6.62561 \cdot 10^{-34}$ | $4.13558 \cdot 10^{-15}$ | $3.33565 \cdot 10^{-11}$ | $1.51983 \cdot 10^{-16}$ | $1$ |
 
+### Interactive converter
+
+Type a value, pick its unit, and the equivalent in every other unit updates instantly. The cell runs live in your browser, so no installation is needed.
+
+```{marimo-config}
+---
+echo: true
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+
+# Value of 1 of each unit, expressed in joules (CODATA 2018)
+to_joules = {
+    "J": 1.0,
+    "eV": 1.602176634e-19,
+    "cm^-1": 1.986445857e-23,   # h * c (c in cm/s)
+    "hartree": 4.3597447222e-18,
+    "Hz": 6.62607015e-34,       # E = h * nu
+}
+```
+
+```{marimo} python
+:hide-code: true
+
+amount = mo.ui.number(value=1.0, step=0.1, label="Value")
+from_unit = mo.ui.dropdown(options=list(to_joules), value="eV", label="From unit")
+mo.hstack([amount, from_unit], justify="start", gap=1.5)
+```
+
+```{marimo} python
+:hide-code: true
+
+value_in = amount.value if amount.value is not None else 0.0
+joules = value_in * to_joules[from_unit.value]
+rows = "\n".join(f"| {unit} | {joules / factor:.6g} |" for unit, factor in to_joules.items())
+
+mo.md(
+    f"**{value_in:g} {from_unit.value}** equals:\n\n"
+    f"| Unit | Value |\n|:--|--:|\n{rows}"
+)
+```
+
 
 ## From classical to Quantum 
 
@@ -33,7 +84,7 @@
 |Energy quantization|$E = nh\nu$|
 |Average energy of an oscillating dipole|$\langle E_{\text{osc}} \rangle = \dfrac{h\nu}{e^{h\nu / k_B T} - 1}$|
 |Spectral radiation density of blackbody (Planck)|$\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3}\dfrac{1}{e^{h\nu / k_B T} - 1} \ d\nu$|
-|Spectral radiation density of blackbody (classical)|$\rho (\nu, T) \ d\nu = \dfrac{8\pi h \nu^3}{c^3} k_B T d\nu$|
+|Spectral radiation density of blackbody (classical, Rayleigh-Jeans)|$\rho (\nu, T) \ d\nu = \dfrac{8\pi \nu^2}{c^3} k_B T \ d\nu$|
 
 ### Wave-particle duality
 
@@ -57,7 +108,7 @@
 
 |Description|Equations|
 |-:|:-|
-|Classical nondispersive wave equation|$\dfrac{\partial \Psi(x, t)}{\partial x^2} = \dfrac{1}{v^2} \dfrac{\partial \Psi(x, t)}{\partial t^2}$|
+|Classical nondispersive wave equation|$\dfrac{\partial^2 \Psi(x, t)}{\partial x^2} = \dfrac{1}{v^2} \dfrac{\partial^2 \Psi(x, t)}{\partial t^2}$|
 |Wave number|$k = \dfrac{2\pi}{\lambda}$|
 |Frequency|$\nu = \dfrac{1}{T}$|
 |Angular frequency|$\omega = \dfrac{2\pi}{T} = 2\pi\nu$|
@@ -66,7 +117,7 @@
 |Solution of wave equation|$\begin{aligned}\Psi(x, t) &= A \sin(kx - \omega t + \phi) \\\ &= \mathrm{Re}(Ae^{i(kx-\omega t + \phi')})\end{aligned}$|
 |Interfering traveling waves give standing wave|$\begin{aligned}\Psi(x, t) &= A[\sin(kx - \omega t) + \sin(kx + \omega t)] \\\ &= 2A \sin(kx)\cos(\omega t) \\\ &= \psi(x)\cos(\omega t) \end{aligned}$|
 |Time-independent Schrodinger equation|$-\dfrac{\hbar^2}{2m}\dfrac{d^2\psi(x)}{dx^2} + V(x)\psi(x) = E\psi(x)$|
-|Time-dependent Schrodinger equation|$-\dfrac{\hbar^2}{2m}\dfrac{\partial^2\Psi(x, t)}{\partial x^2} + V(x, t)\Psi(x, t) = i\hbar\Psi(x, t)$|
+|Time-dependent Schrodinger equation|$-\dfrac{\hbar^2}{2m}\dfrac{\partial^2\Psi(x, t)}{\partial x^2} + V(x, t)\Psi(x, t) = i\hbar\dfrac{\partial \Psi(x, t)}{\partial t}$|
 |Stationary states are standing waves|$\Psi(x, t) = \psi(x) e^{-i(E/\hbar)t}$|
 |Normalization|$\Vert f(x) \Vert = \int_D f^* f \ dx = 1$|
 |Orthogonality|$\int_D f^* g \ dx = 0$|
@@ -105,18 +156,18 @@ $$
 |Time dependent Schrodinger equation|$\hat{H}\Psi(x, t) = i\hbar\dfrac{\partial\Psi(x, t)}{\partial t}$|
 |Time independent Schrodinger equation|$\hat{H}\psi_n(x) = E_n \psi_n(x)$|
 |Stationary state wave function|$\Psi(x, t) = \psi(x) T(t)$|
-|Time component of wave function|$T(t) = e^{iEt/\hbar}$|
+|Time component of wave function|$T(t) = e^{-iEt/\hbar}$|
 |Probability of finding particle in an interval|$\mathrm{Prob}(x, x+dx) = \vert \Psi(x, t) \vert^2 dx = \vert \psi(x) \vert^2 dx$|
 |General solution as linear combination of stationary states|$\psi(x) = \sum\limits_n c_n \phi_n(x)$|
 |Expansion coefficients|$c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^* \psi \ dx$|
-|Normalization|$\sum\limits_n c_n = 1$|
+|Normalization|$\sum\limits_n |c_n|^2 = 1$|
 
 ### Particle in a 1D box
 
 |Description|Equations|
 |-:|:-|
 |Time independent Schrodinger equation|$\left[ -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} + V(x) \right] \psi(x) = E\psi(x)$|
-|Wave function <br/> $n = 0, 1, 2, ...$|$\psi_n(x) = \sqrt{\dfrac{2}{L}} \sin\left(\dfrac{n \pi x}{L}\right)$|
+|Wave function <br/> $n = 1, 2, 3, ...$|$\psi_n(x) = \sqrt{\dfrac{2}{L}} \sin\left(\dfrac{n \pi x}{L}\right)$|
 |Energy eigenvalues|$E_n = \dfrac{h^2}{8mL^2} n^2 = \dfrac{\hbar^2 \pi^2}{2mL^2}n^2$|
 
 ### Particle in a 3D box
@@ -124,7 +175,7 @@ $$
 |Description|Equations|
 |-:|:-|
 |Time independent Schrodinger equation|$\left[ -\dfrac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{x}) \right] \psi(\mathbf{x}) = E\psi(\mathbf{x})$|
-|Wave function <br/> $n_x = 0, 1, 2, ...$ <br/> $n_y = 0, 1, 2, ...$ <br/> $n_z = 0, 1, 2, ...$|$\begin{aligned}&\psi_{n_x, n_y, n_z}(\mathbf{x}) \\\ =& \psi_{n_x}(x)\psi_{n_y}(y)\psi_{n_z}(z) \\\ =& \sqrt{\dfrac{2}{L_x}}\sqrt{\dfrac{2}{L_y}}\sqrt{\dfrac{2}{L_z}} \sin\left(\dfrac{n_x \pi x}{L_x}\right)\sin\left(\dfrac{n_y \pi y}{L_y}\right)\sin\left(\dfrac{n_z \pi z}{L_z}\right)\end{aligned}$|
+|Wave function <br/> $n_x = 1, 2, 3, ...$ <br/> $n_y = 1, 2, 3, ...$ <br/> $n_z = 1, 2, 3, ...$|$\begin{aligned}&\psi_{n_x, n_y, n_z}(\mathbf{x}) \\\ =& \psi_{n_x}(x)\psi_{n_y}(y)\psi_{n_z}(z) \\\ =& \sqrt{\dfrac{2}{L_x}}\sqrt{\dfrac{2}{L_y}}\sqrt{\dfrac{2}{L_z}} \sin\left(\dfrac{n_x \pi x}{L_x}\right)\sin\left(\dfrac{n_y \pi y}{L_y}\right)\sin\left(\dfrac{n_z \pi z}{L_z}\right)\end{aligned}$|
 |Energy eigenvalues|$E_n = \dfrac{h^2}{8m} \left(\dfrac{n_x^2}{L_x^2} + \dfrac{n_y^2}{L_y^2} + \dfrac{n_z^2}{L_z^2}\right)$|
 
 ### Finite potential well
@@ -133,7 +184,7 @@ $$
 |-:|:-|
 |Potential|$V(x) = \begin{cases}0 & x\in [0, L] \\\ V_0 & \mathrm{elsewhere}\end{cases}$|
 |Reflection probability|$R = \dfrac{(\sqrt{E} - \sqrt{E - V_0})^2}{(\sqrt{E} + \sqrt{E - V_0})^2}$|
-|Transmission probability|$T = \dfrac{4\sqrt{E(E - V_0)}}{(\sqrt{E} - \sqrt{E - V_0})^2}$|
+|Transmission probability|$T = \dfrac{4\sqrt{E(E - V_0)}}{(\sqrt{E} + \sqrt{E - V_0})^2}$|
 
 ## Commutators and Uncertainty
 
@@ -141,7 +192,7 @@ $$
 |-:|:-|
 |Commutator|$[A, B] = AB - BA$|
 |Condition of commutation|$[A, B] = 0$|
-|Standard deviation (uncertainty)|$\begin{aligned}\sigma_A &= \sqrt{\langle (A - \langle A \rangle^2 \rangle)} \\\ &= \sqrt{\langle A^2 \rangle - \langle A \rangle^2}\end{aligned}$|
+|Standard deviation (uncertainty)|$\begin{aligned}\sigma_A &= \sqrt{\langle (A - \langle A \rangle)^2 \rangle} \\\ &= \sqrt{\langle A^2 \rangle - \langle A \rangle^2}\end{aligned}$|
 |Heisenberg uncertainty principle (general)|$\sigma_A \sigma_B \ge \frac{1}{2} \vert\langle[\hat{A}, \hat{B}]\rangle\vert$|
 |Heisenberg uncertainty principle (position-momentum)|$\sigma_x \sigma_p \ge \frac{\hbar}{2}$|
 
@@ -156,8 +207,8 @@ $$
 |Harmonic approximation|$V(r) \approx \frac{1}{2}kr^2$|
 |Spring constant|$k = \mu\omega_0^2$|
 |Vibrational Schrodinger equation|$\left[ -\dfrac{\hbar^2}{2\mu}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{1}{2}kr^2 \right]\psi(r) = E\psi(r)$|
-|Wave function <br/> $n = 0, 1, 2, ...$|$\psi(r) = \dfrac{1}{\sqrt{2^2 n!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4} H_n(\sqrt{\alpha} r) e^{-\alpha r^2 / 2}$|
-|Hermite polynomials|$H_n(r) = (-)^n e^{x^2}\left(\dfrac{d^n}{dx^n}\right)e^{-x^2}$|
+|Wave function <br/> $n = 0, 1, 2, ...$|$\psi(r) = \dfrac{1}{\sqrt{2^n n!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4} H_n(\sqrt{\alpha} r) e^{-\alpha r^2 / 2}$|
+|Hermite polynomials|$H_n(x) = (-1)^n e^{x^2}\left(\dfrac{d^n}{dx^n}\right)e^{-x^2}$|
 |Constant|$\alpha = \dfrac{m\omega_0}{\hbar}$|
 |Energy eigenvalue <br/> $n = 0, 1, 2, ...$|$E_n = (n + \frac{1}{2})\hbar \omega_0$|
 |Transition dipole moment|$\vec{\mu}_{fi} = \dfrac{d\vec{\mu}(x_0)}{dx} \langle \psi_f \vert \hat{x} \vert \psi_i \rangle$|
@@ -179,8 +230,8 @@ $$
 |Description|Equations|
 |-:|:-|
 |Angular momentum operator|$\hat{\mathbf{L}} = \hat{\mathbf{x}} \times \hat{\mathbf{p}}$|
-|z-component of angular momentum operator|$L_x = \dfrac{\hbar}{i}\dfrac{\partial}{\partial\phi}$|
-|Magnitude of angular momentum operator|$\hat{\mathbf{L}}^2 = L^2 =  -\hbar^2 \left[ \dfrac{1}{\sin\theta}\dfrac{\partial}{\partial\theta} \left( \sin\theta\dfrac{\partial}{\partial\theta} + \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\phi^2} \right) \right]$|
+|z-component of angular momentum operator|$\hat{L}_z = \dfrac{\hbar}{i}\dfrac{\partial}{\partial\phi}$|
+|Magnitude of angular momentum operator|$\hat{\mathbf{L}}^2 = L^2 =  -\hbar^2 \left[ \dfrac{1}{\sin\theta}\dfrac{\partial}{\partial\theta} \left( \sin\theta\dfrac{\partial}{\partial\theta} \right) + \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\phi^2} \right]$|
 |Components of $\hat{\mathbf{L}}$ does not commute|$[\hat{L}_i, \hat{L}_j] = i\hbar \hat{L}_k$|
 |Components of $\hat{\mathbf{L}}$ commute with its magnitude|$[\hat{L}_i, L^2] = 0$|
 
@@ -199,10 +250,10 @@ $$
 
 |Description|Equations|
 |-:|:-|
-|Hydrogen atom Schrodinger equation|$\left[ -\dfrac{\hbar}{2m_e}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{\vec{L}}{2m_er^2} - \dfrac{e^2}{r} \right]\psi(x) = E\psi(x)$|
-|Effective potential|$V_{\text{eff}} = \dfrac{\hbar l(l+1)}{2mr^2} - \dfrac{e^2}{r}$|
+|Hydrogen atom Schrodinger equation|$\left[ -\dfrac{\hbar^2}{2m_e}\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2 \dfrac{\partial}{\partial r}\right) + \dfrac{\vec{L}^2}{2m_er^2} - \dfrac{e^2}{r} \right]\psi(x) = E\psi(x)$|
+|Effective potential|$V_{\text{eff}} = \dfrac{\hbar^2 l(l+1)}{2mr^2} - \dfrac{e^2}{r}$|
 |Wave function <br/> $n = 1, 2, ...$|$\psi_{nlm}(x) = R_{nl}(r)Y_l^m(\theta, \phi)$|
-|Energy eigenvalues <br/> $n = 1, 2, ...$|$E_n = -\dfrac{e^2}{2a_0}\dfrac{1}{n^2} = -\dfrac{me^4}{2\hbar^2}\dfrac{1}{n^2} - \dfrac{R_H}{n^2}$|
+|Energy eigenvalues <br/> $n = 1, 2, ...$|$E_n = -\dfrac{e^2}{2a_0}\dfrac{1}{n^2} = -\dfrac{me^4}{2\hbar^2}\dfrac{1}{n^2} = -\dfrac{R_H}{n^2}$|
 |Rydberg's constant|$R_H = 2.179 \times 10^{-18} \mathrm{J} = 13.6 \ \mathrm{eV}$|
 |Bohr's radius|$a_0 = \dfrac{\hbar^2}{me^2}$|
 |Radial probability distribution|$P_{nl}(r) dr = r^2 R^2_{nl}(r) dr$|
