@@ -55,13 +55,68 @@ ax.set_title("gradient arrows point uphill, perpendicular to contours", fontsize
 ax.set_xlabel("x"); ax.set_ylabel("y")
 fig.colorbar(cs, ax=ax, shrink=0.85, label="height f(x, y)")
 fig.tight_layout()
-plt.gcf()
+plt.show()
 ```
 
 Two physical readings, both constant companions in this course:
 
 - **Diffusion runs downhill.** Fick's law says the flux of concentration is $\mathbf{J} = -D \nabla c$: matter flows from crowded regions to empty ones, exactly opposite to the gradient. The same minus sign makes forces run downhill in energy, $\mathbf{F} = -\nabla V$.
-- **The gradient generates translation.** Taylor's theorem in operator clothing reads $f(x + a) = e^{a\, d/dx} f(x)$: the derivative is the machine that slides functions sideways. Promote that to three dimensions and multiply by $-i\hbar$ and you have the quantum [momentum operator](../ch03/06-operators.md) $\hat{p} = -i\hbar\nabla$. Momentum is, quite literally, the generator of translations.
+- **The gradient generates translation**, and this deserves its own moment.
+
+#### The derivative is a translation machine
+
+Write out Taylor's theorem for a shift by $a$ and stare at its structure:
+
+$$
+f(x + a) \;=\; f(x) + a\,\frac{df}{dx} + \frac{a^2}{2!}\,\frac{d^2 f}{dx^2} + \frac{a^3}{3!}\,\frac{d^3 f}{dx^3} + \cdots
+\;=\; \sum_{n=0}^{\infty} \frac{1}{n!}\left(a \frac{d}{dx}\right)^{\! n} f(x).
+$$
+
+The right-hand side is exactly the exponential series, applied to an operator instead of a number:
+
+$$
+f(x + a) = e^{\,a\, d/dx} \, f(x).
+$$
+
+Exponentiating the derivative **slides a function sideways**. The figure below makes this concrete: keep more and more terms of the operator series and watch a Gaussian being carried to its translated position, term by term.
+
+```{code-cell} python
+:tags: [hide-input]
+
+xg = np.linspace(-4, 6, 1024)
+f0 = np.exp(-xg**2)
+a_shift = 2.0
+
+k = 2 * np.pi * np.fft.fftfreq(len(xg), xg[1] - xg[0])
+F0 = np.fft.fft(f0)
+
+fig6, ax6 = plt.subplots(figsize=(7.5, 4))
+ax6.plot(xg, f0, lw=2, color="0.55", label="f(x)")
+colors = plt.cm.plasma(np.linspace(0.15, 0.8, 4))
+for Nmax, c in zip([1, 2, 4, 12], colors):
+    op = np.zeros_like(F0)
+    term = np.ones_like(F0)
+    for n_t in range(Nmax + 1):
+        op = op + term
+        term = term * (1j * k * a_shift) / (n_t + 1)
+    fN = np.fft.ifft(F0 * op).real
+    ax6.plot(xg, fN, lw=1.7, color=c, label=f"series through n = {Nmax}")
+ax6.plot(xg, np.exp(-(xg - a_shift)**2), "k--", lw=2, label="exact f(x - (-a)) target")
+ax6.set_ylim(-0.4, 1.35)
+ax6.set_xlabel("x")
+ax6.set_title(r"partial sums of $e^{a\,d/dx}$ carry the function to its shifted self", fontsize=11)
+ax6.legend(fontsize=8, frameon=False, ncol=2)
+fig6.tight_layout()
+plt.show()
+```
+
+One term tilts the function, two terms lean it further, and by a dozen terms the series has physically **moved** it. Now the quantum punchline: multiply the generator by $-i\hbar$ and you get the [momentum operator](../ch03/06-operators.md) $\hat{p} = -i\hbar\, d/dx$, so that
+
+$$
+e^{\,i a \hat{p} / \hbar}\, \psi(x) = \psi(x + a).
+$$
+
+**This is where momentum comes from.** Momentum is not defined by $mv$ in quantum mechanics; it is defined as the generator of translations, the operator whose exponential slides wavefunctions through space. That a particle in empty space conserves momentum is then just the statement that empty space looks the same after any slide (Noether's theorem in one sentence).
 
 ### 2. Divergence: sources and sinks
 
@@ -92,7 +147,7 @@ ax2.set_title("a source field: red = positive divergence (faucet), blue = negati
 ax2.set_xlabel("x"); ax2.set_ylabel("y")
 fig2.colorbar(pc, ax=ax2, shrink=0.85, label=r"$\nabla \cdot \mathbf{F}$")
 fig2.tight_layout()
-plt.gcf()
+plt.show()
 ```
 
 The field above gushes out of the origin (red center) and, because the arrows fade with distance, the far region acts as a gentle drain (blue ring). **Electrostatics is exactly this picture**: Gauss's law $\nabla \cdot \mathbf{E} = \rho / \varepsilon_0$ says electric charge is the faucet of the electric field. Where there is no charge, field lines just pass through.
@@ -117,7 +172,7 @@ ax3.set_title("a vortex: the paddle wheel spins fastest in the orange core", fon
 ax3.set_xlabel("x"); ax3.set_ylabel("y")
 fig3.colorbar(pc3, ax=ax3, shrink=0.85, label=r"$(\nabla \times \mathbf{F})_z$")
 fig3.tight_layout()
-plt.gcf()
+plt.show()
 ```
 
 This is a **vortex**: the same field a stirred cup of coffee has, and fluid dynamicists call $\boldsymbol{\omega} = \nabla \times \mathbf{v}$ the vorticity. Rotation is the curl's whole personality, and that connection survives into quantum mechanics: the operator that generates rotations is the [angular momentum](../ch04/05-angular-momentum.md) $\hat{L} = -i\hbar \, \mathbf{r} \times \nabla$, built from position crossed with the gradient exactly the way curl crosses del into a field.
@@ -153,7 +208,7 @@ for ax_, (Ux, Uy), title in [
 axE.set_ylabel("y")
 axE.set_xlabel("x"); axB.set_xlabel("x")
 fig4.tight_layout()
-plt.gcf()
+plt.show()
 ```
 
 The absence of magnetic divergence, $\nabla \cdot \mathbf{B} = 0$ everywhere, is one of Maxwell's equations and a factual statement about our universe: nobody has ever found a magnetic faucet (a monopole). Field lines of $\mathbf{B}$ have no choice but to close on themselves.
@@ -220,7 +275,40 @@ Watch the trade: as the angle grows, divergence drains out of the field and reap
 
 Apply del twice, $\nabla^2 f = \nabla \cdot (\nabla f)$, and you get the **Laplacian**: a number that compares $f$ at a point with the average of its immediate neighbors. Positive $\nabla^2 f$ means "my neighbors are higher than me" (a dimple), negative means "I stick out" (a bump).
 
-That is precisely what diffusion needs to know. The diffusion equation $\partial c / \partial t = D \nabla^2 c$ says: **bumps melt, dimples fill**, at a rate set by how sharply you differ from your surroundings.
+The cleanest way to see this is the discrete stencil from [numerical calculus](../demos/10-demo-numerical-schrodinger.md):
+
+$$
+\nabla^2 f \Big|_{x} \;\approx\; \frac{f(x+h) + f(x-h) - 2 f(x)}{h^2}
+\;=\; \frac{2}{h^2} \Big( \underbrace{\tfrac{f(x+h) + f(x-h)}{2}}_{\text{neighbor average}} - \; f(x) \Big).
+$$
+
+The Laplacian **is** "neighbor average minus me," rescaled. The figure below shows a lumpy concentration profile, its neighbor average, and the resulting push: wherever the curve sits above its neighbors' average the Laplacian is negative and diffusion pushes it down; wherever it dips below, diffusion pushes it up.
+
+```{code-cell} python
+:tags: [hide-input]
+
+xl = np.linspace(0, 10, 400)
+prof = (1.1 * np.exp(-(xl - 2.4)**2 / 0.35) + 0.8 * np.exp(-(xl - 5.4)**2 / 1.8)
+        - 0.45 * np.exp(-(xl - 8.0)**2 / 0.5) + 0.9)
+lap = np.gradient(np.gradient(prof, xl), xl)
+
+fig7, ax7 = plt.subplots(figsize=(7.5, 4))
+ax7.plot(xl, prof, lw=2.4, color="steelblue", label="concentration c(x)")
+sm = np.convolve(prof, np.ones(25) / 25, mode="same")
+ax7.plot(xl[15:-15], sm[15:-15], lw=1.6, ls="--", color="0.45", label="neighbor average")
+step = 16
+for xi, ci, li in zip(xl[::step], prof[::step], lap[::step]):
+    ax7.annotate("", xy=(xi, ci + np.clip(li, -0.9, 0.9) * 0.35), xytext=(xi, ci),
+                 arrowprops=dict(arrowstyle="->", color="crimson", lw=1.4))
+ax7.set_xlabel("x")
+ax7.set_ylabel("c(x)")
+ax7.set_title("red arrows: the push of the Laplacian, toward the neighbor average", fontsize=11)
+ax7.legend(fontsize=9, frameon=False)
+fig7.tight_layout()
+plt.show()
+```
+
+That push is precisely what diffusion obeys. The diffusion equation $\partial c / \partial t = D \nabla^2 c$ says: **bumps melt, dimples fill**, each point relaxing toward the average of its neighbors until nothing has anything to complain about (equilibrium).
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -234,7 +322,7 @@ ax5.set_xlabel("x"); ax5.set_ylabel("concentration c(x, t)")
 ax5.set_title("diffusion in action: the Laplacian melts the peak and fills the wings", fontsize=11)
 ax5.legend(frameon=False)
 fig5.tight_layout()
-plt.gcf()
+plt.show()
 ```
 
 And now the payoff for this course: the Schrödinger equation's kinetic energy is $-\frac{\hbar^2}{2m}\nabla^2$. The same operator that makes ink spread through water measures how sharply a wavefunction bends, and sharp bending costs kinetic energy. When [Chapter 3](../ch03/01-schrodinger-equation.md) tells you that squeezing a particle raises its energy, it is the Laplacian doing the telling.
