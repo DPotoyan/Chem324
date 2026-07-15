@@ -9,25 +9,25 @@
 - If molab is unavailable, the backup link runs the same notebook entirely in your browser, or run it locally with `uv run marimo edit <file>` after downloading it from [the course repository](https://github.com/DPotoyan/Chem324/tree/master/projects).
 :::
 
-### Project 1: Particle in a Box
-
-Explore energies, wavefunctions, and degeneracies of the 1D and 3D particle in a box, then compute uncertainty products and the classical limit with `sympy` and `numpy`.
-
-[![Open in molab](images/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/01-particle-in-a-box.py)
-
-Backup: [run in your browser (marimo.app)](https://marimo.app/github.com/DPotoyan/Chem324/blob/master/projects/01-particle-in-a-box.py)
-
-**Covers**: Chapter 3 (particle in a box, operators and expectation values). **Skills**: sliders and reactive plots, symbolic integration, degeneracy counting.
-
-### Project 2: Waves, Normal Modes and Interference
+### Project 1: Waves, Normal Modes and Interference
 
 Combine normal modes, model musical beats, and build 2D ripple interference patterns from two spherical wave sources.
 
-[![Open in molab](images/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/02-waves-challenge.py)
+[![Open in molab](images/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/01-waves-challenge.py)
 
-Backup: [run in your browser (marimo.app)](https://marimo.app/github.com/DPotoyan/Chem324/blob/master/projects/02-waves-challenge.py)
+Backup: [run in your browser (marimo.app)](https://marimo.app/github.com/DPotoyan/Chem324/blob/master/projects/01-waves-challenge.py)
 
 **Covers**: Chapter 2 (waves, superposition, normal modes). **Skills**: numpy arrays, meshgrid, subplots, 2D image plots.
+
+### Project 2: Particle in a Box
+
+Explore energies, wavefunctions, and degeneracies of the 1D and 3D particle in a box, then compute uncertainty products and the classical limit with `sympy` and `numpy`.
+
+[![Open in molab](images/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/02-particle-in-a-box.py)
+
+Backup: [run in your browser (marimo.app)](https://marimo.app/github.com/DPotoyan/Chem324/blob/master/projects/02-particle-in-a-box.py)
+
+**Covers**: Chapter 3 (particle in a box, operators and expectation values). **Skills**: sliders and reactive plots, symbolic integration, degeneracy counting.
 
 ### Project 3: Quantum Waves
 

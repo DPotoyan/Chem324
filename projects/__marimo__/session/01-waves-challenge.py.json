@@ -1,0 +1,126 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.14",
+    "script_metadata_hash": "5498676bb9654fbb06c2c232b8d11ed7"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "fa9d233f2d05c9ae215673e2cbde2fe3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"project-1-waves-normal-modes-and-interference\">Project 1: Waves, Normal Modes and Interference</h1>\n<span class=\"paragraph\"><strong>Prerequisites</strong></span>\n<ul>\n<li>The <a href=\"https://dpotoyan.github.io/Chem324/demo-visualizing-waves\" rel=\"noopener noreferrer\" target=\"_blank\">waves demo</a>: you can\n  adapt its examples to solve most of these challenges.</li>\n<li>The <a href=\"https://dpotoyan.github.io/Chem324/python-basics\" rel=\"noopener noreferrer\" target=\"_blank\">Python and NumPy tutorials</a>\n  if you want a refresher on the basics.</li>\n</ul>\n<span class=\"paragraph\"><strong>How to submit</strong>: work through the problems below, adding as many cells as you need.\nWhen done, use File &gt; Download to save this notebook as a <code>.py</code> file and upload it to\nCanvas. Download your work at the end of every session; it is your safety copy.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "b7cac2b083ed9a832b39cfba64759f3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "7fa11c1b1ea71ad19bdc4b02d8d68a4e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"problem-1-combining-normal-modes\">Problem 1: Combining normal modes</h2>\n<ul>\n<li>Recreate figures 2.4, 2.6 and 2.7 of the book using linear combinations of normal\n  modes of a vibrating string.</li>\n<li>Recreate figure 2.4 for the case of combining 2D standing waves of a membrane.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "1cf774887a2a9dc5c210e80f65add4e6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "e32e184371a77d3ce55310cd7bd29dd4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"problem-2-beats-and-music\">Problem 2: Beats and music</h2>\n<span class=\"paragraph\">Music is interesting because instruments mix changing frequencies. When two sounds\nwith nearby frequencies interfere, you hear <strong>beats</strong>. Model the two sounds as a\nsuperposition (keeping only the temporal parts):</span>\n<marimo-tex class=\"arithmatex\">||[s_1 + s_2 = A \\sin(2 \\pi \\nu_1 t + \\phi_1) + A \\sin(2 \\pi \\nu_2 t + \\phi_2)||]</marimo-tex><span class=\"paragraph\">Steps:</span>\n<ul>\n<li>Create time points with <code>t = np.arange(0, 2, 0.01)</code>.</li>\n<li>Set <marimo-tex class=\"arithmatex\">||(A = 1||)</marimo-tex>, <marimo-tex class=\"arithmatex\">||(\\nu_1 = 10||)</marimo-tex>, <marimo-tex class=\"arithmatex\">||(\\nu_2 = 11.5||)</marimo-tex>, <marimo-tex class=\"arithmatex\">||(\\phi_1 = \\phi_2 = 0||)</marimo-tex>.</li>\n<li>Compute <marimo-tex class=\"arithmatex\">||(s_1 = A \\cos(2\\pi\\nu_1 t + \\phi_1)||)</marimo-tex> and <marimo-tex class=\"arithmatex\">||(s_2 = A \\cos(2\\pi\\nu_2 t + \\phi_2)||)</marimo-tex>.</li>\n<li>Plot <marimo-tex class=\"arithmatex\">||(s_1||)</marimo-tex>, <marimo-tex class=\"arithmatex\">||(s_2||)</marimo-tex>, and <marimo-tex class=\"arithmatex\">||(s_1 + s_2||)</marimo-tex> as three vertically stacked subplots.</li>\n<li>Make the phase shift interactive with a <code>mo.ui.slider</code> and describe what it does.</li>\n<li>Write a brief report of your observations in a markdown cell.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "52c293701e13369a460f9bc1995ff241",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "383c6a88aadacf8f65462328d0bc0e5f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"problem-3-interference-of-spherical-waves\">Problem 3: Interference of spherical waves</h2>\n<span class=\"paragraph\">Disturb two points of a quiet lake and you get ripple interference, like in\n<a href=\"https://www.youtube.com/watch?v=ovZkFMuxZNc\" rel=\"noopener noreferrer\" target=\"_blank\">this video</a>. Recreate the effect\ncomputationally: two sine waves <marimo-tex class=\"arithmatex\">||(w_1 = \\sin(k r_1)||)</marimo-tex> and <marimo-tex class=\"arithmatex\">||(w_2 = \\sin(k r_2)||)</marimo-tex> radiate\nfrom two centers in a 2D plane; their sum shows interference that depends on the\nseparation of the centers. Complete the starter code below.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "a4886aaa62a58ca01bf3439cbcd50d1a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
