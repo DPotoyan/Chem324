@@ -132,26 +132,26 @@ mo.md(f"**{val_c:g} {unit_c.value}** equals:\n\n| unit | value |\n|:--|--:|\n{ro
 
 ### 3. Plotting panel
 
-A ready-to-edit plotting template. Swap in any function of `x_p`; the slider is yours to repurpose:
+A ready-to-edit plotting template. Swap in any function of `x`; the slider is yours to repurpose:
 
 ```{marimo} python
 :hide-code: true
 
-k_p = mo.ui.slider(1, 12, step=1, value=3, show_value=True, label="parameter k")
-k_p
+k = mo.ui.slider(1, 12, step=1, value=3, show_value=True, label="parameter k")
+k
 ```
 
 ```{marimo} python
 :editor: true
 
-x_p = np.linspace(0, 2 * np.pi, 500)
-y_p = np.sin(k_p.value * x_p) * np.exp(-x_p / 4)   # edit me
+x = np.linspace(0, 2 * np.pi, 500)
+y = np.sin(k.value * x) * np.exp(-x / 4)   # edit me
 
-fig_p, ax_p = plt.subplots(figsize=(7, 3.5))
-ax_p.plot(x_p, y_p, lw=2)
-ax_p.set_xlabel("x")
-ax_p.grid(True, ls="--", alpha=0.4)
-fig_p
+fig, ax = plt.subplots(figsize=(7, 3.5))
+ax.plot(x, y, lw=2)
+ax.set_xlabel("x")
+ax.grid(True, ls="--", alpha=0.4)
+fig
 ```
 
 ### 4. Symbolic window
