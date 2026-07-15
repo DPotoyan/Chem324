@@ -193,5 +193,5 @@ $$
 :::
 
 :::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [Linear variational method](../demos/13-demo-linear-variational.md) · [Variational method](../demos/14-demo-variational-method.md) · [Perturbation theory](../demos/15-demo-perturbation-theory.md)
+Computational labs for this chapter: [Linear variational method](../demos/08-demo-linear-variational.md) · [Variational method](../demos/09-demo-variational-method.md) · [Perturbation theory](../demos/10-demo-perturbation-theory.md)
 :::

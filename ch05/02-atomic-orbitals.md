@@ -144,3 +144,91 @@ Fig.7 Three-dimensional isosurface renderings of hydrogen atomic orbitals.
         height="500"
         allowfullscreen>
 </iframe>
+
+Or build any orbital yourself; the menus only offer valid quantum numbers, and blue and red are the positive and negative lobes:
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+      "plotly",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import plotly.graph_objects as go
+from scipy.special import sph_harm_y, genlaguerre, factorial
+```
+
+```{marimo} python
+:hide-code: true
+
+def radial_m(r, n=1, l=0):
+    pre = np.sqrt(((2 / n) ** 3 * factorial(n - l - 1)) / (2 * n * factorial(n + l)))
+    p = 2 * r / n
+    return pre * np.exp(-p / 2) * p**l * genlaguerre(n - l - 1, 2 * l + 1)(p)
+```
+
+```{marimo} python
+:hide-code: true
+
+n_o = mo.ui.slider(1, 5, step=1, value=3, show_value=True, label="n")
+n_o
+```
+
+```{marimo} python
+:hide-code: true
+
+l_o = mo.ui.dropdown(
+    options={str(v): v for v in range(n_o.value)}, value=str(n_o.value - 1), label="l"
+)
+l_o
+```
+
+```{marimo} python
+:hide-code: true
+
+m_o = mo.ui.dropdown(
+    options={str(v): v for v in range(-l_o.value, l_o.value + 1)}, value="0", label="m"
+)
+m_o
+```
+
+```{marimo} python
+:hide-code: true
+
+l_o_eff = l_o.value
+m_o_eff = m_o.value
+
+ext = 6.0 * n_o.value
+g_o = np.linspace(-ext, ext, 45)
+x_o, y_o, z_o = np.meshgrid(g_o, g_o, g_o, indexing="ij")
+r_o = np.sqrt(x_o**2 + y_o**2 + z_o**2)
+phi_o = np.arctan2(y_o + 1e-10, x_o)
+theta_o = np.where(np.isclose(r_o, 0.0), 0.0, np.arccos(z_o / (r_o + 1e-12)))
+
+psi_o = (radial_m(r_o, n_o.value, l_o_eff) * sph_harm_y(l_o_eff, m_o_eff, theta_o, phi_o)).real
+amp_o = 0.5 * np.abs(psi_o).max()
+
+fig_o = go.Figure(data=go.Isosurface(
+    x=x_o.flatten(), y=y_o.flatten(), z=z_o.flatten(), value=psi_o.flatten(),
+    colorscale="RdBu", isomin=-amp_o, isomax=amp_o, surface_count=2,
+    showscale=False, caps=dict(x_show=False, y_show=False, z_show=False),
+))
+fig_o.update_layout(
+    scene=dict(aspectmode="data"),
+    width=680, height=480,
+    title_text=f"orbital ({n_o.value}, {l_o_eff}, {m_o_eff})",
+)
+fig_o
+```
+

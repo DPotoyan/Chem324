@@ -219,5 +219,5 @@ The ionization energy of sodium is $5.14$ eV and the electron affinity of chlori
 ::::
 
 :::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [H2+ molecular ion](../demos/17-demo-h2plus.md) · [Benzene by PySCF](../demos/18-demo-benzene.md)
+Computational labs for this chapter: [H2+ molecular ion](../demos/12-demo-h2plus.md) · [Benzene by PySCF](../demos/13-demo-benzene.md)
 :::

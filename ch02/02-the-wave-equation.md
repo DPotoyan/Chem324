@@ -419,6 +419,50 @@ plt.close(fig)  # Prevents static display of the last frame
 HTML(ani.to_jshtml())
 ```
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+      "plotly",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+```
+
+```{marimo} python
+:hide-code: true
+
+n_mode = mo.ui.slider(1, 10, step=1, value=2, show_value=True, label="mode n")
+t_gtr = mo.ui.slider(0, 10.0, step=0.1, value=0.0, show_value=True, label="time t")
+mo.hstack([n_mode, t_gtr], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+x_gtr = np.linspace(0, 1, 1000)
+y_gtr = np.sin(n_mode.value * np.pi * x_gtr) * np.cos(np.pi * t_gtr.value)
+fig_gtr, ax_gtr = plt.subplots(figsize=(7, 3))
+ax_gtr.plot(x_gtr, y_gtr, lw=3)
+ax_gtr.set_ylim(-1, 1)
+ax_gtr.grid(True, ls="--", alpha=0.5)
+ax_gtr.set_xlabel("position along string x")
+ax_gtr.set_ylabel("displacement")
+ax_gtr.set_title(f"normal mode n = {n_mode.value}", fontsize=11)
+fig_gtr
+```
+
 ### 2D Membrane Vibrations
 
 - The wave function of a 2D membrane with fixed edges depends on two independent spatial variables, $x$ and $y$. By applying the method of separation of variables, we decompose the wave function into three ordinary differential equations.
@@ -689,6 +733,30 @@ def viz_membrane2d_plotly(n=1, m=1, t=0):
 interact(viz_membrane2d_plotly, n=(1,1), m=(2,3), t=(0,100))
 ```
 
+```{marimo} python
+:hide-code: true
+
+n_mem = mo.ui.slider(1, 4, step=1, value=1, show_value=True, label="mode n (x)")
+m_mem = mo.ui.slider(1, 4, step=1, value=2, show_value=True, label="mode m (y)")
+mo.hstack([n_mem, m_mem], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+xs_m = np.linspace(0, 1, 80)
+Xm, Ym = np.meshgrid(xs_m, xs_m)
+Zm = np.sin(m_mem.value * np.pi * Xm) * np.sin(n_mem.value * np.pi * Ym)
+
+fig_mem = go.Figure(data=go.Surface(x=Xm, y=Ym, z=Zm, colorscale="RdBu", showscale=False))
+fig_mem.update_layout(
+    width=650, height=450,
+    title_text=f"membrane mode (n, m) = ({n_mem.value}, {m_mem.value})",
+    scene=dict(zaxis=dict(range=[-1.2, 1.2])),
+)
+fig_mem
+```
+
 ### The sound of music.
 
  - Music produced by musical instruments is a combination of sound waves with frequencies corresponding to a superposition of the normal modes (called harmonics or overtones in music) of those instruments. 
@@ -908,6 +976,4 @@ $$
 where $C_1$ and $C_2$ are constants determined by initial conditions.
 :::
 
-:::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [Visualizing waves](../demos/08-demo-visualizing-waves.md)
-:::
+

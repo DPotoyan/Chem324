@@ -800,6 +800,84 @@ fig.update_layout(
 fig.show()
 ```
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+      "plotly",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+from scipy.special import sph_harm_y
+```
+
+```{marimo} python
+:hide-code: true
+
+l_s = mo.ui.slider(0, 8, step=1, value=3, show_value=True, label="l")
+l_s
+```
+
+```{marimo} python
+:hide-code: true
+
+m_s = mo.ui.dropdown(
+    options={str(v): v for v in range(-l_s.value, l_s.value + 1)}, value="0", label="m"
+)
+m_s
+```
+
+```{marimo} python
+:hide-code: true
+
+m_eff5 = m_s.value
+ph_m = np.linspace(0, np.pi, 90)
+th_m = np.linspace(0, 2 * np.pi, 90)
+ph_m, th_m = np.meshgrid(ph_m, th_m)
+Y_m = sph_harm_y(l_s.value, m_eff5, ph_m, th_m).real
+
+xs5 = np.sin(ph_m) * np.cos(th_m)
+ys5 = np.sin(ph_m) * np.sin(th_m)
+zs5 = np.cos(ph_m)
+fc5 = (Y_m - Y_m.min()) / (Y_m.max() - Y_m.min() + 1e-12)
+
+fig5 = plt.figure(figsize=(6, 6))
+ax5 = fig5.add_subplot(111, projection="3d")
+ax5.plot_surface(xs5, ys5, zs5, facecolors=plt.cm.seismic(fc5), rstride=1, cstride=1)
+ax5.set_axis_off()
+ax5.set_title(f"Y(l={l_s.value}, m={m_eff5}) on the unit sphere", fontsize=11)
+fig5
+```
+
+```{marimo} python
+:hide-code: true
+
+r5 = np.abs(Y_m)
+fig5b = go.Figure(data=[go.Surface(
+    x=r5 * np.sin(ph_m) * np.cos(th_m),
+    y=r5 * np.sin(ph_m) * np.sin(th_m),
+    z=r5 * np.cos(ph_m),
+    surfacecolor=Y_m, colorscale="RdBu", showscale=False,
+)])
+fig5b.update_layout(
+    width=650, height=480, scene=dict(aspectmode="data"),
+    title_text=f"r = |Y(l={l_s.value}, m={m_eff5})|",
+)
+fig5b
+```
+
 ### Learn More about Spherical Harmonics
 
 

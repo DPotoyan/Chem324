@@ -622,6 +622,64 @@ plt.close(fig)  # Prevents static display of the last frame
 HTML(ani.to_jshtml())
 ```
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+      "plotly",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+```
+
+```{marimo} python
+:hide-code: true
+
+box_L = mo.ui.slider(0.5, 2.0, step=0.1, value=1.0, show_value=True, label="box length L")
+n_max = mo.ui.slider(1, 10, step=1, value=3, show_value=True, label="highest state n")
+mo.hstack([box_L, n_max], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+hbar_m = 1 / (2 * np.pi)
+
+fig1d, (ax_lev, ax_psi) = plt.subplots(figsize=(9, 4.2), ncols=2)
+for n_i in range(1, n_max.value + 1):
+    E_i = (n_i**2 * np.pi**2 * hbar_m**2) / (2 * box_L.value**2)
+    ax_lev.hlines(E_i, 0.5, 1.5, colors="steelblue", lw=2)
+    ax_lev.text(1.6, E_i, f"n={n_i}, E={E_i:.2f}", va="center", fontsize=9)
+ax_lev.set_xlim(0, 3)
+ax_lev.set_ylim(0, ((n_max.value + 1) ** 2 * np.pi**2 * hbar_m**2) / (2 * box_L.value**2))
+ax_lev.set_ylabel("energy")
+ax_lev.axes.get_xaxis().set_visible(False)
+ax_lev.set_title("energy levels", fontsize=11)
+
+x_b = np.linspace(0, box_L.value, 800)
+psi_b = np.sqrt(2 / box_L.value) * np.sin(n_max.value * np.pi * x_b / box_L.value)
+ax_psi.fill_between(x_b, psi_b**2, color="seagreen", alpha=0.85)
+ax_psi.axvline(0, color="red", lw=3)
+ax_psi.axvline(box_L.value, color="red", lw=3)
+ax_psi.set_xlim(-0.1, box_L.value + 0.1)
+ax_psi.set_ylim(0, 4)
+ax_psi.set_xlabel("x")
+ax_psi.set_title(f"probability density, n={n_max.value}", fontsize=11)
+fig1d.tight_layout()
+fig1d
+```
+
 ### Quantum PIB in 3D
 
 :::{figure} ./images/pib3d.png
@@ -809,6 +867,73 @@ plt.show()
 
 :::
 
+
+```{marimo} python
+:hide-code: true
+
+nx3 = mo.ui.slider(1, 4, step=1, value=2, show_value=True, label="nx")
+ny3 = mo.ui.slider(1, 4, step=1, value=1, show_value=True, label="ny")
+nz3 = mo.ui.slider(1, 4, step=1, value=1, show_value=True, label="nz")
+mo.hstack([nx3, ny3, nz3], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+side3 = 10.0
+g3 = np.linspace(0, side3, 48)
+X3, Y3, Z3 = np.meshgrid(g3, g3, g3, indexing="ij")
+
+def psi1d_m(q, n_q):
+    return np.sqrt(2 / side3) * np.sin(n_q * np.pi * q / side3)
+
+psi_3d = psi1d_m(X3, nx3.value) * psi1d_m(Y3, ny3.value) * psi1d_m(Z3, nz3.value)
+amp3 = 0.5 * np.abs(psi_3d).max()
+
+fig3d = go.Figure(data=go.Isosurface(
+    x=X3.flatten(), y=Y3.flatten(), z=Z3.flatten(), value=psi_3d.flatten(),
+    colorscale="RdBu", isomin=-amp3, isomax=amp3, surface_count=2,
+    showscale=False, caps=dict(x_show=False, y_show=False, z_show=False),
+))
+fig3d.update_layout(
+    scene=dict(xaxis_title="x", yaxis_title="y", zaxis_title="z", aspectmode="data"),
+    width=680, height=460,
+    title_text=f"wavefunction isosurfaces, state ({nx3.value}, {ny3.value}, {nz3.value})",
+)
+fig3d
+```
+
+```{marimo} python
+:hide-code: true
+
+lx_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="lx")
+ly_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="ly")
+lz_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="lz")
+mo.hstack([lx_l, ly_l, lz_l], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+hbar_l = 1 / (2 * np.pi)
+fig_lad, ax_lad = plt.subplots(figsize=(7, 4.2))
+for side_l, x0, x1, color_l, lbl in [
+    (lx_l.value, 0.6, 1.0, "steelblue", "x"),
+    (ly_l.value, 1.1, 1.5, "seagreen", "y"),
+    (lz_l.value, 1.6, 2.0, "goldenrod", "z"),
+]:
+    for n_j in range(1, 7):
+        E_j = (n_j**2 * np.pi**2 * hbar_l**2) / (2 * side_l**2)
+        ax_lad.hlines(E_j, x0, x1, colors=color_l, lw=2)
+    ax_lad.text((x0 + x1) / 2, -0.35, lbl, ha="center")
+ax_lad.set_xlim(0.5, 2.1)
+ax_lad.set_ylim(-0.7, (36 * np.pi**2 * hbar_l**2) / (2 * min(lx_l.value, ly_l.value, lz_l.value) ** 2) * 1.05)
+ax_lad.set_ylabel("energy")
+ax_lad.axes.get_xaxis().set_visible(False)
+ax_lad.set_title("level ladders per direction: stretch a side, break degeneracy", fontsize=11)
+fig_lad.tight_layout()
+fig_lad
+```
 
 ### Note on Computing Average Properties from a Wave Function
 

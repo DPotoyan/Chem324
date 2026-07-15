@@ -241,6 +241,44 @@ $$\omega=\frac{2\pi}{T} = 2\pi\nu$$
 
 $$u(x,t) = Asin\Big[2\pi \Big(\frac{x}{\lambda} - \frac{t}{T}\Big)\Big]$$
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{marimo} python
+:hide-code: true
+
+L_wave = mo.ui.slider(0.1, 2.0, step=0.05, value=0.5, show_value=True, label="wavelength L")
+L_wave
+```
+
+```{marimo} python
+:hide-code: true
+
+x_w1 = np.linspace(0.0, 1.0, 1000)
+fig_w1, ax_w1 = plt.subplots(figsize=(7, 3))
+ax_w1.plot(x_w1, np.sin(2 * np.pi * x_w1 / L_wave.value), lw=2)
+ax_w1.set_xlabel("x")
+ax_w1.set_ylabel("y(x)")
+ax_w1.set_title(f"sine wave with wavelength L = {L_wave.value:.2f}", fontsize=11)
+fig_w1
+```
+
 ### Wave equation
 
 - We obtain the equation of motion by using the chain rule and taking partial derivatives of $u$ with respect to $x$ and $t$.
@@ -381,6 +419,32 @@ Thus, the sum of two complex exponentials with different phases $\phi_1$ and $\p
 
 Illustration of wave interference.
 :::
+
+```{marimo} python
+:hide-code: true
+
+k_sup = mo.ui.slider(2, 20, step=1, value=10, show_value=True, label="wave number k")
+t_sup = mo.ui.slider(0, 5.0, step=0.1, value=0.0, show_value=True, label="time t")
+phi_sup = mo.ui.slider(0, 6.28, step=0.39, value=0.0, show_value=True, label="phase shift phi")
+mo.hstack([k_sup, t_sup, phi_sup], justify="start", gap=1)
+```
+
+```{marimo} python
+:hide-code: true
+
+x_sup = np.linspace(0, 1.0, 1000)
+wave_a = np.sin(k_sup.value * (x_sup - t_sup.value))
+wave_b = np.sin(k_sup.value * (x_sup - t_sup.value) + phi_sup.value)
+
+fig_sup, ax_sup = plt.subplots(figsize=(7, 3.5))
+ax_sup.plot(x_sup, wave_a, lw=1.5, color="steelblue", label="wave 1")
+ax_sup.plot(x_sup, wave_b, lw=1.5, color="seagreen", label="wave 2")
+ax_sup.plot(x_sup, wave_a + wave_b, lw=2.5, color="crimson", label="superposition")
+ax_sup.set_ylim(-2.5, 2.5)
+ax_sup.legend(loc="upper right", fontsize=8)
+ax_sup.grid(True, ls="--", alpha=0.5)
+fig_sup
+```
 
 ### Problems
 

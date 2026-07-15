@@ -12,6 +12,7 @@ kernelspec:
 
 
 
+
 This notebook runs an actual Hartree-Fock (self-consistent field) calculation on atoms using the [PySCF](https://pyscf.org/) quantum chemistry package, and visualizes the resulting orbitals. It complements the Hartree-Fock lecture page, where the theory (Slater determinant, Fock operator, SCF cycle) is developed.
 
 This demo uses the following libraries (already installed for the site build; on your own machine, `pip install pyscf py3Dmol plotly`):

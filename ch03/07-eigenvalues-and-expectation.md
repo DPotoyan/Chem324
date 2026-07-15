@@ -231,6 +231,43 @@ $$ = \left|c_1\right|^2E_1^2 + \left|c_2\right|^2E_2^2 \Rightarrow \sigma_{\hat{
 
 
 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "sympy",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import sympy as sp
+```
+
+The computer can carry the whole calculation symbolically. Watch $\langle \hat{p}^2 \rangle$ come out of three live cells (each is editable):
+
+```{marimo} python
+x, L, n, hbar = sp.symbols("x L n hbar", positive=True)
+psi_n = sp.sqrt(2 / L) * sp.sin(n * sp.pi * x / L)
+psi_n
+```
+
+```{marimo} python
+p2_psi = -hbar**2 * sp.diff(psi_n, x, 2)
+p2_psi
+```
+
+```{marimo} python
+p2_avg = sp.simplify(sp.integrate(psi_n * p2_psi, (x, 0, L)))
+p2_avg
+```
+
+The result $\langle p^2 \rangle = n^2 \pi^2 \hbar^2 / L^2$ is exactly $2m E_n$: all of the particle in a box energy is kinetic.
+
 ### Quantum states as linear superpositions of mutually exclusive states
 
 $$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle $$

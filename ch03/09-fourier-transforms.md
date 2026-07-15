@@ -481,5 +481,5 @@ where $e^{ikx}$ are eigenfunctions of the free-particle Hamiltonian and form a c
 - Thus, a free electron (plane wave) is a *single momentum component* spread uniformly in space, while a localized delta function in space is an *infinite superposition* of plane waves. This Fourier duality expresses the position-momentum uncertainty relationship.
 
 :::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [Particle in a box](../demos/04-demo-particle-in-a-box.md) · [Quantum waves](../demos/09-demo-quantum-waves.md) · [Numerical Schrödinger solver](../demos/10-demo-numerical-schrodinger.md)
+Computational lab for this chapter: [Numerical Schrödinger solver](../demos/07-demo-numerical-schrodinger.md)
 :::

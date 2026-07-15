@@ -227,3 +227,69 @@ $$
 $$
 \langle r^{-3}\rangle_{n,l,m} = \frac{Z^3}{a_0^3 n^3 (l+1/2)(l+1)}
 $$
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "scipy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.special import genlaguerre, factorial
+```
+
+```{marimo} python
+:hide-code: true
+
+def radial_m(r, n=1, l=0):
+    pre = np.sqrt(((2 / n) ** 3 * factorial(n - l - 1)) / (2 * n * factorial(n + l)))
+    p = 2 * r / n
+    return pre * np.exp(-p / 2) * p**l * genlaguerre(n - l - 1, 2 * l + 1)(p)
+```
+
+```{marimo} python
+:hide-code: true
+
+n_r = mo.ui.slider(1, 6, step=1, value=2, show_value=True, label="n")
+n_r
+```
+
+```{marimo} python
+:hide-code: true
+
+l_r = mo.ui.dropdown(
+    options={str(v): v for v in range(n_r.value)}, value="0", label="l"
+)
+l_r
+```
+
+```{marimo} python
+:hide-code: true
+
+l_eff = l_r.value
+r_g = np.linspace(1e-6, 12 * n_r.value, 900)
+R_g = radial_m(r_g, n_r.value, l_eff)
+
+fig_r, (ax_R, ax_P) = plt.subplots(figsize=(9, 3.6), ncols=2)
+ax_R.plot(r_g, R_g, lw=2)
+ax_R.axhline(0, color="0.8", lw=0.8)
+ax_R.set_xlabel("r (Bohr)")
+ax_R.set_title(f"radial function R({n_r.value},{l_eff})", fontsize=11)
+ax_P.plot(r_g, r_g**2 * R_g**2, lw=2, color="seagreen")
+ax_P.set_xlabel("r (Bohr)")
+ax_P.set_title("radial probability r^2 R^2", fontsize=11)
+fig_r.tight_layout()
+fig_r
+```
+

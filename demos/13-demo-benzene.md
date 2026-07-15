@@ -12,6 +12,7 @@ kernelspec:
 
 
 
+
 * This demo uses the following libraries (already installed for the site build; on your own machine, `pip install pyscf py3Dmol plotly`)
   * [PySCF](https://pyscf.org/) (for the quantum chemistry)
   * [py3DMol](https://3dmol.csb.pitt.edu/) for visualizing the molecule

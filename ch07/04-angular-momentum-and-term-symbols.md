@@ -336,5 +336,5 @@ A $2p^4$ configuration has the same terms as $2p^2$ (a "hole" picture), namely $
 ::::
 
 :::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [Hartree-Fock with PySCF](../demos/16-demo-hartree-fock.md)
+Computational lab for this chapter: [Hartree-Fock with PySCF](../demos/11-demo-hartree-fock.md)
 :::

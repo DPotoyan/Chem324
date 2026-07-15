@@ -528,6 +528,4 @@ Sodium's bright yellow emission is a closely spaced doublet (the $D$ lines) aris
 Calculate the average potential energy of the hydrogen atom in its ground and first excited states, using $\langle V \rangle = -\frac{Ze^2}{4\pi\epsilon_0}\langle r^{-1}\rangle$ with $\langle r^{-1}\rangle_{n} = \frac{Z}{a_0 n^2}$. Show that your result satisfies the virial relation $\langle V \rangle = 2E_n$.
 ::::
 
-:::{seealso} Chapter demos
-Run this chapter's interactive Python demos: [Hydrogen wavefunctions](../demos/11-demo-hydrogen-wavefunctions.md) · [Spherical harmonics](../demos/12-demo-spherical-harmonics.md)
-:::
+
