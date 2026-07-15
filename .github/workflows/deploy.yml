@@ -47,6 +47,22 @@ jobs:
           BASE_URL: /Chem324
         run: myst build --html --execute
 
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render lecture slide decks
+        # One self-contained reveal.js html per lecture (embed-resources: true),
+        # copied into the built site under /slides/ and linked from slides-index.
+        run: |
+          for f in slides/ch0*/*.qmd; do
+            quarto render "$f" --to revealjs --quiet
+          done
+          mkdir -p _build/html/slides
+          for d in slides/ch0*; do
+            mkdir -p "_build/html/$d"
+            cp "$d"/*.html "_build/html/$d/" 2>/dev/null || true
+          done
+
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
