@@ -6,13 +6,13 @@ kernelspec:
 
 # Symbolic Math with SymPy
 
-[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-symbolic-math-with-sympy.ipynb)
 
 
 
 
 ```{marimo-config}
 ---
+echo: true
 pyproject: |
   requires-python = ">=3.10"
   dependencies = [
@@ -25,13 +25,15 @@ pyproject: |
 :hide-code: true
 
 import sympy as sp
+from sympy import diff, exp, expand, factor, integrate, lambdify, oo, series, simplify, sin, solve, symbols
+from sympy.physics.hydrogen import R_nl
+import numpy as np
+import matplotlib.pyplot as plt
 ```
 
 SymPy is the SciPy ecosystem's library for **symbolic** mathematics: it manipulates expressions exactly, like a free Mathematica built on Python. Where NumPy gives you numbers, SymPy gives you formulas: it can expand, factor, differentiate, integrate, and solve algebraically. Before a variable can appear in an expression it must be declared a symbol with `symbols()`.
 
-```{code-cell} python
-from sympy import *
-
+```{marimo} python
 x, y, a, b = symbols('x y a b')
 x
 ```
@@ -40,21 +42,21 @@ x
 
 The everyday manipulations are `expand`, `factor`, and `simplify`.
 
-```{code-cell} python
+```{marimo} python
 expand((x + 1) * (x + 2) * (x + 3))
 ```
 
-```{code-cell} python
+```{marimo} python
 factor(x**3 + 6 * x**2 + 11 * x + 6)
 ```
 
-```{code-cell} python
+```{marimo} python
 simplify((x**3 + x**2 - x - 1) / (x**2 + 2 * x + 1))
 ```
 
 To solve an equation (SymPy sets the expression equal to zero), use `solve`:
 
-```{code-cell} python
+```{marimo} python
 solve(x**2 + 1.4 * x - 5.76, x)
 ```
 
@@ -62,27 +64,27 @@ solve(x**2 + 1.4 * x - 5.76, x)
 
 Differentiate with `diff`: the first argument is the expression, the rest are the variables to differentiate by. Repeating a variable (or giving a number) takes higher derivatives.
 
-```{code-cell} python
+```{marimo} python
 diff(sin(x) * exp(-x), x)
 ```
 
-```{code-cell} python
+```{marimo} python
 diff(x**4, x, 2)   # second derivative
 ```
 
 Integrate with `integrate`. With no limits you get an antiderivative; with limits, a definite integral. The symbol `oo` means infinity, so the Gaussian integral central to quantum mechanics is one line:
 
-```{code-cell} python
+```{marimo} python
 integrate(x * exp(-x), x)
 ```
 
-```{code-cell} python
+```{marimo} python
 integrate(exp(-x**2), (x, -oo, oo))
 ```
 
 A **Taylor series** expansion uses `series`. By default it expands about $x = 0$; extra arguments set the center and the order.
 
-```{code-cell} python
+```{marimo} python
 series(exp(x), x, 0, 6)
 ```
 
@@ -90,25 +92,20 @@ series(exp(x), x, 0, 6)
 
 SymPy ships the hydrogen atom's exact wavefunctions in its `physics` module. Here we pull the $2p$ radial function $R_{21}(r)$, find the radius where the radial probability density $r^2 R_{21}^2$ peaks, and plot it. This is a worked symbolic-to-numeric pipeline: solve exactly, then `lambdify` into a NumPy function to plot.
 
-```{code-cell} python
-from sympy.physics.hydrogen import R_nl
-
+```{marimo} python
 r = symbols('r', positive=True)
 R_21 = R_nl(n=2, l=1, r=r, Z=1)
 R_21
 ```
 
-```{code-cell} python
+```{marimo} python
 # radius of maximum radial probability: solve d/dr [ r^2 R^2 ] = 0
 density = r**2 * R_21**2
 r_max = float(max(solve(diff(density, r), r)))   # largest (nonzero) root
 r_max
 ```
 
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-
+```{marimo} python
 f = lambdify(r, density, modules='numpy')
 rr = np.linspace(0, 20, 200)
 
