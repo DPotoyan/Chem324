@@ -103,6 +103,18 @@ $$
 
 A vector with $|a| = 1$ is **normalized**. Orthonormal bases and this norm are the finite-dimensional shadow of wavefunction normalization and orthogonality.
 
+
+:::{tip} **Activity: your first quantum normalization**
+
+The vector $\vec{v} = (1, i)$ has complex components, like every quantum state. Compute its norm using the complex inner product $\langle v | v \rangle = \sum_k v_k^* v_k$, and write down the normalized vector.
+:::
+
+:::{seealso} Solution
+:class: dropdown
+
+$\langle v | v \rangle = 1^* \cdot 1 + i^* \cdot i = 1 + (-i)(i) = 1 + 1 = 2$, so $\|\vec v\| = \sqrt{2}$ and the normalized vector is $\tfrac{1}{\sqrt 2}(1, i)$. Forgetting the complex conjugate gives $1 + i^2 = 0$: a nonzero vector with zero length, which is the classic sign you dropped the star.
+:::
+
 ## Matrices
 
 ### Linear systems as matrix equations
@@ -193,6 +205,45 @@ print("eigenvectors (columns):\n", vecs)
 print("\nA @ v0        :", A @ vecs[:, 0])
 print("lambda0 * v0  :", vals[0] * vecs[:, 0])
 ```
+
+
+The whole story in one picture: a matrix turns almost every vector, but an eigenvector comes back parallel to itself.
+
+```{code-cell} python
+:tags: [hide-input]
+
+A_eig = np.array([[2, 1], [1, 2]])
+w = np.array([1.0, -0.35])
+u = np.array([1.0, 1.0]) / np.sqrt(2)
+
+fig_e, (axg, axe) = plt.subplots(1, 2, figsize=(9, 4.4))
+for ax_, v1, v2, c1, c2, ttl in [
+    (axg, w, A_eig @ w, "0.45", "steelblue", "a generic vector turns"),
+    (axe, u, A_eig @ u, "0.45", "crimson", "an eigenvector only stretches"),
+]:
+    ax_.annotate("", xy=v1, xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=c1, lw=2.5))
+    ax_.annotate("", xy=v2, xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=c2, lw=2.5))
+    ax_.text(*(v1 * 1.15), r"$\vec{v}$", color=c1, fontsize=13)
+    ax_.text(*(v2 * 1.06), r"$A\vec{v}$", color=c2, fontsize=13)
+    ax_.set_xlim(-0.6, 3.0); ax_.set_ylim(-1.2, 2.6)
+    ax_.set_aspect("equal"); ax_.grid(True, ls=":", alpha=0.6)
+    ax_.set_title(ttl, fontsize=11)
+fig_e.tight_layout()
+plt.show()
+```
+
+On the left, $\vec v$ (gray) and $\color{steelblue} A\vec v$ (blue) point in different directions: the matrix rotated the vector. On the right, the eigenvector $\vec u = \tfrac{1}{\sqrt 2}(1,1)$ obeys $\color{crimson} A\vec u = 3\vec u$: same direction, three times longer. Eigenvectors are the directions along which a matrix acts like simple multiplication.
+
+:::{tip} **Activity: eigenvalues of a spin operator**
+
+The Pauli matrix $\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ represents a spin measurement along $x$. Find its eigenvalues and normalized eigenvectors by hand.
+:::
+
+:::{seealso} Solution
+:class: dropdown
+
+$\det(\sigma_x - \lambda I) = \lambda^2 - 1 = 0$ gives $\lambda = \pm 1$: the two possible outcomes of the measurement. For $\lambda = +1$: $\vec v_+ = \tfrac{1}{\sqrt 2}(1, 1)$; for $\lambda = -1$: $\vec v_- = \tfrac{1}{\sqrt 2}(1, -1)$. These are exactly the spin-right and spin-left states of [Chapter 5](../ch05/03-spin.md), and note they are orthogonal, as eigenvectors of distinct eigenvalues of a symmetric matrix must be.
+:::
 
 ### The geometric action of a matrix
 

@@ -97,6 +97,18 @@ Almost every wavefunction is a composition: $e^{-x^2}$, $\sin(kx)$, $e^{ikx}$. E
 
 A few limits underlie these results: $\displaystyle\lim_{\theta\to 0}\frac{\sin\theta}{\theta}=1$, $\displaystyle\lim_{\theta\to 0}\frac{\cos\theta-1}{\theta}=0$, and the definition $\displaystyle\lim_{h\to 0}\frac{e^{h}-1}{h}=1$, which is exactly what makes $e^{x}$ its own derivative.
 
+
+:::{tip} **Activity: differentiate like a quantum chemist**
+
+The Gaussian $f(x) = e^{-a x^2}$ is the single most-differentiated function in this course (it is the harmonic oscillator ground state). Use the chain rule to find $f'(x)$ and $f''(x)$, and check where $f''(x) = 0$.
+:::
+
+:::{seealso} Solution
+:class: dropdown
+
+$f'(x) = -2ax\, e^{-ax^2}$ (chain rule), and the product plus chain rules give $f''(x) = (4a^2x^2 - 2a)\, e^{-ax^2}$. Setting $f'' = 0$ gives $x = \pm 1/\sqrt{2a}$: the inflection points, which for the oscillator ground state sit exactly at the classical turning points.
+:::
+
 ## Integration
 
 ### The integral as accumulated area
@@ -213,6 +225,20 @@ $$
 $$
 
 These are exactly the integrals that enforce **orthogonality** of particle-in-a-box wavefunctions.
+
+
+:::{tip} **Activity: the two integrals you will use all semester**
+
+Evaluate (a) $\int_0^L \sin^2(n\pi x/L)\, dx$ and (b) $\int_0^\infty x^2 e^{-x}\, dx$. Both reappear constantly: (a) normalizes every particle in a box state, (b) belongs to the Gamma-function family behind hydrogen atom integrals.
+:::
+
+:::{seealso} Solution
+:class: dropdown
+
+(a) With $\sin^2 u = \tfrac{1}{2}(1 - \cos 2u)$, the cosine integrates to zero over full half-periods, leaving $L/2$. That is why box wavefunctions carry the prefactor $\sqrt{2/L}$.
+
+(b) Integrate by parts twice (or recognize $\Gamma(3) = 2!$): the answer is $2$. In general $\int_0^\infty x^n e^{-x} dx = n!$, the workhorse of radial hydrogen integrals.
+:::
 
 ## Problems
 
