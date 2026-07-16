@@ -27,6 +27,7 @@ import marimo as mo
 import numpy as np
 from scipy.linalg import eig, inv, eigh
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 from scipy import integrate
 ```
 

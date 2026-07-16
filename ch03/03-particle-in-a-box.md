@@ -640,6 +640,7 @@ pyproject: |
 import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 import plotly.graph_objects as go
 ```
 

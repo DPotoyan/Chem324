@@ -26,6 +26,7 @@ pyproject: |
 import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm, colors
 from scipy.special import sph_harm_y

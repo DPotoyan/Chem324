@@ -37,9 +37,9 @@ jobs:
           path: |
             _build/execute
             _build/cache
-          key: myst-build-${{ hashFiles('requirements.txt') }}-${{ github.sha }}
+          key: myst-build-v2-${{ hashFiles('requirements.txt') }}-${{ github.sha }}
           restore-keys: |
-            myst-build-${{ hashFiles('requirements.txt') }}-
+            myst-build-v2-${{ hashFiles('requirements.txt') }}-
 
       - name: Cache uv packages
         # marimo pages resolve their pyproject deps through uv at build time
@@ -69,6 +69,8 @@ jobs:
         env:
           # Served at https://dpotoyan.github.io/Chem324/ -> assets need the /Chem324 prefix.
           BASE_URL: /Chem324
+          # Retina (2x) matplotlib PNGs; config lives in .ipython/profile_default/.
+          IPYTHONDIR: ${{ github.workspace }}/.ipython
         run: myst build --html --execute
 
       - name: Cache rendered slide decks

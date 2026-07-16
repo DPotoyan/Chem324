@@ -29,6 +29,7 @@ from sympy import diff, exp, expand, factor, integrate, lambdify, oo, series, si
 from sympy.physics.hydrogen import R_nl
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 ```
 
 SymPy is the SciPy ecosystem's library for **symbolic** mathematics: it manipulates expressions exactly, like a free Mathematica built on Python. Where NumPy gives you numbers, SymPy gives you formulas: it can expand, factor, differentiate, integrate, and solve algebraically. Before a variable can appear in an expression it must be declared a symbol with `symbols()`.

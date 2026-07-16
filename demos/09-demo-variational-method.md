@@ -28,6 +28,7 @@ import numpy as np
 import scipy as sp
 from scipy.linalg import eigh
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 ```
 
 

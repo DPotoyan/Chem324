@@ -26,6 +26,7 @@ pyproject: |
 import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 import scipy.constants as const
 import sympy as sp
 from scipy.special import sph_harm_y, genlaguerre, factorial

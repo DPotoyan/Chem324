@@ -94,6 +94,7 @@ import marimo as mo
 import numpy as np
 from scipy.linalg import eigh_tridiagonal
 import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
 ```
 
 The solver builds the two diagonals of $\mathbf{H}$ and asks SciPy for the lowest few eigenpairs. Dividing the eigenvectors by $\sqrt{\Delta x}$ normalizes them so that $\int |\psi|^2\,dx = 1$.
