@@ -69,15 +69,55 @@ The derivative is also the **instantaneous rate of change**: if $f$ is position,
 
 ### Rules of differentiation
 
-| Rule | Equation |
-|-:|:-|
-| Constant multiple | $\dfrac{d}{dx}[cf(x)] = c\,f'(x)$ |
-| Sum and difference | $\dfrac{d}{dx}[f(x)\pm g(x)] = f'(x) \pm g'(x)$ |
-| Product | $\dfrac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)$ |
-| Quotient | $\dfrac{d}{dx}\dfrac{f(x)}{g(x)} = \dfrac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$ |
-| Power | $\dfrac{d}{dx} x^n = n\,x^{n-1}$ |
-| Chain | $\dfrac{d}{dx} f(g(x)) = f'(g(x))\cdot g'(x)$ |
-| Linear approximation | $f(x) \approx f(a) + f'(a)(x-a)$ |
+:::{note} **Six Key Derivative Rules**
+
+1. **Constant multiple**: if $h(x) = c\, f(x)$, then
+
+    $$\frac{dh}{dx} = c\, \frac{df}{dx}$$
+
+2. **Sum and difference**: if $h(x) = f(x) \pm g(x)$, then
+
+    $$\frac{dh}{dx} = \frac{df}{dx} \pm \frac{dg}{dx}$$
+
+3. **Power rule**:
+
+    $$\frac{d}{dx}\, x^n = n\, x^{n-1}$$
+
+4. **Product rule**: if $h(x) = f(x)\, g(x)$, then
+
+    $$\frac{dh}{dx} = \frac{df}{dx}\, g + f\, \frac{dg}{dx}$$
+
+    Equivalently, $h'(x) = f'(x)g(x) + f(x)g'(x)$.
+
+5. **Quotient rule**: if $h(x) = \dfrac{f(x)}{g(x)}$, then
+
+    $$\frac{dh}{dx} = \frac{f'(x)\,g(x) - f(x)\,g'(x)}{g(x)^2}$$
+
+6. **Chain rule**: if $h(x) = f(g(x))$, then
+
+    $$\frac{dh}{dx} = \frac{df}{dg} \cdot \frac{dg}{dx}$$
+
+    Equivalently, $h'(x) = f'(g(x))\, g'(x)$.
+
+Bonus, used everywhere in approximations: the **linear approximation** $f(x) \approx f(a) + f'(a)(x - a)$.
+:::
+
+Attempt this before peeking at the solution.
+
+### Example: a quantum-mechanical composition
+
+Differentiate $f(x) = x^2 e^{-\alpha x^2}$ (up to normalization, the shape of a harmonic oscillator excited state).
+
+:::{seealso} Solution
+:class: dropdown
+
+Split into $x^2$ times $e^{-\alpha x^2}$ and apply the **product rule**:
+
+$$\frac{df}{dx} = \underbrace{2x}_{(x^2)'}\, e^{-\alpha x^2} + x^2\, \underbrace{(-2\alpha x)\, e^{-\alpha x^2}}_{(e^{-\alpha x^2})' \text{ by the chain rule}}
+= 2x\, (1 - \alpha x^2)\, e^{-\alpha x^2}.$$
+
+The chain rule handled the inner function $g(x) = -\alpha x^2$ inside the exponential. Setting $f'(x) = 0$ gives $x = 0$ and $x = \pm 1/\sqrt{\alpha}$: the node and the two probability maxima.
+:::
 
 :::{tip} **The chain rule is the one you will use most**
 :class: dropdown

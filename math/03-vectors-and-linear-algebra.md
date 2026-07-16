@@ -79,16 +79,44 @@ plt.show()
 
 ### Inner products, norms, and orthogonality
 
-The **inner product** (dot product) $\langle a \mid b \rangle$ measures how much two vectors share a direction:
+The next natural operation multiplies two vectors into a **number** that measures how much they share a direction. Throughout this section, ${\color{orange} \vec a}$ is orange and ${\color{#3d81f6} \vec b}$ is blue, in every equation and every figure.
 
-:::{important} **Dot product, geometric form**
+:::{note} **Definition: Dot product (computational form)**
+
+For ${\color{orange} \vec a}, {\color{#3d81f6} \vec b}$ with $n$ components, the **dot product** (in quantum notation, the inner product $\langle {\color{orange} a} \mid {\color{#3d81f6} b} \rangle$) is the scalar
 
 $$
-\langle a \mid b \rangle = |a|\,|b|\cos\theta
+{\color{orange} \vec a} \cdot {\color{#3d81f6} \vec b} =
+{\color{orange} \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}} \cdot
+{\color{#3d81f6} \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}}
+= {\color{orange} a_1}{\color{#3d81f6} b_1} + {\color{orange} a_2}{\color{#3d81f6} b_2} + \cdots + {\color{orange} a_n}{\color{#3d81f6} b_n}.
 $$
 :::
 
-where $\theta$ is the angle between them. When two vectors are perpendicular the dot product is zero and we call them **orthogonal**. Vectors that are both orthogonal and normalized are **orthonormal**, compactly written with the Kronecker delta:
+A worked example, with every number wearing its vector's color. For ${\color{orange} \vec a = \begin{pmatrix} 6 \\ 2 \end{pmatrix}}$ and ${\color{#3d81f6} \vec b = \begin{pmatrix} 5 \\ -3 \end{pmatrix}}$:
+
+$$
+{\color{orange} \vec a} \cdot {\color{#3d81f6} \vec b} = ({\color{orange} 6})({\color{#3d81f6} 5}) + ({\color{orange} 2})({\color{#3d81f6} -3}) = 30 - 6 = 24.
+$$
+
+:::{note} **Definition: Dot product (geometric form)**
+
+The same number can be computed from lengths and the angle $\theta$ between the vectors:
+
+$$
+{\color{orange} \vec a} \cdot {\color{#3d81f6} \vec b} = \|{\color{orange} \vec a}\| \, \|{\color{#3d81f6} \vec b}\| \cos\theta.
+$$
+:::
+
+The two forms together are a machine for extracting angles from components. And the special case $\cos\theta = 0$ earns its own name:
+
+:::{note} **Definition: Orthogonal vectors**
+
+${\color{orange} \vec a}$ and ${\color{#3d81f6} \vec b}$ are **orthogonal** (perpendicular) if
+${\color{orange} \vec a} \cdot {\color{#3d81f6} \vec b} = 0$.
+:::
+
+Vectors that are both orthogonal and normalized are **orthonormal**, compactly written with the Kronecker delta:
 
 $$
 \langle e_i \mid e_j \rangle = \delta_{ij} =
@@ -98,11 +126,80 @@ $$
 The **norm** is the square root of a vector's inner product with itself, giving its length:
 
 $$
-\langle a \mid a \rangle = a_1^2 + a_2^2, \qquad |a| = \sqrt{a_1^2 + a_2^2}.
+\langle a \mid a \rangle = a_1^2 + a_2^2, \qquad \|a\| = \sqrt{a_1^2 + a_2^2}.
 $$
 
-A vector with $|a| = 1$ is **normalized**. Orthonormal bases and this norm are the finite-dimensional shadow of wavefunction normalization and orthogonality.
+A vector with $\|a\| = 1$ is **normalized**.
 
+### Projection: the most quantum operation in this appendix
+
+:::{attention} **The approximation problem**
+Among all multiples $k{\color{#3d81f6} \vec b}$ of one vector, which is closest to ${\color{orange} \vec a}$?
+:::
+
+The answer defines the **orthogonal projection**. Choose $k$ so that the leftover **error vector** ${\color{#d81b60} \vec e} = {\color{orange} \vec a} - k{\color{#3d81f6} \vec b}$ is orthogonal to ${\color{#3d81f6} \vec b}$; any other choice leaves a longer error (Pythagoras). That choice gives:
+
+:::{note} **Definition: Orthogonal projection**
+
+$$
+{\color{#004d40} \vec p} = \frac{{\color{orange} \vec a} \cdot {\color{#3d81f6} \vec b}}{{\color{#3d81f6} \vec b} \cdot {\color{#3d81f6} \vec b}} \; {\color{#3d81f6} \vec b},
+$$
+
+the shadow of ${\color{orange} \vec a}$ along ${\color{#3d81f6} \vec b}$.
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+
+a_v = np.array([2.0, 3.0])
+b_v = np.array([4.0, 1.0])
+p_v = (a_v @ b_v) / (b_v @ b_v) * b_v
+
+fig_pr, ax_pr = plt.subplots(figsize=(6.4, 4.6))
+s = np.linspace(-0.5, 1.35, 2)
+ax_pr.plot(s * b_v[0], s * b_v[1], color="0.85", lw=1.2, zorder=0)
+for vec, color, label, dx, dy in [
+    (a_v, "orange", r"$\vec a$", -0.25, 0.15),
+    (b_v, "#3d81f6", r"$\vec b$", 0.1, -0.3),
+    (p_v, "#004d40", r"$\vec p$", 0.05, 0.22),
+]:
+    ax_pr.annotate("", xy=vec, xytext=(0, 0),
+                   arrowprops=dict(arrowstyle="->", color=color, lw=2.6))
+    ax_pr.text(vec[0] + dx, vec[1] + dy, label, color=color, fontsize=14)
+ax_pr.plot([p_v[0], a_v[0]], [p_v[1], a_v[1]], "--", color="#d81b60", lw=2.2)
+ax_pr.text((p_v[0] + a_v[0]) / 2 + 0.12, (p_v[1] + a_v[1]) / 2, r"$\vec e$",
+           color="#d81b60", fontsize=14)
+u_hat = b_v / np.linalg.norm(b_v)
+n_hat = np.array([-u_hat[1], u_hat[0]])
+sq = 0.16
+corner = p_v
+ax_pr.plot([corner[0] - sq * u_hat[0], corner[0] - sq * u_hat[0] + sq * n_hat[0]],
+           [corner[1] - sq * u_hat[1], corner[1] - sq * u_hat[1] + sq * n_hat[1]],
+           color="0.4", lw=1)
+ax_pr.plot([corner[0] - sq * u_hat[0] + sq * n_hat[0], corner[0] + sq * n_hat[0]],
+           [corner[1] - sq * u_hat[1] + sq * n_hat[1], corner[1] + sq * n_hat[1]],
+           color="0.4", lw=1)
+ax_pr.set_xlim(-0.8, 5.2)
+ax_pr.set_ylim(-0.8, 3.6)
+ax_pr.set_aspect("equal")
+ax_pr.grid(True, ls=":", alpha=0.5)
+ax_pr.set_title("the projection p is the shadow of a along b; the error e is orthogonal", fontsize=10)
+plt.show()
+```
+
+The picture contains a decomposition. Walking along ${\color{#004d40} \vec p}$ and then along ${\color{#d81b60} \vec e}$ lands exactly on ${\color{orange} \vec a}$:
+
+$$
+{\color{orange} \vec a} = \underbrace{{\color{#004d40} \vec p}}_{\text{parallel to } {\color{#3d81f6} \vec b}} + \underbrace{{\color{#d81b60} \vec e}}_{\text{orthogonal to } {\color{#3d81f6} \vec b}}.
+$$
+
+**Now the quantum payoff.** For an orthonormal basis $\{e_1, e_2, \ldots\}$ the projection formula collapses to $c_k = \langle e_k \mid a \rangle$, and expanding a vector in a basis is nothing but projecting it onto each basis direction in turn:
+
+$$
+\vec a = \sum_k c_k\, e_k, \qquad c_k = \langle e_k \mid a \rangle.
+$$
+
+In quantum mechanics the state $\psi$ is the vector, the eigenstates of a measurement are the orthonormal basis, and the numbers $|c_k|^2 = |\langle e_k \mid \psi \rangle|^2$ become the **probabilities of each outcome** (the Born rule). Every quantum measurement is, at its mathematical heart, the orthogonal projection drawn above.
 
 :::{tip} **Activity: your first quantum normalization**
 
