@@ -147,19 +147,11 @@ Davit Potoyan
 <section id="the-many-electron-problem" class="slide level2">
 <h2>The Many-Electron Problem</h2>
 <ul>
-<li class="fragment">The Schrodinger equation is <strong>unsolvable</strong> for <span class="math inline">\(N &gt; 1\)</span> electrons.</li>
+<li class="fragment"><p>The Schrodinger equation is <strong>unsolvable</strong> for <span class="math inline">\(N &gt; 1\)</span> electrons.</p></li>
+<li class="fragment"><p>The culprit: <strong>electron, electron repulsion</strong> couples every coordinate.</p></li>
+<li class="fragment"><p><strong>Idea:</strong> let each electron feel only the <strong>average field</strong> of all the others.</p></li>
+<li class="fragment"><p>A many-body problem becomes many <strong>one-electron</strong> problems.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment">The culprit: <strong>electron, electron repulsion</strong> couples every coordinate.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Idea:</strong> let each electron feel only the <strong>average field</strong> of all the others.</li>
-<li class="fragment">A many-body problem becomes many <strong>one-electron</strong> problems.</li>
-</ul>
-</div>
 </section>
 <section id="the-slater-determinant" class="slide level2">
 <h2>The Slater Determinant</h2>
@@ -175,11 +167,9 @@ Davit Potoyan
 \psi_1(N) &amp; \psi_2(N) &amp; \cdots &amp; \psi_N(N)
 \end{vmatrix}\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">Swapping two electrons <strong>swaps rows</strong>, flipping the sign automatically.</li>
 </ul>
-</div>
 </section>
 <section id="the-hartree-fock-equation" class="slide level2">
 <h2>The Hartree-Fock Equation</h2>
@@ -189,31 +179,19 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[\hat{F}\,\psi_i = \varepsilon_i\,\psi_i\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment"><span class="math inline">\(\hat{F}\)</span> is the <strong>Fock operator</strong>.</li>
 <li class="fragment"><span class="math inline">\(\varepsilon_i\)</span> are the <strong>orbital energies</strong>.</li>
 </ul>
-</div>
 </section>
 <section id="inside-the-fock-operator" class="slide level2">
 <h2>Inside the Fock Operator</h2>
 <p><span class="math display">\[\hat{F} = \hat{h} + \sum_{j}\left(\hat{J}_j - \hat{K}_j\right)\]</span></p>
-<div class="fragment">
 <ul>
-<li class="fragment"><span class="math inline">\(\hat{h}\)</span>: <strong>kinetic energy</strong> plus <strong>nuclear attraction</strong>.</li>
+<li class="fragment"><p><span class="math inline">\(\hat{h}\)</span>: <strong>kinetic energy</strong> plus <strong>nuclear attraction</strong>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{J}_j\)</span>: <strong>Coulomb</strong> operator, classical electron, electron repulsion.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{K}_j\)</span>: <strong>exchange</strong> operator, a purely <strong>quantum</strong> effect with no classical analogue.</p></li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{J}_j\)</span>: <strong>Coulomb</strong> operator, classical electron, electron repulsion.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{K}_j\)</span>: <strong>exchange</strong> operator, a purely <strong>quantum</strong> effect with no classical analogue.</li>
-</ul>
-</div>
 </section>
 <section id="the-self-consistent-field" class="slide level2">
 <h2>The Self-Consistent Field</h2>
@@ -222,14 +200,12 @@ Davit Potoyan
 <p><img data-src="../../ch07/images/HF_iter.png"></p>
 </div><div class="column" style="width:52%;">
 <p><span class="math inline">\(\hat{F}\)</span> depends on the very orbitals it determines, so we <strong>iterate</strong>:</p>
-<div class="fragment">
 <ol type="1">
 <li class="fragment"><strong>Guess</strong> the orbitals <span class="math inline">\(\psi_i\)</span>.</li>
 <li class="fragment"><strong>Build</strong> the Fock operator <span class="math inline">\(\hat{F}\)</span>.</li>
 <li class="fragment"><strong>Solve</strong> <span class="math inline">\(\hat{F}\psi_i = \varepsilon_i\psi_i\)</span>.</li>
 <li class="fragment"><strong>Repeat</strong> until the orbitals stop changing.</li>
 </ol>
-</div>
 </div></div>
 </section>
 <section id="the-mean-field-in-action" class="slide level2">
@@ -239,18 +215,10 @@ Davit Potoyan
 <p><img data-src="../../ch07/images/HF_He.png"></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment"><strong>Helium:</strong> the simplest closed-shell test.</li>
+<li class="fragment"><p><strong>Helium:</strong> the simplest closed-shell test.</p></li>
+<li class="fragment"><p>Each <span class="math inline">\(1s\)</span> electron moves in the <strong>average field</strong> of the other.</p></li>
+<li class="fragment"><p>The two-electron problem splits into <strong>two one-electron</strong> problems.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment">Each <span class="math inline">\(1s\)</span> electron moves in the <strong>average field</strong> of the other.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">The two-electron problem splits into <strong>two one-electron</strong> problems.</li>
-</ul>
-</div>
 </div></div>
 </section>
 <section id="the-effective-potential" class="slide level2">
@@ -260,34 +228,20 @@ Davit Potoyan
 <p><img data-src="../../ch07/images/V_eff.png"></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment">One electron feels the bare <strong>nuclear attraction</strong>…</li>
+<li class="fragment"><p>One electron feels the bare <strong>nuclear attraction</strong>…</p></li>
+<li class="fragment"><p>…<strong>screened</strong> by the averaged charge cloud of the other.</p></li>
+<li class="fragment"><p>The net pull is <strong>weaker</strong> than the bare nucleus: <strong>shielding</strong>.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment">…<strong>screened</strong> by the averaged charge cloud of the other.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">The net pull is <strong>weaker</strong> than the bare nucleus: <strong>shielding</strong>.</li>
-</ul>
-</div>
 </div></div>
 </section>
 <section id="the-total-energy" class="slide level2">
 <h2>The Total Energy</h2>
 <p><span class="math display">\[E_{HF} = \sum_{i}\langle \psi_i | \hat{h} | \psi_i \rangle + \frac{1}{2}\sum_{i,j}\left(J_{ij} - K_{ij}\right)\]</span></p>
-<div class="fragment">
 <ul>
-<li class="fragment"><span class="math inline">\(J_{ij}\)</span>: <strong>Coulomb</strong> integral, classical repulsion.</li>
-<li class="fragment"><span class="math inline">\(K_{ij}\)</span>: <strong>exchange</strong> integral, lowers the energy.</li>
+<li class="fragment"><p><span class="math inline">\(J_{ij}\)</span>: <strong>Coulomb</strong> integral, classical repulsion.</p></li>
+<li class="fragment"><p><span class="math inline">\(K_{ij}\)</span>: <strong>exchange</strong> integral, lowers the energy.</p></li>
+<li class="fragment"><p>The factor <span class="math inline">\(\tfrac{1}{2}\)</span> removes <strong>double counting</strong> of each pair.</p></li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">The factor <span class="math inline">\(\tfrac{1}{2}\)</span> removes <strong>double counting</strong> of each pair.</li>
-</ul>
-</div>
 </section>
 <section id="strengths-and-limits" class="slide level2">
 <h2>Strengths and Limits</h2>

@@ -147,39 +147,19 @@ Davit Potoyan
 <section id="why-we-need-approximations" class="slide level2">
 <h2>Why We Need Approximations</h2>
 <ul>
-<li class="fragment">The Schrodinger equation is solvable <strong>exactly</strong> only for a handful of systems.</li>
+<li class="fragment"><p>The Schrodinger equation is solvable <strong>exactly</strong> only for a handful of systems.</p></li>
+<li class="fragment"><p>The <strong>hydrogen atom</strong> is the most complex atom with a closed form.</p></li>
+<li class="fragment"><p><strong>Helium</strong> and any multi-electron system are <strong>intractable</strong>.</p></li>
+<li class="fragment"><p>We need a systematic way to <strong>approximate</strong> and to <strong>rank</strong> approximations.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment">The <strong>hydrogen atom</strong> is the most complex atom with a closed form.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Helium</strong> and any multi-electron system are <strong>intractable</strong>.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">We need a systematic way to <strong>approximate</strong> and to <strong>rank</strong> approximations.</li>
-</ul>
-</div>
 </section>
 <section id="the-core-idea" class="slide level2">
 <h2>The Core Idea</h2>
 <ul>
-<li class="fragment">Begin with an <strong>educated guess</strong>: a trial wavefunction <span class="math inline">\(|\phi\rangle\)</span>.</li>
+<li class="fragment"><p>Begin with an <strong>educated guess</strong>: a trial wavefunction <span class="math inline">\(|\phi\rangle\)</span>.</p></li>
+<li class="fragment"><p>The guess carries <strong>adjustable parameters</strong>.</p></li>
+<li class="fragment"><p><strong>Tune</strong> the parameters to <strong>minimize the energy</strong>, driving the answer toward the exact value.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment">The guess carries <strong>adjustable parameters</strong>.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Tune</strong> the parameters to <strong>minimize the energy</strong>, driving the answer toward the exact value.</li>
-</ul>
-</div>
 </section>
 <section id="the-variational-theorem" class="slide level2">
 <h2>The Variational Theorem</h2>
@@ -187,34 +167,20 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[E_{\phi} = \frac{\langle \phi \mid \hat{H} \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment"><span class="math inline">\(\hat{H}\)</span> is the Hamiltonian of the problem.</li>
 <li class="fragment"><span class="math inline">\(|\phi\rangle\)</span> is the trial function with unknown parameters.</li>
 <li class="fragment"><span class="math inline">\(E_0\)</span> is the <strong>true</strong> ground-state energy (usually unknown).</li>
 </ul>
-</div>
 </section>
 <section id="what-the-theorem-buys-us" class="slide level2">
 <h2>What the Theorem Buys Us</h2>
 <ul>
-<li class="fragment">The ground state is the <strong>lowest possible</strong> energy.</li>
+<li class="fragment"><p>The ground state is the <strong>lowest possible</strong> energy.</p></li>
+<li class="fragment"><p><strong>Minimizing</strong> the energy functional gives the best answer for a given trial form.</p></li>
+<li class="fragment"><p><strong>More parameters</strong> mean more handles, hence more accuracy.</p></li>
+<li class="fragment"><p>Equality holds <strong>only</strong> when <span class="math inline">\(\phi\)</span> equals the exact ground state.</p></li>
 </ul>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Minimizing</strong> the energy functional gives the best answer for a given trial form.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>More parameters</strong> mean more handles, hence more accuracy.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Equality holds <strong>only</strong> when <span class="math inline">\(\phi\)</span> equals the exact ground state.</li>
-</ul>
-</div>
 </section>
 <section id="example-particle-in-a-box" class="slide level2">
 <h2>Example: Particle in a Box</h2>
@@ -222,19 +188,15 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[\psi_t(x) = \frac{\sqrt{30}}{a^{5/2}}\,x(a - x)\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">Plug into <span class="math inline">\(\hat{H} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}\)</span> and integrate.</li>
 </ul>
-</div>
 <div class="fragment">
 <p><span class="math display">\[E_\phi = \frac{5\hbar^2}{a^2 m} \;\geq\; E_1\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">A clean <strong>upper bound</strong> from a crude parabola guess.</li>
 </ul>
-</div>
 </section>
 <section id="example-hydrogen-with-a-gaussian" class="slide level2">
 <h2>Example: Hydrogen with a Gaussian</h2>
@@ -244,33 +206,23 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[E_{trial}(\alpha) = \frac{3\hbar^2 \alpha}{2m_e} - \frac{e^2 \alpha^{1/2}}{\sqrt{2}\,\epsilon_0 \pi^{3/2}}\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">Minimize: <span class="math inline">\(\dfrac{\partial E_{trial}}{\partial \alpha} = 0\)</span>.</li>
 </ul>
-</div>
 <div class="fragment">
 <p><span class="math display">\[E_0 = -0.5\,h, \qquad E_{trial}(\alpha_{min}) = -0.424\,h\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">About <strong>15% error</strong>. A Gaussian lacks the exponential’s cusp.</li>
 </ul>
-</div>
 </section>
 <section id="the-helium-atom-is-tough" class="slide level2">
 <h2>The Helium Atom Is Tough</h2>
 <p><span class="math display">\[\hat{H} = -\frac{\hbar^2}{2m_e}(\Delta_1 + \Delta_2) - \frac{1}{4\pi\epsilon_0}\left(\frac{Ze^2}{r_1} + \frac{Ze^2}{r_2} - \frac{e^2}{r_{12}}\right)\]</span></p>
-<div class="fragment">
 <ul>
-<li class="fragment">The <strong>electron-electron</strong> term <span class="math inline">\(\dfrac{e^2}{r_{12}}\)</span> blocks any analytic solution.</li>
+<li class="fragment"><p>The <strong>electron-electron</strong> term <span class="math inline">\(\dfrac{e^2}{r_{12}}\)</span> blocks any analytic solution.</p></li>
+<li class="fragment"><p>Drop it and <span class="math inline">\(\hat{H}\)</span> separates into <strong>two hydrogen-like atoms</strong>.</p></li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Drop it and <span class="math inline">\(\hat{H}\)</span> separates into <strong>two hydrogen-like atoms</strong>.</li>
-</ul>
-</div>
 </section>
 <section id="helium-from-crude-to-variational" class="slide level2">
 <h2>Helium: From Crude to Variational</h2>
@@ -282,16 +234,10 @@ Davit Potoyan
 <li class="fragment">Now treat the nuclear charge <span class="math inline">\(Z\)</span> as a <strong>variational parameter</strong>: <span class="math display">\[E(Z) = \left[Z^2 - \frac{27Z}{8}\right]\frac{e^2}{4\pi\epsilon_0 a_0}\]</span></li>
 </ul>
 </div>
-<div class="fragment">
 <ul>
-<li class="fragment">Minimizing gives <span class="math inline">\(Z = \dfrac{27}{16} \approx 1.7\)</span> and <span class="math inline">\(E \approx -77.5\)</span> eV.</li>
+<li class="fragment"><p>Minimizing gives <span class="math inline">\(Z = \dfrac{27}{16} \approx 1.7\)</span> and <span class="math inline">\(E \approx -77.5\)</span> eV.</p></li>
+<li class="fragment"><p><span class="math inline">\(Z &lt; 2\)</span>: each electron <strong>shields</strong> the nucleus. Exact is <span class="math inline">\(-79.0\)</span> eV.</p></li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><span class="math inline">\(Z &lt; 2\)</span>: each electron <strong>shields</strong> the nucleus. Exact is <span class="math inline">\(-79.0\)</span> eV.</li>
-</ul>
-</div>
 </section>
 <section id="the-linear-variational-method" class="slide level2">
 <h2>The Linear Variational Method</h2>
@@ -301,21 +247,11 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[\phi(r) = \sum_n^N c_n f_n(r)\]</span></p>
 </div>
-<div class="fragment">
 <ul>
-<li class="fragment">Minimize over the <strong>coefficients</strong> <span class="math inline">\(c_n\)</span>, not over a functional form.</li>
+<li class="fragment"><p>Minimize over the <strong>coefficients</strong> <span class="math inline">\(c_n\)</span>, not over a functional form.</p></li>
+<li class="fragment"><p>Turns a hard <strong>differential equation</strong> into <strong>linear algebra</strong>.</p></li>
+<li class="fragment"><p>This idea underlies <strong>Hartree-Fock</strong> and modern electronic structure.</p></li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Turns a hard <strong>differential equation</strong> into <strong>linear algebra</strong>.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">This idea underlies <strong>Hartree-Fock</strong> and modern electronic structure.</li>
-</ul>
-</div>
 </section>
 <section id="the-generalized-eigenvalue-problem" class="slide level2">
 <h2>The Generalized Eigenvalue Problem</h2>
@@ -327,12 +263,10 @@ Davit Potoyan
 \begin{bmatrix} S_{11} &amp; S_{12} \\ S_{12} &amp; S_{22} \end{bmatrix}
 \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment"><span class="math inline">\(H_{ij} = \langle f_i|\hat{H}|f_j\rangle\)</span>, <span class="math inline">\(\quad S_{ij} = \langle f_i|f_j\rangle\)</span>.</li>
 <li class="fragment"><strong>Lowest eigenvalue</strong> is the energy estimate; its eigenvector gives the best <span class="math inline">\(\mathbf{c}\)</span>.</li>
 </ul>
-</div>
 </section>
 <section id="the-secular-determinant" class="slide level2">
 <h2>The Secular Determinant</h2>
@@ -340,21 +274,17 @@ Davit Potoyan
 <div class="fragment">
 <p><span class="math display">\[\det(\mathbf{H} - E\,\mathbf{S}) = 0\]</span></p>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">Solving this determinant yields the <strong>variational energies</strong>.</li>
 </ul>
-</div>
 <div class="fragment">
 <ul>
 <li class="fragment">For an <strong>orthonormal</strong> basis (<span class="math inline">\(\mathbf{S} = \mathbf{I}\)</span>) it reduces to <span class="math display">\[\mathbf{H}\mathbf{c} = E\mathbf{c}\]</span></li>
 </ul>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">Box example with two functions: <span class="math inline">\(E_\phi = 4.9349\,\tfrac{\hbar^2}{m}\)</span> vs exact <span class="math inline">\(4.9348\,\tfrac{\hbar^2}{m}\)</span>.</li>
 </ul>
-</div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
