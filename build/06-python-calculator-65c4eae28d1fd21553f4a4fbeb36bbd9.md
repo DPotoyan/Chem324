@@ -16,7 +16,6 @@ pyproject: |
       "scipy",
       "matplotlib",
       "sympy",
-      "plotly",
   ]
 ---
 ```
@@ -27,7 +26,6 @@ pyproject: |
 import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 import scipy.constants as const
 import sympy as sp
 from scipy.special import sph_harm_y, genlaguerre, factorial
@@ -220,7 +218,7 @@ sp.solve(q**3 - 6*q**2 + 11*q - 6, q)           # solver pad
 
 ### 6. Orbital visualizer
 
-Pick quantum numbers; the menus only ever offer valid combinations. Drag to rotate the orbital (blue and red are the wavefunction's positive and negative lobes):
+Pick quantum numbers (the menus only ever offer valid combinations). The first plot is a **2D cross-section** of the orbital in the xz-plane, with blue and red marking the wavefunction's positive and negative lobes. Below it, the **radial view** shows the radial function $R_{nl}(r)$ and the radial distribution $P(r) = r^2 R^2$, and reports the most probable radius, the mean radius $\langle r\rangle$, and the node count.
 
 ```{marimo} python
 :hide-code: true
@@ -255,69 +253,153 @@ m_v
 ```{marimo} python
 :hide-code: true
 
-ext_v = 6.0 * n_v.value
-g_v = np.linspace(-ext_v, ext_v, 45)
-X_v, Y_v, Z_v = np.meshgrid(g_v, g_v, g_v, indexing="ij")
-r_v = np.sqrt(X_v**2 + Y_v**2 + Z_v**2)
-th_v = np.where(np.isclose(r_v, 0.0), 0.0, np.arccos(Z_v / (r_v + 1e-12)))
-ph_v = np.arctan2(Y_v + 1e-10, X_v)
-psi_v = (radial_c(r_v, n_v.value, l_v.value) * sph_harm_y(l_v.value, m_v.value, th_v, ph_v)).real
-amp_v = 0.5 * np.abs(psi_v).max()
+# 2D cross-section of the orbital in the xz-plane (y = 0)
+n6, l6, m6 = n_v.value, l_v.value, m_v.value
+ext6 = 2.2 * n6**2 + 6
+g6 = np.linspace(-ext6, ext6, 320)
+Xg6, Zg6 = np.meshgrid(g6, g6)
+Rg6 = np.sqrt(Xg6**2 + Zg6**2)
+Thg6 = np.arccos(np.clip(Zg6 / (Rg6 + 1e-12), -1.0, 1.0))
+Phg6 = np.arctan2(np.zeros_like(Xg6), Xg6)   # 0 for x>0, pi for x<0
+psi6 = (radial_c(Rg6, n6, l6) * sph_harm_y(l6, m6, Thg6, Phg6)).real
+amp6 = np.abs(psi6).max() + 1e-12
 
-fig_v = go.Figure(data=go.Isosurface(
-    x=X_v.flatten(), y=Y_v.flatten(), z=Z_v.flatten(), value=psi_v.flatten(),
-    colorscale="RdBu", isomin=-amp_v, isomax=amp_v, surface_count=2,
-    showscale=False, caps=dict(x_show=False, y_show=False, z_show=False),
-))
-fig_v.update_layout(scene=dict(aspectmode="data"), width=660, height=460,
-                    title_text=f"orbital ({n_v.value}, {l_v.value}, {m_v.value})")
-fig_v
+fig6, ax6 = plt.subplots(figsize=(5.2, 4.8))
+mesh6 = ax6.pcolormesh(Xg6, Zg6, psi6, cmap="RdBu_r", vmin=-amp6, vmax=amp6, shading="auto")
+ax6.set_aspect("equal")
+ax6.set_xlabel("x (Bohr)")
+ax6.set_ylabel("z (Bohr)")
+ax6.set_title(f"orbital ({n6}, {l6}, {m6}) — xz cross-section")
+fig6.colorbar(mesh6, ax=ax6, shrink=0.85, label="wavefunction (sign)")
+fig6
+```
+
+```{marimo} python
+:hide-code: true
+
+# radial function R(r) and radial distribution P(r) = r^2 R^2
+r_ax6 = np.linspace(1e-6, 2.5 * n_v.value**2 + 12, 1400)
+Rrad6 = radial_c(r_ax6, n_v.value, l_v.value)
+Prad6 = r_ax6**2 * Rrad6**2
+rpeak6 = r_ax6[np.argmax(Prad6)]
+rmean6 = np.trapezoid(r_ax6 * Prad6, r_ax6) / np.trapezoid(Prad6, r_ax6)
+nodes6 = n_v.value - l_v.value - 1
+
+figR6, (axR6a, axR6b) = plt.subplots(2, 1, figsize=(6, 5), sharex=True)
+axR6a.plot(r_ax6, Rrad6, color="steelblue", lw=2)
+axR6a.axhline(0, color="0.7", lw=0.7)
+axR6a.set_ylabel(r"$R_{nl}(r)$")
+axR6a.set_title(f"radial part of ({n_v.value}, {l_v.value}):  {nodes6} radial node(s)")
+axR6b.plot(r_ax6, Prad6, color="crimson", lw=2)
+axR6b.axvline(rpeak6, color="0.35", ls="--", lw=1.2, label=f"most probable r = {rpeak6:.2f} a0")
+axR6b.axvline(rmean6, color="seagreen", ls=":", lw=1.6, label=f"mean r = {rmean6:.2f} a0")
+axR6b.set_ylabel(r"$P(r) = r^2 R^2$")
+axR6b.set_xlabel("r (Bohr)")
+axR6b.legend(fontsize=8, frameon=False)
+figR6.tight_layout()
+figR6
+```
+
+```{marimo} python
+:hide-code: true
+
+mo.md(
+    f"**Orbital ({n_v.value}, {l_v.value}, {m_v.value})** &nbsp;|&nbsp; "
+    f"most probable radius $r_{{\\max}} = {rpeak6:.2f}\\,a_0$ &nbsp;|&nbsp; "
+    f"mean radius $\\langle r\\rangle = {rmean6:.2f}\\,a_0$ "
+    f"(exact $\\tfrac{{1}}{{2}}[3n^2 - l(l+1)] = {(3*n_v.value**2 - l_v.value*(l_v.value+1))/2:.2f}$) &nbsp;|&nbsp; "
+    f"radial nodes $= n-l-1 = {nodes6}$, angular nodes $= l = {l_v.value}$"
+)
 ```
 
 ### 7. Orbital overlap
 
-Bonding starts here: slide two 1s orbitals together and watch their **overlap integral** $S(d) = e^{-d}\left(1 + d + d^2/3\right)$ grow (distances in Bohr radii). The shaded region is the product $\psi_A \psi_B$ whose integral is $S$:
+Bonding starts here. The **overlap integral** $S = \int \psi_A \psi_B\,d^3r$ measures how much two atomic orbitals share the same region with the same sign. Pick an orbital on each center, slide them together, and watch the overlap. The left panel shows both orbitals along the bond ($z$) axis; the right panel is the product $\psi_A\psi_B$ whose integral is $S$. Try **1s with 2p_x** to see an overlap that cancels to zero by symmetry.
 
 ```{marimo} python
 :hide-code: true
 
-d_sep = mo.ui.slider(0.5, 8.0, step=0.25, value=2.0, show_value=True,
+ao_choices = {"1s": "1s", "2s": "2s", "2p_z": "2pz", "2p_x": "2px"}
+aoA = mo.ui.dropdown(options=ao_choices, value="1s", label="orbital on A")
+aoB = mo.ui.dropdown(options=ao_choices, value="1s", label="orbital on B")
+d_sep = mo.ui.slider(0.5, 8.0, step=0.25, value=3.0, show_value=True,
                      label="internuclear distance d (Bohr)")
-d_sep
+mo.vstack([mo.hstack([aoA, aoB], justify="start", gap=1.5), d_sep])
 ```
 
 ```{marimo} python
 :hide-code: true
 
-d_val = d_sep.value
-x_o = np.linspace(-8, 8, 800)
-psi_A = np.exp(-np.abs(x_o + d_val / 2)) / np.sqrt(np.pi)
-psi_B = np.exp(-np.abs(x_o - d_val / 2)) / np.sqrt(np.pi)
-S_curve_d = np.linspace(0.01, 8, 200)
-S_curve = np.exp(-S_curve_d) * (1 + S_curve_d + S_curve_d**2 / 3)
-S_now = np.exp(-d_val) * (1 + d_val + d_val**2 / 3)
+# real hydrogenic atomic orbitals, aligned so p_z points along the bond axis
+Y_S7 = 1 / np.sqrt(4 * np.pi)
+Y_P7 = np.sqrt(3 / (4 * np.pi))
 
-fig_o, (ax_oa, ax_ob) = plt.subplots(1, 2, figsize=(9.5, 3.6))
-ax_oa.plot(x_o, psi_A, lw=1.8, color="steelblue", label=r"$\psi_A$ (1s)")
-ax_oa.plot(x_o, psi_B, lw=1.8, color="seagreen", label=r"$\psi_B$ (1s)")
-ax_oa.fill_between(x_o, psi_A * psi_B * 6, color="crimson", alpha=0.35, label=r"$\psi_A \psi_B$ (scaled)")
-ax_oa.axvline(-d_val / 2, color="0.6", ls=":", lw=1)
-ax_oa.axvline(d_val / 2, color="0.6", ls=":", lw=1)
-ax_oa.set_xlabel("x (Bohr)")
-ax_oa.legend(fontsize=8, frameon=False)
-ax_oa.set_title("two 1s orbitals (cut along the bond axis)", fontsize=10)
-
-ax_ob.plot(S_curve_d, S_curve, lw=2, color="0.4")
-ax_ob.plot(d_val, S_now, "o", ms=9, color="crimson")
-ax_ob.set_xlabel("separation d (Bohr)")
-ax_ob.set_ylabel("overlap S(d)")
-ax_ob.set_title(f"S({d_val:.2f}) = {S_now:.3f}", fontsize=10)
-ax_ob.set_ylim(0, 1.02)
-fig_o.tight_layout()
-fig_o
+def ao_amp(kind, X, Y, Z):
+    r = np.sqrt(X**2 + Y**2 + Z**2) + 1e-12
+    if kind == "1s":  return radial_c(r, 1, 0) * Y_S7
+    if kind == "2s":  return radial_c(r, 2, 0) * Y_S7
+    if kind == "2pz": return radial_c(r, 2, 1) * Y_P7 * Z / r
+    if kind == "2px": return radial_c(r, 2, 1) * Y_P7 * X / r
 ```
 
-At $d = 0$ the orbitals coincide and $S = 1$; by $d \approx 8\,a_0$ the overlap is essentially gone. The window where $S$ is a few tenths is exactly where [chemical bonds live](../ch08/02-hydrogen-molecule-ion.md).
+```{marimo} python
+:hide-code: true
+
+d7 = d_sep.value
+kA7, kB7 = aoA.value, aoB.value
+labA7 = [k for k, v in ao_choices.items() if v == kA7][0]
+labB7 = [k for k, v in ao_choices.items() if v == kB7][0]
+
+# 2D cross-section in the xz-plane: A at z = -d/2, B at z = +d/2
+gp7 = np.linspace(-9, 9, 280)
+Xp7, Zp7 = np.meshgrid(gp7, gp7)
+Yp7 = np.zeros_like(Xp7)
+psiA7 = ao_amp(kA7, Xp7, Yp7, Zp7 + d7 / 2)
+psiB7 = ao_amp(kB7, Xp7, Yp7, Zp7 - d7 / 2)
+prod7 = psiA7 * psiB7
+
+# overlap S via a 3D grid integral
+gx7 = np.linspace(-9, 9, 48)
+gz7 = np.linspace(-(d7 / 2 + 9), d7 / 2 + 9, 64)
+XX7, YY7, ZZ7 = np.meshgrid(gx7, gx7, gz7, indexing="ij")
+fA7 = ao_amp(kA7, XX7, YY7, ZZ7 + d7 / 2)
+fB7 = ao_amp(kB7, XX7, YY7, ZZ7 - d7 / 2)
+S7 = float(np.trapezoid(np.trapezoid(np.trapezoid(fA7 * fB7, gz7, axis=2), gx7, axis=1), gx7, axis=0))
+
+fig7, axes7 = plt.subplots(1, 2, figsize=(9.5, 4.2))
+panels7 = [(axes7[0], psiA7 + psiB7, f"{labA7} (A)  +  {labB7} (B)"),
+           (axes7[1], prod7, r"product $\psi_A\,\psi_B$")]
+for ax7, fld7, ttl7 in panels7:
+    amp7 = np.abs(fld7).max() + 1e-12
+    ax7.pcolormesh(Xp7, Zp7, fld7, cmap="RdBu_r", vmin=-amp7, vmax=amp7, shading="auto")
+    ax7.plot(0, -d7 / 2, "k+", ms=11, mew=2)
+    ax7.plot(0, d7 / 2, "k+", ms=11, mew=2)
+    ax7.set_aspect("equal")
+    ax7.set_xlabel("x (Bohr)")
+    ax7.set_ylabel("z (Bohr)")
+    ax7.set_title(ttl7, fontsize=10)
+fig7.suptitle(f"overlap  S = {S7:.3f}   at  d = {d7:.2f} a0", fontsize=12)
+fig7.tight_layout()
+fig7
+```
+
+```{marimo} python
+:hide-code: true
+
+if abs(S7) < 0.03:
+    verdict7 = ("**essentially zero**: the positive and negative lobes of the product cancel, "
+                "a symmetry-forbidden overlap (the origin of the sigma / pi distinction)")
+elif S7 > 0:
+    verdict7 = ("**positive**: the orbitals meet with the same sign between the nuclei, "
+                "the constructive overlap that builds a bonding orbital")
+else:
+    verdict7 = ("**negative**: the facing lobes have opposite sign, "
+                "the destructive combination behind antibonding orbitals")
+
+mo.md(f"Overlap $S = {S7:.3f}$ for {labA7} on A and {labB7} on B at $d = {d7:.2f}\\,a_0$. This is {verdict7}.")
+```
+
+The window where $|S|$ is a few tenths is exactly where [chemical bonds live](../ch08/02-hydrogen-molecule-ion.md). Pushing the nuclei together raises $|S|$, while a mismatch in orbital symmetry drives it to zero no matter how close they get.
 
 ### 8. One-dimensional Schrödinger solver
 
