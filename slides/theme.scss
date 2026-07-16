@@ -1,47 +1,125 @@
 /*-- scss:defaults --*/
-// Shared reveal.js theme for Chem 3240 lecture slides
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$presentation-heading-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$presentation-heading-color: #1a2a4f;
-$link-color: #2b6cb0;
-$presentation-heading-font-weight: 700;
+// Chem 3240 deck theme, adapted from grantmcdermott/quarto-revealjs-clean (MIT):
+// white background, light Roboto, left-aligned title slide, teal accent.
+// ISU cardinal serves as the secondary accent (alerts, h4, progress bar).
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+
+$jet: #131516;
+$accent: #107895;      // teal: links, h3, subtitle, list markers
+$accent2: #C8102E;     // ISU cardinal: alerts, h4, progress bar
+$right-arrow: "\2192";
+
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$presentation-heading-font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$presentation-heading-color: $jet;
+$presentation-heading-font-weight: 300;
+$presentation-font-size-root: 32px;
+$body-color: $jet;
+$link-color: $accent;
 
 /*-- scss:rules --*/
-.reveal h1, .reveal h2 { letter-spacing: -0.5px; }
+
+.reveal a { line-height: 1.5em; }
+
+.reveal p {
+  font-weight: 300;
+  margin-top: 1.1em;
+}
+
+// Title slide: left-aligned, airy
+#title-slide {
+  text-align: left;
+
+  .title {
+    color: $jet;
+    font-size: 1.4em;
+    font-weight: 300;
+  }
+  .subtitle {
+    color: $accent;
+    font-style: italic;
+    margin-top: 0em;
+    font-weight: 300;
+  }
+  .author, .quarto-title-author-name { color: $jet; font-weight: 300; }
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+    .quarto-title-author { padding-left: 0em; padding-right: 0em; width: 100%; }
+  }
+}
+
+.reveal h2 { font-weight: 300; font-size: 1.4em; }
+.reveal h3 { color: $accent; font-style: italic; font-weight: 300; font-size: 0.95em; }
+.reveal h4 { color: $accent2; font-weight: 400; margin-top: 1.25em; }
+
+// Emphasis helpers: [text]{.alert}, [text]{.fg style="--col: #hex"}, [text]{.bg style="--col: #hex"}
+.alert { color: $accent2; }
+.fg { color: var(--col, $jet); }
+.bg { background-color: var(--col, #fff); padding: 0.1em; border-radius: 5px; display: inline-block; }
+
+// Lists: light weight, tinted markers, arrow sub-bullets
+.reveal ul {
+  font-weight: 300;
+  padding-left: 16px;
+  li::marker { color: mix($accent, white, 70%); }
+}
+.reveal ul ul {
+  list-style: none;
+  li:before {
+    content: $right-arrow;
+    color: mix($accent, white, 60%);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    margin-right: 0.5em;
+  }
+}
+.reveal ol {
+  font-weight: 300;
+  padding-left: 16px;
+  li::marker { color: $accent; }
+}
+
+// Quotes and images: flat and borderless
 .reveal blockquote {
-  border-left: 4px solid #2b6cb0;
-  background: #f5f8fc;
-  padding: 0.5em 1em;
-  font-style: normal;
+  border-left: 3px solid mix($accent, white, 50%);
+  background: transparent;
+  padding: 0.4em 1em;
+  font-style: italic;
+  font-weight: 300;
 }
 .reveal section img { border: none; box-shadow: none; }
 
-// Chrome: keep counters, footer, and progress quiet
-.reveal .slide-number { font-size: 0.55em; color: #9aa1ab; background: transparent; }
-.reveal .footer { font-size: 0.42em; color: #b3b9c2; letter-spacing: 0.03em; }
-.reveal .progress { color: #C8102E; height: 4px; }
-
-// Title slide: cardinal accent under the title, muted subtitle/author
-#title-slide .title {
-  border-bottom: 4px solid #C8102E;
-  display: inline-block;
-  padding-bottom: 0.15em;
-  margin-bottom: 0.4em;
-}
-#title-slide .subtitle { color: #C8102E; font-weight: 600; }
-#title-slide .quarto-title-author-name, #title-slide p.author { color: #5a6472; }
-
-// Section-divider slides (# Takeaway {.center})
-.reveal .slide section > h1, .reveal h1 { color: #1a2a4f; }
+// Tables: borderless with header and bottom rules
+.reveal table { margin: auto; border-collapse: collapse; border-spacing: 0; font-size: 0.8em; }
+.reveal table th, .reveal table td { border: none; padding: 0.23em; text-align: left; font-weight: 300; }
+.reveal table thead th, .reveal .slides table tr:last-child td, .reveal .slides table { border-bottom: 2px solid #D3D3D3; }
+.reveal table thead th { font-weight: 500; }
 
 // Code cells: soft card look
 .reveal pre { box-shadow: none; }
-.reveal pre code {
-  background: #f6f8fa;
-  border: 1px solid #e4e8ee;
-  border-radius: 8px;
-  padding: 0.6em 0.8em;
-}
+.reveal pre code { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.6em 0.8em; }
 
-// OJS inputs (sliders in live slides): readable label size
+// Chrome: quiet counters/footer, cardinal progress
+.reveal .slide-number { font-size: 0.55em; color: #9aa1ab; background: transparent; }
+.reveal .footer { font-size: 0.42em; color: #b3b9c2; letter-spacing: 0.03em; }
+.reveal .progress { color: $accent2; height: 4px; }
+
+// Menu + chalkboard buttons tucked top right (clean-theme convention)
+.reveal .slide-menu-button {
+  position: fixed; top: 6px; right: 0;
+  display: flex; justify-content: flex-end; align-items: flex-start;
+  pointer-events: none;
+}
+.reveal .slide-menu-button > * { pointer-events: auto; }
+.reveal .slide-chalkboard-buttons {
+  position: fixed; top: 12px; right: 24px;
+  display: flex; justify-content: flex-end; align-items: flex-start;
+  pointer-events: none;
+}
+.reveal .slide-chalkboard-buttons > * { pointer-events: auto; }
+
+// OJS inputs (live slider slides): readable label size
 .reveal form.oi-3a86ea, .reveal .ojs-in-a-box-waiting-for-module-import { font-size: 0.65em; }
