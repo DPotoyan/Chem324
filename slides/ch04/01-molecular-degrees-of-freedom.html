@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Davit Potoyan">
-  <title>Molecular Degrees of Freedom</title>
+  <title>Molecular Degrees of Freedom and Classical Vibrations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,7 +132,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Molecular Degrees of Freedom</h1>
+  <h1 class="title">Molecular Degrees of Freedom and Classical Vibrations</h1>
   <p class="subtitle">Chem 3240 · Lecture 4.1</p>
 
 <div class="quarto-title-authors">
@@ -144,139 +144,170 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="where-we-are-headed" class="slide level2">
-<h2>Where we are headed</h2>
-<p>Bound systems have <strong>quantized</strong> energy.</p>
-<div class="fragment">
-<p>Next: how each kind of motion is quantized, and how <strong>spectroscopy</strong> probes it.</p>
-</div>
-<div class="fragment">
-<p>Toy models map onto real motions:</p>
-<ul>
-<li class="fragment"><strong>Particle in a box</strong> → translation</li>
-<li class="fragment"><strong>Harmonic oscillator</strong> → vibration</li>
-<li class="fragment"><strong>Rigid rotor</strong> → rotation</li>
-</ul>
-</div>
-</section>
-<section id="four-kinds-of-molecular-motion" class="slide level2">
-<h2>Four kinds of molecular motion</h2>
+<section id="a-molecule-is-four-motions-at-once" class="slide level2">
+<h2>A molecule is four motions at once</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/mol-DOF.jpg"></p>
+<p><img data-src="../../ch04/images/mol-DOF.jpg" style="width:95.0%"></p>
 </div><div class="column" style="width:50%;">
-<p>A molecule’s energy splits into independent pieces:</p>
-<p><span class="math display">\[E = \epsilon_{trans} + \epsilon_{rot} + \epsilon_{vib} + \epsilon_{elec}\]</span></p>
-<div class="fragment">
-<p>Each kind of motion is <strong>quantized differently</strong>.</p>
-</div>
+<ul>
+<li class="fragment"><strong>Translation</strong>: the molecule flies</li>
+<li class="fragment"><strong>Rotation</strong>: it tumbles</li>
+<li class="fragment"><strong>Vibration</strong>: bonds stretch and bend</li>
+<li class="fragment"><strong>Electronic</strong>: electrons rearrange</li>
+</ul>
 </div></div>
 </section>
-<section id="different-spacings-different-spectroscopy" class="slide level2">
-<h2>Different spacings, different spectroscopy</h2>
+<section id="each-motion-has-its-own-energy-ladder" class="slide level2">
+<h2>Each motion has its own energy ladder</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/Levels1.gif"></p>
+<p><img data-src="../../ch04/images/Levels1.gif" style="width:95.0%"></p>
 </div><div class="column" style="width:55%;">
-<div class="fragment">
-<p>Boundary conditions set the <strong>level spacing</strong>.</p>
-</div>
-<div class="fragment">
-<p>Electronic ≫ vibrational ≫ rotational ≫ translational.</p>
-</div>
-<div class="fragment">
-<p>Each scale → its <strong>own spectroscopy</strong>.</p>
-</div>
+<p><span class="math display">\[E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}\]</span></p>
+<ul>
+<li class="fragment">Level spacings differ by <strong>orders of magnitude</strong></li>
+<li class="fragment">That is why <strong>different spectroscopies</strong> exist: microwave for rotation, infrared for vibration, UV-Vis for electrons</li>
+</ul>
 </div></div>
 </section>
-<section id="counting-3n-nuclear-coordinates" class="slide level2">
-<h2>Counting: 3N nuclear coordinates</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/point_extended.png"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math inline">\(N\)</span> nuclei, each with <span class="math inline">\(x, y, z\)</span>:</p>
-<p><span class="math display">\[3N \text{ total degrees of freedom}\]</span></p>
-<div class="fragment">
-<p><strong>Born–Oppenheimer</strong>: separate nuclei from electrons.</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\hat{H} = \sum_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_{R_i}^2 + E(R_1,\dots,R_N)\]</span></p>
-</div>
-</div></div>
-</section>
-<section id="splitting-the-hamiltonian" class="slide level2">
-<h2>Splitting the Hamiltonian</h2>
-<p>The nuclear motion separates into three parts:</p>
+<section id="separating-the-hamiltonian" class="slide level2">
+<h2>Separating the Hamiltonian</h2>
+<ul>
+<li class="fragment">Born-Oppenheimer separates nuclei from electrons, leaving</li>
+</ul>
 <p><span class="math display">\[\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}\]</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\(\hat{H}_{tr}\)</span>, <span class="math inline">\(\hat{H}_{rot}\)</span>: <strong>no potential</strong></li>
-<li class="fragment"><span class="math inline">\(\hat{H}_{vib}\)</span>: carries the potential <span class="math inline">\(E\)</span> between nuclei</li>
+<li class="fragment">Separation means the wavefunction <strong>factorizes</strong>:</li>
 </ul>
 <div class="fragment">
-<p>Separation lets the wavefunction <strong>factorize</strong>:</p>
 <p><span class="math display">\[\psi = \psi_{tr}\,\psi_{rot}\,\psi_{vib}\]</span></p>
 </div>
-</section>
-<section id="three-schrödinger-equations" class="slide level2">
-<h2>Three Schrödinger equations</h2>
-<p><span class="math display">\[\hat{H}_{tr}\psi_{tr} = E_{tr}\psi_{tr}\]</span></p>
-<p><span class="math display">\[\hat{H}_{rot}\psi_{rot} = E_{rot}\psi_{rot}\]</span></p>
-<p><span class="math display">\[\hat{H}_{vib}\psi_{vib} = E_{vib}\psi_{vib}\]</span></p>
-<div class="fragment">
-<p><strong>Translation</strong>: no boundary condition → continuous spectrum.</p>
-</div>
-<div class="fragment">
-<p><strong>Rotation</strong> (cyclic boundary) and <strong>vibration</strong> (potential <span class="math inline">\(E\)</span>) → <strong>quantized</strong>.</p>
-</div>
-</section>
-<section id="bookkeeping-the-degrees-of-freedom" class="slide level2">
-<h2>Bookkeeping the degrees of freedom</h2>
-<p>Start with <span class="math inline">\(3N\)</span>, then subtract:</p>
 <ul>
-<li class="fragment"><p><strong>Translation</strong>: always <span class="math inline">\(3\)</span> → leaves <span class="math inline">\(3N - 3\)</span></p></li>
-<li class="fragment"><p><strong>Rotation</strong>: <span class="math inline">\(3\)</span> nonlinear, <span class="math inline">\(2\)</span> linear</p></li>
-<li class="fragment"><p><strong>Vibration</strong>: whatever remains</p>
-<ul>
-<li class="fragment">Nonlinear: <span class="math inline">\(3N - 6\)</span></li>
-<li class="fragment">Linear: <span class="math inline">\(3N - 5\)</span></li>
-</ul></li>
+<li class="fragment">One hard problem becomes <strong>three toy models</strong>: particle in a box, rigid rotor, harmonic oscillator</li>
 </ul>
 </section>
-<section id="at-a-glance" class="slide level2">
-<h2>At a glance</h2>
+<section id="counting-the-coordinates" class="slide level2">
+<h2>Counting the coordinates</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(N\)</span> nuclei carry <span class="math inline">\(3N\)</span> coordinates</li>
+<li class="fragment"><strong>Translation</strong> always takes 3</li>
+<li class="fragment"><strong>Rotation</strong> takes 3, or only 2 for a <strong>linear</strong> molecule</li>
+<li class="fragment"><strong>Vibrations</strong> get the rest: <span class="math inline">\(3N-6\)</span> (nonlinear) or <span class="math inline">\(3N-5\)</span> (linear)</li>
+</ul>
+<div class="fragment">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th></th>
-<th style="text-align: center;">Translation</th>
-<th style="text-align: center;">Rotation</th>
-<th style="text-align: center;">Vibration</th>
+<th>molecule</th>
+<th><span class="math inline">\(3N\)</span></th>
+<th>trans</th>
+<th>rot</th>
+<th>vib</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Linear</strong></td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"><span class="math inline">\(3N-5\)</span></td>
+<td>H<span class="math inline">\(_2\)</span>O</td>
+<td>9</td>
+<td>3</td>
+<td>3</td>
+<td><strong>3</strong></td>
 </tr>
 <tr class="even">
-<td><strong>Nonlinear</strong></td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;"><span class="math inline">\(3N-6\)</span></td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>9</td>
+<td>3</td>
+<td>2</td>
+<td><strong>4</strong></td>
+</tr>
+<tr class="odd">
+<td>benzene</td>
+<td>36</td>
+<td>3</td>
+<td>3</td>
+<td><strong>30</strong></td>
 </tr>
 </tbody>
 </table>
-<div class="fragment">
-<p>Linear molecules have <strong>one fewer</strong> rotation, so <strong>one more</strong> vibration.</p>
 </div>
+</section>
+<section id="the-classical-harmonic-oscillator" class="slide level2">
+<h2>The classical harmonic oscillator</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../../ch04/images/harm-osc1.png" style="width:95.0%"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Bead on a spring: displacement <span class="math inline">\(x\)</span> meets a <strong>restoring force</strong></li>
+</ul>
+<p><span class="math display">\[F=-kx\]</span></p>
+<ul>
+<li class="fragment"><strong>Hooke’s law</strong>; <span class="math inline">\(k\)</span> is the spring stiffness</li>
+</ul>
+</div></div>
+</section>
+<section id="solving-the-motion" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Solving the motion</h2>
+<p><span class="math display">\[m \ddot x+kx = 0\]</span></p>
+</section>
+<section id="solving-the-motion-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Solving the motion</h2>
+<p><span class="math display">\[m \ddot x+kx = 0 \quad\Longrightarrow\quad \ddot{x}+\omega^2 x =0, \qquad \omega=\sqrt{\frac{k}{m}}\]</span></p>
+<ul>
+<li>Stiffer spring: <strong>faster</strong> oscillation; heavier mass: <strong>slower</strong></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[x(t)= A \sin(\omega t+\phi)\]</span></p>
+</div>
+<div class="fragment">
+<p>Amplitude <span class="math inline">\(A\)</span> and phase <span class="math inline">\(\phi\)</span> come from <strong>initial conditions</strong></p>
+</div>
+</section>
+<section id="energy-sloshes-but-is-conserved" class="slide level2">
+<h2>Energy sloshes but is conserved</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../ch04/images/ext_shm_graphs.gif" style="width:90.0%"></p>
+</div><div class="column" style="width:60%;">
+<p><span class="math display">\[V(x) = \frac{kx^2}{2}, \qquad E=\frac{p^2}{2m} + \frac{kx^2}{2}\]</span></p>
+<ul>
+<li class="fragment">Kinetic and potential energy <strong>interconvert</strong> at frequency <span class="math inline">\(\omega\)</span></li>
+<li class="fragment">This total energy becomes the quantum <strong>Hamiltonian</strong> next lecture</li>
+</ul>
+</div></div>
+</section>
+<section id="a-diatomic-is-one-bead-in-disguise" class="slide level2">
+<h2>A diatomic is one bead in disguise</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../ch04/images/osc-2.jpeg" style="width:90.0%"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Two masses, one spring: the center of mass <strong>moves freely</strong></li>
+<li class="fragment">Relative coordinate obeys the one-bead equation with the <strong>reduced mass</strong></li>
+</ul>
+<p><span class="math display">\[\mu=\frac{m_1 m_2}{m_1+m_2}, \qquad \omega = \sqrt{\frac{k}{\mu}}\]</span></p>
+</div></div>
+</section>
+<section id="why-harmonic-taylor-says-so" class="slide level2">
+<h2>Why harmonic? Taylor says so</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="../../ch04/images/harm_approx.png" style="width:95.0%"></p>
+</div><div class="column" style="width:55%;">
+<p><span class="math display">\[U(x) = \frac{1}{2}k(x-x_0)^2+\frac{\gamma}{3!}(x-x_0)^3+...\]</span></p>
+<ul>
+<li class="fragment">Near any minimum the <strong>quadratic term dominates</strong></li>
+<li class="fragment"><span class="math inline">\(k = U''(x_0)\)</span>: curvature of the true potential</li>
+<li class="fragment">Higher terms are the <strong>anharmonicity</strong></li>
+</ul>
+</div></div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A molecule has <span class="math inline">\(3N\)</span> degrees of freedom: <span class="math inline">\(3\)</span> translation, <span class="math inline">\(2\)</span> or <span class="math inline">\(3\)</span> rotation, the rest (<span class="math inline">\(3N-5\)</span> or <span class="math inline">\(3N-6\)</span>) vibration. Born–Oppenheimer separation factorizes the motion, and boundary conditions decide which parts are quantized and how spectroscopy probes them.</p>
+<p>Molecular motion separates into translation, rotation, vibration, and electronic parts, with <span class="math inline">\(3N-6\)</span> (or <span class="math inline">\(3N-5\)</span>) vibrations. Each vibration is classically a harmonic oscillator: <span class="math inline">\(\ddot{x} = -\omega^2 x\)</span>, <span class="math inline">\(\omega = \sqrt{k/\mu}\)</span>, <span class="math inline">\(E = \frac{p^2}{2\mu} + \frac{kx^2}{2}\)</span>, valid because every smooth potential is a parabola near its minimum.</p>
 </blockquote>
 
 </section>

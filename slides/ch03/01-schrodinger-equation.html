@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Davit Potoyan">
-  <title>The Schrödinger Equation</title>
+  <title>The Schrödinger Equation and the Wavefunction</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,7 +132,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The Schrödinger Equation</h1>
+  <h1 class="title">The Schrödinger Equation and the Wavefunction</h1>
   <p class="subtitle">Chem 3240 · Lecture 3.1</p>
 
 <div class="quarto-title-authors">
@@ -144,175 +144,150 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="entering-the-quantum-world" class="slide level2">
-<h2>Entering the quantum world</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
+<section id="why-a-new-equation" class="slide level2">
+<h2>Why a new equation?</h2>
 <ul>
 <li class="fragment"><strong>Classical mechanics fails</strong> at atomic scales</li>
-<li class="fragment">Need a new equation explaining <strong>energy quantization</strong> and <strong>wave-particle duality</strong></li>
-<li class="fragment"><strong>Schrödinger’s Equation</strong> is a <em>fundamental law</em>: postulated, not derived</li>
-<li class="fragment">Never failed when applied correctly</li>
+<li class="fragment">Experiments demand: <strong>energy quantization</strong> and <strong>wave-particle duality</strong></li>
+<li class="fragment">Schrödinger’s equation is a <strong>fundamental law</strong>: postulated, not derived</li>
+<li class="fragment">It has <strong>never failed</strong> when applied correctly</li>
 </ul>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../../ch03/images/SE_intro.jpeg"></p>
-</div></div>
 </section>
-<section id="from-a-wave-to-a-quantum-wave" class="slide level2">
-<h2>From a wave to a quantum wave</h2>
-<div class="fragment">
-<p>Start with a traveling wave: <span class="math display">\[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
-</div>
-<div class="fragment">
-<p>Insert the <strong>de Broglie</strong> and <strong>Planck</strong> relations: <span class="math display">\[p = \hbar k \qquad E = \hbar\omega\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>Quantum wave function:</strong> <span class="math display">\[\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}\]</span></p>
-</div>
+<section id="from-classical-waves-to-quantum-waves" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">From classical waves to quantum waves</h2>
+<p><span class="math display">\[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
 </section>
-<section id="what-equation-generates-it" class="slide level2">
-<h2>What equation generates it?</h2>
-<div class="fragment">
-<p><strong>Time part</strong> returns total energy: <span class="math display">\[\frac{\partial \Psi}{\partial t} = -\frac{i}{\hbar} E\, \Psi\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>Spatial part</strong> returns kinetic energy: <span class="math display">\[\frac{\partial^2 \Psi}{\partial x^2} = -\frac{2m(E - V)}{\hbar^2}\, \Psi\]</span></p>
-</div>
-<div class="fragment">
-<p>Combine via <span class="math inline">\(K = E - V\)</span> to eliminate <span class="math inline">\(E\)</span>.</p>
-</div>
-</section>
-<section id="time-dependent-schrödinger-equation" class="slide level2">
-<h2>Time-Dependent Schrödinger Equation</h2>
-<div class="fragment">
-<p><span class="math display">\[-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x)\,\Psi = i\hbar \frac{\partial \Psi}{\partial t}\]</span></p>
-</div>
+<section id="from-classical-waves-to-quantum-waves-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">From classical waves to quantum waves</h2>
+<p><span class="math display">\[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
 <ul>
-<li class="fragment">Describes evolution of <span class="math inline">\(\Psi(x,t)\)</span> in a potential <span class="math inline">\(V(x)\)</span></li>
-<li class="fragment">Only a <strong>single time derivative</strong> (unlike the classical wave equation)</li>
+<li>Insert <strong>de Broglie</strong>: <span class="math inline">\(p = \hbar k\)</span></li>
+<li>Insert <strong>Planck</strong>: <span class="math inline">\(E = \hbar \omega\)</span></li>
+</ul>
+<p><span class="math display">\[\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}\]</span></p>
+<div class="fragment">
+<p>What equation generates such waves? Differentiate and see.</p>
+</div>
+</section>
+<section id="the-time-dependent-schrödinger-equation" class="slide level2">
+<h2>The time-dependent Schrödinger equation</h2>
+<p><span class="math display">\[
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+\]</span></p>
+<ul>
+<li class="fragment">Only a <strong>single time derivative</strong>, unlike the classical wave equation</li>
 <li class="fragment">The <span class="math inline">\(i\)</span> makes solutions <strong>oscillate in the complex plane</strong></li>
+<li class="fragment">Kinetic + potential on the left, <strong>total energy flow</strong> on the right</li>
 </ul>
 </section>
-<section id="anatomy-of-the-equation" class="slide level2">
-<h2>Anatomy of the equation</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/SE-image.png"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment"><strong>Kinetic</strong> + <strong>potential</strong> = total energy flow</li>
-<li class="fragment"><span class="math inline">\(\Psi\)</span> is generally <strong>complex</strong>: not directly measurable</li>
-<li class="fragment">1D shown; 3D adds <span class="math inline">\(y, z\)</span> terms</li>
-</ul>
-</div></div>
-</section>
-<section id="separation-of-variables" class="slide level2">
+<section id="separation-of-variables" class="slide level2 smaller">
 <h2>Separation of variables</h2>
+<p><span class="math display">\[\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}\]</span></p>
+<ul>
+<li class="fragment">Time part: a rotating <strong>phase clock</strong> at rate <span class="math inline">\(E/\hbar\)</span></li>
+<li class="fragment">Spatial part: the <strong>time-independent Schrödinger equation</strong></li>
+</ul>
 <div class="fragment">
-<p>Assume <span class="math inline">\(\Psi(x,t) = \psi(x)\,T(t)\)</span>.</p>
+<p><span class="math display">\[
+-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
+\]</span></p>
 </div>
 <div class="fragment">
-<p>Time part is a simple oscillation: <span class="math display">\[\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}\]</span></p>
+<p>The hard part is finding <span class="math inline">\(\psi(x)\)</span>; the potential <span class="math inline">\(V(x)\)</span> defines the system</p>
+</div>
+</section>
+<section id="what-does-the-wavefunction-mean" class="slide level2">
+<h2>What does the wavefunction mean?</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\psi\)</span> is complex: <strong>no direct physical meaning</strong></li>
+<li class="fragment">The <strong>Born rule</strong> extracts the measurable content:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[p(x) = \psi^{*}(x)\,\psi(x) = |\psi(x)|^2\]</span></p>
 </div>
 <ul>
-<li class="fragment">The <strong>hard part</strong> is finding <span class="math inline">\(\psi(x)\)</span>, set by the potential <span class="math inline">\(V(x)\)</span></li>
+<li class="fragment"><span class="math inline">\(|\psi(x)|^2\,dx\)</span> = probability of finding the particle in <span class="math inline">\([x, x+dx]\)</span></li>
 </ul>
 </section>
-<section id="time-independent-schrödinger-equation" class="slide level2">
-<h2>Time-Independent Schrödinger Equation</h2>
-<div class="fragment">
-<p><span class="math display">\[-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x)\,\psi = E\,\psi\]</span></p>
-</div>
+<section id="wavefunctions-must-be-normalized" class="slide level2">
+<h2>Wavefunctions must be normalized</h2>
+<p><span class="math display">\[\int^{+\infty}_{-\infty} |\psi(x)|^2\, dx = 1\]</span></p>
 <ul>
-<li class="fragment">Gives the <strong>stationary states</strong> of the system</li>
-<li class="fragment">Our <strong>primary focus</strong> for the rest of the course</li>
+<li class="fragment">The particle is <strong>somewhere</strong>: total probability is 1</li>
+<li class="fragment">Normalization fixes the constant in <span class="math inline">\(\psi = N\psi'\)</span></li>
+<li class="fragment">Probability in a region: <span class="math inline">\(P(a&lt;x&lt;b)=\displaystyle\int_a^b |\psi|^2 dx\)</span></li>
 </ul>
 </section>
 <section id="operators-the-language-of-qm" class="slide level2">
 <h2>Operators: the language of QM</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/SE_intro3.jpg"></p>
-</div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment">An <strong>operator</strong> <span class="math inline">\(\hat{A}\)</span> transforms a function into another</li>
-<li class="fragment">Differentiate, multiply, integrate, … ::: {.fragment}</li>
-<li class="fragment">The SE is <strong>linear</strong>: <span class="math display">\[\hat{A}[c_1 f_1 + c_2 f_2] = c_1\hat{A}f_1 + c_2\hat{A}f_2\]</span></li>
+<li class="fragment">Every observable gets an <strong>operator</strong> that acts on <span class="math inline">\(\psi\)</span></li>
 </ul>
-</div></div>
-<p>::::</p>
-</section>
-<section id="the-hamiltonian" class="slide level2">
-<h2>The Hamiltonian</h2>
-<div class="fragment">
-<p><strong>Classical</strong> total energy: <span class="math display">\[H(x,p) = \frac{p^2}{2m} + V(x)\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>Quantum</strong> Hamiltonian operator: <span class="math display">\[\hat{H} = \hat{K} + \hat{V} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)\]</span></p>
-</div>
-<div class="fragment">
-<p>The SE in operator form: <span class="math display">\[\hat{H}\psi = i\hbar \frac{\partial \psi}{\partial t}\]</span></p>
-</div>
-</section>
-<section id="correspondence-principle" class="slide level2">
-<h2>Correspondence principle</h2>
-<div class="fragment">
-<p>Every classical observable has a <strong>quantum operator</strong>:</p>
-</div>
-<div class="fragment">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Observable</th>
-<th style="text-align: center;">Classical</th>
-<th style="text-align: center;">Quantum</th>
+<th>Observable</th>
+<th>Operator</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Position</td>
-<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{x}=x\)</span></td>
+<td>position</td>
+<td><span class="math inline">\(\hat{x} = x\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Momentum</td>
-<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{p}=-i\hbar \frac{\partial}{\partial x}\)</span></td>
+<td>momentum</td>
+<td><span class="math inline">\(\hat{p} = -i\hbar\,\partial/\partial x\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Kinetic energy</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{p^2}{2m}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{K}=\frac{\hat{p}^2}{2m}\)</span></td>
+<td>kinetic energy</td>
+<td><span class="math inline">\(\hat{K} = \hat{p}^2/2m\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Total energy</td>
-<td style="text-align: center;"><span class="math inline">\(H\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{H}=\hat{K}+\hat{V}\)</span></td>
+<td>total energy</td>
+<td><span class="math inline">\(\hat{H} = \hat{K} + \hat{V}\)</span></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="the-hamiltonian" class="slide level2">
+<h2>The Hamiltonian</h2>
+<p><span class="math display">\[
+\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+\]</span></p>
+<ul>
+<li class="fragment">Quantum analog of the classical total energy <span class="math inline">\(H = \frac{p^2}{2m} + V(x)\)</span></li>
+<li class="fragment">The Schrödinger equation in one line:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\hat{H}\psi = E\psi\]</span></p>
 </div>
+</section>
+<section id="expectation-values" class="slide level2">
+<h2>Expectation values</h2>
+<ul>
+<li class="fragment">Predictions are <strong>probability-weighted averages</strong>:</li>
+</ul>
+<p><span class="math display">\[\langle A \rangle = \int \psi^{*}(x)\, \hat{A}\, \psi(x)\, dx\]</span></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\langle x \rangle\)</span>: mean position, <span class="math inline">\(\langle p \rangle\)</span>: mean momentum</li>
+<li class="fragment">Variance <span class="math inline">\(\sigma^2 = \langle A^2\rangle - \langle A\rangle^2\)</span> measures the <strong>spread</strong> of measurements</li>
+</ul>
 </section>
 <section id="eigenvalues-and-eigenfunctions" class="slide level2">
 <h2>Eigenvalues and eigenfunctions</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<p><img data-src="../../ch03/images/SE_intro6.jpg"></p>
-</div><div class="column" style="width:52%;">
-<div class="fragment">
-<p>The TI-SE is an <strong>eigenvalue problem</strong>: <span class="math display">\[\boxed{\hat{H} \psi_n = E_n \psi_n}\]</span></p>
-</div>
+<p><span class="math display">\[\boxed{\hat{H} \psi_n = E_n \psi_n}\]</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\(\psi_n\)</span>: <strong>eigenfunctions</strong> (wave functions)</li>
-<li class="fragment"><span class="math inline">\(E_n\)</span>: <strong>eigenvalues</strong> (energies)</li>
-<li class="fragment">General state: <span class="math inline">\(\psi = \sum_n c_n \psi_n f_n(t)\)</span></li>
+<li class="fragment"><span class="math inline">\(\psi_n\)</span>: <strong>eigenfunctions</strong>, the stationary states</li>
+<li class="fragment"><span class="math inline">\(E_n\)</span>: <strong>eigenvalues</strong>, the allowed energies</li>
+<li class="fragment">Boundary conditions make the spectrum <strong>discrete</strong></li>
+<li class="fragment">Linearity: superpositions <span class="math inline">\(\psi = \sum_n c_n \psi_n\)</span> also solve the equation</li>
 </ul>
-</div></div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Solving a quantum system means finding the eigenfunctions <span class="math inline">\(\psi_n\)</span> and eigenvalues <span class="math inline">\(E_n\)</span> of its Hamiltonian: <span class="math inline">\(\hat{H}\psi_n = E_n \psi_n\)</span>.</p>
+<p>The Schrödinger equation <span class="math inline">\(\hat{H}\psi = E\psi\)</span> is the quantum equation of motion. Its solutions are wavefunctions whose square <span class="math inline">\(|\psi|^2\)</span> gives probabilities, whose operators give expectation values <span class="math inline">\(\langle A \rangle = \int \psi^*\hat{A}\psi\,dx\)</span>, and whose eigenvalues are the quantized energies.</p>
 </blockquote>
 
 </section>
