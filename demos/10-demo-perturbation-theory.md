@@ -15,6 +15,7 @@ pyproject: |
   dependencies = [
       "numpy",
       "matplotlib",
+      "scipy",
   ]
 ---
 ```
@@ -27,7 +28,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams["figure.dpi"] = 150
 from scipy.integrate import quad
-from ipywidgets import interact
 ```
 
 
@@ -211,9 +211,21 @@ def plot_energy_and_wavefunctions(a=1, n=1):
     
     plt.tight_layout()
     plt.show()
+```
 
-# Create interactive sliders
-interact(plot_energy_and_wavefunctions, a=(0, 25, 1), n=(1, 5, 1))
+```{marimo} python
+:hide-code: true
+
+a_p1 = mo.ui.slider(0, 25, step=1, value=10, show_value=True, label="perturbation strength a")
+n_p1 = mo.ui.slider(1, 5, step=1, value=1, show_value=True, label="state n")
+mo.hstack([a_p1, n_p1], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+plot_energy_and_wavefunctions(a=a_p1.value, n=n_p1.value)
+plt.gcf()
 ```
 
 ### Insights into Molecular Orbtials and Bonding from pertrubation theory perspective
@@ -307,7 +319,18 @@ def plot_energy_levels(delta_E=2.0, H_AB=0.5):
     ax.legend()
     ax.grid(True)
     plt.show()
+```
 
-# Create interactive sliders
-interact(plot_energy_levels, delta_E=(-5.0, 5.0, 0.1), H_AB=5)
+```{marimo} python
+:hide-code: true
+
+dE_p2 = mo.ui.slider(-5.0, 5.0, step=0.1, value=0.0, show_value=True, label="energy gap ΔE = E_A - E_B")
+dE_p2
+```
+
+```{marimo} python
+:hide-code: true
+
+plot_energy_levels(delta_E=dE_p2.value, H_AB=5)
+plt.gcf()
 ```

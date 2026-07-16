@@ -95,28 +95,31 @@ def T_n(t, n):
 
     return np.exp(-1j * En * t / hbar)
 
-def psi_combined(x, t, L, c1=1, c2=1, n1=1, n2=2):
-    """Time-dependent wavefunction for a linear superposition of two states of PIB"""
+def psi_combined(x, t, c1=1, c2=1, n1=1, n2=2):
+    """Time-dependent wavefunction for a normalized superposition of two PIB states."""
 
-    return c1 * psi_n(x, n1) * T_n(t, n1) + c2 * psi_n(x, n2) * T_n(t, n2)
+    norm = np.sqrt(c1**2 + c2**2)
+
+    return (c1 * psi_n(x, n1) * T_n(t, n1) + c2 * psi_n(x, n2) * T_n(t, n2)) / norm
 ```
 
 ```{marimo} python
-def plot_wavefunction(t=0, c1=1, c2=1, n1=1, n2=1):
+def plot_wavefunction(t=0, c1=1, c2=1, n1=1, n2=2):
 
     L = 1.0
     x = np.linspace(0, L, 1000)
 
-    psi_squared_x = np.abs(psi_combined(x, t, c1, c2, n1, n2))**2
+    psi_squared_x = np.abs(psi_combined(x, t, c1=c1, c2=c2, n1=n1, n2=n2))**2
 
-    plt.plot(x, psi_squared_x )
+    plt.plot(x, psi_squared_x, color="#3d81f6", lw=2)
+    plt.fill_between(x, psi_squared_x, alpha=0.2, color="#3d81f6")
 
-    plt.title(f"Probability density at t={t:.2f} with c1={c1:.2f} and c2={c2:.2f}")
+    plt.title(f"$|\\Psi(x,t)|^2$ for states n={n1} and n={n2} at t={t:.2f}")
     plt.xlabel('x')
-    plt.ylabel('$|\Psi(x, t)|^2$')
-    plt.grid(True)
-    plt.ylim([0, 10])  # Adjust the y limit to suit the range of the probability density
-    plt.show()
+    plt.ylabel(r'$|\Psi(x, t)|^2$')
+    plt.grid(True, alpha=0.4)
+    plt.ylim([0, 4.5])
+    plt.gcf()
 ```
 
 ```{marimo} python
@@ -133,6 +136,8 @@ mo.hstack([t_qw, n2_qw], justify="start", gap=2)
 plot_wavefunction(t=t_qw.value, c1=1, c2=1, n1=1, n2=n2_qw.value)
 plt.gcf()
 ```
+
+- Drag the **time slider** and watch the probability sloshing between the two walls: the interference term beats at the frequency $(E_{n_2} - E_1)/\hbar$. Raising $n_2$ makes the pattern richer and the beat faster. A single eigenstate would sit perfectly still; motion in quantum mechanics lives in superpositions.
 ### Normalization is time independent!
 
 - Certain quantities remain invariant under time evolution. For instance, it is natural to expect that normalization does not change over time: the particle must always be located somewhere within the box at any given moment.
@@ -210,5 +215,6 @@ Wavefunction dynamics in a Gaussian potential, showing the probability density a
 Wavefunction dynamics in a barrier potential, showing the probability density along with the real and imaginary parts.
 :::
 
-
-
+:::{seealso} Chapter demos
+Computational lab for this chapter: [Numerical Schrödinger solver](../demos/07-demo-numerical-schrodinger.md)
+:::

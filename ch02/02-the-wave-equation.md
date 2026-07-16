@@ -648,8 +648,6 @@ This solution describes the vibration modes of a 2D rectangular membrane, with e
 :tags: [hide-input]
 import numpy as np  
 import matplotlib.pyplot as plt
-import ipywidgets
-from ipywidgets import interact, interactive, Dropdown
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
@@ -731,7 +729,7 @@ def viz_membrane2d_plotly(n=1, m=1, t=0):
     # Show the figure
     fig.show()
 
-interact(viz_membrane2d_plotly, n=(1,1), m=(2,3), t=(0,100))
+viz_membrane2d_plotly(n=2, m=3, t=0)
 ```
 
 ```{marimo} python

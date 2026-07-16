@@ -1,5 +1,5 @@
 ---
-title: "Molecular Degrees of Freedom"
+title: "Molecular Degrees of Freedom and Classical Vibrations"
 subtitle: "Chem 3240 · Lecture 4.1"
 author: "Davit Potoyan"
 format:
@@ -20,144 +20,141 @@ resources:
   - ../../ch04/images
 ---
 
-## Where we are headed
-
-Bound systems have **quantized** energy.
-
-::: {.fragment}
-Next: how each kind of motion is quantized, and how **spectroscopy** probes it.
-:::
-
-::: {.fragment}
-Toy models map onto real motions:
-
-- **Particle in a box** → translation
-- **Harmonic oscillator** → vibration
-- **Rigid rotor** → rotation
-:::
-
-## Four kinds of molecular motion
+## A molecule is four motions at once
 
 :::: {.columns}
-
 ::: {.column width="50%"}
-![](../../ch04/images/mol-DOF.jpg)
+![](../../ch04/images/mol-DOF.jpg){width="95%"}
 :::
-
 ::: {.column width="50%"}
-A molecule's energy splits into independent pieces:
-
-$$E = \epsilon_{trans} + \epsilon_{rot} + \epsilon_{vib} + \epsilon_{elec}$$
-
-::: {.fragment}
-Each kind of motion is **quantized differently**.
+- **Translation**: the molecule flies
+- **Rotation**: it tumbles
+- **Vibration**: bonds stretch and bend
+- **Electronic**: electrons rearrange
 :::
-:::
-
 ::::
 
-## Different spacings, different spectroscopy
+## Each motion has its own energy ladder
 
 :::: {.columns}
-
 ::: {.column width="45%"}
-![](../../ch04/images/Levels1.gif)
+![](../../ch04/images/Levels1.gif){width="95%"}
 :::
-
 ::: {.column width="55%"}
-::: {.fragment}
-Boundary conditions set the **level spacing**.
-:::
+$$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
 
-::: {.fragment}
-Electronic ≫ vibrational ≫ rotational ≫ translational.
+- Level spacings differ by **orders of magnitude**
+- That is why **different spectroscopies** exist: microwave for rotation, infrared for vibration, UV-Vis for electrons
 :::
-
-::: {.fragment}
-Each scale → its **own spectroscopy**.
-:::
-:::
-
 ::::
 
-## Counting: 3N nuclear coordinates
+## Separating the Hamiltonian
 
-:::: {.columns}
-
-::: {.column width="50%"}
-![](../../ch04/images/point_extended.png)
-:::
-
-::: {.column width="50%"}
-$N$ nuclei, each with $x, y, z$:
-
-$$3N \text{ total degrees of freedom}$$
-
-::: {.fragment}
-**Born–Oppenheimer**: separate nuclei from electrons.
-:::
-
-::: {.fragment}
-$$\hat{H} = \sum_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_{R_i}^2 + E(R_1,\dots,R_N)$$
-:::
-:::
-
-::::
-
-## Splitting the Hamiltonian
-
-The nuclear motion separates into three parts:
+- Born-Oppenheimer separates nuclei from electrons, leaving
 
 $$\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}$$
 
-- $\hat{H}_{tr}$, $\hat{H}_{rot}$: **no potential**
-- $\hat{H}_{vib}$: carries the potential $E$ between nuclei
+- Separation means the wavefunction **factorizes**:
 
 ::: {.fragment}
-Separation lets the wavefunction **factorize**:
-
 $$\psi = \psi_{tr}\,\psi_{rot}\,\psi_{vib}$$
 :::
 
-## Three Schrödinger equations
+- One hard problem becomes **three toy models**: particle in a box, rigid rotor, harmonic oscillator
 
-$$\hat{H}_{tr}\psi_{tr} = E_{tr}\psi_{tr}$$
+## Counting the coordinates
 
-$$\hat{H}_{rot}\psi_{rot} = E_{rot}\psi_{rot}$$
-
-$$\hat{H}_{vib}\psi_{vib} = E_{vib}\psi_{vib}$$
+- $N$ nuclei carry $3N$ coordinates
+- **Translation** always takes 3
+- **Rotation** takes 3, or only 2 for a **linear** molecule
+- **Vibrations** get the rest: $3N-6$ (nonlinear) or $3N-5$ (linear)
 
 ::: {.fragment}
-**Translation**: no boundary condition → continuous spectrum.
+| molecule | $3N$ | trans | rot | vib |
+|---|---|---|---|---|
+| H$_2$O | 9 | 3 | 3 | **3** |
+| CO$_2$ | 9 | 3 | 2 | **4** |
+| benzene | 36 | 3 | 3 | **30** |
+:::
+
+## The classical harmonic oscillator
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch04/images/harm-osc1.png){width="95%"}
+:::
+::: {.column width="50%"}
+- Bead on a spring: displacement $x$ meets a **restoring force**
+
+$$F=-kx$$
+
+- **Hooke's law**; $k$ is the spring stiffness
+:::
+::::
+
+## Solving the motion {auto-animate=true}
+
+$$m \ddot x+kx = 0$$
+
+## Solving the motion {auto-animate=true}
+
+$$m \ddot x+kx = 0 \quad\Longrightarrow\quad \ddot{x}+\omega^2 x =0, \qquad \omega=\sqrt{\frac{k}{m}}$$
+
+::: {.nonincremental}
+- Stiffer spring: **faster** oscillation; heavier mass: **slower**
 :::
 
 ::: {.fragment}
-**Rotation** (cyclic boundary) and **vibration** (potential $E$) → **quantized**.
+$$x(t)= A \sin(\omega t+\phi)$$
 :::
-
-## Bookkeeping the degrees of freedom
-
-Start with $3N$, then subtract:
-
-- **Translation**: always $3$ → leaves $3N - 3$
-
-- **Rotation**: $3$ nonlinear, $2$ linear
-
-- **Vibration**: whatever remains
-  - Nonlinear: $3N - 6$
-  - Linear: $3N - 5$
-
-## At a glance
-
-|              | Translation | Rotation | Vibration |
-|--------------|:-----------:|:--------:|:---------:|
-| **Linear**   | 3           | 2        | $3N-5$    |
-| **Nonlinear**| 3           | 3        | $3N-6$    |
 
 ::: {.fragment}
-Linear molecules have **one fewer** rotation, so **one more** vibration.
+Amplitude $A$ and phase $\phi$ come from **initial conditions**
 :::
+
+## Energy sloshes but is conserved
+
+:::: {.columns}
+::: {.column width="40%"}
+![](../../ch04/images/ext_shm_graphs.gif){width="90%"}
+:::
+::: {.column width="60%"}
+$$V(x) = \frac{kx^2}{2}, \qquad E=\frac{p^2}{2m} + \frac{kx^2}{2}$$
+
+- Kinetic and potential energy **interconvert** at frequency $\omega$
+- This total energy becomes the quantum **Hamiltonian** next lecture
+:::
+::::
+
+## A diatomic is one bead in disguise
+
+:::: {.columns}
+::: {.column width="40%"}
+![](../../ch04/images/osc-2.jpeg){width="90%"}
+:::
+::: {.column width="60%"}
+- Two masses, one spring: the center of mass **moves freely**
+- Relative coordinate obeys the one-bead equation with the **reduced mass**
+
+$$\mu=\frac{m_1 m_2}{m_1+m_2}, \qquad \omega = \sqrt{\frac{k}{\mu}}$$
+:::
+::::
+
+## Why harmonic? Taylor says so
+
+:::: {.columns}
+::: {.column width="45%"}
+![](../../ch04/images/harm_approx.png){width="95%"}
+:::
+::: {.column width="55%"}
+$$U(x) = \frac{1}{2}k(x-x_0)^2+\frac{\gamma}{3!}(x-x_0)^3+...$$
+
+- Near any minimum the **quadratic term dominates**
+- $k = U''(x_0)$: curvature of the true potential
+- Higher terms are the **anharmonicity**
+:::
+::::
 
 # Takeaway {.center}
 
-> A molecule has $3N$ degrees of freedom: $3$ translation, $2$ or $3$ rotation, the rest ($3N-5$ or $3N-6$) vibration. Born–Oppenheimer separation factorizes the motion, and boundary conditions decide which parts are quantized and how spectroscopy probes them.
+> Molecular motion separates into translation, rotation, vibration, and electronic parts, with $3N-6$ (or $3N-5$) vibrations. Each vibration is classically a harmonic oscillator: $\ddot{x} = -\omega^2 x$, $\omega = \sqrt{k/\mu}$, $E = \frac{p^2}{2\mu} + \frac{kx^2}{2}$, valid because every smooth potential is a parabola near its minimum.

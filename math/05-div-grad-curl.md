@@ -19,13 +19,44 @@ kernelspec:
 
 ### The del operator
 
-In Cartesian coordinates del is simply
+Del is a **vector operator**: a vector written in the same Cartesian basis $(\hat{x}, \hat{y}, \hat{z})$ as any other vector in the [linear algebra appendix](03-vectors-and-linear-algebra.md), except that its components are not numbers but **derivative instructions**, each waiting for a function to act on:
 
 $$
-\nabla = \left( \frac{\partial}{\partial x}, \; \frac{\partial}{\partial y}, \; \frac{\partial}{\partial z} \right),
+\nabla = \hat{x}\,\frac{\partial}{\partial x} + \hat{y}\,\frac{\partial}{\partial y} + \hat{z}\,\frac{\partial}{\partial z}.
 $$
 
-a vector whose components are "slope detectors" along each axis. Everything on this page is one object applied three ways: multiply it onto a scalar ($\nabla f$), dot it into a vector ($\nabla \cdot \mathbf{F}$), or cross it into a vector ($\nabla \times \mathbf{F}$).
+Because it is a vector, the three vector products you already know all apply to it, and each one produces a different kind of object. The mechanics are worth seeing once in components:
+
+:::{important} **One vector operator, three products**
+
+**Scalar in, vector out (gradient).** Acting on a scalar field $f$, each component derivative fills its slot, so the result has three components:
+
+$$
+\nabla f = \hat{x}\,\frac{\partial f}{\partial x} + \hat{y}\,\frac{\partial f}{\partial y} + \hat{z}\,\frac{\partial f}{\partial z} \qquad \text{(a vector)}
+$$
+
+**Dot product in, scalar out (divergence).** Dotting into a vector field $\mathbf{F} = F_x\hat{x} + F_y\hat{y} + F_z\hat{z}$ contracts the basis vectors pairwise ($\hat{x}\cdot\hat{x} = 1$, $\hat{x}\cdot\hat{y} = 0$, ...), so every direction cancels and a pure number field remains:
+
+$$
+\nabla \cdot \mathbf{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z} \qquad \text{(a scalar)}
+$$
+
+**Cross product in, vector out (curl).** Crossing follows the same determinant recipe as $\vec{a}\times\vec{b}$, so the result is again a vector:
+
+$$
+\nabla \times \mathbf{F} =
+\begin{vmatrix}
+\hat{x} & \hat{y} & \hat{z} \\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+F_x & F_y & F_z
+\end{vmatrix}
+= \hat{x}\left(\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}\right)
++ \hat{y}\left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right)
++ \hat{z}\left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right)
+$$
+:::
+
+One caution that will matter in quantum mechanics: $\nabla$ is an operator, so **order matters**. $\nabla f$ is a finished vector field, while $f\nabla$ is still hungry, an operator waiting for something to differentiate. Everything on this page is this one object applied three ways: multiply it onto a scalar ($\nabla f$), dot it into a vector ($\nabla \cdot \mathbf{F}$), or cross it into a vector ($\nabla \times \mathbf{F}$).
 
 ### 1. Gradient: the uphill compass
 
@@ -109,7 +140,7 @@ fig6.tight_layout()
 plt.show()
 ```
 
-One term tilts the function, two terms lean it further, and by a dozen terms the series has physically **moved** it. Now the quantum punchline: multiply the generator by $-i\hbar$ and you get the [momentum operator](../ch03/06-operators.md) $\hat{p} = -i\hbar\, d/dx$, so that
+One term tilts the function, two terms lean it further, and by a dozen terms the series has physically **moved** it. Now the quantum punchline: multiply the generator by $-i\hbar$ and you get the [momentum operator](../ch03/04-operators.md) $\hat{p} = -i\hbar\, d/dx$, so that
 
 $$
 e^{\,i a \hat{p} / \hbar}\, \psi(x) = \psi(x + a).
@@ -174,7 +205,7 @@ fig3.tight_layout()
 plt.show()
 ```
 
-This is a **vortex**: the same field a stirred cup of coffee has, and fluid dynamicists call $\boldsymbol{\omega} = \nabla \times \mathbf{v}$ the vorticity. Rotation is the curl's whole personality, and that connection survives into quantum mechanics: the operator that generates rotations is the [angular momentum](../ch04/05-angular-momentum.md) $\hat{L} = -i\hbar \, \mathbf{r} \times \nabla$, built from position crossed with the gradient exactly the way curl crosses del into a field.
+This is a **vortex**: the same field a stirred cup of coffee has, and fluid dynamicists call $\boldsymbol{\omega} = \nabla \times \mathbf{v}$ the vorticity. Rotation is the curl's whole personality, and that connection survives into quantum mechanics: the operator that generates rotations is the [angular momentum](../ch04/04-angular-momentum.md) $\hat{L} = -i\hbar \, \mathbf{r} \times \nabla$, built from position crossed with the gradient exactly the way curl crosses del into a field.
 
 **Magnetostatics is the curl picture**: Ampère's law $\nabla \times \mathbf{B} = \mu_0 \mathbf{J}$ says electric currents stir the magnetic field into closed loops around them.
 
@@ -275,7 +306,7 @@ Watch the trade: as the angle grows, divergence drains out of the field and reap
 
 Apply del twice, $\nabla^2 f = \nabla \cdot (\nabla f)$, and you get the **Laplacian**: a number that compares $f$ at a point with the average of its immediate neighbors. Positive $\nabla^2 f$ means "my neighbors are higher than me" (a dimple), negative means "I stick out" (a bump).
 
-The cleanest way to see this is the discrete stencil from [numerical calculus](../demos/10-demo-numerical-schrodinger.md):
+The cleanest way to see this is the discrete stencil from [numerical calculus](../demos/07-demo-numerical-schrodinger.md):
 
 $$
 \nabla^2 f \Big|_{x} \;\approx\; \frac{f(x+h) + f(x-h) - 2 f(x)}{h^2}
@@ -337,5 +368,5 @@ And now the payoff for this course: the Schrödinger equation's kinetic energy i
 | $\nabla^2 f$ | scalar to scalar | do I differ from my neighbors? | diffusion $\partial_t c = D\nabla^2 c$ | kinetic energy $-\tfrac{\hbar^2}{2m}\nabla^2$ |
 
 :::{seealso} Where these operators strike next
-The gradient-as-translation idea becomes the [momentum operator](../ch03/06-operators.md); the curl-as-rotation idea becomes [angular momentum](../ch04/05-angular-momentum.md); and the Laplacian stars in the [Schrödinger equation](../ch03/01-schrodinger-equation.md) and the [hydrogen atom](../ch05/01-hydrogenlike-atoms.md).
+The gradient-as-translation idea becomes the [momentum operator](../ch03/04-operators.md); the curl-as-rotation idea becomes [angular momentum](../ch04/04-angular-momentum.md); and the Laplacian stars in the [Schrödinger equation](../ch03/01-schrodinger-equation.md) and the [hydrogen atom](../ch05/01-hydrogenlike-atoms.md).
 :::

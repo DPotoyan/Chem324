@@ -244,13 +244,125 @@ $$
 (r_1 e^{i\phi_1})(r_2 e^{i\phi_2}) = r_1 r_2\, e^{i(\phi_1 + \phi_2)}.
 $$
 
-So multiplying by $e^{i\phi}$ **rotates** a number counterclockwise by $\phi$ without changing its length. Multiplying by $i = e^{i\pi/2}$ is a quarter-turn. This is the same rotation that trigonometry describes, now in one clean line of algebra.
+Now read that formula geometrically. The number $e^{i\phi} = \cos\phi + i\sin\phi$ has magnitude
+
+$$
+|e^{i\phi}| = \sqrt{\cos^2\phi + \sin^2\phi} = 1,
+$$
+
+so it sits **on the unit circle**. Multiplying any $z$ by it therefore cannot stretch or shrink $z$ at all:
+
+:::{important} **$e^{i\phi}$ is a rotation operator**
+
+$$
+|e^{i\phi} z| = |e^{i\phi}|\,|z| = |z|
+$$
+
+Multiplying by $e^{i\phi}$ is a **pure turn**: it rotates $z$ about the origin by the angle $\phi$ and leaves its length untouched.
+
+- $\phi > 0$: **counterclockwise** (the mathematical positive direction)
+- $\phi < 0$: **clockwise**; $e^{-i\phi}$ exactly undoes $e^{i\phi}$
+- $\phi$ only matters **mod $2\pi$**, like the hands of a clock: $e^{i(\phi + 2\pi)} = e^{i\phi}$
+
+A general complex number $r e^{i\phi}$ then acts on others as "stretch by $r$, turn by $\phi$".
+:::
+
+The cleanest special case is $i = e^{i\pi/2}$: multiplying by $i$ is a **quarter-turn counterclockwise**. Do it four times and you are home, which is the geometric meaning of $i^4 = 1$:
+
+```{code-cell} python
+:tags: [hide-input]
+z0 = 1.6 + 0.6j
+pts = [z0, 1j*z0, -z0, -1j*z0]
+labels = [r"$z$", r"$iz$", r"$i^2z=-z$", r"$i^3z=-iz$"]
+colors = ["orange", "#3d81f6", "#004d40", "#d81b60"]
+
+fig, ax = plt.subplots(figsize=(5.5, 5.5))
+th = np.linspace(0, 2*np.pi, 200)
+R = abs(z0)
+ax.plot(R*np.cos(th), R*np.sin(th), "--", color="gray", lw=1)
+for w, lab, c in zip(pts, labels, colors):
+    ax.annotate("", xy=(w.real, w.imag), xytext=(0, 0),
+                arrowprops=dict(arrowstyle="->", color=c, lw=2.5))
+    ax.text(w.real*1.15, w.imag*1.15, lab, color=c, fontsize=13, ha="center")
+for k in range(4):
+    a0, a1 = np.angle(pts[k]), np.angle(pts[k]) + np.pi/2
+    arc = np.linspace(a0 + 0.15, a1 - 0.15, 40)
+    ax.plot(0.45*np.cos(arc), 0.45*np.sin(arc), color="gray", lw=1)
+ax.axhline(0, color="black", lw=0.7)
+ax.axvline(0, color="black", lw=0.7)
+ax.set_xlim(-2.4, 2.4); ax.set_ylim(-2.4, 2.4)
+ax.set_aspect("equal")
+ax.set_xlabel("Real"); ax.set_ylabel("Imaginary")
+ax.set_title("Fig.5 Multiplying by i is a quarter-turn: four turns return z to itself")
+plt.tight_layout()
+plt.show()
+```
+
+Try it yourself: dial the angle and watch $z$ swing around the circle while its length refuses to change. Negative $\phi$ turns it clockwise.
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+```
+
+```{marimo} python
+:hide-code: true
+
+phi1 = mo.ui.slider(-6.28, 6.28, step=0.05, value=0.9, show_value=True, label="rotation angle φ (rad)")
+phi1
+```
+
+```{marimo} python
+:hide-code: true
+
+z1 = 1.3 + 0.5j
+w1 = np.exp(1j * phi1.value) * z1
+fig1, ax1 = plt.subplots(figsize=(5.2, 5.2))
+th1 = np.linspace(0, 2 * np.pi, 200)
+ax1.plot(np.abs(z1) * np.cos(th1), np.abs(z1) * np.sin(th1), "--", color="gray", lw=1)
+ax1.annotate("", xy=(z1.real, z1.imag), xytext=(0, 0),
+             arrowprops=dict(arrowstyle="->", color="orange", lw=2.5))
+ax1.annotate("", xy=(w1.real, w1.imag), xytext=(0, 0),
+             arrowprops=dict(arrowstyle="->", color="#3d81f6", lw=2.5))
+arc1 = np.angle(z1) + np.linspace(0, phi1.value, 80)
+ax1.plot(0.55 * np.cos(arc1), 0.55 * np.sin(arc1), color="#d81b60", lw=1.8)
+ax1.annotate("", xy=(0.55 * np.cos(arc1[-1]), 0.55 * np.sin(arc1[-1])),
+             xytext=(0.55 * np.cos(arc1[-3]), 0.55 * np.sin(arc1[-3])),
+             arrowprops=dict(arrowstyle="->", color="#d81b60", lw=1.8))
+ax1.text(z1.real + 0.1, z1.imag, "$z$", color="orange", fontsize=13)
+ax1.text(w1.real + 0.1, w1.imag, r"$e^{i\phi}z$", color="#3d81f6", fontsize=13)
+ax1.axhline(0, color="black", lw=0.7)
+ax1.axvline(0, color="black", lw=0.7)
+ax1.set_xlim(-2, 2)
+ax1.set_ylim(-2, 2)
+ax1.set_aspect("equal")
+direction1 = "counterclockwise" if phi1.value >= 0 else "clockwise"
+ax1.set_title(f"|z| = {np.abs(z1):.2f} before, {np.abs(w1):.2f} after: a pure {direction1} turn")
+plt.gcf()
+```
+
+This rotating phase is the single most reused picture in quantum mechanics: every stationary state carries the factor $e^{-iEt/\hbar}$, a clock hand turning **clockwise** at rate $E/\hbar$. When the [time dependence of wavefunctions](../ch03/06-time-dependence.md) looks abstract, come back to this circle.
 
 :::{figure} images/ComplexHelix.gif
 :alt: Euler's formula traced as a helix
 :width: 60%
 
-Fig.5 As $t$ increases, $e^{i\omega t}$ traces a helix. Its shadow on one wall is $\cos\omega t$ and on the other is $\sin\omega t$, so a single rotating phase carries both waves at once.
+Fig.6 As $t$ increases, $e^{i\omega t}$ traces a helix. Its shadow on one wall is $\cos\omega t$ and on the other is $\sin\omega t$, so a single rotating phase carries both waves at once.
 :::
 
 ### The complex conjugate

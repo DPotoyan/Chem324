@@ -1,5 +1,5 @@
 ---
-title: "The Schrödinger Equation"
+title: "The Schrödinger Equation and the Wavefunction"
 subtitle: "Chem 3240 · Lecture 3.1"
 author: "Davit Potoyan"
 format:
@@ -20,175 +20,120 @@ resources:
   - ../../ch03/images
 ---
 
-## Entering the quantum world
+## Why a new equation?
 
-:::: {.columns}
-
-::: {.column width="55%"}
 - **Classical mechanics fails** at atomic scales
-- Need a new equation explaining **energy quantization** and **wave-particle duality**
-- **Schrödinger's Equation** is a *fundamental law*: postulated, not derived
-- Never failed when applied correctly
-:::
+- Experiments demand: **energy quantization** and **wave-particle duality**
+- Schrödinger's equation is a **fundamental law**: postulated, not derived
+- It has **never failed** when applied correctly
 
-::: {.column width="45%"}
-![](../../ch03/images/SE_intro.jpeg)
-:::
+## From classical waves to quantum waves {auto-animate=true}
 
-::::
-
-## From a wave to a quantum wave
-
-::: {.fragment}
-Start with a traveling wave:
 $$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
+
+## From classical waves to quantum waves {auto-animate=true}
+
+$$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
+
+::: {.nonincremental}
+- Insert **de Broglie**: $p = \hbar k$
+- Insert **Planck**: $E = \hbar \omega$
 :::
 
-::: {.fragment}
-Insert the **de Broglie** and **Planck** relations:
-$$p = \hbar k \qquad E = \hbar\omega$$
-:::
-
-::: {.fragment}
-**Quantum wave function:**
 $$\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}$$
-:::
-
-## What equation generates it?
 
 ::: {.fragment}
-**Time part** returns total energy:
-$$\frac{\partial \Psi}{\partial t} = -\frac{i}{\hbar} E\, \Psi$$
+What equation generates such waves? Differentiate and see.
 :::
 
-::: {.fragment}
-**Spatial part** returns kinetic energy:
-$$\frac{\partial^2 \Psi}{\partial x^2} = -\frac{2m(E - V)}{\hbar^2}\, \Psi$$
-:::
+## The time-dependent Schrödinger equation
 
-::: {.fragment}
-Combine via $K = E - V$ to eliminate $E$.
-:::
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+$$
 
-## Time-Dependent Schrödinger Equation
-
-::: {.fragment}
-$$-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x)\,\Psi = i\hbar \frac{\partial \Psi}{\partial t}$$
-:::
-
-- Describes evolution of $\Psi(x,t)$ in a potential $V(x)$
-- Only a **single time derivative** (unlike the classical wave equation)
+- Only a **single time derivative**, unlike the classical wave equation
 - The $i$ makes solutions **oscillate in the complex plane**
+- Kinetic + potential on the left, **total energy flow** on the right
 
-## Anatomy of the equation
+## Separation of variables {.smaller}
 
-:::: {.columns}
-
-::: {.column width="50%"}
-![](../../ch03/images/SE-image.png)
-:::
-
-::: {.column width="50%"}
-- **Kinetic** + **potential** = total energy flow
-- $\Psi$ is generally **complex**: not directly measurable
-- 1D shown; 3D adds $y, z$ terms
-:::
-
-::::
-
-## Separation of variables
-
-::: {.fragment}
-Assume $\Psi(x,t) = \psi(x)\,T(t)$.
-:::
-
-::: {.fragment}
-Time part is a simple oscillation:
 $$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
-:::
 
-- The **hard part** is finding $\psi(x)$, set by the potential $V(x)$
-
-## Time-Independent Schrödinger Equation
+- Time part: a rotating **phase clock** at rate $E/\hbar$
+- Spatial part: the **time-independent Schrödinger equation**
 
 ::: {.fragment}
-$$-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x)\,\psi = E\,\psi$$
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
+$$
 :::
 
-- Gives the **stationary states** of the system
-- Our **primary focus** for the rest of the course
+::: {.fragment}
+The hard part is finding $\psi(x)$; the potential $V(x)$ defines the system
+:::
+
+## What does the wavefunction mean?
+
+- $\psi$ is complex: **no direct physical meaning**
+- The **Born rule** extracts the measurable content:
+
+::: {.fragment}
+$$p(x) = \psi^{*}(x)\,\psi(x) = |\psi(x)|^2$$
+:::
+
+- $|\psi(x)|^2\,dx$ = probability of finding the particle in $[x, x+dx]$
+
+## Wavefunctions must be normalized
+
+$$\int^{+\infty}_{-\infty} |\psi(x)|^2\, dx = 1$$
+
+- The particle is **somewhere**: total probability is 1
+- Normalization fixes the constant in $\psi = N\psi'$
+- Probability in a region: $P(a<x<b)=\displaystyle\int_a^b |\psi|^2 dx$
 
 ## Operators: the language of QM
 
-:::: {.columns}
+- Every observable gets an **operator** that acts on $\psi$
 
-::: {.column width="50%"}
-![](../../ch03/images/SE_intro3.jpg)
-:::
-
-::: {.column width="50%"}
-- An **operator** $\hat{A}$ transforms a function into another
-- Differentiate, multiply, integrate, ...
-::: {.fragment}
-- The SE is **linear**:
-$$\hat{A}[c_1 f_1 + c_2 f_2] = c_1\hat{A}f_1 + c_2\hat{A}f_2$$
-:::
-:::
-
-::::
+| Observable | Operator |
+|---|---|
+| position | $\hat{x} = x$ |
+| momentum | $\hat{p} = -i\hbar\,\partial/\partial x$ |
+| kinetic energy | $\hat{K} = \hat{p}^2/2m$ |
+| total energy | $\hat{H} = \hat{K} + \hat{V}$ |
 
 ## The Hamiltonian
 
-::: {.fragment}
-**Classical** total energy:
-$$H(x,p) = \frac{p^2}{2m} + V(x)$$
-:::
+$$
+\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+$$
+
+- Quantum analog of the classical total energy $H = \frac{p^2}{2m} + V(x)$
+- The Schrödinger equation in one line:
 
 ::: {.fragment}
-**Quantum** Hamiltonian operator:
-$$\hat{H} = \hat{K} + \hat{V} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)$$
+$$\hat{H}\psi = E\psi$$
 :::
 
-::: {.fragment}
-The SE in operator form:
-$$\hat{H}\psi = i\hbar \frac{\partial \psi}{\partial t}$$
-:::
+## Expectation values
 
-## Correspondence principle
+- Predictions are **probability-weighted averages**:
 
-::: {.fragment}
-Every classical observable has a **quantum operator**:
-:::
+$$\langle A \rangle = \int \psi^{*}(x)\, \hat{A}\, \psi(x)\, dx$$
 
-::: {.fragment}
-| Observable | Classical | Quantum |
-|:---:|:---:|:---:|
-| Position | $x$ | $\hat{x}=x$ |
-| Momentum | $p$ | $\hat{p}=-i\hbar \frac{\partial}{\partial x}$ |
-| Kinetic energy | $\frac{p^2}{2m}$ | $\hat{K}=\frac{\hat{p}^2}{2m}$ |
-| Total energy | $H$ | $\hat{H}=\hat{K}+\hat{V}$ |
-:::
+- $\langle x \rangle$: mean position, $\langle p \rangle$: mean momentum
+- Variance $\sigma^2 = \langle A^2\rangle - \langle A\rangle^2$ measures the **spread** of measurements
 
 ## Eigenvalues and eigenfunctions
 
-:::: {.columns}
-
-::: {.column width="48%"}
-![](../../ch03/images/SE_intro6.jpg)
-:::
-
-::: {.column width="52%"}
-::: {.fragment}
-The TI-SE is an **eigenvalue problem**:
 $$\boxed{\hat{H} \psi_n = E_n \psi_n}$$
-:::
-- $\psi_n$: **eigenfunctions** (wave functions)
-- $E_n$: **eigenvalues** (energies)
-- General state: $\psi = \sum_n c_n \psi_n f_n(t)$
-:::
 
-::::
+- $\psi_n$: **eigenfunctions**, the stationary states
+- $E_n$: **eigenvalues**, the allowed energies
+- Boundary conditions make the spectrum **discrete**
+- Linearity: superpositions $\psi = \sum_n c_n \psi_n$ also solve the equation
 
 # Takeaway {.center}
 
-> Solving a quantum system means finding the eigenfunctions $\psi_n$ and eigenvalues $E_n$ of its Hamiltonian: $\hat{H}\psi_n = E_n \psi_n$.
+> The Schrödinger equation $\hat{H}\psi = E\psi$ is the quantum equation of motion. Its solutions are wavefunctions whose square $|\psi|^2$ gives probabilities, whose operators give expectation values $\langle A \rangle = \int \psi^*\hat{A}\psi\,dx$, and whose eigenvalues are the quantized energies.

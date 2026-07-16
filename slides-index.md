@@ -18,24 +18,21 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 
 ## Chapter 3
 
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/01-schrodinger-equation.html">Schrodinger Equation</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/02-wavefunction.html">Wavefunction</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/03-particle-in-a-box.html">Particle in a Box</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/04-applications-of-particle-in-a-box.html">Applications of Particle in a Box</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05-characteristics-of-wavefunctions.html">Characteristics of Wavefunctions</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/06-operators.html">Operators</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/07-eigenvalues-and-expectation.html">Eigenvalues and Expectation</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/08-time-dependence.html">Time Dependence</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/09-fourier-transforms.html">Fourier Transforms</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/01-schrodinger-equation.html">Schrodinger Equation and the Wavefunction</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/02-particle-in-a-box.html">Particle in a Box</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/03-applications-of-particle-in-a-box.html">Applications of Particle in a Box</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/04-tunneling-and-finite-square-well.html">Tunneling and the Finite Square Well</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05-operators.html">Operators</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/06-eigenvalues-and-expectation.html">Eigenvalues and Expectation</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/07-time-dependence.html">Time Dependence</a>
 
 ## Chapter 4
 
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/01-molecular-degrees-of-freedom.html">Molecular Degrees of Freedom</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/02-classical-harmonic-oscillator.html">Classical Harmonic Oscillator</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/03-quantum-harmonic-oscillator.html">Quantum Harmonic Oscillator</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/04-molecular-vibrations.html">Molecular Vibrations</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/05-angular-momentum.html">Angular Momentum</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/06-rigid-rotor.html">Rigid Rotor</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/01-molecular-degrees-of-freedom.html">Molecular Degrees of Freedom and Classical Vibrations</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/02-quantum-harmonic-oscillator.html">Quantum Harmonic Oscillator</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/03-molecular-vibrations.html">Molecular Vibrations</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/04-angular-momentum.html">Angular Momentum</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch04/05-rigid-rotor.html">Rigid Rotor</a>
 
 ## Chapter 5
 

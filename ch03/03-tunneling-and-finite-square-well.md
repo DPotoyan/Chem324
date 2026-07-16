@@ -4,10 +4,11 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Characteristics of Quantum Wavefunctions
+# Tunneling and the Finite Square Well
 
 :::{admonition} **What you need to know**
 
+- **Tunneling** is the signature quantum effect: a particle has a non-zero probability of being found in regions where $E < V$, which no classical particle could ever visit.
 - The **finite depth box** is a more realistic model than the infinite potential well, as it allows for quantum tunneling, where the particle has a non-zero probability of being found outside the well.
 - The potential energy is zero in the central region and finite outside. The time-independent Schrödinger equation is solved in three regions, with a different form of wavefunction in each. Bound states are possible due to confinement of the particle, but the energy levels are determined by matching the wavefunction and its derivative at the boundaries, leading to transcendental equations.
 - Unlike the infinite well, the number of bound states is finite, and the wavefunctions extend slightly outside the well, illustrating the quantum tunneling effect.
@@ -57,68 +58,19 @@ From the signs of the terms in the Schrödinger equation, we can predict qualita
 
 ```{code-cell} python
 :tags: [hide-input]
-###############################################################################################
-#
-#  The cell contains all of the libraries used in the notebook, either run all cells or
-#  execute the cells in order starting with this. 
-#
-#  In google colab run all is ctrl+F8 or select "run all" from the runtime menu above
-#
-###############################################################################################
-
-import matplotlib as mpl # matplotlib library for plotting and visualization
-import matplotlib.pylab as plt # matplotlib library for plotting and visualization
-import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
+import numpy as np
+import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from scipy import optimize
 
-import warnings
-warnings.filterwarnings('ignore')
+# constants for an electron in a well measured in eV and Angstroms
+hbar = 1.05457180013e-34   # J s
+melec = 9.10938356e-31     # electron mass, kg
+eVtoJ = 1.60217662e-19     # J per eV
+AngstromtoMeter = 1e-10
+val = np.sqrt(2.0*melec*eVtoJ)*AngstromtoMeter/(2.0*hbar)  # sqrt(2m)/(2 hbar) with L in Angstrom, E in eV
 
-#widget modules, to allow interaction with plots
-from ipywidgets import interactive
-import ipywidgets as widgets
-#IPython for interactive outputs from cells
-from IPython.display import display, HTML, Image, Markdown
-
-#To animate the 3D plots and produce movies
-from matplotlib import animation
-from mpl_toolkits.mplot3d import Axes3D
-
-#Use to test the system, different response from some code
-#depending on whether the notebook is being compiled into a webpage, 
-#run in jupyter or in google colab.
-import sys
-import psutil
-
-IN_COLAB = 'google.colab' in sys.modules
-PARENT_PROC = psutil.Process().parent().cmdline()[-1]
-
-#set variable to identify the environment for execution.
-if 'jupyter-lab' in PARENT_PROC:
-    interactive_env = True
-elif 'jupyter-notebook' in PARENT_PROC:
-    interactive_env = True
-elif IN_COLAB:
-    interactive_env = True
-else:
-    interactive_env = False
-#function to produce complex number from Euler form.
-def P2R(radii, angles):
-    return radii * np.exp(1j*angles)
-
-#constants used later
-hbar = 1.05457180013e-34 # planck's constant divided by 2*pi, in Joules*second
-melec = 9.10938356e-31 # mass of an electron in kg
-eVtoJ = 1.60217662e-19 # conversion factor from eV to Joules
-AngstromtoMeter = 1e-10 # conversion factor from Angstroms to meters
-val = np.sqrt(2.0*melec*eVtoJ)*AngstromtoMeter/(2.0*hbar) # prefactor sqrt(2*melec)/(2*hbar), for when L is in angstroms and Vo is in eV
-
-#####
-
-
-fig_no = 1
 def potential(x, Vo, L):
     Vx=np.zeros(len(x))
     for i in range(len(x)):
@@ -178,8 +130,9 @@ $$
 
 $$
 -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{d{x}^2}=E\psi(x)
+\quad\Longrightarrow\quad
 \frac{d^2\psi(x)}{d{x}^2}=-\frac{2mE}{\hbar^2}\psi(x)
-=-k^2\psi(x)
+=-k^2\psi(x), \qquad k^2 = \frac{2mE}{\hbar^2}
 $$ 
 
 
@@ -201,20 +154,13 @@ $$
 
 
 $$
-\frac{d^2\psi(x)}{dx^2} = -\frac{2m(E - V_0)}{\hbar^2} \psi(x),
+\frac{d^2\psi(x)}{dx^2} = \frac{2m(V_0 - E)}{\hbar^2} \psi(x) = \beta^2 \psi(x), \qquad \beta^2 = \frac{2m(V_0 - E)}{\hbar^2}
 $$
-
-
-
-$$
-\frac{d^2\psi(x)}{dx^2} = -k^2 \psi(x),
-$$
-
-- where $k^2 = \frac{2m(V_0 - E)}{\hbar^2}$. The value of $k$ differs in each region of the well depending on the energy and the potential.
 
 **What happens when $E < V_0$?**
 
-- When the particle's energy is less than the potential outside the well $(E < V_0)$, the term $E - V_0$ becomes negative. This makes $k^2 = \frac{2m(V_0 - E)}{\hbar^2}$ positive, so $k$ is real and the solution in this region is an exponential decay (an evanescent wave). The wavefunction therefore decays exponentially as the particle penetrates into the classically forbidden regions outside the well.
+- When the particle's energy is less than the potential outside the well $(E < V_0)$, the coefficient $\beta^2$ is **positive**, so $\beta$ is real. Compare the two regions: inside the well $\psi'' = -k^2\psi$ (curvature toward the axis, oscillation), while outside $\psi'' = +\beta^2\psi$ (curvature away from the axis, exponentials $e^{\pm\beta x}$).
+- The physically acceptable solution outside is the **decaying exponential** (an evanescent wave). The wavefunction therefore dies off exponentially as the particle penetrates into the classically forbidden regions, but it is not zero there: that is tunneling.
 
 ### Profile of the full wavefunction
 
@@ -269,7 +215,7 @@ $$
 
 $$
 \beta = k\tan\left(k\frac{L}{2}\right)\Rightarrow \sqrt{V_o-E} = \sqrt{E}\tan\left(\frac{L\sqrt{2mE}}{2\hbar}\right)
-$$(fsw_odd_sol_equ)
+$$(fsw_even_states_equ)
 
 **Odd solutions:**
 
@@ -285,11 +231,11 @@ $$
 
 $$
 \beta = -\frac{k}{\tan\left(k\frac{L}{2}\right)} \Rightarrow  \sqrt{V_o-E} = -\frac{\sqrt{E}}{\tan\left(\frac{L\sqrt{2mE}}{2\hbar}\right)}
-$$(fsw_even_sol_equ)
+$$(fsw_odd_states_equ)
 
 - Unfortunately, we cannot find the allowed energies analytically. Instead, we have to choose either a graphical or a numerical method.
 - What does that mean? We can graph the left- and right-hand sides of each equation separately as a function of energy $E$ and look for the intersection points, which correspond to the allowed energy values (the energy eigenvalues).
-- Below, the functions for the odd and even wavefunctions are plotted using the Desmos graphing tool. You can adjust the potential $V$ and the length $L$, and you can click on the intercept points to read off the energy and the value of the function.
+- Below you can adjust the well depth $V_0$ and the width $L$ and watch both the graphical solution and the resulting energy levels respond live.
 
 ## Finding the energy eigenvalues graphically 
 
@@ -334,73 +280,102 @@ def find_state_energies(Vo,L,step=0.01):
 #print(e_eng)
 ```
 
-```{code-cell} python
-:tags: [hide-input]
-# plot the odd and even solutions, identify the intercepts with an energy label. 
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+      "scipy",
+  ]
+---
+```
 
-def solve_finite_square_well(Vo, L):
-    # Generating the graph
-    fig, axes = plt.subplots(1, 2, figsize=(12,6), gridspec_kw={'width_ratios': [2, 1]})
-    axes[0].axis([0.0,Vo,0.0,np.sqrt(Vo)*1.1])
-    axes[0].set_xlabel(r'$E$ (eV)')
-    axes[0].set_ylabel(r'(eV$^{-1}$)')
-    E = np.linspace(0.0, Vo, 10000)
-    num = int(round((L*np.sqrt(Vo)*val-np.pi/2.0)/np.pi))
-    # Removing discontinuity points
-    for n in range(10000):
-        for m in range(num+2):
-            if abs(E[n]-((2.0*float(m)+1.0)*np.pi/(2.0*L*val))**2)<0.01: E[n] = np.nan
-            if abs(E[n]-(float(m)*np.pi/(L*val))**2)<0.01: E[n] = np.nan
-    # Plotting the curves and setting the labels
-    axes[0].plot(E, np.sqrt(Vo-E), label=r"$\sqrt{V_o-E}$", color="blue", linewidth=1.8)
-    axes[0].plot(E, np.sqrt(E)*np.tan(L*np.sqrt(E)*val), label=r"Even states: $\sqrt{E}\tan(\frac{L\sqrt{2mE}}{2\hbar})$", color="red", linestyle='-.', linewidth=1.8)
-    axes[0].plot(E, -np.sqrt(E)/np.tan(L*np.sqrt(E)*val), label=r"Odd states: $-\frac{\sqrt{E}}{\tan(\frac{L\sqrt{2mE}}{2\hbar})}$", color="green", linestyle='--', linewidth=1.8)
-    axes[0].legend(loc=1, borderaxespad=0.0)
-    
-    energies, nstates = find_state_energies(Vo, L)
-    ydata = np.sqrt(Vo-energies)
-    axes[0].scatter(energies[:nstates], ydata[:nstates])
-    state = 0
-    for i,j in zip(energies[:nstates],ydata[:nstates]):
-        state+=1
-        axes[0].annotate('$E_{%d} = $%.3f eV' %(state, i), xy=(i,j), textcoords='offset points')
-    ##draw energy levels
-    axes[1].spines['right'].set_color('none')
-    axes[1].yaxis.tick_left()
-    axes[1].spines['bottom'].set_color('none')
-    axes[1].axes.get_xaxis().set_visible(False)
-    axes[1].spines['top'].set_color('none')
-    axes[1].axis([-15,15,0.0,10])
-    axes[1].set_ylabel(r'$E_n$ (eV)')
-    
-    for n in range(0,nstates):
-        str1="$n = "+str(n+1)+r"$, $E_"+str(n+1)+r" = %.3f$ eV"%(energies[n])
-        if (n+1)%2:
-            statecolour = 'red'
-            stateline = '-.'
-        else:
-            statecolour = 'green'
-            stateline = '--'
-        axes[1].text(1.1*L/2, energies[n]-0.005*Vo, str1, fontsize=12, color=statecolour)
-        axes[1].hlines(energies[n], -L/2, L/2, linewidth=1.8, linestyle=stateline, color=statecolour)
-    
-    #plot the potential
-    x = np.linspace(-15,15,1000)
-    Vx = potential(x, Vo, L)
-    axes[1].plot(x,Vx, color='blue',linewidth=1.5)
-    
-    # Show the plots on the screen once the code reaches this point    
-    plt.show()
+```{marimo} python
+:hide-code: true
 
-Llabel = r"Vo"
-nlabel = r"L"
-interactive_plot = widgets.interactive(solve_finite_square_well,Vo=widgets.FloatSlider(min=0.1, max=10, step=0.5, value=5, description=Llabel,orientation='horizontal'), 
-                               L=widgets.FloatSlider(min=0.1, max=17, step=0.1, value=10, description=nlabel,orientation='horizontal'))
-display(interactive_plot)
-#create some figure information
-#figstring = 'Figure 2.6.'+str(fig_no)+': On the left are the solutions to the left and right hand size of equation. On the right is the energy level diagram.'
-#fig_no+=1
-#display(Markdown(figstring))
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+from scipy import optimize
+```
+
+```{marimo} python
+:hide-code: true
+
+val_m = np.sqrt(2.0 * 9.10938356e-31 * 1.60217662e-19) * 1e-10 / (2.0 * 1.05457180013e-34)
+
+def f_even_m(E, Vo, L):
+    return np.sqrt(Vo - E) - np.sqrt(E) * np.tan(L * np.sqrt(E) * val_m)
+
+def f_odd_m(E, Vo, L):
+    return np.sqrt(Vo - E) + np.sqrt(E) / np.tan(L * np.sqrt(E) * val_m)
+
+def find_states_m(Vo, L, step=0.01):
+    sol = []
+    E_scan = np.arange(step, Vo, step)
+    even = True
+    for i in range(len(E_scan) - 1):
+        if even and f_even_m(E_scan[i], Vo, L) * f_even_m(E_scan[i + 1], Vo, L) < 0:
+            sol.append(optimize.brentq(f_even_m, E_scan[i], E_scan[i + 1], args=(Vo, L)))
+            even = False
+        if not even and f_odd_m(E_scan[i], Vo, L) * f_odd_m(E_scan[i + 1], Vo, L) < 0:
+            sol.append(optimize.brentq(f_odd_m, E_scan[i], E_scan[i + 1], args=(Vo, L)))
+            even = True
+    return np.array(sol)
+
+def En_box_m(n, L):
+    h_planck = 6.62607e-34
+    return n**2 * h_planck**2 / (8 * 9.1093837e-31 * (L * 1e-10)**2 * 1.6e-19)
+```
+
+```{marimo} python
+:hide-code: true
+
+Vo1 = mo.ui.slider(0.5, 10.0, step=0.5, value=5.0, show_value=True, label="well depth V0 (eV)")
+L1 = mo.ui.slider(2.0, 17.0, step=0.5, value=10.0, show_value=True, label="well width L (Angstrom)")
+mo.hstack([Vo1, L1], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+_Vo, _L = Vo1.value, L1.value
+_fig, _axes = plt.subplots(1, 2, figsize=(11, 5), gridspec_kw={"width_ratios": [2, 1]})
+
+_E = np.linspace(0.001, _Vo * 0.999, 4000)
+_lhs = np.sqrt(_Vo - _E)
+_ev = np.sqrt(_E) * np.tan(_L * np.sqrt(_E) * val_m)
+_od = -np.sqrt(_E) / np.tan(_L * np.sqrt(_E) * val_m)
+_ev[np.abs(_ev) > 4 * np.sqrt(_Vo)] = np.nan
+_od[np.abs(_od) > 4 * np.sqrt(_Vo)] = np.nan
+
+_axes[0].plot(_E, _lhs, color="#3d81f6", lw=2, label=r"$\sqrt{V_0-E}$")
+_axes[0].plot(_E, _ev, color="#d81b60", ls="-.", lw=1.8, label="even states")
+_axes[0].plot(_E, _od, color="#004d40", ls="--", lw=1.8, label="odd states")
+_energies = find_states_m(_Vo, _L)
+_axes[0].scatter(_energies, np.sqrt(_Vo - _energies), zorder=5, color="black")
+_axes[0].set_xlim(0, _Vo)
+_axes[0].set_ylim(0, np.sqrt(_Vo) * 1.15)
+_axes[0].set_xlabel("E (eV)")
+_axes[0].set_ylabel(r"(eV$^{1/2}$)")
+_axes[0].legend(loc="upper right", fontsize=9)
+_axes[0].set_title(f"Graphical solution: {len(_energies)} bound state(s)")
+
+_x = np.linspace(-15, 15, 400)
+_axes[1].plot(_x, np.where(np.abs(_x) >= _L / 2, _Vo, 0.0), color="#3d81f6", lw=1.5)
+for _n, _en in enumerate(_energies, start=1):
+    _c = "#d81b60" if _n % 2 else "#004d40"
+    _axes[1].hlines(_en, -_L / 2, _L / 2, color=_c, ls="--", lw=1.8)
+    _axes[1].text(_L / 2 + 0.7, _en, f"$E_{_n}$ = {_en:.2f} eV", fontsize=9, color=_c, va="center")
+_axes[1].set_ylim(0, _Vo * 1.15)
+_axes[1].set_ylabel(r"$E_n$ (eV)")
+_axes[1].set_xticks([])
+_axes[1].set_title("Energy levels in the well")
+plt.tight_layout()
+plt.gcf()
 ```
 
 Here are some questions to think about:
@@ -558,7 +533,6 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
-#@title  { vertical-output: true, form-width: "60%", display-mode: "form" }
 print ("\nThe tunneling probabilities are:")
 for n in range(1,nstates+1):
     k = 2.0*np.sqrt(E_vals[n-1])*val
@@ -567,7 +541,7 @@ for n in range(1,nstates+1):
     if (n%2==0):
         C = 1.0
         D = np.exp(a0*L/2.0)*np.sin(k*L/2.0)*C
-        prob = D*D*2.0*k*np.exp(-a0*L)/(B*B*a0*(k*L-np.sin(k*L))+D*D*2.0*k*np.exp(-a0*L))
+        prob = D*D*2.0*k*np.exp(-a0*L)/(C*C*a0*(k*L-np.sin(k*L))+D*D*2.0*k*np.exp(-a0*L))
     # For even solution
     else:
         B = 1.0
@@ -582,69 +556,44 @@ for n in range(1,nstates+1):
 
 These values confirm what we have already deduced: the closer the state is to the top of the potential, the more easily it spreads outside the well. How does this affect the energy levels? Lower in the potential, the wavelength of the wavefunction is more closely tied to the width of the well than it is higher up. Compare the infinite and finite square wells of the same width below.
 
-```{code-cell} python
-:tags: [hide-input]
-h=6.62607e-34    #planck's constant in joules
-me=9.1093837e-31  # mass of an electron in kg
+```{marimo} python
+:hide-code: true
 
-def En_infinite_square_well(n,L):
-    return n**2*h**2/(8*me*(L*1e-10)**2*1.6e-19)
+Vo2 = mo.ui.slider(0.5, 10.0, step=0.5, value=5.0, show_value=True, label="well depth V0 (eV)")
+L2 = mo.ui.slider(2.0, 17.0, step=0.5, value=10.0, show_value=True, label="well width L (Angstrom)")
+mo.hstack([Vo2, L2], justify="start", gap=2)
+```
 
-def compare_infinite_and_finite_square_wells(Vo, L):
-    # Generating the graph
-    fig, axes = plt.subplots(1, 2, figsize=(9,6), layout='constrained')
-    
-    nmax = 1
-    axes[0].spines['right'].set_color('none')
-    axes[0].yaxis.tick_left()
-    axes[0].spines['bottom'].set_color('none')
-    axes[0].axes.get_xaxis().set_visible(False)
-    axes[0].spines['top'].set_color('none')
-    axes[0].axis([0.0,10.0,0.0,1.1*Vo])
-    axes[0].set_ylabel(r'$E_n$ (eV)')   
-    while En_infinite_square_well(nmax, L) < Vo:
-        str1="$n = "+str(nmax)+r"$, $E_"+str(nmax)+r" = %.3f$ eV"%(En_infinite_square_well(nmax, L))
-        if (nmax)%2:
-            statecolour = 'red'
-        else:
-            statecolour = 'green'
-        axes[0].text(6.5, En_infinite_square_well(nmax, L), str1, fontsize=12, color=statecolour)
-        axes[0].hlines(En_infinite_square_well(nmax, L), 0.0, 6.3, linewidth=1.8, linestyle='--', color=statecolour)       
-        nmax+=1
-        
-    energies, nstates = find_state_energies(Vo, L)
-    ydata = np.sqrt(Vo-energies)
-    ##draw energy levels
-    axes[1].spines['right'].set_color('none')
-    axes[1].yaxis.tick_left()
-    axes[1].spines['bottom'].set_color('none')
-    axes[1].axes.get_xaxis().set_visible(False)
-    axes[1].spines['top'].set_color('none')
-    axes[1].axis([0.0,10.0,0.0,1.1*Vo])
-    axes[1].set_ylabel(r'$E_n$ (eV)')
-    
-    for n in range(0,nstates):
-        str1="$n = "+str(n+1)+r"$, $E_"+str(n+1)+r" = %.3f$ eV"%(energies[n])
-        if (n+1)%2:
-            statecolour = 'red'
-        else:
-            statecolour = 'green'
-        axes[1].text(6.5, energies[n]-0.005*Vo, str1, fontsize=12, color=statecolour)
-        axes[1].hlines(energies[n], 0.0, 6.3, linewidth=1.8, linestyle='--', color=statecolour)
-    str1="$V_o = %.3f$ eV"%(Vo)
-    axes[1].text(6.5, Vo-0.01*Vo, str1, fontsize=12, color="blue")
-    axes[1].hlines(Vo, 0.0, 6.3, linewidth=2.5, linestyle='-', color="blue")
-    axes[1].hlines(0.0, 0.0, 6.3, linewidth=1.2, linestyle='-', color="black")
-    
-    plt.show()
+```{marimo} python
+:hide-code: true
 
-Llabel = r"Vo"
-nlabel = r"L"
-interactive_plot = widgets.interactive(compare_infinite_and_finite_square_wells,Vo=widgets.FloatSlider(min=0.1, max=10, step=0.5, value=5, description=Llabel,orientation='horizontal'), 
-                               L=widgets.FloatSlider(min=0.1, max=17, step=0.1, value=10, description=nlabel,orientation='horizontal'))
-display(interactive_plot)
-#figstring = 'Figure: On the left are the are the energy levels in the infinite square well. On the right are the energy levels for the finite square well of the same width but height Vo.'
-#display(Markdown(figstring))
+_Vo2, _L2 = Vo2.value, L2.value
+_fig2, _ax2 = plt.subplots(1, 2, figsize=(9, 5), sharey=True)
+
+_n2 = 1
+while En_box_m(_n2, _L2) < _Vo2:
+    _c2 = "#d81b60" if _n2 % 2 else "#004d40"
+    _axline = _ax2[0].hlines(En_box_m(_n2, _L2), -1, 1, color=_c2, ls="--", lw=1.8)
+    _ax2[0].text(1.1, En_box_m(_n2, _L2), f"n={_n2}: {En_box_m(_n2, _L2):.2f} eV", fontsize=9, color=_c2, va="center")
+    _n2 += 1
+_ax2[0].set_title("Infinite well (same width)")
+_ax2[0].set_ylabel(r"$E_n$ (eV)")
+_ax2[0].set_xticks([])
+_ax2[0].set_xlim(-1, 3.2)
+
+_ens2 = find_states_m(_Vo2, _L2)
+for _k2, _e2 in enumerate(_ens2, start=1):
+    _c2 = "#d81b60" if _k2 % 2 else "#004d40"
+    _ax2[1].hlines(_e2, -1, 1, color=_c2, ls="--", lw=1.8)
+    _ax2[1].text(1.1, _e2, f"n={_k2}: {_e2:.2f} eV", fontsize=9, color=_c2, va="center")
+_ax2[1].hlines(_Vo2, -1, 1, color="#3d81f6", lw=2.5)
+_ax2[1].text(1.1, _Vo2, f"$V_0$ = {_Vo2:.1f} eV", fontsize=10, color="#3d81f6", va="center")
+_ax2[1].set_title("Finite well")
+_ax2[1].set_xticks([])
+_ax2[1].set_xlim(-1, 3.2)
+_ax2[1].set_ylim(0, _Vo2 * 1.2)
+plt.tight_layout()
+plt.gcf()
 ```
 
 - Notice that at energies closer to zero, the infinite and finite energies are closer together. As the energy of the state approaches the top of the finite potential, it is smaller in the finite well than in the infinite well. Why? The higher-energy states allow the wavefunction in the finite square well to spread out, so the wavelength is longer in the finite well than in the infinite well. A longer wavelength corresponds to a smaller wavenumber $k$, and hence a lower energy.
