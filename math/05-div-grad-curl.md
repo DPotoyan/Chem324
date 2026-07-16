@@ -83,26 +83,25 @@ Exponentiating the derivative **slides a function sideways**. The figure below m
 ```{code-cell} python
 :tags: [hide-input]
 
-xg = np.linspace(-4, 6, 1024)
-f0 = np.exp(-xg**2)
-a_shift = 2.0
+from scipy.special import eval_hermite, factorial
 
-k = 2 * np.pi * np.fft.fftfreq(len(xg), xg[1] - xg[0])
-F0 = np.fft.fft(f0)
+# f(x) = exp(-x^2); its n-th derivative is (-1)^n H_n(x) exp(-x^2),
+# so the Taylor series of the shift e^{a d/dx} f = f(x+a) is built analytically
+# (doing this in Fourier space instead blows up: the truncated series is unbounded at high k).
+xg = np.linspace(-4, 6, 400)
+a_shift = 1.0
+gauss = np.exp(-xg**2)
 
 fig6, ax6 = plt.subplots(figsize=(7.5, 4))
-ax6.plot(xg, f0, lw=2, color="0.55", label="f(x)")
+ax6.plot(xg, gauss, lw=2, color="0.55", label="f(x)")
 colors = plt.cm.plasma(np.linspace(0.15, 0.8, 4))
 for Nmax, c in zip([1, 2, 4, 12], colors):
-    op = np.zeros_like(F0)
-    term = np.ones_like(F0)
+    partial = np.zeros_like(xg)
     for n_t in range(Nmax + 1):
-        op = op + term
-        term = term * (1j * k * a_shift) / (n_t + 1)
-    fN = np.fft.ifft(F0 * op).real
-    ax6.plot(xg, fN, lw=1.7, color=c, label=f"series through n = {Nmax}")
-ax6.plot(xg, np.exp(-(xg - a_shift)**2), "k--", lw=2, label="exact f(x - (-a)) target")
-ax6.set_ylim(-0.4, 1.35)
+        partial += ((-a_shift)**n_t / factorial(n_t)) * eval_hermite(n_t, xg) * gauss
+    ax6.plot(xg, partial, lw=1.7, color=c, label=f"series through n = {Nmax}")
+ax6.plot(xg, np.exp(-(xg + a_shift)**2), "k--", lw=2, label="exact f(x + a)")
+ax6.set_ylim(-0.5, 1.7)
 ax6.set_xlabel("x")
 ax6.set_title(r"partial sums of $e^{a\,d/dx}$ carry the function to its shifted self", fontsize=11)
 ax6.legend(fontsize=8, frameon=False, ncol=2)

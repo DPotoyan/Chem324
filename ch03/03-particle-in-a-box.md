@@ -1110,6 +1110,62 @@ plt.show()
 'vis '
 ```
 
+### Applications: electronic transitions in conjugated molecules
+
+One of the most useful applications of the particle in a box is estimating the color of light absorbed by **π-conjugated molecules**. In molecules with alternating single and double bonds, the π-electrons are **delocalized** over the conjugated region and behave, to a first approximation, like particles confined to a box whose length is the length of the conjugated chain.
+
+:::{figure} images/pib1d-1.jpeg
+:width: 70%
+
+A linear conjugated system (a polyene) modeled as a 1D particle in a box: the delocalized π-electrons are confined to the length of the conjugated chain.
+:::
+
+- **1D box** models linear conjugated systems such as butadiene and longer polyenes. The box length is the length of the conjugated chain, and the level spacing sets the wavelength of light absorbed.
+- **2D box** models π-electrons delocalized over a two-dimensional region, such as aromatic rings or graphene fragments.
+
+:::{figure} images/pib-applic2.jpeg
+:width: 70%
+
+Aromatic and extended π-systems modeled as a 2D particle in a box.
+:::
+
+#### Worked example: butadiene
+
+Consider butadiene (C₄H₆), whose four π-electrons are delocalized over the conjugated chain. We estimate the wavelength that excites one π-electron across the gap.
+
+**Step 1: length of the box.** The conjugated chain spans three carbon-carbon bonds, using C=C ≈ 1.34 Å and C-C ≈ 1.54 Å:
+
+$$
+L = 1.54\,\text{Å} + 1.34\,\text{Å} + 1.54\,\text{Å} = 4.42\,\text{Å}.
+$$
+
+**Step 2: fill the levels.** Each level holds two electrons (Pauli), so the four π-electrons fill $n=1$ and $n=2$. The highest occupied level is $n=2$ and the lowest empty one is $n=3$, so the absorption is the $n=2 \to n=3$ transition.
+
+**Step 3: transition energy and wavelength.** With $E_n = \dfrac{n^2 h^2}{8mL^2}$, the absorbed photon satisfies
+
+$$
+\Delta E = E_3 - E_2 = \frac{(3^2 - 2^2)h^2}{8mL^2} = \frac{hc}{\lambda}.
+$$
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+
+h = 6.626e-34    # Planck constant (J s)
+m = 9.109e-31    # electron mass (kg)
+c = 3.0e8        # speed of light (m/s)
+L = 4.42e-10     # butadiene conjugation length (m)
+
+E = lambda n: n**2 * h**2 / (8 * m * L**2)
+dE = E(3) - E(2)                 # HOMO (n=2) -> LUMO (n=3)
+lam = h * c / dE
+
+print(f"Delta E (2 -> 3) = {dE:.3e} J")
+print(f"absorption wavelength = {lam * 1e9:.0f} nm")
+```
+
+The particle-in-a-box estimate lands in the ultraviolet, the right ballpark for a small polyene (the measured value for butadiene is about 217 nm). The simple model captures the key trend: **longer conjugation means a longer box, smaller level spacing, and absorption shifted toward the red**, which is why extended π-systems like carotenes are colored.
+
 ### Problems
 
 #### Problem 1: Compute probability of finding particle somewhere
@@ -1396,4 +1452,118 @@ Possible combinations of $n_x$, $n_y$, and $n_z$:
 **Part 2:**
 The degeneracy for the energy level corresponding to $n_x^2 + n_y^2 + n_z^2 = 9$ is **4** (the state $(3,0,0)$ and the 3 permutations of $(2,2,1)$).
 
+:::
+
+#### Problem 10: Absorption of a conjugated diene
+
+A conjugated diene has a conjugation length of 5 Å. Using the 1D particle in a box, calculate the wavelength absorbed when a π-electron is excited from $n = 1$ to $n = 2$. Use $m = 9.109 \times 10^{-31}\,\text{kg}$ and $h = 6.626 \times 10^{-34}\,\text{J s}$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+The gap between $n = 1$ and $n = 2$ is
+
+$$
+\Delta E = \frac{(2^2 - 1^2)h^2}{8mL^2} = \frac{3h^2}{8mL^2},
+$$
+
+with $L = 5 \times 10^{-10}\,\text{m}$. Compute $\Delta E$, then use $\Delta E = \dfrac{hc}{\lambda}$ to find $\lambda$.
+:::
+
+#### Problem 11: Total conjugation length of a polyene
+
+A polyene has 6 alternating bonds with $C=C \approx 1.35$ Å and $C\text{-}C \approx 1.45$ Å. Find the total conjugation length and the wavelength needed to excite a π-electron from $n = 1$ to $n = 2$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+$$
+L = 4 \times 1.35\,\text{Å} + 3 \times 1.45\,\text{Å} = 10.55\,\text{Å} = 10.55 \times 10^{-10}\,\text{m}.
+$$
+
+Then $\Delta E = \dfrac{3h^2}{8mL^2}$ and $\lambda = \dfrac{hc}{\Delta E}$.
+:::
+
+#### Problem 12: A higher transition
+
+A linear conjugated molecule has 8 alternating C-C bonds (1.40 Å single, 1.35 Å double). Calculate the wavelength absorbed for the $n = 1 \to n = 3$ transition.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+For 8 bonds, take 4 double and 4 single:
+
+$$
+L = 4 \times 1.35\,\text{Å} + 4 \times 1.40\,\text{Å} = 11.0\,\text{Å}.
+$$
+
+The energy gap is
+
+$$
+\Delta E = E_3 - E_1 = \frac{(3^2 - 1^2)h^2}{8mL^2} = \frac{8h^2}{8mL^2} = \frac{h^2}{mL^2},
+$$
+
+and $\lambda = \dfrac{hc}{\Delta E}$.
+:::
+
+#### Problem 13: Triene transition
+
+A conjugated triene has a conjugation length of 7.5 Å. Find the wavelength absorbed for the $n = 1 \to n = 3$ transition.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+With $L = 7.5 \times 10^{-10}\,\text{m}$,
+
+$$
+\Delta E = E_3 - E_1 = \frac{8h^2}{8mL^2} = \frac{h^2}{mL^2},
+$$
+
+then $\lambda = \dfrac{hc}{\Delta E}$.
+:::
+
+#### Problem 14: A transition between excited states
+
+A polyene of 10 carbons has $C=C \approx 1.34$ Å and $C\text{-}C \approx 1.54$ Å. Find the total conjugation length and the wavelength for the $n = 2 \to n = 3$ transition.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+$$
+L = 5 \times 1.34\,\text{Å} + 4 \times 1.54\,\text{Å} = 12.86\,\text{Å}.
+$$
+
+The gap is
+
+$$
+\Delta E = E_3 - E_2 = \frac{(3^2 - 2^2)h^2}{8mL^2} = \frac{5h^2}{8mL^2},
+$$
+
+then $\lambda = \dfrac{hc}{\Delta E}$.
+:::
+
+#### Problem 15: A 2D box for a graphene fragment
+
+Model the π-electrons of a graphene-like fragment as a 2D particle in a box with $L_x = 2\,\text{nm}$ and $L_y = 1\,\text{nm}$. Calculate the energy of the state $n_x = 1$, $n_y = 2$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+The 2D energy is
+
+$$
+E_{n_x, n_y} = \frac{h^2}{8m}\left(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2}\right).
+$$
+
+With $L_x = 2 \times 10^{-9}\,\text{m}$ and $L_y = 1 \times 10^{-9}\,\text{m}$,
+
+$$
+\frac{1^2}{L_x^2} + \frac{2^2}{L_y^2} = 2.5 \times 10^{17} + 4.0 \times 10^{18} = 4.25 \times 10^{18}\,\text{m}^{-2},
+$$
+
+and $\dfrac{h^2}{8m} \approx 6.02 \times 10^{-38}\,\text{J m}^2$, giving
+
+$$
+E_{1,2} \approx 2.56 \times 10^{-19}\,\text{J} \approx 1.60\,\text{eV}.
+$$
 :::
