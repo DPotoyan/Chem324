@@ -15,4 +15,33 @@ $presentation-heading-font-weight: 700;
   font-style: normal;
 }
 .reveal section img { border: none; box-shadow: none; }
-.reveal .slide-number { font-size: 0.6em; }
+
+// Chrome: keep counters, footer, and progress quiet
+.reveal .slide-number { font-size: 0.55em; color: #9aa1ab; background: transparent; }
+.reveal .footer { font-size: 0.42em; color: #b3b9c2; letter-spacing: 0.03em; }
+.reveal .progress { color: #C8102E; height: 4px; }
+
+// Title slide: cardinal accent under the title, muted subtitle/author
+#title-slide .title {
+  border-bottom: 4px solid #C8102E;
+  display: inline-block;
+  padding-bottom: 0.15em;
+  margin-bottom: 0.4em;
+}
+#title-slide .subtitle { color: #C8102E; font-weight: 600; }
+#title-slide .quarto-title-author-name, #title-slide p.author { color: #5a6472; }
+
+// Section-divider slides (# Takeaway {.center})
+.reveal .slide section > h1, .reveal h1 { color: #1a2a4f; }
+
+// Code cells: soft card look
+.reveal pre { box-shadow: none; }
+.reveal pre code {
+  background: #f6f8fa;
+  border: 1px solid #e4e8ee;
+  border-radius: 8px;
+  padding: 0.6em 0.8em;
+}
+
+// OJS inputs (sliders in live slides): readable label size
+.reveal form.oi-3a86ea, .reveal .ojs-in-a-box-waiting-for-module-import { font-size: 0.65em; }

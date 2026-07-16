@@ -72,13 +72,15 @@ jobs:
         run: myst build --html --execute
 
       - name: Cache rendered slide decks
-        # Decks are ~200 MB rendered, so they are never committed; instead the
-        # rendered htmls are cached keyed on the deck sources. Only an edit to
-        # a .qmd or the theme triggers a re-render.
+        # Rendered decks are never committed; the html + sidecar *_files dirs
+        # (reveal.js, chalkboard, menu, ojs runtime) are cached keyed on the
+        # deck sources. Only an edit to a .qmd or the theme triggers a re-render.
         id: slides-cache
         uses: actions/cache@v4
         with:
-          path: slides/**/*.html
+          path: |
+            slides/**/*.html
+            slides/**/*_files
           key: slides-html-${{ hashFiles('slides/**/*.qmd', 'slides/theme.scss') }}
 
       - name: Set up Quarto
@@ -93,11 +95,17 @@ jobs:
           done
 
       - name: Copy slide decks into site
-        # One self-contained reveal.js html per lecture, served under /slides/.
+        # Web-first reveal.js decks under /slides/: each html needs its *_files
+        # sidecar, and slide images resolve relatively to ../../chNN/images, so
+        # the chapter image dirs must also exist in the published site.
         run: |
           for d in slides/ch0*; do
             mkdir -p "_build/html/$d"
-            cp "$d"/*.html "_build/html/$d/" 2>/dev/null || true
+            cp -r "$d"/*.html "$d"/*_files "_build/html/$d/" 2>/dev/null || true
+          done
+          for d in ch0*/images; do
+            mkdir -p "_build/html/$d"
+            cp -r "$d"/. "_build/html/$d/"
           done
 
       - name: Publish to gh-pages

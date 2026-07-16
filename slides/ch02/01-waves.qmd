@@ -5,13 +5,17 @@ author: "Davit Potoyan"
 format:
   revealjs:
     theme: [default, ../theme.scss]
-    embed-resources: true
-    slide-number: true
+    slide-number: c/t
     incremental: true
     width: 1280
     height: 720
     transition: fade
     hash: true
+    menu: true
+    chalkboard:
+      buttons: true
+    preview-links: auto
+    footer: "Chem 3240 · Quantum Mechanics"
 resources:
   - ../../ch02/images
 ---
@@ -125,19 +129,33 @@ $$\omega=\frac{2\pi}{T} = 2\pi\nu$$
 Wavelength, frequency, and speed are linked by $\omega = kv$, i.e. $\lambda \nu = v$
 :::
 
-## The classical wave equation
+## The classical wave equation {auto-animate=true}
 
-- Two $x$-derivatives: $u_{xx}^{''} = -k^2 u$
-- Two $t$-derivatives: $u_{tt}^{''} = -\omega^2 u$
-- Take the ratio to eliminate $u$: $\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}$
+$$u(x,t) = Ae^{i(kx-\omega t)}$$
 
-::: {.fragment}
+## The classical wave equation {auto-animate=true}
+
+$$u(x,t) = Ae^{i(kx-\omega t)}$$
+
+::: {.nonincremental}
+- Two $x$-derivatives: $u_{xx} = -k^2\, u$
+- Two $t$-derivatives: $u_{tt} = -\omega^2\, u$
+- Their ratio eliminates $u$: $\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}$
+:::
+
+## The classical wave equation {auto-animate=true}
+
+$$u(x,t) = Ae^{i(kx-\omega t)}$$
+
+::: {.nonincremental}
+- Two $x$-derivatives: $u_{xx} = -k^2\, u$
+- Two $t$-derivatives: $u_{tt} = -\omega^2\, u$
+- Their ratio eliminates $u$: $\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}$
+:::
+
 $$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$
-:::
 
-::: {.fragment}
 Solutions are **wave functions** of space and time
-:::
 
 ## Combining waves: interference
 
@@ -166,6 +184,39 @@ $$\Psi_{\text{total}} = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \lef
 - Out of phase ($\phi=\pi$): **cancels**
 :::
 ::::
+
+## Live: dial the phase {.smaller}
+
+<span style="color:#7fb3d5">**wave 1**</span> $= \sin(kx)$, <span style="color:#e59866">**wave 2**</span> $= \sin(kx+\phi)$, <span style="color:#C8102E">**sum**</span> with envelope $2\cos(\phi/2)$
+
+```{ojs}
+//| echo: false
+viewof phi = Inputs.range([0, 6.283], {step: 0.01, value: 1.0, label: "phase φ (rad)"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const xs = d3.range(0, 12.57, 0.03);
+  const series = (fn) => xs.map(x => ({x, y: fn(x)}));
+  return Plot.plot({
+    width: 1000, height: 360,
+    x: {label: "kx"},
+    y: {domain: [-2.2, 2.2], label: "u"},
+    marks: [
+      Plot.ruleY([0], {stroke: "#ccc"}),
+      Plot.line(series(x => Math.sin(x)), {x: "x", y: "y", stroke: "#7fb3d5", strokeWidth: 1.5}),
+      Plot.line(series(x => Math.sin(x + phi)), {x: "x", y: "y", stroke: "#e59866", strokeWidth: 1.5}),
+      Plot.line(series(x => Math.sin(x) + Math.sin(x + phi)), {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2.5})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+md`Sum amplitude right now: **${(Math.abs(2*Math.cos(phi/2))).toFixed(2)}** (in phase → 2, out of phase → 0)`
+```
 
 # Takeaway {.center}
 
