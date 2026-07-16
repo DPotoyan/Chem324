@@ -154,7 +154,46 @@ ax.grid(True, ls="--", alpha=0.4)
 fig
 ```
 
-### 4. Symbolic window
+
+### 4. Numerical integral
+
+Define any function and limits in the pad; the plot shades area above the axis in green and below in red, and the value comes from `np.trapezoid`, the same tool your homework uses:
+
+```{marimo} python
+:editor: true
+
+def f(x):
+    return np.sin(3 * x) * np.exp(-x / 4)   # edit me
+
+a, b = 0.0, 10.0                             # integration limits
+```
+
+```{marimo} python
+:hide-code: true
+
+xg2 = np.linspace(a, b, 2000)
+yg2 = f(xg2)
+val2 = np.trapezoid(yg2, xg2)
+pos2 = np.trapezoid(np.clip(yg2, 0, None), xg2)
+neg2 = np.trapezoid(np.clip(yg2, None, 0), xg2)
+
+fig2, ax2 = plt.subplots(figsize=(7, 3.8))
+ax2.plot(xg2, yg2, lw=2, color="0.25")
+ax2.fill_between(xg2, yg2, 0, where=yg2 >= 0, color="seagreen", alpha=0.45)
+ax2.fill_between(xg2, yg2, 0, where=yg2 < 0, color="crimson", alpha=0.45)
+ax2.axhline(0, color="0.6", lw=0.8)
+ax2.set_xlabel("x")
+ax2.set_title(
+    f"integral = {val2:.4f}   (positive area {pos2:.4f}, negative area {neg2:.4f})",
+    fontsize=11,
+)
+fig2
+```
+
+The green and red areas fight each other: an integral is a **signed** sum. For probability densities like $|\psi|^2$ the red never appears, which is exactly why they can be interpreted as probabilities.
+
+
+### 5. Symbolic window
 
 Derivatives, integrals, and equation solving with `sympy`; results render as typeset math. Each pad is editable:
 
@@ -179,7 +218,7 @@ q = sp.symbols("q")
 sp.solve(q**3 - 6*q**2 + 11*q - 6, q)           # solver pad
 ```
 
-### 5. Orbital visualizer
+### 6. Orbital visualizer
 
 Pick quantum numbers; the menus only ever offer valid combinations. Drag to rotate the orbital (blue and red are the wavefunction's positive and negative lobes):
 
@@ -235,7 +274,7 @@ fig_v.update_layout(scene=dict(aspectmode="data"), width=660, height=460,
 fig_v
 ```
 
-### 6. Orbital overlap
+### 7. Orbital overlap
 
 Bonding starts here: slide two 1s orbitals together and watch their **overlap integral** $S(d) = e^{-d}\left(1 + d + d^2/3\right)$ grow (distances in Bohr radii). The shaded region is the product $\psi_A \psi_B$ whose integral is $S$:
 
@@ -280,7 +319,7 @@ fig_o
 
 At $d = 0$ the orbitals coincide and $S = 1$; by $d \approx 8\,a_0$ the overlap is essentially gone. The window where $S$ is a few tenths is exactly where [chemical bonds live](../ch08/02-hydrogen-molecule-ion.md).
 
-### 7. One-dimensional Schrödinger solver
+### 8. One-dimensional Schrödinger solver
 
 Pick a potential and get its bound states instantly: energies as horizontal lines, wavefunctions drawn at their own energy (units: $\hbar = m = 1$, hard walls at $x = \pm 4$). To see how the solver works inside, open the [numerical Schrödinger lab](07-demo-numerical-schrodinger.md).
 
@@ -338,42 +377,7 @@ fig1
 
 Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets.
 
-### 8. Numerical integral
 
-Define any function and limits in the pad; the plot shades area above the axis in green and below in red, and the value comes from `np.trapezoid`, the same tool your homework uses:
-
-```{marimo} python
-:editor: true
-
-def f(x):
-    return np.sin(3 * x) * np.exp(-x / 4)   # edit me
-
-a, b = 0.0, 10.0                             # integration limits
-```
-
-```{marimo} python
-:hide-code: true
-
-xg2 = np.linspace(a, b, 2000)
-yg2 = f(xg2)
-val2 = np.trapezoid(yg2, xg2)
-pos2 = np.trapezoid(np.clip(yg2, 0, None), xg2)
-neg2 = np.trapezoid(np.clip(yg2, None, 0), xg2)
-
-fig2, ax2 = plt.subplots(figsize=(7, 3.8))
-ax2.plot(xg2, yg2, lw=2, color="0.25")
-ax2.fill_between(xg2, yg2, 0, where=yg2 >= 0, color="seagreen", alpha=0.45)
-ax2.fill_between(xg2, yg2, 0, where=yg2 < 0, color="crimson", alpha=0.45)
-ax2.axhline(0, color="0.6", lw=0.8)
-ax2.set_xlabel("x")
-ax2.set_title(
-    f"integral = {val2:.4f}   (positive area {pos2:.4f}, negative area {neg2:.4f})",
-    fontsize=11,
-)
-fig2
-```
-
-The green and red areas fight each other: an integral is a **signed** sum. For probability densities like $|\psi|^2$ the red never appears, which is exactly why they can be interpreted as probabilities.
 
 :::{tip} Want more room?
 The molab button at the top opens this whole page as an editable notebook where you can add as many cells as you like. For guided tutorials, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
