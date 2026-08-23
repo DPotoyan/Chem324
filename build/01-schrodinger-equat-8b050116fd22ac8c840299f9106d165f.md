@@ -468,7 +468,7 @@ fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
 # --- Plot 1: Unnormalized psi² ---
 axes[0].fill_between(x, psi2_unnorm, alpha=0.4, color="blue")
-axes[0].set_title("Unnormalized $|\psi(x)|^2$")
+axes[0].set_title(r"Unnormalized $|\psi(x)|^2$")
 axes[0].set_xlabel("x")
 axes[0].set_ylabel(r"$|\psi(x)|^2$")
 axes[0].grid(True)
@@ -477,7 +477,7 @@ axes[0].text(0.5, 0.2, rf"Area = {area_unnorm:.2f}",
 
 # --- Plot 2: Normalized psi² ---
 axes[1].fill_between(x, psi2_norm, alpha=0.4, color="green")
-axes[1].set_title("Normalized $|\psi(x)|^2$")
+axes[1].set_title(r"Normalized $|\psi(x)|^2$")
 axes[1].set_xlabel("x")
 axes[1].set_ylabel(r"$|\psi(x)|^2$")
 axes[1].grid(True)

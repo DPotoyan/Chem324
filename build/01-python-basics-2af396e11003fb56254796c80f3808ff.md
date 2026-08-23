@@ -11,16 +11,6 @@ kernelspec:
 
 
 
-
-
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = []
----
-```
-
 ```{image} images/py-popular2.png
 :class: bg-primary mb-1
 :width: 400px
@@ -234,9 +224,7 @@ print(''.join(' A B C '))
 print('A B C'.split())
 ```
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 element = "Helium"
 symbol = element[:2]
 f"{element} -> {symbol}, {len(element)} letters"
@@ -382,9 +370,7 @@ In Python 3, `range()` generates the numbers on demand. When you use `range()` i
 
 To get the same efficient behaviour in Python 2, use `xrange()` instead of `range()`.
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 evens = [n for n in range(20) if n % 2 == 0]
 evens[2:6]   # try different slices or conditions
 ```
@@ -496,9 +482,7 @@ d3.values()
 d3.items()
 ```
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 masses = {"H": 1.008, "He": 4.003, "Li": 6.94}
 masses["C"] = 12.011   # add more elements
 sorted(masses.items())
@@ -571,9 +555,7 @@ print(harm_osc(2,k=10))
 print(harm_osc(2,k=10,x0=0.5))
 ```
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 def kinetic_energy(m, v):
     return 0.5 * m * v**2
 
@@ -771,9 +753,7 @@ This cell runs **in your browser**. Edit the code and press the play button (or 
 :::
 
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 quantum_pioneers = ["Planck", "Bohr", "Heisenberg", "Schrodinger", "Dirac"]
 greetings = [f"{name} says hi" for name in sorted(quantum_pioneers)]
 greetings

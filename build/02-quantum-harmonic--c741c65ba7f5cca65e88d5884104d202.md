@@ -363,7 +363,7 @@ def plot_wavefunctions_square(v_values, colors):
     ax.set_ylim([0, 1])
     ax.set_xlabel('$q$')
     ax.set_ylabel(r'$|\psi(q)|^2$ and Classical Probability')
-    ax.set_title('Quantum-Classical Comparison: $|\psi(q)|^2$ vs Classical Probability for v=0, 2, 10')
+    ax.set_title(r'Quantum-Classical Comparison: $|\psi(q)|^2$ vs Classical Probability for v=0, 2, 10')
     ax.legend()
     
     plt.show()

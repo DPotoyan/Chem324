@@ -394,8 +394,8 @@ axs[1].set_xlim(0, L)
 axs[1].grid(True, alpha=0.3)
 
 # 3) Histogram vs analytic |psi|^2
-axs[2].hist(samples, bins=bins, range=(0, L), density=True, alpha=0.35, label="Samples from $|\psi|^2$")
-axs[2].plot(x, prob, linewidth=2, label="Analytic $|\psi|^2$")
+axs[2].hist(samples, bins=bins, range=(0, L), density=True, alpha=0.35, label=r"Samples from $|\psi|^2$")
+axs[2].plot(x, prob, linewidth=2, label=r"Analytic $|\psi|^2$")
 for xn in nodes:
     axs[2].axvline(xn, linestyle="--", linewidth=1)
 axs[2].set_title("Non-uniform probability & nodes")

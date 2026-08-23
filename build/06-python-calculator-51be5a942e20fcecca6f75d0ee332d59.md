@@ -4,7 +4,7 @@
 
 Every panel on this page runs **live in your browser**. Cells with a play button are fully editable: change the numbers, press play (or Ctrl-Enter), and the result updates. Come back here whenever you need to crunch a quick number, make a plot, take a derivative, or look at an orbital, without leaving the website.
 
-Already imported for you on this page: `numpy as np`, `matplotlib.pyplot as plt`, `sympy as sp`, and `scipy.constants as const`. The button at the top opens the whole page as an editable notebook in molab.
+Already imported for you on this page: `numpy as np`, `matplotlib.pyplot as plt`, `sympy as sp`, and `scipy.constants as const`. Nothing here needs to be saved or submitted: it is a scratchpad, not an assignment.
 :::
 
 ```{marimo-config}
@@ -463,5 +463,5 @@ Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfec
 
 
 :::{tip} Want more room?
-The molab button at the top opens this whole page as an editable notebook where you can add as many cells as you like. For guided tutorials, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
+Every cell above is editable in place, so use this page as a scratchpad whenever you need a quick number, plot, or derivative. For guided tutorials that you can open in Colab, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
 :::

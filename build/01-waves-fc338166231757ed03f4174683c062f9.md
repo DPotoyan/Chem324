@@ -85,7 +85,7 @@ ax.set_ylim(-0.1, 1.1)
 ax.set_xlabel("x")
 ax.set_ylabel("u(x,t)")
 ax.legend(loc="upper right")
-ax.set_title("Traveling waves: $f(x\mp vt)$")
+ax.set_title(r"Traveling waves: $f(x\mp vt)$")
 
 def init():
     line_right.set_data([], [])

@@ -6,24 +6,13 @@ kernelspec:
 
 # DEMO: Variational Method
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-variational-method.ipynb)
 
-```{marimo-config}
----
-echo: true
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "scipy",
-      "matplotlib",
-  ]
----
-```
 
-```{marimo} python
-:hide-code: true
 
-import marimo as mo
+```{code-cell} python
+:tags: [hide-input]
+
 import numpy as np
 import scipy as sp
 from scipy.linalg import eigh
@@ -32,11 +21,9 @@ plt.rcParams["figure.dpi"] = 150
 ```
 
 
-
-
 ### Harmonic Oscillator 
 
-```{marimo} python
+```{code-cell} python
 def psi0(x):
     '''Normalized ground state wavefunction of harmonic oscillator
      The following units used; hbar=1, mu=1, k=1
@@ -53,7 +40,7 @@ def E0(n):
 
 ### Write functions to compute matrix elements 
 
-```{marimo} python
+```{code-cell} python
 def basis_functions(x, n, alpha=0.1, beta=0):
     '''Define any 1D trial function you like.
     n: is a parameter that defines basis functions in a linear combination, n=1,2,3,...
@@ -83,7 +70,7 @@ def KE(f, dx):
     return -0.5*df2dx2
 ```
 
-```{marimo} python
+```{code-cell} python
 x = np.linspace(-10, 10, 10000)
 
 for n in range(4):
@@ -95,7 +82,7 @@ plt.legend()
 
 ### Test for numerical accuracy
 
-```{marimo} python
+```{code-cell} python
 x = np.linspace(-10, 10, 10000)
 dx=x[1]-x[0]
 
@@ -111,7 +98,7 @@ print(Hii)
 
 ### Solve eigenvalue problem
 
-```{marimo} python
+```{code-cell} python
 # Define the number of basis functions and the range of x
 num_basis_functions = 2
 
@@ -141,7 +128,7 @@ print(f"Ground-State Wavefunction Coefficients: {ground_state_wavefunction}")
 
 ### Visualize Eigenfunctions and eigenvalues
 
-```{marimo} python
+```{code-cell} python
 psi = 0 # trial function
 k   = 0 # eigenvector 
 
@@ -155,7 +142,7 @@ ax1.plot(x, psi0(x)**2, label='exact ground state')
 ax1.legend()
 ax1.set_title(f"Ground-State Energy: {ground_state_energy:.4f}")
 ax1.set_xlabel('x')
-ax1.set_ylabel('$|\psi(x)|^2$')
+ax1.set_ylabel(r'$|\psi(x)|^2$')
 
 for n, level in enumerate(eigenvalues):
 

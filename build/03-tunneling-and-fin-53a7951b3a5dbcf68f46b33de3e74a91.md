@@ -440,7 +440,7 @@ ax[0].plot(x,Vx, color='blue',linewidth=1.5)
 
 #create a legend
 handles, labels = ax[0].get_legend_handles_labels()
-line = Line2D([0], [0], label='Wavefunction $\psi(x)$', color='red', linestyle='-')
+line = Line2D([0], [0], label=r'Wavefunction $\psi(x)$', color='red', linestyle='-')
 handles.append(line)
 line = Line2D([0], [0], label='Energy Level $E_n$', color='black', linestyle='--')
 handles.append(line)
@@ -493,7 +493,7 @@ for n in range(1,nstates+1):
 
 #create a legend
 handles, labels = ax[1].get_legend_handles_labels()
-line = Line2D([0], [0], label='Probability Density $|\psi(x)|^2$', color='red', linestyle='-')
+line = Line2D([0], [0], label=r'Probability Density $|\psi(x)|^2$', color='red', linestyle='-')
 handles.append(line)
 line = Line2D([0], [0], label='Energy Level $E_n$', color='black', linestyle='--')
 handles.append(line)
