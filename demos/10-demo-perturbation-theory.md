@@ -6,30 +6,18 @@ kernelspec:
 
 # DEMO: Perturbation Theory
 
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-perturbation-theory.ipynb)
 
-```{marimo-config}
----
-echo: true
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "matplotlib",
-      "scipy",
-  ]
----
-```
 
-```{marimo} python
-:hide-code: true
 
-import marimo as mo
+```{code-cell} python
+:tags: [hide-input]
+
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams["figure.dpi"] = 150
 from scipy.integrate import quad
 ```
-
 
 
 #### 1. **Energy Levels**
@@ -82,7 +70,7 @@ from scipy.integrate import quad
   - $ \psi_n^{(0)}(x) + \psi_n^{(1)}(x) $: First-order corrected wavefunction (orange line).
   - $ \psi_n^{(0)}(x) + \psi_n^{(1)}(x) + \psi_n^{(2)}(x) $: Second-order corrected wavefunction (green line).
 
-#### Interactive Features
+#### Parameters to vary
 
 - **Magnitude of the Perturbation ($ a $)**:
   - Increasing $ a $ increases the influence of the perturbing potential, making corrections to the energy levels and wavefunctions more pronounced.
@@ -91,7 +79,7 @@ from scipy.integrate import quad
 
 ### Define the problem
 
-```{marimo} python
+```{code-cell} python
 # Constants
 L = 1  # Length of the box
 hbar = 1  # Reduced Planck's constant
@@ -120,7 +108,7 @@ def V_mn(m, n, a):
 
 ### First-order correction 
 
-```{marimo} python
+```{code-cell} python
 # First-order correction to energy
 def first_order_correction(n, a):
     return V_mn(n, n, a)
@@ -139,7 +127,7 @@ def psi_1_correction(x, n, a):
 
 ### Second-order correction 
 
-```{marimo} python
+```{code-cell} python
 def second_order_correction(n, a):
     correction = 0
     E_n0 = E_n_0(n)
@@ -169,7 +157,7 @@ def psi_2_correction(x, n, a):
 
 ### Visualizing corrections
 
-```{marimo} python
+```{code-cell} python
 # Interactive plot function
 def plot_energy_and_wavefunctions(a=1, n=1):
     x = np.linspace(0, L, 1000)  # Position grid
@@ -200,12 +188,12 @@ def plot_energy_and_wavefunctions(a=1, n=1):
     axes[0].grid(True)
     
     # Right panel: Wavefunctions
-    axes[1].plot(x, psi_0, label='Unperturbed $\psi_n^{(0)}(x)$', color='blue')
-    axes[1].plot(x, psi_0 + psi_1, label='1st Order $\psi_n^{(0)}(x) + \psi_n^{(1)}(x)$', color='orange')
-    axes[1].plot(x, psi_total, label='2nd Order $\psi_n^{(0)}(x) + \psi_n^{(1)}(x) + \psi_n^{(2)}(x)$', color='green')
+    axes[1].plot(x, psi_0, label=r'Unperturbed $\psi_n^{(0)}(x)$', color='blue')
+    axes[1].plot(x, psi_0 + psi_1, label=r'1st Order $\psi_n^{(0)}(x) + \psi_n^{(1)}(x)$', color='orange')
+    axes[1].plot(x, psi_total, label=r'2nd Order $\psi_n^{(0)}(x) + \psi_n^{(1)}(x) + \psi_n^{(2)}(x)$', color='green')
     axes[1].set_title('Wavefunctions')
     axes[1].set_xlabel('Position $x$')
-    axes[1].set_ylabel('Wavefunction $\psi(x)$')
+    axes[1].set_ylabel(r'Wavefunction $\psi(x)$')
     axes[1].legend()
     axes[1].grid(True)
     
@@ -213,24 +201,20 @@ def plot_energy_and_wavefunctions(a=1, n=1):
     plt.show()
 ```
 
-```{marimo} python
-:hide-code: true
-
-a_p1 = mo.ui.slider(0, 25, step=1, value=10, show_value=True, label="perturbation strength a")
-n_p1 = mo.ui.slider(1, 5, step=1, value=1, show_value=True, label="state n")
-mo.hstack([a_p1, n_p1], justify="start", gap=2)
+```{code-cell} python
+a_p1 = 10   # perturbation strength a; try anything from 0 to 25
+n_p1 = 1    # state n; try 1 through 5
 ```
 
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
-plot_energy_and_wavefunctions(a=a_p1.value, n=n_p1.value)
-plt.gcf()
+plot_energy_and_wavefunctions(a=a_p1, n=n_p1)
 ```
 
 ### Insights into Molecular Orbtials and Bonding from pertrubation theory perspective
 
-```{marimo} python
+```{code-cell} python
 def molecular_orbital_energies(E_A, E_B, H_AB):
     """
     Compute molecular orbital energies using perturbation theory.
@@ -263,14 +247,14 @@ plt.ylabel('Molecular Orbital Energy')
 plt.title('Molecular Orbital Formation via Perturbation Theory')
 plt.legend()
 plt.grid(True)
-plt.gcf()
+plt.show()
 ```
 
 **Roles of Bonding and Antibonding**:
    - Bonding energy $ E_- $: Stabilized by $ -|H_{AB}|^2 / \Delta E $.
    - Antibonding energy $E_+$: Destabilized by $ +|H_{AB}|^2 / \Delta E$.
 
-```{marimo} python
+```{code-cell} python
 def molecular_orbital_energies(E_A, E_B, H_AB):
     """
     Compute molecular orbital energies using second-order perturbation theory.
@@ -321,16 +305,12 @@ def plot_energy_levels(delta_E=2.0, H_AB=0.5):
     plt.show()
 ```
 
-```{marimo} python
-:hide-code: true
-
-dE_p2 = mo.ui.slider(-5.0, 5.0, step=0.1, value=0.0, show_value=True, label="energy gap ΔE = E_A - E_B")
-dE_p2
+```{code-cell} python
+dE_p2 = 0.0   # energy gap ΔE = E_A - E_B; try anything from -5.0 to 5.0
 ```
 
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
-plot_energy_levels(delta_E=dE_p2.value, H_AB=5)
-plt.gcf()
+plot_energy_levels(delta_E=dE_p2, H_AB=5)
 ```

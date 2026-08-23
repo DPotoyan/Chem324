@@ -11,20 +11,8 @@ kernelspec:
 
 
 
-
-
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-  ]
----
-```
-
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
 import numpy as np
 ```
@@ -220,9 +208,7 @@ a[-1,:] # last row
 
 ![](images/numpy_3d.png)
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 m = np.arange(1, 26).reshape(5, 5)   # np is already imported on this page
 m[1:4, ::2]   # predict the result before running
 ```
@@ -408,9 +394,7 @@ and calculate ``r = sqrt(x**2+y**2)`` with 0 in the center of the grid.
 Calculate the function for -15,15 for both x and y.
 ```
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 counts = np.random.default_rng(11).integers(0, 100, size=(4, 6))
 counts.mean(axis=0).round(1)   # try axis=1, .max(), .argsort()
 ```
@@ -610,9 +594,7 @@ Edit this cell in your browser and press play. The last line is displayed: exper
 :::
 
 
-```{marimo} python
-:editor: true
-
+```{code-cell} python
 arr = np.arange(12).reshape(3, 4)
 row_means = arr.mean(axis=1)
 arr - row_means[:, np.newaxis]   # broadcasting in action: try axis=0

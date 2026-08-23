@@ -1,4 +1,13 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # DEMO: Numerical Schrödinger Solver
+
+[![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-numerical-schrodinger.ipynb)
+
 
 
 :::{note} **What you need to know**
@@ -6,7 +15,7 @@
 - Only a handful of potentials (particle in a box, harmonic oscillator, hydrogen atom) can be solved with pencil and paper. Every other Schrödinger equation in chemistry is solved **numerically**.
 - The **finite-difference method** samples the wavefunction on a grid and replaces derivatives with differences between neighboring points. The Schrödinger equation becomes a **matrix eigenvalue problem**: eigenvalues are the allowed energies, eigenvectors are the wavefunctions.
 - Placing a barrier inside a box splits the energy levels into closely spaced **tunneling doublets**, a first look at a phenomenon that returns in ammonia inversion and hydrogen transfer reactions.
-- This page is **reactive**: the Python cells below run live in your browser. Move the slider and every plot that depends on it recomputes. No installation is needed.
+- This page is also a **Colab notebook**: open it with the badge at the top, change the barrier height, and rerun to see every plot update. No installation is needed.
 :::
 
 ### From differential equation to matrix problem
@@ -68,29 +77,15 @@ $$
 
 For $V_0 = 0$ the solver must reproduce $E_n = n^2 E_1$ exactly, which is a good sanity check. As $V_0$ grows, the box splits into two weakly coupled half-boxes, and pairs of levels squeeze together into **doublets**: a symmetric state with no node at the center and an antisymmetric partner with one. Their tiny energy difference is the **tunneling splitting**, the standard textbook route to double-well physics [@griffiths2018].
 
-### The live solver
-
-```{marimo-config}
----
-echo: true
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "scipy",
-      "matplotlib",
-  ]
----
-```
+### The solver
 
 We need only the course's standard scientific stack: NumPy for arrays, SciPy for the tridiagonal eigensolver, and Matplotlib for plots.
 
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
 import time
 
-import marimo as mo
 import numpy as np
 from scipy.linalg import eigh_tridiagonal
 import matplotlib.pyplot as plt
@@ -99,7 +94,7 @@ plt.rcParams["figure.dpi"] = 150
 
 The solver builds the two diagonals of $\mathbf{H}$ and asks SciPy for the lowest few eigenpairs. Dividing the eigenvectors by $\sqrt{\Delta x}$ normalizes them so that $\int |\psi|^2\,dx = 1$.
 
-```{marimo} python
+```{code-cell} python
 E1 = np.pi**2 / 2  # ground-state energy of the empty box (hbar = m = L = 1)
 
 
@@ -116,26 +111,16 @@ def solve_box(v0, n_grid=1500, n_states=4, width=0.25):
     return x, v, energies, vectors / np.sqrt(dx)
 ```
 
-Drag the slider to raise or lower the barrier. Everything below it reacts.
+Set the barrier height here, then rerun the cells below to see the effect.
 
-```{marimo} python
-:hide-code: true
-
-barrier = mo.ui.slider(
-    start=0,
-    stop=100,
-    step=5,
-    value=40,
-    show_value=True,
-    label="Barrier height V0 in units of E1",
-)
-barrier
+```{code-cell} python
+V0 = 40   # barrier height in units of E1; try 0, 20, 60, 100
 ```
 
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
-x_now, v_now, e_now, psi_now = solve_box(barrier.value * E1)
+x_now, v_now, e_now, psi_now = solve_box(V0 * E1)
 
 fig_psi, ax_psi = plt.subplots(figsize=(7, 4.3))
 ax_psi.fill_between(x_now, 0.0, v_now / E1, color="0.88")
@@ -154,9 +139,9 @@ With the barrier at zero you should read off $E/E_1 = 1, 4, 9, 16$, the exact pa
 
 ### Tunneling doublets across all barrier heights
 
-A single click of the slider solves one Hamiltonian. The cell below instead sweeps the full range of barrier heights, a **moderately expensive computation**: 51 diagonalizations of a $2000 \times 2000$ matrix, tracking the six lowest states. Because it does not read the slider, marimo executes it once and reuses the cached result no matter how much you play with the plots.
+One value of `V0` solves a single Hamiltonian. The cell below instead sweeps the full range of barrier heights, a **moderately expensive computation**: 51 diagonalizations of a $2000 \times 2000$ matrix, tracking the six lowest states. It does not depend on `V0`, so you only need to run it once no matter how much you vary the barrier afterwards.
 
-```{marimo} python
+```{code-cell} python
 n_sweep = 2000
 heights = np.linspace(0.0, 100.0, 51)
 t0 = time.perf_counter()
@@ -166,22 +151,21 @@ sweep = (
 )
 t_sweep = time.perf_counter() - t0
 
-mo.md(
+print(
     f"Diagonalized a {n_sweep} x {n_sweep} Hamiltonian at {len(heights)} "
-    f"barrier heights in **{t_sweep:.2f} s**. This cell ignores the slider, "
-    "so marimo runs it once and caches `sweep`."
+    f"barrier heights in {t_sweep:.2f} s."
 )
 ```
 
-The correlation diagram replots instantly when you move the slider, because only the cheap plotting cell reruns, not the sweep.
+The correlation diagram below marks your chosen `V0` with a dashed line. Change `V0` above and rerun just this cell; the expensive sweep does not need to run again.
 
-```{marimo} python
-:hide-code: true
+```{code-cell} python
+:tags: [hide-input]
 
 fig_corr, ax_corr = plt.subplots(figsize=(7, 4.3))
 for n_idx in range(sweep.shape[1]):
     ax_corr.plot(heights, sweep[:, n_idx], lw=1.8, label=f"n = {n_idx + 1}")
-ax_corr.axvline(barrier.value, color="crimson", ls="--", lw=1.2)
+ax_corr.axvline(V0, color="crimson", ls="--", lw=1.2)
 ax_corr.set_xlabel("barrier height V0 / E1")
 ax_corr.set_ylabel("energy / E1")
 ax_corr.legend(frameon=False, fontsize=9)
@@ -198,5 +182,5 @@ fig_corr
 :::{tip} How this page works
 :class: dropdown
 
-This demo pilots [marimo](https://marimo.io) cells inside the course website. The cells are executed while the site is built, so the page loads with correct static output. The first time you touch the slider, a Python runtime (Pyodide, Python compiled to WebAssembly) downloads in the background along with NumPy, SciPy, and Matplotlib, and from then on all cells rerun locally in your browser. Unlike the ipywidgets demos, nothing needs to run on a server, and unlike static pages, every plot stays live.
+The cells on this page run while the site is built, so the page always loads with correct output and you can read it without running anything. To experiment, open the notebook in Colab with the badge at the top: that gives you a full Python environment in the cloud with NumPy, SciPy, and Matplotlib already installed, and nothing to set up on your own machine. Change `V0`, rerun, and compare. Before saving or submitting work from Colab, use **Runtime > Restart and run all** so the notebook runs cleanly from top to bottom.
 :::

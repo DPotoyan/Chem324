@@ -1,26 +1,27 @@
 # Computational projects
 
-Student project notebooks for Chem 3240, in [marimo](https://marimo.io) format.
-Click a badge to open the project in molab (free cloud notebooks, no installation):
-complete the tasks at the bottom of the notebook, then download the `.py` file
-and submit it on Canvas.
+Student project notebooks for Chem 3240. Each project is authored here as a
+`{code-cell}` markdown file; `scripts/make_notebooks.py` turns it into
+`notebooks/project-<name>.ipynb`, which is what the Colab badges open.
 
 | project | open |
 |---|---|
-| Project 1: Waves, Normal Modes and Interference | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/01-waves-challenge.py) |
-| Project 2: Particle in a Box | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/02-particle-in-a-box.py) |
-| Project 3: Quantum Waves | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/03-quantum-waves-challenge.py) |
-| Project 4: Atomic Orbitals | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/DPotoyan/Chem324/blob/master/projects/04-atomic-orbitals-challenge.py) |
+| Project 1: Waves, Normal Modes and Interference | [![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/project-01-waves-challenge.ipynb) |
+| Project 2: Particle in a Box | [![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/project-02-particle-in-a-box.ipynb) |
+| Project 3: Quantum Waves | [![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/project-03-quantum-waves-challenge.ipynb) |
+| Project 4: Atomic Orbitals | [![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/project-04-atomic-orbitals-challenge.ipynb) |
 
-To preview a project locally instead:
+Students open a badge, do **File > Save a copy in Drive**, work, then run
+**Runtime > Restart and run all** before downloading the `.ipynb` for Canvas.
+
+After editing any project source, regenerate the notebooks:
 
 ```bash
-.venv/bin/marimo edit projects/01-waves-challenge.py
+python3 scripts/make_notebooks.py
 ```
 
-The `__marimo__/session/` snapshots are committed so molab shows a pre-rendered
-preview; refresh them after editing a notebook with:
+To preview a project locally:
 
 ```bash
-uvx marimo export session projects/ --sandbox
+uvx jupytext --to ipynb projects/01-waves-challenge.md -o /tmp/p1.ipynb && jupyter lab /tmp/p1.ipynb
 ```
