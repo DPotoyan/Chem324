@@ -28,22 +28,25 @@ def schematic_axes(ax, xlabel, ylabel):
 
 # ---------------------------------------------------------------- 1. UV catastrophe
 h, c, kB = 6.626e-34, 2.998e8, 1.381e-23
+BLACK = "#111111"
 T = 5000
 nu = np.linspace(1e12, 2.0e15, 800)
 planck = 8 * np.pi * h * nu**3 / c**3 / np.expm1(h * nu / (kB * T))
 rj = 8 * np.pi * nu**2 * kB * T / c**3
-fig, ax = plt.subplots(figsize=(6.4, 4.2))
-ax.plot(nu / 1e14, rj, "--", color=TEAL, lw=2, label="Rayleigh-Jeans (classical)")
-ax.plot(nu / 1e14, planck, color=CARDINAL, lw=2.4, label="Planck (quantum)")
+fig, ax = plt.subplots(figsize=(7.2, 4.8))
+ax.plot(nu / 1e14, rj, "--", color=TEAL, lw=3.2, label="Rayleigh-Jeans (classical)")
+ax.plot(nu / 1e14, planck, color=CARDINAL, lw=3.6, label="Planck (quantum)")
 ax.set_ylim(0, 2.6 * planck.max()); ax.set_xlim(0, 20)
-ax.set_xlabel(r"frequency $\nu$ (10$^{14}$ Hz)"); ax.set_ylabel(r"energy density $\rho_\nu$")
-ax.set_yticks([])
-ax.annotate("ultraviolet catastrophe:\nclassical curve never comes down", xy=(1.95, 2.45 * planck.max()), xytext=(3.2, 2.05 * planck.max()),
-            fontsize=10, color=TEAL, arrowprops=dict(arrowstyle="->", color=TEAL))
-ax.annotate("curves agree at low frequency", xy=(1.0, planck[np.argmin(abs(nu / 1e14 - 1.0))]), xytext=(2.5, 1.5 * planck.max()),
-            fontsize=10, color=GRAY, arrowprops=dict(arrowstyle="->", color=GRAY))
-ax.text(12, 0.55 * planck.max(), f"T = {T} K", fontsize=10, color=GRAY)
-ax.legend(frameon=False, loc="center right", fontsize=10)
+ax.set_xlabel(r"frequency $\nu$ (10$^{14}$ Hz)", fontsize=15, color=BLACK)
+ax.set_ylabel(r"energy density $\rho_\nu$", fontsize=15, color=BLACK)
+ax.set_yticks([]); ax.tick_params(axis="x", labelsize=13, colors=BLACK)
+for sp in ["left", "bottom"]: ax.spines[sp].set_linewidth(1.4)
+ax.annotate("ultraviolet catastrophe:\nclassical curve never comes down", xy=(1.95, 2.45 * planck.max()), xytext=(3.4, 2.0 * planck.max()),
+            fontsize=13, color=BLACK, arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.4))
+ax.annotate("curves agree at\nlow frequency", xy=(1.0, planck[np.argmin(abs(nu / 1e14 - 1.0))]), xytext=(3.2, 1.35 * planck.max()),
+            fontsize=13, color=BLACK, arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.4))
+ax.text(12, 0.55 * planck.max(), f"T = {T} K", fontsize=14, color=BLACK)
+ax.legend(frameon=False, loc="center right", fontsize=13)
 fig.tight_layout(); fig.savefig(f"{OUT}/uv_catastrophe.png", dpi=200)
 
 # ---------------------------------------------------------------- 2. Planck curve family
@@ -67,31 +70,55 @@ ax.set_xlabel("wavelength (nm)"); ax.set_ylabel(r"energy density $\rho_\lambda$"
 ax.legend(frameon=False, fontsize=9.5, loc="center right", title="temperature", title_fontsize=9.5)
 fig.tight_layout(); fig.savefig(f"{OUT}/planck_curves.png", dpi=200)
 
+# ---------------------------------------------------------------- 2b. Planck curve family vs frequency (tab twin of the wavelength plot)
+nu_f = np.linspace(1e12, 2.2e15, 1000)
+fig, ax = plt.subplots(figsize=(6.8, 4.2))
+peaks = []
+for i, Ti in enumerate(Ts):
+    rho = 8 * np.pi * h * nu_f**3 / c**3 / np.expm1(h * nu_f / (kB * Ti))
+    ax.plot(nu_f / 1e14, rho, color=HOT2COLD[i], lw=2.2, label=f"{Ti} K")
+    peaks.append((nu_f[np.argmax(rho)] / 1e14, rho.max()))
+px, py = zip(*peaks)
+ax.plot(px, py, ":", color=GRAY, lw=1.2)
+ax.annotate("Wien's law: peak moves to\nhigher frequency as T rises", xy=(px[-1], py[-1]), xytext=(px[-1] + 3.5, py[-1] * 0.95),
+            fontsize=9.5, color=GRAY, arrowprops=dict(arrowstyle="->", color=GRAY))
+ax.axvspan(c / 750e-9 / 1e14, c / 380e-9 / 1e14, color="gold", alpha=0.15)
+ax.text((c / 750e-9 + c / 380e-9) / 2e14, py[-1] * 1.04, "visible", ha="center", fontsize=9, color="darkgoldenrod")
+ax.set_xlim(0, 22); ax.set_ylim(0, py[-1] * 1.12); ax.set_yticks([])
+ax.set_xlabel(r"frequency $\nu$ (10$^{14}$ Hz)"); ax.set_ylabel(r"energy density $\rho_\nu$")
+ax.legend(frameon=False, fontsize=9.5, loc="center right", title="temperature", title_fontsize=9.5)
+fig.tight_layout(); fig.savefig(f"{OUT}/planck_curves_nu.png", dpi=200)
+
 # ---------------------------------------------------------------- 3. wave definitions
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(11, 4.2), gridspec_kw={"width_ratios": [1, 1.1]})
+BLACK = "#111111"
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 4.6), gridspec_kw={"width_ratios": [1, 1.1]})
 x = np.linspace(0, 3, 600); A = 1.0
-a1.plot(x, A * np.sin(2 * np.pi * x), color=TEAL, lw=2.4)
-a1.axhline(0, color=GRAY, ls="--", lw=1)
-a1.annotate("", xy=(1.25, 1.3), xytext=(0.25, 1.3), arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.5))
-a1.text(0.75, 1.4, r"wavelength $\lambda$", ha="center", color=CARDINAL, fontsize=11)
-a1.annotate("", xy=(2.25, 1.0), xytext=(2.25, 0.0), arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.5))
-a1.text(2.33, 0.5, "amplitude", va="center", color=CARDINAL, fontsize=11)
-a1.text(0.25, 1.06, "peak", ha="center", fontsize=10, color="#333"); a1.text(0.75, -1.2, "trough", ha="center", fontsize=10, color="#333")
-a1.set_xlim(-0.05, 3.05); a1.set_ylim(-1.45, 1.7); a1.axis("off")
-a1.set_title("one wave: wavelength and amplitude", fontsize=11, color="#333")
-xs = np.linspace(0, 1, 800)
+a1.plot(x, A * np.sin(2 * np.pi * x), color=TEAL, lw=2.6)
+a1.axhline(0, color=BLACK, ls="--", lw=1)
+# peaks of sin(2 pi x) sit at x = 0.25, 1.25, 2.25
+a1.annotate("", xy=(1.25, 1.32), xytext=(0.25, 1.32), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.6, shrinkA=0, shrinkB=0))
+a1.plot([0.25, 0.25], [1.0, 1.32], color=BLACK, lw=0.8, ls=":"); a1.plot([1.25, 1.25], [1.0, 1.32], color=BLACK, lw=0.8, ls=":")
+a1.text(0.75, 1.42, r"wavelength $\lambda$", ha="center", color=BLACK, fontsize=14)
+a1.annotate("", xy=(2.25, 1.0), xytext=(2.25, 0.0), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.6, shrinkA=0, shrinkB=0))
+a1.text(2.33, 0.5, "amplitude", va="center", color=BLACK, fontsize=14)
+a1.text(1.36, 1.02, "peak", ha="left", fontsize=13, color=BLACK); a1.text(1.75, -1.2, "trough", ha="center", fontsize=13, color=BLACK)
+a1.set_xlim(-0.05, 3.05); a1.set_ylim(-1.45, 1.75); a1.axis("off")
+a1.set_title("one wave: wavelength and amplitude", fontsize=14, color=BLACK)
+xs = np.linspace(0, 1, 1200)
 for k, (nu_k, col) in enumerate(zip([4, 8, 16], [HOT2COLD[0], HOT2COLD[2], HOT2COLD[4]])):
-    y0 = -k * 2.6
-    a2.plot(xs, y0 + np.sin(2 * np.pi * nu_k * xs), color=col, lw=2.2)
-    a2.text(1.03, y0, rf"$\nu$ = {nu_k} Hz", va="center", fontsize=11, color=col)
+    y0 = -k * 2.7
+    a2.plot(xs, y0 + np.sin(2 * np.pi * nu_k * xs), color=col, lw=2.4)
+    a2.text(1.03, y0, rf"$\nu$ = {nu_k} Hz", va="center", fontsize=14, color=BLACK)
     lam_k = 1 / nu_k
-    a2.annotate("", xy=(0.5 + lam_k, y0 + 1.15), xytext=(0.5, y0 + 1.15), arrowprops=dict(arrowstyle="<->", color=GRAY, lw=1.2))
-    a2.text(0.5 + lam_k / 2, y0 + 1.3, rf"$\lambda_{k+1}$", ha="center", fontsize=10, color=GRAY)
-a2.axvline(0, color=GRAY, ls="--", lw=1); a2.axvline(1, color=GRAY, ls="--", lw=1)
-a2.annotate("", xy=(1, 1.9), xytext=(0, 1.9), arrowprops=dict(arrowstyle="->", color="#333", lw=1.2))
-a2.text(0.5, 2.05, "distance the wave travels in 1 second", ha="center", fontsize=10.5, color="#333")
-a2.set_xlim(-0.05, 1.32); a2.set_ylim(-6.6, 2.5); a2.axis("off")
-a2.set_title("same speed c, higher frequency means shorter wavelength", fontsize=11, color="#333")
+    x_peak = 1 / (4 * nu_k) + np.ceil((0.45 - 1 / (4 * nu_k)) * nu_k) / nu_k  # first peak past x = 0.45
+    a2.annotate("", xy=(x_peak + lam_k, y0 + 1.22), xytext=(x_peak, y0 + 1.22), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.4, shrinkA=0, shrinkB=0))
+    a2.plot([x_peak, x_peak], [y0 + 1.0, y0 + 1.22], color=BLACK, lw=0.8, ls=":"); a2.plot([x_peak + lam_k, x_peak + lam_k], [y0 + 1.0, y0 + 1.22], color=BLACK, lw=0.8, ls=":")
+    a2.text(x_peak + lam_k / 2, y0 + 1.36, rf"$\lambda_{k+1}$", ha="center", fontsize=13, color=BLACK)
+a2.axvline(0, color=BLACK, ls="--", lw=1); a2.axvline(1, color=BLACK, ls="--", lw=1)
+a2.annotate("", xy=(1, 2.0), xytext=(0, 2.0), arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.4))
+a2.text(0.5, 2.15, "distance the wave travels in 1 second", ha="center", fontsize=13, color=BLACK)
+a2.set_xlim(-0.05, 1.36); a2.set_ylim(-6.8, 2.7); a2.axis("off")
+a2.set_title("same speed c: higher frequency, shorter wavelength", fontsize=14, color=BLACK)
 fig.tight_layout(); fig.savefig(f"{OUT}/wave_definitions.png", dpi=200)
 
 # ---------------------------------------------------------------- 4. Bohr standing waves

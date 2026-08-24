@@ -93,13 +93,30 @@ A black body is an idealized model, just like the ideal gas model in thermodynam
 - This model is called a black body because it absorbs every wavelength that hits its surface, therefore appearing as a perfectly black object. 
 - If an object has a color, it is because it reflects certain wavelengths of light, which are then detected by the retina of our eye. The distribution of wavelengths emitted by a black body is determined only by its temperature!
 
-:::{figure} ./images/planck_curves.png
+::::{tab-set}
+:::{tab-item} vs wavelength
+:sync: lam
+
+```{figure} ./images/planck_curves.png
 :label: fig-the-need-for-quantization-5
-:alt: EM
+:alt: Black body spectra versus wavelength for temperatures from 3000 K to 7000 K
 :width: 80%
 
-Black body spectra at increasing temperature, colored red to blue. Heating a material does three things: (1) the radiated intensity rises steeply; (2) the peak shifts to shorter wavelengths (higher frequencies), following the dotted Wien line; and (3) as the peak crosses the visible band the color changes from red to yellow to white to blue.
+Black body spectra versus wavelength at increasing temperature, colored red to blue. Heating a material does three things: (1) the radiated intensity rises steeply; (2) the peak shifts to shorter wavelengths, following the dotted Wien line; and (3) as the peak crosses the visible band the color changes from red to yellow to white to blue.
+```
 :::
+:::{tab-item} vs frequency
+:sync: nu
+
+```{figure} ./images/planck_curves_nu.png
+:label: fig-the-need-for-quantization-5nu
+:alt: Black body spectra versus frequency for temperatures from 3000 K to 7000 K
+:width: 80%
+
+The same spectra plotted against frequency, $\rho_\nu$ with $\nu = c/\lambda$. The peak now moves to higher frequency with temperature. Note that the peak frequency is not simply $c/\lambda_{max}$: converting a density per unit wavelength into a density per unit frequency brings in a factor $c/\nu^2$, which shifts where the maximum sits.
+```
+:::
+::::
 
 
 ### Ultraviolet catastrophe of classical mechanics
