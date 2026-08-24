@@ -2,6 +2,10 @@
 title: "Why Quantum Mechanics?"
 subtitle: "Chem 3240 · Lecture 1.1"
 author: "Davit Potoyan"
+title-slide-attributes:
+  data-background-image: ../../ch01/images/double_slit_buildup.gif
+  data-background-size: cover
+  data-background-color: "#0b0b0f"
 format:
   revealjs:
     theme: [default, ../theme.scss]
@@ -17,9 +21,63 @@ format:
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
 # `quarto render 01-why-quantum-mechanics.qmd --to revealjs`  -> standalone HTML deck
+# Title background: electrons arriving one at a time build up double-slit fringes.
 resources:
   - ../../ch01/images
+  - ../../ch02/images
+  - ../../ch03/images
+  - ../../ch04/images
+  - ../../ch05/images
+  - ../../ch07/images
+  - ../../ch08/images
 ---
+
+## Five things classical physics cannot explain {.smaller}
+
+:::: {.columns}
+::: {.column width="34%"}
+![](../../ch01/images/hot_object_colors.png){height="190px" fig-align="center"}
+
+::: {.fragment}
+Why does hot iron glow **red**, then **white**?
+:::
+:::
+::: {.column width="33%"}
+![](../../ch01/images/BlueSky.png){height="190px" fig-align="center"}
+
+::: {.fragment}
+Why is the sky **blue**?
+:::
+:::
+::: {.column width="33%"}
+![](../../ch01/images/spectra.png){height="190px" fig-align="center"}
+
+::: {.fragment}
+Why do stars and neon signs shine in **sharp lines**?
+:::
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch01/images/classical_atom_collapse.png){height="250px" fig-align="center"}
+
+::: {.fragment}
+Why doesn't the electron **crash into the nucleus**?
+:::
+:::
+::: {.column width="50%"}
+![](../../ch07/images/term_periodic.png){height="250px" fig-align="center"}
+
+::: {.fragment}
+Why is the periodic table **shaped like that**?
+:::
+:::
+::::
+
+::: {.fragment}
+**Every one of these is answered in this course.**
+:::
 
 ## What is quantum mechanics?
 
@@ -48,6 +106,30 @@ We can still **master the logic** of QM and apply it everywhere.
 :::
 :::
 ::::
+
+## Zoom in {background-color="#0b0b0f"}
+
+:::: {.columns}
+::: {.column width="33%"}
+![](../../ch04/images/protein.gif){width="100%"}
+
+[**protein**: Newton's laws, ~10,000 atoms]{.caption}
+:::
+::: {.column width="34%"}
+![](../../ch01/images/aimd_water.gif){width="100%"}
+
+[**water molecule**: nuclei classical, electrons quantum, computed for this course]{.caption}
+:::
+::: {.column width="33%"}
+![](../../ch05/images/Orbital_p1-px_animation.gif){width="100%"}
+
+[**one electron in hydrogen**: pure quantum, no orbit, only a wave]{.caption}
+:::
+::::
+
+::: {.fragment}
+Same matter, three levels of description. This course is about the right-hand end.
+:::
 
 ## QM is not "just another theory"
 
@@ -78,54 +160,48 @@ One year after the Schrödinger equation, Dirac (1929) declared the game over:
 > "The underlying physical laws necessary for ... **the whole of chemistry** are thus completely known, and the difficulty is only that the exact application of these laws leads to equations much too complicated to be soluble."
 :::
 
-- Every **bond**, **reaction barrier**, **color**, and **spectrum** is a solution of the Schrödinger equation
-- A century of cleverness (plus computers) went into extracting those solutions
+- Every **bond**, **reaction barrier**, **color**, and **spectrum** is a solution of one equation
+- A century of cleverness (plus computers, plus now **AI trained on millions of quantum calculations**) went into extracting those solutions
 
-## Where is quantum mechanics applied?
+## Where you are headed {background-color="#0b0b0f"}
+
+![](../../ch01/images/hydrogen_orbital_gallery.png){height="590px" fig-align="center"}
+
+::: {.fragment}
+[By week 10 you will derive every one of these from a single equation.]{style="font-size:0.8em"}
+:::
+
+## What you will compute yourself {.smaller}
 
 :::: {.columns}
-::: {.column width="50%"}
-![](../../ch01/images/qc-applied.png){width="90%"}
+::: {.column width="25%"}
+![a wavepacket **tunneling** through a wall](../../ch03/images/barrier_potential.gif){height="380px"}
 :::
-::: {.column width="50%"}
-- Chemistry & materials
-- Spectroscopy: NMR, UV-Vis, IR, lasers
-- Lasers, LEDs, transistors, solar cells
-- MRI, atomic clocks behind GPS
+::: {.column width="25%"}
+![**quantized states** of a trapped particle](../../ch03/images/ext_infinite_well_animation.gif){height="380px"}
+:::
+::: {.column width="25%"}
+![**standing waves**, the template for orbitals](../../ch02/images/2dmemvib.gif){height="380px"}
+:::
+::: {.column width="25%"}
+![**molecular orbitals** of benzene, in ten lines of Python](../../ch08/images/benzeneMos.png){height="380px"}
 :::
 ::::
 
-## Watching molecules move, atom by atom
-
-![](../../ch01/images/aimd_water.gif){width="85%" fig-align="center"}
-
 ::: {.fragment}
-**Ab initio molecular dynamics** of one water molecule: at every step the electrons' Schrödinger equation is solved from scratch to get the forces on the nuclei. *By the end of this course you will understand every ingredient of this simulation.*
+All of it in Python, in the browser, from the course website.
 :::
-
-## "Too complicated to be soluble" is no longer entirely true
-
-- **QM/MM** (Nobel Prize 2013): a quantum region embedded in a classical environment, enzymes and materials watched one femtosecond at a time
-- **AI has joined the party**: machine-learned force fields are neural networks trained on **millions of quantum calculations**
-- Quantum accuracy at a tiny fraction of the cost
-- Quantum chemistry is now one of the biggest producers of **AI training data** in science
 
 ## And then quantum mechanics became a technology
 
-:::: {.columns}
-::: {.column width="45%"}
-![](../../ch01/images/qcomp-applied.jpg){width="90%"}
-:::
-::: {.column width="55%"}
 > "Nature isn't classical, dammit, and if you want to make a simulation of nature, you'd better make it quantum mechanical."
 >
 > Richard Feynman (1982)
 
 - **Superposition** and **entanglement** turned out to be *resources*
-- A **qubit** is just a two-level quantum system
+- A **qubit** is just a two-level quantum system; a quantum computer computes with wavefunctions
 - The killer app: **simulating molecules**, exactly this course's subject
-:::
-::::
+- Everyday hardware already runs on QM: transistors, LEDs, lasers, MRI, the atomic clocks behind GPS
 
 ## What skills will you gain?
 
@@ -138,6 +214,10 @@ One year after the Schrödinger equation, Dirac (1929) declared the game over:
 And an upgraded meme game.
 :::
 
-# Takeaway {.center}
+# Takeaway {.center background-color="#0b0b0f"}
 
 > Chemistry *is* applied quantum mechanics. If you feel you don't fully understand QM, you're in good company, with *everyone else*. The goal is to master its **logic**, not its intuition.
+
+::: {.fragment}
+[A police officer pulls Heisenberg over: "Do you know how fast you were going?" "No, but I know exactly where I am." "You were doing 90!" "Great. Now I'm lost."]{style="font-size:0.6em; color:#b3b9c2"}
+:::
