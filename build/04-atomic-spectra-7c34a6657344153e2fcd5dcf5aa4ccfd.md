@@ -3,10 +3,10 @@
 
 :::{note} **What you will learn**
 
-- The energies of atoms, molecules, and light are **quantized**, and they can only take on specific, **discrete values** rather than a continuous spectrum.  
-- This quantization is a cornerstone of physical reality, confirmed by countless experiments and rigorously explained by quantum mechanics.  
-- Pivotal historical discoveries, such as **blackbody radiation, the photoelectric effect, and the double-slit experiment**, laid the foundation for quantum theory.  
-- Everyday macroscopic phenomena, including the red glow of heated metals, the heat capacity of solids at low temperatures, and the characteristic colors of materials, all originate from quantum effects.  
+- Excited atoms emit light only at **discrete wavelengths**. Each element has its own line spectrum, an atomic fingerprint that classical physics cannot explain.
+- The hydrogen lines are captured by the empirical **Rydberg formula**, $\tilde{\nu} = R_H(1/n_1^2 - 1/n_2^2)$, whose integers $n_1, n_2$ hinted that something in the atom is quantized.
+- **Bohr's model** (1913) adds one quantum rule to classical orbits, angular momentum in units of $\hbar$, and from it derives the orbit radii $r_n = n^2 a_0$, the energy levels $E_n = -13.6\,\text{eV}/n^2$, and the Rydberg constant from fundamental constants.
+- Spectral lines are **transitions between energy levels**: a photon carries away exactly the energy difference, $h\nu = E_{n_2} - E_{n_1}$. The same formulas work for any one-electron ion once the nuclear charge $Z$ is included.
 :::
 
 
@@ -41,9 +41,9 @@ By analyzing spectral lines, one can identify the presence of different elements
 
 - The existence of discrete spectral lines is impossible to describe with classical mechanics.  In 1885, Johann Balmer demonstrated that a subset of the hydrogen atom spectrum (the Balmer series) could be described by the equation
 
-$$\tilde{\nu} = 8.2202\times10^{14}\left(1-\frac{4}{n^2}\right)$$
+$$\lambda = B\,\frac{n^2}{n^2-4}, \qquad B = 364.6\ \text{nm}$$
 
-where $n=3,4,5,...$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
+where $n=3,4,5,...$. Written in terms of the wavenumber $\tilde{\nu} = 1/\lambda$ this is $\tilde{\nu} = \frac{4}{B}\left(\frac{1}{2^2}-\frac{1}{n^2}\right)$ with $4/B = 1.097\times10^{7}\ \text{m}^{-1}$.  Later, Johannes Rydberg generalized this formula to account for the entire hydrogen atom spectrum yielding the Rydberg formula
 
 :::{important} **Rydberg formula**
 
@@ -202,7 +202,7 @@ $$a_0 \approx 0.529 \,\text{Å}$$
 
 ### Energy of the Hydrogen Atom
 
-The total energy of the electron–proton system is the sum of the electron’s **kinetic energy** and the **Coulomb potential energy**:  
+The total energy of the electron-proton system is the sum of the electron’s **kinetic energy** and the **Coulomb potential energy**:  
 
 $$
 E(r) = \tfrac{1}{2} m_e v^2 - \frac{e^2}{4\pi\varepsilon_0 r}.
@@ -247,7 +247,7 @@ $$
 
 - Ionization energy corresponds to taking the electron from $n=1$ to $n \to \infty$, requiring exactly 13.6 eV.  
 
-- You can compute the energy (or frequency) of the photon for a jump from state $n$ to $m$ by taking the difference between energy levels: $\Delta E_{n\rightarrow m} = -19.6 (1/m^2-1/n^2) = h\nu$  
+- You can compute the energy (or frequency) of the photon for a jump from state $n$ to $m$ by taking the difference between energy levels: $\Delta E_{n\rightarrow m} = 13.6\,(1/m^2-1/n^2)\,\text{eV} = h\nu$ for an emission from a higher level $n$ down to a lower level $m$  
 
 :::
 
@@ -302,9 +302,80 @@ $$
 
 - E.g. for the $H$ atom $Z=1$, for $He^{+}$ $Z=2$, etc.
 
-### Problems 
+### Explore the hydrogen spectrum
 
-#### Problem 1
+Every spectral series is the set of transitions that end on one lower level. Slide $n_1$ to move from the Lyman series (ultraviolet) through Balmer (the visible lines of a hydrogen lamp) to Paschen and Brackett (infrared). Raise $Z$ to see how a one-electron ion like $He^+$ pulls all levels down by $Z^2$ and pushes every line to shorter wavelengths.
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+```
+
+```{marimo} python
+:hide-code: true
+
+n_low = mo.ui.slider(1, 4, step=1, value=2, show_value=True, label="lower level n1")
+Z_h = mo.ui.slider(1, 3, step=1, value=1, show_value=True, label="nuclear charge Z")
+mo.vstack([n_low, Z_h])
+```
+
+```{marimo} python
+:hide-code: true
+
+E_ry = 13.6
+n1_h, Z1 = n_low.value, Z_h.value
+levels_h = np.arange(1, 9)
+E_h = -E_ry * Z1**2 / levels_h**2
+series_names = {1: "Lyman", 2: "Balmer", 3: "Paschen", 4: "Brackett"}
+colors_h = plt.get_cmap("viridis")(np.linspace(0.0, 0.9, 6))
+fig4, (axL, axR) = plt.subplots(1, 2, figsize=(9, 3.8), gridspec_kw={"width_ratios": [1, 1.4]})
+for n_i, E_i in zip(levels_h, E_h):
+    axL.hlines(E_i, 0, 1, color="C3" if n_i == n1_h else "k", lw=1.6)
+    if n_i <= 3:
+        axL.text(1.03, E_i, f"n = {n_i}", va="center", fontsize=8)
+axL.hlines(0, 0, 1, color="gray", ls="--", lw=1)
+axL.text(1.03, 0, "n = ∞", va="center", fontsize=8, color="gray")
+lam_lines = []
+for k_i, n2_i in enumerate(range(n1_h + 1, n1_h + 7)):
+    dE_i = E_ry * Z1**2 * (1 / n1_h**2 - 1 / n2_i**2)
+    lam_lines.append(1239.84 / dE_i)
+    x_i = 0.12 + 0.13 * k_i
+    axL.annotate("", xy=(x_i, E_h[n1_h - 1]), xytext=(x_i, -E_ry * Z1**2 / n2_i**2),
+                 arrowprops=dict(arrowstyle="->", color=colors_h[k_i], lw=1.3))
+    axR.axvline(lam_lines[-1], color=colors_h[k_i], lw=2)
+axL.set_xlim(0, 1.5)
+axL.set_ylim(E_h[0] * 1.08, 0.08 * E_ry * Z1**2)
+axL.set_xticks([])
+axL.set_ylabel("energy (eV)")
+axR.axvspan(380, 750, color="gold", alpha=0.15)
+axR.set_title("shaded band: visible light", fontsize=8, color="darkgoldenrod")
+axR.set_xscale("log")
+axR.set_xlim(10, 30000)
+axR.set_yticks([])
+axR.set_xlabel("wavelength (nm), log scale")
+fig4.suptitle(f"Fig. {series_names[n1_h]} series for Z = {Z1}, lines from {lam_lines[-1]:.0f} nm to {lam_lines[0]:.0f} nm", fontsize=10)
+fig4.tight_layout()
+fig4
+```
+
+### Problems
+
+#### Problem 1: Lyman alpha
 
 The so-called Lyman series of lines in the emission spectrum of hydrogen corresponds to transitions from various excited states to the n = 1 orbit. Calculate the wavelength of the lowest-energy line in the Lyman series to three significant figures. In what region of the electromagnetic spectrum does it occur?
 
@@ -339,7 +410,7 @@ This emission line is called Lyman alpha. It is the strongest atomic emission li
 **B** This wavelength is in the UV region of the spectrum.
 :::
 
-#### Problem 2
+#### Problem 2: Photon from n = 4 to n = 1
 
 - A. Calculate the energy of a photon that is produced when an electron in a hydrogen atom goes from an orbit with $n=4$ to an orbit with $n=1$.
 - B. What happens to the energy of the photon as the initial value of $n$ approaches infinity?
@@ -348,14 +419,14 @@ This emission line is called Lyman alpha. It is the strongest atomic emission li
 :::{admonition} **Solution**
 :class: dropdown solution
 
-**A.**  We will use Bohr's formula in electron volts, $E_n = -19.6 \frac{1}{n^2}$, to calculate the energy of a photon.
+**A.**  We will use Bohr's formula in electron volts, $E_n = -13.6 \frac{1}{n^2}$, to calculate the energy of a photon.
 
-$$\Delta E = 19.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 19.6 \cdot 0.9375 = 18.375\,\, ev$$
+$$\Delta E = 13.6  \Big ( \frac{1}{1^2} - \frac{1}{4^2} \Big) = 13.6 \cdot 0.9375 = 12.75\,\, \text{eV}$$
 
-**B.** The energy of the photon goes up as we excite the electron to higher and higher levels. As $n_2\rightarrow \infty$ we end up with a photon that has sufficient energy to ionize the atom. $E = 19.6 \cdot ( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 19.6 ev$
+**B.** The energy of the photon goes up as the electron starts from higher and higher levels, but it saturates. As $n \rightarrow \infty$ the photon energy approaches the ionization energy of hydrogen: $E = 13.6 \cdot \Big( \frac{1}{1^2} - \frac{1}{\infty} \Big) = 13.6\,\, \text{eV}$. Lines pile up against this limit, which is why each spectral series ends in a continuum.
 :::
 
-#### Problem 3
+#### Problem 3: First lines of the Lyman series
 
 Use Rydberg's formula to calculate the first few lines of the Lyman series ($n_1=1$).
 
@@ -410,7 +481,7 @@ So, the first three wavelengths of the Lyman series are approximately $121.57$ n
 
 :::
 
-#### Problem 4
+#### Problem 4: Which level did the electron come from?
 
 A line in the Lyman series of hydrogen has a wavelength of $1.03 \cdot 10^{-7} m$. Find the original level of the electron.
 
@@ -469,9 +540,9 @@ Thus, the original level of the electron is $n_2 = 3$.
 :::
 
 
-#### Problem 5
+#### Problem 5: Ionization energy of He+
 
-Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
+Using Bohr theory calculate the ionization energy of singly ionized helium $He^{+}$.
 
 :::{admonition} **Solution**
 :class: dropdown solution
@@ -479,12 +550,12 @@ Using Bohr theory calculate ionization energy of singly ionized helium $He^{+}$
 The ionization energy is the energy required to remove an electron from its ground state to infinity. Using Bohr's theory, the energy of an electron in an orbit is given by:
 
 $$
-E_n = -\frac{Z^2 R_H}{n^2}
+E_n = -\frac{Z^2 E_{\text{Ry}}}{n^2}
 $$
 
 Where:
 - $Z$ is the atomic number,
-- $R_H = 13.6 \ \text{eV}$ is the Rydberg constant for hydrogen,
+- $E_{\text{Ry}} = 13.6 \ \text{eV}$ is the Rydberg energy, the ionization energy of hydrogen (not to be confused with the Rydberg constant $R_H$ in $\text{m}^{-1}$, which is $E_{\text{Ry}}/hc$),
 - $n$ is the principal quantum number.
 
 For singly ionized helium $He^+$, the atomic number $Z = 2$. In the ground state, $n = 1$.
@@ -492,7 +563,7 @@ For singly ionized helium $He^+$, the atomic number $Z = 2$. In the ground state
 Thus, the energy in the ground state is:
 
 $$
-E_1 = -\frac{Z^2 R_H}{1^2} = -\frac{(2)^2 \times 13.6 \ \text{eV}}{1^2} = -4 \times 13.6 \ \text{eV} = -54.4 \ \text{eV}
+E_1 = -\frac{Z^2 E_{\text{Ry}}}{1^2} = -\frac{(2)^2 \times 13.6 \ \text{eV}}{1^2} = -4 \times 13.6 \ \text{eV} = -54.4 \ \text{eV}
 $$
 
 The ionization energy is the negative of this ground state energy (since we want to bring the electron to $n = \infty$):
@@ -505,9 +576,9 @@ Therefore, the ionization energy of singly ionized helium $He^+$ is $54.4 \ \tex
 
 :::
 
-#### Problem 6
+#### Problem 6: Bohr radii
 
-- Calculate radii of Bohr orbit for first few levels. 
+- Calculate the radii of the Bohr orbits for the first few levels. 
 
 - (Optional) Using python plot $r_n$ vs $n$
 
@@ -554,3 +625,19 @@ Therefore, the radii of the Bohr orbits for the first few levels are:
 - $r_4 = 8.464 \times 10^{-10} \ \text{m}$.
 
 :::
+
+#### Problem 7: The color of H-alpha
+
+The brightest visible line of hydrogen, H-alpha, is the $n = 3 \to 2$ transition of the Balmer series. Compute its wavelength and name its color. Do the same for $n = 4 \to 2$ (H-beta). These two lines are what you see in a hydrogen discharge tube, and they give emission nebulae their red glow.
+
+#### Problem 8: A coincidence between He+ and H
+
+Show that the $n = 4 \to 2$ transition of $He^+$ emits a photon of exactly the same energy as the $n = 2 \to 1$ (Lyman alpha) transition of hydrogen. Find the general rule: which $He^+$ transitions coincide with hydrogen lines, and why?
+
+#### Problem 9: How fast is the electron?
+
+Using $m_e v r = n\hbar$ and $r = n^2 a_0$, find the speed of the electron in the ground state of hydrogen and express it as a fraction of the speed of light. This dimensionless ratio is the fine-structure constant $\alpha \approx 1/137$. What does it say about the need for relativity in hydrogen, and what happens to the innermost electron of uranium ($Z = 92$)?
+
+#### Problem 10: The edge of a series
+
+Every spectral series has a longest wavelength (its first line) and a shortest (the series limit, $n_2 \to \infty$). Compute both for the Paschen series ($n_1 = 3$). In which region of the electromagnetic spectrum do they fall, and can the Paschen lines ever overlap with the Balmer lines?

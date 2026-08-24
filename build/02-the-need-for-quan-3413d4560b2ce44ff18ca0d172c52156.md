@@ -1,7 +1,7 @@
 
 # The need for quantization
 
-:::{note} **What you will learn.**
+:::{note} **What you will learn**
 
 - The energies of atoms, molecules, and light are **quantized**. This means that energy can only assume specific, **discrete values** rather than a continuous range.
 - Energy quantization is a fundamental principle of our physical reality, consistently observed in quantum experiments. Quantum mechanics provides a comprehensive explanation and accurate predictions of this phenomenon.
@@ -123,7 +123,7 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section.
 :::
 
-- **Packing wave modes in a box.** One can fit more high-frequency (short-wavelength) waves in the box than low-frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d \nu^3 \sim \nu^2 d\nu$. The constant of proportionality requires a few more steps to derive, which we skip, writing only the final result:
+- **Packing wave modes in a box.** One can fit more high-frequency (short-wavelength) waves in the box than low-frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d(\nu^3) \sim \nu^2 d\nu$. The constant of proportionality requires a few more steps to derive, which we skip, writing only the final result:
 
 $$
 dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu
@@ -233,7 +233,7 @@ $$\langle E \rangle = \Big[ \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
 - With this expression we end up with a distribution of oscillator energies that tends to zero in the high-frequency limit.
 
-$$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{1}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
+$$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{h\nu}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
 
 - You can also express the distribution in terms of wavelength by making the substitution $\nu = c/\lambda$:
 
@@ -242,9 +242,9 @@ $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{
 
 - The expressions $\rho_{\lambda}(T)d\lambda$ and $\rho_{\nu}(T)d\nu$ have units of energy per volume, which is why they are often referred to as the **energy density** of radiation. By integrating over the entire spectrum (e.g., all frequencies or wavelengths) we obtain the total energy of radiation per volume!
 
-$$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4 $$
+$$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \frac{4\sigma}{c} T^4 $$
 
-- $\sigma=5.6697 \cdot 10^{-8} J m^{-2} K^{-4} s^{-1}$ is called the Stefan-Boltzmann constant.
+- The power radiated per unit surface area of the black body is the more familiar **Stefan-Boltzmann law**, $P/A = \sigma T^4$, where $\sigma=5.67 \cdot 10^{-8}\, \text{W m}^{-2} \text{K}^{-4}$ is the Stefan-Boltzmann constant. Doubling the temperature increases the radiated power sixteenfold.
 
 > In some books you may also find black body radiation characterized via the radiation flux, measured per unit wavelength and per unit solid angle: $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
 
@@ -266,6 +266,61 @@ $$\lambda_{max} = \frac{b}{T}$$
 
 ### Explore black body radiation
 
+Drag the temperature and watch three things at once: the Planck curve (solid) rises and its peak slides to shorter wavelengths, following Wien's law; the visible band lights up only above a few thousand kelvin; and the classical Rayleigh-Jeans prediction (dashed) agrees with Planck at long wavelengths but shoots off the top of the plot at short ones. That divergence is the ultraviolet catastrophe.
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+```
+
+```{marimo} python
+:hide-code: true
+
+T_bb = mo.ui.slider(1000, 10000, step=100, value=5800, show_value=True, label="temperature T (K)")
+T_bb
+```
+
+```{marimo} python
+:hide-code: true
+
+h_c, c_c, kB_c, b_wien = 6.626e-34, 2.998e8, 1.381e-23, 2.898e-3
+T1 = T_bb.value
+lam1 = np.linspace(50e-9, 3000e-9, 800)
+planck1 = 8 * np.pi * h_c * c_c / lam1**5 / np.expm1(h_c * c_c / (lam1 * kB_c * T1))
+rj1 = 8 * np.pi * kB_c * T1 / lam1**4
+lam_peak1 = b_wien / T1
+fig1, ax1 = plt.subplots(figsize=(7, 3.6))
+ax1.plot(lam1 * 1e9, planck1, lw=2, color="C3", label="Planck")
+ax1.plot(lam1 * 1e9, rj1, lw=2, ls="--", color="C0", label="Rayleigh-Jeans (classical)")
+ax1.axvspan(380, 750, color="gold", alpha=0.15, label="visible")
+ax1.axvline(lam_peak1 * 1e9, color="gray", lw=1, ls=":")
+ax1.set_xlim(0, 3000)
+ax1.set_ylim(0, 1.6 * planck1.max())
+ax1.set_xlabel("wavelength (nm)")
+ax1.set_ylabel(r"energy density $\rho_\lambda$ (J m$^{-4}$)")
+ax1.set_title(f"Fig. Black body spectrum at T = {T1} K, peak at {lam_peak1 * 1e9:.0f} nm", fontsize=10)
+ax1.legend(frameon=False, fontsize=9, loc="upper right")
+fig1.tight_layout()
+fig1
+```
+
+The same physics is available as a PhET simulation, which also shows the star and light bulb whose spectra you are looking at.
+
 <iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_en.html"
         width="800"
         height="500"
@@ -281,6 +336,39 @@ $$\lambda_{max} = \frac{b}{T}$$
 
 The black body is used as a standard against which the absorption of real bodies is compared. To a good approximation, stars radiate like black bodies, so we can use blackbody radiation as a model to infer the temperatures of stars from their colors. Find out more in this video on [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc).
 :::
+
+### Quantized oscillators explain heat capacities too
+
+- Planck's quantized oscillator did more than fix the radiation curve. Classical equipartition says every atom in a solid, vibrating in three directions, stores $3k_BT$ of energy, so the molar heat capacity should be a constant $C_V = 3R \approx 25$ J/(mol K). This is the **Dulong-Petit law**, and it works at room temperature for most metals.
+- Yet measurements showed $C_V$ falling toward **zero** as $T \to 0$, and diamond fell far short of $3R$ even at room temperature. Classical physics had no answer.
+- In 1907 Einstein modeled each atom as a Planck oscillator of frequency $\nu$ and replaced $k_BT$ with Planck's average energy. Differentiating with respect to $T$ gives
+
+$$C_V = 3R \left(\frac{\theta_E}{T}\right)^2 \frac{e^{\theta_E/T}}{\left(e^{\theta_E/T}-1\right)^2}, \qquad \theta_E = \frac{h\nu}{k_B}$$
+
+- The **Einstein temperature** $\theta_E$ marks where quantization kicks in: for $T \gg \theta_E$ the formula returns Dulong-Petit, for $T \ll \theta_E$ the oscillators freeze out and $C_V \to 0$. Diamond's stiff bonds give a large $\nu$, hence a high $\theta_E$, which is why it looks "quantum" already at room temperature.
+
+```{marimo} python
+:hide-code: true
+
+T_e = np.linspace(1, 1500, 600)
+fig2, ax2 = plt.subplots(figsize=(6.5, 3.4))
+for theta_e, name_e in [(240, "copper"), (290, "aluminum"), (1320, "diamond")]:
+    x_e = theta_e / T_e
+    cv_e = x_e**2 * np.exp(-x_e) / np.expm1(-x_e) ** 2
+    ax2.plot(T_e, cv_e, lw=2, label=f"{name_e}, $\\theta_E$ = {theta_e} K")
+ax2.axhline(1, color="gray", ls="--", lw=1)
+ax2.text(1480, 1.03, "Dulong-Petit limit", fontsize=8, color="gray", ha="right")
+ax2.axvline(298, color="gray", lw=0.8, ls=":")
+ax2.text(305, 0.08, "room T", fontsize=8, color="gray")
+ax2.set_xlim(0, 1500)
+ax2.set_ylim(0, 1.15)
+ax2.set_xlabel("temperature T (K)")
+ax2.set_ylabel(r"$C_V / 3R$")
+ax2.set_title("Fig. Einstein heat capacity of three solids, quantization freezes out vibrations at low T", fontsize=10)
+ax2.legend(frameon=False, fontsize=9, loc="lower right")
+fig2.tight_layout()
+fig2
+```
 
 ### Rayleigh Scattering and the Color of the Sky
 
@@ -303,15 +391,11 @@ Preferential scattering of shorter wavelengths biases the color of the sky towar
 
 ### Problems
 
-#### Conceptual question
+#### Problem 1: Why is the sky blue and not violet?
 
-::::{admonition} **Conceptual Question**  
-:class: note
+If hotter objects radiate more strongly at shorter wavelengths, why does the **daytime sky appear blue** instead of violet (or even ultraviolet)?
 
-If hotter objects radiate more strongly at shorter wavelengths, why does the **daytime sky appear blue** instead of violet (or even ultraviolet)?  
-
-
-:::{admonition} **Answer**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 The Sun’s spectrum indeed peaks in the green/yellow (≈500 nm), and it emits significant violet and ultraviolet.  
@@ -322,42 +406,31 @@ However:
 
 Thus, the scattered light that reaches us is predominantly **blue**.
 :::
-::::
 
-#### Problem 1
+#### Problem 2: Color of a 3000 K black body
 
-::::{admonition} **Wien's law**  
-:class: note
+A blackbody has temperature $T = 3000 \,\text{K}$. According to Wien's law, what is the approximate color of its peak emission?
 
-A blackbody has temperature $T = 3000 \,\text{K}$. According to Wien’s law, what is the approximate color of its peak emission?  
-
-1. **Red/Orange**  
-2. Green  
-3. Blue  
+1. Red/Orange
+2. Green
+3. Blue
 4. Ultraviolet
 
-
-:::{admonition} **Answer**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 Using $\lambda_{\max} = \dfrac{2.898 \times 10^{-3}}{3000} \approx 9.7 \times 10^{-7}\,\text{m} = 970 \,\text{nm}$, the peak is in the **infrared**, but the visible portion is dominated by the **red/orange** end.  
 **Correct choice: (1) Red/Orange.**
 :::
 
-::::
+#### Problem 3: Wavelength from photon energy
 
-
-#### Problem 2
-
-::::{admonition} **Calculating the Wavelength of Radiation Using Planck's Equation**  
-:class: note
-
-For a monochromatic (means single wavelength) radiation with an energy of $3.5 \, \text{eV}$ calculate the wavelength. Use Planck's equation to relate the energy of radiation to its wavelength. The values of constants are:
+For a monochromatic (single wavelength) radiation with an energy of $3.5 \, \text{eV}$ calculate the wavelength. Use Planck's equation to relate the energy of radiation to its wavelength. The values of constants are:
 - Planck's constant, $h = 6.626 \times 10^{-34} \, \text{J} \cdot \text{s}$
 - Speed of light, $c = 3.00 \times 10^8 \, \text{m/s}$
 - $1 \, \text{eV} = 1.602 \times 10^{-19} \, \text{J}$
 
-:::{admonition} **Solution:**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 First, convert the energy of the radiation from electron volts (eV) to joules (J):
@@ -391,16 +464,11 @@ $$
 The wavelength of the radiation is approximately $355 \, \text{nm}$, which is in the ultraviolet range of the electromagnetic spectrum.
 :::
 
-::::
+#### Problem 4: Peak of the solar spectrum
 
-#### Problem 3
+Using Wien's displacement law, determine the wavelength $\lambda_{\text{max}}$ at which the spectral radiance of a blackbody is maximized. Calculate $\lambda_{\text{max}}$ for $T = 5800 \, \text{K}$, approximately the temperature of the Sun's surface.
 
-::::{admonition} **Question: Wien's displacement law**  
-:class: note
-
-Using Wien's displacement law, determine the wavelength $\lambda_{\text{max}}$ at which the spectral radiance of a blackbody is maximized. Given the temperature $T$ of the blackbody, calculate $\lambda_{\text{max}}$ for $T = 5800 \, \text{K}$, which is approximately the temperature of the Sun's surface.
-
-:::{admonition} **Solution:**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 Wien's displacement law states that the wavelength at which the spectral radiance of a blackbody peaks is inversely proportional to the temperature:
@@ -420,14 +488,28 @@ $$
 So, the peak wavelength $\lambda_{\text{max}}$ for a blackbody at $5800 \, \text{K}$ is $500 \, \text{nm}$, which is in the visible range.
 :::
 
-::::
+#### Problem 5: Star colors as thermometers
+
+Betelgeuse looks distinctly red, Rigel blue-white. Their spectra peak near 830 nm and 240 nm respectively. Estimate the surface temperature of each star. Which of the two radiates more power per square meter of surface, and by what factor?
+
+#### Problem 6: Counting photons
+
+A red laser pointer emits 1.0 mW at 650 nm. How many photons leave it per second? Compare with the number of photons per second in a 1.0 mW beam of X-rays with wavelength 0.10 nm. In which beam is the "graininess" of light easier to detect?
+
+#### Problem 7: Where the classical formula hides inside Planck's
+
+Expand $e^{h\nu/k_BT}$ for $h\nu \ll k_BT$ and show that Planck's average oscillator energy $\langle E \rangle = h\nu/(e^{h\nu/k_BT}-1)$ reduces to the classical equipartition value $k_BT$. Then examine the opposite limit, $h\nu \gg k_BT$, and show that the average energy dies off exponentially. Explain in one sentence why this second limit is what cures the ultraviolet catastrophe.
+
+#### Problem 8: The Sun's power output
+
+The Sun has radius $6.96 \times 10^8$ m and a surface temperature of about 5770 K. Treating it as a black body, use the Stefan-Boltzmann law $P/A = \sigma T^4$ to compute its total radiated power. The Earth is $1.50 \times 10^{11}$ m away; what power per square meter arrives at the top of our atmosphere? (The measured value, the solar constant, is about 1360 W/m$^2$.)
 
 ## Reference Table of Constants
 
 | Constant                     | Symbol   | Value                                                 |
 | ---- | -- | ----- |
-| Speed of light               | $c$      | $3.00 \cdot 10^8,\, {m/s}$                       |
-| Planck’s constant            | $h$      | $6.626 \cdot 10^{-34},\, {J·s}$                  |
-| Boltzmann constant           | $k_B$    | $1.381 \cdot 10^{-23},\, {J/K}$                  |
-| Stefan–Boltzmann constant    | $\sigma$ | $5.67 \cdot 10^{-8},\, {W·m}^{-2}{K}^{-4}$ |
-| Wien’s displacement constant | $b$      | $2.898 \cdot 10^{-3},\, {m·K}$                   |
+| Speed of light               | $c$      | $3.00 \cdot 10^8\, \text{m/s}$                       |
+| Planck's constant            | $h$      | $6.626 \cdot 10^{-34}\, \text{J s}$                  |
+| Boltzmann constant           | $k_B$    | $1.381 \cdot 10^{-23}\, \text{J/K}$                  |
+| Stefan-Boltzmann constant    | $\sigma$ | $5.67 \cdot 10^{-8}\, \text{W m}^{-2}\text{K}^{-4}$ |
+| Wien's displacement constant | $b$      | $2.898 \cdot 10^{-3}\, \text{m K}$                   |
