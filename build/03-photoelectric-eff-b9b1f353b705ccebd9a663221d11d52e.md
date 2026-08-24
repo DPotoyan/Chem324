@@ -51,7 +51,7 @@ $$
 ### Kinetic energy: frequency vs intensity
 
 
-:::{figure} ./images/photoel1.png
+:::{figure} ./images/photoelectric_ke.png
 :label: fig-photoelectric-effect-2
 :alt: applied photoelectric
 :width: 70%
@@ -71,7 +71,7 @@ Dependence of electron kinetic energy on the frequency of radiation hitting the 
 
 ### Electric current: frequency vs intensity
 
-:::{figure} ./images/photoel2.png
+:::{figure} ./images/photoelectric_current.png
 :label: fig-photoelectric-effect-3
 :alt: applied photoelectric
 :width: 70%

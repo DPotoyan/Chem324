@@ -45,12 +45,12 @@ Spectrum of electromagnetic waves showing wavelengths and radiation types, objec
 ### Relationship between frequency, wavelength and speed of light. 
 
 
-:::{figure} ./images/lec1_wavelen_freq_c.jpg
+:::{figure} ./images/wave_definitions.png
 :label: fig-the-need-for-quantization-3
 :alt: EM
 :width: 80%
 
-Definitions of wavelength $\lambda$ and frequency $\nu$.
+Definitions of wavelength $\lambda$, amplitude, and frequency $\nu$. At fixed speed $c$ a wave with twice the frequency has half the wavelength.
 :::
 
 
@@ -93,19 +93,19 @@ A black body is an idealized model, just like the ideal gas model in thermodynam
 - This model is called a black body because it absorbs every wavelength that hits its surface, therefore appearing as a perfectly black object. 
 - If an object has a color, it is because it reflects certain wavelengths of light, which are then detected by the retina of our eye. The distribution of wavelengths emitted by a black body is determined only by its temperature!
 
-:::{figure} ./images/lec1_bb.png
+:::{figure} ./images/planck_curves.png
 :label: fig-the-need-for-quantization-5
 :alt: EM
 :width: 80%
 
-When heating up a material we observe three things: (1) the radiation intensity increases, implying higher radiated energy; (2) the distribution of emitted wavelengths shifts to lower values, or equivalently the frequency distribution shifts to higher values; and (3) the color of the material changes from red to yellow to blue.
+Black body spectra at increasing temperature, colored red to blue. Heating a material does three things: (1) the radiated intensity rises steeply; (2) the peak shifts to shorter wavelengths (higher frequencies), following the dotted Wien line; and (3) as the peak crosses the visible band the color changes from red to yellow to white to blue.
 :::
 
 
 ### Ultraviolet catastrophe of classical mechanics
 
 
-:::{figure} ./images/lec1_UVcat.jpg
+:::{figure} ./images/uv_catastrophe.png
 :label: fig-the-need-for-quantization-6
 :alt: ultraviolet catastrophe
 :width: 50%
