@@ -132,19 +132,33 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 
 - **What is radiation in classical mechanics?** Radiation is considered a wave with frequency $\nu$. In a heated body, naturally vibrating springs (which represent atoms or molecules) generate waves with the same frequency.
 
-:::{figure} ./images/phonons.gif
-:label: fig-the-need-for-quantization-7
-:alt: ultraviolet catastrophe
-:width: 60%
+:::{tip} **How many waves fit in a box?**
 
-Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section.
+```{figure} ./images/mode_counting.png
+:alt: standing waves in a box and the lattice of allowed modes
+:width: 95%
+
+Left: only waves with a node at each wall fit in a box of size $L$, so $\lambda_n = 2L/n$ and $\nu_n = n\,c/2L$. Right: in two dimensions each allowed mode is a dot $(n_x, n_y)$, and its frequency is proportional to the distance from the origin. The modes between $\nu$ and $\nu + d\nu$ fill a thin ring.
+```
+
+1. A wave fits in the box only if a whole number of half-wavelengths spans it: $n = 1, 2, 3, \ldots$ in each direction.
+2. The frequency of a mode $(n_x, n_y, n_z)$ is $\nu = \frac{c}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}$, so all modes with frequency below $\nu$ sit inside a sphere of radius $2L\nu/c$ in "mode space."
+3. The number of modes below $\nu$ is the volume of that sphere, $\propto \nu^3$. The number in a thin shell $[\nu, \nu + d\nu]$ is its surface times $d\nu$, $\propto \nu^2 d\nu$.
 :::
 
-- **Packing wave modes in a box.** One can fit more high-frequency (short-wavelength) waves in the box than low-frequency ones. The number of waves we can fit in a cubic box in the frequency region $[\nu, \nu+d\nu]$ can be estimated to be $\sim d(\nu^3) \sim \nu^2 d\nu$. The constant of proportionality requires a few more steps to derive, which we skip, writing only the final result:
+- **Packing wave modes in a box.** More high-frequency (short-wavelength) waves fit in the box than low-frequency ones: the count in the interval $[\nu, \nu+d\nu]$ grows as $d(\nu^3) \sim \nu^2 d\nu$. Working out the constant (two polarizations, one octant of the sphere, division by the box volume) gives
 
 $$
 dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu
 $$   
+
+:::{figure} ./images/phonons.gif
+:label: fig-the-need-for-quantization-7
+:alt: atomic vibrations in a solid
+:width: 60%
+
+Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section. Each mode is one of the dots counted above.
+:::
 
  - **Equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
 
@@ -248,20 +262,86 @@ This is Planck's law, which describes the spectral density of radiation emitted 
 
 $$\langle E \rangle = \Big[ \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-- With this expression we end up with a distribution of oscillator energies that tends to zero in the high-frequency limit.
+- With this expression we end up with a distribution of oscillator energies that tends to zero in the high-frequency limit. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
+
+::::{tab-set}
+:::{tab-item} per unit frequency
+:sync: nu
 
 $$ \rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \Big[\frac{h\nu}{e^{\frac{h\nu}{kT}} - 1} \Big]$$
-
-- You can also express the distribution in terms of wavelength by making the substitution $\nu = c/\lambda$:
+:::
+:::{tab-item} per unit wavelength
+:sync: lam
 
 $$ \rho_{\lambda}(T) = \frac{8 \pi hc}{\lambda^5} \cdot \Big[ \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}\Big]$$
+:::
+::::
 
 
 - The expressions $\rho_{\lambda}(T)d\lambda$ and $\rho_{\nu}(T)d\nu$ have units of energy per volume, which is why they are often referred to as the **energy density** of radiation. By integrating over the entire spectrum (e.g., all frequencies or wavelengths) we obtain the total energy of radiation per volume!
 
 $$\int^{\infty}_0 \rho_{\nu}(T)d\nu = \frac{4\sigma}{c} T^4 $$
 
-- The power radiated per unit surface area of the black body is the more familiar **Stefan-Boltzmann law**, $P/A = \sigma T^4$, where $\sigma=5.67 \cdot 10^{-8}\, \text{W m}^{-2} \text{K}^{-4}$ is the Stefan-Boltzmann constant. Doubling the temperature increases the radiated power sixteenfold.
+- The power radiated per unit surface area of the black body is the more familiar **Stefan-Boltzmann law**, $P/A = \sigma T^4$, where $\sigma=5.67 \cdot 10^{-8}\, \text{W m}^{-2} \text{K}^{-4}$ is the Stefan-Boltzmann constant. Doubling the temperature increases the radiated power sixteenfold. Try it: the shaded area below is the integral, and the readout compares it with the area at 3000 K.
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+```
+
+```{marimo} python
+:hide-code: true
+
+T_area = mo.ui.slider(3000, 7000, step=100, value=4500, show_value=True, label="temperature T (K)")
+T_area
+```
+
+```{marimo} python
+:hide-code: true
+
+h_a, c_a, kB_a = 6.626e-34, 2.998e8, 1.381e-23
+T_ref = 3000
+nu_a = np.linspace(1e12, 2.5e15, 1500)
+def planck_nu(T_):
+    return 8 * np.pi * h_a * nu_a**3 / c_a**3 / np.expm1(h_a * nu_a / (kB_a * T_))
+rho_ref, rho_T = planck_nu(T_ref), planck_nu(T_area.value)
+area_ref, area_T = np.trapezoid(rho_ref, nu_a), np.trapezoid(rho_T, nu_a)
+fig5, ax5 = plt.subplots(figsize=(7, 3.6))
+ax5.fill_between(nu_a / 1e14, rho_T, color="#C8102E", alpha=0.25)
+ax5.plot(nu_a / 1e14, rho_T, color="#C8102E", lw=2, label=f"T = {T_area.value} K")
+ax5.fill_between(nu_a / 1e14, rho_ref, color="#107895", alpha=0.35)
+ax5.plot(nu_a / 1e14, rho_ref, color="#107895", lw=2, label=f"T = {T_ref} K (reference)")
+ax5.set_xlim(0, 22)
+ax5.set_ylim(0, 1.05 * planck_nu(7000).max())
+ax5.set_yticks([])
+ax5.set_xlabel(r"frequency $\nu$ ($10^{14}$ Hz)")
+ax5.set_ylabel(r"energy density $\rho_\nu$")
+ax5.set_title(f"Fig. Area under the Planck curve grows as $T^4$: {area_T / area_ref:.1f} times the area at {T_ref} K", fontsize=10)
+ax5.legend(frameon=False, fontsize=9, loc="upper right")
+fig5.tight_layout()
+fig5
+```
+
+```{marimo} python
+:hide-code: true
+
+mo.md(f"Temperature ratio {T_area.value / T_ref:.2f}, so $T^4$ predicts **{(T_area.value / T_ref) ** 4:.1f}** times the area; the numerical integral gives **{area_T / area_ref:.1f}**.")
+```
 
 > In some books you may also find black body radiation characterized via the radiation flux, measured per unit wavelength and per unit solid angle: $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
 
@@ -284,26 +364,6 @@ $$\lambda_{max} = \frac{b}{T}$$
 ### Explore black body radiation
 
 Drag the temperature and watch three things at once: the Planck curve (solid) rises and its peak slides to shorter wavelengths, following Wien's law; the visible band lights up only above a few thousand kelvin; and the classical Rayleigh-Jeans prediction (dashed) agrees with Planck at long wavelengths but shoots off the top of the plot at short ones. That divergence is the ultraviolet catastrophe.
-
-```{marimo-config}
----
-pyproject: |
-  requires-python = ">=3.10"
-  dependencies = [
-      "numpy",
-      "matplotlib",
-  ]
----
-```
-
-```{marimo} python
-:hide-code: true
-
-import marimo as mo
-import numpy as np
-import matplotlib.pyplot as plt
-plt.rcParams["figure.dpi"] = 150
-```
 
 ```{marimo} python
 :hide-code: true
@@ -345,39 +405,6 @@ fig1
 
 The black body is used as a standard against which the absorption of real bodies is compared. To a good approximation, stars radiate like black bodies, so we can use blackbody radiation as a model to infer the temperatures of stars from their colors. Find out more in this video on [Visible Light Waves](https://www.youtube.com/watch?v=PMtC34pzKGc).
 :::
-
-### Quantized oscillators explain heat capacities too
-
-- Planck's quantized oscillator did more than fix the radiation curve. Classical equipartition says every atom in a solid, vibrating in three directions, stores $3k_BT$ of energy, so the molar heat capacity should be a constant $C_V = 3R \approx 25$ J/(mol K). This is the **Dulong-Petit law**, and it works at room temperature for most metals.
-- Yet measurements showed $C_V$ falling toward **zero** as $T \to 0$, and diamond fell far short of $3R$ even at room temperature. Classical physics had no answer.
-- In 1907 Einstein modeled each atom as a Planck oscillator of frequency $\nu$ and replaced $k_BT$ with Planck's average energy. Differentiating with respect to $T$ gives
-
-$$C_V = 3R \left(\frac{\theta_E}{T}\right)^2 \frac{e^{\theta_E/T}}{\left(e^{\theta_E/T}-1\right)^2}, \qquad \theta_E = \frac{h\nu}{k_B}$$
-
-- The **Einstein temperature** $\theta_E$ marks where quantization kicks in: for $T \gg \theta_E$ the formula returns Dulong-Petit, for $T \ll \theta_E$ the oscillators freeze out and $C_V \to 0$. Diamond's stiff bonds give a large $\nu$, hence a high $\theta_E$, which is why it looks "quantum" already at room temperature.
-
-```{marimo} python
-:hide-code: true
-
-T_e = np.linspace(1, 1500, 600)
-fig2, ax2 = plt.subplots(figsize=(6.5, 3.4))
-for theta_e, name_e in [(240, "copper"), (290, "aluminum"), (1320, "diamond")]:
-    x_e = theta_e / T_e
-    cv_e = x_e**2 * np.exp(-x_e) / np.expm1(-x_e) ** 2
-    ax2.plot(T_e, cv_e, lw=2, label=f"{name_e}, $\\theta_E$ = {theta_e} K")
-ax2.axhline(1, color="gray", ls="--", lw=1)
-ax2.text(1480, 1.03, "Dulong-Petit limit", fontsize=8, color="gray", ha="right")
-ax2.axvline(298, color="gray", lw=0.8, ls=":")
-ax2.text(305, 0.08, "room T", fontsize=8, color="gray")
-ax2.set_xlim(0, 1500)
-ax2.set_ylim(0, 1.15)
-ax2.set_xlabel("temperature T (K)")
-ax2.set_ylabel(r"$C_V / 3R$")
-ax2.set_title("Fig. Einstein heat capacity of three solids, quantization freezes out vibrations at low T", fontsize=10)
-ax2.legend(frameon=False, fontsize=9, loc="lower right")
-fig2.tight_layout()
-fig2
-```
 
 ### Rayleigh Scattering and the Color of the Sky
 
@@ -522,3 +549,24 @@ The Sun has radius $6.96 \times 10^8$ m and a surface temperature of about 5770 
 | Boltzmann constant           | $k_B$    | $1.381 \cdot 10^{-23}\, \text{J/K}$                  |
 | Stefan-Boltzmann constant    | $\sigma$ | $5.67 \cdot 10^{-8}\, \text{W m}^{-2}\text{K}^{-4}$ |
 | Wien's displacement constant | $b$      | $2.898 \cdot 10^{-3}\, \text{m K}$                   |
+
+## Extra: quantized oscillators explain heat capacities too
+
+:::{admonition} Einstein's 1907 heat capacity model (optional reading)
+:class: dropdown tip
+
+- Planck's quantized oscillator did more than fix the radiation curve. Classical equipartition says every atom in a solid, vibrating in three directions, stores $3k_BT$ of energy, so the molar heat capacity should be a constant $C_V = 3R \approx 25$ J/(mol K). This is the **Dulong-Petit law**, and it works at room temperature for most metals.
+- Yet measurements showed $C_V$ falling toward **zero** as $T \to 0$, and diamond fell far short of $3R$ even at room temperature. Classical physics had no answer.
+- In 1907 Einstein modeled each atom as a Planck oscillator of frequency $\nu$ and replaced $k_BT$ with Planck's average energy. Differentiating with respect to $T$ gives
+
+$$C_V = 3R \left(\frac{\theta_E}{T}\right)^2 \frac{e^{\theta_E/T}}{\left(e^{\theta_E/T}-1\right)^2}, \qquad \theta_E = \frac{h\nu}{k_B}$$
+
+- The **Einstein temperature** $\theta_E$ marks where quantization kicks in: for $T \gg \theta_E$ the formula returns Dulong-Petit, for $T \ll \theta_E$ the oscillators freeze out and $C_V \to 0$. Diamond's stiff bonds give a large $\nu$, hence a high $\theta_E$, which is why it looks "quantum" already at room temperature.
+
+```{figure} ./images/einstein_heat_capacity.png
+:alt: Einstein heat capacity of copper, aluminum, and diamond versus temperature
+:width: 75%
+
+Einstein heat capacity of three solids. Vibrations freeze out below the Einstein temperature, and diamond is still far from the classical limit at room temperature.
+```
+:::

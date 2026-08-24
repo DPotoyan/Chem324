@@ -89,9 +89,40 @@ ax.set_xlabel(r"frequency $\nu$ (10$^{14}$ Hz)"); ax.set_ylabel(r"energy density
 ax.legend(frameon=False, fontsize=9.5, loc="center right", title="temperature", title_fontsize=9.5)
 fig.tight_layout(); fig.savefig(f"{OUT}/planck_curves_nu.png", dpi=200)
 
+# ---------------------------------------------------------------- 2c. counting wave modes in a box
+BLACK = "#111111"
+fig, (b1, b2) = plt.subplots(1, 2, figsize=(11, 4.6), gridspec_kw={"width_ratios": [1, 1]})
+L = 1.0; xb = np.linspace(0, L, 400)
+for n in [1, 2, 3, 4]:
+    y0 = -(n - 1) * 1.5
+    b1.plot(xb, y0 + 0.55 * np.sin(n * np.pi * xb / L), color=HOT2COLD[min(n, 4)], lw=2.4)
+    b1.plot([0, L], [y0, y0], color="#bbb", lw=0.8)
+    b1.text(L + 0.05, y0, rf"$n$ = {n}:  $\lambda_n = 2L/{n}$,  $\nu_n = {n}\,c/2L$", va="center", fontsize=12, color=BLACK)
+b1.axvline(0, color=BLACK, lw=2.5); b1.axvline(L, color=BLACK, lw=2.5)
+b1.annotate("", xy=(L, 1.0), xytext=(0, 1.0), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.3))
+b1.text(L / 2, 1.1, "box of size L", ha="center", fontsize=12, color=BLACK)
+b1.set_xlim(-0.1, 2.6); b1.set_ylim(-5.3, 1.5); b1.axis("off")
+b1.set_title("Standing waves that fit in a box", fontsize=14, fontweight="bold", color=BLACK, pad=14)
+# mode lattice in 2D: each dot is a mode (n_x, n_y); frequency grows with distance from the origin
+N = 12; R1, R2 = 6.0, 9.0
+nx, ny = np.meshgrid(np.arange(1, N + 1), np.arange(1, N + 1))
+r = np.sqrt(nx**2 + ny**2)
+b2.scatter(nx[r > R2], ny[r > R2], s=14, color="#cccccc")
+b2.scatter(nx[(r > R1) & (r <= R2)], ny[(r > R1) & (r <= R2)], s=18, color=CARDINAL)
+b2.scatter(nx[r <= R1], ny[r <= R1], s=18, color=TEAL)
+th = np.linspace(0, np.pi / 2, 200)
+b2.plot(R1 * np.cos(th), R1 * np.sin(th), color=TEAL, lw=2); b2.plot(R2 * np.cos(th), R2 * np.sin(th), color=CARDINAL, lw=2)
+b2.text(R1 * 0.72 + 0.35, R1 * 0.72 + 0.35, r"$\nu$", color=TEAL, fontsize=14, ha="left", va="bottom", bbox=dict(fc="white", ec="none", pad=1))
+b2.text(R2 * 0.72 + 0.35, R2 * 0.72 + 0.35, r"$\nu + d\nu$", color=CARDINAL, fontsize=14, ha="left", va="bottom", bbox=dict(fc="white", ec="none", pad=1))
+b2.set_xlim(0, N + 1); b2.set_ylim(0, N + 1); b2.set_aspect("equal")
+b2.set_xlabel(r"$n_x$", fontsize=13, color=BLACK); b2.set_ylabel(r"$n_y$", fontsize=13, color=BLACK)
+b2.set_xticks([]); b2.set_yticks([])
+b2.set_title("Each dot is a mode, further out is higher frequency", fontsize=13, fontweight="bold", color=BLACK, pad=14)
+fig.tight_layout(); fig.savefig(f"{OUT}/mode_counting.png", dpi=200)
+
 # ---------------------------------------------------------------- 3. wave definitions
 BLACK = "#111111"
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 4.6), gridspec_kw={"width_ratios": [1, 1.1]})
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 5.2), gridspec_kw={"width_ratios": [1, 1.1]})
 x = np.linspace(0, 3, 600); A = 1.0
 a1.plot(x, A * np.sin(2 * np.pi * x), color=TEAL, lw=2.6)
 a1.axhline(0, color=BLACK, ls="--", lw=1)
@@ -103,7 +134,7 @@ a1.annotate("", xy=(2.25, 1.0), xytext=(2.25, 0.0), arrowprops=dict(arrowstyle="
 a1.text(2.33, 0.5, "amplitude", va="center", color=BLACK, fontsize=14)
 a1.text(1.36, 1.02, "peak", ha="left", fontsize=13, color=BLACK); a1.text(1.75, -1.2, "trough", ha="center", fontsize=13, color=BLACK)
 a1.set_xlim(-0.05, 3.05); a1.set_ylim(-1.45, 1.75); a1.axis("off")
-a1.set_title("one wave: wavelength and amplitude", fontsize=14, color=BLACK)
+a1.set_title("One wave: wavelength and amplitude", fontsize=15, fontweight="bold", color=BLACK, pad=22)
 xs = np.linspace(0, 1, 1200)
 for k, (nu_k, col) in enumerate(zip([4, 8, 16], [HOT2COLD[0], HOT2COLD[2], HOT2COLD[4]])):
     y0 = -k * 2.7
@@ -118,8 +149,9 @@ a2.axvline(0, color=BLACK, ls="--", lw=1); a2.axvline(1, color=BLACK, ls="--", l
 a2.annotate("", xy=(1, 2.0), xytext=(0, 2.0), arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.4))
 a2.text(0.5, 2.15, "distance the wave travels in 1 second", ha="center", fontsize=13, color=BLACK)
 a2.set_xlim(-0.05, 1.36); a2.set_ylim(-6.8, 2.7); a2.axis("off")
-a2.set_title("same speed c: higher frequency, shorter wavelength", fontsize=14, color=BLACK)
-fig.tight_layout(); fig.savefig(f"{OUT}/wave_definitions.png", dpi=200)
+a2.set_title("Same speed c: higher frequency, shorter wavelength", fontsize=15, fontweight="bold", color=BLACK, pad=22)
+fig.tight_layout(h_pad=1.0); fig.subplots_adjust(top=0.86)
+fig.savefig(f"{OUT}/wave_definitions.png", dpi=200)
 
 # ---------------------------------------------------------------- 4. Bohr standing waves
 fig, axes = plt.subplots(1, 2, figsize=(9, 4.4))
