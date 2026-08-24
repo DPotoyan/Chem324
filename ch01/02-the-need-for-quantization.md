@@ -319,14 +319,6 @@ fig1.tight_layout()
 fig1
 ```
 
-The same physics is available as a PhET simulation, which also shows the star and light bulb whose spectra you are looking at.
-
-<iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_en.html"
-        width="800"
-        height="500"
-        allowfullscreen>
-</iframe>
-
 ### Applications of Black Body radiation
 
 :::{figure} ./images/lec1_planets.jpg

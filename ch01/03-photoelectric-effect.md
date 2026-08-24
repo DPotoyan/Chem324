@@ -205,14 +205,6 @@ verdict_pe = (
 mo.md(f"Photon energy **{E_light:.2f} eV** at {lam_pe.value} nm versus work function **{W_pe:.2f} eV**: {verdict_pe}.")
 ```
 
-The PhET simulation below adds the intensity knob and the measured current, so you can check the second half of the story: above threshold, brightness sets how many electrons, never how fast.
-
-<iframe src="https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric"
-        width="800"
-        height="800"
-        allowfullscreen>
-</iframe>
-
 
 ### Problems
 
