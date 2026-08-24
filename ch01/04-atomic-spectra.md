@@ -59,7 +59,7 @@ where
 - While these equations fit the hydrogen atom spectrum nicely, they do not prescribe any physics to the system.  They do not present a model of the hydrogen atom but rather a heuristic equation that fits the data.  Nonetheless, scientists were perplexed by the presence of the integers $n_1$ and $n_2$. 
 
 
-:::{figure} images/Lymann.jpeg
+:::{figure} images/bohr_series_orbits.png
 :label: fig-atomic-spectra-3
 :alt: atomic series
 :width: 30%
@@ -100,12 +100,12 @@ A visitor once noticed a horseshoe (a Scandinavian good-luck charm) hanging abov
 
 ### Quantizing the States of the Electron in the Hydrogen Atom
 
-:::{figure} images/quantization_orbits.jpeg
+:::{figure} images/bohr_standing_waves.png
 :label: fig-atomic-spectra-6
 :alt: Quantized orbits of the electron
 :width: 60%
 
-Bohr rationalized discrete orbits by requiring that an integer number of electron wavelengths fit around the circumference of each orbit.
+Bohr rationalized discrete orbits by requiring that an integer number of electron wavelengths fit around the circumference of each orbit: four waves close on themselves (a), four and a half do not (b).
 :::
 
 - Imposing this condition gives the relation  
