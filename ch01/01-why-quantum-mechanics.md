@@ -1,6 +1,6 @@
 # Why Quantum Mechanics?
 
-:::{note} What you need to know
+:::{note} **What you will learn**
 
 - **Quantum mechanics is the fundamental theory of nature**, governing atoms, molecules, and subatomic particles.
 - Quantum theories (quantum mechanics + quantum field theory) are **complete descriptions of physical reality**, and they’ve never failed an experimental test since their discovery!

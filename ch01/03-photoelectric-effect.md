@@ -2,8 +2,7 @@
 # Photoelectric effect
 
 
-::: {admonition} **What You Will Learn.**
-:class: note
+:::{note} **What you will learn**
 
 - **Photoelectric Effect:** Electrons are ejected from the surface of a material when it is exposed to radiation with a frequency exceeding a specific threshold frequency.
 - **Threshold Frequency:** No electrons are ejected if the radiation's frequency is below this threshold, regardless of the light's intensity (brightness).
@@ -122,6 +121,92 @@ Besides its historical role in the establishment of QM, the photoelectric effect
 
 ### Explore photoelectric effect
 
+Pick a metal and a wavelength. The line is Einstein's equation $KE_{max} = h\nu - W_0$ for that metal: its slope is always $h$, and only the intercept (the threshold $\nu_0$) moves when you change the metal. The marker shows the light you chose: a dot on the line when electrons come out, a cross on the axis when the photon energy falls short.
+
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
+
+```{marimo} python
+:hide-code: true
+
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+```
+
+```{marimo} python
+:hide-code: true
+
+metal_pe = mo.ui.dropdown(
+    options={
+        "cesium (W0 = 2.14 eV)": 2.14,
+        "sodium (W0 = 2.28 eV)": 2.28,
+        "potassium (W0 = 2.30 eV)": 2.30,
+        "zinc (W0 = 4.33 eV)": 4.33,
+        "copper (W0 = 4.70 eV)": 4.70,
+        "platinum (W0 = 5.65 eV)": 5.65,
+    },
+    value="sodium (W0 = 2.28 eV)",
+    label="metal",
+)
+lam_pe = mo.ui.slider(150, 800, step=5, value=400, show_value=True, label="light wavelength (nm)")
+mo.vstack([metal_pe, lam_pe])
+```
+
+```{marimo} python
+:hide-code: true
+
+h_eV, c_pe = 4.1357e-15, 2.998e8
+W_pe = metal_pe.value
+nu0_pe = W_pe / h_eV
+nu_light = c_pe / (lam_pe.value * 1e-9)
+E_light = h_eV * nu_light
+KE_light = E_light - W_pe
+nu_ax = np.linspace(0, 2.5e15, 500)
+ke_ax = np.where(nu_ax > nu0_pe, h_eV * nu_ax - W_pe, np.nan)
+fig3, ax3 = plt.subplots(figsize=(6.5, 3.6))
+ax3.plot(nu_ax / 1e14, ke_ax, lw=2, color="C3", label="KE_max = hν - W0")
+ax3.plot([0, nu0_pe / 1e14], [0, 0], lw=5, color="gray", alpha=0.4, solid_capstyle="butt", label="no emission")
+ax3.axhline(0, color="k", lw=0.8)
+ax3.axvline(nu0_pe / 1e14, color="gray", ls=":", lw=1)
+ax3.text(nu0_pe / 1e14 + 0.3, 6.3, "ν0", fontsize=10, color="gray")
+if KE_light > 0:
+    ax3.plot(nu_light / 1e14, KE_light, "o", ms=9, color="C0", zorder=5)
+else:
+    ax3.plot(nu_light / 1e14, 0, "x", ms=11, mew=2.5, color="C0", zorder=5)
+ax3.axvspan(c_pe / 750e-9 / 1e14, c_pe / 380e-9 / 1e14, color="gold", alpha=0.15)
+ax3.set_xlim(0, 25)
+ax3.set_ylim(-0.5, 7)
+ax3.set_xlabel(r"frequency $\nu$ ($10^{14}$ Hz)")
+ax3.set_ylabel("KE$_{max}$ (eV)")
+ax3.set_title(f"Fig. Photoelectron KE vs light frequency, threshold {nu0_pe / 1e14:.1f} x 10^14 Hz, shaded band is visible light", fontsize=9)
+ax3.legend(frameon=False, fontsize=9, loc="center right")
+fig3.tight_layout()
+fig3
+```
+
+```{marimo} python
+:hide-code: true
+
+verdict_pe = (
+    f"electrons fly off with KE_max = **{KE_light:.2f} eV**"
+    if KE_light > 0
+    else "**no electrons**, no matter how bright the light"
+)
+mo.md(f"Photon energy **{E_light:.2f} eV** at {lam_pe.value} nm versus work function **{W_pe:.2f} eV**: {verdict_pe}.")
+```
+
+The PhET simulation below adds the intensity knob and the measured current, so you can check the second half of the story: above threshold, brightness sets how many electrons, never how fast.
+
 <iframe src="https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric"
         width="800"
         height="800"
@@ -131,14 +216,11 @@ Besides its historical role in the establishment of QM, the photoelectric effect
 
 ### Problems
 
-#### Problem 1
-
-::::{admonition} **Calculating the Threshold Frequency**  
-:class: note
+#### Problem 1: Threshold frequency
 
 A certain metal has a work function of 4.5 eV. Calculate the threshold frequency ($\nu_0$) required to emit electrons from the metal surface.
 
-:::{admonition} **Solution:**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 The threshold frequency $\nu_0$ is related to the work function $\phi$ by the equation:
@@ -156,21 +238,13 @@ Now, solve for $\nu_0$:
 $$
 \nu_0 = \frac{\phi}{h} = \frac{4.5 \, \text{eV}}{4.1357 \times 10^{-15} \, \text{eV} \cdot \text{s}} \approx 1.088 \times 10^{15} \, \text{Hz}
 $$
-
 :::
 
-::::
-
-
-
-#### Problem 2
-
-::::{admonition} **Maximum Kinetic Energy of Photoelectrons**
-:class: note 
+#### Problem 2: Maximum kinetic energy of photoelectrons
 
 Ultraviolet light with a wavelength of 250 nm is incident on a metal surface with a work function of 3.0 eV. Calculate the maximum kinetic energy of the emitted photoelectrons.
 
-:::{admonition} **Solution:**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 First, calculate the energy of the incident photons:
@@ -201,28 +275,30 @@ K_{\text{max}} = E_{\text{photon}} - \phi = 4.96 \, \text{eV} - 3.0 \, \text{eV}
 $$
 :::
 
-::::
-
-
-#### Problem 3
-
-::::{admonition} **Photoelectric Current and Light Intensity**  
-:class: note
+#### Problem 3: Photoelectric current and light intensity
 
 Explain how the intensity of incident light affects the photoelectric current, assuming the frequency of the light is above the threshold frequency.
 
-:::{admonition} **Solution:**
+:::{admonition} **Solution**
 :class: dropdown solution
 
 In the photoelectric effect, the intensity of the incident light is proportional to the number of photons striking the metal surface per unit time. If the frequency of the light is above the threshold frequency, each photon has sufficient energy to eject an electron.
 
 As the intensity increases, more photons hit the surface, leading to the emission of more photoelectrons. Consequently, the photoelectric current, which is proportional to the number of emitted electrons, increases with the intensity of the incident light. However, the kinetic energy of the emitted electrons remains the same and is determined by the energy of the individual photons, not the intensity of the light.
-
 :::
 
-::::
+#### Problem 4: Which metal is it?
 
+Light of wavelength 300 nm shines on an unknown metal, and the fastest photoelectrons are stopped by a reverse voltage of 1.85 V (so $KE_{max} = 1.85$ eV). Find the work function and identify the metal from this list: cesium 2.14 eV, sodium 2.28 eV, zinc 4.33 eV, copper 4.70 eV. What is the longest wavelength that still ejects electrons from it?
 
+#### Problem 5: From photons to current
 
+A 2.0 mW beam of 400 nm light falls on a potassium surface (work function 2.30 eV). (a) How many photons hit the surface per second? (b) If one photon in twenty ejects an electron, what current flows? (c) How does the answer to (b) change if the intensity doubles? And if the wavelength is halved at the same power?
 
+#### Problem 6: Visible light and cesium
 
+Cesium has the lowest work function of the common metals, 2.14 eV. Find its threshold wavelength. Which colors of visible light can eject electrons from cesium and which cannot? Suggest why cesium-coated cathodes were the material of choice for early photocells and night-vision tubes.
+
+#### Problem 7: The missing time delay
+
+In the wave picture an electron would have to soak up energy gradually from the light wave. For a very dim source of intensity $10^{-10}$ W/m$^2$, estimate how long an atom of cross-sectional area $10^{-20}$ m$^2$ would need to collect the 2 eV required to escape. Experimentally, photoelectrons appear within nanoseconds of switching on the light, however dim. What does this tell you about how light delivers its energy?

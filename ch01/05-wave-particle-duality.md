@@ -3,7 +3,7 @@
 # Wave-particle duality
 
 
-:::{note} What you need to know
+:::{note} **What you will learn**
 
 - Compton scattering and electron diffraction experiments have demonstrated that the concepts of particles and waves are not mutually exclusive.
 
@@ -31,19 +31,6 @@ Waves passing through two slits create a diffraction pattern on the screen.
 
 - **Double-slit experiment:** light waves (or water waves) pass through a wall with two slits, which results in wave-like interference patterns, or bands, on the detector screen.
 
-### Refraction and prisms
-
-:::{figure} images/ext_light_dispersion.gif
-:label: fig-wave-particle-duality-2
-:alt: compton
-:width: 300px
-
-Light refracting as it passes through a prism.
-:::
-
-- **Refraction:** change in direction of propagation of any wave as a result of its traveling at different speeds at different points along the wave front.
-- For example, light bends when it travels from air to glass. The bending of light by refraction makes it possible for us to have lenses, magnifying glasses, prisms, and rainbows. Even our eyes depend upon this bending of light.
-
 ### Bragg's formula for diffraction
 
 - X-rays interact with the atoms in a crystal. The phase shift upon scattering off of atoms causes constructive (left figure) or destructive (right figure) interferences.
@@ -60,7 +47,7 @@ X-rays scattering off atoms in a crystal: constructive interference (left) and d
 
 **Maxima and minima in interference patterns** arise from simple geometry, as captured by **Bragg’s law**:
 
-:::{tip} **Bragg’s law**:
+:::{important} **Bragg's law**
 
 $$
 \boxed{2d \sin\theta = n\lambda}
@@ -88,7 +75,7 @@ $$
 Demonstration of electron diffraction. 
 :::
 
-- In 1925, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. 
+- In 1927, Davisson and Germer were studying electron scattering from various materials. To their great surprise, they discovered that at certain angles there was a peak in the intensity of the scattered electron beam. 
 - This peak indicated wave behavior for the electrons and could be interpreted by Bragg's law (previously only applied to X-ray scattering) to give values for the lattice spacing in the nickel crystal. 
 
 
@@ -105,6 +92,16 @@ Compton scattering: photons scatter off electrons just as massive particles do.
 
 - Arthur Compton showed that X-rays get scattered off free electrons like elastic billiard balls. Applying conservation of momentum principle (previously only applied to particle-like objects), it was shown that the outgoing X-rays should be of longer wavelength than the incoming ones. 
 - This means that a moving photon hits the resting free electron and transfers some energy to get the electron moving. Note that this experimental result makes sense only if you think of a photon as a particle with linear momentum which gets bounced off the electron.
+
+:::{important} **Photon momentum and the Compton shift**
+
+$$p_{photon} = \frac{E}{c} = \frac{h\nu}{c} = \frac{h}{\lambda}$$
+
+$$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\theta)$$
+
+- $\theta$ is the angle by which the photon is deflected and $\lambda_C = h/m_e c = 2.43 \times 10^{-12}$ m is the **Compton wavelength** of the electron.
+- The shift depends only on the angle, not on the incoming wavelength, exactly what conservation of energy and momentum predict for a collision between two particles. The relation $p = h/\lambda$ for a photon is the one de Broglie extended to matter below.
+:::
 
 
 
@@ -208,7 +205,7 @@ Demonstration of the uncertainty principle. As the electron's position is locali
 
 - Mathematically, the uncertainty relation is expressed in terms of the standard deviations of position $\sigma_x$ and momentum $\sigma_p$, which are obtained by repeating the experiment, measuring positions and momenta, and quantifying the spread via the standard deviation.
 
-:::{warning} **Heisenberg's uncertainty principle**
+:::{important} **Heisenberg's uncertainty principle**
 
 $$
 \sigma_x \sigma_p \geq \hbar/2
@@ -218,7 +215,7 @@ $$
 
 ### Problems
 
-#### Problem 1
+#### Problem 1: Electrons in an electron microscope
 
 Estimate the wavelength of electrons that have been accelerated from
 rest through a potential difference of $V = 40 kV$. 
@@ -235,11 +232,11 @@ $$
 $$
 
 $$
-{\lambda = \frac{h}{p} = \frac{h}{\sqrt{2m_eeV}}}{= \frac{6.626\times 10^{-34}{ Js}}{\sqrt{2\times (9.109\times 10^{-31} { kg})\times (1.609\times 10^{-19} { C})\times (4.0\times 10^4 { V})}}}{ = 6.1\times 10^{-12}}\, m
+{\lambda = \frac{h}{p} = \frac{h}{\sqrt{2m_eeV}}}{= \frac{6.626\times 10^{-34}{ Js}}{\sqrt{2\times (9.109\times 10^{-31} { kg})\times (1.602\times 10^{-19} { C})\times (4.0\times 10^4 { V})}}}{ = 6.1\times 10^{-12}}\, m
 $$
 :::
 
-#### Problem 2
+#### Problem 2: Your own de Broglie wavelength
 
 If you considered yourself a particle moving at $2 m/s$, what would your de Broglie wavelength be?
 Would it make sense to use quantum mechanics in this case?
@@ -276,7 +273,7 @@ $$
 
 :::
 
-#### Problem 3
+#### Problem 3: Position uncertainty in the Bohr atom
 
 Quantify the uncertainty in the position of an electron in the ground state of the H atom using Bohr's model.
 
@@ -338,7 +335,7 @@ This result suggests that the electron’s position is spread out over a region 
 
 :::
 
-#### Problem 4
+#### Problem 4: Position uncertainty of a free electron
 
 Quantify the uncertainty in the position of an electron traveling freely with a kinetic energy of $3 eV$.
 
@@ -398,6 +395,22 @@ Thus, the uncertainty in the position of the electron traveling with a kinetic e
 This is on the order of atomic scales, which indicates that quantum effects are relevant in this case.
 
 :::
+
+#### Problem 5: Compton shift
+
+X-rays from a molybdenum source ($\lambda = 71.1$ pm) scatter off electrons in a graphite target. Compute the wavelength of the photons scattered at 90 degrees and at 180 degrees. What fraction of the photon energy is handed to the electron in the 180 degree case? Explain why the Compton shift is unobservable with visible light.
+
+#### Problem 6: Thermal neutrons see atoms
+
+Neutrons in equilibrium with a moderator at 300 K have an average kinetic energy of $\tfrac{3}{2}k_BT$. Compute their de Broglie wavelength ($m_n = 1.675 \times 10^{-27}$ kg) and compare it with a typical spacing of atoms in a crystal, about 0.2 nm. Explain why neutron diffraction is used to locate hydrogen atoms in crystals when X-ray diffraction struggles.
+
+#### Problem 7: Are helium atoms waves?
+
+A beam of helium atoms leaves a nozzle at 300 K with a speed of about 1750 m/s. Compute the de Broglie wavelength of the atoms. In 1930 Estermann and Stern diffracted such a beam from a LiF crystal surface. Of the objects met so far (electron, X-ray photon, neutron, helium atom, a walking person), which show diffraction in practice, and what single quantity decides it?
+
+#### Problem 8: Confinement costs energy
+
+An electron is confined to a region the size of an atom, $\Delta x \approx 0.1$ nm. (a) Use the uncertainty relation to find the minimum spread in momentum. (b) Taking $p \sim \Delta p$, estimate the electron's kinetic energy in eV. (c) Repeat for a proton confined to a nucleus, $\Delta x \approx 10^{-15}$ m, and give the result in MeV. What does the comparison say about the energy scales of chemistry versus nuclear physics?
 
 :::{seealso} Chapter demos
 Run this chapter's interactive Python demos: [Python Calculator](../demos/06-python-calculator.md)

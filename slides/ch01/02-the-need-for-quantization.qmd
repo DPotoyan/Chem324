@@ -103,6 +103,42 @@ $$\rho({\nu}) = k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
 :::
 ::::
 
+## Live: heat it up {.smaller}
+
+<span style="color:#C8102E">**Planck**</span> vs <span style="color:#7fb3d5">**Rayleigh-Jeans (classical)**</span>; shaded band is visible light, dotted line is the Wien peak
+
+```{ojs}
+//| echo: false
+viewof Tbb = Inputs.range([1000, 10000], {step: 100, value: 5800, label: "temperature T (K)"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const h = 6.626e-34, c = 2.998e8, kB = 1.381e-23;
+  const lams = d3.range(50, 3000, 5);
+  const planck = lams.map(l => { const lm = l * 1e-9; return {x: l, y: 8 * Math.PI * h * c / Math.pow(lm, 5) / Math.expm1(h * c / (lm * kB * Tbb))}; });
+  const rj = lams.map(l => { const lm = l * 1e-9; return {x: l, y: 8 * Math.PI * kB * Tbb / Math.pow(lm, 4)}; });
+  const ymax = 1.6 * d3.max(planck, d => d.y);
+  return Plot.plot({
+    width: 1000, height: 360,
+    x: {label: "wavelength (nm)", domain: [0, 3000]},
+    y: {label: "energy density", domain: [0, ymax], ticks: 0},
+    marks: [
+      Plot.rect([{x1: 380, x2: 750, y1: 0, y2: ymax}], {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "gold", fillOpacity: 0.15}),
+      Plot.ruleX([2.898e6 / Tbb], {stroke: "#999", strokeDasharray: "2,3"}),
+      Plot.line(rj, {x: "x", y: "y", stroke: "#7fb3d5", strokeWidth: 2, strokeDasharray: "6,4", clip: true}),
+      Plot.line(planck, {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2.5})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+md`Wien peak at **${(2.898e6 / Tbb).toFixed(0)} nm**: the object ${Tbb < 3500 ? "glows dull red" : Tbb < 6500 ? "looks yellow-white, like the Sun" : "looks blue-white"}. The classical curve never comes down.`
+```
+
 ## Planck's trick: quantization
 
 ::: {.fragment}
@@ -126,10 +162,10 @@ $$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}$$
 
 ::: {.fragment}
 This yields a distribution that **vanishes** at high frequency:
-$$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{1}{e^{\frac{h\nu}{kT}} - 1}$$
+$$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}$$
 :::
 
-- Integrating over all $\nu$ gives a **finite** total: $\int^{\infty}_0 \rho_{\nu}(T)d\nu = \sigma T^4$
+- Integrating over all $\nu$ gives a **finite** total, $\propto T^4$ (Stefan-Boltzmann)
 - No more catastrophe!
 
 ## Wien's displacement law
@@ -144,6 +180,20 @@ $$\lambda_{max} = \frac{b}{T}$$
 - $b = 2.898 \cdot 10^{-3} \, m \cdot K$
 - Connects an object's **temperature** to its **color**
 - Hotter object: **shorter** $\lambda_{max}$ (bluer)
+:::
+::::
+
+## Quantization beyond light: heat capacities
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../ch01/images/einstein_heat_capacity.png){width="100%"}
+:::
+::: {.column width="45%"}
+- Classical **Dulong-Petit**: $C_V = 3R$ for every solid, at every $T$
+- Measured: $C_V \to 0$ as $T \to 0$
+- **Einstein (1907)**: atoms are Planck oscillators, vibrations **freeze out** below $\theta_E = h\nu/k_B$
+- Same $E = h\nu$, second triumph
 :::
 ::::
 
