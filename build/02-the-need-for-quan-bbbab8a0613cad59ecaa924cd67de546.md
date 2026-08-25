@@ -132,21 +132,30 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 
 - **What is radiation in classical mechanics?** Radiation is considered a wave with frequency $\nu$. In a heated body, naturally vibrating springs (which represent atoms or molecules) generate waves with the same frequency.
 
-:::{tip} **How many waves fit in a box?**
+:::{important} **The recipe for a radiation spectrum**
 
-```{figure} ./images/mode_counting.png
-:alt: standing waves in a box and the lattice of allowed modes
-:width: 95%
+$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{number of wave modes per volume with frequency in } [\nu, \nu + d\nu]} \times \underbrace{\langle E \rangle}_{\text{average energy of one mode at temperature } T}$$
 
-Left: only waves with a node at each wall fit in a box of size $L$, so $\lambda_n = 2L/n$ and $\nu_n = n\,c/2L$. Right: in two dimensions each allowed mode is a dot $(n_x, n_y)$, and its frequency is proportional to the distance from the origin. The modes between $\nu$ and $\nu + d\nu$ fill a thin ring.
-```
-
-1. A wave fits in the box only if a whole number of half-wavelengths spans it: $n = 1, 2, 3, \ldots$ in each direction.
-2. The frequency of a mode $(n_x, n_y, n_z)$ is $\nu = \frac{c}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}$, so all modes with frequency below $\nu$ sit inside a sphere of radius $2L\nu/c$ in "mode space."
-3. The number of modes below $\nu$ is the volume of that sphere, $\propto \nu^3$. The number in a thin shell $[\nu, \nu + d\nu]$ is its surface times $d\nu$, $\propto \nu^2 d\nu$.
+- The energy stored in radiation at frequency $\nu$ is the number of waves of that frequency times the energy each one carries on average.
+- The first factor is pure **geometry** (how many standing waves fit in a box) and is the same in classical and quantum physics.
+- The second factor is **thermodynamics**, and it is where classical and quantum physics part ways. Everything that follows is about these two factors.
 :::
 
-- **Packing wave modes in a box.** More high-frequency (short-wavelength) waves fit in the box than low-frequency ones: the count in the interval $[\nu, \nu+d\nu]$ grows as $d(\nu^3) \sim \nu^2 d\nu$. Working out the constant (two polarizations, one octant of the sphere, division by the box volume) gives
+:::{tip} **Factor 1: counting the wave modes in a box**
+
+```{figure} ./images/mode_counting.png
+:alt: allowed standing waves in a one-dimensional box and the grid of modes in a two-dimensional box
+:width: 95%
+
+Left: in a box of size $L$ the allowed waves are labeled by one integer $n$, with $\nu_n = n\,c/2L$. Right: in a two-dimensional box a mode is a pair of integers $(n_x, n_y)$, drawn as a dot, and its frequency is proportional to the distance of the dot from the origin.
+```
+
+- **One dimension.** A wave fits only if a whole number of half-wavelengths spans the box, so the allowed frequencies are $\nu_n = n\,c/2L$ with $n = 1, 2, 3, \ldots$ The number of modes with frequency below $\nu$ is simply the largest allowed $n$: $N(\nu) = 2L\nu/c$. It grows **linearly** with $\nu$.
+- **Three dimensions.** Now a mode needs three integers $(n_x, n_y, n_z)$ and its frequency is $\nu = \frac{c}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}$, the distance of the point from the origin. Modes below $\nu$ are the grid points inside a sphere of radius $2L\nu/c$; there are as many as the sphere has volume, so $N(\nu) \propto \nu^3$.
+- **A thin slice.** The modes between $\nu$ and $\nu + d\nu$ form a thin spherical shell whose volume is surface times thickness: $dN \propto \nu^2\, d\nu$. This is the whole content of "more short waves fit than long ones."
+:::
+
+- **Result of the counting.** Keeping track of the constants (two polarizations of light, only positive integers, so one octant of the sphere, and division by the box volume $L^3$) gives the number of modes per unit volume in $[\nu, \nu+d\nu]$:
 
 $$
 dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu
@@ -160,15 +169,15 @@ $$
 Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section. Each mode is one of the dots counted above.
 :::
 
- - **Equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
+ - **Factor 2, the classical way: equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
 
   $$\langle E\rangle = k_BT$$
 
  -  Every vibrating spring in a heated body thus has the same energy regardless of frequency. Think about this assumption for a second!
 
-- **Radiation energy distribution.** The distribution of radiated frequencies is then the product of the average thermal energy and the number of springs in a frequency interval:
+- **Radiation energy distribution.** Putting the two factors of the recipe together, modes per volume times $k_BT$ per mode, gives the classical **Rayleigh-Jeans law**:
 
-$$\rho({\nu}) =  k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
+$$\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T$$
 
 - **Ultraviolet catastrophe.** The energy distribution shoots to infinity at high $\nu$ (or low $\lambda$). This is known as the ultraviolet catastrophe! Integrating $\rho$ over all frequencies gives the total amount of radiation, which in this case is infinite. A light bulb could destroy the universe! Something is off with our classical prediction.
 
@@ -258,11 +267,11 @@ This is Planck's law, which describes the spectral density of radiation emitted 
 
 :::
 
-- Assuming that the energy of an oscillator is quantized, Planck derived a new expression for the average energy which, unlike the classical expression $k_BT$, now depends on the frequency of oscillation:
+- Planck kept factor 1 of the recipe, the mode count, untouched. Assuming that the energy of an oscillator is quantized, he derived a new **factor 2**, an average energy which, unlike the classical $k_BT$, depends on the frequency of oscillation:
 
 $$\langle E \rangle = \Big[ \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-- With this expression we end up with a distribution of oscillator energies that tends to zero in the high-frequency limit. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
+- Modes per volume times this average energy gives **Planck's law**, a distribution that tends to zero in the high-frequency limit because the exponential in factor 2 wins over the $\nu^2$ of factor 1. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
 
 ::::{tab-set}
 :::{tab-item} per unit frequency
