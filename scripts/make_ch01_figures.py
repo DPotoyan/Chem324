@@ -101,8 +101,9 @@ for n in [1, 2, 3, 4]:
 b1.axvline(0, color=BLACK, lw=2.5); b1.axvline(L, color=BLACK, lw=2.5)
 b1.annotate("", xy=(L, 1.0), xytext=(0, 1.0), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.3))
 b1.text(L / 2, 1.1, "box of size L", ha="center", fontsize=12, color=BLACK)
-b1.set_xlim(-0.1, 2.6); b1.set_ylim(-5.3, 1.5); b1.axis("off")
-b1.set_title("Standing waves that fit in a box", fontsize=14, fontweight="bold", color=BLACK, pad=14)
+b1.set_xlim(-0.1, 2.6); b1.set_ylim(-6.8, 1.5); b1.axis("off")
+b1.text(1.25, -6.1, r"modes with frequency below $\nu$:  $N(\nu) = \dfrac{2L\,\nu}{c}$", fontsize=12, color=BLACK, ha="center", va="center", bbox=dict(fc="#f6f6f6", ec="#bbb", pad=6))
+b1.set_title("1D box: allowed waves, one per integer n", fontsize=14, fontweight="bold", color=BLACK, pad=14)
 # mode lattice in 2D: each dot is a mode (n_x, n_y); frequency grows with distance from the origin
 N = 12; R1, R2 = 6.0, 9.0
 nx, ny = np.meshgrid(np.arange(1, N + 1), np.arange(1, N + 1))
@@ -110,6 +111,10 @@ r = np.sqrt(nx**2 + ny**2)
 b2.scatter(nx[r > R2], ny[r > R2], s=14, color="#cccccc")
 b2.scatter(nx[(r > R1) & (r <= R2)], ny[(r > R1) & (r <= R2)], s=18, color=CARDINAL)
 b2.scatter(nx[r <= R1], ny[r <= R1], s=18, color=TEAL)
+b2.annotate("", xy=(4, 3), xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.6))
+b2.plot(4, 3, "o", color=BLACK, ms=7, zorder=5)
+b2.annotate(r"mode $(n_x, n_y) = (4, 3)$" + "\n" + r"$\nu \propto \sqrt{4^2 + 3^2} = 5$", xy=(4.15, 3.15), xytext=(7.2, 10.3), fontsize=11, color=BLACK, ha="center", va="center",
+            bbox=dict(fc="white", ec="#bbb", pad=6), arrowprops=dict(arrowstyle="->", color=BLACK, lw=1.2))
 th = np.linspace(0, np.pi / 2, 200)
 b2.plot(R1 * np.cos(th), R1 * np.sin(th), color=TEAL, lw=2); b2.plot(R2 * np.cos(th), R2 * np.sin(th), color=CARDINAL, lw=2)
 b2.text(R1 * 0.72 + 0.35, R1 * 0.72 + 0.35, r"$\nu$", color=TEAL, fontsize=14, ha="left", va="bottom", bbox=dict(fc="white", ec="none", pad=1))
@@ -117,7 +122,7 @@ b2.text(R2 * 0.72 + 0.35, R2 * 0.72 + 0.35, r"$\nu + d\nu$", color=CARDINAL, fon
 b2.set_xlim(0, N + 1); b2.set_ylim(0, N + 1); b2.set_aspect("equal")
 b2.set_xlabel(r"$n_x$", fontsize=13, color=BLACK); b2.set_ylabel(r"$n_y$", fontsize=13, color=BLACK)
 b2.set_xticks([]); b2.set_yticks([])
-b2.set_title("Each dot is a mode, further out is higher frequency", fontsize=13, fontweight="bold", color=BLACK, pad=14)
+b2.set_title("2D box: a mode is a pair of integers", fontsize=14, fontweight="bold", color=BLACK, pad=14)
 fig.tight_layout(); fig.savefig(f"{OUT}/mode_counting.png", dpi=200)
 
 # ---------------------------------------------------------------- 3. wave definitions
