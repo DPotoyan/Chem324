@@ -83,6 +83,21 @@ A guide to black body radiation from PhD Comics.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uG4xe9cNpP0?si=WwWocuEyIXdI72CD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+:::{note} **A light bulb problem: how a standards lab started quantum mechanics**
+
+```{figure} ./images/light_bulb.png
+:alt: a tree whose branches end in light bulbs of different generations
+:width: 32%
+:align: right
+```
+
+- In 1887 Werner von Siemens and Hermann von Helmholtz founded the **Physikalisch-Technische Reichsanstalt** (PTR) in Berlin, the world's first national metrology institute, with the job of giving German industry reliable standards [@gonzalez2022rubens]. One pressing customer was the new **electric lighting** business: to rate a lamp you must know how much light a glowing filament gives per watt, and how that depends on its temperature. That is exactly the black body question.
+- Through the 1890s the PTR experimenters Lummer, Pringsheim, Rubens, and Kurlbaum built cavity radiators and measured the emitted spectrum with unprecedented precision, pushing far into the infrared [@gonzalez2022rubens]. By 1900 their data showed that the best available formula, Wien's, **failed at long wavelengths**.
+- Max Planck, a theorist in Berlin who had been working on the problem for years, learned of the new infrared results from Rubens on a Sunday in October 1900 and found an interpolation formula that fit everything, the law we now call Planck's law, within the day [@hoffmann2026planck]. He then spent weeks searching for a derivation, and in December 1900 presented the only one that worked: the oscillators exchange energy in packets $E = h\nu$. He later called it "an act of desperation."
+- Planck did not set out to overthrow classical physics; he wanted a formula for lamp engineers. Quantum mechanics is a by-product of the search for a better light bulb.
+- The whole story, with the people and the instruments, is told in [this video](https://www.youtube.com/watch?v=i1TVZIBj7UA).
+:::
+
 ### Black body as an idealized model 
 
 :::{tip} **Definition of black body**
