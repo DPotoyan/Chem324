@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -50,30 +50,42 @@ resources:
 
 ## Frequency, wavelength, speed of light
 
-::: {.fragment}
-$$\lambda \nu = c$$
-:::
+![](../../ch01/images/wave_definitions.png){width="88%" fig-align="center"}
 
-- **Speed of light**: $c = 3 \cdot 10^8 \, m/s$ (fundamental constant)
-- **Frequency** $\nu$: cycles per second, $1\,Hz = 1\,s^{-1}$
-- **Wavelength** $\lambda$: distance between successive peaks
-- Key question: how does **energy** $E$ relate to **frequency** $\nu$?
+$$\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}$$
+
+- Key question: how does the **energy** $E$ of light relate to its **frequency** $\nu$?
 
 ## The black body
 
 :::: {.columns}
-::: {.column width="45%"}
-![](../../ch01/images/planck_curves.png){width="95%"}
-:::
 ::: {.column width="55%"}
+![](../../ch01/images/planck_curves.png){width="100%"}
+:::
+::: {.column width="45%"}
 - **Idealized model**: absorbs and emits **every wavelength**
 - In thermal equilibrium at temperature $T$
 - Emitted spectrum set **only by** $T$
-- Heating up: (1) **intensity rises**, (2) peak **shifts to higher** $\nu$, (3) color **red to yellow to blue**
+- Heating up: **intensity rises**, peak shifts to **shorter** $\lambda$, color goes **red to white to blue**
 :::
 ::::
 
-## The classical picture
+## The recipe for a radiation spectrum
+
+$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace{\langle E \rangle}_{\text{energy per mode}}$$
+
+- Energy at frequency $\nu$ = **number of waves** of that frequency $\times$ **average energy** of each
+- **Factor 1** is geometry: how many standing waves fit in a box. Same classically and quantum
+- **Factor 2** is thermodynamics: this is where classical and quantum physics part ways
+
+## Factor 1: counting the waves in a box
+
+![](../../ch01/images/mode_counting.png){width="80%" fig-align="center"}
+
+- Shorter waves fit more easily: $N \sim L/\lambda \sim \nu$ in 1D; fit along each direction, so $\sim \nu^3$ in 3D
+- A thin slice of frequency holds $\; dN_{\nu} = \dfrac{8\pi}{c^3}\,\nu^2\, d\nu$
+
+## Factor 2, the classical way: equipartition
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -81,31 +93,29 @@ $$\lambda \nu = c$$
 :::
 ::: {.column width="55%"}
 - Heated atoms vibrate like **springs**, radiating at frequency $\nu$
-- More **short-wavelength** modes fit in a box than long ones:
-$$dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu$$
-- **Equipartition**: each oscillator gets the same energy
+- **Equipartition**: every oscillator gets the same energy, whatever its frequency
 $$\langle E\rangle = k_BT$$
+- Modes $\times$ energy per mode, the **Rayleigh-Jeans law**:
+$$\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T$$
 :::
 ::::
 
 ## The ultraviolet catastrophe
 
 :::: {.columns}
-::: {.column width="50%"}
-![](../../ch01/images/uv_catastrophe.png){width="90%"}
+::: {.column width="55%"}
+![](../../ch01/images/uv_catastrophe.png){width="100%"}
 :::
-::: {.column width="50%"}
-- Classical radiation distribution:
-$$\rho({\nu}) = k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
-- **Shoots to infinity** at high $\nu$
+::: {.column width="45%"}
+- $\nu^2 \times k_BT$ **shoots to infinity** at high $\nu$
 - Total radiation would be **infinite**: a light bulb could destroy the universe
-- **Classical physics fails**
+- Factor 1 is solid geometry, so **factor 2 must be wrong**
 :::
 ::::
 
 ## Live: heat it up {.smaller}
 
-<span style="color:#C8102E">**Planck**</span> vs <span style="color:#7fb3d5">**Rayleigh-Jeans (classical)**</span>; shaded band is visible light, dotted line is the Wien peak
+<span style="color:#C8102E">**Planck**</span> vs <span style="color:#7fb3d5">**Rayleigh-Jeans (classical)**</span>, plotted per unit frequency; shaded band is visible light, dotted line is the peak
 
 ```{ojs}
 //| echo: false
@@ -116,17 +126,18 @@ viewof Tbb = Inputs.range([1000, 10000], {step: 100, value: 5800, label: "temper
 //| echo: false
 {
   const h = 6.626e-34, c = 2.998e8, kB = 1.381e-23;
-  const lams = d3.range(50, 3000, 5);
-  const planck = lams.map(l => { const lm = l * 1e-9; return {x: l, y: 8 * Math.PI * h * c / Math.pow(lm, 5) / Math.expm1(h * c / (lm * kB * Tbb))}; });
-  const rj = lams.map(l => { const lm = l * 1e-9; return {x: l, y: 8 * Math.PI * kB * Tbb / Math.pow(lm, 4)}; });
+  const nus = d3.range(0.02, 30, 0.05);   // in units of 1e14 Hz
+  const planck = nus.map(n => { const nu = n * 1e14; return {x: n, y: 8 * Math.PI * h * Math.pow(nu, 3) / Math.pow(c, 3) / Math.expm1(h * nu / (kB * Tbb))}; });
+  const rj = nus.map(n => { const nu = n * 1e14; return {x: n, y: 8 * Math.PI * Math.pow(nu, 2) * kB * Tbb / Math.pow(c, 3)}; });
   const ymax = 1.6 * d3.max(planck, d => d.y);
+  const nuPeak = 5.879e10 * Tbb / 1e14;   // Wien's law in frequency form
   return Plot.plot({
     width: 1000, height: 360,
-    x: {label: "wavelength (nm)", domain: [0, 3000]},
-    y: {label: "energy density", domain: [0, ymax], ticks: 0},
+    x: {label: "frequency (10^14 Hz)", domain: [0, 30]},
+    y: {label: "energy density per unit frequency", domain: [0, ymax], ticks: 0},
     marks: [
-      Plot.rect([{x1: 380, x2: 750, y1: 0, y2: ymax}], {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "gold", fillOpacity: 0.15}),
-      Plot.ruleX([2.898e6 / Tbb], {stroke: "#999", strokeDasharray: "2,3"}),
+      Plot.rect([{x1: 4.0, x2: 7.9, y1: 0, y2: ymax}], {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "gold", fillOpacity: 0.15}),
+      Plot.ruleX([nuPeak], {stroke: "#999", strokeDasharray: "2,3"}),
       Plot.line(rj, {x: "x", y: "y", stroke: "#7fb3d5", strokeWidth: 2, strokeDasharray: "6,4", clip: true}),
       Plot.line(planck, {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2.5})
     ]
@@ -136,37 +147,32 @@ viewof Tbb = Inputs.range([1000, 10000], {step: 100, value: 5800, label: "temper
 
 ```{ojs}
 //| echo: false
-md`Wien peak at **${(2.898e6 / Tbb).toFixed(0)} nm**: the object ${Tbb < 3500 ? "glows dull red" : Tbb < 6500 ? "looks yellow-white, like the Sun" : "looks blue-white"}. The classical curve never comes down.`
+md`Peak at **${(5.879e10 * Tbb / 1e14).toFixed(1)} x 10^14 Hz**: the object ${Tbb < 3500 ? "glows dull red" : Tbb < 6500 ? "looks yellow-white, like the Sun" : "looks blue-white"}. The classical curve never comes down.`
 ```
 
 ## Planck's trick: quantization
 
-::: {.fragment}
-In 1900 Planck postulated that only **discrete** energy values are allowed:
-:::
+In 1900 Planck postulated that an oscillator can hold only **discrete** amounts of energy:
 
-::: {.fragment}
-$$\boxed{E= h\nu}$$
-:::
+$$\boxed{E = n\,h\nu}, \qquad n = 0, 1, 2, \ldots$$
 
 - Planck's constant: $h = 6.63 \cdot 10^{-34} \, \text{J} \cdot \text{s}$
 - Atoms absorb and emit radiation in **quanta**, multiples of $h\nu$
 - $h$ is tiny, so quantization is **invisible** at the macro scale (classical limit $h \to 0$)
 
-## Planck's radiation law
+## Planck's law: same recipe, new factor 2
 
 ::: {.fragment}
-Quantized oscillators give a **frequency-dependent** average energy:
-$$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}$$
+Quantized oscillators give a **frequency-dependent** average energy (Boltzmann-weighted sum over $n$):
+$$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1} \qquad \Big(\to k_BT \text{ for } h\nu \ll k_BT\Big)$$
 :::
 
 ::: {.fragment}
-This yields a distribution that **vanishes** at high frequency:
+Modes $\times$ energy per mode, with factor 1 untouched:
 $$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}$$
-:::
 
-- Integrating over all $\nu$ gives a **finite** total, $\propto T^4$ (Stefan-Boltzmann)
-- No more catastrophe!
+- The exponential **beats** the $\nu^2$: the curve comes down, the total is finite ($\propto T^4$)
+:::
 
 ## Wien's displacement law
 
@@ -183,20 +189,6 @@ $$\lambda_{max} = \frac{b}{T}$$
 :::
 ::::
 
-## Quantization beyond light: heat capacities
-
-:::: {.columns}
-::: {.column width="55%"}
-![](../../ch01/images/einstein_heat_capacity.png){width="100%"}
-:::
-::: {.column width="45%"}
-- Classical **Dulong-Petit**: $C_V = 3R$ for every solid, at every $T$
-- Measured: $C_V \to 0$ as $T \to 0$
-- **Einstein (1907)**: atoms are Planck oscillators, vibrations **freeze out** below $\theta_E = h\nu/k_B$
-- Same $E = h\nu$, second triumph
-:::
-::::
-
 # Takeaway {.center}
 
-> Energy is **quantized**: by postulating $E = h\nu$, Planck cured the ultraviolet catastrophe and gave birth to quantum mechanics.
+> A spectrum is **modes times energy per mode**. Classical equipartition gives every mode $k_BT$ and the ultraviolet catastrophe; Planck's $E = nh\nu$ starves the high-frequency modes, cures the catastrophe, and starts quantum mechanics.
