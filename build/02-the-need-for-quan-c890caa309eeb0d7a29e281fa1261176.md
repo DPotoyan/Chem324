@@ -134,25 +134,29 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 
 :::{important} **The recipe for a radiation spectrum**
 
-$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{number of wave modes per volume with frequency in } [\nu, \nu + d\nu]} \times \underbrace{\langle E \rangle}_{\text{average energy of one mode at temperature } T}$$
+$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace{\langle E \rangle}_{\text{energy per mode}}$$
 
-- The energy stored in radiation at frequency $\nu$ is the number of waves of that frequency times the energy each one carries on average.
+- The energy stored in radiation at frequency $\nu$ is the number of waves of that frequency times the energy each one carries on average: $dN_{\nu}$ is the number of wave modes per volume with frequency in $[\nu, \nu + d\nu]$, and $\langle E \rangle$ is the average energy of one such mode at temperature $T$.
 - The first factor is pure **geometry** (how many standing waves fit in a box) and is the same in classical and quantum physics.
 - The second factor is **thermodynamics**, and it is where classical and quantum physics part ways. Everything that follows is about these two factors.
 :::
 
-:::{tip} **Factor 1: counting the wave modes in a box**
+- **Factor 1 in one breath.** Shorter waves fit into a box of length $L$ more easily than long ones: the number that fit grows as $L/\lambda \sim \nu$ in one dimension, and in three dimensions the wave has to fit along each direction independently, so the count grows as $\nu^3$. The number of modes in a thin frequency slice is therefore $dN \sim d(\nu^3) \sim \nu^2 d\nu$. The box below fills in the details on this calculation.
+
+:::{tip} **Counting the wave modes in a box**
+:class: dropdown
 
 ```{figure} ./images/mode_counting.png
-:alt: allowed standing waves in a one-dimensional box and the grid of modes in a two-dimensional box
+:alt: standing waves with nodes at the walls of a one-dimensional box, and the grid of modes of a two-dimensional box
 :width: 95%
 
-Left: in a box of size $L$ the allowed waves are labeled by one integer $n$, with $\nu_n = n\,c/2L$. Right: in a two-dimensional box a mode is a pair of integers $(n_x, n_y)$, drawn as a dot, and its frequency is proportional to the distance of the dot from the origin.
+Left: a wave trapped between two walls must have a node at each wall, so only a whole number $n$ of half-wavelengths fits: $\lambda_n = 2L/n$. Right: in a two-dimensional box the wave must fit along $x$ and along $y$ separately, so a mode is a pair of integers $(n_x, n_y)$, drawn as a dot; its frequency grows with the distance of the dot from the origin.
 ```
 
-- **One dimension.** A wave fits only if a whole number of half-wavelengths spans the box, so the allowed frequencies are $\nu_n = n\,c/2L$ with $n = 1, 2, 3, \ldots$ The number of modes with frequency below $\nu$ is simply the largest allowed $n$: $N(\nu) = 2L\nu/c$. It grows **linearly** with $\nu$.
-- **Three dimensions.** Now a mode needs three integers $(n_x, n_y, n_z)$ and its frequency is $\nu = \frac{c}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}$, the distance of the point from the origin. Modes below $\nu$ are the grid points inside a sphere of radius $2L\nu/c$; there are as many as the sphere has volume, so $N(\nu) \propto \nu^3$.
-- **A thin slice.** The modes between $\nu$ and $\nu + d\nu$ form a thin spherical shell whose volume is surface times thickness: $dN \propto \nu^2\, d\nu$. This is the whole content of "more short waves fit than long ones."
+- **Where the integers come from.** A wave trapped between two walls has to vanish at both walls, like a guitar string pinned at its ends. That is only possible if a whole number of half-wavelengths spans the box, $L = n\,\lambda/2$, so the allowed wavelengths are $\lambda_n = 2L/n$ with $n = 1, 2, 3, \ldots$ The integer $n$ is nothing more than the number of half-waves that fit.
+- **Shorter waves fit more easily.** Since $\nu = c/\lambda$, the allowed frequencies are $\nu_n = n\,c/2L$. Counting all the waves that fit with frequency up to $\nu$ (wavelength down to $\lambda$) gives $N(\nu) = 2L\nu/c = 2L/\lambda$: the count grows in proportion to $\nu$, in inverse proportion to $\lambda$, and in proportion to the size of the box.
+- **Two and three dimensions.** In a square box the wave must fit along $x$ and along $y$ separately, so a mode needs two integers $(n_x, n_y)$; in a cube it needs three. The frequency of a mode is set by the distance of the point $(n_x, n_y, n_z)$ from the origin, $\nu = \frac{c}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}$, so the modes with frequency below $\nu$ are the grid points inside a sphere of radius $2L\nu/c$. Their number grows like the size of that region: $N(\nu) \propto \nu$ in one dimension (a line), $\propto \nu^2$ in two (a quarter disk), $\propto \nu^3$ in three (an octant of a sphere).
+- **A thin slice.** The modes between $\nu$ and $\nu + d\nu$ form a thin spherical shell whose volume is surface times thickness, $dN \propto \nu^2\, d\nu$. This is all that "more short waves than long waves fit in a box" means.
 :::
 
 - **Result of the counting.** Keeping track of the constants (two polarizations of light, only positive integers, so one octant of the sphere, and division by the box volume $L^3$) gives the number of modes per unit volume in $[\nu, \nu+d\nu]$:
@@ -352,7 +356,6 @@ fig5
 mo.md(f"Temperature ratio {T_area.value / T_ref:.2f}, so $T^4$ predicts **{(T_area.value / T_ref) ** 4:.1f}** times the area; the numerical integral gives **{area_T / area_ref:.1f}**.")
 ```
 
-> In some books you may also find black body radiation characterized via the radiation flux, measured per unit wavelength and per unit solid angle: $B_{\lambda} = \frac{c}{4\pi}  \cdot \rho_{\lambda}$
 
 
 ### Wien's displacement law
