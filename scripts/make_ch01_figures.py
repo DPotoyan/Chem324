@@ -102,8 +102,8 @@ b1.axvline(0, color=BLACK, lw=2.5); b1.axvline(L, color=BLACK, lw=2.5)
 b1.annotate("", xy=(L, 1.0), xytext=(0, 1.0), arrowprops=dict(arrowstyle="<->", color=BLACK, lw=1.3))
 b1.text(L / 2, 1.1, "box of size L", ha="center", fontsize=12, color=BLACK)
 b1.set_xlim(-0.1, 2.6); b1.set_ylim(-6.8, 1.5); b1.axis("off")
-b1.text(1.25, -6.1, r"modes with frequency below $\nu$:  $N(\nu) = \dfrac{2L\,\nu}{c}$", fontsize=12, color=BLACK, ha="center", va="center", bbox=dict(fc="#f6f6f6", ec="#bbb", pad=6))
-b1.set_title("1D box: allowed waves, one per integer n", fontsize=14, fontweight="bold", color=BLACK, pad=14)
+b1.text(1.25, -6.1, r"waves that fit up to frequency $\nu$:  $N(\nu) = \dfrac{2L\,\nu}{c} = \dfrac{2L}{\lambda}$", fontsize=12, color=BLACK, ha="center", va="center", bbox=dict(fc="#f6f6f6", ec="#bbb", pad=6))
+b1.set_title("1D box: n = number of half-waves that fit", fontsize=14, fontweight="bold", color=BLACK, pad=14)
 # mode lattice in 2D: each dot is a mode (n_x, n_y); frequency grows with distance from the origin
 N = 12; R1, R2 = 6.0, 9.0
 nx, ny = np.meshgrid(np.arange(1, N + 1), np.arange(1, N + 1))
@@ -122,7 +122,7 @@ b2.text(R2 * 0.72 + 0.35, R2 * 0.72 + 0.35, r"$\nu + d\nu$", color=CARDINAL, fon
 b2.set_xlim(0, N + 1); b2.set_ylim(0, N + 1); b2.set_aspect("equal")
 b2.set_xlabel(r"$n_x$", fontsize=13, color=BLACK); b2.set_ylabel(r"$n_y$", fontsize=13, color=BLACK)
 b2.set_xticks([]); b2.set_yticks([])
-b2.set_title("2D box: a mode is a pair of integers", fontsize=14, fontweight="bold", color=BLACK, pad=14)
+b2.set_title("2D box: the wave must fit along x and along y", fontsize=14, fontweight="bold", color=BLACK, pad=14)
 fig.tight_layout(); fig.savefig(f"{OUT}/mode_counting.png", dpi=200)
 
 # ---------------------------------------------------------------- 3. wave definitions
