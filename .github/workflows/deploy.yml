@@ -92,7 +92,7 @@ jobs:
       - name: Render lecture slide decks
         if: steps.slides-cache.outputs.cache-hit != 'true'
         run: |
-          for f in slides/ch0*/*.qmd; do
+          for f in slides/ch0*/*.qmd slides/math/*.qmd; do
             quarto render "$f" --to revealjs --quiet
           done
 
@@ -101,11 +101,11 @@ jobs:
         # sidecar, and slide images resolve relatively to ../../chNN/images, so
         # the chapter image dirs must also exist in the published site.
         run: |
-          for d in slides/ch0*; do
+          for d in slides/ch0* slides/math; do
             mkdir -p "_build/html/$d"
             cp -r "$d"/*.html "$d"/*_files "_build/html/$d/" 2>/dev/null || true
           done
-          for d in ch0*/images; do
+          for d in ch0*/images math/images; do
             mkdir -p "_build/html/$d"
             cp -r "$d"/. "_build/html/$d/"
           done

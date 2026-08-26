@@ -1,0 +1,153 @@
+---
+title: "Calculus Essentials"
+subtitle: "Chem 3240 · Appendix A.1"
+author: "Davit Potoyan"
+format:
+  revealjs:
+    theme: [default, ../theme.scss]
+    slide-number: c/t
+    incremental: false
+    width: 1280
+    height: 720
+    transition: fade
+    hash: true
+    menu: true
+    chalkboard:
+      buttons: true
+    preview-links: auto
+    footer: "Chem 3240 · Quantum Mechanics"
+resources:
+  - ../../math/images
+---
+
+## Why calculus, in one slide
+
+- Quantum mechanics **differentiates** wavefunctions to build operators and **integrates** them to get probabilities
+
+$$\hat{p}\,\psi = -i\hbar\,\frac{d\psi}{dx} \qquad\qquad \int_{-\infty}^{\infty} |\psi(x)|^2\, dx = 1$$
+
+- Two pictures carry the whole subject: the **derivative is a slope**, the **integral is an area**
+- Two tools do most of the work: the **chain rule** and **integration by parts**
+
+## The derivative is a slope
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../math/images/secant_tangent.png){width="100%"}
+:::
+::: {.column width="45%"}
+::: {.keyeq}
+$$f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}$$
+:::
+
+- Slope of the **secant** through two nearby points
+- Let the points merge: the secant pivots into the **tangent**
+- Also the **instantaneous rate of change**: position gives velocity, concentration gives reaction rate
+:::
+::::
+
+## Rules of differentiation
+
+:::: {.columns}
+::: {.column width="50%"}
+- **Constant multiple**: $(c f)' = c f'$
+- **Sum**: $(f \pm g)' = f' \pm g'$
+- **Power**: $\dfrac{d}{dx} x^n = n x^{n-1}$
+- **Product**: $(fg)' = f'g + fg'$
+- **Quotient**: $\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^2}$
+:::
+::: {.column width="50%"}
+::: {.keyeq}
+$$\frac{d}{dx} f(g(x)) = \frac{df}{dg}\cdot\frac{dg}{dx}$$
+:::
+
+- The **chain rule**: nearly every wavefunction is a composition, $e^{-\alpha x^2}$, $\sin(kx)$, $e^{ikx}$
+- Outer derivative times inner derivative
+:::
+::::
+
+## Worked: a harmonic-oscillator shape
+
+Differentiate $f(x) = x^2\, e^{-\alpha x^2}$ (product rule, chain rule inside the exponential):
+
+$$\frac{df}{dx} = (x^2)'\, e^{-\alpha x^2} + x^2\, \big(e^{-\alpha x^2}\big)' = 2x\, e^{-\alpha x^2} + x^2\,(-2\alpha x)\, e^{-\alpha x^2} = 2x\,(1 - \alpha x^2)\, e^{-\alpha x^2}$$
+
+- Product rule for the two factors, chain rule for $(e^{-\alpha x^2})' = -2\alpha x\, e^{-\alpha x^2}$
+
+::: {.fragment}
+- $f' = 0$ at $x = 0$ and $x = \pm 1/\sqrt{\alpha}$: the **node** and the two **probability maxima**
+- Same moves for the Gaussian $e^{-ax^2}$: $f' = -2ax\,e^{-ax^2}$, $f'' = (4a^2x^2 - 2a)\,e^{-ax^2}$, inflection at $x = \pm 1/\sqrt{2a}$, the classical turning points
+:::
+
+## Derivatives you should know by heart {.smaller}
+
+| $f(x)$ | $f'(x)$ | | $f(x)$ | $f'(x)$ |
+|:--|:--|--|:--|:--|
+| $x^n$ | $n x^{n-1}$ | | $e^{ax}$ | $a\,e^{ax}$ |
+| $\sin x$ | $\cos x$ | | $\cos x$ | $-\sin x$ |
+| $\ln x$ | $1/x$ | | $\tan x$ | $\sec^2 x$ |
+| $e^{ikx}$ | $ik\,e^{ikx}$ | | $e^{-\alpha x^2}$ | $-2\alpha x\, e^{-\alpha x^2}$ |
+
+- The last row is the course in miniature: **plane waves** and **Gaussians**
+- Behind the table: $\lim_{\theta\to0} \sin\theta/\theta = 1$ and $\lim_{h\to0}(e^h - 1)/h = 1$, which is why $e^x$ is its own derivative
+
+## The integral is an area
+
+::: {.keyeq}
+$$\int_a^b f(x)\,dx = \lim_{n\to\infty}\sum_{i=1}^{n} f(x_i)\,\Delta x, \qquad \Delta x = \frac{b-a}{n}$$
+:::
+
+![](../../math/images/riemann_sums.png){width="66%" fig-align="center"}
+
+## The fundamental theorem
+
+::: {.keyeq}
+$$\int_a^b f(x)\,dx = F(b) - F(a), \qquad F'(x) = f(x)$$
+:::
+
+- Differentiation and integration are **inverse operations**
+- An infinite sum becomes a single subtraction: find an antiderivative and you are done
+
+| $f(x)$ | $F(x)$ | | $f(x)$ | $F(x)$ |
+|:--|:--|--|:--|:--|
+| $x^n$ | $\dfrac{x^{n+1}}{n+1}$ | | $e^{ax}$ | $\dfrac{1}{a}e^{ax}$ |
+| $\sin x$ | $-\cos x$ | | $\cos x$ | $\sin x$ |
+
+## Two techniques cover almost everything
+
+**Substitution**, the chain rule run backwards:
+$$\int f(g(x))\,g'(x)\,dx = \int f(u)\,du$$
+
+::: {.keyeq}
+$$\int u\,dv = uv - \int v\,du$$
+:::
+
+- **Integration by parts** is the product rule run backwards: $\int x\,e^{-x}dx$, $\int x \sin x\,dx$, every expectation value
+- For sines and cosines: $\sin^2 x = \tfrac12(1 - \cos 2x)$, $\cos^2 x = \tfrac12(1 + \cos 2x)$
+
+## Symmetry kills integrals on sight
+
+:::: {.columns}
+::: {.column width="60%"}
+![](../../math/images/even_odd.png){width="100%"}
+:::
+::: {.column width="40%"}
+- **Even** $f(-x) = f(x)$: $\displaystyle\int_{-a}^{a} f\,dx = 2\int_0^a f\,dx$
+- **Odd** $f(-x) = -f(x)$: $\displaystyle\int_{-a}^{a} f\,dx = 0$
+- Check the symmetry **before** you integrate: $\langle x \rangle = 0$ for every symmetric state
+:::
+::::
+
+## The two integrals you will use all semester
+
+$$\int_0^L \sin^2\!\left(\frac{n\pi x}{L}\right) dx = \frac{L}{2}$$
+
+- Power reduction, the cosine integrates to zero over whole half-periods. This is the $\sqrt{2/L}$ in front of every **particle in a box** state
+
+$$\int_0^\infty x^n e^{-x}\, dx = n!$$
+
+- Integrate by parts $n$ times, or recognize the Gamma function. The workhorse of **hydrogen atom** radial integrals
+
+# Takeaway {.center}
+
+> A derivative is a slope, an integral is an area, and the fundamental theorem makes them inverses. In this course the chain rule builds operators and integration by parts evaluates expectation values; check the symmetry of the integrand before doing either.

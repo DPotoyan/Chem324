@@ -61,3 +61,8 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch08/04-polyatomic-molecules.html">Polyatomic Molecules</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch08/05-huckel-theory.html">Huckel Theory</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch08/06-dipole-moments-and-ionic-bonding.html">Dipole Moments and Ionic Bonding</a>
+
+## Appendix A: Mathematical Background
+
+- <a href="https://dpotoyan.github.io/Chem324/slides/math/01-calculus.html">Calculus Essentials</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/math/02-trigonometry-and-complex-numbers.html">Trigonometry and Complex Numbers</a>
