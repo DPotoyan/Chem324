@@ -222,10 +222,10 @@ Davit Potoyan
 <p><img data-src="../../ch01/images/EM-Wave.gif" style="width:90.0%"></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment">Light as a <strong>traveling electromagnetic wave</strong></li>
-<li class="fragment">Perpendicular <strong>electric</strong> and <strong>magnetic</strong> components</li>
-<li class="fragment">Needs <strong>no medium</strong>, travels in vacuum at speed <span class="math inline">\(c\)</span></li>
-<li class="fragment">This wave picture is <strong>not the whole story</strong></li>
+<li>Light as a <strong>traveling electromagnetic wave</strong></li>
+<li>Perpendicular <strong>electric</strong> and <strong>magnetic</strong> components</li>
+<li>Needs <strong>no medium</strong>, travels in vacuum at speed <span class="math inline">\(c\)</span></li>
+<li>This wave picture is <strong>not the whole story</strong></li>
 </ul>
 </div></div>
 </section>
@@ -236,71 +236,83 @@ Davit Potoyan
 <p><img data-src="../../ch01/images/lec1_EMspec.jpg" style="width:95.0%"></p>
 </div><div class="column" style="width:45%;">
 <ul>
-<li class="fragment"><strong>Visible light</strong> is a narrow band</li>
-<li class="fragment"><strong>High frequency</strong> carries <strong>more energy</strong> (X-rays, gamma)</li>
-<li class="fragment"><strong>Low frequency</strong> carries <strong>less energy</strong> (microwave, radio)</li>
-<li class="fragment">Clear link between an object’s <strong>temperature</strong> and its radiation</li>
+<li><strong>Visible light</strong> is a narrow band</li>
+<li><strong>High frequency</strong> carries <strong>more energy</strong> (X-rays, gamma)</li>
+<li><strong>Low frequency</strong> carries <strong>less energy</strong> (microwave, radio)</li>
+<li>Clear link between an object’s <strong>temperature</strong> and its radiation</li>
 </ul>
 </div></div>
 </section>
 <section id="frequency-wavelength-speed-of-light" class="slide level2">
 <h2>Frequency, wavelength, speed of light</h2>
-<div class="fragment">
-<p><span class="math display">\[\lambda \nu = c\]</span></p>
-</div>
+
+<img data-src="../../ch01/images/wave_definitions.png" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"><p><span class="math display">\[\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}\]</span></p>
 <ul>
-<li class="fragment"><strong>Speed of light</strong>: <span class="math inline">\(c = 3 \cdot 10^8 \, m/s\)</span> (fundamental constant)</li>
-<li class="fragment"><strong>Frequency</strong> <span class="math inline">\(\nu\)</span>: cycles per second, <span class="math inline">\(1\,Hz = 1\,s^{-1}\)</span></li>
-<li class="fragment"><strong>Wavelength</strong> <span class="math inline">\(\lambda\)</span>: distance between successive peaks</li>
-<li class="fragment">Key question: how does <strong>energy</strong> <span class="math inline">\(E\)</span> relate to <strong>frequency</strong> <span class="math inline">\(\nu\)</span>?</li>
+<li>Key question: how does the <strong>energy</strong> <span class="math inline">\(E\)</span> of light relate to its <strong>frequency</strong> <span class="math inline">\(\nu\)</span>?</li>
 </ul>
 </section>
 <section id="the-black-body" class="slide level2">
 <h2>The black body</h2>
 <div class="columns">
-<div class="column" style="width:45%;">
-<p><img data-src="../../ch01/images/planck_curves.png" style="width:95.0%"></p>
-</div><div class="column" style="width:55%;">
+<div class="column" style="width:55%;">
+<p><img data-src="../../ch01/images/planck_curves.png" style="width:100.0%"></p>
+</div><div class="column" style="width:45%;">
 <ul>
-<li class="fragment"><strong>Idealized model</strong>: absorbs and emits <strong>every wavelength</strong></li>
-<li class="fragment">In thermal equilibrium at temperature <span class="math inline">\(T\)</span></li>
-<li class="fragment">Emitted spectrum set <strong>only by</strong> <span class="math inline">\(T\)</span></li>
-<li class="fragment">Heating up: (1) <strong>intensity rises</strong>, (2) peak <strong>shifts to higher</strong> <span class="math inline">\(\nu\)</span>, (3) color <strong>red to yellow to blue</strong></li>
+<li><strong>Idealized model</strong>: absorbs and emits <strong>every wavelength</strong></li>
+<li>In thermal equilibrium at temperature <span class="math inline">\(T\)</span></li>
+<li>Emitted spectrum set <strong>only by</strong> <span class="math inline">\(T\)</span></li>
+<li>Heating up: <strong>intensity rises</strong>, peak shifts to <strong>shorter</strong> <span class="math inline">\(\lambda\)</span>, color goes <strong>red to white to blue</strong></li>
 </ul>
 </div></div>
 </section>
-<section id="the-classical-picture" class="slide level2">
-<h2>The classical picture</h2>
+<section id="the-recipe-for-a-radiation-spectrum" class="slide level2">
+<h2>The recipe for a radiation spectrum</h2>
+<p><span class="math display">\[\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace{\langle E \rangle}_{\text{energy per mode}}\]</span></p>
+<ul>
+<li>Energy at frequency <span class="math inline">\(\nu\)</span> = <strong>number of waves</strong> of that frequency <span class="math inline">\(\times\)</span> <strong>average energy</strong> of each</li>
+<li><strong>Factor 1</strong> is geometry: how many standing waves fit in a box. Same classically and quantum</li>
+<li><strong>Factor 2</strong> is thermodynamics: this is where classical and quantum physics part ways</li>
+</ul>
+</section>
+<section id="factor-1-counting-the-waves-in-a-box" class="slide level2">
+<h2>Factor 1: counting the waves in a box</h2>
+
+<img data-src="../../ch01/images/mode_counting.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><ul>
+<li>Shorter waves fit more easily: <span class="math inline">\(N \sim L/\lambda \sim \nu\)</span> in 1D; fit along each direction, so <span class="math inline">\(\sim \nu^3\)</span> in 3D</li>
+<li>A thin slice of frequency holds <span class="math inline">\(\; dN_{\nu} = \dfrac{8\pi}{c^3}\,\nu^2\, d\nu\)</span></li>
+</ul>
+</section>
+<section id="factor-2-the-classical-way-equipartition" class="slide level2">
+<h2>Factor 2, the classical way: equipartition</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><img data-src="../../ch01/images/phonons.gif" style="width:95.0%"></p>
 </div><div class="column" style="width:55%;">
 <ul>
-<li class="fragment">Heated atoms vibrate like <strong>springs</strong>, radiating at frequency <span class="math inline">\(\nu\)</span></li>
-<li class="fragment">More <strong>short-wavelength</strong> modes fit in a box than long ones: <span class="math display">\[dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu\]</span></li>
-<li class="fragment"><strong>Equipartition</strong>: each oscillator gets the same energy <span class="math display">\[\langle E\rangle = k_BT\]</span></li>
+<li>Heated atoms vibrate like <strong>springs</strong>, radiating at frequency <span class="math inline">\(\nu\)</span></li>
+<li><strong>Equipartition</strong>: every oscillator gets the same energy, whatever its frequency <span class="math display">\[\langle E\rangle = k_BT\]</span></li>
+<li>Modes <span class="math inline">\(\times\)</span> energy per mode, the <strong>Rayleigh-Jeans law</strong>: <span class="math display">\[\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T\]</span></li>
 </ul>
 </div></div>
 </section>
 <section id="the-ultraviolet-catastrophe" class="slide level2">
 <h2>The ultraviolet catastrophe</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch01/images/uv_catastrophe.png" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
+<p><img data-src="../../ch01/images/uv_catastrophe.png" style="width:100.0%"></p>
+</div><div class="column" style="width:45%;">
 <ul>
-<li class="fragment">Classical radiation distribution: <span class="math display">\[\rho({\nu}) = k_B T \cdot \frac{8\pi}{c^3}\nu^2\]</span></li>
-<li class="fragment"><strong>Shoots to infinity</strong> at high <span class="math inline">\(\nu\)</span></li>
-<li class="fragment">Total radiation would be <strong>infinite</strong>: a light bulb could destroy the universe</li>
-<li class="fragment"><strong>Classical physics fails</strong></li>
+<li><span class="math inline">\(\nu^2 \times k_BT\)</span> <strong>shoots to infinity</strong> at high <span class="math inline">\(\nu\)</span></li>
+<li>Total radiation would be <strong>infinite</strong>: a light bulb could destroy the universe</li>
+<li>Factor 1 is solid geometry, so <strong>factor 2 must be wrong</strong></li>
 </ul>
 </div></div>
 </section>
 <section id="live-heat-it-up" class="slide level2 smaller">
 <h2>Live: heat it up</h2>
-<p><span style="color:#C8102E"><strong>Planck</strong></span> vs <span style="color:#7fb3d5"><strong>Rayleigh-Jeans (classical)</strong></span>; shaded band is visible light, dotted line is the Wien peak</p>
+<p><span style="color:#C8102E"><strong>Planck</strong></span> vs <span style="color:#7fb3d5"><strong>Rayleigh-Jeans (classical)</strong></span>, plotted per unit frequency; shaded band is visible light, dotted line is the peak</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="111" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 110;"><span id="cb1-111"><a href="" aria-label="111"></a>viewof Tbb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1000</span><span class="op">,</span> <span class="dv">10000</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">5800</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"temperature T (K)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="121" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 120;"><span id="cb1-121"><a href="" aria-label="121"></a>viewof Tbb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1000</span><span class="op">,</span> <span class="dv">10000</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">5800</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"temperature T (K)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -308,24 +320,25 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="116" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb2-116"><a href="" aria-label="116"></a>{</span>
-<span id="cb2-117"><a href="" aria-label="117"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="fl">6.626e-34</span><span class="op">,</span> c <span class="op">=</span> <span class="fl">2.998e8</span><span class="op">,</span> kB <span class="op">=</span> <span class="fl">1.381e-23</span><span class="op">;</span></span>
-<span id="cb2-118"><a href="" aria-label="118"></a>  <span class="kw">const</span> lams <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">50</span><span class="op">,</span> <span class="dv">3000</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></span>
-<span id="cb2-119"><a href="" aria-label="119"></a>  <span class="kw">const</span> planck <span class="op">=</span> lams<span class="op">.</span><span class="fu">map</span>(l <span class="kw">=&gt;</span> { <span class="kw">const</span> lm <span class="op">=</span> l <span class="op">*</span> <span class="fl">1e-9</span><span class="op">;</span> <span class="cf">return</span> {<span class="dt">x</span><span class="op">:</span> l<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> h <span class="op">*</span> c <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(lm<span class="op">,</span> <span class="dv">5</span>) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">expm1</span>(h <span class="op">*</span> c <span class="op">/</span> (lm <span class="op">*</span> kB <span class="op">*</span> Tbb))}<span class="op">;</span> })<span class="op">;</span></span>
-<span id="cb2-120"><a href="" aria-label="120"></a>  <span class="kw">const</span> rj <span class="op">=</span> lams<span class="op">.</span><span class="fu">map</span>(l <span class="kw">=&gt;</span> { <span class="kw">const</span> lm <span class="op">=</span> l <span class="op">*</span> <span class="fl">1e-9</span><span class="op">;</span> <span class="cf">return</span> {<span class="dt">x</span><span class="op">:</span> l<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> kB <span class="op">*</span> Tbb <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(lm<span class="op">,</span> <span class="dv">4</span>)}<span class="op">;</span> })<span class="op">;</span></span>
-<span id="cb2-121"><a href="" aria-label="121"></a>  <span class="kw">const</span> ymax <span class="op">=</span> <span class="fl">1.6</span> <span class="op">*</span> d3<span class="op">.</span><span class="fu">max</span>(planck<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
-<span id="cb2-122"><a href="" aria-label="122"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-123"><a href="" aria-label="123"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
-<span id="cb2-124"><a href="" aria-label="124"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"wavelength (nm)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">3000</span>]}<span class="op">,</span></span>
-<span id="cb2-125"><a href="" aria-label="125"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"energy density"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> ymax]<span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
-<span id="cb2-126"><a href="" aria-label="126"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-127"><a href="" aria-label="127"></a>      Plot<span class="op">.</span><span class="fu">rect</span>([{<span class="dt">x1</span><span class="op">:</span> <span class="dv">380</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="dv">750</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> ymax}]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"x1"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"x2"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"y1"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"y2"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"gold"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.15</span>})<span class="op">,</span></span>
-<span id="cb2-128"><a href="" aria-label="128"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="fl">2.898e6</span> <span class="op">/</span> Tbb]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#999"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"2,3"</span>})<span class="op">,</span></span>
-<span id="cb2-129"><a href="" aria-label="129"></a>      Plot<span class="op">.</span><span class="fu">line</span>(rj<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#7fb3d5"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"6,4"</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">,</span></span>
-<span id="cb2-130"><a href="" aria-label="130"></a>      Plot<span class="op">.</span><span class="fu">line</span>(planck<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
-<span id="cb2-131"><a href="" aria-label="131"></a>    ]</span>
-<span id="cb2-132"><a href="" aria-label="132"></a>  })<span class="op">;</span></span>
-<span id="cb2-133"><a href="" aria-label="133"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="126" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb2-126"><a href="" aria-label="126"></a>{</span>
+<span id="cb2-127"><a href="" aria-label="127"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="fl">6.626e-34</span><span class="op">,</span> c <span class="op">=</span> <span class="fl">2.998e8</span><span class="op">,</span> kB <span class="op">=</span> <span class="fl">1.381e-23</span><span class="op">;</span></span>
+<span id="cb2-128"><a href="" aria-label="128"></a>  <span class="kw">const</span> nus <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="fl">0.02</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="fl">0.05</span>)<span class="op">;</span>   <span class="co">// in units of 1e14 Hz</span></span>
+<span id="cb2-129"><a href="" aria-label="129"></a>  <span class="kw">const</span> planck <span class="op">=</span> nus<span class="op">.</span><span class="fu">map</span>(n <span class="kw">=&gt;</span> { <span class="kw">const</span> nu <span class="op">=</span> n <span class="op">*</span> <span class="fl">1e14</span><span class="op">;</span> <span class="cf">return</span> {<span class="dt">x</span><span class="op">:</span> n<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> h <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(nu<span class="op">,</span> <span class="dv">3</span>) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(c<span class="op">,</span> <span class="dv">3</span>) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">expm1</span>(h <span class="op">*</span> nu <span class="op">/</span> (kB <span class="op">*</span> Tbb))}<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb2-130"><a href="" aria-label="130"></a>  <span class="kw">const</span> rj <span class="op">=</span> nus<span class="op">.</span><span class="fu">map</span>(n <span class="kw">=&gt;</span> { <span class="kw">const</span> nu <span class="op">=</span> n <span class="op">*</span> <span class="fl">1e14</span><span class="op">;</span> <span class="cf">return</span> {<span class="dt">x</span><span class="op">:</span> n<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(nu<span class="op">,</span> <span class="dv">2</span>) <span class="op">*</span> kB <span class="op">*</span> Tbb <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(c<span class="op">,</span> <span class="dv">3</span>)}<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb2-131"><a href="" aria-label="131"></a>  <span class="kw">const</span> ymax <span class="op">=</span> <span class="fl">1.6</span> <span class="op">*</span> d3<span class="op">.</span><span class="fu">max</span>(planck<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-132"><a href="" aria-label="132"></a>  <span class="kw">const</span> nuPeak <span class="op">=</span> <span class="fl">5.879e10</span> <span class="op">*</span> Tbb <span class="op">/</span> <span class="fl">1e14</span><span class="op">;</span>   <span class="co">// Wien's law in frequency form</span></span>
+<span id="cb2-133"><a href="" aria-label="133"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-134"><a href="" aria-label="134"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
+<span id="cb2-135"><a href="" aria-label="135"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"frequency (10^14 Hz)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">30</span>]}<span class="op">,</span></span>
+<span id="cb2-136"><a href="" aria-label="136"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"energy density per unit frequency"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> ymax]<span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb2-137"><a href="" aria-label="137"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-138"><a href="" aria-label="138"></a>      Plot<span class="op">.</span><span class="fu">rect</span>([{<span class="dt">x1</span><span class="op">:</span> <span class="fl">4.0</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="fl">7.9</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> ymax}]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"x1"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"x2"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"y1"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"y2"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"gold"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.15</span>})<span class="op">,</span></span>
+<span id="cb2-139"><a href="" aria-label="139"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([nuPeak]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#999"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"2,3"</span>})<span class="op">,</span></span>
+<span id="cb2-140"><a href="" aria-label="140"></a>      Plot<span class="op">.</span><span class="fu">line</span>(rj<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#7fb3d5"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"6,4"</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">,</span></span>
+<span id="cb2-141"><a href="" aria-label="141"></a>      Plot<span class="op">.</span><span class="fu">line</span>(planck<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
+<span id="cb2-142"><a href="" aria-label="142"></a>    ]</span>
+<span id="cb2-143"><a href="" aria-label="143"></a>  })<span class="op">;</span></span>
+<span id="cb2-144"><a href="" aria-label="144"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -333,7 +346,7 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="138" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 137;"><span id="cb3-138"><a href="" aria-label="138"></a><span class="fu">md</span><span class="vs">`Wien peak at **</span><span class="sc">${</span>(<span class="fl">2.898e6</span> <span class="op">/</span> Tbb)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs"> nm**: the object </span><span class="sc">${</span>Tbb <span class="op">&lt;</span> <span class="dv">3500</span> <span class="op">?</span> <span class="st">"glows dull red"</span> <span class="op">:</span> Tbb <span class="op">&lt;</span> <span class="dv">6500</span> <span class="op">?</span> <span class="st">"looks yellow-white, like the Sun"</span> <span class="op">:</span> <span class="st">"looks blue-white"</span><span class="sc">}</span><span class="vs">. The classical curve never comes down.`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="149" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb3-149"><a href="" aria-label="149"></a><span class="fu">md</span><span class="vs">`Peak at **</span><span class="sc">${</span>(<span class="fl">5.879e10</span> <span class="op">*</span> Tbb <span class="op">/</span> <span class="fl">1e14</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> x 10^14 Hz**: the object </span><span class="sc">${</span>Tbb <span class="op">&lt;</span> <span class="dv">3500</span> <span class="op">?</span> <span class="st">"glows dull red"</span> <span class="op">:</span> Tbb <span class="op">&lt;</span> <span class="dv">6500</span> <span class="op">?</span> <span class="st">"looks yellow-white, like the Sun"</span> <span class="op">:</span> <span class="st">"looks blue-white"</span><span class="sc">}</span><span class="vs">. The classical curve never comes down.`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -343,30 +356,25 @@ Davit Potoyan
 </section>
 <section id="plancks-trick-quantization" class="slide level2">
 <h2>Planck’s trick: quantization</h2>
-<div class="fragment">
-<p>In 1900 Planck postulated that only <strong>discrete</strong> energy values are allowed:</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\boxed{E= h\nu}\]</span></p>
-</div>
+<p>In 1900 Planck postulated that an oscillator can hold only <strong>discrete</strong> amounts of energy:</p>
+<p><span class="math display">\[\boxed{E = n\,h\nu}, \qquad n = 0, 1, 2, \ldots\]</span></p>
 <ul>
-<li class="fragment">Planck’s constant: <span class="math inline">\(h = 6.63 \cdot 10^{-34} \, \text{J} \cdot \text{s}\)</span></li>
-<li class="fragment">Atoms absorb and emit radiation in <strong>quanta</strong>, multiples of <span class="math inline">\(h\nu\)</span></li>
-<li class="fragment"><span class="math inline">\(h\)</span> is tiny, so quantization is <strong>invisible</strong> at the macro scale (classical limit <span class="math inline">\(h \to 0\)</span>)</li>
+<li>Planck’s constant: <span class="math inline">\(h = 6.63 \cdot 10^{-34} \, \text{J} \cdot \text{s}\)</span></li>
+<li>Atoms absorb and emit radiation in <strong>quanta</strong>, multiples of <span class="math inline">\(h\nu\)</span></li>
+<li><span class="math inline">\(h\)</span> is tiny, so quantization is <strong>invisible</strong> at the macro scale (classical limit <span class="math inline">\(h \to 0\)</span>)</li>
 </ul>
 </section>
-<section id="plancks-radiation-law" class="slide level2">
-<h2>Planck’s radiation law</h2>
+<section id="plancks-law-same-recipe-new-factor-2" class="slide level2">
+<h2>Planck’s law: same recipe, new factor 2</h2>
 <div class="fragment">
-<p>Quantized oscillators give a <strong>frequency-dependent</strong> average energy: <span class="math display">\[\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\]</span></p>
+<p>Quantized oscillators give a <strong>frequency-dependent</strong> average energy (Boltzmann-weighted sum over <span class="math inline">\(n\)</span>): <span class="math display">\[\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1} \qquad \Big(\to k_BT \text{ for } h\nu \ll k_BT\Big)\]</span></p>
 </div>
 <div class="fragment">
-<p>This yields a distribution that <strong>vanishes</strong> at high frequency: <span class="math display">\[\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}\]</span></p>
-</div>
+<p>Modes <span class="math inline">\(\times\)</span> energy per mode, with factor 1 untouched: <span class="math display">\[\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}\]</span></p>
 <ul>
-<li class="fragment">Integrating over all <span class="math inline">\(\nu\)</span> gives a <strong>finite</strong> total, <span class="math inline">\(\propto T^4\)</span> (Stefan-Boltzmann)</li>
-<li class="fragment">No more catastrophe!</li>
+<li>The exponential <strong>beats</strong> the <span class="math inline">\(\nu^2\)</span>: the curve comes down, the total is finite (<span class="math inline">\(\propto T^4\)</span>)</li>
 </ul>
+</div>
 </section>
 <section id="wiens-displacement-law" class="slide level2">
 <h2>Wien’s displacement law</h2>
@@ -375,31 +383,17 @@ Davit Potoyan
 <p><img data-src="../../ch01/images/Black_body_rad.jpg" style="width:95.0%"></p>
 </div><div class="column" style="width:55%;">
 <ul>
-<li class="fragment">Peak wavelength is <strong>inversely proportional</strong> to temperature: <span class="math display">\[\lambda_{max} = \frac{b}{T}\]</span></li>
-<li class="fragment"><span class="math inline">\(b = 2.898 \cdot 10^{-3} \, m \cdot K\)</span></li>
-<li class="fragment">Connects an object’s <strong>temperature</strong> to its <strong>color</strong></li>
-<li class="fragment">Hotter object: <strong>shorter</strong> <span class="math inline">\(\lambda_{max}\)</span> (bluer)</li>
-</ul>
-</div></div>
-</section>
-<section id="quantization-beyond-light-heat-capacities" class="slide level2">
-<h2>Quantization beyond light: heat capacities</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../../ch01/images/einstein_heat_capacity.png" style="width:100.0%"></p>
-</div><div class="column" style="width:45%;">
-<ul>
-<li class="fragment">Classical <strong>Dulong-Petit</strong>: <span class="math inline">\(C_V = 3R\)</span> for every solid, at every <span class="math inline">\(T\)</span></li>
-<li class="fragment">Measured: <span class="math inline">\(C_V \to 0\)</span> as <span class="math inline">\(T \to 0\)</span></li>
-<li class="fragment"><strong>Einstein (1907)</strong>: atoms are Planck oscillators, vibrations <strong>freeze out</strong> below <span class="math inline">\(\theta_E = h\nu/k_B\)</span></li>
-<li class="fragment">Same <span class="math inline">\(E = h\nu\)</span>, second triumph</li>
+<li>Peak wavelength is <strong>inversely proportional</strong> to temperature: <span class="math display">\[\lambda_{max} = \frac{b}{T}\]</span></li>
+<li><span class="math inline">\(b = 2.898 \cdot 10^{-3} \, m \cdot K\)</span></li>
+<li>Connects an object’s <strong>temperature</strong> to its <strong>color</strong></li>
+<li>Hotter object: <strong>shorter</strong> <span class="math inline">\(\lambda_{max}\)</span> (bluer)</li>
 </ul>
 </div></div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Energy is <strong>quantized</strong>: by postulating <span class="math inline">\(E = h\nu\)</span>, Planck cured the ultraviolet catastrophe and gave birth to quantum mechanics.</p>
+<p>A spectrum is <strong>modes times energy per mode</strong>. Classical equipartition gives every mode <span class="math inline">\(k_BT\)</span> and the ultraviolet catastrophe; Planck’s <span class="math inline">\(E = nh\nu\)</span> starves the high-frequency modes, cures the catastrophe, and starts quantum mechanics.</p>
 </blockquote>
 
 </section>
@@ -621,7 +615,7 @@ Davit Potoyan
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBUYmIgPSBJbnB1dHMucmFuZ2UoWzEwMDAsIDEwMDAwXSwge3N0ZXA6IDEwMCwgdmFsdWU6IDU4MDAsIGxhYmVsOiBcInRlbXBlcmF0dXJlIFQgKEspXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBoID0gNi42MjZlLTM0LCBjID0gMi45OThlOCwga0IgPSAxLjM4MWUtMjM7XG4gIGNvbnN0IGxhbXMgPSBkMy5yYW5nZSg1MCwgMzAwMCwgNSk7XG4gIGNvbnN0IHBsYW5jayA9IGxhbXMubWFwKGwgPT4geyBjb25zdCBsbSA9IGwgKiAxZS05OyByZXR1cm4ge3g6IGwsIHk6IDggKiBNYXRoLlBJICogaCAqIGMgLyBNYXRoLnBvdyhsbSwgNSkgLyBNYXRoLmV4cG0xKGggKiBjIC8gKGxtICoga0IgKiBUYmIpKX07IH0pO1xuICBjb25zdCByaiA9IGxhbXMubWFwKGwgPT4geyBjb25zdCBsbSA9IGwgKiAxZS05OyByZXR1cm4ge3g6IGwsIHk6IDggKiBNYXRoLlBJICoga0IgKiBUYmIgLyBNYXRoLnBvdyhsbSwgNCl9OyB9KTtcbiAgY29uc3QgeW1heCA9IDEuNiAqIGQzLm1heChwbGFuY2ssIGQgPT4gZC55KTtcbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgd2lkdGg6IDEwMDAsIGhlaWdodDogMzYwLFxuICAgIHg6IHtsYWJlbDogXCJ3YXZlbGVuZ3RoIChubSlcIiwgZG9tYWluOiBbMCwgMzAwMF19LFxuICAgIHk6IHtsYWJlbDogXCJlbmVyZ3kgZGVuc2l0eVwiLCBkb21haW46IFswLCB5bWF4XSwgdGlja3M6IDB9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJlY3QoW3t4MTogMzgwLCB4MjogNzUwLCB5MTogMCwgeTI6IHltYXh9XSwge3gxOiBcIngxXCIsIHgyOiBcIngyXCIsIHkxOiBcInkxXCIsIHkyOiBcInkyXCIsIGZpbGw6IFwiZ29sZFwiLCBmaWxsT3BhY2l0eTogMC4xNX0pLFxuICAgICAgUGxvdC5ydWxlWChbMi44OThlNiAvIFRiYl0sIHtzdHJva2U6IFwiIzk5OVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiMiwzXCJ9KSxcbiAgICAgIFBsb3QubGluZShyaiwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiM3ZmIzZDVcIiwgc3Ryb2tlV2lkdGg6IDIsIHN0cm9rZURhc2hhcnJheTogXCI2LDRcIiwgY2xpcDogdHJ1ZX0pLFxuICAgICAgUGxvdC5saW5lKHBsYW5jaywge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiNDODEwMkVcIiwgc3Ryb2tlV2lkdGg6IDIuNX0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYFdpZW4gcGVhayBhdCAqKiR7KDIuODk4ZTYgLyBUYmIpLnRvRml4ZWQoMCl9IG5tKio6IHRoZSBvYmplY3QgJHtUYmIgPCAzNTAwID8gXCJnbG93cyBkdWxsIHJlZFwiIDogVGJiIDwgNjUwMCA/IFwibG9va3MgeWVsbG93LXdoaXRlLCBsaWtlIHRoZSBTdW5cIiA6IFwibG9va3MgYmx1ZS13aGl0ZVwifS4gVGhlIGNsYXNzaWNhbCBjdXJ2ZSBuZXZlciBjb21lcyBkb3duLmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnVGJiJykifV19
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBUYmIgPSBJbnB1dHMucmFuZ2UoWzEwMDAsIDEwMDAwXSwge3N0ZXA6IDEwMCwgdmFsdWU6IDU4MDAsIGxhYmVsOiBcInRlbXBlcmF0dXJlIFQgKEspXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBoID0gNi42MjZlLTM0LCBjID0gMi45OThlOCwga0IgPSAxLjM4MWUtMjM7XG4gIGNvbnN0IG51cyA9IGQzLnJhbmdlKDAuMDIsIDMwLCAwLjA1KTsgICAvLyBpbiB1bml0cyBvZiAxZTE0IEh6XG4gIGNvbnN0IHBsYW5jayA9IG51cy5tYXAobiA9PiB7IGNvbnN0IG51ID0gbiAqIDFlMTQ7IHJldHVybiB7eDogbiwgeTogOCAqIE1hdGguUEkgKiBoICogTWF0aC5wb3cobnUsIDMpIC8gTWF0aC5wb3coYywgMykgLyBNYXRoLmV4cG0xKGggKiBudSAvIChrQiAqIFRiYikpfTsgfSk7XG4gIGNvbnN0IHJqID0gbnVzLm1hcChuID0+IHsgY29uc3QgbnUgPSBuICogMWUxNDsgcmV0dXJuIHt4OiBuLCB5OiA4ICogTWF0aC5QSSAqIE1hdGgucG93KG51LCAyKSAqIGtCICogVGJiIC8gTWF0aC5wb3coYywgMyl9OyB9KTtcbiAgY29uc3QgeW1heCA9IDEuNiAqIGQzLm1heChwbGFuY2ssIGQgPT4gZC55KTtcbiAgY29uc3QgbnVQZWFrID0gNS44NzllMTAgKiBUYmIgLyAxZTE0OyAgIC8vIFdpZW4ncyBsYXcgaW4gZnJlcXVlbmN5IGZvcm1cbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgd2lkdGg6IDEwMDAsIGhlaWdodDogMzYwLFxuICAgIHg6IHtsYWJlbDogXCJmcmVxdWVuY3kgKDEwXjE0IEh6KVwiLCBkb21haW46IFswLCAzMF19LFxuICAgIHk6IHtsYWJlbDogXCJlbmVyZ3kgZGVuc2l0eSBwZXIgdW5pdCBmcmVxdWVuY3lcIiwgZG9tYWluOiBbMCwgeW1heF0sIHRpY2tzOiAwfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5yZWN0KFt7eDE6IDQuMCwgeDI6IDcuOSwgeTE6IDAsIHkyOiB5bWF4fV0sIHt4MTogXCJ4MVwiLCB4MjogXCJ4MlwiLCB5MTogXCJ5MVwiLCB5MjogXCJ5MlwiLCBmaWxsOiBcImdvbGRcIiwgZmlsbE9wYWNpdHk6IDAuMTV9KSxcbiAgICAgIFBsb3QucnVsZVgoW251UGVha10sIHtzdHJva2U6IFwiIzk5OVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiMiwzXCJ9KSxcbiAgICAgIFBsb3QubGluZShyaiwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiM3ZmIzZDVcIiwgc3Ryb2tlV2lkdGg6IDIsIHN0cm9rZURhc2hhcnJheTogXCI2LDRcIiwgY2xpcDogdHJ1ZX0pLFxuICAgICAgUGxvdC5saW5lKHBsYW5jaywge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiNDODEwMkVcIiwgc3Ryb2tlV2lkdGg6IDIuNX0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYFBlYWsgYXQgKiokeyg1Ljg3OWUxMCAqIFRiYiAvIDFlMTQpLnRvRml4ZWQoMSl9IHggMTBeMTQgSHoqKjogdGhlIG9iamVjdCAke1RiYiA8IDM1MDAgPyBcImdsb3dzIGR1bGwgcmVkXCIgOiBUYmIgPCA2NTAwID8gXCJsb29rcyB5ZWxsb3ctd2hpdGUsIGxpa2UgdGhlIFN1blwiIDogXCJsb29rcyBibHVlLXdoaXRlXCJ9LiBUaGUgY2xhc3NpY2FsIGN1cnZlIG5ldmVyIGNvbWVzIGRvd24uYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdUYmInKSJ9XX0=
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
