@@ -149,16 +149,30 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 
 :::{important} **The recipe for a radiation spectrum**
 
-$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace{\langle E \rangle}_{\text{energy per mode}}$$
+$$\rho_{\nu}(T)\, d\nu = \underbrace{\langle E \rangle}_{\text{energy per mode}} \times \underbrace{dN_{\nu}}_{\text{number of modes}}$$
 
-- The energy stored in radiation at frequency $\nu$ is the number of waves of that frequency times the energy each one carries on average: $dN_{\nu}$ is the number of wave modes per volume with frequency in $[\nu, \nu + d\nu]$, and $\langle E \rangle$ is the average energy of one such mode at temperature $T$.
-- The first factor is pure **geometry** (how many standing waves fit in a box) and is the same in classical and quantum physics.
-- The second factor is **thermodynamics**, and it is where classical and quantum physics part ways. Everything that follows is about these two factors.
+- The energy stored in radiation at frequency $\nu$ is the energy each wave of that frequency carries on average, times the number of such waves: $\langle E \rangle$ is the average energy of one wave mode at temperature $T$, and $dN_{\nu}$ is the number of modes per volume with frequency in $[\nu, \nu + d\nu]$.
+- **Factor 1** is **thermodynamics**: what the waves are and how much energy each holds. It is where classical and quantum physics part ways.
+- **Factor 2** is pure **geometry**: how many standing waves fit in a box. It is the same in classical and quantum physics. Everything that follows is about these two factors, in that order.
 :::
 
-- **Factor 1 in one breath.** Shorter waves fit into a box of length $L$ more easily than long ones: the number that fit grows as $L/\lambda \sim \nu$ in one dimension, and in three dimensions the wave has to fit along each direction independently, so the count grows as $\nu^3$. The number of modes in a thin frequency slice is therefore $dN \sim d(\nu^3) \sim \nu^2 d\nu$. The box below fills in the details on this calculation.
+:::{figure} ./images/phonons.gif
+:label: fig-the-need-for-quantization-7
+:alt: atomic vibrations in a solid
+:width: 60%
 
-:::{tip} **Counting the wave modes in a box**
+Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section. Each mode is one of the dots counted above.
+:::
+
+ - **Factor 1, the classical way: equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
+
+  $$\langle E\rangle = k_BT$$
+
+ -  Every vibrating spring in a heated body thus has the same energy regardless of frequency. Think about this assumption for a second!
+
+- **Factor 2 in one breath.** Shorter waves fit into a box of length $L$ more easily than long ones: the number that fit grows as $L/\lambda \sim \nu$ in one dimension, and in three dimensions the wave has to fit along each direction independently, so the count grows as $\nu^3$. The number of modes in a thin frequency slice is therefore $dN \sim d(\nu^3) \sim \nu^2 d\nu$. The box below fills in the details on this calculation.
+
+:::{tip} **Factor 2: counting the wave modes in a box**
 :class: dropdown
 
 ```{figure} ./images/mode_counting.png
@@ -180,21 +194,7 @@ $$
 dN_{\nu} = \frac{8\pi}{c^3} \cdot \nu^2 d\nu
 $$   
 
-:::{figure} ./images/phonons.gif
-:label: fig-the-need-for-quantization-7
-:alt: atomic vibrations in a solid
-:width: 60%
-
-Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section. Each mode is one of the dots counted above.
-:::
-
- - **Factor 2, the classical way: equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
-
-  $$\langle E\rangle = k_BT$$
-
- -  Every vibrating spring in a heated body thus has the same energy regardless of frequency. Think about this assumption for a second!
-
-- **Radiation energy distribution.** Putting the two factors of the recipe together, modes per volume times $k_BT$ per mode, gives the classical **Rayleigh-Jeans law**:
+- **Radiation energy distribution.** Putting the two factors of the recipe together, $k_BT$ per mode times modes per volume, gives the classical **Rayleigh-Jeans law**:
 
 $$\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T$$
 
@@ -233,7 +233,7 @@ Planck hypothesized that the energy of oscillators in a black body is quantized 
 
 $$E_n = n h \nu$$
 
-where $n$ is a positive integer, $h$ is Planck's constant, and $\nu$ is the frequency.
+where $n = 0, 1, 2, \ldots$ is a non-negative integer, $h$ is Planck's constant, and $\nu$ is the frequency. (Planck's 1900 oscillators start at zero energy; the extra $\tfrac{1}{2}h\nu$ of zero-point energy is a later result of full quantum mechanics that we will meet with the harmonic oscillator.)
 
 The average energy of an oscillator is found by summing over all possible energies, weighted by the Boltzmann factor:
 
@@ -286,11 +286,11 @@ This is Planck's law, which describes the spectral density of radiation emitted 
 
 :::
 
-- Planck kept factor 1 of the recipe, the mode count, untouched. Assuming that the energy of an oscillator is quantized, he derived a new **factor 2**, an average energy which, unlike the classical $k_BT$, depends on the frequency of oscillation:
+- Planck kept factor 2 of the recipe, the mode count, untouched. Assuming that the energy of an oscillator is quantized, he derived a new **factor 1**, an average energy which, unlike the classical $k_BT$, depends on the frequency of oscillation:
 
 $$\langle E \rangle = \Big[ \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-- Modes per volume times this average energy gives **Planck's law**, a distribution that tends to zero in the high-frequency limit because the exponential in factor 2 wins over the $\nu^2$ of factor 1. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
+- Modes per volume times this average energy gives **Planck's law**, a distribution that tends to zero in the high-frequency limit because the exponential in factor 1 wins over the $\nu^2$ of factor 2. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
 
 ::::{tab-set}
 :::{tab-item} per unit frequency
