@@ -56,6 +56,22 @@ $$\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}$$
 
 - Key question: how does the **energy** $E$ of light relate to its **frequency** $\nu$?
 
+## How a light bulb started quantum mechanics
+
+:::: {.columns}
+::: {.column width="30%"}
+![](../../ch01/images/light_bulb.png){width="100%"}
+:::
+::: {.column width="70%"}
+- **1887**: Siemens and Helmholtz found the PTR in Berlin, the first national standards lab, to serve German industry
+- Its customer: the **electric lighting** business. How much light does a glowing filament give per watt, and at what temperature?
+- **1890s**: Lummer, Pringsheim, Rubens, Kurlbaum measure black body spectra with unmatched precision, deep into the infrared
+- **October 1900**: Wien's formula fails at long wavelengths; Rubens tells Planck on a Sunday; Planck has the right formula by evening
+- **December 1900**: the only derivation that works needs $E = h\nu$. Planck: "an act of desperation"
+- [The full story, with the people and instruments (video)](https://www.youtube.com/watch?v=i1TVZIBj7UA)
+:::
+::::
+
 ## The black body
 
 :::: {.columns}
@@ -70,41 +86,15 @@ $$\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}$$
 :::
 ::::
 
-## How a light bulb started quantum mechanics
-
-:::: {.columns}
-::: {.column width="30%"}
-![](../../ch01/images/light_bulb.png){width="100%"}
-:::
-::: {.column width="70%"}
-- **1887**: Siemens and Helmholtz found the PTR in Berlin, the first national standards lab, to serve German industry
-- Its customer: the **electric lighting** business. How much light does a glowing filament give per watt, and at what temperature?
-- **1890s**: Lummer, Pringsheim, Rubens, Kurlbaum measure black body spectra with unmatched precision, deep into the infrared
-- **October 1900**: Wien's formula fails at long wavelengths; Rubens tells Planck on a Sunday; Planck has the right formula by evening
-- **December 1900**: the only derivation that works needs $E = h\nu$. Planck: "an act of desperation"
-
-::: {.fragment}
-Quantum mechanics is a by-product of the search for a better light bulb. [The full story, with the people and instruments (video)](https://www.youtube.com/watch?v=i1TVZIBj7UA)
-:::
-:::
-::::
-
 ## The recipe for a radiation spectrum
 
-$$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace{\langle E \rangle}_{\text{energy per mode}}$$
+$$\rho_{\nu}(T)\, d\nu = \underbrace{\langle E \rangle}_{\text{energy per mode}} \times \underbrace{dN_{\nu}}_{\text{number of modes}}$$
 
-- Energy at frequency $\nu$ = **number of waves** of that frequency $\times$ **average energy** of each
-- **Factor 1** is geometry: how many standing waves fit in a box. Same classically and quantum
-- **Factor 2** is thermodynamics: this is where classical and quantum physics part ways
+- Energy at frequency $\nu$ = **average energy** of one wave $\times$ **number of waves** of that frequency
+- **Factor 1** is thermodynamics: what the waves are, how much energy each holds. This is where classical and quantum physics part ways
+- **Factor 2** is geometry: how many standing waves fit in a box. Same classically and quantum
 
-## Factor 1: counting the waves in a box
-
-![](../../ch01/images/mode_counting.png){width="80%" fig-align="center"}
-
-- Shorter waves fit more easily: $N \sim L/\lambda \sim \nu$ in 1D; fit along each direction, so $\sim \nu^3$ in 3D
-- A thin slice of frequency holds $\; dN_{\nu} = \dfrac{8\pi}{c^3}\,\nu^2\, d\nu$
-
-## Factor 2, the classical way: equipartition
+## Factor 1, the classical way: vibrating atoms
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -114,10 +104,17 @@ $$\rho_{\nu}(T)\, d\nu = \underbrace{dN_{\nu}}_{\text{modes}} \times \underbrace
 - Heated atoms vibrate like **springs**, radiating at frequency $\nu$
 - **Equipartition**: every oscillator gets the same energy, whatever its frequency
 $$\langle E\rangle = k_BT$$
-- Modes $\times$ energy per mode, the **Rayleigh-Jeans law**:
-$$\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T$$
+- The same $k_BT$ for a slow, long wave and a fast, short one. Hold that thought
 :::
 ::::
+
+## Factor 2: counting the waves in a box
+
+![](../../ch01/images/mode_counting.png){width="80%" fig-align="center"}
+
+- Shorter waves fit more easily: $N \sim L/\lambda \sim \nu$ in 1D; fit along each direction, so $\sim \nu^3$ in 3D
+- A thin slice of frequency holds $\; dN_{\nu} = \dfrac{8\pi}{c^3}\,\nu^2\, d\nu$
+- Energy per mode $\times$ modes, the **Rayleigh-Jeans law**: $\;\rho(\nu) = k_B T \cdot \dfrac{8\pi}{c^3}\nu^2$
 
 ## The ultraviolet catastrophe
 
@@ -128,7 +125,7 @@ $$\rho({\nu}) = \frac{8\pi}{c^3}\nu^2 \cdot k_B T$$
 ::: {.column width="45%"}
 - $\nu^2 \times k_BT$ **shoots to infinity** at high $\nu$
 - Total radiation would be **infinite**: a light bulb could destroy the universe
-- Factor 1 is solid geometry, so **factor 2 must be wrong**
+- Factor 2 is solid geometry, so **factor 1 must be wrong**
 :::
 ::::
 
@@ -179,7 +176,7 @@ $$\boxed{E = n\,h\nu}, \qquad n = 0, 1, 2, \ldots$$
 - Atoms absorb and emit radiation in **quanta**, multiples of $h\nu$
 - $h$ is tiny, so quantization is **invisible** at the macro scale (classical limit $h \to 0$)
 
-## Planck's law: same recipe, new factor 2
+## Planck's law: same recipe, new factor 1
 
 ::: {.fragment}
 Quantized oscillators give a **frequency-dependent** average energy (Boltzmann-weighted sum over $n$):
@@ -187,7 +184,7 @@ $$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1} \qquad \Big(\to k_BT
 :::
 
 ::: {.fragment}
-Modes $\times$ energy per mode, with factor 1 untouched:
+Energy per mode $\times$ modes, with factor 2 untouched:
 $$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}$$
 
 - The exponential **beats** the $\nu^2$: the curve comes down, the total is finite ($\propto T^4$)
