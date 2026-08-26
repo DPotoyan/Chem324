@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="02-trigonometry-and-complex-numbers_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02-trigonometry-and-complex-numbers_files/libs/quarto-html/tabby.min.js"></script>
+<script src="02-trigonometry-and-complex-numbers_files/libs/quarto-html/popper.min.js"></script>
+<script src="02-trigonometry-and-complex-numbers_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="02-trigonometry-and-complex-numbers_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02-trigonometry-and-complex-numbers_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="02-trigonometry-and-complex-numbers_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Davit Potoyan">
+  <title>Trigonometry and Complex Numbers</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="02-trigonometry-and-complex-numbers_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="02-trigonometry-and-complex-numbers_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="02-trigonometry-and-complex-numbers_files/libs/revealjs/dist/theme/quarto-03bbba2eb154109f68083490bac4e611.css">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="02-trigonometry-and-complex-numbers_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="02-trigonometry-and-complex-numbers_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Trigonometry and Complex Numbers</h1>
+  <p class="subtitle">Chem 3240 · Appendix A.2</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Davit Potoyan
+</div>
+</div>
+</div>
+
+</section>
+<section id="one-theme-rotation-in-a-plane" class="slide level2">
+<h2>One theme: rotation in a plane</h2>
+<ul>
+<li><strong>Trigonometry</strong> and <strong>complex numbers</strong> are two views of the same thing, a point turning around a circle</li>
+<li>Waves, oscillations, and every quantum phase live here</li>
+<li>The bridge between the two views is <strong>Euler’s formula</strong>, the single most useful identity in the course</li>
+</ul>
+</section>
+<section id="sine-and-cosine-are-coordinates" class="slide level2">
+<h2>Sine and cosine are coordinates</h2>
+
+<img data-src="../../math/images/unit_circle.png" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><ul>
+<li>Rotate a point on the unit circle by <span class="math inline">\(\theta\)</span> radians: <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(y = \sin\theta\)</span></li>
+<li>A full turn is <span class="math inline">\(2\pi\)</span>; each function is the other shifted by a quarter turn</li>
+</ul>
+</section>
+<section id="identities-you-will-reach-for" class="slide level2">
+<h2>Identities you will reach for</h2>
+<div class="keyeq">
+<p><span class="math display">\[\cos^2\theta + \sin^2\theta = 1\]</span></p>
+</div>
+<ul>
+<li><strong>Angle sum</strong>: <span class="math inline">\(\sin(A \pm B) = \sin A\cos B \pm \cos A\sin B\)</span>, <span class="math inline">\(\quad \cos(A \pm B) = \cos A\cos B \mp \sin A\sin B\)</span></li>
+<li><strong>Power reduction</strong>: <span class="math inline">\(\sin^2\theta = \tfrac12(1 - \cos 2\theta)\)</span>, <span class="math inline">\(\quad \cos^2\theta = \tfrac12(1 + \cos 2\theta)\)</span></li>
+<li><strong>Small angles</strong>: <span class="math inline">\(\sin\theta \approx \theta\)</span>, <span class="math inline">\(\cos\theta \approx 1 - \tfrac12\theta^2\)</span>, which is how a vibrating bond becomes a harmonic oscillator</li>
+<li>Do not memorize the table: every line falls out of Euler’s formula</li>
+</ul>
+</section>
+<section id="complex-numbers-live-in-2d" class="slide level2">
+<h2>Complex numbers live in 2D</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../math/images/SumNums.png" style="width:100.0%"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><span class="math inline">\(x^2 + 1 = 0\)</span> has no real root, so extend the line to a plane with one new symbol, <span class="math inline">\(i^2 = -1\)</span></li>
+</ul>
+<div class="keyeq">
+<p><span class="math display">\[z = x + iy, \qquad x = \operatorname{Re} z,\ \ y = \operatorname{Im} z\]</span></p>
+</div>
+<ul>
+<li>A complex number is a <strong>point in a plane</strong>: real part across, imaginary part up</li>
+<li><span class="math inline">\(3 + 2i\)</span>, <span class="math inline">\(-2i\)</span>, and <span class="math inline">\(1.1\)</span> are all complex numbers</li>
+</ul>
+</div></div>
+</section>
+<section id="polar-form-and-eulers-formula" class="slide level2">
+<h2>Polar form and Euler’s formula</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="../../math/images/polar_form.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<ul>
+<li>Locate <span class="math inline">\(z\)</span> by its distance <span class="math inline">\(r\)</span> and angle <span class="math inline">\(\phi\)</span>: <span class="math inline">\(x = r\cos\phi\)</span>, <span class="math inline">\(y = r\sin\phi\)</span></li>
+</ul>
+<div class="keyeq">
+<p><span class="math display">\[e^{i\phi} = \cos\phi + i\sin\phi\]</span></p>
+</div>
+<ul>
+<li>So <span class="math inline">\(z = r(\cos\phi + i\sin\phi) = r\,e^{i\phi}\)</span>: <span class="math inline">\(r = \sqrt{x^2 + y^2}\)</span> is the <strong>magnitude</strong>, <span class="math inline">\(\phi\)</span> the <strong>phase</strong></li>
+<li>Proof in one line: the Taylor series of <span class="math inline">\(e^{ix}\)</span> splits into the series of <span class="math inline">\(\cos x\)</span> and <span class="math inline">\(i\sin x\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="multiplication-is-rotation" class="slide level2">
+<h2>Multiplication is rotation</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="../../math/images/rotation_by_i.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<p><span class="math display">\[(r_1 e^{i\phi_1})(r_2 e^{i\phi_2}) = r_1 r_2\, e^{i(\phi_1 + \phi_2)}\]</span></p>
+<ul>
+<li><strong>Magnitudes multiply, angles add</strong></li>
+<li><span class="math inline">\(|e^{i\phi}| = 1\)</span>, so multiplying by <span class="math inline">\(e^{i\phi}\)</span> is a <strong>pure turn</strong> by <span class="math inline">\(\phi\)</span>: no stretching</li>
+<li><span class="math inline">\(i = e^{i\pi/2}\)</span> is a quarter turn; four of them bring you home, <span class="math inline">\(i^4 = 1\)</span></li>
+<li><span class="math inline">\(e^{-i\phi}\)</span> undoes <span class="math inline">\(e^{i\phi}\)</span>; angles matter only mod <span class="math inline">\(2\pi\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="live-dial-the-phase" class="slide level2 smaller">
+<h2>Live: dial the phase</h2>
+<p><span style="color:#e67e22"><strong><span class="math inline">\(z\)</span></strong></span> and <span style="color:#107895"><strong><span class="math inline">\(e^{i\phi} z\)</span></strong></span>: the length never changes, only the angle</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="104" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 103;"><span id="cb1-104"><a href="" aria-label="104"></a>viewof phi <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="fl">6.28</span><span class="op">,</span> <span class="fl">6.28</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"rotation angle φ (rad)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="109" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb2-109"><a href="" aria-label="109"></a>{</span>
+<span id="cb2-110"><a href="" aria-label="110"></a>  <span class="kw">const</span> z <span class="op">=</span> {<span class="dt">re</span><span class="op">:</span> <span class="fl">1.3</span><span class="op">,</span> <span class="dt">im</span><span class="op">:</span> <span class="fl">0.5</span>}<span class="op">;</span></span>
+<span id="cb2-111"><a href="" aria-label="111"></a>  <span class="kw">const</span> w <span class="op">=</span> {<span class="dt">re</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi) <span class="op">*</span> z<span class="op">.</span><span class="at">re</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(phi) <span class="op">*</span> z<span class="op">.</span><span class="at">im</span><span class="op">,</span> <span class="dt">im</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(phi) <span class="op">*</span> z<span class="op">.</span><span class="at">re</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi) <span class="op">*</span> z<span class="op">.</span><span class="at">im</span>}<span class="op">;</span></span>
+<span id="cb2-112"><a href="" aria-label="112"></a>  <span class="kw">const</span> R <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">hypot</span>(z<span class="op">.</span><span class="at">re</span><span class="op">,</span> z<span class="op">.</span><span class="at">im</span>)<span class="op">;</span></span>
+<span id="cb2-113"><a href="" aria-label="113"></a>  <span class="kw">const</span> circle <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">6.3</span><span class="op">,</span> <span class="fl">0.05</span>)<span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> R <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(t)<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> R <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(t)}))<span class="op">;</span></span>
+<span id="cb2-114"><a href="" aria-label="114"></a>  <span class="kw">const</span> a0 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">atan2</span>(z<span class="op">.</span><span class="at">im</span><span class="op">,</span> z<span class="op">.</span><span class="at">re</span>)<span class="op">;</span></span>
+<span id="cb2-115"><a href="" aria-label="115"></a>  <span class="kw">const</span> arc <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">1.0001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">.</span><span class="fu">map</span>(s <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(a0 <span class="op">+</span> s <span class="op">*</span> phi)<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(a0 <span class="op">+</span> s <span class="op">*</span> phi)}))<span class="op">;</span></span>
+<span id="cb2-116"><a href="" aria-label="116"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-117"><a href="" aria-label="117"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">440</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">440</span><span class="op">,</span> <span class="dt">aspectRatio</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb2-118"><a href="" aria-label="118"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Real"</span><span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">5</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Imaginary"</span><span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">5</span>}<span class="op">,</span></span>
+<span id="cb2-119"><a href="" aria-label="119"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-120"><a href="" aria-label="120"></a>      Plot<span class="op">.</span><span class="fu">line</span>(circle<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#bbb"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})<span class="op">,</span></span>
+<span id="cb2-121"><a href="" aria-label="121"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span> Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb2-122"><a href="" aria-label="122"></a>      Plot<span class="op">.</span><span class="fu">arrow</span>([{<span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> z<span class="op">.</span><span class="at">re</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> z<span class="op">.</span><span class="at">im</span>}]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"x1"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"y1"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"x2"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"y2"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e67e22"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb2-123"><a href="" aria-label="123"></a>      Plot<span class="op">.</span><span class="fu">arrow</span>([{<span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> w<span class="op">.</span><span class="at">re</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> w<span class="op">.</span><span class="at">im</span>}]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"x1"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"y1"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"x2"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"y2"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#107895"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb2-124"><a href="" aria-label="124"></a>      Plot<span class="op">.</span><span class="fu">line</span>(arc<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb2-125"><a href="" aria-label="125"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> z<span class="op">.</span><span class="at">re</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> z<span class="op">.</span><span class="at">im</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"z"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#e67e22"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">18</span>})<span class="op">,</span></span>
+<span id="cb2-126"><a href="" aria-label="126"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> w<span class="op">.</span><span class="at">re</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> w<span class="op">.</span><span class="at">im</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"e^(iφ) z"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#107895"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">18</span>})</span>
+<span id="cb2-127"><a href="" aria-label="127"></a>    ]</span>
+<span id="cb2-128"><a href="" aria-label="128"></a>  })<span class="op">;</span></span>
+<span id="cb2-129"><a href="" aria-label="129"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="134" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 133;"><span id="cb3-134"><a href="" aria-label="134"></a><span class="fu">md</span><span class="vs">`|z| = **</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">hypot</span>(<span class="fl">1.3</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">** before and after: a pure </span><span class="sc">${</span>phi <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"counterclockwise"</span> <span class="op">:</span> <span class="st">"clockwise"</span><span class="sc">}</span><span class="vs"> turn by </span><span class="sc">${</span>phi<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> rad`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="the-rotating-phase-is-a-clock" class="slide level2">
+<h2>The rotating phase is a clock</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="../../math/images/ComplexHelix.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:45%;">
+<ul>
+<li><span class="math inline">\(e^{i\omega t}\)</span> traces a <strong>helix</strong>: its shadow on one wall is <span class="math inline">\(\cos\omega t\)</span>, on the other <span class="math inline">\(\sin\omega t\)</span></li>
+<li>One rotating phase carries <strong>both waves</strong> at once</li>
+<li>Preview: every stationary state carries <span class="math inline">\(e^{-iEt/\hbar}\)</span>, a clock hand turning clockwise at rate <span class="math inline">\(E/\hbar\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="the-conjugate-and-the-modulus" class="slide level2">
+<h2>The conjugate and the modulus</h2>
+<div class="keyeq">
+<p><span class="math display">\[\bar{z} = x - iy = r\,e^{-i\phi}, \qquad |z|^2 = \bar{z}\,z = x^2 + y^2 = r^2\]</span></p>
+</div>
+<ul>
+<li>Conjugation <strong>reflects</strong> <span class="math inline">\(z\)</span> across the real axis; <span class="math inline">\(\bar z z\)</span> rotates it back onto the axis and leaves a non-negative number</li>
+<li>This is exactly how an amplitude becomes a probability: <span class="math inline">\(|\psi|^2 = \psi^*\psi\)</span></li>
+<li>Sums and differences give the trig functions back: <span class="math display">\[\cos\phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \qquad \sin\phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}\]</span></li>
+</ul>
+</section>
+<section id="why-chemists-care" class="slide level2">
+<h2>Why chemists care</h2>
+<ul>
+<li><strong>Probabilities</strong>: <span class="math inline">\(|\psi|^2 = \psi^*\psi\)</span> is why wavefunctions may be complex while measurements are real</li>
+<li><strong>Phases are invisible alone</strong>: <span class="math inline">\(\psi \to e^{i\theta}\psi\)</span> leaves <span class="math inline">\(|\psi|^2\)</span> unchanged, but phases <strong>between</strong> two amplitudes produce interference</li>
+<li><strong>Time evolution</strong> is a phase rotation, <span class="math inline">\(e^{-iEt/\hbar}\)</span></li>
+<li><strong>X-ray crystallography</strong>: each scattered wave is <span class="math inline">\(|A|e^{i\phi}\)</span>; detectors measure <span class="math inline">\(|A|\)</span> only, and recovering <span class="math inline">\(\phi\)</span> is the famous <strong>phase problem</strong></li>
+</ul>
+</section>
+<section id="takeaway" class="title-slide slide level1 center">
+<h1>Takeaway</h1>
+<blockquote>
+<p><span class="math inline">\(e^{i\phi} = \cos\phi + i\sin\phi\)</span> turns trigonometry into exponentials: multiplying by <span class="math inline">\(e^{i\phi}\)</span> rotates without stretching, <span class="math inline">\(\bar z z = |z|^2\)</span> turns amplitudes into probabilities, and every identity you need falls out of one exponential rule.</p>
+</blockquote>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Chem 3240 · Quantum Mechanics</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="02-trigonometry-and-complex-numbers_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwaGkgPSBJbnB1dHMucmFuZ2UoWy02LjI4LCA2LjI4XSwge3N0ZXA6IDAuMDUsIHZhbHVlOiAwLjksIGxhYmVsOiBcInJvdGF0aW9uIGFuZ2xlIM+GIChyYWQpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB6ID0ge3JlOiAxLjMsIGltOiAwLjV9O1xuICBjb25zdCB3ID0ge3JlOiBNYXRoLmNvcyhwaGkpICogei5yZSAtIE1hdGguc2luKHBoaSkgKiB6LmltLCBpbTogTWF0aC5zaW4ocGhpKSAqIHoucmUgKyBNYXRoLmNvcyhwaGkpICogei5pbX07XG4gIGNvbnN0IFIgPSBNYXRoLmh5cG90KHoucmUsIHouaW0pO1xuICBjb25zdCBjaXJjbGUgPSBkMy5yYW5nZSgwLCA2LjMsIDAuMDUpLm1hcCh0ID0+ICh7eDogUiAqIE1hdGguY29zKHQpLCB5OiBSICogTWF0aC5zaW4odCl9KSk7XG4gIGNvbnN0IGEwID0gTWF0aC5hdGFuMih6LmltLCB6LnJlKTtcbiAgY29uc3QgYXJjID0gZDMucmFuZ2UoMCwgMS4wMDAxLCAwLjAyKS5tYXAocyA9PiAoe3g6IDAuNSAqIE1hdGguY29zKGEwICsgcyAqIHBoaSksIHk6IDAuNSAqIE1hdGguc2luKGEwICsgcyAqIHBoaSl9KSk7XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHdpZHRoOiA0NDAsIGhlaWdodDogNDQwLCBhc3BlY3RSYXRpbzogMSxcbiAgICB4OiB7ZG9tYWluOiBbLTIsIDJdLCBsYWJlbDogXCJSZWFsXCIsIHRpY2tzOiA1fSwgeToge2RvbWFpbjogWy0yLCAyXSwgbGFiZWw6IFwiSW1hZ2luYXJ5XCIsIHRpY2tzOiA1fSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5saW5lKGNpcmNsZSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiNiYmJcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjQsNFwifSksXG4gICAgICBQbG90LnJ1bGVYKFswXSwge3N0cm9rZTogXCIjMzMzXCJ9KSwgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwiIzMzM1wifSksXG4gICAgICBQbG90LmFycm93KFt7eDE6IDAsIHkxOiAwLCB4Mjogei5yZSwgeTI6IHouaW19XSwge3gxOiBcIngxXCIsIHkxOiBcInkxXCIsIHgyOiBcIngyXCIsIHkyOiBcInkyXCIsIHN0cm9rZTogXCIjZTY3ZTIyXCIsIHN0cm9rZVdpZHRoOiAzfSksXG4gICAgICBQbG90LmFycm93KFt7eDE6IDAsIHkxOiAwLCB4Mjogdy5yZSwgeTI6IHcuaW19XSwge3gxOiBcIngxXCIsIHkxOiBcInkxXCIsIHgyOiBcIngyXCIsIHkyOiBcInkyXCIsIHN0cm9rZTogXCIjMTA3ODk1XCIsIHN0cm9rZVdpZHRoOiAzfSksXG4gICAgICBQbG90LmxpbmUoYXJjLCB7eDogXCJ4XCIsIHk6IFwieVwiLCBzdHJva2U6IFwiI0M4MTAyRVwiLCBzdHJva2VXaWR0aDogMn0pLFxuICAgICAgUGxvdC50ZXh0KFt7eDogei5yZSArIDAuMTUsIHk6IHouaW0gKyAwLjEsIHQ6IFwielwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCBmaWxsOiBcIiNlNjdlMjJcIiwgZm9udFNpemU6IDE4fSksXG4gICAgICBQbG90LnRleHQoW3t4OiB3LnJlICsgMC4xNSwgeTogdy5pbSArIDAuMSwgdDogXCJlXihpz4YpIHpcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgZmlsbDogXCIjMTA3ODk1XCIsIGZvbnRTaXplOiAxOH0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYHx6fCA9ICoqJHtNYXRoLmh5cG90KDEuMywgMC41KS50b0ZpeGVkKDIpfSoqIGJlZm9yZSBhbmQgYWZ0ZXI6IGEgcHVyZSAke3BoaSA+PSAwID8gXCJjb3VudGVyY2xvY2t3aXNlXCIgOiBcImNsb2Nrd2lzZVwifSB0dXJuIGJ5ICR7cGhpLnRvRml4ZWQoMil9IHJhZGBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGhpJykifV19
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
