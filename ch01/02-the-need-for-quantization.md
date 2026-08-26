@@ -151,9 +151,9 @@ Predictions of classical and quantum mechanics diverge in the high-frequency (sh
 
 $$\rho_{\nu}(T)\, d\nu = \underbrace{\langle E \rangle}_{\text{energy per mode}} \times \underbrace{dN_{\nu}}_{\text{number of modes}}$$
 
-- The energy stored in radiation at frequency $\nu$ is the energy each wave of that frequency carries on average, times the number of such waves: $\langle E \rangle$ is the average energy of one wave mode at temperature $T$, and $dN_{\nu}$ is the number of modes per volume with frequency in $[\nu, \nu + d\nu]$.
-- **Factor 1** is **thermodynamics**: what the waves are and how much energy each holds. It is where classical and quantum physics part ways.
-- **Factor 2** is pure **geometry**: how many standing waves fit in a box. It is the same in classical and quantum physics. Everything that follows is about these two factors, in that order.
+- A **mode** is one standing wave that fits in the cavity, like one harmonic of a guitar string; each mode has its own frequency. The energy stored in radiation at frequency $\nu$ is the energy each mode of that frequency carries on average, times the number of such modes: $\langle E \rangle$ is the average energy of one wave mode at temperature $T$, and $dN_{\nu}$ is the number of modes per volume with frequency in $[\nu, \nu + d\nu]$.
+- The **average mode energy** $\langle E \rangle$ is **thermodynamics**: what the waves are and how much energy each holds. It is where classical and quantum physics part ways.
+- The **number of modes** $dN_{\nu}$ is pure **geometry**: how many standing waves fit in a box. It is the same in classical and quantum physics. Everything that follows is about these two ingredients, in that order.
 :::
 
 :::{figure} ./images/phonons.gif
@@ -164,22 +164,22 @@ $$\rho_{\nu}(T)\, d\nu = \underbrace{\langle E \rangle}_{\text{energy per mode}}
 Visualization of atomic vibrations in a solid body. These vibrational modes are called phonons, not to be confused with the photons introduced in the next section. Each mode is one of the dots counted above.
 :::
 
- - **Factor 1, the classical way: equipartition of energy.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
+ - **Average mode energy, the classical way: equipartition.** From thermodynamics we know that in equilibrium each degree of freedom, or each oscillator, gets the same energy $k_BT$, where $k_B$ is the Boltzmann constant. 
 
   $$\langle E\rangle = k_BT$$
 
  -  Every vibrating spring in a heated body thus has the same energy regardless of frequency. Think about this assumption for a second!
 
-- **Factor 2 in one breath.** Shorter waves fit into a box of length $L$ more easily than long ones: the number that fit grows as $L/\lambda \sim \nu$ in one dimension, and in three dimensions the wave has to fit along each direction independently, so the count grows as $\nu^3$. The number of modes in a thin frequency slice is therefore $dN \sim d(\nu^3) \sim \nu^2 d\nu$. The box below fills in the details on this calculation.
+- **Number of modes in one breath.** Shorter waves fit into a box of length $L$ more easily than long ones: the number that fit grows as $L/\lambda \sim \nu$ in one dimension, and in three dimensions the wave has to fit along each direction independently, so the count grows as $\nu^3$. The number of modes in a thin frequency slice is therefore $dN \sim d(\nu^3) \sim \nu^2 d\nu$. The box below fills in the details on this calculation.
 
-:::{tip} **Factor 2: counting the wave modes in a box**
+:::{tip} **Counting the number of modes in a box**
 :class: dropdown
 
 ```{figure} ./images/mode_counting.png
 :alt: standing waves with nodes at the walls of a one-dimensional box, and the grid of modes of a two-dimensional box
 :width: 95%
 
-Left: a wave trapped between two walls must have a node at each wall, so only a whole number $n$ of half-wavelengths fits: $\lambda_n = 2L/n$. Right: in a two-dimensional box the wave must fit along $x$ and along $y$ separately, so a mode is a pair of integers $(n_x, n_y)$, drawn as a dot; its frequency grows with the distance of the dot from the origin.
+A wave trapped between two walls must vanish at each wall, so only a whole number $n$ of half-wavelengths fits: $\lambda_n = 2L/n$. Shorter waves fit more easily, and the number that fit up to a given frequency grows as $2L/\lambda = 2L\nu/c$.
 ```
 
 - **Where the integers come from.** A wave trapped between two walls has to vanish at both walls, like a guitar string pinned at its ends. That is only possible if a whole number of half-wavelengths spans the box, $L = n\,\lambda/2$, so the allowed wavelengths are $\lambda_n = 2L/n$ with $n = 1, 2, 3, \ldots$ The integer $n$ is nothing more than the number of half-waves that fit.
@@ -286,11 +286,11 @@ This is Planck's law, which describes the spectral density of radiation emitted 
 
 :::
 
-- Planck kept factor 2 of the recipe, the mode count, untouched. Assuming that the energy of an oscillator is quantized, he derived a new **factor 1**, an average energy which, unlike the classical $k_BT$, depends on the frequency of oscillation:
+- Planck kept the number of modes untouched. Assuming that the energy of an oscillator is quantized, he derived a new **average mode energy** which, unlike the classical $k_BT$, depends on the frequency of oscillation:
 
 $$\langle E \rangle = \Big[ \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1}\Big] $$
 
-- Modes per volume times this average energy gives **Planck's law**, a distribution that tends to zero in the high-frequency limit because the exponential in factor 1 wins over the $\nu^2$ of factor 2. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
+- Modes per volume times this average energy gives **Planck's law**, a distribution that tends to zero in the high-frequency limit because the exponential in the average energy wins over the $\nu^2$ of the mode count. The same law can be written per unit frequency or per unit wavelength (substitute $\nu = c/\lambda$ and $d\nu = c\,d\lambda/\lambda^2$):
 
 ::::{tab-set}
 :::{tab-item} per unit frequency

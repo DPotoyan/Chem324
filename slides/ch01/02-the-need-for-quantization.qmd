@@ -52,7 +52,9 @@ resources:
 
 ![](../../ch01/images/wave_definitions.png){width="88%" fig-align="center"}
 
+::: {.keyeq}
 $$\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}$$
+:::
 
 - Key question: how does the **energy** $E$ of light relate to its **frequency** $\nu$?
 
@@ -90,11 +92,12 @@ $$\lambda \nu = c \qquad c = 3 \cdot 10^8 \, \text{m/s}$$
 
 $$\rho_{\nu}(T)\, d\nu = \underbrace{\langle E \rangle}_{\text{energy per mode}} \times \underbrace{dN_{\nu}}_{\text{number of modes}}$$
 
-- Energy at frequency $\nu$ = **average energy** of one wave $\times$ **number of waves** of that frequency
-- **Factor 1** is thermodynamics: what the waves are, how much energy each holds. This is where classical and quantum physics part ways
-- **Factor 2** is geometry: how many standing waves fit in a box. Same classically and quantum
+- A **mode** is one standing wave that fits in the box, like one harmonic of a guitar string; each mode has its own frequency
+- Energy at frequency $\nu$ = **average energy** of one mode $\times$ **number of modes** at that frequency
+- **Average mode energy** $\langle E\rangle$ is thermodynamics: what the waves are, how much energy each holds. This is where classical and quantum physics part ways
+- **Number of modes** $dN_\nu$ is geometry: how many standing waves fit in a box. Same classically and quantum
 
-## Factor 1, the classical way: vibrating atoms
+## Average mode energy, the classical way
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -108,13 +111,20 @@ $$\langle E\rangle = k_BT$$
 :::
 ::::
 
-## Factor 2: counting the waves in a box
+## Number of modes: counting the waves in a box
 
-![](../../ch01/images/mode_counting.png){width="80%" fig-align="center"}
-
-- Shorter waves fit more easily: $N \sim L/\lambda \sim \nu$ in 1D; fit along each direction, so $\sim \nu^3$ in 3D
-- A thin slice of frequency holds $\; dN_{\nu} = \dfrac{8\pi}{c^3}\,\nu^2\, d\nu$
-- Energy per mode $\times$ modes, the **Rayleigh-Jeans law**: $\;\rho(\nu) = k_B T \cdot \dfrac{8\pi}{c^3}\nu^2$
+:::: {.columns}
+::: {.column width="46%"}
+![](../../ch01/images/mode_counting.png){width="100%"}
+:::
+::: {.column width="54%"}
+- Only whole half-waves fit: $\lambda_n = 2L/n$
+- **Shorter waves fit more easily**: $N \sim L/\lambda \sim \nu$ in 1D
+- In 3D the wave must fit along each direction, so $N \sim \nu^3$
+- A thin slice of frequency holds
+$$dN_{\nu} = \frac{8\pi}{c^3}\,\nu^2\, d\nu$$
+:::
+::::
 
 ## The ultraviolet catastrophe
 
@@ -123,9 +133,10 @@ $$\langle E\rangle = k_BT$$
 ![](../../ch01/images/uv_catastrophe.png){width="100%"}
 :::
 ::: {.column width="45%"}
-- $\nu^2 \times k_BT$ **shoots to infinity** at high $\nu$
-- Total radiation would be **infinite**: a light bulb could destroy the universe
-- Factor 2 is solid geometry, so **factor 1 must be wrong**
+- Energy per mode $\times$ modes, the **Rayleigh-Jeans law**:
+$$\rho(\nu) = k_B T \cdot \frac{8\pi}{c^3}\nu^2$$
+- It **shoots to infinity** at high $\nu$: a light bulb could destroy the universe
+- The mode count is solid geometry, so **the average energy must be wrong**
 :::
 ::::
 
@@ -170,13 +181,15 @@ md`Peak at **${(5.879e10 * Tbb / 1e14).toFixed(1)} x 10^14 Hz**: the object ${Tb
 
 In 1900 Planck postulated that an oscillator can hold only **discrete** amounts of energy:
 
+::: {.keyeq}
 $$\boxed{E = n\,h\nu}, \qquad n = 0, 1, 2, \ldots$$
+:::
 
 - Planck's constant: $h = 6.63 \cdot 10^{-34} \, \text{J} \cdot \text{s}$
 - Atoms absorb and emit radiation in **quanta**, multiples of $h\nu$
 - $h$ is tiny, so quantization is **invisible** at the macro scale (classical limit $h \to 0$)
 
-## Planck's law: same recipe, new factor 1
+## Planck's law: same recipe, new average energy
 
 ::: {.fragment}
 Quantized oscillators give a **frequency-dependent** average energy (Boltzmann-weighted sum over $n$):
@@ -184,8 +197,11 @@ $$\langle E \rangle = \frac{h\nu}{e^{\frac{h\nu}{ kT}} - 1} \qquad \Big(\to k_BT
 :::
 
 ::: {.fragment}
-Energy per mode $\times$ modes, with factor 2 untouched:
+Energy per mode $\times$ modes, with the mode count untouched:
+
+::: {.keyeq}
 $$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}$$
+:::
 
 - The exponential **beats** the $\nu^2$: the curve comes down, the total is finite ($\propto T^4$)
 :::
@@ -198,7 +214,11 @@ $$\rho_{\nu}(T) = \frac{8\pi \nu^2}{c^3} \cdot \frac{h\nu}{e^{\frac{h\nu}{kT}} -
 :::
 ::: {.column width="55%"}
 - Peak wavelength is **inversely proportional** to temperature:
+
+::: {.keyeq}
 $$\lambda_{max} = \frac{b}{T}$$
+:::
+
 - $b = 2.898 \cdot 10^{-3} \, m \cdot K$
 - Connects an object's **temperature** to its **color**
 - Hotter object: **shorter** $\lambda_{max}$ (bluer)

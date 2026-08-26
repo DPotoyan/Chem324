@@ -143,3 +143,28 @@ $link-color: $accent;
   .subtitle { color: mix($accent, white, 55%); }
   .author, .quarto-title-author-name { color: #d9dce1; }
 }
+
+// Key equations: wrap the one formula that matters on a slide in `::: {.keyeq}` ... `:::`
+// (the deck counterpart of the page's `important` box). Larger math on a tinted card.
+.reveal .keyeq {
+  background: mix($accent, white, 8%);
+  border-left: 6px solid $accent2;
+  border-radius: 6px;
+  padding: 0.15em 1.0em 0.25em 1.0em;
+  margin: 0.3em auto;
+  width: fit-content;
+  min-width: 45%;
+  font-size: 1.1em;
+}
+.reveal .keyeq::before {
+  content: "key equation";
+  display: block;
+  font-size: 0.4em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $accent2;
+  font-weight: 500;
+}
+.reveal .keyeq p { margin: 0.05em 0; }
+.reveal .keyeq .math.display { margin: 0; }
+.reveal .slide.has-dark-background .keyeq { background: rgba(255, 255, 255, 0.08); }
