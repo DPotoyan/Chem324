@@ -34,6 +34,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="03-photoelectric-effect_files/libs/revealjs/dist/theme/quarto-03bbba2eb154109f68083490bac4e611.css">
   <link href="03-photoelectric-effect_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -129,6 +195,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="03-photoelectric-effect_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="03-photoelectric-effect_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -163,19 +231,19 @@ Davit Potoyan
 </section>
 <section id="why-classical-physics-fails" class="slide level2">
 <h2>Why Classical Physics Fails</h2>
-<ul>
-<li>Classically, energy of a wave scales with <strong>amplitude</strong> (intensity, brightness)</li>
-<li>So a bright enough light <em>should</em> always eject electrons</li>
-<li>Experiment says <strong>no</strong>: dim high-frequency light works, intense low-frequency light does not</li>
-<li><strong>Intensity is the wrong knob.</strong> Frequency is the gatekeeper.</li>
+
+<img data-src="../../ch01/images/photoelectric_classical_fail.png" class="quarto-figure quarto-figure-center r-stretch" style="width:52.0%"><ul>
+<li>Classically the energy of a wave scales with its <strong>amplitude</strong>: <span class="math inline">\(E \propto A^2\)</span>, with <strong>no role for frequency</strong></li>
+<li>Experiment says no, twice: KE ignores brightness, and electrons leave <strong>instantly</strong> even in dim light</li>
+<li><strong>Intensity is the wrong knob.</strong> Frequency is the gatekeeper</li>
 </ul>
 </section>
 <section id="enter-the-photon" class="slide level2">
 <h2>Enter the Photon</h2>
-<ul>
-<li>Planck quantized oscillators: energies <span class="math inline">\(0, h\nu, 2h\nu, 3h\nu, \ldots\)</span> (seen then as a math trick)</li>
-<li><strong>Einstein</strong>: light itself is a stream of discrete energy packets, <strong>photons</strong></li>
-<li>This bold step explains the experiment</li>
+
+<img data-src="../../ch01/images/photon_stream.png" class="quarto-figure quarto-figure-center r-stretch" style="width:72.0%"><ul>
+<li>Planck quantized the <strong>oscillators</strong> (seen then as a math trick); <strong>Einstein</strong> quantized <strong>light itself</strong>: a stream of discrete packets, photons</li>
+<li>One packet is absorbed <strong>whole by one electron</strong>, instantly: no soaking-up time, and brightness only sets how many packets arrive</li>
 </ul>
 </section>
 <section id="energy-of-a-photon" class="slide level2">
@@ -193,30 +261,19 @@ E_{photon} = h\nu = \frac{hc}{\lambda}
 </section>
 <section id="kinetic-energy-frequency-vs-intensity" class="slide level2">
 <h2>Kinetic Energy: Frequency vs Intensity</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch01/images/photoelectric_ke.png" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li>Need <span class="math inline">\(\nu &gt; \nu_0\)</span> to eject at all</li>
-<li><strong>KE grows linearly with frequency</strong>: <span class="math inline">\(KE \sim \nu\)</span></li>
-<li>KE does <strong>not</strong> depend on intensity</li>
-<li>Below <span class="math inline">\(\nu_0\)</span>: brighter light still ejects nothing</li>
+
+<img data-src="../../ch01/images/photoelectric_ke.png" class="quarto-figure quarto-figure-center r-stretch" style="width:72.0%"><ul>
+<li>Need <span class="math inline">\(\nu &gt; \nu_0\)</span> to eject at all; then <strong>KE grows linearly with frequency</strong>, with slope <span class="math inline">\(h\)</span></li>
+<li>KE does <strong>not</strong> depend on intensity: below <span class="math inline">\(\nu_0\)</span>, brighter light still ejects nothing</li>
 </ul>
-</div></div>
 </section>
 <section id="electric-current-frequency-vs-intensity" class="slide level2">
 <h2>Electric Current: Frequency vs Intensity</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch01/images/photoelectric_current.png" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li>Above threshold, <strong>frequency does not change current</strong></li>
-<li><strong>Intensity sets the current</strong>: more photons, more electrons</li>
-<li>Current rises <strong>linearly</strong> with intensity</li>
+
+<img data-src="../../ch01/images/photoelectric_current.png" class="quarto-figure quarto-figure-center r-stretch" style="width:72.0%"><ul>
+<li>Above threshold, <strong>frequency does not change the current</strong></li>
+<li><strong>Intensity sets the current</strong>: more photons, more electrons, rising linearly</li>
 </ul>
-</div></div>
 </section>
 <section id="how-photons-explain-it-all" class="slide level2">
 <h2>How Photons Explain It All</h2>
@@ -238,6 +295,60 @@ E_{photon} = h\nu = \frac{hc}{\lambda}
 <li><span class="math inline">\(\nu_0\)</span>: <strong>threshold frequency</strong>; below it, no energy transfers</li>
 <li>Excess energy becomes electron kinetic energy <span class="math inline">\(KE = mv_e^2/2\)</span></li>
 </ul>
+</section>
+<section id="live-pick-a-metal-dial-the-light" class="slide level2 smaller">
+<h2>Live: pick a metal, dial the light</h2>
+<p>The line is <span class="math inline">\(KE_{max} = h\nu - W_0\)</span>: its slope is always <span class="math inline">\(h\)</span>, only the threshold moves with the metal. The dot is your light: on the line means electrons out, on the axis means nothing, however bright.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="102" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb1-102"><a href="" aria-label="102"></a>viewof W0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"cesium (W0 = 2.14 eV)"</span><span class="op">,</span> <span class="fl">2.14</span>]<span class="op">,</span> [<span class="st">"sodium (2.28 eV)"</span><span class="op">,</span> <span class="fl">2.28</span>]<span class="op">,</span> [<span class="st">"potassium (2.30 eV)"</span><span class="op">,</span> <span class="fl">2.30</span>]<span class="op">,</span> [<span class="st">"zinc (4.33 eV)"</span><span class="op">,</span> <span class="fl">4.33</span>]<span class="op">,</span> [<span class="st">"copper (4.70 eV)"</span><span class="op">,</span> <span class="fl">4.70</span>]<span class="op">,</span> [<span class="st">"platinum (5.65 eV)"</span><span class="op">,</span> <span class="fl">5.65</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"metal"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="107" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb2-107"><a href="" aria-label="107"></a>viewof lam <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">150</span><span class="op">,</span> <span class="dv">800</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"light wavelength (nm)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="112" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 111;"><span id="cb3-112"><a href="" aria-label="112"></a>{</span>
+<span id="cb3-113"><a href="" aria-label="113"></a>  <span class="kw">const</span> hEV <span class="op">=</span> <span class="fl">4.1357e-15</span><span class="op">,</span> c <span class="op">=</span> <span class="fl">2.998e8</span><span class="op">;</span></span>
+<span id="cb3-114"><a href="" aria-label="114"></a>  <span class="kw">const</span> nu0 <span class="op">=</span> W0 <span class="op">/</span> hEV <span class="op">/</span> <span class="fl">1e14</span><span class="op">;</span></span>
+<span id="cb3-115"><a href="" aria-label="115"></a>  <span class="kw">const</span> nuL <span class="op">=</span> c <span class="op">/</span> (lam <span class="op">*</span> <span class="fl">1e-9</span>) <span class="op">/</span> <span class="fl">1e14</span><span class="op">;</span></span>
+<span id="cb3-116"><a href="" aria-label="116"></a>  <span class="kw">const</span> KE <span class="op">=</span> hEV <span class="op">*</span> nuL <span class="op">*</span> <span class="fl">1e14</span> <span class="op">-</span> W0<span class="op">;</span></span>
+<span id="cb3-117"><a href="" aria-label="117"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">.</span><span class="fu">map</span>(n <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> n<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> n <span class="op">&gt;</span> nu0 <span class="op">?</span> hEV <span class="op">*</span> n <span class="op">*</span> <span class="fl">1e14</span> <span class="op">-</span> W0 <span class="op">:</span> <span class="dv">0</span>}))<span class="op">;</span></span>
+<span id="cb3-118"><a href="" aria-label="118"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-119"><a href="" aria-label="119"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">950</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span></span>
+<span id="cb3-120"><a href="" aria-label="120"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"frequency (10^14 Hz)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">25</span>]}<span class="op">,</span></span>
+<span id="cb3-121"><a href="" aria-label="121"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"KE_max (eV)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.3</span><span class="op">,</span> <span class="fl">6.5</span>]}<span class="op">,</span></span>
+<span id="cb3-122"><a href="" aria-label="122"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-123"><a href="" aria-label="123"></a>      Plot<span class="op">.</span><span class="fu">rect</span>([{<span class="dt">x1</span><span class="op">:</span> c <span class="op">/</span> <span class="fl">750e-9</span> <span class="op">/</span> <span class="fl">1e14</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> c <span class="op">/</span> <span class="fl">380e-9</span> <span class="op">/</span> <span class="fl">1e14</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="op">-</span><span class="fl">0.3</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="fl">6.5</span>}]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"x1"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"x2"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"y1"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"y2"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"gold"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.15</span>})<span class="op">,</span></span>
+<span id="cb3-124"><a href="" aria-label="124"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb3-125"><a href="" aria-label="125"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([nu0]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#999"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"2,3"</span>})<span class="op">,</span></span>
+<span id="cb3-126"><a href="" aria-label="126"></a>      Plot<span class="op">.</span><span class="fu">line</span>(line<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb3-127"><a href="" aria-label="127"></a>      Plot<span class="op">.</span><span class="fu">dot</span>([{<span class="dt">x</span><span class="op">:</span> nuL<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(KE<span class="op">,</span> <span class="dv">0</span>)}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> KE <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"#107895"</span> <span class="op">:</span> <span class="st">"#999"</span>})</span>
+<span id="cb3-128"><a href="" aria-label="128"></a>    ]</span>
+<span id="cb3-129"><a href="" aria-label="129"></a>  })<span class="op">;</span></span>
+<span id="cb3-130"><a href="" aria-label="130"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="135" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb4-135"><a href="" aria-label="135"></a><span class="fu">md</span><span class="vs">`Photon energy **</span><span class="sc">${</span>(<span class="fl">4.1357e-15</span> <span class="op">*</span> <span class="fl">2.998e8</span> <span class="op">/</span> (lam <span class="op">*</span> <span class="fl">1e-9</span>))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> eV** at </span><span class="sc">${</span>lam<span class="sc">}</span><span class="vs"> nm vs work function **</span><span class="sc">${</span>W0<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> eV**: </span><span class="sc">${</span>(<span class="fl">4.1357e-15</span> <span class="op">*</span> <span class="fl">2.998e8</span> <span class="op">/</span> (lam <span class="op">*</span> <span class="fl">1e-9</span>)) <span class="op">&gt;</span> W0 <span class="op">?</span> <span class="vs">`electrons fly off with KE_max = **</span><span class="sc">${</span>(<span class="fl">4.1357e-15</span> <span class="op">*</span> <span class="fl">2.998e8</span> <span class="op">/</span> (lam <span class="op">*</span> <span class="fl">1e-9</span>) <span class="op">-</span> W0)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> eV**`</span> <span class="op">:</span> <span class="st">"**no electrons**, no matter how bright the light"</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </section>
 <section id="why-it-matters" class="slide level2">
 <h2>Why It Matters</h2>
@@ -476,6 +587,17 @@ E_{photon} = h\nu = \frac{hc}{\lambda}
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBXMCA9IElucHV0cy5zZWxlY3QobmV3IE1hcChbW1wiY2VzaXVtIChXMCA9IDIuMTQgZVYpXCIsIDIuMTRdLCBbXCJzb2RpdW0gKDIuMjggZVYpXCIsIDIuMjhdLCBbXCJwb3Rhc3NpdW0gKDIuMzAgZVYpXCIsIDIuMzBdLCBbXCJ6aW5jICg0LjMzIGVWKVwiLCA0LjMzXSwgW1wiY29wcGVyICg0LjcwIGVWKVwiLCA0LjcwXSwgW1wicGxhdGludW0gKDUuNjUgZVYpXCIsIDUuNjVdXSksIHtsYWJlbDogXCJtZXRhbFwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBsYW0gPSBJbnB1dHMucmFuZ2UoWzE1MCwgODAwXSwge3N0ZXA6IDUsIHZhbHVlOiA0MDAsIGxhYmVsOiBcImxpZ2h0IHdhdmVsZW5ndGggKG5tKVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgY29uc3QgaEVWID0gNC4xMzU3ZS0xNSwgYyA9IDIuOTk4ZTg7XG4gIGNvbnN0IG51MCA9IFcwIC8gaEVWIC8gMWUxNDtcbiAgY29uc3QgbnVMID0gYyAvIChsYW0gKiAxZS05KSAvIDFlMTQ7XG4gIGNvbnN0IEtFID0gaEVWICogbnVMICogMWUxNCAtIFcwO1xuICBjb25zdCBsaW5lID0gZDMucmFuZ2UoMCwgMjUsIDAuMSkubWFwKG4gPT4gKHt4OiBuLCB5OiBuID4gbnUwID8gaEVWICogbiAqIDFlMTQgLSBXMCA6IDB9KSk7XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHdpZHRoOiA5NTAsIGhlaWdodDogMzIwLFxuICAgIHg6IHtsYWJlbDogXCJmcmVxdWVuY3kgKDEwXjE0IEh6KVwiLCBkb21haW46IFswLCAyNV19LFxuICAgIHk6IHtsYWJlbDogXCJLRV9tYXggKGVWKVwiLCBkb21haW46IFstMC4zLCA2LjVdfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5yZWN0KFt7eDE6IGMgLyA3NTBlLTkgLyAxZTE0LCB4MjogYyAvIDM4MGUtOSAvIDFlMTQsIHkxOiAtMC4zLCB5MjogNi41fV0sIHt4MTogXCJ4MVwiLCB4MjogXCJ4MlwiLCB5MTogXCJ5MVwiLCB5MjogXCJ5MlwiLCBmaWxsOiBcImdvbGRcIiwgZmlsbE9wYWNpdHk6IDAuMTV9KSxcbiAgICAgIFBsb3QucnVsZVkoWzBdLCB7c3Ryb2tlOiBcIiMzMzNcIn0pLFxuICAgICAgUGxvdC5ydWxlWChbbnUwXSwge3N0cm9rZTogXCIjOTk5XCIsIHN0cm9rZURhc2hhcnJheTogXCIyLDNcIn0pLFxuICAgICAgUGxvdC5saW5lKGxpbmUsIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjQzgxMDJFXCIsIHN0cm9rZVdpZHRoOiAyLjV9KSxcbiAgICAgIFBsb3QuZG90KFt7eDogbnVMLCB5OiBNYXRoLm1heChLRSwgMCl9XSwge3g6IFwieFwiLCB5OiBcInlcIiwgcjogOCwgZmlsbDogS0UgPiAwID8gXCIjMTA3ODk1XCIgOiBcIiM5OTlcIn0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYFBob3RvbiBlbmVyZ3kgKiokeyg0LjEzNTdlLTE1ICogMi45OThlOCAvIChsYW0gKiAxZS05KSkudG9GaXhlZCgyKX0gZVYqKiBhdCAke2xhbX0gbm0gdnMgd29yayBmdW5jdGlvbiAqKiR7VzAudG9GaXhlZCgyKX0gZVYqKjogJHsoNC4xMzU3ZS0xNSAqIDIuOTk4ZTggLyAobGFtICogMWUtOSkpID4gVzAgPyBgZWxlY3Ryb25zIGZseSBvZmYgd2l0aCBLRV9tYXggPSAqKiR7KDQuMTM1N2UtMTUgKiAyLjk5OGU4IC8gKGxhbSAqIDFlLTkpIC0gVzApLnRvRml4ZWQoMil9IGVWKipgIDogXCIqKm5vIGVsZWN0cm9ucyoqLCBubyBtYXR0ZXIgaG93IGJyaWdodCB0aGUgbGlnaHRcIn1gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ1cwJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2xhbScpIn1dfQ==
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
