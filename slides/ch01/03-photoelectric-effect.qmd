@@ -36,16 +36,18 @@ resources:
 
 ## Why Classical Physics Fails
 
-- Classically, energy of a wave scales with **amplitude** (intensity, brightness)
-- So a bright enough light *should* always eject electrons
-- Experiment says **no**: dim high-frequency light works, intense low-frequency light does not
-- **Intensity is the wrong knob.** Frequency is the gatekeeper.
+![](../../ch01/images/photoelectric_classical_fail.png){width="52%" fig-align="center"}
+
+- Classically the energy of a wave scales with its **amplitude**: $E \propto A^2$, with **no role for frequency**
+- Experiment says no, twice: KE ignores brightness, and electrons leave **instantly** even in dim light
+- **Intensity is the wrong knob.** Frequency is the gatekeeper
 
 ## Enter the Photon
 
-- Planck quantized oscillators: energies $0, h\nu, 2h\nu, 3h\nu, \ldots$ (seen then as a math trick)
-- **Einstein**: light itself is a stream of discrete energy packets, **photons**
-- This bold step explains the experiment
+![](../../ch01/images/photon_stream.png){width="72%" fig-align="center"}
+
+- Planck quantized the **oscillators** (seen then as a math trick); **Einstein** quantized **light itself**: a stream of discrete packets, photons
+- One packet is absorbed **whole by one electron**, instantly: no soaking-up time, and brightness only sets how many packets arrive
 
 ## Energy of a Photon
 
@@ -61,30 +63,17 @@ $$
 
 ## Kinetic Energy: Frequency vs Intensity
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch01/images/photoelectric_ke.png){width="90%"}
-:::
-::: {.column width="50%"}
-- Need $\nu > \nu_0$ to eject at all
-- **KE grows linearly with frequency**: $KE \sim \nu$
-- KE does **not** depend on intensity
-- Below $\nu_0$: brighter light still ejects nothing
-:::
-::::
+![](../../ch01/images/photoelectric_ke.png){width="72%" fig-align="center"}
+
+- Need $\nu > \nu_0$ to eject at all; then **KE grows linearly with frequency**, with slope $h$
+- KE does **not** depend on intensity: below $\nu_0$, brighter light still ejects nothing
 
 ## Electric Current: Frequency vs Intensity
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch01/images/photoelectric_current.png){width="90%"}
-:::
-::: {.column width="50%"}
-- Above threshold, **frequency does not change current**
-- **Intensity sets the current**: more photons, more electrons
-- Current rises **linearly** with intensity
-:::
-::::
+![](../../ch01/images/photoelectric_current.png){width="72%" fig-align="center"}
+
+- Above threshold, **frequency does not change the current**
+- **Intensity sets the current**: more photons, more electrons, rising linearly
 
 ## How Photons Explain It All
 
@@ -104,6 +93,48 @@ $$E_{photon} = W_0 + KE \qquad\Longrightarrow\qquad h\nu = h\nu_0 + \frac{mv_e^2
 - **Work function** $W_0 = h\nu_0$: minimum energy to free an electron (material dependent)
 - $\nu_0$: **threshold frequency**; below it, no energy transfers
 - Excess energy becomes electron kinetic energy $KE = mv_e^2/2$
+
+## Live: pick a metal, dial the light {.smaller}
+
+The line is $KE_{max} = h\nu - W_0$: its slope is always $h$, only the threshold moves with the metal. The dot is your light: on the line means electrons out, on the axis means nothing, however bright.
+
+```{ojs}
+//| echo: false
+viewof W0 = Inputs.select(new Map([["cesium (W0 = 2.14 eV)", 2.14], ["sodium (2.28 eV)", 2.28], ["potassium (2.30 eV)", 2.30], ["zinc (4.33 eV)", 4.33], ["copper (4.70 eV)", 4.70], ["platinum (5.65 eV)", 5.65]]), {label: "metal"})
+```
+
+```{ojs}
+//| echo: false
+viewof lam = Inputs.range([150, 800], {step: 5, value: 400, label: "light wavelength (nm)"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const hEV = 4.1357e-15, c = 2.998e8;
+  const nu0 = W0 / hEV / 1e14;
+  const nuL = c / (lam * 1e-9) / 1e14;
+  const KE = hEV * nuL * 1e14 - W0;
+  const line = d3.range(0, 25, 0.1).map(n => ({x: n, y: n > nu0 ? hEV * n * 1e14 - W0 : 0}));
+  return Plot.plot({
+    width: 950, height: 320,
+    x: {label: "frequency (10^14 Hz)", domain: [0, 25]},
+    y: {label: "KE_max (eV)", domain: [-0.3, 6.5]},
+    marks: [
+      Plot.rect([{x1: c / 750e-9 / 1e14, x2: c / 380e-9 / 1e14, y1: -0.3, y2: 6.5}], {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "gold", fillOpacity: 0.15}),
+      Plot.ruleY([0], {stroke: "#333"}),
+      Plot.ruleX([nu0], {stroke: "#999", strokeDasharray: "2,3"}),
+      Plot.line(line, {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2.5}),
+      Plot.dot([{x: nuL, y: Math.max(KE, 0)}], {x: "x", y: "y", r: 8, fill: KE > 0 ? "#107895" : "#999"})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+md`Photon energy **${(4.1357e-15 * 2.998e8 / (lam * 1e-9)).toFixed(2)} eV** at ${lam} nm vs work function **${W0.toFixed(2)} eV**: ${(4.1357e-15 * 2.998e8 / (lam * 1e-9)) > W0 ? `electrons fly off with KE_max = **${(4.1357e-15 * 2.998e8 / (lam * 1e-9) - W0).toFixed(2)} eV**` : "**no electrons**, no matter how bright the light"}`
+```
 
 ## Why It Matters
 
