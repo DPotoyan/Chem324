@@ -1,5 +1,8 @@
-
-
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
 # Wave-particle duality
 
 
@@ -141,6 +144,107 @@ $$\lambda = \frac{h}{\sqrt{2m(E - V)}}$$
 - This equation shows that the de Broglie wavelength of a particle such as an electron with constant total energy $E$ changes as it moves into a region with different potential energy.
 - This has implications for chemical bonding, where electrons experience different fields in atoms and molecules.
 
+
+### Waves have to fit
+
+The de Broglie relation has a consequence that goes far beyond diffraction. Take the
+electron wave and wrap it around a closed loop, as in an orbit around a nucleus. After one
+complete trip around the loop, called a **pass**, the wave meets itself and has no choice but
+to agree with where it started. If the circumference holds a whole number of wavelengths,
+every pass reinforces the one before it and a **standing wave** survives. If it does not,
+successive passes land out of step and the wave interferes itself away.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from matplotlib.patches import Circle
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, GREEN = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#1a7f37"
+R, AMP, LAPS = 1.0, 0.17, 8              # ring radius, wave amplitude, passes summed
+th1 = np.linspace(0, 2 * np.pi, 900)             # first pass around the loop
+th2 = np.linspace(2 * np.pi, 4 * np.pi, 900)     # second pass around the loop
+
+# amplitude left after LAPS passes: the passes add as phasors exp(2 pi i n k)
+n_grid = np.linspace(1.5, 6.5, 2000)
+survival = np.abs(np.exp(2j * np.pi * n_grid * np.arange(LAPS)[:, None]).sum(axis=0)) / LAPS
+
+n_seq = [2.0] * 4                        # sweep n, pausing on each whole number
+for target in (3.0, 4.0, 5.0, 6.0):
+    n_seq += list(np.linspace(n_seq[-1], target, 11, endpoint=False)) + [target] * 4
+
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(8.8, 4.2), gridspec_kw={"width_ratios": [1, 1.15]})
+
+ax.add_patch(Circle((0, 0), R, fill=False, color=GRAY, lw=1.2, ls="--"))
+ax.plot(0, 0, "o", color=CARDINAL, ms=9)
+(lap1,) = ax.plot([], [], color=PURPLE, lw=2.4, label="1st pass")
+(lap2,) = ax.plot([], [], color="#e07b00", lw=2.0, ls="--", label="2nd pass")
+(gap,) = ax.plot([], [], color=CARDINAL, lw=3.4, solid_capstyle="butt", zorder=6)
+(startdot,) = ax.plot([], [], "o", color=PURPLE, ms=8, mec="white", mew=1.2, zorder=7)
+(enddot,) = ax.plot([], [], "o", color="#e07b00", ms=8, mec="white", mew=1.2, zorder=7)
+gaplabel = ax.text(0, -1.42, "", fontsize=10.5, ha="center", va="center")
+verdict = ax.set_title("", fontsize=12, pad=10)
+ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.12), ncol=2, frameon=False, fontsize=9)
+ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.55); ax.set_aspect("equal"); ax.axis("off")
+
+bx.plot(n_grid, survival, color=TEAL, lw=2.2)
+bx.fill_between(n_grid, survival, color=TEAL, alpha=0.10)
+(marker,) = bx.plot([], [], "o", color=CARDINAL, ms=9, zorder=5)
+vline = bx.axvline(2.0, color=CARDINAL, lw=1.2, ls=":")
+bx.set_xlim(1.5, 6.5); bx.set_ylim(-0.03, 1.18); bx.set_xticks(range(2, 7))
+bx.set_xlabel(r"wavelengths around the orbit,  $n = 2\pi r / \lambda$", fontsize=11)
+bx.set_ylabel("amplitude left after 8 passes", fontsize=11)
+bx.set_title(r"Only integer $n$ survives", fontsize=12, pad=10)
+for s in ("top", "right"):
+    bx.spines[s].set_visible(False)
+fig.suptitle(r"A standing wave on a Bohr orbit:  $2\pi r = n\lambda = nh/p$", fontsize=13.5, y=0.99)
+fig.tight_layout(rect=(0, 0, 1, 0.93))
+
+def update(i):
+    n = n_seq[i]
+    lap1.set_data((R + AMP * np.sin(n * th1)) * np.cos(th1), (R + AMP * np.sin(n * th1)) * np.sin(th1))
+    lap2.set_data((R + AMP * np.sin(n * th2)) * np.cos(th2), (R + AMP * np.sin(n * th2)) * np.sin(th2))
+    r1 = R + AMP * np.sin(2 * np.pi * n)          # where the wave sits after one full pass
+    gap.set_data([R, r1], [0, 0]); startdot.set_data([R], [0]); enddot.set_data([r1], [0])
+    closes = abs(n - round(n)) < 1e-9
+    off = abs(n - round(n))
+    verdict.set_text(f"$n$ = {n:.2f}   " + ("the wave closes on itself" if closes else "the wave misses itself"))
+    verdict.set_color(GREEN if closes else CARDINAL)
+    gaplabel.set_text("the 2nd pass lands on the 1st" if closes else rf"the 2nd pass is {off:.2f}$\lambda$ out of step")
+    gaplabel.set_color(GREEN if closes else CARDINAL)
+    marker.set_data([n], [abs(np.exp(2j * np.pi * n * np.arange(LAPS)).sum()) / LAPS])
+    vline.set_xdata([n, n])
+    return lap1, lap2, gap, startdot, enddot, gaplabel, marker, vline, verdict
+
+ani = FuncAnimation(fig, update, frames=len(n_seq), interval=80, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. Left: an electron wave wrapped around an orbit, drawn for two passes. Right: the
+amplitude left after eight passes, which is sharply peaked at whole numbers of wavelengths.
+
+The closure condition is nothing more than the circumference holding $n$ wavelengths:
+
+$$
+2\pi r = n\lambda = \frac{nh}{p}, \qquad n = 1, 2, 3, \ldots
+$$
+
+Rearranging gives the quantization of angular momentum,
+
+$$
+L = pr = mvr = n\frac{h}{2\pi} = n\hbar
+$$
+
+:::{note} **Quantization is what waves do when you confine them**
+
+Nothing was postulated here. A whole number appeared because a wave in a closed region has
+to match itself, exactly as a guitar string of fixed length can only sound a discrete set of
+notes. This standing-wave condition is the starting point of Bohr's model of the hydrogen
+atom in the next lecture, and the same idea returns as the particle in a box in Chapter 3.
+:::
 
 ### Double-slit experiment
 
