@@ -8,8 +8,8 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch01/01-why-quantum-mechanics.html">Why Quantum Mechanics</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch01/02-the-need-for-quantization.html">the Need For Quantization</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch01/03-photoelectric-effect.html">Photoelectric Effect</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch01/04-atomic-spectra.html">Atomic Spectra</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch01/05-wave-particle-duality.html">Wave Particle Duality</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch01/04-wave-particle-duality.html">Wave Particle Duality</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch01/05-atomic-spectra.html">Atomic Spectra</a>
 
 ## Chapter 2
 
