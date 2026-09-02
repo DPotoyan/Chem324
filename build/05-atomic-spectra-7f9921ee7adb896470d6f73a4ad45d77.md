@@ -1,4 +1,8 @@
-
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
 # Atomic spectra
 
 :::{note} **What you will learn**
@@ -7,6 +11,7 @@
 - The hydrogen lines are captured by the empirical **Rydberg formula**, $\tilde{\nu} = R_H(1/n_1^2 - 1/n_2^2)$, whose integers $n_1, n_2$ hinted that something in the atom is quantized.
 - **Bohr's model** (1913) adds one quantum rule to classical orbits, angular momentum in units of $\hbar$, and from it derives the orbit radii $r_n = n^2 a_0$, the energy levels $E_n = -13.6\,\text{eV}/n^2$, and the Rydberg constant from fundamental constants.
 - Spectral lines are **transitions between energy levels**: a photon carries away exactly the energy difference, $h\nu = E_{n_2} - E_{n_1}$. The same formulas work for any one-electron ion once the nuclear charge $Z$ is included.
+- Bohr's model nonetheless **fails** past hydrogen: no helium, no line intensities, no fine structure, and an orbit that the uncertainty principle forbids. Keep the quantization, discard the orbit.
 :::
 
 
@@ -26,6 +31,53 @@
 **Atomic spectroscopy of the hydrogen atom.**  
 Hydrogen in a gas-discharge tube emits light at discrete wavelengths, which appear as distinct spectral lines when passed through a prism.
 :::
+
+Every element produces its own set of lines. Below is what a spectrograph records from a
+discharge lamp of each gas: no two patterns are alike, which is why a spectrum taken through
+a telescope tells you what a star is made of.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wl_to_rgb(wl):
+    """Approximate sRGB colour of a single wavelength in nm."""
+    if wl < 440:    r, g, b = -(wl - 440) / 60, 0.0, 1.0
+    elif wl < 490:  r, g, b = 0.0, (wl - 440) / 50, 1.0
+    elif wl < 510:  r, g, b = 0.0, 1.0, -(wl - 510) / 20
+    elif wl < 580:  r, g, b = (wl - 510) / 70, 1.0, 0.0
+    elif wl < 645:  r, g, b = 1.0, -(wl - 645) / 65, 0.0
+    else:           r, g, b = 1.0, 0.0, 0.0
+    return (min(r, 1.0), min(g, 1.0), min(b, 1.0))
+
+# (wavelength in nm, relative brightness) for the strong visible lines
+spectra = {
+    "H":  [(656.3, 1.0), (486.1, 0.6), (434.0, 0.4), (410.2, 0.3)],
+    "He": [(447.1, 0.5), (471.3, 0.3), (492.2, 0.3), (501.6, 0.6),
+           (587.6, 1.0), (667.8, 0.5), (706.5, 0.4)],
+    "Na": [(498.3, 0.2), (568.8, 0.3), (589.0, 1.0), (589.6, 1.0), (615.4, 0.3)],
+    "Hg": [(404.7, 0.6), (435.8, 1.0), (546.1, 1.0), (577.0, 0.6), (579.1, 0.6)],
+    "Ne": [(585.2, 0.8), (588.2, 0.6), (594.5, 0.7), (607.4, 0.5), (614.3, 0.7),
+           (621.7, 0.5), (626.6, 0.6), (633.4, 0.8), (640.2, 1.0), (650.7, 0.6),
+           (659.9, 0.5), (692.9, 0.4), (703.2, 0.5)],
+}
+
+fig, axes = plt.subplots(len(spectra), 1, figsize=(9, 4.0), sharex=True)
+for ax, (name, lines) in zip(axes, spectra.items()):
+    ax.set_facecolor("black")
+    for wl, intensity in lines:
+        ax.axvline(wl, color=wl_to_rgb(wl), lw=1.8, alpha=0.35 + 0.65 * intensity)
+    ax.set_yticks([])
+    ax.set_ylabel(name, rotation=0, ha="right", va="center", fontsize=12, labelpad=14)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+axes[-1].set_xlim(380, 750)
+axes[-1].set_xlabel("wavelength (nm)")
+fig.suptitle("Fig. Visible emission lines of five elements. Each element has its own fingerprint.",
+             fontsize=10)
+fig.tight_layout()
+```
 
 :::{figure} images/spectra.png
 :label: fig-atomic-spectra-2
@@ -129,6 +181,16 @@ $$
 - We introduce the shorthand $\hbar = \tfrac{h}{2\pi}$ because it appears frequently in quantum mechanics. The left-hand side, $m_e v r$, represents the **angular momentum** of the electron.  
 - Thus, Bohr’s model predicts that the electron’s angular momentum is **quantized** in integer multiples of $\hbar$.  
 
+:::{note} **A word on history**
+
+Bohr's 1913 paper contains no de Broglie waves, because matter waves were still eleven
+years away. Bohr simply postulated that angular momentum comes in whole units of $\hbar$
+and defended the postulate by showing it reproduces classical physics for very large
+orbits. The standing-wave picture above is de Broglie's 1924 reading of the same rule, and
+it is the one worth remembering: confinement plus waves gives quantization, here and
+everywhere else in this course.
+:::
+
 
 ### Force Balance
 
@@ -155,6 +217,113 @@ Equating these two forces gives
 $$
 \frac{e^2}{4\pi\varepsilon_0 r^2} = \frac{m_e v^2}{r}.
 $$  
+
+:::{warning} **Careful: the centrifugal force is fictitious**
+
+In the laboratory frame there is only one force on the electron, the Coulomb pull, and it
+is unbalanced: it supplies the **centripetal acceleration** $a = v^2/r$ that keeps bending
+the velocity into a circle. The **centrifugal force** appears only when you ride along with
+the electron, in the rotating frame, where it exactly cancels the Coulomb pull and the
+electron sits still. Both bookkeepings give the same equation above, which is why Bohr
+could write it either way.
+:::
+
+::::{admonition} **Watch it move: position, velocity and acceleration on a circular orbit**
+:class: dropdown tip
+
+The three vectors keep constant length and only turn. The velocity is always tangent, the
+acceleration always points at the nucleus, and the centrifugal arrow is its mirror image in
+the rotating frame. The right panel is worth remembering for later: each component of
+circular motion is simple harmonic motion, with $v_x$ a quarter cycle ahead of $x$ and
+$a_x$ exactly opposite to it. The same machinery returns for angular momentum in Chapter 4
+and the rigid rotor in Chapter 5.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from matplotlib.patches import Circle
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE = "#107895", "#C8102E", "#6c757d", "#6a3d9a"
+R2, N_FR, OM = 1.0, 72, 1.0           # radius, frames, angular velocity
+SV, SA = 0.62, 0.48                   # arrow scale factors
+th_seq = np.linspace(0, 2 * np.pi, N_FR, endpoint=False)
+
+fig_cm, (cx, dx) = plt.subplots(1, 2, figsize=(10.4, 4.5),
+                                gridspec_kw={"width_ratios": [1.15, 1.2]})
+
+cx.add_patch(Circle((0, 0), R2, fill=False, color=GRAY, lw=1.2, ls="--"))
+cx.plot(0, 0, "o", color=CARDINAL, ms=11)
+cx.text(0.10, -0.22, "nucleus", color=CARDINAL, fontsize=8)
+(bead,) = cx.plot([], [], "o", color="k", ms=9, zorder=6)
+
+def arrow(color, ls="-", lw=2.2):
+    return cx.annotate("", xy=(0, 0), xytext=(0, 0), zorder=5,
+                       arrowprops=dict(arrowstyle="-|>", color=color, lw=lw,
+                                       ls=ls, shrinkA=0, shrinkB=0))
+
+a_r, a_v, a_a, a_cf = arrow(GRAY, lw=1.3), arrow(TEAL), arrow(PURPLE), arrow(CARDINAL, "--")
+a_r.arrow_patch.set_alpha(0.45)
+cx.set_xlim(-1.75, 1.75)
+cx.set_ylim(-1.6, 1.6)
+cx.set_aspect("equal")
+cx.axis("off")
+cx.legend(handles=[plt.Line2D([], [], color=GRAY, lw=1.3, alpha=0.45, label=r"$\vec{r}$  position"),
+                   plt.Line2D([], [], color=TEAL, lw=2.2, label=r"$\vec{v}$  velocity (tangent)"),
+                   plt.Line2D([], [], color=PURPLE, lw=2.2, label=r"$\vec{a}$  centripetal (inward)"),
+                   plt.Line2D([], [], color=CARDINAL, lw=2.2, ls="--",
+                              label="centrifugal (rotating frame)")],
+          loc="lower center", bbox_to_anchor=(0.5, -0.16), fontsize=7.5, frameon=False)
+
+t_full = th_seq / OM
+dx.plot(t_full, R2 * np.cos(th_seq), color=GRAY, lw=1.6, label=r"$x = R\cos\omega t$")
+dx.plot(t_full, -OM * R2 * np.sin(th_seq), color=TEAL, lw=1.6, label=r"$v_x = -\omega R\sin\omega t$")
+dx.plot(t_full, -OM**2 * R2 * np.cos(th_seq), color=PURPLE, lw=1.6,
+        label=r"$a_x = -\omega^2 R\cos\omega t$")
+sweep = dx.axvline(0, color="k", lw=0.9, alpha=0.45)
+(m_x,) = dx.plot([], [], "o", color=GRAY, ms=7)
+(m_v,) = dx.plot([], [], "o", color=TEAL, ms=7)
+(m_a,) = dx.plot([], [], "o", color=PURPLE, ms=7)
+dx.axhline(0, color="k", lw=0.6, alpha=0.3)
+dx.set_xlim(0, t_full[-1])
+dx.set_ylim(-1.5, 1.9)
+dx.set_xlabel("time")
+dx.set_yticks([])
+dx.legend(loc="upper right", fontsize=7.5, frameon=False)
+dx.set_title("each component is simple harmonic motion", fontsize=9)
+for sp in ("top", "right", "left"):
+    dx.spines[sp].set_visible(False)
+
+fig_cm.suptitle("Fig. Circular motion: position, velocity and centripetal acceleration.\n"
+                "The magnitudes never change, only the directions.", fontsize=10)
+fig_cm.tight_layout()
+
+def frame_cm(i):
+    th = th_seq[i]
+    p = np.array([R2 * np.cos(th), R2 * np.sin(th)])
+    rhat, that = p / R2, np.array([-np.sin(th), np.cos(th)])
+    bead.set_data([p[0]], [p[1]])
+    a_r.xy = p
+    a_r.set_position((0, 0))
+    a_v.xy = p + SV * OM * R2 * that
+    a_v.set_position(p)
+    a_a.xy = p - SA * OM**2 * R2 * rhat
+    a_a.set_position(p)
+    a_cf.xy = p + SA * OM**2 * R2 * rhat
+    a_cf.set_position(p)
+    sweep.set_xdata([t_full[i], t_full[i]])
+    m_x.set_data([t_full[i]], [p[0]])
+    m_v.set_data([t_full[i]], [-OM * R2 * np.sin(th)])
+    m_a.set_data([t_full[i]], [-OM**2 * R2 * np.cos(th)])
+    return bead, a_r, a_v, a_a, a_cf, sweep, m_x, m_v, m_a
+
+ani_cm = FuncAnimation(fig_cm, frame_cm, frames=N_FR, interval=50, blit=False)
+plt.close(fig_cm)
+HTML(ani_cm.to_jshtml())
+```
+::::
 
 ---
 
@@ -276,6 +445,16 @@ $$
 R_H = \frac{m_e e^4}{8 \varepsilon_0^2 c h^3}
 $$  
 
+:::{figure} images/hydrogen_levels_series.png
+:label: fig-atomic-spectra-7
+:alt: Hydrogen energy levels with Lyman, Balmer and Paschen transitions
+:width: 75%
+
+Fig. Hydrogen energy levels and the three lowest spectral series. Every series shares one
+lower level, and the lines of a series crowd together as $n_2$ grows, converging on the
+series limit where the electron is set free.
+:::
+
 
 :::{tip} **A note about wavenumbers and $cm^{-1}$ units**
 
@@ -342,7 +521,14 @@ n1_h, Z1 = n_low.value, Z_h.value
 levels_h = np.arange(1, 9)
 E_h = -E_ry * Z1**2 / levels_h**2
 series_names = {1: "Lyman", 2: "Balmer", 3: "Paschen", 4: "Brackett"}
-colors_h = plt.get_cmap("viridis")(np.linspace(0.0, 0.9, 6))
+def wl_color(w):                       # true colour of a line, grey outside the visible
+    if w < 380 or w > 750: return "#8c8c8c"
+    if w < 440: return "#7b2fbe"
+    if w < 490: return "#2b6fd6"
+    if w < 510: return "#12b5a6"
+    if w < 580: return "#3aa93a"
+    if w < 645: return "#e0a521"
+    return "#C8102E"
 fig4, (axL, axR) = plt.subplots(1, 2, figsize=(9, 3.8), gridspec_kw={"width_ratios": [1, 1.4]})
 for n_i, E_i in zip(levels_h, E_h):
     axL.hlines(E_i, 0, 1, color="C3" if n_i == n1_h else "k", lw=1.6)
@@ -354,10 +540,11 @@ lam_lines = []
 for k_i, n2_i in enumerate(range(n1_h + 1, n1_h + 7)):
     dE_i = E_ry * Z1**2 * (1 / n1_h**2 - 1 / n2_i**2)
     lam_lines.append(1239.84 / dE_i)
+    c_i = wl_color(lam_lines[-1])
     x_i = 0.12 + 0.13 * k_i
     axL.annotate("", xy=(x_i, E_h[n1_h - 1]), xytext=(x_i, -E_ry * Z1**2 / n2_i**2),
-                 arrowprops=dict(arrowstyle="->", color=colors_h[k_i], lw=1.3))
-    axR.axvline(lam_lines[-1], color=colors_h[k_i], lw=2)
+                 arrowprops=dict(arrowstyle="->", color=c_i, lw=1.3))
+    axR.axvline(lam_lines[-1], color=c_i, lw=2)
 axL.set_xlim(0, 1.5)
 axL.set_ylim(E_h[0] * 1.08, 0.08 * E_ry * Z1**2)
 axL.set_xticks([])
@@ -365,13 +552,37 @@ axL.set_ylabel("energy (eV)")
 axR.axvspan(380, 750, color="gold", alpha=0.15)
 axR.set_title("shaded band: visible light", fontsize=8, color="darkgoldenrod")
 axR.set_xscale("log")
-axR.set_xlim(10, 30000)
+axR.set_xlim(10, 5000)
 axR.set_yticks([])
 axR.set_xlabel("wavelength (nm), log scale")
 fig4.suptitle(f"Fig. {series_names[n1_h]} series for Z = {Z1}, lines from {lam_lines[-1]:.0f} nm to {lam_lines[0]:.0f} nm", fontsize=10)
 fig4.tight_layout()
 fig4
 ```
+
+### Where Bohr's model breaks down
+
+Bohr's model reproduces the hydrogen spectrum to four digits, and that success is exactly
+why its failures matter. Within a decade it was clear that the model was a lucky halfway
+house rather than the final theory.
+
+- **It fails for every atom with more than one electron.** Applied to neutral helium it
+  misses the measured ionization energy of 24.6 eV badly, and it says nothing at all about
+  the periodic table.
+- **It predicts where lines are but not how bright.** Real spectra have strong lines, weak
+  lines, and transitions that never appear at all. Bohr's rules give no intensities and no
+  selection rules.
+- **It cannot see fine structure.** At high resolution each Balmer line splits into closely
+  spaced components, and a magnetic field splits them further (the Zeeman effect). A single
+  quantum number $n$ has no room for this.
+- **It assumes an orbit at all.** A definite radius together with a definite speed violates
+  the uncertainty principle from the previous lecture. The ground state of hydrogen in fact
+  has zero orbital angular momentum, not $\hbar$.
+
+What survives is the physics, not the picture: energies are quantized, the quantum number
+is an integer, and light is emitted when the atom drops from one level to another. Chapter
+5 replaces the orbit with a wavefunction and gets the levels right for the right reason,
+Chapter 6 supplies the missing selection rules, and Chapter 7 takes on helium.
 
 ### Problems
 

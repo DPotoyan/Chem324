@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="04-wave-particle-duality_files/libs/revealjs/dist/theme/quarto-03bbba2eb154109f68083490bac4e611.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="04-wave-particle-duality_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="04-wave-particle-duality_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="04-wave-particle-duality_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -171,10 +187,10 @@ Davit Potoyan
 <li>Path differences give <strong>constructive</strong> or <strong>destructive</strong> interference</li>
 </ul>
 <div class="keyeq">
-<p><span class="math display">\[2d \sin\theta = n\lambda\]</span></p>
+<p><span class="math display">2d \sin\theta = n\lambda</span></p>
 </div>
 <ul>
-<li><span class="math inline">\(d\)</span>: plane spacing, <span class="math inline">\(n\)</span>: diffraction order</li>
+<li><span class="math inline">d</span>: plane spacing, <span class="math inline">n</span>: diffraction order</li>
 </ul>
 </div></div>
 </section>
@@ -203,10 +219,10 @@ Davit Potoyan
 <li>Makes sense only if the photon is a <strong>particle</strong> with momentum</li>
 </ul>
 <div class="keyeq">
-<p><span class="math display">\[p_{photon} = \frac{h}{\lambda}\]</span></p>
+<p><span class="math display">p_{photon} = \frac{h}{\lambda}</span></p>
 </div>
 <ul>
-<li>Wavelength shift: <span class="math inline">\(\Delta\lambda = \dfrac{h}{m_e c}(1-\cos\theta)\)</span></li>
+<li>Wavelength shift: <span class="math inline">\Delta\lambda = \dfrac{h}{m_e c}(1-\cos\theta)</span></li>
 </ul>
 </div></div>
 </section>
@@ -225,11 +241,11 @@ Davit Potoyan
 <li>Wave-like and particle-like traits are <strong>inversely proportional</strong></li>
 </ul>
 <div class="keyeq">
-<p><span class="math display">\[\lambda = \frac{h}{p}\]</span></p>
+<p><span class="math display">\lambda = \frac{h}{p}</span></p>
 </div>
 <ul>
 <li><strong>Heavy/fast</strong> objects: tiny wavelength (particle-like); <strong>light/slow</strong> objects: large wavelength (wave-like)</li>
-<li>With <span class="math inline">\(E = T + V\)</span>: <span class="math inline">\(\lambda = \dfrac{h}{\sqrt{2m(E - V)}}\)</span>, so the wavelength <strong>changes</strong> with the potential</li>
+<li>With <span class="math inline">E = T + V</span>: <span class="math inline">\lambda = \dfrac{h}{\sqrt{2m(E - V)}}</span>, so the wavelength <strong>changes</strong> with the potential</li>
 </ul>
 </section>
 <section id="waves-have-to-fit" class="slide level2">
@@ -237,7 +253,7 @@ Davit Potoyan
 
 <img data-src="../../ch01/images/debroglie_ring.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:76.0%"><ul>
 <li>Wrap the wave around a loop: only a <strong>whole number</strong> of wavelengths survives</li>
-<li><span class="math inline">\(2\pi r = n\lambda = nh/p \;\Rightarrow\; mvr = n\hbar\)</span>: <strong>quantization, from a wave</strong></li>
+<li><span class="math inline">2\pi r = n\lambda = nh/p \;\Rightarrow\; mvr = n\hbar</span>: <strong>quantization, from a wave</strong></li>
 </ul>
 </section>
 <section id="the-double-slit-puzzle" class="slide level2">
@@ -274,18 +290,18 @@ Davit Potoyan
 </div><div class="column" style="width:50%;">
 <ul>
 <li>Cannot know exact <strong>position and momentum</strong> at once</li>
-<li>Narrow the slit (localize <span class="math inline">\(x\)</span>): momentum spreads out</li>
+<li>Narrow the slit (localize <span class="math inline">x</span>): momentum spreads out</li>
 <li>A direct consequence of <strong>wave-particle duality</strong></li>
 </ul>
 </div></div>
 <div class="keyeq">
-<p><span class="math display">\[\sigma_x \sigma_p \geq \hbar/2\]</span></p>
+<p><span class="math display">\sigma_x \sigma_p \geq \hbar/2</span></p>
 </div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Every quantum object is both wave and particle, with wavelength set by <span class="math inline">\(\lambda = h/p\)</span>, so position and momentum can never both be sharp: <span class="math inline">\(\sigma_x \sigma_p \geq \hbar/2\)</span>.</p>
+<p>Every quantum object is both wave and particle, with wavelength set by <span class="math inline">\lambda = h/p</span>, so position and momentum can never both be sharp: <span class="math inline">\sigma_x \sigma_p \geq \hbar/2</span>.</p>
 </blockquote>
 
 </section>
@@ -310,7 +326,6 @@ Davit Potoyan
   <script src="04-wave-particle-duality_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="04-wave-particle-duality_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="04-wave-particle-duality_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="04-wave-particle-duality_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -479,27 +494,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
