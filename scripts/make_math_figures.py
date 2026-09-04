@@ -143,3 +143,77 @@ p2.set_xlabel(r"$\theta$"); p2.set_ylim(-2.3, 2.3); p2.legend(fontsize=11, loc="
 p2.set_title(r"Sum amplitude $2|\cos(\phi/2)|$ = 1.00 for $\phi = 2\pi/3$", fontsize=13, fontweight="bold", color=BLACK)
 fig.tight_layout(); fig.savefig(f"{OUT}/phasor_sum.png", dpi=200)
 print("done (partials, phasors)")
+
+# ---------------------------------------------------------------- Taylor polynomials of sin x
+from math import factorial
+xt = np.linspace(-2 * np.pi, 2 * np.pi, 600)
+fig, ax = plt.subplots(figsize=(7.6, 4.2))
+ax.plot(xt, np.sin(xt), color=BLACK, lw=2.6, label=r"$\sin x$")
+for order, col in zip([1, 3, 5, 7], [CARDINAL, "#e67e22", TEAL, "#1f3a93"]):
+    poly = sum((-1) ** (k // 2) * xt**k / factorial(k) for k in range(1, order + 1, 2))
+    ax.plot(xt, poly, "--", color=col, lw=1.8, label="1 derivative" if order == 1 else f"{order} derivatives")
+ax.set_ylim(-2.5, 2.5); ax.set_xlabel("x"); ax.axhline(0, color=GRAY, lw=0.6)
+ax.set_xticks([-2 * np.pi, -np.pi, 0, np.pi, 2 * np.pi]); ax.set_xticklabels([r"$-2\pi$", r"$-\pi$", "0", r"$\pi$", r"$2\pi$"])
+ax.legend(fontsize=10, loc="lower right", ncol=2, frameon=False)
+ax.set_title("More derivatives at 0 predict sin x farther out", fontsize=13, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/taylor_sin.png", dpi=200)
+
+# ---------------------------------------------------------------- first derivative: direction
+xc = np.linspace(-2.3, 2.3, 500); fc, fpc, fppc = xc**3 - 3 * xc, 3 * xc**2 - 3, 6 * xc
+fig, (d1, d2) = plt.subplots(2, 1, figsize=(6.6, 5.8), sharex=True)
+d1.plot(xc, fc, color=BLACK, lw=2.6)
+d1.fill_between(xc, -6, 6, where=fpc > 0, color=TEAL, alpha=0.12); d1.fill_between(xc, -6, 6, where=fpc < 0, color=CARDINAL, alpha=0.12)
+for x_ in (-1, 1):
+    d1.plot([x_ - 0.4, x_ + 0.4], [x_**3 - 3 * x_] * 2, color="#1f3a93", lw=2.2); d1.plot(x_, x_**3 - 3 * x_, "o", color="#1f3a93", ms=8)
+d1.text(-1, 2.7, "maximum", ha="center", fontsize=11); d1.text(1, -3.5, "minimum", ha="center", fontsize=11)
+d1.text(-2.1, 3.7, "rising", color=TEAL, fontsize=11); d1.text(-0.35, 3.7, "falling", color=CARDINAL, fontsize=11); d1.text(1.5, 3.7, "rising", color=TEAL, fontsize=11)
+d1.set_ylim(-5, 5); d1.set_ylabel(r"$f = x^3 - 3x$")
+d2.plot(xc, fpc, color="#1f3a93", lw=2.6); d2.axhline(0, color=GRAY, lw=0.8); d2.plot([-1, 1], [0, 0], "o", color="#1f3a93", ms=8)
+d2.fill_between(xc, 0, fpc, where=fpc > 0, color=TEAL, alpha=0.25); d2.fill_between(xc, 0, fpc, where=fpc < 0, color=CARDINAL, alpha=0.25)
+d2.text(-2.15, 3.2, r"$f' > 0$", color=TEAL, fontsize=12); d2.text(0.2, -2.2, r"$f' < 0$", color=CARDINAL, fontsize=12)
+d2.set_ylabel(r"$f' = 3x^2 - 3$"); d2.set_xlabel("x")
+d1.set_title("Sign of f' gives the direction, zeros give the stationary points", fontsize=12, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/first_derivative.png", dpi=200)
+
+# ---------------------------------------------------------------- second derivative: bending
+fig, (e1, e2) = plt.subplots(2, 1, figsize=(6.6, 5.8), sharex=True)
+e1.plot(xc, fc, color=BLACK, lw=2.6)
+e1.fill_between(xc, -6, 6, where=xc < 0, color=CARDINAL, alpha=0.12); e1.fill_between(xc, -6, 6, where=xc > 0, color=TEAL, alpha=0.12)
+e1.plot(0, 0, "s", color="#e67e22", ms=9); e1.text(0.15, 0.5, "inflection", fontsize=11, color="#b7500a")
+e1.text(-1.9, 3.7, "bends down (dome)", color=CARDINAL, fontsize=11); e1.text(0.4, 3.7, "bends up (bowl)", color=TEAL, fontsize=11)
+e1.plot(-1, 2, "o", color="#1f3a93", ms=8); e1.plot(1, -2, "o", color="#1f3a93", ms=8)
+e1.text(-1, 2.7, r"$f'' < 0$: max", ha="center", fontsize=11); e1.text(1, -3.5, r"$f'' > 0$: min", ha="center", fontsize=11)
+e1.set_ylim(-5, 5); e1.set_ylabel(r"$f = x^3 - 3x$")
+e2.plot(xc, fppc, color="#b7500a", lw=2.6); e2.axhline(0, color=GRAY, lw=0.8); e2.plot(0, 0, "s", color="#e67e22", ms=9)
+e2.fill_between(xc, 0, fppc, where=fppc > 0, color=TEAL, alpha=0.25); e2.fill_between(xc, 0, fppc, where=fppc < 0, color=CARDINAL, alpha=0.25)
+e2.set_ylabel(r"$f'' = 6x$"); e2.set_xlabel("x")
+e1.set_title("Sign of f'' gives the bending, a zero crossing an inflection", fontsize=12, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/second_derivative.png", dpi=200)
+
+# ---------------------------------------------------------------- Gaussian and its derivatives
+xg = np.linspace(-3, 3, 500); gg = np.exp(-xg**2); xi = 1 / np.sqrt(2)
+fig, ax = plt.subplots(figsize=(7.6, 4.2))
+ax.plot(xg, gg, color=BLACK, lw=2.6, label=r"$f = e^{-x^2}$")
+ax.plot(xg, -2 * xg * gg, color="#1f3a93", lw=2, label=r"$f' = -2x\,e^{-x^2}$")
+ax.plot(xg, (4 * xg**2 - 2) * gg, "--", color=CARDINAL, lw=2, label=r"$f'' = (4x^2 - 2)\,e^{-x^2}$")
+ax.axhline(0, color=GRAY, lw=0.6)
+for x_ in (-xi, xi):
+    ax.axvline(x_, color="#b7500a", lw=1, ls=":"); ax.plot(x_, np.exp(-x_**2), "s", color="#e67e22", ms=8)
+ax.plot(0, 1, "o", color="#1f3a93", ms=8)
+ax.text(0, 1.1, r"peak: $f' = 0,\ f'' < 0$", ha="center", fontsize=11); ax.text(xi + 0.08, 0.72, r"inflection: $f'' = 0$", fontsize=11, color="#b7500a")
+ax.set_ylim(-2.3, 1.45); ax.set_xlabel("x"); ax.legend(fontsize=10, loc="lower right", frameon=False)
+ax.set_title("The Gaussian with its first two derivatives", fontsize=13, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/gaussian_derivs.png", dpi=200)
+
+# ---------------------------------------------------------------- cosine motion
+tt = np.linspace(0, 4 * np.pi, 500)
+fig, ax = plt.subplots(figsize=(7.6, 3.8))
+ax.plot(tt, np.cos(tt), color=BLACK, lw=2.6, label=r"position $x = \cos t$")
+ax.plot(tt, -np.sin(tt), color="#1f3a93", lw=2, label=r"velocity $x' = -\sin t$")
+ax.plot(tt, -np.cos(tt), "--", color=CARDINAL, lw=2, label=r"acceleration $x'' = -x$")
+ax.axhline(0, color=GRAY, lw=0.6)
+ax.set_xticks([0, np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi]); ax.set_xticklabels(["0", r"$\pi$", r"$2\pi$", r"$3\pi$", r"$4\pi$"])
+ax.set_xlabel("t"); ax.set_ylim(-1.9, 1.9); ax.legend(fontsize=10, loc="upper right", ncol=3, frameon=False)
+ax.set_title("Acceleration is the mirror image of position", fontsize=13, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/motion_cos.png", dpi=200)
+print("done (taylor, derivatives, gaussian, motion)")

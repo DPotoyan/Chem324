@@ -85,6 +85,77 @@ viewof hh = Inputs.range([0.05, 1.5], {step: 0.05, value: 1.0, label: "spacing h
 md`secant slope = **${(2 + hh).toFixed(2)}** (tangent slope 2); step prediction error = h² = **${(hh * hh).toFixed(3)}**`
 ```
 
+## Derivatives predict: the Taylor series
+
+$$f(x + a) = f(x) + a\,f'(x) + \frac{a^2}{2!}\,f''(x) + \frac{a^3}{3!}\,f'''(x) + \cdots = \sum_{n=0}^{\infty} \frac{a^n}{n!}\,\frac{d^n f}{dx^n}$$
+
+:::: {.columns}
+::: {.column width="52%"}
+![](../../math/images/taylor_sin.png){width="100%"}
+:::
+::: {.column width="48%"}
+- Two terms: the **step recipe**; the $a^2$ term corrects for the bending
+- Know by heart: $e^x \approx 1 + x$, $\sin\theta \approx \theta$, $\cos\theta \approx 1 - \tfrac12\theta^2$
+- Keep the $x^2$ term of a potential near its minimum: a real bond becomes a **harmonic oscillator**
+:::
+::::
+
+## Reading the first derivative
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../math/images/first_derivative.png){width="100%"}
+:::
+::: {.column width="50%"}
+- $f' > 0$: **rising**. $f' < 0$: **falling**. The size of $f'$ is the steepness
+- $f' = 0$: horizontal tangent, a **stationary point**: maximum, minimum, or shelf
+- Finding where $f' = 0$ locates the most probable position, the equilibrium bond length, the lowest energy
+:::
+::::
+
+## The second derivative is bending
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../math/images/second_derivative.png){width="100%"}
+:::
+::: {.column width="50%"}
+- $f''$ is the derivative **of the slope**: how fast the slope is changing
+- $f'' > 0$: bends **up** like a bowl, so a stationary point is a **minimum**
+- $f'' < 0$: bends **down** like a dome, so a stationary point is a **maximum**
+- $f'' = 0$ with a sign change: **inflection**, the bending switches
+:::
+::::
+
+## Worked: the Gaussian, read by its derivatives
+
+:::: {.columns}
+::: {.column width="58%"}
+![](../../math/images/gaussian_derivs.png){width="100%"}
+:::
+::: {.column width="42%"}
+- $f' = -2x\,e^{-x^2}$ vanishes only at $x = 0$, where $f'' = -2 < 0$: the peak is a **maximum**
+- $f'' = (4x^2 - 2)\,e^{-x^2} = 0$ at $x = \pm 1/\sqrt{2}$: the **inflection points**
+- Remember them: when this curve returns as a vibrational state they are the **classical turning points**
+:::
+::::
+
+## In time: velocity and acceleration
+
+:::: {.columns}
+::: {.column width="58%"}
+![](../../math/images/motion_cos.png){width="100%"}
+:::
+::: {.column width="42%"}
+- $x'$ is **velocity**, $x''$ is **acceleration**; Newton's $F = m\,x''$ makes physics live in the **bending**
+- $x = \cos t$ gives $x'' = -x$: the higher it climbs, the harder it bends back. That is the **harmonic oscillator**
+:::
+::::
+
+::: {.fragment}
+- Same in space: $\dfrac{d^2}{dx^2}\sin kx = -k^2 \sin kx$, which is why sines solve the wave equation. In quantum mechanics the curvature of $\psi$ is its **kinetic energy**: wigglier means faster
+:::
+
 ## Rules of differentiation
 
 :::: {.columns}
