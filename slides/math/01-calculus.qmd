@@ -15,6 +15,7 @@ format:
     chalkboard:
       buttons: true
     preview-links: auto
+    html-math-method: katex
     footer: "Chem 3240 · Quantum Mechanics"
 resources:
   - ../../math/images
@@ -22,12 +23,13 @@ resources:
 
 ## Why calculus, in one slide
 
-- Quantum mechanics **differentiates** wavefunctions to build operators and **integrates** them to get probabilities
+- Chemistry asks two questions of any changing quantity: **how fast** does it change, and **how much** accumulates
 
-$$\hat{p}\,\psi = -i\hbar\,\frac{d\psi}{dx} \qquad\qquad \int_{-\infty}^{\infty} |\psi(x)|^2\, dx = 1$$
+$$\text{rate} = -\frac{d[\mathrm{A}]}{dt} \qquad\qquad q = \int_{T_1}^{T_2} C_p\, dT$$
 
 - Two pictures carry the whole subject: the **derivative is a slope**, the **integral is an area**
 - Two tools do most of the work: the **chain rule** and **integration by parts**
+- Later the same moves act on waves and quantum states; sharpen them now
 
 ## The derivative is a slope
 
@@ -40,11 +42,48 @@ $$\hat{p}\,\psi = -i\hbar\,\frac{d\psi}{dx} \qquad\qquad \int_{-\infty}^{\infty}
 $$f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}$$
 :::
 
-- Slope of the **secant** through two nearby points
-- Let the points merge: the secant pivots into the **tangent**
-- Also the **instantaneous rate of change**: position gives velocity, concentration gives reaction rate
+- Slope of the **secant** through two nearby points; merge them and it becomes the **tangent**
+- **Rate of change**: position gives velocity, concentration gives rate
+- Read backwards, a **step recipe**: $f(x+h) \approx f(x) + f'(x)\,h$
 :::
 ::::
+
+## Live: shrink the spacing {.smaller}
+
+<span style="color:#C8102E">**secant**</span> pivots into the <span style="color:#1f3a93">**tangent**</span>; the <span style="color:#107895">**step prediction**</span> $f(x) + f'(x)\,h$ misses the curve by $h^2$
+
+```{ojs}
+//| echo: false
+viewof hh = Inputs.range([0.05, 1.5], {step: 0.05, value: 1.0, label: "spacing h"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const f = x => x * x, x0 = 1, slope = 2 + hh, pred = f(x0) + 2 * hh;
+  const xs = d3.range(-0.5, 2.81, 0.02);
+  const curve = xs.map(x => ({x, y: f(x)}));
+  const sec = xs.map(x => ({x, y: f(x0) + slope * (x - x0)}));
+  const tan = xs.map(x => ({x, y: f(x0) + 2 * (x - x0)}));
+  return Plot.plot({
+    width: 620, height: 400,
+    x: {domain: [-0.5, 2.8], label: "x"}, y: {domain: [-1, 7], label: "f(x)"},
+    marks: [
+      Plot.line(curve, {x: "x", y: "y", stroke: "#111", strokeWidth: 2.5}),
+      Plot.line(sec, {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2, strokeDasharray: "6,4"}),
+      Plot.line(tan, {x: "x", y: "y", stroke: "#1f3a93", strokeWidth: 2}),
+      Plot.ruleX([x0 + hh], {y1: pred, y2: f(x0 + hh), stroke: "#107895", strokeWidth: 4}),
+      Plot.dot([{x: x0, y: f(x0)}, {x: x0 + hh, y: f(x0 + hh)}], {x: "x", y: "y", fill: "#C8102E", r: 5}),
+      Plot.dot([{x: x0 + hh, y: pred}], {x: "x", y: "y", fill: "#107895", r: 5, symbol: "square"})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+md`secant slope = **${(2 + hh).toFixed(2)}** (tangent slope 2); step prediction error = h² = **${(hh * hh).toFixed(3)}**`
+```
 
 ## Rules of differentiation
 
@@ -61,12 +100,12 @@ $$f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}$$
 $$\frac{d}{dx} f(g(x)) = \frac{df}{dg}\cdot\frac{dg}{dx}$$
 :::
 
-- The **chain rule**: nearly every wavefunction is a composition, $e^{-\alpha x^2}$, $\sin(kx)$, $e^{ikx}$
+- The **chain rule**: nearly every function in this course is a composition, $e^{-\alpha x^2}$, $\sin(kx)$, $e^{ikx}$
 - Outer derivative times inner derivative
 :::
 ::::
 
-## Worked: a harmonic-oscillator shape
+## Worked: a product with a composition inside
 
 Differentiate $f(x) = x^2\, e^{-\alpha x^2}$ (product rule, chain rule inside the exponential):
 
@@ -75,8 +114,8 @@ $$\frac{df}{dx} = (x^2)'\, e^{-\alpha x^2} + x^2\, \big(e^{-\alpha x^2}\big)' = 
 - Product rule for the two factors, chain rule for $(e^{-\alpha x^2})' = -2\alpha x\, e^{-\alpha x^2}$
 
 ::: {.fragment}
-- $f' = 0$ at $x = 0$ and $x = \pm 1/\sqrt{\alpha}$: the **node** and the two **probability maxima**
-- Same moves for the Gaussian $e^{-ax^2}$: $f' = -2ax\,e^{-ax^2}$, $f'' = (4a^2x^2 - 2a)\,e^{-ax^2}$, inflection at $x = \pm 1/\sqrt{2a}$, the classical turning points
+- $f' = 0$ at $x = 0$ and $x = \pm 1/\sqrt{\alpha}$: a **minimum** flanked by two **maxima**
+- Same moves for the Gaussian $e^{-ax^2}$: $f' = -2ax\,e^{-ax^2}$, $f'' = (4a^2x^2 - 2a)\,e^{-ax^2}$, inflection points at $x = \pm 1/\sqrt{2a}$
 :::
 
 ## Derivatives you should know by heart {.smaller}
@@ -90,6 +129,41 @@ $$\frac{df}{dx} = (x^2)'\, e^{-\alpha x^2} + x^2\, \big(e^{-\alpha x^2}\big)' = 
 
 - The last row is the course in miniature: **plane waves** and **Gaussians**
 - Behind the table: $\lim_{\theta\to0} \sin\theta/\theta = 1$ and $\lim_{h\to0}(e^h - 1)/h = 1$, which is why $e^x$ is its own derivative
+
+## Several variables: hold the rest fixed
+
+:::: {.columns}
+::: {.column width="42%"}
+![](../../math/images/partial_slices.png){width="100%"}
+:::
+::: {.column width="58%"}
+::: {.keyeq}
+$$\frac{\partial f}{\partial x} = \lim_{h \to 0}\frac{f(x+h,\,y) - f(x,\,y)}{h}$$
+:::
+
+- A surface has no single slope: **slice it** along one variable, freeze the others
+- Compute with the ordinary rules; the frozen variables ride along like constants
+- Shorthands $f_x$, $f_{xx}$, $f_{xy}$, and $\left(\partial P/\partial V\right)_T$ in thermodynamics
+- Mixed partials **commute**: $f_{xy} = f_{yx}$
+:::
+::::
+
+## The chain rule on a sliding shape
+
+$u(x,t) = f(x - vt)$: the profile $f$ moving right at speed $v$. Chain rule with $s = x - vt$:
+
+$$\frac{\partial u}{\partial x} = f'(s), \qquad \frac{\partial u}{\partial t} = -v\,f'(s), \qquad
+\frac{\partial^2 u}{\partial x^2} = f''(s), \qquad \frac{\partial^2 u}{\partial t^2} = v^2 f''(s)$$
+
+- Each $t$ derivative brings down one factor of $-v$
+
+::: {.fragment}
+- Eliminate $f''$: a relation holds for **every** sliding shape, whatever $f$ is
+
+$$\frac{\partial^2 u}{\partial x^2} = \frac{1}{v^2}\,\frac{\partial^2 u}{\partial t^2}$$
+
+- This is the **classical wave equation**, straight out of calculus. Chapter 2 gives it physics
+:::
 
 ## The integral is an area
 
@@ -150,4 +224,4 @@ $$\int_0^\infty x^n e^{-x}\, dx = n!$$
 
 # Takeaway {.center}
 
-> A derivative is a slope, an integral is an area, and the fundamental theorem makes them inverses. In this course the chain rule builds operators and integration by parts evaluates expectation values; check the symmetry of the integrand before doing either.
+> A derivative is a slope and a step recipe, an integral is an area, and the fundamental theorem makes them inverses. A partial derivative is the same slope with the other variables frozen. The chain rule and integration by parts do most of the work; check the symmetry of the integrand before doing either.

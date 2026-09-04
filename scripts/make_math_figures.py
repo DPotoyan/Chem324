@@ -99,3 +99,47 @@ ax.set_xlim(-2.4, 2.4); ax.set_ylim(-2.4, 2.4); ax.set_aspect("equal"); ax.set_x
 ax.set_title("Multiplying by i is a quarter turn", fontsize=13, fontweight="bold", color=BLACK)
 fig.tight_layout(); fig.savefig(f"{OUT}/rotation_by_i.png", dpi=200)
 print("done")
+
+# ---------------------------------------------------------------- partial derivatives as slopes of slices
+g = lambda x, y: 4 - x**2 - y**2 / 4
+gx = lambda x, y: -2 * x
+gy = lambda x, y: -y / 2
+x0, y0 = 1.0, 1.0
+X, Y = np.meshgrid(np.linspace(-2, 2, 60), np.linspace(-3, 3, 60))
+fig = plt.figure(figsize=(7.2, 5.4))
+ax = fig.add_subplot(111, projection="3d")
+ax.plot_surface(X, Y, g(X, Y), color="lightgray", alpha=0.35, linewidth=0)
+xs = np.linspace(-2, 2, 100); ys = np.linspace(-3, 3, 100)
+ax.plot(xs, np.full_like(xs, y0), g(xs, y0), color=CARDINAL, lw=2.8, label=r"slice $y = 1$: slope is $\partial f/\partial x$")
+ax.plot(np.full_like(ys, x0), ys, g(x0, ys), color=TEAL, lw=2.8, label=r"slice $x = 1$: slope is $\partial f/\partial y$")
+tx = np.array([x0 - 0.8, x0 + 0.8]); ax.plot(tx, np.full_like(tx, y0), g(x0, y0) + gx(x0, y0) * (tx - x0), "--", color=CARDINAL, lw=1.6)
+ty = np.array([y0 - 1.2, y0 + 1.2]); ax.plot(np.full_like(ty, x0), ty, g(x0, y0) + gy(x0, y0) * (ty - y0), "--", color=TEAL, lw=1.6)
+ax.scatter([x0], [y0], [g(x0, y0)], color=BLACK, s=45)
+ax.set_xlabel("x"); ax.set_ylabel("y"); ax.set_zlabel("f(x, y)")
+ax.view_init(elev=25, azim=-60)
+ax.legend(loc="upper left", fontsize=10, frameon=False)
+ax.set_title("Slopes of slices, one variable at a time", fontsize=13, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/partial_slices.png", dpi=200)
+
+# ---------------------------------------------------------------- phasor addition of two waves
+phi = 2 * np.pi / 3; th = np.linspace(0, 4 * np.pi, 500)
+pa, pb = 1 + 0j, np.exp(1j * phi); pc = pa + pb
+fig, (p1, p2) = plt.subplots(1, 2, figsize=(10.5, 4.2), gridspec_kw={"width_ratios": [1, 1.6]})
+p1.annotate("", xy=(pa.real, pa.imag), xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=CARDINAL, lw=2.6))
+p1.annotate("", xy=(pc.real, pc.imag), xytext=(pa.real, pa.imag), arrowprops=dict(arrowstyle="->", color=TEAL, lw=2.6))
+p1.annotate("", xy=(pc.real, pc.imag), xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=BLACK, lw=3.2))
+p1.text(0.5, -0.2, "1", color=CARDINAL, fontsize=14, ha="center")
+p1.text(0.85, 0.6, r"$e^{i\phi}$", color=TEAL, fontsize=14)
+p1.text(-0.55, 0.85, r"$1 + e^{i\phi}$", color=BLACK, fontsize=14)
+p1.axhline(0, color=GRAY, lw=0.6); p1.axvline(0, color=GRAY, lw=0.6)
+p1.set_aspect("equal"); p1.set_xlim(-0.6, 1.6); p1.set_ylim(-0.6, 1.4); p1.set_xlabel("Real"); p1.set_ylabel("Imaginary")
+p1.set_title("Phasors add tip to tail", fontsize=13, fontweight="bold", color=BLACK)
+p2.plot(th, np.cos(th), color=CARDINAL, lw=1.6, label=r"$\cos\theta$")
+p2.plot(th, np.cos(th + phi), color=TEAL, lw=1.6, label=r"$\cos(\theta + \phi)$")
+p2.plot(th, np.cos(th) + np.cos(th + phi), color=BLACK, lw=2.8, label="sum")
+p2.axhline(0, color=GRAY, lw=0.6)
+p2.set_xticks([0, np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi]); p2.set_xticklabels(["0", r"$\pi$", r"$2\pi$", r"$3\pi$", r"$4\pi$"])
+p2.set_xlabel(r"$\theta$"); p2.set_ylim(-2.3, 2.3); p2.legend(fontsize=11, loc="upper right", ncol=3, frameon=False)
+p2.set_title(r"Sum amplitude $2|\cos(\phi/2)|$ = 1.00 for $\phi = 2\pi/3$", fontsize=13, fontweight="bold", color=BLACK)
+fig.tight_layout(); fig.savefig(f"{OUT}/phasor_sum.png", dpi=200)
+print("done (partials, phasors)")

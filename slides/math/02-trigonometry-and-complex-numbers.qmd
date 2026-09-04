@@ -15,6 +15,7 @@ format:
     chalkboard:
       buttons: true
     preview-links: auto
+    html-math-method: katex
     footer: "Chem 3240 · Quantum Mechanics"
 resources:
   - ../../math/images
@@ -158,6 +159,23 @@ $$\bar{z} = x - iy = r\,e^{-i\phi}, \qquad |z|^2 = \bar{z}\,z = x^2 + y^2 = r^2$
 - This is exactly how an amplitude becomes a probability: $|\psi|^2 = \psi^*\psi$
 - Sums and differences give the trig functions back:
 $$\cos\phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \qquad \sin\phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}$$
+
+## Waves are rotating phases
+
+::: {.keyeq}
+$$\cos(kx - \omega t) = \operatorname{Re}\, e^{i(kx - \omega t)}$$
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../math/images/phasor_sum.png){width="100%"}
+:::
+::: {.column width="45%"}
+- **Derivatives become multiplications**: $\partial_x \to ik$, $\partial_t \to -i\omega$; twice gives $-k^2$, $-\omega^2$
+- **Adding waves becomes adding arrows**: $\cos\theta + \cos(\theta+\phi) = \operatorname{Re}[e^{i\theta}(1 + e^{i\phi})]$
+- Resultant amplitude $2|\cos(\phi/2)|$: doubles in phase, cancels half a turn apart. That is **interference**
+:::
+::::
 
 ## Why chemists care
 

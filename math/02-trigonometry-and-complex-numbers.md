@@ -13,6 +13,7 @@ kernelspec:
 - **Complex numbers as 2D numbers.** A complex number carries a real and an imaginary part and lives in a plane.
 - **Euler's formula.** $e^{i\phi} = \cos\phi + i\sin\phi$ fuses trigonometry and exponentials into one object and is the single most useful identity in the course.
 - **Polar form, conjugation, and rotation.** Multiplying complex numbers rotates and scales them, and the conjugate reflects across the real axis.
+- **Waves as rotating phases.** A cosine wave is the real part of $e^{i(kx - \omega t)}$, which turns derivatives into multiplications and the addition of waves into the addition of arrows.
 :::
 
 Trigonometry and complex numbers are two views of the same thing: rotation in a plane. Waves, oscillations, and quantum phases all live here, and Euler's formula is the bridge that connects them. We treat them together because in quantum mechanics you almost never use one without the other.
@@ -417,6 +418,78 @@ This is why we do not memorize the trig identities separately: they all fall out
 Complex exponentials are the natural language of anything that oscillates or diffracts. In X-ray crystallography, each scattered wave is a complex number $A = |A|e^{i\phi}$, and the **structure factor** $F(\mathbf{h}) = \sum_j f_j\,e^{i\mathbf{h}\cdot\mathbf{r}_j}$ combines these amplitudes and phases to reconstruct electron density by an inverse Fourier transform. The hard part, the **phase problem**, is precisely that detectors measure $|F|$ but not the phase $\phi$ that the complex representation makes explicit.
 :::
 
+### Waves as rotating phases
+
+The payoff of all this for the [waves lecture](../ch02/01-waves.md) is that a wave with wavenumber $k$ and angular frequency $\omega$, $\cos(kx - \omega t)$, is the shadow of a rotating phase:
+
+:::{important} **A wave is the real part of a rotating phase**
+
+$$
+\cos(kx - \omega t) = \operatorname{Re}\, e^{i(kx - \omega t)}
+$$
+:::
+
+Since taking the real part commutes with adding and with differentiating, all the algebra can be done on the exponential and the real part taken at the very end. Two things become almost trivial:
+
+1. **Derivatives turn into multiplications.** Each partial derivative of $e^{i(kx - \omega t)}$ only brings down a constant factor:
+
+    $$
+    \frac{\partial}{\partial x}\, e^{i(kx - \omega t)} = ik\, e^{i(kx - \omega t)},
+    \qquad
+    \frac{\partial}{\partial t}\, e^{i(kx - \omega t)} = -i\omega\, e^{i(kx - \omega t)}.
+    $$
+
+    Doing it twice gives $-k^2$ and $-\omega^2$ times the function. Compare the pages of trig bookkeeping the same calculation costs with sines and cosines.
+
+2. **Adding waves turns into adding arrows.** Two waves of equal amplitude whose phases differ by $\phi$ add as
+
+    $$
+    \cos\theta + \cos(\theta + \phi) = \operatorname{Re}\big[e^{i\theta}\,(1 + e^{i\phi})\big],
+    $$
+
+    so the sum is again a wave, with amplitude $|1 + e^{i\phi}| = 2\left|\cos(\phi/2)\right|$. The arrows $1$ and $e^{i\phi}$ are called **phasors**: tip to tail they give the resultant. In phase ($\phi = 0$) they line up and the amplitude doubles; half a turn apart ($\phi = \pi$) they cancel. This is interference, and it is the whole content of the double-slit pattern.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+
+phi = 2 * np.pi / 3
+th = np.linspace(0, 4 * np.pi, 500)
+a, b = 1 + 0j, np.exp(1j * phi)
+c = a + b
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), gridspec_kw={'width_ratios': [1, 1.6]})
+ax1.annotate('', xy=(a.real, a.imag), xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='#d1495b', lw=2.5))
+ax1.annotate('', xy=(c.real, c.imag), xytext=(a.real, a.imag), arrowprops=dict(arrowstyle='->', color='#66a182', lw=2.5))
+ax1.annotate('', xy=(c.real, c.imag), xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='#2e4057', lw=3))
+ax1.text(0.5, -0.18, '1', color='#d1495b', fontsize=12, ha='center')
+ax1.text(0.85, 0.6, r'$e^{i\phi}$', color='#66a182', fontsize=12)
+ax1.text(-0.55, 0.8, r'$1+e^{i\phi}$', color='#2e4057', fontsize=12)
+ax1.axhline(0, color='gray', lw=0.6)
+ax1.axvline(0, color='gray', lw=0.6)
+ax1.set_aspect('equal')
+ax1.set_xlim(-0.6, 1.6)
+ax1.set_ylim(-0.6, 1.4)
+ax1.set_xlabel('Real')
+ax1.set_ylabel('Imaginary')
+ax1.set_title('Phasors add tip to tail', fontsize=11)
+
+ax2.plot(th, np.cos(th), color='#d1495b', lw=1.5, label=r'$\cos\theta$')
+ax2.plot(th, np.cos(th + phi), color='#66a182', lw=1.5, label=r'$\cos(\theta+\phi)$')
+ax2.plot(th, np.cos(th) + np.cos(th + phi), color='#2e4057', lw=2.5, label='sum')
+ax2.axhline(0, color='gray', lw=0.6)
+ax2.set_xlabel(r'$\theta$')
+ax2.set_xticks([0, np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi])
+ax2.set_xticklabels(['0', r'$\pi$', r'$2\pi$', r'$3\pi$', r'$4\pi$'])
+ax2.legend(fontsize=9, loc='upper right', ncol=3)
+ax2.set_ylim(-2.3, 2.3)
+ax2.set_title(fr'Sum has amplitude $2|\cos(\phi/2)|$ = {abs(c):.2f} for $\phi = 2\pi/3$', fontsize=11)
+plt.suptitle('Fig.7 Adding two waves is adding two arrows in the complex plane', y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
 ## Problems
 
 ### Problem 1: Multiplication in Cartesian form
@@ -485,14 +558,34 @@ $$
 so $z = 4\sqrt{2}\,e^{i 3\pi/4}$.
 :::
 
-### Problem 6: A famous identity
+### Problem 6: Amplitude of two interfering waves
+
+Show that $|1 + e^{i\phi}| = 2\left|\cos(\phi/2)\right|$, and hence that two equal-amplitude waves with phase difference $\phi$ add to a wave of amplitude $2|\cos(\phi/2)|$.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+Factor out half the phase:
+
+$$
+1 + e^{i\phi} = e^{i\phi/2}\left(e^{-i\phi/2} + e^{i\phi/2}\right) = 2\cos(\phi/2)\, e^{i\phi/2}.
+$$
+
+The factor $e^{i\phi/2}$ has modulus one, so $|1 + e^{i\phi}| = 2|\cos(\phi/2)|$. Then $\cos\theta + \cos(\theta+\phi) = \operatorname{Re}[e^{i\theta}(1+e^{i\phi})] = 2\cos(\phi/2)\cos(\theta + \phi/2)$: a wave of the same frequency, shifted by half the phase difference, with amplitude between $0$ (at $\phi = \pi$) and $2$ (at $\phi = 0$).
+:::
+
+### Problem 7: A famous identity
 
 Use Euler's formula to evaluate $e^{i\pi}$.
 
-### Problem 7: Trig from exponentials
+### Problem 8: Trig from exponentials
 
 Using $\cos\phi = \tfrac{1}{2}(e^{i\phi} + e^{-i\phi})$, show that $\cos^2\phi = \tfrac{1}{2}(1 + \cos 2\phi)$.
 
-### Problem 8: Phase rotation
+### Problem 9: Phase rotation
 
 A quantum amplitude picks up a phase, $\psi \to e^{i\theta}\psi$. Show that the probability density $|\psi|^2$ is unchanged.
+
+### Problem 10: Derivatives of a rotating phase
+
+For $u(x,t) = e^{i(kx - \omega t)}$ compute $\partial^2 u/\partial x^2$ and $\partial^2 u/\partial t^2$, and show that $\dfrac{\partial^2 u}{\partial x^2} = \dfrac{k^2}{\omega^2}\dfrac{\partial^2 u}{\partial t^2}$. What is the speed $v = \omega/k$ of this wave?
