@@ -9,6 +9,8 @@ kernelspec:
 :::{note} **What you will learn**
 
 - **The derivative as a slope and as a step.** The derivative is the slope of the tangent line, and read the other way it is the recipe for stepping from $f(x)$ to a neighboring value $f(x+h)$.
+- **Reading first and second derivatives.** The sign of $f'$ says whether $f$ rises or falls, and $f''$ says how the curve bends. Together they locate and classify maxima, minima, and inflection points; in mechanics they are velocity and acceleration.
+- **Taylor series.** Each further derivative at a point predicts the function farther away; the full series reconstructs it exactly.
 - **The rules of differentiation.** Constant multiple, sum, product, quotient, power, and chain rules let you differentiate almost any function you meet in chemistry.
 - **The integral as accumulated area.** A definite integral is the limit of a sum of thin rectangles, giving the net area under a curve.
 - **The fundamental theorem of calculus.** Differentiation and integration are inverse operations, and this theorem is the workhorse for evaluating integrals.
@@ -101,18 +103,163 @@ $$
 
 Knowing the value and the slope at one position is enough to predict the value at a neighboring position: the derivative is the **rate at which $f$ responds to a shift** in $x$. The green bar in the slider figure measures how far this prediction misses the true $f(x+h)$. For $x^2$ the miss is exactly $h^2$, so halving the step quarters the error, and in the limit the prediction is perfect. That is what "linear approximation" means, and it is why a tangent line is the best straight-line stand-in for a curve near a point.
 
-:::{tip} **Taylor series: the derivative generates shifts**
-:class: dropdown
+### Higher derivatives predict farther: the Taylor series
 
-Keep going with higher derivatives and the approximation becomes exact for any smooth function:
+The step recipe uses one derivative and works for small steps. Each further derivative extends the reach, and with all of them the prediction becomes exact for any smooth function:
+
+:::{important} **Taylor series**
 
 $$
 f(x + a) = f(x) + a\,f'(x) + \frac{a^2}{2!}\,f''(x) + \frac{a^3}{3!}\,f'''(x) + \cdots
-= \sum_{n=0}^{\infty} \frac{a^n}{n!}\,\frac{d^n f}{dx^n}.
+= \sum_{n=0}^{\infty} \frac{a^n}{n!}\,\frac{d^n f}{dx^n}
+$$
+:::
+
+The first two terms are the step recipe (the linear approximation). Adding the $a^2$ term corrects for the bending of the curve, and so on. The figure shows the partial sums for $\sin x$ about $x = 0$: one derivative is good near the origin, seven derivatives track the curve for more than a full period.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from math import factorial
+
+x = np.linspace(-2 * np.pi, 2 * np.pi, 600)
+fig, ax = plt.subplots(figsize=(7.5, 4))
+ax.plot(x, np.sin(x), 'k', lw=2.5, label=r'$\sin x$')
+for order, color in zip([1, 3, 5, 7], ['#d1495b', '#edae49', '#66a182', '#2e4057']):
+    poly = sum((-1)**(k // 2) * x**k / factorial(k) for k in range(1, order + 1, 2))
+    label = '1 derivative' if order == 1 else f'{order} derivatives'
+    ax.plot(x, poly, '--', color=color, lw=1.6, label=label)
+ax.set_ylim(-2.5, 2.5)
+ax.set_xlabel('x')
+ax.set_xticks([-2 * np.pi, -np.pi, 0, np.pi, 2 * np.pi])
+ax.set_xticklabels([r'$-2\pi$', r'$-\pi$', '0', r'$\pi$', r'$2\pi$'])
+ax.axhline(0, color='gray', lw=0.6)
+ax.legend(fontsize=8, loc='lower right', ncol=2)
+ax.set_title('Fig.2 Taylor polynomials of sin x about 0: more derivatives reach farther')
+plt.tight_layout()
+plt.show()
+```
+
+Three expansions are worth knowing by heart, all about $x = 0$:
+
+$$
+e^{x} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots, \qquad
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots, \qquad
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
 $$
 
-The sum has the same shape as the exponential series, which is why one writes $f(x + a) = e^{a\, d/dx} f(x)$: exponentiating the derivative **translates** a function by $a$. Later in the course the operator $d/dx$ reappears, dressed as $-i\hbar\,d/dx$, as momentum, and this formula is the deep reason momentum and translation belong together.
+Truncating after the first non-trivial term gives the small-quantity approximations used throughout chemistry: $e^{x} \approx 1 + x$, $\sin\theta \approx \theta$, $\cos\theta \approx 1 - \theta^2/2$, and $(1 + x)^n \approx 1 + nx$. Keeping the $x^2$ term of any potential energy curve near its minimum is what turns a real vibrating bond into a harmonic oscillator.
+
+Every derivative at one point is a piece of information about the function elsewhere, and the complete set determines the function everywhere. The sum has the shape of the exponential series, which is why one writes $f(x + a) = e^{a\, d/dx} f(x)$: exponentiating the derivative **translates** a function by $a$. Later in the course the operator $d/dx$ reappears, dressed as $-i\hbar\,d/dx$, as momentum, and this formula is the deep reason momentum and translation belong together.
+
+### Reading the first and second derivatives
+
+Most of what a derivative tells you can be read off a graph without any formula. The first derivative reports the **direction** of the curve:
+
+- $f' > 0$ where $f$ rises, $f' < 0$ where $f$ falls, and the size of $f'$ is the steepness.
+- $f' = 0$ where the tangent is horizontal: a maximum, a minimum, or a flat shelf. These are the **stationary points**, and finding them is how one locates the most probable position, the equilibrium bond length, or the lowest energy.
+
+The second derivative is the derivative of the slope, so it reports how the slope itself is changing, that is, how the curve **bends**:
+
+- $f'' > 0$: the slope is increasing and the curve bends upward like a bowl. A stationary point there is a **minimum**.
+- $f'' < 0$: the slope is decreasing and the curve bends downward like a dome. A stationary point there is a **maximum**.
+- $f'' = 0$ with a change of sign: an **inflection point**, where the bending switches direction.
+
+The second and third bullets together are the **second derivative test**. The figure applies all of this to $f(x) = x^3 - 3x$: the first derivative $3(x^2 - 1)$ vanishes at $x = \pm 1$, the second derivative $6x$ is negative at $-1$ (maximum) and positive at $+1$ (minimum), and it changes sign at $x = 0$ (inflection).
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2.3, 2.3, 500)
+f, fp, fpp = x**3 - 3 * x, 3 * x**2 - 3, 6 * x
+UP, DOWN = '#66a182', '#d1495b'
+
+fig, axes = plt.subplots(3, 1, figsize=(7, 8), sharex=True)
+ax = axes[0]
+ax.plot(x, f, 'k', lw=2.5)
+ax.fill_between(x, -6, 6, where=fp > 0, color=UP, alpha=0.12)
+ax.fill_between(x, -6, 6, where=fp < 0, color=DOWN, alpha=0.12)
+for xc in (-1, 1):
+    ax.plot([xc - 0.4, xc + 0.4], [xc**3 - 3 * xc] * 2, color='#2e4057', lw=2)
+    ax.plot(xc, xc**3 - 3 * xc, 'o', color='#2e4057', ms=7)
+ax.plot(0, 0, 's', color='#edae49', ms=7)
+ax.text(-1, 2.6, 'maximum', ha='center', fontsize=9)
+ax.text(1, -3.3, 'minimum', ha='center', fontsize=9)
+ax.text(0.15, 0.4, 'inflection', fontsize=9, color='#b07d1a')
+ax.text(-2.1, 3.6, 'rising', color=UP, fontsize=9)
+ax.text(-0.3, 3.6, 'falling', color=DOWN, fontsize=9)
+ax.text(1.5, 3.6, 'rising', color=UP, fontsize=9)
+ax.set_ylim(-5, 5)
+ax.set_ylabel(r'$f = x^3 - 3x$')
+
+ax = axes[1]
+ax.plot(x, fp, color='#2e4057', lw=2.5)
+ax.axhline(0, color='gray', lw=0.8)
+ax.plot([-1, 1], [0, 0], 'o', color='#2e4057', ms=7)
+ax.fill_between(x, 0, fp, where=fp > 0, color=UP, alpha=0.25)
+ax.fill_between(x, 0, fp, where=fp < 0, color=DOWN, alpha=0.25)
+ax.text(-1.75, 1.5, r"$f' > 0$: rising", color=UP, fontsize=9)
+ax.text(-0.6, 1.3, r"$f' < 0$: falling", color=DOWN, fontsize=9)
+ax.set_ylabel(r"$f' = 3x^2 - 3$")
+
+ax = axes[2]
+ax.plot(x, fpp, color='#b07d1a', lw=2.5)
+ax.axhline(0, color='gray', lw=0.8)
+ax.plot(0, 0, 's', color='#edae49', ms=7)
+ax.fill_between(x, 0, fpp, where=fpp > 0, color=UP, alpha=0.25)
+ax.fill_between(x, 0, fpp, where=fpp < 0, color=DOWN, alpha=0.25)
+ax.text(0.8, -6, r"$f'' > 0$: bends up (bowl)", color=UP, fontsize=9)
+ax.text(-2.2, 6, r"$f'' < 0$: bends down (dome)", color=DOWN, fontsize=9)
+ax.set_ylabel(r"$f'' = 6x$")
+ax.set_xlabel('x')
+fig.suptitle("Fig.3 Reading a curve from its derivatives: f' gives direction, f'' gives bending", y=0.995, fontsize=10)
+plt.tight_layout()
+plt.show()
+```
+
+:::{note} **Example: locate and classify a maximum**
+
+Where is $g(x) = x\,e^{-x}$ largest for $x > 0$, and where does it change bending?
+
+By the product rule, $g'(x) = (1 - x)\,e^{-x}$, which vanishes only at $x = 1$. Differentiating again, $g''(x) = (x - 2)\,e^{-x}$, so $g''(1) = -e^{-1} < 0$: the curve bends downward there and $x = 1$ is a **maximum**, with $g(1) = 1/e$. The second derivative changes sign at $x = 2$, the **inflection point** beyond which the decaying tail bends upward toward the axis. (Curves of exactly this shape describe hydrogen orbitals along the radius, and the same two calculations locate their most probable distance from the nucleus.)
 :::
+
+### Derivatives in motion: velocity and acceleration
+
+When the variable is time, the two derivatives have names everyone knows. If $x(t)$ is position, then $x'(t)$ is the **velocity**, how fast and in which direction, and $x''(t)$ is the **acceleration**, how the velocity is changing. Newton's second law $F = m\,x''$ says that forces set the second derivative: the physics enters through the *bending* of the trajectory, not its slope. That is why equations of motion are second order and need two initial conditions, a position and a velocity.
+
+The cleanest example is $x(t) = \cos t$. Its velocity is $-\sin t$ and its acceleration is $-\cos t$, so
+
+$$
+x'' = -x .
+$$
+
+The acceleration is proportional to minus the displacement: the higher the curve climbs, the harder it bends back toward zero. A function whose curvature is proportional to minus itself oscillates, and cosine and sine are exactly the functions that do this. This one relation is the harmonic oscillator, and the same structure returns in space instead of time: $\sin(kx)$ satisfies $\dfrac{d^2}{dx^2}\sin(kx) = -k^2 \sin(kx)$, which is why sines and cosines solve the wave equation met later on this page. In quantum mechanics the curvature of a wavefunction measures its kinetic energy, so a wigglier wave means a faster particle.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 4 * np.pi, 500)
+fig, ax = plt.subplots(figsize=(7.5, 3.6))
+ax.plot(t, np.cos(t), 'k', lw=2.5, label=r'position $x = \cos t$')
+ax.plot(t, -np.sin(t), color='#2e4057', lw=1.8, label=r"velocity $x' = -\sin t$")
+ax.plot(t, -np.cos(t), color='#d1495b', lw=1.8, ls='--', label=r"acceleration $x'' = -\cos t = -x$")
+ax.axhline(0, color='gray', lw=0.6)
+ax.set_xticks([0, np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi])
+ax.set_xticklabels(['0', r'$\pi$', r'$2\pi$', r'$3\pi$', r'$4\pi$'])
+ax.set_xlabel('t')
+ax.set_ylim(-1.8, 1.8)
+ax.legend(fontsize=8, loc='upper right', ncol=3)
+ax.set_title('Fig.4 Cosine motion: the acceleration is the mirror image of the position')
+plt.tight_layout()
+plt.show()
+```
+
 
 ### Rules of differentiation
 
@@ -191,7 +338,34 @@ The Gaussian $f(x) = e^{-a x^2}$ is the single most-differentiated function in t
 :::{seealso} Solution
 :class: dropdown
 
-$f'(x) = -2ax\, e^{-ax^2}$ (chain rule), and the product plus chain rules give $f''(x) = (4a^2x^2 - 2a)\, e^{-ax^2}$. Setting $f'' = 0$ gives $x = \pm 1/\sqrt{2a}$: the inflection points where the bell curve changes from concave down to concave up. Remember this pair of points; when the Gaussian returns as a vibrational state they turn out to be the classical turning points.
+$f'(x) = -2ax\, e^{-ax^2}$ (chain rule), and the product plus chain rules give $f''(x) = (4a^2x^2 - 2a)\, e^{-ax^2}$. The first derivative vanishes only at $x = 0$, where $f'' = -2a < 0$: the peak is a maximum. Setting $f'' = 0$ gives $x = \pm 1/\sqrt{2a}$: the inflection points where the bell curve changes from bending down to bending up. Remember this pair of points; when the Gaussian returns as a vibrational state they turn out to be the classical turning points.
+
+```{code-cell} python
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-3, 3, 500)
+g = np.exp(-x**2)
+fig, ax = plt.subplots(figsize=(7.5, 4))
+ax.plot(x, g, 'k', lw=2.5, label=r'$f = e^{-x^2}$')
+ax.plot(x, -2 * x * g, color='#2e4057', lw=1.8, label=r"$f' = -2x\,e^{-x^2}$")
+ax.plot(x, (4 * x**2 - 2) * g, color='#d1495b', lw=1.8, ls='--', label=r"$f'' = (4x^2 - 2)\,e^{-x^2}$")
+ax.axhline(0, color='gray', lw=0.6)
+xi = 1 / np.sqrt(2)
+for xc in (-xi, xi):
+    ax.axvline(xc, color='#b07d1a', lw=1, ls=':')
+    ax.plot(xc, np.exp(-xc**2), 's', color='#edae49', ms=7)
+ax.plot(0, 1, 'o', color='#2e4057', ms=7)
+ax.text(0, 1.1, r"peak: $f' = 0$, $f'' < 0$", ha='center', fontsize=9)
+ax.text(xi + 0.08, 0.72, r"inflection: $f'' = 0$", fontsize=9, color='#b07d1a')
+ax.set_ylim(-2.3, 1.4)
+ax.set_xlabel('x')
+ax.legend(fontsize=8, loc='lower right')
+ax.set_title('Fig.5 The Gaussian with its first two derivatives (a = 1)')
+plt.tight_layout()
+plt.show()
+```
 :::
 
 ## Functions of several variables
@@ -248,7 +422,7 @@ ax.set_ylabel('y')
 ax.set_zlabel('f(x, y)')
 ax.view_init(elev=25, azim=-60)
 ax.legend(loc='upper left', fontsize=8)
-ax.set_title('Fig.2 Partial derivatives are slopes of slices through the surface')
+ax.set_title('Fig.6 Partial derivatives are slopes of slices through the surface')
 plt.tight_layout()
 plt.show()
 ```
@@ -361,7 +535,7 @@ for ax, n in zip(axes, [4, 8, 32]):
     ax.set_title(f'n = {n},  sum = {approx:.3f}', fontsize=10)
     ax.set_xlabel('x')
 axes[0].set_ylabel('f(x)')
-plt.suptitle('Fig.3 Riemann sums approaching the exact area 8/3 = 2.667 as n grows', y=1.04)
+plt.suptitle('Fig.7 Riemann sums approaching the exact area 8/3 = 2.667 as n grows', y=1.04)
 plt.tight_layout()
 plt.show()
 ```
