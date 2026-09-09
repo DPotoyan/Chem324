@@ -171,3 +171,34 @@ $link-color: $accent;
 .reveal .keyeq p { margin: 0.05em 0; }
 .reveal .keyeq .math.display { margin: 0; }
 .reveal .slide.has-dark-background .keyeq { background: rgba(255, 255, 255, 0.08); }
+
+// Worked examples: `::: {.worked}` poses the question, `::: {.soln}` gives the answer
+// (deck counterpart of the page's Example note and Solution dropdown). Add `.fragment`
+// to the solution card to hold it back: `::: {.soln .fragment}`.
+.reveal .worked,
+.reveal .soln {
+  border-radius: 6px;
+  padding: 0.15em 1.0em 0.3em 1.0em;
+  margin: 0.35em auto;
+  width: fit-content;
+  min-width: 55%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+.reveal .worked { background: #f4f5f6; border-left: 6px solid #9aa1ab; }
+.reveal .soln { background: mix($accent, white, 7%); border-left: 6px solid $accent; }
+.reveal .worked::before,
+.reveal .soln::before {
+  display: block;
+  font-size: 0.4em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.reveal .worked::before { content: "example"; color: #6c757d; }
+.reveal .soln::before { content: "solution"; color: $accent; }
+.reveal .worked p, .reveal .soln p { margin: 0.1em 0; }
+.reveal .worked .math.display, .reveal .soln .math.display { margin: 0.15em 0; }
+.reveal .slide.has-dark-background .worked { background: rgba(255, 255, 255, 0.06); }
+.reveal .slide.has-dark-background .soln { background: rgba(255, 255, 255, 0.10); }

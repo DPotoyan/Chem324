@@ -23,9 +23,10 @@ resources:
 
 ## One theme: rotation in a plane
 
-- **Trigonometry** and **complex numbers** are two views of the same thing, a point turning around a circle
-- Waves, oscillations, and every quantum phase live here
-- The bridge between the two views is **Euler's formula**, the single most useful identity in the course
+![](../../math/images/two_coordinates.png){.nostretch width="76%" fig-align="center"}
+
+- One point, two ways to name it: **across and up**, or **out and around**
+- **Trigonometry** converts between them; **complex numbers** make the second one algebra
 
 ## Sine and cosine are coordinates
 
@@ -40,10 +41,25 @@ resources:
 $$\cos^2\theta + \sin^2\theta = 1$$
 :::
 
-- **Angle sum**: $\sin(A \pm B) = \sin A\cos B \pm \cos A\sin B$, $\quad \cos(A \pm B) = \cos A\cos B \mp \sin A\sin B$
-- **Power reduction**: $\sin^2\theta = \tfrac12(1 - \cos 2\theta)$, $\quad \cos^2\theta = \tfrac12(1 + \cos 2\theta)$
-- **Small angles**: $\sin\theta \approx \theta$, $\cos\theta \approx 1 - \tfrac12\theta^2$, which is how a vibrating bond becomes a harmonic oscillator
+**Angle sum**, the workhorse
+
+$$\sin(A \pm B) = \sin A\cos B \pm \cos A\sin B$$
+
+$$\cos(A \pm B) = \cos A\cos B \mp \sin A\sin B$$
+
 - Do not memorize the table: every line falls out of Euler's formula
+
+## Two more you will use constantly
+
+**Power reduction**, a square becomes a single cosine
+
+$$\sin^2\theta = \tfrac{1}{2}(1 - \cos 2\theta), \qquad \cos^2\theta = \tfrac{1}{2}(1 + \cos 2\theta)$$
+
+**Small angles** in radians, the first Taylor terms
+
+$$\sin\theta \approx \theta, \qquad \cos\theta \approx 1 - \tfrac{1}{2}\theta^2$$
+
+- The second one is how a vibrating bond becomes a **harmonic oscillator**
 
 ## Complex numbers live in 2D
 
@@ -63,23 +79,48 @@ $$z = x + iy, \qquad x = \operatorname{Re} z,\ \ y = \operatorname{Im} z$$
 :::
 ::::
 
+## Why we needed $i$: every root, every time
+
+![](../../math/images/fta_roots.png){.nostretch width="70%" fig-align="center"}
+
+- Lift the parabola and the crossings vanish, but the **roots do not**: they step off the line
+- **Fundamental theorem of algebra**: degree $n$ means exactly $n$ complex roots, always
+
 ## Polar form and Euler's formula
 
 :::: {.columns}
-::: {.column width="45%"}
+::: {.column width="42%"}
 ![](../../math/images/polar_form.png){width="100%"}
 :::
-::: {.column width="55%"}
-- Locate $z$ by its distance $r$ and angle $\phi$: $x = r\cos\phi$, $y = r\sin\phi$
+::: {.column width="58%"}
+Locate $z$ by its distance $r$ and angle $\phi$
+
+$$x = r\cos\phi, \qquad y = r\sin\phi$$
 
 ::: {.keyeq}
 $$e^{i\phi} = \cos\phi + i\sin\phi$$
 :::
 
-- So $z = r(\cos\phi + i\sin\phi) = r\,e^{i\phi}$: $r = \sqrt{x^2 + y^2}$ is the **magnitude**, $\phi$ the **phase**
-- Proof in one line: the Taylor series of $e^{ix}$ splits into the series of $\cos x$ and $i\sin x$
+$$z = r(\cos\phi + i\sin\phi) = r\,e^{i\phi}$$
+
+- $r = \sqrt{x^2 + y^2}$ is the **magnitude**, $\phi$ the **phase**
 :::
 ::::
+
+## Example: Cartesian to polar
+
+::: {.worked}
+Write $z = -4 + 4i$ in polar form.
+:::
+
+::: {.soln .fragment}
+$$r = \sqrt{(-4)^2 + 4^2} = 4\sqrt{2}, \qquad \phi = \frac{3\pi}{4}$$
+
+$$z = 4\sqrt{2}\;e^{i\,3\pi/4}$$
+:::
+
+- Second quadrant, so take $\phi$ from `arctan2(y, x)`, not from $\arctan(y/x)$
+- On a calculator `atan` sees $-4/4$ and $4/{-4}$ as one ratio and always answers in quadrant I or IV; `atan2` reads both signs
 
 ## Multiplication is rotation
 
@@ -96,6 +137,20 @@ $$(r_1 e^{i\phi_1})(r_2 e^{i\phi_2}) = r_1 r_2\, e^{i(\phi_1 + \phi_2)}$$
 - $e^{-i\phi}$ undoes $e^{i\phi}$; angles matter only mod $2\pi$
 :::
 ::::
+
+## Example: multiply the same idea two ways
+
+::: {.worked}
+Find $(3 + 4i)(1 - 2i)$, then $\left(2e^{i\pi/6}\right)\left(3e^{i\pi/3}\right)$.
+:::
+
+::: {.soln .fragment}
+$$(3 + 4i)(1 - 2i) = 3 - 6i + 4i - 8i^2 = 11 - 2i$$
+
+$$\left(2e^{i\pi/6}\right)\left(3e^{i\pi/3}\right) = 6\,e^{i(\pi/6 + \pi/3)} = 6\,e^{i\pi/2} = 6i$$
+:::
+
+- Cartesian: expand, then $i^2 = -1$. Polar: **lengths multiply, angles add**, and you are done
 
 ## Live: dial the phase {.smaller}
 
@@ -136,16 +191,18 @@ viewof phi = Inputs.range([-6.28, 6.28], {step: 0.05, value: 0.9, label: "rotati
 md`|z| = **${Math.hypot(1.3, 0.5).toFixed(2)}** before and after: a pure ${phi >= 0 ? "counterclockwise" : "clockwise"} turn by ${phi.toFixed(2)} rad`
 ```
 
-## The rotating phase is a clock
+## The rotating phase is a helix
 
 :::: {.columns}
 ::: {.column width="55%"}
 ![](../../math/images/ComplexHelix.gif){width="100%"}
 :::
 ::: {.column width="45%"}
-- $e^{i\omega t}$ traces a **helix**: its shadow on one wall is $\cos\omega t$, on the other $\sin\omega t$
-- One rotating phase carries **both waves** at once
-- Preview: every stationary state carries $e^{-iEt/\hbar}$, a clock hand turning clockwise at rate $E/\hbar$
+$$e^{i\omega t} = \cos\omega t + i\sin\omega t$$
+
+- The tip runs around a **circle** in the complex plane; let time run along a third axis and the path is a **helix**
+- Its shadow on one wall is $\cos\omega t$, on the other $\sin\omega t$
+- One turning arrow carries **both waves**, which is why one exponential replaces two trig functions
 :::
 ::::
 
@@ -156,34 +213,58 @@ $$\bar{z} = x - iy = r\,e^{-i\phi}, \qquad |z|^2 = \bar{z}\,z = x^2 + y^2 = r^2$
 :::
 
 - Conjugation **reflects** $z$ across the real axis; $\bar z z$ rotates it back onto the axis and leaves a non-negative number
-- This is exactly how an amplitude becomes a probability: $|\psi|^2 = \psi^*\psi$
-- Sums and differences give the trig functions back:
+- Sums and differences of $e^{\pm i\phi}$ hand the trig functions back:
+
 $$\cos\phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \qquad \sin\phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}$$
 
-## Waves are rotating phases
+## Example: modulus and division
+
+::: {.worked}
+Find $|7 + 24i|$, then divide $3 + 4i$ by $1 - 2i$.
+:::
+
+::: {.soln .fragment}
+$$|7 + 24i| = \sqrt{49 + 576} = \sqrt{625} = 25$$
+
+$$\frac{3 + 4i}{1 - 2i} = \frac{(3 + 4i)(1 + 2i)}{(1 - 2i)(1 + 2i)} = \frac{-5 + 10i}{5} = -1 + 2i$$
+:::
+
+- To divide, multiply top and bottom by the **conjugate of the bottom**: the denominator turns real
+
+## Adding waves is adding arrows
+
+Each cosine is the shadow of a turning arrow, $\cos\theta = \operatorname{Re}\,e^{i\theta}$
+
+$$\cos\theta + \cos(\theta + \phi)
+= \operatorname{Re}\,e^{i\theta} + \operatorname{Re}\,e^{i\theta}e^{i\phi}
+= \operatorname{Re}\big[e^{i\theta} + e^{i\theta}e^{i\phi}\big]$$
 
 ::: {.keyeq}
-$$\cos(kx - \omega t) = \operatorname{Re}\, e^{i(kx - \omega t)}$$
+$$\cos\theta + \cos(\theta + \phi) = \operatorname{Re}\big[e^{i\theta}\,(1 + e^{i\phi})\big]$$
 :::
 
-:::: {.columns}
-::: {.column width="55%"}
-![](../../math/images/phasor_sum.png){width="100%"}
-:::
-::: {.column width="45%"}
-- **Derivatives become multiplications**: $\partial_x \to ik$, $\partial_t \to -i\omega$; twice gives $-k^2$, $-\omega^2$
-- **Adding waves becomes adding arrows**: $\cos\theta + \cos(\theta+\phi) = \operatorname{Re}[e^{i\theta}(1 + e^{i\phi})]$
-- Resultant amplitude $2|\cos(\phi/2)|$: doubles in phase, cancels half a turn apart. That is **interference**
-:::
-::::
+- Two rules only: $e^{i(\theta + \phi)} = e^{i\theta}e^{i\phi}$, and $\operatorname{Re}$ of a sum is the sum of the $\operatorname{Re}$s
+- Factoring the shared $e^{i\theta}$ leaves $1 + e^{i\phi}$: **two arrows a fixed angle $\phi$ apart**
 
-## Why chemists care
+## Interference is the length of one arrow
 
-- **Probabilities**: $|\psi|^2 = \psi^*\psi$ is why wavefunctions may be complex while measurements are real
-- **Phases are invisible alone**: $\psi \to e^{i\theta}\psi$ leaves $|\psi|^2$ unchanged, but phases **between** two amplitudes produce interference
-- **Time evolution** is a phase rotation, $e^{-iEt/\hbar}$
-- **X-ray crystallography**: each scattered wave is $|A|e^{i\phi}$; detectors measure $|A|$ only, and recovering $\phi$ is the famous **phase problem**
+![](../../math/images/phasor_sum.png){.nostretch width="72%" fig-align="center"}
+
+$$|1 + e^{i\phi}| = 2\left|\cos(\phi/2)\right|$$
+
+- $\phi = 0$: arrows aligned, amplitude **doubles**. $\phi = \pi$: opposed, amplitude **zero**
+- Bright and dark fringes are exactly this arrow, long or short
+
+## Derivatives become multiplications
+
+::: {.keyeq}
+$$\frac{\partial}{\partial x}\,e^{i(kx - \omega t)} = ik\,e^{i(kx - \omega t)}, \qquad \frac{\partial}{\partial t}\,e^{i(kx - \omega t)} = -i\omega\,e^{i(kx - \omega t)}$$
+:::
+
+- A wave is the real part of a rotating phase: $\cos(kx - \omega t) = \operatorname{Re}\,e^{i(kx - \omega t)}$
+- Differentiating only brings down a **constant factor**; twice gives $-k^2$ and $-\omega^2$
+- Taking the real part commutes with adding and differentiating, so do all the algebra on the exponential and take $\operatorname{Re}$ at the very end
 
 # Takeaway {.center}
 
-> $e^{i\phi} = \cos\phi + i\sin\phi$ turns trigonometry into exponentials: multiplying by $e^{i\phi}$ rotates without stretching, $\bar z z = |z|^2$ turns amplitudes into probabilities, and every identity you need falls out of one exponential rule.
+> $e^{i\phi} = \cos\phi + i\sin\phi$ turns trigonometry into exponentials: multiplying by $e^{i\phi}$ rotates without stretching, $\bar z z = |z|^2$ turns any complex number into a real length, and adding waves becomes adding arrows.
