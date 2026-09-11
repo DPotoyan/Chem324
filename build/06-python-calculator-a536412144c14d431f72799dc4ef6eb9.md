@@ -253,7 +253,7 @@ mesh6 = ax6.pcolormesh(Xg6, Zg6, psi6, cmap="RdBu_r", vmin=-amp6, vmax=amp6, sha
 ax6.set_aspect("equal")
 ax6.set_xlabel("x (Bohr)")
 ax6.set_ylabel("z (Bohr)")
-ax6.set_title(f"orbital ({n6}, {l6}, {m6}) — xz cross-section")
+ax6.set_title(f"orbital ({n6}, {l6}, {m6}): xz cross-section")
 fig6.colorbar(mesh6, ax=ax6, shrink=0.85, label="wavefunction (sign)")
 fig6
 ```
@@ -357,6 +357,131 @@ fig1
 Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets.
 
 
+
+### 7. Quadratic equation solver
+
+Every quadratic $ax^2 + bx + c = 0$ is solved by one formula:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+The sign of the **discriminant** $\Delta = b^2 - 4ac$ decides what comes out: two real crossings for $\Delta > 0$, one repeated root for $\Delta = 0$, and for $\Delta < 0$ a pair of complex conjugates that never touch the axis. Drag the coefficients and watch the roots leave the real line.
+
+```{marimo} python
+:hide-code: true
+
+a7 = mo.ui.slider(-3.0, 3.0, step=0.25, value=1.0, show_value=True, label="a")
+b7 = mo.ui.slider(-6.0, 6.0, step=0.25, value=-2.0, show_value=True, label="b")
+c7 = mo.ui.slider(-6.0, 6.0, step=0.25, value=-3.0, show_value=True, label="c")
+mo.hstack([a7, b7, c7], justify="start", gap=1.5)
+```
+
+```{marimo} python
+:hide-code: true
+
+av7, bv7, cv7 = a7.value, b7.value, c7.value
+disc7 = bv7**2 - 4 * av7 * cv7
+if av7 == 0:
+    roots7 = [] if bv7 == 0 else [complex(-cv7 / bv7, 0.0)]
+elif disc7 >= 0:
+    sq7 = np.sqrt(disc7) / (2 * av7)
+    roots7 = [complex(-bv7 / (2 * av7) - sq7, 0.0), complex(-bv7 / (2 * av7) + sq7, 0.0)]
+else:
+    sq7 = np.sqrt(-disc7) / (2 * abs(av7))
+    roots7 = [complex(-bv7 / (2 * av7), -sq7), complex(-bv7 / (2 * av7), sq7)]
+
+def par7(v):
+    """format a coefficient, wrapping negatives in parentheses for substitution"""
+    return f"({v:g})" if v < 0 else f"{v:g}"
+
+if av7 == 0:
+    if bv7 == 0:
+        text7 = f"With $a = 0$ and $b = 0$ nothing is left to solve: the equation reads ${cv7:g} = 0$."
+    else:
+        text7 = (f"With $a = 0$ the parabola flattens into the line $bx + c = 0$, "
+                 f"which has the single root $x = -c/b = {roots7[0].real:.4g}$.")
+else:
+    kind7 = ("two real roots" if disc7 > 0 else
+             "one repeated real root" if disc7 == 0 else
+             "two complex conjugate roots")
+    if disc7 >= 0:
+        result7 = f"x_1 = {roots7[0].real:.4g}, \\qquad x_2 = {roots7[1].real:.4g}"
+    else:
+        result7 = f"x = {roots7[1].real:.4g} \\pm {roots7[1].imag:.4g}\\, i"
+    text7 = (
+        f"$$\\Delta = b^2 - 4ac = {par7(bv7)}^2 - 4 \\cdot {par7(av7)} \\cdot {par7(cv7)} = {disc7:g}$$\n\n"
+        f"$\\Delta {'>' if disc7 > 0 else '=' if disc7 == 0 else '<'} 0$, so **{kind7}**:\n\n"
+        f"$$x = \\frac{{-{par7(bv7)} \\pm \\sqrt{{{disc7:g}}}}}{{2 \\cdot {par7(av7)}}}"
+        f"\\qquad\\Longrightarrow\\qquad {result7}$$"
+    )
+mo.md(text7)
+```
+
+```{marimo} python
+:hide-code: true
+
+# left: the parabola against the real axis; right: where the roots sit in the complex plane
+if av7 != 0:
+    xv7 = -bv7 / (2 * av7)
+    half7 = max(3.0, 1.6 * max(abs(r.real - xv7) for r in roots7) + 1.0)
+else:
+    xv7 = 0.0 if not roots7 else roots7[0].real
+    half7 = 4.0
+xs7 = np.linspace(xv7 - half7, xv7 + half7, 400)
+ys7 = av7 * xs7**2 + bv7 * xs7 + cv7
+real7 = [r for r in roots7 if abs(r.imag) < 1e-12]
+cplx7 = [r for r in roots7 if abs(r.imag) >= 1e-12]
+
+fig7, (axL7, axR7) = plt.subplots(1, 2, figsize=(9.6, 4.0), gridspec_kw={"width_ratios": [1.25, 1]})
+axL7.plot(xs7, ys7, color="0.2", lw=2.2)
+axL7.axhline(0, color="k", lw=1.2)
+axL7.axvline(0, color="0.75", lw=0.8)
+for r in real7:
+    axL7.plot(r.real, 0, "o", color="#C8102E", ms=9, zorder=5)
+if av7 != 0 and cplx7:
+    yv7 = av7 * xv7**2 + bv7 * xv7 + cv7
+    axL7.annotate("", xy=(xv7, yv7), xytext=(xv7, 0), arrowprops=dict(arrowstyle="<->", color="#107895", lw=1.6))
+    axL7.text(xv7, yv7 / 2, "  no crossing", color="#107895", fontsize=10, va="center")
+ylo7, yhi7 = ys7.min(), ys7.max()
+pad7 = 0.12 * (yhi7 - ylo7 + 1e-9)
+axL7.set_ylim(min(ylo7, 0) - pad7, max(yhi7, 0) + pad7)
+axL7.set_xlabel("x")
+axL7.set_ylabel(r"$ax^2 + bx + c$")
+def term7(v, power):
+    """one term of the polynomial as text: drop zero terms, hide unit coefficients"""
+    if v == 0:
+        return ""
+    mag = "" if abs(v) == 1 and power else f"{abs(v):g}"
+    var = {2: "x²", 1: "x", 0: ""}[power]
+    return f" {'-' if v < 0 else '+'} {mag}{var}"
+poly7 = (term7(av7, 2) + term7(bv7, 1) + term7(cv7, 0)).strip() or "0"
+poly7 = poly7[2:] if poly7.startswith("+ ") else "-" + poly7[2:] if poly7.startswith("- ") else poly7
+axL7.set_title(f"y = {poly7}", fontsize=11)
+
+axR7.axhline(0, color="k", lw=1.0)
+axR7.axvline(0, color="k", lw=1.0)
+for r in real7:
+    axR7.plot(r.real, 0, "o", color="#C8102E", ms=10, zorder=5)
+    axR7.annotate(f"{r.real:.3g}", (r.real, 0), textcoords="offset points", xytext=(6, 8), color="#C8102E", fontsize=10)
+for r in cplx7:
+    axR7.plot(r.real, r.imag, "o", color="#107895", ms=10, zorder=5)
+    axR7.annotate(f"{r.real:.3g} {r.imag:+.3g}i", (r.real, r.imag), textcoords="offset points", xytext=(6, 6 if r.imag > 0 else -14), color="#107895", fontsize=10)
+if cplx7:
+    axR7.plot([cplx7[0].real] * 2, [cplx7[0].imag, cplx7[1].imag], ls="--", color="#107895", lw=1, alpha=0.6)
+lim7 = max(1.5, 1.35 * max([abs(r) for r in roots7] + [1.0]))
+axR7.set_xlim(-lim7, lim7)
+axR7.set_ylim(-lim7, lim7)
+axR7.set_aspect("equal")
+axR7.set_xlabel("Re x")
+axR7.set_ylabel("Im x")
+axR7.set_title(f"{len(roots7)} root(s) in the complex plane", fontsize=11)
+fig7.suptitle("Fig. Roots of the quadratic: crossings of the real axis (left) and positions in the complex plane (right)", fontsize=10, y=1.02)
+fig7.tight_layout()
+fig7
+```
+
+Start from the defaults and raise $c$: the two crossings slide together, merge at $\Delta = 0$, and then step off the real line as a mirror pair, real part shared and imaginary parts opposite. The curve stops touching the axis, but the number of roots never changes. That is the fundamental theorem of algebra in miniature: a degree $n$ polynomial has exactly $n$ complex roots. The background is in the [complex numbers appendix](../math/02-trigonometry-and-complex-numbers.md).
 
 :::{tip} Want more room?
 Every cell above is editable in place, so use this page as a scratchpad whenever you need a quick number, plot, or derivative. For guided tutorials that you can open in Colab, see [Python basics](01-python-basics.md), [NumPy](02-numpy.md), and [SymPy](03-symbolic-math-with-sympy.md).
