@@ -47,7 +47,33 @@ def wavelength_to_rgb(nm):
     return rgb
 ```
 
-### 1. Constants and quick calculations
+### 1. Units, Constants and quick calculations
+
+```{marimo} python
+:hide-code: true
+
+to_joules = {
+    "J": 1.0,
+    "eV": 1.602176634e-19,
+    "cm^-1": 1.986445857e-23,
+    "kJ/mol": 1000 / 6.02214076e23,
+    "hartree": 4.3597447222e-18,
+    "Hz": 6.62607015e-34,
+}
+amount_c = mo.ui.number(value=1.0, step=0.1, label="value")
+unit_c = mo.ui.dropdown(options=list(to_joules), value="eV", label="from unit")
+mo.hstack([amount_c, unit_c], justify="start", gap=1.5)
+```
+
+```{marimo} python
+:hide-code: true
+
+val_c = amount_c.value if amount_c.value is not None else 0.0
+joules_c = val_c * to_joules[unit_c.value]
+rows_c = "\n".join(f"| {u} | {joules_c / f:.6g} |" for u, f in to_joules.items())
+mo.md(f"**{val_c:g} {unit_c.value}** equals:\n\n| unit | value |\n|:--|--:|\n{rows_c}")
+```
+
 
 `scipy.constants` knows every physical constant ([full list](https://docs.scipy.org/doc/scipy/reference/constants.html)):
 
@@ -76,60 +102,17 @@ A scratchpad, seeded with a photon-energy calculation. Edit it and press play; t
 lam = 532e-9                       # a green laser pointer
 E_photon = const.h * const.c / lam
 E_photon / const.e                 # in electron volts
+
+
+
+
+
+
+
 ```
 
-Or let the slider do the arithmetic. Can this photon break a C-C bond?
 
-```{marimo} python
-:hide-code: true
-
-lam_q = mo.ui.slider(start=200, stop=1000, step=2, value=532, show_value=True,
-                     label="photon wavelength (nm)")
-lam_q
-```
-
-```{marimo} python
-:hide-code: true
-
-e_q = const.h * const.c / (lam_q.value * 1e-9)
-kjmol_q = e_q * const.N_A / 1000
-region_q = "ultraviolet" if lam_q.value < 380 else ("visible" if lam_q.value <= 750 else "infrared")
-verdict_q = "YES, breaks a C-C bond (347 kJ/mol)" if kjmol_q > 347 else "no, too weak for a C-C bond (347 kJ/mol)"
-mo.vstack([
-    mo.md(f"A **{lam_q.value} nm** photon ({region_q}) carries **{e_q/const.e:.2f} eV** "
-          f"= **{kjmol_q:.0f} kJ/mol**: **{verdict_q}**"),
-    mo.Html(f"<div style='width:120px;height:14px;border-radius:7px;background:{to_hex(wavelength_to_rgb(lam_q.value))}'></div>"),
-])
-```
-
-### 2. Unit converter
-
-```{marimo} python
-:hide-code: true
-
-to_joules = {
-    "J": 1.0,
-    "eV": 1.602176634e-19,
-    "cm^-1": 1.986445857e-23,
-    "kJ/mol": 1000 / 6.02214076e23,
-    "hartree": 4.3597447222e-18,
-    "Hz": 6.62607015e-34,
-}
-amount_c = mo.ui.number(value=1.0, step=0.1, label="value")
-unit_c = mo.ui.dropdown(options=list(to_joules), value="eV", label="from unit")
-mo.hstack([amount_c, unit_c], justify="start", gap=1.5)
-```
-
-```{marimo} python
-:hide-code: true
-
-val_c = amount_c.value if amount_c.value is not None else 0.0
-joules_c = val_c * to_joules[unit_c.value]
-rows_c = "\n".join(f"| {u} | {joules_c / f:.6g} |" for u, f in to_joules.items())
-mo.md(f"**{val_c:g} {unit_c.value}** equals:\n\n| unit | value |\n|:--|--:|\n{rows_c}")
-```
-
-### 3. Plotting panel
+### 2. Plotting panel
 
 A ready-to-edit plotting template. Swap in any function of `x`; the slider is yours to repurpose:
 
@@ -154,7 +137,7 @@ fig
 ```
 
 
-### 4. Numerical integral
+### 3. Numerical integral
 
 Define any function and limits in the pad; the plot shades area above the axis in green and below in red, and the value comes from `np.trapezoid`, the same tool your homework uses:
 
@@ -192,7 +175,7 @@ fig2
 The green and red areas fight each other: an integral is a **signed** sum. For probability densities like $|\psi|^2$ the red never appears, which is exactly why they can be interpreted as probabilities.
 
 
-### 5. Symbolic window
+### 4. Symbolic window
 
 Derivatives, integrals, and equation solving with `sympy`; results render as typeset math. Each pad is editable:
 
@@ -217,7 +200,7 @@ q = sp.symbols("q")
 sp.solve(q**3 - 6*q**2 + 11*q - 6, q)           # solver pad
 ```
 
-### 6. Orbital visualizer
+### 5. Orbital visualizer
 
 Pick quantum numbers (the menus only ever offer valid combinations). The first plot is a **2D cross-section** of the orbital in the xz-plane, with blue and red marking the wavefunction's positive and negative lobes. Below it, the **radial view** shows the radial function $R_{nl}(r)$ and the radial distribution $P(r) = r^2 R^2$, and reports the most probable radius, the mean radius $\langle r\rangle$, and the node count.
 
@@ -313,96 +296,9 @@ mo.md(
 )
 ```
 
-### 7. Orbital overlap
 
-Bonding starts here. The **overlap integral** $S = \int \psi_A \psi_B\,d^3r$ measures how much two atomic orbitals share the same region with the same sign. Pick an orbital on each center, slide them together, and watch the overlap. The left panel shows both orbitals along the bond ($z$) axis; the right panel is the product $\psi_A\psi_B$ whose integral is $S$. Try **1s with 2p_x** to see an overlap that cancels to zero by symmetry.
 
-```{marimo} python
-:hide-code: true
-
-ao_choices = {"1s": "1s", "2s": "2s", "2p_z": "2pz", "2p_x": "2px"}
-aoA = mo.ui.dropdown(options=ao_choices, value="1s", label="orbital on A")
-aoB = mo.ui.dropdown(options=ao_choices, value="1s", label="orbital on B")
-d_sep = mo.ui.slider(0.5, 8.0, step=0.25, value=3.0, show_value=True,
-                     label="internuclear distance d (Bohr)")
-mo.vstack([mo.hstack([aoA, aoB], justify="start", gap=1.5), d_sep])
-```
-
-```{marimo} python
-:hide-code: true
-
-# real hydrogenic atomic orbitals, aligned so p_z points along the bond axis
-Y_S7 = 1 / np.sqrt(4 * np.pi)
-Y_P7 = np.sqrt(3 / (4 * np.pi))
-
-def ao_amp(kind, X, Y, Z):
-    r = np.sqrt(X**2 + Y**2 + Z**2) + 1e-12
-    if kind == "1s":  return radial_c(r, 1, 0) * Y_S7
-    if kind == "2s":  return radial_c(r, 2, 0) * Y_S7
-    if kind == "2pz": return radial_c(r, 2, 1) * Y_P7 * Z / r
-    if kind == "2px": return radial_c(r, 2, 1) * Y_P7 * X / r
-```
-
-```{marimo} python
-:hide-code: true
-
-d7 = d_sep.value
-kA7, kB7 = aoA.value, aoB.value
-labA7 = [k for k, v in ao_choices.items() if v == kA7][0]
-labB7 = [k for k, v in ao_choices.items() if v == kB7][0]
-
-# 2D cross-section in the xz-plane: A at z = -d/2, B at z = +d/2
-gp7 = np.linspace(-9, 9, 280)
-Xp7, Zp7 = np.meshgrid(gp7, gp7)
-Yp7 = np.zeros_like(Xp7)
-psiA7 = ao_amp(kA7, Xp7, Yp7, Zp7 + d7 / 2)
-psiB7 = ao_amp(kB7, Xp7, Yp7, Zp7 - d7 / 2)
-prod7 = psiA7 * psiB7
-
-# overlap S via a 3D grid integral
-gx7 = np.linspace(-9, 9, 48)
-gz7 = np.linspace(-(d7 / 2 + 9), d7 / 2 + 9, 64)
-XX7, YY7, ZZ7 = np.meshgrid(gx7, gx7, gz7, indexing="ij")
-fA7 = ao_amp(kA7, XX7, YY7, ZZ7 + d7 / 2)
-fB7 = ao_amp(kB7, XX7, YY7, ZZ7 - d7 / 2)
-S7 = float(np.trapezoid(np.trapezoid(np.trapezoid(fA7 * fB7, gz7, axis=2), gx7, axis=1), gx7, axis=0))
-
-fig7, axes7 = plt.subplots(1, 2, figsize=(9.5, 4.2))
-panels7 = [(axes7[0], psiA7 + psiB7, f"{labA7} (A)  +  {labB7} (B)"),
-           (axes7[1], prod7, r"product $\psi_A\,\psi_B$")]
-for ax7, fld7, ttl7 in panels7:
-    amp7 = np.abs(fld7).max() + 1e-12
-    ax7.pcolormesh(Xp7, Zp7, fld7, cmap="RdBu_r", vmin=-amp7, vmax=amp7, shading="auto")
-    ax7.plot(0, -d7 / 2, "k+", ms=11, mew=2)
-    ax7.plot(0, d7 / 2, "k+", ms=11, mew=2)
-    ax7.set_aspect("equal")
-    ax7.set_xlabel("x (Bohr)")
-    ax7.set_ylabel("z (Bohr)")
-    ax7.set_title(ttl7, fontsize=10)
-fig7.suptitle(f"overlap  S = {S7:.3f}   at  d = {d7:.2f} a0", fontsize=12)
-fig7.tight_layout()
-fig7
-```
-
-```{marimo} python
-:hide-code: true
-
-if abs(S7) < 0.03:
-    verdict7 = ("**essentially zero**: the positive and negative lobes of the product cancel, "
-                "a symmetry-forbidden overlap (the origin of the sigma / pi distinction)")
-elif S7 > 0:
-    verdict7 = ("**positive**: the orbitals meet with the same sign between the nuclei, "
-                "the constructive overlap that builds a bonding orbital")
-else:
-    verdict7 = ("**negative**: the facing lobes have opposite sign, "
-                "the destructive combination behind antibonding orbitals")
-
-mo.md(f"Overlap $S = {S7:.3f}$ for {labA7} on A and {labB7} on B at $d = {d7:.2f}\\,a_0$. This is {verdict7}.")
-```
-
-The window where $|S|$ is a few tenths is exactly where [chemical bonds live](../ch08/02-hydrogen-molecule-ion.md). Pushing the nuclei together raises $|S|$, while a mismatch in orbital symmetry drives it to zero no matter how close they get.
-
-### 8. One-dimensional Schrödinger solver
+### 6. One-dimensional Schrödinger solver
 
 Pick a potential and get its bound states instantly: energies as horizontal lines, wavefunctions drawn at their own energy (units: $\hbar = m = 1$, hard walls at $x = \pm 4$). To see how the solver works inside, open the [numerical Schrödinger lab](07-demo-numerical-schrodinger.md).
 
