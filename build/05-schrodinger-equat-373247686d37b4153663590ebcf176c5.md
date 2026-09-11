@@ -1,7 +1,7 @@
 # HW 5: Schrodinger Equation and Operators
 
 >  "Where did we get that (equation) from? Nowhere! It is not possible to derive it from anything you know. It came out of the mind of Schrödinger.”
-> — Richard Feynman
+> Richard Feynman
 
 
 
