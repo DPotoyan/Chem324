@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,176 +16,155 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch02/images
 ---
 
 ## What is a wave?
 
-- A **wave** is a self-propagating **disturbance**
-- Transfers **energy, momentum, information**
-- Does **not** transport matter
-- Governed by the **wave equation**, a PDE
-
-::: {.fragment}
-Two key families: **traveling waves** (propagate) and **standing waves** (oscillate in place)
-:::
-
-## Kinds of waves
-
 :::: {.columns}
-::: {.column width="50%"}
-![](../../ch02/images/propage_stand.gif){width="90%"}
+::: {.column width="56%"}
+![](../../ch02/images/transverse_longitudinal.gif){width="100%"}
 :::
-::: {.column width="50%"}
-- **Medium disturbance**: sound, strings, water
-- **Quantum waves**: complex wavefunctions for electrons, atoms
-- **Electromagnetic waves**: need **no medium**, travel in vacuum
-- **Gravitational waves**: ripples in spacetime
+::: {.column width="44%"}
+- A **self-propagating disturbance**: carries energy and information, **not matter**
+- **Transverse**: medium moves perpendicular to travel (string, light)
+- **Longitudinal**: medium moves along travel (sound)
+- Strings, water, sound, light, and electron **wavefunctions**
 :::
 ::::
 
-## Transverse vs longitudinal
+## A shape that moves: $f(x - vt)$
 
 :::: {.columns}
-::: {.column width="50%"}
-![](../../ch02/images/ext_transverse_longitudinal.gif){width="90%"}
+::: {.column width="56%"}
+![](../../ch02/images/traveling_pulse.gif){width="100%"}
 :::
-::: {.column width="50%"}
-- **Transverse**: disturbance is **perpendicular** to propagation
-- **Longitudinal**: disturbance is **along** propagation
+::: {.column width="44%"}
+- Surfer rides the wave: shape frozen at $x'$
+- Shore sees it slide: $x = x' + vt$
+
+$$u(x,t) = f(x') = f(x - vt)$$
+
+- Hold the peak fixed: $x - vt = \text{const}$ moves **right** at speed $v$
+- $f(x + vt)$ moves **left**
 :::
 ::::
-
-## Defining a wave mathematically
-
-- A disturbance $u$ depends on space and time: $u = f(x, t)$
-- A surfer riding the wave sees it frozen at $x'$
-- A shore observer sees the front move: $x = x' + vt$
-
-::: {.fragment}
-A right-moving wave of fixed shape:
-
-$$u(x,t) = f(x-vt)$$
-:::
-
-::: {.fragment}
-Set the front constant: $x - vt = const \Rightarrow x = vt + const$ (moves right). The form $f(x+vt)$ moves **left**.
-:::
 
 ## Periodic traveling waves
 
+![](../../ch02/images/wavelength_period.gif){.nostretch width="76%" fig-align="center"}
+
+$$u(x,t) = A\sin(kx - \omega t + \phi)$$
+
+- **Amplitude** $A$, **wave number** $k$, **angular frequency** $\omega = kv$, **phase** $\phi$
+
+## Wavelength, period, speed
+
+Repeats every $\lambda$ in space and every $T$ in time: $k\lambda = 2\pi$ and $\omega T = 2\pi$
+
 :::: {.columns}
 ::: {.column width="50%"}
-![](../../ch02/images/lec5_Introwave.jpg){width="90%"}
+
+::: {.keyeq}
+$$k = \frac{2\pi}{\lambda}$$
+:::
+
 :::
 ::: {.column width="50%"}
-A sine wave traveling along $x$:
 
-$$y(x,t)= A \sin(kx-\omega t+\phi)$$
+::: {.keyeq}
+$$\omega = \frac{2\pi}{T} = 2\pi\nu$$
+:::
 
-- **Amplitude** $A$: max disturbance
-- **Wave number** $k$: periodicity in space
-- **Angular frequency** $\omega = kv$: periodicity in time
-- **Phase** $\phi$: starting point
 :::
 ::::
+
+::: {.fragment}
+
+::: {.keyeq}
+$$v = \frac{\omega}{k} = \lambda\nu$$
+:::
+
+:::
+
+- One wavelength per period. The **medium** sets $v$, so fixing $\lambda$ fixes $\nu$
 
 ## Complex representation
 
-- Easier to compute with **complex exponentials**, take real or imaginary part at the end
-
-::: {.fragment}
-$$u(x,t) = Ae^{i(kx-\omega t)}$$
-:::
-
 :::: {.columns}
-::: {.column width="40%"}
-![](../../ch02/images/phasors.gif){width="80%"}
-:::
 ::: {.column width="60%"}
-- Real and imaginary parts are cosine and sine
-- The **phasor** rotates as $t$ advances at fixed $x$
+![](../../ch02/images/phasor_wave.gif){width="100%"}
+:::
+::: {.column width="40%"}
+$$u(x,t) = Ae^{i(kx - \omega t)}$$
+
+- Real part **cosine**, imaginary part **sine**
+- At fixed $x$: a **phasor** turning at rate $\omega$
+- Derivatives become **multiplications** by $ik$ and $-i\omega$
+- Take the real part at the very end
 :::
 ::::
 
-## Periodicity in space and time
+## The classical wave equation {auto-animate=true}
 
-- Repeats every **wavelength** $\lambda$ in space: $k\lambda = 2\pi$
+$$u(x,t) = Ae^{i(kx-\omega t)}$$
 
-::: {.fragment}
-$$k=\frac{2\pi}{\lambda}$$
-:::
+**Two $x$-derivatives, two $t$-derivatives**
 
-- Repeats every **period** $T$ in time, frequency $\nu = 1/T$: $\omega T = 2\pi$
-
-::: {.fragment}
-$$\omega=\frac{2\pi}{T} = 2\pi\nu$$
-:::
-
-::: {.fragment}
-Wavelength, frequency, and speed are linked by $\omega = kv$, i.e. $\lambda \nu = v$
-:::
+$$\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u$$
 
 ## The classical wave equation {auto-animate=true}
 
 $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
-## The classical wave equation {auto-animate=true}
+**Two $x$-derivatives, two $t$-derivatives**
 
-$$u(x,t) = Ae^{i(kx-\omega t)}$$
+$$\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u$$
 
-::: {.nonincremental}
-- Two $x$-derivatives: $u_{xx} = -k^2\, u$
-- Two $t$-derivatives: $u_{tt} = -\omega^2\, u$
-- Their ratio eliminates $u$: $\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}$
+Divide and use $\omega = kv$: the ratio is $k^2/\omega^2 = 1/v^2$
+
+::: {.keyeq}
+$$\frac{\partial^2 u}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}$$
 :::
 
-## The classical wave equation {auto-animate=true}
+- Holds for **every** shape $f(x \mp vt)$ by the chain rule: the equation of motion of waves
 
-$$u(x,t) = Ae^{i(kx-\omega t)}$$
+## Example: read a wave off its formula
 
-::: {.nonincremental}
-- Two $x$-derivatives: $u_{xx} = -k^2\, u$
-- Two $t$-derivatives: $u_{tt} = -\omega^2\, u$
-- Their ratio eliminates $u$: $\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}$
+::: {.worked}
+$u(x,t) = \sin(2x - 10t + \pi/2)$ in SI units. Find $A$, $\lambda$, $\nu$, $T$, and $v$.
 :::
 
-$$\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}$$
+::: {.soln .fragment}
+$$A = 1, \qquad k = 2\ \text{m}^{-1} \Rightarrow \lambda = \pi\ \text{m}, \qquad \omega = 10\ \text{s}^{-1} \Rightarrow \nu = \tfrac{5}{\pi}\ \text{Hz},\; T = \tfrac{\pi}{5}\ \text{s}$$
 
-Solutions are **wave functions** of space and time
+$$v = \frac{\omega}{k} = 5\ \text{m/s to the right}, \qquad \sin(\theta + \pi/2) = \cos\theta$$
+:::
 
-## Combining waves: interference
+- Match to $A\sin(kx - \omega t + \phi)$ and read off; only $v = \omega/k$ needs a calculation
+
+## Superposition and interference
 
 :::: {.columns}
-::: {.column width="55%"}
-![](../../ch02/images/ext_wave_interference.gif){width="95%"}
+::: {.column width="62%"}
+![](../../ch02/images/interference_phase.gif){width="100%"}
 :::
-::: {.column width="45%"}
-- **Superposition**: if $u_A$ and $u_B$ solve the wave equation, so does $u_C = u_A + u_B$
-- **Interference**: combining waves yields greater, lower, or equal amplitude
-:::
-::::
+::: {.column width="38%"}
+- Linear equation: $u_A + u_B$ is again a solution
+- Equal waves, phase difference $\phi$:
 
-## Interference of two phases
+$$\text{sum} = 2\cos\tfrac{\phi}{2}\; e^{i(\theta + \phi/2)}$$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch02/images/ext_wave_interference2.gif){width="90%"}
-:::
-::: {.column width="50%"}
-Summing two waves differing only in phase:
-
-$$\Psi_{\text{total}} = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \left( kx - \omega t + \frac{\phi_1 + \phi_2}{2} \right)}$$
-
-- In phase ($\phi=0$): amplitude **doubles**
-- Out of phase ($\phi=\pi$): **cancels**
+- $\phi = 0$: amplitude **doubles**
+- $\phi = \pi$: waves **cancel**
 :::
 ::::
 
 ## Live: dial the phase {.smaller}
 
-<span style="color:#7fb3d5">**wave 1**</span> $= \sin(kx)$, <span style="color:#e59866">**wave 2**</span> $= \sin(kx+\phi)$, <span style="color:#C8102E">**sum**</span> with envelope $2\cos(\phi/2)$
+<span style="color:#107895">**wave 1**</span> $= \sin(kx)$, <span style="color:#e07b00">**wave 2**</span> $= \sin(kx+\phi)$, <span style="color:#C8102E">**sum**</span> with envelope $2\cos(\phi/2)$
 
 ```{ojs}
 //| echo: false
@@ -203,8 +182,8 @@ viewof phi = Inputs.range([0, 6.283], {step: 0.01, value: 1.0, label: "phase φ 
     y: {domain: [-2.2, 2.2], label: "u"},
     marks: [
       Plot.ruleY([0], {stroke: "#ccc"}),
-      Plot.line(series(x => Math.sin(x)), {x: "x", y: "y", stroke: "#7fb3d5", strokeWidth: 1.5}),
-      Plot.line(series(x => Math.sin(x + phi)), {x: "x", y: "y", stroke: "#e59866", strokeWidth: 1.5}),
+      Plot.line(series(x => Math.sin(x)), {x: "x", y: "y", stroke: "#107895", strokeWidth: 1.5}),
+      Plot.line(series(x => Math.sin(x + phi)), {x: "x", y: "y", stroke: "#e07b00", strokeWidth: 1.5}),
       Plot.line(series(x => Math.sin(x) + Math.sin(x + phi)), {x: "x", y: "y", stroke: "#C8102E", strokeWidth: 2.5})
     ]
   });
@@ -216,6 +195,52 @@ viewof phi = Inputs.range([0, 6.283], {step: 0.01, value: 1.0, label: "phase φ 
 md`Sum amplitude right now: **${(Math.abs(2*Math.cos(phi/2))).toFixed(2)}** (in phase → 2, out of phase → 0)`
 ```
 
+## Two sources: fringes
+
+:::: {.columns}
+::: {.column width="62%"}
+![](../../ch02/images/two_source_interference.gif){width="100%"}
+:::
+::: {.column width="38%"}
+- Two in-phase sources, $d = 3\lambda$
+- Path difference $m\lambda$: crests meet, **bright**
+- Path difference $(m + \tfrac12)\lambda$: crest meets trough, **dark**
+- This is the **double slit** of Chapter 1
+:::
+::::
+
+## Standing waves: two waves, opposite directions
+
+:::: {.columns}
+::: {.column width="46%"}
+![](../../ch02/images/traveling_standing.gif){height="400"}
+:::
+::: {.column width="54%"}
+- $x$ and $t$ **separate**: the shape $\sin kx$ stays put, its height $\cos\omega t$ oscillates
+- **Nodes** at $kx = n\pi$, spaced $\lambda/2$, never move
+- Clamped ends must be nodes: only $L = n\lambda/2$ **fits**
+:::
+::::
+
+::: {.keyeq}
+$$\sin(kx-\omega t) + \sin(kx+\omega t) = 2\sin(kx)\cos(\omega t)$$
+:::
+
+## Beats
+
+:::: {.columns}
+::: {.column width="60%"}
+![](../../ch02/images/beats.gif){width="100%"}
+:::
+::: {.column width="40%"}
+$$\cos a + \cos b = 2\cos\tfrac{a-b}{2}\cos\tfrac{a+b}{2}$$
+
+- Slightly different $k$: a **slow envelope** times a **fast carrier**
+- Beat frequency $|\nu_2 - \nu_1|$: two strings almost in tune
+- Many $k$ at once: one **wave packet**, the seed of the uncertainty principle
+:::
+::::
+
 # Takeaway {.center}
 
-> A wave is a disturbance described by $u=f(x \pm vt)$ that obeys the classical wave equation $u_{xx} = \frac{1}{v^2}u_{tt}$, with $k=2\pi/\lambda$, $\omega=2\pi\nu$, and $\omega=kv$; superposing waves produces interference.
+> A wave is any shape $f(x \mp vt)$. Sine waves carry $k = 2\pi/\lambda$ and $\omega = 2\pi\nu$ with $v = \omega/k$, every wave obeys $u_{xx} = u_{tt}/v^2$, and because that equation is linear, waves add: interference, standing waves, and beats.
