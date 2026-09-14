@@ -102,6 +102,22 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="01-waves_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="01-waves_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01-waves_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01-waves_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -217,164 +233,138 @@ Davit Potoyan
 </section>
 <section id="what-is-a-wave" class="slide level2">
 <h2>What is a wave?</h2>
-<ul>
-<li class="fragment">A <strong>wave</strong> is a self-propagating <strong>disturbance</strong></li>
-<li class="fragment">Transfers <strong>energy, momentum, information</strong></li>
-<li class="fragment">Does <strong>not</strong> transport matter</li>
-<li class="fragment">Governed by the <strong>wave equation</strong>, a PDE</li>
-</ul>
-<div class="fragment">
-<p>Two key families: <strong>traveling waves</strong> (propagate) and <strong>standing waves</strong> (oscillate in place)</p>
-</div>
-</section>
-<section id="kinds-of-waves" class="slide level2">
-<h2>Kinds of waves</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch02/images/propage_stand.gif" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:56%;">
+<p><img data-src="../../ch02/images/transverse_longitudinal.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:44%;">
 <ul>
-<li class="fragment"><strong>Medium disturbance</strong>: sound, strings, water</li>
-<li class="fragment"><strong>Quantum waves</strong>: complex wavefunctions for electrons, atoms</li>
-<li class="fragment"><strong>Electromagnetic waves</strong>: need <strong>no medium</strong>, travel in vacuum</li>
-<li class="fragment"><strong>Gravitational waves</strong>: ripples in spacetime</li>
+<li>A <strong>self-propagating disturbance</strong>: carries energy and information, <strong>not matter</strong></li>
+<li><strong>Transverse</strong>: medium moves perpendicular to travel (string, light)</li>
+<li><strong>Longitudinal</strong>: medium moves along travel (sound)</li>
+<li>Strings, water, sound, light, and electron <strong>wavefunctions</strong></li>
 </ul>
 </div></div>
 </section>
-<section id="transverse-vs-longitudinal" class="slide level2">
-<h2>Transverse vs longitudinal</h2>
+<section id="a-shape-that-moves-fx---vt" class="slide level2">
+<h2>A shape that moves: <span class="math inline">f(x - vt)</span></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch02/images/ext_transverse_longitudinal.gif" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:56%;">
+<p><img data-src="../../ch02/images/traveling_pulse.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:44%;">
 <ul>
-<li class="fragment"><strong>Transverse</strong>: disturbance is <strong>perpendicular</strong> to propagation</li>
-<li class="fragment"><strong>Longitudinal</strong>: disturbance is <strong>along</strong> propagation</li>
+<li>Surfer rides the wave: shape frozen at <span class="math inline">x'</span></li>
+<li>Shore sees it slide: <span class="math inline">x = x' + vt</span></li>
+</ul>
+<p><span class="math display">u(x,t) = f(x') = f(x - vt)</span></p>
+<ul>
+<li>Hold the peak fixed: <span class="math inline">x - vt = \text{const}</span> moves <strong>right</strong> at speed <span class="math inline">v</span></li>
+<li><span class="math inline">f(x + vt)</span> moves <strong>left</strong></li>
 </ul>
 </div></div>
-</section>
-<section id="defining-a-wave-mathematically" class="slide level2">
-<h2>Defining a wave mathematically</h2>
-<ul>
-<li class="fragment">A disturbance <span class="math inline">\(u\)</span> depends on space and time: <span class="math inline">\(u = f(x, t)\)</span></li>
-<li class="fragment">A surfer riding the wave sees it frozen at <span class="math inline">\(x'\)</span></li>
-<li class="fragment">A shore observer sees the front move: <span class="math inline">\(x = x' + vt\)</span></li>
-</ul>
-<div class="fragment">
-<p>A right-moving wave of fixed shape:</p>
-<p><span class="math display">\[u(x,t) = f(x-vt)\]</span></p>
-</div>
-<div class="fragment">
-<p>Set the front constant: <span class="math inline">\(x - vt = const \Rightarrow x = vt + const\)</span> (moves right). The form <span class="math inline">\(f(x+vt)\)</span> moves <strong>left</strong>.</p>
-</div>
 </section>
 <section id="periodic-traveling-waves" class="slide level2">
 <h2>Periodic traveling waves</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch02/images/wavelength_period.gif" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<p><span class="math display">u(x,t) = A\sin(kx - \omega t + \phi)</span></p>
+<ul>
+<li><strong>Amplitude</strong> <span class="math inline">A</span>, <strong>wave number</strong> <span class="math inline">k</span>, <strong>angular frequency</strong> <span class="math inline">\omega = kv</span>, <strong>phase</strong> <span class="math inline">\phi</span></li>
+</ul>
+</section>
+<section id="wavelength-period-speed" class="slide level2">
+<h2>Wavelength, period, speed</h2>
+<p>Repeats every <span class="math inline">\lambda</span> in space and every <span class="math inline">T</span> in time: <span class="math inline">k\lambda = 2\pi</span> and <span class="math inline">\omega T = 2\pi</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="../../ch02/images/lec5_Introwave.jpg" style="width:90.0%"></p>
+<div class="keyeq">
+<p><span class="math display">k = \frac{2\pi}{\lambda}</span></p>
+</div>
 </div><div class="column" style="width:50%;">
-<p>A sine wave traveling along <span class="math inline">\(x\)</span>:</p>
-<p><span class="math display">\[y(x,t)= A \sin(kx-\omega t+\phi)\]</span></p>
-<ul>
-<li class="fragment"><strong>Amplitude</strong> <span class="math inline">\(A\)</span>: max disturbance</li>
-<li class="fragment"><strong>Wave number</strong> <span class="math inline">\(k\)</span>: periodicity in space</li>
-<li class="fragment"><strong>Angular frequency</strong> <span class="math inline">\(\omega = kv\)</span>: periodicity in time</li>
-<li class="fragment"><strong>Phase</strong> <span class="math inline">\(\phi\)</span>: starting point</li>
-</ul>
+<div class="keyeq">
+<p><span class="math display">\omega = \frac{2\pi}{T} = 2\pi\nu</span></p>
+</div>
 </div></div>
+<div class="fragment">
+<div class="keyeq">
+<p><span class="math display">v = \frac{\omega}{k} = \lambda\nu</span></p>
+</div>
+</div>
+<ul>
+<li>One wavelength per period. The <strong>medium</strong> sets <span class="math inline">v</span>, so fixing <span class="math inline">\lambda</span> fixes <span class="math inline">\nu</span></li>
+</ul>
 </section>
 <section id="complex-representation" class="slide level2">
 <h2>Complex representation</h2>
-<ul>
-<li class="fragment">Easier to compute with <strong>complex exponentials</strong>, take real or imaginary part at the end</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[u(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
-</div>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="../../ch02/images/phasors.gif" style="width:80.0%"></p>
-</div><div class="column" style="width:60%;">
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch02/images/phasor_wave.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
+<p><span class="math display">u(x,t) = Ae^{i(kx - \omega t)}</span></p>
 <ul>
-<li class="fragment">Real and imaginary parts are cosine and sine</li>
-<li class="fragment">The <strong>phasor</strong> rotates as <span class="math inline">\(t\)</span> advances at fixed <span class="math inline">\(x\)</span></li>
+<li>Real part <strong>cosine</strong>, imaginary part <strong>sine</strong></li>
+<li>At fixed <span class="math inline">x</span>: a <strong>phasor</strong> turning at rate <span class="math inline">\omega</span></li>
+<li>Derivatives become <strong>multiplications</strong> by <span class="math inline">ik</span> and <span class="math inline">-i\omega</span></li>
+<li>Take the real part at the very end</li>
 </ul>
 </div></div>
-</section>
-<section id="periodicity-in-space-and-time" class="slide level2">
-<h2>Periodicity in space and time</h2>
-<ul>
-<li class="fragment">Repeats every <strong>wavelength</strong> <span class="math inline">\(\lambda\)</span> in space: <span class="math inline">\(k\lambda = 2\pi\)</span></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[k=\frac{2\pi}{\lambda}\]</span></p>
-</div>
-<ul>
-<li class="fragment">Repeats every <strong>period</strong> <span class="math inline">\(T\)</span> in time, frequency <span class="math inline">\(\nu = 1/T\)</span>: <span class="math inline">\(\omega T = 2\pi\)</span></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\omega=\frac{2\pi}{T} = 2\pi\nu\]</span></p>
-</div>
-<div class="fragment">
-<p>Wavelength, frequency, and speed are linked by <span class="math inline">\(\omega = kv\)</span>, i.e.&nbsp;<span class="math inline">\(\lambda \nu = v\)</span></p>
-</div>
 </section>
 <section id="the-classical-wave-equation" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The classical wave equation</h2>
-<p><span class="math display">\[u(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
+<p><span class="math display">u(x,t) = Ae^{i(kx-\omega t)}</span></p>
+<p><strong>Two <span class="math inline">x</span>-derivatives, two <span class="math inline">t</span>-derivatives</strong></p>
+<p><span class="math display">\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u</span></p>
 </section>
 <section id="the-classical-wave-equation-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The classical wave equation</h2>
-<p><span class="math display">\[u(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
+<p><span class="math display">u(x,t) = Ae^{i(kx-\omega t)}</span></p>
+<p><strong>Two <span class="math inline">x</span>-derivatives, two <span class="math inline">t</span>-derivatives</strong></p>
+<p><span class="math display">\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u</span></p>
+<p>Divide and use <span class="math inline">\omega = kv</span>: the ratio is <span class="math inline">k^2/\omega^2 = 1/v^2</span></p>
+<div class="keyeq">
+<p><span class="math display">\frac{\partial^2 u}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}</span></p>
+</div>
 <ul>
-<li>Two <span class="math inline">\(x\)</span>-derivatives: <span class="math inline">\(u_{xx} = -k^2\, u\)</span></li>
-<li>Two <span class="math inline">\(t\)</span>-derivatives: <span class="math inline">\(u_{tt} = -\omega^2\, u\)</span></li>
-<li>Their ratio eliminates <span class="math inline">\(u\)</span>: <span class="math inline">\(\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}\)</span></li>
+<li>Holds for <strong>every</strong> shape <span class="math inline">f(x \mp vt)</span> by the chain rule: the equation of motion of waves</li>
 </ul>
 </section>
-<section id="the-classical-wave-equation-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">The classical wave equation</h2>
-<p><span class="math display">\[u(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
+<section id="example-read-a-wave-off-its-formula" class="slide level2">
+<h2>Example: read a wave off its formula</h2>
+<div class="worked">
+<p><span class="math inline">u(x,t) = \sin(2x - 10t + \pi/2)</span> in SI units. Find <span class="math inline">A</span>, <span class="math inline">\lambda</span>, <span class="math inline">\nu</span>, <span class="math inline">T</span>, and <span class="math inline">v</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">A = 1, \qquad k = 2\ \text{m}^{-1} \Rightarrow \lambda = \pi\ \text{m}, \qquad \omega = 10\ \text{s}^{-1} \Rightarrow \nu = \tfrac{5}{\pi}\ \text{Hz},\; T = \tfrac{\pi}{5}\ \text{s}</span></p>
+<p><span class="math display">v = \frac{\omega}{k} = 5\ \text{m/s to the right}, \qquad \sin(\theta + \pi/2) = \cos\theta</span></p>
+</div>
 <ul>
-<li>Two <span class="math inline">\(x\)</span>-derivatives: <span class="math inline">\(u_{xx} = -k^2\, u\)</span></li>
-<li>Two <span class="math inline">\(t\)</span>-derivatives: <span class="math inline">\(u_{tt} = -\omega^2\, u\)</span></li>
-<li>Their ratio eliminates <span class="math inline">\(u\)</span>: <span class="math inline">\(\dfrac{k^2}{\omega^2} = \dfrac{1}{v^2}\)</span></li>
+<li>Match to <span class="math inline">A\sin(kx - \omega t + \phi)</span> and read off; only <span class="math inline">v = \omega/k</span> needs a calculation</li>
 </ul>
-<p><span class="math display">\[\frac{\partial^2 u(x,t)}{\partial x^2 } = \frac{1}{v^2}\frac{\partial^2 u(x,t)}{\partial t^2}\]</span></p>
-<p>Solutions are <strong>wave functions</strong> of space and time</p>
 </section>
-<section id="combining-waves-interference" class="slide level2">
-<h2>Combining waves: interference</h2>
+<section id="superposition-and-interference" class="slide level2">
+<h2>Superposition and interference</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../../ch02/images/ext_wave_interference.gif" style="width:95.0%"></p>
-</div><div class="column" style="width:45%;">
+<div class="column" style="width:62%;">
+<p><img data-src="../../ch02/images/interference_phase.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:38%;">
 <ul>
-<li class="fragment"><strong>Superposition</strong>: if <span class="math inline">\(u_A\)</span> and <span class="math inline">\(u_B\)</span> solve the wave equation, so does <span class="math inline">\(u_C = u_A + u_B\)</span></li>
-<li class="fragment"><strong>Interference</strong>: combining waves yields greater, lower, or equal amplitude</li>
+<li>Linear equation: <span class="math inline">u_A + u_B</span> is again a solution</li>
+<li>Equal waves, phase difference <span class="math inline">\phi</span>:</li>
 </ul>
-</div></div>
-</section>
-<section id="interference-of-two-phases" class="slide level2">
-<h2>Interference of two phases</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch02/images/ext_wave_interference2.gif" style="width:90.0%"></p>
-</div><div class="column" style="width:50%;">
-<p>Summing two waves differing only in phase:</p>
-<p><span class="math display">\[\Psi_{\text{total}} = 2 \cos\left( \frac{\phi_1 - \phi_2}{2} \right) e^{i \left( kx - \omega t + \frac{\phi_1 + \phi_2}{2} \right)}\]</span></p>
+<p><span class="math display">\text{sum} = 2\cos\tfrac{\phi}{2}\; e^{i(\theta + \phi/2)}</span></p>
 <ul>
-<li class="fragment">In phase (<span class="math inline">\(\phi=0\)</span>): amplitude <strong>doubles</strong></li>
-<li class="fragment">Out of phase (<span class="math inline">\(\phi=\pi\)</span>): <strong>cancels</strong></li>
+<li><span class="math inline">\phi = 0</span>: amplitude <strong>doubles</strong></li>
+<li><span class="math inline">\phi = \pi</span>: waves <strong>cancel</strong></li>
 </ul>
 </div></div>
 </section>
 <section id="live-dial-the-phase" class="slide level2 smaller">
 <h2>Live: dial the phase</h2>
-<p><span style="color:#7fb3d5"><strong>wave 1</strong></span> <span class="math inline">\(= \sin(kx)\)</span>, <span style="color:#e59866"><strong>wave 2</strong></span> <span class="math inline">\(= \sin(kx+\phi)\)</span>, <span style="color:#C8102E"><strong>sum</strong></span> with envelope <span class="math inline">\(2\cos(\phi/2)\)</span></p>
+<p><span style="color:#107895"><strong>wave 1</strong></span> <span class="math inline">= \sin(kx)</span>, <span style="color:#e07b00"><strong>wave 2</strong></span> <span class="math inline">= \sin(kx+\phi)</span>, <span style="color:#C8102E"><strong>sum</strong></span> with envelope <span class="math inline">2\cos(\phi/2)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="191" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb1-191"><a href="" aria-label="191"></a>viewof phi <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.283</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"phase φ (rad)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="170" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 169;"><span id="cb1-170"><a href="" aria-label="170"></a>viewof phi <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.283</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"phase φ (rad)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -382,21 +372,21 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="196" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 195;"><span id="cb2-196"><a href="" aria-label="196"></a>{</span>
-<span id="cb2-197"><a href="" aria-label="197"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">12.57</span><span class="op">,</span> <span class="fl">0.03</span>)<span class="op">;</span></span>
-<span id="cb2-198"><a href="" aria-label="198"></a>  <span class="kw">const</span> series <span class="op">=</span> (fn) <span class="kw">=&gt;</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">fn</span>(x)}))<span class="op">;</span></span>
-<span id="cb2-199"><a href="" aria-label="199"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-200"><a href="" aria-label="200"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
-<span id="cb2-201"><a href="" aria-label="201"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"kx"</span>}<span class="op">,</span></span>
-<span id="cb2-202"><a href="" aria-label="202"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">2.2</span><span class="op">,</span> <span class="fl">2.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u"</span>}<span class="op">,</span></span>
-<span id="cb2-203"><a href="" aria-label="203"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-204"><a href="" aria-label="204"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
-<span id="cb2-205"><a href="" aria-label="205"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#7fb3d5"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
-<span id="cb2-206"><a href="" aria-label="206"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e59866"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
-<span id="cb2-207"><a href="" aria-label="207"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x) <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
-<span id="cb2-208"><a href="" aria-label="208"></a>    ]</span>
-<span id="cb2-209"><a href="" aria-label="209"></a>  })<span class="op">;</span></span>
-<span id="cb2-210"><a href="" aria-label="210"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="175" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 174;"><span id="cb2-175"><a href="" aria-label="175"></a>{</span>
+<span id="cb2-176"><a href="" aria-label="176"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">12.57</span><span class="op">,</span> <span class="fl">0.03</span>)<span class="op">;</span></span>
+<span id="cb2-177"><a href="" aria-label="177"></a>  <span class="kw">const</span> series <span class="op">=</span> (fn) <span class="kw">=&gt;</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">fn</span>(x)}))<span class="op">;</span></span>
+<span id="cb2-178"><a href="" aria-label="178"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-179"><a href="" aria-label="179"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
+<span id="cb2-180"><a href="" aria-label="180"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"kx"</span>}<span class="op">,</span></span>
+<span id="cb2-181"><a href="" aria-label="181"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">2.2</span><span class="op">,</span> <span class="fl">2.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u"</span>}<span class="op">,</span></span>
+<span id="cb2-182"><a href="" aria-label="182"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-183"><a href="" aria-label="183"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb2-184"><a href="" aria-label="184"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#107895"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
+<span id="cb2-185"><a href="" aria-label="185"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e07b00"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
+<span id="cb2-186"><a href="" aria-label="186"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x) <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
+<span id="cb2-187"><a href="" aria-label="187"></a>    ]</span>
+<span id="cb2-188"><a href="" aria-label="188"></a>  })<span class="op">;</span></span>
+<span id="cb2-189"><a href="" aria-label="189"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -404,7 +394,7 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="215" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 214;"><span id="cb3-215"><a href="" aria-label="215"></a><span class="fu">md</span><span class="vs">`Sum amplitude right now: **</span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi<span class="op">/</span><span class="dv">2</span>)))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">** (in phase → 2, out of phase → 0)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="194" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb3-194"><a href="" aria-label="194"></a><span class="fu">md</span><span class="vs">`Sum amplitude right now: **</span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi<span class="op">/</span><span class="dv">2</span>)))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">** (in phase → 2, out of phase → 0)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -412,10 +402,54 @@ Davit Potoyan
 </div>
 </div>
 </section>
+<section id="two-sources-fringes" class="slide level2">
+<h2>Two sources: fringes</h2>
+<div class="columns">
+<div class="column" style="width:62%;">
+<p><img data-src="../../ch02/images/two_source_interference.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:38%;">
+<ul>
+<li>Two in-phase sources, <span class="math inline">d = 3\lambda</span></li>
+<li>Path difference <span class="math inline">m\lambda</span>: crests meet, <strong>bright</strong></li>
+<li>Path difference <span class="math inline">(m + \tfrac12)\lambda</span>: crest meets trough, <strong>dark</strong></li>
+<li>This is the <strong>double slit</strong> of Chapter 1</li>
+</ul>
+</div></div>
+</section>
+<section id="standing-waves-two-waves-opposite-directions" class="slide level2">
+<h2>Standing waves: two waves, opposite directions</h2>
+<div class="columns">
+<div class="column" style="width:46%;">
+<p><img data-src="../../ch02/images/traveling_standing.gif" height="400"></p>
+</div><div class="column" style="width:54%;">
+<ul>
+<li><span class="math inline">x</span> and <span class="math inline">t</span> <strong>separate</strong>: the shape <span class="math inline">\sin kx</span> stays put, its height <span class="math inline">\cos\omega t</span> oscillates</li>
+<li><strong>Nodes</strong> at <span class="math inline">kx = n\pi</span>, spaced <span class="math inline">\lambda/2</span>, never move</li>
+<li>Clamped ends must be nodes: only <span class="math inline">L = n\lambda/2</span> <strong>fits</strong></li>
+</ul>
+</div></div>
+<div class="keyeq">
+<p><span class="math display">\sin(kx-\omega t) + \sin(kx+\omega t) = 2\sin(kx)\cos(\omega t)</span></p>
+</div>
+</section>
+<section id="beats" class="slide level2">
+<h2>Beats</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch02/images/beats.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
+<p><span class="math display">\cos a + \cos b = 2\cos\tfrac{a-b}{2}\cos\tfrac{a+b}{2}</span></p>
+<ul>
+<li>Slightly different <span class="math inline">k</span>: a <strong>slow envelope</strong> times a <strong>fast carrier</strong></li>
+<li>Beat frequency <span class="math inline">|\nu_2 - \nu_1|</span>: two strings almost in tune</li>
+<li>Many <span class="math inline">k</span> at once: one <strong>wave packet</strong>, the seed of the uncertainty principle</li>
+</ul>
+</div></div>
+</section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A wave is a disturbance described by <span class="math inline">\(u=f(x \pm vt)\)</span> that obeys the classical wave equation <span class="math inline">\(u_{xx} = \frac{1}{v^2}u_{tt}\)</span>, with <span class="math inline">\(k=2\pi/\lambda\)</span>, <span class="math inline">\(\omega=2\pi\nu\)</span>, and <span class="math inline">\(\omega=kv\)</span>; superposing waves produces interference.</p>
+<p>A wave is any shape <span class="math inline">f(x \mp vt)</span>. Sine waves carry <span class="math inline">k = 2\pi/\lambda</span> and <span class="math inline">\omega = 2\pi\nu</span> with <span class="math inline">v = \omega/k</span>, every wave obeys <span class="math inline">u_{xx} = u_{tt}/v^2</span>, and because that equation is linear, waves add: interference, standing waves, and beats.</p>
 </blockquote>
 
 </section>
@@ -440,7 +474,6 @@ Davit Potoyan
   <script src="01-waves_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="01-waves_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="01-waves_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-waves_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -609,27 +642,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
@@ -637,7 +652,7 @@ Davit Potoyan
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwaGkgPSBJbnB1dHMucmFuZ2UoWzAsIDYuMjgzXSwge3N0ZXA6IDAuMDEsIHZhbHVlOiAxLjAsIGxhYmVsOiBcInBoYXNlIM+GIChyYWQpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB4cyA9IGQzLnJhbmdlKDAsIDEyLjU3LCAwLjAzKTtcbiAgY29uc3Qgc2VyaWVzID0gKGZuKSA9PiB4cy5tYXAoeCA9PiAoe3gsIHk6IGZuKHgpfSkpO1xuICByZXR1cm4gUGxvdC5wbG90KHtcbiAgICB3aWR0aDogMTAwMCwgaGVpZ2h0OiAzNjAsXG4gICAgeDoge2xhYmVsOiBcImt4XCJ9LFxuICAgIHk6IHtkb21haW46IFstMi4yLCAyLjJdLCBsYWJlbDogXCJ1XCJ9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCIjY2NjXCJ9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4KSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjN2ZiM2Q1XCIsIHN0cm9rZVdpZHRoOiAxLjV9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4ICsgcGhpKSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjZTU5ODY2XCIsIHN0cm9rZVdpZHRoOiAxLjV9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4KSArIE1hdGguc2luKHggKyBwaGkpKSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiNDODEwMkVcIiwgc3Ryb2tlV2lkdGg6IDIuNX0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYFN1bSBhbXBsaXR1ZGUgcmlnaHQgbm93OiAqKiR7KE1hdGguYWJzKDIqTWF0aC5jb3MocGhpLzIpKSkudG9GaXhlZCgyKX0qKiAoaW4gcGhhc2Ug4oaSIDIsIG91dCBvZiBwaGFzZSDihpIgMClgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BoaScpIn1dfQ==
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwaGkgPSBJbnB1dHMucmFuZ2UoWzAsIDYuMjgzXSwge3N0ZXA6IDAuMDEsIHZhbHVlOiAxLjAsIGxhYmVsOiBcInBoYXNlIM+GIChyYWQpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB4cyA9IGQzLnJhbmdlKDAsIDEyLjU3LCAwLjAzKTtcbiAgY29uc3Qgc2VyaWVzID0gKGZuKSA9PiB4cy5tYXAoeCA9PiAoe3gsIHk6IGZuKHgpfSkpO1xuICByZXR1cm4gUGxvdC5wbG90KHtcbiAgICB3aWR0aDogMTAwMCwgaGVpZ2h0OiAzNjAsXG4gICAgeDoge2xhYmVsOiBcImt4XCJ9LFxuICAgIHk6IHtkb21haW46IFstMi4yLCAyLjJdLCBsYWJlbDogXCJ1XCJ9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCIjY2NjXCJ9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4KSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjMTA3ODk1XCIsIHN0cm9rZVdpZHRoOiAxLjV9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4ICsgcGhpKSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjZTA3YjAwXCIsIHN0cm9rZVdpZHRoOiAxLjV9KSxcbiAgICAgIFBsb3QubGluZShzZXJpZXMoeCA9PiBNYXRoLnNpbih4KSArIE1hdGguc2luKHggKyBwaGkpKSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcIiNDODEwMkVcIiwgc3Ryb2tlV2lkdGg6IDIuNX0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYFN1bSBhbXBsaXR1ZGUgcmlnaHQgbm93OiAqKiR7KE1hdGguYWJzKDIqTWF0aC5jb3MocGhpLzIpKSkudG9GaXhlZCgyKX0qKiAoaW4gcGhhc2Ug4oaSIDIsIG91dCBvZiBwaGFzZSDihpIgMClgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BoaScpIn1dfQ==
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
