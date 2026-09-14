@@ -1,12 +1,18 @@
-"""Regenerate the chapter 2 animated GIFs and deck stills in ch02/images/.
+"""Chapter 2 animations and deck stills, authored ONCE here.
 
-The SAME animation is authored as a `{code-cell}` on the lecture page, where it is
-displayed with `HTML(ani.to_jshtml())`; this script bakes it once to a GIF for the deck
-(house rule: JS player on pages, GIF in decks). Stills are saved at dpi 200.
+Each registered function builds one figure (and, for animations, a FuncAnimation) and is
+self-contained: it uses only numpy, matplotlib.pyplot, FuncAnimation and the colour
+constants below. Running this script bakes the GIFs / PNG stills for the slide decks into
+ch02/images/. `scripts/sync_ch02_cells.py` copies the SAME function bodies into the
+`{code-cell}` blocks of the lecture pages (marker line `# synced: <name>`), where they are
+shown with the matplotlib JS player (house rule: JS player on pages, GIF in decks).
 
 Run from the repo root:
-    .venv/bin/python scripts/make_ch02_animations.py                 # everything
-    .venv/bin/python scripts/make_ch02_animations.py beats membrane_modes   # a subset
+    .venv/bin/python scripts/make_ch02_animations.py                 # bake everything
+    .venv/bin/python scripts/make_ch02_animations.py beats light_clock   # a subset
+    .venv/bin/python scripts/sync_ch02_cells.py                       # refresh page cells
+
+Page weight: the JS player embeds every frame as a PNG, so keep animations to 24-44 frames.
 """
 import sys
 import numpy as np
@@ -17,7 +23,6 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 OUT = "ch02/images"
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"font.size": 12, "axes.spines.top": False, "axes.spines.right": False})
 
 REGISTRY = {}
 
@@ -30,10 +35,11 @@ def register(fn):
 # ------------------------------------------------------------ transverse vs longitudinal
 @register
 def transverse_longitudinal():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     N, A, k, w = 48, 0.35, 2 * np.pi / 4.0, 2 * np.pi / 2.0   # beads, amplitude, lambda = 4, T = 2
     x0 = np.linspace(0, 12, N)
     xs = np.linspace(0, 12, 600)
-    ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+    ts = np.linspace(0, 2 * np.pi / w, 40, endpoint=False)
     pick = 18                                                 # the bead we follow
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 4.6))
@@ -63,17 +69,18 @@ def transverse_longitudinal():
         red2.set_data([xl[pick]], [0])
         return string, beads1, red1, beads2, red2
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=75, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ a shape that moves: f(x -/+ vt)
 @register
 def traveling_pulse():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     f = lambda s: np.exp(-s**2)
     v = 1.0
     x = np.linspace(-10, 10, 800)
-    ts = np.linspace(0, 6.5, 66)
+    ts = np.linspace(0, 6.5, 44)
 
     fig, ax = plt.subplots(figsize=(7.5, 3.8))
     (right,) = ax.plot([], [], color=TEAL, lw=2.6, label=r"$f(x-vt)$  moves right")
@@ -94,18 +101,19 @@ def traveling_pulse():
         label.set_position((v * t, 1.08)); label.set_text(f"peak at x = vt = {v*t:.1f}")
         return right, left, peak, label
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ wavelength (space) and period (time)
 @register
 def wavelength_period():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     lam, T = 4.0, 2.0
     k, w = 2 * np.pi / lam, 2 * np.pi / T
     x = np.linspace(0, 12, 800); x0 = 5.0
     tt = np.linspace(0, 2 * T, 800)
-    ts = np.linspace(0, 2 * T, 80, endpoint=False)
+    ts = np.linspace(0, 2 * T, 40, endpoint=False)
 
     fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.5, 3.9), gridspec_kw={"width_ratios": [1.4, 1]})
     (wave,) = ax.plot([], [], color=TEAL, lw=2.4)
@@ -137,16 +145,17 @@ def wavelength_period():
         trace.set_data(tt[mask], np.sin(k * x0 - w * tt[mask])); dot2.set_data([t], [np.sin(k * x0 - w * t)])
         return wave, dot, lam_bar, lam_txt, trace, dot2
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ complex wave and its phasor
 @register
 def phasor_wave():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     k, w = 2 * np.pi / 5.0, 2 * np.pi / 3.0     # lambda = 5, T = 3
     x = np.linspace(-10, 10, 800); x0 = 0.0
-    ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+    ts = np.linspace(0, 2 * np.pi / w, 36, endpoint=False)
 
     fig, (ax_w, ax_p) = plt.subplots(1, 2, figsize=(9.5, 4), gridspec_kw={"width_ratios": [1.7, 1]})
     (re,) = ax_w.plot([], [], color=TEAL, lw=2.4, label=r"Re $e^{i(kx-\omega t)} = \cos(kx-\omega t)$")
@@ -181,15 +190,16 @@ def phasor_wave():
         proj_re.set_data([z.real, z.real], [0, z.imag]); proj_im.set_data([0, z.real], [z.imag, z.imag])
         return re, im, dot_re, dot_im, arrow, tip, proj_re, proj_im
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=85, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ interference of two waves vs phase
 @register
 def interference_phase():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     x = np.linspace(0, 4 * np.pi, 800)
-    phis = np.linspace(0, 2 * np.pi, 80, endpoint=False)
+    phis = np.linspace(0, 2 * np.pi, 40, endpoint=False)
 
     fig, (ax_w, ax_p) = plt.subplots(1, 2, figsize=(9.5, 4), gridspec_kw={"width_ratios": [1.9, 1]})
     (w1,) = ax_w.plot([], [], color=TEAL, lw=1.6, label=r"$\sin(kx)$")
@@ -228,13 +238,14 @@ def interference_phase():
         title.set_text(rf"phase difference $\phi$ = {phi/np.pi:.2f}$\pi$,   sum amplitude $2|\cos(\phi/2)|$ = {amp:.2f}")
         return w1, w2, ws, env_hi, env_lo, a1, a2, asum, t1, tsum, title
 
-    ani = FuncAnimation(fig, update, frames=len(phis), interval=60, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(phis), interval=100, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ two point sources: fringes in 2D
 @register
 def two_source_interference():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     lam = 1.0; k, w = 2 * np.pi / lam, 2 * np.pi; d = 3 * lam
     xs = np.linspace(-6, 6, 220); ys = np.linspace(0, 12, 220)
     X, Y = np.meshgrid(xs, ys)
@@ -256,7 +267,6 @@ def two_source_interference():
     bx.set_xlabel("x along the far edge  (y = 12)"); bx.set_ylabel("time-averaged intensity")
     bx.set_title("bright and dark fringes", loc="left", fontsize=11.5)
     fig.tight_layout()
-
     art = []
 
     def update(i):
@@ -268,16 +278,17 @@ def two_source_interference():
         art.append(ax.contourf(X, Y, u, levels=levels, cmap="RdBu_r", extend="both"))
         return art
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ standing wave = two traveling waves
 @register
 def traveling_standing():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     k, w = 1.0, 1.0                        # v = w/k = 1
     x = np.linspace(0, 4 * np.pi, 800)     # two wavelengths
-    ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+    ts = np.linspace(0, 2 * np.pi / w, 36, endpoint=False)
     nodes = np.arange(0, 4 * np.pi + 1e-9, np.pi / k)
 
     fig, axes = plt.subplots(3, 1, figsize=(7.5, 5.6), sharex=True)
@@ -310,18 +321,19 @@ def traveling_standing():
         dots[2].set_data([np.pi / (2 * k)], [2 * np.cos(w * t)])           # an antinode: up and down only
         return (*lines, *dots)
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=85, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ beats
 @register
 def beats():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     v = 1.0
     k1, k2 = 4.0, 5.0
     w1, w2 = v * k1, v * k2
     x = np.linspace(0, 20, 1600)
-    ts = np.linspace(0, 2 * np.pi, 60, endpoint=False)     # common period of both waves
+    ts = np.linspace(0, 2 * np.pi, 40, endpoint=False)     # common period of both waves
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 4.8), sharex=True)
     (l1,) = ax1.plot([], [], color=TEAL, lw=1.5, label=r"$\cos(k_1x-\omega_1t)$")
@@ -348,17 +360,102 @@ def beats():
         e1.set_data(x, env); e2.set_data(x, -env)
         return l1, l2, ls, e1, e2
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=75, blit=False)
     return fig, ani
+
+
+# ------------------------------------------------------------ light clock: moving clocks run slow
+@register
+def light_clock():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    c, v, d = 1.0, 0.6, 1.0                          # light speed, clock speed, mirror gap
+    gamma = 1 / np.sqrt(1 - v**2 / c**2)             # 1.25
+    T0 = 2 * d / c                                   # one tick of the clock at rest
+    ts = np.linspace(0, 3 * T0, 48, endpoint=False)  # three ticks of the rest clock
+    bounce = lambda tau: d * (1 - np.abs(2 * (tau % 1.0) - 1))   # 0 -> d -> 0 once per unit tau
+
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.5, 4.2), gridspec_kw={"width_ratios": [1, 2.4]})
+    for a_, xlim in ((ax, (-0.8, 0.8)), (bx, (-0.8, 4.4))):
+        a_.set_xlim(*xlim); a_.set_ylim(-0.35, 1.45); a_.set_yticks([]); a_.set_xticks([])
+        for s in ("left", "bottom"):
+            a_.spines[s].set_visible(False)
+    (mir_a0,) = ax.plot([-0.5, 0.5], [0, 0], color="#333333", lw=5, solid_capstyle="butt")
+    (mir_a1,) = ax.plot([-0.5, 0.5], [d, d], color="#333333", lw=5, solid_capstyle="butt")
+    (ph_a,) = ax.plot([], [], "o", color=ORANGE, ms=13, mec="#ffd27f", mew=2.5, zorder=6)
+    (path_a,) = ax.plot([], [], color=ORANGE, lw=1.2, ls=":", alpha=0.8)
+    tick_a = ax.text(0, -0.25, "", ha="center", fontsize=12, color=TEAL, fontweight="bold")
+    ax.set_title(r"clock at rest:  tick $= 2d/c$", loc="left", fontsize=11.5)
+    ax.text(0.62, d / 2, "d", fontsize=12, color=GRAY, va="center")
+    ax.plot([0.58, 0.58], [0, d], color=GRAY, lw=1, marker="_", ms=8)
+
+    (mir_b0,) = bx.plot([], [], color="#333333", lw=5, solid_capstyle="butt")
+    (mir_b1,) = bx.plot([], [], color="#333333", lw=5, solid_capstyle="butt")
+    (ph_b,) = bx.plot([], [], "o", color=ORANGE, ms=13, mec="#ffd27f", mew=2.5, zorder=6)
+    (path_b,) = bx.plot([], [], color=ORANGE, lw=1.2, ls=":", alpha=0.8)
+    tick_b = bx.text(0, -0.25, "", ha="center", fontsize=12, color=CARDINAL, fontweight="bold")
+    bx.annotate("", xy=(4.2, 1.32), xytext=(2.9, 1.32), arrowprops=dict(arrowstyle="->", color=GRAY, lw=1.6))
+    bx.text(3.55, 1.37, "v = 0.6 c", color=GRAY, fontsize=10.5, ha="center")
+    bx.set_title(rf"moving at $v = 0.6c$:  longer path at the same $c$, tick $= \gamma\, 2d/c$,  $\gamma$ = {gamma:.2f}",
+                 loc="left", fontsize=11.5)
+    fig.suptitle("light moves at c for every observer, so the moving clock ticks slower", fontsize=12.5, y=0.99)
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
+
+    def update(i):
+        t = ts[i]
+        tt = np.linspace(0, t, 300)
+        ph_a.set_data([0], [bounce(t / T0)])
+        path_a.set_data(np.zeros_like(tt), bounce(tt / T0))
+        tick_a.set_text(f"ticks: {int(t // T0)}")
+        xc = v * t
+        mir_b0.set_data([xc - 0.5, xc + 0.5], [0, 0]); mir_b1.set_data([xc - 0.5, xc + 0.5], [d, d])
+        ph_b.set_data([xc], [bounce(t / (gamma * T0))])
+        path_b.set_data(v * tt, bounce(tt / (gamma * T0)))
+        tick_b.set_position((xc, -0.25)); tick_b.set_text(f"ticks: {int(t // (gamma * T0))}")
+        return mir_b0, mir_b1, ph_a, path_a, tick_a, ph_b, path_b, tick_b
+
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ acceleration follows curvature (still)
+@register
+def curvature_pulls():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-3.2, 3.6, 1200)
+    u = 1.1 * np.exp(-x**2 / 0.9) - 0.7 * np.exp(-(x - 2.3)**2 / 0.35)      # a crest and a trough
+    d2 = np.gradient(np.gradient(u, x), x)                                 # curvature u_xx
+    xb = np.array([-2.6, -1.9, -1.35, -0.7, 0.0, 0.7, 1.35, 1.75, 2.3, 2.85, 3.4])
+    ub, ab = np.interp(xb, x, u), 0.32 * np.interp(xb, x, d2)
+
+    fig, ax = plt.subplots(figsize=(8, 3.8))
+    ax.plot(x, u, color=TEAL, lw=2.8)
+    ax.plot(xb, ub, "o", color=TEAL, ms=7, mec="white", mew=1.2, zorder=5)
+    for xi, ui, ai in zip(xb, ub, ab):
+        if abs(ai) > 0.1:
+            ax.annotate("", xy=(xi, ui + ai), xytext=(xi, ui),
+                        arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=2.2, mutation_scale=16))
+    ax.text(0, 1.55, "curves down: pulled down", color=CARDINAL, ha="center", fontsize=10.5)
+    ax.text(2.3, -1.1, "curves up: pulled up", color=CARDINAL, ha="center", fontsize=10.5)
+    ax.annotate("straight here:\nno net pull", xy=(-0.7, 0.64), xytext=(-1.9, 1.15), color=GRAY, ha="center",
+                fontsize=10, arrowprops=dict(arrowstyle="-", color=GRAY, lw=1))
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(-3.2, 3.6); ax.set_ylim(-1.3, 1.8); ax.set_yticks([]); ax.set_xlabel("x")
+    ax.set_title(r"acceleration follows curvature:  $\partial^2 u/\partial t^2 = v^2\,\partial^2 u/\partial x^2$",
+                 loc="left", fontsize=12)
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/curvature_pulls.png", dpi=200)
+    print("wrote", f"{OUT}/curvature_pulls.png")
+    return fig, None
 
 
 # ------------------------------------------------------------ d'Alembert: a bump released from rest
 @register
 def dalembert_split():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     f = lambda s: np.exp(-s**2 / 0.5)
     v = 1.0
     x = np.linspace(-8, 8, 1000)
-    ts = np.linspace(0, 5.5, 56)
+    ts = np.linspace(0, 5.5, 40)
 
     fig, ax = plt.subplots(figsize=(7.5, 3.8))
     ax.plot(x, f(x), color=GRAY, lw=1.2, ls=":", label="initial shape f(x), released from rest")
@@ -378,13 +475,14 @@ def dalembert_split():
         u.set_data(x, 0.5 * (f(x - v * t) + f(x + v * t)))
         return hr, hl, u
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=70, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ normal modes of a string (still)
 @register
 def string_modes():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     L = 1.0
     x = np.linspace(0, L, 600)
     lam = [r"$\lambda_1 = 2L$", r"$\lambda_2 = L$", r"$\lambda_3 = 2L/3$", r"$\lambda_4 = L/2$"]
@@ -414,9 +512,10 @@ def string_modes():
 # ------------------------------------------------------------ single modes vs sums of modes
 @register
 def mode_superposition():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     L, v = 1.0, 1.0
     x = np.linspace(0, L, 600)
-    ts = np.linspace(0, 2 * L / v, 60, endpoint=False)     # one period of the fundamental
+    ts = np.linspace(0, 2 * L / v, 40, endpoint=False)     # one period of the fundamental
     X = lambda n: np.sin(n * np.pi * x / L)
     Tt = lambda n, t: np.cos(n * np.pi * v * t / L)
     combos = [[1], [3], [1, 2], [1, 2, 3]]
@@ -440,13 +539,14 @@ def mode_superposition():
             ln.set_data(x, sum(X(n) * Tt(n, t) for n in combo))
         return lines
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
     return fig, ani
 
 
 # ------------------------------------------------------------ plucked string from its modes
 @register
 def plucked_string():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     L, v, h, a = 1.0, 1.0, 1.0, 0.3            # length, speed, pluck height, pluck position
     N = 40                                      # modes kept
     n = np.arange(1, N + 1)
@@ -454,7 +554,7 @@ def plucked_string():
     x = np.linspace(0, L, 600)
     modes = np.sin(np.outer(n, np.pi * x / L))
     omega = n * np.pi * v / L
-    ts = np.linspace(0, 2 * L / v, 60, endpoint=False)
+    ts = np.linspace(0, 2 * L / v, 40, endpoint=False)
     f0 = np.where(x < a, h * x / a, h * (L - x) / (L - a))
 
     fig, (ax, bx) = plt.subplots(2, 1, figsize=(7.5, 5.8), gridspec_kw={"height_ratios": [1.5, 1]})
@@ -479,7 +579,7 @@ def plucked_string():
         m1.set_data(x, A[0] * Tn[0] * modes[0]); m2.set_data(x, A[1] * Tn[1] * modes[1])
         return u, m1, m2
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
     return fig, ani
 
 
@@ -491,7 +591,7 @@ def membrane_modes():
     X, Y = np.meshgrid(g, g)
     pairs = [(1, 1), (2, 1), (1, 2), (2, 2)]
     shapes = [np.sin(n * np.pi * X / a) * np.sin(m * np.pi * Y / b) for n, m in pairs]
-    ts = np.linspace(0, 1, 30, endpoint=False)             # one common period
+    ts = np.linspace(0, 1, 24, endpoint=False)             # one common period
 
     fig = plt.figure(figsize=(8.4, 6.4))
     axes = [fig.add_subplot(2, 2, i + 1, projection="3d") for i in range(4)]
@@ -513,7 +613,7 @@ def membrane_modes():
                                          rstride=1, cstride=1, linewidth=0, antialiased=True))
         return surfs
 
-    ani = FuncAnimation(fig, update, frames=len(ts), interval=70, blit=False)
+    ani = FuncAnimation(fig, update, frames=len(ts), interval=110, blit=False)
     return fig, ani
 
 
@@ -523,6 +623,6 @@ if __name__ == "__main__":
         fig, ani = REGISTRY[name]()
         if ani is not None:
             path = f"{OUT}/{name}.gif"
-            ani.save(path, writer=PillowWriter(fps=20), dpi=100)
+            ani.save(path, writer=PillowWriter(fps=15), dpi=100)
             print("wrote", path)
         plt.close(fig)

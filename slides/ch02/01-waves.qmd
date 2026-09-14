@@ -19,7 +19,22 @@ format:
     html-math-method: katex
 resources:
   - ../../ch02/images
+  - ../../ch01/images
 ---
+
+## Why waves, in a chemistry course?
+
+:::: {.columns}
+::: {.column width="50%"}
+![](../../ch01/images/double_slit_buildup.gif){width="100%"}
+:::
+::: {.column width="50%"}
+- Chapter 1: electrons **diffract**, and Bohr's orbits are **standing waves** that have to fit
+- Quantum mechanics is written in the **language of waves**
+- Today: the vocabulary ($\lambda$, $\nu$, phase), the **equation of motion** of a wave, and how waves **add**
+- Next lecture: waves with fixed ends produce **integers**
+:::
+::::
 
 ## What is a wave?
 
@@ -31,7 +46,7 @@ resources:
 - A **self-propagating disturbance**: carries energy and information, **not matter**
 - **Transverse**: medium moves perpendicular to travel (string, light)
 - **Longitudinal**: medium moves along travel (sound)
-- Strings, water, sound, light, and electron **wavefunctions**
+- The red bead never travels; only the **pattern** does
 :::
 ::::
 
@@ -107,7 +122,7 @@ $$u(x,t) = Ae^{i(kx - \omega t)}$$
 :::
 ::::
 
-## The classical wave equation {auto-animate=true}
+## The classical wave equation
 
 $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
@@ -115,14 +130,7 @@ $$u(x,t) = Ae^{i(kx-\omega t)}$$
 
 $$\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u$$
 
-## The classical wave equation {auto-animate=true}
-
-$$u(x,t) = Ae^{i(kx-\omega t)}$$
-
-**Two $x$-derivatives, two $t$-derivatives**
-
-$$\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u$$
-
+::: {.fragment}
 Divide and use $\omega = kv$: the ratio is $k^2/\omega^2 = 1/v^2$
 
 ::: {.keyeq}
@@ -130,6 +138,14 @@ $$\frac{\partial^2 u}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 u}{\partial 
 :::
 
 - Holds for **every** shape $f(x \mp vt)$ by the chain rule: the equation of motion of waves
+:::
+
+## What the equation says: curvature pulls
+
+![](../../ch02/images/curvature_pulls.png){.nostretch width="62%" fig-align="center"}
+
+- Newton's law for a piece of string: **acceleration follows curvature**. Neighbors pull a trough up and a crest down; a straight piece feels nothing
+- $v^2 = \mathcal{T}/\mu$, tension over mass per length: tighter or lighter strings carry faster waves
 
 ## Example: read a wave off its formula
 
@@ -195,25 +211,11 @@ viewof phi = Inputs.range([0, 6.283], {step: 0.01, value: 1.0, label: "phase φ 
 md`Sum amplitude right now: **${(Math.abs(2*Math.cos(phi/2))).toFixed(2)}** (in phase → 2, out of phase → 0)`
 ```
 
-## Two sources: fringes
-
-:::: {.columns}
-::: {.column width="62%"}
-![](../../ch02/images/two_source_interference.gif){width="100%"}
-:::
-::: {.column width="38%"}
-- Two in-phase sources, $d = 3\lambda$
-- Path difference $m\lambda$: crests meet, **bright**
-- Path difference $(m + \tfrac12)\lambda$: crest meets trough, **dark**
-- This is the **double slit** of Chapter 1
-:::
-::::
-
 ## Standing waves: two waves, opposite directions
 
 :::: {.columns}
 ::: {.column width="46%"}
-![](../../ch02/images/traveling_standing.gif){height="400"}
+![](../../ch02/images/traveling_standing.gif){height="330"}
 :::
 ::: {.column width="54%"}
 - $x$ and $t$ **separate**: the shape $\sin kx$ stays put, its height $\cos\omega t$ oscillates
@@ -226,21 +228,37 @@ md`Sum amplitude right now: **${(Math.abs(2*Math.cos(phi/2))).toFixed(2)}** (in 
 $$\sin(kx-\omega t) + \sin(kx+\omega t) = 2\sin(kx)\cos(\omega t)$$
 :::
 
-## Beats
+## Can you surf a light wave?
+
+- Our first move was to ride along with the wave, $x' = x - vt$. It works because water, sound, and strings have a **medium**
+- Maxwell: light obeys the wave equation with **no medium** and a speed made of constants
+
+$$\frac{\partial^2 E}{\partial x^2} = \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2}, \qquad c = \frac{1}{\sqrt{\varepsilon_0\mu_0}}$$
+
+- Einstein at 16: run beside a light beam and see a **frozen ripple**? Maxwell forbids it
+
+::: {.fragment}
+- 1905: take the equation at its word. **Light moves at $c$ for every observer.** There is no surfer frame, and $x' = x - vt$ must fail near $c$
+:::
+
+## The light clock: moving clocks run slow
+
+![](../../ch02/images/light_clock.gif){.nostretch height="330" fig-align="center"}
 
 :::: {.columns}
-::: {.column width="60%"}
-![](../../ch02/images/beats.gif){width="100%"}
-:::
-::: {.column width="40%"}
-$$\cos a + \cos b = 2\cos\tfrac{a-b}{2}\cos\tfrac{a+b}{2}$$
+::: {.column width="55%"}
 
-- Slightly different $k$: a **slow envelope** times a **fast carrier**
-- Beat frequency $|\nu_2 - \nu_1|$: two strings almost in tune
-- Many $k$ at once: one **wave packet**, the seed of the uncertainty principle
+::: {.keyeq}
+$$\Delta t = \gamma\,\Delta t_0, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$
+:::
+
+:::
+::: {.column width="45%"}
+- Same $c$, longer zigzag, slower tick
+- Gold's inner electrons: $v/c \approx 0.6$, which is why gold is **yellow**
 :::
 ::::
 
 # Takeaway {.center}
 
-> A wave is any shape $f(x \mp vt)$. Sine waves carry $k = 2\pi/\lambda$ and $\omega = 2\pi\nu$ with $v = \omega/k$, every wave obeys $u_{xx} = u_{tt}/v^2$, and because that equation is linear, waves add: interference, standing waves, and beats.
+> A wave is any shape $f(x \mp vt)$. Sine waves carry $k = 2\pi/\lambda$ and $\omega = 2\pi\nu$ with $v = \omega/k$, every wave obeys $u_{xx} = u_{tt}/v^2$ because acceleration follows curvature, and since that equation is linear, waves add. Light is the one wave nobody can surf.
