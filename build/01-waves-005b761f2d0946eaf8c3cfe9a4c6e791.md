@@ -13,6 +13,7 @@ kernelspec:
 - **Two periodicities**: the wavelength $\lambda$ in space and the period $T$ in time, packaged as $k=2\pi/\lambda$ and $\omega=2\pi/T$ and tied together by the speed, $v=\omega/k=\lambda\nu$.
 - **Every wave $f(x \mp vt)$ obeys the same equation**, the classical wave equation $u_{xx}=u_{tt}/v^2$.
 - **Waves add.** Because the wave equation is linear, interference, standing waves, and beats are all superpositions of simpler waves.
+- **Light is the one wave without a medium.** Its speed is the same for every observer, and that single fact forces moving clocks to run slow.
 
 :::
 
@@ -28,23 +29,24 @@ Waves also differ in *which way the medium moves*. In a **transverse** wave the 
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: transverse_longitudinal
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY = "#107895", "#C8102E", "#6c757d"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 N, A, k, w = 48, 0.35, 2 * np.pi / 4.0, 2 * np.pi / 2.0   # beads, amplitude, lambda = 4, T = 2
 x0 = np.linspace(0, 12, N)
 xs = np.linspace(0, 12, 600)
-ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+ts = np.linspace(0, 2 * np.pi / w, 40, endpoint=False)
 pick = 18                                                 # the bead we follow
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 4.6))
 for ax in (ax1, ax2):
     ax.set_xlim(-0.5, 12.5); ax.set_ylim(-1.3, 1.45)
     ax.set_yticks([]); ax.spines["left"].set_visible(False)
-    ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
     ax.annotate("", xy=(12.3, 1.1), xytext=(10.3, 1.1), arrowprops=dict(arrowstyle="->", color=GRAY, lw=1.6))
     ax.text(11.3, 1.22, "wave moves", color=GRAY, fontsize=10, ha="center")
     ax.axvline(x0[pick], color=CARDINAL, lw=1, ls=":")
@@ -66,9 +68,8 @@ def update(i):
     xl = x0 + A * np.sin(k * x0 - w * t)
     beads2.set_data(xl, np.zeros(N))
     red2.set_data([xl[pick]], [0])
-    return string, beads1, red1, beads2, red2
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=75, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -95,16 +96,18 @@ $$u(x,t) = f(x')=f(x-vt)$$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: traveling_pulse
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, ORANGE, GRAY = "#107895", "#e07b00", "#6c757d"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 f = lambda s: np.exp(-s**2)
 v = 1.0
 x = np.linspace(-10, 10, 800)
-ts = np.linspace(0, 6.5, 66)
+ts = np.linspace(0, 6.5, 44)
 
 fig, ax = plt.subplots(figsize=(7.5, 3.8))
 (right,) = ax.plot([], [], color=TEAL, lw=2.6, label=r"$f(x-vt)$  moves right")
@@ -116,8 +119,6 @@ ax.set_xlim(-10, 10); ax.set_ylim(-0.1, 1.25)
 ax.set_xlabel("x"); ax.set_ylabel("u(x, t)")
 ax.legend(loc="upper right", frameon=False, fontsize=10)
 ax.set_title(r"a shape that keeps its form while it moves:  $u(x,t) = f(x \mp vt)$", fontsize=12, loc="left")
-for s in ("top", "right"):
-    ax.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
@@ -125,9 +126,8 @@ def update(i):
     right.set_data(x, f(x - v * t)); left.set_data(x, f(x + v * t))
     peak.set_xdata([v * t, v * t])
     label.set_position((v * t, 1.08)); label.set_text(f"peak at x = vt = {v*t:.1f}")
-    return right, left, peak, label
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -156,17 +156,19 @@ A periodic traveling wave repeats in *two* directions: along $x$ at a fixed inst
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: wavelength_period
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY = "#107895", "#C8102E", "#6c757d"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 lam, T = 4.0, 2.0
 k, w = 2 * np.pi / lam, 2 * np.pi / T
 x = np.linspace(0, 12, 800); x0 = 5.0
 tt = np.linspace(0, 2 * T, 800)
-ts = np.linspace(0, 2 * T, 80, endpoint=False)
+ts = np.linspace(0, 2 * T, 40, endpoint=False)
 
 fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.5, 3.9), gridspec_kw={"width_ratios": [1.4, 1]})
 (wave,) = ax.plot([], [], color=TEAL, lw=2.4)
@@ -187,9 +189,6 @@ bx.text(T / 2, 1.22, "period T: crest to crest", color=GRAY, ha="center", fontsi
 bx.axhline(0, color=GRAY, lw=0.6)
 bx.set_xlim(0, 2 * T); bx.set_ylim(-1.5, 1.5); bx.set_xlabel("t"); bx.set_yticks([])
 bx.set_title(r"history of the point $x_0$", loc="left", fontsize=11.5)
-for a_ in (ax, bx):
-    for s in ("top", "right"):
-        a_.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
@@ -199,9 +198,8 @@ def update(i):
     lam_bar.set_data([xc, xc + lam], [1.15, 1.15]); lam_txt.set_position((xc + lam / 2, 1.24))
     mask = tt <= t
     trace.set_data(tt[mask], np.sin(k * x0 - w * tt[mask])); dot2.set_data([t], [np.sin(k * x0 - w * t)])
-    return wave, dot, lam_bar, lam_txt, trace, dot2
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -220,15 +218,17 @@ The real part is the cosine wave and the imaginary part the sine wave. At a fixe
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: phasor_wave
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, ORANGE, GRAY, PURPLE = "#107895", "#e07b00", "#6c757d", "#6a3d9a"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 k, w = 2 * np.pi / 5.0, 2 * np.pi / 3.0     # lambda = 5, T = 3
 x = np.linspace(-10, 10, 800); x0 = 0.0
-ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+ts = np.linspace(0, 2 * np.pi / w, 36, endpoint=False)
 
 fig, (ax_w, ax_p) = plt.subplots(1, 2, figsize=(9.5, 4), gridspec_kw={"width_ratios": [1.7, 1]})
 (re,) = ax_w.plot([], [], color=TEAL, lw=2.4, label=r"Re $e^{i(kx-\omega t)} = \cos(kx-\omega t)$")
@@ -251,9 +251,6 @@ ax_p.axhline(0, color=GRAY, lw=0.6); ax_p.axvline(0, color=GRAY, lw=0.6)
 ax_p.set_aspect("equal"); ax_p.set_xlim(-1.3, 1.3); ax_p.set_ylim(-1.3, 1.3)
 ax_p.set_xlabel("Re"); ax_p.set_ylabel("Im")
 ax_p.set_title(r"the phasor $e^{i(kx_0-\omega t)}$ at $x_0 = 0$", loc="left", fontsize=11.5)
-for a_ in (ax_w, ax_p):
-    for s in ("top", "right"):
-        a_.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
@@ -264,9 +261,8 @@ def update(i):
     dot_re.set_data([x0], [z.real]); dot_im.set_data([x0], [z.imag])
     arrow.set_data([0, z.real], [0, z.imag]); tip.set_data([z.real], [z.imag])
     proj_re.set_data([z.real, z.real], [0, z.imag]); proj_im.set_data([0, z.real], [z.imag, z.imag])
-    return re, im, dot_re, dot_im, arrow, tip, proj_re, proj_im
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=85, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -407,6 +403,49 @@ $$u(x,t) = f(x-vt) + g(x+vt),$$
 
   a right-moving shape plus a left-moving shape (d'Alembert's solution). The two shapes are fixed by the initial position and initial velocity of the medium, just as a trajectory in mechanics is fixed by the initial position and velocity of a particle. The next lecture solves the wave equation on a string with fixed ends.
 
+:::{tip} **What the equation says physically**
+
+Read it as Newton's second law for a string. The right side is the acceleration of one small piece of string. The left side is the **curvature** of the string at that piece. Where the string curves upward (a trough), the neighbors on either side sit higher and pull the piece up; where it curves downward (a crest), they pull it down; where the string is straight, the two pulls cancel and there is no acceleration. **Acceleration follows curvature.** The constant $v^2$ measures how strongly the medium responds: for a string $v^2 = \mathcal{T}/\mu$, tension over mass per unit length, so tighter or lighter strings carry faster waves.
+
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: curvature_pulls
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(-3.2, 3.6, 1200)
+u = 1.1 * np.exp(-x**2 / 0.9) - 0.7 * np.exp(-(x - 2.3)**2 / 0.35)      # a crest and a trough
+d2 = np.gradient(np.gradient(u, x), x)                                 # curvature u_xx
+xb = np.array([-2.6, -1.9, -1.35, -0.7, 0.0, 0.7, 1.35, 1.75, 2.3, 2.85, 3.4])
+ub, ab = np.interp(xb, x, u), 0.32 * np.interp(xb, x, d2)
+
+fig, ax = plt.subplots(figsize=(8, 3.8))
+ax.plot(x, u, color=TEAL, lw=2.8)
+ax.plot(xb, ub, "o", color=TEAL, ms=7, mec="white", mew=1.2, zorder=5)
+for xi, ui, ai in zip(xb, ub, ab):
+    if abs(ai) > 0.1:
+        ax.annotate("", xy=(xi, ui + ai), xytext=(xi, ui),
+                    arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=2.2, mutation_scale=16))
+ax.text(0, 1.55, "curves down: pulled down", color=CARDINAL, ha="center", fontsize=10.5)
+ax.text(2.3, -1.1, "curves up: pulled up", color=CARDINAL, ha="center", fontsize=10.5)
+ax.annotate("straight here:\nno net pull", xy=(-0.7, 0.64), xytext=(-1.9, 1.15), color=GRAY, ha="center",
+            fontsize=10, arrowprops=dict(arrowstyle="-", color=GRAY, lw=1))
+ax.axhline(0, color=GRAY, lw=0.6)
+ax.set_xlim(-3.2, 3.6); ax.set_ylim(-1.3, 1.8); ax.set_yticks([]); ax.set_xlabel("x")
+ax.set_title(r"acceleration follows curvature:  $\partial^2 u/\partial t^2 = v^2\,\partial^2 u/\partial x^2$",
+             loc="left", fontsize=12)
+fig.tight_layout()
+plt.show()
+```
+
+Fig. A snapshot of a string. Each arrow is the acceleration of a bead, proportional to the local curvature: downward on the crest, upward in the trough, zero where the string is straight.
+
 
 ### Combining waves: interference
 
@@ -414,63 +453,6 @@ $$u(x,t) = f(x-vt) + g(x+vt),$$
 - Adding two solutions of the wave equation produces another solution. This is the **principle of linear superposition**: if $u_A$ and $u_B$ both solve the wave equation, so does $u_C = u_A + u_B$. It holds because every term in the equation contains $u$ to the first power.
 - **Interference** is the name for what superposition looks like: the combined wave can have a greater, smaller, or unchanged amplitude depending on how the crests of the two waves line up.
 
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, ORANGE = "#107895", "#C8102E", "#6c757d", "#e07b00"
-x = np.linspace(0, 4 * np.pi, 800)
-phis = np.linspace(0, 2 * np.pi, 80, endpoint=False)
-
-fig, (ax_w, ax_p) = plt.subplots(1, 2, figsize=(9.5, 4), gridspec_kw={"width_ratios": [1.9, 1]})
-(w1,) = ax_w.plot([], [], color=TEAL, lw=1.6, label=r"$\sin(kx)$")
-(w2,) = ax_w.plot([], [], color=ORANGE, lw=1.6, label=r"$\sin(kx+\phi)$")
-(ws,) = ax_w.plot([], [], color=CARDINAL, lw=2.8, label="sum")
-env_hi = ax_w.axhline(2, color=GRAY, lw=1, ls="--"); env_lo = ax_w.axhline(-2, color=GRAY, lw=1, ls="--")
-ax_w.axhline(0, color=GRAY, lw=0.6)
-ax_w.set_xlim(0, 4 * np.pi); ax_w.set_ylim(-2.5, 2.9)
-ax_w.set_xticks([0, np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi])
-ax_w.set_xticklabels(["0", r"$\pi$", r"$2\pi$", r"$3\pi$", r"$4\pi$"])
-ax_w.set_xlabel("kx"); ax_w.set_ylabel("u")
-ax_w.legend(loc="upper right", frameon=False, fontsize=9.5, ncol=3)
-title = ax_w.set_title(r"phase difference $\phi$ = 0.00$\pi$,   sum amplitude $2|\cos(\phi/2)|$ = 2.00", loc="left", fontsize=11.5)
-
-th = np.linspace(0, 2 * np.pi, 400)
-ax_p.plot(np.cos(th), np.sin(th), color=GRAY, lw=0.8, ls="--")
-ax_p.axhline(0, color=GRAY, lw=0.6); ax_p.axvline(0, color=GRAY, lw=0.6)
-(a1,) = ax_p.plot([], [], color=TEAL, lw=2.4)
-(a2,) = ax_p.plot([], [], color=ORANGE, lw=2.4)
-(asum,) = ax_p.plot([], [], color=CARDINAL, lw=3)
-(t1,) = ax_p.plot([], [], "o", color=TEAL, ms=6)
-(tsum,) = ax_p.plot([], [], "o", color=CARDINAL, ms=7)
-ax_p.set_aspect("equal"); ax_p.set_xlim(-2.3, 2.3); ax_p.set_ylim(-2.3, 2.3)
-ax_p.set_xlabel("Re"); ax_p.set_ylabel("Im")
-ax_p.set_title(r"phasors: $1 + e^{i\phi}$ tip to tail", loc="left", fontsize=11.5)
-for a_ in (ax_w, ax_p):
-    for s in ("top", "right"):
-        a_.spines[s].set_visible(False)
-fig.tight_layout()
-
-def update(i):
-    phi = phis[i]
-    w1.set_data(x, np.sin(x)); w2.set_data(x, np.sin(x + phi)); ws.set_data(x, np.sin(x) + np.sin(x + phi))
-    amp = 2 * abs(np.cos(phi / 2))
-    env_hi.set_ydata([amp, amp]); env_lo.set_ydata([-amp, -amp])
-    z1, zs = 1 + 0j, 1 + np.exp(1j * phi)
-    a1.set_data([0, z1.real], [0, z1.imag]); a2.set_data([z1.real, zs.real], [z1.imag, zs.imag])
-    asum.set_data([0, zs.real], [0, zs.imag]); t1.set_data([z1.real], [z1.imag]); tsum.set_data([zs.real], [zs.imag])
-    title.set_text(rf"phase difference $\phi$ = {phi/np.pi:.2f}$\pi$,   sum amplitude $2|\cos(\phi/2)|$ = {amp:.2f}")
-    return w1, w2, ws, env_hi, env_lo, a1, a2, asum, t1, tsum, title
-
-ani = FuncAnimation(fig, update, frames=len(phis), interval=60, blit=False)
-plt.close(fig)
-HTML(ani.to_jshtml())
-```
-
-Fig. Two equal waves that differ only in phase $\phi$, and their sum (red). Left: in phase ($\phi=0$) the amplitude doubles, half a turn out of phase ($\phi=\pi$) the waves cancel. Right: the same addition as arrows in the complex plane. The resultant $1+e^{i\phi}$ has length $2|\cos(\phi/2)|$.
 
 :::{tip} **Wave interference: derivation**
 :class: dropdown
@@ -516,12 +498,14 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: two_source_interference
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-CARDINAL = "#C8102E"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 lam = 1.0; k, w = 2 * np.pi / lam, 2 * np.pi; d = 3 * lam
 xs = np.linspace(-6, 6, 220); ys = np.linspace(0, 12, 220)
 X, Y = np.meshgrid(xs, ys)
@@ -542,10 +526,7 @@ bx.fill_between(xs, I_far / I_far.max(), color=CARDINAL, alpha=0.12)
 bx.set_xlim(-6, 6); bx.set_ylim(0, 1.1)
 bx.set_xlabel("x along the far edge  (y = 12)"); bx.set_ylabel("time-averaged intensity")
 bx.set_title("bright and dark fringes", loc="left", fontsize=11.5)
-for s in ("top", "right"):
-    bx.spines[s].set_visible(False)
 fig.tight_layout()
-
 art = []
 
 def update(i):
@@ -555,23 +536,22 @@ def update(i):
     art.clear()
     u = damp(r1) * np.cos(k * r1 - w * t) + damp(r2) * np.cos(k * r2 - w * t)
     art.append(ax.contourf(X, Y, u, levels=levels, cmap="RdBu_r", extend="both"))
-    return art
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
 
 Fig. Left: two point sources (red dots) three wavelengths apart send out circular waves. The gray bands radiating outward are lines of destructive interference. Right: the time-averaged intensity along the top edge shows the bright and dark fringes of a double-slit pattern.
 
-Try the sliders below: change the phase shift and watch the red curve go from double amplitude to zero.
+Move the sliders: the phase shift takes the red sum from double amplitude to zero, and the phasor panel shows why.
 
 ```{marimo} python
 :hide-code: true
 
 k_sup = mo.ui.slider(2, 20, step=1, value=10, show_value=True, label="wave number k")
 t_sup = mo.ui.slider(0, 5.0, step=0.1, value=0.0, show_value=True, label="time t")
-phi_sup = mo.ui.slider(0, 6.28, step=0.39, value=0.0, show_value=True, label="phase shift phi")
+phi_sup = mo.ui.slider(0, 6.28, step=0.13, value=1.0, show_value=True, label="phase shift phi")
 mo.hstack([k_sup, t_sup, phi_sup], justify="start", gap=1)
 ```
 
@@ -581,15 +561,33 @@ mo.hstack([k_sup, t_sup, phi_sup], justify="start", gap=1)
 x_sup = np.linspace(0, 1.0, 1000)
 wave_a = np.sin(k_sup.value * (x_sup - t_sup.value))
 wave_b = np.sin(k_sup.value * (x_sup - t_sup.value) + phi_sup.value)
+amp_sup = 2 * abs(np.cos(phi_sup.value / 2))
+zs_sup = 1 + np.exp(1j * phi_sup.value)
 
-fig_sup, ax_sup = plt.subplots(figsize=(7, 3.5))
-ax_sup.plot(x_sup, wave_a, lw=1.5, color="steelblue", label="wave 1")
-ax_sup.plot(x_sup, wave_b, lw=1.5, color="seagreen", label="wave 2")
-ax_sup.plot(x_sup, wave_a + wave_b, lw=2.5, color="crimson", label="superposition")
+fig_sup, (ax_sup, px_sup) = plt.subplots(1, 2, figsize=(9, 3.6), gridspec_kw={"width_ratios": [2, 1]})
+ax_sup.plot(x_sup, wave_a, lw=1.5, color="#107895", label="wave 1")
+ax_sup.plot(x_sup, wave_b, lw=1.5, color="#e07b00", label="wave 2")
+ax_sup.plot(x_sup, wave_a + wave_b, lw=2.5, color="#C8102E", label="sum")
+ax_sup.axhline(amp_sup, color="gray", lw=1, ls="--")
+ax_sup.axhline(-amp_sup, color="gray", lw=1, ls="--")
 ax_sup.set_ylim(-2.5, 2.5)
-ax_sup.legend(loc="upper right", fontsize=8)
-ax_sup.grid(True, ls="--", alpha=0.5)
-ax_sup.set_title(f"sum amplitude 2|cos(phi/2)| = {2*abs(np.cos(phi_sup.value/2)):.2f}", fontsize=11)
+ax_sup.set_xlabel("x")
+ax_sup.legend(loc="upper right", fontsize=8, ncol=3)
+ax_sup.set_title(f"phase shift {phi_sup.value:.2f} rad: sum amplitude 2|cos(phi/2)| = {amp_sup:.2f}", fontsize=10)
+th_sup = np.linspace(0, 2 * np.pi, 200)
+px_sup.plot(np.cos(th_sup), np.sin(th_sup), color="gray", lw=0.8, ls="--")
+px_sup.axhline(0, color="gray", lw=0.6)
+px_sup.axvline(0, color="gray", lw=0.6)
+px_sup.plot([0, 1], [0, 0], color="#107895", lw=2.4)
+px_sup.plot([1, zs_sup.real], [0, zs_sup.imag], color="#e07b00", lw=2.4)
+px_sup.plot([0, zs_sup.real], [0, zs_sup.imag], color="#C8102E", lw=3)
+px_sup.set_aspect("equal")
+px_sup.set_xlim(-2.2, 2.2)
+px_sup.set_ylim(-2.2, 2.2)
+px_sup.set_xlabel("Re")
+px_sup.set_ylabel("Im")
+px_sup.set_title("phasors tip to tail", fontsize=10)
+fig_sup.tight_layout()
 fig_sup
 ```
 
@@ -611,15 +609,17 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: traveling_standing
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY, ORANGE = "#107895", "#C8102E", "#6c757d", "#e07b00"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 k, w = 1.0, 1.0                        # v = w/k = 1
 x = np.linspace(0, 4 * np.pi, 800)     # two wavelengths
-ts = np.linspace(0, 2 * np.pi / w, 60, endpoint=False)
+ts = np.linspace(0, 2 * np.pi / w, 36, endpoint=False)
 nodes = np.arange(0, 4 * np.pi + 1e-9, np.pi / k)
 
 fig, axes = plt.subplots(3, 1, figsize=(7.5, 5.6), sharex=True)
@@ -632,8 +632,6 @@ for ax, ttl, col in zip(axes, titles, [TEAL, ORANGE, CARDINAL]):
     lines.append(ln); dots.append(dt)
     ax.axhline(0, color=GRAY, lw=0.6)
     ax.set_title(ttl, fontsize=11.5, loc="left", pad=4); ax.set_yticks([])
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
 axes[0].set_ylim(-1.3, 1.3); axes[1].set_ylim(-1.3, 1.3); axes[2].set_ylim(-2.5, 2.5)
 axes[2].plot(x, 2 * np.sin(k * x), color=GRAY, lw=1, ls="--")
 axes[2].plot(x, -2 * np.sin(k * x), color=GRAY, lw=1, ls="--")
@@ -652,9 +650,8 @@ def update(i):
     dots[0].set_data([(np.pi / 2 + w * t) / k], [1.0])                 # a crest moving right
     dots[1].set_data([(np.pi / 2 + 2 * np.pi - w * t) / k], [1.0])     # a crest moving left
     dots[2].set_data([np.pi / (2 * k)], [2 * np.cos(w * t)])           # an antinode: up and down only
-    return (*lines, *dots)
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=85, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -688,17 +685,19 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: beats
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY, ORANGE = "#107895", "#C8102E", "#6c757d", "#e07b00"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 v = 1.0
 k1, k2 = 4.0, 5.0
 w1, w2 = v * k1, v * k2
 x = np.linspace(0, 20, 1600)
-ts = np.linspace(0, 2 * np.pi, 60, endpoint=False)     # common period of both waves
+ts = np.linspace(0, 2 * np.pi, 40, endpoint=False)     # common period of both waves
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 4.8), sharex=True)
 (l1,) = ax1.plot([], [], color=TEAL, lw=1.5, label=r"$\cos(k_1x-\omega_1t)$")
@@ -715,8 +714,6 @@ ax2.legend(loc="upper right", frameon=False, fontsize=9.5, ncol=2)
 ax2.set_title("their sum: a fast carrier inside a slow envelope (beats)", loc="left", fontsize=11.5)
 for ax in (ax1, ax2):
     ax.axhline(0, color=GRAY, lw=0.6)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
@@ -725,9 +722,8 @@ def update(i):
     l1.set_data(x, y1); l2.set_data(x, y2); ls.set_data(x, y1 + y2)
     env = 2 * np.cos(0.5 * (k2 - k1) * x - 0.5 * (w2 - w1) * t)
     e1.set_data(x, env); e2.set_data(x, -env)
-    return l1, l2, ls, e1, e2
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=50, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=75, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -737,6 +733,96 @@ Fig. Two waves with $k_2/k_1 = 5/4$ (top) and their sum (bottom). Where the cres
 :::{note} **Looking ahead: wave packets**
 
 Adding two wavelengths produced one lump repeated over and over. Adding *many* neighboring wavelengths with suitable amplitudes cancels all the lumps but one, leaving a single localized **wave packet**. That is how a wave can describe a particle that is somewhere in particular, and it is why a sharply localized packet needs a wide spread of $k$: the uncertainty principle of Chapter 3 in classical clothing. [Appendix A.6](../math/06-fourier-transforms.md) works out the mathematics.
+
+:::
+
+
+### A wave you cannot surf: light and relativity
+
+- Our very first step was to ride along with the wave. A surfer moving at the wave speed $v$ sees a frozen shape, and the shore observer sees that shape slide by: $x = x' + vt$. For water, sound, and strings this works because the wave lives in a medium, and "speed $v$" means speed relative to that medium.
+- Light is the exception. Maxwell's equations of electromagnetism turn out to contain a wave equation for the electric and magnetic fields, with a speed built from two constants of nature and no medium in sight:
+
+$$
+\frac{\partial^2 E}{\partial x^2} = \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2}, \qquad c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}} = 3.00\times 10^8\ \text{m/s}
+$$
+
+- With no medium there is nothing for "speed relative to the medium" to mean. At sixteen, Einstein asked what a light wave would look like if he could run alongside it at $c$: a frozen electromagnetic ripple, which Maxwell's equations do not allow. His resolution (1905) was to take the wave equation at its word: **light moves at $c$ for every observer**, however fast that observer moves. There is no surfer frame for light, and the everyday rule $x' = x - vt$ must fail at speeds near $c$.
+- The simplest consequence shows up in a **light clock**: a photon bouncing between two mirrors a distance $d$ apart, one round trip per tick. At rest the tick lasts $\Delta t_0 = 2d/c$. Now watch the same clock fly past at speed $v$. The photon travels a longer zigzag path, but at the same speed $c$, so each tick takes longer. Pythagoras on one half-tick, $(c\,\Delta t/2)^2 = d^2 + (v\,\Delta t/2)^2$, gives:
+
+:::{important} **Time dilation**
+
+$$
+\Delta t = \frac{\Delta t_0}{\sqrt{1 - v^2/c^2}} = \gamma\, \Delta t_0, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \geq 1
+$$
+
+A moving clock ticks slower by the factor $\gamma$. Nothing is wrong with the clock; this is the price of $c$ being the same in every inertial frame.
+
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: light_clock
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+c, v, d = 1.0, 0.6, 1.0                          # light speed, clock speed, mirror gap
+gamma = 1 / np.sqrt(1 - v**2 / c**2)             # 1.25
+T0 = 2 * d / c                                   # one tick of the clock at rest
+ts = np.linspace(0, 3 * T0, 48, endpoint=False)  # three ticks of the rest clock
+bounce = lambda tau: d * (1 - np.abs(2 * (tau % 1.0) - 1))   # 0 -> d -> 0 once per unit tau
+
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.5, 4.2), gridspec_kw={"width_ratios": [1, 2.4]})
+for a_, xlim in ((ax, (-0.8, 0.8)), (bx, (-0.8, 4.4))):
+    a_.set_xlim(*xlim); a_.set_ylim(-0.35, 1.45); a_.set_yticks([]); a_.set_xticks([])
+    for s in ("left", "bottom"):
+        a_.spines[s].set_visible(False)
+(mir_a0,) = ax.plot([-0.5, 0.5], [0, 0], color="#333333", lw=5, solid_capstyle="butt")
+(mir_a1,) = ax.plot([-0.5, 0.5], [d, d], color="#333333", lw=5, solid_capstyle="butt")
+(ph_a,) = ax.plot([], [], "o", color=ORANGE, ms=13, mec="#ffd27f", mew=2.5, zorder=6)
+(path_a,) = ax.plot([], [], color=ORANGE, lw=1.2, ls=":", alpha=0.8)
+tick_a = ax.text(0, -0.25, "", ha="center", fontsize=12, color=TEAL, fontweight="bold")
+ax.set_title(r"clock at rest:  tick $= 2d/c$", loc="left", fontsize=11.5)
+ax.text(0.62, d / 2, "d", fontsize=12, color=GRAY, va="center")
+ax.plot([0.58, 0.58], [0, d], color=GRAY, lw=1, marker="_", ms=8)
+
+(mir_b0,) = bx.plot([], [], color="#333333", lw=5, solid_capstyle="butt")
+(mir_b1,) = bx.plot([], [], color="#333333", lw=5, solid_capstyle="butt")
+(ph_b,) = bx.plot([], [], "o", color=ORANGE, ms=13, mec="#ffd27f", mew=2.5, zorder=6)
+(path_b,) = bx.plot([], [], color=ORANGE, lw=1.2, ls=":", alpha=0.8)
+tick_b = bx.text(0, -0.25, "", ha="center", fontsize=12, color=CARDINAL, fontweight="bold")
+bx.annotate("", xy=(4.2, 1.32), xytext=(2.9, 1.32), arrowprops=dict(arrowstyle="->", color=GRAY, lw=1.6))
+bx.text(3.55, 1.37, "v = 0.6 c", color=GRAY, fontsize=10.5, ha="center")
+bx.set_title(rf"moving at $v = 0.6c$:  longer path at the same $c$, tick $= \gamma\, 2d/c$,  $\gamma$ = {gamma:.2f}",
+             loc="left", fontsize=11.5)
+fig.suptitle("light moves at c for every observer, so the moving clock ticks slower", fontsize=12.5, y=0.99)
+fig.tight_layout(rect=(0, 0, 1, 0.94))
+
+def update(i):
+    t = ts[i]
+    tt = np.linspace(0, t, 300)
+    ph_a.set_data([0], [bounce(t / T0)])
+    path_a.set_data(np.zeros_like(tt), bounce(tt / T0))
+    tick_a.set_text(f"ticks: {int(t // T0)}")
+    xc = v * t
+    mir_b0.set_data([xc - 0.5, xc + 0.5], [0, 0]); mir_b1.set_data([xc - 0.5, xc + 0.5], [d, d])
+    ph_b.set_data([xc], [bounce(t / (gamma * T0))])
+    path_b.set_data(v * tt, bounce(tt / (gamma * T0)))
+    tick_b.set_position((xc, -0.25)); tick_b.set_text(f"ticks: {int(t // (gamma * T0))}")
+
+ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. Left: a light clock at rest ticks every $2d/c$. Right: the same clock moving at $v = 0.6c$. The photon's zigzag path is longer by $\gamma = 1.25$, and since $c$ is unchanged the moving clock has completed fewer ticks at every instant.
+
+:::{note} **Why a chemist should know this**
+
+Electrons near a heavy nucleus move fast: in the Bohr model the innermost electron of gold ($Z = 79$) has $v/c \approx Z/137 \approx 0.58$. Relativity contracts and stabilizes the $6s$ orbital of gold and mercury, which is why gold is yellow while silver is white, and part of why mercury is a liquid. The Schrödinger equation we build next is **non-relativistic**. It is excellent for light atoms and for most of chemistry, and its relativistic extension, the Dirac equation, is where electron spin comes from.
 
 :::
 
@@ -836,3 +922,10 @@ Show that the real part and the imaginary part of $\Psi = Ae^{i(kx-\omega t)}$ e
 
 - A. Two equal waves of amplitude $A$ interfere to give a wave of amplitude $1.2A$. What is the phase difference between them? For what phase difference is the combined amplitude exactly $A$?
 - B. Use $\sin(a - b) = \sin a\cos b - \cos a\sin b$ to write the traveling wave $\sin(kx-\omega t)$ as a sum of two standing waves. How are the two standing waves shifted relative to each other in space and in time?
+
+
+#### Problem 9: The light clock
+
+- A. Derive the time-dilation formula from the light clock: while a photon makes one round trip between mirrors a distance $d$ apart, the clock moves a distance $v\,\Delta t$. Apply Pythagoras to one half of the trip.
+- B. At what speed does a moving clock run at half the rate of a clock at rest?
+- C. Muons created high in the atmosphere live $2.2\ \mu\text{s}$ in their own frame and move at $0.998c$. How far do they travel before decaying, with and without time dilation? (Without it almost none would reach the ground; they do.)

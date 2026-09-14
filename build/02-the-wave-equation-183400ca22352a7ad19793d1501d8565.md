@@ -28,16 +28,18 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: dalembert_split
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY, ORANGE = "#107895", "#C8102E", "#6c757d", "#e07b00"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 f = lambda s: np.exp(-s**2 / 0.5)
 v = 1.0
 x = np.linspace(-8, 8, 1000)
-ts = np.linspace(0, 5.5, 56)
+ts = np.linspace(0, 5.5, 40)
 
 fig, ax = plt.subplots(figsize=(7.5, 3.8))
 ax.plot(x, f(x), color=GRAY, lw=1.2, ls=":", label="initial shape f(x), released from rest")
@@ -49,17 +51,14 @@ ax.set_xlim(-8, 8); ax.set_ylim(-0.1, 1.3); ax.set_xlabel("x"); ax.set_ylabel("u
 ax.legend(loc="upper right", frameon=False, fontsize=9.5)
 ax.set_title(r"the wave equation splits a bump in two:  $u = \frac{1}{2}[f(x-vt) + f(x+vt)]$",
              loc="left", fontsize=11.5)
-for s in ("top", "right"):
-    ax.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
     t = ts[i]
     hr.set_data(x, 0.5 * f(x - v * t)); hl.set_data(x, 0.5 * f(x + v * t))
     u.set_data(x, 0.5 * (f(x - v * t) + f(x + v * t)))
-    return hr, hl, u
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=70, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -242,10 +241,14 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: string_modes
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY = "#107895", "#C8102E", "#6c757d"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 L = 1.0
 x = np.linspace(0, L, 600)
 lam = [r"$\lambda_1 = 2L$", r"$\lambda_2 = L$", r"$\lambda_3 = 2L/3$", r"$\lambda_4 = L/2$"]
@@ -258,9 +261,7 @@ for ax, n in zip(axes, range(1, 5)):
     nodes = np.arange(0, n + 1) * L / n
     ax.plot(nodes, np.zeros_like(nodes), "o", color=CARDINAL, ms=7, zorder=5)
     ax.axhline(0, color=GRAY, lw=0.6)
-    ax.set_ylim(-1.3, 1.3); ax.set_yticks([])
-    for s in ("left", "top", "right"):
-        ax.spines[s].set_visible(False)
+    ax.set_ylim(-1.3, 1.3); ax.set_yticks([]); ax.spines["left"].set_visible(False)
     plural = "s" if n - 1 != 1 else ""
     ax.text(1.03, 0, f"n = {n}\n{n-1} interior node{plural}\n" + lam[n - 1],
             transform=ax.get_yaxis_transform(), va="center", fontsize=10.5)
@@ -316,15 +317,17 @@ A single mode is a standing wave with fixed nodes. A *sum* of modes is not: beca
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: mode_superposition
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-CARDINAL, GRAY = "#C8102E", "#6c757d"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 L, v = 1.0, 1.0
 x = np.linspace(0, L, 600)
-ts = np.linspace(0, 2 * L / v, 60, endpoint=False)     # one period of the fundamental
+ts = np.linspace(0, 2 * L / v, 40, endpoint=False)     # one period of the fundamental
 X = lambda n: np.sin(n * np.pi * x / L)
 Tt = lambda n, t: np.cos(n * np.pi * v * t / L)
 combos = [[1], [3], [1, 2], [1, 2, 3]]
@@ -339,8 +342,6 @@ for ax, ttl in zip(axes, titles):
     ax.set_xlim(0, L); ax.set_ylim(-2.6, 2.6); ax.set_yticks([])
     ax.set_title(ttl, fontsize=11.5, loc="left")
     ax.set_xticks([0, L]); ax.set_xticklabels(["0", "L"])
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
 fig.suptitle("single modes are standing waves; sums of modes are not", fontsize=12.5)
 fig.tight_layout()
 
@@ -348,9 +349,8 @@ def update(i):
     t = ts[i]
     for ln, combo in zip(lines, combos):
         ln.set_data(x, sum(X(n) * Tt(n, t) for n in combo))
-    return lines
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -443,12 +443,14 @@ Two lessons sit in this formula. The amplitudes fall off as $1/n^2$, so a handfu
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: plucked_string
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
-TEAL, CARDINAL, GRAY, ORANGE = "#107895", "#C8102E", "#6c757d", "#e07b00"
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 L, v, h, a = 1.0, 1.0, 1.0, 0.3            # length, speed, pluck height, pluck position
 N = 40                                      # modes kept
 n = np.arange(1, N + 1)
@@ -456,7 +458,7 @@ A = 2 * h * L**2 * np.sin(n * np.pi * a / L) / (np.pi**2 * n**2 * a * (L - a))
 x = np.linspace(0, L, 600)
 modes = np.sin(np.outer(n, np.pi * x / L))
 omega = n * np.pi * v / L
-ts = np.linspace(0, 2 * L / v, 60, endpoint=False)
+ts = np.linspace(0, 2 * L / v, 40, endpoint=False)
 f0 = np.where(x < a, h * x / a, h * (L - x) / (L - a))
 
 fig, (ax, bx) = plt.subplots(2, 1, figsize=(7.5, 5.8), gridspec_kw={"height_ratios": [1.5, 1]})
@@ -473,18 +475,14 @@ bx.axhline(0, color=GRAY, lw=0.6)
 bx.set_xticks(n[:12]); bx.set_xlabel("mode n"); bx.set_ylabel(r"$A_n$")
 bx.set_title(r"the pluck sets the recipe:  $A_n = \frac{2hL^2}{\pi^2 n^2 a(L-a)}\sin\frac{n\pi a}{L}$",
              loc="left", fontsize=11.5)
-for a_ in (ax, bx):
-    for s in ("top", "right"):
-        a_.spines[s].set_visible(False)
 fig.tight_layout()
 
 def update(i):
     Tn = np.cos(omega * ts[i])
     u.set_data(x, (A * Tn) @ modes)
     m1.set_data(x, A[0] * Tn[0] * modes[0]); m2.set_data(x, A[1] * Tn[1] * modes[1])
-    return u, m1, m2
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=60, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=90, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
@@ -546,17 +544,19 @@ $$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: membrane_modes
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 a = b = 1.0
 g = np.linspace(0, 1, 41)
 X, Y = np.meshgrid(g, g)
 pairs = [(1, 1), (2, 1), (1, 2), (2, 2)]
 shapes = [np.sin(n * np.pi * X / a) * np.sin(m * np.pi * Y / b) for n, m in pairs]
-ts = np.linspace(0, 1, 30, endpoint=False)             # one common period
+ts = np.linspace(0, 1, 24, endpoint=False)             # one common period
 
 fig = plt.figure(figsize=(8.4, 6.4))
 axes = [fig.add_subplot(2, 2, i + 1, projection="3d") for i in range(4)]
@@ -576,9 +576,8 @@ def update(i):
     for ax, Z in zip(axes, shapes):
         surfs.append(ax.plot_surface(X, Y, c * Z, cmap="RdBu_r", vmin=-1, vmax=1,
                                      rstride=1, cstride=1, linewidth=0, antialiased=True))
-    return surfs
 
-ani = FuncAnimation(fig, update, frames=len(ts), interval=70, blit=False)
+ani = FuncAnimation(fig, update, frames=len(ts), interval=110, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```

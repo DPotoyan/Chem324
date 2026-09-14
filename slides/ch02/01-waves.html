@@ -231,6 +231,20 @@ Davit Potoyan
 </div>
 
 </section>
+<section id="why-waves-in-a-chemistry-course" class="slide level2">
+<h2>Why waves, in a chemistry course?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../../ch01/images/double_slit_buildup.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Chapter 1: electrons <strong>diffract</strong>, and Bohr’s orbits are <strong>standing waves</strong> that have to fit</li>
+<li>Quantum mechanics is written in the <strong>language of waves</strong></li>
+<li>Today: the vocabulary (<span class="math inline">\lambda</span>, <span class="math inline">\nu</span>, phase), the <strong>equation of motion</strong> of a wave, and how waves <strong>add</strong></li>
+<li>Next lecture: waves with fixed ends produce <strong>integers</strong></li>
+</ul>
+</div></div>
+</section>
 <section id="what-is-a-wave" class="slide level2">
 <h2>What is a wave?</h2>
 <div class="columns">
@@ -241,7 +255,7 @@ Davit Potoyan
 <li>A <strong>self-propagating disturbance</strong>: carries energy and information, <strong>not matter</strong></li>
 <li><strong>Transverse</strong>: medium moves perpendicular to travel (string, light)</li>
 <li><strong>Longitudinal</strong>: medium moves along travel (sound)</li>
-<li>Strings, water, sound, light, and electron <strong>wavefunctions</strong></li>
+<li>The red bead never travels; only the <strong>pattern</strong> does</li>
 </ul>
 </div></div>
 </section>
@@ -311,23 +325,31 @@ Davit Potoyan
 </ul>
 </div></div>
 </section>
-<section id="the-classical-wave-equation" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">The classical wave equation</h2>
+<section id="the-classical-wave-equation" class="slide level2">
+<h2>The classical wave equation</h2>
 <p><span class="math display">u(x,t) = Ae^{i(kx-\omega t)}</span></p>
 <p><strong>Two <span class="math inline">x</span>-derivatives, two <span class="math inline">t</span>-derivatives</strong></p>
 <p><span class="math display">\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u</span></p>
-</section>
-<section id="the-classical-wave-equation-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">The classical wave equation</h2>
-<p><span class="math display">u(x,t) = Ae^{i(kx-\omega t)}</span></p>
-<p><strong>Two <span class="math inline">x</span>-derivatives, two <span class="math inline">t</span>-derivatives</strong></p>
-<p><span class="math display">\frac{\partial^2 u}{\partial x^2} = (ik)^2 u = -k^2 u, \qquad \frac{\partial^2 u}{\partial t^2} = (-i\omega)^2 u = -\omega^2 u</span></p>
+<div class="fragment">
 <p>Divide and use <span class="math inline">\omega = kv</span>: the ratio is <span class="math inline">k^2/\omega^2 = 1/v^2</span></p>
 <div class="keyeq">
 <p><span class="math display">\frac{\partial^2 u}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}</span></p>
 </div>
 <ul>
 <li>Holds for <strong>every</strong> shape <span class="math inline">f(x \mp vt)</span> by the chain rule: the equation of motion of waves</li>
+</ul>
+</div>
+</section>
+<section id="what-the-equation-says-curvature-pulls" class="slide level2">
+<h2>What the equation says: curvature pulls</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch02/images/curvature_pulls.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Newton’s law for a piece of string: <strong>acceleration follows curvature</strong>. Neighbors pull a trough up and a crest down; a straight piece feels nothing</li>
+<li><span class="math inline">v^2 = \mathcal{T}/\mu</span>, tension over mass per length: tighter or lighter strings carry faster waves</li>
 </ul>
 </section>
 <section id="example-read-a-wave-off-its-formula" class="slide level2">
@@ -364,7 +386,7 @@ Davit Potoyan
 <h2>Live: dial the phase</h2>
 <p><span style="color:#107895"><strong>wave 1</strong></span> <span class="math inline">= \sin(kx)</span>, <span style="color:#e07b00"><strong>wave 2</strong></span> <span class="math inline">= \sin(kx+\phi)</span>, <span style="color:#C8102E"><strong>sum</strong></span> with envelope <span class="math inline">2\cos(\phi/2)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="170" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 169;"><span id="cb1-170"><a href="" aria-label="170"></a>viewof phi <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.283</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"phase φ (rad)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="186" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 185;"><span id="cb1-186"><a href="" aria-label="186"></a>viewof phi <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.283</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"phase φ (rad)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -372,21 +394,21 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="175" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 174;"><span id="cb2-175"><a href="" aria-label="175"></a>{</span>
-<span id="cb2-176"><a href="" aria-label="176"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">12.57</span><span class="op">,</span> <span class="fl">0.03</span>)<span class="op">;</span></span>
-<span id="cb2-177"><a href="" aria-label="177"></a>  <span class="kw">const</span> series <span class="op">=</span> (fn) <span class="kw">=&gt;</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">fn</span>(x)}))<span class="op">;</span></span>
-<span id="cb2-178"><a href="" aria-label="178"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-179"><a href="" aria-label="179"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
-<span id="cb2-180"><a href="" aria-label="180"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"kx"</span>}<span class="op">,</span></span>
-<span id="cb2-181"><a href="" aria-label="181"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">2.2</span><span class="op">,</span> <span class="fl">2.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u"</span>}<span class="op">,</span></span>
-<span id="cb2-182"><a href="" aria-label="182"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-183"><a href="" aria-label="183"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
-<span id="cb2-184"><a href="" aria-label="184"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#107895"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
-<span id="cb2-185"><a href="" aria-label="185"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e07b00"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
-<span id="cb2-186"><a href="" aria-label="186"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x) <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
-<span id="cb2-187"><a href="" aria-label="187"></a>    ]</span>
-<span id="cb2-188"><a href="" aria-label="188"></a>  })<span class="op">;</span></span>
-<span id="cb2-189"><a href="" aria-label="189"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="191" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb2-191"><a href="" aria-label="191"></a>{</span>
+<span id="cb2-192"><a href="" aria-label="192"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">12.57</span><span class="op">,</span> <span class="fl">0.03</span>)<span class="op">;</span></span>
+<span id="cb2-193"><a href="" aria-label="193"></a>  <span class="kw">const</span> series <span class="op">=</span> (fn) <span class="kw">=&gt;</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">fn</span>(x)}))<span class="op">;</span></span>
+<span id="cb2-194"><a href="" aria-label="194"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-195"><a href="" aria-label="195"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></span>
+<span id="cb2-196"><a href="" aria-label="196"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"kx"</span>}<span class="op">,</span></span>
+<span id="cb2-197"><a href="" aria-label="197"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">2.2</span><span class="op">,</span> <span class="fl">2.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u"</span>}<span class="op">,</span></span>
+<span id="cb2-198"><a href="" aria-label="198"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-199"><a href="" aria-label="199"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb2-200"><a href="" aria-label="200"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#107895"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
+<span id="cb2-201"><a href="" aria-label="201"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e07b00"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})<span class="op">,</span></span>
+<span id="cb2-202"><a href="" aria-label="202"></a>      Plot<span class="op">.</span><span class="fu">line</span>(<span class="fu">series</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x) <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(x <span class="op">+</span> phi))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
+<span id="cb2-203"><a href="" aria-label="203"></a>    ]</span>
+<span id="cb2-204"><a href="" aria-label="204"></a>  })<span class="op">;</span></span>
+<span id="cb2-205"><a href="" aria-label="205"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -394,7 +416,7 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="194" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb3-194"><a href="" aria-label="194"></a><span class="fu">md</span><span class="vs">`Sum amplitude right now: **</span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi<span class="op">/</span><span class="dv">2</span>)))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">** (in phase → 2, out of phase → 0)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="210" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 209;"><span id="cb3-210"><a href="" aria-label="210"></a><span class="fu">md</span><span class="vs">`Sum amplitude right now: **</span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(phi<span class="op">/</span><span class="dv">2</span>)))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">** (in phase → 2, out of phase → 0)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -402,25 +424,11 @@ Davit Potoyan
 </div>
 </div>
 </section>
-<section id="two-sources-fringes" class="slide level2">
-<h2>Two sources: fringes</h2>
-<div class="columns">
-<div class="column" style="width:62%;">
-<p><img data-src="../../ch02/images/two_source_interference.gif" style="width:100.0%"></p>
-</div><div class="column" style="width:38%;">
-<ul>
-<li>Two in-phase sources, <span class="math inline">d = 3\lambda</span></li>
-<li>Path difference <span class="math inline">m\lambda</span>: crests meet, <strong>bright</strong></li>
-<li>Path difference <span class="math inline">(m + \tfrac12)\lambda</span>: crest meets trough, <strong>dark</strong></li>
-<li>This is the <strong>double slit</strong> of Chapter 1</li>
-</ul>
-</div></div>
-</section>
 <section id="standing-waves-two-waves-opposite-directions" class="slide level2">
 <h2>Standing waves: two waves, opposite directions</h2>
 <div class="columns">
 <div class="column" style="width:46%;">
-<p><img data-src="../../ch02/images/traveling_standing.gif" height="400"></p>
+<p><img data-src="../../ch02/images/traveling_standing.gif" height="330"></p>
 </div><div class="column" style="width:54%;">
 <ul>
 <li><span class="math inline">x</span> and <span class="math inline">t</span> <strong>separate</strong>: the shape <span class="math inline">\sin kx</span> stays put, its height <span class="math inline">\cos\omega t</span> oscillates</li>
@@ -432,24 +440,45 @@ Davit Potoyan
 <p><span class="math display">\sin(kx-\omega t) + \sin(kx+\omega t) = 2\sin(kx)\cos(\omega t)</span></p>
 </div>
 </section>
-<section id="beats" class="slide level2">
-<h2>Beats</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="../../ch02/images/beats.gif" style="width:100.0%"></p>
-</div><div class="column" style="width:40%;">
-<p><span class="math display">\cos a + \cos b = 2\cos\tfrac{a-b}{2}\cos\tfrac{a+b}{2}</span></p>
+<section id="can-you-surf-a-light-wave" class="slide level2">
+<h2>Can you surf a light wave?</h2>
 <ul>
-<li>Slightly different <span class="math inline">k</span>: a <strong>slow envelope</strong> times a <strong>fast carrier</strong></li>
-<li>Beat frequency <span class="math inline">|\nu_2 - \nu_1|</span>: two strings almost in tune</li>
-<li>Many <span class="math inline">k</span> at once: one <strong>wave packet</strong>, the seed of the uncertainty principle</li>
+<li>Our first move was to ride along with the wave, <span class="math inline">x' = x - vt</span>. It works because water, sound, and strings have a <strong>medium</strong></li>
+<li>Maxwell: light obeys the wave equation with <strong>no medium</strong> and a speed made of constants</li>
+</ul>
+<p><span class="math display">\frac{\partial^2 E}{\partial x^2} = \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2}, \qquad c = \frac{1}{\sqrt{\varepsilon_0\mu_0}}</span></p>
+<ul>
+<li>Einstein at 16: run beside a light beam and see a <strong>frozen ripple</strong>? Maxwell forbids it</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>1905: take the equation at its word. <strong>Light moves at <span class="math inline">c</span> for every observer.</strong> There is no surfer frame, and <span class="math inline">x' = x - vt</span> must fail near <span class="math inline">c</span></li>
+</ul>
+</div>
+</section>
+<section id="the-light-clock-moving-clocks-run-slow" class="slide level2">
+<h2>The light clock: moving clocks run slow</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch02/images/light_clock.gif" class="quarto-figure quarto-figure-center" height="330"></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="keyeq">
+<p><span class="math display">\Delta t = \gamma\,\Delta t_0, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}</span></p>
+</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>Same <span class="math inline">c</span>, longer zigzag, slower tick</li>
+<li>Gold’s inner electrons: <span class="math inline">v/c \approx 0.6</span>, which is why gold is <strong>yellow</strong></li>
 </ul>
 </div></div>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A wave is any shape <span class="math inline">f(x \mp vt)</span>. Sine waves carry <span class="math inline">k = 2\pi/\lambda</span> and <span class="math inline">\omega = 2\pi\nu</span> with <span class="math inline">v = \omega/k</span>, every wave obeys <span class="math inline">u_{xx} = u_{tt}/v^2</span>, and because that equation is linear, waves add: interference, standing waves, and beats.</p>
+<p>A wave is any shape <span class="math inline">f(x \mp vt)</span>. Sine waves carry <span class="math inline">k = 2\pi/\lambda</span> and <span class="math inline">\omega = 2\pi\nu</span> with <span class="math inline">v = \omega/k</span>, every wave obeys <span class="math inline">u_{xx} = u_{tt}/v^2</span> because acceleration follows curvature, and since that equation is linear, waves add. Light is the one wave nobody can surf.</p>
 </blockquote>
 
 </section>
