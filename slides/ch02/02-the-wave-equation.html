@@ -273,9 +273,49 @@ Davit Potoyan
 <p><span class="math display">\frac{d^2X}{dx^2} - KX = 0, \qquad \frac{d^2T}{dt^2} - Kv^2\,T = 0</span></p>
 </div>
 </section>
+<section id="step-2-turn-the-ode-into-algebra" class="slide level2">
+<h2>Step 2: turn the ODE into algebra</h2>
+<p><strong>Trial function</strong>: every derivative of <span class="math inline">e^{rx}</span> returns a multiple of <span class="math inline">e^{rx}</span></p>
+<p><span class="math display">X = e^{rx} \quad\Rightarrow\quad \frac{d^2X}{dx^2} = r^2\,e^{rx}</span></p>
+<div class="fragment">
+<p><strong>Plug into</strong> <span class="math inline">X'' - KX = 0</span> and factor:</p>
+<p><span class="math display">r^2 e^{rx} - K\,e^{rx} = \left(r^2 - K\right)e^{rx} = 0</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">r^2 = K \qquad\Rightarrow\qquad r = \pm\sqrt{K}</span></p>
+<ul>
+<li><span class="math inline">e^{rx}</span> is never zero, so the bracket must vanish: the <strong>differential</strong> equation became <strong>algebraic</strong>, two roots for two constants</li>
+</ul>
+</div>
+</section>
+<section id="example-damped-oscillator" class="slide level2">
+<h2>Example: damped oscillator</h2>
+<div class="worked">
+<p>Solve <span class="math inline">\dfrac{d^2y}{dt^2} + 2\beta\dfrac{dy}{dt} + \omega^2 y = 0</span> with the trial function <span class="math inline">e^{rt}</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">r^2 + 2\beta r + \omega^2 = 0 \quad\Rightarrow\quad r = -\beta \pm \sqrt{\beta^2 - \omega^2}</span></p>
+<p><span class="math display">\beta &lt; \omega:\; r = -\beta \pm i\omega_d, \quad y = e^{-\beta t}\left[C_1\cos\omega_d t + C_2\sin\omega_d t\right]</span></p>
+<p><span class="math display">\beta &gt; \omega:\; r_1, r_2 \text{ real and negative}, \quad y = C_1 e^{r_1 t} + C_2 e^{r_2 t}</span></p>
+</div>
+<ul>
+<li><span class="math inline">\omega_d^2 = \omega^2 - \beta^2</span>: the <strong>sign of the discriminant</strong> decides between oscillation and plain decay</li>
+</ul>
+</section>
+<section id="complex-roots-oscillate-real-roots-decay" class="slide level2">
+<h2>Complex roots oscillate, real roots decay</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch02/images/damped_oscillator.gif" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Imaginary part of <span class="math inline">r</span> sets the <strong>frequency</strong>, real part sets the <strong>decay</strong></li>
+<li>The same test is coming for <span class="math inline">X'' - KX = 0</span>: the sign of <span class="math inline">K</span> picks the root type</li>
+</ul>
+</section>
 <section id="step-2-the-sign-of-k-decides" class="slide level2">
 <h2>Step 2: the sign of K decides</h2>
-<p><strong>Trial function</strong> <span class="math inline">e^{rx}</span> turns the ODE into the algebraic equation <span class="math inline">r^2 = K</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong><span class="math inline">K = \beta^2 &gt; 0</span>: real roots</strong></p>
@@ -292,6 +332,11 @@ Davit Potoyan
 <li><span class="math inline">X(L) = 0</span> needs <span class="math inline">\sin\beta L = 0</span></li>
 </ul>
 </div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch02/images/sign_of_k.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
 </section>
 <section id="boundary-conditions-quantize" class="slide level2">
 <h2>Boundary conditions quantize</h2>
@@ -344,17 +389,17 @@ Davit Potoyan
 <li>A single mode is a <strong>standing wave</strong> with fixed nodes; a sum of modes <strong>sloshes</strong>, because each mode runs at its own frequency</li>
 </ul>
 </section>
-<section id="example-the-notes-of-a-string" class="slide level2">
-<h2>Example: the notes of a string</h2>
+<section id="example-mode-frequencies-of-a-string" class="slide level2">
+<h2>Example: mode frequencies of a string</h2>
 <div class="worked">
-<p>Low E string of a guitar: <span class="math inline">L = 0.65</span> m, fundamental <span class="math inline">\nu_1 = 82.4</span> Hz. Find <span class="math inline">v</span>, the first overtones, and the pitch at the 12th fret (half length).</p>
+<p>A string with <span class="math inline">L = 0.50</span> m carries waves at <span class="math inline">v = 200</span> m/s. Find the wavelengths and frequencies of the first three modes.</p>
 </div>
 <div class="soln fragment">
-<p><span class="math display">\nu_n = n\frac{v}{2L} \;\Rightarrow\; v = 2L\nu_1 = 107\ \text{m/s}, \qquad \nu_2 = 164.8\ \text{Hz},\quad \nu_3 = 247.2\ \text{Hz}</span></p>
-<p><span class="math display">L \to L/2 \;\Rightarrow\; \nu_1 \to 164.8\ \text{Hz}, \text{ one octave up}</span></p>
+<p><span class="math display">\lambda_n = \frac{2L}{n} = 1.00,\; 0.50,\; 0.33\ \text{m}</span></p>
+<p><span class="math display">\nu_n = \frac{v}{\lambda_n} = n\frac{v}{2L} = 200,\; 400,\; 600\ \text{Hz}</span></p>
 </div>
 <ul>
-<li>Harmonics are integer multiples of <span class="math inline">v/2L</span>: pitch from <span class="math inline">L</span> and <span class="math inline">v</span>, timbre from the mix of <span class="math inline">A_n</span></li>
+<li>Only <span class="math inline">L</span> and <span class="math inline">v</span> enter: the string fixes the allowed frequencies, the pluck fixes how loud each one is</li>
 </ul>
 </section>
 <section id="the-pluck-sets-the-amplitudes" class="slide level2">
@@ -377,7 +422,7 @@ Davit Potoyan
 <h2>Live: move the pluck</h2>
 <p>Pluck position <span class="math inline">a</span> sets the mix of harmonics: <span class="math inline">A_n \propto \sin(n\pi a/L)\,/\,n^2</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="182" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb1-182"><a href="" aria-label="182"></a>viewof apos <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="fl">0.95</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"pluck position a / L"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="223" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 222;"><span id="cb1-223"><a href="" aria-label="223"></a>viewof apos <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="fl">0.95</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"pluck position a / L"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -385,21 +430,21 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="187" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb2-187"><a href="" aria-label="187"></a>{</span>
-<span id="cb2-188"><a href="" aria-label="188"></a>  <span class="kw">const</span> N <span class="op">=</span> <span class="dv">12</span><span class="op">;</span></span>
-<span id="cb2-189"><a href="" aria-label="189"></a>  <span class="kw">const</span> An <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> N <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">map</span>(n <span class="kw">=&gt;</span> ({n<span class="op">,</span> <span class="dt">A</span><span class="op">:</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(n <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> apos) <span class="op">/</span> (<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">**</span><span class="dv">2</span> <span class="op">*</span> n<span class="op">*</span>n <span class="op">*</span> apos <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> apos))}))<span class="op">;</span></span>
-<span id="cb2-190"><a href="" aria-label="190"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">1.0001</span><span class="op">,</span> <span class="fl">0.005</span>)<span class="op">;</span></span>
-<span id="cb2-191"><a href="" aria-label="191"></a>  <span class="kw">const</span> shape <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> x <span class="op">&lt;</span> apos <span class="op">?</span> x <span class="op">/</span> apos <span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> x) <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> apos)}))<span class="op">;</span></span>
-<span id="cb2-192"><a href="" aria-label="192"></a>  <span class="kw">const</span> rebuilt <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">sum</span>(An<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">A</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(d<span class="op">.</span><span class="at">n</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> x))}))<span class="op">;</span></span>
-<span id="cb2-193"><a href="" aria-label="193"></a>  <span class="kw">const</span> left <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({<span class="dt">width</span><span class="op">:</span> <span class="dv">580</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"x / L"</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.2</span><span class="op">,</span> <span class="fl">1.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u / h"</span>}<span class="op">,</span></span>
-<span id="cb2-194"><a href="" aria-label="194"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
-<span id="cb2-195"><a href="" aria-label="195"></a>            Plot<span class="op">.</span><span class="fu">line</span>(shape<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#6c757d"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})<span class="op">,</span></span>
-<span id="cb2-196"><a href="" aria-label="196"></a>            Plot<span class="op">.</span><span class="fu">line</span>(rebuilt<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})]})<span class="op">;</span></span>
-<span id="cb2-197"><a href="" aria-label="197"></a>  <span class="kw">const</span> right <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({<span class="dt">width</span><span class="op">:</span> <span class="dv">520</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"mode n"</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.35</span><span class="op">,</span> <span class="fl">0.9</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Aₙ / h"</span>}<span class="op">,</span></span>
-<span id="cb2-198"><a href="" aria-label="198"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
-<span id="cb2-199"><a href="" aria-label="199"></a>            Plot<span class="op">.</span><span class="fu">barY</span>(An<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"A"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">A</span> <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"#107895"</span> <span class="op">:</span> <span class="st">"#e07b00"</span>})]})<span class="op">;</span></span>
-<span id="cb2-200"><a href="" aria-label="200"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div style="display:flex; gap: 24px; align-items: flex-start"&gt;</span><span class="sc">${</span>left<span class="sc">}${</span>right<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-201"><a href="" aria-label="201"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="228" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 227;"><span id="cb2-228"><a href="" aria-label="228"></a>{</span>
+<span id="cb2-229"><a href="" aria-label="229"></a>  <span class="kw">const</span> N <span class="op">=</span> <span class="dv">12</span><span class="op">;</span></span>
+<span id="cb2-230"><a href="" aria-label="230"></a>  <span class="kw">const</span> An <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> N <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">map</span>(n <span class="kw">=&gt;</span> ({n<span class="op">,</span> <span class="dt">A</span><span class="op">:</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(n <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> apos) <span class="op">/</span> (<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">**</span><span class="dv">2</span> <span class="op">*</span> n<span class="op">*</span>n <span class="op">*</span> apos <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> apos))}))<span class="op">;</span></span>
+<span id="cb2-231"><a href="" aria-label="231"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">1.0001</span><span class="op">,</span> <span class="fl">0.005</span>)<span class="op">;</span></span>
+<span id="cb2-232"><a href="" aria-label="232"></a>  <span class="kw">const</span> shape <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> x <span class="op">&lt;</span> apos <span class="op">?</span> x <span class="op">/</span> apos <span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> x) <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> apos)}))<span class="op">;</span></span>
+<span id="cb2-233"><a href="" aria-label="233"></a>  <span class="kw">const</span> rebuilt <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">sum</span>(An<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">A</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(d<span class="op">.</span><span class="at">n</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> x))}))<span class="op">;</span></span>
+<span id="cb2-234"><a href="" aria-label="234"></a>  <span class="kw">const</span> left <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({<span class="dt">width</span><span class="op">:</span> <span class="dv">580</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"x / L"</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.2</span><span class="op">,</span> <span class="fl">1.2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"u / h"</span>}<span class="op">,</span></span>
+<span id="cb2-235"><a href="" aria-label="235"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb2-236"><a href="" aria-label="236"></a>            Plot<span class="op">.</span><span class="fu">line</span>(shape<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#6c757d"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})<span class="op">,</span></span>
+<span id="cb2-237"><a href="" aria-label="237"></a>            Plot<span class="op">.</span><span class="fu">line</span>(rebuilt<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#C8102E"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})]})<span class="op">;</span></span>
+<span id="cb2-238"><a href="" aria-label="238"></a>  <span class="kw">const</span> right <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({<span class="dt">width</span><span class="op">:</span> <span class="dv">520</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"mode n"</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.35</span><span class="op">,</span> <span class="fl">0.9</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Aₙ / h"</span>}<span class="op">,</span></span>
+<span id="cb2-239"><a href="" aria-label="239"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb2-240"><a href="" aria-label="240"></a>            Plot<span class="op">.</span><span class="fu">barY</span>(An<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"A"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">A</span> <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"#107895"</span> <span class="op">:</span> <span class="st">"#e07b00"</span>})]})<span class="op">;</span></span>
+<span id="cb2-241"><a href="" aria-label="241"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div style="display:flex; gap: 24px; align-items: flex-start"&gt;</span><span class="sc">${</span>left<span class="sc">}${</span>right<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-242"><a href="" aria-label="242"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -407,7 +452,7 @@ Davit Potoyan
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="206" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 205;"><span id="cb3-206"><a href="" aria-label="206"></a><span class="fu">md</span><span class="vs">`Dashed: the pluck. Red: the first 12 modes added up. Silent modes at this pluck: **</span><span class="sc">${</span>d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">13</span>)<span class="op">.</span><span class="fu">filter</span>(n <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(n <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> apos)) <span class="op">&lt;</span> <span class="fl">0.02</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>) <span class="op">||</span> <span class="st">"none below n = 12"</span><span class="sc">}</span><span class="vs">**`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="247" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 246;"><span id="cb3-247"><a href="" aria-label="247"></a><span class="fu">md</span><span class="vs">`Dashed: the pluck. Red: the first 12 modes added up. Silent modes at this pluck: **</span><span class="sc">${</span>d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">13</span>)<span class="op">.</span><span class="fu">filter</span>(n <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(n <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> apos)) <span class="op">&lt;</span> <span class="fl">0.02</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>) <span class="op">||</span> <span class="st">"none below n = 12"</span><span class="sc">}</span><span class="vs">**`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
