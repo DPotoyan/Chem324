@@ -153,6 +153,56 @@ $$
 
 :::
 
+The damped oscillator, $y'' + 2\beta y' + \omega^2 y = 0$, shows what the root type means for the motion. Its characteristic equation has roots $r = -\beta \pm \sqrt{\beta^2 - \omega^2}$: complex when the damping is weak, real when it is strong. The full solution is worked out in Problem 2 at the end of the chapter.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: damped_oscillator
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+w, b_under, b_over = 2 * np.pi, 0.45, 5.0 * np.pi          # omega, two damping constants
+t = np.linspace(0, 4, 400)
+ts = np.linspace(0, 4, 40)
+wd = np.sqrt(w**2 - b_under**2)
+y_under = np.exp(-b_under * t) * (np.cos(wd * t) + (b_under / wd) * np.sin(wd * t))
+r1, r2 = -b_over + np.sqrt(b_over**2 - w**2), -b_over - np.sqrt(b_over**2 - w**2)
+y_over = (r2 * np.exp(r1 * t) - r1 * np.exp(r2 * t)) / (r2 - r1)
+y_crit = (1 + w * t) * np.exp(-w * t)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3.2))
+for ax in (ax1, ax2):
+    ax.axhline(0, color=GRAY, lw=0.8)
+    ax.set_xlim(0, 4); ax.set_ylim(-1.1, 1.1); ax.set_xlabel("t / T"); ax.set_yticks([-1, 0, 1])
+ax1.plot(t, np.exp(-b_under * t), color=GRAY, lw=1, ls="--")
+ax1.plot(t, -np.exp(-b_under * t), color=GRAY, lw=1, ls="--")
+ax1.text(2.4, 0.45, r"$\pm e^{-\beta t}$", color=GRAY, fontsize=10)
+ax1.set_title(r"complex roots $r=-\beta\pm i\omega_d$: decaying oscillation", loc="left", fontsize=10.5)
+ax2.plot(t, y_crit, color=GRAY, lw=1.2, ls="--")
+ax2.text(1.1, 0.42, "critical", color=GRAY, fontsize=10)
+ax2.set_title(r"real roots $r_1, r_2<0$: decay, no oscillation", loc="left", fontsize=10.5)
+(l1,) = ax1.plot([], [], color=TEAL, lw=2.4)
+(d1,) = ax1.plot([], [], "o", color=TEAL, ms=8, mec="white", mew=1.2, zorder=5)
+(l2,) = ax2.plot([], [], color=CARDINAL, lw=2.4)
+(d2,) = ax2.plot([], [], "o", color=CARDINAL, ms=8, mec="white", mew=1.2, zorder=5)
+fig.tight_layout()
+
+def update(i):
+    n = int(np.searchsorted(t, ts[i])) + 1
+    l1.set_data(t[:n], y_under[:n]); d1.set_data([t[n - 1]], [y_under[n - 1]])
+    l2.set_data(t[:n], y_over[:n]); d2.set_data([t[n - 1]], [y_over[n - 1]])
+
+ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. Left: complex roots $r = -\beta \pm i\omega_d$ give an oscillation inside a decaying envelope; the imaginary part sets the frequency, the real part the decay. Right: two real negative roots give decay with no oscillation, the dashed curve being the critically damped case. The spatial equation $X'' - KX = 0$ faces the same fork, decided by the sign of $K$.
+
 :::{tip} **Solving the spatial part when $K > 0$**
 :class: dropdown
 
@@ -207,6 +257,39 @@ $$
 - The value $n = 0$ gives $X = 0$ and negative $n$ only flips the sign of $B_n$, so the distinct solutions are $n = 1, 2, 3, \ldots$
 
 :::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: sign_of_k
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+L, b = 1.0, 3.0
+x = np.linspace(0, L, 400)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 2.0))
+for ax in (ax1, ax2):
+    ax.axhline(0, color=GRAY, lw=0.8)
+    for xc in (0, L):
+        ax.plot([xc], [0], "o", color="k", ms=6, zorder=5)
+    ax.set_xlim(-0.03, L + 0.03); ax.set_yticks([]); ax.set_xticks([0, L]); ax.set_xticklabels(["0", "L"])
+    ax.spines["left"].set_visible(False)
+ax1.plot(x, np.exp(b * x) / np.exp(b * L), color=CARDINAL, lw=2.4, label=r"$e^{\beta x}$")
+ax1.plot(x, np.exp(-b * x), color=ORANGE, lw=2.4, label=r"$e^{-\beta x}$")
+ax1.set_ylim(-0.15, 1.15)
+ax1.legend(loc="upper center", fontsize=10, frameon=False, ncol=2)
+for n, c in ((1, TEAL), (2, PURPLE)):
+    ax2.plot(x, np.sin(n * np.pi * x / L), color=c, lw=2.4, label=r"$\sin(\pi x/L)$" if n == 1 else rf"$\sin({n}\pi x/L)$")
+ax2.set_ylim(-1.15, 1.15)
+ax2.legend(loc="lower left", fontsize=10, frameon=False)
+fig.tight_layout()
+plt.show()
+```
+
+Fig. Why the sign of $K$ decides. Left: for $K > 0$ the solutions are growing and decaying exponentials, and no combination of them returns to zero at both clamps. Right: for $K < 0$ the solutions are sines and cosines, and the sines vanish at both clamps whenever a whole number of half-wavelengths fits.
 
 :::{tip} **Solving the temporal part**
 :class: dropdown

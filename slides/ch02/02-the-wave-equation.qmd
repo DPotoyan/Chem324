@@ -74,9 +74,48 @@ $$\frac{1}{v^2\,T}\frac{d^2T}{dt^2} = \frac{1}{X}\frac{d^2X}{dx^2} = K$$
 $$\frac{d^2X}{dx^2} - KX = 0, \qquad \frac{d^2T}{dt^2} - Kv^2\,T = 0$$
 :::
 
-## Step 2: the sign of K decides
+## Step 2: turn the ODE into algebra
 
-**Trial function** $e^{rx}$ turns the ODE into the algebraic equation $r^2 = K$
+**Trial function**: every derivative of $e^{rx}$ returns a multiple of $e^{rx}$
+
+$$X = e^{rx} \quad\Rightarrow\quad \frac{d^2X}{dx^2} = r^2\,e^{rx}$$
+
+::: {.fragment}
+**Plug into** $X'' - KX = 0$ and factor:
+
+$$r^2 e^{rx} - K\,e^{rx} = \left(r^2 - K\right)e^{rx} = 0$$
+:::
+
+::: {.fragment}
+$$r^2 = K \qquad\Rightarrow\qquad r = \pm\sqrt{K}$$
+
+- $e^{rx}$ is never zero, so the bracket must vanish: the **differential** equation became **algebraic**, two roots for two constants
+:::
+
+## Example: damped oscillator
+
+::: {.worked}
+Solve $\dfrac{d^2y}{dt^2} + 2\beta\dfrac{dy}{dt} + \omega^2 y = 0$ with the trial function $e^{rt}$.
+:::
+
+::: {.soln .fragment}
+$$r^2 + 2\beta r + \omega^2 = 0 \quad\Rightarrow\quad r = -\beta \pm \sqrt{\beta^2 - \omega^2}$$
+
+$$\beta < \omega:\; r = -\beta \pm i\omega_d, \quad y = e^{-\beta t}\left[C_1\cos\omega_d t + C_2\sin\omega_d t\right]$$
+
+$$\beta > \omega:\; r_1, r_2 \text{ real and negative}, \quad y = C_1 e^{r_1 t} + C_2 e^{r_2 t}$$
+:::
+
+- $\omega_d^2 = \omega^2 - \beta^2$: the **sign of the discriminant** decides between oscillation and plain decay
+
+## Complex roots oscillate, real roots decay
+
+![](../../ch02/images/damped_oscillator.gif){.nostretch width="80%" fig-align="center"}
+
+- Imaginary part of $r$ sets the **frequency**, real part sets the **decay**
+- The same test is coming for $X'' - KX = 0$: the sign of $K$ picks the root type
+
+## Step 2: the sign of K decides
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -96,6 +135,8 @@ $$X = A\cos\beta x + B\sin\beta x$$
 - $X(L) = 0$ needs $\sin\beta L = 0$
 :::
 ::::
+
+![](../../ch02/images/sign_of_k.png){.nostretch width="70%" fig-align="center"}
 
 ## Boundary conditions quantize
 
@@ -142,19 +183,19 @@ $$u(x,t) = \sum_{n=1}^{\infty} A_n \sin\left(\frac{n\pi x}{L}\right)\cos(\omega_
 
 - A single mode is a **standing wave** with fixed nodes; a sum of modes **sloshes**, because each mode runs at its own frequency
 
-## Example: the notes of a string
+## Example: mode frequencies of a string
 
 ::: {.worked}
-Low E string of a guitar: $L = 0.65$ m, fundamental $\nu_1 = 82.4$ Hz. Find $v$, the first overtones, and the pitch at the 12th fret (half length).
+A string with $L = 0.50$ m carries waves at $v = 200$ m/s. Find the wavelengths and frequencies of the first three modes.
 :::
 
 ::: {.soln .fragment}
-$$\nu_n = n\frac{v}{2L} \;\Rightarrow\; v = 2L\nu_1 = 107\ \text{m/s}, \qquad \nu_2 = 164.8\ \text{Hz},\quad \nu_3 = 247.2\ \text{Hz}$$
+$$\lambda_n = \frac{2L}{n} = 1.00,\; 0.50,\; 0.33\ \text{m}$$
 
-$$L \to L/2 \;\Rightarrow\; \nu_1 \to 164.8\ \text{Hz}, \text{ one octave up}$$
+$$\nu_n = \frac{v}{\lambda_n} = n\frac{v}{2L} = 200,\; 400,\; 600\ \text{Hz}$$
 :::
 
-- Harmonics are integer multiples of $v/2L$: pitch from $L$ and $v$, timbre from the mix of $A_n$
+- Only $L$ and $v$ enter: the string fixes the allowed frequencies, the pluck fixes how loud each one is
 
 ## The pluck sets the amplitudes
 
