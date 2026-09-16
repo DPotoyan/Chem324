@@ -165,7 +165,7 @@ from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-w, b_under, b_over = 2 * np.pi, 0.45, 5.0 * np.pi          # omega, two damping constants
+w, b_under, b_over = 2 * np.pi, 0.45, 5.0 * np.pi          # omega, weak and strong damping
 t = np.linspace(0, 4, 400)
 ts = np.linspace(0, 4, 40)
 wd = np.sqrt(w**2 - b_under**2)
@@ -173,35 +173,55 @@ y_under = np.exp(-b_under * t) * (np.cos(wd * t) + (b_under / wd) * np.sin(wd * 
 r1, r2 = -b_over + np.sqrt(b_over**2 - w**2), -b_over - np.sqrt(b_over**2 - w**2)
 y_over = (r2 * np.exp(r1 * t) - r1 * np.exp(r2 * t)) / (r2 - r1)
 y_crit = (1 + w * t) * np.exp(-w * t)
+YLO, YHI, TOP = -1.3, 1.95, 1.85                             # shared y range, spring anchor
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3.2))
+spring_xy = lambda y_mass, n=9, half=0.16: (                # zigzag from the anchor to the mass
+    np.concatenate([[0.0], half * (-1.0) ** np.arange(2 * n), [0.0]]),
+    np.linspace(TOP, y_mass + 0.14, 2 * n + 2))
+
+fig = plt.figure(figsize=(8, 3.2))
+gs = fig.add_gridspec(1, 4, width_ratios=[1, 3.4, 1, 3.4], wspace=0.32)
+ax_s1, ax1, ax_s2, ax2 = [fig.add_subplot(gs[0, i]) for i in range(4)]
+for ax_s, fluid, col in ((ax_s1, "water", "#d6ecf5"), (ax_s2, "honey", "#f4d9a4")):
+    ax_s.set_xlim(-0.6, 0.6); ax_s.set_ylim(YLO, YHI); ax_s.set_axis_off()
+    ax_s.fill_between([-0.6, 0.6], YLO, TOP + 0.02, color=col, zorder=0)
+    ax_s.plot([-0.5, 0.5], [TOP, TOP], color="k", lw=3)
+    ax_s.axhline(0, color=GRAY, lw=0.8, ls=":")
+    ax_s.text(0, YLO + 0.12, fluid, ha="center", fontsize=10.5, color="#444444")
 for ax in (ax1, ax2):
     ax.axhline(0, color=GRAY, lw=0.8)
-    ax.set_xlim(0, 4); ax.set_ylim(-1.1, 1.1); ax.set_xlabel("t / T"); ax.set_yticks([-1, 0, 1])
+    ax.set_xlim(0, 4); ax.set_ylim(YLO, YHI); ax.set_xlabel("t / T"); ax.set_yticks([-1, 0, 1])
 ax1.plot(t, np.exp(-b_under * t), color=GRAY, lw=1, ls="--")
 ax1.plot(t, -np.exp(-b_under * t), color=GRAY, lw=1, ls="--")
-ax1.text(2.4, 0.45, r"$\pm e^{-\beta t}$", color=GRAY, fontsize=10)
-ax1.set_title(r"complex roots $r=-\beta\pm i\omega_d$: decaying oscillation", loc="left", fontsize=10.5)
+ax1.text(2.4, 0.5, r"$\pm e^{-\beta t}$", color=GRAY, fontsize=10)
+ax1.set_title(r"complex roots $r=-\beta\pm i\omega_d$: oscillates, decays", loc="left", fontsize=10)
 ax2.plot(t, y_crit, color=GRAY, lw=1.2, ls="--")
 ax2.text(1.1, 0.42, "critical", color=GRAY, fontsize=10)
-ax2.set_title(r"real roots $r_1, r_2<0$: decay, no oscillation", loc="left", fontsize=10.5)
+ax2.set_title(r"real roots $r_1, r_2<0$: no oscillation", loc="left", fontsize=10)
 (l1,) = ax1.plot([], [], color=TEAL, lw=2.4)
 (d1,) = ax1.plot([], [], "o", color=TEAL, ms=8, mec="white", mew=1.2, zorder=5)
 (l2,) = ax2.plot([], [], color=CARDINAL, lw=2.4)
 (d2,) = ax2.plot([], [], "o", color=CARDINAL, ms=8, mec="white", mew=1.2, zorder=5)
-fig.tight_layout()
+(sp1,) = ax_s1.plot([], [], color="#444444", lw=1.4)
+(m1,) = ax_s1.plot([], [], "s", color=TEAL, ms=15, mec="white", mew=1.2, zorder=5)
+(sp2,) = ax_s2.plot([], [], color="#444444", lw=1.4)
+(m2,) = ax_s2.plot([], [], "s", color=CARDINAL, ms=15, mec="white", mew=1.2, zorder=5)
+fig.subplots_adjust(left=0.02, right=0.985, top=0.88, bottom=0.18)
 
 def update(i):
     n = int(np.searchsorted(t, ts[i])) + 1
-    l1.set_data(t[:n], y_under[:n]); d1.set_data([t[n - 1]], [y_under[n - 1]])
-    l2.set_data(t[:n], y_over[:n]); d2.set_data([t[n - 1]], [y_over[n - 1]])
+    yu, yo = y_under[n - 1], y_over[n - 1]
+    l1.set_data(t[:n], y_under[:n]); d1.set_data([t[n - 1]], [yu])
+    l2.set_data(t[:n], y_over[:n]); d2.set_data([t[n - 1]], [yo])
+    sp1.set_data(*spring_xy(yu)); m1.set_data([0], [yu])
+    sp2.set_data(*spring_xy(yo)); m2.set_data([0], [yo])
 
 ani = FuncAnimation(fig, update, frames=len(ts), interval=100, blit=False)
 plt.close(fig)
 HTML(ani.to_jshtml())
 ```
 
-Fig. Left: complex roots $r = -\beta \pm i\omega_d$ give an oscillation inside a decaying envelope; the imaginary part sets the frequency, the real part the decay. Right: two real negative roots give decay with no oscillation, the dashed curve being the critically damped case. The spatial equation $X'' - KX = 0$ faces the same fork, decided by the sign of $K$.
+Fig. A mass on a spring released in water (left) and in honey (right). Left: complex roots $r = -\beta \pm i\omega_d$ give an oscillation inside a decaying envelope; the imaginary part sets the frequency, the real part the decay. Right: two real negative roots give decay with no oscillation, the dashed curve being the critically damped case. The spatial equation $X'' - KX = 0$ faces the same fork, decided by the sign of $K$.
 
 :::{tip} **Solving the spatial part when $K > 0$**
 :class: dropdown
