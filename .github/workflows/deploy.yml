@@ -65,6 +65,29 @@ jobs:
         # that cannot run headless carry `execute: skip: true` frontmatter.
         run: pip install -r requirements.txt
 
+      - name: Start Jupyter server for cell execution
+        # myst launches its own jupyter_server and gives up after a fixed 20 s. Since
+        # 2026-09-14 the runners take longer than that (12 s on 2026-09-04, >20 s after),
+        # so every page needing execution was published with bare source and no
+        # outputs. Start the server here with a real readiness wait and hand it to
+        # myst through JUPYTER_BASE_URL / JUPYTER_TOKEN, which makes myst skip its own
+        # launch. root_dir must be the project root, the same path myst would use.
+        run: |
+          TOKEN=$(python -c "import secrets; print(secrets.token_hex(16))")
+          echo "::add-mask::$TOKEN"
+          nohup python -m jupyter_server --ServerApp.root_dir "$GITHUB_WORKSPACE" \
+            --ServerApp.port=8888 --ServerApp.port_retries=0 \
+            --IdentityProvider.token="$TOKEN" > jupyter-server.log 2>&1 &
+          for i in $(seq 1 90); do
+            curl -sf -H "Authorization: token $TOKEN" http://127.0.0.1:8888/api/status >/dev/null && break
+            sleep 2
+          done
+          curl -sf -H "Authorization: token $TOKEN" http://127.0.0.1:8888/api/status \
+            || { echo "Jupyter server did not come up"; cat jupyter-server.log; exit 1; }
+          echo "Jupyter server ready after about $((i * 2)) s"
+          echo "JUPYTER_BASE_URL=http://127.0.0.1:8888" >> "$GITHUB_ENV"
+          echo "JUPYTER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+
       - name: Build HTML
         env:
           # Served at https://dpotoyan.github.io/Chem324/ -> assets need the /Chem324 prefix.
