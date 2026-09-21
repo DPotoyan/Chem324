@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="01-schrodinger-equation_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="01-schrodinger-equation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01-schrodinger-equation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01-schrodinger-equation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,150 +163,209 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="why-a-new-equation" class="slide level2">
-<h2>Why a new equation?</h2>
+<section id="two-facts-in-search-of-an-equation" class="slide level2">
+<h2>Two facts in search of an equation</h2>
+<p><strong>Chapter 1: what experiments demand</strong></p>
+<p><span class="math display">E = h\nu = \hbar\omega \qquad\qquad p = \frac{h}{\lambda} = \hbar k</span></p>
+<p><strong>Chapter 2: the language of waves</strong></p>
+<p><span class="math display">u(x,t) = A\,e^{i(kx - \omega t)}</span></p>
 <ul>
-<li class="fragment"><strong>Classical mechanics fails</strong> at atomic scales</li>
-<li class="fragment">Experiments demand: <strong>energy quantization</strong> and <strong>wave-particle duality</strong></li>
-<li class="fragment">Schrödinger’s equation is a <strong>fundamental law</strong>: postulated, not derived</li>
-<li class="fragment">It has <strong>never failed</strong> when applied correctly</li>
+<li>Schrödinger, 1926: <strong>which wave equation</strong> does the matter wave obey?</li>
+<li>A <strong>fundamental law</strong>: motivated and tested, never derived</li>
 </ul>
 </section>
-<section id="from-classical-waves-to-quantum-waves" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">From classical waves to quantum waves</h2>
-<p><span class="math display">\[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
-</section>
-<section id="from-classical-waves-to-quantum-waves-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">From classical waves to quantum waves</h2>
-<p><span class="math display">\[\Psi(x,t) = Ae^{i(kx-\omega t)}\]</span></p>
+<section id="the-wave-of-a-free-particle" class="slide level2">
+<h2>The wave of a free particle</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch03/images/complex_plane_wave.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
+<div class="keyeq">
+<p><span class="math display">\Psi(x,t) = A\,e^{\frac{i}{\hbar}(px - Et)}</span></p>
+</div>
 <ul>
-<li>Insert <strong>de Broglie</strong>: <span class="math inline">\(p = \hbar k\)</span></li>
-<li>Insert <strong>Planck</strong>: <span class="math inline">\(E = \hbar \omega\)</span></li>
+<li>Re and Im run a <strong>quarter cycle apart</strong></li>
+<li><span class="math inline">|\Psi|^2</span> is <strong>flat</strong>: definite momentum, no preferred position</li>
+<li>A real wave would have moving dead spots</li>
 </ul>
-<p><span class="math display">\[\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}\]</span></p>
+</div></div>
+</section>
+<section id="derivatives-pull-out-energy-and-momentum" class="slide level2">
+<h2>Derivatives pull out energy and momentum</h2>
+<p><span class="math display">i\hbar\,\frac{\partial \Psi}{\partial t} = E\,\Psi \qquad\qquad -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} = \frac{p^2}{2m}\,\Psi</span></p>
+<ul>
+<li>Each derivative <strong>asks the wave a question</strong> and gets a number back</li>
+</ul>
 <div class="fragment">
-<p>What equation generates such waves? Differentiate and see.</p>
+<p><strong>Now demand energy conservation</strong>, and multiply by <span class="math inline">\Psi</span>:</p>
+<p><span class="math display">E = \frac{p^2}{2m} + V \qquad\Longrightarrow\qquad E\,\Psi = \frac{p^2}{2m}\,\Psi + V\,\Psi</span></p>
 </div>
 </section>
 <section id="the-time-dependent-schrödinger-equation" class="slide level2">
 <h2>The time-dependent Schrödinger equation</h2>
-<p><span class="math display">\[
--\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
-\]</span></p>
+<div class="keyeq">
+<p><span class="math display">\underbrace{-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}}_{\text{kinetic}} \;+\; \underbrace{V(x)\,\Psi\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{potential}} \;=\; \underbrace{i \hbar \frac{\partial \Psi}{\partial t}\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{total energy}}</span></p>
+</div>
 <ul>
-<li class="fragment">Only a <strong>single time derivative</strong>, unlike the classical wave equation</li>
-<li class="fragment">The <span class="math inline">\(i\)</span> makes solutions <strong>oscillate in the complex plane</strong></li>
-<li class="fragment">Kinetic + potential on the left, <strong>total energy flow</strong> on the right</li>
+<li><strong>Energy conservation</strong>, written for waves</li>
+<li><strong>One</strong> time derivative and a factor <span class="math inline">i</span>: free particles need <span class="math inline">\omega \propto k^2</span>, not <span class="math inline">\omega \propto k</span></li>
+<li><span class="math inline">V(x)</span> <strong>defines the system</strong>; the postulate is that this holds for any <span class="math inline">\Psi</span> and any <span class="math inline">V</span></li>
 </ul>
 </section>
-<section id="separation-of-variables" class="slide level2 smaller">
+<section id="separation-of-variables" class="slide level2">
 <h2>Separation of variables</h2>
-<p><span class="math display">\[\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}\]</span></p>
+<p>Try <span class="math inline">\Psi(x,t) = \psi(x)\,T(t)</span> and divide by <span class="math inline">\psi T</span>:</p>
+<p><span class="math display">i\hbar\,\frac{1}{T}\frac{dT}{dt} = \frac{1}{\psi}\left[-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V\psi\right] = E</span></p>
 <ul>
-<li class="fragment">Time part: a rotating <strong>phase clock</strong> at rate <span class="math inline">\(E/\hbar\)</span></li>
-<li class="fragment">Spatial part: the <strong>time-independent Schrödinger equation</strong></li>
+<li>A function of <span class="math inline">t</span> equals a function of <span class="math inline">x</span>: both are one <strong>constant</strong>, the energy</li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[
--\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
-\]</span></p>
+<p><strong>Time part</strong>: an imaginary root, so pure rotation <span class="math inline">T = e^{-iEt/\hbar}</span>. <strong>Space part</strong>:</p>
+<div class="keyeq">
+<p><span class="math display">-\frac{\hbar^2}{2m} \frac{d^2 \psi}{d x^2} + V(x)\, \psi = E\, \psi</span></p>
 </div>
-<div class="fragment">
-<p>The hard part is finding <span class="math inline">\(\psi(x)\)</span>; the potential <span class="math inline">\(V(x)\)</span> defines the system</p>
 </div>
 </section>
-<section id="what-does-the-wavefunction-mean" class="slide level2">
-<h2>What does the wavefunction mean?</h2>
-<ul>
-<li class="fragment"><span class="math inline">\(\psi\)</span> is complex: <strong>no direct physical meaning</strong></li>
-<li class="fragment">The <strong>Born rule</strong> extracts the measurable content:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[p(x) = \psi^{*}(x)\,\psi(x) = |\psi(x)|^2\]</span></p>
+<section id="stationary-states" class="slide level2">
+<h2>Stationary states</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch03/images/phase_clock.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
+<div class="keyeq">
+<p><span class="math display">\Psi(x,t) = \psi(x)\,e^{-iEt/\hbar}</span></p>
 </div>
 <ul>
-<li class="fragment"><span class="math inline">\(|\psi(x)|^2\,dx\)</span> = probability of finding the particle in <span class="math inline">\([x, x+dx]\)</span></li>
+<li>The <strong>phase clock</strong> turns at <span class="math inline">E/\hbar</span></li>
+<li><span class="math inline">|\Psi|^2 = |\psi|^2</span>: the density <strong>does not move</strong></li>
+<li>Four times the energy, four times the clock rate</li>
+</ul>
+</div></div>
+</section>
+<section id="a-curvature-equation" class="slide level2">
+<h2>A curvature equation</h2>
+<p><span class="math display">\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\,\big[E - V(x)\big]\,\psi</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/allowed_forbidden.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The string’s <span class="math inline">X'' = KX</span> again: the <strong>sign of <span class="math inline">E - V</span></strong> picks sines or exponentials</li>
 </ul>
 </section>
-<section id="wavefunctions-must-be-normalized" class="slide level2">
-<h2>Wavefunctions must be normalized</h2>
-<p><span class="math display">\[\int^{+\infty}_{-\infty} |\psi(x)|^2\, dx = 1\]</span></p>
+<section id="only-some-energies-fit" class="slide level2">
+<h2>Only some energies fit</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/shooting.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment">The particle is <strong>somewhere</strong>: total probability is 1</li>
-<li class="fragment">Normalization fixes the constant in <span class="math inline">\(\psi = N\psi'\)</span></li>
-<li class="fragment">Probability in a region: <span class="math inline">\(P(a&lt;x&lt;b)=\displaystyle\int_a^b |\psi|^2 dx\)</span></li>
+<li><span class="math inline">\psi</span> must stay <strong>finite</strong>: at most energies the tail blows up</li>
+<li><strong>Boundary conditions quantize</strong>, as the clamps did for the string</li>
 </ul>
 </section>
-<section id="operators-the-language-of-qm" class="slide level2">
-<h2>Operators: the language of QM</h2>
+<section id="the-born-rule" class="slide level2">
+<h2>The Born rule</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch03/images/born_buildup.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
+<div class="keyeq">
+<p><span class="math display">p(x) = \psi^{*}\psi = |\psi(x)|^2</span></p>
+</div>
 <ul>
-<li class="fragment">Every observable gets an <strong>operator</strong> that acts on <span class="math inline">\(\psi\)</span></li>
+<li><span class="math inline">\psi</span> is complex: <strong>not measurable</strong></li>
+<li>One detection is random; <strong>many</strong> trace out <span class="math inline">|\psi|^2</span></li>
+<li>At a <strong>node</strong> no particle is ever found</li>
 </ul>
+</div></div>
+</section>
+<section id="example-normalize-and-locate" class="slide level2">
+<h2>Example: normalize and locate</h2>
+<div class="worked">
+<p>A particle on <span class="math inline">[0,1]</span> has <span class="math inline">\psi = N x</span>. Find <span class="math inline">N</span>, then the probability of finding it between <span class="math inline">0.3</span> and <span class="math inline">0.6</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\int_0^1 N^2x^2\,dx = \frac{N^2}{3} = 1 \quad\Rightarrow\quad N = \sqrt{3}</span></p>
+<p><span class="math display">P = \int_{0.3}^{0.6} 3x^2\,dx = 0.6^3 - 0.3^3 = 0.189</span></p>
+</div>
+<ul>
+<li>The linear equation leaves the size of <span class="math inline">\psi</span> open; <strong>total probability one</strong> fixes it</li>
+</ul>
+</section>
+<section id="operators-and-the-eigenvalue-problem" class="slide level2">
+<h2>Operators and the eigenvalue problem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Observable</th>
-<th>Operator</th>
+<th>observable</th>
+<th>operator</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>position</td>
-<td><span class="math inline">\(\hat{x} = x\)</span></td>
+<td><span class="math inline">\hat{x} = x</span></td>
 </tr>
 <tr class="even">
 <td>momentum</td>
-<td><span class="math inline">\(\hat{p} = -i\hbar\,\partial/\partial x\)</span></td>
+<td><span class="math inline">\hat{p} = -i\hbar\,\partial/\partial x</span></td>
 </tr>
 <tr class="odd">
 <td>kinetic energy</td>
-<td><span class="math inline">\(\hat{K} = \hat{p}^2/2m\)</span></td>
+<td><span class="math inline">\hat{K} = \hat{p}^2/2m</span></td>
 </tr>
 <tr class="even">
 <td>total energy</td>
-<td><span class="math inline">\(\hat{H} = \hat{K} + \hat{V}\)</span></td>
+<td><span class="math inline">\hat{H} = \hat{K} + V(x)</span></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="the-hamiltonian" class="slide level2">
-<h2>The Hamiltonian</h2>
-<p><span class="math display">\[
-\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
-\]</span></p>
-<ul>
-<li class="fragment">Quantum analog of the classical total energy <span class="math inline">\(H = \frac{p^2}{2m} + V(x)\)</span></li>
-<li class="fragment">The Schrödinger equation in one line:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}\psi = E\psi\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="keyeq">
+<p><span class="math display">\hat{H}\,\psi_n = E_n\,\psi_n</span></p>
 </div>
+<ul>
+<li><span class="math inline">\psi_n</span>: <strong>eigenfunctions</strong>, the stationary states</li>
+<li><span class="math inline">E_n</span>: <strong>eigenvalues</strong>, the allowed energies</li>
+</ul>
+</div></div>
+</section>
+<section id="example-is-it-an-eigenfunction" class="slide level2">
+<h2>Example: is it an eigenfunction?</h2>
+<div class="worked">
+<p>Test <span class="math inline">\psi = A\sin(ax)</span> against the momentum and the kinetic energy operators.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\hat{p}\,\psi = -i\hbar\,a\,A\cos(ax) \qquad \text{a new function: no}</span></p>
+<p><span class="math display">\hat{K}\,\psi = \frac{\hbar^2a^2}{2m}\,A\sin(ax) \qquad \text{the same function: yes}</span></p>
+</div>
+<ul>
+<li>Definite kinetic energy, no definite momentum: an equal mix of <strong>left and right</strong> movers</li>
+</ul>
 </section>
 <section id="expectation-values" class="slide level2">
 <h2>Expectation values</h2>
+<div class="keyeq">
+<p><span class="math display">\langle A \rangle = \int \psi^{*}(x)\,\hat{A}\,\psi(x)\,dx</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/mean_and_spread.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment">Predictions are <strong>probability-weighted averages</strong>:</li>
-</ul>
-<p><span class="math display">\[\langle A \rangle = \int \psi^{*}(x)\, \hat{A}\, \psi(x)\, dx\]</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\langle x \rangle\)</span>: mean position, <span class="math inline">\(\langle p \rangle\)</span>: mean momentum</li>
-<li class="fragment">Variance <span class="math inline">\(\sigma^2 = \langle A^2\rangle - \langle A\rangle^2\)</span> measures the <strong>spread</strong> of measurements</li>
-</ul>
-</section>
-<section id="eigenvalues-and-eigenfunctions" class="slide level2">
-<h2>Eigenvalues and eigenfunctions</h2>
-<p><span class="math display">\[\boxed{\hat{H} \psi_n = E_n \psi_n}\]</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\psi_n\)</span>: <strong>eigenfunctions</strong>, the stationary states</li>
-<li class="fragment"><span class="math inline">\(E_n\)</span>: <strong>eigenvalues</strong>, the allowed energies</li>
-<li class="fragment">Boundary conditions make the spectrum <strong>discrete</strong></li>
-<li class="fragment">Linearity: superpositions <span class="math inline">\(\psi = \sum_n c_n \psi_n\)</span> also solve the equation</li>
+<li>The operator sits <strong>between</strong> <span class="math inline">\psi^*</span> and <span class="math inline">\psi</span>; <span class="math inline">\sigma_x</span> measures the spread of results</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>The Schrödinger equation <span class="math inline">\(\hat{H}\psi = E\psi\)</span> is the quantum equation of motion. Its solutions are wavefunctions whose square <span class="math inline">\(|\psi|^2\)</span> gives probabilities, whose operators give expectation values <span class="math inline">\(\langle A \rangle = \int \psi^*\hat{A}\psi\,dx\)</span>, and whose eigenvalues are the quantized energies.</p>
+<p>Energy conservation written for matter waves gives the Schrödinger equation. It separates into a turning phase and <span class="math inline">\hat{H}\psi = E\psi</span>, whose finite solutions exist only at quantized energies. The wavefunction itself is not measurable: <span class="math inline">|\psi|^2</span> gives probabilities and <span class="math inline">\int\psi^{*}\hat{A}\psi\,dx</span> gives averages.</p>
 </blockquote>
 
 </section>
@@ -315,7 +390,6 @@ Davit Potoyan
   <script src="01-schrodinger-equation_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="01-schrodinger-equation_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="01-schrodinger-equation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-schrodinger-equation_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -484,27 +558,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

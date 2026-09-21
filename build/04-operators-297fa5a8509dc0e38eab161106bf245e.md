@@ -29,6 +29,27 @@
 - In quantum mechanics we use **a simple recipe to find operators**: take expressions from classical mechanics and replace position and momentum by their respective operator expressions.
 
 
+:::{admonition} **Example of operators**
+:class: dropdown
+
+- Let us take the function $e^{2x}$ as an example and see how operator notation works:
+
+$$\frac{d^2}{dx^2} e^{2x} = 4e^{2x}$$
+
+$$\hat{A} f =4f$$
+
+-  Here we say that the operator $\hat{A}$ acts on the function $e^{2x}$ to produce another function, which in this case is the same function multiplied by 4.
+
+- In general, operators can be anything placed in front of a function $f(x)$. Here are a few more examples of operators:
+
+  - $\hat{A} = x$ multiplies the function by $x$, e.g. $\hat{A}e^{2x} = xe^{2x}$
+  - $\hat{A} = -i$ multiplies the function by $-i$, e.g. $\hat{A}e^{2x} = -ie^{2x}$
+  - $\hat{A} = \sqrt{\phantom{x}}$ takes the square root, e.g. $\hat{A}e^{2x} = e^{x}$
+  - $\hat{A} = d/dx + x^2$ differentiates, then adds $x^2$ times the function: $\hat{A}e^{2x} = 2e^{2x}+x^2e^{2x} = (2+x^2)e^{2x}$
+
+:::
+
+
 ### Linearity of Operators
 
 - Operators in quantum mechanics are **linear**, meaning they satisfy:
@@ -44,6 +65,25 @@ $$
 - Here $c$ is a constant, and $\psi_1$, $\psi_2$, and $\psi$ are wavefunctions.
 - $\hat{x}$, $\hat{p_x}$, and $\hat{H}$ all satisfy this property.
 
+
+
+:::{admonition} **Example of linear operators**
+:class: dropdown
+
+- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$,      $\hat{B}=\int dx$       $\hat{C}=\sqrt{}$.
+
+
+- Using the rules of calculus, we know that the derivative and integral act on each term in the sum:
+
+$$\frac{d}{dx}(c_1f_1+c_2f_2) = c_1\frac{df_1}{dx}+c_2\frac{df_2}{dx}$$
+
+$$\int(c_1f_1+c_2f_2)dx = c_1\int f_1dx+c_2\int f_2dx$$
+
+- For the square root, the linearity property does not hold!
+
+$$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
+
+:::
 
 
 ### Commutations of operators
@@ -680,4 +720,91 @@ $$
 - The matrix is anti-Hermitian (i.e., $P^\dagger = -P$), as expected for the momentum operator.
 
 - This $4 \times 4$ matrix represents the momentum operator in a discrete system with 4 grid points. The matrix elements link neighboring points, reflecting the nature of the derivative approximation.
+:::
+
+#### Problem-6: Taking the square of an operator
+
+Consider the operator $ \hat{A} = x \frac{d}{dx} $. Find $ \hat{A}^2 $, i.e., $ \hat{A}(\hat{A}f(x)) $, and apply it to an arbitrary function $ f(x) $.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+First, apply $ \hat{A} f(x) = x \frac{d}{dx} f(x) $:
+
+$$
+\hat{A} f(x) = x \frac{df}{dx}
+$$
+
+Now, apply $ \hat{A} $ again to the result:
+
+$$
+\hat{A}(\hat{A} f(x)) = \hat{A} \left( x \frac{df}{dx} \right) = x \frac{d}{dx} \left( x \frac{df}{dx} \right)
+$$
+
+Using the product rule:
+
+$$
+\frac{d}{dx} \left( x \frac{df}{dx} \right) = \frac{df}{dx} + x \frac{d^2 f}{dx^2}
+$$
+
+Thus:
+
+$$
+\hat{A}^2 f(x) = x \left( \frac{df}{dx} + x \frac{d^2 f}{dx^2} \right) = x \frac{df}{dx} + x^2 \frac{d^2 f}{dx^2}
+$$
+
+:::
+
+#### Problem-7: Verifying an eigenfunction and its eigenvalue
+
+Consider the operator $ \hat{B} = -i\hbar \frac{d}{dx} $ (momentum operator). Verify that $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $, and find the corresponding eigenvalue.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+Apply $ \hat{B} $ to $ f(x) = e^{ikx} $:
+
+$$
+\hat{B} f(x) = -i\hbar \frac{d}{dx} e^{ikx}
+$$
+
+The derivative of $ e^{ikx} $ is:
+
+$$
+\frac{d}{dx} e^{ikx} = ik e^{ikx}
+$$
+
+Thus:
+
+$$
+\hat{B} f(x) = -i\hbar \cdot ik e^{ikx} = \hbar k e^{ikx}
+$$
+
+Since $ \hat{B} f(x) = \hbar k f(x) $, $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $ with eigenvalue $ \hbar k $.
+
+:::
+
+#### Problem-8: Linearity and eigenfunction testing
+
+Consider the operator $ \hat{D} = x \frac{d}{dx} $. Show whether this operator is linear and check if $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $.
+
+:::{admonition} **Solution**
+:class: dropdown solution
+
+First, test linearity by applying $ \hat{D} $ to $ \alpha f(x) + \beta g(x) $:
+
+$$
+\hat{D}(\alpha f(x) + \beta g(x)) = x \frac{d}{dx} (\alpha f(x) + \beta g(x)) = \alpha x \frac{df}{dx} + \beta x \frac{dg}{dx}
+$$
+
+This is $ \alpha \hat{D} f(x) + \beta \hat{D} g(x) $, so $ \hat{D} $ is linear.
+
+Now, apply $ \hat{D} $ to $ f(x) = x^n $:
+
+$$
+\hat{D} f(x) = x \frac{d}{dx} x^n = x \cdot n x^{n-1} = n x^n
+$$
+
+Since the result is proportional to $ f(x) = x^n $, $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $ with eigenvalue $ n $.
+
 :::
