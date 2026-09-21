@@ -8,987 +8,1010 @@ kernelspec:
 
 :::{note} **What you need to know**
 
-- Combining the classical wave equation with the Planck and de Broglie relations produces **Schrödinger's equation**, the fundamental equation of motion of the quantum world.
-- **Separation of variables** splits the time-dependent equation into an oscillatory time factor $e^{-iEt/\hbar}$ and the **time-independent Schrödinger equation**, our workhorse for the rest of the course.
-- The wavefunction itself is complex and not directly measurable; its absolute square $|\psi(x)|^2$ is the **probability distribution** for finding the particle. Physical wavefunctions must be **normalized**.
-- Every measurable quantity corresponds to an **operator**, and predictions come as **expectation values** $\langle A \rangle = \int \psi^{*} \hat{A}\, \psi\, dx$.
-- Solving the Schrödinger equation means finding the **eigenfunctions** $\psi_n$ and **eigenvalues** $E_n$ of the Hamiltonian. Boundary conditions make the spectrum discrete, and linearity makes superpositions $\sum_n c_n \psi_n$ solutions too.
+- Feeding the **de Broglie** and **Planck** relations into a complex traveling wave, and demanding that energy is conserved, produces **Schrödinger's equation**, the equation of motion of the quantum world.
+- **Separation of variables** splits it into a rotating phase $e^{-iEt/\hbar}$ and the **time-independent Schrödinger equation** for the shape $\psi(x)$. These product solutions are **stationary states**: the phase turns, the probability density does not move.
+- The time-independent equation is a **curvature equation**. Where $E > V$ the wavefunction oscillates, where $E < V$ it decays or grows. Demanding that it stays finite allows only special energies: **quantization comes from boundary conditions**, as it did for the string.
+- The wavefunction is complex and not directly measurable. Its absolute square $|\psi(x)|^2$ is the **probability density** for finding the particle, so physical wavefunctions must be **normalized**.
+- Every measurable quantity corresponds to an **operator**. Predictions are **expectation values** $\langle A \rangle = \int \psi^{*} \hat{A}\, \psi\, dx$, and solving the Schrödinger equation means finding the **eigenfunctions** $\psi_n$ and **eigenvalues** $E_n$ of the Hamiltonian.
 
 :::
 
-## The exciting journey into the microscopic world
+### Why a new equation?
 
-- In the next few sections, we will introduce **Schrödinger's Equation (SE)**, one of the fundamental laws of physics. A "fundamental law" means that SE cannot be derived from more basic principles; it can only be inferred or hypothesized based on experimental evidence. Its validity is supported by countless successful quantitative predictions and explanations of experimental observations.
-
-- It's important to emphasize that there has never been an instance where **quantum mechanics** has failed when applied correctly. The physical world is inherently quantum, especially at small scales. **Quantum mechanics works flawlessly** at all scales and in all situations where it has been properly applied.
-
+- Classical mechanics works at large scales and fails for atoms and molecules. Chapter 1 collected the evidence, and any new equation of motion has to build in two facts from it:
+  - **Energy comes in quanta.** Blackbody radiation, the photoelectric effect and atomic spectra all require $E = h\nu$.
+  - **Matter is a wave.** Electron diffraction and the double slit show that a particle with momentum $p$ carries a wavelength $\lambda = h/p$.
+- Chapter 2 gave us the language of waves: complex exponentials, the wave equation, separation of variables, normal modes. In 1926 Erwin Schrödinger, an expert on the physics of waves, put the two quantum relations into that language and found the equation that the matter wave obeys.
+- The Schrödinger equation is a **fundamental law**. It cannot be derived from anything more basic; it can only be motivated and then tested. In the century since, it has passed every test it was given, from the spectrum of hydrogen to the structure of molecules and solids.
 
 :::{figure} images/SE_intro.jpeg
 :label: fig-schrodinger-equation-1
-:alt: SE-intro
+:alt: A person stepping through a door into a space filled with crossing lines
 :width: 300px
 
-You are now entering the quantum world. Proceed with caution.
+Fig. Entering the quantum world.
 :::
 
-### What do we require from the new quantum theory?
+### Building the equation
 
+We follow Schrödinger's reasoning in three steps: write down the wave of a free particle, see what its derivatives give back, and then demand that energy is conserved.
 
-- Recall that while **classical mechanics** is valid at large scales, it completely fails to describe motion at the atomic and molecular levels. A new, accurate equation of motion is required to explain phenomena such as:
+#### Step 1: the wave of a free particle
 
-  - The **quantized nature of energy**, as observed in experiments involving blackbody radiation and atomic and molecular spectra.
-  
-  - **Wave-particle duality**, demonstrated through electron diffraction, Compton scattering, and double-slit experiments.
-
-
-:::{figure} images/SE_intro2.gif
-:label: fig-schrodinger-equation-2
-:alt: SE-intro
-:width: 300px
-
-Schrödinger had to accept that electrons are correctly described by wave functions.
-:::
-
-### Quantum wave equation
-
-- In 1925/1926 Erwin Schrödinger, an expert on the physics of waves, derived a new equation of motion that predicts quantum phenomena such as energy quantization and wave-particle duality from first principles.
-
-- We can trace Schrödinger's approach by starting with the classical wave equation:
-
-  $$\frac{\partial^2 \Psi(x,t)}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 \Psi(x,t)}{\partial t^2}$$
-
-- The classical wave equation we have seen can produce traveling or standing waves depending on boundary conditions. Let us pick a general periodic traveling wave, for instance:
-
-$$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
-
-- We are going to plug into a wave function the two key quantum relations discovered empirically and then see what kind of wave equation can produce it:
-
-  - **Plug wave-particle duality via De Broglie relation:** 
-  
-  $$p=h/\lambda=\hbar k\,\,\,\, where\,\,\,\, k=\frac{2\pi}{\lambda}$$
-
-  - **Plug energy quantization via Planck equation:**  
-  
-  $$E=h\nu=\hbar\omega\,\,\,\, where\,\,\,\, \omega=2\pi\nu$$
-
-- **Quantum wave function** 
-
-$$\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}$$
-
-- **What equation can generate such quantum wave functions?** To find out we need to take derivatives with respect to time and space.
-
-### From Quantum Wave Function to Quantum Wave Equation
-
-- **Time Part**: When we take the time derivative of the wave function, we find that the total energy appears as a multiplicative factor. This is significant because, in quantum mechanics, total energy is conserved. The relationship between energy and the time dependence of the wave function is given by:
+- The [complex traveling wave](../ch02/01-waves.md) of Chapter 2 moves to the right with wavenumber $k = 2\pi/\lambda$ and angular frequency $\omega = 2\pi\nu$:
 
 $$
-\frac{\partial \Psi(x,t)}{\partial t} = -\frac{i}{\hbar} E \Psi(x,t)
+\Psi(x,t) = A\,e^{i(kx-\omega t)}
 $$
 
-
-- **Spatial Part**: To recover the total energy from the spatial part of the wave function, we take two spatial derivatives. 
-
-$$
-\frac{\partial \Psi(x,t)}{\partial x} = \frac{i}{\hbar} p \Psi(x,t)
-$$
-
+- Now insert the two quantum relations. De Broglie ties the wavenumber to the momentum, and Planck ties the frequency to the energy:
 
 $$
-\frac{\partial^2 \Psi(x,t)}{\partial x^2} = -\frac{p^2}{\hbar^2} \Psi(x,t) = -\frac{2m(E - V)}{\hbar^2} \Psi(x,t)
+p = \frac{h}{\lambda} = \hbar k, \qquad E = h\nu = \hbar\omega
 $$
-- This equation, in which the time variable is absent, is the **time-independent Schrödinger equation.** We will come back to it shortly. 
-- **Joining time and spatial parts** by expressing the kinetic energy as a difference between total and potential energies $K = E-V$ and eliminating $E$ we get:
 
-:::{important} **Time-Dependent Schrödinger Equation**
+:::{important} **Wavefunction of a free particle with momentum $p$ and energy $E$**
 
 $$
--\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+\Psi(x,t) = A\,e^{\frac{i}{\hbar}(px - Et)}
 $$
-:::
-
-### Quantum vs Classical Wave equation
-
-
-:::{figure} images/SE-image.png
-:label: fig-schrodinger-equation-3
-:alt: SE-intro
-:width: 300px
-
-Dissecting the Schrödinger equation, using the 1D version for simplicity.
-:::
-
-- The Schrödinger equation describes the evolution of the wave function $\Psi(x,t)$ for a quantum system such as an electron or atom in a potential $V(x)$. 
-- Unlike the classical wave equation, there is only a single time derivative. The presence of $i$ generates oscillatory solutions in the complex plane, which is why we call it a quantum wave equation. 
-- What is the meaning of $\Psi(x,t)$? It is generally complex and so cannot stand for any real measurable quantity. We will see how to extract information from $\Psi$ later. 
-- Note that we are focusing on the 1D case for simplicity. Generalizing to 3D involves adding similar terms that depend on the $y$ and $z$ coordinates of every quantum object. 
-
-### Separation of Variables and the Time-Independent Schrödinger Equation
-
-- By assuming the wave function can be separated into a product of a spatial part and a time part, $\Psi(x,t) = \psi(x) T(t)$, we can solve for each part independently:
-- The time part $T(t)=e^{-iEt/\hbar}$ yields an oscillatory solution related to the total energy.
-- The spatial part $\psi(x)$ satisfies the **time-independent Schrödinger equation**, which we solve to obtain stationary states.
-
-:::{important} **Quantum Wave function**
-
-$$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
-
-- The hard part is finding $\psi(x)$, which depends on the system, e.g. the form of the potential energy function $V$.
 
 :::
 
-- This method is crucial for solving quantum systems, particularly in cases where the potential $V(x)$ does not depend on time.
-- Plugging in $\psi(x) T(t)$ and cancelling the time part, we are back to the time-independent equation we obtained earlier.  
-
-:::{important} **Time-Independent Schrödinger Equation**
-
-$$
--\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
-$$
-:::
-
-## From the equation to its meaning
-
-We now have the equation and a strategy for solving it. What we do not yet have is the meaning of the object the equation keeps handing us. This half of the lecture answers that question and turns $\psi$ into numbers an experiment can check.
-
-### What is the meaning of a wave-function $\psi$ ? 
-
-- In the classical wave equation, the wave function has a clear mechanical interpretation: it represents the degree of disturbance in the wave. For example, it can describe the elevation of a guitar string from its resting position.
-
-- In contrast, the quantum wave function is less intuitive. The wave function itself does not have direct physical meaning, as it is generally a complex function. To connect it to measurable quantities, we need to extract real values from it that correspond to physical observables.
-
-- The key insight is that the absolute square of the wave function gives the probability distribution:
-
-:::{important} **Probabilistic meaning of quantum wave function (square)**
-
-  $$p(x) = \psi^{*}(x) \cdot \psi(x) = |\psi(x)|^2$$
-  
-:::
-
-- $p(x)$ is a **probability distribution function**. It describes the likelihood of finding a quantum object at a position $x$.
-- $p(x)\,dx$ gives the probability of finding the particle in a tiny part of space inside the interval $[x, x+dx]$.
-
-- In three-dimensional space, the analogous expression is:
-
-  $$p(x, y, z) = \psi(x, y, z)^{*} \cdot \psi(x, y, z)$$
-
-### Probability Refresher
-
-- Before introducing quantum mechanics and wavefunctions, let's recall some core ideas from probability.
-
-#### Random Variables
-
-- A **random variable** assigns numbers to the outcomes of an experiment. For example, how many squirrels you see each day is a random variable.
-- **Discrete examples**: dice rolls, coin flips.  
-- **Continuous examples**: particle position, measurement noise.  
-
-#### Probability Distributions
-
-- A continuous random variable is fully described by a distribution over all possible values. We call this object a probability distribution $p(x)$, which must integrate (or sum, in the discrete case) to one, showing that we cover all possibilities and that each possibility is assigned a fraction of 1.
-
-:::{important} **Rules of Probabilities**
-
-- **Non-negative**: 
-
-$$p(x) \geq 0$$
-
-
-- **Normalized**: 
-
-$$\int_{-\infty}^{\infty} p(x)\,dx = 1$$  
-
-- **Mean (expectation)**:  
-
-  $$
-  \mu = \langle x \rangle = \int_{-\infty}^{\infty} x\,p(x)\,dx
-  $$
-
-- **Variance**:  
-
-  $$
-  \sigma^2 = \langle x^2 \rangle - \langle x \rangle^2
-  $$
-
-:::
-
-#### Further Exploration
-- [Video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw)  
-- [Interactive probability explorer](https://idiot.computer/probs/)  
-
-:::{note} **Worked Examples of Probability distributions**
-:class: dropdown
-
-**1. Fair coin Flip**
-
-- Random variable $X \in \{0,1\}$ with
-
-$$
-P(X=0) = 0.5, \quad P(X=1) = 0.5
-$$
-
-**Normalization**
-
-$$
-P(0)+P(1) = 0.5+0.5 = 1
-$$
-
-**Mean**
-
-$$
-\langle X \rangle = \sum_x xP(x) = 0\cdot 0.5 + 1\cdot 0.5 = 0.5
-$$
-
-**Variance**
-
-$$
-\langle X^2 \rangle = 0^2\cdot 0.5 + 1^2\cdot 0.5 = 0.5
-$$
-
-$$
-\sigma^2 = \langle X^2 \rangle - \langle X \rangle^2 = 0.5 - (0.5)^2 = 0.25
-$$
-
-
-
-**2. Uniform Distribution on [0,1]**
-
-- PDF:
-$$
-p(x) = 
-\begin{cases}
-1, & 0 \leq x \leq 1 \\
-0, & \text{otherwise}
-\end{cases}
-$$
-
-**Normalization**
-
-$$
-\int_0^1 1 \, dx = 1
-$$
-
-**Mean**
-
-$$
-\langle x \rangle = \int_0^1 x \, dx = \left.\frac{x^2}{2}\right|_0^1 = \frac{1}{2}
-$$
-
-**Variance**
-
-$$
-\langle x^2 \rangle = \int_0^1 x^2 \, dx = \left.\frac{x^3}{3}\right|_0^1 = \frac{1}{3}
-$$
-
-$$
-\sigma^2 = \frac{1}{3} - \left(\frac{1}{2}\right)^2 = \frac{1}{12}
-$$
-
-
-
-
-**Gaussian Distribution $\mathcal{N}(0,1)$**
-
-- PDF:
-$$
-p(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
-$$
-
-**Normalization**
-
-$$
-\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-x^2/2} dx = 1
-$$
-
-(This is the famous Gaussian integral.)
-
-**Mean**
-
-$$
-\langle x \rangle = \int_{-\infty}^\infty x\,p(x)\,dx = 0 \quad \text{(odd function)}
-$$
-
-**Variance**
-
-$$
-\langle x^2 \rangle = \int_{-\infty}^\infty x^2 \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\,dx = 1
-$$
-
-$$
-\sigma^2 = 1 - 0^2 = 1
-$$
-
-:::
+- The wave has to be complex, and the reason is physical. A free particle with a definite momentum has no preferred position, so the chance of finding it must be the same everywhere and at all times. A real wave $\cos(kx-\omega t)$ cannot do that: its square vanishes at nodes that sweep along with the wave. The complex wave can. Its real and imaginary parts run a quarter cycle apart, so when one is zero the other is at its maximum, and $|\Psi|^2 = \mathrm{Re}^2 + \mathrm{Im}^2$ stays perfectly flat.
 
 ```{code-cell} python
 :tags: [hide-input]
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Discrete probabilities (fair dice)
-outcomes = np.arange(1, 7)
-probs = np.ones_like(outcomes) / 6
-
-plt.bar(outcomes, probs)
-plt.xlabel("Dice outcome")
-plt.ylabel("Probability")
-plt.title("PMF of a Fair Die")
-plt.show()
-```
-
-```{code-cell} python
-:tags: [hide-input]
-# -----------------------------
-# Correct sampling for H-atom 1s
-# -----------------------------
-N = 6000
-a0 = 1.0
-
-# For 1s: if x = 2r/a0, then x ~ Gamma(k=3, theta=1)
-x = np.random.gamma(shape=3.0, scale=1.0, size=N)
-r = 0.5 * a0 * x
-
-# Isotropic angles
-u = np.random.rand(N)
-theta = np.arccos(1 - 2*u)
-phi = 2*np.pi*np.random.rand(N)
-
-# Convert to Cartesian and take a 2D projection
-x3 = r * np.sin(theta) * np.cos(phi)
-y3 = r * np.sin(theta) * np.sin(phi)
-
-# Histogram for the shell probability density P(r) (per unit r)
-bins = np.linspace(0, 6*a0, 80)
-hist, edges = np.histogram(r, bins=bins, density=True)
-centers = 0.5*(edges[1:] + edges[:-1])
-
-# Analytical radial distribution P(r) = 4 r^2 |psi|^2 = 4 r^2 / (a0^3*pi) * exp(-2r/a0) * pi
-# Simplifies to: P(r) = (4/a0^3) r^2 exp(-2r/a0), which integrates to 1
-rr = np.linspace(0, bins[-1], 400)
-P_r = (4.0/(a0**3)) * rr**2 * np.exp(-2*rr/a0)
-
-# Side-by-side subplots: dot cloud and radial distribution
-
-fig, axs = plt.subplots(1, 2, figsize=(12, 5))
-
-# Left: simulated dot cloud
-axs[0].scatter(x3, y3, s=1, alpha=0.5)
-axs[0].set_title("Hydrogen 1s: position observations (2D projection)")
-axs[0].set_xlabel("x [$a_0$]")
-axs[0].set_ylabel("y [$a_0$]")
-axs[0].set_aspect('equal')
-
-# Right: radial distribution histogram + analytical curve
-axs[1].plot(centers, hist, lw=2, label="Monte Carlo (histogram)")
-axs[1].plot(rr, P_r, lw=2, linestyle="--", label="Analytical 1s")
-axs[1].set_title("Radial probability distribution")
-axs[1].set_xlabel("r [$a_0$]")
-axs[1].set_ylabel("$P(r)$")
-axs[1].legend()
-
-plt.tight_layout()
-plt.show()
-```
-
-### Normalization of wavefunction
-
-- For the wave function to represent a proper probability distribution, it must be normalizable. If it is not normalizable, the wave function is only proportional to a probability distribution and not equal to it.
-
-- **Normalization** of $\psi^2$ ensures that there is absolute certainty that the quantum object exists somewhere in space. In an experiment, when searching for a quantum particle across the entire space, normalization guarantees that you will find it somewhere.
-
-- **Normalization in 1D**:
-
-  $$\int^{+\infty}_{-\infty} |\psi(x)|^2 dx = \int^{+\infty}_{-\infty} p(x) dx = 1$$
-
-- To normalize a wave function $\psi'$, multiply it by a constant: $\psi = N\psi'$. The constant $N$ is determined by plugging this expression into the normalization condition. In other words, normalization determines the multiplicative factor in front of the wave function.
-
-- **Normalization in 3D**:
-
-  $$\int^{+\infty}_{-\infty} \int^{+\infty}_{-\infty} \int^{+\infty}_{-\infty} |\psi(x, y, z)|^2 dx \, dy \, dz = 1$$
-
-
-:::{admonition} **Normalization example**
-:class: info, dropdown
-
-- Given the wave function $\psi(x)=x$ on the range $[0,1]$, normalize it so that it becomes a proper probability distribution function.
-
-We require
-
-$$
-\int_0^1 |\psi(x)|^2 \, dx = 1.
-$$
-
-Substitute $\psi(x)=C\,x$:
-
-$$
-\int_0^1 (C\,x)^2 \, dx = 1,
-$$
-
-$$
-C^2 \int_0^1 x^2 \, dx = 1,
-$$
-
-$$
-C^2 \cdot \frac{1}{3} = 1.
-$$
-
-
-$$
-C^2 = 3 \quad \Rightarrow \quad C = \sqrt{3}.
-$$
-
-Therefore the normalized wave function is
-
-$$
-\psi(x) = \sqrt{3}\,x, \quad 0 \leq x \leq 1.
-$$
-
-:::
-
-```{code-cell} python
-:tags: [hide-input]
+# synced: complex_plane_wave
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-# Define x values
-x = np.linspace(0, 1, 500)
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+k, w = 2 * np.pi / 4.0, 2 * np.pi            # lambda = 4, one period per loop
+x = np.linspace(0, 12, 600)
+ts = np.linspace(0, 1, 36, endpoint=False)
 
-# Unnormalized psi
-psi_unnorm = x
-psi2_unnorm = psi_unnorm**2
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 4.0), sharex=True,
+                               gridspec_kw={"height_ratios": [1.25, 1]})
+(re,) = ax1.plot([], [], color=TEAL, lw=2.4, label=r"Re $\Psi = \cos(kx-\omega t)$")
+(im,) = ax1.plot([], [], color=ORANGE, lw=2.0, ls="--", label=r"Im $\Psi = \sin(kx-\omega t)$")
+ax1.axhline(0, color=GRAY, lw=0.6)
+ax1.set_ylim(-1.3, 1.95); ax1.set_yticks([-1, 0, 1]); ax1.set_ylabel(r"$\Psi$")
+ax1.legend(loc="upper right", frameon=False, fontsize=9.5, ncol=2)
+ax1.set_title(r"free particle $\Psi = e^{i(kx-\omega t)}$: two real waves, a quarter cycle apart",
+              loc="left", fontsize=11)
 
-# Normalized psi (C = sqrt(3))
-psi_norm = np.sqrt(3) * x
-psi2_norm = psi_norm**2
+real2 = ax2.fill_between(x, 0 * x, color=GRAY, alpha=0.25, lw=0)
+(real2_line,) = ax2.plot([], [], color=GRAY, lw=1.4, label=r"a real wave, $\cos^2(kx-\omega t)$: moving dead spots")
+ax2.plot(x, np.ones_like(x), color=CARDINAL, lw=2.8, label=r"$|\Psi|^2 = \mathrm{Re}^2 + \mathrm{Im}^2 = 1$ everywhere")
+ax2.set_xlim(0, 12); ax2.set_ylim(0, 1.75); ax2.set_yticks([0, 1])
+ax2.set_xlabel("x"); ax2.set_ylabel("probability density")
+ax2.legend(loc="upper right", frameon=False, fontsize=9.5, ncol=1)
+fig.tight_layout()
 
-# Compute integrals for annotation
-area_unnorm = np.trapezoid(psi2_unnorm, x)
-area_norm = np.trapezoid(psi2_norm, x)
+def update(i):
+    ph = k * x - w * ts[i]
+    re.set_data(x, np.cos(ph)); im.set_data(x, np.sin(ph))
+    real2_line.set_data(x, np.cos(ph) ** 2)
+    real2.set_data(x, 0 * x, np.cos(ph) ** 2)
 
-# Create the figure and axes
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# --- Plot 1: Unnormalized psi² ---
-axes[0].fill_between(x, psi2_unnorm, alpha=0.4, color="blue")
-axes[0].set_title(r"Unnormalized $|\psi(x)|^2$")
-axes[0].set_xlabel("x")
-axes[0].set_ylabel(r"$|\psi(x)|^2$")
-axes[0].grid(True)
-axes[0].text(0.5, 0.2, rf"Area = {area_unnorm:.2f}", 
-             transform=axes[0].transAxes, fontsize=12, color="blue")
-
-# --- Plot 2: Normalized psi² ---
-axes[1].fill_between(x, psi2_norm, alpha=0.4, color="green")
-axes[1].set_title(r"Normalized $|\psi(x)|^2$")
-axes[1].set_xlabel("x")
-axes[1].set_ylabel(r"$|\psi(x)|^2$")
-axes[1].grid(True)
-axes[1].text(0.5, 0.2, rf"Area = {area_norm:.2f}", 
-             transform=axes[1].transAxes, fontsize=12, color="green")
-
-plt.tight_layout()
-plt.show()
+ani = FuncAnimation(fig, update, frames=len(ts), interval=85, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
 ```
 
+Fig. A free particle moving to the right. Top: the real and imaginary parts of $\Psi$ are two ordinary traveling waves a quarter cycle apart. Bottom: their squares add up to a constant, so the particle is equally likely to be found anywhere, while the square of a single real wave would have dead spots moving along $x$.
 
-### What can we do with probability distribution functions (PDF)? 
+#### Step 2: derivatives pull out the energy and the momentum
 
-- By definition, the probability distribution function $p(x)$ lets us quantify the probability that a quantum "particle" is located in an infinitesimal slice $[x, x+dx]$ around the point $x$. This then enables us to find the probability in any finite region $[a,b]$ simply by integrating:
+- Differentiate the free-particle wave with respect to time. The exponential comes back multiplied by $-iE/\hbar$. Moving the constants to the left side:
 
-  $$p(a<x<b)=\int_a^b |\psi(x)|^2dx$$
+$$
+i\hbar\,\frac{\partial \Psi}{\partial t} = E\,\Psi
+$$
 
-- In higher dimensions, e.g. 3D, we can locate the particle within a volume element $dx\,dy\,dz$, or any finite volume, via a similar integration:
+- Differentiate with respect to position. One derivative returns the momentum, two derivatives return the kinetic energy:
 
-  $$p(a_x<x<b_x,a_y<y<b_y, a_z<z<b_z )=\int^{b_x}_{a_x}  \int^{b_y}_{a_y}  \int^{b_z}_{a_z} |\psi(x,y,z)|^2dx dy dz$$
+$$
+-i\hbar\,\frac{\partial \Psi}{\partial x} = p\,\Psi, \qquad\qquad -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} = \frac{p^2}{2m}\,\Psi
+$$
 
+- Read these three lines as questions put to the wave. The operation $i\hbar\,\partial/\partial t$ asks "what is your energy?", $-i\hbar\,\partial/\partial x$ asks "what is your momentum?", and the wave answers by returning itself times the number. This is the first appearance of **operators**, to which we return at the end of the lecture.
 
-### The Mathematical Language of Quantum Mechanics: Operators
+#### Step 3: demand that energy is conserved
 
-- To streamline our discussion and draw analogies with classical intuition, we need to introduce some essential **notation and terminology**.
+- A particle moving in a potential $V$ has total energy equal to kinetic plus potential energy:
 
-- In quantum mechanics, we define **operators** as mathematical entities that transform one function into another. An operator can perform various actions on a function, such as differentiation, integration, addition, multiplication, and more. In this way, operators serve as tools to manipulate wave functions and extract physical information.
+$$
+E = \frac{p^2}{2m} + V
+$$
 
+- Multiply both sides by $\Psi$, then replace $E\Psi$ and $\frac{p^2}{2m}\Psi$ with the derivatives from Step 2:
 
-:::{figure} images/SE_intro3.jpg
-:label: fig-schrodinger-equation-4
-:alt: SE-intro
-:width: 300px
+$$
+E\,\Psi = \frac{p^2}{2m}\,\Psi + V\,\Psi
+\qquad\Longrightarrow\qquad
+i\hbar\,\frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} + V\,\Psi
+$$
 
-Analogy of operators with ordinary functions.
+:::{important} **Time-dependent Schrödinger equation**
+
+$$
+-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x)\, \Psi = i \hbar \frac{\partial \Psi}{\partial t}
+$$
+
 :::
 
-:::{admonition} **Example of operators**
+- Every term of the equation is an energy acting on the wavefunction, so the equation is energy conservation written in the language of waves:
+
+$$
+\underbrace{-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}}_{\substack{\text{kinetic energy:} \\ \text{curvature of } \Psi \text{ in space}}}
+\;+\;
+\underbrace{V(x)\,\Psi\vphantom{\frac{\partial^2}{\partial x^2}}}_{\substack{\text{potential energy:} \\ \text{defines the system}}}
+\;=\;
+\underbrace{i \hbar \frac{\partial \Psi}{\partial t}\vphantom{\frac{\partial^2}{\partial x^2}}}_{\substack{\text{total energy:} \\ \text{rate of change of } \Psi \text{ in time}}}
+$$
+
+- What we did is a motivation and not a derivation. The steps hold for one plane wave and a constant $V$. Schrödinger's postulate is that the same equation governs **any** wavefunction in **any** potential $V(x)$. Only the agreement with experiment justifies that leap.
+- We work in one dimension for simplicity. In three dimensions the second derivative becomes the Laplacian, $\partial^2/\partial x^2 \to \nabla^2$, and $V$ depends on $x, y, z$.
+
+:::{tip} **Why not reuse the classical wave equation?**
 :class: dropdown
 
-- Let us take the function $e^{2x}$ as an example and see how operator notation works:
+The classical wave equation has two derivatives in space and two in time. Acting on $e^{i(kx-\omega t)}$ they bring down $k^2$ and $\omega^2$, so the equation enforces $\omega = vk$: frequency proportional to wavenumber.
 
-$$\frac{d^2}{dx^2} e^{2x} = 4e^{2x}$$
+A free quantum particle obeys a different rule. With $E = \hbar\omega$ and $p = \hbar k$, the energy $E = p^2/2m$ reads
 
-$$\hat{A} f =4f$$
+$$
+\omega = \frac{\hbar k^2}{2m}
+$$
 
--  Here we say that the operator $\hat{A}$ acts on the function $e^{2x}$ to produce another function, which in this case is the same function multiplied by 4.
-
-- In general, operators can be anything placed in front of a function $f(x)$. Here are a few more examples of operators:
-
-  - $\hat{A}f = x$ multiplies function by x, e.g $\hat{A}e^{2x} = xe^{2x}$
-  - $\hat{A} = -i$ multiplies function by $-i$, e.g $\hat{A}e^{2x} = -ie^{2x}$
-  - $\hat{A} = \sqrt{}$, takes square root, e.g $\hat{A}e^{2x} = e^{x}$
-  - $\hat{A} = (d/dx +x^2)$, takes derivative then adds $x^2$ multiplication $\hat{A}e^{2x} = 4e^{2x}+x^2e^{2x} = (4+x^2)e^{2x}$
+so the frequency goes as the **square** of the wavenumber. An equation that produces one power of $\omega$ and two powers of $k$ needs **one** time derivative and **two** space derivatives. The single time derivative returns $-i\omega$, which is imaginary, while the two space derivatives return $-k^2$, which is real. The factor $i$ in the Schrödinger equation is there to balance the two sides.
 
 :::
 
+### Quantum versus classical wave equation
 
-### Linear operators
+| | classical wave equation | Schrödinger equation |
+|---|---|---|
+| equation | $\dfrac{\partial^2 u}{\partial x^2} = \dfrac{1}{v^2}\dfrac{\partial^2 u}{\partial t^2}$ | $-\dfrac{\hbar^2}{2m}\dfrac{\partial^2 \Psi}{\partial x^2} + V\Psi = i\hbar\dfrac{\partial \Psi}{\partial t}$ |
+| time derivative | second | first, with a factor $i$ |
+| the wave | real displacement $u$, directly measurable | complex $\Psi$, only $\lvert\Psi\rvert^2$ is measurable |
+| frequency and wavenumber | $\omega = vk$ | $\omega = \hbar k^2/2m$ for a free particle |
+| what defines the system | wave speed $v$ and the boundaries | mass $m$, potential $V(x)$ and the boundaries |
+| time dependence of a mode | real oscillation $\cos(\omega_n t)$ | rotating phase $e^{-iE_n t/\hbar}$ |
+| linear, so solutions add | yes | yes |
 
-- Linear means that an operator acting on a sum of functions does not change the power of any of the functions. 
+### Solving the equation: separation of variables
 
-$$\hat{A}[c_1 f_1(x)+c_2f_2(x)]=  c_1 \hat{A}f_1(x)+c_2 \hat{A}f_2(x)$$
+The equation is linear and, as long as $V$ does not depend on time, it separates. The recipe is the one we used for the [vibrating string](../ch02/02-the-wave-equation.md).
 
-- The Schrödinger equation is a linear differential equation. Hence it can be written as a linear operator acting on a wave function.
+#### Step 1: plug in a product
 
-:::{admonition} **Example of linear operators**
-:class: dropdown
+- Look for solutions in which the dependence on $x$ and on $t$ factorizes, $\Psi(x,t) = \psi(x)\,T(t)$. Each derivative acts on one factor only:
 
-- Which of the following would be linear operator? $\hat{A}=\frac{d}{dx}$,      $\hat{B}=\int dx$       $\hat{C}=\sqrt{}$.
+$$
+i\hbar\,\psi(x)\,\frac{dT}{dt} = T(t)\left[-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\,\psi\right]
+$$
 
+- Divide both sides by $\psi(x)T(t)$:
 
-- Using the rules of calculus, we know that the derivative and integral act on each term in the sum:
+$$
+i\hbar\,\frac{1}{T}\frac{dT}{dt} = \frac{1}{\psi}\left[-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\,\psi\right]
+$$
 
-$$\frac{d}{dx}(c_1f_1+c_2f_2) = c_1\frac{df_1}{dx}+c_2\frac{df_2}{dx}$$
+- The left side depends only on $t$ and the right side only on $x$, so both must equal the same constant. It has units of energy, and we call it $E$. One PDE has become two ODEs.
 
-$$\int(c_1f_1+c_2f_2)dx = c_1\int f_1dx+c_2\int f_2dx$$
+#### Step 2: the time part is a rotating phase
 
-- For the square root, the linearity property does not hold!
+- The time equation is first order, $dT/dt = -(iE/\hbar)\,T$. The trial function $e^{rt}$ gives a single root $r = -iE/\hbar$, which is purely imaginary. In Chapter 2 imaginary roots meant oscillation, and the same holds here:
 
-$$\sqrt{(c_1f_1+c_2f_2)} \neq c_1\sqrt{f_1} +c_2\sqrt{f_2}$$
+$$
+T(t) = e^{-iEt/\hbar}
+$$
+
+- This is a point moving around the unit circle of the complex plane with angular frequency $\omega = E/\hbar$. The separation constant is the energy of Planck's relation $E = \hbar\omega$, which justifies its name.
+
+#### Step 3: the spatial part is the time-independent Schrödinger equation
+
+:::{important} **Time-independent Schrödinger equation**
+
+$$
+-\frac{\hbar^2}{2m} \frac{d^2 \psi}{d x^2} + V(x)\, \psi = E\, \psi
+$$
 
 :::
 
+- Almost all of the work in this course goes into this equation. The potential $V(x)$ defines the system, and solving the equation gives the shapes $\psi(x)$ and the energies $E$ the system can have.
 
-
-
-
-### Schrödinger equation in operator notation
-
-- By expressing the equation in operator notation, we can start to recognize various terms and see that the Schrödinger equation, like any proper equation of motion, embodies the principle of total energy conservation:
-- Let us take the Schrödinger equation and denote the differentials as operators acting on the wave function. For example, let us look at the two sides of the time-dependent Schrödinger equation: $
-\left[ -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \right] \Psi
-$ and $i\hbar \frac{\partial }{\partial t} \Psi$
-- The operator of the position part is called the **Hamiltonian operator**, and it has a deep connection to energy conservation and the Hamiltonian function of classical mechanics.
-
-:::{important} **Classical Hamiltonian:**
+:::{important} **Stationary state**
 
 $$
-H(x,p) = K + V = \frac{p^2}{2m} + V(x)
+\Psi(x,t) = \psi(x)\, e^{-iEt/\hbar}
 $$
-
--  The classical Hamiltonian represents the total energy, showing us how kinetic and potential energy change as a function of momentum and position. 
 
 :::
 
-:::{important} **Quantum Hamiltonian:**
+### Stationary states: the phase turns, the density stays
+
+- The name comes from the probability density. The time factor has absolute value one, so it drops out:
 
 $$
-\hat{H} = \hat{K} + \hat{V} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+|\Psi(x,t)|^2 = |\psi(x)|^2\,\left|e^{-iEt/\hbar}\right|^2 = |\psi(x)|^2
 $$
 
-- The operator $\hat{H}$, known as the Hamiltonian operator, is the quantum mechanical analog of the classical Hamiltonian, which represents the total energy:
-:::
-
-
-:::{important} **Schrödinger Equation in operator form**
-
-$$
-\hat{H} \psi = E \psi
-$$
-
-$$
-\hat{H} \psi = i\hbar \frac{\partial \psi}{\partial t}
-$$
-
-- **Hamiltonian Operator**: $\hat{H}$ can stand for 1D, 2D, or 3D systems and describe any quantum object, from a single electron to a collection of molecules.
-- **Energy**: Describes the possible energy states of the quantum system.
-- **Energy Operator**: $i\hbar \frac{\partial}{\partial t}$
-:::
-
-- Note how the potential energy term appears in the same form across different systems: it is always a function of spatial coordinates. Some examples of potentials:
-  - $V(x) = 0$ represents a free particle, 
-  - $V(x) = kx^2$ describes a particle trapped in a harmonic potential, 
-  - $V(x) = \cos(x)$ corresponds to a particle in a periodic potential.
-
-
-### The correspondence principle of Quantum Mechanics
-
-- Thanks to the universality of the energy conservation law, for every observable in classical mechanics there is a corresponding operator in quantum mechanics! Let us list them here:
-
-|               Observables               |                   Classical                    |                           Quantum                            |
-| :-------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
-|                Position                 |                      $x$                       |                         $\hat{x}=x$                          |
-|                Momentum                 |                     $p=mv$                     |        $\hat{p}=-i\hbar \frac{\partial}{\partial x}$         |
-|            Potential Energy             |                     $V(X)$                     |                        $\hat{V}=V(x)$                        |
-|             Kinetic Energy              |               $K=\frac{p^2}{2m}$               |                $\hat{K}=\frac{\hat{p}^2}{2m}$                |
-|              Total Energy               |          $H(x,p)=\frac{p^2}{2m}+V(x)$          |                  $\hat{H}=\hat{K}+\hat{V}$                   |
-|           Equation of motion            | Newton's law $F=ma$ <br>or Hamiltons equations | $\hat{H}\psi=E\psi$ Or <br>$i\hbar\frac{\partial \psi}{\partial t}=\hat{H}\psi$ |
-| Quantization and wave-particle duality? |                      N/A                       | Energy quantization and duality are<br> naturally described by $E_n$ and $\psi_n$. |
-
-
-### What about quantities which correspond to operators?
-
-- Recall that the mean value of $x$ is computed by weighting its values by their probabilities. For example, think of the average mass of a box of candies: we multiply the probability (or fraction) of each candy type by its mass and sum.
-
-$$\langle x \rangle = x_1 p_2+x_2 p_2 + ...$$
-
-$$\langle x \rangle  = \int x\cdot p(x)  dx$$
-
-- Likewise, you can compute the average of any function of $x$, say $x^2$ or $\sin(x)$.
-
-$$\langle f \rangle  = \int f(x)  \cdot  p(x) dx$$
-
-- For quantities like momentum or total energy, which are no longer simple functions as in classical mechanics but operators, $\hat{p}$ and $\hat{H}$, we simply use the operators in the definition of the moments:
-
-$$\langle A \rangle  = \int \hat{A} p(x) \cdot  dx = \int \psi^{*}(x) \cdot \hat{A} \psi(x) \cdot  dx $$
-
-
-|                       Average quantity                       |               Corresponding operator               |
-| :----------------------------------------------------------: | :------------------------------------------------: |
-|   $\langle E \rangle=\int \psi^{*}(x) \hat{H} \psi(x)  dx$   | $\hat{H}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)$ |
-|  $\langle K \rangle=\int \psi^{*}(x) \hat{K}\psi(x)  dx  $   |   $\hat{K}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$    |
-|   $\langle p \rangle=\int \psi^{*}(x) \hat{p} \psi(x)  dx$   |           $\hat{p}=-i\hbar\frac{d}{dx}$            |
-| $\langle p^2 \rangle=\int \psi^{*}(x) \hat{p}^2 \psi(x)  dx$ |        $\hat{p}^2=-\hbar^2\frac{d^2}{dx^2}$        |
+- The real and imaginary parts of $\Psi$ slosh back and forth forever, yet nothing measurable moves. A string mode of Chapter 2 passes through the flat shape twice per period. A stationary state never goes flat, because its imaginary part is at its largest when its real part vanishes.
+- The animation uses the two lowest states of a particle held between two walls. Their shapes are the sines of the string modes, as we will show in the [next lecture](02-particle-in-a-box.md). The second state has four times the energy, so its phase clock runs four times faster.
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: phase_clock
 import numpy as np
 import matplotlib.pyplot as plt
-from math import erf, sqrt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-# ----- Parameters -----
-sigma = 1.0  # width of the Gaussian (harmonic oscillator ground state)
-x0, x1 = -1.0, 1.0  # interval to integrate over
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 300)
+ts = np.linspace(0, 1, 36, endpoint=False)    # one full turn of the n = 1 clock
+th = np.linspace(0, 2 * np.pi, 200)
+fig = plt.figure(figsize=(8, 4.3))
+gs = fig.add_gridspec(2, 2, width_ratios=[3.4, 1], hspace=0.5, wspace=0.08)
+rows = []
+for r, n in enumerate((1, 2)):
+    ax, axc = fig.add_subplot(gs[r, 0]), fig.add_subplot(gs[r, 1])
+    psi = np.sqrt(2) * np.sin(n * np.pi * x)
+    ax.fill_between(x, psi**2, color=CARDINAL, alpha=0.12, lw=0)
+    ax.plot(x, psi**2, color=CARDINAL, lw=1.8, label=r"$|\Psi|^2$ (does not move)")
+    (re,) = ax.plot([], [], color=TEAL, lw=2.4, label=r"Re $\Psi$")
+    (im,) = ax.plot([], [], color=ORANGE, lw=2.0, ls="--", label=r"Im $\Psi$")
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(0, 1); ax.set_ylim(-1.7, 2.3); ax.set_yticks([-1, 0, 1, 2])
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"])
+    ax.set_title(rf"$\Psi_{n}(x,t) = \psi_{n}(x)\,e^{{-iE_{n}t/\hbar}}$" + ("" if n == 1 else r",  $E_2 = 4E_1$"),
+                 loc="left", fontsize=11)
+    if r == 0:
+        ax.legend(loc="upper right", frameon=False, fontsize=9, ncol=3, bbox_to_anchor=(1.0, 1.32))
+    axc.plot(np.cos(th), np.sin(th), color=GRAY, lw=1, ls="--")
+    axc.axhline(0, color=GRAY, lw=0.6); axc.axvline(0, color=GRAY, lw=0.6)
+    (hand,) = axc.plot([], [], color=PURPLE, lw=2.8)
+    (tip,) = axc.plot([], [], "o", color=PURPLE, ms=7)
+    axc.set_aspect("equal"); axc.set_xlim(-1.25, 1.25); axc.set_ylim(-1.25, 1.25); axc.set_axis_off()
+    axc.set_title("phase clock" if r == 0 else "4 times faster", fontsize=10, color=PURPLE)
+    rows.append((n, psi, re, im, hand, tip))
+fig.subplots_adjust(left=0.06, right=0.99, top=0.86, bottom=0.08)
 
-# ----- Define |psi(x)|^2 for a normalized Gaussian -----
-def prob_density(x, sigma):
-    # |psi(x)|^2 = (1/(sqrt(2*pi)*sigma)) * exp(-x^2/(2*sigma^2))
-    return (1.0/(np.sqrt(2*np.pi)*sigma)) * np.exp(-x**2/(2*sigma**2))
+def update(i):
+    for n, psi, re, im, hand, tip in rows:
+        z = np.exp(-2j * np.pi * n**2 * ts[i])
+        re.set_data(x, psi * z.real); im.set_data(x, psi * z.imag)
+        hand.set_data([0, z.real], [0, z.imag]); tip.set_data([z.real], [z.imag])
 
-# Probability via the error function (analytic CDF of a normal distribution)
-def interval_probability(a, b, sigma):
-    return 0.5*(erf(b/(sqrt(2)*sigma)) - erf(a/(sqrt(2)*sigma)))
+ani = FuncAnimation(fig, update, frames=len(ts), interval=110, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
 
-P = interval_probability(x0, x1, sigma)
+Fig. Two stationary states of a particle between walls at $0$ and $L$. The real and imaginary parts oscillate at the rate $E_n/\hbar$ set by the phase clock on the right, while the probability density $|\Psi|^2$ stays fixed.
 
-# ----- Plot -----
-xs = np.linspace(-4*sigma, 4*sigma, 800)
-ys = prob_density(xs, sigma)
+### The time-independent equation is a curvature equation
 
-fig = plt.figure(figsize=(10, 5))
+- Solve the time-independent equation for the second derivative:
 
-# Title with the integral expression
-plt.title(r"$P_{x_0<x<x_1}=\int_{x_0}^{x_1}|\psi(x)|^2\,dx$" + 
-          f"\nSelected interval: [{x0:.2f}, {x1:.2f}]",
-          loc="left")
+$$
+\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\,\big[E - V(x)\big]\,\psi
+$$
 
-# Curve
-plt.plot(xs, ys, linewidth=3)
+- This is the spatial equation of the string, $X'' = KX$, with $K = -\frac{2m}{\hbar^2}(E - V)$. There the sign of $K$ decided between sines and exponentials. Here the sign of $E - V(x)$ decides, and it can change from place to place:
+  - **Allowed region, $E > V$.** The kinetic energy $E - V$ is positive. The curvature has the opposite sign to $\psi$, so the wavefunction always bends back toward the axis and **oscillates**. The larger $E - V$, the stronger the curvature and the shorter the wavelength, in line with de Broglie: $\lambda = h/\sqrt{2m(E-V)}$.
+  - **Forbidden region, $E < V$.** A classical particle could never be here, since its kinetic energy would be negative. The curvature has the same sign as $\psi$, so the wavefunction bends away from the axis: it **decays or grows exponentially**. It is not zero there, a fact that leads to [tunneling](03-tunneling-and-finite-square-well.md).
 
-# Shade between x0 and x1 under the curve
-mask = (xs >= x0) & (xs <= x1)
-plt.fill_between(xs[mask], ys[mask], 0, alpha=0.25)
+```{code-cell} python
+:tags: [hide-input]
+# synced: allowed_forbidden
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-# Mark the boundaries with vertical dashed lines
-plt.axvline(x0, linestyle="--", linewidth=2)
-plt.axvline(x1, linestyle="--", linewidth=2)
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+a, V0, N = 1.2, 30.0, 700                     # half width, depth (units hbar^2/2m = 1)
+x = np.linspace(-3.4, 3.4, N); h = x[1] - x[0]
+V = np.where(np.abs(x) < a, 0.0, V0)
+H = (np.diag(2.0 / h**2 + V) - np.diag(np.ones(N - 1) / h**2, 1)
+     - np.diag(np.ones(N - 1) / h**2, -1))
+En, vec = np.linalg.eigh(H)
+n = 3                                         # fourth level: three nodes, long tails
+E, psi = En[n], vec[:, n] / np.abs(vec[:, n]).max()
+psi = psi * np.sign(psi[np.argmax(np.abs(psi))])
 
-# Tick marks and labels
-plt.xlabel("x")
-plt.ylabel(r"$|\psi(x)|^2$")
-
-# Annotate the probability
-plt.text(0.02, 0.90, rf"$P_{{{x0:.2f}<x<{x1:.2f}}} = {P:.3f}$",
-         transform=plt.gca().transAxes, fontsize=16)
-
-plt.xlim(xs.min(), xs.max())
-plt.ylim(bottom=0)
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-
+fig, ax = plt.subplots(figsize=(8, 3.4))
+ax.axvspan(-a, a, color=TEAL, alpha=0.08, lw=0)
+ax.axvspan(-3.4, -a, color=CARDINAL, alpha=0.06, lw=0)
+ax.axvspan(a, 3.4, color=CARDINAL, alpha=0.06, lw=0)
+ax.plot(x, V, color="k", lw=2.0)
+ax.axhline(E, color=GRAY, lw=1.2, ls="--")
+ax.plot(x, E + 7.5 * psi, color=TEAL, lw=2.6)
+ax.text(3.35, E + 0.9, "E", color=GRAY, fontsize=11, ha="right")
+ax.text(3.35, V0 + 0.9, "V(x)", color="k", fontsize=11, ha="right")
+ax.text(0, 38.5, r"allowed, $E > V$" + "\n" + r"$\psi$ curves toward the axis: oscillates",
+        ha="center", va="top", fontsize=10, color=TEAL)
+for xc in (-2.35, 2.35):
+    ax.text(xc, 38.5, r"forbidden, $E < V$" + "\n" + "curves away: decays",
+            ha="center", va="top", fontsize=10, color=CARDINAL)
+ax.set_xlim(-3.4, 3.4); ax.set_ylim(-2, 39.5)
+ax.set_xlabel("x"); ax.set_ylabel("energy"); ax.set_yticks([])
+fig.tight_layout()
 plt.show()
 ```
 
-### Linearity and the Principle of Superposition
+Fig. The fourth state of a particle in a well of finite depth, drawn on its energy level. Inside the well $E > V$ and $\psi$ oscillates; in the walls $E < V$ and $\psi$ decays.
 
-- As we recall from solving the classical wave equation, whenever boundary conditions are imposed on the spatial domain of our PDE we can end up with an infinite number of solutions $u_n(x)$ discretized by integers $n=1,2,...$ for each spatial coordinate. 
+### Why only some energies are allowed
 
-- The general solution was written as a linear combination of normal modes. Likewise, boundary conditions produce an infinite number of solutions to the quantum wave equation discretized by integers $n$: $\hat{H} \psi_n(x)=E_n \psi_n(x)$
+- In a forbidden region the general solution is a mix of a decaying and a growing exponential. A wavefunction that grows without limit cannot describe a particle, so the growing part has to be absent on the left **and** on the right.
+- For most energies this is impossible. Start the solution so that it decays properly on the left and follow the curvature equation across the well: it arrives on the right side with some of the growing exponential mixed in, and it blows up. Only at special energies does the solution arrive with the right slope to decay on both sides. These are the allowed energies.
+- Try it for a particle on a spring, $V = \frac{1}{2}kx^2$. The cell below starts from a tiny value on the far left and integrates the curvature equation to the right for the trial energy you choose. Find the energies between $0$ and $3\,\hbar\omega$ for which the right tail comes down to the axis, and count the nodes of each solution.
 
-- **The general solution** is again written as a linear combination of quantum wave functions, **thanks to the linearity of the Schrödinger equation**:
+```{marimo-config}
+---
+pyproject: |
+  requires-python = ">=3.10"
+  dependencies = [
+      "numpy",
+      "matplotlib",
+  ]
+---
+```
 
-$$\psi(x,t) = \sum_n c_n \psi_n(x) f_n(t)$$
+```{marimo} python
+:hide-code: true
 
+import marimo as mo
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams["figure.dpi"] = 150
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+```
 
-### Eigenvalues and Eigenfunctions
+```{marimo} python
+:hide-code: true
 
-- In both the classical wave equation and the time-independent Schrödinger equation, we can use operator notation to frame the problem as one of finding special functions and their corresponding multiplicative factors that satisfy specific operators.
+E1 = mo.ui.slider(0.10, 3.00, step=0.01, value=0.80, show_value=True, label="trial energy E (units of ħω)")
+E1
+```
 
-:::{figure} images/SE_intro6.jpg
-:label: fig-schrodinger-equation-5
-:alt: eigval-func
-:width: 300px
+```{marimo} python
+:hide-code: true
 
-Eigenvalue/Eigenfunction problem
+x1 = np.linspace(-4.6, 4.6, 1400)
+h1 = x1[1] - x1[0]
+V1 = 0.5 * x1**2
+f1 = (1.0 + h1 * h1 * 2.0 * (E1.value - V1) / 12.0).tolist()
+psi1 = [0.0, 1e-8]
+for _j in range(1, len(f1) - 1):          # Numerov integration from left to right
+    psi1.append(((12.0 - 10.0 * f1[_j]) * psi1[_j] - f1[_j - 1] * psi1[_j - 1]) / f1[_j + 1])
+psi1 = np.array(psi1)
+psi1 = psi1 / np.abs(psi1[np.abs(x1) < 2.6]).max()
+ok1 = abs(psi1[-1]) < 0.05
+col1 = "#107895" if ok1 else "#C8102E"
+
+fig1, ax1 = plt.subplots(figsize=(7, 3.3))
+ax1.plot(x1, V1, color="k", lw=1.8)
+ax1.axhline(E1.value, color="#6c757d", lw=1.1, ls="--")
+ax1.plot(x1, E1.value + 0.85 * np.clip(psi1, -9, 9), color=col1, lw=2.6)
+ax1.text(0, 4.55, r"$V(x) = \frac{1}{2}kx^2$", fontsize=11, ha="center")
+ax1.set_xlim(-4.6, 4.6); ax1.set_ylim(-1.2, 5.2); ax1.set_yticks([])
+ax1.set_xlabel("x"); ax1.set_ylabel("energy")
+ax1.set_title(f"E = {E1.value:.2f}: " + ("the tail returns to the axis" if ok1 else "the tail blows up"),
+              loc="left", fontsize=11, color=col1)
+fig1.tight_layout()
+fig1
+```
+
+```{marimo} python
+:hide-code: true
+
+nodes1 = int(np.sum(np.diff(np.sign(psi1[np.abs(x1) < 3.5])) != 0))
+mo.md(f"Trial energy **{E1.value:.2f} ħω**: " + (f"**allowed**. The solution decays on both sides and has **{nodes1}** node(s)." if ok1 else "**not allowed**. The solution cannot decay on both sides, so no particle can have this energy."))
+```
+
+Fig. A trial solution of the time-independent equation for a particle on a spring, drawn on its energy level. It is bounded only at $E = \frac{1}{2}, \frac{3}{2}, \frac{5}{2}$ in units of $\hbar\omega$.
+
+- The pattern is the one we met on the string, where clamped ends allowed only the wavelengths that fit. Here the requirement that $\psi$ stays finite allows only the energies that fit. **The Schrödinger equation does not contain quantization; the boundary conditions put it there.** Each new allowed state has one more node than the one below it.
+- The allowed energies of the spring turn out to be evenly spaced, $E_n = (n + \frac{1}{2})\hbar\omega$. We derive this in [Chapter 4](../ch04/02-quantum-harmonic-oscillator.md), where it explains molecular vibrations.
+
+### What does the wavefunction mean?
+
+We now have the equation and a strategy for solving it. What we do not have yet is the meaning of the object the equation keeps handing us.
+
+- In the classical wave equation, $u(x,t)$ is something you can see: the height of a guitar string above its resting position. The quantum wavefunction is complex, so it cannot stand for any measurable quantity by itself.
+- The interpretation that survived every experimental test was proposed by Max Born in 1926. The wavefunction is a **probability amplitude**, and its absolute square is a probability density:
+
+:::{important} **Born rule**
+
+$$
+p(x) = \psi^{*}(x)\,\psi(x) = |\psi(x)|^2
+$$
+
+- $p(x)\,dx$ is the probability of finding the particle between $x$ and $x + dx$.
+
 :::
 
-- In general, the action of an operator can change a function, but in quantum mechanics, we are particularly interested in operators that preserve the form of the function, producing only a constant multiplicative factor.
+- One measurement of position gives one dot at one place, and the wavefunction does not say where the next dot lands. Its content shows up only in the statistics: repeat the experiment on many identically prepared particles, and the dots pile up in proportion to $|\psi(x)|^2$. Where $\psi$ has a node, no particle is ever found.
 
-- The time-independent Schrödinger equation can be viewed as an **eigenfunction-eigenvalue problem.**
+```{code-cell} python
+:tags: [hide-input]
+# synced: born_buildup
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-:::{important} **Schrödinger Equation as an Eigenfunction/Eigenvalue problem**
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+rng = np.random.default_rng(7)
+cand = rng.random(14000)
+hits = cand[rng.random(14000) < np.sin(2 * np.pi * cand) ** 2][:3000]   # samples of 2 sin^2(2 pi x)
+yj = rng.random(3000)
+counts = np.unique(np.round(np.geomspace(1, 3000, 40)).astype(int))
+edges = np.linspace(0, 1, 31); mid = 0.5 * (edges[1:] + edges[:-1]); dx = edges[1] - edges[0]
+xs = np.linspace(0, 1, 300)
 
-$$
-\boxed{\hat{H} \psi_n = E_n \psi_n}
-$$
+fig, (ax_s, ax_h) = plt.subplots(2, 1, figsize=(8, 4.0), sharex=True,
+                                 gridspec_kw={"height_ratios": [1, 2.3]})
+scat = ax_s.scatter([], [], s=5, color=TEAL, alpha=0.6, lw=0)
+ax_s.set_ylim(0, 1); ax_s.set_yticks([])
+for sp in ("left", "bottom"):
+    ax_s.spines[sp].set_visible(False)
+ax_s.tick_params(bottom=False)
+bars = ax_h.bar(mid, np.zeros_like(mid), width=0.92 * dx, color=TEAL, alpha=0.5, label="detections per bin")
+(curve,) = ax_h.plot([], [], color=CARDINAL, lw=2.6, label=r"prediction $N\,|\psi(x)|^2\,\Delta x$")
+ax_h.set_xlim(0, 1); ax_h.set_yticks([])
+ax_h.set_xticks([0, 0.5, 1]); ax_h.set_xticklabels(["0", "L/2", "L"])
+ax_h.set_xlabel("position x"); ax_h.set_ylabel("detections")
+ax_h.legend(loc="upper center", frameon=False, fontsize=9.5, ncol=2, bbox_to_anchor=(0.5, 1.17))
+ax_s.set_title("N = 1 detection, one dot each", loc="left", fontsize=11)
+fig.tight_layout()
 
-- $\psi_n$, the wave functions, are the eigenfunctions of the Hamiltonian operator. 
-- $E_n$, the energies, are the eigenvalues of the Hamiltonian operator.
+def update(i):
+    N = counts[i]
+    scat.set_offsets(np.column_stack([hits[:N], yj[:N]]))
+    hist = np.histogram(hits[:N], bins=edges)[0]
+    for b, c in zip(bars, hist):
+        b.set_height(c)
+    curve.set_data(xs, N * dx * 2 * np.sin(2 * np.pi * xs) ** 2)
+    ax_h.set_ylim(0, 1.3 * max(1.0, hist.max(), 2 * N * dx))
+    ax_s.set_title(f"N = {N} detection" + ("" if N == 1 else "s") + ", one dot each", loc="left", fontsize=11)
+
+ani = FuncAnimation(fig, update, frames=len(counts), interval=160, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. Position measurements on particles that were all prepared in the same state $\psi_2$. Single detections look random; the histogram of many detections converges to $|\psi_2(x)|^2$, with a gap at the node.
+
+- The same holds in three dimensions, where $|\psi(x,y,z)|^2\,dx\,dy\,dz$ is the probability of finding the particle in a small volume. The "electron cloud" pictures of chemistry are this statement: each dot below is one position measurement on a hydrogen atom in its ground state, and the cloud of many dots traces out the 1s orbital.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: h1s_cloud
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+rng = np.random.default_rng(11)
+N = 5000
+r = 0.5 * rng.gamma(shape=3.0, scale=1.0, size=N)       # P(r) = 4 r^2 exp(-2r), r in units of a0
+cos_t = 1 - 2 * rng.random(N); phi = 2 * np.pi * rng.random(N)
+xx, zz = r * np.sqrt(1 - cos_t**2) * np.cos(phi), r * cos_t
+rr = np.linspace(0, 6, 300)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3.5), gridspec_kw={"width_ratios": [1, 1.35]})
+ax1.scatter(xx, zz, s=2, color=TEAL, alpha=0.45, lw=0)
+ax1.plot([0], [0], "+", color=CARDINAL, ms=9, mew=1.8)
+ax1.set_aspect("equal"); ax1.set_xlim(-5, 5); ax1.set_ylim(-5, 5)
+ax1.set_xlabel(r"x / $a_0$"); ax1.set_ylabel(r"z / $a_0$")
+ax1.set_title(f"{N} position measurements", loc="left", fontsize=11)
+ax2.hist(r, bins=np.linspace(0, 6, 49), density=True, color=TEAL, alpha=0.45, label="measured distances")
+ax2.plot(rr, 4 * rr**2 * np.exp(-2 * rr), color=CARDINAL, lw=2.6, label=r"$4\pi r^2\,|\psi_{1s}|^2$")
+ax2.set_xlim(0, 6); ax2.set_xlabel(r"distance from the nucleus r / $a_0$"); ax2.set_ylabel("probability density")
+ax2.legend(frameon=False, fontsize=10)
+ax2.set_title("the dots follow the wavefunction", loc="left", fontsize=11)
+fig.tight_layout()
+plt.show()
+```
+
+Fig. Left: simulated position measurements of the electron in the hydrogen 1s state, projected on a plane. Right: the measured distances from the nucleus follow the radial distribution computed from the wavefunction ([Chapter 5](../ch05/02-atomic-orbitals.md)).
+
+:::{tip} **Probability refresher**
+:class: dropdown
+
+A **random variable** assigns a number to the outcome of an experiment. It can be discrete (a die roll, a coin flip) or continuous (the position of a particle). A continuous random variable is described by a **probability density** $p(x)$ with these properties:
+
+- **Non-negative:** $p(x) \geq 0$.
+- **Normalized:** $\int_{-\infty}^{\infty} p(x)\,dx = 1$, because the outcome is certain to lie somewhere.
+- **Mean:** $\langle x \rangle = \int x\,p(x)\,dx$, and for any function $\langle f \rangle = \int f(x)\,p(x)\,dx$.
+- **Variance:** $\sigma^2 = \langle x^2 \rangle - \langle x \rangle^2$, the squared width of the distribution.
+
+For a discrete variable the integrals become sums, $\langle x \rangle = \sum_i x_i\,p_i$.
+
+**Fair coin**, $X \in \{0, 1\}$ with $p_0 = p_1 = \frac{1}{2}$: the mean is $\langle X\rangle = 0\cdot\frac{1}{2} + 1\cdot\frac{1}{2} = \frac{1}{2}$, and since $\langle X^2\rangle = \frac{1}{2}$ the variance is $\sigma^2 = \frac{1}{2} - \frac{1}{4} = \frac{1}{4}$.
+
+**Uniform density on $[0,1]$**, $p(x) = 1$: the mean is $\int_0^1 x\,dx = \frac{1}{2}$, the mean square is $\int_0^1 x^2dx = \frac{1}{3}$, and $\sigma^2 = \frac{1}{3} - \frac{1}{4} = \frac{1}{12}$.
+
+**Gaussian**, $p(x) = \frac{1}{\sqrt{2\pi}\,\sigma}e^{-(x-\mu)^2/2\sigma^2}$: normalized, with mean $\mu$ and variance $\sigma^2$.
+
+More practice: a [video overview](https://www.youtube.com/watch?v=QxqxdQ_g2uw) and an [interactive probability explorer](https://idiot.computer/probs/).
 
 :::
 
+### Normalization
 
-### Examples of using probabilistic calculations in QM
+- The particle is certain to be found somewhere, so the probabilities must add up to one:
 
-#### Example 1: Probability in a region (1D)
-
-Take the normalized wavefunction on $[0,1]$: $\psi(x)=\sqrt{3}\,x$. Then $p(x)=|\psi(x)|^2=3x^2$.
-
-* Probability that the particle lies in $[a,b]\subset[0,1]$:
+:::{important} **Normalization condition**
 
 $$
-P(a<x<b)=\int_a^b 3x^2\,dx= \left[x^3\right]_a^b=b^3-a^3.
+\int_{-\infty}^{+\infty} |\psi(x)|^2\, dx = 1
 $$
 
-* Concrete numbers, say $[0.3,0.6]$:
+:::
+
+- The Schrödinger equation is linear, so if $\psi'$ solves it then $N\psi'$ does too, for any constant $N$. The equation therefore never fixes the overall size of a wavefunction. Normalization does: substitute $\psi = N\psi'$ into the condition and solve for $N$.
+- A wavefunction that cannot be normalized, because the integral of $|\psi'|^2$ is infinite, does not describe a particle. This is the requirement that ruled out the diverging solutions in the slider above.
+- In three dimensions the integral runs over all of space, $\iiint |\psi(x,y,z)|^2\,dx\,dy\,dz = 1$.
+
+:::{note} **Example: normalize $\psi' = x$ on $[0, 1]$**
+
+Write $\psi = N x$ and require the total probability to be one:
 
 $$
-P(0.3<x<0.6)=0.6^3-0.3^3=0.216-0.027=0.189.
+\int_0^1 (N x)^2\, dx = N^2 \int_0^1 x^2\,dx = \frac{N^2}{3} = 1 \quad\Rightarrow\quad N = \sqrt{3}
 $$
 
+The normalized wavefunction is $\psi(x) = \sqrt{3}\,x$, and its probability density is $p(x) = 3x^2$.
 
+:::
 
-#### Example 2: 3D slice probability (separable state)
+```{code-cell} python
+:tags: [hide-input]
+# synced: normalization_area
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-Let $\psi(x,y,z)=\sqrt{27}\,xyz$ on the unit cube $[0,1]^3$ (this is normalized since $|\psi|^2=27x^2y^2z^2$ and $\int_0^1 x^2dx=\tfrac13$, so $27(\tfrac13)^3=1$).
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 300)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 2.9), sharey=True)
+for ax, c, col, lab, area in ((ax1, 1.0, GRAY, r"$\psi' = x$", "area = 1/3"),
+                              (ax2, 3.0, TEAL, r"$\psi = \sqrt{3}\,x$", "area = 1")):
+    ax.fill_between(x, c * x**2, color=col, alpha=0.25, lw=0)
+    ax.plot(x, c * x**2, color=col, lw=2.6)
+    ax.text(0.06, 2.55, lab, fontsize=12, color=col)
+    ax.text(0.80, 0.18 * c + 0.05, area, fontsize=11, ha="center", color="k")
+    ax.set_xlim(0, 1); ax.set_ylim(0, 3.1); ax.set_xlabel("x")
+ax1.set_ylabel(r"$|\psi(x)|^2$")
+ax1.set_title("not normalized", loc="left", fontsize=11)
+ax2.set_title("normalized: a probability density", loc="left", fontsize=11)
+fig.tight_layout()
+plt.show()
+```
 
-* Probability the particle is inside the rectangular box $[a_x,b_x]\times[a_y,b_y]\times[a_z,b_z]$:
+Fig. Normalization rescales the wavefunction until the area under $|\psi|^2$ equals one.
 
-$$
-P=\int_{a_x}^{b_x}\!\!\int_{a_y}^{b_y}\!\!\int_{a_z}^{b_z}27x^2y^2z^2\,dz\,dy\,dx
-= \big(b_x^3-a_x^3\big)\big(b_y^3-a_y^3\big)\big(b_z^3-a_z^3\big).
-$$
+### Probability of finding the particle in a region
 
+- Once $\psi$ is normalized, the probability of finding the particle anywhere between $a$ and $b$ is the area under $|\psi|^2$ over that interval:
 
-
-#### Example 3: Averages and variance from a PDF
-
-For $\psi(x)=\sqrt{3}\,x$ on $[0,1]$ (so $p(x)=3x^2$):
-
-* Mean position:
-
-$$
-\langle x\rangle=\int_0^1 x\,3x^2\,dx=3\int_0^1 x^3dx=\tfrac34.
-$$
-
-* Mean square position:
-
-$$
-\langle x^2\rangle=\int_0^1 x^2\,3x^2\,dx=3\int_0^1 x^4dx=\tfrac35.
-$$
-
-* Variance and standard deviation:
-
-$$
-\mathrm{Var}(x)=\langle x^2\rangle-\langle x\rangle^2=\tfrac35-\Big(\tfrac34\Big)^2=\tfrac{3}{80},\qquad
-\sigma_x=\sqrt{\tfrac{3}{80}}\approx 0.1937.
-$$
-
-
-#### Example 4: Operator expectations (momentum/energy in a box)
-
-Operator rules:
-
-* $ \hat{p}=-i\hbar\,\dfrac{d}{dx}$,
-* $ \hat{H}=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}+V(x)$.
-
-Use the infinite square well on $[0,1]$ with $V(x)=0$ inside and $\psi_n(x)=\sqrt{2}\sin(n\pi x)$, which is normalized.
-
-* Momentum expectation:
+:::{important} **Probability in a region**
 
 $$
-\langle p\rangle=\int_0^1\psi_n^*(-i\hbar)\psi_n'\,dx=0
+P(a < x < b) = \int_a^b |\psi(x)|^2\,dx
 $$
 
-(the integrand is odd over a full sine half-wave, or integrate by parts with vanishing boundary terms).
+:::
 
-* Momentum squared:
+- In three dimensions the same integral runs over a volume.
 
-$$
-\langle p^2\rangle=\int_0^1\psi_n^*(-\hbar^2)\psi_n''\,dx
-=(n\pi\hbar)^2.
-$$
+:::{note} **Example: where is the particle?**
 
-* Energy (since $\hat{H}=\hat{p}^2/2m$ inside the well):
+For $\psi = \sqrt{3}\,x$ on $[0,1]$ the density is $3x^2$, so
 
 $$
-\langle E\rangle=\frac{\langle p^2\rangle}{2m}=\frac{(n\pi\hbar)^2}{2m}.
+P(a<x<b) = \int_a^b 3x^2\,dx = b^3 - a^3
 $$
 
+The particle is found between $0.3$ and $0.6$ with probability $0.6^3 - 0.3^3 = 0.216 - 0.027 = 0.189$. The left half of the interval, $[0, 0.5]$, holds only $0.125$ of the probability: the density is piled up near $x = 1$.
+
+:::
+
+Move the edges of the region and check the example.
+
+```{marimo} python
+:hide-code: true
+
+a2 = mo.ui.slider(0.0, 1.0, step=0.05, value=0.30, show_value=True, label="left edge a")
+b2 = mo.ui.slider(0.0, 1.0, step=0.05, value=0.60, show_value=True, label="right edge b")
+mo.hstack([a2, b2], justify="start", gap=2)
+```
+
+```{marimo} python
+:hide-code: true
+
+lo2, hi2 = min(a2.value, b2.value), max(a2.value, b2.value)
+P2 = hi2**3 - lo2**3
+x2 = np.linspace(0, 1, 400)
+m2 = (x2 >= lo2) & (x2 <= hi2)
+fig2, ax2 = plt.subplots(figsize=(7, 3.0))
+ax2.plot(x2, 3 * x2**2, color="#107895", lw=2.6)
+ax2.fill_between(x2[m2], 3 * x2[m2] ** 2, color="#107895", alpha=0.3, lw=0)
+ax2.axvline(lo2, color="#6c757d", lw=1, ls="--"); ax2.axvline(hi2, color="#6c757d", lw=1, ls="--")
+ax2.set_xlim(0, 1); ax2.set_ylim(0, 3.1)
+ax2.set_xlabel("x"); ax2.set_ylabel(r"$|\psi(x)|^2 = 3x^2$")
+ax2.set_title(f"P({lo2:.2f} < x < {hi2:.2f}) = {P2:.3f}", loc="left", fontsize=11)
+fig2.tight_layout()
+fig2
+```
+
+```{marimo} python
+:hide-code: true
+
+mo.md(f"Shaded area: $b^3 - a^3 = {hi2:.2f}^3 - {lo2:.2f}^3 =$ **{P2:.3f}**, so the particle is found in this region in about **{1000 * P2:.0f}** of every 1000 measurements.")
+```
+
+Fig. The probability of finding the particle in a region is the shaded area under $|\psi|^2$.
+
+### Mean and spread of position
+
+- A probability density also predicts averages. The mean of many position measurements is the **expectation value** of $x$, and the spread of the results around it is the standard deviation $\sigma_x$:
+
+:::{important} **Mean and spread of position**
+
+$$
+\langle x \rangle = \int x\,|\psi(x)|^2\,dx, \qquad \langle x^2 \rangle = \int x^2\,|\psi(x)|^2\,dx, \qquad \sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2}
+$$
+
+:::
+
+- $\langle x \rangle$ is the balance point of the density. It is not the most likely position, and it need not even be a position where the particle can be found: for $\psi_2$ in the animation above, $\langle x \rangle = L/2$ sits exactly on the node.
+
+:::{note} **Example: mean and spread for $\psi = \sqrt{3}\,x$**
+
+With $p(x) = 3x^2$ on $[0,1]$:
+
+$$
+\langle x\rangle = \int_0^1 x \cdot 3x^2\,dx = \frac{3}{4}, \qquad
+\langle x^2\rangle = \int_0^1 x^2 \cdot 3x^2\,dx = \frac{3}{5}
+$$
+
+$$
+\sigma_x = \sqrt{\frac{3}{5} - \left(\frac{3}{4}\right)^2} = \sqrt{\frac{3}{80}} \approx 0.19
+$$
+
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: mean_and_spread
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 2001)
+fig, axes = plt.subplots(1, 2, figsize=(8, 3.0), sharey=True)
+for ax, p, col, lab in ((axes[0], 3 * x**2, TEAL, r"$|\psi|^2 = 3x^2$"),
+                        (axes[1], 2 * np.sin(np.pi * x) ** 2, ORANGE, r"$|\psi_1|^2 = 2\sin^2(\pi x)$")):
+    mu = np.trapezoid(x * p, x)
+    sig = np.sqrt(np.trapezoid(x**2 * p, x) - mu**2)
+    ax.fill_between(x, p, color=col, alpha=0.2, lw=0); ax.plot(x, p, color=col, lw=2.6)
+    ax.axvspan(mu - sig, mu + sig, color=PURPLE, alpha=0.12, lw=0)
+    ax.axvline(mu, color=PURPLE, lw=1.6)
+    ax.plot([mu], [-0.16], marker="^", color=PURPLE, ms=11, clip_on=False, zorder=6)
+    ax.set_title(lab + rf":  $\langle x\rangle = {mu:.2f}$,  $\sigma_x = {sig:.2f}$", loc="left", fontsize=10.5)
+    ax.set_xlim(0, 1); ax.set_ylim(0, 3.2); ax.set_xlabel("x")
+    ax.set_xticks([0, 0.25, 0.5, 0.75, 1]); ax.tick_params(axis="x", pad=9)
+axes[0].set_ylabel("probability density")
+axes[0].text(0.75 - 0.21, 2.75, r"$\pm\sigma_x$", color=PURPLE, fontsize=11, ha="right")
+fig.tight_layout()
+plt.show()
+```
+
+Fig. The mean (line and triangle) is the balance point of the probability density, and the band marks one standard deviation on each side. Left: the density of the example. Right: the ground state of a particle between walls, whose mean sits at the center by symmetry.
+
+### Operators: a first look
+
+Position was easy, because $x$ is just a number that multiplies $|\psi|^2$. Momentum and energy are different. In Step 2 we extracted them from the wave by differentiating, and that idea organizes the rest of quantum mechanics. This section is a preview; [Operators](04-operators.md) and [Eigenvalues and Expectation Values](05-eigenvalues-and-expectation.md) develop it in full.
+
+- An **operator** is an instruction that turns one function into another, written with a hat. Every observable of classical mechanics has a quantum operator. The recipe: write the classical expression in terms of $x$ and $p$, then replace $p$ with $-i\hbar\,\partial/\partial x$.
+
+| observable | classical | quantum operator |
+| :-- | :-- | :-- |
+| position | $x$ | $\hat{x} = x$ |
+| momentum | $p = mv$ | $\hat{p} = -i\hbar \dfrac{\partial}{\partial x}$ |
+| potential energy | $V(x)$ | $\hat{V} = V(x)$ |
+| kinetic energy | $K = \dfrac{p^2}{2m}$ | $\hat{K} = \dfrac{\hat{p}^2}{2m} = -\dfrac{\hbar^2}{2m}\dfrac{\partial^2}{\partial x^2}$ |
+| total energy | $H = \dfrac{p^2}{2m} + V(x)$ | $\hat{H} = \hat{K} + \hat{V}$ |
+
+- The operator of the total energy is the **Hamiltonian**, named after the total energy function $H(x,p)$ of classical mechanics. With it both Schrödinger equations fit on one line.
+
+:::{important} **Hamiltonian and the Schrödinger equation in operator form**
+
+$$
+\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+$$
+
+$$
+\hat{H}\,\Psi = i\hbar \frac{\partial \Psi}{\partial t} \qquad\qquad \hat{H}\,\psi = E\,\psi
+$$
+
+:::
+
+- Different systems differ only in $V(x)$: $V = 0$ is a free particle, $V = \frac{1}{2}kx^2$ a particle on a spring (a vibrating bond), $V = -e^2/4\pi\epsilon_0 r$ the electron of a hydrogen atom.
+
+#### Eigenfunctions and eigenvalues
+
+- An operator usually changes the shape of the function it acts on. The special functions that come back unchanged, multiplied by a constant, are its **eigenfunctions**, and the constant is the **eigenvalue**:
+
+$$
+\hat{A} f(x) = a\, f(x)
+$$
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: eigen_test
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(-3, 3, 500); a = 1.5
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3.0))
+ax1.plot(x, np.sin(a * x), color=TEAL, lw=2.6, label=r"$f = \sin(ax)$")
+ax1.plot(x, -a**2 * np.sin(a * x), color=CARDINAL, lw=2.2, ls="--", label=r"$f'' = -a^2 \sin(ax)$")
+ax1.set_title(r"same shape, rescaled: eigenfunction of $d^2/dx^2$", loc="left", fontsize=10.5)
+ax2.plot(x, np.exp(-x**2), color=TEAL, lw=2.6, label=r"$f = e^{-x^2}$")
+ax2.plot(x, (4 * x**2 - 2) * np.exp(-x**2), color=CARDINAL, lw=2.2, ls="--", label=r"$f'' = (4x^2-2)\,e^{-x^2}$")
+ax2.set_title("new shape: not an eigenfunction", loc="left", fontsize=10.5)
+for ax in (ax1, ax2):
+    ax.axhline(0, color=GRAY, lw=0.6); ax.set_xlim(-3, 3); ax.set_ylim(-2.6, 3.6); ax.set_xlabel("x")
+    ax.legend(loc="upper right", frameon=False, fontsize=9.5)
+fig.tight_layout()
+plt.show()
+```
+
+Fig. Testing two functions against the operator $d^2/dx^2$. Left: $\sin(ax)$ comes back with the same shape, multiplied by $-a^2$, so it is an eigenfunction. Right: the Gaussian comes back with a different shape, so it is not.
+
+- The time-independent Schrödinger equation is exactly such a problem. The slider above was a search for its eigenvalues by hand.
+
+:::{important} **Schrödinger equation as an eigenvalue problem**
+
+$$
+\hat{H}\, \psi_n = E_n\, \psi_n
+$$
+
+- The stationary states $\psi_n$ are the eigenfunctions of the Hamiltonian.
+- The allowed energies $E_n$ are its eigenvalues.
+
+:::
+
+#### Expectation values
+
+- For position we averaged $x$ over the density $\psi^*\psi$. An operator such as $\hat{p}$ has to act on $\psi$ before we multiply by $\psi^*$, so it sits between the two:
+
+:::{important} **Expectation value of an observable**
+
+$$
+\langle A \rangle = \int \psi^{*}(x)\, \hat{A}\, \psi(x)\, dx
+$$
+
+:::
+
+| average | operator inside the integral |
+| :-- | :-- |
+| $\langle x \rangle=\int \psi^{*}\, x\, \psi\, dx$ | $\hat{x} = x$ |
+| $\langle p \rangle=\int \psi^{*}\, \hat{p}\, \psi\, dx$ | $\hat{p}=-i\hbar\dfrac{d}{dx}$ |
+| $\langle K \rangle=\int \psi^{*}\, \hat{K}\, \psi\, dx$ | $\hat{K}=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}$ |
+| $\langle E \rangle=\int \psi^{*}\, \hat{H}\, \psi\, dx$ | $\hat{H}=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}+V(x)$ |
+
+:::{note} **Example: momentum and energy of a particle between walls**
+
+Take $\psi_n(x)=\sqrt{2}\sin(n\pi x)$ on $[0,1]$ with $V = 0$ inside.
+
+**Momentum.** The derivative turns the sine into a cosine, and $\sin\cos = \frac{1}{2}\sin(2n\pi x)$ integrates to zero over the box:
+
+$$
+\langle p\rangle = \int_0^1 \psi_n\,(-i\hbar)\,\frac{d\psi_n}{dx}\,dx = -2i\hbar\, n\pi \int_0^1 \sin(n\pi x)\cos(n\pi x)\,dx = 0
+$$
+
+The particle is as likely to move left as right.
+
+**Momentum squared and energy.** Two derivatives return the sine, $\psi_n'' = -(n\pi)^2\psi_n$, so
+
+$$
+\langle p^2\rangle = -\hbar^2\int_0^1 \psi_n\,\psi_n''\,dx = (n\pi\hbar)^2, \qquad
+\langle E\rangle = \frac{\langle p^2\rangle}{2m} = \frac{(n\pi\hbar)^2}{2m}
+$$
+
+The average momentum vanishes but the average of its square does not: the particle is moving, with no preferred direction.
+
+:::
+
+#### Linearity and superposition
+
+- $\hat{H}$ is a linear operator, so any sum of solutions is again a solution. As for the string, the general solution is a sum over the stationary states, each turning at its own rate:
+
+$$
+\Psi(x,t) = \sum_n c_n\, \psi_n(x)\, e^{-iE_n t/\hbar}
+$$
+
+- A single stationary state has a frozen probability density. A sum of two does not, because their phase clocks run at different rates and the relative phase changes in time (Problem 2). All motion in quantum mechanics comes from superposition, the subject of [Time Dependence](06-time-dependence.md).
+
+### Looking ahead
+
+The next lecture carries out this program for the simplest potential there is: a [particle in a box](02-particle-in-a-box.md), $V = 0$ between two impenetrable walls. The curvature equation gives sines, the walls pick out the allowed ones, normalization fixes their height, and the expectation values of this lecture turn them into predictions.
 
 ### Problems
 
-#### Problem 1
+#### Problem 1: The plane wave solves the free equation
 
-Confirm that the following wavefunctions are eigenfunctions of linear momentum and kinetic energy (or neither or both):
-
-- $C sin(ax)$
-
-- $N e^{-ix/\hbar}$
+Show that $\Psi(x,t) = A\,e^{\frac{i}{\hbar}(px - Et)}$ solves the time-dependent Schrödinger equation with $V = 0$ only if $E = p^2/2m$.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-Start by applying the linear momentum operator to the first function:
-
-$$-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar Aa \cos(ax) \nonumber$$
-
-- We see that the action of the operator changed the $\sin$ function, hence the $\sin$ function cannot be an eigenfunction of linear momentum. 
-
-Next we apply the kinetic energy operator:
+Two derivatives in $x$ bring down $(ip/\hbar)^2 = -p^2/\hbar^2$, so the left side is
 
 $$
-\begin{align*} -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) &= -\dfrac{\hbar^2}{2m} \dfrac{\partial}{\partial x} Aa \cos(ax) \\[4pt] &= +\dfrac{\hbar^2}{2m} Aa^2 \sin(ax) \end{align*}  \nonumber
+-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2} = \frac{p^2}{2m}\,\Psi
 $$
 
-- The kinetic energy operator did not modify the function, hence the $\sin$ function is an eigenfunction of the kinetic energy operator.
+One derivative in $t$ brings down $-iE/\hbar$, so the right side is
+
+$$
+i\hbar\frac{\partial \Psi}{\partial t} = i\hbar\left(-\frac{iE}{\hbar}\right)\Psi = E\,\Psi
+$$
+
+The two sides agree for all $x$ and $t$ only if $E = p^2/2m$. The equation accepts a plane wave of any momentum, but it ties the frequency to the wavenumber: $\omega = \hbar k^2/2m$.
+
 :::
 
+#### Problem 2: One stationary state stands still, two do not
 
-#### Problem 2: Taking the Square of an Operator
+Let $\psi_1$ and $\psi_2$ be real, normalized stationary states with energies $E_1$ and $E_2$. Compute the probability density $|\Psi|^2$ of the superposition
 
-Consider the operator $ \hat{A} = x \frac{d}{dx} $. Find $ \hat{A}^2 $, i.e., $ \hat{A}(\hat{A}f(x)) $, and apply it to an arbitrary function $ f(x) $.
+$$
+\Psi(x,t) = \frac{1}{\sqrt{2}}\left[\psi_1(x)\,e^{-iE_1t/\hbar} + \psi_2(x)\,e^{-iE_2t/\hbar}\right]
+$$
+
+and find the frequency at which it oscillates.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-First, apply $ \hat{A} f(x) = x \frac{d}{dx} f(x) $:
+Multiply $\Psi$ by its complex conjugate. The two squared terms lose their phases; the two cross terms keep the difference of the phases:
 
 $$
-\hat{A} f(x) = x \frac{df}{dx}
+|\Psi|^2 = \frac{1}{2}\left[\psi_1^2 + \psi_2^2 + \psi_1\psi_2\left(e^{i(E_2-E_1)t/\hbar} + e^{-i(E_2-E_1)t/\hbar}\right)\right]
 $$
 
-Now, apply $ \hat{A} $ again to the result:
-
 $$
-\hat{A}(\hat{A} f(x)) = \hat{A} \left( x \frac{df}{dx} \right) = x \frac{d}{dx} \left( x \frac{df}{dx} \right)
+|\Psi|^2 = \frac{1}{2}\left[\psi_1^2 + \psi_2^2\right] + \psi_1\psi_2\cos\left(\frac{(E_2-E_1)\,t}{\hbar}\right)
 $$
 
-Using the product rule:
-
-$$
-\frac{d}{dx} \left( x \frac{df}{dx} \right) = \frac{df}{dx} + x \frac{d^2 f}{dx^2}
-$$
-
-Thus:
-
-$$
-\hat{A}^2 f(x) = x \left( \frac{df}{dx} + x \frac{d^2 f}{dx^2} \right) = x \frac{df}{dx} + x^2 \frac{d^2 f}{dx^2}
-$$
+The density sloshes at the angular frequency $\omega_{21} = (E_2 - E_1)/\hbar$. Only energy **differences** appear, which is the Bohr frequency condition $h\nu = E_2 - E_1$ of atomic spectra.
 
 :::
 
-#### Problem 3: Verifying Eigenfunction and Eigenvalue
+#### Problem 3: Normalize and locate
 
-Consider the operator $ \hat{B} = -i\hbar \frac{d}{dx} $ (momentum operator). Verify that $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $, and find the corresponding eigenvalue.
+Normalize $\psi(x) = N\cos(\pi x / 2)$ on the interval $[-1, 1]$, then compute the probability of finding the particle in $[0, \tfrac{1}{2}]$.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-Apply $ \hat{B} $ to $ f(x) = e^{ikx} $:
+Use $\cos^2\theta = \frac{1}{2}(1 + \cos 2\theta)$:
 
 $$
-\hat{B} f(x) = -i\hbar \frac{d}{dx} e^{ikx}
+\int_{-1}^{1} N^2\cos^2\left(\frac{\pi x}{2}\right)dx = \frac{N^2}{2}\int_{-1}^{1}\left[1 + \cos(\pi x)\right]dx = \frac{N^2}{2}\left[2 + 0\right] = N^2
 $$
 
-The derivative of $ e^{ikx} $ is:
+so $N = 1$: the function was already normalized. The probability is
 
 $$
-\frac{d}{dx} e^{ikx} = ik e^{ikx}
+P\left(0 < x < \tfrac{1}{2}\right) = \frac{1}{2}\int_0^{1/2}\left[1 + \cos(\pi x)\right]dx = \frac{1}{2}\left[\frac{1}{2} + \frac{1}{\pi}\right] \approx 0.41
 $$
 
-Thus:
-
-$$
-\hat{B} f(x) = -i\hbar \cdot ik e^{ikx} = \hbar k e^{ikx}
-$$
-
-Since $ \hat{B} f(x) = \hbar k f(x) $, $ f(x) = e^{ikx} $ is an eigenfunction of $ \hat{B} $ with eigenvalue $ \hbar k $.
+A quarter of the interval holds 41 percent of the probability, because the density peaks at the center.
 
 :::
 
-#### Problem 4: Testing for an Eigenfunction and Eigenvalue
+#### Problem 4: Eigenfunctions of momentum and kinetic energy
 
-Given the operator $ \hat{C} = \frac{d^2}{dx^2} $ (second derivative operator), check if $ f(x) = e^{-\alpha x^2} $ is an eigenfunction of $ \hat{C} $, and find the eigenvalue if it is.
+Decide whether each function is an eigenfunction of the momentum operator, of the kinetic energy operator, of both, or of neither:
+
+- $A \sin(ax)$
+- $N e^{-ikx}$
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-Apply $\hat{C} = \frac{d^2}{dx^2} $ to $ f(x) = e^{-\alpha x^2} $:
+Apply the momentum operator to the first function:
 
 $$
-\frac{d}{dx} e^{-\alpha x^2} = -2\alpha x e^{-\alpha x^2}
+-i \hbar \dfrac{\partial}{\partial x} A \sin(ax) = -i \hbar A a \cos(ax)
 $$
 
-Taking the second derivative:
+The sine turned into a cosine, so $\sin(ax)$ is not an eigenfunction of momentum. The kinetic energy operator gives
 
 $$
-\frac{d^2}{dx^2} e^{-\alpha x^2} = \frac{d}{dx} \left( -2\alpha x e^{-\alpha x^2} \right) = -2\alpha e^{-\alpha x^2} + 4\alpha^2 x^2 e^{-\alpha x^2}
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} A \sin(ax) = \dfrac{\hbar^2 a^2}{2m}\, A \sin(ax)
 $$
 
-Thus:
+The same function came back, so $\sin(ax)$ is an eigenfunction of kinetic energy with eigenvalue $\hbar^2a^2/2m$.
+
+For the second function:
 
 $$
-\hat{C} f(x) = \left( -2\alpha + 4\alpha^2 x^2 \right) e^{-\alpha x^2}
+-i\hbar \dfrac{\partial}{\partial x} N e^{-ikx} = -i\hbar(-ik)\,N e^{-ikx} = -\hbar k\, N e^{-ikx}
 $$
 
-Since this is not proportional to $ f(x) = e^{-\alpha x^2} $, $ f(x) $ is **not** an eigenfunction of $ \hat{C} $.
+It is an eigenfunction of momentum with eigenvalue $-\hbar k$: a wave moving to the left. Applying the momentum operator twice gives $\hat{K} N e^{-ikx} = \frac{\hbar^2k^2}{2m} N e^{-ikx}$, so it is an eigenfunction of kinetic energy too.
+
+A state of definite momentum always has a definite kinetic energy. The reverse is not true: $\sin(ax)$ is an equal mix of $e^{iax}$ and $e^{-iax}$, waves moving right and left with the same kinetic energy.
 
 :::
 
-#### Problem 5: Linearity and Eigenfunction Testing
+#### Problem 5: Testing a Gaussian
 
-Consider the operator $ \hat{D} = x^2 \frac{d}{dx} $. Show whether this operator is linear and check if $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $.
+Check whether $f(x) = e^{-\alpha x^2}$ is an eigenfunction of $\hat{C} = \dfrac{d^2}{dx^2}$.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-First, test linearity by applying $ \hat{D} $ to $ \alpha f(x) + \beta g(x) $:
-
 $$
-\hat{D}(\alpha f(x) + \beta g(x)) = x^2 \frac{d}{dx} (\alpha f(x) + \beta g(x)) = \alpha x^2 \frac{df}{dx} + \beta x^2 \frac{dg}{dx}
+\frac{d}{dx} e^{-\alpha x^2} = -2\alpha x\, e^{-\alpha x^2}
 $$
 
-This is $ \alpha \hat{D} f(x) + \beta \hat{D} g(x) $, so $ \hat{D} $ is linear.
-
-Now, apply $ \hat{D} $ to $ f(x) = x^n $:
-
 $$
-\hat{D} f(x) = x^2 \frac{d}{dx} x^n = x^2 \cdot n x^{n-1} = n x^n
+\frac{d^2}{dx^2} e^{-\alpha x^2} = \left( 4\alpha^2 x^2 - 2\alpha \right) e^{-\alpha x^2}
 $$
 
-Since the result is proportional to $ f(x) = x^n $, $ f(x) = x^n $ is an eigenfunction of $ \hat{D} $ with eigenvalue $ n $.
+The factor in front depends on $x$, so the result is not a constant times $f$: the Gaussian is **not** an eigenfunction of $d^2/dx^2$. This is the right panel of the eigenfunction figure, with $\alpha = 1$. Notice, though, that $\left(-\frac{d^2}{dx^2} + 4\alpha^2x^2\right)f = 2\alpha f$: the Gaussian **is** an eigenfunction once a potential proportional to $x^2$ is added. It is the ground state of the particle on a spring that you found with the slider.
 
 :::
 
-#### Problem 6: Normalize and locate
+#### Problem 6: Find the levels by hand
 
-Normalize $\psi(x) = \cos(\pi x / 2)$ on the interval $[-1, 1]$, then compute the probability of finding the particle in $[0, \tfrac{1}{2}]$.
+Use the trial-energy slider to find every allowed energy of the particle on a spring below $3\,\hbar\omega$. For each one record the number of nodes. How is the number of nodes related to the order of the levels? Compare with the modes of a string.
 
-#### Problem 7: Symmetry does the integrals
+#### Problem 7: Allowed and forbidden regions
 
-For the particle-in-a-box state $\psi_2(x) = \sqrt{2}\sin(2\pi x)$ on $[0, 1]$, evaluate $\langle x \rangle$ and $\langle p \rangle$, and explain both results using symmetry alone.
+A particle with energy $E$ moves in $V(x) = \frac{1}{2}kx^2$. Find the two turning points where $E = V$. Sketch the state with two nodes and mark where $\psi$ oscillates and where it decays. Where is the local wavelength shortest, and why?
+
+#### Problem 8: A particle in a cube
+
+Let $\psi(x,y,z)=\sqrt{27}\,xyz$ inside the unit cube $[0,1]^3$ and zero outside. Verify that $\psi$ is normalized, then find the probability that the particle is in the corner box $[0,\frac{1}{2}]^3$. Compare with the fraction of the volume that the box takes up.
+
+#### Problem 9: Symmetry does the integrals
+
+For the state $\psi_2(x) = \sqrt{2}\sin(2\pi x)$ on $[0, 1]$, evaluate $\langle x \rangle$ and $\langle p \rangle$, and explain both results using symmetry alone.
+
+#### Problem 10: Spread of the ground state
+
+For $\psi_1(x) = \sqrt{2}\sin(\pi x)$ on $[0,1]$ compute $\langle x^2 \rangle$ and $\sigma_x$, and compare with the value quoted in the figure on mean and spread. (Integrate by parts, or use $\sin^2\theta = \frac{1}{2}(1-\cos 2\theta)$.)

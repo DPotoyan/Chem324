@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,124 +16,193 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch03/images
 ---
 
-## Why a new equation?
+## Two facts in search of an equation
 
-- **Classical mechanics fails** at atomic scales
-- Experiments demand: **energy quantization** and **wave-particle duality**
-- Schrödinger's equation is a **fundamental law**: postulated, not derived
-- It has **never failed** when applied correctly
+**Chapter 1: what experiments demand**
 
-## From classical waves to quantum waves {auto-animate=true}
+$$E = h\nu = \hbar\omega \qquad\qquad p = \frac{h}{\lambda} = \hbar k$$
 
-$$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
+**Chapter 2: the language of waves**
 
-## From classical waves to quantum waves {auto-animate=true}
+$$u(x,t) = A\,e^{i(kx - \omega t)}$$
 
-$$\Psi(x,t) = Ae^{i(kx-\omega t)}$$
+- Schrödinger, 1926: **which wave equation** does the matter wave obey?
+- A **fundamental law**: motivated and tested, never derived
 
-::: {.nonincremental}
-- Insert **de Broglie**: $p = \hbar k$
-- Insert **Planck**: $E = \hbar \omega$
+## The wave of a free particle
+
+:::: {.columns}
+::: {.column width="58%"}
+![](../../ch03/images/complex_plane_wave.gif){width="100%"}
+:::
+::: {.column width="42%"}
+
+::: {.keyeq}
+$$\Psi(x,t) = A\,e^{\frac{i}{\hbar}(px - Et)}$$
 :::
 
-$$\Psi(x,t)=Ae^{\frac{i}{\hbar}(px-E t)}$$
+- Re and Im run a **quarter cycle apart**
+- $|\Psi|^2$ is **flat**: definite momentum, no preferred position
+- A real wave would have moving dead spots
+:::
+::::
+
+## Derivatives pull out energy and momentum
+
+$$i\hbar\,\frac{\partial \Psi}{\partial t} = E\,\Psi \qquad\qquad -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} = \frac{p^2}{2m}\,\Psi$$
+
+- Each derivative **asks the wave a question** and gets a number back
 
 ::: {.fragment}
-What equation generates such waves? Differentiate and see.
+**Now demand energy conservation**, and multiply by $\Psi$:
+
+$$E = \frac{p^2}{2m} + V \qquad\Longrightarrow\qquad E\,\Psi = \frac{p^2}{2m}\,\Psi + V\,\Psi$$
 :::
 
 ## The time-dependent Schrödinger equation
 
-$$
--\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V(x) \Psi = i \hbar \frac{\partial \Psi}{\partial t}
-$$
-
-- Only a **single time derivative**, unlike the classical wave equation
-- The $i$ makes solutions **oscillate in the complex plane**
-- Kinetic + potential on the left, **total energy flow** on the right
-
-## Separation of variables {.smaller}
-
-$$\Psi(x,t) = \psi(x)\cdot e^{-iEt/\hbar}$$
-
-- Time part: a rotating **phase clock** at rate $E/\hbar$
-- Spatial part: the **time-independent Schrödinger equation**
-
-::: {.fragment}
-$$
--\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi = E \psi
-$$
+::: {.keyeq}
+$$\underbrace{-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}}_{\text{kinetic}} \;+\; \underbrace{V(x)\,\Psi\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{potential}} \;=\; \underbrace{i \hbar \frac{\partial \Psi}{\partial t}\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{total energy}}$$
 :::
 
+- **Energy conservation**, written for waves
+- **One** time derivative and a factor $i$: free particles need $\omega \propto k^2$, not $\omega \propto k$
+- $V(x)$ **defines the system**; the postulate is that this holds for any $\Psi$ and any $V$
+
+## Separation of variables
+
+Try $\Psi(x,t) = \psi(x)\,T(t)$ and divide by $\psi T$:
+
+$$i\hbar\,\frac{1}{T}\frac{dT}{dt} = \frac{1}{\psi}\left[-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V\psi\right] = E$$
+
+- A function of $t$ equals a function of $x$: both are one **constant**, the energy
+
 ::: {.fragment}
-The hard part is finding $\psi(x)$; the potential $V(x)$ defines the system
+**Time part**: an imaginary root, so pure rotation $T = e^{-iEt/\hbar}$. **Space part**:
+
+::: {.keyeq}
+$$-\frac{\hbar^2}{2m} \frac{d^2 \psi}{d x^2} + V(x)\, \psi = E\, \psi$$
+:::
 :::
 
-## What does the wavefunction mean?
+## Stationary states
 
-- $\psi$ is complex: **no direct physical meaning**
-- The **Born rule** extracts the measurable content:
+:::: {.columns}
+::: {.column width="58%"}
+![](../../ch03/images/phase_clock.gif){width="100%"}
+:::
+::: {.column width="42%"}
 
-::: {.fragment}
-$$p(x) = \psi^{*}(x)\,\psi(x) = |\psi(x)|^2$$
+::: {.keyeq}
+$$\Psi(x,t) = \psi(x)\,e^{-iEt/\hbar}$$
 :::
 
-- $|\psi(x)|^2\,dx$ = probability of finding the particle in $[x, x+dx]$
+- The **phase clock** turns at $E/\hbar$
+- $|\Psi|^2 = |\psi|^2$: the density **does not move**
+- Four times the energy, four times the clock rate
+:::
+::::
 
-## Wavefunctions must be normalized
+## A curvature equation
 
-$$\int^{+\infty}_{-\infty} |\psi(x)|^2\, dx = 1$$
+$$\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\,\big[E - V(x)\big]\,\psi$$
 
-- The particle is **somewhere**: total probability is 1
-- Normalization fixes the constant in $\psi = N\psi'$
-- Probability in a region: $P(a<x<b)=\displaystyle\int_a^b |\psi|^2 dx$
+![](../../ch03/images/allowed_forbidden.png){.nostretch width="66%" fig-align="center"}
 
-## Operators: the language of QM
+- The string's $X'' = KX$ again: the **sign of $E - V$** picks sines or exponentials
 
-- Every observable gets an **operator** that acts on $\psi$
+## Only some energies fit
 
-| Observable | Operator |
+![](../../ch03/images/shooting.gif){.nostretch width="72%" fig-align="center"}
+
+- $\psi$ must stay **finite**: at most energies the tail blows up
+- **Boundary conditions quantize**, as the clamps did for the string
+
+## The Born rule
+
+:::: {.columns}
+::: {.column width="58%"}
+![](../../ch03/images/born_buildup.gif){width="100%"}
+:::
+::: {.column width="42%"}
+
+::: {.keyeq}
+$$p(x) = \psi^{*}\psi = |\psi(x)|^2$$
+:::
+
+- $\psi$ is complex: **not measurable**
+- One detection is random; **many** trace out $|\psi|^2$
+- At a **node** no particle is ever found
+:::
+::::
+
+## Example: normalize and locate
+
+::: {.worked}
+A particle on $[0,1]$ has $\psi = N x$. Find $N$, then the probability of finding it between $0.3$ and $0.6$.
+:::
+
+::: {.soln .fragment}
+$$\int_0^1 N^2x^2\,dx = \frac{N^2}{3} = 1 \quad\Rightarrow\quad N = \sqrt{3}$$
+
+$$P = \int_{0.3}^{0.6} 3x^2\,dx = 0.6^3 - 0.3^3 = 0.189$$
+:::
+
+- The linear equation leaves the size of $\psi$ open; **total probability one** fixes it
+
+## Operators and the eigenvalue problem
+
+:::: {.columns}
+::: {.column width="50%"}
+
+| observable | operator |
 |---|---|
 | position | $\hat{x} = x$ |
 | momentum | $\hat{p} = -i\hbar\,\partial/\partial x$ |
 | kinetic energy | $\hat{K} = \hat{p}^2/2m$ |
-| total energy | $\hat{H} = \hat{K} + \hat{V}$ |
+| total energy | $\hat{H} = \hat{K} + V(x)$ |
 
-## The Hamiltonian
-
-$$
-\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
-$$
-
-- Quantum analog of the classical total energy $H = \frac{p^2}{2m} + V(x)$
-- The Schrödinger equation in one line:
-
-::: {.fragment}
-$$\hat{H}\psi = E\psi$$
 :::
+::: {.column width="50%"}
 
-## Expectation values
-
-- Predictions are **probability-weighted averages**:
-
-$$\langle A \rangle = \int \psi^{*}(x)\, \hat{A}\, \psi(x)\, dx$$
-
-- $\langle x \rangle$: mean position, $\langle p \rangle$: mean momentum
-- Variance $\sigma^2 = \langle A^2\rangle - \langle A\rangle^2$ measures the **spread** of measurements
-
-## Eigenvalues and eigenfunctions
-
-$$\boxed{\hat{H} \psi_n = E_n \psi_n}$$
+::: {.keyeq}
+$$\hat{H}\,\psi_n = E_n\,\psi_n$$
+:::
 
 - $\psi_n$: **eigenfunctions**, the stationary states
 - $E_n$: **eigenvalues**, the allowed energies
-- Boundary conditions make the spectrum **discrete**
-- Linearity: superpositions $\psi = \sum_n c_n \psi_n$ also solve the equation
+:::
+::::
+
+## Example: is it an eigenfunction?
+
+::: {.worked}
+Test $\psi = A\sin(ax)$ against the momentum and the kinetic energy operators.
+:::
+
+::: {.soln .fragment}
+$$\hat{p}\,\psi = -i\hbar\,a\,A\cos(ax) \qquad \text{a new function: no}$$
+
+$$\hat{K}\,\psi = \frac{\hbar^2a^2}{2m}\,A\sin(ax) \qquad \text{the same function: yes}$$
+:::
+
+- Definite kinetic energy, no definite momentum: an equal mix of **left and right** movers
+
+## Expectation values
+
+::: {.keyeq}
+$$\langle A \rangle = \int \psi^{*}(x)\,\hat{A}\,\psi(x)\,dx$$
+:::
+
+![](../../ch03/images/mean_and_spread.png){.nostretch width="62%" fig-align="center"}
+
+- The operator sits **between** $\psi^*$ and $\psi$; $\sigma_x$ measures the spread of results
 
 # Takeaway {.center}
 
-> The Schrödinger equation $\hat{H}\psi = E\psi$ is the quantum equation of motion. Its solutions are wavefunctions whose square $|\psi|^2$ gives probabilities, whose operators give expectation values $\langle A \rangle = \int \psi^*\hat{A}\psi\,dx$, and whose eigenvalues are the quantized energies.
+> Energy conservation written for matter waves gives the Schrödinger equation. It separates into a turning phase and $\hat{H}\psi = E\psi$, whose finite solutions exist only at quantized energies. The wavefunction itself is not measurable: $|\psi|^2$ gives probabilities and $\int\psi^{*}\hat{A}\psi\,dx$ gives averages.
