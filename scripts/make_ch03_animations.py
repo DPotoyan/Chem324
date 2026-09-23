@@ -16,6 +16,7 @@ Page weight: the JS player embeds every frame as a PNG, so keep animations to 24
 Sync strips every line starting with `return`, so inner helpers must not use it (write a
 lambda, or fill an array in place) and `update` must not return artists (use blit=False).
 `shooting` is deck-only: the page shows the same idea with a marimo slider instead.
+`phase_direction` is deck-only too (the 3.1 deck's ramp to expectation values).
 """
 import sys
 import numpy as np
@@ -335,6 +336,33 @@ def eigen_test():
     fig.tight_layout()
     fig.savefig(f"{OUT}/eigen_test.png", dpi=200)
     print("wrote", f"{OUT}/eigen_test.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ direction lives in the phase, not in |psi|^2 (deck still)
+@register
+def phase_direction():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4, 4, 1200); k0 = 5.0
+    phi = np.exp(-x**2 / 2.4)                     # real envelope, peak 1
+    fig, axes = plt.subplots(2, 1, figsize=(7.0, 4.6), sharex=True)
+    for ax, s, word in ((axes[0], 1, "moving right"), (axes[1], -1, "moving left")):
+        psi = phi * np.exp(1j * s * k0 * x)
+        ax.fill_between(x, np.abs(psi) ** 2, color=CARDINAL, alpha=0.15, lw=0)
+        ax.plot(x, np.abs(psi) ** 2, color=CARDINAL, lw=2.6, label=r"$|\psi|^2$")
+        ax.plot(x, psi.real, color=TEAL, lw=1.8, label=r"Re $\psi$")
+        ax.plot(x, psi.imag, color=ORANGE, lw=1.6, ls="--", label=r"Im $\psi$")
+        ax.axhline(0, color=GRAY, lw=0.6)
+        ax.annotate("", xy=(3.7 * s, 0.75), xytext=(2.5 * s, 0.75),
+                    arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2.4, mutation_scale=18))
+        ax.set_xlim(-4, 4); ax.set_ylim(-1.15, 1.25); ax.set_yticks([])
+        ax.set_title(word + (r":  $\psi = \varphi(x)\,e^{+ik_0x}$" if s > 0 else r":  $\psi = \varphi(x)\,e^{-ik_0x}$"),
+                     loc="left", fontsize=12)
+    axes[0].legend(loc="upper left", frameon=False, fontsize=10.5, ncol=3, bbox_to_anchor=(0.0, 1.02))
+    axes[1].set_xlabel("x")
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/phase_direction.png", dpi=200)
+    print("wrote", f"{OUT}/phase_direction.png")
     return fig, None
 
 
