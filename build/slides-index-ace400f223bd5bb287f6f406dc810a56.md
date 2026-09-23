@@ -19,6 +19,7 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 ## Chapter 3
 
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/01-schrodinger-equation.html">Schrodinger Equation and the Wavefunction</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/01b-one-path-or-many.html">One Path or Many: from Newton to Feynman</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/02-particle-in-a-box.html">Particle in a Box</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/03-applications-of-particle-in-a-box.html">Applications of Particle in a Box</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/04-tunneling-and-finite-square-well.html">Tunneling and the Finite Square Well</a>
