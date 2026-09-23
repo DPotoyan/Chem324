@@ -16,7 +16,8 @@ Page weight: the JS player embeds every frame as a PNG, so keep animations to 24
 Sync strips every line starting with `return`, so inner helpers must not use it (write a
 lambda, or fill an array in place) and `update` must not return artists (use blit=False).
 `shooting` is deck-only: the page shows the same idea with a marimo slider instead.
-`phase_direction` is deck-only too (the 3.1 deck's ramp to expectation values).
+`phase_direction` is deck-only too (the 3.1 deck's ramp to expectation values), and so is
+everything under "deck 3.1b" at the bottom (slides/ch03/01b-one-path-or-many.qmd).
 """
 import sys
 import numpy as np
@@ -364,6 +365,397 @@ def phase_direction():
     fig.savefig(f"{OUT}/phase_direction.png", dpi=200)
     print("wrote", f"{OUT}/phase_direction.png")
     return fig, None
+
+
+# ============================================================ deck 3.1b "One path or many" (all deck-only GIFs)
+# slides/ch03/01b-one-path-or-many.qmd. Every update() below is a pure function of the frame
+# index (state is precomputed), because FuncAnimation calls frame 0 more than once.
+
+# ------------------------------------------------------------ Newton's spring and Hamilton's phase-space point
+@register
+def hamilton_phase():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    A, n, wall = 1.6, 40, -2.75
+    ts = np.linspace(0, 2 * np.pi, n, endpoint=False)          # one period, m = omega = 1
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 5.2), sharex=True,
+                                   gridspec_kw={"height_ratios": [1, 2.6], "hspace": 0.34})
+    ax1.axvline(wall, color="k", lw=5)
+    ax1.axhline(-0.5, color=GRAY, lw=0.8)
+    (spring,) = ax1.plot([], [], color=GRAY, lw=1.6)
+    (block,) = ax1.fill([0, 0, 0, 0], [0, 0, 0, 0], color=TEAL, alpha=0.9)
+    arrow = ax1.annotate("", xy=(0, 0.8), xytext=(0, 0.8),
+                         arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=2.4, mutation_scale=18))
+    ax1.set_ylim(-0.6, 1.15); ax1.set_yticks([]); ax1.spines["left"].set_visible(False)
+    ax1.set_title("Newton: a mass on a spring (arrow = momentum)", loc="left", fontsize=11)
+    th = np.linspace(0, 2 * np.pi, 300)
+    for r in (0.6, 1.1, 2.1):
+        ax2.plot(r * np.cos(th), r * np.sin(th), color=GRAY, lw=0.7, alpha=0.5)
+    ax2.plot(A * np.cos(th), A * np.sin(th), color=TEAL, lw=2.0)
+    for a0 in (0.25, 0.75, 1.25, 1.75):                         # the point runs clockwise
+        x0, y0 = A * np.cos(a0 * np.pi), A * np.sin(a0 * np.pi)
+        ax2.annotate("", xy=(x0 + 0.2 * np.sin(a0 * np.pi), y0 - 0.2 * np.cos(a0 * np.pi)), xytext=(x0, y0),
+                     arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=1.6, mutation_scale=14))
+    ax2.text(1.25, 1.75, r"$H = E$", color=TEAL, fontsize=12)
+    ax2.axhline(0, color=GRAY, lw=0.6)
+    (trail,) = ax2.plot([], [], color=CARDINAL, lw=3, alpha=0.45)
+    (dot,) = ax2.plot([], [], "o", color=CARDINAL, ms=11, zorder=5)
+    g1 = ax1.axvline(0, color=GRAY, lw=1, ls="--")
+    g2 = ax2.axvline(0, color=GRAY, lw=1, ls="--")
+    ax2.set_xlim(-2.95, 2.9); ax2.set_ylim(-2.3, 2.3)
+    ax2.set_xlabel("position x"); ax2.set_ylabel("momentum p")
+    ax2.set_title("Hamilton: the same motion as one point (x, p)", loc="left", fontsize=11)
+    fig.subplots_adjust(left=0.11, right=0.97, top=0.93, bottom=0.1)
+    frac = np.linspace(0, 12, 80) % 1
+
+    def update(i):
+        q, p = A * np.cos(ts[i]), -A * np.sin(ts[i])
+        ys = 0.22 * (4 * np.abs(frac - 0.5) - 1)
+        ys[0] = ys[-1] = 0.0
+        spring.set_data(np.linspace(wall, q - 0.26, 80), ys - 0.05)
+        block.set_xy([[q - 0.26, -0.5], [q + 0.26, -0.5], [q + 0.26, 0.42], [q - 0.26, 0.42]])
+        arrow.xy = (q + 0.55 * p, 0.8); arrow.set_position((q, 0.8)); arrow.set_visible(abs(p) > 0.2)
+        k = np.arange(i - 7, i + 1) % n
+        trail.set_data(A * np.cos(ts[k]), -A * np.sin(ts[k]))
+        dot.set_data([q], [p]); g1.set_xdata([q, q]); g2.set_xdata([q, q])
+
+    ani = FuncAnimation(fig, update, frames=n, interval=80, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ pendulum phase flow: each point keeps its energy
+@register
+def phase_flow():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    qg, pg = np.linspace(-np.pi, np.pi, 300), np.linspace(-2.6, 2.6, 300)
+    Q, P = np.meshgrid(qg, pg)
+    H = 0.5 * P**2 - np.cos(Q)                                  # pendulum, m = g/l = 1
+    rng = np.random.default_rng(3)
+    n, F, sub, dt = 600, 60, 3, 0.05
+    r, a = 0.32 * np.sqrt(rng.random(n)), 2 * np.pi * rng.random(n)
+    q, p = r * np.cos(a), 1.55 + r * np.sin(a)
+    E = 0.5 * p**2 - np.cos(q)
+    Qs, Ps = np.empty((F, n)), np.empty((F, n))
+    for f in range(F):                                          # leapfrog keeps the flow symplectic
+        Qs[f], Ps[f] = q, p
+        for _ in range(sub):
+            p = p - 0.5 * dt * np.sin(q); q = q + dt * p; p = p - 0.5 * dt * np.sin(q)
+
+    fig, ax = plt.subplots(figsize=(6.4, 5.0))
+    ax.contour(Q, P, H, levels=np.linspace(-0.8, 2.2, 11), colors=GRAY, linewidths=0.7, alpha=0.55)
+    ax.contour(Q, P, H, levels=[1.0], colors="k", linewidths=1.0, linestyles="--")
+    sc = ax.scatter(Qs[0], Ps[0], c=E, cmap="viridis", s=10, lw=0, zorder=4)
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(-np.pi, np.pi); ax.set_ylim(-2.6, 2.6)
+    ax.set_xlabel("angle x"); ax.set_ylabel("momentum p")
+    ax.set_title("a pendulum: every point stays on its own energy contour", loc="left", fontsize=11)
+    ax.text(0.98, 0.03, "color = energy H", transform=ax.transAxes, ha="right", fontsize=10, color=GRAY)
+    fig.tight_layout()
+
+    def update(i):
+        sc.set_offsets(np.column_stack([Qs[i], Ps[i]]))
+
+    ani = FuncAnimation(fig, update, frames=F, interval=80, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ least action: the true path minimizes S
+@register
+def least_action():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    T, g = 2.0, 1.0
+    t = np.linspace(0, T, 400)
+    z0, zd0 = 0.5 * g * t * (T - t), g * (T / 2 - t)            # thrown up at A, lands at B
+    eta, etad = np.sin(np.pi * t / T), (np.pi / T) * np.cos(np.pi * t / T)
+    eg = np.linspace(-0.75, 0.75, 151)
+    Sg = np.array([np.trapezoid(0.5 * (zd0 + e * etad) ** 2 - g * (z0 + e * eta), t) for e in eg])
+    F = 48
+    eps = 0.7 * np.cos(2 * np.pi * np.arange(F) / F) ** 3        # cubed: lingers near the true path
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 5.2), gridspec_kw={"height_ratios": [1.5, 1], "hspace": 0.5})
+    for e in np.linspace(-0.7, 0.7, 8):
+        ax1.plot(t, z0 + e * eta, color=GRAY, lw=0.8, alpha=0.35)
+    ax1.plot(t, z0, color=TEAL, lw=2.4, ls="--", label="true path (Newton)")
+    (cur,) = ax1.plot([], [], lw=2.8)
+    ax1.plot([0, T], [0, 0], "o", color="k", ms=8, zorder=5)
+    ax1.text(0.0, -0.3, "A", fontsize=12, ha="center"); ax1.text(T, -0.3, "B", fontsize=12, ha="center")
+    ax1.set_xlim(-0.08, T + 0.08); ax1.set_ylim(-0.4, 1.4)
+    ax1.set_xlabel("time t"); ax1.set_ylabel("height z")
+    ax1.legend(loc="upper right", frameon=False, fontsize=9.5)
+    ax2.plot(eg, Sg, color="k", lw=1.8)
+    ax2.axvline(0, color=TEAL, lw=1.2, ls="--")
+    (sdot,) = ax2.plot([], [], "o", ms=11, zorder=5)
+    ax2.set_xlabel(r"size of the detour $\varepsilon$"); ax2.set_ylabel("action S"); ax2.set_yticks([])
+    ax2.set_title("the true path has the smallest action", loc="left", fontsize=11)
+    fig.subplots_adjust(left=0.1, right=0.97, top=0.93, bottom=0.1)
+
+    def update(i):
+        e = eps[i]
+        col = TEAL if abs(e) < 0.03 else CARDINAL
+        cur.set_data(t, z0 + e * eta); cur.set_color(col)
+        sdot.set_data([e], [np.interp(e, eg, Sg)]); sdot.set_color(col)
+        ax1.set_title(rf"a ball thrown up, trial path $\varepsilon$ = {e:+.2f}", loc="left", fontsize=11)
+
+    ani = FuncAnimation(fig, update, frames=F, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ Feynman: drill more holes, add more screens
+@register
+def drill_holes():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    rng = np.random.default_rng(5)
+    L, per = 10.0, 14
+    stages = []
+    for xs_, hl, label in (([5.0], [np.array([-1.0, 1.0])], "1 screen, 2 holes: 2 paths (the double slit)"),
+                           ([5.0], [np.linspace(-2, 2, 5)], "1 screen, 5 holes: 5 paths"),
+                           ([10 / 3, 20 / 3], [np.linspace(-2, 2, 5)] * 2, "2 screens, 5 holes each: 25 paths"),
+                           ([2.0, 4.0, 6.0, 8.0], [np.linspace(-2.4, 2.4, 7)] * 4,
+                            "4 screens, 7 holes each: 2401 paths")):
+        grid = np.array(np.meshgrid(*hl, indexing="ij")).reshape(len(hl), -1).T   # every choice of holes
+        if len(grid) > 220:
+            grid = grid[rng.choice(len(grid), 220, replace=False)]
+        X = np.concatenate([[0.0], xs_, [L]])
+        stages.append((xs_, hl, [(X, np.concatenate([[0.0], row, [0.0]])) for row in grid], label))
+    s = np.linspace(0, 1, 80)
+    free = []
+    for _ in range(220):                                         # no screens left: smooth random histories
+        a = rng.normal(0, 1.0, 4) / np.arange(1, 5)
+        free.append((L * s, 1.2 * sum(a[k] * np.sin((k + 1) * np.pi * s) for k in range(4))))
+    stages.append((stages[-1][0], stages[-1][1], free, "drill everywhere, remove the screens: every path from A to B"))
+
+    fig, ax = plt.subplots(figsize=(9, 3.9))
+
+    def update(i):
+        si, f = divmod(i, per)
+        xs_, hl, paths, label = stages[si]
+        last = si == len(stages) - 1
+        ax.cla()
+        for xsc, holes in zip(xs_, hl):
+            edges = np.concatenate([[-3.4], np.repeat(holes, 2) + np.tile([-0.14, 0.14], len(holes)), [3.4]])
+            for y0, y1 in edges.reshape(-1, 2):
+                ax.plot([xsc, xsc], [y0, y1], color="k", lw=4, alpha=max(0.0, 1 - f / 5) if last else 1.0,
+                        solid_capstyle="butt")
+        a = min(0.9, 3.2 / np.sqrt(len(paths)))
+        for X, Y in paths[:int(np.ceil(len(paths) * min(1.0, (f + 1) / 8)))]:
+            ax.plot(X, Y, color=PURPLE if last else TEAL, lw=2.2 if len(paths) < 10 else 0.9, alpha=a)
+        ax.plot([0, L], [0, 0], "o", color=CARDINAL, ms=11, zorder=5)
+        ax.text(-0.35, 0.0, "A", fontsize=14, ha="right", va="center")
+        ax.text(L + 0.35, 0.0, "B", fontsize=14, ha="left", va="center")
+        ax.set_xlim(-0.8, L + 0.8); ax.set_ylim(-3.4, 3.4); ax.set_axis_off()
+        ax.set_title(label, loc="left", fontsize=13)
+
+    ani = FuncAnimation(fig, update, frames=per * len(stages), interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ many histories at once, each with a phase clock
+@register
+def ghost_paths():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    cyc = LinearSegmentedColormap.from_list("cyc", [TEAL, PURPLE, CARDINAL, ORANGE, TEAL])
+    rng = np.random.default_rng(8)
+    n, F, hold = 36, 48, 14
+    s = np.linspace(0, 1, 400)
+    amp = np.sort(np.abs(rng.normal(0, 0.17, n)))
+    wig = np.array([np.sin((k + 1) * np.pi * s) for k in range(3)])
+    X, Y = np.empty((n, s.size)), np.empty((n, s.size))
+    for j in range(n):
+        a, b = rng.normal(0, 1, 3) / np.arange(1, 4), rng.normal(0, 1, 3) / np.arange(1, 4)
+        X[j], Y[j] = s + 0.35 * amp[j] * (b @ wig), amp[j] * (a @ wig)
+    v2 = np.gradient(X, s, axis=1) ** 2 + np.gradient(Y, s, axis=1) ** 2
+    rate = 40 * (v2 - 1)                                         # extra kinetic action per unit time, in hbar
+    ph = np.concatenate([np.zeros((n, 1)), np.cumsum(0.5 * (rate[:, 1:] + rate[:, :-1]) * np.diff(s), axis=1)], axis=1)
+
+    fig, ax = plt.subplots(figsize=(7.2, 4.6))
+
+    instep = np.abs(ph[:, -1]) < np.pi / 2                      # arrive within a quarter turn of the classical phase
+
+    def update(i):
+        idx = int(round(min(i, F - 1) / (F - 1) * (s.size - 1)))
+        done = i >= F
+        ax.cla()
+        for j in range(n):
+            c = cyc((ph[j, idx] % (2 * np.pi)) / (2 * np.pi))
+            hi = done and instep[j]
+            ax.plot(X[j, :idx + 1], Y[j, :idx + 1], color=c, lw=2.0 if hi else 1.0,
+                    alpha=(0.95 if hi else 0.15) if done else 0.45)
+            ax.plot(X[j, idx], Y[j, idx], "o", color=c, ms=6.5, alpha=0.95)
+        ax.plot([0, s[idx]], [0, 0], color="k", lw=1.2, ls="--", zorder=5)
+        ax.plot([s[idx]], [0], "o", color="k", ms=9, zorder=6)
+        ax.plot([0, 1], [0, 0], "s", color="k", ms=6, zorder=6)
+        ax.text(-0.03, 0.0, "A", fontsize=13, ha="right", va="center")
+        ax.text(1.03, 0.0, "B", fontsize=13, ha="left", va="center")
+        ax.set_xlim(-0.1, 1.1); ax.set_ylim(-0.8, 0.8); ax.set_axis_off()
+        ax.set_title("every history at once, color = its phase clock S/ħ  (dashed: the classical path)",
+                     loc="left", fontsize=11)
+        if done:
+            ax.text(0.5, -0.76, f"bold: the {instep.sum()} histories that arrive in step with the classical one."
+                    "\nthe others arrive with every color and cancel", ha="center", fontsize=10.5, color="k")
+
+    ani = FuncAnimation(fig, update, frames=F + hold, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ add the arrows: the Cornu spiral
+@register
+def phasor_sum():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    cyc = LinearSegmentedColormap.from_list("cyc", [TEAL, PURPLE, CARDINAL, ORANGE, TEAL])
+    N, hold = 61, 14
+    y = np.linspace(-1, 1, N)
+    th = 3 * np.pi * y**2                                        # extra action of each detour, in hbar
+    z = np.exp(1j * th)
+    tips = np.concatenate([[0], np.cumsum(z)])
+    cols = cyc((th % (2 * np.pi)) / (2 * np.pi))
+    pad = 0.8
+    lim = (tips.real.min() - pad, tips.real.max() + pad, tips.imag.min() - pad, tips.imag.max() + pad)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.4, 4.4), gridspec_kw={"width_ratios": [1, 1.1]})
+
+    def update(i):
+        k = min(i + 1, N)
+        done = i >= N
+        ax1.cla(); ax2.cla()
+        ax1.axvline(0.5, color=GRAY, lw=0.8, ls=":")
+        for j in range(k):
+            near = th[j] < np.pi
+            ax1.plot([0, 0.5, 1], [0, y[j], 0], color=cols[j], lw=2.0 if (done and near) else 1.3,
+                     alpha=0.95 if (not done or near) else 0.3)
+        ax1.plot([0, 1], [0, 0], "o", color="k", ms=8, zorder=5)
+        ax1.text(-0.03, 0, "A", fontsize=13, ha="right", va="center")
+        ax1.text(1.03, 0, "B", fontsize=13, ha="left", va="center")
+        ax1.set_xlim(-0.12, 1.12); ax1.set_ylim(-1.1, 1.1); ax1.set_axis_off()
+        ax1.set_title("paths through one screen, color = phase", loc="left", fontsize=11)
+        al = np.where((th[:k] < np.pi) | (not done), 1.0, 0.3)
+        c = cols[:k].copy(); c[:, 3] = al
+        ax2.quiver(tips[:k].real, tips[:k].imag, z[:k].real, z[:k].imag, color=c,
+                   angles="xy", scale_units="xy", scale=1, width=0.007, headwidth=3.5, headlength=4)
+        ax2.annotate("", xy=(tips[k].real, tips[k].imag), xytext=(0, 0),
+                     arrowprops=dict(arrowstyle="-|>", color="k", lw=2.6, mutation_scale=20))
+        ax2.set_xlim(lim[0], lim[1]); ax2.set_ylim(lim[2], lim[3]); ax2.set_aspect("equal"); ax2.set_axis_off()
+        ax2.set_title("the total: set by the paths near the straight one" if done
+                      else f"add the arrows head to tail ({k} of {N})", loc="left", fontsize=11)
+
+    ani = FuncAnimation(fig, update, frames=N + hold, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ turn down hbar: the band of agreeing paths shrinks
+@register
+def hbar_limit():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    hs = np.concatenate([np.full(6, 0.6), np.geomspace(0.6, 0.004, 44), np.full(12, 0.004)])
+    Np = 41
+    yp, yy = np.linspace(-1, 1, Np), np.linspace(-1, 1, 8000)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 5.2), gridspec_kw={"height_ratios": [1.5, 1], "hspace": 0.5})
+
+    def update(i):
+        h = hs[i]
+        w = np.sqrt(np.pi * h)                                  # detour action y^2 below pi*hbar: in step
+        ax1.cla(); ax2.cla()
+        agree = np.abs(yp) < w
+        for yj, ok in zip(yp, agree):
+            ax1.plot([0, 0.5, 1], [0, yj, 0], color=TEAL if ok else GRAY,
+                     lw=1.3 if ok else 0.6, alpha=0.9 if ok else 0.25)
+        ax1.plot([0, 1], [0, 0], color="k", lw=2.2)
+        ax1.plot([0, 1], [0, 0], "o", color="k", ms=8, zorder=5)
+        ax1.set_xlim(-0.05, 1.05); ax1.set_ylim(-1.1, 1.1); ax1.set_axis_off()
+        ax1.set_title(rf"$\hbar$ = {h:.3f}:  {agree.sum()} of {Np} paths in step", loc="left", fontsize=12)
+        ax2.plot(yy, np.cos(yy**2 / h), color=PURPLE, lw=0.8)
+        ax2.axvspan(-min(w, 1), min(w, 1), color=TEAL, alpha=0.15, lw=0)
+        ax2.set_xlim(-1, 1); ax2.set_ylim(-1.25, 1.25); ax2.set_yticks([-1, 0, 1])
+        ax2.set_xlabel("detour height y"); ax2.set_ylabel(r"cos(S/$\hbar$)")
+        ax2.set_title("phase: flat near the straight path, wild far away", loc="left", fontsize=11)
+        fig.subplots_adjust(left=0.12, right=0.97, top=0.93, bottom=0.1)
+
+    ani = FuncAnimation(fig, update, frames=hs.size, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ superposition: adding waves makes a blur
+@register
+def superposition_blur():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-20, 20, 1500)
+    k0, dk, sk = 1.5, 2 * np.pi / 80, 0.2                       # spacing: the sum repeats only every 80
+    order = [0] + [m for j in range(1, 8) for m in (j, -j)]
+    ks = k0 + dk * np.array(order)
+    ck = np.exp(-(ks - k0) ** 2 / (4 * sk**2))
+    kk = np.linspace(k0 - 0.7, k0 + 0.7, 200)
+    per, hold = 3, 12
+
+    fig = plt.figure(figsize=(7.4, 4.8))
+    gs = fig.add_gridspec(2, 2, width_ratios=[3.2, 1], hspace=0.5, wspace=0.28)
+    axw, axs, axk = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0]), fig.add_subplot(gs[:, 1])
+
+    def update(i):
+        N = min(len(order), i // per + 1)
+        axw.cla(); axs.cla(); axk.cla()
+        for j in range(N):
+            new = j == N - 1
+            axw.plot(x, ck[j] * np.cos(ks[j] * x), color=ORANGE if new else GRAY,
+                     lw=1.6 if new else 0.7, alpha=1.0 if new else 0.4)
+        axw.set_xlim(-20, 20); axw.set_ylim(-1.2, 1.2); axw.set_yticks([])
+        axw.set_title(f"{N} wave{'s' if N > 1 else ''} with definite momentum", loc="left", fontsize=11)
+        psi = (ck[:N, None] * np.exp(1j * ks[:N, None] * x)).sum(0)
+        psi = psi / np.abs(psi).max()
+        axs.fill_between(x, np.abs(psi) ** 2, color=CARDINAL, alpha=0.18, lw=0)
+        axs.plot(x, np.abs(psi) ** 2, color=CARDINAL, lw=2.2, label=r"$|\psi|^2$")
+        axs.plot(x, psi.real, color=TEAL, lw=1.1, label=r"Re $\psi$")
+        axs.set_xlim(-20, 20); axs.set_ylim(-1.1, 1.3); axs.set_yticks([]); axs.set_xlabel("x")
+        axs.legend(loc="upper right", frameon=False, fontsize=9, ncol=2)
+        axs.set_title("one wave: found anywhere" if N == 1 else "their sum: localized in x",
+                      loc="left", fontsize=11)
+        axk.plot(np.exp(-(kk - k0) ** 2 / (2 * sk**2)), kk, color=GRAY, lw=1, ls="--")
+        axk.barh(ks[:N], ck[:N] ** 2, height=0.8 * dk, color=TEAL)
+        axk.set_ylim(kk[0], kk[-1]); axk.set_xlim(0, 1.1); axk.set_xticks([]); axk.set_yticks([])
+        axk.set_ylabel("momentum p"); axk.set_title("spread in p", fontsize=11)
+
+    ani = FuncAnimation(fig, update, frames=per * len(order) + hold, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ a point becomes a blur (coherent state)
+@register
+def point_vs_blur():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    wt = LinearSegmentedColormap.from_list("wt", ["white", TEAL])
+    A, hb, n = 2.0, 0.3, 40                                     # m = omega = 1, a visible hbar
+    sig = np.sqrt(hb / 2)
+    ts = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    x = np.linspace(-3.4, 3.4, 500)
+    Q, P = np.meshgrid(np.linspace(-3.4, 3.4, 170), np.linspace(-3.0, 3.0, 150))
+    th = np.linspace(0, 2 * np.pi, 300)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 5.4), sharex=True,
+                                   gridspec_kw={"height_ratios": [1, 2.1], "hspace": 0.32})
+
+    def update(i):
+        qc, pc = A * np.cos(ts[i]), -A * np.sin(ts[i])
+        ax1.cla(); ax2.cla()
+        ax1.plot(x, 0.1 * x**2, color=GRAY, lw=1.0)
+        rho = np.exp(-(x - qc) ** 2 / (2 * sig**2))
+        ax1.fill_between(x, rho, color=TEAL, alpha=0.3, lw=0)
+        ax1.plot(x, rho, color=TEAL, lw=2.2, label=r"quantum: $|\psi|^2$")
+        ax1.plot([qc], [0.06], "o", color="k", ms=8, zorder=5, label="classical: a point")
+        ax1.set_ylim(0, 1.35); ax1.set_yticks([])
+        ax1.legend(loc="upper right", frameon=False, fontsize=9.5, ncol=2)
+        ax1.set_title("position", loc="left", fontsize=11)
+        W = np.exp(-((Q - qc) ** 2 + (P - pc) ** 2) / (2 * sig**2))
+        ax2.contourf(Q, P, W, levels=[0.08, 0.25, 0.45, 0.65, 0.85, 1.01], cmap=wt, vmin=-0.1, vmax=1.0)
+        ax2.plot(A * np.cos(th), A * np.sin(th), color=GRAY, lw=1.0, ls="--")
+        ax2.plot([qc], [pc], "o", color="k", ms=8, zorder=5)
+        ax2.axhline(0, color=GRAY, lw=0.5); ax2.axvline(0, color=GRAY, lw=0.5)
+        ax2.set_xlim(-3.4, 3.4); ax2.set_ylim(-3.0, 3.0)
+        ax2.set_xlabel("position x"); ax2.set_ylabel("momentum p")
+        ax2.set_title(r"phase space: a point, or a blob of area $\sim\hbar$ riding the same orbit",
+                      loc="left", fontsize=11)
+        fig.subplots_adjust(left=0.11, right=0.97, top=0.94, bottom=0.1)
+
+    ani = FuncAnimation(fig, update, frames=n, interval=90, blit=False)
+    return fig, ani
 
 
 if __name__ == "__main__":
