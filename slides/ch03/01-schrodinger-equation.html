@@ -190,25 +190,40 @@ Davit Potoyan
 </ul>
 </div></div>
 </section>
-<section id="derivatives-pull-out-energy-and-momentum" class="slide level2">
-<h2>Derivatives pull out energy and momentum</h2>
-<p><span class="math display">i\hbar\,\frac{\partial \Psi}{\partial t} = E\,\Psi \qquad\qquad -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} = \frac{p^2}{2m}\,\Psi</span></p>
-<ul>
-<li>Each derivative <strong>asks the wave a question</strong> and gets a number back</li>
-</ul>
-<div class="fragment">
-<p><strong>Now demand energy conservation</strong>, and multiply by <span class="math inline">\Psi</span>:</p>
-<p><span class="math display">E = \frac{p^2}{2m} + V \qquad\Longrightarrow\qquad E\,\Psi = \frac{p^2}{2m}\,\Psi + V\,\Psi</span></p>
+<section id="example-does-the-strings-equation-work" class="slide level2">
+<h2>Example: does the string’s equation work?</h2>
+<div class="worked">
+<p>Put <span class="math inline">\Psi = A\,e^{i(kx-\omega t)}</span> into the string’s wave equation. What must <span class="math inline">E</span> and <span class="math inline">p</span> obey?</p>
 </div>
+<div class="soln fragment">
+<p><span class="math display">\frac{\partial^2 \Psi}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 \Psi}{\partial t^2} \quad\Longrightarrow\quad -k^2 = -\frac{\omega^2}{v^2} \quad\Longrightarrow\quad E = v\,p</span></p>
+<p>Right for <strong>light</strong>, <span class="math inline">E = pc</span>. Wrong for an <strong>electron</strong>, <span class="math inline">E = p^2/2m</span>.</p>
+<p>We need an equation that brings down <span class="math inline">E</span> <strong>once</strong> and <span class="math inline">p</span> <strong>twice</strong>: one time derivative, two space derivatives.</p>
+</div>
+</section>
+<section id="derivatives-read-off-e-and-p" class="slide level2">
+<h2>Derivatives read off <span class="math inline">E</span> and <span class="math inline">p</span></h2>
+<p>Each derivative of <span class="math inline">\Psi = A\,e^{\frac{i}{\hbar}(px - Et)}</span> brings down the factor in the exponent:</p>
+<p><span class="math display">
+\begin{aligned}
+i\hbar\,\frac{\partial \Psi}{\partial t} &amp;= i\hbar\left(-\frac{iE}{\hbar}\right)\Psi = -i^2E\,\Psi = E\,\Psi \\[6pt]
+-i\hbar\,\frac{\partial \Psi}{\partial x} &amp;= -i\hbar\left(\frac{ip}{\hbar}\right)\Psi = p\,\Psi \\[6pt]
+-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} &amp;= -\frac{\hbar^2}{2m}\left(\frac{ip}{\hbar}\right)^{2}\Psi = \frac{p^2}{2m}\,\Psi
+\end{aligned}
+</span></p>
+<ul>
+<li>The <span class="math inline">i</span>’s cancel, since <span class="math inline">i^2 = -1</span>: out come the <strong>real</strong> numbers <span class="math inline">E</span>, <span class="math inline">p</span>, <span class="math inline">p^2/2m</span></li>
+<li>Left sides: what to <strong>do</strong> to <span class="math inline">\Psi</span> to ask for its energy or momentum</li>
+</ul>
 </section>
 <section id="the-time-dependent-schrödinger-equation" class="slide level2">
 <h2>The time-dependent Schrödinger equation</h2>
+<p>Multiply <span class="math inline">\;E = \dfrac{p^2}{2m} + V\;</span> by <span class="math inline">\Psi</span> and swap each number for its derivative:</p>
 <div class="keyeq">
 <p><span class="math display">\underbrace{-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}}_{\text{kinetic}} \;+\; \underbrace{V(x)\,\Psi\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{potential}} \;=\; \underbrace{i \hbar \frac{\partial \Psi}{\partial t}\vphantom{\frac{\partial^2}{\partial x^2}}}_{\text{total energy}}</span></p>
 </div>
 <ul>
-<li><strong>Energy conservation</strong>, written for waves</li>
-<li><strong>One</strong> time derivative and a factor <span class="math inline">i</span>: free particles need <span class="math inline">\omega \propto k^2</span>, not <span class="math inline">\omega \propto k</span></li>
+<li>Kinetic energy as <span class="math inline">p^2/2m</span>, not <span class="math inline">\frac{1}{2}mv^2</span>: the wave knows <span class="math inline">p</span> through <span class="math inline">\lambda = h/p</span></li>
 <li><span class="math inline">V(x)</span> <strong>defines the system</strong>; the postulate is that this holds for any <span class="math inline">\Psi</span> and any <span class="math inline">V</span></li>
 </ul>
 </section>
@@ -247,7 +262,7 @@ Davit Potoyan
 <p><span class="math display">\frac{d^2\psi}{dx^2} = -\frac{2m}{\hbar^2}\,\big[E - V(x)\big]\,\psi</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/allowed_forbidden.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+<p><img data-src="../../ch03/images/allowed_forbidden.png" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
 </figure>
 </div>
 <ul>
@@ -258,7 +273,7 @@ Davit Potoyan
 <h2>Only some energies fit</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/shooting.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+<p><img data-src="../../ch03/images/shooting.gif" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
 </figure>
 </div>
 <ul>
@@ -295,43 +310,99 @@ Davit Potoyan
 <li>The linear equation leaves the size of <span class="math inline">\psi</span> open; <strong>total probability one</strong> fixes it</li>
 </ul>
 </section>
-<section id="operators-and-the-eigenvalue-problem" class="slide level2">
-<h2>Operators and the eigenvalue problem</h2>
+<section id="averages-of-many-measurements" class="slide level2">
+<h2>Averages of many measurements</h2>
+<p>Average <span class="math inline">N</span> detections. As <span class="math inline">N</span> grows, the fraction landing near <span class="math inline">x</span> becomes <span class="math inline">|\psi(x)|^2\,dx</span>:</p>
+<div class="keyeq">
+<p><span class="math display">\textstyle\frac{1}{N}\sum_{i} x_i \;\xrightarrow{\;N\to\infty\;}\; \langle x \rangle = \displaystyle\int x\,|\psi(x)|^2\,dx</span></p>
+</div>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
+<p><img data-src="../../ch03/images/mean_and_spread.png" style="width:100.0%"></p>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>The <strong>balance point</strong> of <span class="math inline">|\psi|^2</span>; the band shows the <strong>spread</strong> <span class="math inline">\sigma_x</span></li>
+<li>Any function of <span class="math inline">x</span> averages the same way: <span class="math inline">\langle x^2 \rangle</span>, <span class="math inline">\langle V \rangle</span></li>
+</ul>
+</div></div>
+</section>
+<section id="what-is-an-operator" class="slide level2">
+<h2>What is an operator?</h2>
+<p>An <strong>operator</strong> turns one function into another. It wears a <strong>hat</strong>:</p>
+<p><span class="math display">\hat{x}\;e^{-x^2} = x\,e^{-x^2} \qquad\qquad \frac{d}{dx}\,\sin(ax) = a\cos(ax)</span></p>
+<ul>
+<li>Two kinds: <strong>multiply</strong> by a function (<span class="math inline">\hat{x}</span>, <span class="math inline">\hat{V}</span>) or <strong>differentiate</strong> (<span class="math inline">\hat{p}</span>, <span class="math inline">\hat{K}</span>)</li>
+<li>We have met them already: the derivatives that <strong>read off</strong> <span class="math inline">E</span> and <span class="math inline">p</span></li>
+<li>Usually the function <strong>changes shape</strong>; the rare ones that do not come next</li>
+</ul>
+</section>
+<section id="observables-become-operators" class="slide level2">
+<h2>Observables become operators</h2>
+<p><strong>Recipe</strong>: write the classical quantity with <span class="math inline">x</span> and <span class="math inline">p</span>, then replace <span class="math inline">p</span> by <span class="math inline">-i\hbar\,\dfrac{d}{dx}</span></p>
+<div class="columns">
+<div class="column" style="width:52%;">
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>observable</th>
+<th>classical</th>
 <th>operator</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>position</td>
+<td><span class="math inline">x</span></td>
 <td><span class="math inline">\hat{x} = x</span></td>
 </tr>
 <tr class="even">
 <td>momentum</td>
-<td><span class="math inline">\hat{p} = -i\hbar\,\partial/\partial x</span></td>
+<td><span class="math inline">p</span></td>
+<td><span class="math inline">\hat{p} = -i\hbar\,\dfrac{d}{dx}</span></td>
 </tr>
 <tr class="odd">
 <td>kinetic energy</td>
-<td><span class="math inline">\hat{K} = \hat{p}^2/2m</span></td>
+<td><span class="math inline">\dfrac{p^2}{2m}</span></td>
+<td><span class="math inline">\hat{K} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}</span></td>
 </tr>
 <tr class="even">
-<td>total energy</td>
-<td><span class="math inline">\hat{H} = \hat{K} + V(x)</span></td>
+<td>potential energy</td>
+<td><span class="math inline">V(x)</span></td>
+<td><span class="math inline">\hat{V} = V(x)</span></td>
 </tr>
 </tbody>
 </table>
+</div><div class="column" style="width:48%;">
+<div class="keyeq">
+<p><span class="math display">\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)</span></p>
+</div>
+<ul>
+<li>Total energy: the <strong>Hamiltonian</strong></li>
+<li>Systems differ <strong>only in <span class="math inline">V</span></strong>: free particle, bond <span class="math inline">\frac{1}{2}kx^2</span>, H atom <span class="math inline">-\frac{e^2}{4\pi\epsilon_0 r}</span></li>
+</ul>
+</div></div>
+</section>
+<section id="eigenfunctions-and-eigenvalues" class="slide level2">
+<h2>Eigenfunctions and eigenvalues</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../../ch03/images/eigen_test.png" style="width:100.0%"></p>
+<p><span class="math display">\hat{A}\,f = a\,f</span></p>
 </div><div class="column" style="width:50%;">
+<ul>
+<li>Same function back, times a number: <strong>eigenfunction</strong> <span class="math inline">f</span>, <strong>eigenvalue</strong> <span class="math inline">a</span></li>
+<li>In such a state <strong>every</strong> measurement of <span class="math inline">A</span> gives <span class="math inline">a</span>: a <strong>definite value</strong></li>
+</ul>
 <div class="keyeq">
 <p><span class="math display">\hat{H}\,\psi_n = E_n\,\psi_n</span></p>
 </div>
 <ul>
-<li><span class="math inline">\psi_n</span>: <strong>eigenfunctions</strong>, the stationary states</li>
-<li><span class="math inline">E_n</span>: <strong>eigenvalues</strong>, the allowed energies</li>
+<li><span class="math inline">\psi_n</span>: the <strong>stationary states</strong>; <span class="math inline">E_n</span>: the <strong>allowed energies</strong></li>
 </ul>
 </div></div>
 </section>
@@ -348,24 +419,49 @@ Davit Potoyan
 <li>Definite kinetic energy, no definite momentum: an equal mix of <strong>left and right</strong> movers</li>
 </ul>
 </section>
+<section id="what-about-momentum" class="slide level2">
+<h2>What about momentum?</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p><img data-src="../../ch03/images/phase_direction.png" style="width:100.0%"></p>
+</div><div class="column" style="width:44%;">
+<ul>
+<li>Recall the free particle: <span class="math inline">|\Psi|^2</span> was <strong>flat</strong> whatever <span class="math inline">p</span> was</li>
+<li>Moving right or left: the <strong>same</strong> <span class="math inline">|\psi|^2</span></li>
+<li>The direction lives in the <strong>phase</strong> of <span class="math inline">\psi</span>, and squaring erases it</li>
+<li>So <span class="math inline">\hat{p}</span> must act on <span class="math inline">\psi</span> <strong>before</strong> we multiply by <span class="math inline">\psi^*</span></li>
+</ul>
+</div></div>
+</section>
 <section id="expectation-values" class="slide level2">
 <h2>Expectation values</h2>
+<p><strong>Position</strong>: <span class="math inline">x</span> is just a number, so it can sit in the middle:</p>
+<p><span class="math display">\langle x \rangle = \int x\,|\psi|^2\,dx = \int \psi^{*}\,x\,\psi\,dx</span></p>
+<p><strong>Any observable</strong>: put its operator where <span class="math inline">x</span> was, acting on <span class="math inline">\psi</span>:</p>
 <div class="keyeq">
 <p><span class="math display">\langle A \rangle = \int \psi^{*}(x)\,\hat{A}\,\psi(x)\,dx</span></p>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/mean_and_spread.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
-</figure>
+<div class="fragment">
+<p><strong>Check</strong>: a state with a definite value, <span class="math inline">\hat{A}\psi = a\psi</span>, returns it: <span class="math inline">\;\langle A \rangle = a\displaystyle\int \psi^{*}\psi\,dx = a</span></p>
+</div>
+</section>
+<section id="example-which-way-is-it-moving" class="slide level2">
+<h2>Example: which way is it moving?</h2>
+<div class="worked">
+<p><span class="math inline">\psi = \varphi(x)\,e^{ik_0x}</span>, with <span class="math inline">\varphi</span> real and normalized. Find <span class="math inline">\langle p \rangle</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\hat{p}\,\psi = -i\hbar\,\big(\varphi' + ik_0\,\varphi\big)\,e^{ik_0x}</span></p>
+<p><span class="math display">\langle p \rangle = \underbrace{-i\hbar\int \varphi\,\varphi'\,dx}_{[\varphi^2/2]\;=\;0} \;+\; \hbar k_0\underbrace{\int \varphi^2\,dx}_{1} \;=\; \hbar k_0</span></p>
 </div>
 <ul>
-<li>The operator sits <strong>between</strong> <span class="math inline">\psi^*</span> and <span class="math inline">\psi</span>; <span class="math inline">\sigma_x</span> measures the spread of results</li>
+<li>Flip <span class="math inline">k_0</span> and <span class="math inline">\langle p \rangle</span> flips, while <span class="math inline">|\psi|^2</span> stays the same: the operator <strong>reads the phase</strong></li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Energy conservation written for matter waves gives the Schrödinger equation. It separates into a turning phase and <span class="math inline">\hat{H}\psi = E\psi</span>, whose finite solutions exist only at quantized energies. The wavefunction itself is not measurable: <span class="math inline">|\psi|^2</span> gives probabilities and <span class="math inline">\int\psi^{*}\hat{A}\psi\,dx</span> gives averages.</p>
+<p>Energy conservation written for matter waves gives the Schrödinger equation. It separates into a turning phase and <span class="math inline">\hat{H}\psi = E\psi</span>, whose finite solutions exist only at quantized energies. <span class="math inline">|\psi|^2</span> gives probabilities; because momentum lives in the phase, averages need the operator acting on <span class="math inline">\psi</span> itself: <span class="math inline">\langle A \rangle = \int\psi^{*}\hat{A}\psi\,dx</span>.</p>
 </blockquote>
 
 </section>
