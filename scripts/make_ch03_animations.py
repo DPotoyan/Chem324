@@ -758,6 +758,504 @@ def point_vs_blur():
     return fig, ani
 
 
+# ============================================================ deck 3.2 "Particle in a box" (deck GIFs and stills)
+# slides/ch03/02-particle-in-a-box.qmd. Box units: L = 1, energies in units of E1 = h^2/8mL^2.
+# As in 3.1b, every update() is a pure function of the frame index.
+
+# ------------------------------------------------------------ classical vs quantum: where do we catch it?
+@register
+def box_bounce():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    rng = np.random.default_rng(5)
+    xc = rng.random(4000)                                       # classical: snapshots at random times
+    cand = rng.random(16000)
+    xq = cand[rng.random(16000) < np.sin(3 * np.pi * cand) ** 2][:4000]   # quantum: samples of |psi_3|^2
+    yj = rng.random(4000)
+    counts = np.unique(np.round(np.geomspace(1, 4000, 44)).astype(int))
+    counts = np.concatenate([counts, np.full(8, counts[-1])])
+    edges = np.linspace(0, 1, 31); mid = 0.5 * (edges[1:] + edges[:-1]); dx = edges[1] - edges[0]
+    xs = np.linspace(0, 1, 300)
+    fig, axes = plt.subplots(2, 2, figsize=(8, 3.9), sharex=True,
+                             gridspec_kw={"height_ratios": [1, 2.2], "hspace": 0.12, "wspace": 0.1})
+    (ta, tb), (ha, hb) = axes
+    for ax in (ta, tb):
+        ax.axvline(0, color="k", lw=3); ax.axvline(1, color="k", lw=3)
+        ax.set_ylim(0, 1); ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.tick_params(bottom=False)
+    ta.set_title("classical: a ball bouncing at constant speed", loc="left", fontsize=10.5)
+    tb.set_title(r"quantum, $n = 3$: each dot is one detection", loc="left", fontsize=10.5)
+    (trail,) = ta.plot([], [], "o", color=ORANGE, ms=9, alpha=0.25)
+    (ball,) = ta.plot([], [], "o", color=ORANGE, ms=12)
+    scat = tb.scatter([], [], s=5, color=TEAL, alpha=0.6, lw=0)
+    bars_c = ha.bar(mid, 0 * mid, width=0.92 * dx, color=ORANGE, alpha=0.5)
+    bars_q = hb.bar(mid, 0 * mid, width=0.92 * dx, color=TEAL, alpha=0.5)
+    (pc,) = ha.plot([], [], color=GRAY, lw=2.4, ls="--", label=r"flat: $1/L$")
+    (pq,) = hb.plot([], [], color=CARDINAL, lw=2.4, label=r"$|\psi_3(x)|^2$")
+    for ax in (ha, hb):
+        ax.set_xlim(-0.02, 1.02); ax.set_yticks([])
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("position x")
+        ax.legend(loc="upper right", frameon=False, fontsize=9.5)
+    ha.set_ylabel("times caught here")
+    fig.subplots_adjust(left=0.05, right=0.99, top=0.84, bottom=0.13)
+    sup = fig.suptitle("", fontsize=11.5)
+    tri = lambda s: 0.04 + 0.92 * (1 - np.abs(2 * (s % 1) - 1))  # bounce between the walls
+
+    def update(i):
+        N = counts[i]
+        pos = tri(np.arange(i - 3, i + 1) / 11.0)
+        trail.set_data(pos[:-1], np.full(3, 0.5)); ball.set_data(pos[-1:], [0.5])
+        scat.set_offsets(np.column_stack([xq[:N], yj[:N]]))
+        hc = np.histogram(xc[:N], bins=edges)[0]; hq = np.histogram(xq[:N], bins=edges)[0]
+        for b, c in zip(bars_c, hc):
+            b.set_height(c)
+        for b, c in zip(bars_q, hq):
+            b.set_height(c)
+        pc.set_data(xs, np.full_like(xs, N * dx)); pq.set_data(xs, N * dx * 2 * np.sin(3 * np.pi * xs) ** 2)
+        top = 1.3 * max(1.0, hc.max(), hq.max(), 2 * N * dx)
+        ha.set_ylim(0, top); hb.set_ylim(0, top)
+        sup.set_text(f"N = {N} position measurement" + ("" if N == 1 else "s"))
+
+    ani = FuncAnimation(fig, update, frames=len(counts), interval=150, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ the model: flat floor, infinite walls (still)
+@register
+def box_model():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 300)
+    fig, ax = plt.subplots(figsize=(5.0, 3.5))
+    for x0, x1 in ((-0.38, 0), (1, 1.38)):
+        ax.axvspan(x0, x1, color=GRAY, alpha=0.18, lw=0)
+    ax.plot([0, 0, 1, 1], [1.15, 0, 0, 1.15], color="k", lw=3)
+    ax.text(-0.19, 0.55, r"$V = \infty$", ha="center", fontsize=13)
+    ax.text(1.19, 0.55, r"$V = \infty$", ha="center", fontsize=13)
+    ax.text(0.5, 0.06, r"$V = 0$", ha="center", fontsize=13)
+    ax.plot(x, 0.3 + 0.42 * np.sin(np.pi * x), color=TEAL, lw=2.6)
+    ax.axhline(0.3, xmin=0.275, xmax=0.725, color=GRAY, lw=0.8, ls="--")
+    ax.plot([0, 1], [0.3, 0.3], "o", color=CARDINAL, ms=9, zorder=5)
+    ax.text(0.5, 0.8, r"$\psi(0) = \psi(L) = 0$", ha="center", fontsize=12, color=CARDINAL)
+    ax.set_xlim(-0.38, 1.38); ax.set_ylim(-0.02, 1.15)
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "L"], fontsize=12); ax.set_yticks([])
+    ax.spines["left"].set_visible(False); ax.set_xlabel("x", fontsize=12)
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/box_model.png", dpi=200)
+    print("wrote", f"{OUT}/box_model.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ only whole half-waves fit: scan the energy
+@register
+def box_fit():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    es = np.concatenate([np.linspace(0.25, 1, 8), np.full(5, 1.0), np.linspace(1, 4, 11)[1:], np.full(5, 4.0),
+                         np.linspace(4, 9, 13)[1:], np.full(5, 9.0), np.linspace(9, 11, 4)[1:], np.full(3, 11.0)])
+    eg = np.linspace(0, 11.2, 600)
+    fig, (ax, axe) = plt.subplots(1, 2, figsize=(8, 3.4), gridspec_kw={"width_ratios": [1.15, 1], "wspace": 0.3})
+    ax.axvline(0, color="k", lw=3); ax.axvline(1, color="k", lw=3); ax.axhline(0, color=GRAY, lw=0.6)
+    (wave,) = ax.plot([], [], lw=2.6)
+    (miss,) = ax.plot([], [], color=CARDINAL, lw=4)
+    (dot,) = ax.plot([], [], "o", ms=10, zorder=5)
+    ax.set_xlim(-0.04, 1.04); ax.set_ylim(-1.3, 1.55); ax.set_yticks([])
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "L"]); ax.set_xlabel("x")
+    ax.text(0.02, 1.3, r"$\psi = \sin kx$ already obeys $\psi(0) = 0$", fontsize=9.5, color=GRAY)
+    axe.plot(eg, np.sin(np.pi * np.sqrt(eg)), color=GRAY, lw=1, alpha=0.3)
+    axe.axhline(0, color=GRAY, lw=0.6)
+    (trace,) = axe.plot([], [], color=ORANGE, lw=2.2)
+    (cur,) = axe.plot([], [], "o", ms=9, zorder=5)
+    zeros = []
+    for n in (1, 2, 3):
+        (mk,) = axe.plot([n * n], [0], "o", color=TEAL, ms=11, mfc="white", mew=2.4, zorder=4)
+        lb = axe.text(n * n, -1.27, f"n = {n}", ha="center", va="bottom", fontsize=10.5, color=TEAL)
+        zeros.append((n, mk, lb))
+    axe.set_xlim(0, 11.2); axe.set_ylim(-1.3, 1.55)
+    axe.set_xticks([1, 4, 9]); axe.set_xticklabels([r"$E_1$", r"$4E_1$", r"$9E_1$"])
+    axe.set_xlabel("energy E"); axe.set_ylabel(r"$\psi(L)$"); axe.set_yticks([-1, 0, 1])
+    axe.set_title("the right wall's verdict", loc="left", fontsize=11)
+    fig.subplots_adjust(left=0.03, right=0.98, top=0.88, bottom=0.16)
+
+    def update(i):
+        e = es[i]; r = np.sqrt(e)
+        fit = abs(r - round(r)) < 1e-9 and e <= 9
+        col = TEAL if fit else ORANGE
+        end = np.sin(np.pi * r)
+        wave.set_data(x, np.sin(np.pi * r * x)); wave.set_color(col)
+        miss.set_data([1.018, 1.018], [0, end]); miss.set_visible(not fit)
+        dot.set_data([1.018 if not fit else 1], [end]); dot.set_color(TEAL if fit else CARDINAL)
+        ax.set_title((f"E = {round(e)}" if e > 1 else "E = ") + r"$E_1$" + f":  {round(r)} half-wave" + ("s fit" if r > 1 else " fits")
+                     if fit else f"E = {e:.2f}" + r"$E_1$" + ":  misses the wall", loc="left", fontsize=11, color=col)
+        m = eg <= e
+        trace.set_data(eg[m], np.sin(np.pi * np.sqrt(eg[m])))
+        cur.set_data([e], [end]); cur.set_color(TEAL if fit else CARDINAL)
+        for n, mk, lb in zeros:
+            mk.set_visible(e >= n * n - 1e-9); lb.set_visible(e >= n * n - 1e-9)
+
+    ani = FuncAnimation(fig, update, frames=len(es), interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ the ladder: psi_n and |psi_n|^2 on their levels (still)
+@register
+def pib_ladder():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4.4), sharey=True, gridspec_kw={"wspace": 0.08})
+    for ax in (ax1, ax2):
+        ax.plot([0, 0, 1, 1], [18.3, 0, 0, 18.3], color="k", lw=2.6)
+        ax.set_xlim(-0.04, 1.04); ax.set_ylim(-0.4, 18.3)
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("x")
+        ax.spines["left"].set_visible(False)
+    for n in range(1, 5):
+        E, s = n * n, np.sin(n * np.pi * x)
+        for ax in (ax1, ax2):
+            ax.hlines(E, 0, 1, color=GRAY, lw=0.8, ls="--")
+        ax1.plot(x, E + 1.25 * s, color=TEAL, lw=2.4)
+        ax2.fill_between(x, E, E + 1.6 * s**2, color=CARDINAL, alpha=0.18, lw=0)
+        ax2.plot(x, E + 1.6 * s**2, color=CARDINAL, lw=2.2)
+        ax2.plot(np.arange(1, n) / n, np.full(n - 1, E), "o", color="k", ms=5, zorder=5)
+        ax2.text(1.06, E, rf"$n = {n}$,  " + (r"$E_1$" if n == 1 else rf"${E}E_1$"), va="center", fontsize=11.5)
+    ax1.set_yticks([]); ax1.set_ylabel("energy")
+    ax1.set_title(r"$\psi_n(x)$, drawn on its level $E_n$", loc="left", fontsize=11)
+    ax2.set_title(r"$|\psi_n(x)|^2$: dots mark the $n-1$ nodes", loc="left", fontsize=11)
+    fig.subplots_adjust(left=0.05, right=0.83, top=0.92, bottom=0.12)
+    fig.savefig(f"{OUT}/pib_ladder.png", dpi=200)
+    print("wrote", f"{OUT}/pib_ladder.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ squeeze the box: every level rises as 1/L^2
+@register
+def box_squeeze():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nf = 44
+    Ls = 0.775 + 0.225 * np.cos(2 * np.pi * np.arange(nf) / nf)        # L0 -> 0.55 L0 -> L0
+    Lg = np.linspace(0.5, 1.05, 200)
+    fig, (ax, axl) = plt.subplots(1, 2, figsize=(8, 3.7), gridspec_kw={"width_ratios": [1.55, 1], "wspace": 0.32})
+
+    def update(i):
+        L = Ls[i]; xl, xr = -L / 2, L / 2
+        x = np.linspace(xl, xr, 300)
+        ax.cla(); axl.cla()
+        ax.plot([xl, xl, xr, xr], [34, 0, 0, 34], color="k", lw=2.6)
+        for n, col in zip((1, 2, 3), (TEAL, ORANGE, PURPLE)):
+            E = n * n / L**2
+            ax.hlines(E, xl, xr, color=col, lw=0.9, ls="--")
+            ax.plot(x, E + 1.3 * np.sin(n * np.pi * (x - xl) / L), color=col, lw=2.4)
+            ax.text(0.58, E, rf"$E_{n} = {E:.1f}$", color=col, va="center", fontsize=11)
+        ax.set_xlim(-0.6, 0.98); ax.set_ylim(-0.6, 33); ax.set_xticks([]); ax.set_yticks([])
+        ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+        ax.set_title(rf"box length $L = {L:.2f}\,L_0$  (energies in units of $E_1$ at $L_0$)", loc="left", fontsize=10.5)
+        axl.plot(Lg, 1 / Lg**2, color=TEAL, lw=2.2)
+        axl.plot([L], [1 / L**2], "o", color=TEAL, ms=10)
+        axl.set_xlim(0.5, 1.05); axl.set_ylim(0, 4.2)
+        axl.set_xlabel(r"$L / L_0$"); axl.set_ylabel(r"$E_1$")
+        axl.set_title(r"$E_1 = h^2/8mL^2$: never zero", loc="left", fontsize=10.5)
+        fig.subplots_adjust(left=0.03, right=0.97, top=0.9, bottom=0.14)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ large n: the lobes wash out into the classical 1/L
+@register
+def correspondence():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    ns = [1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 20, 25, 30, 40, 50]
+    frames = [n for n in ns for _ in range(5)] + [ns[-1]] * 6
+    x = np.linspace(0, 1, 3000)
+    fig, ax = plt.subplots(figsize=(8, 3.2))
+
+    def update(i):
+        n = frames[i]
+        P = 1 / 3 + (np.sin(2 * n * np.pi / 3) - np.sin(4 * n * np.pi / 3)) / (2 * n * np.pi)
+        p = 2 * np.sin(n * np.pi * x) ** 2
+        ax.cla()
+        ax.axvspan(1 / 3, 2 / 3, color=PURPLE, alpha=0.09, lw=0)
+        ax.fill_between(x, p, color=CARDINAL, alpha=0.2, lw=0)
+        ax.plot(x, p, color=CARDINAL, lw=1.4 if n < 12 else 0.8, label=r"$|\psi_n|^2$")
+        ax.axhline(1, color="k", lw=2.2, ls="--", label=r"classical: $1/L$")
+        ax.plot([0, 0, 1, 1], [2.6, 0, 0, 2.6], color="k", lw=2.6)
+        ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 2.6); ax.set_yticks([0, 1, 2]); ax.set_yticklabels(["0", "1/L", "2/L"])
+        ax.set_xticks([0, 1 / 3, 2 / 3, 1]); ax.set_xticklabels(["0", "L/3", "2L/3", "L"]); ax.set_xlabel("x")
+        ax.legend(loc="upper right", frameon=False, fontsize=10, ncol=2, bbox_to_anchor=(1.0, 1.16))
+        ax.set_title(rf"$n = {n}$:   P(middle third) = {P:.3f}   (classical: 0.333)", loc="left", fontsize=12, color=PURPLE)
+        fig.subplots_adjust(left=0.07, right=0.98, top=0.86, bottom=0.17)
+
+    ani = FuncAnimation(fig, update, frames=len(frames), interval=120, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ superposition of n = 1 and n = 2: the density sloshes
+@register
+def box_slosh():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    p1, p2 = np.sqrt(2) * np.sin(np.pi * x), np.sqrt(2) * np.sin(2 * np.pi * x)
+    nf = 60
+    ts = np.linspace(0, 2 * np.pi, nf, endpoint=False)          # E1 = 1, E2 = 4, hbar = 1: three sloshes
+    tt = np.linspace(0, 2 * np.pi, 400)
+    xbar = lambda t: 0.5 - 16 / (9 * np.pi**2) * np.cos(3 * t)  # <x>(t) = L/2 + x12 cos(w21 t)
+    th = np.linspace(0, 2 * np.pi, 200)
+    fig = plt.figure(figsize=(8, 3.3))
+    gs = fig.add_gridspec(2, 2, width_ratios=[2.3, 1], hspace=0.75, wspace=0.22)
+    ax, axc, axt = fig.add_subplot(gs[:, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 1])
+    ax.plot(x, 0.5 * p1**2, color=GRAY, lw=1, ls="--")
+    ax.plot(x, 0.5 * p2**2, color=GRAY, lw=1, ls=":")
+    (dens,) = ax.plot([], [], color=CARDINAL, lw=2.6, label=r"$|\Psi(x,t)|^2$")
+    band = [ax.fill_between(x, 0 * x, color=CARDINAL, alpha=0.18, lw=0)]
+    (mark,) = ax.plot([], [], marker="^", color=PURPLE, ms=13, clip_on=False, zorder=6, ls="none",
+                      label=r"$\langle x\rangle$")
+    ax.plot([0, 0, 1, 1], [3.4, 0, 0, 3.4], color="k", lw=2.6)
+    ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 3.4); ax.set_yticks([])
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("x", labelpad=8)
+    ax.tick_params(axis="x", pad=10)
+    ax.legend(loc="upper right", frameon=False, fontsize=10)
+    ax.set_title(r"$\Psi = (\psi_1 e^{-iE_1t/\hbar} + \psi_2 e^{-iE_2t/\hbar})/\sqrt{2}$", loc="left", fontsize=11)
+    axc.plot(np.cos(th), np.sin(th), color=GRAY, lw=1, ls="--")
+    (h1,) = axc.plot([], [], color=TEAL, lw=2.8, label=r"$E_1$")
+    (h2,) = axc.plot([], [], color=ORANGE, lw=2.8, label=r"$E_2 = 4E_1$")
+    axc.set_aspect("equal"); axc.set_xlim(-1.25, 1.25); axc.set_ylim(-1.25, 1.25); axc.set_axis_off()
+    axc.legend(loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=False, fontsize=9.5, handlelength=1.2)
+    axc.set_title("two phase clocks", fontsize=10.5, color=GRAY)
+    axt.plot(tt, xbar(tt), color=GRAY, lw=1.2)
+    (tdot,) = axt.plot([], [], "o", color=PURPLE, ms=8)
+    axt.set_xlim(0, 2 * np.pi); axt.set_ylim(0.25, 0.75); axt.set_xticks([])
+    axt.set_yticks([0.5]); axt.set_yticklabels(["L/2"]); axt.set_xlabel("time")
+    axt.set_title(r"$\langle x\rangle$ swings at $(E_2-E_1)/\hbar$", fontsize=10.5)
+    fig.subplots_adjust(left=0.03, right=0.9, top=0.88, bottom=0.14)
+
+    def update(i):
+        t = ts[i]
+        psi = (p1 * np.exp(-1j * t) + p2 * np.exp(-4j * t)) / np.sqrt(2)
+        rho = np.abs(psi) ** 2
+        dens.set_data(x, rho)
+        band[0].remove(); band[0] = ax.fill_between(x, rho, color=CARDINAL, alpha=0.18, lw=0)
+        mark.set_data([xbar(t)], [-0.12])
+        h1.set_data([0, np.cos(-t)], [0, np.sin(-t)]); h2.set_data([0, np.cos(-4 * t)], [0, np.sin(-4 * t)])
+        tdot.set_data([t], [xbar(t)])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ 2D box: products of 1D waves (still)
+@register
+def box2d_states():
+    from matplotlib.colors import LinearSegmentedColormap
+    cm = LinearSegmentedColormap.from_list("ct", [CARDINAL, "white", TEAL])
+    g = np.linspace(0, 1, 160)
+    X, Y = np.meshgrid(g, g)
+    fig, axes = plt.subplots(2, 2, figsize=(5.0, 5.2))
+    for ax, (nx, ny) in zip(axes.flat, [(1, 1), (2, 2), (2, 1), (1, 2)]):
+        ax.contourf(X, Y, np.sin(nx * np.pi * X) * np.sin(ny * np.pi * Y), levels=np.linspace(-1, 1, 15), cmap=cm)
+        for j in range(1, nx):
+            ax.axvline(j / nx, color="k", lw=1.2, ls="--")
+        for j in range(1, ny):
+            ax.axhline(j / ny, color="k", lw=1.2, ls="--")
+        ax.set_aspect("equal"); ax.set_xticks([]); ax.set_yticks([])
+        for sp in ax.spines.values():
+            sp.set_visible(True); sp.set_linewidth(2.4)
+        deg = (nx, ny) in ((2, 1), (1, 2))
+        ax.set_title(rf"$({nx},{ny})$:  $E = {nx * nx + ny * ny}\,E_0$", fontsize=12,
+                     color=PURPLE if deg else "k")
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.93, bottom=0.02, wspace=0.12, hspace=0.22)
+    fig.savefig(f"{OUT}/box2d_states.png", dpi=200)
+    print("wrote", f"{OUT}/box2d_states.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ break the square's symmetry: the (2,1)/(1,2) level splits
+@register
+def degeneracy_split():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    cm = LinearSegmentedColormap.from_list("ct", [CARDINAL, "white", TEAL])
+    nf = 40
+    bs = 1.25 - 0.25 * np.cos(2 * np.pi * np.arange(nf) / nf)          # b/a: 1 -> 1.5 -> 1
+    u = np.linspace(0, 1, 90)
+    U, W = np.meshgrid(u, u)
+    fig = plt.figure(figsize=(8, 3.6))
+    gs = fig.add_gridspec(1, 3, width_ratios=[1, 1, 1.35], wspace=0.15)
+    a1, a2, al = fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[2])
+
+    def update(i):
+        b = bs[i]
+        for ax, (nx, ny), col in ((a1, (2, 1), TEAL), (a2, (1, 2), ORANGE)):
+            ax.cla()
+            ax.contourf(U, b * W, np.sin(nx * np.pi * U) * np.sin(ny * np.pi * W), levels=np.linspace(-1, 1, 15), cmap=cm)
+            ax.plot([0, 1, 1, 0, 0], [0, 0, b, b, 0], color="k", lw=2.4)
+            ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.05, 1.55); ax.set_aspect("equal"); ax.set_axis_off()
+            ax.set_title(f"({nx},{ny})", fontsize=12, color=col)
+        al.cla()
+        E11, E21, E12 = 1 + 1 / b**2, 4 + 1 / b**2, 1 + 4 / b**2
+        al.hlines(E11, 0, 1, color=GRAY, lw=3); al.text(1.08, E11, "(1,1)", va="center", fontsize=11, color=GRAY)
+        al.hlines(E21, 0, 1, color=TEAL, lw=3); al.hlines(E12, 0, 1, color=ORANGE, lw=3)
+        if E21 - E12 < 0.35:
+            al.text(1.08, E21, "(2,1) and (1,2)", va="center", fontsize=11, color=PURPLE)
+        else:
+            al.text(1.08, E21, "(2,1)", va="center", fontsize=11, color=TEAL)
+            al.text(1.08, E12, "(1,2)", va="center", fontsize=11, color=ORANGE)
+        al.set_xlim(-0.1, 2.3); al.set_ylim(0, 5.6); al.set_xticks([]); al.set_yticks([])
+        al.spines["bottom"].set_visible(False); al.set_ylabel("energy")
+        al.set_title("square: degenerate" if b < 1.02 else f"stretched, b = {b:.2f}a: split",
+                     loc="left", fontsize=11.5, color=PURPLE if b < 1.02 else "k")
+        fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.04)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ============================================================ deck 3.3 "Applications of the particle in a box"
+# slides/ch03/03-applications-of-particle-in-a-box.qmd. Polyene model: C=C 1.35 A, C-C 1.54 A, and the
+# box runs one carbon radius (0.77 A) past each end carbon, so L = 1.445 N A for N carbons.
+
+# ------------------------------------------------------------ butadiene: pi electrons spread over a box (still)
+@register
+def polyene_box():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    xs = np.array([0.0, 1.35, 2.89, 4.24])                      # carbons, spaced by bond length along the chain (A)
+    ys = np.array([0.0, 0.7, 0.0, 0.7]) + 2.35
+    x = np.linspace(-0.77, 5.01, 400); L = 5.78
+    s = (x + 0.77) / L
+    rho = 2 * (2 / L) * np.sin(np.pi * s) ** 2 + 2 * (2 / L) * np.sin(2 * np.pi * s) ** 2
+    fig, ax = plt.subplots(figsize=(7.6, 3.8))
+    for j, lab in zip(range(3), ("1.35 Å", "1.54 Å", "1.35 Å")):
+        d = np.array([xs[j + 1] - xs[j], ys[j + 1] - ys[j]]); nrm = np.array([-d[1], d[0]]) / np.hypot(*d)
+        ax.plot(xs[j:j + 2], ys[j:j + 2], color="k", lw=2.4)
+        up = 1 if j == 1 else -1                                # label on the outside of the zigzag
+        if j != 1:                                              # C=C: an inner second line, shortened
+            a = np.array([xs[j], ys[j]]) + 0.18 * d - 0.16 * nrm * (1 if j == 0 else 1)
+            b = np.array([xs[j + 1], ys[j + 1]]) - 0.18 * d - 0.16 * nrm
+            ax.plot([a[0], b[0]], [a[1], b[1]], color="k", lw=2.4)
+        mid = 0.5 * np.array([xs[j] + xs[j + 1], ys[j] + ys[j + 1]]) + 0.32 * nrm * (1 if j != 1 else -1)
+        ax.text(mid[0], mid[1], lab, ha="center", va="center", fontsize=10.5)
+    ax.plot(xs, ys, "o", color="k", ms=15, zorder=5)
+    for xj, yj in zip(xs, ys):
+        ax.text(xj, yj, "C", color="white", ha="center", va="center", fontsize=9, fontweight="bold", zorder=6)
+    ax.plot([-0.77, -0.77, 5.01, 5.01], [1.9, 0, 0, 1.9], color="k", lw=2.6)
+    for xe in (0.0, 4.24):
+        ax.plot([xe, xe], [0, 2.2], color=GRAY, lw=1, ls=":")
+    ax.fill_between(x, 1.3 * rho, color=TEAL, alpha=0.25, lw=0)
+    ax.plot(x, 1.3 * rho, color=TEAL, lw=2.4)
+    ax.text(5.25, 0.75, r"$\pi$ electron density" + "\n" + r"$2|\psi_1|^2 + 2|\psi_2|^2$", fontsize=11, color=TEAL, va="center")
+    ax.text(-0.39, 1.72, "0.77 Å", ha="center", fontsize=9, color=GRAY)
+    ax.text(4.62, 1.72, "0.77 Å", ha="center", fontsize=9, color=GRAY)
+    ax.annotate("", xy=(-0.77, -0.3), xytext=(5.01, -0.3), arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.8))
+    ax.text(2.12, -0.62, "L = 1.35 + 1.54 + 1.35 + 2(0.77) = 5.78 Å", ha="center", va="top", fontsize=11.5, color=CARDINAL)
+    ax.set_xlim(-1.0, 7.6); ax.set_ylim(-1.05, 3.45); ax.set_axis_off()
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
+    fig.savefig(f"{OUT}/polyene_box.png", dpi=200)
+    print("wrote", f"{OUT}/polyene_box.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ fill two per level: HOMO -> LUMO (still)
+@register
+def homo_lumo():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, ax = plt.subplots(figsize=(4.6, 4.2))
+    for n in range(1, 5):
+        E = n * n
+        ax.hlines(E, 0, 1, color="k" if n <= 2 else GRAY, lw=2.6)
+        ax.text(1.08, E, f"n = {n}" + ("   HOMO" if n == 2 else "   LUMO" if n == 3 else ""), va="center", fontsize=11.5,
+                color=TEAL if n == 2 else CARDINAL if n == 3 else "k")
+        if n <= 2:
+            for xa, d in ((0.36, 1), (0.64, -1)):
+                ax.annotate("", xy=(xa, E + 0.75 * d), xytext=(xa, E - 0.75 * d),
+                            arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2, mutation_scale=14))
+    ax.annotate("", xy=(0.5, 8.8), xytext=(0.5, 4.2), arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2.6, mutation_scale=20))
+    ax.text(0.56, 6.4, r"$h\nu = E_3 - E_2$", color=PURPLE, fontsize=12.5)
+    ax.set_xlim(-0.1, 2.0); ax.set_ylim(-0.5, 17.5); ax.set_xticks([]); ax.set_yticks([])
+    ax.spines["bottom"].set_visible(False); ax.set_ylabel(r"energy, $E_n \propto n^2$")
+    ax.set_title(r"butadiene: 4 $\pi$ electrons", loc="left", fontsize=11.5)
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/homo_lumo.png", dpi=200)
+    print("wrote", f"{OUT}/homo_lumo.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ longer chain, smaller gap, redder light (box model)
+@register
+def chain_color():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    Ns = [2, 4, 6, 8, 10, 12]
+    frames = [N for N in Ns for _ in range(8)] + [Ns[-1]] * 4
+    wl = np.linspace(100, 800, 701)
+    anchors = [380, 440, 490, 510, 580, 645, 700, 780]          # a smooth visible-spectrum colormap
+    rgb = np.stack([np.interp(wl, anchors, [0.4, 0.0, 0.0, 0.0, 1.0, 1.0, 0.8, 0.4]),
+                    np.interp(wl, anchors, [0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0]),
+                    np.interp(wl, anchors, [0.5, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0])], axis=-1)
+    fade = np.clip(np.minimum((wl - 380) / 40, (780 - wl) / 80), 0, 1)[:, None]
+    strip = (fade * rgb + (1 - fade) * 0.93)[None, :, :]
+    fig = plt.figure(figsize=(8, 4.2))
+    gs = fig.add_gridspec(2, 2, width_ratios=[1, 2.4], height_ratios=[1, 1.25], hspace=0.6, wspace=0.22)
+    axe, axm, axs = fig.add_subplot(gs[:, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 1])
+
+    def update(i):
+        N = frames[i]; L = 1.445 * N
+        En = 37.6 * np.arange(1, N // 2 + 2) ** 2 / L**2          # eV, h^2/8m = 37.6 eV A^2; up to the LUMO
+        gap = En[N // 2] - En[N // 2 - 1]; lam = 1239.8 / gap
+        axm.cla(); axe.cla(); axs.cla()
+        cx = 1.2 * np.arange(N); cy = 0.5 * (np.arange(N) % 2)
+        for j in range(N - 1):
+            axm.plot(cx[j:j + 2], cy[j:j + 2], color="k", lw=2)
+            if j % 2 == 0:
+                axm.plot(cx[j:j + 2], cy[j:j + 2] - 0.16, color="k", lw=2)
+        axm.plot(cx, cy, "o", color="k", ms=9)
+        axm.set_xlim(-0.6, 14.2); axm.set_ylim(-0.4, 0.9); axm.set_axis_off()
+        axm.set_title(f"{N} carbons, {N} $\\pi$ electrons, box L = {L:.1f} Å", loc="left", fontsize=11.5)
+        for n, E in enumerate(En, start=1):
+            occ = n <= N // 2
+            axe.hlines(E, 0, 1, color="k" if occ else GRAY, lw=2.2 if occ else 1.6)
+        axe.annotate("", xy=(0.5, En[N // 2]), xytext=(0.5, En[N // 2 - 1]),
+                     arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2.4, mutation_scale=16, shrinkA=0, shrinkB=0))
+        axe.text(1.08, 0.5 * (En[N // 2] + En[N // 2 - 1]), f"{gap:.1f} eV", color=PURPLE, fontsize=12, va="center")
+        axe.text(1.08, En[N // 2 - 1], "HOMO", color="k", fontsize=9.5, va="top")
+        axe.text(1.08, En[N // 2], "LUMO", color=GRAY, fontsize=9.5, va="bottom")
+        axe.set_xlim(0, 2.1); axe.set_ylim(0, 19); axe.set_xticks([])
+        axe.spines["bottom"].set_visible(False)
+        axe.set_ylabel("energy (eV)"); axe.set_title("levels", loc="left", fontsize=11)
+        axs.imshow(strip, extent=[100, 800, 0, 1], aspect="auto")
+        axs.text(240, 0.5, "ultraviolet", ha="center", va="center", fontsize=11, color=GRAY)
+        axs.plot([lam], [1.12], marker="v", color="k", ms=13, clip_on=False)
+        axs.text(lam, 1.3, f"{lam:.0f} nm", ha="center", fontsize=12)
+        axs.set_xlim(100, 800); axs.set_ylim(0, 1); axs.set_yticks([]); axs.set_xlabel("absorbed wavelength predicted by the box (nm)")
+        fig.subplots_adjust(left=0.08, right=0.98, top=0.9, bottom=0.12)
+
+    ani = FuncAnimation(fig, update, frames=len(frames), interval=120, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ quantum dots: a 3D box whose size sets the color (still)
+@register
+def quantum_dots():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    R = np.array([1.0, 1.3, 1.6, 2.0, 2.5, 3.1])
+    lam = np.array([460, 500, 530, 565, 600, 630])               # schematic emission colors, small to large
+    anchors = [380, 440, 490, 510, 580, 645, 700, 780]
+    cols = np.stack([np.interp(lam, anchors, [0.4, 0.0, 0.0, 0.0, 1.0, 1.0, 0.8, 0.4]),
+                     np.interp(lam, anchors, [0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0]),
+                     np.interp(lam, anchors, [0.5, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0])], axis=-1)
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(8, 3.1), gridspec_kw={"width_ratios": [1.5, 1], "wspace": 0.25})
+    xc = np.cumsum(np.r_[0, R[:-1] + R[1:] + 0.5])
+    for x0, r, c in zip(xc, R, cols):
+        a1.add_patch(plt.Circle((x0, 0), r, color=c, alpha=0.9))
+    a1.set_xlim(-1.3, xc[-1] + 3.3); a1.set_ylim(-3.4, 3.4); a1.set_aspect("equal"); a1.set_axis_off()
+    a1.annotate("", xy=(xc[-1], -3.35), xytext=(xc[0], -3.35), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6))
+    a1.text(0.5 * (xc[0] + xc[-1]), -3.2, "bigger dot", ha="center", va="bottom", fontsize=10.5, color=GRAY)
+    a1.set_title("same material, different sizes", loc="left", fontsize=11)
+    rr = np.linspace(0.85, 3.3, 200)
+    a2.plot(rr, 1 + 1.2 / rr**2, color=GRAY, lw=2)
+    a2.scatter(R, 1 + 1.2 / R**2, s=90, c=cols, zorder=5)
+    a2.axhline(1, color=GRAY, lw=1, ls="--"); a2.text(0.9, 1.06, "bulk gap", ha="left", va="bottom", fontsize=9.5, color=GRAY)
+    a2.set_xlabel("dot radius R"); a2.set_ylabel("gap"); a2.set_xticks([]); a2.set_yticks([])
+    a2.set_title(r"gap = bulk + $\propto 1/R^2$", loc="left", fontsize=11)
+    fig.subplots_adjust(left=0.01, right=0.98, top=0.88, bottom=0.12)
+    fig.savefig(f"{OUT}/quantum_dots.png", dpi=200)
+    print("wrote", f"{OUT}/quantum_dots.png")
+    return fig, None
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:
