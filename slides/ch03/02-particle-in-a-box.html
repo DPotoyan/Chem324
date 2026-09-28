@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="02-particle-in-a-box_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="02-particle-in-a-box_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02-particle-in-a-box_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02-particle-in-a-box_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,143 +163,241 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="classical-vs-quantum" class="slide level2">
-<h2>Classical vs Quantum</h2>
+<section id="trap-the-particle" class="slide level2">
+<h2>Trap the particle</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/ext_infinite_well_animation.gif" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch03/images/box_bounce.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li class="fragment"><p>A particle trapped in a region <span class="math inline">\([0, L]\)</span></p></li>
-<li class="fragment"><p><strong>Classical</strong>: bounces freely, found <strong>everywhere</strong> with equal probability</p></li>
-<li class="fragment"><p><strong>Quantum</strong>: described by a wavefunction <span class="math inline">\(\psi(x)\)</span>, found in some regions with <strong>high</strong> probability, others with <strong>zero</strong></p></li>
-<li class="fragment"><p>Wavefunctions are <strong>standing waves</strong>, but with a <strong>probabilistic</strong> meaning</p></li>
+<li>Walls at <span class="math inline">x = 0</span> and <span class="math inline">x = L</span>, nothing in between</li>
+<li><strong>Classical</strong>: constant speed, so <strong>equally likely</strong> anywhere</li>
+<li><strong>Quantum</strong> (<span class="math inline">n = 3</span>): lobes, and two points where it is <strong>never</strong> found</li>
+<li>Same walls; only the rule changed: <strong><span class="math inline">|\psi|^2</span></strong> decides where we catch it</li>
 </ul>
 </div></div>
 </section>
-<section id="the-model" class="slide level2">
-<h2>The Model</h2>
+<section id="the-model-perfect-walls" class="slide level2">
+<h2>The model: perfect walls</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><img data-src="../../ch03/images/ext_infinite_well.svg" style="width:100.0%"></p>
+<p><img data-src="../../ch03/images/box_model.png" style="width:100.0%"></p>
 </div><div class="column" style="width:55%;">
-<p><strong>Infinite walls</strong> confine the particle:</p>
-<p><span class="math display">\[V(x) = \begin{cases} \infty &amp; x = 0 \text{ or } x = L \\ 0 &amp; 0 &lt; x &lt; L \end{cases}\]</span></p>
-<div class="fragment">
-<p><strong>Boundary conditions:</strong> <span class="math display">\[\psi(0) = \psi(L) = 0\]</span></p>
-</div>
-<div class="fragment">
-<p>Inside, only <strong>kinetic energy</strong>: <span class="math display">\[\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\]</span></p>
-</div>
+<p><strong>Inside</strong>, <span class="math inline">V = 0</span>: only kinetic energy</p>
+<p><span class="math display">-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} = E\,\psi, \qquad 0 &lt; x &lt; L</span></p>
+<p><strong>Walls</strong>, <span class="math inline">V = \infty</span>: the particle is never there, so</p>
+<p><span class="math display">\psi(0) = \psi(L) = 0</span></p>
+<ul>
+<li>The walls enter only as <strong>boundary conditions</strong></li>
+</ul>
 </div></div>
 </section>
-<section id="solving-the-schrödinger-equation" class="slide level2">
-<h2>Solving the Schrödinger Equation</h2>
-<p>The eigenvalue problem <span class="math inline">\(\hat{H}\psi = E\psi\)</span> becomes</p>
-<p><span class="math display">\[\psi''(x) = -k^2\psi(x), \qquad k^2 = \frac{2mE}{\hbar^2}\]</span></p>
+<section id="solve-it-the-string-again" class="slide level2">
+<h2>Solve it: the string again</h2>
+<p><span class="math display">-\frac{\hbar^2}{2m}\,\psi'' = E\,\psi \quad\Longrightarrow\quad \psi'' = -k^2\,\psi, \qquad k = \frac{\sqrt{2mE}}{\hbar}</span></p>
+<p>The clamped string’s equation from Chapter 2, so the same solutions:</p>
+<p><span class="math display">\psi(x) = A\cos kx + B\sin kx</span></p>
 <div class="fragment">
-<p>General solution: <span class="math display">\[\psi(x) = A\cos(kx) + B\sin(kx)\]</span></p>
+<p><span class="math display">
+\begin{aligned}
+\psi(0) = 0 &amp;\quad\Rightarrow\quad A = 0 \\
+\psi(L) = 0 &amp;\quad\Rightarrow\quad B\sin kL = 0 \quad\Rightarrow\quad kL = n\pi, \quad n = 1, 2, 3, \dots
+\end{aligned}
+</span></p>
 </div>
 <ul>
-<li class="fragment"><span class="math inline">\(\psi(0)=0 \Rightarrow A = 0\)</span></li>
-<li class="fragment"><span class="math inline">\(\psi(L)=0 \Rightarrow \sin(kL) = 0\)</span></li>
+<li><span class="math inline">B = 0</span> would erase the particle, so the <strong>sine</strong> must vanish at the wall</li>
 </ul>
 </section>
-<section id="quantization-emerges" class="slide level2">
-<h2>Quantization Emerges</h2>
-<p>The wall condition forces</p>
-<p><span class="math display">\[kL = n\pi \quad\Rightarrow\quad k = \frac{n\pi}{L}, \quad n = 1, 2, 3, \dots\]</span></p>
-<div class="fragment">
-<p>Energy is <strong>quantized</strong>: <span class="math display">\[E_n = \frac{n^2 h^2}{8mL^2}\]</span></p>
+<section id="only-whole-half-waves-fit" class="slide level2">
+<h2>Only whole half-waves fit</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/box_fit.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
 </div>
-<div class="fragment">
-<blockquote>
-<p>Confining a wave to a finite space forces <strong>discrete</strong> energy levels. Atoms, molecules, and solids inherit their quantized levels this way.</p>
-</blockquote>
-</div>
+<ul>
+<li>Raise <span class="math inline">E</span>: the sine bends faster, but meets the right wall at zero only at <strong>special energies</strong></li>
+<li>The fit condition <span class="math inline">L = n\,\lambda/2</span> is the <strong>clamped string</strong> again: boundary conditions quantize</li>
+</ul>
 </section>
-<section id="normalization-fixes-the-amplitude" class="slide level2">
-<h2>Normalization Fixes the Amplitude</h2>
-<p>Require total probability of <span class="math inline">\(1\)</span>:</p>
-<p><span class="math display">\[\int_0^L \psi_n(x)^2\, dx = 1\]</span></p>
-<div class="fragment">
-<p>Using <span class="math inline">\(\sin^2\theta = \tfrac{1}{2}(1-\cos 2\theta)\)</span> gives <span class="math inline">\(\tfrac{B_n^2}{2}L = 1\)</span>, so</p>
-<p><span class="math display">\[B_n = \sqrt{\frac{2}{L}}\]</span></p>
+<section id="energy-in-one-line" class="slide level2">
+<h2>Energy in one line</h2>
+<p>The fit sets the wavelength; de Broglie turns it into momentum:</p>
+<p><span class="math display">\lambda_n = \frac{2L}{n} \quad\Longrightarrow\quad p_n = \frac{h}{\lambda_n} = \frac{nh}{2L} \quad\Longrightarrow\quad E_n = \frac{p_n^2}{2m}</span></p>
+<div class="keyeq">
+<p><span class="math display">E_n = \frac{n^2h^2}{8mL^2}, \qquad n = 1, 2, 3, \dots</span></p>
 </div>
+<ul>
+<li>Same answer from <span class="math inline">k = n\pi/L</span> in <span class="math inline">E = \hbar^2k^2/2m</span></li>
+<li><span class="math inline">E \propto n^2</span>: gaps <strong>widen</strong> going up. <span class="math inline">E \propto 1/mL^2</span>: <strong>light</strong> particles in <strong>small</strong> boxes</li>
+</ul>
 </section>
-<section id="the-1d-eigenstates" class="slide level2">
-<h2>The 1D Eigenstates</h2>
+<section id="example-normalize" class="slide level2">
+<h2>Example: normalize</h2>
+<div class="worked">
+<p>Choose <span class="math inline">B</span> so that <span class="math inline">\psi_n = B\sin(n\pi x/L)</span> is normalized.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\int_0^L B^2\sin^2\frac{n\pi x}{L}\,dx = B^2\,\frac{L}{2} = 1 \quad\Longrightarrow\quad B = \sqrt{\frac{2}{L}}</span></p>
+<p>Over whole half-waves <span class="math inline">\sin^2</span> averages to <span class="math inline">\tfrac{1}{2}</span>: its hills fill its valleys, so the integral is half the box length.</p>
+</div>
+<ul>
+<li>The same <span class="math inline">B</span> for <strong>every</strong> <span class="math inline">n</span>: more lobes, each one thinner</li>
+</ul>
+</section>
+<section id="the-states-of-the-box" class="slide level2">
+<h2>The states of the box</h2>
 <div class="columns">
-<div class="column" style="width:48%;">
-<p><img data-src="../../ch03/images/pib1d-1.jpeg" style="width:100.0%"></p>
-</div><div class="column" style="width:52%;">
-<p><span class="math display">\[\psi_n(x) = \left(\frac{2}{L}\right)^{1/2}\sin\frac{n\pi x}{L}\]</span></p>
-<p><span class="math display">\[E_n = \frac{n^2 h^2}{8mL^2}\]</span></p>
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch03/images/pib_ladder.png" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
+<div class="keyeq">
+<p><span class="math display">\psi_n(x) = \sqrt{\frac{2}{L}}\,\sin\frac{n\pi x}{L}</span></p>
+</div>
 <ul>
-<li class="fragment"><strong>Higher <span class="math inline">\(n\)</span></strong>: more curvature, more energy</li>
-<li class="fragment">State <span class="math inline">\(n\)</span> has <span class="math inline">\(n-1\)</span> <strong>nodes</strong> where <span class="math inline">\(|\psi_n|^2 = 0\)</span></li>
+<li><span class="math inline">n - 1</span> <strong>nodes</strong> inside the box</li>
+<li>More nodes, more <strong>curvature</strong>, more kinetic energy</li>
+<li><span class="math inline">|\psi_n|^2</span> is <strong>not</strong> flat, and it is zero at every node</li>
 </ul>
 </div></div>
 </section>
-<section id="zero-point-energy" class="slide level2">
-<h2>Zero-Point Energy</h2>
-<p>The lowest state <span class="math inline">\(n=1\)</span> has <strong>nonzero</strong> energy:</p>
-<p><span class="math display">\[E_1 = \frac{h^2}{8mL^2} \neq 0\]</span></p>
-<ul>
-<li class="fragment">Energy is purely kinetic, so a quantum particle is <strong>never at rest</strong></li>
-</ul>
-<div class="fragment">
-<ul>
-<li class="fragment">Level spacing grows with <span class="math inline">\(n\)</span>: <span class="math display">\[E_{n+1} - E_n = (2n+1)\frac{h^2}{8mL^2}\]</span></li>
-</ul>
-</div>
-<div class="fragment">
-<blockquote>
-<p>Smaller box means larger spacing. Quantum effects dominate when a particle is tightly confined.</p>
-</blockquote>
-</div>
-</section>
-<section id="nodes-and-non-uniform-probability" class="slide level2">
-<h2>Nodes and Non-Uniform Probability</h2>
-<ul>
-<li class="fragment"><p><span class="math inline">\(|\psi_n|^2\)</span> is <strong>not</strong> uniform, unlike the classical prediction</p></li>
-<li class="fragment"><p><strong>Nodes</strong>: points where probability is exactly <strong>zero</strong></p></li>
-<li class="fragment"><p>State <span class="math inline">\(n\)</span> has <span class="math inline">\(n-1\)</span> nodes at <span class="math inline">\(x = \frac{L}{n}, \frac{2L}{n}, \dots, \frac{(n-1)L}{n}\)</span></p></li>
-<li class="fragment"><p>The existence of nodes is the signature of <strong>wave-like</strong> behavior</p></li>
-<li class="fragment"><p>Yet for any <span class="math inline">\(n\)</span>: <span class="math inline">\(\langle x \rangle = \frac{L}{2}\)</span> and <span class="math inline">\(\langle p \rangle = 0\)</span> by symmetry</p></li>
-</ul>
-</section>
-<section id="pure-vs-mixed-states" class="slide level2">
-<h2>Pure vs Mixed States</h2>
-<p><strong>Pure state</strong> (single eigenstate): probability is <strong>time-independent</strong></p>
-<p><span class="math display">\[|\psi_n(x,t)|^2 = |\psi_n(x)|^2\]</span></p>
-<div class="fragment">
-<p><strong>Mixed state</strong> (superposition): probability <strong>oscillates</strong> in time</p>
-<p><span class="math display">\[\psi(x,t) = c_1\psi_1 e^{-iE_1 t/\hbar} + c_2\psi_2 e^{-iE_2 t/\hbar}\]</span></p>
-</div>
-<ul>
-<li class="fragment">Interference term beats at frequency <span class="math inline">\((E_1 - E_2)/\hbar\)</span></li>
-</ul>
-</section>
-<section id="the-3d-box" class="slide level2">
-<h2>The 3D Box</h2>
+<section id="squeeze-the-box" class="slide level2">
+<h2>Squeeze the box</h2>
 <div class="columns">
-<div class="column" style="width:42%;">
-<p><img data-src="../../ch03/images/pib3d.png" style="width:100.0%"></p>
-</div><div class="column" style="width:58%;">
-<p>Separable solution <span class="math inline">\(\psi = X(x)Y(y)Z(z)\)</span>:</p>
-<p><span class="math display">\[\psi = \sqrt{\frac{8}{abc}}\sin\frac{n_x\pi x}{a}\sin\frac{n_y\pi y}{b}\sin\frac{n_z\pi z}{c}\]</span></p>
-<p><span class="math display">\[E_{n_x,n_y,n_z} = \frac{h^2}{8m}\left(\frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2}\right)\]</span></p>
-</div></div>
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch03/images/box_squeeze.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li class="fragment">When <span class="math inline">\(a = b = c\)</span>, different <span class="math inline">\((n_x, n_y, n_z)\)</span> can share one energy: <strong>degeneracy</strong></li>
-<li class="fragment"><strong>Degeneracy arises from symmetry</strong></li>
+<li>Halve <span class="math inline">L</span>: every level rises <strong>4 times</strong></li>
+<li>The ladder starts at <span class="math inline">n = 1</span>: a <strong>zero-point energy</strong> <span class="math inline">E_1 &gt; 0</span></li>
+<li><span class="math inline">n = 0</span> would be <span class="math inline">\psi = 0</span>, no particle: a confined particle is <strong>never at rest</strong></li>
+<li>Uncertainty in words: pin <span class="math inline">x</span> to within <span class="math inline">L</span> and <span class="math inline">p</span> must spread by about <span class="math inline">h/L</span></li>
+</ul>
+</div></div>
+</section>
+<section id="example-electron-or-marble" class="slide level2">
+<h2>Example: electron or marble?</h2>
+<div class="worked">
+<p>Find the gap <span class="math inline">E_2 - E_1</span> for an electron in a 1 nm box and for a 1 g marble in a 1 cm box. Compare each with <span class="math inline">k_BT \approx 4\times10^{-21}</span> J at room temperature.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">
+E_2 - E_1 = \frac{3h^2}{8mL^2} =
+\begin{cases}
+1.8\times10^{-19}\ \text{J} \approx 1.1\ \text{eV} &amp; \text{electron, 1 nm} \\[4pt]
+1.6\times10^{-60}\ \text{J} &amp; \text{marble, 1 cm}
+\end{cases}
+</span></p>
+<p>Electron: <strong>40 times</strong> <span class="math inline">k_BT</span>, the levels stand apart. Marble: <span class="math inline">10^{-40}\,k_BT</span>, a continuum.</p>
+</div>
+<ul>
+<li>Chemistry lives where the electron does: <strong>nanometer boxes, electron-volt gaps</strong></li>
+</ul>
+</section>
+<section id="example-which-third-of-the-box" class="slide level2">
+<h2>Example: which third of the box?</h2>
+<div class="worked">
+<p>In <span class="math inline">\psi_1</span> and in <span class="math inline">\psi_2</span>, what is the probability of finding the particle in the middle third, <span class="math inline">L/3 &lt; x &lt; 2L/3</span>? Classically it is <span class="math inline">1/3</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">P_n = \frac{2}{L}\int_{L/3}^{2L/3}\sin^2\frac{n\pi x}{L}\,dx = \frac{1}{3} + \frac{\sin(2n\pi/3) - \sin(4n\pi/3)}{2n\pi}</span></p>
+<p><span class="math display">P_1 = \frac{1}{3} + \frac{\sqrt{3}}{2\pi} = 0.61 \qquad\qquad P_2 = \frac{1}{3} - \frac{\sqrt{3}}{4\pi} = 0.20</span></p>
+</div>
+<ul>
+<li><span class="math inline">n = 1</span> crowds the <strong>center</strong>; <span class="math inline">n = 2</span> has a <strong>node</strong> there</li>
+</ul>
+</section>
+<section id="large-n-the-classical-box-returns" class="slide level2">
+<h2>Large <span class="math inline">n</span>: the classical box returns</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/correspondence.gif" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The lobes get finer than any detector can resolve; on average <span class="math inline">|\psi_n|^2 \to 1/L</span></li>
+<li><strong>Correspondence principle</strong>: quantum results turn classical at large quantum numbers</li>
+</ul>
+</section>
+<section id="example-moving-but-going-nowhere" class="slide level2">
+<h2>Example: moving, but going nowhere</h2>
+<div class="worked">
+<p>Find <span class="math inline">\langle p\rangle</span> and <span class="math inline">\langle p^2\rangle</span> in the state <span class="math inline">\psi_n</span>, with <span class="math inline">k_n = n\pi/L</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\langle p\rangle = -i\hbar\int_0^L \psi_n\,\psi_n'\,dx = -i\hbar\left[\tfrac{1}{2}\psi_n^2\right]_0^L = 0</span></p>
+<p><span class="math display">\hat{p}^2\psi_n = -\hbar^2\psi_n'' = \hbar^2k_n^2\,\psi_n \quad\Longrightarrow\quad \langle p^2\rangle = \hbar^2k_n^2 = 2mE_n</span></p>
+</div>
+<ul>
+<li>Equal parts <span class="math inline">e^{+ik_nx}</span> and <span class="math inline">e^{-ik_nx}</span>: <strong>left and right movers</strong>, <span class="math inline">|p| = \hbar k_n</span></li>
+<li>For <span class="math inline">n = 1</span>, <span class="math inline">\sigma_x\sigma_p = 0.57\,\hbar</span>: just above Heisenberg’s <span class="math inline">\hbar/2</span></li>
+</ul>
+</section>
+<section id="superposition-the-particle-sloshes" class="slide level2">
+<h2>Superposition: the particle sloshes</h2>
+<div class="keyeq">
+<p><span class="math display">\Psi(x,t) = \sum_n c_n\,\psi_n(x)\,e^{-iE_nt/\hbar}</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch03/images/box_slosh.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
+<ul>
+<li>Two states, equal weights: the clocks run at <strong>different rates</strong></li>
+<li>The cross term <span class="math inline">\psi_1\psi_2\cos\omega t</span> <strong>beats</strong>, <span class="math inline">\omega = (E_2 - E_1)/\hbar</span></li>
+<li><span class="math inline">\langle x\rangle</span> oscillates: a tiny <strong>antenna</strong> for light with <span class="math inline">h\nu = E_2 - E_1</span></li>
+</ul>
+</div></div>
+</section>
+<section id="d-and-3d-products-of-1d-boxes" class="slide level2">
+<h2>2D and 3D: products of 1D boxes</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p>Separate variables, <span class="math inline">\psi = X(x)\,Y(y)\,Z(z)</span>: each factor is a 1D box, and the energies <strong>add</strong></p>
+<div class="keyeq">
+<p><span class="math display">E_{n_xn_yn_z} = \frac{h^2}{8m}\left(\frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2}\right)</span></p>
+</div>
+<ul>
+<li>Square of side <span class="math inline">a</span>, <span class="math inline">E_0 = h^2/8ma^2</span></li>
+<li><span class="math inline">(2,1)</span> and <span class="math inline">(1,2)</span>: one pattern <strong>turned 90°</strong>, the same <span class="math inline">5E_0</span></li>
+</ul>
+</div><div class="column" style="width:42%;">
+<p><img data-src="../../ch03/images/box2d_states.png" style="width:92.0%"></p>
+</div></div>
+</section>
+<section id="symmetry-makes-degeneracy" class="slide level2">
+<h2>Symmetry makes degeneracy</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../../ch03/images/degeneracy_split.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><strong>Degenerate</strong>: different states, same energy</li>
+<li>In a square, a 90° turn maps <span class="math inline">(2,1)</span> onto <span class="math inline">(1,2)</span>, so they <strong>must</strong> share an energy</li>
+<li>Stretch one side: the symmetry is gone and the level <strong>splits</strong></li>
+<li>Cube: <span class="math inline">(2,1,1)</span>, <span class="math inline">(1,2,1)</span>, <span class="math inline">(1,1,2)</span> all have <span class="math inline">6E_0</span>, <strong>3-fold</strong></li>
+</ul>
+</div></div>
+</section>
+<section id="example-counting-states-in-a-cube" class="slide level2">
+<h2>Example: counting states in a cube</h2>
+<div class="worked">
+<p>In a cube, <span class="math inline">E = (n_x^2 + n_y^2 + n_z^2)\,E_0</span>. How many states have <span class="math inline">E = 9E_0</span>? And <span class="math inline">E = 14E_0</span>?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">9 = 2^2 + 2^2 + 1^2: \quad (2,2,1),\ (2,1,2),\ (1,2,2) \quad\Longrightarrow\quad \text{3 states}</span></p>
+<p><span class="math display">14 = 3^2 + 2^2 + 1^2: \quad \text{every ordering of } (3,2,1) \quad\Longrightarrow\quad \text{6 states}</span></p>
+<p>Not <span class="math inline">(3,0,0)</span>: <span class="math inline">n = 0</span> means <span class="math inline">\psi = 0</span>, no particle.</p>
+</div>
+<ul>
+<li>Three different numbers give 6 states, a repeated pair gives 3, all equal gives 1</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Confining a quantum wave to a box quantizes its energy as <span class="math inline">\(E_n = \frac{n^2 h^2}{8mL^2}\)</span>, forbids rest through zero-point energy, and carves the probability into nodes, with symmetry producing degeneracy in higher dimensions.</p>
+<p>Walls turn a free particle into a standing wave: only whole half-waves fit, so <span class="math inline">E_n = n^2h^2/8mL^2</span>. The lowest level sits above zero, the levels climb as the box shrinks, and <span class="math inline">|\psi_n|^2</span> has <span class="math inline">n-1</span> nodes that blur into the classical flat distribution at large <span class="math inline">n</span>. A superposition sloshes at <span class="math inline">(E_2 - E_1)/\hbar</span>, and in 2D and 3D, symmetry makes levels degenerate.</p>
 </blockquote>
 
 </section>
@@ -308,7 +422,6 @@ Davit Potoyan
   <script src="02-particle-in-a-box_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="02-particle-in-a-box_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="02-particle-in-a-box_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="02-particle-in-a-box_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -477,27 +590,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
