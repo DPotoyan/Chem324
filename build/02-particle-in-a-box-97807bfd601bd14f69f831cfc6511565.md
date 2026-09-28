@@ -1134,10 +1134,10 @@ Aromatic and extended π-systems modeled as a 2D particle in a box.
 
 Consider butadiene (C₄H₆), whose four π-electrons are delocalized over the conjugated chain. We estimate the wavelength that excites one π-electron across the gap.
 
-**Step 1: length of the box.** The conjugated chain spans three carbon-carbon bonds, using C=C ≈ 1.34 Å and C-C ≈ 1.54 Å:
+**Step 1: length of the box.** Butadiene, CH₂=CH-CH=CH₂, has two C=C bonds and one C-C bond between its end carbons (C=C ≈ 1.35 Å, C-C ≈ 1.54 Å):
 
 $$
-L = 1.54\,\text{Å} + 1.34\,\text{Å} + 1.54\,\text{Å} = 4.42\,\text{Å}.
+L = 1.35\,\text{Å} + 1.54\,\text{Å} + 1.35\,\text{Å} = 4.24\,\text{Å}.
 $$
 
 **Step 2: fill the levels.** Each level holds two electrons (Pauli), so the four π-electrons fill $n=1$ and $n=2$. The highest occupied level is $n=2$ and the lowest empty one is $n=3$, so the absorption is the $n=2 \to n=3$ transition.
@@ -1155,17 +1155,15 @@ import numpy as np
 h = 6.626e-34    # Planck constant (J s)
 m = 9.109e-31    # electron mass (kg)
 c = 3.0e8        # speed of light (m/s)
-L = 4.42e-10     # butadiene conjugation length (m)
-
-E = lambda n: n**2 * h**2 / (8 * m * L**2)
-dE = E(3) - E(2)                 # HOMO (n=2) -> LUMO (n=3)
-lam = h * c / dE
-
-print(f"Delta E (2 -> 3) = {dE:.3e} J")
-print(f"absorption wavelength = {lam * 1e9:.0f} nm")
+# box ending at the end carbons, then one carbon radius (0.77 A) past each end
+for label, L in [("L = 4.24 A", 4.24e-10), ("L = 5.78 A", 5.78e-10)]:
+    E = lambda n: n**2 * h**2 / (8 * m * L**2)
+    dE = E(3) - E(2)             # HOMO (n=2) -> LUMO (n=3)
+    lam = h * c / dE
+    print(f"{label}:  Delta E (2 -> 3) = {dE:.3e} J,  absorption wavelength = {lam * 1e9:.0f} nm")
 ```
 
-The particle-in-a-box estimate lands in the ultraviolet, the right ballpark for a small polyene (the measured value for butadiene is about 217 nm). The simple model captures the key trend: **longer conjugation means a longer box, smaller level spacing, and absorption shifted toward the red**, which is why extended π-systems like carotenes are colored.
+With the box ending at the end carbons, the estimate (about 119 nm) lands deep in the ultraviolet, well short of the measured 217 nm. The π-electrons do not stop at the end carbons, though: extending the box by one carbon radius (0.77 Å) past each end gives $L = 5.78$ Å and about 220 nm, close to experiment. The simple model captures the key trend: **longer conjugation means a longer box, smaller level spacing, and absorption shifted toward the red**, which is why extended π-systems like carotenes are colored.
 
 ### Problems
 
@@ -1443,15 +1441,15 @@ $n_x^2 + n_y^2 + n_z^2 = 9$
 
 Possible combinations of $n_x$, $n_y$, and $n_z$:
 
-- $n_x = 3$, $n_y = 0$, $n_z = 0$ gives $3^2 + 0^2 + 0^2 = 9$.
 - $n_x = 2$, $n_y = 2$, $n_z = 1$ gives $2^2 + 2^2 + 1^2 = 4 + 4 + 1 = 9$.
 - Permutations of $(2, 2, 1)$ are:
   - $(2, 2, 1)$
   - $(2, 1, 2)$
   - $(1, 2, 2)$
+- $(3, 0, 0)$ also gives 9, but it is not allowed: each quantum number is at least 1, since $n = 0$ makes $\psi = 0$.
 
 **Part 2:**
-The degeneracy for the energy level corresponding to $n_x^2 + n_y^2 + n_z^2 = 9$ is **4** (the state $(3,0,0)$ and the 3 permutations of $(2,2,1)$).
+The degeneracy for the energy level corresponding to $n_x^2 + n_y^2 + n_z^2 = 9$ is **3**: the three permutations of $(2,2,1)$.
 
 :::
 

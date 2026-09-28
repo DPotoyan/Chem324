@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="03-applications-of-particle-in-a-box_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -136,7 +152,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Applications of the Particle in a Box</h1>
-  <p class="subtitle">Chem 3240 · Lecture 3.3</p>
+  <p class="subtitle">Chem 3240 · Lecture 3.3 · color from confinement</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -147,138 +163,117 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="why-a-toy-model-matters" class="slide level2">
-<h2>Why a Toy Model Matters</h2>
-<div class="fragment">
-<p>The <strong>particle in a box</strong> is exactly solvable.</p>
-</div>
-<div class="fragment">
-<p>It also <strong>predicts real chemistry</strong>: light absorbed by dye-like molecules.</p>
-</div>
-<div class="fragment">
-<p>Key idea: <strong>delocalized <span class="math inline">\(\pi\)</span>-electrons</strong> behave like particles trapped in a 1D box.</p>
-</div>
-</section>
-<section id="pi-electrons-as-confined-particles" class="slide level2">
-<h2><span class="math inline">\(\pi\)</span>-Electrons as Confined Particles</h2>
+<section id="pi-electrons-live-in-a-box" class="slide level2">
+<h2><span class="math inline">\pi</span> electrons live in a box</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<div class="fragment">
-<p>Conjugated chains: <strong>alternating single and double bonds</strong>.</p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\pi\)</span>-electrons are <strong>delocalized</strong> over the chain.</p>
-</div>
-<div class="fragment">
-<p>Box length <span class="math inline">\(L\)</span> = <strong>length of the conjugated region</strong>.</p>
-</div>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../../ch03/images/pib1d-1.jpeg"></p>
+<div class="column" style="width:62%;">
+<p><img data-src="../../ch03/images/polyene_box.png" style="width:100.0%"></p>
+</div><div class="column" style="width:38%;">
+<ul>
+<li>Light is absorbed when <span class="math inline">h\nu</span> matches a <strong>gap</strong>; visible light needs about 2 to 3 eV</li>
+<li>In a conjugated chain the <span class="math inline">\pi</span> electrons <strong>spread over the whole chain</strong>: a 1D box</li>
+<li>The box runs one carbon radius <strong>past</strong> each end carbon</li>
+</ul>
 </div></div>
 </section>
-<section id="the-model-system-butadiene" class="slide level2">
-<h2>The Model System: Butadiene</h2>
+<section id="fill-the-levels-then-jump" class="slide level2">
+<h2>Fill the levels, then jump</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment">
-<p><strong>Butadiene</strong> <span class="math inline">\(\text{C}_4\text{H}_6\)</span>: four carbons, <strong>4 <span class="math inline">\(\pi\)</span>-electrons</strong>.</p>
-</div>
-<div class="fragment">
-<p>C–C single bond: <strong>1.54 Å</strong></p>
-</div>
-<div class="fragment">
-<p>C=C double bond: <strong>1.34 Å</strong></p>
-</div>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/pib-applic2.jpeg"></p>
+<div class="column" style="width:42%;">
+<p><img data-src="../../ch03/images/homo_lumo.png" style="width:100.0%"></p>
+</div><div class="column" style="width:58%;">
+<ul>
+<li>Each level holds <strong>two</strong> electrons, spin up and spin down</li>
+<li><span class="math inline">N</span> <span class="math inline">\pi</span> electrons fill <span class="math inline">n = 1</span> to <span class="math inline">N/2</span></li>
+<li><strong>HOMO</strong>: <span class="math inline">n = N/2</span>, the highest filled level</li>
+<li><strong>LUMO</strong>: <span class="math inline">n = N/2 + 1</span>, the lowest empty one</li>
+<li>The lowest-energy absorption lifts one electron from HOMO to LUMO</li>
+</ul>
 </div></div>
 </section>
-<section id="step-1-box-length" class="slide level2">
-<h2>Step 1: Box Length</h2>
+<section id="from-gap-to-wavelength" class="slide level2">
+<h2>From gap to wavelength</h2>
+<p>The HOMO to LUMO gap:</p>
+<p><span class="math display">\Delta E = \left[\left(\tfrac{N}{2}+1\right)^2 - \left(\tfrac{N}{2}\right)^2\right]\frac{h^2}{8mL^2} = (N+1)\,\frac{h^2}{8mL^2}</span></p>
 <div class="fragment">
-<p>Sum the bond lengths across the conjugated chain.</p>
+<p>Set <span class="math inline">\Delta E = hc/\lambda</span>:</p>
+<p><span class="math display">\lambda = \frac{8mc}{h}\,\frac{L^2}{N+1} \qquad\Longrightarrow\qquad \lambda\ (\text{nm}) \approx 33\,\frac{\big[L\ (\text{Å})\big]^2}{N+1}</span></p>
 </div>
-<div class="fragment">
-<p><span class="math display">\[
-L = 1.54\, \text{Å} + 1.34\, \text{Å} + 1.54\, \text{Å} = 4.42\, \text{Å}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Each C contributes <strong>one <span class="math inline">\(\pi\)</span>-electron</strong> <span class="math inline">\(\rightarrow\)</span> <strong>4 electrons</strong> total.</p>
-</div>
+<ul>
+<li>Longer chain: <span class="math inline">L^2</span> grows faster than <span class="math inline">N + 1</span>, so <span class="math inline">\lambda</span> <strong>grows</strong></li>
+</ul>
 </section>
-<section id="step-2-energy-levels" class="slide level2">
-<h2>Step 2: Energy Levels</h2>
-<div class="fragment">
-<p>1D particle-in-a-box energies:</p>
+<section id="example-butadiene" class="slide level2">
+<h2>Example: butadiene</h2>
+<div class="worked">
+<p>Butadiene, CH<span class="math inline">_2</span>=CH–CH=CH<span class="math inline">_2</span>, has 4 <span class="math inline">\pi</span> electrons (C=C 1.35 Å, C–C 1.54 Å). Estimate <span class="math inline">\lambda</span> with the box ending (a) at the end carbons, (b) one carbon radius, 0.77 Å, beyond them.</p>
 </div>
-<div class="fragment">
-<p><span class="math display">\[
-E_n = \frac{n^2 h^2}{8mL^2}
-\]</span></p>
+<div class="soln fragment">
+<p><span class="math display">\text{(a)}\quad L = 1.35 + 1.54 + 1.35 = 4.24\ \text{Å}: \qquad \lambda = 33\,\frac{(4.24)^2}{5} \approx 119\ \text{nm}</span></p>
+<p><span class="math display">\text{(b)}\quad L = 4.24 + 2(0.77) = 5.78\ \text{Å}: \qquad \lambda = 33\,\frac{(5.78)^2}{5} \approx 220\ \text{nm}</span></p>
+<p>Measured: <strong>217 nm</strong>. The <span class="math inline">\pi</span> cloud does not stop at the end carbons.</p>
 </div>
-<div class="fragment">
-<p><span class="math inline">\(n = 1, 2, 3, \dots\)</span>, <span class="math inline">\(\;m\)</span> = electron mass, <span class="math inline">\(\;L\)</span> = box length.</p>
-</div>
+<ul>
+<li>No fitting: <span class="math inline">L</span> comes from bond lengths alone</li>
+</ul>
 </section>
-<section id="step-3-fill-and-excite" class="slide level2">
-<h2>Step 3: Fill and Excite</h2>
-<div class="fragment">
-<p>4 electrons, 2 per level <span class="math inline">\(\rightarrow\)</span> fill <span class="math inline">\(n=1\)</span> and <span class="math inline">\(n=2\)</span>.</p>
+<section id="longer-chain-redder-light" class="slide level2">
+<h2>Longer chain, redder light</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/chain_color.gif" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
 </div>
-<div class="fragment">
-<p><strong>HOMO</strong> <span class="math inline">\(= n=2\)</span>, <strong>LUMO</strong> <span class="math inline">\(= n=3\)</span>.</p>
-</div>
-<div class="fragment">
-<p>Absorption promotes one electron: <span class="math inline">\(n=2 \rightarrow n=3\)</span>.</p>
-</div>
+<ul>
+<li>Each C=C adds 2 electrons and 2.9 Å of box: the gap closes roughly as <span class="math inline">1/N</span></li>
+<li>The <strong>trend</strong> is right. Are the numbers, for a long chain?</li>
+</ul>
 </section>
-<section id="step-4-photon-wavelength" class="slide level2">
-<h2>Step 4: Photon Wavelength</h2>
-<div class="fragment">
-<p>Transition energy: <span class="math display">\[
-\Delta E = E_{n+1} - E_n
-\]</span></p>
+<section id="example-β-carotene" class="slide level2">
+<h2>Example: β-carotene</h2>
+<div class="worked">
+<p>β-carotene, the orange of carrots, has 22 conjugated carbons and 22 <span class="math inline">\pi</span> electrons. With the butadiene rule, <span class="math inline">L = 1.445\,N</span> Å, predict <span class="math inline">\lambda</span>.</p>
 </div>
-<div class="fragment">
-<p>Set equal to photon energy: <span class="math display">\[
-\Delta E = \frac{hc}{\lambda}
-\]</span></p>
+<div class="soln fragment">
+<p><span class="math display">L = 1.445 \times 22 = 31.8\ \text{Å}: \qquad \lambda = 33\,\frac{(31.8)^2}{23} \approx 1450\ \text{nm, infrared}</span></p>
+<p>Measured: about <strong>450 nm</strong>. It absorbs blue, so it looks orange. The box overshoots threefold.</p>
 </div>
-<div class="fragment">
-<p>Solve for <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\rightarrow\)</span> the <strong>color absorbed</strong>.</p>
-</div>
+<ul>
+<li>Real polyenes <strong>alternate</strong> short and long bonds: the floor of the box is bumpy, and that keeps a gap open</li>
+<li>Dyes with <strong>equal</strong> bond lengths (cyanines) follow the box far better</li>
+</ul>
 </section>
-<section id="the-trend-longer-chain-redder-light" class="slide level2">
-<h2>The Trend: Longer Chain, Redder Light</h2>
-<div class="fragment">
-<p><span class="math inline">\(\Delta E \propto \dfrac{1}{L^2}\)</span></p>
+<section id="quantum-dots-a-box-in-3d" class="slide level2">
+<h2>Quantum dots: a box in 3D</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/quantum_dots.png" class="quarto-figure quarto-figure-center" style="width:74.0%"></p>
+</figure>
 </div>
-<div class="fragment">
-<p>Bigger conjugation <span class="math inline">\(\rightarrow\)</span> <strong>smaller <span class="math inline">\(\Delta E\)</span></strong> <span class="math inline">\(\rightarrow\)</span> <strong>longer <span class="math inline">\(\lambda\)</span></strong>.</p>
-</div>
-<div class="fragment">
-<p>Explains why extended dyes are <strong>deeply colored</strong>.</p>
-</div>
+<ul>
+<li>Semiconductor crystals a few nm across: the electron is confined in <strong>three</strong> dimensions</li>
+<li>Gap = bulk gap + confinement <span class="math inline">\propto 1/R^2</span>: shrink the dot, <strong>bluer</strong> light</li>
+<li>2023 Nobel Prize in Chemistry: Bawendi, Brus, and Ekimov</li>
+</ul>
 </section>
-<section id="beyond-1d-2d-box" class="slide level2">
-<h2>Beyond 1D: 2D Box</h2>
-<div class="fragment">
-<p>Aromatic rings and <strong>graphene fragments</strong>: confine in two directions.</p>
+<section id="example-an-electron-in-a-helium-bubble" class="slide level2">
+<h2>Example: an electron in a helium bubble</h2>
+<div class="worked">
+<p>An electron in liquid helium pushes the atoms away and sits in a cavity about 36 Å across. Treat it as a cube of side 36 Å: find the zero-point energy and the gap to the first excited level.</p>
 </div>
-<div class="fragment">
-<p><span class="math display">\[
-E_{n_x,n_y} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} \right)
-\]</span></p>
+<div class="soln fragment">
+<p><span class="math display">E_{111} = \frac{3h^2}{8mL^2} = 3\,(4.65\times10^{-21}\ \text{J}) = 1.39\times10^{-20}\ \text{J} = 87\ \text{meV}</span></p>
+<p><span class="math display">E_{211} - E_{111} = \frac{(6 - 3)\,h^2}{8mL^2} = 87\ \text{meV}, \quad \text{to a 3-fold degenerate level}</span></p>
+<p>Measured gap: about 105 meV.</p>
 </div>
-<div class="fragment">
-<p>Same physics, <strong>two quantum numbers</strong>.</p>
-</div>
+<ul>
+<li>A crude cube, yet within 20% of experiment</li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>The particle in a box turns a length and an electron count into a predicted absorption wavelength: longer conjugation gives a smaller gap and redder color.</p>
+<p>A length and an electron count predict a color: <span class="math inline">N</span> <span class="math inline">\pi</span> electrons in a box of length <span class="math inline">L</span> absorb at <span class="math inline">\lambda = 8mcL^2/h(N+1)</span>. The model gets butadiene within a few percent and the trend right for longer chains, overshoots when bond alternation roughens the box, and carries over to 3D, where the size of a quantum dot sets its color.</p>
 </blockquote>
 
 </section>
@@ -303,7 +298,6 @@ E_{n_x,n_y} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} \r
   <script src="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03-applications-of-particle-in-a-box_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -472,27 +466,9 @@ E_{n_x,n_y} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} \r
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
