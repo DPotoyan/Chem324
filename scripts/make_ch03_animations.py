@@ -18,6 +18,8 @@ lambda, or fill an array in place) and `update` must not return artists (use bli
 `shooting` is deck-only: the page shows the same idea with a marimo slider instead.
 `phase_direction` is deck-only too (the 3.1 deck's ramp to expectation values), and so is
 everything under "deck 3.1b" at the bottom (slides/ch03/01b-one-path-or-many.qmd).
+The "deck 3.2" and "deck 3.3" sections (particle in a box and its applications) are deck-only
+for now; page ch03/02 still has its older cells and is not in sync_ch03_cells.PAGES yet.
 """
 import sys
 import numpy as np

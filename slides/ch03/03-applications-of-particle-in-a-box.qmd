@@ -1,12 +1,12 @@
 ---
 title: "Applications of the Particle in a Box"
-subtitle: "Chem 3240 · Lecture 3.3"
+subtitle: "Chem 3240 · Lecture 3.3 · color from confinement"
 author: "Davit Potoyan"
 format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,168 +16,117 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch03/images
 ---
 
-## Why a Toy Model Matters
-
-::: {.fragment}
-The **particle in a box** is exactly solvable.
-:::
-
-::: {.fragment}
-It also **predicts real chemistry**: light absorbed by dye-like molecules.
-:::
-
-::: {.fragment}
-Key idea: **delocalized $\pi$-electrons** behave like particles trapped in a 1D box.
-:::
-
-## $\pi$-Electrons as Confined Particles
+## $\pi$ electrons live in a box
 
 :::: {.columns}
-
-::: {.column width="55%"}
-::: {.fragment}
-Conjugated chains: **alternating single and double bonds**.
+::: {.column width="62%"}
+![](../../ch03/images/polyene_box.png){width="100%"}
 :::
+::: {.column width="38%"}
 
-::: {.fragment}
-$\pi$-electrons are **delocalized** over the chain.
+- Light is absorbed when $h\nu$ matches a **gap**; visible light needs about 2 to 3 eV
+- In a conjugated chain the $\pi$ electrons **spread over the whole chain**: a 1D box
+- The box runs one carbon radius **past** each end carbon
 :::
-
-::: {.fragment}
-Box length $L$ = **length of the conjugated region**.
-:::
-:::
-
-::: {.column width="45%"}
-![](../../ch03/images/pib1d-1.jpeg)
-:::
-
 ::::
 
-## The Model System: Butadiene
+## Fill the levels, then jump
 
 :::: {.columns}
-
-::: {.column width="50%"}
-::: {.fragment}
-**Butadiene** $\text{C}_4\text{H}_6$: four carbons, **4 $\pi$-electrons**.
+::: {.column width="42%"}
+![](../../ch03/images/homo_lumo.png){width="100%"}
 :::
+::: {.column width="58%"}
 
-::: {.fragment}
-C–C single bond: **1.54 Å**
+- Each level holds **two** electrons, spin up and spin down
+- $N$ $\pi$ electrons fill $n = 1$ to $N/2$
+- **HOMO**: $n = N/2$, the highest filled level
+- **LUMO**: $n = N/2 + 1$, the lowest empty one
+- The lowest-energy absorption lifts one electron from HOMO to LUMO
 :::
-
-::: {.fragment}
-C=C double bond: **1.34 Å**
-:::
-:::
-
-::: {.column width="50%"}
-![](../../ch03/images/pib-applic2.jpeg)
-:::
-
 ::::
 
-## Step 1: Box Length
+## From gap to wavelength
+
+The HOMO to LUMO gap:
+
+$$\Delta E = \left[\left(\tfrac{N}{2}+1\right)^2 - \left(\tfrac{N}{2}\right)^2\right]\frac{h^2}{8mL^2} = (N+1)\,\frac{h^2}{8mL^2}$$
 
 ::: {.fragment}
-Sum the bond lengths across the conjugated chain.
+Set $\Delta E = hc/\lambda$:
+
+$$\lambda = \frac{8mc}{h}\,\frac{L^2}{N+1} \qquad\Longrightarrow\qquad \lambda\ (\text{nm}) \approx 33\,\frac{\big[L\ (\text{Å})\big]^2}{N+1}$$
 :::
 
-::: {.fragment}
-$$
-L = 1.54\, \text{Å} + 1.34\, \text{Å} + 1.54\, \text{Å} = 4.42\, \text{Å}
-$$
+- Longer chain: $L^2$ grows faster than $N + 1$, so $\lambda$ **grows**
+
+## Example: butadiene
+
+::: {.worked}
+Butadiene, CH$_2$=CH–CH=CH$_2$, has 4 $\pi$ electrons (C=C 1.35 Å, C–C 1.54 Å). Estimate $\lambda$ with the box ending (a) at the end carbons, (b) one carbon radius, 0.77 Å, beyond them.
 :::
 
-::: {.fragment}
-Each C contributes **one $\pi$-electron** $\rightarrow$ **4 electrons** total.
+::: {.soln .fragment}
+$$\text{(a)}\quad L = 1.35 + 1.54 + 1.35 = 4.24\ \text{Å}: \qquad \lambda = 33\,\frac{(4.24)^2}{5} \approx 119\ \text{nm}$$
+
+$$\text{(b)}\quad L = 4.24 + 2(0.77) = 5.78\ \text{Å}: \qquad \lambda = 33\,\frac{(5.78)^2}{5} \approx 220\ \text{nm}$$
+
+Measured: **217 nm**. The $\pi$ cloud does not stop at the end carbons.
 :::
 
-## Step 2: Energy Levels
+- No fitting: $L$ comes from bond lengths alone
 
-::: {.fragment}
-1D particle-in-a-box energies:
+## Longer chain, redder light
+
+![](../../ch03/images/chain_color.gif){.nostretch width="62%" fig-align="center"}
+
+- Each C=C adds 2 electrons and 2.9 Å of box: the gap closes roughly as $1/N$
+- The **trend** is right. Are the numbers, for a long chain?
+
+## Example: β-carotene
+
+::: {.worked}
+β-carotene, the orange of carrots, has 22 conjugated carbons and 22 $\pi$ electrons. With the butadiene rule, $L = 1.445\,N$ Å, predict $\lambda$.
 :::
 
-::: {.fragment}
-$$
-E_n = \frac{n^2 h^2}{8mL^2}
-$$
+::: {.soln .fragment}
+$$L = 1.445 \times 22 = 31.8\ \text{Å}: \qquad \lambda = 33\,\frac{(31.8)^2}{23} \approx 1450\ \text{nm, infrared}$$
+
+Measured: about **450 nm**. It absorbs blue, so it looks orange. The box overshoots threefold.
 :::
 
-::: {.fragment}
-$n = 1, 2, 3, \dots$, $\;m$ = electron mass, $\;L$ = box length.
+- Real polyenes **alternate** short and long bonds: the floor of the box is bumpy, and that keeps a gap open
+- Dyes with **equal** bond lengths (cyanines) follow the box far better
+
+## Quantum dots: a box in 3D
+
+![](../../ch03/images/quantum_dots.png){.nostretch width="74%" fig-align="center"}
+
+- Semiconductor crystals a few nm across: the electron is confined in **three** dimensions
+- Gap = bulk gap + confinement $\propto 1/R^2$: shrink the dot, **bluer** light
+- 2023 Nobel Prize in Chemistry: Bawendi, Brus, and Ekimov
+
+## Example: an electron in a helium bubble
+
+::: {.worked}
+An electron in liquid helium pushes the atoms away and sits in a cavity about 36 Å across. Treat it as a cube of side 36 Å: find the zero-point energy and the gap to the first excited level.
 :::
 
-## Step 3: Fill and Excite
+::: {.soln .fragment}
+$$E_{111} = \frac{3h^2}{8mL^2} = 3\,(4.65\times10^{-21}\ \text{J}) = 1.39\times10^{-20}\ \text{J} = 87\ \text{meV}$$
 
-::: {.fragment}
-4 electrons, 2 per level $\rightarrow$ fill $n=1$ and $n=2$.
+$$E_{211} - E_{111} = \frac{(6 - 3)\,h^2}{8mL^2} = 87\ \text{meV}, \quad \text{to a 3-fold degenerate level}$$
+
+Measured gap: about 105 meV.
 :::
 
-::: {.fragment}
-**HOMO** $= n=2$, **LUMO** $= n=3$.
-:::
-
-::: {.fragment}
-Absorption promotes one electron: $n=2 \rightarrow n=3$.
-:::
-
-## Step 4: Photon Wavelength
-
-::: {.fragment}
-Transition energy:
-$$
-\Delta E = E_{n+1} - E_n
-$$
-:::
-
-::: {.fragment}
-Set equal to photon energy:
-$$
-\Delta E = \frac{hc}{\lambda}
-$$
-:::
-
-::: {.fragment}
-Solve for $\lambda$ $\rightarrow$ the **color absorbed**.
-:::
-
-## The Trend: Longer Chain, Redder Light
-
-::: {.fragment}
-$\Delta E \propto \dfrac{1}{L^2}$
-:::
-
-::: {.fragment}
-Bigger conjugation $\rightarrow$ **smaller $\Delta E$** $\rightarrow$ **longer $\lambda$**.
-:::
-
-::: {.fragment}
-Explains why extended dyes are **deeply colored**.
-:::
-
-## Beyond 1D: 2D Box
-
-::: {.fragment}
-Aromatic rings and **graphene fragments**: confine in two directions.
-:::
-
-::: {.fragment}
-$$
-E_{n_x,n_y} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} \right)
-$$
-:::
-
-::: {.fragment}
-Same physics, **two quantum numbers**.
-:::
+- A crude cube, yet within 20% of experiment
 
 # Takeaway {.center}
 
-> The particle in a box turns a length and an electron count into a predicted absorption wavelength: longer conjugation gives a smaller gap and redder color.
+> A length and an electron count predict a color: $N$ $\pi$ electrons in a box of length $L$ absorb at $\lambda = 8mcL^2/h(N+1)$. The model gets butadiene within a few percent and the trend right for longer chains, overshoots when bond alternation roughens the box, and carries over to 3D, where the size of a quantum dot sets its color.
