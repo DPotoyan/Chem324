@@ -18,8 +18,10 @@ lambda, or fill an array in place) and `update` must not return artists (use bli
 `shooting` is deck-only: the page shows the same idea with a marimo slider instead.
 `phase_direction` is deck-only too (the 3.1 deck's ramp to expectation values), and so is
 everything under "deck 3.1b" at the bottom (slides/ch03/01b-one-path-or-many.qmd).
-The "deck 3.2" and "deck 3.3" sections (particle in a box and its applications) are deck-only
-for now; page ch03/02 still has its older cells and is not in sync_ch03_cells.PAGES yet.
+From the "deck 3.2" section, page ch03/02 syncs box_bounce, pib_ladder and box_slosh; the page
+shows box length, large n and degeneracy with marimo sliders instead, so box_squeeze,
+correspondence and degeneracy_split stay deck-only, as do box_fit (ch03/01's trial-energy
+slider already makes that point), box_model, box2d_states and all of "deck 3.3".
 """
 import sys
 import numpy as np
