@@ -32,13 +32,70 @@ kernelspec:
 - **According to classical mechanics**, in the absence of any attractive interactions the particle bounces back and forth between the walls with constant speed. We therefore expect to find it with equal probability at all locations $x$.
 - **According to quantum mechanics**, the quantum particle in the box is found in some regions with high probability and in others with little or zero probability.
 
-:::{figure} images/ext_infinite_well_animation.gif
-:label: fig-particle-in-a-box-1
-:alt: PIB-wiki
-:width: 300px
+```{code-cell} python
+:tags: [hide-input]
+# synced: box_bounce
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-Classical (A) versus quantum (B-F) behavior of a particle in a box. The horizontal axis is position; the vertical axis shows the real (blue) and imaginary (red) parts of the wavefunction $\psi_n(x)$. States B, C, D are the $n=1,2,3$ eigenfunctions of the Hamiltonian, while E and F are not.
-:::
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+rng = np.random.default_rng(5)
+xc = rng.random(4000)                                       # classical: snapshots at random times
+cand = rng.random(16000)
+xq = cand[rng.random(16000) < np.sin(3 * np.pi * cand) ** 2][:4000]   # quantum: samples of |psi_3|^2
+yj = rng.random(4000)
+counts = np.unique(np.round(np.geomspace(1, 4000, 44)).astype(int))
+counts = np.concatenate([counts, np.full(8, counts[-1])])
+edges = np.linspace(0, 1, 31); mid = 0.5 * (edges[1:] + edges[:-1]); dx = edges[1] - edges[0]
+xs = np.linspace(0, 1, 300)
+fig, axes = plt.subplots(2, 2, figsize=(8, 3.9), sharex=True,
+                         gridspec_kw={"height_ratios": [1, 2.2], "hspace": 0.12, "wspace": 0.1})
+(ta, tb), (ha, hb) = axes
+for ax in (ta, tb):
+    ax.axvline(0, color="k", lw=3); ax.axvline(1, color="k", lw=3)
+    ax.set_ylim(0, 1); ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.tick_params(bottom=False)
+ta.set_title("classical: a ball bouncing at constant speed", loc="left", fontsize=10.5)
+tb.set_title(r"quantum, $n = 3$: each dot is one detection", loc="left", fontsize=10.5)
+(trail,) = ta.plot([], [], "o", color=ORANGE, ms=9, alpha=0.25)
+(ball,) = ta.plot([], [], "o", color=ORANGE, ms=12)
+scat = tb.scatter([], [], s=5, color=TEAL, alpha=0.6, lw=0)
+bars_c = ha.bar(mid, 0 * mid, width=0.92 * dx, color=ORANGE, alpha=0.5)
+bars_q = hb.bar(mid, 0 * mid, width=0.92 * dx, color=TEAL, alpha=0.5)
+(pc,) = ha.plot([], [], color=GRAY, lw=2.4, ls="--", label=r"flat: $1/L$")
+(pq,) = hb.plot([], [], color=CARDINAL, lw=2.4, label=r"$|\psi_3(x)|^2$")
+for ax in (ha, hb):
+    ax.set_xlim(-0.02, 1.02); ax.set_yticks([])
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("position x")
+    ax.legend(loc="upper right", frameon=False, fontsize=9.5)
+ha.set_ylabel("times caught here")
+fig.subplots_adjust(left=0.05, right=0.99, top=0.84, bottom=0.13)
+sup = fig.suptitle("", fontsize=11.5)
+tri = lambda s: 0.04 + 0.92 * (1 - np.abs(2 * (s % 1) - 1))  # bounce between the walls
+
+def update(i):
+    N = counts[i]
+    pos = tri(np.arange(i - 3, i + 1) / 11.0)
+    trail.set_data(pos[:-1], np.full(3, 0.5)); ball.set_data(pos[-1:], [0.5])
+    scat.set_offsets(np.column_stack([xq[:N], yj[:N]]))
+    hc = np.histogram(xc[:N], bins=edges)[0]; hq = np.histogram(xq[:N], bins=edges)[0]
+    for b, c in zip(bars_c, hc):
+        b.set_height(c)
+    for b, c in zip(bars_q, hq):
+        b.set_height(c)
+    pc.set_data(xs, np.full_like(xs, N * dx)); pq.set_data(xs, N * dx * 2 * np.sin(3 * np.pi * xs) ** 2)
+    top = 1.3 * max(1.0, hc.max(), hq.max(), 2 * N * dx)
+    ha.set_ylim(0, top); hb.set_ylim(0, top)
+    sup.set_text(f"N = {N} position measurement" + ("" if N == 1 else "s"))
+
+ani = FuncAnimation(fig, update, frames=len(counts), interval=150, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. Catching the particle many times. Left: a classical ball bounces between the walls at constant speed, so its position measurements pile up evenly. Right: in the quantum state $n = 3$ the measurements pile up into three lobes, and the particle is never found at $x = L/3$ or $x = 2L/3$. Each dot is one measurement, as in the Born-rule figure of the [previous lecture](01-schrodinger-equation.md).
 
 ### Solving the Schrödinger Equation for the Particle in a Box (PIB)
 
@@ -58,7 +115,7 @@ The Schrödinger equation for a particle in a box (PIB) is defined by a Hamilton
 $$
 V(x) =
 \begin{cases} 
-\infty & x = 0 \text{ or } x = L \\ 
+\infty & x \le 0 \text{ or } x \ge L \\ 
 0 & 0 < x < L
 \end{cases}
 $$
@@ -142,17 +199,17 @@ E_n = \frac{n^2 h^2}{8mL^2}
 $$
 
 - The quantization of energy results from confining the wavefunction within a finite space. This is the reason bound states exhibit quantized energy levels. Atoms, molecules, and solids all possess discrete energy levels due to similar constraints.
+- This is the trial-energy experiment of the [previous lecture](01-schrodinger-equation.md) in its simplest form. There the decaying tails admitted only special energies; here the walls do: $\sin kx$ reaches zero at $x = L$ only when a whole number of half-waves fits, $L = n\lambda/2$.
 
 ### Wavefunctions Must Be Normalized
 
 - Next, we determine the constant coefficient $B_n$ by enforcing the normalization condition:
 
 $$
-\int_0^L \psi_n(x)^2 \, dx  = 1
-
+\int_0^L \psi_n(x)^2 \, dx = 1
 $$
 
-- To evaluate the integral, we use the trigonometric identity $\sin^2(x) = \frac{1}{2}(1 - \cos(2x))=1$
+- To evaluate the integral, we use the trigonometric identity $\sin^2 x = \frac{1}{2}(1 - \cos 2x)$
 
 $$
 B_n^2 \int_0^L \sin^2\left(\frac{n\pi x}{L}\right) dx = \frac{B_n^2}{2} \int_0^L \left[ 1 - \cos\left(\frac{2n\pi x}{L}\right) \right] dx =1
@@ -192,70 +249,38 @@ $$\Psi(x,t) = \sum_n c_n \psi_n(x, t)$$
 
 ```{code-cell} python
 :tags: [hide-input]
+# synced: pib_ladder
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-# Parameters
-L = 1.0  # Length of the box
-x = np.linspace(0, L, 1000)  # Position array
-n_max = 5  # Maximum quantum number to display
-
-# Constants
-hbar = 1.0545718e-34  # Reduced Planck's constant (J·s)
-m = 9.10938356e-31  # Mass of an electron (kg)
-
-# Functions
-def psi_n(n, x, L):
-    """Wavefunction for a particle in a 1D box."""
-    return np.sqrt(2 / L) * np.sin(n * np.pi * x / L)
-
-def psi_n_squared(n, x, L):
-    """Probability density (wavefunction squared)."""
-    return psi_n(n, x, L) ** 2
-
-def energy_levels(n, L):
-    """Energy level for the particle in the box."""
-    return (n**2 * np.pi**2 * hbar**2) / (2 * m * L**2)
-
-# Energy formula string
-energy_formula = r"$E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}$"
-
-# Plotting
-fig, axs = plt.subplots(1, 2, figsize=(8, 6), sharey=True)
-
-# Plot wavefunctions in the first subplot
-for n in range(1, n_max + 1):
-    wavefunction = psi_n(n, x, L)
-    axs[0].plot(x, wavefunction + n**2, label=f'n={n}')
-    axs[0].hlines(n**2, 0, L, colors='gray', linestyles='dashed')  # Energy level lines
-
-# Wavefunction plot labels and title
-axs[0].set_xlabel('Position (x)', fontsize=12)
-axs[0].set_ylabel(r'$\psi_n(x)$', fontsize=12)
-axs[0].legend(loc='upper right', bbox_to_anchor=(1.15, 1))
-
-# Plot wavefunction squared (probability densities) in the second subplot
-for n in range(1, n_max + 1):
-    wavefunction_squared = psi_n_squared(n, x, L)
-    axs[1].plot(x, wavefunction_squared + n**2, label=f'n={n}')
-    axs[1].hlines(n**2, 0, L, colors='gray', linestyles='dashed')  # Energy level lines
-
-# Probability density plot labels
-axs[1].set_xlabel('Position (x)', fontsize=12)
-axs[1].set_ylabel(r'$|\psi_n(x)|^2$', fontsize=12)
-
-# Display the energy formula and levels in the second subplot
-for n in range(1, n_max + 1):
-    energy_value = energy_levels(n, L)
-    axs[1].text(L, n**2, f"$E_{n}$ = {energy_value:.2e} J", verticalalignment='bottom', fontsize=12)
-
-# Overall title for the figure
-fig.suptitle(f'Wavefunctions and Energies for a 1D Particle in a Box (n=1 to n={n_max})')
-
-# Make room for labels outside plot and improve layout
-plt.tight_layout(rect=[0, 0, 1, 0.95])
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 400)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4.4), sharey=True, gridspec_kw={"wspace": 0.08})
+for ax in (ax1, ax2):
+    ax.plot([0, 0, 1, 1], [18.3, 0, 0, 18.3], color="k", lw=2.6)
+    ax.set_xlim(-0.04, 1.04); ax.set_ylim(-0.4, 18.3)
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("x")
+    ax.spines["left"].set_visible(False)
+for n in range(1, 5):
+    E, s = n * n, np.sin(n * np.pi * x)
+    for ax in (ax1, ax2):
+        ax.hlines(E, 0, 1, color=GRAY, lw=0.8, ls="--")
+    ax1.plot(x, E + 1.25 * s, color=TEAL, lw=2.4)
+    ax2.fill_between(x, E, E + 1.6 * s**2, color=CARDINAL, alpha=0.18, lw=0)
+    ax2.plot(x, E + 1.6 * s**2, color=CARDINAL, lw=2.2)
+    ax2.plot(np.arange(1, n) / n, np.full(n - 1, E), "o", color="k", ms=5, zorder=5)
+    ax2.text(1.06, E, rf"$n = {n}$,  " + (r"$E_1$" if n == 1 else rf"${E}E_1$"), va="center", fontsize=11.5)
+ax1.set_yticks([]); ax1.set_ylabel("energy")
+ax1.set_title(r"$\psi_n(x)$, drawn on its level $E_n$", loc="left", fontsize=11)
+ax2.set_title(r"$|\psi_n(x)|^2$: dots mark the $n-1$ nodes", loc="left", fontsize=11)
+fig.subplots_adjust(left=0.05, right=0.83, top=0.92, bottom=0.12)
 plt.show()
 ```
+
+Fig. The four lowest states of the particle in a box, each drawn on its energy level $E_n = n^2E_1$. Left: the wavefunctions $\psi_n(x)$. Right: the probability densities $|\psi_n(x)|^2$; the dots mark the $n-1$ nodes, where the particle is never found.
 
 ### Discrete energy levels and zero point energy
 
@@ -267,6 +292,8 @@ $$E_1 = h^2/8mL^2$$
 
 - Keeping in mind that the energy is purely kinetic, this means a quantum particle never ceases its motion.
 
+- This is the **uncertainty principle** at work. Confining the particle to a length $L$ leaves a position spread $\sigma_x \approx 0.18L$ in the ground state (Problem 2), and the momentum cannot be pinned down either: $\langle p \rangle = 0$ but $\langle p^2 \rangle = (h/2L)^2$, so $\sigma_p = h/2L$. The product $\sigma_x\sigma_p \approx 0.57\hbar$ sits just above the Heisenberg limit $\hbar/2$. A smaller box means a larger $\sigma_p$ and a larger kinetic energy.
+
 - The spacing of energy levels is finite and depends on the size of the box:
 
 $$E_{n+1} - E_n = (2n+1)\frac{h^2}{8mL^2}$$
@@ -275,352 +302,6 @@ $$E_{n+1} - E_n = (2n+1)\frac{h^2}{8mL^2}$$
 
 - As the box size is increased, the energy spacing gets smaller.
 - Thus quantum effects are more pronounced when an electron is bound in smaller regions of space.
-
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants (set h^2/8m = 1 for simplicity)
-L1 = 1.0
-L2 = 2.0
-n_max = 5
-
-def energy_levels(L, n_max):
-    n = np.arange(1, n_max+1)
-    E = (n**2) / (L**2)  # scaled energy
-    return n, E
-
-# Compute for two box sizes
-n, E1 = energy_levels(L1, n_max)
-_, E2 = energy_levels(L2, n_max)
-
-fig, axs = plt.subplots(1, 2, figsize=(12, 5), sharey=True)
-
-# Left: small box (L=1)
-for i, E in enumerate(E1, start=1):
-    axs[0].hlines(E, 0.9, 1.1, colors="tab:blue", linewidth=3)
-    axs[0].text(1.15, E, f"n={i}", va="center")
-axs[0].set_title("Small box (L=1)\nLarger spacing")
-axs[0].set_xlim(0.8, 1.5)
-axs[0].set_ylabel("Energy (scaled units)")
-
-# Right: larger box (L=2)
-for i, E in enumerate(E2, start=1):
-    axs[1].hlines(E, 0.9, 1.1, colors="tab:green", linewidth=3)
-    axs[1].text(1.15, E, f"n={i}", va="center")
-axs[1].set_title("Larger box (L=2)\nSmaller spacing")
-axs[1].set_xlim(0.8, 1.5)
-
-# Add zero-point energy annotation
-axs[0].annotate("Zero-point energy\n(n=1)", xy=(1.0, E1[0]), xytext=(1.3, E1[0]+2),
-                arrowprops=dict(arrowstyle="->"))
-
-for ax in axs:
-    ax.set_xticks([])
-    ax.set_xlabel("Particle in a box")
-    ax.grid(True, axis="y", alpha=0.3)
-
-plt.suptitle("Discrete Energy Levels and Zero-Point Energy", fontsize=14)
-plt.tight_layout()
-plt.show()
-```
-
-### Non-uniform probabilities and nodes
-
-1. **Nodes imply zero probability to find an electron in the box**. 
-    - $|\psi_n|^2=0$ at nodal points, which means zero probability.
-    - This sharply contradicts classical mechanics, which bases its prediction on purely particle-like motion of the electron.
-    - The existence of nodes implies a wave-like character of the electron.
-
-2. **There are $n-1$ nodes for quantum state $n$**
-
-- Recall that the sine function hits zero at integer multiples of $\pi$: $\sin(n\pi)=0$ when $n=1,2,3,4,...$
-- The wavefunction $\psi_n(x) = \sin \frac{n\pi x}{L}$ then has $n-1$ nodes at the points $x=L/n$, $2L/n$, $3L/n$, ..., $(n-1)L/n$.
-- Note that we do not count the $x=0$ and $x=L$ points as nodes, because they are part of the boundary conditions that apply to all wavefunctions.
-    - For instance, the $n=3$ nodes are at $x=L/3$ and $x=2L/3$.
-    - For instance, the $n=4$ nodes are at $L/4$, $2L/4$, and $3L/4$.
-
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Parameters
-n = 4
-L = 1.0
-Nsamples = 6000
-bins = 60
-
-# Grid and eigenstate
-x = np.linspace(0, L, 1000)
-psi = np.sqrt(2/L) * np.sin(n*np.pi*x/L)   # normalized
-prob = psi**2
-
-# Node locations (exclude 0 and L)
-nodes = np.arange(1, n) * L / n
-
-# Monte Carlo sampling via rejection
-rng = np.random.default_rng(0)
-samples = []
-while len(samples) < Nsamples:
-    u = rng.random(20000)
-    x_prop = L * rng.random(20000)
-    accept = u < (np.sin(n*np.pi*x_prop/L)**2)
-    samples.extend(x_prop[accept].tolist())
-samples = np.array(samples[:Nsamples])
-
-# Plot
-fig, axs = plt.subplots(1, 3, figsize=(14, 4))
-
-# 1) psi_n(x)
-axs[0].plot(x, psi, linewidth=2)
-for xn in nodes:
-    axs[0].axvline(xn, linestyle="--", linewidth=1)
-axs[0].set_title(rf"$\psi_{n}(x)$ with {n-1} nodes")
-axs[0].set_xlabel("x")
-axs[0].set_ylabel(r"$\psi_n(x)$")
-axs[0].set_xlim(0, L)
-axs[0].grid(True, alpha=0.3)
-
-# 2) |psi|^2
-axs[1].plot(x, prob, linewidth=2)
-for xn in nodes:
-    axs[1].axvline(xn, linestyle="--", linewidth=1)
-axs[1].set_title(rf"$|\psi_{n}(x)|^2$ (zero at nodes)")
-axs[1].set_xlabel("x")
-axs[1].set_ylabel(r"$|\psi_n(x)|^2$")
-axs[1].set_xlim(0, L)
-axs[1].grid(True, alpha=0.3)
-
-# 3) Histogram vs analytic |psi|^2
-axs[2].hist(samples, bins=bins, range=(0, L), density=True, alpha=0.35, label=r"Samples from $|\psi|^2$")
-axs[2].plot(x, prob, linewidth=2, label=r"Analytic $|\psi|^2$")
-for xn in nodes:
-    axs[2].axvline(xn, linestyle="--", linewidth=1)
-axs[2].set_title("Non-uniform probability & nodes")
-axs[2].set_xlabel("x")
-axs[2].set_ylabel("Probability density")
-axs[2].set_xlim(0, L)
-axs[2].legend()
-axs[2].grid(True, alpha=0.3)
-
-plt.suptitle("Non-uniform probabilities and nodes in a 1D box (n=4)", fontsize=14)
-plt.tight_layout()
-plt.show()
-```
-
-### On time-dependence
-
-### Pure states
-
-- Pure states correspond to time-independent probability distribution.
-
-$$|\psi_n(x,t)|^2 =  \psi_n(x,t)^{*}\cdot\psi_n(x,t) = \psi(x)e^{-iE_nt/\hbar}\cdot \psi(x)e^{+E_nt/\hbar} = |\psi(x)|^2$$
-
-- Below we visualize the wavefunction and its square for $n=2$.
-
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-# Parameters
-L = 1.0  # Length of the box
-hbar = 1.0  # Set hbar = 1 for simplicity
-m = 1.0  # Set mass = 1 for simplicity
-
-# Define spatial and time arrays
-x = np.linspace(0, L,  200)  
-t = np.linspace(0, 10, 200)  
-
-n = 2
-
-# Define energy for nth state
-def energy_n(n, L):
-    return (n**2 * np.pi**2 * hbar**2) / (2 * m * L**2)
-
-# Define wavefunction for nth state
-def psi_total(n, x, L, t):
-    E_n = energy_n(n, L)
-    return np.sqrt(2 / L) * np.sin(n * np.pi * x / L) * np.exp(-1j * E_n * t / hbar)
-
-
-# Set up the figure and axis
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 8))
-
-# Set limits for the wavefunction and wavefunction squared
-ax1.set_xlim(0, L)
-ax1.set_ylim(-2, 2)
-ax2.set_xlim(0, L)
-ax2.set_ylim(0, 4)
-
-# Set labels for the wavefunction plot
-ax1.set_xlabel('Position (x)', fontsize=14)
-ax1.set_ylabel(r'Re[$\psi(x,t)$]', fontsize=14)
-ax1.set_title('Time Evolution of Wavefunction', fontsize=16)
-
-# Set labels for the squared wavefunction plot
-ax2.set_xlabel('Position (x)', fontsize=14)
-ax2.set_ylabel(r'$|\psi(x,t)|^2$', fontsize=14)
-ax2.set_title('Probability Density', fontsize=16)
-
-### Animation settings 
-
-# Initialize the wavefunction and its square plots
-line_real, = ax1.plot([], [], lw=2)
-line_prob, = ax2.plot([], [], lw=2)
-
-# Initialization function for the plot
-def init():
-    line_real.set_data([], [])
-    line_prob.set_data([], [])
-    return line_real, line_prob
-
-# Animation function which updates the plot each frame
-def animate(i):
-    t_val = t[i]
-    psi = psi_total(n, x, L, t_val)
-    psi_real = np.real(psi)
-    psi_squared = np.abs(psi)**2
-    line_real.set_data(x, psi_real)
-    line_prob.set_data(x, psi_squared)
-    return line_real, line_prob
-
-# Create the animation
-ani = FuncAnimation(fig, animate, init_func=init, frames=len(t), interval=150, blit=True)
-
-plt.close(fig)  # Prevents static display of the last frame
-HTML(ani.to_jshtml())
-```
-
-#### Mixed states
-
-- Mixed states show time dependence. Below we visualize a linear combination of the first two eigenfunctions of the PIB.
-
-$$
-\psi(x,t) = c_1 \psi_1(x) e^{-iE_1t/\hbar} +c_2 \psi_2 e^{-iE_2t/\hbar}
-$$
-
-:::{admonition} **Step-by-Step illustration of time-dependence**
-:class: dropdown
-
-1. The **complex conjugate** of $\psi(x,t)$ is:
-
-$$
-\psi^*(x,t) = c_1^* \psi_1(x) e^{iE_1t/\hbar} + c_2^* \psi_2(x) e^{iE_2t/\hbar}
-$$
-
-2. **The squared wavefunction** $|\psi(x,t)|^2$ is:
-
-$$
-|\psi(x,t)|^2 = \left( c_1 \psi_1(x) e^{-iE_1t/\hbar} + c_2 \psi_2(x) e^{-iE_2t/\hbar} \right) \left( c_1^* \psi_1(x) e^{iE_1t/\hbar} + c_2^* \psi_2(x) e^{iE_2t/\hbar} \right)
-$$
-
-3. **Expanding the product**:
-
-$$
-|\psi(x,t)|^2 = |c_1|^2 |\psi_1(x)|^2 + |c_2|^2 |\psi_2(x)|^2 + c_1 c_2^* \psi_1(x) \psi_2^*(x) e^{-i(E_1 - E_2)t/\hbar} + c_1^* c_2 \psi_1^*(x) \psi_2(x) e^{i(E_1 - E_2)t/\hbar}
-$$
-
-**Final Expression**
-
-$$
-|\psi(x,t)|^2 = |c_1|^2 |\psi_1(x)|^2 + |c_2|^2 |\psi_2(x)|^2 + 2 \, \text{Re} \left[ c_1 c_2^* \psi_1(x) \psi_2^*(x) e^{-i(E_1 - E_2)t/\hbar} \right]
-$$
-
-This consists of:
-- The probability densities of $\psi_1(x)$ and $\psi_2(x)$ with coefficients $|c_1|^2$ and $|c_2|^2$.
-- A time-dependent interference term that oscillates with the frequency $(E_1 - E_2)/\hbar$.
-:::
-
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-# Parameters
-L = 1.0  # Length of the box
-hbar = 1.0  # Set hbar = 1 for simplicity
-m = 1.0  # Set mass = 1 for simplicity
-
-n_states = [1, 2]  # Quantum numbers for the superposition
-coeffs = [1, 1]  # Coefficients for the superposition
-coeffs = np.array(coeffs) / np.sqrt(np.sum(np.array(coeffs) ** 2))  # Normalize coefficients
-
-# Define spatial and time arrays
-x = np.linspace(0, L,  200)  
-t = np.linspace(0, 10, 200)  
-
-# Define wavefunction for nth state
-def psi_n(n, x, L):
-    return np.sqrt(2 / L) * np.sin(n * np.pi * x / L)
-
-# Define energy for nth state
-def energy_n(n, L):
-    return (n**2 * np.pi**2 * hbar**2) / (2 * m * L**2)
-
-# Define time-dependent wavefunction
-def psi_total(x, t, L, coeffs, n_states):
-    psi_t = np.zeros_like(x, dtype=complex)
-    for idx, n in enumerate(n_states):
-        psi_x = psi_n(n, x, L)
-        E_n = energy_n(n, L)
-        time_factor = np.exp(-1j * E_n * t / hbar)
-        psi_t += coeffs[idx] * psi_x * time_factor
-    return psi_t
-
-# Set up the figure and axis
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 8))
-
-# Set limits for the wavefunction and wavefunction squared
-ax1.set_xlim(0, L)
-ax1.set_ylim(-2, 2)
-ax2.set_xlim(0, L)
-ax2.set_ylim(0, 4)
-
-# Set labels for the wavefunction plot
-ax1.set_xlabel('Position (x)', fontsize=14)
-ax1.set_ylabel(r'Re[$\psi(x,t)$]', fontsize=14)
-ax1.set_title('Time Evolution of Wavefunction', fontsize=16)
-
-# Set labels for the squared wavefunction plot
-ax2.set_xlabel('Position (x)', fontsize=14)
-ax2.set_ylabel(r'$|\psi(x,t)|^2$', fontsize=14)
-ax2.set_title('Probability Density', fontsize=16)
-
-### Animation settings 
-
-# Initialize the wavefunction and its square plots
-line_real, = ax1.plot([], [], lw=2)
-line_prob, = ax2.plot([], [], lw=2)
-
-# Initialization function for the plot
-def init():
-    line_real.set_data([], [])
-    line_prob.set_data([], [])
-    return line_real, line_prob
-
-# Animation function which updates the plot each frame
-def animate(i):
-    t_val = t[i]
-    psi = psi_total(x, t_val, L, coeffs, n_states)
-    psi_real = np.real(psi)
-    psi_squared = np.abs(psi)**2
-    line_real.set_data(x, psi_real)
-    line_prob.set_data(x, psi_squared)
-    return line_real, line_prob
-
-# Create the animation
-ani = FuncAnimation(fig, animate, init_func=init, frames=len(t), interval=150, blit=True)
-
-plt.close(fig)  # Prevents static display of the last frame
-HTML(ani.to_jshtml())
-```
 
 ```{marimo-config}
 ---
@@ -641,45 +322,198 @@ import marimo as mo
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams["figure.dpi"] = 150
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 import plotly.graph_objects as go
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 ```
 
 ```{marimo} python
 :hide-code: true
 
-box_L = mo.ui.slider(0.5, 2.0, step=0.1, value=1.0, show_value=True, label="box length L")
-n_max = mo.ui.slider(1, 10, step=1, value=3, show_value=True, label="highest state n")
-mo.hstack([box_L, n_max], justify="start", gap=2)
+box_L = mo.ui.slider(0.5, 1.0, step=0.05, value=1.0, show_value=True, label="box length L (units of L₀)")
+box_L
 ```
 
 ```{marimo} python
 :hide-code: true
 
-hbar_m = 1 / (2 * np.pi)
-
-fig1d, (ax_lev, ax_psi) = plt.subplots(figsize=(9, 4.2), ncols=2)
-for n_i in range(1, n_max.value + 1):
-    E_i = (n_i**2 * np.pi**2 * hbar_m**2) / (2 * box_L.value**2)
-    ax_lev.hlines(E_i, 0.5, 1.5, colors="steelblue", lw=2)
-    ax_lev.text(1.6, E_i, f"n={n_i}, E={E_i:.2f}", va="center", fontsize=9)
-ax_lev.set_xlim(0, 3)
-ax_lev.set_ylim(0, ((n_max.value + 1) ** 2 * np.pi**2 * hbar_m**2) / (2 * box_L.value**2))
-ax_lev.set_ylabel("energy")
-ax_lev.axes.get_xaxis().set_visible(False)
-ax_lev.set_title("energy levels", fontsize=11)
-
-x_b = np.linspace(0, box_L.value, 800)
-psi_b = np.sqrt(2 / box_L.value) * np.sin(n_max.value * np.pi * x_b / box_L.value)
-ax_psi.fill_between(x_b, psi_b**2, color="seagreen", alpha=0.85)
-ax_psi.axvline(0, color="red", lw=3)
-ax_psi.axvline(box_L.value, color="red", lw=3)
-ax_psi.set_xlim(-0.1, box_L.value + 0.1)
-ax_psi.set_ylim(0, 4)
-ax_psi.set_xlabel("x")
-ax_psi.set_title(f"probability density, n={n_max.value}", fontsize=11)
-fig1d.tight_layout()
-fig1d
+_L = box_L.value
+_x = np.linspace(0, _L, 300)
+_fig, (_ax, _axl) = plt.subplots(1, 2, figsize=(7.5, 3.4), gridspec_kw={"width_ratios": [1.4, 1]})
+_ax.plot([0, 0, _L, _L], [38, 0, 0, 38], color="k", lw=2.6)
+for _n, _c in zip((1, 2, 3), (TEAL, ORANGE, PURPLE)):
+    _E = _n**2 / _L**2
+    _ax.hlines(_E, 0, _L, color=_c, lw=0.9, ls="--")
+    _ax.plot(_x, _E + 1.2 * np.sin(_n * np.pi * _x / _L), color=_c, lw=2.4)
+    _ax.text(_L + 0.05, _E, rf"$E_{_n} = {_E:.1f}$", color=_c, va="center", fontsize=11)
+_ax.text(0, -1.5, "0", ha="center", va="top", fontsize=11)
+_ax.text(_L, -1.5, "L", ha="center", va="top", fontsize=11)
+_ax.set_xlim(-0.05, 1.42); _ax.set_ylim(-4.5, 38); _ax.set_xticks([]); _ax.set_yticks([])
+_ax.spines["left"].set_visible(False); _ax.spines["bottom"].set_visible(False)
+_ax.set_title(rf"$L = {_L:.2f}\,L_0$", loc="left", fontsize=11)
+_Lg = np.linspace(0.45, 3, 300)
+_axl.plot(_Lg, 1 / _Lg**2, color=TEAL, lw=2.2)
+_axl.plot([_L], [1 / _L**2], "o", color=TEAL, ms=9)
+_axl.set_xlim(0.4, 3); _axl.set_ylim(0, 5)
+_axl.set_xlabel(r"$L / L_0$"); _axl.set_ylabel(r"$E_1$")
+_axl.set_title(r"$E_1 \propto 1/L^2$: never zero", loc="left", fontsize=11)
+_fig.subplots_adjust(left=0.02, right=0.98, top=0.88, bottom=0.17, wspace=0.22)
+_fig
 ```
+
+Fig. Left: the three lowest levels of a particle in a box of length $L$, each wavefunction drawn on its level. Right: the ground-state energy against box length. Shrinking the box raises every level as $1/L^2$; enlarging it lowers $E_1$ toward zero without ever reaching it. Energies in units of $h^2/8mL_0^2$.
+
+### Non-uniform probabilities and nodes
+
+1. **Nodes imply zero probability to find an electron in the box**. 
+    - $|\psi_n|^2=0$ at nodal points, which means zero probability.
+    - This sharply contradicts classical mechanics, which bases its prediction on purely particle-like motion of the electron.
+    - The existence of nodes implies a wave-like character of the electron.
+
+2. **There are $n-1$ nodes for quantum state $n$**
+
+- Recall that the sine function hits zero at integer multiples of $\pi$: $\sin(n\pi)=0$ when $n=1,2,3,4,...$
+- The wavefunction $\psi_n(x) = \sin \frac{n\pi x}{L}$ then has $n-1$ nodes at the points $x=L/n$, $2L/n$, $3L/n$, ..., $(n-1)L/n$.
+- Note that we do not count the $x=0$ and $x=L$ points as nodes, because they are part of the boundary conditions that apply to all wavefunctions.
+    - For instance, the $n=3$ nodes are at $x=L/3$ and $x=2L/3$.
+    - For instance, the $n=4$ nodes are at $L/4$, $2L/4$, and $3L/4$.
+
+- The dots in the right panel of the figure of the four lowest states mark these nodes.
+
+### Large quantum numbers: the classical box returns
+
+- As $n$ grows, the lobes of $|\psi_n|^2$ crowd together. A real detector has a finite resolution and averages over many lobes, and $\sin^2$ averages to $\frac{1}{2}$ over whole half-waves, so the measured density approaches the flat classical value $1/L$.
+- Problem 1 gives the probability of catching the particle in the middle third of the box:
+
+$$
+P_n = \frac{1}{3} + \frac{\sin(2n\pi/3) - \sin(4n\pi/3)}{2n\pi}
+$$
+
+- The correction to the classical $\frac{1}{3}$ dies off as $1/n$. This is the **correspondence principle**: quantum predictions go over to classical ones at large quantum numbers. A 1 g marble crawling at 1 cm/s across a 30 cm box has $n \approx 10^{28}$, far beyond any lobe we could resolve.
+
+```{marimo} python
+:hide-code: true
+
+n_c = mo.ui.slider(1, 40, step=1, value=1, show_value=True, label="quantum number n")
+n_c
+```
+
+```{marimo} python
+:hide-code: true
+
+_n = n_c.value
+_x = np.linspace(0, 1, 3000)
+_p = 2 * np.sin(_n * np.pi * _x) ** 2
+_P = 1 / 3 + (np.sin(2 * _n * np.pi / 3) - np.sin(4 * _n * np.pi / 3)) / (2 * _n * np.pi)
+_fig, _ax = plt.subplots(figsize=(7, 3.0))
+_ax.axvspan(1 / 3, 2 / 3, color=PURPLE, alpha=0.09, lw=0)
+_ax.fill_between(_x, _p, color=CARDINAL, alpha=0.2, lw=0)
+_ax.plot(_x, _p, color=CARDINAL, lw=1.4 if _n < 12 else 0.8, label=r"$|\psi_n|^2$")
+_ax.axhline(1, color="k", lw=2, ls="--", label=r"classical: $1/L$")
+_ax.plot([0, 0, 1, 1], [2.6, 0, 0, 2.6], color="k", lw=2.6)
+_ax.set_xlim(-0.02, 1.02); _ax.set_ylim(0, 2.6)
+_ax.set_yticks([0, 1, 2]); _ax.set_yticklabels(["0", "1/L", "2/L"])
+_ax.set_xticks([0, 1 / 3, 2 / 3, 1]); _ax.set_xticklabels(["0", "L/3", "2L/3", "L"])
+_ax.legend(loc="upper right", frameon=False, fontsize=10, ncol=2, bbox_to_anchor=(1.0, 1.18))
+_ax.set_title(f"n = {_n}:  P(middle third) = {_P:.3f}", loc="left", fontsize=11, color=PURPLE)
+_fig.tight_layout()
+_fig
+```
+
+Fig. The probability density of state $n$ against the flat classical density $1/L$. The shaded band is the middle third of the box; its probability tends to the classical $\frac{1}{3}$ as $n$ grows.
+
+### Superposition: the particle sloshes
+
+- A single state $\psi_n(x)\,e^{-iE_nt/\hbar}$ is stationary. Its phase turns, but the time factor has absolute value one, so $|\psi_n(x,t)|^2 = |\psi_n(x)|^2$ never changes (see the phase clocks in the [previous lecture](01-schrodinger-equation.md)).
+- A superposition of two states does move. Take equal amounts of the two lowest states:
+
+$$
+\Psi(x,t) = \frac{1}{\sqrt{2}}\left[\psi_1(x)\,e^{-iE_1t/\hbar} + \psi_2(x)\,e^{-iE_2t/\hbar}\right]
+$$
+
+- Multiplying by the complex conjugate (Problem 2 of the previous lecture) leaves a fixed part and a **cross term** that oscillates at the difference of the two phase rates, $\omega = (E_2 - E_1)/\hbar$:
+
+$$
+|\Psi(x,t)|^2 = \frac{1}{2}\left[\psi_1^2(x) + \psi_2^2(x)\right] + \psi_1(x)\,\psi_2(x)\cos\omega t
+$$
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: box_slosh
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 400)
+p1, p2 = np.sqrt(2) * np.sin(np.pi * x), np.sqrt(2) * np.sin(2 * np.pi * x)
+fixed, cross = 0.5 * (p1**2 + p2**2), p1 * p2               # |Psi|^2 = fixed + cross cos(wt): even + odd about L/2
+nf = 60
+ts = np.linspace(0, 2 * np.pi, nf, endpoint=False)          # E1 = 1, E2 = 4, hbar = 1: w = 3, three sloshes
+xbar = lambda t: 0.5 - 16 / (9 * np.pi**2) * np.cos(3 * t)  # <x>(t) = L/2 + x12 cos(wt), x12 = -16L/9pi^2
+th = np.linspace(0, 2 * np.pi, 200)
+fig = plt.figure(figsize=(7.2, 3.4))
+gs = fig.add_gridspec(2, 2, width_ratios=[2.3, 1], height_ratios=[2, 1], hspace=0.42, wspace=0.08)
+ax, axx = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0])
+axc, axl = fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 1])
+ax.plot(x, fixed, color=GRAY, lw=1.8, ls="--", label=r"$\frac{1}{2}(\psi_1^2 + \psi_2^2)$")
+(dens,) = ax.plot([], [], color=CARDINAL, lw=2.8, label=r"$|\Psi|^2$")
+band = [ax.fill_between(x, 0 * x, color=CARDINAL, alpha=0.18, lw=0)]
+(mark,) = ax.plot([], [], marker="^", color=PURPLE, ms=14, zorder=6, ls="none", label=r"$\langle x\rangle$")
+ax.plot([0, 0, 1, 1], [3.35, 0, 0, 3.35], color="k", lw=2.6)          # peak of |Psi|^2 is 3.10
+ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 3.35); ax.set_xticks([]); ax.set_yticks([])
+ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+ax.legend(loc="lower left", bbox_to_anchor=(0, 0.97), ncol=3, frameon=False, fontsize=13,
+          handlelength=1.6, columnspacing=1.4)
+axx.axhline(0, color=GRAY, lw=0.8)
+(crs,) = axx.plot([], [], color=PURPLE, lw=2.6)
+cband = [axx.fill_between(x, 0 * x, color=PURPLE, alpha=0.18, lw=0)]
+axx.set_xlim(-0.02, 1.02); axx.set_ylim(-1.7, 1.7); axx.set_yticks([])
+axx.set_xticks([0, 0.5, 1]); axx.set_xticklabels(["0", "L/2", "L"], fontsize=13)
+axx.spines["left"].set_visible(False)
+axx.set_title(r"cross term $\psi_1\psi_2\cos\omega t$", loc="left", fontsize=13, color=PURPLE)
+for a in (ax, axx):
+    a.axvline(0.5, color=GRAY, lw=0.8, ls=":")
+axc.plot(np.cos(th), np.sin(th), color=GRAY, lw=1, ls="--")
+(arc,) = axc.plot([], [], color=PURPLE, lw=3.2, label=r"$\omega t$")
+(h1,) = axc.plot([], [], color=TEAL, lw=3.2, label=r"$E_1$")
+(h2,) = axc.plot([], [], color=ORANGE, lw=3.2, label=r"$E_2 = 4E_1$")
+axc.set_aspect("equal"); axc.set_xlim(-1.15, 1.15); axc.set_ylim(-1.15, 1.15); axc.set_axis_off()
+axc.set_title("phase clocks", fontsize=13)
+axl.set_axis_off()
+axl.legend(handles=[h1, h2, arc], loc="center", frameon=False, fontsize=13, handlelength=1.2)
+fig.subplots_adjust(left=0.02, right=0.99, top=0.87, bottom=0.1)
+
+def update(i):
+    t = ts[i]
+    c = cross * np.cos(3 * t)
+    dens.set_data(x, fixed + c)
+    band[0].remove(); band[0] = ax.fill_between(x, fixed + c, color=CARDINAL, alpha=0.18, lw=0)
+    mark.set_data([xbar(t)], [0.14])
+    crs.set_data(x, c)
+    cband[0].remove(); cband[0] = axx.fill_between(x, c, color=PURPLE, alpha=0.18, lw=0)
+    a1, a2 = -t, -4 * t                                     # clock hands: e^{-iE1 t}, e^{-iE2 t}
+    d = (a1 - a2) % (2 * np.pi)                             # angle between the hands, w t
+    s = np.linspace(a2, a2 + d, 40) if d <= np.pi else np.linspace(a1, a1 + 2 * np.pi - d, 40)
+    arc.set_data(0.42 * np.cos(s), 0.42 * np.sin(s))
+    h1.set_data([0, np.cos(a1)], [0, np.sin(a1)]); h2.set_data([0, np.cos(a2)], [0, np.sin(a2)])
+
+ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. An equal superposition of $\psi_1$ and $\psi_2$. Top: the density $|\Psi|^2$ is the fixed part $\frac{1}{2}(\psi_1^2 + \psi_2^2)$ (dashed) plus the cross term; the triangle marks $\langle x \rangle$. Bottom: the cross term $\psi_1\psi_2\cos\omega t$. Right: the phase clocks of the two states; the angle between their hands is $\omega t$.
+
+- The fixed part is symmetric about the center of the box, so on its own it balances at $L/2$. The cross term is odd about the center: it adds probability on one side, removes the same amount on the other, and flips sign every half period. The mean position swings with it:
+
+$$
+\langle x \rangle(t) = \frac{L}{2} + \cos\omega t \int_0^L x\,\psi_1\psi_2\,dx = \frac{L}{2} - \frac{16L}{9\pi^2}\cos\omega t
+$$
+
+- For an electron, an oscillating $\langle x \rangle$ is an oscillating electric dipole: a tiny antenna that emits or absorbs light of angular frequency $\omega$, that is photons with $h\nu = E_2 - E_1$. This is the link to the colors of conjugated molecules in the applications below. The general theory is in [Time Dependence](06-time-dependence.md).
 
 ### Quantum PIB in 3D
 
@@ -752,120 +586,32 @@ $$
 
 - Energy is quantized and when $a = b = c$, we find that the energy levels can also be **degenerate** (i.e., the same energy with different values of $n_x, n_y$ and $n_z$).
 
-- In most cases, **degeneracy in quantum mechanics arises from symmetry**. When $a = b = c$, the first excited state has triple degeneracy. When only $a=b\neq c$, the first excited state has double degeneracy.
+- In most cases, **degeneracy in quantum mechanics arises from symmetry**. When $a = b = c$, the first excited level is triply degenerate: $(2,1,1)$, $(1,2,1)$ and $(1,1,2)$ are one shape turned to face different axes. When only $a = b \neq c$, that level splits into a pair and a single state; the pair lies lower when $c$ is shorter than $a$.
 
-```{code-cell} python
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
 
-# -------- Parameters --------
-L = 1.0
-nx, ny, nz = 1, 2, 3        # quantum numbers
-N = 60                      # grid points per axis
-
-# -------- Wavefunction on a 3D grid --------
-x = np.linspace(0, L, N)
-y = np.linspace(0, L, N)
-z = np.linspace(0, L, N)
-X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
-
-norm = (2.0/np.sqrt(L**3))
-psi = norm * np.sin(nx*np.pi*X/L) * np.sin(ny*np.pi*Y/L) * np.sin(nz*np.pi*Z/L)
-rho = psi**2  # probability density
-
-# -------- Create illustrative views --------
-# 1) Three orthogonal central slices: xy|_{z=L/2}, xz|_{y=L/2}, yz|_{x=L/2}
-z_mid = np.argmin(np.abs(z - L/2))
-y_mid = np.argmin(np.abs(y - L/2))
-x_mid = np.argmin(np.abs(x - L/2))
-
-slice_xy = rho[:, :, z_mid]
-slice_xz = rho[:, y_mid, :]
-slice_yz = rho[x_mid, :, :]
-
-# 2) "Isosurface-like" point cloud: plot points above a probability threshold
-# Choose threshold so that top ~2% of voxels are shown
-flat = rho.ravel()
-thresh = np.quantile(flat, 0.98)
-mask = rho >= thresh
-pts = np.column_stack((X[mask], Y[mask], Z[mask]))
-
-# Downsample if there are too many points
-max_pts = 8000
-if pts.shape[0] > max_pts:
-    idx = np.random.choice(pts.shape[0], size=max_pts, replace=False)
-    pts = pts[idx]
-
-# -------- Plot --------
-fig = plt.figure(figsize=(12, 9))
-
-# XY slice
-ax1 = fig.add_subplot(2, 2, 1)
-im1 = ax1.imshow(slice_xy.T, origin='lower', extent=[0, L, 0, L], aspect='equal')
-ax1.set_title(rf"$|\psi(x,y,z=L/2)|^2$  (n=({nx},{ny},{nz}))")
-ax1.set_xlabel("x")
-ax1.set_ylabel("y")
-fig.colorbar(im1, ax=ax1, shrink=0.8)
-
-# XZ slice
-ax2 = fig.add_subplot(2, 2, 2)
-im2 = ax2.imshow(slice_xz.T, origin='lower', extent=[0, L, 0, L], aspect='equal')
-ax2.set_title(rf"$|\psi(x,y=L/2,z)|^2$")
-ax2.set_xlabel("x")
-ax2.set_ylabel("z")
-fig.colorbar(im2, ax=ax2, shrink=0.8)
-
-# YZ slice
-ax3 = fig.add_subplot(2, 2, 3)
-im3 = ax3.imshow(slice_yz.T, origin='lower', extent=[0, L, 0, L], aspect='equal')
-ax3.set_title(rf"$|\psi(x=L/2,y,z)|^2$")
-ax3.set_xlabel("y")
-ax3.set_ylabel("z")
-fig.colorbar(im3, ax=ax3, shrink=0.8)
-
-# 3D point cloud (isosurface-like)
-ax4 = fig.add_subplot(2, 2, 4, projection='3d')
-ax4.scatter(pts[:, 0], pts[:, 1], pts[:, 2], s=2, alpha=0.4)
-ax4.set_title("High-probability region (point cloud)")
-ax4.set_xlabel("x")
-ax4.set_ylabel("y")
-ax4.set_zlabel("z")
-ax4.set_xlim(0, L); ax4.set_ylim(0, L); ax4.set_zlim(0, L)
-
-plt.suptitle("3D Particle-in-a-Box Orbital: n = (1, 2, 3)", y=0.98)
-plt.tight_layout()
-plt.show()
-```
-
-:::{admonition} **Table of energy levels for 3D box**
+:::{admonition} **Table of energy levels for a cubic box**
 :class: dropdown
 
+Energies in units of $E_0 = \dfrac{h^2}{8mL^2}$, so $E = (n_x^2 + n_y^2 + n_z^2)\,E_0$. The degeneracy $g$ counts the states on each level.
 
-| Quantum Numbers $( n_x, n_y, n_z$) | Energy $( E_{n_x, n_y, n_z} )$ | Degeneracy |
-|------------------------------------|-------------------------------|------------|
-| (1,1,1)                            | $( \frac{3\hbar^2}{2mL^2} )  $| 1          |
-| (1,1,2), (1,2,1), (2,1,1)          | $( \frac{6\hbar^2}{2mL^2} )  $| 3          |
-| (1,1,3), (1,3,1), (3,1,1)          | $( \frac{11\hbar^2}{2mL^2} ) $| 3          |
-| (1,2,2), (2,1,2), (2,2,1)          | $( \frac{9\hbar^2}{2mL^2} )  $| 3          |
-| (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1) | $( \frac{14\hbar^2}{2mL^2} )$ | 6 |
-| (1,3,3), (3,1,3), (3,3,1)          | $( \frac{19\hbar^2}{2mL^2} )$ | 3          |
-| (2,2,2)                            | $( \frac{12\hbar^2}{2mL^2} )$ | 1          |
-| (2,2,3), (2,3,2), (3,2,2)          | $( \frac{17\hbar^2}{2mL^2} )$ | 3          |
-| (2,3,3), (3,2,3), (3,3,2)          | $( \frac{22\hbar^2}{2mL^2} )$ | 3          |
-| (3,3,3)                            | $( \frac{27\hbar^2}{2mL^2} )$ | 1          |
-| (1,1,4), (1,4,1), (4,1,1)          | $( \frac{18\hbar^2}{2mL^2} )$ | 3          |
-| (1,2,4), (1,4,2), (2,1,4), (2,4,1), (4,1,2), (4,2,1) | $( \frac{21\hbar^2}{2mL^2} )$ | 6 |
-| (1,3,4), (1,4,3), (3,1,4), (3,4,1), (4,1,3), (4,3,1) | $( \frac{26\hbar^2}{2mL^2} )$ | 6 |
-| (1,4,4), (4,1,4), (4,4,1)          | $( \frac{33\hbar^2}{2mL^2} )$ | 3          |
-| (2,2,4), (2,4,2), (4,2,2)          | $( \frac{24\hbar^2}{2mL^2} )$ | 3          |
-| (2,3,4), (2,4,3), (3,2,4), (3,4,2), (4,2,3), (4,3,2) | $( \frac{29\hbar^2}{2mL^2} )$ | 6 |
-| (2,4,4), (4,2,4), (4,4,2)          | $( \frac{36\hbar^2}{2mL^2} )$ | 3          |
-| (3,3,4), (3,4,3), (4,3,3)          | $( \frac{34\hbar^2}{2mL^2} )$ | 3          |
-| (3,4,4), (4,3,4), (4,4,3)          | $( \frac{39\hbar^2}{2mL^2} )$ | 3          |
-| (4,4,4)                            | $( \frac{48\hbar^2}{2mL^2} )$ | 1          |
+| $n_x^2 + n_y^2 + n_z^2$ | states $(n_x, n_y, n_z)$ | degeneracy $g$ |
+| :-- | :-- | :-- |
+| 3 | (1,1,1) | 1 |
+| 6 | (2,1,1), (1,2,1), (1,1,2) | 3 |
+| 9 | (2,2,1), (2,1,2), (1,2,2) | 3 |
+| 11 | (3,1,1), (1,3,1), (1,1,3) | 3 |
+| 12 | (2,2,2) | 1 |
+| 14 | all six orderings of (3,2,1) | 6 |
+| 17 | (3,2,2), (2,3,2), (2,2,3) | 3 |
+| 18 | (4,1,1), (1,4,1), (1,1,4) | 3 |
+| 19 | (3,3,1), (3,1,3), (1,3,3) | 3 |
+| 21 | all six orderings of (4,2,1) | 6 |
+| 22 | (3,3,2), (3,2,3), (2,3,3) | 3 |
+| 24 | (4,2,2), (2,4,2), (2,2,4) | 3 |
+| 26 | all six orderings of (4,3,1) | 6 |
+| 27 | (3,3,3) and the three orderings of (5,1,1) | 4 |
 
+The last row is an **accidental** degeneracy: $3^2 + 3^2 + 3^2 = 5^2 + 1^2 + 1^2$, and no rotation of the cube turns $(3,3,3)$ into $(5,1,1)$.
 :::
 
 
@@ -904,37 +650,55 @@ fig3d.update_layout(
 fig3d
 ```
 
+Fig. Surfaces of constant $\psi_{n_x n_y n_z}$ in a cubic box, red and blue for the two signs. Set $(2,1,1)$ and then $(1,2,1)$: the same shape turned by $90°$, so the two states share an energy.
+
+- The level diagram below does the counting. Each short bar is one state. With all three sides equal, states related by a rotation of the box share a level; stretch or squeeze one side and those levels split.
+
 ```{marimo} python
 :hide-code: true
 
-lx_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="lx")
-ly_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="ly")
-lz_l = mo.ui.slider(0.5, 2.0, step=0.25, value=1.0, show_value=True, label="lz")
-mo.hstack([lx_l, ly_l, lz_l], justify="start", gap=2)
+side_a = mo.ui.slider(0.5, 2.0, step=0.05, value=1.0, show_value=True, label="side a (units of L)")
+side_b = mo.ui.slider(0.5, 2.0, step=0.05, value=1.0, show_value=True, label="side b")
+side_c = mo.ui.slider(0.5, 2.0, step=0.05, value=1.0, show_value=True, label="side c")
+mo.hstack([side_a, side_b, side_c], justify="start", gap=2)
 ```
 
 ```{marimo} python
 :hide-code: true
 
-hbar_l = 1 / (2 * np.pi)
-fig_lad, ax_lad = plt.subplots(figsize=(7, 4.2))
-for side_l, x0, x1, color_l, lbl in [
-    (lx_l.value, 0.6, 1.0, "steelblue", "x"),
-    (ly_l.value, 1.1, 1.5, "seagreen", "y"),
-    (lz_l.value, 1.6, 2.0, "goldenrod", "z"),
-]:
-    for n_j in range(1, 7):
-        E_j = (n_j**2 * np.pi**2 * hbar_l**2) / (2 * side_l**2)
-        ax_lad.hlines(E_j, x0, x1, colors=color_l, lw=2)
-    ax_lad.text((x0 + x1) / 2, -0.35, lbl, ha="center")
-ax_lad.set_xlim(0.5, 2.1)
-ax_lad.set_ylim(-0.7, (36 * np.pi**2 * hbar_l**2) / (2 * min(lx_l.value, ly_l.value, lz_l.value) ** 2) * 1.05)
-ax_lad.set_ylabel("energy")
-ax_lad.axes.get_xaxis().set_visible(False)
-ax_lad.set_title("level ladders per direction: stretch a side, break degeneracy", fontsize=11)
-fig_lad.tight_layout()
-fig_lad
+_s = (side_a.value, side_b.value, side_c.value)
+_E = {}
+for _i in range(1, 9):
+    for _j in range(1, 9):
+        for _k in range(1, 9):
+            _E[(_i, _j, _k)] = _i**2 / _s[0]**2 + _j**2 / _s[1]**2 + _k**2 / _s[2]**2
+_levels = []
+for _st in sorted(_E, key=_E.get):
+    if _levels and abs(_E[_st] - _levels[-1][0]) < 1e-6:
+        _levels[-1][1].append(_st)
+    else:
+        _levels.append([_E[_st], [_st]])
+_levels = _levels[:7]
+_top = _levels[-1][0] * 1.08
+_fig, _ax = plt.subplots(figsize=(7, 4.2))
+_ylab = -1.0
+for _Eg, _ss in _levels:
+    _g = len(_ss)
+    _col = PURPLE if _g > 1 else TEAL
+    for _q in range(_g):
+        _ax.hlines(_Eg, 0.1 + 0.34 * _q, 0.38 + 0.34 * _q, color=_col, lw=3.2)
+    _ylab = max(_Eg, _ylab + 0.055 * _top)                  # keep labels of close levels apart
+    _lab = f"g = {_g}:  " + ", ".join(f"({_a},{_b},{_c})" for _a, _b, _c in _ss) if _g <= 3 else f"g = {_g}"
+    _ax.text(2.2, _ylab, _lab, va="center", fontsize=10, color=_col)
+_ax.set_xlim(0, 5.4); _ax.set_ylim(0, _top)
+_ax.set_xticks([]); _ax.set_yticks([]); _ax.spines["bottom"].set_visible(False)
+_ax.set_ylabel(r"energy (units of $h^2/8mL^2$)")
+_ax.set_title(f"sides a, b, c = {_s[0]:.2f}, {_s[1]:.2f}, {_s[2]:.2f}: the seven lowest levels", loc="left", fontsize=11)
+_fig.tight_layout()
+_fig
 ```
+
+Fig. The seven lowest levels of a particle in a rectangular box. Each bar is one state and $g$ counts the states on a level. A cube has levels with $g = 1, 3, 3, 3, 1, 6, 3$; changing one side breaks the symmetry and splits them.
 
 ### Note on Computing Average Properties from a Wave Function
 
@@ -948,7 +712,7 @@ where $\hat{A}$ is any operator. This could be momentum, kinetic energy, and so 
 
 To calculate the average position (or **expectation value** of position) for a particle in a 1D box, follow the steps shown in the example below.
 
-:::{tip} **Example: Calculate average (expectation) of position, $\langle x\rangle$**
+:::{note} **Example: Calculate average (expectation) of position, $\langle x\rangle$**
 :class: dropdown
 
 **1. Wavefunction of the Particle in a 1D Box**
@@ -1046,70 +810,16 @@ $$
 
 This result makes sense intuitively because, due to the symmetry of the problem, the particle is equally likely to be found on either side of the box, so its average position is right in the middle of the box at $x = \frac{L}{2}$.
 
-### Summary
+**Summary**
 
 To find the average position of a particle in a 1D box for a general wavefunction:
 - Use the wavefunction $\psi_n(x)$,
-- Set up the expectation value integral $\langle x \rangle = \int_0^L \cdot |\psi_n(x)|^2 \, dx$,
+- Set up the expectation value integral $\langle x \rangle = \int_0^L x\,|\psi_n(x)|^2 \, dx$,
 - Solve the integral, which results in $\langle x \rangle = \frac{L}{2}$ for all $n$.
 
 Thus, the particle's average position is always at the midpoint of the box, independent of the quantum number $n$.
 :::
 
-```{code-cell} python
-:tags: [hide-input]
-# Visual proof that the positive and negative areas cancel:
-# ∫_0^L x cos(2 n π x / L) dx = 0
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Parameters (you can change n or L for other examples)
-n = 1
-L = 1.0
-
-# Define function
-x = np.linspace(0, L, 1500)
-f = x * np.cos(2 * np.pi * n * x / L)
-
-# Numerical integral for confirmation
-num_int = np.trapezoid(f, x)
-
-# Create plot
-plt.figure(figsize=(8, 4.5))
-plt.plot(x, f, label=r"$f(x) = x\cos\!\left(\frac{2n\pi x}{L}\right)$")
-# Shade positive and negative regions (same default color; annotated for clarity)
-pos = f >= 0
-neg = f < 0
-p = plt.fill_between(x, 0, f, where=pos, alpha=0.3, label="positive area")
-q = plt.fill_between(x, 0, f, where=neg, alpha=0.3, label="negative area")
-
-# Add zero line and formatting
-plt.axhline(0, linewidth=1)
-plt.xlim(0, L)
-plt.xlabel("x")
-plt.ylabel("f(x)")
-plt.title(r"Positive and negative areas cancel:  $\int_0^L x\cos\!\left(\frac{2n\pi x}{L}\right)\,dx = 0$")
-
-# Annotate a positive lobe and a negative lobe
-# Find a representative positive and negative region to place annotations
-if np.any(pos):
-    idx_pos = np.argmax(f)  # near first positive peak
-    plt.annotate("positive area", xy=(x[idx_pos], f[idx_pos]), xytext=(x[idx_pos]+0.1*L, 0.7*np.max(f)),
-                 arrowprops=dict(arrowstyle="->"))
-if np.any(neg):
-    idx_neg = np.argmin(f)  # near first negative through
-    plt.annotate("negative area", xy=(x[idx_neg], f[idx_neg]), xytext=(x[idx_neg]-0.2*L, 0.7*np.min(f)),
-                 arrowprops=dict(arrowstyle="->"))
-
-# Show numerical check in a small textbox
-plt.text(0.02*L, 0.9*np.max(f), f"Numerical integral ≈ {num_int:.2e}")
-
-plt.legend(loc="upper right")
-plt.tight_layout()
-plt.show()
-'vis '
-```
 
 ### Applications: electronic transitions in conjugated molecules
 
@@ -1369,7 +1079,7 @@ Since $E_{1,1,2} \neq E_{2,2,1}$, these energy levels are **not degenerate**.
 
 #### Problem 7: Degeneracy of Energy Levels
 
-Consider a particle confined in a cubic box with side lengths $L_x = L_y = L_z = L$. The energy levels are given by the same formula as in Problem 1.
+Consider a particle confined in a cubic box with side lengths $L_x = L_y = L_z = L$. The energy levels are given by the same formula as in Problem 6.
 
 - **Part 1:** Find the degeneracy of the energy level corresponding to the quantum number sum $n_x^2 + n_y^2 + n_z^2 = 14$.
 - **Part 2:** Write down all the quantum number triplets $(n_x, n_y, n_z)$ that correspond to this energy level.
