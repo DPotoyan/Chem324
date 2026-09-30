@@ -29,6 +29,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 OUT = "ch03/images"
+GIF_DPI = 200    # 2x: an 8 in figure bakes 1600 px wide, crisp full screen (dpi 100 was blurry on projectors, retina)
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 
 REGISTRY = {}
@@ -845,52 +846,50 @@ def box_model():
     return fig, None
 
 
-# ------------------------------------------------------------ only whole half-waves fit: scan the energy
+# ------------------------------------------------------------ only whole half-waves fit: raise E, each fit adds a rung
 @register
 def box_fit():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     x = np.linspace(0, 1, 400)
-    es = np.concatenate([np.linspace(0.25, 1, 8), np.full(5, 1.0), np.linspace(1, 4, 11)[1:], np.full(5, 4.0),
-                         np.linspace(4, 9, 13)[1:], np.full(5, 9.0), np.linspace(9, 11, 4)[1:], np.full(3, 11.0)])
-    eg = np.linspace(0, 11.2, 600)
-    fig, (ax, axe) = plt.subplots(1, 2, figsize=(8, 3.4), gridspec_kw={"width_ratios": [1.15, 1], "wspace": 0.3})
-    ax.axvline(0, color="k", lw=3); ax.axvline(1, color="k", lw=3); ax.axhline(0, color=GRAY, lw=0.6)
-    (wave,) = ax.plot([], [], lw=2.6)
-    (miss,) = ax.plot([], [], color=CARDINAL, lw=4)
-    (dot,) = ax.plot([], [], "o", ms=10, zorder=5)
-    ax.set_xlim(-0.04, 1.04); ax.set_ylim(-1.3, 1.55); ax.set_yticks([])
-    ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "L"]); ax.set_xlabel("x")
-    ax.text(0.02, 1.3, r"$\psi = \sin kx$ already obeys $\psi(0) = 0$", fontsize=9.5, color=GRAY)
-    axe.plot(eg, np.sin(np.pi * np.sqrt(eg)), color=GRAY, lw=1, alpha=0.3)
-    axe.axhline(0, color=GRAY, lw=0.6)
-    (trace,) = axe.plot([], [], color=ORANGE, lw=2.2)
-    (cur,) = axe.plot([], [], "o", ms=9, zorder=5)
-    zeros = []
+    up = lambda a, b, k: np.linspace(a, b, k + 1)[1:]
+    es = np.concatenate([np.linspace(0.3, 1, 10), np.full(18, 1.0), up(1, 4, 16), np.full(18, 4.0),
+                         up(4, 9, 18), np.full(18, 9.0), up(9, 10.6, 8), np.full(24, 10.6)])
+    fig, (ax, axe) = plt.subplots(1, 2, figsize=(8, 3.8), gridspec_kw={"width_ratios": [2.3, 1], "wspace": 0.1})
+    ax.plot([0, 0], [-1.3, 1.3], color="k", lw=3); ax.plot([1, 1], [-1.3, 1.3], color="k", lw=3)
+    ax.axhline(0, color=GRAY, lw=0.8, ls="--")
+    (wave,) = ax.plot([], [], lw=2.8)
+    (miss,) = ax.plot([], [], color=CARDINAL, lw=5, solid_capstyle="butt")
+    ax.plot([0], [0], "o", color=TEAL, ms=9, zorder=5)               # psi(0) = 0 holds for every E
+    (right,) = ax.plot([], [], "o", ms=11, zorder=5)
+    ax.set_xlim(-0.03, 1.06); ax.set_ylim(-1.3, 1.3); ax.set_yticks([])
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "L"], fontsize=13); ax.set_xlabel("x", fontsize=13)
+    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    rungs = []
     for n in (1, 2, 3):
-        (mk,) = axe.plot([n * n], [0], "o", color=TEAL, ms=11, mfc="white", mew=2.4, zorder=4)
-        lb = axe.text(n * n, -1.27, f"n = {n}", ha="center", va="bottom", fontsize=10.5, color=TEAL)
-        zeros.append((n, mk, lb))
-    axe.set_xlim(0, 11.2); axe.set_ylim(-1.3, 1.55)
-    axe.set_xticks([1, 4, 9]); axe.set_xticklabels([r"$E_1$", r"$4E_1$", r"$9E_1$"])
-    axe.set_xlabel("energy E"); axe.set_ylabel(r"$\psi(L)$"); axe.set_yticks([-1, 0, 1])
-    axe.set_title("the right wall's verdict", loc="left", fontsize=11)
-    fig.subplots_adjust(left=0.03, right=0.98, top=0.88, bottom=0.16)
+        rungs.append((n * n, axe.hlines(n * n, 0, 0.3, color=TEAL, lw=3.5),
+                      axe.text(0.38, n * n, rf"$n = {n}$,  " + (r"$E_1$" if n == 1 else rf"${n * n}E_1$"),
+                               va="center", fontsize=13, color=TEAL)))
+    (now,) = axe.plot([], [], lw=5, solid_capstyle="butt")
+    axe.set_xlim(0, 1); axe.set_ylim(0, 11.3); axe.set_xticks([]); axe.set_yticks([])
+    axe.spines["bottom"].set_visible(False); axe.set_ylabel("energy", fontsize=13)
+    axe.set_title("allowed energies", loc="left", fontsize=13, color=TEAL)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.15)
 
     def update(i):
-        e = es[i]; r = np.sqrt(e)
-        fit = abs(r - round(r)) < 1e-9 and e <= 9
-        col = TEAL if fit else ORANGE
-        end = np.sin(np.pi * r)
-        wave.set_data(x, np.sin(np.pi * r * x)); wave.set_color(col)
-        miss.set_data([1.018, 1.018], [0, end]); miss.set_visible(not fit)
-        dot.set_data([1.018 if not fit else 1], [end]); dot.set_color(TEAL if fit else CARDINAL)
-        ax.set_title((f"E = {round(e)}" if e > 1 else "E = ") + r"$E_1$" + f":  {round(r)} half-wave" + ("s fit" if r > 1 else " fits")
-                     if fit else f"E = {e:.2f}" + r"$E_1$" + ":  misses the wall", loc="left", fontsize=11, color=col)
-        m = eg <= e
-        trace.set_data(eg[m], np.sin(np.pi * np.sqrt(eg[m])))
-        cur.set_data([e], [end]); cur.set_color(TEAL if fit else CARDINAL)
-        for n, mk, lb in zeros:
-            mk.set_visible(e >= n * n - 1e-9); lb.set_visible(e >= n * n - 1e-9)
+        e = es[i]; r = np.sqrt(e); n = round(r)
+        fit = abs(r - n) < 1e-9
+        end = np.sin(np.pi * r)                                     # psi(L) for psi = sin kx, kL = pi sqrt(E/E1)
+        wave.set_data(x, np.sin(np.pi * r * x)); wave.set_color(TEAL if fit else ORANGE)
+        miss.set_data([1.03, 1.03], [0, end]); miss.set_visible(not fit)
+        right.set_data([1], [end]); right.set_color(TEAL if fit else CARDINAL)
+        now.set_data([0, 0.3], [e, e]); now.set_color(TEAL if fit else ORANGE)
+        for E, rung, lb in rungs:
+            rung.set_visible(e >= E - 1e-9); lb.set_visible(e >= E - 1e-9)
+        if fit:
+            ax.set_title((r"$E = E_1$" if n == 1 else rf"$E = {n * n}E_1$") + f":  {n} half-wave" + ("s fit" if n > 1 else " fits")
+                         + r", $\psi(L) = 0$", loc="left", fontsize=14, color=TEAL)
+        else:
+            ax.set_title(rf"$E = {e:.2f}\,E_1$:  {r:.2f} half-waves, $\psi(L) \neq 0$", loc="left", fontsize=14, color=CARDINAL)
 
     ani = FuncAnimation(fig, update, frames=len(es), interval=110, blit=False)
     return fig, ani
@@ -987,54 +986,62 @@ def correspondence():
     return fig, ani
 
 
-# ------------------------------------------------------------ superposition of n = 1 and n = 2: the density sloshes
+# ------------------------------------------------------------ superposition of n = 1 and n = 2: the cross term sloshes the density
 @register
 def box_slosh():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     x = np.linspace(0, 1, 400)
     p1, p2 = np.sqrt(2) * np.sin(np.pi * x), np.sqrt(2) * np.sin(2 * np.pi * x)
+    fixed, cross = 0.5 * (p1**2 + p2**2), p1 * p2               # |Psi|^2 = fixed + cross cos(wt): even + odd about L/2
     nf = 60
-    ts = np.linspace(0, 2 * np.pi, nf, endpoint=False)          # E1 = 1, E2 = 4, hbar = 1: three sloshes
-    tt = np.linspace(0, 2 * np.pi, 400)
-    xbar = lambda t: 0.5 - 16 / (9 * np.pi**2) * np.cos(3 * t)  # <x>(t) = L/2 + x12 cos(w21 t)
+    ts = np.linspace(0, 2 * np.pi, nf, endpoint=False)          # E1 = 1, E2 = 4, hbar = 1: w = 3, three sloshes
+    xbar = lambda t: 0.5 - 16 / (9 * np.pi**2) * np.cos(3 * t)  # <x>(t) = L/2 + x12 cos(wt), x12 = -16L/9pi^2
     th = np.linspace(0, 2 * np.pi, 200)
-    fig = plt.figure(figsize=(8, 3.3))
-    gs = fig.add_gridspec(2, 2, width_ratios=[2.3, 1], hspace=0.75, wspace=0.22)
-    ax, axc, axt = fig.add_subplot(gs[:, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 1])
-    ax.plot(x, 0.5 * p1**2, color=GRAY, lw=1, ls="--")
-    ax.plot(x, 0.5 * p2**2, color=GRAY, lw=1, ls=":")
-    (dens,) = ax.plot([], [], color=CARDINAL, lw=2.6, label=r"$|\Psi(x,t)|^2$")
+    fig = plt.figure(figsize=(7.2, 3.4))
+    gs = fig.add_gridspec(2, 2, width_ratios=[2.3, 1], height_ratios=[2, 1], hspace=0.42, wspace=0.08)
+    ax, axx = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0])
+    axc, axl = fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 1])
+    ax.plot(x, fixed, color=GRAY, lw=1.8, ls="--", label=r"$\frac{1}{2}(\psi_1^2 + \psi_2^2)$")
+    (dens,) = ax.plot([], [], color=CARDINAL, lw=2.8, label=r"$|\Psi|^2$")
     band = [ax.fill_between(x, 0 * x, color=CARDINAL, alpha=0.18, lw=0)]
-    (mark,) = ax.plot([], [], marker="^", color=PURPLE, ms=13, clip_on=False, zorder=6, ls="none",
-                      label=r"$\langle x\rangle$")
-    ax.plot([0, 0, 1, 1], [3.4, 0, 0, 3.4], color="k", lw=2.6)
-    ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 3.4); ax.set_yticks([])
-    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"]); ax.set_xlabel("x", labelpad=8)
-    ax.tick_params(axis="x", pad=10)
-    ax.legend(loc="upper right", frameon=False, fontsize=10)
-    ax.set_title(r"$\Psi = (\psi_1 e^{-iE_1t/\hbar} + \psi_2 e^{-iE_2t/\hbar})/\sqrt{2}$", loc="left", fontsize=11)
+    (mark,) = ax.plot([], [], marker="^", color=PURPLE, ms=14, zorder=6, ls="none", label=r"$\langle x\rangle$")
+    ax.plot([0, 0, 1, 1], [3.35, 0, 0, 3.35], color="k", lw=2.6)          # peak of |Psi|^2 is 3.10
+    ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 3.35); ax.set_xticks([]); ax.set_yticks([])
+    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 0.97), ncol=3, frameon=False, fontsize=13,
+              handlelength=1.6, columnspacing=1.4)
+    axx.axhline(0, color=GRAY, lw=0.8)
+    (crs,) = axx.plot([], [], color=PURPLE, lw=2.6)
+    cband = [axx.fill_between(x, 0 * x, color=PURPLE, alpha=0.18, lw=0)]
+    axx.set_xlim(-0.02, 1.02); axx.set_ylim(-1.7, 1.7); axx.set_yticks([])
+    axx.set_xticks([0, 0.5, 1]); axx.set_xticklabels(["0", "L/2", "L"], fontsize=13)
+    axx.spines["left"].set_visible(False)
+    axx.set_title(r"cross term $\psi_1\psi_2\cos\omega t$", loc="left", fontsize=13, color=PURPLE)
+    for a in (ax, axx):
+        a.axvline(0.5, color=GRAY, lw=0.8, ls=":")
     axc.plot(np.cos(th), np.sin(th), color=GRAY, lw=1, ls="--")
-    (h1,) = axc.plot([], [], color=TEAL, lw=2.8, label=r"$E_1$")
-    (h2,) = axc.plot([], [], color=ORANGE, lw=2.8, label=r"$E_2 = 4E_1$")
-    axc.set_aspect("equal"); axc.set_xlim(-1.25, 1.25); axc.set_ylim(-1.25, 1.25); axc.set_axis_off()
-    axc.legend(loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=False, fontsize=9.5, handlelength=1.2)
-    axc.set_title("two phase clocks", fontsize=10.5, color=GRAY)
-    axt.plot(tt, xbar(tt), color=GRAY, lw=1.2)
-    (tdot,) = axt.plot([], [], "o", color=PURPLE, ms=8)
-    axt.set_xlim(0, 2 * np.pi); axt.set_ylim(0.25, 0.75); axt.set_xticks([])
-    axt.set_yticks([0.5]); axt.set_yticklabels(["L/2"]); axt.set_xlabel("time")
-    axt.set_title(r"$\langle x\rangle$ swings at $(E_2-E_1)/\hbar$", fontsize=10.5)
-    fig.subplots_adjust(left=0.03, right=0.9, top=0.88, bottom=0.14)
+    (arc,) = axc.plot([], [], color=PURPLE, lw=3.2, label=r"$\omega t$")
+    (h1,) = axc.plot([], [], color=TEAL, lw=3.2, label=r"$E_1$")
+    (h2,) = axc.plot([], [], color=ORANGE, lw=3.2, label=r"$E_2 = 4E_1$")
+    axc.set_aspect("equal"); axc.set_xlim(-1.15, 1.15); axc.set_ylim(-1.15, 1.15); axc.set_axis_off()
+    axc.set_title("phase clocks", fontsize=13)
+    axl.set_axis_off()
+    axl.legend(handles=[h1, h2, arc], loc="center", frameon=False, fontsize=13, handlelength=1.2)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.87, bottom=0.1)
 
     def update(i):
         t = ts[i]
-        psi = (p1 * np.exp(-1j * t) + p2 * np.exp(-4j * t)) / np.sqrt(2)
-        rho = np.abs(psi) ** 2
-        dens.set_data(x, rho)
-        band[0].remove(); band[0] = ax.fill_between(x, rho, color=CARDINAL, alpha=0.18, lw=0)
-        mark.set_data([xbar(t)], [-0.12])
-        h1.set_data([0, np.cos(-t)], [0, np.sin(-t)]); h2.set_data([0, np.cos(-4 * t)], [0, np.sin(-4 * t)])
-        tdot.set_data([t], [xbar(t)])
+        c = cross * np.cos(3 * t)
+        dens.set_data(x, fixed + c)
+        band[0].remove(); band[0] = ax.fill_between(x, fixed + c, color=CARDINAL, alpha=0.18, lw=0)
+        mark.set_data([xbar(t)], [0.14])
+        crs.set_data(x, c)
+        cband[0].remove(); cband[0] = axx.fill_between(x, c, color=PURPLE, alpha=0.18, lw=0)
+        a1, a2 = -t, -4 * t                                     # clock hands: e^{-iE1 t}, e^{-iE2 t}
+        d = (a1 - a2) % (2 * np.pi)                             # angle between the hands, w t
+        s = np.linspace(a2, a2 + d, 40) if d <= np.pi else np.linspace(a1, a1 + 2 * np.pi - d, 40)
+        arc.set_data(0.42 * np.cos(s), 0.42 * np.sin(s))
+        h1.set_data([0, np.cos(a1)], [0, np.sin(a1)]); h2.set_data([0, np.cos(a2)], [0, np.sin(a2)])
 
     ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
     return fig, ani
@@ -1264,6 +1271,6 @@ if __name__ == "__main__":
         fig, ani = REGISTRY[name]()
         if ani is not None:
             path = f"{OUT}/{name}.gif"
-            ani.save(path, writer=PillowWriter(fps=15), dpi=100)
+            ani.save(path, writer=PillowWriter(fps=15), dpi=GIF_DPI)
             print("wrote", path)
         plt.close(fig)
