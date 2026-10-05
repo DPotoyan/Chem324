@@ -311,6 +311,7 @@ pot1 = mo.ui.dropdown(
         "linear well, V = a|x|": "linear",
         "harmonic, V = a x^2 / 2": "harmonic",
         "double well, V = a((x/2)^2 - 1)^2": "double",
+        "square barrier, height a, width 1": "barrier",
     },
     value="harmonic, V = a x^2 / 2", label="potential",
 )
@@ -332,6 +333,8 @@ elif pot1.value == "linear":
     v1 = amp1.value * np.abs(x1)
 elif pot1.value == "harmonic":
     v1 = 0.5 * amp1.value * x1**2
+elif pot1.value == "barrier":
+    v1 = np.where(np.abs(x1) < 0.5, amp1.value, 0.0)
 else:
     v1 = amp1.value * ((x1 / 2) ** 2 - 1) ** 2
 
@@ -354,11 +357,140 @@ ax1.set_title(f"{pot1.value}:  E = " + ", ".join(f"{e:.2f}" for e in en1[:4]) + 
 fig1
 ```
 
-Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets.
+Try the classics: the box gives the $n^2$ ladder, the harmonic well gives perfectly even spacing (the fingerprint of vibrations), the linear well spaces levels like Airy zeros, and the double well pairs levels into tunneling doublets. The square barrier does the same with sharp walls: it cuts the box into two halves that talk only by tunneling, so raise $a$ and watch each pair of levels squeeze together.
 
 
 
-### 7. Quadratic equation solver
+### 7. Tunneling through a square barrier
+
+An electron with energy $E$ comes in from the left toward a barrier of height $V_0$ and width $a$. Classically it bounces back whenever $E < V_0$. Quantum mechanically the wave leaks in, decays as $e^{-\kappa x}$ inside, and whatever amplitude reaches the far side carries on as a transmitted wave. The fraction that gets through is
+
+$$
+T = \left[1 + \frac{V_0^2 \sinh^2(\kappa a)}{4E(V_0 - E)}\right]^{-1}, \qquad \kappa = \frac{\sqrt{2m(V_0 - E)}}{\hbar}
+$$
+
+For a thick barrier ($\kappa a \gg 1$) this becomes $T \approx 16\frac{E}{V_0}\left(1 - \frac{E}{V_0}\right)e^{-2\kappa a}$, exponential in the width. Units here are eV and Å with the electron mass. The derivation is in the [tunneling lecture](../ch03/03-tunneling-and-finite-square-well.md).
+
+```{marimo} python
+:hide-code: true
+
+V0_8 = mo.ui.slider(0.5, 10.0, step=0.5, value=4.0, show_value=True, label="barrier height V0 (eV)")
+w8 = mo.ui.slider(0.25, 10.0, step=0.25, value=3.0, show_value=True, label="width a (Å)")
+E8 = mo.ui.slider(0.05, 15.0, step=0.05, value=2.0, show_value=True, label="energy E (eV)")
+log8 = mo.ui.checkbox(value=False, label="log scale for T")
+mo.vstack([mo.hstack([V0_8, w8], justify="start", gap=1.5), mo.hstack([E8, log8], justify="start", gap=1.5)])
+```
+
+```{marimo} python
+:hide-code: true
+
+c8 = const.hbar**2 / (2 * const.m_e) / const.e * 1e20   # hbar^2/2m = 3.81 eV Å^2 for an electron
+V8, a8 = V0_8.value, w8.value
+en8 = E8.value if abs(E8.value - V8) > 1e-3 else V8 + 1e-3   # step off E = V0, where the basis degenerates
+
+def trans8(E, V, a):
+    """exact T(E) for a square barrier; sinh(x)/x and sin(x)/x keep E = V0 finite"""
+    d = (V - E) / c8
+    qa = np.sqrt(np.abs(d)) * a
+    sx = np.where(d > 0, np.sinh(qa) / np.where(qa > 1e-9, qa, 1.0), np.sinc(qa / np.pi))
+    sx = np.where(qa > 1e-9, sx, 1.0)
+    return 1.0 / (1.0 + V**2 * a**2 * sx**2 / (4 * E * c8))
+
+# scattering state: e^{ikx} + r e^{-ikx} | C e^{q(x-a)} + D e^{-qx} | t e^{ikx}, matched at x = 0 and x = a
+k8 = np.sqrt(en8 / c8)
+q8 = np.sqrt((V8 - en8) / c8 + 0j)
+eq8 = np.exp(-q8 * a8)
+M8 = np.array([
+    [1, -eq8, -1, 0],
+    [-1j * k8, -q8 * eq8, q8, 0],
+    [0, 1, eq8, -np.exp(1j * k8 * a8)],
+    [0, q8, -q8 * eq8, -1j * k8 * np.exp(1j * k8 * a8)],
+])
+r8, C8, D8, t8 = np.linalg.solve(M8, np.array([-1, -1j * k8, 0, 0]))
+T8, R8 = abs(t8) ** 2, abs(r8) ** 2
+
+side8 = float(np.clip(3 * np.pi / k8, 8.0, 25.0))   # about 1.5 wavelengths on each side
+xs8 = np.linspace(-side8, a8 + side8, 1600)
+psi8 = np.where(xs8 < 0, np.exp(1j * k8 * xs8) + r8 * np.exp(-1j * k8 * xs8),
+       np.where(xs8 <= a8, C8 * np.exp(q8 * (xs8 - a8)) + D8 * np.exp(-q8 * xs8),
+                t8 * np.exp(1j * k8 * xs8)))
+
+# left: Re psi drawn at height E over the barrier; right: T(E) with the current E marked
+inside8 = (xs8 >= 0) & (xs8 <= a8)
+top8 = max(V8, en8)
+fig8, (axL8, axR8) = plt.subplots(1, 2, figsize=(9.6, 4.0), gridspec_kw={"width_ratios": [1.3, 1]})
+axL8.fill_between(xs8, np.where(inside8, V8, 0.0), color="0.88")
+axL8.plot(xs8, np.where(inside8, V8, 0.0), color="0.35", lw=1.8)
+axL8.axhline(en8, color="0.6", ls="--", lw=0.9)
+axL8.plot(xs8, en8 + 0.22 * top8 * psi8.real / np.abs(psi8.real).max(), color="steelblue", lw=1.6)
+axL8.text(xs8[0], en8, " E", va="bottom", fontsize=10, color="0.4")
+axL8.text(a8 / 2, V8, "$V_0$", ha="center", va="bottom", fontsize=10, color="0.35")
+axL8.set_xlim(xs8[0], xs8[-1])
+axL8.set_ylim(min(-0.05 * top8, en8 - 0.3 * top8), max(V8, en8 + 0.3 * top8) * 1.08)
+axL8.set_xlabel("x (Å)")
+axL8.set_ylabel("energy (eV)")
+axL8.set_title(f"electron from the left:  T = {T8:.3g},  R = {R8:.3g}", fontsize=10)
+
+eg8 = np.linspace(0.005, max(2.5 * V8, 1.15 * en8), 600)
+tg8 = trans8(eg8, V8, a8)
+axR8.plot(eg8, tg8, color="0.2", lw=2, label="quantum")
+axR8.plot(eg8, (eg8 > V8).astype(float), color="0.6", ls=":", lw=1.6, label="classical")
+axR8.axvline(V8, color="0.75", lw=0.8)
+axR8.plot(en8, T8, "o", color="crimson", ms=8, zorder=5)
+if log8.value:
+    axR8.set_yscale("log")
+    axR8.set_ylim(max(tg8.min(), 1e-300) / 3, 3)
+else:
+    axR8.set_ylim(-0.03, 1.08)
+axR8.set_xlabel("E (eV)")
+axR8.set_ylabel("transmission T")
+axR8.set_title(f"barrier: $V_0$ = {V8:g} eV, a = {a8:g} Å", fontsize=10)
+axR8.legend(loc="lower right", fontsize=9, frameon=False)
+fig8.suptitle("Fig. Square barrier: the wave decays inside and leaks through (left); transmission versus energy (right)", fontsize=10, y=1.02)
+fig8.tight_layout()
+fig8
+```
+
+```{marimo} python
+:hide-code: true
+
+def sci8(v):
+    """3 significant figures, as LaTeX powers of ten when small"""
+    if v >= 1e-3:
+        return f"{v:.3g}"
+    m8, p8 = f"{v:.2e}".split("e")
+    return f"{m8} \\times 10^{{{int(p8)}}}"
+
+if abs(E8.value - V8) <= 1e-3:
+    text8 = (
+        f"**At the barrier top.** $E = V_0$, so $\\kappa = 0$: inside the barrier the wave neither decays "
+        f"nor oscillates. The formula's limit is $T = \\left[1 + m V_0 a^2/2\\hbar^2\\right]^{{-1}} = {sci8(T8)}$."
+    )
+elif en8 < V8:
+    kap8 = np.sqrt((V8 - en8) / c8)
+    est8 = 16 * (en8 / V8) * (1 - en8 / V8) * np.exp(-2 * kap8 * a8)
+    text8 = (
+        f"**Below the barrier.** $\\kappa = {kap8:.3g}$ Å$^{{-1}}$, so inside the barrier the wave loses "
+        f"a factor of $e$ every $1/\\kappa = {1 / kap8:.3g}$ Å, and $\\kappa a = {kap8 * a8:.3g}$.\n\n"
+        f"Exact $T = {sci8(T8)}$. Thick-barrier estimate "
+        f"$16\\frac{{E}}{{V_0}}\\left(1 - \\frac{{E}}{{V_0}}\\right)e^{{-2\\kappa a}} = {sci8(est8)}$, "
+        f"off by {abs(est8 / T8 - 1):.0%}."
+    )
+else:
+    kp8 = np.sqrt((en8 - V8) / c8)
+    text8 = (
+        f"**Above the barrier.** A classical electron always gets through, yet $R = {R8:.3g}$ of the wave "
+        f"reflects. Inside, the wave oscillates with $k' = {kp8:.3g}$ Å$^{{-1}}$ and $k'a/\\pi = {kp8 * a8 / np.pi:.2f}$; "
+        f"$T = 1$ exactly when $k'a/\\pi$ is a whole number, so the barrier holds a whole number of half wavelengths."
+    )
+mo.md(text8)
+```
+
+Start below the barrier and widen it in steps of 1 Å: $T$ drops by roughly the same factor each step, and the log scale turns that exponential into a straight line. Then push $E$ above $V_0$: the classical electron always passes, but the quantum one still reflects, and $T$ wiggles up to 1 only at the resonances. The same exponential is why a scanning tunneling microscope current changes about tenfold per ångström of tip height, and why a proton, 1836 times heavier than an electron, has a $\kappa$ about 43 times larger and tunnels only through barriers a fraction of an ångström thick.
+
+
+
+### 8. Quadratic equation solver
 
 Every quadratic $ax^2 + bx + c = 0$ is solved by one formula:
 

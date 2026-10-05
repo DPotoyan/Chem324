@@ -8,8 +8,10 @@ kernelspec:
 
 **Prerequisites**
 
-- The [waves demo](https://dpotoyan.github.io/Chem324/demo-visualizing-waves): you can
-  adapt its examples to solve most of these challenges.
+- The Chapter 2 lectures [Waves](https://dpotoyan.github.io/Chem324/waves) (traveling
+  and standing waves, interference, beats) and
+  [Wave equation](https://dpotoyan.github.io/Chem324/the-wave-equation) (normal modes of a
+  string, 2D membrane): you can adapt their code to solve most of these challenges.
 - The [Python and NumPy tutorials](https://dpotoyan.github.io/Chem324/python-basics)
   if you want a refresher on the basics.
 

@@ -8,9 +8,10 @@ kernelspec:
 
 **Prerequisites**
 
-- The [hydrogen wavefunctions demo](https://dpotoyan.github.io/Chem324/demo-hydrogen-wavefunctions)
-  and the [spherical harmonics demo](https://dpotoyan.github.io/Chem324/demo-spherical-harmonics):
-  the plotting functions there are your starting points.
+- The lectures [Hydrogenlike Atoms](https://dpotoyan.github.io/Chem324/hydrogenlike-atoms)
+  (radial wavefunctions), [Atomic Orbitals](https://dpotoyan.github.io/Chem324/atomic-orbitals)
+  (3D orbital plots), and [Angular Momentum](https://dpotoyan.github.io/Chem324/angular-momentum)
+  (plotting spherical harmonics): the plotting code there is your starting point.
 
 **How to submit**: start with **File > Save a copy in Drive** so your work is saved
 as you go. Add your code below each problem, using as many cells as you need. When you

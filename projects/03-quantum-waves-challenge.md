@@ -8,8 +8,9 @@ kernelspec:
 
 **Prerequisites**
 
-- The [quantum waves demo](https://dpotoyan.github.io/Chem324/demo-quantum-waves) and
-  the [particle in a box demo](https://dpotoyan.github.io/Chem324/demo-particle-in-a-box).
+- The lectures [Particle in a Box](https://dpotoyan.github.io/Chem324/particle-in-a-box),
+  [Time Dependence](https://dpotoyan.github.io/Chem324/time-dependence) (superpositions
+  in time), and [Fourier Transforms](https://dpotoyan.github.io/Chem324/fourier-transforms).
 - The [Python and NumPy tutorials](https://dpotoyan.github.io/Chem324/python-basics)
   for the numerical tools.
 

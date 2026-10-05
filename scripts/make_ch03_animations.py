@@ -22,6 +22,11 @@ From the "deck 3.2" section, page ch03/02 syncs box_bounce, pib_ladder and box_s
 shows box length, large n and degeneracy with marimo sliders instead, so box_squeeze,
 correspondence and degeneracy_split stay deck-only, as do box_fit (ch03/01's trial-energy
 slider already makes that point), box_model, box2d_states and all of "deck 3.3".
+From the "deck 3.4" section, page ch03/03 syncs barrier_packet, wall_leak, fsw_match, fsw_ladder,
+barrier_setup, barrier_width, stm_scan and ammonia_flip; fsw_circle and barrier_mass stay deck-only
+(the page's marimo sliders show the graphical solution and the electron/H/D comparison instead), and
+so do curvature_signs and curvature_tracer (ch03/01 already teaches the curvature rule on its page)
+and barrier_counts (the page defines T in words).
 """
 import sys
 import numpy as np
@@ -1264,6 +1269,615 @@ def quantum_dots():
     fig.subplots_adjust(left=0.01, right=0.98, top=0.88, bottom=0.12)
     fig.savefig(f"{OUT}/quantum_dots.png", dpi=200)
     print("wrote", f"{OUT}/quantum_dots.png")
+    return fig, None
+
+
+# ============================================================ deck 3.4 "Tunneling and the finite square well"
+# Page ch03/03 syncs barrier_packet, wall_leak, fsw_match, fsw_ladder, barrier_width, stm_scan and
+# ammonia_flip. fsw_circle and barrier_mass are deck-only: the page shows the graphical solution and
+# the width and mass dependence of T with marimo sliders instead.
+
+# ------------------------------------------------------------ a ball bounces back, a wave gets through
+@register
+def barrier_packet():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    N = 4096                                                    # hbar = m = 1, split-operator steps on a periodic grid
+    x = np.linspace(-60, 60, N, endpoint=False); dx = x[1] - x[0]
+    kk = 2 * np.pi * np.fft.fftfreq(N, dx)
+    k0, V0, a, sig, x0 = 5.0, 20.0, 0.35, 1.5, -14.0             # E = k0^2/2 = 12.5, well below the top V0 = 20
+    E0 = 0.5 * k0**2
+    V = np.where((x > 0) & (x < a), V0, 0.0)
+    psi = np.exp(-(x - x0)**2 / (4 * sig**2) + 1j * k0 * x)
+    psi = psi / np.sqrt(np.sum(np.abs(psi)**2) * dx)
+    dt, per, nmove = 0.002, 85, 36                              # each frame advances t by 0.17
+    half, kin = np.exp(-0.5j * V * dt), np.exp(-0.5j * kk**2 * dt)
+    dens = np.zeros((nmove, N))
+    for i in range(nmove):
+        dens[i] = np.abs(psi)**2
+        for _ in range(per):
+            psi = half * np.fft.ifft(kin * np.fft.fft(half * psi))
+    order = np.concatenate([np.zeros(4, int), np.arange(nmove), np.full(8, nmove - 1)])
+    thit = (-0.35 - x0) / k0                                    # the classical ball turns at the wall
+    win = (x > -24) & (x < 24); xs = x[win]
+    sc = 0.92 * (25.5 - E0) / dens.max()                       # the tallest fringe, at the barrier, just fits
+    fig, (axc, ax) = plt.subplots(2, 1, figsize=(8, 3.6), sharex=True,
+                                  gridspec_kw={"height_ratios": [1, 2.7], "hspace": 0.18})
+    axc.axvspan(0, a, color=GRAY, alpha=0.5, lw=0)
+    axc.axhline(0.4, color=GRAY, lw=0.8, ls=":")
+    (ball,) = axc.plot([], [], "o", color=CARDINAL, ms=11)
+    axc.set_ylim(0, 1); axc.set_yticks([]); axc.spines["left"].set_visible(False); axc.tick_params(bottom=False)
+    axc.set_title("classical ball with the same energy: it always turns back", loc="left", fontsize=12)
+    ax.fill_between([0, a], 0, V0, color=GRAY, alpha=0.3, lw=0)
+    ax.plot([-24, 0, 0, a, a, 24], [0, 0, V0, V0, 0, 0], color="k", lw=2)
+    ax.axhline(E0, color=GRAY, lw=1, ls="--")
+    (dline,) = ax.plot([], [], color=TEAL, lw=2)
+    band = [ax.fill_between(xs, E0, E0, color=TEAL, alpha=0.25, lw=0)]
+    tlab = ax.text(23.6, 24.6, "", ha="right", va="top", color=TEAL, fontsize=13)
+    ax.set_xlim(-24, 24); ax.set_ylim(8, 25.5); ax.set_xticks([])
+    ax.set_yticks([E0, V0]); ax.set_yticklabels(["E", r"$V_0$"], fontsize=13)
+    ax.set_xlabel("x", fontsize=12)
+    ax.set_title(r"quantum wave: $|\Psi(x,t)|^2$ drawn on its energy", loc="left", fontsize=12)
+    fig.subplots_adjust(left=0.06, right=0.98, top=0.92, bottom=0.08)
+
+    def update(i):
+        d = dens[order[i]]
+        t = order[i] * per * dt
+        dline.set_data(xs, E0 + sc * d[win])
+        band[0].remove(); band[0] = ax.fill_between(xs, E0, E0 + sc * d[win], color=TEAL, alpha=0.25, lw=0)
+        ball.set_data([x0 + k0 * t if t < thit else -0.35 - k0 * (t - thit)], [0.4])
+        tr = d[x > a].sum() * dx
+        tlab.set_text(f"through the barrier: {100 * tr:.0f}%" if tr > 0.005 else "")
+
+    ani = FuncAnimation(fig, update, frames=len(order), interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ finite walls: the state leaks a distance 1/beta (still)
+@register
+def wall_leak():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    z0 = 2.0                                                    # well strength; x in units of L/2, E in units of V0
+    lo, hi = 1e-9, np.pi / 2 - 1e-9                             # even ground state: z tan z = sqrt(z0^2 - z^2)
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        lo, hi = (mid, hi) if mid * np.tan(mid) < np.sqrt(z0**2 - mid**2) else (lo, mid)
+    z = 0.5 * (lo + hi); b = np.sqrt(z0**2 - z**2); E = (z / z0)**2    # here beta = b, since L/2 = 1
+    x = np.linspace(-3.3, 3.3, 900)
+    psi = np.where(np.abs(x) < 1, np.cos(z * x), np.cos(z) * np.exp(-b * (np.abs(x) - 1)))
+    sc = 0.42
+    fig, ax = plt.subplots(figsize=(8, 3.1))
+    ax.axvspan(-1, 1, color=TEAL, alpha=0.07, lw=0)
+    for x1, x2 in ((-3.3, -1), (1, 3.3)):
+        ax.axvspan(x1, x2, color=CARDINAL, alpha=0.06, lw=0)
+    ax.plot([-3.3, -1, -1, 1, 1, 3.3], [1, 1, 0, 0, 1, 1], color="k", lw=2.4)
+    ax.axhline(E, color=GRAY, lw=1.1, ls="--")
+    ax.text(3.25, E + 0.03, "E", ha="right", va="bottom", color=GRAY, fontsize=13)
+    ax.fill_between(x, E, E + sc * psi, where=np.abs(x) >= 1, color=CARDINAL, alpha=0.3, lw=0)
+    ax.plot(x, E + sc * psi, color=TEAL, lw=2.6)
+    d = 1 / b
+    ax.annotate("", xy=(1 + d, E - 0.08), xytext=(1, E - 0.08),
+                arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.6, shrinkA=0, shrinkB=0))
+    ax.text(1 + d / 2, E - 0.12, r"$1/\beta$", ha="center", va="top", color=CARDINAL, fontsize=14)
+    ax.text(1.75, E + 0.14, r"$\psi \propto e^{-\beta x}$", color=CARDINAL, fontsize=13)
+    ax.text(0, 0.86, r"$V = 0$:  $E > V$, $\psi$ oscillates", ha="center", color=TEAL, fontsize=12.5)
+    for xc in (-2.15, 2.15):
+        ax.text(xc, 1.07, r"$V_0$:  $E < V$, $\psi$ decays", ha="center", color=CARDINAL, fontsize=12.5)
+    ax.set_xlim(-3.3, 3.3); ax.set_ylim(-0.05, 1.27); ax.set_yticks([])
+    ax.set_xticks([-1, 0, 1]); ax.set_xticklabels([r"$-L/2$", "0", r"$L/2$"], fontsize=13)
+    ax.spines["left"].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/wall_leak.png", dpi=200)
+    print("wrote", f"{OUT}/wall_leak.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ join psi and psi': at most energies the join has a kink (still)
+@register
+def fsw_match():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    z0 = 2.0                                                    # the same well as wall_leak
+    lo, hi = 1e-9, np.pi / 2 - 1e-9
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        lo, hi = (mid, hi) if mid * np.tan(mid) < np.sqrt(z0**2 - mid**2) else (lo, mid)
+    zr = 0.5 * (lo + hi)
+    x = np.linspace(-2.6, 2.6, 900)
+    fig, axes = plt.subplots(2, 1, figsize=(4.8, 4.4), sharex=True, gridspec_kw={"hspace": 0.45})
+    for ax, z, col, head in ((axes[0], 0.45 * zr, CARDINAL, "trial E: the slopes disagree, a kink"),
+                             (axes[1], zr, TEAL, r"allowed E: $\psi$ and $\psi'$ both match")):
+        b = np.sqrt(z0**2 - z**2); E = (z / z0)**2
+        psi = np.where(np.abs(x) < 1, np.cos(z * x), np.cos(z) * np.exp(-b * (np.abs(x) - 1)))
+        ax.plot([-2.6, -1, -1, 1, 1, 2.6], [1, 1, 0, 0, 1, 1], color="k", lw=2)
+        ax.axhline(E, color=GRAY, lw=0.9, ls="--")
+        ax.plot(x, E + 0.45 * psi, color=col, lw=2.6)
+        ax.plot([-1, 1], [E + 0.45 * np.cos(z)] * 2, "o", mfc="none", mec=col, mew=2, ms=17)
+        ax.set_title(head, loc="left", fontsize=12.5, color=col)
+        ax.set_xlim(-2.6, 2.6); ax.set_ylim(-0.04, 1.08); ax.set_yticks([])
+        ax.spines["left"].set_visible(False)
+    axes[0].tick_params(bottom=False)
+    axes[1].set_xticks([-1, 0, 1]); axes[1].set_xticklabels([r"$-L/2$", "0", r"$L/2$"], fontsize=12)
+    fig.subplots_adjust(left=0.03, right=0.98, top=0.92, bottom=0.1)
+    fig.savefig(f"{OUT}/fsw_match.png", dpi=200)
+    print("wrote", f"{OUT}/fsw_match.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ graphical solution: the circle z0 grows across the branches (deck GIF)
+@register
+def fsw_circle():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    z0s = np.concatenate([np.full(6, 0.5), np.linspace(0.5, 7.2, 47)[1:], np.full(12, 7.2)])
+    fig, (ax, axw) = plt.subplots(1, 2, figsize=(8, 3.5), gridspec_kw={"width_ratios": [1, 1.3], "wspace": 0.14})
+    for m in range(5):                                          # even branches z tan z, odd branches -z cot z
+        zz = np.linspace(m * np.pi / 2 + 1e-4, (m + 1) * np.pi / 2 - 1e-4, 400)
+        ee = zz * np.tan(zz) if m % 2 == 0 else -zz / np.tan(zz)
+        ee[ee > 8] = np.nan
+        ax.plot(zz, ee, color=TEAL if m % 2 == 0 else PURPLE, lw=2.2)
+    for m in range(1, 5):
+        ax.axvline(m * np.pi / 2, color=GRAY, lw=0.7, ls=":")
+    th = np.linspace(0, np.pi / 2, 200)
+    (circ,) = ax.plot([], [], color="k", lw=1.8)
+    dots = [ax.plot([], [], "o", color=TEAL if m % 2 == 0 else PURPLE, ms=9, mec="k", mew=0.8, zorder=5)[0]
+            for m in range(5)]
+    ax.set_aspect("equal"); ax.set_xlim(0, 7.7); ax.set_ylim(0, 7.7); ax.set_yticks([])
+    ax.set_xticks(np.arange(1, 5) * np.pi / 2)
+    ax.set_xticklabels([r"$\frac{\pi}{2}$", r"$\pi$", r"$\frac{3\pi}{2}$", r"$2\pi$"], fontsize=13)
+    ax.set_xlabel(r"$z = kL/2$", fontsize=12); ax.set_ylabel(r"$\eta = \beta L/2$", fontsize=12)
+    ax.text(0.74, 1.03, "even", color=TEAL, fontsize=12.5, ha="right", transform=ax.transAxes)
+    ax.text(1.0, 1.03, "odd", color=PURPLE, fontsize=12.5, ha="right", transform=ax.transAxes)
+    (walls,) = axw.plot([], [], color="k", lw=2.4)             # depth fixed, L/2 grows in step with z0
+    lev = [axw.plot([], [], color=TEAL if m % 2 == 0 else PURPLE, lw=3.2)[0] for m in range(5)]
+    axw.set_xlim(-8.4, 8.4); axw.set_ylim(-0.04, 1.12); axw.set_xticks([])
+    axw.set_yticks([0, 1]); axw.set_yticklabels(["0", r"$V_0$"], fontsize=13)
+    axw.set_xlabel("widen the well, depth fixed", fontsize=12)
+    fig.subplots_adjust(left=0.05, right=0.98, top=0.88, bottom=0.16)
+
+    def update(i):
+        z0 = z0s[i]
+        circ.set_data(z0 * np.cos(th), z0 * np.sin(th))
+        walls.set_data([-8.4, -z0, -z0, z0, z0, 8.4], [1, 1, 0, 0, 1, 1])
+        n = int(2 * z0 / np.pi) + 1                             # one more state each time z0 passes a multiple of pi/2
+        for m in range(5):
+            if m < n:
+                lo, hi = m * np.pi / 2 + 1e-9, min((m + 1) * np.pi / 2, z0) - 1e-9
+                for _ in range(50):
+                    mid = 0.5 * (lo + hi)
+                    f = (mid * np.tan(mid) if m % 2 == 0 else -mid / np.tan(mid)) - np.sqrt(z0**2 - mid**2)
+                    lo, hi = (mid, hi) if f < 0 else (lo, mid)
+                z = 0.5 * (lo + hi)
+                dots[m].set_data([z], [np.sqrt(z0**2 - z**2)])
+                lev[m].set_data([-z0, z0], [(z / z0)**2] * 2)   # E = V0 (z/z0)^2
+            else:
+                dots[m].set_data([], []); lev[m].set_data([], [])
+        ax.set_title(rf"$z_0 = {z0:.2f}$", loc="left", fontsize=13)
+        axw.set_title(f"{n} bound state" + ("s" if n > 1 else ""), loc="left", fontsize=13)
+
+    ani = FuncAnimation(fig, update, frames=len(z0s), interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ bound states of a finite well, what leaks, vs the infinite box (still)
+@register
+def fsw_ladder():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    V0, L = 5.0, 10.0                                           # electron in a 5 eV, 10 Angstrom well (the page's example)
+    z0 = 0.5 * L * 0.5123 * np.sqrt(V0)                         # 0.5123 = sqrt(2 m_e (1 eV)) / hbar, in 1/Angstrom
+    n = int(2 * z0 / np.pi) + 1
+    zs = np.zeros(n)
+    for m in range(n):
+        lo, hi = m * np.pi / 2 + 1e-9, min((m + 1) * np.pi / 2, z0) - 1e-9
+        for _ in range(60):
+            mid = 0.5 * (lo + hi)
+            f = (mid * np.tan(mid) if m % 2 == 0 else -mid / np.tan(mid)) - np.sqrt(z0**2 - mid**2)
+            lo, hi = (mid, hi) if f < 0 else (lo, mid)
+        zs[m] = 0.5 * (lo + hi)
+    E = V0 * (zs / z0)**2
+    Einf = 0.3760 * np.arange(1, n + 1)**2                      # n^2 h^2 / 8 m L^2 for L = 10 Angstrom, in eV
+    x = np.linspace(-12, 12, 1600); dx = x[1] - x[0]
+    out = np.abs(x) > L / 2
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(8, 3.6), sharey=True,
+                                        gridspec_kw={"width_ratios": [1, 1, 0.5], "wspace": 0.08})
+    for ax in (ax1, ax2):
+        ax.plot([-12, -5, -5, 5, 5, 12], [V0, V0, 0, 0, V0, V0], color="k", lw=2.2)
+        ax.set_xlim(-12, 12); ax.set_xticks([-5, 5]); ax.set_xticklabels([r"$-L/2$", r"$L/2$"], fontsize=12)
+    for m in range(n):
+        k, b = 2 * zs[m] / L, 2 * np.sqrt(z0**2 - zs[m]**2) / L
+        if m % 2 == 0:
+            psi = np.where(out, np.cos(k * L / 2) * np.exp(-b * (np.abs(x) - L / 2)), np.cos(k * x))
+        else:
+            psi = np.where(out, np.sign(x) * np.sin(k * L / 2) * np.exp(-b * (np.abs(x) - L / 2)), np.sin(k * x))
+        p = psi**2 / (np.sum(psi**2) * dx)
+        col = TEAL if m % 2 == 0 else PURPLE
+        for ax in (ax1, ax2):
+            ax.hlines(E[m], -12, 12, color=GRAY, lw=0.8, ls="--")
+        ax1.plot(x, E[m] + 0.36 * psi / np.abs(psi).max(), color=col, lw=2.2)
+        pn = 0.6 * p / p.max()
+        ax2.fill_between(x, E[m], E[m] + pn, where=out, color=CARDINAL, alpha=0.5, lw=0)
+        ax2.plot(x, E[m] + pn, color=CARDINAL, lw=1.8)
+        ax2.text(11.8, E[m] + 0.08, f"{100 * np.sum(p[out]) * dx:.1f}%", ha="right", va="bottom",
+                 fontsize=11.5, color=CARDINAL)
+        ax3.plot([0.06, 0.42], [E[m]] * 2, color=col, lw=3)
+        ax3.plot([0.58, 0.94], [Einf[m]] * 2, color=GRAY, lw=3)
+        ax3.plot([0.42, 0.58], [E[m], Einf[m]], color=GRAY, lw=0.9, ls=":")
+    ax3.axhline(V0, color="k", lw=1.6)
+    ax3.set_xlim(0, 1); ax3.set_xticks([0.24, 0.76]); ax3.set_xticklabels(["finite", "infinite"], fontsize=11.5)
+    ax3.tick_params(bottom=False)
+    ax1.set_ylim(-0.15, 6.5); ax1.set_yticks(range(7)); ax1.set_ylabel("energy (eV)", fontsize=12)
+    ax1.set_title(r"$\psi_n$ on its level", loc="left", fontsize=12)
+    ax2.set_title(r"$|\psi_n|^2$, shaded: outside", loc="left", fontsize=12)
+    ax3.set_title("levels", loc="left", fontsize=12)
+    for ax in (ax2, ax3):
+        ax.tick_params(left=False)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.91, bottom=0.1)
+    fig.savefig(f"{OUT}/fsw_ladder.png", dpi=200)
+    print("wrote", f"{OUT}/fsw_ladder.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ a barrier: widen it and the transmitted wave shrinks
+@register
+def barrier_width():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    E, V0 = 0.5, 1.0                                            # hbar = m = 1: k = beta = 1, so the exact T is sech^2(a)
+    k, q = np.sqrt(2 * E), np.sqrt(2 * (V0 - E))
+    x = np.linspace(-12.5, 15.5, 1400)
+    nf = 44
+    aa = np.concatenate([np.linspace(0.15, 3.0, nf - 10), np.full(10, 3.0)])
+    ph = 2 * np.pi * np.arange(nf) / 11                         # e^{-i omega t}: one turn every 11 frames
+    ag = np.linspace(0, 3.2, 200)
+    fig, (ax, axt) = plt.subplots(1, 2, figsize=(8, 3.0), gridspec_kw={"width_ratios": [2.4, 1], "wspace": 0.22})
+    (pot,) = ax.plot([], [], color="k", lw=2)
+    blk = [ax.fill_between([0, 1], 0, 1, color=GRAY, alpha=0.25, lw=0)]
+    ax.axhline(E, color=GRAY, lw=1, ls="--")
+    (wave,) = ax.plot([], [], color=TEAL, lw=2.2)
+    (envp,) = ax.plot([], [], color=TEAL, lw=1.1, ls=":")
+    (envm,) = ax.plot([], [], color=TEAL, lw=1.1, ls=":")
+    ax.text(-6.5, 1.06, "incident + reflected", ha="center", color=GRAY, fontsize=12)
+    ax.text(9.5, 1.06, r"transmitted, amplitude $|t|$", ha="center", color=TEAL, fontsize=12)
+    ax.set_xlim(-12.5, 15.5); ax.set_ylim(-0.02, 1.2); ax.set_xticks([])
+    ax.set_yticks([E, V0]); ax.set_yticklabels(["E", r"$V_0$"], fontsize=13)
+    ax.set_xlabel("x", fontsize=12)
+    axt.semilogy(ag, 1 / np.cosh(ag)**2, color=GRAY, lw=2.2)
+    axt.semilogy(ag, 4 * np.exp(-2 * ag), color=GRAY, lw=1, ls="--")
+    axt.text(1.45, 0.55, r"$\approx 4\,e^{-2\beta a}$", fontsize=12, color=GRAY)
+    (dot,) = axt.plot([], [], "o", color=CARDINAL, ms=9, zorder=5)
+    axt.set_xlim(0, 3.2); axt.set_ylim(5e-3, 1.6)
+    axt.set_xlabel(r"width $a$, units of $1/\beta$", fontsize=11.5)
+    axt.set_title(r"$T$, log scale", loc="left", fontsize=12)
+    fig.subplots_adjust(left=0.05, right=0.98, top=0.88, bottom=0.17)
+
+    def update(i):
+        a = aa[i]
+        M = np.array([[1, -1, -1, 0], [-1j * k, -q, q, 0],                     # psi and psi' continuous at 0 and a
+                      [0, np.exp(q * a), np.exp(-q * a), -np.exp(1j * k * a)],
+                      [0, q * np.exp(q * a), -q * np.exp(-q * a), -1j * k * np.exp(1j * k * a)]])
+        r, C, D, t = np.linalg.solve(M, np.array([-1, -1j * k, 0, 0]))
+        psi = np.where(x < 0, np.exp(1j * k * x) + r * np.exp(-1j * k * x),
+                       np.where(x < a, C * np.exp(q * x) + D * np.exp(-q * x), t * np.exp(1j * k * x)))
+        wave.set_data(x, E + 0.2 * np.real(psi * np.exp(-1j * ph[i])))
+        xr = x[x >= a]
+        envp.set_data(xr, E + 0.2 * abs(t) + 0 * xr); envm.set_data(xr, E - 0.2 * abs(t) + 0 * xr)
+        pot.set_data([-12.5, 0, 0, a, a, 15.5], [0, 0, V0, V0, 0, 0])
+        blk[0].remove(); blk[0] = ax.fill_between([0, a], 0, V0, color=GRAY, alpha=0.25, lw=0)
+        dot.set_data([a], [abs(t)**2])
+        ax.set_title(rf"$a = {a:.2f}/\beta$:  $T = |t|^2 = {abs(t)**2:.3f}$", loc="left", fontsize=13)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=120, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ width and mass sit in the exponent: electron, H, D (still)
+@register
+def barrier_mass():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    dE = 0.2                                                    # barrier height above E, eV
+    a = np.linspace(0, 10, 2000)                                # width, Angstrom
+    fig, ax = plt.subplots(figsize=(7.2, 3.4))
+    for name, m, col, xy, ha in (("electron", 1.0, TEAL, (9.9, -1.1), "right"),
+                                 ("H", 1836.15, PURPLE, (1.6, -12.4), "left"),
+                                 ("D", 3670.48, CARDINAL, (0.8, -12.4), "right")):
+        lt = -2 * 0.5123 * np.sqrt(m * dE) * a / np.log(10)     # log10 of e^{-2 beta a}
+        ok = lt > -16.2
+        ax.plot(a[ok], lt[ok], color=col, lw=2.8)
+        ax.text(*xy, name, color=col, fontsize=14, ha=ha)
+    ax.set_xlim(0, 10); ax.set_ylim(-16, 0.6)
+    ax.set_yticks([0, -4, -8, -12, -16])
+    ax.set_yticklabels(["1", r"$10^{-4}$", r"$10^{-8}$", r"$10^{-12}$", r"$10^{-16}$"], fontsize=12)
+    ax.tick_params(axis="x", labelsize=12)
+    ax.set_xlabel("barrier width a (Å)", fontsize=12); ax.set_ylabel(r"$T \approx e^{-2\beta a}$", fontsize=13)
+    ax.set_title(r"the same barrier, $V_0 - E = 0.2$ eV, for three particles", loc="left", fontsize=12)
+    fig.tight_layout()
+    fig.savefig(f"{OUT}/barrier_mass.png", dpi=200)
+    print("wrote", f"{OUT}/barrier_mass.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the STM: a tip scans at constant height, the current maps the atoms
+@register
+def stm_scan():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    beta, h = 1.09, 3.6                                         # 1/Angstrom for a 4.5 eV work function; apex height
+    cx = np.append(1.5 + 3.0 * np.arange(6), 12.0)              # six surface atoms and one adatom in a hollow
+    cy = np.append(np.zeros(6), 1.2)
+    R = np.append(np.full(6, 1.0), 0.8)                         # the adatom's top sits 1 Angstrom above the others
+    xs = np.linspace(-0.2, 18.2, 1500)
+    gap = (np.sqrt((xs[:, None] - cx)**2 + (h - cy)**2) - R).min(axis=1)
+    cur = np.exp(-2 * beta * (gap - (h - 1.0)))                 # current relative to the value over a surface atom
+    nf = 46
+    xt = np.concatenate([np.linspace(-0.2, 18.2, nf - 6), np.full(6, 18.2)])
+    fig, (ax, axi) = plt.subplots(2, 1, figsize=(8, 3.8), sharex=True,
+                                  gridspec_kw={"height_ratios": [2.0, 1], "hspace": 0.14})
+    for x0, y0, r0, c in zip(cx, cy, R, [GRAY] * 6 + [ORANGE]):
+        ax.add_patch(plt.Circle((x0, y0), r0, facecolor=c, alpha=0.45 if c == GRAY else 0.85, edgecolor=c, lw=1.5))
+    tip = plt.Polygon([[0, h], [-1.6, h + 3.2], [1.6, h + 3.2]], closed=True, facecolor=GRAY, edgecolor="k", lw=1.2)
+    ax.add_patch(tip)
+    (spark,) = ax.plot([], [], color=TEAL, solid_capstyle="round")
+    ax.set_aspect("equal"); ax.set_xlim(-0.2, 18.2); ax.set_ylim(-0.6, 5.4); ax.axis("off")
+    ax.set_title("the tip scans at constant height; electrons tunnel across the gap", loc="left", fontsize=13)
+    axi.plot(xs, cur, color=TEAL, lw=1, alpha=0.15)
+    (trace,) = axi.plot([], [], color=TEAL, lw=2.4)
+    (now,) = axi.plot([], [], "o", color=TEAL, ms=7)
+    axi.set_ylim(0, 10); axi.set_yticks([0, 4, 8]); axi.set_xticks([]); axi.tick_params(labelsize=12)
+    axi.set_ylabel("current", fontsize=13)
+    fig.subplots_adjust(left=0.07, right=0.99, top=0.93, bottom=0.04)
+
+    def update(i):
+        x0 = xt[i]
+        tip.set_xy([[x0, h], [x0 - 1.6, h + 3.2], [x0 + 1.6, h + 3.2]])
+        j = np.argmin(np.sqrt((x0 - cx)**2 + (h - cy)**2) - R)   # nearest atom: the electrons tunnel to it
+        u = np.array([x0 - cx[j], h - cy[j]]); u = u / np.linalg.norm(u)
+        I = np.interp(x0, xs, cur)
+        spark.set_data([x0, cx[j] + R[j] * u[0]], [h, cy[j] + R[j] * u[1]])
+        spark.set_linewidth(1.2 + 1.8 * I**0.6); spark.set_alpha(min(1.0, 0.35 + 0.12 * I))
+        ok = xs <= x0
+        trace.set_data(xs[ok], cur[ok]); now.set_data([x0], [I])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ ammonia: start on one side of a double well, tunnel across and back
+@register
+def ammonia_flip():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    Vb, N = 14.0, 700                                           # V = Vb (x^2 - 1)^2 with H = -d^2/dx^2 + V
+    x = np.linspace(-2.2, 2.2, N); h = x[1] - x[0]
+    V = Vb * (x**2 - 1)**2
+    H = np.diag(2 / h**2 + V) - np.diag(np.ones(N - 1) / h**2, 1) - np.diag(np.ones(N - 1) / h**2, -1)
+    En, vec = np.linalg.eigh(H)
+    s, an = vec[:, 0] / np.sqrt(h), vec[:, 1] / np.sqrt(h)
+    s = s * np.sign(s[N // 2]); an = an * np.sign(an[N // 4])  # an > 0 on the left, so s + an starts on the left
+    D, Em = En[1] - En[0], 0.5 * (En[0] + En[1])
+    nf = 44
+    ph = 2 * np.pi * np.arange(nf) / nf                         # Delta t over one full period h/Delta, a seamless loop
+    rho0 = 0.5 * (s + an)**2
+    sc = 0.36 * Vb / rho0.max()
+    fig = plt.figure(figsize=(8, 3.6))
+    gs = fig.add_gridspec(1, 2, width_ratios=[2.2, 1], wspace=0.22)
+    ax, axp = fig.add_subplot(gs[0]), fig.add_subplot(gs[1])
+    ax.plot(x, V, color="k", lw=2)
+    ax.axhline(En[0], color=TEAL, lw=1.2); ax.axhline(En[1], color=PURPLE, lw=1.2)
+    ax.annotate(r"split by $\Delta$", xy=(0, En[0] - 0.1), xytext=(0, 3.2), ha="center", fontsize=12, color=GRAY,
+                arrowprops=dict(arrowstyle="->", color=GRAY, lw=1.2))
+    (dline,) = ax.plot([], [], color=TEAL, lw=2)
+    band = [ax.fill_between(x, Em, Em, color=TEAL, alpha=0.25, lw=0)]
+    ax.set_xlim(-2.2, 2.2); ax.set_ylim(0, 1.75 * Vb); ax.set_xticks([]); ax.set_yticks([])
+    ax.set_xlabel("umbrella coordinate", fontsize=12); ax.set_ylabel("energy", fontsize=12)
+    ax.set_title("start on the left: it tunnels across and back", loc="left", fontsize=12)
+    axp.axhline(0.5, color=GRAY, lw=0.7, ls=":")
+    (trace,) = axp.plot([], [], color=TEAL, lw=2.4)
+    (now,) = axp.plot([], [], "o", color=TEAL, ms=7)
+    axp.set_xlim(0, 1); axp.set_ylim(-0.04, 1.06)
+    axp.set_xticks([0, 0.5, 1]); axp.set_xticklabels(["0", r"$h/2\Delta$", r"$h/\Delta$"], fontsize=12)
+    axp.set_yticks([0, 1]); axp.set_yticklabels(["0", "1"], fontsize=12); axp.set_xlabel("time", fontsize=12)
+    axp.set_title("probability on the right", loc="left", fontsize=12)
+    fig.subplots_adjust(left=0.05, right=0.98, top=0.9, bottom=0.15)
+    p = ax.get_position()
+    mols = []                                                   # NH3 seen side on: N above (left well) or below (right)
+    for xc, sg in ((-1.0, 1), (1.0, -1)):
+        u = (xc + 2.2) / 4.4
+        axm = fig.add_axes([p.x0 + p.width * u - 0.07, p.y0 + p.height * 0.68, 0.14, 0.24])
+        axm.set_xlim(-1, 1); axm.set_ylim(-1, 1); axm.set_aspect("equal"); axm.axis("off")
+        hx, hy = np.array([-0.62, 0.62, 0.16]), sg * np.array([-0.18, -0.18, -0.42])
+        bonds = [axm.plot([0, hx[j]], [sg * 0.5, hy[j]], color=GRAY, lw=2.2)[0] for j in range(3)]
+        hs = axm.scatter(hx, hy, s=170, facecolor="white", edgecolor=GRAY, lw=1.6, zorder=3)
+        nn = axm.scatter([0], [sg * 0.5], s=420, facecolor=TEAL, edgecolor="k", lw=1, zorder=4)
+        mols.append(bonds + [hs, nn])
+    xg = np.linspace(0, 1, 300)
+    pr = np.sum((s * an)[x > 0]) * h                            # P_right(t) = 1/2 + pr cos(Delta t), pr close to -1/2
+
+    def update(i):
+        c = np.cos(ph[i])
+        rho = 0.5 * (s**2 + an**2) + s * an * c                 # |Psi|^2: a fixed part and a cross term at frequency Delta
+        dline.set_data(x, Em + sc * rho)
+        band[0].remove(); band[0] = ax.fill_between(x, Em, Em + sc * rho, color=TEAL, alpha=0.25, lw=0)
+        Pr = 0.5 + pr * c
+        for art in mols[0]:
+            art.set_alpha(0.12 + 0.88 * (1 - Pr))
+        for art in mols[1]:
+            art.set_alpha(0.12 + 0.88 * Pr)
+        tt = i / nf
+        ok = xg <= tt
+        trace.set_data(xg[ok], 0.5 + pr * np.cos(2 * np.pi * xg[ok])); now.set_data([tt], [Pr])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=100, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ the sign of V - E decides which way psi bends (deck still)
+@register
+def curvature_signs():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, (axa, axf) = plt.subplots(1, 2, figsize=(8, 2.7), gridspec_kw={"wspace": 0.08})
+    x = np.linspace(-0.3, 2 * np.pi + 0.3, 400)
+    axa.axvspan(-0.3, 2 * np.pi + 0.3, color=TEAL, alpha=0.07, lw=0)
+    axa.plot(x, np.cos(x), color=TEAL, lw=2.8)
+    for x0, y0, dy, lab in ((0, 1.0, -0.45, r"$\psi > 0$, $\psi'' < 0$"), (np.pi, -1.0, 0.45, r"$\psi < 0$, $\psi'' > 0$")):
+        axa.annotate("", xy=(x0, y0 + dy), xytext=(x0, y0),
+                     arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.4, mutation_scale=18))
+        axa.text(x0 + 0.3, y0 + 0.45 * dy, lab, va="center", fontsize=12)
+    axa.set_title(r"$E > V$: opposite signs", loc="left", fontsize=13, color=TEAL)
+    axa.text(np.pi, -1.62, "bends back toward the axis: oscillates", ha="center", fontsize=12, color=TEAL)
+    x = np.linspace(0, 3.2, 300)
+    axf.axvspan(0, 3.2, color=CARDINAL, alpha=0.06, lw=0)
+    for sg in (1, -1):                                          # e^{-x} and -e^{-x}: both bend away from the axis
+        axf.plot(x, sg * 1.25 * np.exp(-0.9 * x), color=TEAL, lw=2.8 if sg > 0 else 1.8, alpha=1 if sg > 0 else 0.55)
+        x0 = 0.9; y0 = sg * 1.25 * np.exp(-0.81)
+        axf.annotate("", xy=(x0, y0 + sg * 0.45), xytext=(x0, y0),
+                     arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=2.4, mutation_scale=18))
+        axf.text(x0 + 0.15, y0 + sg * 0.32, r"$\psi > 0$, $\psi'' > 0$" if sg > 0 else r"$\psi < 0$, $\psi'' < 0$",
+                 va="center", fontsize=12)
+    axf.set_title(r"$E < V$: the same sign", loc="left", fontsize=13, color=CARDINAL)
+    axf.text(1.6, -1.62, "bends away: grows or decays", ha="center", fontsize=12, color=CARDINAL)
+    for ax, x1 in ((axa, 2 * np.pi + 0.3), (axf, 3.2)):
+        ax.axhline(0, color=GRAY, lw=1)
+        ax.text(x1, 0.06, r"$\psi = 0$", ha="right", va="bottom", fontsize=11, color=GRAY)
+        ax.set_ylim(-1.8, 1.45); ax.set_xticks([]); ax.set_yticks([])
+        for s in ("left", "bottom"):
+            ax.spines[s].set_visible(False)
+    axa.set_xlim(-0.3, 2 * np.pi + 0.3); axf.set_xlim(0, 3.2)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02)
+    fig.savefig(f"{OUT}/curvature_signs.png", dpi=200)
+    print("wrote", f"{OUT}/curvature_signs.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ read psi from V(x): a tracer draws psi, the arrow is psi'' (deck GIF)
+@register
+def curvature_tracer():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    N = 1400                                                    # hbar^2/2m = 1, so psi'' = (V - E) psi
+    x = np.linspace(-3.0, 8.0, N); h = x[1] - x[0]
+    V = np.where(x < 0, 12.0, np.where(x < 3, 7.0, np.where(x < 5.5, 0.0, 30.0)))
+    H = np.diag(2 / h**2 + V) - np.diag(np.ones(N - 1) / h**2, 1) - np.diag(np.ones(N - 1) / h**2, -1)
+    En, vec = np.linalg.eigh(H)
+    E = En[4]                                                   # four nodes; E lies between the 7 and 12 steps
+    psi = vec[:, 4] / np.abs(vec[:, 4]).max()
+    psi = psi * np.sign(psi[np.argmin(np.abs(x - 0.4))])
+    curv = (V - E) * psi                                        # psi'' from the Schrodinger equation
+    cmax = np.abs(curv).max()
+    sc = 3.0
+    nf = 52
+    xt = np.concatenate([np.linspace(-3.0, 8.0, nf - 8), np.full(8, 8.0)])
+    fig, ax = plt.subplots(figsize=(8, 3.5))
+    for x1, x2, al in ((-3, 0, False), (0, 3, True), (3, 5.5, True), (5.5, 8, False)):
+        ax.axvspan(x1, x2, color=TEAL if al else CARDINAL, alpha=0.07 if al else 0.06, lw=0)
+    ax.plot(x, np.minimum(V, 17.5), color="k", lw=2)
+    ax.axhline(E, color=GRAY, lw=1, ls="--")
+    for xc, top, bot, c in ((-1.5, r"$V - E$ small", "slow decay", CARDINAL), (1.5, r"$E - V$ small", "long wavelength", TEAL),
+                            (4.25, r"$E - V$ large", "short wavelength", TEAL), (6.75, r"$V - E$ large", "fast decay", CARDINAL)):
+        ax.text(xc, 17.0, top, ha="center", va="top", fontsize=11.5, color=c)
+        ax.text(xc, 15.6, bot, ha="center", va="top", fontsize=11.5, color=c)
+    (trace,) = ax.plot([], [], color=TEAL, lw=2.6)
+    (tip,) = ax.plot([], [], "o", color="k", ms=6, zorder=6)
+    arrow = ax.annotate("", xy=(0, E), xytext=(0, E), arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.6, mutation_scale=18))
+    ax.set_xlim(-3, 8); ax.set_ylim(-0.4, 17.5); ax.set_xticks([]); ax.set_yticks([E]); ax.set_yticklabels(["E"], fontsize=13)
+    ax.set_xlabel("x", fontsize=12)
+    fig.subplots_adjust(left=0.05, right=0.99, top=0.9, bottom=0.09)
+
+    def update(i):
+        x0 = xt[i]
+        j = min(N - 1, np.searchsorted(x, x0))
+        ok = x <= x0
+        trace.set_data(x[ok], E + sc * psi[ok])
+        y0 = E + sc * psi[j]
+        tip.set_data([x0], [y0])
+        c = curv[j]
+        toward = c * psi[j] < 0                                 # psi'' opposite to psi: bends back toward the axis
+        show = abs(c) > 0.03 * cmax
+        arrow.set_visible(show)
+        arrow.xy = (x0, y0 + np.sign(c) * (1.0 + 2.6 * np.sqrt(abs(c) / cmax)))
+        arrow.set_position((x0, y0))
+        arrow.arrow_patch.set_color(TEAL if toward else CARDINAL)
+        if show:
+            ax.set_title(r"$\psi''$ arrow: " + ("opposite sign to $\\psi$, bends toward the axis" if toward
+                         else "same sign as $\\psi$, bends away from the axis"),
+                         loc="left", fontsize=12.5, color=TEAL if toward else CARDINAL)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ what T means: send particles one at a time and count (deck GIF)
+@register
+def barrier_counts():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    T = 0.27                                                    # the barrier of barrier_packet
+    rng = np.random.default_rng(17)                             # 33 of 120 get through, close to T
+    n = 120
+    through = rng.random(n) < T
+    yj = rng.uniform(0.18, 0.82, n)
+    t0 = 0.5 * np.arange(n)                                     # two particles leave the source per frame
+    v, L = 1.5, 12.0
+    tdet = 2 * L / v                                            # frames from launch to a detector
+    nf = int(t0[-1] + tdet) + 10
+    frac = np.cumsum(through) / np.arange(1, n + 1)
+    fig, (ax, axf) = plt.subplots(2, 1, figsize=(8, 3.6), gridspec_kw={"height_ratios": [1.1, 1], "hspace": 0.62})
+    ax.axvspan(-0.4, 0.4, color=GRAY, alpha=0.55, lw=0)
+    for xd, c in ((-L - 0.6, ORANGE), (L + 0.6, TEAL)):
+        ax.axvspan(xd - 0.5, xd + 0.5, color=c, alpha=0.35, lw=0)
+    dots = ax.scatter([], [], s=26, zorder=4)
+    lab_l = ax.text(-L - 1.2, 1.12, "", ha="left", va="bottom", fontsize=12, color=ORANGE)
+    lab_r = ax.text(L + 1.2, 1.12, "", ha="right", va="bottom", fontsize=12, color=TEAL)
+    ax.text(0, 1.12, "barrier", ha="center", va="bottom", fontsize=11, color=GRAY)
+    ax.set_xlim(-L - 1.2, L + 1.2); ax.set_ylim(0, 1); ax.axis("off")
+    axf.axhline(T, color=GRAY, lw=1.2, ls="--")
+    axf.text(n, T + 0.04, f"T = {T}", ha="right", va="bottom", fontsize=12, color=GRAY)
+    (run,) = axf.plot([], [], color=TEAL, lw=2.4)
+    axf.set_xlim(0, n); axf.set_ylim(0, 0.8); axf.set_yticks([0, 0.4, 0.8])
+    axf.set_xlabel("particles detected", fontsize=12); axf.set_ylabel("fraction\non the right", fontsize=11)
+    fig.subplots_adjust(left=0.1, right=0.98, top=0.86, bottom=0.17)
+
+    def update(i):
+        age = i - t0
+        live = (age >= 0) & (age < tdet)
+        xr = -L + v * age                                       # position if nothing happened at the barrier
+        xs = np.where(xr > 0, np.where(through, xr, -xr), xr)   # past the barrier: carry on, or come back
+        col = np.where(xr <= 0, GRAY, np.where(through, TEAL, ORANGE))
+        dots.set_offsets(np.c_[xs[live], yj[live]]); dots.set_color(col[live])
+        k = int((age >= tdet).sum())                            # detected so far
+        lab_l.set_text(f"found on the left: {k - int(through[:k].sum())}")
+        lab_r.set_text(f"found on the right: {int(through[:k].sum())}")
+        run.set_data(np.arange(1, k + 1), frac[:k])
+        axf.set_title(f"fraction on the right after {k} particles: " + (f"{frac[k - 1]:.2f}" if k else "-"),
+                      loc="left", fontsize=12)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ T from the wave: incident, reflected and transmitted pieces (still)
+@register
+def barrier_setup():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    E, V0, a = 0.5, 1.0, 1.0                                    # hbar = m = 1: k = beta = 1, so T = sech^2(1) = 0.42
+    k, q = np.sqrt(2 * E), np.sqrt(2 * (V0 - E))
+    M = np.array([[1, -1, -1, 0], [-1j * k, -q, q, 0],
+                  [0, np.exp(q * a), np.exp(-q * a), -np.exp(1j * k * a)],
+                  [0, q * np.exp(q * a), -q * np.exp(-q * a), -1j * k * np.exp(1j * k * a)]])
+    r, C, D, t = np.linalg.solve(M, np.array([-1, -1j * k, 0, 0]))
+    R, T = abs(r)**2, abs(t)**2
+    fig, ax = plt.subplots(figsize=(8, 3.3))
+    ax.fill_between([0, a], 0, 1, color=GRAY, alpha=0.3, lw=0)
+    ax.plot([-9.5, 0, 0, a, a, 10.5], [0, 0, 1, 1, 0, 0], color="k", lw=2)
+    ax.text(a / 2, 1.04, r"$V_0$", ha="center", va="bottom", fontsize=13)
+    xl, xr = np.linspace(-9.3, -0.4, 400), np.linspace(a + 0.4, 10.3, 400)
+    w = 0.1                                                     # drawn amplitude of a unit wave
+    ax.plot(xl, 0.8 + w * np.cos(k * xl), color=TEAL, lw=2.4)
+    ax.plot(xl, 0.28 + w * abs(r) * np.cos(-k * xl + np.angle(r)), color=ORANGE, lw=2.4)
+    ax.plot(xr, 0.55 + w * abs(t) * np.cos(k * xr + np.angle(t)), color=TEAL, lw=2.4)
+    for (x1, x2), y, f, c in (((-7.5, -2.5), 0.62, 1.0, TEAL), ((-2.5, -7.5), 0.1, R, ORANGE), ((3.0, 8.0), 0.37, T, TEAL)):
+        ax.annotate("", xy=(x2, y), xytext=(x1, y), arrowprops=dict(
+            arrowstyle=f"simple,head_length=0.8,head_width={0.4 + 1.1 * f:.2f},tail_width={0.6 * f:.2f}",
+            color=c, alpha=0.75, mutation_scale=22))
+    ax.text(-9.3, 0.96, r"incident $e^{ikx}$: flux 1", fontsize=12.5, color=TEAL, va="bottom")
+    ax.text(-9.3, 0.42, rf"reflected $r\,e^{{-ikx}}$: $R = |r|^2 = {R:.2f}$", fontsize=12.5, color=ORANGE, va="bottom")
+    ax.text(10.3, 0.69, rf"transmitted $t\,e^{{ikx}}$: $T = |t|^2 = {T:.2f}$", fontsize=12.5, color=TEAL,
+            va="bottom", ha="right")
+    ax.set_xlim(-9.5, 10.5); ax.set_ylim(-0.05, 1.2); ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.98, bottom=0.02)
+    fig.savefig(f"{OUT}/barrier_setup.png", dpi=200)
+    print("wrote", f"{OUT}/barrier_setup.png")
     return fig, None
 
 
