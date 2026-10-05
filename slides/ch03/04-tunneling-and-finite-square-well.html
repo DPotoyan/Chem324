@@ -34,8 +34,90 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="04-tunneling-and-finite-square-well_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -129,6 +211,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="04-tunneling-and-finite-square-well_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="04-tunneling-and-finite-square-well_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -147,162 +231,329 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="quantum-objects-go-where-classical-ones-cannot" class="slide level2">
-<h2>Quantum objects go where classical ones cannot</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../../ch03/images/tunnel1.png"></p>
-</div><div class="column" style="width:45%;">
+<section id="a-ball-bounces-back-a-wave-gets-through" class="slide level2">
+<h2>A ball bounces back, a wave gets through</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/barrier_packet.gif" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment"><strong>Tunneling</strong> into classically forbidden regions</li>
-<li class="fragment">Electron emission, <strong>ammonia inversion</strong>, tunnel diodes</li>
-<li class="fragment">The <strong>finite well</strong> is the realistic model that allows it</li>
+<li>The energy is <strong>below</strong> the barrier top: a classical ball always turns around</li>
+<li>Inside the barrier the wave <strong>decays</strong>, but a thin barrier leaves some on the far side: <strong>tunneling</strong></li>
 </ul>
+</section>
+<section id="the-sign-of-v---e-sets-the-shape" class="slide level2">
+<h2>The sign of <span class="math inline">V - E</span> sets the shape</h2>
+<p><span class="math display">\frac{d^2\psi}{dx^2} = \frac{2m}{\hbar^2}\,\big(V - E\big)\,\psi</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/curvature_signs.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">E &gt; V</span>: <span class="math inline">\psi''</span> <strong>opposite</strong> to <span class="math inline">\psi</span>, so it bends back <strong>toward</strong> the axis: <strong>oscillates</strong></li>
+<li><span class="math inline">E &lt; V</span>: <span class="math inline">\psi''</span> the <strong>same</strong> sign as <span class="math inline">\psi</span>, so it bends <strong>away</strong>: <strong>grows or decays</strong></li>
+</ul>
+</section>
+<section id="reading-psi-from-vx" class="slide level2">
+<h2>Reading <span class="math inline">\psi</span> from <span class="math inline">V(x)</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/curvature_tracer.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The arrow is <span class="math inline">\psi''</span>: <span class="fg" style="--col: #107895">teal</span> bends toward the axis (the dashed line), <span class="fg" style="--col: #C8102E">red</span> bends away</li>
+<li>Bigger <span class="math inline">|E - V|</span>, harder bending: <strong>shorter wavelength</strong>, <strong>faster decay</strong></li>
+</ul>
+</section>
+<section id="real-walls-are-finite" class="slide level2">
+<h2>Real walls are finite</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/wall_leak.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<p><span class="math display">
+\begin{aligned}
+\text{well:}\quad \psi'' &amp;= -k^2\psi, &amp; k &amp;= \sqrt{2mE}\,/\,\hbar \\
+\text{walls:}\quad \psi'' &amp;= +\beta^2\psi, &amp; \beta &amp;= \sqrt{2m(V_0-E)}\,/\,\hbar
+\end{aligned}
+</span></p>
+<ul>
+<li>The wave leaks a distance of about <span class="math inline">1/\beta</span> into the wall: the <strong>penetration depth</strong></li>
+</ul>
+</section>
+<section id="three-regions" class="slide level2">
+<h2>Three regions</h2>
+<p><span class="math display">
+\begin{array}{lll}
+\text{I:} &amp; x &lt; -\tfrac{L}{2} &amp; \psi_{I} = A\,e^{\beta x} \\[6pt]
+\text{II:} &amp; |x| &lt; \tfrac{L}{2} &amp; \psi_{II} = B\cos kx + C\sin kx \\[6pt]
+\text{III:} &amp; x &gt; \tfrac{L}{2} &amp; \psi_{III} = D\,e^{-\beta x}
+\end{array}
+</span></p>
+<ul>
+<li>In each wall keep only the exponential that <strong>decays</strong> away from the well</li>
+<li>At each wall join <strong>both</strong> <span class="math inline">\psi</span> and <span class="math inline">\psi'</span>: a kink would make <span class="math inline">\psi''</span>, the kinetic energy, infinite</li>
+<li>Two conditions per wall can be met only at <strong>special energies</strong></li>
+</ul>
+</section>
+<section id="matching-at-the-wall" class="slide level2">
+<h2>Matching at the wall</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p>Even state: differentiate each piece</p>
+<p><span class="math display">
+\begin{aligned}
+\text{inside:}\quad \psi &amp;= B\cos kx, &amp; \psi' &amp;= -kB\sin kx \\
+\text{wall:}\quad \psi &amp;= D\,e^{-\beta x}, &amp; \psi' &amp;= -\beta D\,e^{-\beta x}
+\end{aligned}
+</span></p>
+<p>Set them equal at <span class="math inline">x = L/2</span>:</p>
+<p><span class="math display">
+\begin{aligned}
+\text{value:}\quad B\cos\tfrac{kL}{2} &amp;= D\,e^{-\beta L/2} \\
+\text{slope:}\quad kB\sin\tfrac{kL}{2} &amp;= \beta D\,e^{-\beta L/2}
+\end{aligned}
+</span></p>
+<div class="fragment">
+<p><span class="math display">\frac{\text{slope}}{\text{value}}: \quad \beta = k\tan\frac{kL}{2} \qquad (B,\ D \text{ cancel})</span></p>
+</div>
+</div><div class="column" style="width:44%;">
+<p><img data-src="../../ch03/images/fsw_match.png" style="width:100.0%"></p>
 </div></div>
 </section>
-<section id="reading-a-wavefunction-qualitatively" class="slide level2">
-<h2>Reading a wavefunction qualitatively</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/gen_psi1.png"></p>
-</div><div class="column" style="width:50%;">
+<section id="even-and-odd-one-circle" class="slide level2">
+<h2>Even and odd: one circle</h2>
+<p>The same steps with <span class="math inline">C\sin kx</span> give the odd states:</p>
+<p><span class="math display">\text{even: } \beta = k\tan\frac{kL}{2} \qquad\qquad \text{odd: } \beta = -k\cot\frac{kL}{2}</span></p>
+<div class="keyeq">
+<p><span class="math display">\text{even: } \eta = z\tan z, \qquad \text{odd: } \eta = -z\cot z, \qquad z^2 + \eta^2 = z_0^2</span></p>
+</div>
+<p><span class="math display">z = \frac{kL}{2}, \qquad \eta = \frac{\beta L}{2}, \qquad z_0 = \frac{L}{2}\,\frac{\sqrt{2mV_0}}{\hbar}</span></p>
 <ul>
-<li class="fragment"><strong>Curvature</strong> is set by the sign of <span class="math inline">\(E - V\)</span></li>
-<li class="fragment"><span class="math inline">\(E &gt; V\)</span>: <span class="math inline">\(\psi\)</span> <strong>oscillates</strong>, curves toward axis</li>
-<li class="fragment"><span class="math inline">\(E &lt; V\)</span>: <span class="math inline">\(\psi\)</span> <strong>decays</strong>, curves away from axis</li>
-</ul>
-</div></div>
-</section>
-<section id="curvature-follows-the-potential" class="slide level2">
-<h2>Curvature follows the potential</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/gen_psi2.png"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">A <strong>stepped potential</strong> changes the local wavelength</li>
-<li class="fragment">Higher kinetic energy means <strong>shorter wavelength</strong></li>
-<li class="fragment"><span class="math inline">\(\psi\)</span> stays smooth and continuous everywhere</li>
-</ul>
-</div></div>
-</section>
-<section id="three-regions-three-solutions" class="slide level2">
-<h2>Three regions, three solutions</h2>
-<p>The finite square well: <span class="math inline">\(V=0\)</span> inside, <span class="math inline">\(V=V_0\)</span> outside.</p>
-<div class="fragment">
-<p><span class="math display">\[
--\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{d{x}^2}+V(x)\psi(x) =E\psi(x)
-\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{gathered}
-\text{Region I:  }  V(x) = V_0 ~~~~~~~~~~~~~~~~ x \leq-\frac{L}{2} ~~~~~ \psi_{I} = A e^{\beta  x} \\
-\text{Region II: }  V(x) = 0 ~~~ -\frac{L}{2} \leq x \leq\frac{L}{2} ~~~~~~~ \psi_{II} = B \cos(k x) + C \sin(k x)\\
-\text{Region III:}  V(x) = V_0 ~~~~~~~~~~~~~~  x \geq \frac{L}{2}  ~~~~~~~ \psi_{III} = D e^{-\beta x}
-\end{gathered}
-\]</span></p>
-</div>
-</section>
-<section id="inside-vs-outside-the-well" class="slide level2">
-<h2>Inside vs outside the well</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Inside</strong> (<span class="math inline">\(E &gt; V\)</span>) <span class="math display">\[
-\psi(x)=A\sin(kx)+B\cos(kx)
-\]</span> ::: {.fragment} Oscillatory.</p>
-</div></div>
-<div class="column" style="width:50%;">
-<p><strong>Outside</strong> (<span class="math inline">\(E &lt; V_0\)</span>) ::: {.fragment} <span class="math display">\[
-k^2 = \frac{2m(V_0 - E)}{\hbar^2}
-\]</span></p>
-</div><div class="fragment">
-<p>Real <span class="math inline">\(\beta\)</span>: <strong>exponential decay</strong>, an evanescent wave.</p>
-</div>
-<p>:::</p>
-<p>::::</p>
-</section>
-<section id="why-continuity-matters" class="slide level2">
-<h2>Why continuity matters</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch03/images/decay_psi.png"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Match <span class="math inline">\(\psi\)</span> <strong>and</strong> <span class="math inline">\(\psi'\)</span> at each boundary ::: {.fragment} <span class="math display">\[
-\psi_{I}\!\left(-\tfrac{L}{2}\right) = \psi_{II}\!\left(-\tfrac{L}{2}\right)
-\]</span></li>
-</ul>
-</div><ul>
-<li class="fragment"><span class="math inline">\(\psi'\)</span> continuous so <span class="math inline">\(\psi''\)</span> exists</li>
-<li class="fragment"><span class="math inline">\(\psi''\)</span> is the <strong>kinetic energy</strong> operator: must be defined</li>
-</ul>
-</div>
-<p>::::</p>
-</section>
-<section id="even-and-odd-solutions" class="slide level2">
-<h2>Even and odd solutions</h2>
-<p>The well is <strong>symmetric</strong> about <span class="math inline">\(x=0\)</span>, so states split by parity.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment">
-<p><strong>Even</strong> (<span class="math inline">\(\psi(x)=\psi(-x)\)</span>) <span class="math display">\[
-\psi_{II}(x) = B \cos(k x)
-\]</span> <span class="math display">\[
-\beta = k\tan\left(k\frac{L}{2}\right)
-\]</span></p>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><strong>Odd</strong> (<span class="math inline">\(\psi(x)=-\psi(-x)\)</span>) <span class="math display">\[
-\psi_{II}(x) = C \sin(k x)
-\]</span> <span class="math display">\[
-\beta = -\frac{k}{\tan\left(k\frac{L}{2}\right)}
-\]</span></p>
-</div>
-</div></div>
-<div class="fragment">
-<p>No closed form: solve <strong>graphically or numerically</strong>.</p>
-</div>
-</section>
-<section id="wavefunctions-leak-out" class="slide level2">
-<h2>Wavefunctions leak out</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../../ch03/images/fin_pib.png"></p>
-</div><div class="column" style="width:45%;">
-<ul>
-<li class="fragment"><span class="math inline">\(\psi\)</span> extends into the <strong>classically forbidden</strong> region</li>
-<li class="fragment">Green area: probability of being <strong>outside</strong> the well</li>
-<li class="fragment">Leakage <strong>grows</strong> as <span class="math inline">\(V_0 - E \to 0\)</span></li>
-</ul>
-</div></div>
-</section>
-<section id="tunneling-probability" class="slide level2">
-<h2>Tunneling probability</h2>
-<p>The chance of finding the particle outside the box:</p>
-<div class="fragment">
-<p><span class="math display">\[
-P\left(-\frac{L}{2}&gt;x&gt;\frac{L}{2}\right)=\frac{\int^{\frac{-L}{2}}_{-\infty} |\psi(x)|^2\ dx +\int^{+\infty}_{\frac{L}{2}} |\psi(x)|^2\ dx }{\int_{-\infty}^{+\infty} |\psi(x)|^2\ dx }
-\]</span></p>
-</div>
-<ul>
-<li class="fragment">States <strong>near the top</strong> of the well tunnel most</li>
+<li><span class="math inline">k^2 + \beta^2 = 2mV_0/\hbar^2</span> for every <span class="math inline">E</span>, so <span class="math inline">(z, \eta)</span> lies on a <strong>circle</strong> of radius <span class="math inline">z_0</span>, the <strong>well strength</strong></li>
 </ul>
 </section>
-<section id="finite-vs-infinite-well" class="slide level2">
-<h2>Finite vs infinite well</h2>
+<section id="solve-graphically" class="slide level2">
+<h2>Solve graphically</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/fsw_circle.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment">Finite well has a <strong>finite number</strong> of bound states</li>
-<li class="fragment">Low states: energies nearly <strong>match</strong> the infinite well</li>
-<li class="fragment">High states: <span class="math inline">\(\psi\)</span> spreads out, <strong>longer wavelength</strong></li>
-<li class="fragment">Longer wavelength means smaller <span class="math inline">\(k\)</span>, so <strong>lower energy</strong></li>
+<li>Each crossing is a bound state, with <span class="math inline">E = V_0\,(z/z_0)^2</span>. A <strong>new state</strong> appears each time <span class="math inline">z_0</span> passes a multiple of <span class="math inline">\pi/2</span></li>
+<li>Even a weak well holds <strong>one</strong> state, and no finite well holds infinitely many</li>
+</ul>
+</section>
+<section id="the-states-leak" class="slide level2">
+<h2>The states leak</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/fsw_ladder.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Electron, 10 Å wide, 5 eV deep: <strong>4</strong> states; the top one is <strong>23%</strong> outside</li>
+<li>Each level sits <strong>below</strong> its infinite-box partner: more room, longer wavelength</li>
+</ul>
+</section>
+<section id="example-how-far-does-it-leak" class="slide level2">
+<h2>Example: how far does it leak?</h2>
+<div class="worked">
+<p>An electron sits 1 eV below the top of a wall. How far into the wall does <span class="math inline">\psi</span> reach? And a proton?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">
+\frac{1}{\beta} = \frac{\hbar}{\sqrt{2m(V_0 - E)}} =
+\begin{cases}
+1.95\ \text{Å} &amp; \text{electron} \\[4pt]
+0.046\ \text{Å} &amp; \text{proton: } \sqrt{1836} = 43 \text{ times shorter}
+\end{cases}
+</span></p>
+<p>An electron leaks about the radius of an atom. A proton barely leaks at all.</p>
+</div>
+<ul>
+<li><span class="math inline">1/\beta</span> is largest for <strong>light</strong> particles near the <strong>top</strong> of the wall</li>
+</ul>
+</section>
+<section id="what-the-transmission-coefficient-means" class="slide level2">
+<h2>What the transmission coefficient means</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/barrier_counts.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Particles arrive one at a time; each is found <strong>either</strong> on the left <strong>or</strong> on the right</li>
+<li><span class="math inline">T</span> = the fraction found on the right = the <strong>probability</strong> that one particle gets through</li>
+</ul>
+</section>
+<section id="t-from-the-wave" class="slide level2">
+<h2><span class="math inline">T</span> from the wave</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/barrier_setup.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">T = \frac{\text{transmitted flux}}{\text{incident flux}} = |t|^2, \qquad R = |r|^2, \qquad R + T = 1</span></p>
+</div>
+<ul>
+<li><strong>Flux</strong> = density <span class="math inline">|A|^2</span> times speed, and the speed is equal on both sides</li>
+</ul>
+</section>
+<section id="computing-t-for-a-barrier" class="slide level2">
+<h2>Computing <span class="math inline">T</span> for a barrier</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/barrier_width.gif" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Matching <span class="math inline">\psi</span> and <span class="math inline">\psi'</span> at <span class="math inline">x = 0</span> and <span class="math inline">x = a</span> gives <span class="math inline">t</span>. For a thick barrier:</p>
+<div class="keyeq">
+<p><span class="math display">T = |t|^2 \approx 16\,\frac{E}{V_0}\left(1 - \frac{E}{V_0}\right)e^{-2\beta a} \qquad (\beta a \gg 1)</span></p>
+</div>
+</section>
+<section id="width-and-mass-sit-in-the-exponent" class="slide level2">
+<h2>Width and mass sit in the exponent</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/barrier_mass.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\beta \propto \sqrt{m}</span>: a proton’s <span class="math inline">\beta</span> is <strong>43 times</strong> an electron’s</li>
+<li>Electrons tunnel through <strong>nanometers</strong>, protons through <strong>fractions of an ångström</strong></li>
+</ul>
+</section>
+<section id="example-hydrogen-or-deuterium" class="slide level2">
+<h2>Example: hydrogen or deuterium?</h2>
+<div class="worked">
+<p>An H atom transfers through a barrier 0.2 eV above its energy and 0.5 Å wide. Compare <span class="math inline">T</span> for H and D.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">
+\begin{aligned}
+\text{H:}\quad 2\beta_H a &amp;= 9.82 &amp; T_H &amp;\approx e^{-9.82} = 5.4\times10^{-5} \\
+\text{D:}\quad 2\beta_D a &amp;= \sqrt{2}\,(9.82) = 13.9 &amp; T_D &amp;\approx e^{-13.9} = 9.4\times10^{-7}
+\end{aligned}
+</span></p>
+<p><span class="math display">\frac{T_H}{T_D} = e^{(\sqrt{2}-1)(9.82)} = 58 \approx 60</span></p>
+<p>Doubling the mass multiplies <span class="math inline">\beta</span> by <span class="math inline">\sqrt{2}</span>, and the exponent does the rest.</p>
+</div>
+<ul>
+<li>Without tunneling <span class="math inline">k_H/k_D</span> stays below about <strong>7</strong>; lipoxygenase shows about <strong>80</strong></li>
+</ul>
+</section>
+<section id="live-tune-the-barrier" class="slide level2 smaller">
+<h2>Live: tune the barrier</h2>
+<p><span class="math inline">T \approx e^{-2\beta a}</span> for an <span class="fg" style="--col: #107895">electron</span>, a <span class="fg" style="--col: #6a3d9a">proton</span> and a <span class="fg" style="--col: #C8102E">deuteron</span> facing the same barrier</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="218" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb1-218"><a href="" aria-label="218"></a>viewof dE <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"V₀ − E (eV)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="223" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 222;"><span id="cb2-223"><a href="" aria-label="223"></a>viewof aw <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"width a (Å)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="228" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 227;"><span id="cb3-228"><a href="" aria-label="228"></a>{</span>
+<span id="cb3-229"><a href="" aria-label="229"></a>  <span class="kw">const</span> parts <span class="op">=</span> [</span>
+<span id="cb3-230"><a href="" aria-label="230"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">"electron"</span><span class="op">,</span> <span class="dt">m</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#107895"</span>}<span class="op">,</span></span>
+<span id="cb3-231"><a href="" aria-label="231"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">"proton (H)"</span><span class="op">,</span> <span class="dt">m</span><span class="op">:</span> <span class="fl">1836.15</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#6a3d9a"</span>}<span class="op">,</span></span>
+<span id="cb3-232"><a href="" aria-label="232"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">"deuteron (D)"</span><span class="op">,</span> <span class="dt">m</span><span class="op">:</span> <span class="fl">3670.48</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#C8102E"</span>}</span>
+<span id="cb3-233"><a href="" aria-label="233"></a>  ]<span class="op">;</span></span>
+<span id="cb3-234"><a href="" aria-label="234"></a>  <span class="kw">const</span> lg <span class="op">=</span> (m<span class="op">,</span> a) <span class="kw">=&gt;</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="fl">0.5123</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(m <span class="op">*</span> dE) <span class="op">*</span> a <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">LN10</span><span class="op">;</span>   <span class="co">// log10 of e^(-2 beta a), beta in 1/Angstrom</span></span>
+<span id="cb3-235"><a href="" aria-label="235"></a>  <span class="kw">const</span> <span class="im">as</span> <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">10.001</span><span class="op">,</span> <span class="fl">0.01</span>)<span class="op">;</span></span>
+<span id="cb3-236"><a href="" aria-label="236"></a>  <span class="kw">const</span> rows <span class="op">=</span> parts<span class="op">.</span><span class="fu">flatMap</span>(p <span class="kw">=&gt;</span> <span class="im">as</span><span class="op">.</span><span class="fu">map</span>(a <span class="kw">=&gt;</span> ({a<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">lg</span>(p<span class="op">.</span><span class="at">m</span><span class="op">,</span> a)<span class="op">,</span> <span class="dt">name</span><span class="op">:</span> p<span class="op">.</span><span class="at">name</span>}))<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">y</span> <span class="op">&gt;=</span> <span class="op">-</span><span class="dv">16</span>))<span class="op">;</span></span>
+<span id="cb3-237"><a href="" aria-label="237"></a>  <span class="kw">const</span> pts <span class="op">=</span> parts<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> ({<span class="dt">a</span><span class="op">:</span> aw<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">-</span><span class="dv">16</span><span class="op">,</span> <span class="fu">lg</span>(p<span class="op">.</span><span class="at">m</span><span class="op">,</span> aw))<span class="op">,</span> <span class="dt">name</span><span class="op">:</span> p<span class="op">.</span><span class="at">name</span>}))<span class="op">;</span></span>
+<span id="cb3-238"><a href="" aria-label="238"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-239"><a href="" aria-label="239"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">330</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb3-240"><a href="" aria-label="240"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"barrier width a (Å)"</span>}<span class="op">,</span></span>
+<span id="cb3-241"><a href="" aria-label="241"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">16</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"log₁₀ T"</span><span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">8</span><span class="op">,</span> <span class="op">-</span><span class="dv">12</span><span class="op">,</span> <span class="op">-</span><span class="dv">16</span>]}<span class="op">,</span></span>
+<span id="cb3-242"><a href="" aria-label="242"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> parts<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">name</span>)<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> parts<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">c</span>)<span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb3-243"><a href="" aria-label="243"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-244"><a href="" aria-label="244"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([aw]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#6c757d"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb3-245"><a href="" aria-label="245"></a>      Plot<span class="op">.</span><span class="fu">line</span>(rows<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"a"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb3-246"><a href="" aria-label="246"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(pts<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"a"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">7</span>})</span>
+<span id="cb3-247"><a href="" aria-label="247"></a>    ]</span>
+<span id="cb3-248"><a href="" aria-label="248"></a>  })<span class="op">;</span></span>
+<span id="cb3-249"><a href="" aria-label="249"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="254" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 253;"><span id="cb4-254"><a href="" aria-label="254"></a>{</span>
+<span id="cb4-255"><a href="" aria-label="255"></a>  <span class="kw">const</span> lg <span class="op">=</span> m <span class="kw">=&gt;</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="fl">0.5123</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(m <span class="op">*</span> dE) <span class="op">*</span> aw <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">LN10</span><span class="op">;</span></span>
+<span id="cb4-256"><a href="" aria-label="256"></a>  <span class="kw">const</span> sci <span class="op">=</span> y <span class="kw">=&gt;</span> {</span>
+<span id="cb4-257"><a href="" aria-label="257"></a>    <span class="kw">const</span> e <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(y)<span class="op">;</span></span>
+<span id="cb4-258"><a href="" aria-label="258"></a>    <span class="cf">return</span> (e <span class="op">&gt;=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">&amp;&amp;</span> e <span class="op">&lt;=</span> <span class="dv">3</span>) <span class="op">?</span> (<span class="dv">10</span> <span class="op">**</span> y)<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">2</span>) <span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>(<span class="dv">10</span> <span class="op">**</span> (y <span class="op">-</span> e))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">×10&lt;sup&gt;</span><span class="sc">${</span>e<span class="sc">}</span><span class="vs">&lt;/sup&gt;`</span><span class="op">;</span></span>
+<span id="cb4-259"><a href="" aria-label="259"></a>  }<span class="op">;</span></span>
+<span id="cb4-260"><a href="" aria-label="260"></a>  <span class="cf">return</span> <span class="fu">md</span><span class="vs">`electron **</span><span class="sc">${</span><span class="fu">sci</span>(<span class="fu">lg</span>(<span class="dv">1</span>))<span class="sc">}</span><span class="vs">** · proton **</span><span class="sc">${</span><span class="fu">sci</span>(<span class="fu">lg</span>(<span class="fl">1836.15</span>))<span class="sc">}</span><span class="vs">** · deuteron **</span><span class="sc">${</span><span class="fu">sci</span>(<span class="fu">lg</span>(<span class="fl">3670.48</span>))<span class="sc">}</span><span class="vs">** · H gets through **</span><span class="sc">${</span><span class="fu">sci</span>(<span class="fu">lg</span>(<span class="fl">1836.15</span>) <span class="op">-</span> <span class="fu">lg</span>(<span class="fl">3670.48</span>))<span class="sc">}</span><span class="vs">** times as often as D`</span><span class="op">;</span></span>
+<span id="cb4-261"><a href="" aria-label="261"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="the-scanning-tunneling-microscope" class="slide level2">
+<h2>The scanning tunneling microscope</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/stm_scan.gif" class="quarto-figure quarto-figure-center" style="width:74.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Electrons <strong>tunnel</strong> across the gap <span class="math inline">d</span>: the current falls as <span class="math inline">e^{-2\beta d}</span> and maps the atoms</li>
+<li>The orange adatom is only <strong>1 Å</strong> taller. Binnig and Rohrer, 1981; Nobel Prize 1986</li>
+</ul>
+</section>
+<section id="example-why-the-stm-sees-atoms" class="slide level2">
+<h2>Example: why the STM sees atoms</h2>
+<div class="worked">
+<p>For a metal with work function <span class="math inline">\phi = 4.5</span> eV, by what factor does the current grow when the tip moves 1 Å closer?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\beta = \frac{\sqrt{2m_e\phi}}{\hbar} = 1.09\ \text{Å}^{-1} \quad\Longrightarrow\quad \frac{I(d - 1\,\text{Å})}{I(d)} = e^{2\beta\,(1\,\text{Å})} = e^{2.17} \approx 9</span></p>
+<p>A height change of 0.01 Å moves the current by 2%, which the electronics read easily.</p>
+</div>
+<ul>
+<li>About a factor of ten per ångström: the exponential turns height into a <strong>huge signal</strong></li>
+</ul>
+</section>
+<section id="ammonia-turns-inside-out" class="slide level2">
+<h2>Ammonia turns inside out</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/ammonia_flip.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The lowest level splits by <strong>Δ = 0.79 cm⁻¹</strong>: a flip and back every <span class="math inline">h/\Delta = 42</span> ps</li>
+<li><strong>ND₃</strong> is 15 times slower. The 24 GHz line ran the first <strong>maser</strong> (1954)</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Wavefunctions stay smooth, curving and decaying according to <span class="math inline">\(E - V\)</span>, and they leak into forbidden regions, giving the finite well its tunneling and its limited set of bound states.</p>
+<p>Where <span class="math inline">E &gt; V</span> the wavefunction bends toward the axis and oscillates; where <span class="math inline">E &lt; V</span> it bends away and decays over about <span class="math inline">1/\beta</span>. Joining <span class="math inline">\psi</span> and <span class="math inline">\psi'</span> at the walls allows a finite well only a limited set of levels, each a little lower than in the infinite box. A barrier passes the fraction <span class="math inline">T = |t|^2</span> of the incident flux, <span class="math inline">T \approx e^{-2\beta a}</span>, exponential in the width and in <span class="math inline">\sqrt{m}</span>: electrons tunnel nanometers, protons fractions of an ångström, the STM sees atoms, and ammonia turns inside out.</p>
 </blockquote>
 
 </section>
@@ -327,7 +578,6 @@ P\left(-\frac{L}{2}&gt;x&gt;\frac{L}{2}\right)=\frac{\int^{\frac{-L}{2}}_{-\inft
   <script src="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="04-tunneling-and-finite-square-well_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -496,32 +746,25 @@ P\left(-\frac{L}{2}&gt;x&gt;\frac{L}{2}\right)=\frac{\int^{\frac{-L}{2}}_{-\inft
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBkRSA9IElucHV0cy5yYW5nZShbMC4wNSwgMl0sIHtzdGVwOiAwLjA1LCB2YWx1ZTogMC4yLCBsYWJlbDogXCJW4oKAIOKIkiBFIChlVilcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgYXcgPSBJbnB1dHMucmFuZ2UoWzAuMSwgMTBdLCB7c3RlcDogMC4wNSwgdmFsdWU6IDAuNSwgbGFiZWw6IFwid2lkdGggYSAow4UpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBwYXJ0cyA9IFtcbiAgICB7bmFtZTogXCJlbGVjdHJvblwiLCBtOiAxLCBjOiBcIiMxMDc4OTVcIn0sXG4gICAge25hbWU6IFwicHJvdG9uIChIKVwiLCBtOiAxODM2LjE1LCBjOiBcIiM2YTNkOWFcIn0sXG4gICAge25hbWU6IFwiZGV1dGVyb24gKEQpXCIsIG06IDM2NzAuNDgsIGM6IFwiI0M4MTAyRVwifVxuICBdO1xuICBjb25zdCBsZyA9IChtLCBhKSA9PiAtMiAqIDAuNTEyMyAqIE1hdGguc3FydChtICogZEUpICogYSAvIE1hdGguTE4xMDsgICAvLyBsb2cxMCBvZiBlXigtMiBiZXRhIGEpLCBiZXRhIGluIDEvQW5nc3Ryb21cbiAgY29uc3QgYXMgPSBkMy5yYW5nZSgwLCAxMC4wMDEsIDAuMDEpO1xuICBjb25zdCByb3dzID0gcGFydHMuZmxhdE1hcChwID0+IGFzLm1hcChhID0+ICh7YSwgeTogbGcocC5tLCBhKSwgbmFtZTogcC5uYW1lfSkpLmZpbHRlcihyID0+IHIueSA+PSAtMTYpKTtcbiAgY29uc3QgcHRzID0gcGFydHMubWFwKHAgPT4gKHthOiBhdywgeTogTWF0aC5tYXgoLTE2LCBsZyhwLm0sIGF3KSksIG5hbWU6IHAubmFtZX0pKTtcbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgd2lkdGg6IDEwMDAsIGhlaWdodDogMzMwLCBtYXJnaW5MZWZ0OiA2MCxcbiAgICB4OiB7ZG9tYWluOiBbMCwgMTBdLCBsYWJlbDogXCJiYXJyaWVyIHdpZHRoIGEgKMOFKVwifSxcbiAgICB5OiB7ZG9tYWluOiBbLTE2LCAwXSwgbGFiZWw6IFwibG9n4oKB4oKAIFRcIiwgdGlja3M6IFswLCAtNCwgLTgsIC0xMiwgLTE2XX0sXG4gICAgY29sb3I6IHtkb21haW46IHBhcnRzLm1hcChwID0+IHAubmFtZSksIHJhbmdlOiBwYXJ0cy5tYXAocCA9PiBwLmMpLCBsZWdlbmQ6IHRydWV9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVYKFthd10sIHtzdHJva2U6IFwiIzZjNzU3ZFwiLCBzdHJva2VEYXNoYXJyYXk6IFwiNCwzXCJ9KSxcbiAgICAgIFBsb3QubGluZShyb3dzLCB7eDogXCJhXCIsIHk6IFwieVwiLCBzdHJva2U6IFwibmFtZVwiLCBzdHJva2VXaWR0aDogMi41fSksXG4gICAgICBQbG90LmRvdChwdHMsIHt4OiBcImFcIiwgeTogXCJ5XCIsIGZpbGw6IFwibmFtZVwiLCByOiA3fSlcbiAgICBdXG4gIH0pO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBsZyA9IG0gPT4gLTIgKiAwLjUxMjMgKiBNYXRoLnNxcnQobSAqIGRFKSAqIGF3IC8gTWF0aC5MTjEwO1xuICBjb25zdCBzY2kgPSB5ID0+IHtcbiAgICBjb25zdCBlID0gTWF0aC5mbG9vcih5KTtcbiAgICByZXR1cm4gKGUgPj0gLTIgJiYgZSA8PSAzKSA/ICgxMCAqKiB5KS50b1ByZWNpc2lvbigyKSA6IGAkeygxMCAqKiAoeSAtIGUpKS50b0ZpeGVkKDEpfcOXMTA8c3VwPiR7ZX08L3N1cD5gO1xuICB9O1xuICByZXR1cm4gbWRgZWxlY3Ryb24gKioke3NjaShsZygxKSl9KiogwrcgcHJvdG9uICoqJHtzY2kobGcoMTgzNi4xNSkpfSoqIMK3IGRldXRlcm9uICoqJHtzY2kobGcoMzY3MC40OCkpfSoqIMK3IEggZ2V0cyB0aHJvdWdoICoqJHtzY2kobGcoMTgzNi4xNSkgLSBsZygzNjcwLjQ4KSl9KiogdGltZXMgYXMgb2Z0ZW4gYXMgRGA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RFJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2F3JykifV19
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../../../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
