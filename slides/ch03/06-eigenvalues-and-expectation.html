@@ -6,11 +6,11 @@
 <script src="06-eigenvalues-and-expectation_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="06-eigenvalues-and-expectation_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="06-eigenvalues-and-expectation_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="06-eigenvalues-and-expectation_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="06-eigenvalues-and-expectation_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Davit Potoyan">
-  <title>Eigenvalues and Expectation Values</title>
+  <title>Measurement: Eigenvalues and Expectation Values</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="06-eigenvalues-and-expectation_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -135,7 +151,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Eigenvalues and Expectation Values</h1>
+  <h1 class="title">Measurement: Eigenvalues and Expectation Values</h1>
   <p class="subtitle">Chem 3240 · Lecture 3.6</p>
 
 <div class="quarto-title-authors">
@@ -147,99 +163,166 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="the-eigenvalue-equation" class="slide level2">
-<h2>The Eigenvalue Equation</h2>
-<p>An operator acting on its <strong>eigenfunction</strong> returns the same function, scaled.</p>
-<p><span class="math display">\[\hat{A}\psi_n = A_n\psi_n\]</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\psi_n\)</span>: <strong>eigenfunctions</strong></li>
-<li class="fragment"><span class="math inline">\(A_n\)</span>: <strong>eigenvalues</strong></li>
-</ul>
-<div class="fragment">
-<p>Boundary conditions fix how many solutions exist: <strong>finite or infinite</strong>.</p>
+<section id="warm-up-components-of-a-vector" class="slide level2">
+<h2>Warm-up: components of a vector</h2>
+<div class="worked">
+<p>Write <span class="math inline">\mathbf{v} = (3, 4)</span> in the tilted axes <span class="math inline">\hat{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)</span> and <span class="math inline">\hat{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)</span>.</p>
 </div>
-</section>
-<section id="in-matrix-form" class="slide level2">
-<h2>In Matrix Form</h2>
-<p>Numerically, operators become <strong>matrices</strong>, eigenfunctions become <strong>eigenvectors</strong>.</p>
-<p><span class="math display">\[Av = \lambda v\]</span></p>
+<div class="soln fragment">
+<p>Each component is a <strong>projection</strong> (a dot product):</p>
+<p><span class="math display">c_1 = \hat{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \hat{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}</span></p>
+<p><span class="math display">\mathbf{v} = c_1\hat{u}_1 + c_2\hat{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2</span></p>
+</div>
 <ul>
-<li class="fragment"><span class="math inline">\(v\)</span>: eigenvector, <span class="math inline">\(\lambda\)</span>: eigenvalue</li>
-<li class="fragment">An <span class="math inline">\(N \times N\)</span> matrix has <strong>at most <span class="math inline">\(N\)</span> eigenvalues</strong></li>
+<li>Perpendicular unit axes: components are <strong>projections</strong>, and their squares add up to the <strong>length</strong> squared</li>
 </ul>
 </section>
-<section id="eigenvalues-are-what-we-measure" class="slide level2">
-<h2>Eigenvalues Are What We Measure</h2>
-<p><strong>Hermitian operators</strong> describe observables.</p>
-<p><span class="math display">\[\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*\]</span></p>
-<div class="fragment">
-<p>Three consequences: - <strong>Eigenvalues are real</strong>: <span class="math inline">\(\;E_n = E_n^*\)</span> - <strong>Eigenfunctions are orthogonal</strong>: <span class="math inline">\(\;\langle \psi_n \mid \psi_m\rangle = \delta_{nm}\)</span> - <strong>Eigenfunctions form a complete basis</strong></p>
+<section id="eigenfunctions-are-coordinates" class="slide level2">
+<h2>Eigenfunctions are coordinates</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/projection.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx</span></p>
 </div>
 </section>
-<section id="a-complete-basis-set" class="slide level2">
-<h2>A Complete Basis Set</h2>
-<p>Eigenfunctions of a Hermitian operator span the space, like <strong>unit vectors</strong>.</p>
-<p><span class="math display">\[\mid f\rangle = \sum_i c_i \mid \psi_i \rangle\]</span></p>
-<div class="fragment">
-<p>Any wavefunction can be <strong>expanded</strong> in the eigenfunctions of any observable.</p>
-</div>
-</section>
-<section id="wavefunction-as-superposition" class="slide level2">
-<h2>Wavefunction as Superposition</h2>
-<p>A state is a <strong>linear superposition</strong> of the eigenfunctions of <span class="math inline">\(\hat{A}\)</span>.</p>
-<p><span class="math display">\[\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle\]</span></p>
-<div class="fragment">
-<p>The coefficients are <strong>projections</strong> onto each eigenfunction:</p>
-<p><span class="math display">\[c_n = \langle n \mid \psi \rangle\]</span></p>
-</div>
-</section>
-<section id="probabilistic-meaning" class="slide level2">
-<h2>Probabilistic Meaning</h2>
-<p>The <strong>squared coefficients</strong> are probabilities.</p>
-<p><span class="math display">\[p_n = \mid c_n \mid^2\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\sum_n \mid c_n \mid^2 = \sum_n p_n = 1\]</span></p>
-</div>
-<div class="fragment">
-<p>Measuring <span class="math inline">\(\hat{A}\)</span> yields eigenvalue <span class="math inline">\(A_n\)</span> with probability <span class="math inline">\(p_n\)</span>.</p>
-</div>
-</section>
-<section id="expectation-value" class="slide level2">
-<h2>Expectation Value</h2>
-<p>The average is a <strong>probability-weighted sum of eigenvalues</strong>.</p>
-<p><span class="math display">\[\langle E\rangle = \langle \psi \mid \hat{H}\mid \psi \rangle\]</span></p>
-<div class="fragment">
-<p>For <span class="math inline">\(\mid \psi \rangle = c_1\mid 1\rangle + c_2\mid 2\rangle\)</span>:</p>
-<p><span class="math display">\[\langle E\rangle = \mid c_1\mid^2 E_1 + \mid c_2\mid^2 E_2 = p_1 E_1 + p_2 E_2\]</span></p>
-</div>
-</section>
-<section id="measurement-and-collapse" class="slide level2">
-<h2>Measurement and Collapse</h2>
-<p>In any single experiment you obtain <strong>one</strong> eigenvalue.</p>
-<p><span class="math display">\[\mid \psi \rangle \rightarrow \mid \phi_n \rangle\]</span></p>
-<div class="fragment">
-<p>The superposition <strong>collapses</strong> to a single eigenfunction.</p>
-</div>
-<div class="fragment">
-<p><strong>Orthogonality</strong> means <strong>mutually exclusive</strong> outcomes:</p>
-<p><span class="math display">\[\langle \phi_1 \mid \phi_2 \rangle = 0\]</span></p>
-</div>
-</section>
-<section id="schrödingers-cat" class="slide level2">
-<h2>Schrödinger’s Cat</h2>
-<p>A radioactive atom in <strong>superposition</strong> of decayed and not-decayed.</p>
+<section id="three-one-line-derivations" class="slide level2">
+<h2>Three one-line derivations</h2>
+<p>All three use only <strong>orthonormality</strong>, <span class="math inline">\langle \phi_m \vert \phi_n \rangle = \delta_{mn}</span>:</p>
+<p><span class="math display">
+\begin{aligned}
+\text{coefficient:}\quad &amp; \langle \phi_m \vert \psi \rangle = \sum_n c_n\,\langle \phi_m \vert \phi_n \rangle = c_m \\[6pt]
+\text{normalization:}\quad &amp; \langle \psi \vert \psi \rangle = \sum_m\sum_n c_m^*\,c_n\,\delta_{mn} = \sum_n \lvert c_n\rvert^2 = 1 \\[6pt]
+\text{average:}\quad &amp; \langle \psi \vert \hat{A} \vert \psi \rangle = \sum_m\sum_n c_m^*\,c_n\,a_n\,\delta_{mn} = \sum_n \lvert c_n\rvert^2\,a_n
+\end{aligned}
+</span></p>
 <ul>
-<li class="fragment">Atom decay triggers poison</li>
-<li class="fragment">Cat is <strong>alive and dead at once</strong> until observed</li>
+<li>Same as the vector: squared components add up to one, the <strong>length</strong> of a normalized state</li>
 </ul>
-<div class="fragment">
-<p>Measurement forces the system into <strong>one</strong> mutually exclusive state.</p>
+</section>
+<section id="example-how-much-ground-state-is-in-a-parabola" class="slide level2">
+<h2>Example: how much ground state is in a parabola?</h2>
+<div class="worked">
+<p>Expand <span class="math inline">\psi = \sqrt{30/L^5}\;x(L-x)</span> in box states <span class="math inline">\psi_n = \sqrt{2/L}\,\sin(n\pi x/L)</span>.</p>
 </div>
+<div class="soln fragment">
+<p>Two integrations by parts:</p>
+<p><span class="math display">c_n = \int_0^L \psi_n\,\psi\,dx = \frac{8\sqrt{15}}{(n\pi)^3}\ \ (n \text{ odd}), \qquad c_n = 0\ \ (n \text{ even: odd about } L/2)</span></p>
+<p><span class="math display">\lvert c_1\rvert^2 = \frac{960}{\pi^6} = 0.9986, \qquad \lvert c_3\rvert^2 = 0.0014, \qquad \lvert c_5\rvert^2 = 0.0001</span></p>
+</div>
+<ul>
+<li>A smooth, spread-out state is <strong>almost all ground state</strong></li>
+</ul>
+</section>
+<section id="a-narrow-state-needs-many-eigenstates" class="slide level2">
+<h2>A narrow state needs many eigenstates</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/sine_series.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Sharp features need <strong>short wavelengths</strong>, high <span class="math inline">n</span>: about ten states for a packet <span class="math inline">0.045\,L</span> wide</li>
+</ul>
+</section>
+<section id="a-measurement-returns-an-eigenvalue" class="slide level2">
+<h2>A measurement returns an eigenvalue</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/measure_energy.gif" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">\text{reading } a_n \text{ with probability}\quad p_n = \lvert c_n\rvert^2 = \lvert\langle \phi_n \vert \psi \rangle\rvert^2</span></p>
+</div>
+</section>
+<section id="live-measure-it-yourself" class="slide level2">
+<h2>Live: measure it yourself</h2>
+<div id="mw-live" style="width: 1080px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/measure_energy.mjs";
+  const opts = { state: "example", fontSize: "22px", showMean: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mw-live") });
+</script>
+</section>
+<section id="averages-and-spreads" class="slide level2">
+<h2>Averages and spreads</h2>
+<div class="keyeq">
+<p><span class="math display">\langle A \rangle = \sum_n p_n\,a_n = \langle \psi \vert \hat{A} \vert \psi \rangle</span></p>
+<p><span class="math display">\sigma_A^2 = \sum_n p_n\,\big(a_n - \langle A \rangle\big)^2 = \langle A^2 \rangle - \langle A \rangle^2</span></p>
+</div>
+<ul>
+<li><span class="math inline">\langle A\rangle</span>: the <strong>average</strong> of many readings, usually <strong>not</strong> a possible reading itself</li>
+<li><span class="math inline">\sigma_A = 0</span> only if all the probability sits on <strong>one</strong> eigenvalue: only eigenstates are <strong>sharp</strong></li>
+</ul>
+</section>
+<section id="example-readings-average-spread" class="slide level2">
+<h2>Example: readings, average, spread</h2>
+<div class="worked">
+<p><span class="math inline">\psi = \tfrac{1}{2}\psi_1 + \tfrac{1}{2}\psi_2 + \tfrac{1}{\sqrt{2}}\psi_3</span> in a box. What can an energy measurement give, how often, and what are <span class="math inline">\langle E\rangle</span> and <span class="math inline">\sigma_E</span>?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">E_1,\ 4E_1,\ 9E_1 \quad\text{with}\quad p = \tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{2}</span></p>
+<p><span class="math display">\langle E \rangle = \tfrac{1}{4}(1) + \tfrac{1}{4}(4) + \tfrac{1}{2}(9) = 5.75\,E_1</span></p>
+<p><span class="math display">\langle E^2 \rangle = \tfrac{1}{4}(1) + \tfrac{1}{4}(16) + \tfrac{1}{2}(81) = 44.75\,E_1^2</span></p>
+<p><span class="math display">\sigma_E = \sqrt{44.75 - 5.75^2}\;E_1 = 3.42\,E_1</span></p>
+</div>
+</section>
+<section id="after-the-measurement" class="slide level2">
+<h2>After the measurement</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/collapse.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<ul>
+<li>A reading of <span class="math inline">a_n</span> leaves the state <span class="math inline">\phi_n</span> (<strong>collapse</strong>): measure again, get <span class="math inline">a_n</span> every time</li>
+<li>The probabilities live in <strong>many identical copies</strong>, not in one particle</li>
+</ul>
+</section>
+<section id="a-box-state-has-no-sharp-momentum" class="slide level2">
+<h2>A box state has no sharp momentum</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/box_momentum.png" class="quarto-figure quarto-figure-center" style="width:52.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\sin kx</span> is half <span class="math inline">e^{ikx}</span> (moving right), half <span class="math inline">e^{-ikx}</span> (moving left); the walls broaden each hump</li>
+<li><strong>Sharp</strong> <span class="math inline">E</span>, <strong>spread</strong> <span class="math inline">p</span>: in the box <span class="math inline">\hat{H}</span> and <span class="math inline">\hat{p}</span> do not share eigenfunctions</li>
+</ul>
+</section>
+<section id="the-uncertainty-principle" class="slide level2">
+<h2>The uncertainty principle</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/uncertainty_tradeoff.gif" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">\sigma_A\,\sigma_B \geq \tfrac{1}{2}\big\lvert\langle[\hat{A},\hat{B}]\rangle\big\rvert \qquad\Longrightarrow\qquad \sigma_x\,\sigma_p \geq \hbar/2</span></p>
+</div>
+</section>
+<section id="example-sigma_xsigma_p-for-the-box-ground-state" class="slide level2">
+<h2>Example: <span class="math inline">\sigma_x\sigma_p</span> for the box ground state</h2>
+<div class="worked">
+<p>For <span class="math inline">\psi_1 = \sqrt{2/L}\,\sin(\pi x/L)</span>, find <span class="math inline">\sigma_x</span>, <span class="math inline">\sigma_p</span> and their product.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\langle x\rangle = \tfrac{L}{2}, \quad \langle x^2\rangle = L^2\left(\tfrac{1}{3} - \tfrac{1}{2\pi^2}\right) \;\Rightarrow\; \sigma_x = 0.181\,L</span></p>
+<p><span class="math display">\langle p\rangle = 0, \quad \langle p^2\rangle = 2mE_1 = \left(\tfrac{\pi\hbar}{L}\right)^2 \;\Rightarrow\; \sigma_p = \tfrac{\pi\hbar}{L}</span></p>
+<p><span class="math display">\sigma_x\,\sigma_p = 0.181\,\pi\,\hbar = 0.568\,\hbar \;\geq\; 0.5\,\hbar</span></p>
+</div>
+<ul>
+<li>Independent of <span class="math inline">L</span>: squeeze the box and <span class="math inline">\sigma_p</span> grows, so <strong>confinement costs energy</strong> (<span class="math inline">\propto 1/L^2</span>)</li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A quantum state is a superposition of eigenfunctions; measurement returns a single eigenvalue with probability <span class="math inline">\(\mid c_n\mid^2\)</span>, and the expectation value is the probability-weighted average of those eigenvalues.</p>
+<p>Expand the state in the eigenfunctions of the observable: the coefficients are projections, <span class="math inline">c_n = \langle \phi_n \vert \psi \rangle</span>. A measurement returns one eigenvalue <span class="math inline">a_n</span>, with probability <span class="math inline">\lvert c_n\rvert^2</span>, and leaves the system in <span class="math inline">\phi_n</span>. Averages are weighted sums, <span class="math inline">\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n</span>, sharp only in eigenstates; and observables that do not commute cannot be sharp together, <span class="math inline">\sigma_x\sigma_p \geq \hbar/2</span>.</p>
 </blockquote>
 
 </section>
@@ -264,7 +347,6 @@ Davit Potoyan
   <script src="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="06-eigenvalues-and-expectation_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -433,27 +515,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
