@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,119 +16,197 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch03/images
 ---
 
-## How states evolve in time
+## One stationary state: only the phase turns
 
-The **time-dependent Schrödinger equation** governs all quantum dynamics:
+![](../../ch03/images/phase_clock.gif){.nostretch width="62%" fig-align="center"}
 
-$$ i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\mid\psi(t)\rangle $$
+$$\Psi_n(x,t) = \psi_n(x)\,e^{-iE_nt/\hbar} \qquad\Longrightarrow\qquad \lvert\Psi_n\rvert^2 = \lvert\psi_n\rvert^2 \ \text{ never moves}$$
 
-::: {.fragment}
-So far we have studied states that **do not appear to move**. Why?
+## Two states: the density sloshes
+
+![](../../ch03/images/box_slosh.gif){.nostretch width="58%" fig-align="center"}
+
+$$\lvert\Psi\rvert^2 = \tfrac{1}{2}\big(\psi_1^2 + \psi_2^2\big) + \psi_1\psi_2\cos\omega t, \qquad \omega = \frac{E_2 - E_1}{\hbar}$$
+
+- Each term keeps **its own clock**; the **cross term** carries the difference of the two phases
+
+## One recipe for all motion
+
+::: {.keyeq}
+$$\Psi(x,0) = \sum_n c_n\,\psi_n(x) \quad\Longrightarrow\quad \Psi(x,t) = \sum_n c_n\,e^{-iE_nt/\hbar}\,\psi_n(x)$$
 :::
 
-## Stationary states carry a phase
+1. **Expand** the starting state in energy eigenstates: $c_n = \langle \psi_n \vert \Psi(0) \rangle$
+2. **Attach** to each the phase of its own clock, $e^{-iE_nt/\hbar}$
+3. **Add up**
 
-A pure eigenstate of $\hat{H}$ evolves only by a complex **phase factor**:
+- Works because the equation is **linear** and the eigenstates are a **complete** basis
 
-$$\psi_n(x,t) = \psi_n(x)\, e^{-\frac{i}{\hbar}E_n t}$$
+## Example: does the recipe solve the equation?
 
-- Spatial shape $\psi_n(x)$ is **fixed**
-- Only the phase $e^{-iE_n t/\hbar}$ turns
-
-## Why the probability is stationary
-
-The phase has **unit magnitude**, so it cancels in $|\psi|^2$:
-
-$$\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x)\, e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t} = \mid \psi_n(x) \mid^2$$
-
-::: {.fragment}
-**Definite energy** $\Rightarrow$ **time-independent** probability distribution.
+::: {.worked}
+Show that $\Psi(x,t) = \sum_n c_n\,e^{-iE_nt/\hbar}\,\psi_n(x)$ satisfies $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$.
 :::
 
-## Expectation values freeze too
+::: {.soln .fragment}
+$$i\hbar\,\frac{\partial\Psi}{\partial t} = \sum_n c_n\,i\hbar\left(-\frac{iE_n}{\hbar}\right)e^{-iE_nt/\hbar}\,\psi_n = \sum_n c_n\,E_n\,e^{-iE_nt/\hbar}\,\psi_n$$
 
-For any operator $\hat{A}$ the phases also cancel:
+$$\hat{H}\Psi = \sum_n c_n\,e^{-iE_nt/\hbar}\,\hat{H}\psi_n = \sum_n c_n\,E_n\,e^{-iE_nt/\hbar}\,\psi_n \quad\checkmark$$
 
-$$\langle A \rangle = \int \psi_n^*(x) e^{+\frac{i}{\hbar}E_n t} \hat{A}\, \psi_n(x) e^{-\frac{i}{\hbar}E_n t}\, dx = \int \psi_n^*(x) \hat{A}\, \psi_n(x)\, dx$$
-
-::: {.fragment}
-Nothing observable changes in a **single eigenstate**.
+Term by term, using $\hat{H}\psi_n = E_n\psi_n$. At $t = 0$ every phase is 1.
 :::
 
-## Superpositions bring time back
+## Three clocks
 
-Start with a superposition at $t=0$:
+![](../../ch03/images/evolve_recipe.gif){.nostretch width="66%" fig-align="center"}
 
-$$\mid \psi(0) \rangle = c_1\mid 1 \rangle + c_2 \mid 2 \rangle$$
+- Hand **lengths** $\lvert c_n\rvert$ fixed; the **angles** between hands make the motion
 
-::: {.fragment}
-Each piece picks up **its own** phase:
+## Three lines of numpy
 
-$$\mid \psi(t) \rangle = c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2 \rangle$$
+::: {style="font-size: 1.25em"}
+```python
+x = np.linspace(-10, 10, 600); h = x[1] - x[0]
+H = -0.5 * D2 + np.diag(0.5 * x**2)            # spring: hbar = m = omega = 1
+E, phi = np.linalg.eigh(H); phi /= np.sqrt(h)  # 1. diagonalize once
+c = phi.T @ psi0 * h                           # 2. expand a packet released at x = 3
+psi_t = phi @ (c * np.exp(-1j * E * t))        # 3. attach the phases, add up
+```
 :::
 
-## Coefficients move, basis stays fixed
+- $\langle x\rangle = +3.000,\ +0.004,\ -3.000$ at $t = 0,\ \pi/2,\ \pi$: exactly $3\cos t$, a classical spring
+- The **norm** stays $1.000000$ at every $t$
 
-$$\mid \psi(t) \rangle = c_1(t)\mid 1\rangle+c_2(t) \mid 2 \rangle$$
+## What never changes
 
-- The eigenstates are **fixed, orthogonal** directions
-- The **coefficients** $c_n(t)$ rotate the state vector through them
+$$\lvert c_n\,e^{-iE_nt/\hbar}\rvert^2 = \lvert c_n\rvert^2 \qquad\Longrightarrow\qquad \text{energy probabilities, } \langle E\rangle,\ \sigma_E \text{ frozen}$$
 
-::: {.fragment}
-General case:
+$$\langle \Psi(t) \vert \Psi(t) \rangle = \sum_m\sum_n c_m^*\,c_n\,e^{i(E_m - E_n)t/\hbar}\,\delta_{mn} = \sum_n \lvert c_n\rvert^2 = 1$$
 
-$$\mid \psi(t)\rangle = \sum_n c_n e^{-\frac{i}{\hbar}E_n t} \mid n\rangle$$
+- $e^{-i\hat{H}t/\hbar}$ is **unitary**: it rotates the state vector, never stretches it
+- Only the **relative phases** change, and all motion comes from them
+
+## How an average changes
+
+Product rule, then $\partial_t\lvert\Psi\rangle = \hat{H}\lvert\Psi\rangle/i\hbar$ and $\partial_t\langle\Psi\rvert = -\langle\Psi\rvert\hat{H}/i\hbar$:
+
+$$\frac{d}{dt}\langle\Psi\vert\hat{A}\vert\Psi\rangle = -\frac{1}{i\hbar}\langle\Psi\vert\hat{H}\hat{A}\vert\Psi\rangle + \frac{1}{i\hbar}\langle\Psi\vert\hat{A}\hat{H}\vert\Psi\rangle$$
+
+::: {.keyeq}
+$$\frac{d}{dt}\langle A\rangle = \frac{i}{\hbar}\,\big\langle[\hat{H},\hat{A}]\big\rangle \qquad (\hat{A} \text{ not explicitly time dependent})$$
 :::
 
-## Interference makes probabilities oscillate
-
-Different energies $\Rightarrow$ phases turn at **different rates**.
-
-- Relative phase $e^{-\frac{i}{\hbar}(E_k - E_n)t}$ drives **interference**
-- Drives **oscillations** between states in two-level systems
-- The engine of all **quantum dynamics**
-
-## What stays constant: normalization
-
-Orthogonality kills the cross terms, so the norm is **conserved**:
-
-$$\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k c^*_n c_k\, e^{-\frac{i}{\hbar}(E_k - E_n)t} \delta_{kn} = \sum_n \mid c_n \mid^2 = 1$$
-
-::: {.fragment}
-The particle is always **somewhere**.
-:::
+- Commutes with $\hat{H}$: a **constant of motion**
 
 ## Constants of motion
 
-Time derivative of any expectation value:
+| observable | $[\hat{H}, \cdot\,]$ with $\hat{H} = \hat{p}^2/2m + V$ | conserved when |
+|:--|:--|:--|
+| energy $\hat{H}$ | $0$ | always |
+| momentum $\hat{p}$ | $i\hbar\,dV/dx$ | no force |
+| parity $\hat{\Pi}$ | $0$ if $V(-x) = V(x)$ | symmetric potential |
+| position $\hat{x}$ | $-i\hbar\,\hat{p}/m$ | only while $\langle p\rangle = 0$ |
 
-$$\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle$$
+- The commutators of Lecture 3.5 now say **what moves** and **what stays**
 
-- **Commutes** with $\hat{H}$ and no explicit $t$ $\Rightarrow$ **conserved**
-- Energy commutes with itself $\Rightarrow$ $\dfrac{\partial}{\partial t}\langle E \rangle = 0$
+## Free particle: $x$ spreads, $p$ stays
 
-## Quantum dynamics, visualized
+![](../../ch03/images/free_spread.gif){.nostretch width="66%" fig-align="center"}
 
-:::: {.columns}
+- $[\hat{p},\hat{H}] = 0$: every momentum probability is frozen, while the position spreads
 
-::: {.column width="50%"}
-![Wavepacket in a Gaussian potential: probability density with real and imaginary parts.](../../ch03/images/gaussian_potential.gif){width="90%"}
+## Ehrenfest: averages obey Newton
+
+::: {.keyeq}
+$$\frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m} \qquad\qquad \frac{d\langle p\rangle}{dt} = -\Big\langle\frac{dV}{dx}\Big\rangle$$
 :::
 
-::: {.column width="50%"}
-![Decay of a superposition, $|\psi|^2$ evolving in time.](../../ch03/images/decay_psi.png){width="90%"}
+- The force is **averaged over the packet**: the same as at its center only if it is **linear** in $x$
+
+![](../../ch03/images/ehrenfest_wells.gif){.nostretch width="46%" fig-align="center"}
+
+## Example: a packet in a uniform field
+
+::: {.worked}
+For $V = mgx$, find $\langle x\rangle(t)$ for a packet released at rest from $x_0$.
 :::
 
-::::
+::: {.soln .fragment}
+$$-\frac{dV}{dx} = -mg \ \text{everywhere} \quad\Longrightarrow\quad \frac{d\langle p\rangle}{dt} = -mg, \qquad \frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m}$$
 
-::: {.fragment}
-Superposition of energies $\Rightarrow$ **motion** you can watch.
+$$\langle x\rangle(t) = x_0 - \tfrac{1}{2}\,g\,t^2$$
+
+The center falls like a stone, whatever the shape. The width still spreads, as for a free packet.
 :::
+
+## Motion holds only energy differences
+
+$$\langle x\rangle(t) = \sum_n \lvert c_n\rvert^2 x_{nn} + \sum_{n\neq m} c_m^*\,c_n\,x_{mn}\,e^{-i(E_n - E_m)t/\hbar}, \qquad x_{mn} = \langle\psi_m\vert\hat{x}\vert\psi_n\rangle$$
+
+![](../../ch03/images/bohr_spectrum.png){.nostretch width="58%" fig-align="center"}
+
+- **Bohr frequencies** $(E_n - E_m)/\hbar$: the light a sloshing charge absorbs and emits
+
+## Example: which frequencies are in the motion?
+
+::: {.worked}
+$\frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3$ in a box: which of $\omega_{21}$, $\omega_{32}$, $\omega_{31}$ appear in $\langle x\rangle(t)$?
+:::
+
+::: {.soln .fragment}
+About the center, $\psi_1$ and $\psi_3$ are **even**, $x - L/2$ is **odd**:
+
+$$x_{13} = \tfrac{L}{2}\int\psi_1\psi_3\,dx + \int\psi_1\big(x - \tfrac{L}{2}\big)\psi_3\,dx = 0 + 0$$
+
+$\omega_{21} = 3E_1/\hbar$ and $\omega_{32} = 5E_1/\hbar$ appear; $\omega_{31} = 8E_1/\hbar$ does not. A **selection rule**.
+:::
+
+## Revivals
+
+![](../../ch03/images/box_revival.png){.nostretch width="48%" fig-align="center"}
+
+::: {.keyeq}
+$$T_{\text{rev}} = \frac{2\pi\hbar}{E_1} = \frac{4mL^2}{\pi\hbar}$$
+:::
+
+- $E_n = n^2E_1$: every phase $e^{-in^2E_1t/\hbar}$ returns to 1 at the **same** moment
+
+## Example: revival in a 1 nm box
+
+::: {.worked}
+How long does an electron in a box 1 nm long take to rebuild any starting state?
+:::
+
+::: {.soln .fragment}
+$$T_{\text{rev}} = \frac{4\,(9.109\times10^{-31}\ \text{kg})\,(10^{-9}\ \text{m})^2}{\pi\,(1.055\times10^{-34}\ \text{J s})} = 1.1\times10^{-14}\ \text{s} = 11\ \text{fs}$$
+
+Twice the box, four times slower: $T_{\text{rev}} \propto L^2$.
+:::
+
+## Watching a bond vibrate
+
+![](../../ch03/images/morse_revival.png){.nostretch width="66%" fig-align="center"}
+
+- A laser pulse makes a **packet** of vibrational states: the bond swings. **Femtochemistry**, Zewail, Nobel 1999. I₂: about 300 fs
+- **Anharmonic** levels: the clocks drift apart (**dephasing**), then realign (**revival**)
+
+## The postulates, all together
+
+| | postulate | in equations |
+|:-:|:------------------------------|:----------------------|
+| 1 | the state is a normalized wavefunction | $\langle \psi \vert \psi \rangle = 1$ |
+| 2 | observables are linear Hermitian operators | $\hat{A} = \hat{A}^\dagger$, $\hat{A}\phi_n = a_n\phi_n$ |
+| 3 | a reading is an eigenvalue; the state becomes its eigenfunction | $a_n$, then $\psi \to \phi_n$ |
+| 4 | probabilities and averages | $p_n = \lvert\langle \phi_n \vert \psi \rangle\rvert^2$, $\langle A\rangle = \langle \psi \vert \hat{A} \vert \psi \rangle$ |
+| 5 | evolution by the Schrödinger equation | $\Psi(t) = \sum_n c_n e^{-iE_nt/\hbar}\psi_n$ |
+
+- The rest of the course applies these five rules to new potentials $V(x)$
 
 # Takeaway {.center}
 
-> A single eigenstate only spins its phase, so nothing observable moves; superpose different energies and their phases beat against each other, and quantum dynamics comes alive.
+> Diagonalize $\hat{H}$ once, and any state's future follows: expand, attach to each eigenstate its phase $e^{-iE_nt/\hbar}$, add up. The energy probabilities and the norm never change; the relative phases make all the motion, at the Bohr frequencies $(E_n - E_m)/\hbar$ that spectroscopy measures. Averages obey Newton's laws, exactly so in a harmonic well, and observables that commute with $\hat{H}$ are conserved.

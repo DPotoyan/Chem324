@@ -2345,6 +2345,272 @@ def uncertainty_tradeoff():
     return fig, ani
 
 
+# ============================================================ deck 3.7 "Time dependence"
+# Page ch03/06 syncs evolve_recipe, free_spread, ehrenfest_wells, bohr_spectrum, box_revival and morse_revival.
+# Stationary states (phase_clock), the two-state slosh (box_slosh) and ammonia (ammonia_flip) are shown in
+# 3.1, 3.2 and 3.4; the page links back to them instead of animating them again.
+
+# ------------------------------------------------------------ the recipe: three clocks of fixed length drive |Psi|^2 and <x>
+@register
+def evolve_recipe():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)                                  # box, L = hbar = 1, E_n = n^2 E1 with E1 = 1
+    c = np.array([0.5, 0.5, np.sqrt(0.5)])                      # the state of the Measurement lecture
+    ns = np.array([1, 2, 3])
+    phis = np.sqrt(2) * np.sin(np.outer(ns, np.pi * x))
+    nf = 44
+    ts = np.linspace(0, 2 * np.pi, nf, endpoint=False)          # one full period T = 2 pi hbar / E1
+    tt = np.linspace(0, 2 * np.pi, 500)
+    amp = lambda t: (c * np.exp(-1j * ns**2 * t)) @ phis
+    xbar = np.array([np.trapezoid(x * np.abs(amp(t))**2, x) for t in tt])
+    th = np.linspace(0, 2 * np.pi, 200)
+    fig = plt.figure(figsize=(8.4, 4.4))
+    gs = fig.add_gridspec(3, 2, width_ratios=[2.5, 1], height_ratios=[1, 1, 1], hspace=0.55, wspace=0.12)
+    ax = fig.add_subplot(gs[0:2, 0]); axx = fig.add_subplot(gs[2, 0])
+    (dens,) = ax.plot([], [], color=CARDINAL, lw=2.6)
+    band = [ax.fill_between(x, 0 * x, color=CARDINAL, alpha=0.16, lw=0)]
+    (mark,) = ax.plot([], [], marker="^", color=PURPLE, ms=13, ls="none", zorder=6)
+    ax.plot([0, 0, 1, 1], [5.4, 0, 0, 5.4], color="k", lw=2.6)
+    ax.set_xlim(-0.02, 1.02); ax.set_ylim(0, 5.4); ax.set_xticks([]); ax.set_yticks([])
+    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    axx.plot(tt / (2 * np.pi), xbar, color=PURPLE, lw=1, alpha=0.25)
+    (trace,) = axx.plot([], [], color=PURPLE, lw=2.4); (dot,) = axx.plot([], [], "o", color=PURPLE, ms=7)
+    axx.axhline(0.5, color=GRAY, lw=0.8, ls=":")
+    axx.set_xlim(0, 1); axx.set_ylim(0.2, 0.8); axx.set_yticks([0.25, 0.5, 0.75]); axx.set_yticklabels(["L/4", "L/2", "3L/4"])
+    axx.set_xticks([0, 0.25, 0.5, 0.75, 1]); axx.set_xticklabels(["0", "T/4", "T/2", "3T/4", "T"])
+    axx.tick_params(labelsize=11); axx.set_title(r"$\langle x\rangle(t)$", loc="left", fontsize=12.5, color=PURPLE)
+    hands = []
+    for r, (n, cn, col) in enumerate(zip(ns, c, (TEAL, ORANGE, CARDINAL))):
+        axc = fig.add_subplot(gs[r, 1])
+        axc.plot(np.cos(th), np.sin(th), color=GRAY, lw=0.8, ls="--")
+        (hd,) = axc.plot([], [], color=col, lw=3.2); (tp,) = axc.plot([], [], "o", color=col, ms=6)
+        axc.set_aspect("equal"); axc.set_xlim(-1.1, 1.1); axc.set_ylim(-1.1, 1.1); axc.axis("off")
+        axc.text(1.25, 0, rf"$n = {n}$" + "\n" + rf"$|c_{n}|^2 = {cn**2:.2f}$" + "\n" + (r"$E_1$" if n == 1 else rf"${n * n}E_1$"),
+                 fontsize=11, va="center", color=col)
+        hands.append((hd, tp, n, cn / c.max()))
+    fig.subplots_adjust(left=0.08, right=0.9, top=0.93, bottom=0.08)
+
+    def update(i):
+        t = ts[i]
+        d = np.abs(amp(t))**2
+        dens.set_data(x, d)
+        band[0].remove(); band[0] = ax.fill_between(x, d, color=CARDINAL, alpha=0.16, lw=0)
+        xm = np.trapezoid(x * d, x)
+        mark.set_data([xm], [0.25])
+        k = int(round(t / (2 * np.pi) * (len(tt) - 1)))
+        trace.set_data(tt[:k + 1] / (2 * np.pi), xbar[:k + 1]); dot.set_data([t / (2 * np.pi)], [xm])
+        for hd, tp, n, ln in hands:
+            z = ln * np.exp(-1j * n * n * t)
+            hd.set_data([0, z.real], [0, z.imag]); tp.set_data([z.real], [z.imag])
+        ax.set_title(rf"$|\Psi(x,t)|^2$ at $t = {t / (2 * np.pi):.2f}\,T$   (" + "\u25b2" + r" marks $\langle x\rangle$)", loc="left", fontsize=12.5)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ a free packet spreads in x while its momentum distribution never changes
+@register
+def free_spread():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-25, 45, 2048, endpoint=False); dx = x[1] - x[0]   # hbar = m = 1
+    k = 2 * np.pi * np.fft.fftfreq(x.size, d=dx)
+    s0, k0 = 0.8, 2.5                                           # |psi|^2 starts with width s0 and moves at speed k0
+    psi0 = np.exp(-x**2 / (4 * s0**2) + 1j * k0 * x); psi0 = psi0 / np.sqrt(np.sum(np.abs(psi0)**2) * dx)
+    f0 = np.fft.fft(psi0)
+    nf = 36
+    ts = np.linspace(0, 7, nf)
+    p = np.linspace(-0.5, 5.5, 400)
+    php = np.exp(-(p - k0)**2 * 2 * s0**2); php = php / np.trapezoid(php, p)
+    fig, (ax, axp) = plt.subplots(2, 1, figsize=(8, 4.2), gridspec_kw={"height_ratios": [1.6, 1], "hspace": 0.6})
+    (lx,) = ax.plot([], [], color=TEAL, lw=2.4); bx = [ax.fill_between(x, 0 * x, color=TEAL, alpha=0.2, lw=0)]
+    (cl,) = ax.plot([], [], "o", color=PURPLE, ms=9, zorder=5, label=r"classical particle, $x = p_0t/m$")
+    ax.set_xlim(-6, 22); ax.set_ylim(0, 0.56); ax.set_yticks([]); ax.spines["left"].set_visible(False)
+    ax.set_xlabel(r"position $x$", fontsize=12); ax.tick_params(labelsize=11)
+    ax.legend(loc="upper right", frameon=False, fontsize=11.5)
+    axp.fill_between(p, php, color=CARDINAL, alpha=0.2, lw=0); axp.plot(p, php, color=CARDINAL, lw=2.4)
+    axp.set_xlim(-0.5, 5.5); axp.set_yticks([]); axp.spines["left"].set_visible(False)
+    axp.set_xlabel(r"momentum $p$", fontsize=12); axp.tick_params(labelsize=11)
+    axp.set_title(r"$|\phi(p)|^2$: the same at every $t$, because $[\hat{p},\hat{H}] = 0$", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.03, right=0.98, top=0.9, bottom=0.13)
+
+    def update(i):
+        t = ts[i]
+        d = np.abs(np.fft.ifft(f0 * np.exp(-0.5j * k**2 * t)))**2
+        lx.set_data(x, d); bx[0].remove(); bx[0] = ax.fill_between(x, d, color=TEAL, alpha=0.2, lw=0)
+        cl.set_data([k0 * t], [0.02])
+        sx = s0 * np.sqrt(1 + (t / (2 * s0**2))**2)
+        ax.set_title(rf"$|\Psi(x,t)|^2$ at $t = {t:.1f}$:  $\Delta x = {sx:.2f}$ grows,  $\Delta p = {1 / (2 * s0):.2f}$ stays",
+                     loc="left", fontsize=12.5)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=120, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ Ehrenfest: harmonic packet tracks the ball exactly, quartic packet does not
+@register
+def ehrenfest_wells():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-6, 6, 600); h = x[1] - x[0]               # hbar = m = 1, both packets start at rest at x0
+    x0 = -2.5
+    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
+    psi0 = np.exp(-(x - x0)**2 / 2) / np.pi**0.25
+    nf, tmax = 44, 9.4
+    ts = np.linspace(0, tmax, nf)
+    wells = [(0.5 * x**2, lambda y: y, lambda y: 0.5 * y**2, r"harmonic, $V = \frac{1}{2}x^2$", TEAL),
+             (0.1 * x**4, lambda y: 0.4 * y**3, lambda y: 0.1 * y**4, r"quartic, $V = 0.1\,x^4$", ORANGE)]
+    data = []
+    for V, dV, Vf, title, col in wells:
+        E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(h)
+        c = U.T @ psi0 * h
+        dens = np.array([np.abs(U @ (c * np.exp(-1j * E * t)))**2 for t in ts])
+        xq = dens @ x * h
+        dt = 1e-3; xc = np.empty(int(tmax / dt) + 2); xv, vv = x0, 0.0  # velocity Verlet for the classical ball
+        for j in range(xc.size):
+            xc[j] = xv; a1 = -dV(xv); xv = xv + vv * dt + 0.5 * a1 * dt**2; vv = vv + 0.5 * (a1 - dV(xv)) * dt
+        xcl = np.interp(ts, np.arange(xc.size) * dt, xc)
+        data.append((V, Vf, title, col, dens, xq, xcl, np.sum(c**2 * E)))
+    fig = plt.figure(figsize=(8.8, 4.6))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1.7, 1], hspace=0.45, wspace=0.14)
+    arts = []
+    for j, (V, Vf, title, col, dens, xq, xcl, Eav) in enumerate(data):
+        ax = fig.add_subplot(gs[0, j]); axt = fig.add_subplot(gs[1, j])
+        ax.plot(x, V, color=GRAY, lw=1.8)
+        (pk,) = ax.plot([], [], color=col, lw=2.4)
+        (ball,) = ax.plot([], [], "o", color=PURPLE, ms=11, zorder=6)
+        (qm,) = ax.plot([], [], marker="^", color=col, ms=12, ls="none", zorder=6)
+        ax.set_xlim(-4, 4); ax.set_ylim(0, 8.6); ax.set_yticks([]); ax.set_xticks([])
+        ax.spines["left"].set_visible(False)
+        ax.set_title(title, loc="left", fontsize=12.5)
+        axt.plot(ts, xcl, color=PURPLE, lw=1.4, ls="--")
+        (tq,) = axt.plot([], [], color=col, lw=2.4)
+        axt.set_xlim(0, tmax); axt.set_ylim(-2.9, 2.9); axt.set_yticks([-2, 0, 2]); axt.tick_params(labelsize=10.5)
+        axt.set_xlabel("time", fontsize=11.5)
+        axt.set_title(r"$\langle x\rangle$ (solid) " + ("tracks the ball (dashed) exactly" if j == 0 else "falls away from the ball (dashed)"),
+                      loc="left", fontsize=11.5)
+        arts.append((pk, ball, qm, tq, dens, xq, xcl, Vf, Eav))
+    fig.subplots_adjust(left=0.04, right=0.99, top=0.92, bottom=0.1)
+
+    def update(i):
+        for pk, ball, qm, tq, dens, xq, xcl, Vf, Eav in arts:
+            pk.set_data(x, Eav + 1.8 * dens[i])
+            ball.set_data([xcl[i]], [Vf(xcl[i])])
+            qm.set_data([xq[i]], [Eav - 0.25])
+            tq.set_data(ts[:i + 1], xq[:i + 1])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ Bohr frequencies: <x>(t) of psi1 + psi2 + psi3 holds w21 and w32, not w31 (still)
+@register
+def bohr_spectrum():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    c = np.array([0.5, 0.5, np.sqrt(0.5)])                      # L = hbar = E1 = 1, E_n = n^2
+    xnm = lambda n, m: 0.5 if n == m else (0.0 if (n + m) % 2 == 0 else -8 * n * m / (np.pi**2 * (n * n - m * m)**2))
+    t = np.linspace(0, 2 * np.pi, 800)
+    xt = sum(c[n - 1] * c[m - 1] * xnm(n, m) * np.cos((n * n - m * m) * t) for n in (1, 2, 3) for m in (1, 2, 3))
+    fig, (ax, axs) = plt.subplots(1, 2, figsize=(9, 3.4), gridspec_kw={"width_ratios": [1.5, 1], "wspace": 0.3})
+    ax.plot(t / (2 * np.pi), xt, color=PURPLE, lw=2.2)
+    ax.axhline(0.5, color=GRAY, lw=0.8, ls=":")
+    ax.set_xlim(0, 1); ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "T/2", "T"])
+    ax.set_yticks([0.3, 0.5, 0.7]); ax.set_yticklabels(["0.3 L", "L/2", "0.7 L"]); ax.tick_params(labelsize=11)
+    ax.set_title(r"$\langle x\rangle(t)$ for $\frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3$", loc="left", fontsize=12.5)
+    lines = [(3, 2 * c[0] * c[1] * abs(xnm(1, 2)), r"$\omega_{21}$"), (5, 2 * c[1] * c[2] * abs(xnm(2, 3)), r"$\omega_{32}$"),
+             (8, 0.0, r"$\omega_{31}$")]
+    for w, a, lab in lines:
+        if a > 0:
+            axs.vlines(w, 0, a, color=PURPLE, lw=5); axs.text(w, a + 0.01, lab, ha="center", fontsize=13, color=PURPLE)
+        else:
+            axs.plot([w], [0.004], "o", mfc="white", mec=GRAY, ms=10, mew=2)
+            axs.text(w, 0.03, lab + "\nmissing:\n" + r"$\langle 1|x|3\rangle = 0$", ha="center", fontsize=11, color=GRAY)
+    axs.set_xlim(1, 10); axs.set_ylim(0, 0.17); axs.set_yticks([])
+    axs.set_xticks([3, 5, 8]); axs.set_xticklabels([r"$3E_1/\hbar$", r"$5E_1/\hbar$", r"$8E_1/\hbar$"], fontsize=11.5)
+    axs.spines["left"].set_visible(False)
+    axs.set_title("frequencies in the motion", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.88, bottom=0.14)
+    fig.savefig(f"{OUT}/bohr_spectrum.png", dpi=200)
+    print("wrote", f"{OUT}/bohr_spectrum.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ revival in a box: the packet dissolves, mirrors at T/2 and returns at T (still)
+@register
+def box_revival():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 500); dx = x[1] - x[0]               # L = 1; time in units of T_rev = 4 m L^2 / (pi hbar)
+    ns = np.arange(1, 81)
+    phis = np.sqrt(2) * np.sin(np.outer(ns, np.pi * x))
+    g = np.exp(-(x - 0.3)**2 / (4 * 0.05**2)); g = g / np.sqrt(np.sum(g**2) * dx)
+    c = phis @ g * dx
+    psi = lambda tau: (c * np.exp(-2j * np.pi * ns**2 * tau)) @ phis
+    snaps = [(0.0, "t = 0"), (0.01, "t = 0.01 T"), (0.25, "T/4: two copies"), (0.5, "T/2: mirror image"), (1.0, "t = T: back")]
+    taus = np.linspace(0, 1, 3001)
+    ret = np.abs(np.exp(-2j * np.pi * np.outer(taus, ns**2)) @ (c**2))**2
+    fig = plt.figure(figsize=(9.4, 4.1))
+    gs = fig.add_gridspec(2, len(snaps), height_ratios=[1, 1.15], hspace=0.55, wspace=0.12)
+    for j, (tau, lab) in enumerate(snaps):
+        ax = fig.add_subplot(gs[0, j])
+        d = np.abs(psi(tau))**2
+        ax.fill_between(x, d, color=CARDINAL, alpha=0.2, lw=0); ax.plot(x, d, color=CARDINAL, lw=1.8)
+        ax.plot([0, 0, 1, 1], [8.5, 0, 0, 8.5], color="k", lw=2)
+        ax.set_xlim(-0.03, 1.03); ax.set_ylim(0, 8.5); ax.axis("off")
+        ax.set_title(lab, fontsize=11.5)
+    axr = fig.add_subplot(gs[1, :])
+    axr.plot(taus, ret, color=TEAL, lw=1.3)
+    for tau, lab in snaps:
+        k = int(round(tau * (taus.size - 1)))
+        axr.plot([tau], [ret[k]], "o", color=CARDINAL, ms=7, zorder=5)
+    axr.set_xlim(0, 1); axr.set_ylim(0, 1.08)
+    axr.set_xticks([0, 0.25, 0.5, 0.75, 1]); axr.set_xticklabels(["0", "T/4", "T/2", "3T/4", "T"], fontsize=11.5)
+    axr.set_yticks([0, 0.5, 1]); axr.tick_params(labelsize=11)
+    axr.set_ylabel(r"$|\langle\Psi(0)|\Psi(t)\rangle|^2$", fontsize=12)
+    axr.set_title("return probability: how much of the starting packet is back", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.92, bottom=0.11)
+    fig.savefig(f"{OUT}/box_revival.png", dpi=200)
+    print("wrote", f"{OUT}/box_revival.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ femtochemistry: a packet in a Morse bond swings, dephases and revives (still)
+@register
+def morse_revival():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    D = 10.0; a = 1 / np.sqrt(2 * D)                            # hbar = m = 1, harmonic frequency 1 at the bottom
+    x = np.linspace(-4, 20, 900); h = x[1] - x[0]
+    V = D * (1 - np.exp(-a * x))**2
+    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
+    E, U = np.linalg.eigh(T + np.diag(np.minimum(V, 80))); U = U / np.sqrt(h)
+    psi0 = np.exp(-(x + 1.2)**2 / 2) / np.pi**0.25              # ground-state-shaped packet on the compressed side
+    c = U.T @ psi0 * h
+    keep = np.argsort(-c**2)[:30]; cc, UU, EE = c[keep], U[:, keep], E[keep]
+    X = UU.T @ (x[:, None] * UU) * h
+    tl = np.linspace(0, 2 * np.pi * 44, 6000)
+    A = cc * np.exp(-1j * np.outer(tl, EE))
+    xm = np.real(np.einsum("ti,ij,tj->t", np.conj(A), X, A))
+    snaps = [(0.25, "first swings: a compact packet"), (10.3, "about 10 periods: spread out"), (20.25, "about 20 periods: back together")]
+    fig = plt.figure(figsize=(9.4, 4.4))
+    gs = fig.add_gridspec(2, 3, height_ratios=[1.1, 1], hspace=0.5, wspace=0.1)
+    Eav = np.sum(c**2 * E)
+    for j, (per, lab) in enumerate(snaps):
+        ax = fig.add_subplot(gs[0, j])
+        d = np.abs(UU @ (cc * np.exp(-1j * EE * per * 2 * np.pi)))**2
+        ax.plot(x, V, color=GRAY, lw=1.6)
+        ax.fill_between(x, Eav, Eav + 4 * d, color=CARDINAL, alpha=0.2, lw=0); ax.plot(x, Eav + 4 * d, color=CARDINAL, lw=1.8)
+        ax.set_xlim(-3, 9); ax.set_ylim(0, 6.2); ax.axis("off")
+        ax.set_title(lab, fontsize=11.5)
+    axm = fig.add_subplot(gs[1, :])
+    axm.plot(tl / (2 * np.pi), xm, color=TEAL, lw=0.9)
+    for per, lab in snaps:
+        axm.axvline(per, color=CARDINAL, lw=1, ls=":")
+    axm.set_xlim(0, 44); axm.set_xlabel("time  (vibrational periods)", fontsize=12)
+    axm.set_ylabel(r"$\langle x\rangle$, bond length", fontsize=11.5); axm.set_yticks([]); axm.tick_params(labelsize=11)
+    axm.set_title("the average bond length swings, fades as the packet dephases, and comes back", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.06, right=0.99, top=0.92, bottom=0.12)
+    fig.savefig(f"{OUT}/morse_revival.png", dpi=200)
+    print("wrote", f"{OUT}/morse_revival.png")
+    return fig, None
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:
