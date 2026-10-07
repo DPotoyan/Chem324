@@ -247,6 +247,13 @@ print("<E> = <psi|H|psi>:", round(psi @ H @ psi * h / E1, 4), "E1   (exact: 10/p
 ```
 
 - The grid agrees with the exact coefficients of the example, and both routes give $\langle E \rangle = 10E_1/\pi^2 = 1.013\,E_1$: the parabola costs only 1.3 percent more energy than the ground state.
+- The translation table of [Operators](04-operators.md) grows by the three rows this lecture used:
+
+| | integral | Dirac | numpy on a grid |
+| :-- | :-- | :-- | :-- |
+| expansion coefficient | $c_n = \int \phi_n^*\,\psi\,dx$ | $c_n = \langle \phi_n \vert \psi \rangle$ | `c = phi.conj().T @ psi * h` |
+| probability of $a_n$ | $\lvert c_n\rvert^2$ | $\lvert\langle \phi_n \vert \psi \rangle\rvert^2$ | `p = np.abs(c)**2` |
+| average | $\sum_n \lvert c_n\rvert^2 a_n$ | $\langle \psi \vert \hat{A} \vert \psi \rangle$ | `p @ a` |
 
 ### After the measurement
 

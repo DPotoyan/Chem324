@@ -375,7 +375,7 @@ print(np.round(E[:5], 4))                     # exact: 0.5 1.5 2.5 3.5 4.5
 ```
 
 - The levels come out $0.5, 1.5, 2.5, \dots$ in units of $\hbar\omega$, to three or four digits. This evenly spaced ladder is the vibrating bond of [Chapter 4](../ch04/02-quantum-harmonic-oscillator.md). The columns of `psi` are the wavefunctions.
-- `eigh` is numpy's eigensolver for **Hermitian** matrices. Why the physics hands us only Hermitian matrices is the subject of the next two sections.
+- `eigh` is numpy's eigensolver for **Hermitian** matrices. Why the physics hands us only Hermitian matrices is the subject of the section on Hermitian operators below.
 
 ### Dirac notation
 

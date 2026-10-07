@@ -34,8 +34,90 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="07-time-dependence_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="07-time-dependence_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="07-time-dependence_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="07-time-dependence_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,112 +229,285 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="how-states-evolve-in-time" class="slide level2">
-<h2>How states evolve in time</h2>
-<p>The <strong>time-dependent Schrödinger equation</strong> governs all quantum dynamics:</p>
-<p><span class="math display">\[ i\hbar\frac{\partial}{\partial t}\mid \psi \rangle =\hat{H}\mid\psi(t)\rangle \]</span></p>
-<div class="fragment">
-<p>So far we have studied states that <strong>do not appear to move</strong>. Why?</p>
+<section id="one-stationary-state-only-the-phase-turns" class="slide level2">
+<h2>One stationary state: only the phase turns</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/phase_clock.gif" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
 </div>
+<p><span class="math display">\Psi_n(x,t) = \psi_n(x)\,e^{-iE_nt/\hbar} \qquad\Longrightarrow\qquad \lvert\Psi_n\rvert^2 = \lvert\psi_n\rvert^2 \ \text{ never moves}</span></p>
 </section>
-<section id="stationary-states-carry-a-phase" class="slide level2">
-<h2>Stationary states carry a phase</h2>
-<p>A pure eigenstate of <span class="math inline">\(\hat{H}\)</span> evolves only by a complex <strong>phase factor</strong>:</p>
-<p><span class="math display">\[\psi_n(x,t) = \psi_n(x)\, e^{-\frac{i}{\hbar}E_n t}\]</span></p>
+<section id="two-states-the-density-sloshes" class="slide level2">
+<h2>Two states: the density sloshes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/box_slosh.gif" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\lvert\Psi\rvert^2 = \tfrac{1}{2}\big(\psi_1^2 + \psi_2^2\big) + \psi_1\psi_2\cos\omega t, \qquad \omega = \frac{E_2 - E_1}{\hbar}</span></p>
 <ul>
-<li class="fragment">Spatial shape <span class="math inline">\(\psi_n(x)\)</span> is <strong>fixed</strong></li>
-<li class="fragment">Only the phase <span class="math inline">\(e^{-iE_n t/\hbar}\)</span> turns</li>
+<li>Each term keeps <strong>its own clock</strong>; the <strong>cross term</strong> carries the difference of the two phases</li>
 </ul>
 </section>
-<section id="why-the-probability-is-stationary" class="slide level2">
-<h2>Why the probability is stationary</h2>
-<p>The phase has <strong>unit magnitude</strong>, so it cancels in <span class="math inline">\(|\psi|^2\)</span>:</p>
-<p><span class="math display">\[\mid \psi_n(x,t) \mid^2 = \psi_n^*(x)\psi_n(x)\, e^{-\frac{i}{\hbar}E_n t} e^{+\frac{i}{\hbar}E_n t} = \mid \psi_n(x) \mid^2\]</span></p>
-<div class="fragment">
-<p><strong>Definite energy</strong> <span class="math inline">\(\Rightarrow\)</span> <strong>time-independent</strong> probability distribution.</p>
+<section id="one-recipe-for-all-motion" class="slide level2">
+<h2>One recipe for all motion</h2>
+<div class="keyeq">
+<p><span class="math display">\Psi(x,0) = \sum_n c_n\,\psi_n(x) \quad\Longrightarrow\quad \Psi(x,t) = \sum_n c_n\,e^{-iE_nt/\hbar}\,\psi_n(x)</span></p>
 </div>
-</section>
-<section id="expectation-values-freeze-too" class="slide level2">
-<h2>Expectation values freeze too</h2>
-<p>For any operator <span class="math inline">\(\hat{A}\)</span> the phases also cancel:</p>
-<p><span class="math display">\[\langle A \rangle = \int \psi_n^*(x) e^{+\frac{i}{\hbar}E_n t} \hat{A}\, \psi_n(x) e^{-\frac{i}{\hbar}E_n t}\, dx = \int \psi_n^*(x) \hat{A}\, \psi_n(x)\, dx\]</span></p>
-<div class="fragment">
-<p>Nothing observable changes in a <strong>single eigenstate</strong>.</p>
-</div>
-</section>
-<section id="superpositions-bring-time-back" class="slide level2">
-<h2>Superpositions bring time back</h2>
-<p>Start with a superposition at <span class="math inline">\(t=0\)</span>:</p>
-<p><span class="math display">\[\mid \psi(0) \rangle = c_1\mid 1 \rangle + c_2 \mid 2 \rangle\]</span></p>
-<div class="fragment">
-<p>Each piece picks up <strong>its own</strong> phase:</p>
-<p><span class="math display">\[\mid \psi(t) \rangle = c_1 e^{-\frac{i}{\hbar}E_1 t}\mid 1 \rangle + c_2 e^{-\frac{i}{\hbar}E_2 t}\mid 2 \rangle\]</span></p>
-</div>
-</section>
-<section id="coefficients-move-basis-stays-fixed" class="slide level2">
-<h2>Coefficients move, basis stays fixed</h2>
-<p><span class="math display">\[\mid \psi(t) \rangle = c_1(t)\mid 1\rangle+c_2(t) \mid 2 \rangle\]</span></p>
+<ol type="1">
+<li><strong>Expand</strong> the starting state in energy eigenstates: <span class="math inline">c_n = \langle \psi_n \vert \Psi(0) \rangle</span></li>
+<li><strong>Attach</strong> to each the phase of its own clock, <span class="math inline">e^{-iE_nt/\hbar}</span></li>
+<li><strong>Add up</strong></li>
+</ol>
 <ul>
-<li class="fragment">The eigenstates are <strong>fixed, orthogonal</strong> directions</li>
-<li class="fragment">The <strong>coefficients</strong> <span class="math inline">\(c_n(t)\)</span> rotate the state vector through them</li>
-</ul>
-<div class="fragment">
-<p>General case:</p>
-<p><span class="math display">\[\mid \psi(t)\rangle = \sum_n c_n e^{-\frac{i}{\hbar}E_n t} \mid n\rangle\]</span></p>
-</div>
-</section>
-<section id="interference-makes-probabilities-oscillate" class="slide level2">
-<h2>Interference makes probabilities oscillate</h2>
-<p>Different energies <span class="math inline">\(\Rightarrow\)</span> phases turn at <strong>different rates</strong>.</p>
-<ul>
-<li class="fragment">Relative phase <span class="math inline">\(e^{-\frac{i}{\hbar}(E_k - E_n)t}\)</span> drives <strong>interference</strong></li>
-<li class="fragment">Drives <strong>oscillations</strong> between states in two-level systems</li>
-<li class="fragment">The engine of all <strong>quantum dynamics</strong></li>
+<li>Works because the equation is <strong>linear</strong> and the eigenstates are a <strong>complete</strong> basis</li>
 </ul>
 </section>
-<section id="what-stays-constant-normalization" class="slide level2">
-<h2>What stays constant: normalization</h2>
-<p>Orthogonality kills the cross terms, so the norm is <strong>conserved</strong>:</p>
-<p><span class="math display">\[\langle \psi(t) \mid \psi(t)\rangle = \sum_n \sum_k c^*_n c_k\, e^{-\frac{i}{\hbar}(E_k - E_n)t} \delta_{kn} = \sum_n \mid c_n \mid^2 = 1\]</span></p>
-<div class="fragment">
-<p>The particle is always <strong>somewhere</strong>.</p>
+<section id="example-does-the-recipe-solve-the-equation" class="slide level2">
+<h2>Example: does the recipe solve the equation?</h2>
+<div class="worked">
+<p>Show that <span class="math inline">\Psi(x,t) = \sum_n c_n\,e^{-iE_nt/\hbar}\,\psi_n(x)</span> satisfies <span class="math inline">i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi</span>.</p>
 </div>
+<div class="soln fragment">
+<p><span class="math display">i\hbar\,\frac{\partial\Psi}{\partial t} = \sum_n c_n\,i\hbar\left(-\frac{iE_n}{\hbar}\right)e^{-iE_nt/\hbar}\,\psi_n = \sum_n c_n\,E_n\,e^{-iE_nt/\hbar}\,\psi_n</span></p>
+<p><span class="math display">\hat{H}\Psi = \sum_n c_n\,e^{-iE_nt/\hbar}\,\hat{H}\psi_n = \sum_n c_n\,E_n\,e^{-iE_nt/\hbar}\,\psi_n \quad\checkmark</span></p>
+<p>Term by term, using <span class="math inline">\hat{H}\psi_n = E_n\psi_n</span>. At <span class="math inline">t = 0</span> every phase is 1.</p>
+</div>
+</section>
+<section id="three-clocks" class="slide level2">
+<h2>Three clocks</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/evolve_recipe.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Hand <strong>lengths</strong> <span class="math inline">\lvert c_n\rvert</span> fixed; the <strong>angles</strong> between hands make the motion</li>
+</ul>
+</section>
+<section id="three-lines-of-numpy" class="slide level2">
+<h2>Three lines of numpy</h2>
+<div style="font-size: 1.25em">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-label="1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">600</span>)<span class="op">;</span> h <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
+<span id="cb1-2"><a href="" aria-label="2"></a>H <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> D2 <span class="op">+</span> np.diag(<span class="fl">0.5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span>)            <span class="co"># spring: hbar = m = omega = 1</span></span>
+<span id="cb1-3"><a href="" aria-label="3"></a>E, phi <span class="op">=</span> np.linalg.eigh(H)<span class="op">;</span> phi <span class="op">/=</span> np.sqrt(h)  <span class="co"># 1. diagonalize once</span></span>
+<span id="cb1-4"><a href="" aria-label="4"></a>c <span class="op">=</span> phi.T <span class="op">@</span> psi0 <span class="op">*</span> h                           <span class="co"># 2. expand a packet released at x = 3</span></span>
+<span id="cb1-5"><a href="" aria-label="5"></a>psi_t <span class="op">=</span> phi <span class="op">@</span> (c <span class="op">*</span> np.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> E <span class="op">*</span> t))        <span class="co"># 3. attach the phases, add up</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><span class="math inline">\langle x\rangle = +3.000,\ +0.004,\ -3.000</span> at <span class="math inline">t = 0,\ \pi/2,\ \pi</span>: exactly <span class="math inline">3\cos t</span>, a classical spring</li>
+<li>The <strong>norm</strong> stays <span class="math inline">1.000000</span> at every <span class="math inline">t</span></li>
+</ul>
+</section>
+<section id="what-never-changes" class="slide level2">
+<h2>What never changes</h2>
+<p><span class="math display">\lvert c_n\,e^{-iE_nt/\hbar}\rvert^2 = \lvert c_n\rvert^2 \qquad\Longrightarrow\qquad \text{energy probabilities, } \langle E\rangle,\ \sigma_E \text{ frozen}</span></p>
+<p><span class="math display">\langle \Psi(t) \vert \Psi(t) \rangle = \sum_m\sum_n c_m^*\,c_n\,e^{i(E_m - E_n)t/\hbar}\,\delta_{mn} = \sum_n \lvert c_n\rvert^2 = 1</span></p>
+<ul>
+<li><span class="math inline">e^{-i\hat{H}t/\hbar}</span> is <strong>unitary</strong>: it rotates the state vector, never stretches it</li>
+<li>Only the <strong>relative phases</strong> change, and all motion comes from them</li>
+</ul>
+</section>
+<section id="how-an-average-changes" class="slide level2">
+<h2>How an average changes</h2>
+<p>Product rule, then <span class="math inline">\partial_t\lvert\Psi\rangle = \hat{H}\lvert\Psi\rangle/i\hbar</span> and <span class="math inline">\partial_t\langle\Psi\rvert = -\langle\Psi\rvert\hat{H}/i\hbar</span>:</p>
+<p><span class="math display">\frac{d}{dt}\langle\Psi\vert\hat{A}\vert\Psi\rangle = -\frac{1}{i\hbar}\langle\Psi\vert\hat{H}\hat{A}\vert\Psi\rangle + \frac{1}{i\hbar}\langle\Psi\vert\hat{A}\hat{H}\vert\Psi\rangle</span></p>
+<div class="keyeq">
+<p><span class="math display">\frac{d}{dt}\langle A\rangle = \frac{i}{\hbar}\,\big\langle[\hat{H},\hat{A}]\big\rangle \qquad (\hat{A} \text{ not explicitly time dependent})</span></p>
+</div>
+<ul>
+<li>Commutes with <span class="math inline">\hat{H}</span>: a <strong>constant of motion</strong></li>
+</ul>
 </section>
 <section id="constants-of-motion" class="slide level2">
 <h2>Constants of motion</h2>
-<p>Time derivative of any expectation value:</p>
-<p><span class="math display">\[\frac{\partial}{\partial t}\langle A \rangle = \frac{1}{i\hbar} \langle \psi \mid [\hat{A}, \hat{H}] \mid \psi \rangle + \langle \psi \mid \frac{\partial \hat{A}}{\partial t} \mid \psi \rangle\]</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">observable</th>
+<th style="text-align: left;"><span class="math inline">[\hat{H}, \cdot\,]</span> with <span class="math inline">\hat{H} = \hat{p}^2/2m + V</span></th>
+<th style="text-align: left;">conserved when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">energy <span class="math inline">\hat{H}</span></td>
+<td style="text-align: left;"><span class="math inline">0</span></td>
+<td style="text-align: left;">always</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">momentum <span class="math inline">\hat{p}</span></td>
+<td style="text-align: left;"><span class="math inline">i\hbar\,dV/dx</span></td>
+<td style="text-align: left;">no force</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">parity <span class="math inline">\hat{\Pi}</span></td>
+<td style="text-align: left;"><span class="math inline">0</span> if <span class="math inline">V(-x) = V(x)</span></td>
+<td style="text-align: left;">symmetric potential</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">position <span class="math inline">\hat{x}</span></td>
+<td style="text-align: left;"><span class="math inline">-i\hbar\,\hat{p}/m</span></td>
+<td style="text-align: left;">only while <span class="math inline">\langle p\rangle = 0</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment"><strong>Commutes</strong> with <span class="math inline">\(\hat{H}\)</span> and no explicit <span class="math inline">\(t\)</span> <span class="math inline">\(\Rightarrow\)</span> <strong>conserved</strong></li>
-<li class="fragment">Energy commutes with itself <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\dfrac{\partial}{\partial t}\langle E \rangle = 0\)</span></li>
+<li>The commutators of Lecture 3.5 now say <strong>what moves</strong> and <strong>what stays</strong></li>
 </ul>
 </section>
-<section id="quantum-dynamics-visualized" class="slide level2">
-<h2>Quantum dynamics, visualized</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="free-particle-x-spreads-p-stays" class="slide level2">
+<h2>Free particle: <span class="math inline">x</span> spreads, <span class="math inline">p</span> stays</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/gaussian_potential.gif" style="width:90.0%"></p>
-<figcaption>Wavepacket in a Gaussian potential: probability density with real and imaginary parts.</figcaption>
+<p><img data-src="../../ch03/images/free_spread.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
 </figure>
 </div>
-</div><div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">[\hat{p},\hat{H}] = 0</span>: every momentum probability is frozen, while the position spreads</li>
+</ul>
+</section>
+<section id="ehrenfest-averages-obey-newton" class="slide level2">
+<h2>Ehrenfest: averages obey Newton</h2>
+<div class="keyeq">
+<p><span class="math display">\frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m} \qquad\qquad \frac{d\langle p\rangle}{dt} = -\Big\langle\frac{dV}{dx}\Big\rangle</span></p>
+</div>
+<ul>
+<li>The force is <strong>averaged over the packet</strong>: the same as at its center only if it is <strong>linear</strong> in <span class="math inline">x</span></li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/decay_psi.png" style="width:90.0%"></p>
-<figcaption>Decay of a superposition, <span class="math inline">\(|\psi|^2\)</span> evolving in time.</figcaption>
+<p><img data-src="../../ch03/images/ehrenfest_wells.gif" class="quarto-figure quarto-figure-center" style="width:46.0%"></p>
 </figure>
 </div>
-</div></div>
-<div class="fragment">
-<p>Superposition of energies <span class="math inline">\(\Rightarrow\)</span> <strong>motion</strong> you can watch.</p>
+</section>
+<section id="example-a-packet-in-a-uniform-field" class="slide level2">
+<h2>Example: a packet in a uniform field</h2>
+<div class="worked">
+<p>For <span class="math inline">V = mgx</span>, find <span class="math inline">\langle x\rangle(t)</span> for a packet released at rest from <span class="math inline">x_0</span>.</p>
 </div>
+<div class="soln fragment">
+<p><span class="math display">-\frac{dV}{dx} = -mg \ \text{everywhere} \quad\Longrightarrow\quad \frac{d\langle p\rangle}{dt} = -mg, \qquad \frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m}</span></p>
+<p><span class="math display">\langle x\rangle(t) = x_0 - \tfrac{1}{2}\,g\,t^2</span></p>
+<p>The center falls like a stone, whatever the shape. The width still spreads, as for a free packet.</p>
+</div>
+</section>
+<section id="motion-holds-only-energy-differences" class="slide level2">
+<h2>Motion holds only energy differences</h2>
+<p><span class="math display">\langle x\rangle(t) = \sum_n \lvert c_n\rvert^2 x_{nn} + \sum_{n\neq m} c_m^*\,c_n\,x_{mn}\,e^{-i(E_n - E_m)t/\hbar}, \qquad x_{mn} = \langle\psi_m\vert\hat{x}\vert\psi_n\rangle</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/bohr_spectrum.png" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Bohr frequencies</strong> <span class="math inline">(E_n - E_m)/\hbar</span>: the light a sloshing charge absorbs and emits</li>
+</ul>
+</section>
+<section id="example-which-frequencies-are-in-the-motion" class="slide level2">
+<h2>Example: which frequencies are in the motion?</h2>
+<div class="worked">
+<p><span class="math inline">\frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3</span> in a box: which of <span class="math inline">\omega_{21}</span>, <span class="math inline">\omega_{32}</span>, <span class="math inline">\omega_{31}</span> appear in <span class="math inline">\langle x\rangle(t)</span>?</p>
+</div>
+<div class="soln fragment">
+<p>About the center, <span class="math inline">\psi_1</span> and <span class="math inline">\psi_3</span> are <strong>even</strong>, <span class="math inline">x - L/2</span> is <strong>odd</strong>:</p>
+<p><span class="math display">x_{13} = \tfrac{L}{2}\int\psi_1\psi_3\,dx + \int\psi_1\big(x - \tfrac{L}{2}\big)\psi_3\,dx = 0 + 0</span></p>
+<p><span class="math inline">\omega_{21} = 3E_1/\hbar</span> and <span class="math inline">\omega_{32} = 5E_1/\hbar</span> appear; <span class="math inline">\omega_{31} = 8E_1/\hbar</span> does not. A <strong>selection rule</strong>.</p>
+</div>
+</section>
+<section id="revivals" class="slide level2">
+<h2>Revivals</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/box_revival.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">T_{\text{rev}} = \frac{2\pi\hbar}{E_1} = \frac{4mL^2}{\pi\hbar}</span></p>
+</div>
+<ul>
+<li><span class="math inline">E_n = n^2E_1</span>: every phase <span class="math inline">e^{-in^2E_1t/\hbar}</span> returns to 1 at the <strong>same</strong> moment</li>
+</ul>
+</section>
+<section id="example-revival-in-a-1-nm-box" class="slide level2">
+<h2>Example: revival in a 1 nm box</h2>
+<div class="worked">
+<p>How long does an electron in a box 1 nm long take to rebuild any starting state?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">T_{\text{rev}} = \frac{4\,(9.109\times10^{-31}\ \text{kg})\,(10^{-9}\ \text{m})^2}{\pi\,(1.055\times10^{-34}\ \text{J s})} = 1.1\times10^{-14}\ \text{s} = 11\ \text{fs}</span></p>
+<p>Twice the box, four times slower: <span class="math inline">T_{\text{rev}} \propto L^2</span>.</p>
+</div>
+</section>
+<section id="watching-a-bond-vibrate" class="slide level2">
+<h2>Watching a bond vibrate</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/morse_revival.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>A laser pulse makes a <strong>packet</strong> of vibrational states: the bond swings. <strong>Femtochemistry</strong>, Zewail, Nobel 1999. I₂: about 300 fs</li>
+<li><strong>Anharmonic</strong> levels: the clocks drift apart (<strong>dephasing</strong>), then realign (<strong>revival</strong>)</li>
+</ul>
+</section>
+<section id="the-postulates-all-together" class="slide level2">
+<h2>The postulates, all together</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 54%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: left;">postulate</th>
+<th style="text-align: left;">in equations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">the state is a normalized wavefunction</td>
+<td style="text-align: left;"><span class="math inline">\langle \psi \vert \psi \rangle = 1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">observables are linear Hermitian operators</td>
+<td style="text-align: left;"><span class="math inline">\hat{A} = \hat{A}^\dagger</span>, <span class="math inline">\hat{A}\phi_n = a_n\phi_n</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">a reading is an eigenvalue; the state becomes its eigenfunction</td>
+<td style="text-align: left;"><span class="math inline">a_n</span>, then <span class="math inline">\psi \to \phi_n</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">probabilities and averages</td>
+<td style="text-align: left;"><span class="math inline">p_n = \lvert\langle \phi_n \vert \psi \rangle\rvert^2</span>, <span class="math inline">\langle A\rangle = \langle \psi \vert \hat{A} \vert \psi \rangle</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">evolution by the Schrödinger equation</td>
+<td style="text-align: left;"><span class="math inline">\Psi(t) = \sum_n c_n e^{-iE_nt/\hbar}\psi_n</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The rest of the course applies these five rules to new potentials <span class="math inline">V(x)</span></li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A single eigenstate only spins its phase, so nothing observable moves; superpose different energies and their phases beat against each other, and quantum dynamics comes alive.</p>
+<p>Diagonalize <span class="math inline">\hat{H}</span> once, and any state’s future follows: expand, attach to each eigenstate its phase <span class="math inline">e^{-iE_nt/\hbar}</span>, add up. The energy probabilities and the norm never change; the relative phases make all the motion, at the Bohr frequencies <span class="math inline">(E_n - E_m)/\hbar</span> that spectroscopy measures. Averages obey Newton’s laws, exactly so in a harmonic well, and observables that commute with <span class="math inline">\hat{H}</span> are conserved.</p>
 </blockquote>
 
 </section>
@@ -277,7 +532,6 @@ Davit Potoyan
   <script src="07-time-dependence_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="07-time-dependence_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="07-time-dependence_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="07-time-dependence_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -446,27 +700,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
