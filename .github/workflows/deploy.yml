@@ -122,13 +122,14 @@ jobs:
       - name: Copy slide decks into site
         # Web-first reveal.js decks under /slides/: each html needs its *_files
         # sidecar, and slide images resolve relatively to ../../chNN/images, so
-        # the chapter image dirs must also exist in the published site.
+        # the chapter image dirs must also exist in the published site. Live deck
+        # slides import JS widgets from ../../widgets (pages get theirs from myst).
         run: |
           for d in slides/ch0* slides/math; do
             mkdir -p "_build/html/$d"
             cp -r "$d"/*.html "$d"/*_files "_build/html/$d/" 2>/dev/null || true
           done
-          for d in ch0*/images math/images; do
+          for d in ch0*/images math/images widgets; do
             mkdir -p "_build/html/$d"
             cp -r "$d"/. "_build/html/$d/"
           done

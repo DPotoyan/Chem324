@@ -1881,6 +1881,470 @@ def barrier_setup():
     return fig, None
 
 
+# ============================================================ deck 3.5 "Operators"
+# Page ch03/04 syncs function_vector, difference_stencils, box_grid_states, grid_operators, hermitian_dial
+# and order_matters (the first three build the matrix picture step by step before any numpy).
+
+# ------------------------------------------------------------ sample a function at N points: it becomes a vector (still)
+@register
+def function_vector():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    xs = np.linspace(0, 1, 400)
+    f = lambda x: np.sin(np.pi * x) + 0.45 * np.sin(2 * np.pi * x)
+    N, h = 7, 1 / 8
+    xj = h * np.arange(1, N + 1); fj = f(xj)
+    fig = plt.figure(figsize=(9, 3.7))
+    gs = fig.add_gridspec(1, 3, width_ratios=[2.6, 0.5, 0.9], wspace=0.05)
+    ax, axa, axv = (fig.add_subplot(gs[0, j]) for j in range(3))
+    ax.plot(xs, f(xs), color=TEAL, lw=2.6, label=r"$\psi(x)$")
+    ax.vlines(xj, 0, fj, color=GRAY, lw=1, ls=":")
+    ax.plot(xj, fj, "o", color=CARDINAL, ms=8, zorder=5)
+    for j, (xv, fv) in enumerate(zip(xj, fj), start=1):
+        ax.text(xv, fv + 0.09, rf"$\psi_{j}$", ha="center", fontsize=12, color=CARDINAL)
+    ax.plot([0, 0], [0, 1.55], color="k", lw=2.6); ax.plot([1, 1], [0, 1.55], color="k", lw=2.6)
+    ax.axhline(0, color=GRAY, lw=0.8)
+    ax.annotate("", xy=(xj[3], -0.14), xytext=(xj[2], -0.14), arrowprops=dict(arrowstyle="<->", color="k", lw=1.2))
+    ax.text((xj[2] + xj[3]) / 2, -0.2, r"$h$", ha="center", va="top", fontsize=13)
+    ax.set_xlim(-0.03, 1.03); ax.set_ylim(-0.42, 1.6)
+    ax.set_xticks(list(xj)); ax.set_xticklabels([rf"$x_{j}$" for j in range(1, N + 1)], fontsize=12)
+    ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    ax.tick_params(length=0)
+    ax.set_title(r"a function, sampled at $N$ points spaced $h$ apart", loc="left", fontsize=12.5)
+    axa.axis("off")
+    axa.annotate("", xy=(0.95, 0.5), xytext=(0.05, 0.5), xycoords="axes fraction",
+                 arrowprops=dict(arrowstyle="simple,head_length=0.8,head_width=0.8,tail_width=0.3", color=PURPLE, alpha=0.8))
+    axv.axis("off"); axv.set_xlim(0, 1); axv.set_ylim(0, N + 1)
+    for j, fv in enumerate(fj, start=1):
+        y = N + 0.5 - j
+        axv.text(0.5, y, f"{fv:.2f}", ha="center", va="center", fontsize=13,
+                 bbox=dict(boxstyle="round,pad=0.25", fc="#fbeaec", ec=CARDINAL, lw=1))
+        axv.text(0.02, y, rf"$\psi_{j}$", ha="left", va="center", fontsize=11, color=CARDINAL)
+    axv.plot([0.27, 0.22, 0.22, 0.27], [N + 0.35, N + 0.35, 0.15, 0.15], color="k", lw=1.4)
+    axv.plot([0.73, 0.78, 0.78, 0.73], [N + 0.35, N + 0.35, 0.15, 0.15], color="k", lw=1.4)
+    axv.set_title("a vector", fontsize=12.5)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.88, bottom=0.12)
+    fig.savefig(f"{OUT}/function_vector.png", dpi=200)
+    print("wrote", f"{OUT}/function_vector.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ derivatives from neighbors: the chord and the change of slope (still)
+@register
+def difference_stencils():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    f = lambda x: 0.75 + 0.42 * np.sin(1.7 * x - 0.6) + 0.06 * x
+    df = lambda x: 0.42 * 1.7 * np.cos(1.7 * x - 0.6) + 0.06
+    xs = np.linspace(-0.2, 2.6, 300)
+    x0, h = 1.15, 0.55
+    pts = np.array([x0 - h, x0, x0 + h]); fp = f(pts)
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.4, 4.0), gridspec_kw={"wspace": 0.1})
+    for ax in (a1, a2):
+        ax.plot(xs, f(xs), color=GRAY, lw=2.2, alpha=0.8)
+        ax.plot(pts, fp, "o", color=CARDINAL, ms=9, zorder=5)
+        ax.set_xticks(pts); ax.set_xticklabels([r"$x_{j-1}$", r"$x_j$", r"$x_{j+1}$"], fontsize=12.5)
+        ax.set_yticks([]); ax.spines["left"].set_visible(False)
+        ax.set_xlim(-0.2, 2.6); ax.set_ylim(-0.62, 1.42)
+    t = np.array([x0 - 0.62, x0 + 0.62])
+    a1.plot(t, fp[1] + df(x0) * (t - x0), color="k", lw=1.6, ls="--", label=r"tangent at $x_j$: slope $\psi'(x_j)$")
+    sl = (fp[2] - fp[0]) / (2 * h)
+    a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2h$")
+    a1.plot([pts[0], pts[2]], [fp[0], fp[2]], color=PURPLE, lw=1.4, ls=":")
+    a1.legend(loc="lower center", frameon=False, fontsize=11.5)
+    a1.set_title(r"first derivative: weights $-1,\ 0,\ +1$ times $1/2h$", loc="left", fontsize=12.5)
+    a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/h$")
+    a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/h$")
+    a2.legend(loc="lower left", frameon=False, fontsize=11.5, bbox_to_anchor=(0.0, 0.13))
+    a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{h} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}$",
+            transform=a2.transAxes, ha="left", va="bottom", fontsize=12.5)
+    a2.set_title(r"second derivative: weights $1,\ -2,\ 1$ times $1/h^2$", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.09)
+    fig.savefig(f"{OUT}/difference_stencils.png", dpi=200)
+    print("wrote", f"{OUT}/difference_stencils.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the box on a grid: 3 points already give sampled sines; levels converge from below (still)
+@register
+def box_grid_states():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    xs = np.linspace(0, 1, 300)                                 # hbar = m = L = 1
+    fig = plt.figure(figsize=(9.4, 4.0))
+    gs = fig.add_gridspec(3, 3, width_ratios=[1.15, 0.42, 1], hspace=0.25, wspace=0.12)
+    N, h = 3, 0.25
+    xg = np.array([0, 0.25, 0.5, 0.75, 1.0])
+    H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h**2)
+    Eg, V = np.linalg.eigh(H)
+    for r in range(3):
+        ax = fig.add_subplot(gs[r, 0])
+        n = r + 1
+        v = V[:, r] / np.sqrt(h); v = v * np.sign(v[0])          # normalized as a function, first point positive
+        ax.plot(xs, np.sqrt(2) * np.sin(n * np.pi * xs), color=GRAY, lw=1.8, alpha=0.7)
+        ax.plot(xg, np.concatenate([[0], v, [0]]), "-o", color=CARDINAL, lw=1.6, ms=7)
+        ax.axhline(0, color=GRAY, lw=0.6)
+        ax.plot([0, 0], [-1.6, 1.6], color="k", lw=2); ax.plot([1, 1], [-1.6, 1.6], color="k", lw=2)
+        ax.set_xlim(-0.03, 1.03); ax.set_ylim(-1.75, 1.75); ax.axis("off")
+        axt = fig.add_subplot(gs[r, 1]); axt.axis("off")
+        axt.text(0.05, 0.5, rf"$n = {n}$: $E = {Eg[r]:.2f}$" + "\n" + rf"exact: ${(n * np.pi)**2 / 2:.2f}$", fontsize=11.5,
+                 va="center", transform=axt.transAxes)
+        if r == 0:
+            ax.set_title("3 grid points: eigenvectors (dots) vs exact states", loc="left", fontsize=12.5)
+    axl = fig.add_subplot(gs[:, 2])
+    cols = [(3, CARDINAL), (10, PURPLE), (30, TEAL)]
+    for k, (Ng, col) in enumerate(cols):
+        hh = 1 / (Ng + 1)
+        En = (1 - np.cos(np.arange(1, min(Ng, 4) + 1) * np.pi * hh)) / hh**2
+        axl.hlines(En, k - 0.32, k + 0.32, color=col, lw=3)
+    Ex = (np.arange(1, 5) * np.pi)**2 / 2
+    axl.hlines(Ex, 3 - 0.32, 3 + 0.32, color="k", lw=3)
+    for e in Ex:
+        axl.axhline(e, color=GRAY, lw=0.6, ls=":", zorder=0)
+    axl.set_xticks([0, 1, 2, 3]); axl.set_xticklabels([r"$N = 3$", r"$N = 10$", r"$N = 30$", "exact"], fontsize=12)
+    axl.yaxis.tick_right(); axl.yaxis.set_label_position("right")
+    axl.spines["left"].set_visible(False); axl.spines["right"].set_visible(True)
+    axl.set_ylabel(r"energy  ($\hbar^2/mL^2$)", fontsize=12); axl.tick_params(axis="y", labelsize=11)
+    axl.set_xlim(-0.6, 3.6); axl.set_ylim(0, 85)
+    axl.set_title("more points: closer to exact", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.09)
+    fig.subplots_adjust(right=0.93)
+    fig.savefig(f"{OUT}/box_grid_states.png", dpi=200)
+    print("wrote", f"{OUT}/box_grid_states.png")
+    return fig, None
+
+# ------------------------------------------------------------ on a grid, x, p and H are matrices (still)
+@register
+def grid_operators():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    div = LinearSegmentedColormap.from_list("div", [TEAL, "white", CARDINAL])
+    N = 8                                                       # hbar = m = 1, V = x^2/2 on 8 points
+    x = np.linspace(-2, 2, N); h = x[1] - x[0]
+    up, dn = np.eye(N, k=1), np.eye(N, k=-1)
+    X = np.diag(x)
+    P = -1j * (up - dn) / (2 * h)                               # p = -i d/dx as a centered difference
+    H = -0.5 * (up - 2 * np.eye(N) + dn) / h**2 + np.diag(0.5 * x**2)
+    panels = [(X, r"$\hat{x}$", "grid positions on the diagonal\nreal, symmetric"),
+              (P.imag, r"$\hat{p}$  (imaginary part)", r"$\mp i\hbar/2h$ next to the diagonal" + "\nimaginary, antisymmetric"),
+              (H, r"$\hat{H}$", "$V$ on the diagonal, neighbors linked\nreal, symmetric")]
+    fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.8))
+    for ax, (M, title, note) in zip(axs, panels):
+        m = np.abs(M).max()
+        ax.imshow(M, cmap=div, vmin=-m, vmax=m)
+        ax.set_xticks(np.arange(-0.5, N, 1), minor=True); ax.set_yticks(np.arange(-0.5, N, 1), minor=True)
+        ax.grid(which="minor", color="white", lw=1.5)
+        ax.tick_params(which="both", length=0, labelbottom=False, labelleft=False)
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+        ax.set_title(title, fontsize=14)
+        ax.set_xlabel(note, fontsize=11.5, linespacing=1.4)
+    fig.suptitle(r"each matrix equals its conjugate transpose: $A^\dagger = A$", fontsize=13, y=0.98)
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.83, bottom=0.17, wspace=0.18)
+    fig.savefig(f"{OUT}/grid_operators.png", dpi=200)
+    print("wrote", f"{OUT}/grid_operators.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ lose Hermiticity: eigenvalues leave the real axis, overlaps appear
+@register
+def hermitian_dial():
+    from matplotlib.colors import LinearSegmentedColormap
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    wt = LinearSegmentedColormap.from_list("wt", ["white", TEAL])
+    rng = np.random.default_rng(3)
+    N = 8
+    A = rng.normal(size=(N, N)) + 1j * rng.normal(size=(N, N))
+    Hm, K = (A + A.conj().T) / 2, (A - A.conj().T) / 2           # Hermitian part plus anti-Hermitian part
+    ss = np.concatenate([np.zeros(5), np.linspace(0, 1, 30), np.ones(6)])
+    vals, ovl = [], []
+    for s in ss:
+        w, V = np.linalg.eig(Hm + s * K)
+        o = np.argsort(w.real)
+        V = V[:, o] / np.linalg.norm(V[:, o], axis=0)
+        vals.append(w[o]); ovl.append(np.abs(V.conj().T @ V))
+    allv = np.concatenate(vals)
+    fig, (ax, axo) = plt.subplots(1, 2, figsize=(8, 3.6), gridspec_kw={"width_ratios": [1.55, 1], "wspace": 0.25})
+    ax.axhline(0, color=GRAY, lw=1.2)
+    ax.text(allv.real.max() + 0.2, 0.15, "real axis", color=GRAY, fontsize=11, ha="right", va="bottom")
+    scat = ax.scatter(vals[0].real, vals[0].imag, s=70, color=TEAL, zorder=5)
+    ax.set_xlim(allv.real.min() - 0.5, allv.real.max() + 0.5)
+    lim = 1.15 * max(0.5, np.abs(allv.imag).max())
+    ax.set_ylim(-lim, lim)
+    ax.set_xlabel("Re (eigenvalue)", fontsize=12); ax.set_ylabel("Im (eigenvalue)", fontsize=12)
+    img = axo.imshow(ovl[0], cmap=wt, vmin=0, vmax=1)
+    axo.set_xticks([]); axo.set_yticks([])
+    for sp in axo.spines.values():
+        sp.set_visible(False)
+    axo.set_title(r"overlaps $|\langle v_j | v_k \rangle|$", fontsize=13)
+    fig.subplots_adjust(left=0.09, right=0.98, top=0.84, bottom=0.15)
+
+    def update(i):
+        w, s = vals[i], ss[i]
+        scat.set_offsets(np.column_stack([w.real, w.imag]))
+        scat.set_color([TEAL if abs(v.imag) < 1e-6 else CARDINAL for v in w])
+        img.set_data(ovl[i])
+        off = (ovl[i] - np.diag(np.diag(ovl[i]))).max()
+        ax.set_title(rf"$A = H + s\,K$,  $s = {s:.2f}$:  " + ("eigenvalues real" if s == 0 else f"largest |Im| = {np.abs(w.imag).max():.2f}"),
+                     loc="left", fontsize=12.5)
+        axo.set_xlabel("eigenvectors orthonormal" if s == 0 else f"largest overlap {off:.2f}", fontsize=12)
+
+    ani = FuncAnimation(fig, update, frames=len(ss), interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ x then p, or p then x: the two orders differ by i hbar psi (still)
+@register
+def order_matters():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]          # hbar = 1; psi real, so x p psi and p x psi are imaginary
+    funcs = [np.exp(-x**2 / 2) * (1 + 0.5 * x),
+             np.exp(-x**2 / 5) * np.cos(2.2 * x) + 0.3 * np.exp(-(x - 1.5)**2)]
+    fig, axs = plt.subplots(1, 2, figsize=(9, 3.6))
+    for k, (ax, psi) in enumerate(zip(axs, funcs)):
+        d = np.gradient(psi, h)
+        xp, px = -x * d, -(psi + x * d)                         # (x p psi)/(i hbar) and (p x psi)/(i hbar)
+        ax.plot(x, xp, color=TEAL, lw=2.2, label=r"$\hat{x}\hat{p}\,\psi\ /\ i\hbar$")
+        ax.plot(x, px, color=ORANGE, lw=2.2, ls="--", label=r"$\hat{p}\hat{x}\,\psi\ /\ i\hbar$")
+        ax.plot(x, xp - px, color=CARDINAL, lw=6, alpha=0.4, label=r"difference $/\ i\hbar$")
+        ax.plot(x, psi, color="k", lw=1.4, ls=":", label=r"$\psi$ itself")
+        ax.axhline(0, color=GRAY, lw=0.6)
+        ax.set_xlim(-4.5, 4.5); ax.set_xlabel("x", fontsize=12); ax.set_yticks([])
+        ax.spines["left"].set_visible(False)
+        ax.set_title(("a lopsided bump" if k == 0 else "a wiggly packet"), loc="left", fontsize=12.5)
+    fig.legend(*axs[0].get_legend_handles_labels(), loc="upper center", ncol=4, frameon=False, fontsize=11.5,
+               bbox_to_anchor=(0.5, 0.9), handlelength=2.2, columnspacing=1.6)
+    fig.suptitle(r"the difference of the two orders is $\psi$ itself:  $[\hat{x},\hat{p}]\,\psi = i\hbar\,\psi$", fontsize=13.5, y=0.99)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.72, bottom=0.14, wspace=0.08)
+    fig.savefig(f"{OUT}/order_matters.png", dpi=200)
+    print("wrote", f"{OUT}/order_matters.png")
+    return fig, None
+
+
+# ============================================================ deck 3.6 "Measurement: eigenvalues and expectation values"
+# Page ch03/05 syncs projection, sine_series, collapse, box_momentum and uncertainty_tradeoff. measure_energy is
+# deck-only: the page measures with the JS widget widgets/measure_energy.mjs instead (same state, same story).
+
+# ------------------------------------------------------------ a coefficient is a projection: vector onto axes, function onto psi_n (still)
+@register
+def projection():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    psi = np.sqrt(30) * x * (1 - x)                             # the state of the worked example, L = 1
+    fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.3), gridspec_kw={"width_ratios": [0.85, 1, 1], "wspace": 0.28})
+    ax = axs[0]
+    for e, lab, ofs in (((1, 0), r"$\hat{e}_1$", (0.5, -0.32)), ((0, 1), r"$\hat{e}_2$", (-0.42, 0.45))):
+        ax.annotate("", xy=e, xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=2))
+        ax.text(*ofs, lab, color=GRAY, fontsize=13)
+    ax.annotate("", xy=(3, 2), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.6, mutation_scale=18))
+    ax.text(3.08, 2.08, r"$\mathbf{v}$", color=TEAL, fontsize=15)
+    ax.plot([3, 3], [0, 2], color=PURPLE, ls="--", lw=1.4); ax.plot([0, 3], [2, 2], color=PURPLE, ls="--", lw=1.4)
+    ax.text(3, -0.22, r"$c_1 = \langle \hat{e}_1|\mathbf{v}\rangle = 3$", color=PURPLE, fontsize=12, ha="center", va="top")
+    ax.text(-0.15, 2, r"$c_2 = 2$", color=PURPLE, fontsize=12, ha="right", va="center")
+    ax.set_xlim(-1.3, 3.8); ax.set_ylim(-0.95, 2.6); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_title("a vector: project onto the axes", loc="left", fontsize=12)
+    for ax, n in ((axs[1], 1), (axs[2], 2)):
+        phi = np.sqrt(2) * np.sin(n * np.pi * x)
+        prod = phi * psi
+        c = np.trapezoid(prod, x)
+        ax.fill_between(x, prod, where=prod >= 0, color=PURPLE, alpha=0.25, lw=0, interpolate=True)
+        ax.fill_between(x, prod, where=prod < 0, color=ORANGE, alpha=0.3, lw=0, interpolate=True)
+        ax.plot(x, psi, color=TEAL, lw=2.4, label=r"the state $\psi$")
+        ax.plot(x, phi, color=GRAY, lw=1.6, ls="--", label=r"box state $\psi_n$")
+        ax.plot(x, prod, color=PURPLE, lw=1.2, label=r"product $\psi_n\psi$")
+        ax.axhline(0, color=GRAY, lw=0.6)
+        ax.set_xlim(0, 1); ax.set_ylim(-1.75, 2.35); ax.set_yticks([])
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=11)
+        ax.spines["left"].set_visible(False)
+        ax.set_title(rf"$c_{n} = \int \psi_{n}\,\psi\,dx = {abs(c):.3f}$" if n == 1 else r"$c_2 = 0$: the two lobes cancel",
+                     loc="left", fontsize=12)
+    axs[2].legend(loc="lower left", frameon=False, fontsize=10.5, handlelength=1.6, borderaxespad=0.1)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.1)
+    fig.savefig(f"{OUT}/projection.png", dpi=200)
+    print("wrote", f"{OUT}/projection.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ a narrow packet needs many box states: partial sums and |c_n|^2
+@register
+def sine_series():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 600)
+    psi = np.exp(-(x - 0.3)**2 / (4 * 0.045**2))               # |psi|^2 has width 0.045 L
+    psi = psi / np.sqrt(np.trapezoid(psi**2, x))
+    ns = np.arange(1, 31)
+    phis = np.sqrt(2) * np.sin(np.outer(ns, np.pi * x))
+    c = np.trapezoid(phis * psi, x, axis=1)
+    ks = np.concatenate([np.arange(1, 25), np.full(6, 24)])
+    fig, (ax, axb) = plt.subplots(2, 1, figsize=(8, 4.4), gridspec_kw={"height_ratios": [1.5, 1], "hspace": 0.55})
+    ax.plot(x, psi, color="k", lw=1.4, ls=":", label=r"the state $\psi$")
+    (part,) = ax.plot([], [], color=TEAL, lw=2.4, label=r"sum of the first $k$ terms $c_n\psi_n$")
+    band = [ax.fill_between(x, 0 * x, color=TEAL, alpha=0.15, lw=0)]
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(0, 1); ax.set_ylim(-1.6, 3.6); ax.set_yticks([])
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=12)
+    ax.spines["left"].set_visible(False)
+    ax.legend(loc="upper right", frameon=False, fontsize=12)
+    bars = axb.bar(ns, c**2, color="#d9dde1", width=0.75)
+    axb.set_xlim(0.3, 30.7); axb.set_ylim(0, 1.15 * (c**2).max())
+    axb.set_xlabel(r"$n$", fontsize=12); axb.set_ylabel(r"$|c_n|^2$", fontsize=12)
+    axb.set_yticks([0, 0.1]); axb.tick_params(labelsize=11)
+    fig.subplots_adjust(left=0.08, right=0.98, top=0.9, bottom=0.12)
+
+    def update(i):
+        k = ks[i]
+        s = c[:k] @ phis[:k]
+        part.set_data(x, s)
+        band[0].remove(); band[0] = ax.fill_between(x, s, color=TEAL, alpha=0.15, lw=0)
+        for j, b in enumerate(bars):
+            b.set_color(TEAL if j < k else "#d9dde1")
+        ax.set_title(rf"$k = {k}$ box states", loc="left", fontsize=13)
+        axb.set_title(f"the first {k} states hold probability {np.sum(c[:k]**2):.3f}", loc="left", fontsize=12.5)
+
+    ani = FuncAnimation(fig, update, frames=len(ks), interval=140, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ repeated energy readings: histogram -> |c_n|^2, mean -> <E> (deck GIF)
+@register
+def measure_energy():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    p, E = np.array([0.25, 0.25, 0.5]), np.array([1, 4, 9])    # psi = (psi1 + psi2 + sqrt2 psi3)/2, E in units of E1
+    rng = np.random.default_rng(11)
+    reads = rng.choice(E, size=3000, p=p)
+    counts = np.unique(np.round(np.geomspace(1, 3000, 40)).astype(int))
+    run = np.cumsum(reads) / np.arange(1, 3001)
+    Eavg = p @ E
+    fig, (axh, axm) = plt.subplots(1, 2, figsize=(8, 3.6), gridspec_kw={"width_ratios": [1, 1.25], "wspace": 0.32})
+    bars = axh.bar([1, 2, 3], [0, 0, 0], width=0.6, color=TEAL, alpha=0.75, label="fraction of readings")
+    axh.plot([1, 2, 3], p, "_", color=CARDINAL, ms=34, mew=3, label=r"$|c_n|^2$")
+    axh.set_xticks([1, 2, 3]); axh.set_xticklabels([r"$E_1$", r"$4E_1$", r"$9E_1$"], fontsize=13)
+    axh.set_ylim(0, 0.75); axh.set_yticks([0, 0.25, 0.5]); axh.tick_params(labelsize=11)
+    axh.legend(loc="upper left", frameon=False, fontsize=11.5)
+    (line,) = axm.plot([], [], color=TEAL, lw=2.2, label="mean of the readings")
+    axm.axhline(Eavg, color=CARDINAL, lw=1.8, ls="--", label=rf"$\langle E\rangle = \sum p_n E_n = {Eavg:.2f}\,E_1$")
+    axm.set_xscale("log"); axm.set_xlim(1, 3000); axm.set_ylim(0, 10)
+    axm.set_xlabel("number of readings", fontsize=12); axm.set_ylabel(r"energy $/\,E_1$", fontsize=12)
+    axm.tick_params(labelsize=11)
+    axm.legend(loc="upper right", frameon=False, fontsize=11.5)
+    fig.subplots_adjust(left=0.06, right=0.98, top=0.84, bottom=0.17)
+
+    def update(i):
+        N = counts[i]
+        f = np.array([(reads[:N] == e).mean() for e in E])
+        for b, h in zip(bars, f):
+            b.set_height(h)
+        line.set_data(np.arange(1, N + 1), run[:N])
+        axh.set_title(f"{N} reading" + ("" if N == 1 else "s") + rf": each one is $E_1$, $4E_1$ or $9E_1$",
+                      loc="left", fontsize=12.5)
+
+    ani = FuncAnimation(fig, update, frames=len(counts), interval=160, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ what one measurement does: the state collapses to the eigenstate it reported (still)
+@register
+def collapse():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    ph = [np.sqrt(2) * np.sin(n * np.pi * x) for n in (1, 2, 3, 4)]
+    before = np.array([0.5, 0.5, np.sqrt(0.5), 0])
+    after = np.array([0, 0, 1.0, 0])
+    fig = plt.figure(figsize=(8.6, 3.9))
+    gs = fig.add_gridspec(2, 3, width_ratios=[1, 0.42, 1], height_ratios=[1.1, 1], hspace=0.35, wspace=0.05)
+    for col, cs, title in ((0, before, r"before: $\psi = \frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3$"),
+                           (2, after, r"after: $\psi = \psi_3$")):
+        ax, axb = fig.add_subplot(gs[0, col]), fig.add_subplot(gs[1, col])
+        w = sum(ci * p for ci, p in zip(cs, ph))
+        ax.fill_between(x, w**2, color=CARDINAL, alpha=0.15, lw=0)
+        ax.plot(x, w, color=TEAL, lw=2.4); ax.plot(x, w**2, color=CARDINAL, lw=1.6)
+        ax.axhline(0, color=GRAY, lw=0.6); ax.set_xlim(0, 1); ax.set_ylim(-2.2, 4.3)
+        ax.set_xticks([]); ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+        ax.set_title(title, loc="left", fontsize=12)
+        axb.bar([1, 2, 3, 4], cs**2, color=TEAL, width=0.6)
+        axb.set_xticks([1, 2, 3, 4]); axb.set_xticklabels([r"$E_1$", r"$4E_1$", r"$9E_1$", r"$16E_1$"], fontsize=12)
+        axb.set_ylim(0, 1.08); axb.set_yticks([0, 0.5, 1]); axb.tick_params(axis="y", labelsize=10.5)
+        if col == 0:
+            axb.set_ylabel("probability", fontsize=11)
+        else:
+            axb.set_yticklabels([])
+    axm = fig.add_subplot(gs[:, 1]); axm.axis("off")
+    axm.annotate("", xy=(0.95, 0.55), xytext=(0.05, 0.55), xycoords="axes fraction",
+                 arrowprops=dict(arrowstyle="simple,head_length=0.9,head_width=0.9,tail_width=0.35", color=PURPLE, alpha=0.8))
+    axm.text(0.5, 0.68, "measure $E$", ha="center", fontsize=12.5, color=PURPLE)
+    axm.text(0.5, 0.49, "reading: $9E_1$", ha="center", va="top", fontsize=12.5, color=PURPLE)
+    fig.text(0.5, 0.01, r"measuring again right away gives $9E_1$ every time; a fresh copy of the old state gives $E_1$, $4E_1$ or $9E_1$",
+             ha="center", fontsize=11.5, color=GRAY)
+    fig.subplots_adjust(left=0.06, right=0.99, top=0.9, bottom=0.14)
+    fig.savefig(f"{OUT}/collapse.png", dpi=200)
+    print("wrote", f"{OUT}/collapse.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ momentum of a box state: two humps near +-n pi hbar/L, never one sharp value (still)
+@register
+def box_momentum():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 2000)                                 # L = hbar = 1: p in units of pi hbar / L
+    p = np.linspace(-8, 8, 800)
+    kern = np.exp(-1j * np.outer(p * np.pi, x)) / np.sqrt(2 * np.pi)
+    fig, axs = plt.subplots(3, 1, figsize=(8, 4.6), sharex=True, gridspec_kw={"hspace": 0.45})
+    for ax, n, col in zip(axs, (1, 2, 5), (TEAL, PURPLE, CARDINAL)):
+        amp = np.trapezoid(kern * np.sqrt(2) * np.sin(n * np.pi * x), x, axis=1)
+        dens = np.abs(amp)**2 * np.pi                           # density per unit of p / (pi hbar / L)
+        ax.fill_between(p, dens, color=col, alpha=0.2, lw=0); ax.plot(p, dens, color=col, lw=2.2)
+        for s in (-n, n):
+            ax.axvline(s, color=GRAY, lw=1, ls="--")
+        ax.set_yticks([]); ax.spines["left"].set_visible(False)
+        ax.set_ylim(0, 1.15 * dens.max())
+        ax.set_title(rf"$n = {n}$:  dashed lines at $p = \pm\sqrt{{2mE_{n}}} = \pm {n}\,\pi\hbar/L$", loc="left", fontsize=12)
+    axs[-1].set_xlabel(r"momentum $p$  (units of $\pi\hbar/L$)", fontsize=12)
+    axs[-1].tick_params(labelsize=11)
+    fig.subplots_adjust(left=0.03, right=0.98, top=0.93, bottom=0.12)
+    fig.savefig(f"{OUT}/box_momentum.png", dpi=200)
+    print("wrote", f"{OUT}/box_momentum.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ squeeze a Gaussian: x narrows, p widens, the product stays at hbar/2
+@register
+def uncertainty_tradeoff():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nf = 40
+    sx = np.exp(np.log(1.4) + (np.log(0.3) - np.log(1.4)) * 0.5 * (1 - np.cos(2 * np.pi * np.arange(nf) / nf)))
+    x = np.linspace(-4, 4, 500)                                 # hbar = 1
+    fig = plt.figure(figsize=(9, 3.4))
+    gs = fig.add_gridspec(1, 3, width_ratios=[1, 1, 1.05], wspace=0.35)
+    axx, axp, axu = (fig.add_subplot(gs[0, j]) for j in range(3))
+    (lx,) = axx.plot([], [], color=TEAL, lw=2.4); bx = [axx.fill_between(x, 0 * x, color=TEAL, alpha=0.2, lw=0)]
+    (lp,) = axp.plot([], [], color=CARDINAL, lw=2.4); bp = [axp.fill_between(x, 0 * x, color=CARDINAL, alpha=0.2, lw=0)]
+    for ax, lab in ((axx, r"position $x$"), (axp, r"momentum $p$")):
+        ax.set_xlim(-4, 4); ax.set_ylim(0, 1.45); ax.set_yticks([]); ax.spines["left"].set_visible(False)
+        ax.set_xlabel(lab, fontsize=12); ax.tick_params(labelsize=10.5)
+    dx = np.geomspace(0.08, 3, 200)
+    axu.fill_between(dx, 0.04, 0.5 / dx, color=GRAY, alpha=0.25, lw=0)
+    axu.plot(dx, 0.5 / dx, color="k", lw=1.6)
+    axu.plot(dx, 0.568 / dx, color=PURPLE, lw=1.4, ls="--")
+    axu.text(0.1, 0.35, "forbidden:\n" + r"$\Delta x\,\Delta p < \hbar/2$", fontsize=11, color=GRAY, va="bottom")
+    (gdot,) = axu.plot([], [], "o", color=TEAL, ms=10, zorder=5, label=r"Gaussian: $\Delta x\Delta p = 0.50\,\hbar$")
+    (bdot,) = axu.plot([], [], "s", color=PURPLE, ms=9, zorder=5, label=r"box ground state: $0.57\,\hbar$")
+    axu.set_xscale("log"); axu.set_yscale("log"); axu.set_xlim(0.08, 3); axu.set_ylim(0.04, 12)
+    axu.set_xlabel(r"$\Delta x$", fontsize=12); axu.set_ylabel(r"$\Delta p$", fontsize=12); axu.tick_params(labelsize=10)
+    axu.legend(loc="upper right", frameon=False, fontsize=10.5, handletextpad=0.3, borderaxespad=0.1)
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.86, bottom=0.17)
+
+    def update(i):
+        s = sx[i]; sp = 0.5 / s
+        rx = np.exp(-x**2 / (2 * s**2)) / np.sqrt(2 * np.pi * s**2)
+        rp = np.exp(-x**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
+        lx.set_data(x, rx); bx[0].remove(); bx[0] = axx.fill_between(x, rx, color=TEAL, alpha=0.2, lw=0)
+        lp.set_data(x, rp); bp[0].remove(); bp[0] = axp.fill_between(x, rp, color=CARDINAL, alpha=0.2, lw=0)
+        axx.set_title(rf"$|\psi(x)|^2$:  $\Delta x = {s:.2f}$", loc="left", fontsize=12.5)
+        axp.set_title(rf"$|\phi(p)|^2$:  $\Delta p = {sp:.2f}$", loc="left", fontsize=12.5)
+        gdot.set_data([s], [sp]); bdot.set_data([s], [0.568 / s])
+        axu.set_title(rf"$\Delta x\,\Delta p = {s * sp:.2f}\,\hbar$", loc="left", fontsize=12.5)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=120, blit=False)
+    return fig, ani
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:

@@ -1,12 +1,12 @@
 ---
-title: "Eigenvalues and Expectation Values"
+title: "Measurement: Eigenvalues and Expectation Values"
 subtitle: "Chem 3240 · Lecture 3.6"
 author: "Davit Potoyan"
 format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,120 +16,155 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch03/images
 ---
 
-## The Eigenvalue Equation
+## Warm-up: components of a vector
 
-An operator acting on its **eigenfunction** returns the same function, scaled.
-
-$$\hat{A}\psi_n = A_n\psi_n$$
-
-- $\psi_n$: **eigenfunctions**
-- $A_n$: **eigenvalues**
-
-::: {.fragment}
-Boundary conditions fix how many solutions exist: **finite or infinite**.
+::: {.worked}
+Write $\mathbf{v} = (3, 4)$ in the tilted axes $\hat{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\hat{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
 :::
 
-## In Matrix Form
+::: {.soln .fragment}
+Each component is a **projection** (a dot product):
 
-Numerically, operators become **matrices**, eigenfunctions become **eigenvectors**.
+$$c_1 = \hat{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \hat{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}$$
 
-$$Av = \lambda v$$
-
-- $v$: eigenvector, $\lambda$: eigenvalue
-- An $N \times N$ matrix has **at most $N$ eigenvalues**
-
-## Eigenvalues Are What We Measure
-
-**Hermitian operators** describe observables.
-
-$$\langle \phi \mid \hat{H} \mid \psi \rangle = \langle \psi \mid \hat{H}\mid \phi \rangle^*$$
-
-::: {.fragment}
-Three consequences:
-- **Eigenvalues are real**: $\;E_n = E_n^*$
-- **Eigenfunctions are orthogonal**: $\;\langle \psi_n \mid \psi_m\rangle = \delta_{nm}$
-- **Eigenfunctions form a complete basis**
+$$\mathbf{v} = c_1\hat{u}_1 + c_2\hat{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2$$
 :::
 
-## A Complete Basis Set
+- Perpendicular unit axes: components are **projections**, and their squares add up to the **length** squared
 
-Eigenfunctions of a Hermitian operator span the space, like **unit vectors**.
+## Eigenfunctions are coordinates
 
-$$\mid f\rangle = \sum_i c_i \mid \psi_i \rangle$$
+![](../../ch03/images/projection.png){.nostretch width="80%" fig-align="center"}
 
-::: {.fragment}
-Any wavefunction can be **expanded** in the eigenfunctions of any observable.
+::: {.keyeq}
+$$\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx$$
 :::
 
-## Wavefunction as Superposition
+## Three one-line derivations
 
-A state is a **linear superposition** of the eigenfunctions of $\hat{A}$.
+All three use only **orthonormality**, $\langle \phi_m \vert \phi_n \rangle = \delta_{mn}$:
 
-$$\mid \psi \rangle = \sum_n c_n \mid \phi_n \rangle$$
+$$
+\begin{aligned}
+\text{coefficient:}\quad & \langle \phi_m \vert \psi \rangle = \sum_n c_n\,\langle \phi_m \vert \phi_n \rangle = c_m \\[6pt]
+\text{normalization:}\quad & \langle \psi \vert \psi \rangle = \sum_m\sum_n c_m^*\,c_n\,\delta_{mn} = \sum_n \lvert c_n\rvert^2 = 1 \\[6pt]
+\text{average:}\quad & \langle \psi \vert \hat{A} \vert \psi \rangle = \sum_m\sum_n c_m^*\,c_n\,a_n\,\delta_{mn} = \sum_n \lvert c_n\rvert^2\,a_n
+\end{aligned}
+$$
 
-::: {.fragment}
-The coefficients are **projections** onto each eigenfunction:
+- Same as the vector: squared components add up to one, the **length** of a normalized state
 
-$$c_n = \langle n \mid \psi \rangle$$
+## Example: how much ground state is in a parabola?
+
+::: {.worked}
+Expand $\psi = \sqrt{30/L^5}\;x(L-x)$ in box states $\psi_n = \sqrt{2/L}\,\sin(n\pi x/L)$.
 :::
 
-## Probabilistic Meaning
+::: {.soln .fragment}
+Two integrations by parts:
 
-The **squared coefficients** are probabilities.
+$$c_n = \int_0^L \psi_n\,\psi\,dx = \frac{8\sqrt{15}}{(n\pi)^3}\ \ (n \text{ odd}), \qquad c_n = 0\ \ (n \text{ even: odd about } L/2)$$
 
-$$p_n = \mid c_n \mid^2$$
-
-::: {.fragment}
-$$\sum_n \mid c_n \mid^2 = \sum_n p_n = 1$$
+$$\lvert c_1\rvert^2 = \frac{960}{\pi^6} = 0.9986, \qquad \lvert c_3\rvert^2 = 0.0014, \qquad \lvert c_5\rvert^2 = 0.0001$$
 :::
 
-::: {.fragment}
-Measuring $\hat{A}$ yields eigenvalue $A_n$ with probability $p_n$.
+- A smooth, spread-out state is **almost all ground state**
+
+## A narrow state needs many eigenstates
+
+![](../../ch03/images/sine_series.gif){.nostretch width="66%" fig-align="center"}
+
+- Sharp features need **short wavelengths**, high $n$: about ten states for a packet $0.045\,L$ wide
+
+## A measurement returns an eigenvalue
+
+![](../../ch03/images/measure_energy.gif){.nostretch width="58%" fig-align="center"}
+
+::: {.keyeq}
+$$\text{reading } a_n \text{ with probability}\quad p_n = \lvert c_n\rvert^2 = \lvert\langle \phi_n \vert \psi \rangle\rvert^2$$
 :::
 
-## Expectation Value
+## Live: measure it yourself
 
-The average is a **probability-weighted sum of eigenvalues**.
+```{=html}
+<div id="mw-live" style="width: 1080px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/measure_energy.mjs";
+  const opts = { state: "example", fontSize: "22px", showMean: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mw-live") });
+</script>
+```
 
-$$\langle E\rangle = \langle \psi \mid \hat{H}\mid \psi \rangle$$
+## Averages and spreads
 
-::: {.fragment}
-For $\mid \psi \rangle = c_1\mid 1\rangle + c_2\mid 2\rangle$:
+::: {.keyeq}
+$$\langle A \rangle = \sum_n p_n\,a_n = \langle \psi \vert \hat{A} \vert \psi \rangle$$
 
-$$\langle E\rangle = \mid c_1\mid^2 E_1 + \mid c_2\mid^2 E_2 = p_1 E_1 + p_2 E_2$$
+$$\sigma_A^2 = \sum_n p_n\,\big(a_n - \langle A \rangle\big)^2 = \langle A^2 \rangle - \langle A \rangle^2$$
 :::
 
-## Measurement and Collapse
+- $\langle A\rangle$: the **average** of many readings, usually **not** a possible reading itself
+- $\sigma_A = 0$ only if all the probability sits on **one** eigenvalue: only eigenstates are **sharp**
 
-In any single experiment you obtain **one** eigenvalue.
+## Example: readings, average, spread
 
-$$\mid \psi \rangle \rightarrow \mid \phi_n \rangle$$
-
-::: {.fragment}
-The superposition **collapses** to a single eigenfunction.
+::: {.worked}
+$\psi = \tfrac{1}{2}\psi_1 + \tfrac{1}{2}\psi_2 + \tfrac{1}{\sqrt{2}}\psi_3$ in a box. What can an energy measurement give, how often, and what are $\langle E\rangle$ and $\sigma_E$?
 :::
 
-::: {.fragment}
-**Orthogonality** means **mutually exclusive** outcomes:
+::: {.soln .fragment}
+$$E_1,\ 4E_1,\ 9E_1 \quad\text{with}\quad p = \tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{2}$$
 
-$$\langle \phi_1 \mid \phi_2 \rangle = 0$$
+$$\langle E \rangle = \tfrac{1}{4}(1) + \tfrac{1}{4}(4) + \tfrac{1}{2}(9) = 5.75\,E_1$$
+
+$$\langle E^2 \rangle = \tfrac{1}{4}(1) + \tfrac{1}{4}(16) + \tfrac{1}{2}(81) = 44.75\,E_1^2$$
+
+$$\sigma_E = \sqrt{44.75 - 5.75^2}\;E_1 = 3.42\,E_1$$
 :::
 
-## Schrödinger's Cat
+## After the measurement
 
-A radioactive atom in **superposition** of decayed and not-decayed.
+![](../../ch03/images/collapse.png){.nostretch width="70%" fig-align="center"}
 
-- Atom decay triggers poison
-- Cat is **alive and dead at once** until observed
+- A reading of $a_n$ leaves the state $\phi_n$ (**collapse**): measure again, get $a_n$ every time
+- The probabilities live in **many identical copies**, not in one particle
 
-::: {.fragment}
-Measurement forces the system into **one** mutually exclusive state.
+## A box state has no sharp momentum
+
+![](../../ch03/images/box_momentum.png){.nostretch width="52%" fig-align="center"}
+
+- $\sin kx$ is half $e^{ikx}$ (moving right), half $e^{-ikx}$ (moving left); the walls broaden each hump
+- **Sharp** $E$, **spread** $p$: in the box $\hat{H}$ and $\hat{p}$ do not share eigenfunctions
+
+## The uncertainty principle
+
+![](../../ch03/images/uncertainty_tradeoff.gif){.nostretch width="76%" fig-align="center"}
+
+::: {.keyeq}
+$$\sigma_A\,\sigma_B \geq \tfrac{1}{2}\big\lvert\langle[\hat{A},\hat{B}]\rangle\big\rvert \qquad\Longrightarrow\qquad \sigma_x\,\sigma_p \geq \hbar/2$$
 :::
+
+## Example: $\sigma_x\sigma_p$ for the box ground state
+
+::: {.worked}
+For $\psi_1 = \sqrt{2/L}\,\sin(\pi x/L)$, find $\sigma_x$, $\sigma_p$ and their product.
+:::
+
+::: {.soln .fragment}
+$$\langle x\rangle = \tfrac{L}{2}, \quad \langle x^2\rangle = L^2\left(\tfrac{1}{3} - \tfrac{1}{2\pi^2}\right) \;\Rightarrow\; \sigma_x = 0.181\,L$$
+
+$$\langle p\rangle = 0, \quad \langle p^2\rangle = 2mE_1 = \left(\tfrac{\pi\hbar}{L}\right)^2 \;\Rightarrow\; \sigma_p = \tfrac{\pi\hbar}{L}$$
+
+$$\sigma_x\,\sigma_p = 0.181\,\pi\,\hbar = 0.568\,\hbar \;\geq\; 0.5\,\hbar$$
+:::
+
+- Independent of $L$: squeeze the box and $\sigma_p$ grows, so **confinement costs energy** ($\propto 1/L^2$)
 
 # Takeaway {.center}
 
-> A quantum state is a superposition of eigenfunctions; measurement returns a single eigenvalue with probability $\mid c_n\mid^2$, and the expectation value is the probability-weighted average of those eigenvalues.
+> Expand the state in the eigenfunctions of the observable: the coefficients are projections, $c_n = \langle \phi_n \vert \psi \rangle$. A measurement returns one eigenvalue $a_n$, with probability $\lvert c_n\rvert^2$, and leaves the system in $\phi_n$. Averages are weighted sums, $\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n$, sharp only in eigenstates; and observables that do not commute cannot be sharp together, $\sigma_x\sigma_p \geq \hbar/2$.

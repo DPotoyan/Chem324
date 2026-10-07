@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,175 +16,237 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch03/images
 ---
 
-## Observables become operators
+## The rules of the game
 
-Every measurable quantity has a **corresponding operator** (the hat $\hat{}$).
+| | postulate | lecture |
+|:-:|:-------------------------------------|:-----:|
+| 1 | the state is a wavefunction $\psi$; $\lvert\psi\rvert^2$ is the probability density | 3.1 |
+| 2 | **every observable is a linear Hermitian operator** | **today** |
+| 3 | a measurement returns an eigenvalue $a_n$ and leaves the state $\phi_n$ | 3.6 |
+| 4 | outcome $a_n$ has probability $\lvert\langle\phi_n\vert\psi\rangle\rvert^2$ | 3.6 |
+| 5 | the state evolves by $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$ | 3.7 |
 
-::: {.fragment}
-**Position** multiplies by $x$:
-$$\hat{x} = x$$
+- Today: which operators may stand for **observables**, and what if two **do not commute**?
+
+## Operators must be linear
+
+::: {.keyeq}
+$$\hat{A}\,(c_1\psi_1 + c_2\psi_2) = c_1\,\hat{A}\psi_1 + c_2\,\hat{A}\psi_2$$
 :::
 
-::: {.fragment}
-**Momentum** differentiates, then scales by $-i\hbar$:
-$$\hat{p}_x = -i\hbar\frac{d}{dx}$$
+- **Superposition** demands it: if $\Psi_1$ and $\Psi_2$ are states, so is their sum
+- **Linear:** $x$, $d/dx$, $\hat{H}$. **Not linear:** $f^2$, $\sqrt{f}$, $\ln f$
+- Quick test: a linear operator turns $2f$ into $2\hat{A}f$; squaring gives $4f^2$
+
+## A function becomes a vector
+
+![](../../ch03/images/function_vector.png){.nostretch width="80%" fig-align="center"}
+
+- Sample at $N$ points spaced $h$ apart: $\psi(x) \to (\psi_1, \psi_2, \dots, \psi_N)$, with $\psi_j = \psi(x_j)$
+- Integrals become sums: $\int \phi^*\psi\,dx \;\to\; \sum_j \phi_j^*\,\psi_j\,h$
+
+## Multiplying by $x$: a diagonal matrix
+
+$$
+\hat{x}\,\psi \;\longrightarrow\;
+\begin{pmatrix} x_1 & 0 & 0 & 0 \\ 0 & x_2 & 0 & 0 \\ 0 & 0 & x_3 & 0 \\ 0 & 0 & 0 & x_4 \end{pmatrix}
+\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+=
+\begin{pmatrix} x_1\psi_1 \\ x_2\psi_2 \\ x_3\psi_3 \\ x_4\psi_4 \end{pmatrix}
+$$
+
+- Each sample is multiplied by **its own** $x_j$: nothing off the diagonal
+- Any potential $V(x)$ is diagonal the same way, with $V(x_1), V(x_2), \dots$ on the diagonal
+
+## A derivative compares neighbors
+
+![](../../ch03/images/difference_stencils.png){.nostretch width="78%" fig-align="center"}
+
+$$
+\psi'(x_j) \approx \frac{\psi_{j+1} - \psi_{j-1}}{2h} \qquad\qquad
+\psi''(x_j) \approx \frac{s_+ - s_-}{h} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}
+$$
+
+## Derivatives as matrices
+
+$$
+\frac{d}{dx} \to \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix}
+\qquad\qquad
+\frac{d^2}{dx^2} \to \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
+$$
+
+- Row $j$ holds the **stencil weights**, centered on the diagonal
+- First row of $D_2$ gives $(-2\psi_1 + \psi_2)/h^2$: the stencil with $\psi_0 = 0$, so the **wall** is built in
+- Momentum $\hat{p} = -i\hbar\,D_1$: imaginary entries, $-i\hbar/2h$ above the diagonal, $+i\hbar/2h$ below
+
+## Example: the grid derivative of a plane wave
+
+::: {.worked}
+Apply the centered difference to the samples of a plane wave, $\psi_j = e^{ikx_j}$.
 :::
 
-::: {.fragment}
-**Recipe:** take the classical expression, replace $x$ and $p$ by their operators.
+::: {.soln .fragment}
+$$
+\frac{\psi_{j+1} - \psi_{j-1}}{2h} = \frac{e^{ikh} - e^{-ikh}}{2h}\,e^{ikx_j} = \frac{i\sin kh}{h}\,\psi_j \;\;\xrightarrow{\;kh\,\ll\,1\;}\;\; ik\,\psi_j
+$$
+
+An **eigenvector** of the matrix, as $e^{ikx}$ is an eigenfunction of $d/dx$. Momentum: $\hbar\sin(kh)/h \approx \hbar k$.
 :::
 
-## Operators are linear
+- The grid works when there are **many points per wavelength**
 
-Inherited from the linear Schrodinger equation.
+## The Hamiltonian is a matrix
 
-::: {.fragment}
-$$\hat{A}(\psi_1 + \psi_2) = \hat{A}\psi_1 + \hat{A}\psi_2$$
+$$
+H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 & -t & 0 & 0 \\ -t & 2t + V_2 & -t & 0 \\ 0 & -t & 2t + V_3 & -t \\ 0 & 0 & -t & 2t + V_4 \end{pmatrix}, \qquad t = \frac{\hbar^2}{2mh^2}
+$$
+
+::: {.keyeq}
+$$\hat{H}\psi = E\,\psi \quad\longrightarrow\quad H\mathbf{v} = E\,\mathbf{v}$$
 :::
 
-::: {.fragment}
-$$\hat{A}(c\psi) = c\hat{A}\psi$$
+- **Potential** on the diagonal; **kinetic** energy links neighbors through $-t$ (the Hückel picture, too)
+
+## Example: a box with three grid points
+
+::: {.worked}
+Three interior points ($h = L/4$, $\psi = 0$ at the walls). Find the energies and the ground state of $\;H = t\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}$, $\;t = \dfrac{8\hbar^2}{mL^2}$.
 :::
 
-::: {.fragment}
-$\hat{x}$, $\hat{p}_x$, and $\hat{H}$ all satisfy this.
+::: {.soln .fragment}
+$$
+\begin{aligned}
+&\det(H - \lambda t\,I) = t^3\,(2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0 \\
+&\lambda = 2-\sqrt{2},\ \ 2,\ \ 2+\sqrt{2} \\
+&E_1 = (2-\sqrt{2})\,t = 4.69\ \hbar^2/mL^2 \qquad (\text{exact: } 4.93) \\
+&\mathbf{v}_1 \propto \big(1,\ \sqrt{2},\ 1\big) \propto \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big)
+\end{aligned}
+$$
 :::
 
-## The commutator
+## More points, better answers
 
-Order of operations matters, just like matrices ($AB \neq BA$).
+![](../../ch03/images/box_grid_states.png){.nostretch width="80%" fig-align="center"}
 
-::: {.fragment}
-$$\left[\hat{A},\hat{B}\right]f = \left(\hat{A}\hat{B} - \hat{B}\hat{A}\right)f$$
+- Eigenvectors are the exact states **sampled** on the grid; the levels converge **from below**
+
+## Five lines solve the Schrödinger equation
+
+::: {style="font-size: 1.3em"}
+```python
+x = np.linspace(-8, 8, 400); h = x[1] - x[0]
+D2 = (np.eye(400, k=1) - 2*np.eye(400) + np.eye(400, k=-1)) / h**2
+H = -0.5 * D2 + np.diag(0.5 * x**2)      # spring: hbar = m = omega = 1
+E, psi = np.linalg.eigh(H)
+E[:4]                                    # 0.4999  1.4997  2.4993  3.4987
+```
 :::
 
-- **Zero** commutator: order does not matter.
-- **Non-zero** commutator: order matters.
+- The same recipe with **400 points**: the levels of a vibrating bond, $\left(n + \tfrac{1}{2}\right)\hbar\omega$
+- `eigh` is the eigensolver for **Hermitian** matrices. Why Hermitian? Next
 
-::: {.fragment}
-$$\left[A,A^n\right] = 0, \qquad \left[A,B\right] = -\left[B,A\right]$$
+## Dirac notation: one language, three dialects
+
+| | integral | Dirac | numpy |
+|:-----|:-----|:-----|:-----------|
+| inner product | $\int\phi^*\psi\,dx$ | $\langle\phi\vert\psi\rangle$ | `np.vdot(phi, psi) * h` |
+| operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
+| matrix element | $\int\phi^*\hat{A}\psi\,dx$ | $\langle\phi\vert\hat{A}\vert\psi\rangle$ | `np.vdot(phi, A @ psi) * h` |
+| eigenproblem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
+
+- **Ket** $\lvert\psi\rangle$: the state. **Bra** $\langle\psi\rvert$: its conjugate. A bra meets a ket: a **number**
+
+## Hermitian: its own mirror image
+
+::: {.keyeq}
+$$\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}\phi \vert \psi \rangle \qquad\Longleftrightarrow\qquad A_{jk} = A_{kj}^*$$
 :::
 
-## The canonical commutator
+![](../../ch03/images/grid_operators.png){.nostretch width="64%" fig-align="center"}
 
-Position and momentum **do not commute**.
+- Acts on **either side** of the inner product: transpose and conjugate give it back
 
-::: {.fragment}
-$$\hat{p}_x\hat{x}\psi = \frac{\hbar x}{i}\frac{d\psi}{dx} + \frac{\hbar}{i}\psi, \qquad \hat{x}\hat{p}_x\psi = \frac{\hbar x}{i}\frac{d\psi}{dx}$$
+## Example: which matrices are Hermitian?
+
+::: {.worked}
+$$
+A = \begin{pmatrix} 2 & 1-i \\ 1+i & 3 \end{pmatrix} \quad
+B = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \quad
+C = \begin{pmatrix} i & 0 \\ 0 & 1 \end{pmatrix} \quad
+D = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+$$
 :::
 
-::: {.fragment}
-$$\left[\hat{p}_x,\hat{x}\right] = \frac{\hbar}{i} \qquad\Longleftrightarrow\qquad \left[\hat{x},\hat{p}_x\right] = i\hbar$$
+::: {.soln .fragment}
+- $A$: $A_{12} = 1-i = A_{21}^*$, real diagonal: **Hermitian**
+- $B$: $B_{12} = 2 \neq B_{21}^* = 3$: not Hermitian
+- $C$: the diagonal must be **real**, and $i \neq i^* = -i$: not Hermitian
+- $D$: $D_{12} = -i = D_{21}^*$: **Hermitian**, the pattern of $\hat{p}$ on the grid
 :::
 
-::: {.fragment}
-This single line drives the uncertainty principle.
+## Why observables are Hermitian
+
+![](../../ch03/images/hermitian_dial.gif){.nostretch width="72%" fig-align="center"}
+
+- **Real eigenvalues**: measured values are real numbers
+- **Orthogonal eigenvectors**: different outcomes exclude each other. Add a non-Hermitian part and both fail
+
+## Example: is momentum Hermitian?
+
+::: {.worked}
+Show that $\hat{p} = -i\hbar\,d/dx$ satisfies $\langle \phi \vert \hat{p}\psi \rangle = \langle \hat{p}\phi \vert \psi \rangle$.
 :::
 
-## Commutators set measurement limits
+::: {.soln .fragment}
+Integrate by parts; the boundary term vanishes because $\phi, \psi \to 0$:
 
-For any non-commuting $\hat{A}$ and $\hat{B}$:
+$$\int\phi^*\big(-i\hbar\,\psi'\big)\,dx = i\hbar\int\phi'^*\,\psi\,dx = \int\big(-i\hbar\,\phi'\big)^*\,\psi\,dx \quad\checkmark$$
 
-::: {.fragment}
-$$\Delta A\,\Delta B \ge \frac{1}{2}\left|\left\langle\left[\hat{A},\hat{B}\right]\right\rangle\right|$$
+Without the $i$: $(d/dx)^\dagger = -d/dx$, **anti**-Hermitian. The $-i$ turns the sign around.
 :::
 
-::: {.fragment}
-Apply it to $\hat{x}$ and $\hat{p}_x$:
-$$\Delta x\,\Delta p_x \ge \frac{\hbar}{2}$$
+- On the grid: $d/dx$ is real and **antisymmetric**, $\hat{p} = -i\,d/dx$ is **Hermitian**
+
+## Order matters
+
+::: {.keyeq}
+$$[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A} \qquad\qquad [\hat{x},\hat{p}] = i\hbar$$
 :::
 
-::: {.fragment}
-**Position and momentum cannot be measured precisely at once.**
+![](../../ch03/images/order_matters.png){.nostretch width="80%" fig-align="center"}
+
+## Example: $x$ and $d/dx$
+
+::: {.worked}
+Find $[x, d/dx]$ by acting on an arbitrary function $f$.
 :::
+
+::: {.soln .fragment}
+$$x\,\frac{df}{dx} - \frac{d}{dx}\big(xf\big) = xf' - f - xf' = -f \qquad\Longrightarrow\qquad \left[x,\frac{d}{dx}\right] = -1$$
+
+Multiply by $-i\hbar$: $[\hat{x},\hat{p}] = i\hbar$. The product rule leaves one term, for **every** $f$.
+:::
+
+- On a grid it holds only for smooth $f$: finite matrices have $\operatorname{tr}[X,P] = 0$
 
 ## Commuting operators share eigenfunctions
 
-$$[\hat{A},\hat{B}]=0 \;\Longrightarrow\; \hat{A}\phi_k = a_k\phi_k,\quad \hat{B}\phi_k = b_k\phi_k$$
-
-::: {.fragment}
-Both observables measured **simultaneously** in one experiment.
+::: {.keyeq}
+$$[\hat{A},\hat{B}] = 0 \quad\Longrightarrow\quad \hat{A}\phi_n = a_n\phi_n, \quad \hat{B}\phi_n = b_n\phi_n$$
 :::
 
 ::: {.fragment}
-$\hat{T}$ and $\hat{p}_x$ commute (measure together):
-$$\left[\hat{T},\hat{p}_x\right] = \left[\frac{\hat{p}_x^2}{2m},\hat{p}_x\right] = 0$$
+Why: if $\hat{A}\phi = a\phi$, then $\hat{A}(\hat{B}\phi) = \hat{B}(\hat{A}\phi) = a\,(\hat{B}\phi)$, so $\hat{B}\phi = b\,\phi$
 :::
 
-::: {.fragment}
-But $\hat{x}$ and $\hat{p}_x$ do **not**.
-:::
-
-## Expectation values
-
-Average outcome of many measurements.
-
-::: {.fragment}
-$$\langle A \rangle = \int \psi^* \hat{A}\,\psi \, d\tau$$
-:::
-
-::: {.fragment}
-If $\psi$ is an eigenfunction, $\hat{A}\psi = a\psi$, then
-$$\langle A \rangle = a\int \psi^*\psi\,d\tau = a$$
-:::
-
-::: {.fragment}
-The expectation value collapses to the **eigenvalue**.
-:::
-
-## Dirac notation
-
-A compact, representation-free language.
-
-::: {.fragment}
-**Ket** $|\psi\rangle$, **bra** $\langle\psi|$, inner product
-$$\langle \phi | \psi \rangle = \int \phi^*(r)\,\psi(r)\,d\tau$$
-:::
-
-::: {.fragment}
-Expectation value becomes one symbol:
-$$\langle A \rangle = \langle \psi | \hat{A} | \psi \rangle$$
-:::
-
-## Adjoint and Hermitian operators
-
-The **adjoint** $\hat{A}^\dagger$ is defined through the inner product:
-
-::: {.fragment}
-$$\langle \phi | \hat{A}\psi \rangle = \langle \hat{A}^\dagger \phi | \psi \rangle$$
-:::
-
-::: {.fragment}
-For matrices, the adjoint is the **conjugate transpose**, $(A^\dagger)_{jk} = A_{kj}^*$.
-:::
-
-::: {.fragment}
-An operator is **Hermitian** (self-adjoint) when
-$$\hat{A} = \hat{A}^\dagger, \qquad \langle \phi | \hat{A}\psi \rangle = \langle \hat{A}\phi | \psi \rangle$$
-:::
-
-## Why Hermitian operators matter
-
-Observables are represented by **Hermitian operators**.
-
-::: {.fragment}
-**Real eigenvalues** (only real numbers can be measured):
-$$\hat{A}|\psi\rangle = a|\psi\rangle \implies a \in \mathbb{R}$$
-:::
-
-::: {.fragment}
-**Orthogonal eigenfunctions** for distinct eigenvalues:
-$$\langle \psi_m | \psi_n \rangle = 0 \quad (m \ne n)$$
-:::
-
-::: {.fragment}
-The quantum analog of symmetric matrices.
-:::
+- Free particle: $[\hat{H},\hat{p}] = 0$, and $e^{ikx}$ has sharp $p = \hbar k$ **and** sharp $E = \hbar^2k^2/2m$
+- $[\hat{x},\hat{p}] \neq 0$: no state has sharp $x$ **and** sharp $p$ (next lecture)
 
 # Takeaway {.center}
 
-> Observables are linear Hermitian operators with real eigenvalues, and their commutators decide which quantities can be known at once: $[\hat{x},\hat{p}_x]=i\hbar$ forbids sharp position and momentum together.
+> Observables are linear Hermitian operators. On a grid they are matrices equal to their own conjugate transpose, with real eigenvalues and orthogonal eigenvectors, ready to be measured. Operators need not commute: $[\hat{x},\hat{p}] = i\hbar$ is why position and momentum are never sharp together, while commuting operators share eigenfunctions and can be.
