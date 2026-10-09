@@ -403,12 +403,18 @@ print(np.round(E[:5], 4))                     # exact: 0.5 1.5 2.5 3.5 4.5
 
 ### Dirac notation
 
-Integrals and matrices are two ways of writing the same objects. Dirac's notation writes them once.
+Integrals and matrices are two ways of writing the same objects. Dirac's notation writes them once, and it reads like matrix algebra: a ket is a column, a bra is a row, and a row times a column is a number.
 
 #### Kets and bras
 
-- A state is a **ket** $\lvert\psi\rangle$: on the grid, the column of samples $(\psi_1, \psi_2, \dots)$. Its partner, the **bra** $\langle\psi\rvert$, is the same numbers written as a row, each one **conjugated**.
-- A bra next to a ket is an **inner product**, a single number:
+- A state is a **ket** $\lvert\psi\rangle$: on the grid, the column of samples from Step 1. Its partner, the **bra** $\langle\psi\rvert$, is the same numbers written as a row, each one **conjugated**:
+
+$$
+\lvert\psi\rangle = \begin{pmatrix} \psi_1 \\ \psi_2 \\ \vdots \end{pmatrix}, \qquad
+\langle\psi\rvert = \begin{pmatrix} \psi_1^* & \psi_2^* & \cdots \end{pmatrix}
+$$
+
+- A bra next to a ket is row times column: multiply matching entries and add, times the grid spacing $h$. The result is a single number, the **inner product**:
 
 $$
 \langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\longrightarrow\; \int \phi^*\,\psi\,dx
@@ -427,12 +433,38 @@ a real, positive length squared. Without the conjugate the same product would be
 
 :::
 
-- One consequence is used all the time: a number comes out of a ket unchanged but out of a bra conjugated, $\langle \phi \vert c\,\psi \rangle = c\,\langle \phi \vert \psi \rangle$ but $\langle c\,\phi \vert \psi \rangle = c^*\langle \phi \vert \psi \rangle$, because $\int (c\,\phi)^*\psi\,dx = c^*\!\int \phi^*\psi\,dx$.
+- One consequence is used all the time: a constant $c$ comes out of a ket unchanged but out of a bra conjugated. The star in the integral does it:
+
+$$
+\begin{aligned}
+\langle \phi \vert c\,\psi \rangle &= \int \phi^*\,(c\,\psi)\,dx = c\,\langle \phi \vert \psi \rangle \\
+\langle c\,\phi \vert \psi \rangle &= \int (c\,\phi)^*\,\psi\,dx = c^*\langle \phi \vert \psi \rangle
+\end{aligned}
+$$
 
 #### Sandwiches: matrix elements
 
-- An operator acts on a ket, $\hat{A}\lvert\psi\rangle$: on the grid, the matrix times the column. Put a bra in front and the result is a number, the **matrix element** $\langle\phi\vert\hat{A}\vert\psi\rangle = \int\phi^*\,\hat{A}\psi\,dx$: row times matrix times column.
-- The name is literal. Sandwiching a matrix between unit vectors picks out one entry. For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$: $A\mathbf{e}_2 = (1, 2)$ and $\mathbf{e}_1\cdot(1, 2) = 1 = A_{12}$. In general $A_{jk} = \langle \mathbf{e}_j \vert A \vert \mathbf{e}_k \rangle$.
+- An operator acts on a ket, $\hat{A}\lvert\psi\rangle$, and gives a new ket: on the grid, the matrix times the column. Put a bra in front and the result is a number, the **matrix element**: row times matrix times column.
+
+$$
+\langle\phi\vert\hat{A}\vert\psi\rangle = \int\phi^*\,\hat{A}\psi\,dx
+$$
+
+- The name is literal: the matrix is the filling between a bra and a ket. Put the unit vectors $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$ on the outside and the sandwich picks out a single entry.
+- Take $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ and do it in two steps, the ket first and then the bra:
+
+$$
+\begin{aligned}
+A\mathbf{e}_2 &= \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \\
+\langle \mathbf{e}_1 \vert A \vert \mathbf{e}_2 \rangle &= \begin{pmatrix} 1 & 0 \end{pmatrix}\begin{pmatrix} 1 \\ 2 \end{pmatrix} = 1 = A_{12}
+\end{aligned}
+$$
+
+- The ket picked out column 2 of the matrix, and the bra then picked out the first entry of that column. In general, the sandwich of the unit vectors $\mathbf{e}_j$ and $\mathbf{e}_k$ is the entry in row $j$ and column $k$:
+
+$$
+A_{jk} = \langle \mathbf{e}_j \vert A \vert \mathbf{e}_k \rangle
+$$
 - In a basis of functions instead of grid points, the same sandwich builds the matrices that quantum chemistry programs diagonalize: $H_{mn} = \langle \phi_m \vert \hat{H} \vert \phi_n \rangle$ for a set of orbitals $\phi_n$ ([Hückel Theory](../ch08/05-huckel-theory.md)).
 
 #### Diagonalizing a Hamiltonian
