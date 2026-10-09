@@ -1,5 +1,5 @@
 ---
-title: "Hermitian Operators and Commutators"
+title: "Operators 2: Hermitian Operators and Commutators"
 subtitle: "Chem 3240 · Lecture 3.5b"
 author: "Davit Potoyan"
 format:
@@ -58,16 +58,14 @@ $\lambda = 3$: $\mathbf{v} \propto (1, 1)$. $\ \lambda = 1$: $\mathbf{v} \propto
 
 ## Hermitian: the matrix version of a real number
 
-| numbers | matrices and operators |
+| numbers | matrices |
 |:--------------------------|:--------------------------------------------|
-| conjugate $z^*$ | **adjoint** $A^\dagger$: swap rows and columns, then conjugate |
-| real: $z^* = z$ | **Hermitian:** $A^\dagger = A$ |
-| imaginary: $z^* = -z$ | **anti-Hermitian:** $A^\dagger = -A$, for example $d/dx$ |
-| $z = \text{real part} + i\,\text{imaginary part}$ | $A = \tfrac{1}{2}(A + A^\dagger) + \tfrac{1}{2}(A - A^\dagger)$ |
-| $-i \times 3i = 3$ is real | $-i\hbar\,d/dx$ is Hermitian |
-| $(zw)^* = z^*w^*$ | $(AB)^\dagger = B^\dagger A^\dagger$: the order **reverses** |
+| **conjugate** $z^*$: flip the sign of $i$ | **adjoint** $A^\dagger$: swap rows and columns, then conjugate |
+| **real**: $z^* = z$ | **Hermitian**: $A^\dagger = A$ |
 
-- Hermitian operators are the "real numbers" of quantum mechanics: their eigenvalues are real
+![](../../ch03/images/real_vs_hermitian.png){.nostretch width="66%" fig-align="center"}
+
+- Hermitian operators are the "real numbers" of quantum mechanics: their **eigenvalues are real**
 
 ## Hermitian: its own mirror image
 
@@ -118,12 +116,23 @@ Under the root sits a **sum of squares**, never negative, so $\lambda$ is real. 
 - Symmetric: $(1, 1)\cdot(1, -1) = 0$, **orthogonal** eigenvectors
 - Not symmetric: real eigenvalues, but the eigenvectors **overlap**. A rotation has none at all
 
+## Live: perpendicular or not?
+
+```{=html}
+<div id="mx-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/matrix_arrows.mjs";
+  const opts = { mode: "hunt", presets: true, fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mx-live") });
+</script>
+```
+
 ## Why observables are Hermitian
 
 ![](../../ch03/images/hermitian_dial.gif){.nostretch width="64%" fig-align="center"}
 
 - **Real eigenvalues**: measured values are real numbers
-- **Orthogonal eigenvectors**: different outcomes exclude each other. Turning up the "imaginary part" $sK$ breaks both
+- **Orthogonal eigenvectors**: different outcomes exclude each other. Add a non-Hermitian part and both fail
 
 ## Why the eigenvalues are real, in two lines
 
@@ -158,7 +167,6 @@ $$
 $D_1$ is the rotation of the last figure: **imaginary** eigenvalues. Times $-i\hbar$ they turn **real**; $P$ is $\tfrac{\hbar}{2h}$ times matrix $D$ above.
 :::
 
-- $d/dx$ is anti-Hermitian, the "imaginary" kind; $-i\hbar\,d/dx$ is Hermitian, the "real" kind
 
 ## Example: is momentum Hermitian?
 
@@ -176,7 +184,7 @@ $$
 \end{aligned}
 $$
 
-Without the $i$: $(d/dx)^\dagger = -d/dx$, **anti**-Hermitian. The $-i$ turns the sign around.
+Without the $i$ the sign comes out wrong, $(d/dx)^\dagger = -d/dx$; the $-i$ turns it around.
 :::
 
 - **Recipe:** move the derivative to the other function by parts, then check the signs and the conjugates

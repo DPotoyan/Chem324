@@ -513,7 +513,7 @@ $$
 \langle x \rangle(t) = \frac{L}{2} + \cos\omega t \int_0^L x\,\psi_1\psi_2\,dx = \frac{L}{2} - \frac{16L}{9\pi^2}\cos\omega t
 $$
 
-- For an electron, an oscillating $\langle x \rangle$ is an oscillating electric dipole: a tiny antenna that emits or absorbs light of angular frequency $\omega$, that is photons with $h\nu = E_2 - E_1$. This is the link to the colors of conjugated molecules in the applications below. The general theory is in [Time Dependence](06-time-dependence.md).
+- For an electron, an oscillating $\langle x \rangle$ is an oscillating electric dipole: a tiny antenna that emits or absorbs light of angular frequency $\omega$, that is photons with $h\nu = E_2 - E_1$. This is the link to the colors of conjugated molecules in the applications below. The general theory is in [Time Dependence](07-time-dependence.md).
 
 ### Quantum PIB in 3D
 

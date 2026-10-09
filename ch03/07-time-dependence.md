@@ -16,7 +16,7 @@ kernelspec:
 
 :::
 
-[Operators](04-operators.md) and [Measurement](05-eigenvalues-and-expectation.md) described a single instant. This lecture adds time, the last postulate: the state evolves by the time-dependent Schrödinger equation, $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$.
+[Operators 1](04-operators.md), [Operators 2](05-hermitian-operators-and-commutators.md) and [Measurement](06-eigenvalues-and-expectation.md) described a single instant. This lecture adds time, the last postulate: the state evolves by the time-dependent Schrödinger equation, $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$.
 
 ### One recipe for all motion
 
@@ -48,7 +48,7 @@ The two sides agree term by term. At $t = 0$ every phase is 1, so the sum starts
 
 :::
 
-- We have already met the simplest cases. One term: nothing moves. Two terms: the density sloshes at $(E_2 - E_1)/\hbar$, as in [Particle in a Box](02-particle-in-a-box.md), and the ammonia molecule of [Tunneling](03-tunneling-and-finite-square-well.md) flips back and forth. Here are three terms, the superposition $\frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3$ whose energy readings we simulated in [Measurement](05-eigenvalues-and-expectation.md):
+- We have already met the simplest cases. One term: nothing moves. Two terms: the density sloshes at $(E_2 - E_1)/\hbar$, as in [Particle in a Box](02-particle-in-a-box.md), and the ammonia molecule of [Tunneling](03-tunneling-and-finite-square-well.md) flips back and forth. Here are three terms, the superposition $\frac{1}{2}\psi_1 + \frac{1}{2}\psi_2 + \frac{1}{\sqrt{2}}\psi_3$ whose energy readings we simulated in [Measurement](06-eigenvalues-and-expectation.md):
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -138,7 +138,7 @@ for t in [0, np.pi / 2, np.pi, 2 * np.pi]:
 ```
 
 - The norm stays exactly 1, and the average position follows $3\cos t$, the motion of a classical mass on a spring released from $x = 3$. Both facts are explained below.
-- The translation table of [Operators](04-operators.md) gets its last row:
+- The translation table of [Operators 1](04-operators.md) gets its last row:
 
 | | integral | Dirac | numpy on a grid |
 | :-- | :-- | :-- | :-- |
@@ -172,7 +172,7 @@ $$
 
 :::
 
-- For an operator with no explicit time dependence, the average is constant whenever $\hat{A}$ **commutes with** $\hat{H}$. Such observables are **constants of motion**, and the commutators of [Operators](04-operators.md) tell us which ones they are:
+- For an operator with no explicit time dependence, the average is constant whenever $\hat{A}$ **commutes with** $\hat{H}$. Such observables are **constants of motion**, and the commutators of [Operators 2](05-hermitian-operators-and-commutators.md) tell us which ones they are:
 
 | observable | commutator with $\hat{H} = \hat{p}^2/2m + V(x)$ | conserved when |
 | :-- | :-- | :-- |
@@ -391,7 +391,7 @@ An electron confined to a molecule-sized box rebuilds any starting state every 1
 
 :::
 
-- A narrow packet needs many box states (the sine series of [Measurement](05-eigenvalues-and-expectation.md)), so between revivals their phases scramble and the packet dissolves. At simple fractions of $T_{\text{rev}}$ the phases partly realign, and the packet comes back in pieces:
+- A narrow packet needs many box states (the sine series of [Measurement](06-eigenvalues-and-expectation.md)), so between revivals their phases scramble and the packet dissolves. At simple fractions of $T_{\text{rev}}$ the phases partly realign, and the packet comes back in pieces:
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -490,7 +490,7 @@ Fig. A ground-state-shaped packet released on the compressed side of a Morse wel
 
 ### The postulates, all together
 
-This lecture completes the rules started in [Operators](04-operators.md):
+This lecture completes the rules started in [Operators 1](04-operators.md):
 
 | | postulate | in equations |
 | :-- | :-- | :-- |

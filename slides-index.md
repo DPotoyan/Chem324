@@ -23,8 +23,8 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/02-particle-in-a-box.html">Particle in a Box</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/03-applications-of-particle-in-a-box.html">Applications of Particle in a Box</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/04-tunneling-and-finite-square-well.html">Tunneling and the Finite Square Well</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05-operators.html">Operators</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05b-hermitian-and-commutators.html">Hermitian Operators and Commutators</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05-operators.html">Operators 1: Matrices and Dirac Notation</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch03/05b-hermitian-and-commutators.html">Operators 2: Hermitian Operators and Commutators</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/06-eigenvalues-and-expectation.html">Measurement: Eigenvalues and Expectation</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch03/07-time-dependence.html">Time Dependence</a>
 

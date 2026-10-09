@@ -1,5 +1,5 @@
 ---
-title: "Operators"
+title: "Operators 1: Matrices and Dirac Notation"
 subtitle: "Chem 3240 · Lecture 3.5"
 author: "Davit Potoyan"
 format:
@@ -55,6 +55,17 @@ $$
 $$
 
 - An **eigenvector** keeps its direction, $A\mathbf{v} = \lambda\mathbf{v}$: the same shape as $\hat{A}\phi = a\phi$
+
+## Live: hunt for the eigenvectors
+
+```{=html}
+<div id="mx-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/matrix_arrows.mjs";
+  const opts = { mode: "hunt", fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mx-live") });
+</script>
+```
 
 ## Example: eigenvalues of a 2×2 by hand
 
@@ -239,6 +250,33 @@ For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ 
 $A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: sandwiching unit vectors picks out **one entry** of the matrix.
 :::
 
+## Same matrix, new axes
+
+![](../../ch03/images/basis_turn.gif){.nostretch width="78%" fig-align="center"}
+
+- Each entry is a sandwich, $A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$: **purple** along its own axis, **orange** off it
+- The entries change; **trace** 4 and **determinant** 3 never do, so neither do the **eigenvalues**
+
+## Example: diagonal in its own eigenbasis
+
+::: {.worked}
+Write $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in its eigenvector axes, $\mathbf{u}_{1,2} = \tfrac{1}{\sqrt{2}}(1,\ \pm 1)$.
+:::
+
+::: {.soln .fragment}
+Each $\mathbf{u}_n$ only stretches, $A\mathbf{u}_n = \lambda_n\mathbf{u}_n$, so a sandwich is an eigenvalue times an overlap:
+
+$$
+\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\langle \mathbf{u}_m \vert \mathbf{u}_n \rangle
+\quad\Longrightarrow\quad
+A' = \begin{pmatrix} 3\cdot 1 & 1\cdot 0 \\ 3\cdot 0 & 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+Check one by row times column: $\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}(1,\ -1)\cdot(3,\ 3) = 0$
+:::
+
+- **Diagonalizing** $H$ means finding these axes: `eigh` returns them as the **columns** of `psi`
+
 ## Dirac notation: one language, three dialects
 
 | | integral | Dirac | matrices (numpy) |
@@ -247,6 +285,7 @@ $A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: san
 | operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
 | matrix element | $\int\phi^*\hat{A}\psi\,dx$ | $\langle\phi\vert\hat{A}\vert\psi\rangle$ | `np.vdot(phi, A @ psi) * h` |
 | eigenproblem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
+| new axes | $\int\phi_m^*\hat{A}\phi_n\,dx$ | $\langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * h` |
 
 - The same objects in three dialects: integrals for functions, brackets on paper, matrices on a computer
 
@@ -259,5 +298,5 @@ $A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: san
 
 # Takeaway {.center}
 
-> Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language. Next: which matrices can be observables, and what happens when two of them do not commute.
+> Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language, and in the axes of its own eigenvectors a matrix is diagonal. Next: which matrices can be observables, and what happens when two of them do not commute.
 

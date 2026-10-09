@@ -16,7 +16,7 @@ kernelspec:
 
 :::
 
-[Operators](04-operators.md) showed that observables are Hermitian operators, with real eigenvalues and orthonormal eigenfunctions. This lecture is about what happens when we use one: postulates 3 and 4, what a measurement returns and how often.
+[Operators 2](05-hermitian-operators-and-commutators.md) showed that observables are Hermitian operators, with real eigenvalues and orthonormal eigenfunctions. This lecture is about what happens when we use one: postulates 3 and 4, what a measurement returns and how often.
 
 ### Eigenfunctions are a coordinate system
 
@@ -174,7 +174,7 @@ $$
 \langle \psi \vert \psi \rangle = \sum_m\sum_n c_m^*\,c_n\,\langle \phi_m \vert \phi_n \rangle = \sum_n \lvert c_n\rvert^2 = 1
 $$
 
-- Only the size of each coefficient matters for these probabilities. The coefficients $c_n$ and $c_n e^{i\theta}$ give the same $p_n$; the phases come back in [Time Dependence](06-time-dependence.md).
+- Only the size of each coefficient matters for these probabilities. The coefficients $c_n$ and $c_n e^{i\theta}$ give the same $p_n$; the phases come back in [Time Dependence](07-time-dependence.md).
 - A measurement does not reveal $\psi$. It returns one number, and it changes the state (below). The probabilities show up only in the statistics of many **identically prepared copies**, just as $\lvert\psi(x)\rvert^2$ showed up in the pattern of many single detections in [The Schrödinger Equation](01-schrodinger-equation.md).
 
 Try it: pick a state, measure one copy at a time, then a thousand. Every reading is one of the energies $E_n = n^2E_1$ of the box, never anything in between. The bars approach $\lvert c_n\rvert^2$ and the running mean approaches a value we compute next.
@@ -247,7 +247,7 @@ print("<E> = <psi|H|psi>:", round(psi @ H @ psi * h / E1, 4), "E1   (exact: 10/p
 ```
 
 - The grid agrees with the exact coefficients of the example, and both routes give $\langle E \rangle = 10E_1/\pi^2 = 1.013\,E_1$: the parabola costs only 1.3 percent more energy than the ground state.
-- The translation table of [Operators](04-operators.md) grows by the three rows this lecture used:
+- The translation table of [Operators 1](04-operators.md) grows by the three rows this lecture used:
 
 | | integral | Dirac | numpy on a grid |
 | :-- | :-- | :-- | :-- |
@@ -315,7 +315,7 @@ Fig. One energy measurement on the superposition of the example. Before: three p
 
 ### Compatible and incompatible observables
 
-- If $[\hat{A},\hat{B}] = 0$, the two operators share eigenfunctions ([Operators](04-operators.md)). A reading of $a_n$ leaves the system in a shared eigenfunction, so $B$ is sharp too, and measuring $B$ does not disturb the value of $A$. Such observables are **compatible**: energy and momentum of a free particle, or $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ for hydrogen.
+- If $[\hat{A},\hat{B}] = 0$, the two operators share eigenfunctions ([Operators 2](05-hermitian-operators-and-commutators.md)). A reading of $a_n$ leaves the system in a shared eigenfunction, so $B$ is sharp too, and measuring $B$ does not disturb the value of $A$. Such observables are **compatible**: energy and momentum of a free particle, or $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ for hydrogen.
 - If they do not commute, a state with a sharp value of one has a spread in the other. The box states have sharp energies; their momenta are not sharp:
 
 ```{code-cell} python
@@ -520,7 +520,7 @@ Compute the momentum distribution $\lvert\phi_1(p)\rvert^2$ of the box ground st
 
 #### Problem 7: An uncertainty relation for energy and position
 
-Use $[\hat{x},\hat{H}] = i\hbar\,\hat{p}/m$ (Problem 5 of [Operators](04-operators.md) leads to it) in the general uncertainty principle to show $\sigma_x\,\sigma_E \geq \frac{\hbar}{2m}\lvert\langle p\rangle\rvert$. Evaluate the bound for a box eigenstate and for a free packet moving with average momentum $p_0$. Why does a stationary state escape any constraint?
+Use $[\hat{x},\hat{H}] = i\hbar\,\hat{p}/m$ (Problem 5 of [Operators 2](05-hermitian-operators-and-commutators.md) leads to it) in the general uncertainty principle to show $\sigma_x\,\sigma_E \geq \frac{\hbar}{2m}\lvert\langle p\rangle\rvert$. Evaluate the bound for a box eigenstate and for a free packet moving with average momentum $p_0$. Why does a stationary state escape any constraint?
 
 #### Problem 8: Phases you can see
 

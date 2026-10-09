@@ -357,7 +357,7 @@ ax1.set_title(f"|z| = {np.abs(z1):.2f} before, {np.abs(w1):.2f} after: a pure {d
 plt.gcf()
 ```
 
-This rotating phase is the single most reused picture in quantum mechanics: every stationary state carries the factor $e^{-iEt/\hbar}$, a clock hand turning **clockwise** at rate $E/\hbar$. When the [time dependence of wavefunctions](../ch03/06-time-dependence.md) looks abstract, come back to this circle.
+This rotating phase is the single most reused picture in quantum mechanics: every stationary state carries the factor $e^{-iEt/\hbar}$, a clock hand turning **clockwise** at rate $E/\hbar$. When the [time dependence of wavefunctions](../ch03/07-time-dependence.md) looks abstract, come back to this circle.
 
 :::{figure} images/ComplexHelix.gif
 :alt: Euler's formula traced as a helix

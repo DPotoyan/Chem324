@@ -24,26 +24,52 @@ resources:
 ## Warm-up: components of a vector
 
 ::: {.worked}
-Write $\mathbf{v} = (3, 4)$ in the tilted axes $\hat{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\hat{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
+Write $\mathbf{v} = (3, 4)$ in the tilted axes $\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
 :::
 
 ::: {.soln .fragment}
 Each component is a **projection** (a dot product):
 
-$$c_1 = \hat{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \hat{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}$$
+$$c_1 = \mathbf{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \mathbf{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}$$
 
-$$\mathbf{v} = c_1\hat{u}_1 + c_2\hat{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2$$
+$$\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2$$
 :::
 
 - Perpendicular unit axes: components are **projections**, and their squares add up to the **length** squared
 
-## Eigenfunctions are coordinates
+## Same recipe for functions
 
-![](../../ch03/images/projection.png){.nostretch width="80%" fig-align="center"}
+| | a vector | a function |
+|:--------------|:------------------------|:------------------------|
+| its numbers | components $v_1, v_2$ | values $\psi(x)$ at every $x$ |
+| dot product | $\mathbf{u}\cdot\mathbf{v} = \sum_j u_j\,v_j$ | $\int \phi^*\,\psi\,dx$ |
+| in words | multiply matching entries, add | multiply point by point, add up |
+| unit axes | $\mathbf{u}_1, \mathbf{u}_2$: perpendicular, length 1 | box states $\psi_1, \psi_2, \dots$: orthonormal |
+| a component | $c_k = \mathbf{u}_k\cdot\mathbf{v}$ | $c_n = \int \psi_n^*\,\psi\,dx$ |
+
+- Lecture 3.5's grid made this literal: the integral **is** the dot product of the sampled values, times $h$
+
+## One component, step by step
+
+![](../../ch03/images/component_steps.png){.nostretch width="86%" fig-align="center"}
+
+- The parabola $\psi = \sqrt{30/L^5}\;x(L-x)$ looks almost like $\psi_1$, so its component along $\psi_1$ is almost 1: $\ c_1 = 0.999$
+
+## A component that vanishes
+
+![](../../ch03/images/component_cancel.png){.nostretch width="78%" fig-align="center"}
+
+- $\psi$ is symmetric about $L/2$, $\psi_2$ is antisymmetric: the two halves of the product cancel, so $c_2 = 0$
+- The same happens for every even $n$: the parabola has **no** even components
+
+## Eigenfunctions are coordinates
 
 ::: {.keyeq}
 $$\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx$$
 :::
+
+- The eigenfunctions $\phi_n$ of an observable are the **axes**; $c_n$ says how far $\psi$ reaches along axis $n$
+- Each $c_n$ is a **projection**, found exactly as for the vector: multiply, then add up
 
 ## Three one-line derivations
 

@@ -4,35 +4,35 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Operators
+# Operators 1: Matrices and Dirac Notation
 
 :::{note} **What you need to know**
 
 - An operator turns one function into another. Quantum operators are **linear**, so they respect superposition: acting on a sum gives the sum of the results.
+- A matrix is the linear operator you already know: it turns and stretches arrows. The arrows it only stretches are its **eigenvectors**, $A\mathbf{v} = \lambda\mathbf{v}$, and for a $2\times 2$ matrix the eigenvalues come from a quadratic equation.
 - Sample a function on a grid and it becomes a **vector**; every operator becomes a **matrix**. Position is diagonal, derivatives link neighboring points, and solving $\hat{H}\psi = E\psi$ becomes finding the eigenvalues of a matrix: by hand for three points, with five lines of numpy for four hundred.
-- Every observable is a **Hermitian** operator, $\hat{A}^\dagger = \hat{A}$. Hermitian operators have **real eigenvalues** and **orthogonal eigenfunctions** that form a **complete basis**: exactly what a measurement needs.
-- Operators need not **commute**. The commutator $[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}$ measures the difference between the two orders, and for position and momentum it is never zero: $[\hat{x},\hat{p}] = i\hbar$.
-- Operators that commute share their eigenfunctions, so their observables can have sharp values at the same time. Position and momentum cannot.
-- **Dirac notation** writes all of this in one form that does not care whether we use integrals or matrices, and it translates line by line into numpy.
+- **Dirac notation** writes the same objects once. A ket is a column, a bra is the conjugated row, a bra meeting a ket is an inner product, and a bra, an operator and a ket together give a matrix element. Every line translates into an integral and into numpy.
+- The entries of a matrix depend on the axes you write it in; each one is a sandwich $\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$. In the axes of its own eigenvectors a matrix is **diagonal**, with the eigenvalues on the diagonal. Finding those axes is what **diagonalizing** a Hamiltonian means.
+- Two matrix properties matter next: some matrices equal their own mirror image (**Hermitian**), and the order of a product can matter (**commutators**). Both are the subject of [Operators 2](05-hermitian-operators-and-commutators.md).
 
 :::
 
 ### The rules of the game
 
-This lecture and the next two complete the short list of rules, the **postulates**, from which all of quantum mechanics follows. Two of them we have already met.
+This lecture and the next three complete the short list of rules, the **postulates**, from which all of quantum mechanics follows. Two of them we have already met.
 
 | | Postulate | Lecture |
 | :-- | :-- | :-- |
 | 1 | The state of a system is a wavefunction $\psi$, and $\lvert\psi\rvert^2$ is the probability density | [The Schrödinger Equation](01-schrodinger-equation.md) |
-| 2 | Every observable is represented by a linear Hermitian operator $\hat{A}$ | this lecture |
-| 3 | A measurement of $A$ returns one of the eigenvalues $a_n$ of $\hat{A}$ and leaves the system in its eigenfunction $\phi_n$ | [Measurement](05-eigenvalues-and-expectation.md) |
-| 4 | The outcome $a_n$ has probability $\lvert\langle \phi_n \vert \psi\rangle\rvert^2$, so the average is $\langle A\rangle = \langle \psi \vert \hat{A} \vert \psi \rangle$ | [Measurement](05-eigenvalues-and-expectation.md) |
-| 5 | The state evolves by $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$ | [The Schrödinger Equation](01-schrodinger-equation.md), [Time Dependence](06-time-dependence.md) |
+| 2 | Every observable is represented by a linear Hermitian operator $\hat{A}$ | this lecture and [Operators 2](05-hermitian-operators-and-commutators.md) |
+| 3 | A measurement of $A$ returns one of the eigenvalues $a_n$ of $\hat{A}$ and leaves the system in its eigenfunction $\phi_n$ | [Measurement](06-eigenvalues-and-expectation.md) |
+| 4 | The outcome $a_n$ has probability $\lvert\langle \phi_n \vert \psi\rangle\rvert^2$, so the average is $\langle A\rangle = \langle \psi \vert \hat{A} \vert \psi \rangle$ | [Measurement](06-eigenvalues-and-expectation.md) |
+| 5 | The state evolves by $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$ | [The Schrödinger Equation](01-schrodinger-equation.md), [Time Dependence](07-time-dependence.md) |
 
 ### Operators act on functions
 
 - In [The Schrödinger Equation](01-schrodinger-equation.md) we built operators by a recipe: write the classical expression in $x$ and $p$, then replace $p$ by $-i\hbar\,d/dx$. We also met eigenfunctions, the functions an operator returns unchanged up to a constant, and expectation values.
-- The recipe leaves two questions open. Which operators are allowed to stand for something we can measure? And what happens when two operators do not commute? Answering them is the job of this lecture.
+- The recipe leaves two questions open: which operators are allowed to stand for something we can measure, and what happens when two operators do not commute? [Operators 2](05-hermitian-operators-and-commutators.md) answers both. This lecture builds the language they need: functions become vectors, and operators become matrices.
 - An operator is any rule that turns a function into another function: multiply by $x$, differentiate, integrate, square. Quantum mechanics uses only one kind.
 
 #### Linear operators
@@ -67,6 +67,95 @@ $$
 The squared constants and the cross term $2c_1c_2f_1f_2$ both spoil it. A quick first test: a linear operator must turn $2f$ into $2\hat{A}f$, and squaring turns it into $4f^2$.
 
 :::
+
+### Matrices act on vectors
+
+The linear operators you already know are matrices. Before turning functions into vectors, here is what a matrix does to an ordinary arrow in the plane. [Vectors and Linear Algebra](../math/03-vectors-and-linear-algebra.md) in Appendix A has more.
+
+- A matrix acts on a vector **row by column**: each entry of the result is one row of the matrix times the column, entry by entry, added up. For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$,
+
+$$
+A\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2\cdot 1 + 1\cdot 0 \\ 1\cdot 1 + 2\cdot 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \qquad
+A\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 3 \\ 3 \end{pmatrix} = 3\begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+
+- The first arrow is **turned** as well as stretched. The second keeps its direction and is only stretched, by a factor of 3.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: matrix_arrows
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+A = np.array([[2.0, 1.0], [1.0, 2.0]])
+arrow = lambda ax, tip, col, lw, z: ax.annotate("", xy=tip, xytext=(0, 0), zorder=z, arrowprops=dict(
+    arrowstyle="-|>", color=col, lw=lw, mutation_scale=22, shrinkA=0, shrinkB=0))
+t = np.linspace(0, 2 * np.pi, 300)
+fig, axs = plt.subplots(1, 2, figsize=(9.6, 4.2))
+for ax in axs:
+    ax.plot(np.cos(t), np.sin(t), color=GRAY, lw=1, ls=":")
+    ax.axhline(0, color=GRAY, lw=0.8); ax.axvline(0, color=GRAY, lw=0.8)
+    ax.set_xlim(-1.3, 2.75); ax.set_ylim(-1.15, 2.5); ax.set_aspect("equal"); ax.axis("off")
+a = axs[0]                                                  # a generic arrow: turned and stretched
+v = np.array([1.0, 0.0]); Av = A @ v
+arrow(a, v, TEAL, 3, 3); arrow(a, Av, CARDINAL, 3, 3)
+a.text(1.0, -0.12, r"$\mathbf{v} = (1, 0)$", color=TEAL, fontsize=15, ha="center", va="top")
+a.text(2.0, 1.12, r"$A\mathbf{v} = (2, 1)$", color=CARDINAL, fontsize=15, ha="center", va="bottom")
+a.set_title("a generic arrow turns", fontsize=15)
+b = axs[1]                                                  # the eigenvectors: only stretched
+u1 = np.array([1.0, 1.0]) / np.sqrt(2); u2 = np.array([1.0, -1.0]) / np.sqrt(2)
+b.plot([-1.0, 2.45], [-1.0, 2.45], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
+b.plot([-0.95, 1.0], [0.95, -1.0], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
+arrow(b, A @ u1, CARDINAL, 3, 2); arrow(b, u1, TEAL, 3.4, 3)
+arrow(b, A @ u2, CARDINAL, 7, 2); arrow(b, u2, TEAL, 2.6, 3)
+b.text(1.95, 2.12, r"$A\mathbf{u}_1 = 3\,\mathbf{u}_1$", color=CARDINAL, fontsize=15, ha="right", va="center")
+b.text(0.2, 0.68, r"$\mathbf{u}_1$", color=TEAL, fontsize=15, ha="right")
+b.text(0.85, -0.78, r"$A\mathbf{u}_2 = \mathbf{u}_2$", color=CARDINAL, fontsize=15, ha="left", va="center")
+b.set_title("eigenvectors only stretch", fontsize=15)
+fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02, wspace=0.05)
+plt.show()
+```
+
+Fig. The matrix $A$ turns a generic arrow (left) but only stretches its eigenvectors (right): $(1, 1)$ by a factor 3 and $(1, -1)$ by a factor 1.
+
+Try it: drag anywhere on the plane to aim the unit arrow $\mathbf{v}$ and watch $A\mathbf{v}$. Most directions come out turned. Hunt for the two directions that are only stretched; the widget marks each one you find. **Sweep** carries $\mathbf{v}$ once around the circle, pausing on each eigenvector, while the tips of $A\mathbf{v}$ trace an ellipse.
+
+```{anywidget} ../widgets/matrix_arrows.mjs
+{"mode": "hunt"}
+```
+
+:::{important} **Eigenvectors and eigenvalues of a matrix**
+
+$$
+A\mathbf{v} = \lambda\mathbf{v}, \quad \mathbf{v} \neq 0 \qquad\Longleftrightarrow\qquad \det(A - \lambda I) = 0
+$$
+
+:::
+
+- This has the same shape as the eigenvalue equation $\hat{A}\phi = a\phi$ of [The Schrödinger Equation](01-schrodinger-equation.md), with a matrix in place of the operator and a vector in place of the function.
+- Why the determinant? $(A - \lambda I)\mathbf{v} = 0$ says that the matrix $A - \lambda I$ squashes the nonzero arrow $\mathbf{v}$ to zero. A matrix that squashes some arrow to zero flattens the plane, so the area factor it multiplies areas by, its determinant, is zero. For a $2\times 2$ matrix the condition is a quadratic equation:
+
+$$
+\det\begin{pmatrix} a - \lambda & b \\ c & d - \lambda \end{pmatrix} = (a - \lambda)(d - \lambda) - bc = \lambda^2 - (a + d)\,\lambda + (ad - bc) = 0
+$$
+
+:::{note} **Example: eigenvalues of a $2\times 2$ by hand**
+
+Find the eigenvalues and eigenvectors of $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$.
+
+$$
+\det(A - \lambda I) = (2 - \lambda)^2 - 1 = 0 \quad\Longrightarrow\quad 2 - \lambda = \pm 1 \quad\Longrightarrow\quad \lambda = 3,\ 1
+$$
+
+For $\lambda = 3$, the first row of $(A - 3I)\mathbf{v} = 0$ reads $-v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, 1)$. For $\lambda = 1$ it reads $v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, -1)$. Two quick checks: the eigenvalues add up to the sum of the diagonal entries (the **trace**), $3 + 1 = 2 + 2$, and multiply to the determinant, $3 \times 1 = 2\cdot 2 - 1\cdot 1$.
+
+:::
+
+- The same pattern, $\begin{pmatrix} \alpha & \beta \\ \beta & \alpha \end{pmatrix}$, describes two $p$ orbitals sharing an electron in Hückel theory: $(1, 1)$ is the bonding orbital and $(1, -1)$ the antibonding one (Problem 3).
 
 ### From operators to matrices
 
@@ -182,20 +271,26 @@ sl = (fp[2] - fp[0]) / (2 * h)
 a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2h$")
 a1.plot([pts[0], pts[2]], [fp[0], fp[2]], color=PURPLE, lw=1.4, ls=":")
 a1.legend(loc="lower center", frameon=False, fontsize=11.5)
-a1.set_title(r"first derivative: weights $-1,\ 0,\ +1$ times $1/2h$", loc="left", fontsize=12.5)
+a1.set_title("first derivative: the slope of the chord", loc="left", fontsize=12.5)
 a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/h$")
 a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/h$")
 a2.legend(loc="lower left", frameon=False, fontsize=11.5, bbox_to_anchor=(0.0, 0.13))
 a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{h} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}$",
         transform=a2.transAxes, ha="left", va="bottom", fontsize=12.5)
-a2.set_title(r"second derivative: weights $1,\ -2,\ 1$ times $1/h^2$", loc="left", fontsize=12.5)
+a2.set_title("second derivative: how much the slope changes", loc="left", fontsize=12.5)
 fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.09)
 plt.show()
 ```
 
 Fig. Derivatives from neighboring samples. Left: the chord through the two neighbors of $x_j$ is almost parallel to the tangent at $x_j$, so its slope estimates $\psi'(x_j)$. Right: the slope drops from $s_-$ to $s_+$ across $x_j$; the drop per unit length estimates $\psi''(x_j)$, the curvature.
 
-- Row $j$ of each matrix holds the weights of its stencil, centered on the diagonal. For four points, with $\psi = 0$ beyond the ends:
+- Each formula multiplies the samples at three neighboring points by fixed numbers: $-1, 0, 1$ (over $2h$) for the slope and $1, -2, 1$ (over $h^2$) for the curvature. Written as a row times a column, the curvature at point 2 is
+
+$$
+\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{h^2} = \frac{1}{h^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+$$
+
+- So the numbers of the formula **are a row of a matrix**. At point 3 the same numbers move one place to the right, $(0, 1, -2, 1)$. Stacking one row per point, with $\psi = 0$ beyond the ends:
 
 $$
 \frac{d}{dx} \;\longrightarrow\; D_1 = \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix},
@@ -203,7 +298,7 @@ $$
 \frac{d^2}{dx^2} \;\longrightarrow\; D_2 = \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
 $$
 
-- Multiply the first row of $D_2$ into the vector: $(-2\psi_1 + \psi_2)/h^2$. That is the stencil formula with $\psi_0 = 0$, the value at the wall, so the boundary condition is built into the matrix.
+- Multiply the first row of $D_2$ into the vector: $(-2\psi_1 + \psi_2)/h^2$. That is the curvature formula with $\psi_0 = 0$, the value at the wall, so the boundary condition is built into the matrix.
 - Momentum is $\hat{p} = -i\hbar\,D_1$: entries $-i\hbar/2h$ above the diagonal and $+i\hbar/2h$ below.
 
 :::{note} **Example: the grid derivative of a plane wave**
@@ -220,13 +315,13 @@ The sampled plane wave is an **eigenvector** of the derivative matrix, just as $
 
 #### Step 4: the Hamiltonian is a matrix
 
-- Put the pieces together: $\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)$ becomes $H = -\frac{\hbar^2}{2m}D_2 + V$. With the shorthand $t = \hbar^2/2mh^2$:
+- Put the pieces together: $\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)$ becomes $H = -\frac{\hbar^2}{2m}D_2 + V$. The constants in front of $D_2$ collect into one symbol, $\varepsilon = \hbar^2/2mh^2$, which is only a unit of energy:
 
 $$
-H = \begin{pmatrix} 2t + V_1 & -t & 0 & 0 \\ -t & 2t + V_2 & -t & 0 \\ 0 & -t & 2t + V_3 & -t \\ 0 & 0 & -t & 2t + V_4 \end{pmatrix}, \qquad t = \frac{\hbar^2}{2mh^2}
+H = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2}
 $$
 
-- Read it as a picture: the potential energy sits on the diagonal, one value per point, and the kinetic energy couples each point to its neighbors through $-t$. This is the same structure as the Hückel matrix that chemists use for $\pi$ electrons hopping between carbon atoms (Problem 7).
+- Read it as a picture: the potential energy sits on the diagonal, one value per point, and the kinetic energy couples each point to its neighbors through $-\varepsilon$. This is the same structure as the Hückel matrix that chemists use for $\pi$ electrons hopping between carbon atoms (Problem 6).
 
 :::{important} **The Schrödinger equation on a grid**
 
@@ -243,23 +338,24 @@ The allowed energies are the eigenvalues of the matrix $H$, and the stationary s
 Divide a box of length $L$ into four intervals, $h = L/4$. The wavefunction vanishes at the two walls, which leaves three interior points, $x = L/4$, $L/2$ and $3L/4$. With $V = 0$ inside,
 
 $$
-H = t\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}, \qquad t = \frac{\hbar^2}{2mh^2} = \frac{8\hbar^2}{mL^2}
+H = \varepsilon\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2} = \frac{8\hbar^2}{mL^2}
 $$
 
-Write $E = \lambda t$ and set $\det(H - E\,I) = 0$. Expanding along the first row,
+Write $E = \lambda\varepsilon$ and solve $\det(H/\varepsilon - \lambda I) = 0$. Go along the first row: each entry times the $2\times 2$ determinant that is left when its row and column are crossed out, with the signs $+\,-\,+$:
 
 $$
-(2-\lambda)\big[(2-\lambda)^2 - 1\big] - (2-\lambda) = (2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0
-\quad\Longrightarrow\quad \lambda = 2 - \sqrt{2},\ \ 2,\ \ 2 + \sqrt{2}
+(2-\lambda)\underbrace{\big[(2-\lambda)^2 - 1\big]}_{\text{row 1, column 1 crossed out}} - (-1)\underbrace{\big[-(2-\lambda)\big]}_{\text{row 1, column 2 crossed out}} + 0 = (2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0
 $$
 
-The lowest level is $E_1 = (2 - \sqrt{2})\,t = 4.69\,\hbar^2/mL^2$, within 5 percent of the exact $\pi^2\hbar^2/2mL^2 = 4.93\,\hbar^2/mL^2$. Its eigenvector is
+The product vanishes when $\lambda = 2$ or $(2 - \lambda)^2 = 2$, so $\lambda = 2 - \sqrt{2},\ 2,\ 2 + \sqrt{2}$. They add up to the trace, $6$, and multiply to the determinant, $4$. The lowest level is $E_1 = (2 - \sqrt{2})\,\varepsilon = 4.69\,\hbar^2/mL^2$, within 5 percent of the exact $\pi^2\hbar^2/2mL^2 = 4.93\,\hbar^2/mL^2$.
+
+A row-times-column check confirms the ground state. Sample the exact ground state $\sin(\pi x/L)$ at the three points, $\big(\sin\tfrac{\pi}{4}, \sin\tfrac{\pi}{2}, \sin\tfrac{3\pi}{4}\big) \propto (1, \sqrt{2}, 1)$:
 
 $$
-\mathbf{v}_1 = \tfrac{1}{2}\big(1,\ \sqrt{2},\ 1\big) = \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big)\big/\sqrt{2}
+\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix} = \begin{pmatrix} 2 - \sqrt{2} \\ 2\sqrt{2} - 2 \\ 2 - \sqrt{2} \end{pmatrix} = (2 - \sqrt{2})\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
 $$
 
-the exact ground state sampled at the three points. Check it: $H\mathbf{v}_1 = \tfrac{t}{2}\big(2 - \sqrt{2},\ 2\sqrt{2} - 2,\ 2 - \sqrt{2}\big) = (2 - \sqrt{2})\,t\,\mathbf{v}_1$.
+The middle entry works because $2\sqrt{2} - 2 = (2 - \sqrt{2})\sqrt{2}$. The grid's ground state is the exact sine, sampled at the grid points.
 
 :::
 
@@ -319,7 +415,131 @@ Fig. Left: the three eigenvectors of the three-point box (dots, joined by straig
 
 #### Five lines of numpy
 
-- Here are $\hat{x}$, $\hat{p}$ and $\hat{H}$ for a particle on a spring on an 8-point grid, as color maps. At any size they keep the same pattern:
+- With 400 points instead of 3, the eigenvalue problem is too big for a determinant by hand, and numpy solves it in one call. Here is the particle on a spring whose levels you hunted with the trial-energy slider in [The Schrödinger Equation](01-schrodinger-equation.md), in units with $\hbar = m = \omega = 1$:
+
+```{code-cell} python
+import numpy as np
+
+N = 400                                       # grid points
+x = np.linspace(-8, 8, N); h = x[1] - x[0]
+D2 = (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / h**2    # second derivative
+H = -0.5 * D2 + np.diag(0.5 * x**2)           # kinetic + potential energy
+
+E, psi = np.linalg.eigh(H)                    # eigenvalues and eigenvectors of a Hermitian matrix
+print(np.round(E[:5], 4))                     # exact: 0.5 1.5 2.5 3.5 4.5
+```
+
+- The levels come out $0.5, 1.5, 2.5, \dots$ in units of $\hbar\omega$, to three or four digits. This evenly spaced ladder is the vibrating bond of [Chapter 4](../ch04/02-quantum-harmonic-oscillator.md). The columns of `psi` are the wavefunctions.
+- `eigh` is numpy's eigensolver for **Hermitian** matrices. Why the physics hands us only Hermitian matrices is the subject of [Operators 2](05-hermitian-operators-and-commutators.md).
+
+### Dirac notation
+
+Integrals and matrices are two ways of writing the same objects. Dirac's notation writes them once.
+
+#### Kets and bras
+
+- A state is a **ket** $\lvert\psi\rangle$: on the grid, the column of samples $(\psi_1, \psi_2, \dots)$. Its partner, the **bra** $\langle\psi\rvert$, is the same numbers written as a row, each one **conjugated**.
+- A bra next to a ket is an **inner product**, a single number:
+
+$$
+\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\longrightarrow\; \int \phi^*\,\psi\,dx
+$$
+
+:::{note} **Example: why the bra is conjugated**
+
+Take the two-component ket $\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Its bra is $\langle\psi\rvert = (1,\ -i)$, so
+
+$$
+\langle \psi \vert \psi \rangle = 1\cdot 1 + (-i)(i) = 1 + 1 = 2
+$$
+
+a real, positive length squared. Without the conjugate the same product would be $1\cdot 1 + i\cdot i = 0$: a nonzero vector of zero length. Conjugating the bra makes every $\langle \psi \vert \psi \rangle$ real and positive, which is what allows $\lvert\psi\rvert^2$ to be a probability density.
+
+:::
+
+- One consequence is used all the time: a number comes out of a ket unchanged but out of a bra conjugated, $\langle \phi \vert c\,\psi \rangle = c\,\langle \phi \vert \psi \rangle$ but $\langle c\,\phi \vert \psi \rangle = c^*\langle \phi \vert \psi \rangle$, because $\int (c\,\phi)^*\psi\,dx = c^*\!\int \phi^*\psi\,dx$.
+
+#### Sandwiches: matrix elements
+
+- An operator acts on a ket, $\hat{A}\lvert\psi\rangle$: on the grid, the matrix times the column. Put a bra in front and the result is a number, the **matrix element** $\langle\phi\vert\hat{A}\vert\psi\rangle = \int\phi^*\,\hat{A}\psi\,dx$: row times matrix times column.
+- The name is literal. Sandwiching a matrix between unit vectors picks out one entry. For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$: $A\mathbf{e}_2 = (1, 2)$ and $\mathbf{e}_1\cdot(1, 2) = 1 = A_{12}$. In general $A_{jk} = \langle \mathbf{e}_j \vert A \vert \mathbf{e}_k \rangle$.
+- In a basis of functions instead of grid points, the same sandwich builds the matrices that quantum chemistry programs diagonalize: $H_{mn} = \langle \phi_m \vert \hat{H} \vert \phi_n \rangle$ for a set of orbitals $\phi_n$ ([Hückel Theory](../ch08/05-huckel-theory.md)).
+
+#### Same matrix, new axes
+
+- Nothing forces us to use the axes $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$. Turn them to any two perpendicular unit vectors $\mathbf{u}_1$ and $\mathbf{u}_2$, and the same sandwiches give the matrix in the new axes:
+
+$$
+A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle
+$$
+
+- The operator has not changed: it turns and stretches every arrow exactly as before. Only its description changes, just as the components of an arrow change when you turn the axes while the arrow stays put.
+- Read column $n$ of $A'$ as the arrow $A\mathbf{u}_n$ written in the new axes. The diagonal entry $A'_{nn}$ is the part of $A\mathbf{u}_n$ along its own axis; the off-diagonal entry is the part that lands on the other axis.
+
+Try it: drag on the plane to turn the axes. The orange pieces are the off-diagonal entries. They shrink as you turn, and at $45^\circ$ they vanish: each $A\mathbf{u}_n$ then lies along its own axis. The trace and the determinant never change.
+
+```{anywidget} ../widgets/matrix_arrows.mjs
+{"mode": "axes"}
+```
+
+:::{note} **Example: diagonal in its own eigenbasis**
+
+Write $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in the axes of its eigenvectors, $\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
+
+Each eigenvector is only stretched, $A\mathbf{u}_1 = 3\,\mathbf{u}_1$ and $A\mathbf{u}_2 = \mathbf{u}_2$, so every sandwich is an eigenvalue times an overlap, $\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n \langle \mathbf{u}_m \vert \mathbf{u}_n \rangle$. The axes are perpendicular unit vectors, so the overlap is 1 for $m = n$ and 0 otherwise:
+
+$$
+A' = \begin{pmatrix} 3\cdot 1 & 1\cdot 0 \\ 3\cdot 0 & 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+Check one entry by row times column: $A\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(3, 3)$, so $\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}\big(1\cdot 3 + (-1)\cdot 3\big) = 0$. The trace is still $3 + 1 = 4$ and the determinant $3 \times 1 = 3$.
+
+:::
+
+:::{important} **A matrix is diagonal in the axes of its eigenvectors**
+
+$$
+\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\delta_{mn}
+$$
+
+when the $\mathbf{u}_n$ are perpendicular unit eigenvectors, $A\mathbf{u}_n = \lambda_n\mathbf{u}_n$. The symbol $\delta_{mn}$ is 1 for $m = n$ and 0 otherwise, so the eigenvalues sit on the diagonal and everything else is zero.
+
+:::
+
+- This is what **diagonalizing** a Hamiltonian means: finding the axes, its eigenvectors, in which $H$ is diagonal. The diagonal then lists the energies. The trace and the determinant are the same in every set of axes, which is why they could check the eigenvalues of the $2\times 2$ example.
+- numpy does it in one call. `eigh` returns the eigenvectors as the columns of a matrix `U`, and `U.T @ H @ U` computes every sandwich $\langle \mathbf{u}_m \vert H \vert \mathbf{u}_n \rangle$ at once: row $m$ of `U.T` is the bra, column $n$ of `U` the ket. For the three-point box:
+
+```{code-cell} python
+import numpy as np
+
+H = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])   # the three-point box, in units of epsilon
+E, U = np.linalg.eigh(H)              # columns of U: the eigenvectors, the new axes
+Hnew = U.T @ H @ U                    # every sandwich <u_m|H|u_n> at once
+
+print(np.round(Hnew, 4) + 0.0)        # diagonal (adding 0.0 prints -0. as 0.)
+print(np.allclose(Hnew, np.diag(E)))  # the diagonal holds the eigenvalues
+print(np.trace(H), round(np.trace(Hnew), 10))   # the trace is the same in both axes
+```
+
+- The diagonal holds $2 - \sqrt{2}$, $2$ and $2 + \sqrt{2}$, the energies found by hand above, and the trace is 6 in both axes. A complex matrix needs the conjugate in the bra, `U.conj().T @ H @ U`. [Measurement](06-eigenvalues-and-expectation.md) uses the same idea to expand a wavefunction along the eigenfunctions of an operator.
+
+#### One language, three dialects
+
+| | integral | Dirac | numpy on a grid |
+| :-- | :-- | :-- | :-- |
+| inner product | $\int \phi^*\psi\,dx$ | $\langle \phi \vert \psi \rangle$ | `np.vdot(phi, psi) * h` |
+| normalization | $\int \lvert\psi\rvert^2 dx = 1$ | $\langle \psi \vert \psi \rangle = 1$ | `np.vdot(psi, psi) * h` |
+| operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
+| matrix element | $\int \phi^*\hat{A}\psi\,dx$ | $\langle \phi \vert \hat{A} \vert \psi \rangle$ | `np.vdot(phi, A @ psi) * h` |
+| eigenvalue problem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
+| matrix in new axes | $A'_{mn} = \int \phi_m^*\hat{A}\phi_n\,dx$ | $A'_{mn} = \langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * h` (columns of `U`: the $\phi_n$) |
+
+- `np.vdot` conjugates its first argument, which is exactly what the bra does. The factor `h` turns the sum over grid points into the integral.
+- The table grows in the next three lectures: adjoints and commutators in [Operators 2](05-hermitian-operators-and-commutators.md), expansion coefficients in [Measurement](06-eigenvalues-and-expectation.md), time evolution in [Time Dependence](07-time-dependence.md).
+
+### Two matrix properties to watch
+
+Here are $\hat{x}$, $\hat{p}$ and $\hat{H}$ for a particle on a spring on an 8-point grid, as color maps. At any size they keep the same pattern:
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -358,374 +578,10 @@ fig.subplots_adjust(left=0.02, right=0.98, top=0.83, bottom=0.17, wspace=0.18)
 plt.show()
 ```
 
-Fig. Position, momentum and energy of a particle on a spring, on a grid of 8 points. Color shows the sign and size of each entry (teal negative, red positive, white zero). Each matrix equals its own conjugate transpose, the defining property of the Hermitian matrices below; momentum manages it with an imaginary, antisymmetric pattern.
+Fig. Position, momentum and energy of a particle on a spring, on a grid of 8 points. Color shows the sign and size of each entry (teal negative, red positive, white zero). Each matrix equals its own conjugate transpose, the defining property of a Hermitian matrix ([Operators 2](05-hermitian-operators-and-commutators.md)); momentum manages it with an imaginary, antisymmetric pattern.
 
-- With 400 points instead of 3, the eigenvalue problem is too big for a determinant by hand, and numpy solves it in one call. Here is the particle on a spring whose levels you hunted with the trial-energy slider in [The Schrödinger Equation](01-schrodinger-equation.md), in units with $\hbar = m = \omega = 1$:
-
-```{code-cell} python
-import numpy as np
-
-N = 400                                       # grid points
-x = np.linspace(-8, 8, N); h = x[1] - x[0]
-D2 = (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / h**2    # second derivative
-H = -0.5 * D2 + np.diag(0.5 * x**2)           # kinetic + potential energy
-
-E, psi = np.linalg.eigh(H)                    # eigenvalues and eigenvectors of a Hermitian matrix
-print(np.round(E[:5], 4))                     # exact: 0.5 1.5 2.5 3.5 4.5
-```
-
-- The levels come out $0.5, 1.5, 2.5, \dots$ in units of $\hbar\omega$, to three or four digits. This evenly spaced ladder is the vibrating bond of [Chapter 4](../ch04/02-quantum-harmonic-oscillator.md). The columns of `psi` are the wavefunctions.
-- `eigh` is numpy's eigensolver for **Hermitian** matrices. Why the physics hands us only Hermitian matrices is the subject of the section on Hermitian operators below.
-
-### Dirac notation
-
-Integrals and matrices are two ways of writing the same objects. Dirac's notation writes them once:
-
-- A state is a **ket** $\lvert\psi\rangle$. Its partner, the **bra** $\langle\psi\rvert$, carries the complex conjugate.
-- A bra next to a ket is an **inner product**, a number: $\langle\phi\vert\psi\rangle = \int \phi^*\,\psi\,dx$.
-- An operator acts on a ket, $\hat{A}\lvert\psi\rangle$. Sandwiched between a bra and a ket it gives the **matrix element** $\langle\phi\vert\hat{A}\vert\psi\rangle = \int\phi^*\,\hat{A}\psi\,dx$.
-
-| | integral | Dirac | numpy on a grid |
-| :-- | :-- | :-- | :-- |
-| inner product | $\int \phi^*\psi\,dx$ | $\langle \phi \vert \psi \rangle$ | `np.vdot(phi, psi) * h` |
-| normalization | $\int \lvert\psi\rvert^2 dx = 1$ | $\langle \psi \vert \psi \rangle = 1$ | `np.vdot(psi, psi) * h` |
-| operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
-| matrix element | $\int \phi^*\hat{A}\psi\,dx$ | $\langle \phi \vert \hat{A} \vert \psi \rangle$ | `np.vdot(phi, A @ psi) * h` |
-| eigenvalue problem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
-
-- `np.vdot` conjugates its first argument, which is exactly what the bra does. The factor `h` turns the sum over grid points into the integral.
-- The table grows in the next two lectures: expansion coefficients in [Measurement](05-eigenvalues-and-expectation.md), time evolution in [Time Dependence](06-time-dependence.md).
-
-### Hermitian operators
-
-#### The adjoint
-
-- For a complex number, the conjugate flips the sign of $i$: $(3 + 2i)^* = 3 - 2i$. For a matrix, the analog is the **adjoint** or conjugate transpose: swap rows and columns, then conjugate every entry, $(A^\dagger)_{jk} = A_{kj}^*$.
-- For an operator, the adjoint is whatever you get by moving it from the ket to the bra of an inner product. An operator that can move across unchanged is **Hermitian**.
-
-:::{important} **Adjoint and Hermitian operator**
-
-$$
-\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}^\dagger\phi \vert \psi \rangle
-$$
-
-$\hat{A}$ is **Hermitian** (self-adjoint) when $\hat{A}^\dagger = \hat{A}$:
-
-$$
-\int \phi^*\,\big(\hat{A}\psi\big)\,dx = \int \big(\hat{A}\phi\big)^*\,\psi\,dx, \qquad \text{for a matrix: } A_{jk} = A_{kj}^*
-$$
-
-:::
-
-- The three grid matrices above are Hermitian. Position and energy are real and symmetric. Momentum is imaginary and antisymmetric: transposing flips the sign of every entry and conjugating flips it back.
-
-:::{note} **Example: which matrices are Hermitian?**
-
-$$
-A = \begin{pmatrix} 2 & 1-i \\ 1+i & 3 \end{pmatrix}, \quad
-B = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad
-C = \begin{pmatrix} i & 0 \\ 0 & 1 \end{pmatrix}, \quad
-D = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
-$$
-
-Compare each entry with the conjugate of its mirror image across the diagonal.
-
-- $A$: $A_{12} = 1 - i$ and $A_{21}^* = (1+i)^* = 1 - i$, and the diagonal is real. **Hermitian.**
-- $B$: $B_{12} = 2$ but $B_{21}^* = 3$. Not Hermitian.
-- $C$: a diagonal entry is its own mirror image, so it must equal its own conjugate, but $i \neq -i$. A Hermitian matrix has a **real diagonal**. Not Hermitian.
-- $D$: $D_{12} = -i$ and $D_{21}^* = i^* = -i$. **Hermitian**, although every off-diagonal entry is imaginary: the same pattern as $\hat{p}$ on the grid.
-
-:::
-
-#### Why observables must be Hermitian
-
-A measurement needs three things from its operator, and Hermitian operators deliver all three.
-
-1. **Real eigenvalues.** The eigenvalues are the values a measurement can return, and measured values are real numbers.
-2. **Orthogonal eigenfunctions.** Eigenfunctions with different eigenvalues satisfy $\langle \phi_m \vert \phi_n \rangle = 0$: distinct outcomes are mutually exclusive.
-3. **A complete basis.** Every state can be written as a sum of the eigenfunctions, so every state has a definite probability for each outcome. That is the subject of [Measurement](05-eigenvalues-and-expectation.md).
-
-:::{important} **Eigenvalues and eigenfunctions of a Hermitian operator**
-
-$$
-\hat{A}\phi_n = a_n\phi_n \quad\Longrightarrow\quad a_n = a_n^*, \qquad \langle \phi_m \vert \phi_n \rangle = \delta_{mn}, \qquad \psi = \sum_n c_n\,\phi_n
-$$
-
-:::
-
-:::{tip} **Proof: the eigenvalues are real**
-:class: dropdown
-
-Let $\hat{A}\phi = a\phi$ with $\phi$ normalized. Use the Hermitian property with both functions equal to $\phi$:
-
-$$
-\langle \phi \vert \hat{A}\phi \rangle = a\,\langle \phi \vert \phi \rangle = a, \qquad
-\langle \hat{A}\phi \vert \phi \rangle = a^*\,\langle \phi \vert \phi \rangle = a^*
-$$
-
-The bra conjugates the constant it carries. Hermitian means the two are equal, so $a = a^*$.
-
-:::
-
-:::{tip} **Proof: eigenfunctions with different eigenvalues are orthogonal**
-:class: dropdown
-
-Let $\hat{A}\phi_m = a_m\phi_m$ and $\hat{A}\phi_n = a_n\phi_n$ with $a_m \neq a_n$. Both eigenvalues are real. Move $\hat{A}$ across the inner product:
-
-$$
-\langle \phi_m \vert \hat{A}\phi_n \rangle = a_n\,\langle \phi_m \vert \phi_n \rangle, \qquad
-\langle \hat{A}\phi_m \vert \phi_n \rangle = a_m\,\langle \phi_m \vert \phi_n \rangle
-$$
-
-The two are equal, so $(a_n - a_m)\,\langle \phi_m \vert \phi_n \rangle = 0$, and since $a_n \neq a_m$ the overlap vanishes. When several eigenfunctions share one eigenvalue (degeneracy) the argument says nothing, but they can always be combined into orthogonal ones.
-
-:::
-
-- What goes wrong without Hermiticity? Take a Hermitian matrix and add a growing non-Hermitian part:
-
-```{code-cell} python
-:tags: [hide-input]
-# synced: hermitian_dial
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-from matplotlib.colors import LinearSegmentedColormap
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-wt = LinearSegmentedColormap.from_list("wt", ["white", TEAL])
-rng = np.random.default_rng(3)
-N = 8
-A = rng.normal(size=(N, N)) + 1j * rng.normal(size=(N, N))
-Hm, K = (A + A.conj().T) / 2, (A - A.conj().T) / 2           # Hermitian part plus anti-Hermitian part
-ss = np.concatenate([np.zeros(5), np.linspace(0, 1, 30), np.ones(6)])
-vals, ovl = [], []
-for s in ss:
-    w, V = np.linalg.eig(Hm + s * K)
-    o = np.argsort(w.real)
-    V = V[:, o] / np.linalg.norm(V[:, o], axis=0)
-    vals.append(w[o]); ovl.append(np.abs(V.conj().T @ V))
-allv = np.concatenate(vals)
-fig, (ax, axo) = plt.subplots(1, 2, figsize=(8, 3.6), gridspec_kw={"width_ratios": [1.55, 1], "wspace": 0.25})
-ax.axhline(0, color=GRAY, lw=1.2)
-ax.text(allv.real.max() + 0.2, 0.15, "real axis", color=GRAY, fontsize=11, ha="right", va="bottom")
-scat = ax.scatter(vals[0].real, vals[0].imag, s=70, color=TEAL, zorder=5)
-ax.set_xlim(allv.real.min() - 0.5, allv.real.max() + 0.5)
-lim = 1.15 * max(0.5, np.abs(allv.imag).max())
-ax.set_ylim(-lim, lim)
-ax.set_xlabel("Re (eigenvalue)", fontsize=12); ax.set_ylabel("Im (eigenvalue)", fontsize=12)
-img = axo.imshow(ovl[0], cmap=wt, vmin=0, vmax=1)
-axo.set_xticks([]); axo.set_yticks([])
-for sp in axo.spines.values():
-    sp.set_visible(False)
-axo.set_title(r"overlaps $|\langle v_j | v_k \rangle|$", fontsize=13)
-fig.subplots_adjust(left=0.09, right=0.98, top=0.84, bottom=0.15)
-
-def update(i):
-    w, s = vals[i], ss[i]
-    scat.set_offsets(np.column_stack([w.real, w.imag]))
-    scat.set_color([TEAL if abs(v.imag) < 1e-6 else CARDINAL for v in w])
-    img.set_data(ovl[i])
-    off = (ovl[i] - np.diag(np.diag(ovl[i]))).max()
-    ax.set_title(rf"$A = H + s\,K$,  $s = {s:.2f}$:  " + ("eigenvalues real" if s == 0 else f"largest |Im| = {np.abs(w.imag).max():.2f}"),
-                 loc="left", fontsize=12.5)
-    axo.set_xlabel("eigenvectors orthonormal" if s == 0 else f"largest overlap {off:.2f}", fontsize=12)
-
-ani = FuncAnimation(fig, update, frames=len(ss), interval=110, blit=False)
-plt.close(fig)
-HTML(ani.to_jshtml())
-```
-
-Fig. A Hermitian matrix $H$ ($s = 0$) has real eigenvalues (left, all on the real axis) and orthonormal eigenvectors, so their overlaps (right) form the identity. Adding $s$ times a non-Hermitian part $K$, with $K^\dagger = -K$, pushes the eigenvalues into the complex plane, and the eigenvectors start to overlap. Neither could describe a measurement.
-
-- Hermitian is more than "real eigenvalues". The matrix $\begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$ has the real eigenvalues 1 and 2, but its eigenvectors overlap (Problem 4). Its outcomes would not be mutually exclusive, so it cannot represent an observable.
-
-:::{note} **Example: is momentum Hermitian?**
-
-Integrate by parts. The boundary term vanishes because physical wavefunctions go to zero at infinity, or at the walls of a box:
-
-$$
-\int_{-\infty}^{\infty}\phi^*\left(-i\hbar\frac{d\psi}{dx}\right)dx
-= \Big[-i\hbar\,\phi^*\psi\Big]_{-\infty}^{\infty} + i\hbar\int_{-\infty}^{\infty}\frac{d\phi^*}{dx}\,\psi\,dx
-= \int_{-\infty}^{\infty}\left(-i\hbar\frac{d\phi}{dx}\right)^{\!*}\psi\,dx
-$$
-
-The last step uses $\big(-i\hbar\,\phi'\big)^* = i\hbar\,\phi'^*$. So $\langle \phi \vert \hat{p}\psi \rangle = \langle \hat{p}\phi \vert \psi \rangle$: **momentum is Hermitian**.
-
-Without the $i$ it fails. The same steps give $\int\phi^*\psi'\,dx = -\int(\phi')^*\psi\,dx$, so $d/dx$ is **anti-Hermitian**, $(d/dx)^\dagger = -d/dx$. The factor $-i$ turns the minus sign around, which is why momentum carries an $i$.
-
-:::
-
-The same check on the grid, where the derivative matrix is real and antisymmetric:
-
-```{code-cell} python
-import numpy as np
-
-N = 400; x = np.linspace(-8, 8, N); h = x[1] - x[0]
-D1 = (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h)    # first derivative, centered difference
-P = -1j * D1                                         # momentum, hbar = 1
-
-print("d/dx is anti-Hermitian:", np.allclose(D1.conj().T, -D1))
-print("p    is Hermitian:     ", np.allclose(P.conj().T, P))
-```
-
-### Commutators: the order of operations
-
-- $\hat{A}\hat{B}\psi$ means: apply $\hat{B}$ first, then $\hat{A}$. For numbers the order never matters. For operators, as for matrices, it often does.
-
-:::{important} **Commutator**
-
-$$
-\big[\hat{A},\hat{B}\big] = \hat{A}\hat{B} - \hat{B}\hat{A}
-$$
-
-If $\big[\hat{A},\hat{B}\big] = 0$ the operators **commute**, and the order does not matter.
-
-:::
-
-:::{note} **Example: $x$ and $d/dx$ do not commute**
-
-Act on an arbitrary function $f$:
-
-$$
-x\,\frac{d}{dx}f = xf', \qquad \frac{d}{dx}\big(xf\big) = f + xf'
-$$
-
-$$
-\left[x,\frac{d}{dx}\right]f = xf' - f - xf' = -f \qquad\Longrightarrow\qquad \left[x,\frac{d}{dx}\right] = -1
-$$
-
-The product rule leaves one extra term, and it does not depend on what $f$ is.
-
-:::
-
-- Multiply by $-i\hbar$ and the example becomes the most important commutator in quantum mechanics:
-
-:::{important} **Canonical commutator**
-
-$$
-\big[\hat{x},\hat{p}\big] = i\hbar
-$$
-
-:::
-
-```{code-cell} python
-:tags: [hide-input]
-# synced: order_matters
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]          # hbar = 1; psi real, so x p psi and p x psi are imaginary
-funcs = [np.exp(-x**2 / 2) * (1 + 0.5 * x),
-         np.exp(-x**2 / 5) * np.cos(2.2 * x) + 0.3 * np.exp(-(x - 1.5)**2)]
-fig, axs = plt.subplots(1, 2, figsize=(9, 3.6))
-for k, (ax, psi) in enumerate(zip(axs, funcs)):
-    d = np.gradient(psi, h)
-    xp, px = -x * d, -(psi + x * d)                         # (x p psi)/(i hbar) and (p x psi)/(i hbar)
-    ax.plot(x, xp, color=TEAL, lw=2.2, label=r"$\hat{x}\hat{p}\,\psi\ /\ i\hbar$")
-    ax.plot(x, px, color=ORANGE, lw=2.2, ls="--", label=r"$\hat{p}\hat{x}\,\psi\ /\ i\hbar$")
-    ax.plot(x, xp - px, color=CARDINAL, lw=6, alpha=0.4, label=r"difference $/\ i\hbar$")
-    ax.plot(x, psi, color="k", lw=1.4, ls=":", label=r"$\psi$ itself")
-    ax.axhline(0, color=GRAY, lw=0.6)
-    ax.set_xlim(-4.5, 4.5); ax.set_xlabel("x", fontsize=12); ax.set_yticks([])
-    ax.spines["left"].set_visible(False)
-    ax.set_title(("a lopsided bump" if k == 0 else "a wiggly packet"), loc="left", fontsize=12.5)
-fig.legend(*axs[0].get_legend_handles_labels(), loc="upper center", ncol=4, frameon=False, fontsize=11.5,
-           bbox_to_anchor=(0.5, 0.9), handlelength=2.2, columnspacing=1.6)
-fig.suptitle(r"the difference of the two orders is $\psi$ itself:  $[\hat{x},\hat{p}]\,\psi = i\hbar\,\psi$", fontsize=13.5, y=0.99)
-fig.subplots_adjust(left=0.02, right=0.99, top=0.72, bottom=0.14, wspace=0.08)
-plt.show()
-```
-
-Fig. Two arbitrary functions acted on by $\hat{x}\hat{p}$ and by $\hat{p}\hat{x}$, both divided by $i\hbar$. The two orders give very different curves, but their difference lands exactly on $\psi$, whatever $\psi$ is: $[\hat{x},\hat{p}]\,\psi = i\hbar\,\psi$.
-
-- The grid matrices pass the same test. Build $C = XP - PX$ and apply it to a smooth function:
-
-```{code-cell} python
-import numpy as np
-
-N = 400; x = np.linspace(-8, 8, N); h = x[1] - x[0]
-X = np.diag(x)
-P = -1j * (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h)      # hbar = 1
-C = X @ P - P @ X
-
-psi = np.exp(-x**2 / 2) * (1 + 0.3 * x)                     # any smooth function
-print(f"largest |C psi - i psi|: {np.abs(C @ psi - 1j * psi)[5:-5].max():.1e}")
-print("largest diagonal entry of C:", np.abs(np.diag(C)).max())
-```
-
-- $C\psi$ matches $i\psi$ to about $10^{-3}$, the accuracy of the grid, yet the diagonal of $C$ is zero. That is no accident:
-
-:::{tip} **Why no finite matrices can obey $[X, P] = i\hbar$ exactly**
-:class: dropdown
-
-You might expect $C = XP - PX$ to be $i\hbar$ times the identity matrix. It cannot be. The trace of a product does not depend on the order, $\operatorname{tr}(XP) = \operatorname{tr}(PX)$, so $\operatorname{tr} C = 0$, while $\operatorname{tr}(i\hbar\,I) = i\hbar N$. No pair of $N \times N$ matrices satisfies the canonical commutator; only operators on infinitely many dimensions can.
-
-On the grid, $C$ has zeros on its diagonal and $i\hbar/2$ just above and below it. Acting on a function, it averages the two neighbors of each point and multiplies by $i\hbar$. For a smooth function that average is the function itself, so $C\psi \approx i\hbar\psi$, and the error shrinks as the grid gets finer.
-
-:::
-
-#### Rules for commutators
-
-- An operator commutes with itself and its powers: $[\hat{A},\hat{A}] = [\hat{A},\hat{A}^n] = 0$. So $[\hat{p},\hat{K}] = [\hat{p}, \hat{p}^2/2m] = 0$.
-- Swapping the order flips the sign: $[\hat{A},\hat{B}] = -[\hat{B},\hat{A}]$, so $[\hat{p},\hat{x}] = -i\hbar$.
-- Functions of $x$ commute with each other: $[\hat{x}, V(x)] = 0$.
-- A product rule: $[\hat{A},\hat{B}\hat{C}] = [\hat{A},\hat{B}]\,\hat{C} + \hat{B}\,[\hat{A},\hat{C}]$ (Problem 5).
-
-### Commuting operators share eigenfunctions
-
-:::{important} **Commuting operators share eigenfunctions**
-
-If $\big[\hat{A},\hat{B}\big] = 0$, there is a set of functions that are eigenfunctions of both:
-
-$$
-\hat{A}\phi_n = a_n\,\phi_n, \qquad \hat{B}\phi_n = b_n\,\phi_n
-$$
-
-:::
-
-- **Why, in three lines.** Let $\hat{A}\phi = a\phi$, and suppose no other eigenfunction of $\hat{A}$ has the eigenvalue $a$. Because the operators commute,
-
-$$
-\hat{A}\big(\hat{B}\phi\big) = \hat{B}\big(\hat{A}\phi\big) = a\,\big(\hat{B}\phi\big)
-$$
-
-so $\hat{B}\phi$ is also an eigenfunction of $\hat{A}$ with eigenvalue $a$. The only such function is $\phi$ itself, up to a constant, so $\hat{B}\phi = b\,\phi$.
-- If several eigenfunctions share an eigenvalue (degeneracy), $\hat{B}$ can mix them, and the shared eigenfunctions are particular combinations, as in the example below.
-
-:::{tip} **The converse: shared eigenfunctions mean the operators commute**
-:class: dropdown
-
-Suppose $\hat{A}$ and $\hat{B}$ share a complete set of eigenfunctions, $\hat{A}\phi_n = a_n\phi_n$ and $\hat{B}\phi_n = b_n\phi_n$. Expand an arbitrary function in that set, $\psi = \sum_n c_n\phi_n$, and use linearity:
-
-$$
-\hat{A}\hat{B}\,\psi = \sum_n c_n\,\hat{A}\big(b_n\phi_n\big) = \sum_n c_n\,a_nb_n\,\phi_n, \qquad
-\hat{B}\hat{A}\,\psi = \sum_n c_n\,\hat{B}\big(a_n\phi_n\big) = \sum_n c_n\,b_na_n\,\phi_n
-$$
-
-The numbers $a_nb_n$ and $b_na_n$ are equal, so $\hat{A}\hat{B}\psi = \hat{B}\hat{A}\psi$ for every $\psi$: the operators commute. The argument needs the set to be complete, because the commutator must vanish on every function, not just on a few.
-
-:::
-
-:::{note} **Example: the free particle**
-
-With $V = 0$, $\hat{H} = \hat{p}^2/2m$ commutes with $\hat{p}$. The plane wave $e^{ikx}$ is an eigenfunction of both:
-
-$$
-\hat{p}\,e^{ikx} = \hbar k\,e^{ikx}, \qquad \hat{H}\,e^{ikx} = \frac{\hbar^2k^2}{2m}\,e^{ikx}
-$$
-
-The function $\sin kx$ is an eigenfunction of $\hat{H}$ with the same energy but not of $\hat{p}$ (Problem 4 of [The Schrödinger Equation](01-schrodinger-equation.md)). There is no contradiction: $e^{ikx}$ and $e^{-ikx}$ have the same energy, so any mix of them, $\sin kx$ included, is an eigenfunction of $\hat{H}$. The theorem promises that shared eigenfunctions exist, here the two plane waves, not that every eigenfunction of $\hat{H}$ is one of them.
-
-:::
-
-- Commuting observables can have **sharp values at the same time**: a state of definite momentum also has a definite kinetic energy. Position and momentum do not commute, and no state has sharp values of both. [Measurement](05-eigenvalues-and-expectation.md) turns this into the uncertainty principle.
-- The labels of chemistry are shared eigenvalues. The quantum numbers $n$, $l$, $m$ of a hydrogen orbital label simultaneous eigenfunctions of three commuting operators, $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ ([Chapter 5](../ch05/01-hydrogenlike-atoms.md)).
+- **Mirror symmetry.** Each of these matrices equals its own mirror image across the diagonal, after conjugating the entries. Matrices like this are called **Hermitian**, and [Operators 2](05-hermitian-operators-and-commutators.md) shows why every observable must be one: it guarantees real eigenvalues.
+- **Order.** Matrix products depend on the order, $AB \neq BA$ in general, and on the grid $XP \neq PX$. The difference, the **commutator**, decides which observables can be sharp at the same time ([Operators 2](05-hermitian-operators-and-commutators.md)).
 
 ### Problems
 
@@ -743,79 +599,57 @@ Decide which of these operators are linear: (a) $\hat{A}f = f + x$, (b) $\hat{B}
 
 :::
 
-#### Problem 2: The parity operator
+#### Problem 2: Eigenvectors by hand
 
-The parity operator reflects a function through the origin, $\hat{\Pi}f(x) = f(-x)$. Show that $\hat{\Pi}$ is Hermitian, and find its eigenvalues and eigenfunctions. Which states of the finite square well of [Tunneling and the Finite Square Well](03-tunneling-and-finite-square-well.md) are eigenfunctions of $\hat{\Pi}$?
+Find the eigenvalues and eigenvectors of $B = \begin{pmatrix} 2 & 2 \\ 2 & -1 \end{pmatrix}$. Check them against the trace and the determinant, and check that the two eigenvectors are perpendicular.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-**Hermitian.** Substitute $y = -x$, which maps the interval $(-\infty, \infty)$ onto itself:
-
 $$
-\int_{-\infty}^{\infty}\phi^*(x)\,\psi(-x)\,dx = \int_{-\infty}^{\infty}\phi^*(-y)\,\psi(y)\,dy = \int_{-\infty}^{\infty}\big(\hat{\Pi}\phi\big)^*\,\psi\,dy
+\det(B - \lambda I) = (2 - \lambda)(-1 - \lambda) - 4 = \lambda^2 - \lambda - 6 = (\lambda - 3)(\lambda + 2) = 0 \quad\Longrightarrow\quad \lambda = 3,\ -2
 $$
 
-**Eigenvalues.** Reflecting twice gives back the function, $\hat{\Pi}^2 f = f$. If $\hat{\Pi}f = \lambda f$ then $\hat{\Pi}^2f = \lambda^2 f = f$, so $\lambda^2 = 1$ and $\lambda = \pm 1$, real as promised. The eigenfunctions with $\lambda = +1$ are the **even** functions, $f(-x) = f(x)$, and those with $\lambda = -1$ the **odd** ones.
-
-**The well.** The bound states of the finite well came out even (cosines inside) or odd (sines inside), so each is an eigenfunction of $\hat{\Pi}$. That is the shared-eigenfunction theorem at work: when $V(-x) = V(x)$, $\hat{\Pi}$ commutes with $\hat{H}$, and the stationary states can be chosen to have definite parity.
+For $\lambda = 3$ the first row of $(B - 3I)\mathbf{v} = 0$ reads $-v_1 + 2v_2 = 0$, so $\mathbf{v} \propto (2, 1)$. For $\lambda = -2$ it reads $4v_1 + 2v_2 = 0$, so $\mathbf{v} \propto (1, -2)$. Checks: $3 + (-2) = 1$ is the trace $2 + (-1)$, and $3 \times (-2) = -6$ is the determinant $2\cdot(-1) - 2\cdot 2$. The dot product $(2, 1)\cdot(1, -2) = 0$, so the eigenvectors are perpendicular, a property of every symmetric matrix that [Operators 2](05-hermitian-operators-and-commutators.md) explains.
 
 :::
 
-#### Problem 3: Momentum on a four-point grid
+#### Problem 3: Two orbitals, one matrix
 
-Build the $4\times4$ momentum matrix on a periodic grid of four points with spacing $h$, using the centered difference and $\hbar = 1$ (on a periodic grid the neighbors of point 1 are points 4 and 2). Show that it is Hermitian and find its eigenvalues.
+In Hückel theory the two $p$ orbitals of ethylene are described by $H = \begin{pmatrix} \alpha & \beta \\ \beta & \alpha \end{pmatrix}$, where $\alpha$ is the energy of an electron on one carbon and $\beta < 0$ couples the two. Find the energies and the normalized eigenvectors. Which combination is lower in energy?
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-Row $j$ of the derivative matrix holds $+1/2h$ for the right neighbor and $-1/2h$ for the left one, wrapping around at the ends. Multiplying by $-i$:
+$\det(H - EI) = (\alpha - E)^2 - \beta^2 = 0$, so $\alpha - E = \pm\beta$ and $E = \alpha + \beta$ or $E = \alpha - \beta$. For $E = \alpha + \beta$ the first row of $(H - EI)\mathbf{v} = 0$ reads $-\beta v_1 + \beta v_2 = 0$, so $\mathbf{v} = (1, 1)/\sqrt{2}$; for $E = \alpha - \beta$, $\mathbf{v} = (1, -1)/\sqrt{2}$. Since $\beta < 0$, $\alpha + \beta$ is the lower energy: the in-phase combination $(1, 1)/\sqrt{2}$ is the **bonding** orbital, and the out-of-phase $(1, -1)/\sqrt{2}$, with a node between the carbons, is **antibonding**. The eigenvectors do not depend on $\alpha$ or $\beta$ at all; the symmetry of the molecule fixes them.
 
-$$
-P = \frac{-i}{2h}\begin{pmatrix} 0 & 1 & 0 & -1 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 1 & 0 & -1 & 0 \end{pmatrix}
-$$
+:::
 
-The real matrix in parentheses is antisymmetric ($d/dx$ is anti-Hermitian). For $P$, compare $P_{12} = -i/2h$ with $P_{21}^* = (+i/2h)^* = -i/2h$: equal, and likewise for every pair, with zeros on the diagonal. $P$ is **Hermitian**.
+#### Problem 4: Position as a matrix in the box basis
+
+Use the box states $\psi_n = \sqrt{2/L}\,\sin(n\pi x/L)$ as a basis and build the $3\times 3$ matrix $x_{mn} = \langle \psi_m \vert \hat{x} \vert \psi_n \rangle$, $m, n = 1, 2, 3$, with numpy on a grid. Is the matrix symmetric? Which entries vanish?
+
+:::{admonition} **Solution**
+:class: dropdown solution
 
 ```python
 import numpy as np
-h = 1.0
-M = np.array([[0, 1, 0, -1], [-1, 0, 1, 0], [0, -1, 0, 1], [1, 0, -1, 0]])
-P = -1j * M / (2 * h)
-print(np.allclose(P, P.conj().T))           # True
-print(np.round(np.linalg.eigvalsh(P), 6))   # [-1.  0.  0.  1.]
+L = 1.0
+x = np.linspace(0, L, 2001); h = x[1] - x[0]
+psi = np.array([np.sqrt(2 / L) * np.sin(n * np.pi * x / L) for n in (1, 2, 3)])
+X = np.array([[np.sum(psi[m] * x * psi[n]) * h for n in range(3)] for m in range(3)])
+print(np.round(X, 4))   # [[ 0.5 -0.1801 0. ] [-0.1801 0.5 -0.1945] [ 0. -0.1945 0.5]]
 ```
 
-The eigenvalues $-1/h, 0, 0, +1/h$ are real, and the eigenvectors are discrete plane waves $e^{ikx_j}$: the grid version of the momentum eigenfunctions.
+Each diagonal entry is $\langle x \rangle = L/2$, because every box state is symmetric about the middle of the box. The matrix is symmetric, $x_{mn} = x_{nm}$, as a real operator in a real basis must be. The entries $x_{13} = x_{31}$ vanish: write $x = (x - L/2) + L/2$; the $L/2$ part gives $\tfrac{L}{2}\langle \psi_1 \vert \psi_3 \rangle = 0$, and in the other part $\psi_1\psi_3$ is symmetric about $L/2$ while $x - L/2$ is antisymmetric, so the two halves of the integral cancel.
 
 :::
 
-#### Problem 4: Real eigenvalues are not enough
+#### Problem 5: A rotation has no real eigenvectors
 
-Find the eigenvalues and normalized eigenvectors of $M = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$ and the overlap between the eigenvectors. Could $M$ represent an observable?
+The matrix $R = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ turns every arrow by the angle $\theta$. Apply it to $(1, 0)$ and $(0, 1)$ for $\theta = 90^\circ$ and sketch the results. Then show that its eigenvalues are $\lambda = \cos\theta \pm i\sin\theta = e^{\pm i\theta}$, find the eigenvectors, and say for which angles the eigenvalues are real. Why does the picture make the answer obvious?
 
-:::{admonition} **Solution**
-:class: dropdown solution
-
-$M$ is triangular, so its eigenvalues are the diagonal entries, $1$ and $2$: both real. The eigenvectors are
-
-$$
-\lambda = 1:\ \mathbf{v}_1 = \begin{pmatrix}1\\0\end{pmatrix}, \qquad \lambda = 2:\ \mathbf{v}_2 = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}, \qquad \langle \mathbf{v}_1 \vert \mathbf{v}_2 \rangle = \frac{1}{\sqrt{2}} \neq 0
-$$
-
-$M$ is not Hermitian ($M_{12} = 1$ but $M_{21} = 0$), and the price is overlapping eigenvectors. A system in state $\mathbf{v}_2$ would have a nonzero overlap with the outcome "1", although it is supposed to give "2" with certainty. The outcomes are not mutually exclusive, so $M$ cannot represent an observable.
-
-:::
-
-#### Problem 5: Commutator algebra
-
-Prove the product rule $[\hat{A},\hat{B}\hat{C}] = [\hat{A},\hat{B}]\,\hat{C} + \hat{B}\,[\hat{A},\hat{C}]$ by expanding both sides. Use it, with $[\hat{x},\hat{p}] = i\hbar$, to find $[\hat{x},\hat{p}^3]$ and $[\hat{x}^2,\hat{p}]$.
-
-#### Problem 6: Momentum and force
-
-Show that $[\hat{p}, V(x)] = -i\hbar\,\dfrac{dV}{dx}$ by acting on a test function. Evaluate it for a particle on a spring, $V = \tfrac{1}{2}kx^2$, and for a uniform field, $V = mgx$. For which potentials does $\hat{p}$ commute with $\hat{H}$?
-
-#### Problem 7: Butadiene as a matrix
+#### Problem 6: Butadiene as a matrix
 
 In Hückel theory ([Chapter 8](../ch08/05-huckel-theory.md)) the $\pi$ electrons of butadiene are described by the matrix
 
@@ -825,6 +659,10 @@ $$
 
 where $\alpha$ is the energy of an electron on one carbon and $\beta < 0$ couples neighbors. Set $\alpha = 0$, $\beta = -1$ and use `np.linalg.eigh` to find the eigenvalues and eigenvectors. Check that the eigenvalues are real (you should find $\pm 1.618$ and $\pm 0.618$) and that the eigenvectors are orthonormal. Draw each eigenvector as four bars, one per carbon, and count the sign changes. Compare with the particle-in-a-box states of butadiene in [Particle in a Box](02-particle-in-a-box.md).
 
-#### Problem 8: Building a shared eigenfunction
+#### Problem 7: Brackets on a grid
 
-For a free particle, show that $\cos kx$ is an eigenfunction of $\hat{H}$ but not of $\hat{p}$. Which combinations $a\cos kx + b\sin kx$ are eigenfunctions of both, and what are their momenta?
+Sample the box states $\psi_1$ and $\psi_2$ ($L = 1$) on $N$ interior grid points and compute $\langle \psi_1 \vert \psi_1 \rangle$, $\langle \psi_2 \vert \psi_2 \rangle$ and $\langle \psi_1 \vert \psi_2 \rangle$ with `np.vdot(...) * h`. How close are they to 1, 1 and 0 for $N = 5$, $20$ and $100$? Then multiply $\psi_2$ by $c = 2i$ and confirm that $\langle c\,\psi_2 \vert \psi_2 \rangle = c^*\langle \psi_2 \vert \psi_2 \rangle$ while $\langle \psi_2 \vert c\,\psi_2 \rangle = c\,\langle \psi_2 \vert \psi_2 \rangle$.
+
+#### Problem 8: How many points per wavelength?
+
+Adapt the five lines of numpy to the particle in a box: $V = 0$ on $N$ interior points, $\hbar = m = L = 1$, exact levels $E_n = n^2\pi^2/2$. For $n = 1$, $5$ and $10$, find how many points you need for a 1 percent error, and express each answer as points per wavelength, $2(N + 1)/n$. What rule of thumb do you find?

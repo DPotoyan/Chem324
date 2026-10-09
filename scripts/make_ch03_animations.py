@@ -1881,9 +1881,11 @@ def barrier_setup():
     return fig, None
 
 
-# ============================================================ deck 3.5 "Operators"
-# Page ch03/04 syncs function_vector, difference_stencils, box_grid_states, grid_operators, hermitian_dial
-# and order_matters (the first three build the matrix picture step by step before any numpy).
+# ============================================================ deck 3.5 "Operators 1: Matrices and Dirac Notation"
+# Page ch03/04 syncs function_vector, difference_stencils, box_grid_states and grid_operators (the first three build
+# the matrix picture step by step before any numpy); page ch03/05 syncs hermitian_dial. basis_turn is deck-only: the
+# page turns the axes live with the JS widget widgets/matrix_arrows.mjs (mode "axes") instead. order_matters is
+# unused since commutator_steps replaced it.
 
 # ------------------------------------------------------------ sample a function at N points: it becomes a vector (still)
 @register
@@ -2010,6 +2012,65 @@ def box_grid_states():
     print("wrote", f"{OUT}/box_grid_states.png")
     return fig, None
 
+# ------------------------------------------------------------ same matrix, turned axes: entries change, at 45 deg it is diagonal (deck GIF)
+@register
+def basis_turn():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    A = np.array([[2.0, 1.0], [1.0, 2.0]])
+    ease = lambda s: 0.5 - 0.5 * np.cos(np.pi * s)
+    th = np.concatenate([np.zeros(15), 45 * ease(np.linspace(0, 1, 24)), np.full(30, 45.0), 45 * ease(np.linspace(1, 0, 16))])
+    R, xlo, ylo = 3.36, -2.7, -1.6                               # the arrows stay in the upper half: crop the plane
+    fig = plt.figure(figsize=(9.6, 3.9))
+    ax = fig.add_axes([0.01, 0.02, 0.44, 0.96])                 # the plane, same colours as the widget's axes mode
+    am = fig.add_axes([0.47, 0.0, 0.53, 1.0])                   # the matrix written in the turned axes
+    arrow = lambda tip, col, lw, ms: ax.annotate("", xy=tip, xytext=(0, 0), arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=ms, shrinkA=0, shrinkB=0))
+    fmt = lambda v: f"{0.0 if abs(v) < 0.005 else v:.2f}"
+    t = np.linspace(0, 2 * np.pi, 200)
+
+    def update(i):
+        a = np.radians(th[i])
+        u1, u2 = np.array([np.cos(a), np.sin(a)]), np.array([-np.sin(a), np.cos(a)])
+        Au1, Au2 = A @ u1, A @ u2
+        m = np.array([[u1 @ Au1, u1 @ Au2], [u2 @ Au1, u2 @ Au2]])
+        ax.cla()
+        for k in range(-3, 4):
+            ax.plot([k, k], [-R, R], color="#eceef1", lw=1, zorder=0); ax.plot([-R, R], [k, k], color="#eceef1", lw=1, zorder=0)
+        ax.axhline(0, color="#adb5bd", lw=1); ax.axvline(0, color="#adb5bd", lw=1)
+        ax.plot(np.cos(t), np.sin(t), color=GRAY, lw=1, ls=":")
+        for u, name in ((u1, r"$\mathbf{u}_1$"), (u2, r"$\mathbf{u}_2$")):
+            reach = min((R if u[j] > 0 else -lo) / abs(u[j]) for j, lo in ((0, xlo), (1, ylo)) if abs(u[j]) > 1e-9)
+            ax.plot([-6 * u[0], 6 * u[0]], [-6 * u[1], 6 * u[1]], color=TEAL, lw=1.2, alpha=0.5)
+            ax.text(*(0.84 * reach * u + 0.3 * np.array([u[1], -u[0]])), name, color=TEAL, fontsize=16, ha="center", va="center")
+        ax.plot([0, m[0, 0] * u1[0]], [0, m[0, 0] * u1[1]], color=PURPLE, lw=9, alpha=0.4, solid_capstyle="butt")
+        ax.plot([0, m[1, 1] * u2[0]], [0, m[1, 1] * u2[1]], color=PURPLE, lw=9, alpha=0.4, solid_capstyle="butt")
+        ax.plot([m[0, 0] * u1[0], Au1[0]], [m[0, 0] * u1[1], Au1[1]], color=ORANGE, lw=4.5, solid_capstyle="round")
+        ax.plot([m[1, 1] * u2[0], Au2[0]], [m[1, 1] * u2[1], Au2[1]], color=ORANGE, lw=4.5, solid_capstyle="round")
+        arrow(Au1, CARDINAL, 3.2, 20); arrow(Au2, CARDINAL, 3.2, 20)
+        arrow(u1, TEAL, 2.4, 16); arrow(u2, TEAL, 2.4, 16)
+        for Au, name in ((Au1, r"$A\mathbf{u}_1$"), (Au2, r"$A\mathbf{u}_2$")):
+            d = Au / np.linalg.norm(Au)
+            ax.text(*(Au + 0.32 * d + 0.3 * np.array([-d[1], d[0]])), name, color=CARDINAL, fontsize=16, ha="center", va="center")
+        ax.set_xlim(xlo, R); ax.set_ylim(ylo, R); ax.set_aspect("equal"); ax.axis("off")
+        am.cla(); am.set_xlim(0, 1); am.set_ylim(0, 1); am.axis("off")
+        am.text(0.04, 0.9, "the same matrix in the turned axes", fontsize=15, va="center")
+        am.text(0.04, 0.6, r"$A' =$", fontsize=22, va="center")
+        for x0, s in ((0.27, 1), (0.71, -1)):                   # square brackets
+            am.plot([x0 + 0.03 * s, x0, x0, x0 + 0.03 * s], [0.78, 0.78, 0.42, 0.42], color="k", lw=2)
+        for r in range(2):
+            for c in range(2):
+                am.text(0.39 + 0.21 * c, 0.69 - 0.18 * r, fmt(m[r, c]), fontsize=22, ha="center", va="center",
+                        color=PURPLE if r == c else ORANGE, fontweight="bold")
+        am.text(0.04, 0.3, f"axes turned by {th[i]:.0f}°", fontsize=15, va="center")
+        am.text(0.04, 0.18, f"trace {m[0, 0] + m[1, 1]:.2f}   determinant {np.linalg.det(m):.2f}", fontsize=14, color=GRAY, va="center")
+        if th[i] > 44.99:
+            am.text(0.04, 0.06, "diagonal: the axes are the eigenvectors", fontsize=15, color=PURPLE, va="center", fontweight="bold")
+
+    update(0)
+    ani = FuncAnimation(fig, update, frames=len(th), interval=1000 / 15, blit=False)
+    return fig, ani
+
+
 # ------------------------------------------------------------ on a grid, x, p and H are matrices (still)
 @register
 def grid_operators():
@@ -2118,10 +2179,10 @@ def order_matters():
     return fig, None
 
 
-# ============================================================ deck 3.5b "Hermitian operators and commutators"
-# Deck stills for slides/ch03/05b (commutator_steps is also used by deck 05). When the pages are split, page ch03/04
-# may sync matrix_arrows and the new Hermitian page flip_swap and commutator_steps (in place of order_matters);
-# eigen_directions stays deck-only if the page gets the widget.
+# ============================================================ deck 3.5b "Operators 2: Hermitian operators and commutators"
+# Deck stills for slides/ch03/05b; deck 05 shows matrix_arrows too. Page ch03/04 syncs matrix_arrows, page ch03/05
+# syncs real_vs_hermitian, eigen_directions, flip_swap and commutator_steps. Next to matrix_arrows and
+# eigen_directions both pages (and both decks) embed the live version, widgets/matrix_arrows.mjs in hunt mode.
 
 # ------------------------------------------------------------ a matrix turns most arrows; eigenvectors only stretch (still)
 @register
@@ -2155,6 +2216,43 @@ def matrix_arrows():
     fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02, wspace=0.05)
     fig.savefig(f"{OUT}/matrix_arrows.png", dpi=200)
     print("wrote", f"{OUT}/matrix_arrows.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ real number vs Hermitian matrix: both are their own mirror image (still)
+@register
+def real_vs_hermitian():
+    from matplotlib.patches import Rectangle, FancyArrowPatch
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(10.4, 3.9), gridspec_kw={"width_ratios": [1, 1.25], "wspace": 0.12})
+    a1.axhline(0, color=GRAY, lw=1.8, zorder=1); a1.axvline(0, color=GRAY, lw=0.8, zorder=1)  # a number: the real axis is the mirror
+    a1.text(5.2, 0.15, "real axis = mirror", color=GRAY, fontsize=12, ha="right", va="bottom")
+    a1.annotate("", xy=(3, -1.75), xytext=(3, 1.75), arrowprops=dict(arrowstyle="<->", color=GRAY, lw=1.4, ls=(0, (3, 2))))
+    a1.plot(3, 2, "o", color=TEAL, ms=12, zorder=3); a1.text(3.3, 2, r"$z = 3 + 2i$", color=TEAL, fontsize=15, va="center")
+    a1.plot(3, -2, "o", color=CARDINAL, ms=12, zorder=3); a1.text(3.3, -2, r"$z^* = 3 - 2i$", color=CARDINAL, fontsize=15, va="center")
+    a1.plot(1.2, 0, "o", color=PURPLE, ms=12, zorder=3)
+    a1.text(1.2, -0.5, r"real: $w^* = w$", color=PURPLE, fontsize=14, ha="center", va="top")
+    a1.set_xlim(-0.4, 5.6); a1.set_ylim(-2.7, 2.7); a1.axis("off")
+    s0 = 1.25                                                   # a matrix: the diagonal is the mirror
+    for r in range(2):
+        for c in range(2):
+            a2.add_patch(Rectangle((c * s0, (1 - r) * s0), s0, s0, fc="#f1ecf7" if r == c else "white", ec=GRAY, lw=1.2, zorder=1))
+    a2.plot([-0.15, 2 * s0 + 0.15], [2 * s0 + 0.15, -0.15], color=PURPLE, lw=1.6, ls=(0, (4, 3)), zorder=2)
+    for (xc, yc, lab, col, bg) in ((0.5, 1.5, r"$2$", PURPLE, "#f1ecf7"), (1.5, 0.5, r"$3$", PURPLE, "#f1ecf7"),
+                                   (1.55, 1.68, r"$1 - i$", TEAL, "white"), (0.45, 0.32, r"$1 + i$", CARDINAL, "white")):
+        a2.text(xc * s0, yc * s0, lab, color=col, fontsize=17, ha="center", va="center", zorder=4,
+                bbox=dict(boxstyle="round,pad=0.15", fc=bg, ec="none"))
+    a2.add_patch(FancyArrowPatch((1.36 * s0, 1.36 * s0), (0.64 * s0, 0.64 * s0), arrowstyle="<->", mutation_scale=16,
+                                 color=GRAY, lw=1.5, zorder=3))
+    a2.text(2 * s0 + 0.35, 1.75 * s0, "diagonal: on the mirror,\nso it must be real", color=PURPLE, fontsize=13, va="center")
+    a2.text(2 * s0 + 0.35, 0.95 * s0, r"partners: $(1 - i)^* = 1 + i$", color="k", fontsize=13, va="center")
+    a2.text(2 * s0 + 0.35, 0.3 * s0, r"$A^\dagger = A$:  Hermitian", color="k", fontsize=15, va="center")
+    a2.set_xlim(-0.3, 6.4); a2.set_ylim(-0.5, 2 * s0 + 0.3); a2.set_aspect("equal"); a2.axis("off")
+    fig.text(0.01, 0.95, "a number: conjugate = mirror in the real axis", fontsize=13.5, va="top")
+    fig.text(0.47, 0.95, "a matrix: mirror in the diagonal, then conjugate", fontsize=13.5, va="top")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.03)
+    fig.savefig(f"{OUT}/real_vs_hermitian.png", dpi=200)
+    print("wrote", f"{OUT}/real_vs_hermitian.png")
     return fig, None
 
 
@@ -2266,7 +2364,8 @@ def commutator_steps():
 
 
 # ============================================================ deck 3.6 "Measurement: eigenvalues and expectation values"
-# Page ch03/05 syncs projection, sine_series, collapse, box_momentum and uncertainty_tradeoff. measure_energy is
+# Page ch03/05 syncs projection, sine_series, collapse, box_momentum and uncertainty_tradeoff; component_steps and
+# component_cancel are deck-only (the deck's step-by-step opener). measure_energy is
 # deck-only: the page measures with the JS widget widgets/measure_energy.mjs instead (same state, same story).
 
 # ------------------------------------------------------------ a coefficient is a projection: vector onto axes, function onto psi_n (still)
@@ -2306,6 +2405,68 @@ def projection():
     fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.1)
     fig.savefig(f"{OUT}/projection.png", dpi=200)
     print("wrote", f"{OUT}/projection.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ deck 3.6 opener: one component of a function in three steps (still, deck-only)
+@register
+def component_steps():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    psi = np.sqrt(30) * x * (1 - x)                             # the parabola of the worked example, L = 1
+    phi = np.sqrt(2) * np.sin(np.pi * x)                        # the box ground state: the first "axis"
+    prod = phi * psi
+    c1 = np.trapezoid(prod, x)
+    fig, axs = plt.subplots(1, 3, figsize=(10.5, 3.4), sharey=True)
+    for ax in axs:
+        ax.axhline(0, color=GRAY, lw=0.7)
+        ax.set_xlim(0, 1); ax.set_ylim(-0.1, 2.9); ax.set_yticks([])
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=12)
+        ax.spines["left"].set_visible(False)
+    axs[0].plot(x, psi, color=TEAL, lw=2.6, label=r"the state $\psi$")
+    axs[0].plot(x, phi, color=GRAY, lw=2, ls="--", label=r"box state $\psi_1$")
+    axs[0].legend(loc="upper center", frameon=False, fontsize=12, ncol=2, handlelength=1.4, columnspacing=1)
+    axs[0].set_title("1.  the state and one axis", loc="left", fontsize=14)
+    axs[1].plot(x, prod, color=PURPLE, lw=2.6)
+    axs[1].text(0.5, 2.15, r"$\psi_1(x)\,\psi(x)$", color=PURPLE, fontsize=15, ha="center")
+    axs[1].set_title("2.  multiply point by point", loc="left", fontsize=14)
+    axs[2].fill_between(x, prod, color=PURPLE, alpha=0.3, lw=0)
+    axs[2].plot(x, prod, color=PURPLE, lw=2)
+    axs[2].text(0.5, 0.75, rf"area $= {c1:.3f}$", color=PURPLE, fontsize=15, ha="center")
+    axs[2].set_title(r"3.  add up:  $c_1 = \int \psi_1\,\psi\,dx$", loc="left", fontsize=14)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.1, wspace=0.08)
+    fig.savefig(f"{OUT}/component_steps.png", dpi=200)
+    print("wrote", f"{OUT}/component_steps.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ deck 3.6 opener: a component that vanishes, + and - areas cancel (still, deck-only)
+@register
+def component_cancel():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 400)
+    psi = np.sqrt(30) * x * (1 - x)
+    phi = np.sqrt(2) * np.sin(2 * np.pi * x)                    # the second box state: odd about L/2
+    prod = phi * psi
+    fig, axs = plt.subplots(1, 2, figsize=(9.0, 3.4), sharey=True)
+    for ax in axs:
+        ax.axhline(0, color=GRAY, lw=0.7)
+        ax.set_xlim(0, 1); ax.set_ylim(-1.7, 2.2); ax.set_yticks([])
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=12)
+        ax.spines["left"].set_visible(False)
+    axs[0].plot(x, psi, color=TEAL, lw=2.6, label=r"the state $\psi$")
+    axs[0].plot(x, phi, color=GRAY, lw=2, ls="--", label=r"box state $\psi_2$")
+    axs[0].legend(loc="upper center", frameon=False, fontsize=12, ncol=2, handlelength=1.4, columnspacing=1)
+    axs[0].set_title("1.  the state and the second axis", loc="left", fontsize=14)
+    axs[1].fill_between(x, prod, where=prod >= 0, color=PURPLE, alpha=0.3, lw=0, interpolate=True)
+    axs[1].fill_between(x, prod, where=prod < 0, color=ORANGE, alpha=0.35, lw=0, interpolate=True)
+    axs[1].plot(x, prod, color=PURPLE, lw=2)
+    axs[1].text(0.25, 0.35, "+", color=PURPLE, fontsize=22, ha="center", va="center")
+    axs[1].text(0.75, -0.4, "−", color=ORANGE, fontsize=22, ha="center", va="center")
+    axs[1].set_title(r"2.  multiply: the areas cancel, $c_2 = 0$", loc="left", fontsize=14)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.1, wspace=0.08)
+    fig.savefig(f"{OUT}/component_cancel.png", dpi=200)
+    print("wrote", f"{OUT}/component_cancel.png")
     return fig, None
 
 
