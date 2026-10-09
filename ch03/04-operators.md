@@ -12,7 +12,7 @@ kernelspec:
 - A matrix is the linear operator you already know: it turns and stretches arrows. The arrows it only stretches are its **eigenvectors**, $A\mathbf{v} = \lambda\mathbf{v}$, and for a $2\times 2$ matrix the eigenvalues come from a quadratic equation.
 - Sample a function on a grid and it becomes a **vector**; every operator becomes a **matrix**. Position is diagonal, derivatives link neighboring points, and solving $\hat{H}\psi = E\psi$ becomes finding the eigenvalues of a matrix: by hand for three points, with five lines of numpy for four hundred.
 - **Dirac notation** writes the same objects once. A ket is a column, a bra is the conjugated row, a bra meeting a ket is an inner product, and a bra, an operator and a ket together give a matrix element. Every line translates into an integral and into numpy.
-- The entries of a matrix depend on the axes you write it in; each one is a sandwich $\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$. In the axes of its own eigenvectors a matrix is **diagonal**, with the eigenvalues on the diagonal. Finding those axes is what **diagonalizing** a Hamiltonian means.
+- The entries of a matrix depend on the axes you write it in. In the axes of its own eigenvectors a matrix is **diagonal**, with the eigenvalues on the diagonal, and finding those axes is what **diagonalizing** a Hamiltonian means.
 - Two matrix properties matter next: some matrices equal their own mirror image (**Hermitian**), and the order of a product can matter (**commutators**). Both are the subject of [Operators 2](05-hermitian-operators-and-commutators.md).
 
 :::
@@ -51,6 +51,7 @@ for any functions $\psi_1$, $\psi_2$ and any complex numbers $c_1$, $c_2$.
 - Derivatives and multiplication by a function are linear: the derivative of a sum is the sum of the derivatives. Squaring, square roots and logarithms are not.
 
 :::{note} **Example: two tests for linearity**
+:class: dropdown
 
 Is the kinetic energy operator $\hat{K} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$ linear? Is squaring, $\hat{S}f = f^2$?
 
@@ -81,45 +82,6 @@ $$
 
 - The first arrow is **turned** as well as stretched. The second keeps its direction and is only stretched, by a factor of 3.
 
-```{code-cell} python
-:tags: [hide-input]
-# synced: matrix_arrows
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-A = np.array([[2.0, 1.0], [1.0, 2.0]])
-arrow = lambda ax, tip, col, lw, z: ax.annotate("", xy=tip, xytext=(0, 0), zorder=z, arrowprops=dict(
-    arrowstyle="-|>", color=col, lw=lw, mutation_scale=22, shrinkA=0, shrinkB=0))
-t = np.linspace(0, 2 * np.pi, 300)
-fig, axs = plt.subplots(1, 2, figsize=(9.6, 4.2))
-for ax in axs:
-    ax.plot(np.cos(t), np.sin(t), color=GRAY, lw=1, ls=":")
-    ax.axhline(0, color=GRAY, lw=0.8); ax.axvline(0, color=GRAY, lw=0.8)
-    ax.set_xlim(-1.3, 2.75); ax.set_ylim(-1.15, 2.5); ax.set_aspect("equal"); ax.axis("off")
-a = axs[0]                                                  # a generic arrow: turned and stretched
-v = np.array([1.0, 0.0]); Av = A @ v
-arrow(a, v, TEAL, 3, 3); arrow(a, Av, CARDINAL, 3, 3)
-a.text(1.0, -0.12, r"$\mathbf{v} = (1, 0)$", color=TEAL, fontsize=15, ha="center", va="top")
-a.text(2.0, 1.12, r"$A\mathbf{v} = (2, 1)$", color=CARDINAL, fontsize=15, ha="center", va="bottom")
-a.set_title("a generic arrow turns", fontsize=15)
-b = axs[1]                                                  # the eigenvectors: only stretched
-u1 = np.array([1.0, 1.0]) / np.sqrt(2); u2 = np.array([1.0, -1.0]) / np.sqrt(2)
-b.plot([-1.0, 2.45], [-1.0, 2.45], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
-b.plot([-0.95, 1.0], [0.95, -1.0], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
-arrow(b, A @ u1, CARDINAL, 3, 2); arrow(b, u1, TEAL, 3.4, 3)
-arrow(b, A @ u2, CARDINAL, 7, 2); arrow(b, u2, TEAL, 2.6, 3)
-b.text(1.95, 2.12, r"$A\mathbf{u}_1 = 3\,\mathbf{u}_1$", color=CARDINAL, fontsize=15, ha="right", va="center")
-b.text(0.2, 0.68, r"$\mathbf{u}_1$", color=TEAL, fontsize=15, ha="right")
-b.text(0.85, -0.78, r"$A\mathbf{u}_2 = \mathbf{u}_2$", color=CARDINAL, fontsize=15, ha="left", va="center")
-b.set_title("eigenvectors only stretch", fontsize=15)
-fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02, wspace=0.05)
-plt.show()
-```
-
 Fig. The matrix $A$ turns a generic arrow (left) but only stretches its eigenvectors (right): $(1, 1)$ by a factor 3 and $(1, -1)$ by a factor 1.
 
 Try it: drag anywhere on the plane to aim the unit arrow $\mathbf{v}$ and watch $A\mathbf{v}$. Most directions come out turned. Hunt for the two directions that are only stretched; the widget marks each one you find. **Sweep** carries $\mathbf{v}$ once around the circle, pausing on each eigenvector, while the tips of $A\mathbf{v}$ trace an ellipse.
@@ -143,7 +105,10 @@ $$
 \det\begin{pmatrix} a - \lambda & b \\ c & d - \lambda \end{pmatrix} = (a - \lambda)(d - \lambda) - bc = \lambda^2 - (a + d)\,\lambda + (ad - bc) = 0
 $$
 
+- The roots of $\lambda^2 - s\lambda + p = 0$ add up to $s$ and multiply to $p$. So the eigenvalues of a $2\times 2$ matrix add up to $a + d$, the sum of its diagonal entries, called the **trace**, and multiply to $ad - bc$, the determinant. These two numbers give a quick check on any eigenvalue calculation.
+
 :::{note} **Example: eigenvalues of a $2\times 2$ by hand**
+:class: dropdown
 
 Find the eigenvalues and eigenvectors of $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$.
 
@@ -151,11 +116,10 @@ $$
 \det(A - \lambda I) = (2 - \lambda)^2 - 1 = 0 \quad\Longrightarrow\quad 2 - \lambda = \pm 1 \quad\Longrightarrow\quad \lambda = 3,\ 1
 $$
 
-For $\lambda = 3$, the first row of $(A - 3I)\mathbf{v} = 0$ reads $-v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, 1)$. For $\lambda = 1$ it reads $v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, -1)$. Two quick checks: the eigenvalues add up to the sum of the diagonal entries (the **trace**), $3 + 1 = 2 + 2$, and multiply to the determinant, $3 \times 1 = 2\cdot 2 - 1\cdot 1$.
+For $\lambda = 3$, the first row of $(A - 3I)\mathbf{v} = 0$ reads $-v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, 1)$. For $\lambda = 1$ it reads $v_1 + v_2 = 0$, so $\mathbf{v} \propto (1, -1)$. Two quick checks: the eigenvalues add up to the trace, $3 + 1 = 2 + 2$, and multiply to the determinant, $3 \times 1 = 2\cdot 2 - 1\cdot 1$.
 
 :::
 
-- The same pattern, $\begin{pmatrix} \alpha & \beta \\ \beta & \alpha \end{pmatrix}$, describes two $p$ orbitals sharing an electron in Hückel theory: $(1, 1)$ is the bonding orbital and $(1, -1)$ the antibonding one (Problem 3).
 
 ### From operators to matrices
 
@@ -302,6 +266,7 @@ $$
 - Momentum is $\hat{p} = -i\hbar\,D_1$: entries $-i\hbar/2h$ above the diagonal and $+i\hbar/2h$ below.
 
 :::{note} **Example: the grid derivative of a plane wave**
+:class: dropdown
 
 Apply the centered difference to the samples of a plane wave, $\psi_j = e^{ikx_j}$:
 
@@ -334,6 +299,7 @@ The allowed energies are the eigenvalues of the matrix $H$, and the stationary s
 :::
 
 :::{note} **Example: a particle in a box with three grid points**
+:class: dropdown
 
 Divide a box of length $L$ into four intervals, $h = L/4$. The wavefunction vanishes at the two walls, which leaves three interior points, $x = L/4$, $L/2$ and $3L/4$. With $V = 0$ inside,
 
@@ -413,9 +379,10 @@ plt.show()
 
 Fig. Left: the three eigenvectors of the three-point box (dots, joined by straight lines) on top of the exact box states (gray). Each is the exact sine sampled at the grid points. Right: the levels of grids with 3, 10 and 30 points against the exact ones, in units of $\hbar^2/mL^2$. More points give more levels, and each converges to the exact value from below. The top levels of a coarse grid are the least accurate, because their short wavelengths have few points per wavelength.
 
-#### Five lines of numpy
+:::{note} **Example: five lines of numpy to solve the 1D Schrödinger equation**
+:class: dropdown
 
-- With 400 points instead of 3, the eigenvalue problem is too big for a determinant by hand, and numpy solves it in one call. Here is the particle on a spring whose levels you hunted with the trial-energy slider in [The Schrödinger Equation](01-schrodinger-equation.md), in units with $\hbar = m = \omega = 1$:
+With 400 points instead of 3, the eigenvalue problem is too big for a determinant by hand, and numpy solves it in one call. Here is the particle on a spring whose levels you hunted with the trial-energy slider in [The Schrödinger Equation](01-schrodinger-equation.md), in units with $\hbar = m = \omega = 1$:
 
 ```{code-cell} python
 import numpy as np
@@ -432,6 +399,8 @@ print(np.round(E[:5], 4))                     # exact: 0.5 1.5 2.5 3.5 4.5
 - The levels come out $0.5, 1.5, 2.5, \dots$ in units of $\hbar\omega$, to three or four digits. This evenly spaced ladder is the vibrating bond of [Chapter 4](../ch04/02-quantum-harmonic-oscillator.md). The columns of `psi` are the wavefunctions.
 - `eigh` is numpy's eigensolver for **Hermitian** matrices. Why the physics hands us only Hermitian matrices is the subject of [Operators 2](05-hermitian-operators-and-commutators.md).
 
+:::
+
 ### Dirac notation
 
 Integrals and matrices are two ways of writing the same objects. Dirac's notation writes them once.
@@ -446,6 +415,7 @@ $$
 $$
 
 :::{note} **Example: why the bra is conjugated**
+:class: dropdown
 
 Take the two-component ket $\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Its bra is $\langle\psi\rvert = (1,\ -i)$, so
 
@@ -465,36 +435,9 @@ a real, positive length squared. Without the conjugate the same product would be
 - The name is literal. Sandwiching a matrix between unit vectors picks out one entry. For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$: $A\mathbf{e}_2 = (1, 2)$ and $\mathbf{e}_1\cdot(1, 2) = 1 = A_{12}$. In general $A_{jk} = \langle \mathbf{e}_j \vert A \vert \mathbf{e}_k \rangle$.
 - In a basis of functions instead of grid points, the same sandwich builds the matrices that quantum chemistry programs diagonalize: $H_{mn} = \langle \phi_m \vert \hat{H} \vert \phi_n \rangle$ for a set of orbitals $\phi_n$ ([Hückel Theory](../ch08/05-huckel-theory.md)).
 
-#### Same matrix, new axes
+#### Diagonalizing a Hamiltonian
 
-- Nothing forces us to use the axes $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$. Turn them to any two perpendicular unit vectors $\mathbf{u}_1$ and $\mathbf{u}_2$, and the same sandwiches give the matrix in the new axes:
-
-$$
-A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle
-$$
-
-- The operator has not changed: it turns and stretches every arrow exactly as before. Only its description changes, just as the components of an arrow change when you turn the axes while the arrow stays put.
-- Read column $n$ of $A'$ as the arrow $A\mathbf{u}_n$ written in the new axes. The diagonal entry $A'_{nn}$ is the part of $A\mathbf{u}_n$ along its own axis; the off-diagonal entry is the part that lands on the other axis.
-
-Try it: drag on the plane to turn the axes. The orange pieces are the off-diagonal entries. They shrink as you turn, and at $45^\circ$ they vanish: each $A\mathbf{u}_n$ then lies along its own axis. The trace and the determinant never change.
-
-```{anywidget} ../widgets/matrix_arrows.mjs
-{"mode": "axes"}
-```
-
-:::{note} **Example: diagonal in its own eigenbasis**
-
-Write $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in the axes of its eigenvectors, $\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
-
-Each eigenvector is only stretched, $A\mathbf{u}_1 = 3\,\mathbf{u}_1$ and $A\mathbf{u}_2 = \mathbf{u}_2$, so every sandwich is an eigenvalue times an overlap, $\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n \langle \mathbf{u}_m \vert \mathbf{u}_n \rangle$. The axes are perpendicular unit vectors, so the overlap is 1 for $m = n$ and 0 otherwise:
-
-$$
-A' = \begin{pmatrix} 3\cdot 1 & 1\cdot 0 \\ 3\cdot 0 & 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}
-$$
-
-Check one entry by row times column: $A\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(3, 3)$, so $\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}\big(1\cdot 3 + (-1)\cdot 3\big) = 0$. The trace is still $3 + 1 = 4$ and the determinant $3 \times 1 = 3$.
-
-:::
+- The entries of a matrix depend on the axes you write it in; the operator does not. Turn the axes to perpendicular unit vectors $\mathbf{u}_1, \mathbf{u}_2, \dots$ and each entry becomes a sandwich, $A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$. [A Matrix in New Axes](../math/03-vectors-and-linear-algebra.md#a-matrix-in-new-axes-diagonalization) in Appendix A lets you turn the axes yourself and watch the entries change.
 
 :::{important} **A matrix is diagonal in the axes of its eigenvectors**
 
@@ -506,22 +449,8 @@ when the $\mathbf{u}_n$ are perpendicular unit eigenvectors, $A\mathbf{u}_n = \l
 
 :::
 
-- This is what **diagonalizing** a Hamiltonian means: finding the axes, its eigenvectors, in which $H$ is diagonal. The diagonal then lists the energies. The trace and the determinant are the same in every set of axes, which is why they could check the eigenvalues of the $2\times 2$ example.
-- numpy does it in one call. `eigh` returns the eigenvectors as the columns of a matrix `U`, and `U.T @ H @ U` computes every sandwich $\langle \mathbf{u}_m \vert H \vert \mathbf{u}_n \rangle$ at once: row $m$ of `U.T` is the bra, column $n$ of `U` the ket. For the three-point box:
-
-```{code-cell} python
-import numpy as np
-
-H = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])   # the three-point box, in units of epsilon
-E, U = np.linalg.eigh(H)              # columns of U: the eigenvectors, the new axes
-Hnew = U.T @ H @ U                    # every sandwich <u_m|H|u_n> at once
-
-print(np.round(Hnew, 4) + 0.0)        # diagonal (adding 0.0 prints -0. as 0.)
-print(np.allclose(Hnew, np.diag(E)))  # the diagonal holds the eigenvalues
-print(np.trace(H), round(np.trace(Hnew), 10))   # the trace is the same in both axes
-```
-
-- The diagonal holds $2 - \sqrt{2}$, $2$ and $2 + \sqrt{2}$, the energies found by hand above, and the trace is 6 in both axes. A complex matrix needs the conjugate in the bra, `U.conj().T @ H @ U`. [Measurement](06-eigenvalues-and-expectation.md) uses the same idea to expand a wavefunction along the eigenfunctions of an operator.
+- This is what **diagonalizing** a Hamiltonian means: finding the axes, its eigenvectors, in which $H$ is diagonal. The diagonal then lists the energies. For the three-point box it holds $2 - \sqrt{2}$, $2$ and $2 + \sqrt{2}$ in units of $\varepsilon$, the energies found by hand above.
+- numpy finds the axes in one call. `E, U = np.linalg.eigh(H)` returns the eigenvectors as the columns of `U`, and `U.T @ H @ U` is $H$ in those axes: diagonal, with `E` on the diagonal. A complex matrix needs the conjugate in the bra, `U.conj().T @ H @ U`. [Measurement](06-eigenvalues-and-expectation.md) uses the same idea to expand a wavefunction along the eigenfunctions of an operator.
 
 #### One language, three dialects
 
