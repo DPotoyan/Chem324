@@ -253,7 +253,7 @@ Davit Potoyan
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: left;"><strong>every observable is a linear Hermitian operator</strong></td>
-<td style="text-align: center;"><strong>today</strong></td>
+<td style="text-align: center;"><strong>3.5, 3.5b</strong></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
@@ -273,7 +273,8 @@ Davit Potoyan
 </tbody>
 </table>
 <ul>
-<li>Today: which operators may stand for <strong>observables</strong>, and what if two <strong>do not commute</strong>?</li>
+<li><strong>Today:</strong> a change of viewpoint. Functions become <strong>vectors</strong>, operators become <strong>matrices</strong></li>
+<li><strong>Next lecture:</strong> which matrices may stand for an observable (Hermitian), and what if two <strong>do not commute</strong></li>
 </ul>
 </section>
 <section id="operators-must-be-linear" class="slide level2">
@@ -286,6 +287,35 @@ Davit Potoyan
 <li><strong>Linear:</strong> <span class="math inline">x</span>, <span class="math inline">d/dx</span>, <span class="math inline">\hat{H}</span>. <strong>Not linear:</strong> <span class="math inline">f^2</span>, <span class="math inline">\sqrt{f}</span>, <span class="math inline">\ln f</span></li>
 <li>Quick test: a linear operator turns <span class="math inline">2f</span> into <span class="math inline">2\hat{A}f</span>; squaring gives <span class="math inline">4f^2</span></li>
 </ul>
+</section>
+<section id="a-matrix-turns-and-stretches-arrows" class="slide level2">
+<h2>A matrix turns and stretches arrows</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/matrix_arrows.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+<p><span class="math display">
+\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\ \text{turned},
+\qquad\qquad
+\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = 3\begin{pmatrix} 1 \\ 1 \end{pmatrix}\ \text{only stretched}
+</span></p>
+<ul>
+<li>An <strong>eigenvector</strong> keeps its direction, <span class="math inline">A\mathbf{v} = \lambda\mathbf{v}</span>: the same shape as <span class="math inline">\hat{A}\phi = a\phi</span></li>
+</ul>
+</section>
+<section id="example-eigenvalues-of-a-22-by-hand" class="slide level2">
+<h2>Example: eigenvalues of a 2×2 by hand</h2>
+<div class="keyeq">
+<p><span class="math display">A\mathbf{v} = \lambda\mathbf{v}\ \text{ with }\ \mathbf{v} \neq 0 \qquad\Longleftrightarrow\qquad \det(A - \lambda I) = 0</span></p>
+</div>
+<div class="worked">
+<p>Find the eigenvalues and eigenvectors of <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\det\begin{pmatrix} 2-\lambda &amp; 1 \\ 1 &amp; 2-\lambda \end{pmatrix} = (2-\lambda)^2 - 1 = 0 \quad\Longrightarrow\quad \lambda = 3,\ 1</span></p>
+<p><span class="math inline">\lambda = 3</span>: <span class="math inline">\mathbf{v} \propto (1, 1)</span>. <span class="math inline">\ \lambda = 1</span>: <span class="math inline">\mathbf{v} \propto (1, -1)</span>. Check: <span class="math inline">3 + 1 = 4</span> is the trace, <span class="math inline">3 \times 1 = 3</span> the determinant.</p>
+</div>
 </section>
 <section id="a-function-becomes-a-vector" class="slide level2">
 <h2>A function becomes a vector</h2>
@@ -325,17 +355,32 @@ Davit Potoyan
 \psi''(x_j) \approx \frac{s_+ - s_-}{h} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}
 </span></p>
 </section>
+<section id="one-formula-one-matrix-row" class="slide level2">
+<h2>One formula, one matrix row</h2>
+<ul>
+<li>The curvature formula at point 2 uses three samples, with the numbers <span class="math inline">1,\ -2,\ 1</span> in front of them:</li>
+</ul>
+<p><span class="math display">
+\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{h^2}
+= \frac{1}{h^2}\begin{pmatrix} 1 &amp; -2 &amp; 1 &amp; 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+</span></p>
+<ul>
+<li><strong>Row times column:</strong> multiply matching entries, then add them up</li>
+<li>So the formula’s numbers <strong>are a row</strong> of a matrix. At point 3 the same numbers move one place right: <span class="math inline">(0,\ 1,\ -2,\ 1)</span></li>
+</ul>
+</section>
 <section id="derivatives-as-matrices" class="slide level2">
 <h2>Derivatives as matrices</h2>
 <p><span class="math display">
-\frac{d}{dx} \to \frac{1}{2h}\begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; -1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; -1 &amp; 0 \end{pmatrix}
-\qquad\qquad
-\frac{d^2}{dx^2} \to \frac{1}{h^2}\begin{pmatrix} -2 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; -2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -2 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -2 \end{pmatrix}
+\begin{aligned}
+\frac{d}{dx} \;\to\; D_1 &amp;= \frac{1}{2h}\begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; -1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; -1 &amp; 0 \end{pmatrix} \\[6pt]
+\frac{d^2}{dx^2} \;\to\; D_2 &amp;= \frac{1}{h^2}\begin{pmatrix} -2 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; -2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -2 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -2 \end{pmatrix}
+\end{aligned}
 </span></p>
 <ul>
-<li>Row <span class="math inline">j</span> holds the <strong>stencil weights</strong>, centered on the diagonal</li>
-<li>First row of <span class="math inline">D_2</span> gives <span class="math inline">(-2\psi_1 + \psi_2)/h^2</span>: the stencil with <span class="math inline">\psi_0 = 0</span>, so the <strong>wall</strong> is built in</li>
-<li>Momentum <span class="math inline">\hat{p} = -i\hbar\,D_1</span>: imaginary entries, <span class="math inline">-i\hbar/2h</span> above the diagonal, <span class="math inline">+i\hbar/2h</span> below</li>
+<li><strong>One row per grid point:</strong> the same formula each time, shifted one place to the right</li>
+<li>Row 1 of <span class="math inline">D_2</span> gives <span class="math inline">(-2\psi_1 + \psi_2)/h^2</span>: the formula with <span class="math inline">\psi_0 = 0</span>, so the <strong>wall</strong> is built in</li>
+<li>Momentum <span class="math inline">\hat{p} = -i\hbar\,D_1</span>: <span class="math inline">-i\hbar/2h</span> above the diagonal, <span class="math inline">+i\hbar/2h</span> below</li>
 </ul>
 </section>
 <section id="example-the-grid-derivative-of-a-plane-wave" class="slide level2">
@@ -356,29 +401,43 @@ Davit Potoyan
 <section id="the-hamiltonian-is-a-matrix" class="slide level2">
 <h2>The Hamiltonian is a matrix</h2>
 <p><span class="math display">
-H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 &amp; -t &amp; 0 &amp; 0 \\ -t &amp; 2t + V_2 &amp; -t &amp; 0 \\ 0 &amp; -t &amp; 2t + V_3 &amp; -t \\ 0 &amp; 0 &amp; -t &amp; 2t + V_4 \end{pmatrix}, \qquad t = \frac{\hbar^2}{2mh^2}
+H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\varepsilon &amp; 0 &amp; 0 \\ -\varepsilon &amp; 2\varepsilon + V_2 &amp; -\varepsilon &amp; 0 \\ 0 &amp; -\varepsilon &amp; 2\varepsilon + V_3 &amp; -\varepsilon \\ 0 &amp; 0 &amp; -\varepsilon &amp; 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2}
 </span></p>
 <div class="keyeq">
-<p><span class="math display">\hat{H}\psi = E\,\psi \quad\longrightarrow\quad H\mathbf{v} = E\,\mathbf{v}</span></p>
+<p><span class="math display">\hat{H}\psi = E\,\psi \quad\longrightarrow\quad H\mathbf{v} = E\mathbf{v}</span></p>
 </div>
 <ul>
-<li><strong>Potential</strong> on the diagonal; <strong>kinetic</strong> energy links neighbors through <span class="math inline">-t</span> (the Hückel picture, too)</li>
+<li><span class="math inline">\varepsilon</span> is only a <strong>unit of energy</strong>: the constants in front of <span class="math inline">D_2</span>, collected in one symbol</li>
+<li><strong>Potential</strong> on the diagonal; <strong>kinetic</strong> energy links neighbors through <span class="math inline">-\varepsilon</span> (the Hückel picture, too)</li>
 </ul>
 </section>
 <section id="example-a-box-with-three-grid-points" class="slide level2">
 <h2>Example: a box with three grid points</h2>
 <div class="worked">
-<p>Three interior points (<span class="math inline">h = L/4</span>, <span class="math inline">\psi = 0</span> at the walls). Find the energies and the ground state of <span class="math inline">\;H = t\begin{pmatrix} 2 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 2 \end{pmatrix}</span>, <span class="math inline">\;t = \dfrac{8\hbar^2}{mL^2}</span>.</p>
+<p>Three interior points, <span class="math inline">\psi = 0</span> at the walls. Find the energies <span class="math inline">E = \lambda\,\varepsilon</span> of <span class="math inline">\;H = \varepsilon\begin{pmatrix} 2 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 2 \end{pmatrix}</span>.</p>
+</div>
+<div class="soln fragment">
+<p>Solve <span class="math inline">\det(H/\varepsilon - \lambda I) = 0</span> along the first row: each entry times the <span class="math inline">2\times2</span> determinant left after crossing out its row and column, signs <span class="math inline">+\,-\,+</span>:</p>
+<p><span class="math display">
+\begin{aligned}
+&amp;(2-\lambda)\underbrace{\big[(2-\lambda)^2 - 1\big]}_{\text{cross out row 1, column 1}} \;-\; (-1)\underbrace{\big[-(2-\lambda)\big]}_{\text{cross out row 1, column 2}} \;+\; 0 \\
+&amp;= (2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0 \quad\Longrightarrow\quad \lambda = 2 - \sqrt{2},\ \ 2,\ \ 2 + \sqrt{2}
+\end{aligned}
+</span></p>
+</div>
+</section>
+<section id="check-the-ground-state-by-row-times-column" class="slide level2">
+<h2>Check the ground state by row times column</h2>
+<div class="worked">
+<p>Sample the exact ground state <span class="math inline">\sin(\pi x/L)</span> at the three points: <span class="math inline">\mathbf{v} = \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big) \propto (1,\ \sqrt{2},\ 1)</span>. Is it an eigenvector of <span class="math inline">H</span>?</p>
 </div>
 <div class="soln fragment">
 <p><span class="math display">
-\begin{aligned}
-&amp;\det(H - \lambda t\,I) = t^3\,(2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0 \\
-&amp;\lambda = 2-\sqrt{2},\ \ 2,\ \ 2+\sqrt{2} \\
-&amp;E_1 = (2-\sqrt{2})\,t = 4.69\ \hbar^2/mL^2 \qquad (\text{exact: } 4.93) \\
-&amp;\mathbf{v}_1 \propto \big(1,\ \sqrt{2},\ 1\big) \propto \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big)
-\end{aligned}
+\begin{pmatrix} 2 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
+= \begin{pmatrix} 2 - \sqrt{2} \\ -1 + 2\sqrt{2} - 1 \\ -\sqrt{2} + 2 \end{pmatrix}
+= (2-\sqrt{2})\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
 </span></p>
+<p>Yes, with <span class="math inline">\lambda = 2 - \sqrt{2}</span> (the middle entry <span class="math inline">2\sqrt{2} - 2</span> is <span class="math inline">(2-\sqrt{2})\sqrt{2}</span>). With <span class="math inline">h = L/4</span>, <span class="math inline">\varepsilon = 8\hbar^2/mL^2</span> and <span class="math inline">E_1 = 4.69\,\hbar^2/mL^2</span>, close to the exact <span class="math inline">4.93</span>.</p>
 </div>
 </section>
 <section id="more-points-better-answers" class="slide level2">
@@ -406,6 +465,34 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 &amp; -t &amp; 0 &amp;
 <li><code>eigh</code> is the eigensolver for <strong>Hermitian</strong> matrices. Why Hermitian? Coming up</li>
 </ul>
 </section>
+<section id="dirac-notation-kets-and-bras" class="slide level2">
+<h2>Dirac notation: kets and bras</h2>
+<ul>
+<li><strong>Ket</strong> <span class="math inline">\lvert\psi\rangle</span>: the column of samples. <strong>Bra</strong> <span class="math inline">\langle\psi\rvert</span>: the same numbers as a row, <strong>conjugated</strong></li>
+<li>A bra meeting a ket is an <strong>inner product</strong>, a single number:</li>
+</ul>
+<p><span class="math display">\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\;\longrightarrow\;\; \int \phi^*\,\psi\,dx</span></p>
+<div class="worked">
+<p>Why conjugate? Take <span class="math inline">\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}</span> and find <span class="math inline">\langle\psi\vert\psi\rangle</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math inline">\langle\psi\rvert = (1,\ -i)</span>, so <span class="math inline">\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2</span>: a real, positive <strong>length squared</strong>. Without the conjugate, <span class="math inline">1 + i^2 = 0</span>: a nonzero vector of length zero.</p>
+</div>
+</section>
+<section id="sandwiches-matrix-elements" class="slide level2">
+<h2>Sandwiches: matrix elements</h2>
+<ul>
+<li>An operator acts on a ket: <span class="math inline">\hat{A}\lvert\psi\rangle</span> is the matrix times the column</li>
+<li>A bra in front turns it into a number, the <strong>matrix element</strong>:</li>
+</ul>
+<p><span class="math display">\langle \phi \vert \hat{A} \vert \psi \rangle \;=\; \text{row} \times \text{matrix} \times \text{column} \;\;\longrightarrow\;\; \int \phi^*\,\hat{A}\psi\,dx</span></p>
+<div class="worked">
+<p>For <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span>, <span class="math inline">\mathbf{e}_1 = (1, 0)</span> and <span class="math inline">\mathbf{e}_2 = (0, 1)</span>, compute <span class="math inline">\langle \mathbf{e}_1 \vert A \vert \mathbf{e}_2 \rangle</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math inline">A\,\mathbf{e}_2 = (1,\ 2)</span>, then <span class="math inline">\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}</span>: sandwiching unit vectors picks out <strong>one entry</strong> of the matrix.</p>
+</div>
+</section>
 <section id="dirac-notation-one-language-three-dialects" class="slide level2">
 <h2>Dirac notation: one language, three dialects</h2>
 <table class="caption-top">
@@ -420,7 +507,7 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 &amp; -t &amp; 0 &amp;
 <th style="text-align: left;"></th>
 <th style="text-align: left;">integral</th>
 <th style="text-align: left;">Dirac</th>
-<th style="text-align: left;">numpy</th>
+<th style="text-align: left;">matrices (numpy)</th>
 </tr>
 </thead>
 <tbody>
@@ -451,109 +538,25 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 &amp; -t &amp; 0 &amp;
 </tbody>
 </table>
 <ul>
-<li><strong>Ket</strong> <span class="math inline">\lvert\psi\rangle</span>: the state. <strong>Bra</strong> <span class="math inline">\langle\psi\rvert</span>: its conjugate. A bra meets a ket: a <strong>number</strong></li>
+<li>The same objects in three dialects: integrals for functions, brackets on paper, matrices on a computer</li>
 </ul>
 </section>
-<section id="hermitian-its-own-mirror-image" class="slide level2">
-<h2>Hermitian: its own mirror image</h2>
-<div class="keyeq">
-<p><span class="math display">\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}\phi \vert \psi \rangle \qquad\Longleftrightarrow\qquad A_{jk} = A_{kj}^*</span></p>
-</div>
+<section id="two-matrix-properties-to-watch" class="slide level2">
+<h2>Two matrix properties to watch</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/grid_operators.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+<p><img data-src="../../ch03/images/grid_operators.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
 </figure>
 </div>
 <ul>
-<li>Acts on <strong>either side</strong> of the inner product: transpose and conjugate give it back</li>
-</ul>
-</section>
-<section id="example-which-matrices-are-hermitian" class="slide level2">
-<h2>Example: which matrices are Hermitian?</h2>
-<div class="worked">
-<p><span class="math display">
-A = \begin{pmatrix} 2 &amp; 1-i \\ 1+i &amp; 3 \end{pmatrix} \quad
-B = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} \quad
-C = \begin{pmatrix} i &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad
-D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
-</span></p>
-</div>
-<div class="soln fragment">
-<ul>
-<li><span class="math inline">A</span>: <span class="math inline">A_{12} = 1-i = A_{21}^*</span>, real diagonal: <strong>Hermitian</strong></li>
-<li><span class="math inline">B</span>: <span class="math inline">B_{12} = 2 \neq B_{21}^* = 3</span>: not Hermitian</li>
-<li><span class="math inline">C</span>: the diagonal must be <strong>real</strong>, and <span class="math inline">i \neq i^* = -i</span>: not Hermitian</li>
-<li><span class="math inline">D</span>: <span class="math inline">D_{12} = -i = D_{21}^*</span>: <strong>Hermitian</strong>, the pattern of <span class="math inline">\hat{p}</span> on the grid</li>
-</ul>
-</div>
-</section>
-<section id="why-observables-are-hermitian" class="slide level2">
-<h2>Why observables are Hermitian</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/hermitian_dial.gif" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
-</figure>
-</div>
-<ul>
-<li><strong>Real eigenvalues</strong>: measured values are real numbers</li>
-<li><strong>Orthogonal eigenvectors</strong>: different outcomes exclude each other. Add a non-Hermitian part and both fail</li>
-</ul>
-</section>
-<section id="example-is-momentum-hermitian" class="slide level2">
-<h2>Example: is momentum Hermitian?</h2>
-<div class="worked">
-<p>Show that <span class="math inline">\hat{p} = -i\hbar\,d/dx</span> satisfies <span class="math inline">\langle \phi \vert \hat{p}\psi \rangle = \langle \hat{p}\phi \vert \psi \rangle</span>.</p>
-</div>
-<div class="soln fragment">
-<p>Integrate by parts; the boundary term vanishes because <span class="math inline">\phi, \psi \to 0</span>:</p>
-<p><span class="math display">\int\phi^*\big(-i\hbar\,\psi'\big)\,dx = i\hbar\int\phi'^*\,\psi\,dx = \int\big(-i\hbar\,\phi'\big)^*\,\psi\,dx \quad\checkmark</span></p>
-<p>Without the <span class="math inline">i</span>: <span class="math inline">(d/dx)^\dagger = -d/dx</span>, <strong>anti</strong>-Hermitian. The <span class="math inline">-i</span> turns the sign around.</p>
-</div>
-<ul>
-<li>On the grid: <span class="math inline">d/dx</span> is real and <strong>antisymmetric</strong>, <span class="math inline">\hat{p} = -i\,d/dx</span> is <strong>Hermitian</strong></li>
-</ul>
-</section>
-<section id="order-matters" class="slide level2">
-<h2>Order matters</h2>
-<div class="keyeq">
-<p><span class="math display">[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A} \qquad\qquad [\hat{x},\hat{p}] = i\hbar</span></p>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/order_matters.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
-</section>
-<section id="example-x-and-ddx" class="slide level2">
-<h2>Example: <span class="math inline">x</span> and <span class="math inline">d/dx</span></h2>
-<div class="worked">
-<p>Find <span class="math inline">[x, d/dx]</span> by acting on an arbitrary function <span class="math inline">f</span>.</p>
-</div>
-<div class="soln fragment">
-<p><span class="math display">x\,\frac{df}{dx} - \frac{d}{dx}\big(xf\big) = xf' - f - xf' = -f \qquad\Longrightarrow\qquad \left[x,\frac{d}{dx}\right] = -1</span></p>
-<p>Multiply by <span class="math inline">-i\hbar</span>: <span class="math inline">[\hat{x},\hat{p}] = i\hbar</span>. The product rule leaves one term, for <strong>every</strong> <span class="math inline">f</span>.</p>
-</div>
-<ul>
-<li>On a grid it holds only for smooth <span class="math inline">f</span>: finite matrices have <span class="math inline">\operatorname{tr}[X,P] = 0</span></li>
-</ul>
-</section>
-<section id="commuting-operators-share-eigenfunctions" class="slide level2">
-<h2>Commuting operators share eigenfunctions</h2>
-<div class="keyeq">
-<p><span class="math display">[\hat{A},\hat{B}] = 0 \quad\Longrightarrow\quad \hat{A}\phi_n = a_n\phi_n, \quad \hat{B}\phi_n = b_n\phi_n</span></p>
-</div>
-<div class="fragment">
-<p>Why: if <span class="math inline">\hat{A}\phi = a\phi</span>, then <span class="math inline">\hat{A}(\hat{B}\phi) = \hat{B}(\hat{A}\phi) = a\,(\hat{B}\phi)</span>, so <span class="math inline">\hat{B}\phi = b\,\phi</span></p>
-</div>
-<ul>
-<li>Free particle: <span class="math inline">[\hat{H},\hat{p}] = 0</span>, and <span class="math inline">e^{ikx}</span> has sharp <span class="math inline">p = \hbar k</span> <strong>and</strong> sharp <span class="math inline">E = \hbar^2k^2/2m</span></li>
-<li><span class="math inline">[\hat{x},\hat{p}] \neq 0</span>: no state has sharp <span class="math inline">x</span> <strong>and</strong> sharp <span class="math inline">p</span> (next lecture)</li>
+<li><strong>Mirror:</strong> each matrix equals its own conjugate transpose. Next lecture: <strong>Hermitian</strong>, which makes eigenvalues real</li>
+<li><strong>Order:</strong> for matrices <span class="math inline">AB \neq BA</span> in general. Next lecture: <strong>commutators</strong>, and why <span class="math inline">x</span> and <span class="math inline">p</span> are never sharp together</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Observables are linear Hermitian operators. On a grid they are matrices equal to their own conjugate transpose, with real eigenvalues and orthogonal eigenvectors, ready to be measured. Operators need not commute: <span class="math inline">[\hat{x},\hat{p}] = i\hbar</span> is why position and momentum are never sharp together, while commuting operators share eigenfunctions and can be.</p>
+<p>Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language. Next: which matrices can be observables, and what happens when two of them do not commute.</p>
 </blockquote>
 
 </section>

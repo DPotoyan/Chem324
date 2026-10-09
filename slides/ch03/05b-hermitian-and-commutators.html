@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="05b-hermitian-and-commutators_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05b-hermitian-and-commutators_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05b-hermitian-and-commutators_files/libs/quarto-html/popper.min.js"></script>
+<script src="05b-hermitian-and-commutators_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05b-hermitian-and-commutators_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05b-hermitian-and-commutators_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="05b-hermitian-and-commutators_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <meta name="author" content="Davit Potoyan">
+  <title>Hermitian Operators and Commutators</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="05b-hermitian-and-commutators_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05b-hermitian-and-commutators_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="05b-hermitian-and-commutators_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="05b-hermitian-and-commutators_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Hermitian Operators and Commutators</h1>
+  <p class="subtitle">Chem 3240 · Lecture 3.5b</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Davit Potoyan
+</div>
+</div>
+</div>
+
+</section>
+<section id="where-we-are" class="slide level2">
+<h2>Where we are</h2>
+<ul>
+<li><strong>Last time:</strong> on a grid every operator is a <strong>matrix</strong>, and <span class="math inline">\hat{H}\psi = E\psi</span> becomes <span class="math inline">H\mathbf{v} = E\mathbf{v}</span></li>
+<li>The <strong>eigenvalues</strong> are the values a measurement can return</li>
+<li><strong>Postulate 2:</strong> every observable is a linear <strong>Hermitian</strong> operator</li>
+<li><strong>Today:</strong> which matrices may stand for an observable? And what if two of them <strong>do not commute</strong>?</li>
+</ul>
+</section>
+<section id="a-matrix-turns-and-stretches-arrows" class="slide level2">
+<h2>A matrix turns and stretches arrows</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/matrix_arrows.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+<p><span class="math display">
+\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\ \text{turned},
+\qquad\qquad
+\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = 3\begin{pmatrix} 1 \\ 1 \end{pmatrix}\ \text{only stretched}
+</span></p>
+<ul>
+<li>An <strong>eigenvector</strong> keeps its direction, <span class="math inline">A\mathbf{v} = \lambda\mathbf{v}</span>: the same shape as <span class="math inline">\hat{A}\phi = a\phi</span></li>
+</ul>
+</section>
+<section id="example-eigenvalues-of-a-22-by-hand" class="slide level2">
+<h2>Example: eigenvalues of a 2×2 by hand</h2>
+<div class="keyeq">
+<p><span class="math display">A\mathbf{v} = \lambda\mathbf{v}\ \text{ with }\ \mathbf{v} \neq 0 \qquad\Longleftrightarrow\qquad \det(A - \lambda I) = 0</span></p>
+</div>
+<div class="worked">
+<p>Find the eigenvalues and eigenvectors of <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\det\begin{pmatrix} 2-\lambda &amp; 1 \\ 1 &amp; 2-\lambda \end{pmatrix} = (2-\lambda)^2 - 1 = 0 \quad\Longrightarrow\quad \lambda = 3,\ 1</span></p>
+<p><span class="math inline">\lambda = 3</span>: <span class="math inline">\mathbf{v} \propto (1, 1)</span>. <span class="math inline">\ \lambda = 1</span>: <span class="math inline">\mathbf{v} \propto (1, -1)</span>. Check: <span class="math inline">3 + 1 = 4</span> is the trace, <span class="math inline">3 \times 1 = 3</span> the determinant.</p>
+</div>
+</section>
+<section id="hermitian-the-matrix-version-of-a-real-number" class="slide level2">
+<h2>Hermitian: the matrix version of a real number</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">numbers</th>
+<th style="text-align: left;">matrices and operators</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">conjugate <span class="math inline">z^*</span></td>
+<td style="text-align: left;"><strong>adjoint</strong> <span class="math inline">A^\dagger</span>: swap rows and columns, then conjugate</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">real: <span class="math inline">z^* = z</span></td>
+<td style="text-align: left;"><strong>Hermitian:</strong> <span class="math inline">A^\dagger = A</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">imaginary: <span class="math inline">z^* = -z</span></td>
+<td style="text-align: left;"><strong>anti-Hermitian:</strong> <span class="math inline">A^\dagger = -A</span>, for example <span class="math inline">d/dx</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">z = \text{real part} + i\,\text{imaginary part}</span></td>
+<td style="text-align: left;"><span class="math inline">A = \tfrac{1}{2}(A + A^\dagger) + \tfrac{1}{2}(A - A^\dagger)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">-i \times 3i = 3</span> is real</td>
+<td style="text-align: left;"><span class="math inline">-i\hbar\,d/dx</span> is Hermitian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">(zw)^* = z^*w^*</span></td>
+<td style="text-align: left;"><span class="math inline">(AB)^\dagger = B^\dagger A^\dagger</span>: the order <strong>reverses</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hermitian operators are the “real numbers” of quantum mechanics: their eigenvalues are real</li>
+</ul>
+</section>
+<section id="hermitian-its-own-mirror-image" class="slide level2">
+<h2>Hermitian: its own mirror image</h2>
+<div class="keyeq">
+<p><span class="math display">\int \phi^*\,\big(\hat{A}\psi\big)\,dx = \int \big(\hat{A}\phi\big)^*\,\psi\,dx \qquad\Longleftrightarrow\qquad A_{jk} = A_{kj}^*</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/grid_operators.png" class="quarto-figure quarto-figure-center" style="width:52.0%"></p>
+</figure>
+</div>
+<ul>
+<li>In Dirac notation <span class="math inline">\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}\phi \vert \psi \rangle</span>: the operator may act on <strong>either side</strong></li>
+</ul>
+</section>
+<section id="example-which-matrices-are-hermitian" class="slide level2">
+<h2>Example: which matrices are Hermitian?</h2>
+<div class="worked">
+<p><span class="math display">
+A = \begin{pmatrix} 2 &amp; 1-i \\ 1+i &amp; 3 \end{pmatrix} \quad
+B = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} \quad
+C = \begin{pmatrix} i &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad
+D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
+</span></p>
+</div>
+<div class="soln fragment">
+<ul>
+<li><span class="math inline">A</span>: <span class="math inline">A_{12} = 1-i = A_{21}^*</span>, real diagonal: <strong>Hermitian</strong></li>
+<li><span class="math inline">B</span>: <span class="math inline">B_{12} = 2 \neq B_{21}^* = 3</span>: not Hermitian</li>
+<li><span class="math inline">C</span>: the diagonal must be <strong>real</strong>, and <span class="math inline">i \neq i^* = -i</span>: not Hermitian</li>
+<li><span class="math inline">D</span>: <span class="math inline">D_{12} = -i = D_{21}^*</span>: <strong>Hermitian</strong>, the pattern of <span class="math inline">\hat{p}</span> on the grid</li>
+</ul>
+</div>
+</section>
+<section id="example-real-eigenvalues-from-the-quadratic-formula" class="slide level2">
+<h2>Example: real eigenvalues from the quadratic formula</h2>
+<div class="worked">
+<p>Show that every Hermitian <span class="math inline">2\times 2</span> matrix <span class="math inline">\begin{pmatrix} a &amp; b \\ b^* &amp; d \end{pmatrix}</span>, with <span class="math inline">a</span> and <span class="math inline">d</span> real, has real eigenvalues.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">(a - \lambda)(d - \lambda) - b\,b^* = 0 \qquad\Longrightarrow\qquad \lambda = \frac{a + d}{2} \pm \sqrt{\Big(\frac{a - d}{2}\Big)^2 + \lvert b\rvert^2}</span></p>
+<p>Under the root sits a <strong>sum of squares</strong>, never negative, so <span class="math inline">\lambda</span> is real. Matrix <span class="math inline">A</span> above: <span class="math inline">\lambda = \tfrac{5}{2} \pm \tfrac{3}{2} = 4</span> and <span class="math inline">1</span>.</p>
+</div>
+<ul>
+<li>The coupling <span class="math inline">\lvert b\rvert</span> pushes the two levels <strong>apart</strong>: bonding and antibonding orbitals</li>
+</ul>
+</section>
+<section id="hermitian-eigenvectors-are-perpendicular" class="slide level2">
+<h2>Hermitian eigenvectors are perpendicular</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/eigen_directions.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Symmetric: <span class="math inline">(1, 1)\cdot(1, -1) = 0</span>, <strong>orthogonal</strong> eigenvectors</li>
+<li>Not symmetric: real eigenvalues, but the eigenvectors <strong>overlap</strong>. A rotation has none at all</li>
+</ul>
+</section>
+<section id="why-observables-are-hermitian" class="slide level2">
+<h2>Why observables are Hermitian</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/hermitian_dial.gif" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Real eigenvalues</strong>: measured values are real numbers</li>
+<li><strong>Orthogonal eigenvectors</strong>: different outcomes exclude each other. Turning up the “imaginary part” <span class="math inline">sK</span> breaks both</li>
+</ul>
+</section>
+<section id="why-the-eigenvalues-are-real-in-two-lines" class="slide level2">
+<h2>Why the eigenvalues are real, in two lines</h2>
+<div class="worked">
+<p>Let <span class="math inline">\hat{A}\phi = a\phi</span> with <span class="math inline">\langle \phi \vert \phi \rangle = 1</span> and <span class="math inline">\hat{A}</span> Hermitian. Show that <span class="math inline">a</span> is real.</p>
+</div>
+<div class="soln">
+<p><span class="math display">\langle \phi \vert \hat{A}\phi \rangle = \langle \phi \vert a\phi \rangle = a, \qquad\qquad \langle \hat{A}\phi \vert \phi \rangle = \langle a\phi \vert \phi \rangle = a^*</span></p>
+<p>Hermitian says the two are equal, so <span class="math inline">a = a^*</span>.</p>
+</div>
+<ul>
+<li>The step that matters: a constant leaves a ket as it is, but leaves a bra <strong>conjugated</strong></li>
+</ul>
+<p><span class="math display">\langle a\phi \vert \psi \rangle = \int (a\phi)^*\,\psi\,dx = a^*\!\int \phi^*\,\psi\,dx = a^*\,\langle \phi \vert \psi \rangle</span></p>
+</section>
+<section id="example-the-derivative-on-two-points" class="slide level2">
+<h2>Example: the derivative on two points</h2>
+<div class="worked">
+<p>On two grid points <span class="math inline">\dfrac{d}{dx} \to D_1 = \dfrac{1}{2h}\begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}</span>. Find the eigenvalues of <span class="math inline">D_1</span> and of <span class="math inline">P = -i\hbar D_1</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">
+\begin{aligned}
+\det(D_1 - \lambda I) &amp;= \lambda^2 + \frac{1}{4h^2} = 0 &amp;&amp;\Rightarrow\quad \lambda = \pm\frac{i}{2h} \\
+P = -i\hbar D_1 &amp;= \frac{\hbar}{2h}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} &amp;&amp;\Rightarrow\quad p = \pm\frac{\hbar}{2h}
+\end{aligned}
+</span></p>
+<p><span class="math inline">D_1</span> is the rotation of the last figure: <strong>imaginary</strong> eigenvalues. Times <span class="math inline">-i\hbar</span> they turn <strong>real</strong>; <span class="math inline">P</span> is <span class="math inline">\tfrac{\hbar}{2h}</span> times matrix <span class="math inline">D</span> above.</p>
+</div>
+<ul>
+<li><span class="math inline">d/dx</span> is anti-Hermitian, the “imaginary” kind; <span class="math inline">-i\hbar\,d/dx</span> is Hermitian, the “real” kind</li>
+</ul>
+</section>
+<section id="example-is-momentum-hermitian" class="slide level2">
+<h2>Example: is momentum Hermitian?</h2>
+<div class="worked">
+<p>Show that <span class="math inline">\hat{p} = -i\hbar\,d/dx</span> satisfies <span class="math inline">\int \phi^*\,(\hat{p}\psi)\,dx = \int (\hat{p}\phi)^*\,\psi\,dx</span>.</p>
+</div>
+<div class="soln fragment">
+<p>Integrate by parts. The boundary term vanishes because physical <span class="math inline">\phi</span>, <span class="math inline">\psi</span> go to zero:</p>
+<p><span class="math display">
+\begin{aligned}
+\int\phi^*\big(-i\hbar\,\psi'\big)\,dx &amp;= \Big[-i\hbar\,\phi^*\psi\Big]_{-\infty}^{\infty} + i\hbar\int\phi'^*\,\psi\,dx \\
+&amp;= 0 + \int\big(-i\hbar\,\phi'\big)^*\,\psi\,dx \quad\checkmark
+\end{aligned}
+</span></p>
+<p>Without the <span class="math inline">i</span>: <span class="math inline">(d/dx)^\dagger = -d/dx</span>, <strong>anti</strong>-Hermitian. The <span class="math inline">-i</span> turns the sign around.</p>
+</div>
+<ul>
+<li><strong>Recipe:</strong> move the derivative to the other function by parts, then check the signs and the conjugates</li>
+</ul>
+</section>
+<section id="order-matters" class="slide level2">
+<h2>Order matters</h2>
+<ul>
+<li><span class="math inline">\hat{A}\hat{B}\,f</span> means: apply <span class="math inline">\hat{B}</span> <strong>first</strong>, then <span class="math inline">\hat{A}</span></li>
+<li>For numbers the order never matters, <span class="math inline">3 \times 5 = 5 \times 3</span>. For operators it often does</li>
+</ul>
+<div class="keyeq">
+<p><span class="math display">[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}</span></p>
+</div>
+<ul>
+<li>The <strong>commutator</strong> is zero exactly when the order does not matter</li>
+</ul>
+</section>
+<section id="can-two-observables-be-sharp-at-once" class="slide level2">
+<h2>Can two observables be sharp at once?</h2>
+<ul>
+<li>A <strong>sharp</strong> value <span class="math inline">a</span> means an eigenfunction, <span class="math inline">\hat{A}\psi = a\psi</span>. Sharp <span class="math inline">a</span> <strong>and</strong> sharp <span class="math inline">b</span> needs <span class="math inline">\hat{B}\psi = b\psi</span> too. Then</li>
+</ul>
+<p><span class="math display">\hat{A}\hat{B}\,\psi = \hat{A}\,(b\psi) = ab\,\psi \qquad\qquad \hat{B}\hat{A}\,\psi = \hat{B}\,(a\psi) = ba\,\psi</span></p>
+<div class="fragment">
+<div class="keyeq">
+<p><span class="math display">\big[\hat{A},\hat{B}\big]\,\psi = \big(\hat{A}\hat{B} - \hat{B}\hat{A}\big)\,\psi = 0 \quad \text{on the shared } \psi</span></p>
+</div>
+<ul>
+<li>So two observables can be sharp together only if their commutator gives zero on that state</li>
+</ul>
+</div>
+</section>
+<section id="order-matters-flip-and-swap" class="slide level2">
+<h2>Order matters: flip and swap</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/flip_swap.png" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<p><span class="math display">F = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}, \quad S = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}: \qquad [F, S] = FS - SF = \begin{pmatrix} 0 &amp; 2 \\ -2 &amp; 0 \end{pmatrix} \neq 0</span></p>
+<ul>
+<li>Both Hermitian, <strong>no shared eigenvector</strong>: <span class="math inline">F</span> keeps <span class="math inline">(1,0)</span>, <span class="math inline">(0,1)</span>; <span class="math inline">S</span> keeps <span class="math inline">(1,\pm 1)</span>. Spin along <span class="math inline">z</span>, <span class="math inline">x</span> (Ch. 5)</li>
+</ul>
+</section>
+<section id="example-x-and-ddx" class="slide level2">
+<h2>Example: <span class="math inline">x</span> and <span class="math inline">d/dx</span></h2>
+<div class="worked">
+<p>Find <span class="math inline">[x, d/dx]</span> by acting on an arbitrary test function <span class="math inline">f</span>.</p>
+</div>
+<div class="soln">
+<p><span class="math display">x\,\frac{df}{dx} - \frac{d}{dx}\big(xf\big) = xf' - f - xf' = -f \qquad\Longrightarrow\qquad \left[x,\frac{d}{dx}\right] = -1</span></p>
+<p>Multiply by <span class="math inline">-i\hbar</span>: <span class="math inline">[\hat{x},\hat{p}] = i\hbar</span>. The product rule leaves one term, for <strong>every</strong> <span class="math inline">f</span>.</p>
+</div>
+<ul>
+<li><strong>Recipe:</strong> act on a test function <span class="math inline">f</span>, use the product rule, then drop <span class="math inline">f</span></li>
+</ul>
+</section>
+<section id="picture-it-the-two-orders-differ-by-f" class="slide level2">
+<h2>Picture it: the two orders differ by <span class="math inline">f</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/commutator_steps.png" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">\left[x,\frac{d}{dx}\right] = -1 \qquad\xrightarrow{\ \times\,(-i\hbar)\ }\qquad [\hat{x},\hat{p}] = i\hbar</span></p>
+</div>
+</section>
+<section id="example-xp---px-on-three-points" class="slide level2">
+<h2>Example: <span class="math inline">XP - PX</span> on three points</h2>
+<div class="worked">
+<p>Three grid points spaced <span class="math inline">h</span> apart: <span class="math inline">X = \operatorname{diag}(x_1, x_2, x_3)</span>, and <span class="math inline">P = -i\hbar D_1</span> has <span class="math inline">P_{j,j\pm 1} = \mp\dfrac{i\hbar}{2h}</span>. Find <span class="math inline">XP - PX</span>.</p>
+</div>
+<div class="soln fragment">
+<p>Entry by entry, <span class="math inline">(XP - PX)_{jk} = (x_j - x_k)\,P_{jk}</span> with <span class="math inline">x_j - x_{j\pm 1} = \mp h</span>:</p>
+<p><span class="math display">XP - PX = \frac{i\hbar}{2}\begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{pmatrix} \qquad \text{averages the neighbors: } \approx i\hbar\,\psi</span></p>
+<p>Its trace is <span class="math inline">0</span>, not <span class="math inline">3i\hbar</span>: no finite grid gives exactly <span class="math inline">i\hbar I</span>.</p>
+</div>
+</section>
+<section id="example-momentum-and-energy-of-a-free-particle" class="slide level2">
+<h2>Example: momentum and energy of a free particle</h2>
+<div class="worked">
+<p>For a free particle <span class="math inline">\hat{H} = \hat{p}^2/2m</span>. Is <span class="math inline">e^{ikx}</span> an eigenfunction of <span class="math inline">\hat{p}</span>? Of <span class="math inline">\hat{H}</span>?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">
+\begin{aligned}
+\hat{p}\,e^{ikx} &amp;= -i\hbar\,(ik)\,e^{ikx} = \hbar k\,e^{ikx} \\
+\hat{H}\,e^{ikx} &amp;= \frac{1}{2m}\,\hat{p}\,\big(\hbar k\,e^{ikx}\big) = \frac{\hbar^2k^2}{2m}\,e^{ikx}
+\end{aligned}
+</span></p>
+<p>Yes, both: this state has a sharp momentum <strong>and</strong> a sharp energy.</p>
+</div>
+<ul>
+<li>The two operators commute: <span class="math inline">\hat{H}\hat{p} = \hat{p}^3/2m = \hat{p}\hat{H}</span></li>
+</ul>
+</section>
+<section id="commuting-operators-share-eigenfunctions" class="slide level2">
+<h2>Commuting operators share eigenfunctions</h2>
+<div class="keyeq">
+<p><span class="math display">[\hat{A},\hat{B}] = 0 \quad\Longrightarrow\quad \hat{A}\phi_n = a_n\phi_n, \quad \hat{B}\phi_n = b_n\phi_n</span></p>
+</div>
+<p><strong>Why</strong>, in three steps (if no other function has the same <span class="math inline">a</span>):</p>
+<ol type="1">
+<li>Start from <span class="math inline">\hat{A}\phi = a\phi</span></li>
+<li>Swap the order, allowed because they commute: <span class="math inline">\hat{A}\big(\hat{B}\phi\big) = \hat{B}\big(\hat{A}\phi\big) = a\,\big(\hat{B}\phi\big)</span></li>
+<li>So <span class="math inline">\hat{B}\phi</span> also has the value <span class="math inline">a</span>: it can only be <span class="math inline">\phi</span> times a number, <span class="math inline">\hat{B}\phi = b\,\phi</span></li>
+</ol>
+<ul>
+<li><span class="math inline">[\hat{x},\hat{p}]\,\psi = i\hbar\,\psi \neq 0</span> for <strong>every</strong> <span class="math inline">\psi</span>: no shared eigenfunctions, so no state has a sharp <span class="math inline">x</span> <strong>and</strong> a sharp <span class="math inline">p</span> (uncertainty, next lecture)</li>
+</ul>
+</section>
+<section id="takeaway" class="title-slide slide level1 center">
+<h1>Takeaway</h1>
+<blockquote>
+<p>Observables are Hermitian operators, the matrix version of real numbers: equal to their own conjugate transpose, with real eigenvalues and orthogonal eigenvectors. Two observables can be sharp together only when their operators commute, and <span class="math inline">[\hat{x},\hat{p}] = i\hbar</span> says position and momentum never are.</p>
+</blockquote>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Chem 3240 · Quantum Mechanics</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05b-hermitian-and-commutators_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
