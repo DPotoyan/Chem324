@@ -26,12 +26,13 @@ resources:
 | | postulate | lecture |
 |:-:|:-------------------------------------|:-----:|
 | 1 | the state is a wavefunction $\psi$; $\lvert\psi\rvert^2$ is the probability density | 3.1 |
-| 2 | **every observable is a linear Hermitian operator** | **today** |
+| 2 | **every observable is a linear Hermitian operator** | **3.5, 3.5b** |
 | 3 | a measurement returns an eigenvalue $a_n$ and leaves the state $\phi_n$ | 3.6 |
 | 4 | outcome $a_n$ has probability $\lvert\langle\phi_n\vert\psi\rangle\rvert^2$ | 3.6 |
 | 5 | the state evolves by $i\hbar\,\partial\Psi/\partial t = \hat{H}\Psi$ | 3.7 |
 
-- Today: which operators may stand for **observables**, and what if two **do not commute**?
+- **Today:** a change of viewpoint. Functions become **vectors**, operators become **matrices**
+- **Next lecture:** which matrices may stand for an observable (Hermitian), and what if two **do not commute**
 
 ## Operators must be linear
 
@@ -42,6 +43,34 @@ $$\hat{A}\,(c_1\psi_1 + c_2\psi_2) = c_1\,\hat{A}\psi_1 + c_2\,\hat{A}\psi_2$$
 - **Superposition** demands it: if $\Psi_1$ and $\Psi_2$ are states, so is their sum
 - **Linear:** $x$, $d/dx$, $\hat{H}$. **Not linear:** $f^2$, $\sqrt{f}$, $\ln f$
 - Quick test: a linear operator turns $2f$ into $2\hat{A}f$; squaring gives $4f^2$
+
+## A matrix turns and stretches arrows
+
+![](../../ch03/images/matrix_arrows.png){.nostretch width="62%" fig-align="center"}
+
+$$
+\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\ \text{turned},
+\qquad\qquad
+\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = 3\begin{pmatrix} 1 \\ 1 \end{pmatrix}\ \text{only stretched}
+$$
+
+- An **eigenvector** keeps its direction, $A\mathbf{v} = \lambda\mathbf{v}$: the same shape as $\hat{A}\phi = a\phi$
+
+## Example: eigenvalues of a 2×2 by hand
+
+::: {.keyeq}
+$$A\mathbf{v} = \lambda\mathbf{v}\ \text{ with }\ \mathbf{v} \neq 0 \qquad\Longleftrightarrow\qquad \det(A - \lambda I) = 0$$
+:::
+
+::: {.worked}
+Find the eigenvalues and eigenvectors of $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$.
+:::
+
+::: {.soln .fragment}
+$$\det\begin{pmatrix} 2-\lambda & 1 \\ 1 & 2-\lambda \end{pmatrix} = (2-\lambda)^2 - 1 = 0 \quad\Longrightarrow\quad \lambda = 3,\ 1$$
+
+$\lambda = 3$: $\mathbf{v} \propto (1, 1)$. $\ \lambda = 1$: $\mathbf{v} \propto (1, -1)$. Check: $3 + 1 = 4$ is the trace, $3 \times 1 = 3$ the determinant.
+:::
 
 ## A function becomes a vector
 
@@ -72,17 +101,30 @@ $$
 \psi''(x_j) \approx \frac{s_+ - s_-}{h} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}
 $$
 
+## One formula, one matrix row
+
+- The curvature formula at point 2 uses three samples, with the numbers $1,\ -2,\ 1$ in front of them:
+
+$$
+\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{h^2}
+= \frac{1}{h^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+$$
+
+- **Row times column:** multiply matching entries, then add them up
+- So the formula's numbers **are a row** of a matrix. At point 3 the same numbers move one place right: $(0,\ 1,\ -2,\ 1)$
+
 ## Derivatives as matrices
 
 $$
-\frac{d}{dx} \to \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix}
-\qquad\qquad
-\frac{d^2}{dx^2} \to \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
+\begin{aligned}
+\frac{d}{dx} \;\to\; D_1 &= \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix} \\[6pt]
+\frac{d^2}{dx^2} \;\to\; D_2 &= \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
+\end{aligned}
 $$
 
-- Row $j$ holds the **stencil weights**, centered on the diagonal
-- First row of $D_2$ gives $(-2\psi_1 + \psi_2)/h^2$: the stencil with $\psi_0 = 0$, so the **wall** is built in
-- Momentum $\hat{p} = -i\hbar\,D_1$: imaginary entries, $-i\hbar/2h$ above the diagonal, $+i\hbar/2h$ below
+- **One row per grid point:** the same formula each time, shifted one place to the right
+- Row 1 of $D_2$ gives $(-2\psi_1 + \psi_2)/h^2$: the formula with $\psi_0 = 0$, so the **wall** is built in
+- Momentum $\hat{p} = -i\hbar\,D_1$: $-i\hbar/2h$ above the diagonal, $+i\hbar/2h$ below
 
 ## Example: the grid derivative of a plane wave
 
@@ -103,30 +145,47 @@ An **eigenvector** of the matrix, as $e^{ikx}$ is an eigenfunction of $d/dx$. Mo
 ## The Hamiltonian is a matrix
 
 $$
-H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2t + V_1 & -t & 0 & 0 \\ -t & 2t + V_2 & -t & 0 \\ 0 & -t & 2t + V_3 & -t \\ 0 & 0 & -t & 2t + V_4 \end{pmatrix}, \qquad t = \frac{\hbar^2}{2mh^2}
+H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2}
 $$
 
 ::: {.keyeq}
-$$\hat{H}\psi = E\,\psi \quad\longrightarrow\quad H\mathbf{v} = E\,\mathbf{v}$$
+$$\hat{H}\psi = E\,\psi \quad\longrightarrow\quad H\mathbf{v} = E\mathbf{v}$$
 :::
 
-- **Potential** on the diagonal; **kinetic** energy links neighbors through $-t$ (the Hückel picture, too)
+- $\varepsilon$ is only a **unit of energy**: the constants in front of $D_2$, collected in one symbol
+- **Potential** on the diagonal; **kinetic** energy links neighbors through $-\varepsilon$ (the Hückel picture, too)
 
 ## Example: a box with three grid points
 
 ::: {.worked}
-Three interior points ($h = L/4$, $\psi = 0$ at the walls). Find the energies and the ground state of $\;H = t\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}$, $\;t = \dfrac{8\hbar^2}{mL^2}$.
+Three interior points, $\psi = 0$ at the walls. Find the energies $E = \lambda\,\varepsilon$ of $\;H = \varepsilon\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}$.
+:::
+
+::: {.soln .fragment}
+Solve $\det(H/\varepsilon - \lambda I) = 0$ along the first row: each entry times the $2\times2$ determinant left after crossing out its row and column, signs $+\,-\,+$:
+
+$$
+\begin{aligned}
+&(2-\lambda)\underbrace{\big[(2-\lambda)^2 - 1\big]}_{\text{cross out row 1, column 1}} \;-\; (-1)\underbrace{\big[-(2-\lambda)\big]}_{\text{cross out row 1, column 2}} \;+\; 0 \\
+&= (2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0 \quad\Longrightarrow\quad \lambda = 2 - \sqrt{2},\ \ 2,\ \ 2 + \sqrt{2}
+\end{aligned}
+$$
+:::
+
+## Check the ground state by row times column
+
+::: {.worked}
+Sample the exact ground state $\sin(\pi x/L)$ at the three points: $\mathbf{v} = \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big) \propto (1,\ \sqrt{2},\ 1)$. Is it an eigenvector of $H$?
 :::
 
 ::: {.soln .fragment}
 $$
-\begin{aligned}
-&\det(H - \lambda t\,I) = t^3\,(2-\lambda)\big[(2-\lambda)^2 - 2\big] = 0 \\
-&\lambda = 2-\sqrt{2},\ \ 2,\ \ 2+\sqrt{2} \\
-&E_1 = (2-\sqrt{2})\,t = 4.69\ \hbar^2/mL^2 \qquad (\text{exact: } 4.93) \\
-&\mathbf{v}_1 \propto \big(1,\ \sqrt{2},\ 1\big) \propto \big(\sin\tfrac{\pi}{4},\ \sin\tfrac{\pi}{2},\ \sin\tfrac{3\pi}{4}\big)
-\end{aligned}
+\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
+= \begin{pmatrix} 2 - \sqrt{2} \\ -1 + 2\sqrt{2} - 1 \\ -\sqrt{2} + 2 \end{pmatrix}
+= (2-\sqrt{2})\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
 $$
+
+Yes, with $\lambda = 2 - \sqrt{2}$ (the middle entry $2\sqrt{2} - 2$ is $(2-\sqrt{2})\sqrt{2}$). With $h = L/4$, $\varepsilon = 8\hbar^2/mL^2$ and $E_1 = 4.69\,\hbar^2/mL^2$, close to the exact $4.93$.
 :::
 
 ## More points, better answers
@@ -150,103 +209,55 @@ E[:4]                                    # 0.4999  1.4997  2.4993  3.4987
 - The same recipe with **400 points**: the levels of a vibrating bond, $\left(n + \tfrac{1}{2}\right)\hbar\omega$
 - `eigh` is the eigensolver for **Hermitian** matrices. Why Hermitian? Coming up
 
+## Dirac notation: kets and bras
+
+- **Ket** $\lvert\psi\rangle$: the column of samples. **Bra** $\langle\psi\rvert$: the same numbers as a row, **conjugated**
+- A bra meeting a ket is an **inner product**, a single number:
+
+$$\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\;\longrightarrow\;\; \int \phi^*\,\psi\,dx$$
+
+::: {.worked}
+Why conjugate? Take $\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}$ and find $\langle\psi\vert\psi\rangle$.
+:::
+
+::: {.soln .fragment}
+$\langle\psi\rvert = (1,\ -i)$, so $\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2$: a real, positive **length squared**. Without the conjugate, $1 + i^2 = 0$: a nonzero vector of length zero.
+:::
+
+## Sandwiches: matrix elements
+
+- An operator acts on a ket: $\hat{A}\lvert\psi\rangle$ is the matrix times the column
+- A bra in front turns it into a number, the **matrix element**:
+
+$$\langle \phi \vert \hat{A} \vert \psi \rangle \;=\; \text{row} \times \text{matrix} \times \text{column} \;\;\longrightarrow\;\; \int \phi^*\,\hat{A}\psi\,dx$$
+
+::: {.worked}
+For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$, compute $\langle \mathbf{e}_1 \vert A \vert \mathbf{e}_2 \rangle$.
+:::
+
+::: {.soln .fragment}
+$A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: sandwiching unit vectors picks out **one entry** of the matrix.
+:::
+
 ## Dirac notation: one language, three dialects
 
-| | integral | Dirac | numpy |
+| | integral | Dirac | matrices (numpy) |
 |:-----|:-----|:-----|:-----------|
 | inner product | $\int\phi^*\psi\,dx$ | $\langle\phi\vert\psi\rangle$ | `np.vdot(phi, psi) * h` |
 | operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
 | matrix element | $\int\phi^*\hat{A}\psi\,dx$ | $\langle\phi\vert\hat{A}\vert\psi\rangle$ | `np.vdot(phi, A @ psi) * h` |
 | eigenproblem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
 
-- **Ket** $\lvert\psi\rangle$: the state. **Bra** $\langle\psi\rvert$: its conjugate. A bra meets a ket: a **number**
+- The same objects in three dialects: integrals for functions, brackets on paper, matrices on a computer
 
-## Hermitian: its own mirror image
+## Two matrix properties to watch
 
-::: {.keyeq}
-$$\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}\phi \vert \psi \rangle \qquad\Longleftrightarrow\qquad A_{jk} = A_{kj}^*$$
-:::
+![](../../ch03/images/grid_operators.png){.nostretch width="66%" fig-align="center"}
 
-![](../../ch03/images/grid_operators.png){.nostretch width="64%" fig-align="center"}
-
-- Acts on **either side** of the inner product: transpose and conjugate give it back
-
-## Example: which matrices are Hermitian?
-
-::: {.worked}
-$$
-A = \begin{pmatrix} 2 & 1-i \\ 1+i & 3 \end{pmatrix} \quad
-B = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \quad
-C = \begin{pmatrix} i & 0 \\ 0 & 1 \end{pmatrix} \quad
-D = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
-$$
-:::
-
-::: {.soln .fragment}
-- $A$: $A_{12} = 1-i = A_{21}^*$, real diagonal: **Hermitian**
-- $B$: $B_{12} = 2 \neq B_{21}^* = 3$: not Hermitian
-- $C$: the diagonal must be **real**, and $i \neq i^* = -i$: not Hermitian
-- $D$: $D_{12} = -i = D_{21}^*$: **Hermitian**, the pattern of $\hat{p}$ on the grid
-:::
-
-## Why observables are Hermitian
-
-![](../../ch03/images/hermitian_dial.gif){.nostretch width="72%" fig-align="center"}
-
-- **Real eigenvalues**: measured values are real numbers
-- **Orthogonal eigenvectors**: different outcomes exclude each other. Add a non-Hermitian part and both fail
-
-## Example: is momentum Hermitian?
-
-::: {.worked}
-Show that $\hat{p} = -i\hbar\,d/dx$ satisfies $\langle \phi \vert \hat{p}\psi \rangle = \langle \hat{p}\phi \vert \psi \rangle$.
-:::
-
-::: {.soln .fragment}
-Integrate by parts; the boundary term vanishes because $\phi, \psi \to 0$:
-
-$$\int\phi^*\big(-i\hbar\,\psi'\big)\,dx = i\hbar\int\phi'^*\,\psi\,dx = \int\big(-i\hbar\,\phi'\big)^*\,\psi\,dx \quad\checkmark$$
-
-Without the $i$: $(d/dx)^\dagger = -d/dx$, **anti**-Hermitian. The $-i$ turns the sign around.
-:::
-
-- On the grid: $d/dx$ is real and **antisymmetric**, $\hat{p} = -i\,d/dx$ is **Hermitian**
-
-## Order matters
-
-::: {.keyeq}
-$$[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A} \qquad\qquad [\hat{x},\hat{p}] = i\hbar$$
-:::
-
-![](../../ch03/images/order_matters.png){.nostretch width="80%" fig-align="center"}
-
-## Example: $x$ and $d/dx$
-
-::: {.worked}
-Find $[x, d/dx]$ by acting on an arbitrary function $f$.
-:::
-
-::: {.soln .fragment}
-$$x\,\frac{df}{dx} - \frac{d}{dx}\big(xf\big) = xf' - f - xf' = -f \qquad\Longrightarrow\qquad \left[x,\frac{d}{dx}\right] = -1$$
-
-Multiply by $-i\hbar$: $[\hat{x},\hat{p}] = i\hbar$. The product rule leaves one term, for **every** $f$.
-:::
-
-- On a grid it holds only for smooth $f$: finite matrices have $\operatorname{tr}[X,P] = 0$
-
-## Commuting operators share eigenfunctions
-
-::: {.keyeq}
-$$[\hat{A},\hat{B}] = 0 \quad\Longrightarrow\quad \hat{A}\phi_n = a_n\phi_n, \quad \hat{B}\phi_n = b_n\phi_n$$
-:::
-
-::: {.fragment}
-Why: if $\hat{A}\phi = a\phi$, then $\hat{A}(\hat{B}\phi) = \hat{B}(\hat{A}\phi) = a\,(\hat{B}\phi)$, so $\hat{B}\phi = b\,\phi$
-:::
-
-- Free particle: $[\hat{H},\hat{p}] = 0$, and $e^{ikx}$ has sharp $p = \hbar k$ **and** sharp $E = \hbar^2k^2/2m$
-- $[\hat{x},\hat{p}] \neq 0$: no state has sharp $x$ **and** sharp $p$ (next lecture)
+- **Mirror:** each matrix equals its own conjugate transpose. Next lecture: **Hermitian**, which makes eigenvalues real
+- **Order:** for matrices $AB \neq BA$ in general. Next lecture: **commutators**, and why $x$ and $p$ are never sharp together
 
 # Takeaway {.center}
 
-> Observables are linear Hermitian operators. On a grid they are matrices equal to their own conjugate transpose, with real eigenvalues and orthogonal eigenvectors, ready to be measured. Operators need not commute: $[\hat{x},\hat{p}] = i\hbar$ is why position and momentum are never sharp together, while commuting operators share eigenfunctions and can be.
+> Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language. Next: which matrices can be observables, and what happens when two of them do not commute.
+

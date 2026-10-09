@@ -1950,13 +1950,13 @@ def difference_stencils():
     a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2h$")
     a1.plot([pts[0], pts[2]], [fp[0], fp[2]], color=PURPLE, lw=1.4, ls=":")
     a1.legend(loc="lower center", frameon=False, fontsize=11.5)
-    a1.set_title(r"first derivative: weights $-1,\ 0,\ +1$ times $1/2h$", loc="left", fontsize=12.5)
+    a1.set_title("first derivative: the slope of the chord", loc="left", fontsize=12.5)
     a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/h$")
     a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/h$")
     a2.legend(loc="lower left", frameon=False, fontsize=11.5, bbox_to_anchor=(0.0, 0.13))
     a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{h} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}$",
             transform=a2.transAxes, ha="left", va="bottom", fontsize=12.5)
-    a2.set_title(r"second derivative: weights $1,\ -2,\ 1$ times $1/h^2$", loc="left", fontsize=12.5)
+    a2.set_title("second derivative: how much the slope changes", loc="left", fontsize=12.5)
     fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.09)
     fig.savefig(f"{OUT}/difference_stencils.png", dpi=200)
     print("wrote", f"{OUT}/difference_stencils.png")
@@ -2115,6 +2115,153 @@ def order_matters():
     fig.subplots_adjust(left=0.02, right=0.99, top=0.72, bottom=0.14, wspace=0.08)
     fig.savefig(f"{OUT}/order_matters.png", dpi=200)
     print("wrote", f"{OUT}/order_matters.png")
+    return fig, None
+
+
+# ============================================================ deck 3.5b "Hermitian operators and commutators"
+# Deck stills for slides/ch03/05b (commutator_steps is also used by deck 05). When the pages are split, page ch03/04
+# may sync matrix_arrows and the new Hermitian page flip_swap and commutator_steps (in place of order_matters);
+# eigen_directions stays deck-only if the page gets the widget.
+
+# ------------------------------------------------------------ a matrix turns most arrows; eigenvectors only stretch (still)
+@register
+def matrix_arrows():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    A = np.array([[2.0, 1.0], [1.0, 2.0]])
+    arrow = lambda ax, tip, col, lw, z: ax.annotate("", xy=tip, xytext=(0, 0), zorder=z, arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=22, shrinkA=0, shrinkB=0))
+    t = np.linspace(0, 2 * np.pi, 300)
+    fig, axs = plt.subplots(1, 2, figsize=(9.6, 4.2))
+    for ax in axs:
+        ax.plot(np.cos(t), np.sin(t), color=GRAY, lw=1, ls=":")
+        ax.axhline(0, color=GRAY, lw=0.8); ax.axvline(0, color=GRAY, lw=0.8)
+        ax.set_xlim(-1.3, 2.75); ax.set_ylim(-1.15, 2.5); ax.set_aspect("equal"); ax.axis("off")
+    a = axs[0]                                                  # a generic arrow: turned and stretched
+    v = np.array([1.0, 0.0]); Av = A @ v
+    arrow(a, v, TEAL, 3, 3); arrow(a, Av, CARDINAL, 3, 3)
+    a.text(1.0, -0.12, r"$\mathbf{v} = (1, 0)$", color=TEAL, fontsize=15, ha="center", va="top")
+    a.text(2.0, 1.12, r"$A\mathbf{v} = (2, 1)$", color=CARDINAL, fontsize=15, ha="center", va="bottom")
+    a.set_title("a generic arrow turns", fontsize=15)
+    b = axs[1]                                                  # the eigenvectors: only stretched
+    u1 = np.array([1.0, 1.0]) / np.sqrt(2); u2 = np.array([1.0, -1.0]) / np.sqrt(2)
+    b.plot([-1.0, 2.45], [-1.0, 2.45], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
+    b.plot([-0.95, 1.0], [0.95, -1.0], color=CARDINAL, lw=0.8, ls="--", alpha=0.5, zorder=1)
+    arrow(b, A @ u1, CARDINAL, 3, 2); arrow(b, u1, TEAL, 3.4, 3)
+    arrow(b, A @ u2, CARDINAL, 7, 2); arrow(b, u2, TEAL, 2.6, 3)
+    b.text(1.95, 2.12, r"$A\mathbf{u}_1 = 3\,\mathbf{u}_1$", color=CARDINAL, fontsize=15, ha="right", va="center")
+    b.text(0.2, 0.68, r"$\mathbf{u}_1$", color=TEAL, fontsize=15, ha="right")
+    b.text(0.85, -0.78, r"$A\mathbf{u}_2 = \mathbf{u}_2$", color=CARDINAL, fontsize=15, ha="left", va="center")
+    b.set_title("eigenvectors only stretch", fontsize=15)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02, wspace=0.05)
+    fig.savefig(f"{OUT}/matrix_arrows.png", dpi=200)
+    print("wrote", f"{OUT}/matrix_arrows.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ eigen-directions: perpendicular, skewed, or none at all (still)
+@register
+def eigen_directions():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    t = np.linspace(0, 2 * np.pi, 400); circ = np.array([np.cos(t), np.sin(t)])
+    arrow = lambda ax, tip, col, lw: ax.annotate("", xy=tip, xytext=(0, 0), arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=16, shrinkA=0, shrinkB=0))
+    mats = [(np.array([[2.0, 1.0], [1.0, 2.0]]), r"$\binom{2\ \ 1}{1\ \ 2}$", "symmetric"),
+            (np.array([[1.0, 1.0], [0.0, 2.0]]), r"$\binom{1\ \ 1}{0\ \ 2}$", "not symmetric"),
+            (np.array([[0.0, 1.0], [-1.0, 0.0]]), r"$\left(\genfrac{}{}{0}{}{\ \ 0\quad 1}{-1\ \ \ 0}\right)$", "a rotation")]   # = the two-point d/dx = FS
+    notes = ["eigen-directions at 90°", "eigen-directions at 45°", "every arrow turns 90° clockwise:\nno eigen-direction"]
+    fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.9))
+    for k, (ax, (M, lab, title)) in enumerate(zip(axs, mats)):
+        ax.plot(*circ, color=GRAY, lw=1, ls=":")
+        ax.axhline(0, color=GRAY, lw=0.6); ax.axvline(0, color=GRAY, lw=0.6)
+        w, V = np.linalg.eig(M)
+        if k < 2:
+            for j in range(2):
+                d = V[:, j].real / np.linalg.norm(V[:, j].real); d = d if d[0] >= 0 else -d
+                ax.plot([-2.6 * d[0], 2.6 * d[0]], [-2.6 * d[1], 2.6 * d[1]], color=TEAL, lw=2.4, ls="--")
+                ax.text(*(2.75 * d), rf"$\lambda = {w[j].real:.0f}$", color=TEAL, fontsize=13,
+                        ha="left", va="bottom" if d[1] >= 0 else "top")
+        else:
+            for deg in (20, 235):                                # turned clockwise to 290 and 145 degrees, clear of the originals
+                vv = 1.6 * np.array([np.cos(np.radians(deg)), np.sin(np.radians(deg))])
+                arrow(ax, vv, TEAL, 2.6); arrow(ax, M @ vv, CARDINAL, 2.6)
+                arc = np.radians(np.linspace(deg - 8, deg - 80, 30))
+                ax.plot(0.75 * np.cos(arc), 0.75 * np.sin(arc), color=CARDINAL, lw=1.3)
+                ax.annotate("", xy=(0.75 * np.cos(np.radians(deg - 86)), 0.75 * np.sin(np.radians(deg - 86))),
+                            xytext=(0.75 * np.cos(arc[-1]), 0.75 * np.sin(arc[-1])),
+                            arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.3, mutation_scale=12))
+        ax.set_xlim(-2.9, 3.6); ax.set_ylim(-2.9, 2.9); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, fontsize=14.5)
+        ax.text(0.0, 0.98, lab, transform=ax.transAxes, fontsize=15, va="top")
+        ax.text(0.5, -0.02, notes[k], transform=ax.transAxes, fontsize=13, ha="center", va="top",
+                color=CARDINAL if k == 2 else "k")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.17, wspace=0.08)
+    fig.savefig(f"{OUT}/eigen_directions.png", dpi=200)
+    print("wrote", f"{OUT}/eigen_directions.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ flip then swap, or swap then flip: opposite turns (still)
+@register
+def flip_swap():
+    from matplotlib.patches import FancyArrowPatch
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    F = np.array([[1.0, 0.0], [0.0, -1.0]])                    # flip: mirror in the x axis
+    S = np.array([[0.0, 1.0], [1.0, 0.0]])                     # swap: mirror in the line y = x
+    strokes = [np.array([[0.25, 0.2], [0.25, 1.0]]), np.array([[0.25, 1.0], [0.8, 1.0]]),
+               np.array([[0.25, 0.6], [0.65, 0.6]])]          # the letter F, each stroke as rows [x, y]
+    draw = lambda ax, M, col, lw, ls, alpha: [ax.plot(*(M @ s.T), color=col, lw=lw, ls=ls, alpha=alpha,
+                                                      solid_capstyle="round") for s in strokes]
+    fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.7))
+    panels = [(None, None, "start", ""),
+              (S, F @ S, r"swap, then flip:  $F\,S$", "turned 90° clockwise"),
+              (F, S @ F, r"flip, then swap:  $S\,F$", "turned 90° counterclockwise")]
+    for ax, (M1, M2, title, note) in zip(axs, panels):
+        ax.axhline(0, color=GRAY, lw=0.8); ax.axvline(0, color=GRAY, lw=0.8)
+        draw(ax, np.eye(2), TEAL, 7, "-", 1.0 if M1 is None else 0.3)
+        if M1 is not None:
+            draw(ax, M1, GRAY, 3.5, (0, (1.5, 2.5)), 0.8)      # after the first step
+            draw(ax, M2, CARDINAL, 7, "-", 1.0)                 # after both steps
+        ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, fontsize=14.5)
+        ax.text(0.5, -0.02, note, transform=ax.transAxes, fontsize=13, ha="center", va="top", color=CARDINAL)
+    for ax, (a0, a1) in ((axs[1], (78, -12)), (axs[2], (72, 162))):   # the net turn, drawn outside the letters
+        arc = np.radians(np.linspace(a0, a1, 60))
+        ax.plot(1.38 * np.cos(arc), 1.38 * np.sin(arc), color=CARDINAL, lw=1.6)
+        ax.add_patch(FancyArrowPatch((1.38 * np.cos(arc[-4]), 1.38 * np.sin(arc[-4])), (1.38 * np.cos(arc[-1]), 1.38 * np.sin(arc[-1])),
+                                     arrowstyle="-|>", mutation_scale=18, color=CARDINAL, lw=1.6))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.12, wspace=0.08)
+    fig.savefig(f"{OUT}/flip_swap.png", dpi=200)
+    print("wrote", f"{OUT}/flip_swap.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ [x, d/dx] in three steps: f, the two orders, their difference (still)
+@register
+def commutator_steps():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]
+    f = np.exp(-x**2 / 2) * (1 + 0.5 * x)                       # any smooth test function
+    fp = np.gradient(f, h)
+    xfp, dxf = x * fp, f + x * fp                                # x f'  and  (x f)' = f + x f'
+    fig, axs = plt.subplots(1, 3, figsize=(10.5, 3.5), sharey=True)
+    for ax in axs:
+        ax.axhline(0, color=GRAY, lw=0.7)
+        ax.set_xlim(-4, 4); ax.set_ylim(-1.35, 1.45); ax.set_xticks([]); ax.set_yticks([])
+        ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    axs[0].plot(x, f, color="k", lw=2.6)
+    axs[0].text(1.3, 1.05, r"$f$", fontsize=16)
+    axs[0].set_title("1.  a test function", loc="left", fontsize=14)
+    axs[1].plot(x, xfp, color=TEAL, lw=2.6, label=r"$x\,f'$:  differentiate, then multiply by $x$")
+    axs[1].plot(x, dxf, color=ORANGE, lw=2.6, ls="--", label=r"$(x f)'$:  multiply by $x$, then differentiate")
+    axs[1].set_title("2.  the two orders differ", loc="left", fontsize=14)
+    axs[1].legend(loc="lower center", frameon=False, fontsize=11.5, bbox_to_anchor=(0.5, -0.32))
+    axs[2].plot(x, xfp - dxf, color=CARDINAL, lw=7, alpha=0.45, label=r"$x f' - (x f)'$")
+    axs[2].plot(x, -f, color="k", lw=1.8, ls=":", label=r"$-f$")
+    axs[2].set_title(r"3.  their difference is $-f$", loc="left", fontsize=14)
+    axs[2].legend(loc="lower center", frameon=False, fontsize=12, ncol=2, bbox_to_anchor=(0.5, -0.24))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.2, wspace=0.08)
+    fig.savefig(f"{OUT}/commutator_steps.png", dpi=200)
+    print("wrote", f"{OUT}/commutator_steps.png")
     return fig, None
 
 
