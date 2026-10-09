@@ -13,6 +13,7 @@ kernelspec:
 - **Linear systems as matrix equations.** A system $A\mathbf{x} = \mathbf{b}$ is solved compactly by matrix inversion.
 - **Eigenvalues and eigenvectors.** Special vectors that a matrix only rescales. In quantum mechanics eigenvalues are the measurable observables and eigenvectors the states with definite outcomes.
 - **The geometric action of matrices.** Matrices stretch, rotate, shear, and scale vectors, and each effect can be pictured.
+- **A matrix in new axes.** Turning the axes changes the entries of a matrix but not what it does; in the axes of its eigenvectors it is diagonal, with the eigenvalues on the diagonal.
 :::
 
 Linear algebra is the backbone of quantum mechanics. States are vectors, observables are matrices, and measurement outcomes are eigenvalues. Everything that follows in the course is, at bottom, an eigenvalue problem in a vector space. This page builds that vocabulary from the 2D picture up.
@@ -391,6 +392,75 @@ plt.suptitle('Fig.2 How different matrices deform the same shape', fontsize=13)
 plt.tight_layout()
 plt.show()
 ```
+
+### A matrix in new axes: diagonalization
+
+Turning the axes changes the *components* of a vector but not the vector, as in the tip on bases at the start of this page. A matrix is the same: its *entries* depend on the axes, while what it does to an arrow does not.
+
+In the usual axes $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$, the entry in row $m$ and column $n$ is a dot product, $A_{mn} = \mathbf{e}_m \cdot (A\mathbf{e}_n)$: the matrix turns $\mathbf{e}_n$ into $A\mathbf{e}_n$, and the entry says how much of that lands on $\mathbf{e}_m$. Turn to any two perpendicular unit vectors $\mathbf{u}_1$ and $\mathbf{u}_2$ and the same recipe gives the matrix in the new axes. In Dirac's notation it is a "sandwich" of a bra, the matrix and a ket:
+
+$$
+A'_{mn} = \mathbf{u}_m \cdot (A\mathbf{u}_n) = \langle \mathbf{u}_m \mid A \mid \mathbf{u}_n \rangle
+$$
+
+- The matrix has not changed: it turns and stretches every arrow exactly as before. Only its description changes.
+- Read column $n$ of $A'$ as the arrow $A\mathbf{u}_n$ written in the new axes. The diagonal entry $A'_{nn}$ is the part of $A\mathbf{u}_n$ along its own axis; the off-diagonal entry is the part that lands on the other axis.
+
+Try it: drag on the plane to turn the axes for $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, the matrix of the eigenvalue picture above. The orange pieces are the off-diagonal entries. They shrink as you turn, and at $45^\circ$ they vanish: each $A\mathbf{u}_n$ then lies along its own axis. The trace and the determinant never change.
+
+```{anywidget} ../widgets/matrix_arrows.mjs
+{"mode": "axes"}
+```
+
+For this $A$, axes turned by an angle $\theta$, with $\mathbf{u}_1 = (\cos\theta, \sin\theta)$ and $\mathbf{u}_2 = (-\sin\theta, \cos\theta)$, give
+
+$$
+A'(\theta) = \begin{pmatrix} 2 + \sin 2\theta & \cos 2\theta \\ \cos 2\theta & 2 - \sin 2\theta \end{pmatrix}
+$$
+
+The off-diagonal entry $\cos 2\theta$ vanishes at $\theta = 45^\circ$. The trace is $4$ and the determinant is $4 - \sin^2 2\theta - \cos^2 2\theta = 3$ at every angle, so the eigenvalues, the roots of $\lambda^2 - 4\lambda + 3 = 0$, cannot change when the axes turn.
+
+:::{note} **Example: diagonal in its own eigenbasis**
+:class: dropdown
+
+Write $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in the axes of its eigenvectors, $\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
+
+Each eigenvector is only stretched, $A\mathbf{u}_1 = 3\,\mathbf{u}_1$ and $A\mathbf{u}_2 = \mathbf{u}_2$, so every sandwich is an eigenvalue times an overlap, $\langle \mathbf{u}_m \mid A \mid \mathbf{u}_n \rangle = \lambda_n \langle \mathbf{u}_m \mid \mathbf{u}_n \rangle$. The axes are perpendicular unit vectors, so the overlap is 1 for $m = n$ and 0 otherwise:
+
+$$
+A' = \begin{pmatrix} 3\cdot 1 & 1\cdot 0 \\ 3\cdot 0 & 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+Check one entry by row times column: $A\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(3, 3)$, so $\langle \mathbf{u}_2 \mid A \mid \mathbf{u}_1 \rangle = \tfrac{1}{2}\big(1\cdot 3 + (-1)\cdot 3\big) = 0$. The trace is still $3 + 1 = 4$ and the determinant $3 \times 1 = 3$.
+
+:::
+
+:::{important} **A matrix is diagonal in the axes of its eigenvectors**
+
+$$
+\langle \mathbf{u}_m \mid A \mid \mathbf{u}_n \rangle = \lambda_n\,\delta_{mn}
+$$
+
+when the $\mathbf{u}_n$ are perpendicular unit eigenvectors, $A\mathbf{u}_n = \lambda_n\mathbf{u}_n$. The symbol $\delta_{mn}$ is 1 for $m = n$ and 0 otherwise, so the eigenvalues sit on the diagonal and everything else is zero.
+
+:::
+
+Finding those axes is called **diagonalizing** the matrix. A symmetric matrix always has perpendicular unit eigenvectors (so does a Hermitian one, see [Operators as Matrices](04-operators-and-matrices.md)), so it can always be diagonalized. In numpy, `eigh` returns the eigenvectors as the columns of a matrix `U`, and `U.T @ A @ U` computes every sandwich $\langle \mathbf{u}_m \mid A \mid \mathbf{u}_n \rangle$ at once: row $m$ of `U.T` is the bra, column $n$ of `U` the ket.
+
+```{code-cell} python
+import numpy as np
+
+A_ax = np.array([[2.0, 1.0], [1.0, 2.0]])
+lam_ax, U_ax = np.linalg.eigh(A_ax)              # columns of U_ax: the eigenvectors, the new axes
+A_ax_new = U_ax.T @ A_ax @ U_ax                  # every sandwich at once
+
+print("eigenvalues        :", lam_ax)            # eigh lists them in increasing order
+print("A in the new axes  :\n", np.round(A_ax_new, 10) + 0.0)    # adding 0.0 prints -0. as 0.
+print("trace before, after:", np.trace(A_ax), round(np.trace(A_ax_new), 10))
+print("det   before, after:", round(np.linalg.det(A_ax), 10), round(np.linalg.det(A_ax_new), 10))
+```
+
+The new matrix is diagonal, with the eigenvalues $1$ and $3$ in increasing order, and the trace and determinant are unchanged. This is what "diagonalizing a Hamiltonian" means in [Operators 1](../ch03/04-operators.md): find the eigenvectors of $H$, write $H$ in those axes, and read the energies off the diagonal. For complex matrices the bra carries a complex conjugate, `U.conj().T @ A @ U`.
 
 ## Problems
 
