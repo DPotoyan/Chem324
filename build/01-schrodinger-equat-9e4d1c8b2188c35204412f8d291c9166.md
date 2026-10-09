@@ -734,7 +734,7 @@ Fig. The mean (line and triangle) is the balance point of the probability densit
 
 ### Operators: a first look
 
-Position was easy, because $x$ is just a number that multiplies $|\psi|^2$. Momentum and energy are different. In Step 2 we extracted them from the wave by differentiating, and that idea organizes the rest of quantum mechanics. This section is a preview; [Operators](04-operators.md) and [Eigenvalues and Expectation Values](05-eigenvalues-and-expectation.md) develop it in full.
+Position was easy, because $x$ is just a number that multiplies $|\psi|^2$. Momentum and energy are different. In Step 2 we extracted them from the wave by differentiating, and that idea organizes the rest of quantum mechanics. This section is a preview; [Operators 1](04-operators.md), [Operators 2](05-hermitian-operators-and-commutators.md) and [Eigenvalues and Expectation Values](06-eigenvalues-and-expectation.md) develop it in full.
 
 - An **operator** is an instruction that turns one function into another, written with a hat. Every observable of classical mechanics has a quantum operator. The recipe: write the classical expression in terms of $x$ and $p$, then replace $p$ with $-i\hbar\,\partial/\partial x$.
 
@@ -860,7 +860,7 @@ $$
 \Psi(x,t) = \sum_n c_n\, \psi_n(x)\, e^{-iE_n t/\hbar}
 $$
 
-- A single stationary state has a frozen probability density. A sum of two does not, because their phase clocks run at different rates and the relative phase changes in time (Problem 2). All motion in quantum mechanics comes from superposition, the subject of [Time Dependence](06-time-dependence.md).
+- A single stationary state has a frozen probability density. A sum of two does not, because their phase clocks run at different rates and the relative phase changes in time (Problem 2). All motion in quantum mechanics comes from superposition, the subject of [Time Dependence](07-time-dependence.md).
 
 ### Looking ahead
 

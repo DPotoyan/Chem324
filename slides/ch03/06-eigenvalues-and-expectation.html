@@ -166,27 +166,96 @@ Davit Potoyan
 <section id="warm-up-components-of-a-vector" class="slide level2">
 <h2>Warm-up: components of a vector</h2>
 <div class="worked">
-<p>Write <span class="math inline">\mathbf{v} = (3, 4)</span> in the tilted axes <span class="math inline">\hat{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)</span> and <span class="math inline">\hat{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)</span>.</p>
+<p>Write <span class="math inline">\mathbf{v} = (3, 4)</span> in the tilted axes <span class="math inline">\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)</span> and <span class="math inline">\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)</span>.</p>
 </div>
 <div class="soln fragment">
 <p>Each component is a <strong>projection</strong> (a dot product):</p>
-<p><span class="math display">c_1 = \hat{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \hat{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}</span></p>
-<p><span class="math display">\mathbf{v} = c_1\hat{u}_1 + c_2\hat{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2</span></p>
+<p><span class="math display">c_1 = \mathbf{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \mathbf{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}</span></p>
+<p><span class="math display">\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2</span></p>
 </div>
 <ul>
 <li>Perpendicular unit axes: components are <strong>projections</strong>, and their squares add up to the <strong>length</strong> squared</li>
 </ul>
 </section>
-<section id="eigenfunctions-are-coordinates" class="slide level2">
-<h2>Eigenfunctions are coordinates</h2>
+<section id="same-recipe-for-functions" class="slide level2">
+<h2>Same recipe for functions</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">a vector</th>
+<th style="text-align: left;">a function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">its numbers</td>
+<td style="text-align: left;">components <span class="math inline">v_1, v_2</span></td>
+<td style="text-align: left;">values <span class="math inline">\psi(x)</span> at every <span class="math inline">x</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dot product</td>
+<td style="text-align: left;"><span class="math inline">\mathbf{u}\cdot\mathbf{v} = \sum_j u_j\,v_j</span></td>
+<td style="text-align: left;"><span class="math inline">\int \phi^*\,\psi\,dx</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">in words</td>
+<td style="text-align: left;">multiply matching entries, add</td>
+<td style="text-align: left;">multiply point by point, add up</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">unit axes</td>
+<td style="text-align: left;"><span class="math inline">\mathbf{u}_1, \mathbf{u}_2</span>: perpendicular, length 1</td>
+<td style="text-align: left;">box states <span class="math inline">\psi_1, \psi_2, \dots</span>: orthonormal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a component</td>
+<td style="text-align: left;"><span class="math inline">c_k = \mathbf{u}_k\cdot\mathbf{v}</span></td>
+<td style="text-align: left;"><span class="math inline">c_n = \int \psi_n^*\,\psi\,dx</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Lecture 3.5’s grid made this literal: the integral <strong>is</strong> the dot product of the sampled values, times <span class="math inline">h</span></li>
+</ul>
+</section>
+<section id="one-component-step-by-step" class="slide level2">
+<h2>One component, step by step</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/projection.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+<p><img data-src="../../ch03/images/component_steps.png" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
 </figure>
 </div>
+<ul>
+<li>The parabola <span class="math inline">\psi = \sqrt{30/L^5}\;x(L-x)</span> looks almost like <span class="math inline">\psi_1</span>, so its component along <span class="math inline">\psi_1</span> is almost 1: <span class="math inline">\ c_1 = 0.999</span></li>
+</ul>
+</section>
+<section id="a-component-that-vanishes" class="slide level2">
+<h2>A component that vanishes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/component_cancel.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\psi</span> is symmetric about <span class="math inline">L/2</span>, <span class="math inline">\psi_2</span> is antisymmetric: the two halves of the product cancel, so <span class="math inline">c_2 = 0</span></li>
+<li>The same happens for every even <span class="math inline">n</span>: the parabola has <strong>no</strong> even components</li>
+</ul>
+</section>
+<section id="eigenfunctions-are-coordinates" class="slide level2">
+<h2>Eigenfunctions are coordinates</h2>
 <div class="keyeq">
 <p><span class="math display">\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx</span></p>
 </div>
+<ul>
+<li>The eigenfunctions <span class="math inline">\phi_n</span> of an observable are the <strong>axes</strong>; <span class="math inline">c_n</span> says how far <span class="math inline">\psi</span> reaches along axis <span class="math inline">n</span></li>
+<li>Each <span class="math inline">c_n</span> is a <strong>projection</strong>, found exactly as for the vector: multiply, then add up</li>
+</ul>
 </section>
 <section id="three-one-line-derivations" class="slide level2">
 <h2>Three one-line derivations</h2>

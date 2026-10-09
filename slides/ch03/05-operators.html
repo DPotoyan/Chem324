@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Davit Potoyan">
-  <title>Operators</title>
+  <title>Operators 1: Matrices and Dirac Notation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -217,7 +217,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Operators</h1>
+  <h1 class="title">Operators 1: Matrices and Dirac Notation</h1>
   <p class="subtitle">Chem 3240 · Lecture 3.5</p>
 
 <div class="quarto-title-authors">
@@ -303,6 +303,15 @@ Davit Potoyan
 <ul>
 <li>An <strong>eigenvector</strong> keeps its direction, <span class="math inline">A\mathbf{v} = \lambda\mathbf{v}</span>: the same shape as <span class="math inline">\hat{A}\phi = a\phi</span></li>
 </ul>
+</section>
+<section id="live-hunt-for-the-eigenvectors" class="slide level2">
+<h2>Live: hunt for the eigenvectors</h2>
+<div id="mx-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/matrix_arrows.mjs";
+  const opts = { mode: "hunt", fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mx-live") });
+</script>
 </section>
 <section id="example-eigenvalues-of-a-22-by-hand" class="slide level2">
 <h2>Example: eigenvalues of a 2×2 by hand</h2>
@@ -493,6 +502,36 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\vare
 <p><span class="math inline">A\,\mathbf{e}_2 = (1,\ 2)</span>, then <span class="math inline">\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}</span>: sandwiching unit vectors picks out <strong>one entry</strong> of the matrix.</p>
 </div>
 </section>
+<section id="same-matrix-new-axes" class="slide level2">
+<h2>Same matrix, new axes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/basis_turn.gif" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Each entry is a sandwich, <span class="math inline">A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle</span>: <strong>purple</strong> along its own axis, <strong>orange</strong> off it</li>
+<li>The entries change; <strong>trace</strong> 4 and <strong>determinant</strong> 3 never do, so neither do the <strong>eigenvalues</strong></li>
+</ul>
+</section>
+<section id="example-diagonal-in-its-own-eigenbasis" class="slide level2">
+<h2>Example: diagonal in its own eigenbasis</h2>
+<div class="worked">
+<p>Write <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span> in its eigenvector axes, <span class="math inline">\mathbf{u}_{1,2} = \tfrac{1}{\sqrt{2}}(1,\ \pm 1)</span>.</p>
+</div>
+<div class="soln fragment">
+<p>Each <span class="math inline">\mathbf{u}_n</span> only stretches, <span class="math inline">A\mathbf{u}_n = \lambda_n\mathbf{u}_n</span>, so a sandwich is an eigenvalue times an overlap:</p>
+<p><span class="math display">
+\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\langle \mathbf{u}_m \vert \mathbf{u}_n \rangle
+\quad\Longrightarrow\quad
+A' = \begin{pmatrix} 3\cdot 1 &amp; 1\cdot 0 \\ 3\cdot 0 &amp; 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
+</span></p>
+<p>Check one by row times column: <span class="math inline">\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}(1,\ -1)\cdot(3,\ 3) = 0</span></p>
+</div>
+<ul>
+<li><strong>Diagonalizing</strong> <span class="math inline">H</span> means finding these axes: <code>eigh</code> returns them as the <strong>columns</strong> of <code>psi</code></li>
+</ul>
+</section>
 <section id="dirac-notation-one-language-three-dialects" class="slide level2">
 <h2>Dirac notation: one language, three dialects</h2>
 <table class="caption-top">
@@ -535,6 +574,12 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\vare
 <td style="text-align: left;"><span class="math inline">\hat{A}\lvert n\rangle = a_n\lvert n\rangle</span></td>
 <td style="text-align: left;"><code>a, phi = np.linalg.eigh(A)</code></td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">new axes</td>
+<td style="text-align: left;"><span class="math inline">\int\phi_m^*\hat{A}\phi_n\,dx</span></td>
+<td style="text-align: left;"><span class="math inline">\langle \phi_m \vert \hat{A} \vert \phi_n \rangle</span></td>
+<td style="text-align: left;"><code>U.conj().T @ A @ U * h</code></td>
+</tr>
 </tbody>
 </table>
 <ul>
@@ -556,7 +601,7 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\vare
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language. Next: which matrices can be observables, and what happens when two of them do not commute.</p>
+<p>Sample a function and it becomes a vector; every operator becomes a matrix. Position is diagonal, derivatives link neighbors, and the Hamiltonian is a matrix whose eigenvalues are the allowed energies. Dirac notation writes integrals and matrices in one language, and in the axes of its own eigenvectors a matrix is diagonal. Next: which matrices can be observables, and what happens when two of them do not commute.</p>
 </blockquote>
 
 </section>

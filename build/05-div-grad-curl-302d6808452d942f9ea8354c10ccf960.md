@@ -140,7 +140,7 @@ fig6.tight_layout()
 plt.show()
 ```
 
-One term tilts the function, two terms lean it further, and by a dozen terms the series has physically **moved** it. Now the quantum punchline: multiply the generator by $-i\hbar$ and you get the [momentum operator](../ch03/04-operators.md) $\hat{p} = -i\hbar\, d/dx$, so that
+One term tilts the function, two terms lean it further, and by a dozen terms the series has physically **moved** it. Now the quantum punchline: multiply the generator by $-i\hbar$ and you get the [momentum operator](../ch03/05-hermitian-operators-and-commutators.md) $\hat{p} = -i\hbar\, d/dx$, so that
 
 $$
 e^{\,i a \hat{p} / \hbar}\, \psi(x) = \psi(x + a).

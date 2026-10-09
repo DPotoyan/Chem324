@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Davit Potoyan">
-  <title>Hermitian Operators and Commutators</title>
+  <title>Operators 2: Hermitian Operators and Commutators</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -151,7 +151,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Hermitian Operators and Commutators</h1>
+  <h1 class="title">Operators 2: Hermitian Operators and Commutators</h1>
   <p class="subtitle">Chem 3240 · Lecture 3.5b</p>
 
 <div class="quarto-title-authors">
@@ -211,38 +211,27 @@ Davit Potoyan
 <thead>
 <tr class="header">
 <th style="text-align: left;">numbers</th>
-<th style="text-align: left;">matrices and operators</th>
+<th style="text-align: left;">matrices</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">conjugate <span class="math inline">z^*</span></td>
+<td style="text-align: left;"><strong>conjugate</strong> <span class="math inline">z^*</span>: flip the sign of <span class="math inline">i</span></td>
 <td style="text-align: left;"><strong>adjoint</strong> <span class="math inline">A^\dagger</span>: swap rows and columns, then conjugate</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">real: <span class="math inline">z^* = z</span></td>
-<td style="text-align: left;"><strong>Hermitian:</strong> <span class="math inline">A^\dagger = A</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">imaginary: <span class="math inline">z^* = -z</span></td>
-<td style="text-align: left;"><strong>anti-Hermitian:</strong> <span class="math inline">A^\dagger = -A</span>, for example <span class="math inline">d/dx</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">z = \text{real part} + i\,\text{imaginary part}</span></td>
-<td style="text-align: left;"><span class="math inline">A = \tfrac{1}{2}(A + A^\dagger) + \tfrac{1}{2}(A - A^\dagger)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">-i \times 3i = 3</span> is real</td>
-<td style="text-align: left;"><span class="math inline">-i\hbar\,d/dx</span> is Hermitian</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">(zw)^* = z^*w^*</span></td>
-<td style="text-align: left;"><span class="math inline">(AB)^\dagger = B^\dagger A^\dagger</span>: the order <strong>reverses</strong></td>
+<td style="text-align: left;"><strong>real</strong>: <span class="math inline">z^* = z</span></td>
+<td style="text-align: left;"><strong>Hermitian</strong>: <span class="math inline">A^\dagger = A</span></td>
 </tr>
 </tbody>
 </table>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/real_vs_hermitian.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
 <ul>
-<li>Hermitian operators are the “real numbers” of quantum mechanics: their eigenvalues are real</li>
+<li>Hermitian operators are the “real numbers” of quantum mechanics: their <strong>eigenvalues are real</strong></li>
 </ul>
 </section>
 <section id="hermitian-its-own-mirror-image" class="slide level2">
@@ -303,6 +292,15 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
 <li>Not symmetric: real eigenvalues, but the eigenvectors <strong>overlap</strong>. A rotation has none at all</li>
 </ul>
 </section>
+<section id="live-perpendicular-or-not" class="slide level2">
+<h2>Live: perpendicular or not?</h2>
+<div id="mx-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/matrix_arrows.mjs";
+  const opts = { mode: "hunt", presets: true, fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mx-live") });
+</script>
+</section>
 <section id="why-observables-are-hermitian" class="slide level2">
 <h2>Why observables are Hermitian</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -312,7 +310,7 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
 </div>
 <ul>
 <li><strong>Real eigenvalues</strong>: measured values are real numbers</li>
-<li><strong>Orthogonal eigenvectors</strong>: different outcomes exclude each other. Turning up the “imaginary part” <span class="math inline">sK</span> breaks both</li>
+<li><strong>Orthogonal eigenvectors</strong>: different outcomes exclude each other. Add a non-Hermitian part and both fail</li>
 </ul>
 </section>
 <section id="why-the-eigenvalues-are-real-in-two-lines" class="slide level2">
@@ -343,9 +341,6 @@ P = -i\hbar D_1 &amp;= \frac{\hbar}{2h}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \
 </span></p>
 <p><span class="math inline">D_1</span> is the rotation of the last figure: <strong>imaginary</strong> eigenvalues. Times <span class="math inline">-i\hbar</span> they turn <strong>real</strong>; <span class="math inline">P</span> is <span class="math inline">\tfrac{\hbar}{2h}</span> times matrix <span class="math inline">D</span> above.</p>
 </div>
-<ul>
-<li><span class="math inline">d/dx</span> is anti-Hermitian, the “imaginary” kind; <span class="math inline">-i\hbar\,d/dx</span> is Hermitian, the “real” kind</li>
-</ul>
 </section>
 <section id="example-is-momentum-hermitian" class="slide level2">
 <h2>Example: is momentum Hermitian?</h2>
@@ -360,7 +355,7 @@ P = -i\hbar D_1 &amp;= \frac{\hbar}{2h}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \
 &amp;= 0 + \int\big(-i\hbar\,\phi'\big)^*\,\psi\,dx \quad\checkmark
 \end{aligned}
 </span></p>
-<p>Without the <span class="math inline">i</span>: <span class="math inline">(d/dx)^\dagger = -d/dx</span>, <strong>anti</strong>-Hermitian. The <span class="math inline">-i</span> turns the sign around.</p>
+<p>Without the <span class="math inline">i</span> the sign comes out wrong, <span class="math inline">(d/dx)^\dagger = -d/dx</span>; the <span class="math inline">-i</span> turns it around.</p>
 </div>
 <ul>
 <li><strong>Recipe:</strong> move the derivative to the other function by parts, then check the signs and the conjugates</li>
