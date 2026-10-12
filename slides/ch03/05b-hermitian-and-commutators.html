@@ -172,34 +172,19 @@ Davit Potoyan
 <li><strong>Today:</strong> which matrices may stand for an observable? And what if two of them <strong>do not commute</strong>?</li>
 </ul>
 </section>
-<section id="a-matrix-turns-and-stretches-arrows" class="slide level2">
-<h2>A matrix turns and stretches arrows</h2>
+<section id="recap-eigenvectors-of-a-matrix" class="slide level2">
+<h2>Recap: eigenvectors of a matrix</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/matrix_arrows.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+<p><img data-src="../../ch03/images/matrix_arrows.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
 </figure>
 </div>
-<p><span class="math display">
-\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\ \text{turned},
-\qquad\qquad
-\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = 3\begin{pmatrix} 1 \\ 1 \end{pmatrix}\ \text{only stretched}
-</span></p>
-<ul>
-<li>An <strong>eigenvector</strong> keeps its direction, <span class="math inline">A\mathbf{v} = \lambda\mathbf{v}</span>: the same shape as <span class="math inline">\hat{A}\phi = a\phi</span></li>
-</ul>
-</section>
-<section id="example-eigenvalues-of-a-22-by-hand" class="slide level2">
-<h2>Example: eigenvalues of a 2×2 by hand</h2>
 <div class="keyeq">
 <p><span class="math display">A\mathbf{v} = \lambda\mathbf{v}\ \text{ with }\ \mathbf{v} \neq 0 \qquad\Longleftrightarrow\qquad \det(A - \lambda I) = 0</span></p>
 </div>
-<div class="worked">
-<p>Find the eigenvalues and eigenvectors of <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span>.</p>
-</div>
-<div class="soln fragment">
-<p><span class="math display">\det\begin{pmatrix} 2-\lambda &amp; 1 \\ 1 &amp; 2-\lambda \end{pmatrix} = (2-\lambda)^2 - 1 = 0 \quad\Longrightarrow\quad \lambda = 3,\ 1</span></p>
-<p><span class="math inline">\lambda = 3</span>: <span class="math inline">\mathbf{v} \propto (1, 1)</span>. <span class="math inline">\ \lambda = 1</span>: <span class="math inline">\mathbf{v} \propto (1, -1)</span>. Check: <span class="math inline">3 + 1 = 4</span> is the trace, <span class="math inline">3 \times 1 = 3</span> the determinant.</p>
-</div>
+<ul>
+<li><span class="math inline">A = \left(\begin{smallmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{smallmatrix}\right)</span>: <span class="math inline">\lambda = 3</span> along <span class="math inline">(1, 1)</span> and <span class="math inline">\lambda = 1</span> along <span class="math inline">(1, -1)</span>. They add up to the <strong>trace</strong> and multiply to the <strong>determinant</strong></li>
+</ul>
 </section>
 <section id="hermitian-the-matrix-version-of-a-real-number" class="slide level2">
 <h2>Hermitian: the matrix version of a real number</h2>
@@ -234,19 +219,24 @@ Davit Potoyan
 <li>Hermitian operators are the “real numbers” of quantum mechanics: their <strong>eigenvalues are real</strong></li>
 </ul>
 </section>
-<section id="hermitian-its-own-mirror-image" class="slide level2">
-<h2>Hermitian: its own mirror image</h2>
-<div class="keyeq">
-<p><span class="math display">\int \phi^*\,\big(\hat{A}\psi\big)\,dx = \int \big(\hat{A}\phi\big)^*\,\psi\,dx \qquad\Longleftrightarrow\qquad A_{jk} = A_{kj}^*</span></p>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/grid_operators.png" class="quarto-figure quarto-figure-center" style="width:52.0%"></p>
-</figure>
-</div>
+<section id="adjoint-and-hermitian-operators" class="slide level2">
+<h2>Adjoint and Hermitian operators</h2>
 <ul>
-<li>In Dirac notation <span class="math inline">\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}\phi \vert \psi \rangle</span>: the operator may act on <strong>either side</strong></li>
+<li>The <strong>adjoint</strong> <span class="math inline">\hat{A}^\dagger</span>: move <span class="math inline">\hat{A}</span> from the ket to the bra</li>
 </ul>
+<p><span class="math display">\langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}^\dagger\phi \vert \psi \rangle</span></p>
+<ul>
+<li><strong>Hermitian</strong>, <span class="math inline">\hat{A}^\dagger = \hat{A}</span>: the operator moves across <strong>unchanged</strong></li>
+</ul>
+<div class="keyeq">
+<p><span class="math display">
+\begin{aligned}
+&amp;\text{integral:}\qquad &amp; \int \phi^*\,\big(\hat{A}\psi\big)\,dx &amp;= \int \big(\hat{A}\phi\big)^*\,\psi\,dx \\
+&amp;\text{Dirac:} &amp; \langle \phi \vert \hat{A}\psi \rangle &amp;= \langle \hat{A}\phi \vert \psi \rangle \\
+&amp;\text{matrix:} &amp; A_{jk} &amp;= A_{kj}^*
+\end{aligned}
+</span></p>
+</div>
 </section>
 <section id="example-which-matrices-are-hermitian" class="slide level2">
 <h2>Example: which matrices are Hermitian?</h2>
@@ -267,6 +257,25 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
 </ul>
 </div>
 </section>
+<section id="why-observables-must-be-hermitian" class="slide level2">
+<h2>Why observables must be Hermitian</h2>
+<p>A measurement needs three things from its operator:</p>
+<ol type="1">
+<li><strong>Real eigenvalues</strong>: measured values are real numbers</li>
+<li><strong>Orthogonal eigenfunctions</strong>: different outcomes exclude each other</li>
+<li><strong>A complete basis</strong>: every state is a sum of eigenfunctions (next lecture)</li>
+</ol>
+<div class="keyeq">
+<p><span class="math display">
+\hat{A}\phi_n = a_n\phi_n \quad\Longrightarrow\quad
+\begin{aligned}
+&amp;a_n = a_n^* \\
+&amp;\langle \phi_m \vert \phi_n \rangle = \delta_{mn} \\
+&amp;\psi = \textstyle\sum_n c_n\,\phi_n
+\end{aligned}
+</span></p>
+</div>
+</section>
 <section id="example-real-eigenvalues-from-the-quadratic-formula" class="slide level2">
 <h2>Example: real eigenvalues from the quadratic formula</h2>
 <div class="worked">
@@ -279,6 +288,20 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
 <ul>
 <li>The coupling <span class="math inline">\lvert b\rvert</span> pushes the two levels <strong>apart</strong>: bonding and antibonding orbitals</li>
 </ul>
+</section>
+<section id="why-the-eigenvalues-are-real-in-two-lines" class="slide level2">
+<h2>Why the eigenvalues are real, in two lines</h2>
+<div class="worked">
+<p>Let <span class="math inline">\hat{A}\phi = a\phi</span> with <span class="math inline">\langle \phi \vert \phi \rangle = 1</span> and <span class="math inline">\hat{A}</span> Hermitian. Show that <span class="math inline">a</span> is real.</p>
+</div>
+<div class="soln">
+<p><span class="math display">\langle \phi \vert \hat{A}\phi \rangle = \langle \phi \vert a\phi \rangle = a, \qquad\qquad \langle \hat{A}\phi \vert \phi \rangle = \langle a\phi \vert \phi \rangle = a^*</span></p>
+<p>Hermitian says the two are equal, so <span class="math inline">a = a^*</span>.</p>
+</div>
+<ul>
+<li>The step that matters: a constant leaves a ket as it is, but leaves a bra <strong>conjugated</strong></li>
+</ul>
+<p><span class="math display">\langle a\phi \vert \psi \rangle = \int (a\phi)^*\,\psi\,dx = a^*\!\int \phi^*\,\psi\,dx = a^*\,\langle \phi \vert \psi \rangle</span></p>
 </section>
 <section id="hermitian-eigenvectors-are-perpendicular" class="slide level2">
 <h2>Hermitian eigenvectors are perpendicular</h2>
@@ -301,31 +324,17 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
   widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("mx-live") });
 </script>
 </section>
-<section id="why-observables-are-hermitian" class="slide level2">
-<h2>Why observables are Hermitian</h2>
+<section id="what-goes-wrong-without-hermiticity" class="slide level2">
+<h2>What goes wrong without Hermiticity</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="../../ch03/images/hermitian_dial.gif" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
 </figure>
 </div>
 <ul>
-<li><strong>Real eigenvalues</strong>: measured values are real numbers</li>
-<li><strong>Orthogonal eigenvectors</strong>: different outcomes exclude each other. Add a non-Hermitian part and both fail</li>
+<li>Add a non-Hermitian part: the eigenvalues leave the <strong>real axis</strong> and the eigenvectors start to <strong>overlap</strong></li>
+<li>Real eigenvalues are <strong>not enough</strong>: <span class="math inline">\left(\begin{smallmatrix} 1 &amp; 1 \\ 0 &amp; 2 \end{smallmatrix}\right)</span> has <span class="math inline">1</span> and <span class="math inline">2</span>, but overlapping eigenvectors</li>
 </ul>
-</section>
-<section id="why-the-eigenvalues-are-real-in-two-lines" class="slide level2">
-<h2>Why the eigenvalues are real, in two lines</h2>
-<div class="worked">
-<p>Let <span class="math inline">\hat{A}\phi = a\phi</span> with <span class="math inline">\langle \phi \vert \phi \rangle = 1</span> and <span class="math inline">\hat{A}</span> Hermitian. Show that <span class="math inline">a</span> is real.</p>
-</div>
-<div class="soln">
-<p><span class="math display">\langle \phi \vert \hat{A}\phi \rangle = \langle \phi \vert a\phi \rangle = a, \qquad\qquad \langle \hat{A}\phi \vert \phi \rangle = \langle a\phi \vert \phi \rangle = a^*</span></p>
-<p>Hermitian says the two are equal, so <span class="math inline">a = a^*</span>.</p>
-</div>
-<ul>
-<li>The step that matters: a constant leaves a ket as it is, but leaves a bra <strong>conjugated</strong></li>
-</ul>
-<p><span class="math display">\langle a\phi \vert \psi \rangle = \int (a\phi)^*\,\psi\,dx = a^*\!\int \phi^*\,\psi\,dx = a^*\,\langle \phi \vert \psi \rangle</span></p>
 </section>
 <section id="example-the-derivative-on-two-points" class="slide level2">
 <h2>Example: the derivative on two points</h2>

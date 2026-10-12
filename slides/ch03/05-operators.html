@@ -508,7 +508,7 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\vare
 <p>Why conjugate? Take <span class="math inline">\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}</span> and find <span class="math inline">\langle\psi\vert\psi\rangle</span>.</p>
 </div>
 <div class="soln fragment">
-<p><span class="math inline">\langle\psi\rvert = (1,\ -i)</span>, so <span class="math inline">\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2</span>: a real, positive <strong>length squared</strong>. Without the conjugate, <span class="math inline">1 + i^2 = 0</span>: a nonzero vector of length zero.</p>
+<p><span class="math inline">\langle\psi\rvert = (1,\ -i)</span>, so <span class="math inline">\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2</span>: a real, positive <strong>length squared</strong>. Without the conjugate, <span class="math inline">1 + i^2 = 0</span>: a nonzero vector of length zero. So a constant leaves a bra <strong>conjugated</strong>: <span class="math inline">\langle c\,\phi \vert \psi \rangle = c^*\langle \phi \vert \psi \rangle</span>.</p>
 </div>
 </section>
 <section id="sandwiches-matrix-elements" class="slide level2">
@@ -537,34 +537,18 @@ H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 &amp; -\vare
 <li>Inner sizes must <strong>match</strong>; the outer sizes give the <strong>result</strong>: a number, or a new ket</li>
 </ul>
 </section>
-<section id="same-matrix-new-axes" class="slide level2">
-<h2>Same matrix, new axes</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/basis_turn.gif" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
-</figure>
-</div>
+<section id="diagonalizing-a-hamiltonian" class="slide level2">
+<h2>Diagonalizing a Hamiltonian</h2>
 <ul>
-<li>Each entry is a sandwich, <span class="math inline">A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle</span>: <strong>purple</strong> along its own axis, <strong>orange</strong> off it</li>
-<li>The entries change; <strong>trace</strong> 4 and <strong>determinant</strong> 3 never do, so neither do the <strong>eigenvalues</strong></li>
+<li>The entries of a matrix depend on the <strong>axes</strong>; the operator does not. In perpendicular unit axes <span class="math inline">\mathbf{u}_1, \mathbf{u}_2, \dots</span> each entry is a sandwich, <span class="math inline">A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle</span></li>
 </ul>
-</section>
-<section id="example-diagonal-in-its-own-eigenbasis" class="slide level2">
-<h2>Example: diagonal in its own eigenbasis</h2>
-<div class="worked">
-<p>Write <span class="math inline">A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}</span> in its eigenvector axes, <span class="math inline">\mathbf{u}_{1,2} = \tfrac{1}{\sqrt{2}}(1,\ \pm 1)</span>.</p>
-</div>
-<div class="soln fragment">
-<p>Each <span class="math inline">\mathbf{u}_n</span> only stretches, <span class="math inline">A\mathbf{u}_n = \lambda_n\mathbf{u}_n</span>, so a sandwich is an eigenvalue times an overlap:</p>
-<p><span class="math display">
-\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\langle \mathbf{u}_m \vert \mathbf{u}_n \rangle
-\quad\Longrightarrow\quad
-A' = \begin{pmatrix} 3\cdot 1 &amp; 1\cdot 0 \\ 3\cdot 0 &amp; 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
-</span></p>
-<p>Check one by row times column: <span class="math inline">\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}(1,\ -1)\cdot(3,\ 3) = 0</span></p>
+<div class="keyeq">
+<p><span class="math display">\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\delta_{mn} \qquad \text{when } A\mathbf{u}_n = \lambda_n\mathbf{u}_n</span></p>
 </div>
 <ul>
-<li><strong>Diagonalizing</strong> <span class="math inline">H</span> means finding these axes: <code>eigh</code> returns them as the <strong>columns</strong> of <code>psi</code></li>
+<li>In the axes of its <strong>eigenvectors</strong> a matrix is <strong>diagonal</strong>: eigenvalues on the diagonal, zeros elsewhere</li>
+<li><strong>Diagonalizing</strong> <span class="math inline">H</span> means finding these axes; the diagonal lists the energies, <span class="math inline">{2 - \sqrt{2}},\ 2,\ {2 + \sqrt{2}}</span> for the three-point box</li>
+<li><code>E, U = np.linalg.eigh(H)</code>: the axes are the columns of <code>U</code>, and <code>U.T @ H @ U</code> is diagonal</li>
 </ul>
 </section>
 <section id="dirac-notation-one-language-three-dialects" class="slide level2">
