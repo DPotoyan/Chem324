@@ -163,65 +163,41 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="warm-up-components-of-a-vector" class="slide level2">
-<h2>Warm-up: components of a vector</h2>
+<section id="a-vector-build-it-then-project" class="slide level2">
+<h2>A vector: build it, then project</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/vector_projection.png" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\langle u_1 \vert v\rangle = c_1\,\underbrace{\langle u_1 \vert u_1\rangle}_{1} + c_2\,\underbrace{\langle u_1 \vert u_2\rangle}_{0} = c_1</span></p>
+</section>
+<section id="example-components-of-a-vector" class="slide level2">
+<h2>Example: components of a vector</h2>
 <div class="worked">
-<p>Write <span class="math inline">\mathbf{v} = (3, 4)</span> in the tilted axes <span class="math inline">\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)</span> and <span class="math inline">\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)</span>.</p>
+<p>Write <span class="math inline">\lvert v\rangle = (3, 4)</span> in the tilted axes <span class="math inline">\lvert u_1\rangle = \tfrac{1}{\sqrt{2}}(1, 1)</span> and <span class="math inline">\lvert u_2\rangle = \tfrac{1}{\sqrt{2}}(1, -1)</span>.</p>
 </div>
 <div class="soln fragment">
-<p>Each component is a <strong>projection</strong> (a dot product):</p>
-<p><span class="math display">c_1 = \mathbf{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \mathbf{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}</span></p>
-<p><span class="math display">\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2</span></p>
+<p>Each coefficient is a <strong>projection</strong>:</p>
+<p><span class="math display">c_1 = \langle u_1 \vert v\rangle = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \langle u_2 \vert v\rangle = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}</span></p>
+<p><span class="math display">\lvert v\rangle = c_1\lvert u_1\rangle + c_2\lvert u_2\rangle, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \langle v \vert v\rangle</span></p>
 </div>
 <ul>
-<li>Perpendicular unit axes: components are <strong>projections</strong>, and their squares add up to the <strong>length</strong> squared</li>
+<li>Perpendicular unit axes: coefficients are <strong>projections</strong>, and their squares add up to the <strong>length</strong> squared</li>
 </ul>
 </section>
-<section id="same-recipe-for-functions" class="slide level2">
-<h2>Same recipe for functions</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 38%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">a vector</th>
-<th style="text-align: left;">a function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">its numbers</td>
-<td style="text-align: left;">components <span class="math inline">v_1, v_2</span></td>
-<td style="text-align: left;">values <span class="math inline">\psi(x)</span> at every <span class="math inline">x</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">dot product</td>
-<td style="text-align: left;"><span class="math inline">\mathbf{u}\cdot\mathbf{v} = \sum_j u_j\,v_j</span></td>
-<td style="text-align: left;"><span class="math inline">\int \phi^*\,\psi\,dx</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">in words</td>
-<td style="text-align: left;">multiply matching entries, add</td>
-<td style="text-align: left;">multiply point by point, add up</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">unit axes</td>
-<td style="text-align: left;"><span class="math inline">\mathbf{u}_1, \mathbf{u}_2</span>: perpendicular, length 1</td>
-<td style="text-align: left;">box states <span class="math inline">\psi_1, \psi_2, \dots</span>: orthonormal</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">a component</td>
-<td style="text-align: left;"><span class="math inline">c_k = \mathbf{u}_k\cdot\mathbf{v}</span></td>
-<td style="text-align: left;"><span class="math inline">c_n = \int \psi_n^*\,\psi\,dx</span></td>
-</tr>
-</tbody>
-</table>
+<section id="a-function-the-same-two-steps" class="slide level2">
+<h2>A function: the same two steps</h2>
 <ul>
-<li>Lecture 3.5’s grid made this literal: the integral <strong>is</strong> the dot product of the sampled values, times <span class="math inline">\Delta x</span></li>
+<li><strong>Build:</strong> the box states <span class="math inline">\lvert\psi_n\rangle</span> are the axes, orthonormal, <span class="math inline">\langle \psi_m \vert \psi_n\rangle = \delta_{mn}</span></li>
+</ul>
+<p><span class="math display">\lvert\psi\rangle = c_1\lvert\psi_1\rangle + c_2\lvert\psi_2\rangle + c_3\lvert\psi_3\rangle + \cdots</span></p>
+<ul>
+<li><strong>Project:</strong> the bra <span class="math inline">\langle \psi_m\rvert</span> picks out one coefficient, exactly as for the vector</li>
+</ul>
+<p><span class="math display">\langle \psi_m \vert \psi\rangle = \sum_n c_n\,\underbrace{\langle \psi_m \vert \psi_n\rangle}_{\delta_{mn}} = c_m</span></p>
+<ul>
+<li>The only new step: a bracket of two functions is an <strong>integral</strong>, <span class="math inline">\langle \psi_m \vert \psi\rangle = \int \psi_m^*\,\psi\,dx</span></li>
 </ul>
 </section>
 <section id="one-component-step-by-step" class="slide level2">
@@ -247,10 +223,57 @@ Davit Potoyan
 <li>The same happens for every even <span class="math inline">n</span>: the parabola has <strong>no</strong> even components</li>
 </ul>
 </section>
+<section id="one-structure-two-settings" class="slide level2">
+<h2>One structure, two settings</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">a vector in a plane</th>
+<th style="text-align: left;">a function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">axes</td>
+<td style="text-align: left;"><span class="math inline">\lvert u_1\rangle, \lvert u_2\rangle</span></td>
+<td style="text-align: left;">eigenfunctions <span class="math inline">\lvert\phi_1\rangle, \lvert\phi_2\rangle, \dots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orthonormal</td>
+<td style="text-align: left;"><span class="math inline">\langle u_j \vert u_k\rangle = \delta_{jk}</span></td>
+<td style="text-align: left;"><span class="math inline">\langle \phi_m \vert \phi_n\rangle = \delta_{mn}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">build</td>
+<td style="text-align: left;"><span class="math inline">\lvert v\rangle = \sum_k c_k\lvert u_k\rangle</span></td>
+<td style="text-align: left;"><span class="math inline">\lvert\psi\rangle = \sum_n c_n\lvert\phi_n\rangle</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">project</td>
+<td style="text-align: left;"><span class="math inline">c_k = \langle u_k \vert v\rangle</span></td>
+<td style="text-align: left;"><span class="math inline">c_n = \langle \phi_n \vert \psi\rangle</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">the bracket</td>
+<td style="text-align: left;">multiply matching components, add</td>
+<td style="text-align: left;">multiply point by point, integrate</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Lecture 3.5’s grid made this literal: the integral <strong>is</strong> the dot product of the sampled values, times <span class="math inline">\Delta x</span></li>
+</ul>
+</section>
 <section id="eigenfunctions-are-coordinates" class="slide level2">
 <h2>Eigenfunctions are coordinates</h2>
 <div class="keyeq">
-<p><span class="math display">\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx</span></p>
+<p><span class="math display">\lvert\psi\rangle = \sum_n c_n\,\lvert\phi_n\rangle, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx</span></p>
 </div>
 <ul>
 <li>The eigenfunctions <span class="math inline">\phi_n</span> of an observable are the <strong>axes</strong>; <span class="math inline">c_n</span> says how far <span class="math inline">\psi</span> reaches along axis <span class="math inline">n</span></li>
