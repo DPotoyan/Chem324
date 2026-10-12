@@ -123,18 +123,18 @@ Fig. Three box states, each with a clock that turns at its own rate, $E_n/\hbar 
 import numpy as np
 
 N = 600
-x = np.linspace(-10, 10, N); h = x[1] - x[0]
-H = -0.5 * (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / h**2 + np.diag(0.5 * x**2)
+x = np.linspace(-10, 10, N); dx = x[1] - x[0]
+H = -0.5 * (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / dx**2 + np.diag(0.5 * x**2)
 E, phi = np.linalg.eigh(H)                    # 1. diagonalize once
-phi = phi / np.sqrt(h)                        #    columns normalized as functions
+phi = phi / np.sqrt(dx)                       #    columns normalized as functions
 
 psi0 = np.exp(-(x - 3)**2 / 2) / np.pi**0.25  # ground-state shape, displaced to x = 3
-c = phi.T @ psi0 * h                          # 2. expand: c_n = <phi_n|psi0>
+c = phi.T @ psi0 * dx                         # 2. expand: c_n = <phi_n|psi0>
 
 for t in [0, np.pi / 2, np.pi, 2 * np.pi]:
     psi_t = phi @ (c * np.exp(-1j * E * t))   # 3. attach the phases and add up
     rho = np.abs(psi_t)**2
-    print(f"t = {t:4.2f}   norm = {np.sum(rho) * h:.6f}   <x> = {np.sum(x * rho) * h:+.3f}   3 cos t = {3 * np.cos(t):+.3f}")
+    print(f"t = {t:4.2f}   norm = {np.sum(rho) * dx:.6f}   <x> = {np.sum(x * rho) * dx:+.3f}   3 cos t = {3 * np.cos(t):+.3f}")
 ```
 
 - The norm stays exactly 1, and the average position follows $3\cos t$, the motion of a classical mass on a spring released from $x = 3$. Both facts are explained below.
@@ -254,9 +254,9 @@ from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-x = np.linspace(-6, 6, 600); h = x[1] - x[0]               # hbar = m = 1, both packets start at rest at x0
+x = np.linspace(-6, 6, 600); dx = x[1] - x[0]              # hbar = m = 1, both packets start at rest at x0
 x0 = -2.5
-T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
+T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / dx**2
 psi0 = np.exp(-(x - x0)**2 / 2) / np.pi**0.25
 nf, tmax = 44, 9.4
 ts = np.linspace(0, tmax, nf)
@@ -264,10 +264,10 @@ wells = [(0.5 * x**2, lambda y: y, lambda y: 0.5 * y**2, r"harmonic, $V = \frac{
          (0.1 * x**4, lambda y: 0.4 * y**3, lambda y: 0.1 * y**4, r"quartic, $V = 0.1\,x^4$", ORANGE)]
 data = []
 for V, dV, Vf, title, col in wells:
-    E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(h)
-    c = U.T @ psi0 * h
+    E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(dx)
+    c = U.T @ psi0 * dx
     dens = np.array([np.abs(U @ (c * np.exp(-1j * E * t)))**2 for t in ts])
-    xq = dens @ x * h
+    xq = dens @ x * dx
     dt = 1e-3; xc = np.empty(int(tmax / dt) + 2); xv, vv = x0, 0.0  # velocity Verlet for the classical ball
     for j in range(xc.size):
         xc[j] = xv; a1 = -dV(xv); xv = xv + vv * dt + 0.5 * a1 * dt**2; vv = vv + 0.5 * (a1 - dV(xv)) * dt
@@ -453,14 +453,14 @@ from IPython.display import HTML
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 D = 10.0; a = 1 / np.sqrt(2 * D)                            # hbar = m = 1, harmonic frequency 1 at the bottom
-x = np.linspace(-4, 20, 900); h = x[1] - x[0]
+x = np.linspace(-4, 20, 900); dx = x[1] - x[0]
 V = D * (1 - np.exp(-a * x))**2
-T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
-E, U = np.linalg.eigh(T + np.diag(np.minimum(V, 80))); U = U / np.sqrt(h)
+T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / dx**2
+E, U = np.linalg.eigh(T + np.diag(np.minimum(V, 80))); U = U / np.sqrt(dx)
 psi0 = np.exp(-(x + 1.2)**2 / 2) / np.pi**0.25              # ground-state-shaped packet on the compressed side
-c = U.T @ psi0 * h
+c = U.T @ psi0 * dx
 keep = np.argsort(-c**2)[:30]; cc, UU, EE = c[keep], U[:, keep], E[keep]
-X = UU.T @ (x[:, None] * UU) * h
+X = UU.T @ (x[:, None] * UU) * dx
 tl = np.linspace(0, 2 * np.pi * 44, 6000)
 A = cc * np.exp(-1j * np.outer(tl, EE))
 xm = np.real(np.einsum("ti,ij,tj->t", np.conj(A), X, A))

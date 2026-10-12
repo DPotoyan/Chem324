@@ -71,11 +71,11 @@ Term by term, using $\hat{H}\psi_n = E_n\psi_n$. At $t = 0$ every phase is 1.
 
 ::: {style="font-size: 1.25em"}
 ```python
-x = np.linspace(-10, 10, 600); h = x[1] - x[0]
-H = -0.5 * D2 + np.diag(0.5 * x**2)            # spring: hbar = m = omega = 1
-E, phi = np.linalg.eigh(H); phi /= np.sqrt(h)  # 1. diagonalize once
-c = phi.T @ psi0 * h                           # 2. expand a packet released at x = 3
-psi_t = phi @ (c * np.exp(-1j * E * t))        # 3. attach the phases, add up
+x = np.linspace(-10, 10, 600); dx = x[1] - x[0]
+H = -0.5 * D2 + np.diag(0.5 * x**2)             # spring: hbar = m = omega = 1
+E, phi = np.linalg.eigh(H); phi /= np.sqrt(dx)  # 1. diagonalize once
+c = phi.T @ psi0 * dx                           # 2. expand a packet released at x = 3
+psi_t = phi @ (c * np.exp(-1j * E * t))         # 3. attach the phases, add up
 ```
 :::
 

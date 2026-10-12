@@ -83,12 +83,25 @@ $$\det\begin{pmatrix} 2-\lambda & 1 \\ 1 & 2-\lambda \end{pmatrix} = (2-\lambda)
 $\lambda = 3$: $\mathbf{v} \propto (1, 1)$. $\ \lambda = 1$: $\mathbf{v} \propto (1, -1)$. Check: $3 + 1 = 4$ is the trace, $3 \times 1 = 3$ the determinant.
 :::
 
+## From operators to matrices: four steps
+
+![](../../ch03/images/grid_roadmap.png){.nostretch width="94%" fig-align="center"}
+
+- Each step swaps **calculus** (top) for what a **computer** can store (bottom)
+
+## One vector, two pictures
+
+![](../../ch03/images/arrow_to_bars.png){.nostretch width="92%" fig-align="center"}
+
+- A vector is a **list of numbers**. An arrow shows two or three; **bars show any number**
+- Many bars trace a curve: a **function is a vector**, one component per point
+
 ## A function becomes a vector
 
 ![](../../ch03/images/function_vector.png){.nostretch width="80%" fig-align="center"}
 
-- Sample at $N$ points spaced $h$ apart: $\psi(x) \to (\psi_1, \psi_2, \dots, \psi_N)$, with $\psi_j = \psi(x_j)$
-- Integrals become sums: $\int \phi^*\psi\,dx \;\to\; \sum_j \phi_j^*\,\psi_j\,h$
+- Sample at $N$ points spaced $\Delta x$ apart: $\psi(x) \to (\psi_1, \psi_2, \dots, \psi_N)$, with $\psi_j = \psi(x_j)$
+- Integrals become sums: $\int \phi^*\psi\,dx \;\to\; \sum_j \phi_j^*\,\psi_j\,\Delta x$
 
 ## Multiplying by $x$: a diagonal matrix
 
@@ -108,8 +121,8 @@ $$
 ![](../../ch03/images/difference_stencils.png){.nostretch width="78%" fig-align="center"}
 
 $$
-\psi'(x_j) \approx \frac{\psi_{j+1} - \psi_{j-1}}{2h} \qquad\qquad
-\psi''(x_j) \approx \frac{s_+ - s_-}{h} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}
+\psi'(x_j) \approx \frac{\psi_{j+1} - \psi_{j-1}}{2\Delta x} \qquad\qquad
+\psi''(x_j) \approx \frac{s_+ - s_-}{\Delta x} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{\Delta x^2}
 $$
 
 ## One formula, one matrix row
@@ -117,8 +130,8 @@ $$
 - The curvature formula at point 2 uses three samples, with the numbers $1,\ -2,\ 1$ in front of them:
 
 $$
-\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{h^2}
-= \frac{1}{h^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{\Delta x^2}
+= \frac{1}{\Delta x^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
 $$
 
 - **Row times column:** multiply matching entries, then add them up
@@ -128,14 +141,14 @@ $$
 
 $$
 \begin{aligned}
-\frac{d}{dx} \;\to\; D_1 &= \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix} \\[6pt]
-\frac{d^2}{dx^2} \;\to\; D_2 &= \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
+\frac{d}{dx} \;\to\; D_1 &= \frac{1}{2\Delta x}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix} \\[6pt]
+\frac{d^2}{dx^2} \;\to\; D_2 &= \frac{1}{\Delta x^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
 \end{aligned}
 $$
 
 - **One row per grid point:** the same formula each time, shifted one place to the right
-- Row 1 of $D_2$ gives $(-2\psi_1 + \psi_2)/h^2$: the formula with $\psi_0 = 0$, so the **wall** is built in
-- Momentum $\hat{p} = -i\hbar\,D_1$: $-i\hbar/2h$ above the diagonal, $+i\hbar/2h$ below
+- Row 1 of $D_2$ gives $(-2\psi_1 + \psi_2)/\Delta x^2$: the formula with $\psi_0 = 0$, so the **wall** is built in
+- Momentum $\hat{p} = -i\hbar\,D_1$: $-i\hbar/2\Delta x$ above the diagonal, $+i\hbar/2\Delta x$ below
 
 ## Example: the grid derivative of a plane wave
 
@@ -145,10 +158,10 @@ Apply the centered difference to the samples of a plane wave, $\psi_j = e^{ikx_j
 
 ::: {.soln .fragment}
 $$
-\frac{\psi_{j+1} - \psi_{j-1}}{2h} = \frac{e^{ikh} - e^{-ikh}}{2h}\,e^{ikx_j} = \frac{i\sin kh}{h}\,\psi_j \;\;\xrightarrow{\;kh\,\ll\,1\;}\;\; ik\,\psi_j
+\frac{\psi_{j+1} - \psi_{j-1}}{2\Delta x} = \frac{e^{ik\Delta x} - e^{-ik\Delta x}}{2\Delta x}\,e^{ikx_j} = \frac{i\sin(k\Delta x)}{\Delta x}\,\psi_j \;\;\xrightarrow{\;k\Delta x\,\ll\,1\;}\;\; ik\,\psi_j
 $$
 
-An **eigenvector** of the matrix, as $e^{ikx}$ is an eigenfunction of $d/dx$. Momentum: $\hbar\sin(kh)/h \approx \hbar k$.
+An **eigenvector** of the matrix, as $e^{ikx}$ is an eigenfunction of $d/dx$. Momentum: $\hbar\sin(k\Delta x)/\Delta x \approx \hbar k$.
 :::
 
 - The grid works when there are **many points per wavelength**
@@ -156,7 +169,7 @@ An **eigenvector** of the matrix, as $e^{ikx}$ is an eigenfunction of $d/dx$. Mo
 ## The Hamiltonian is a matrix
 
 $$
-H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2}
+H = -\frac{\hbar^2}{2m}D_2 + V = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \quad \varepsilon = \frac{\hbar^2}{2m\,\Delta x^2}
 $$
 
 ::: {.keyeq}
@@ -196,7 +209,7 @@ $$
 = (2-\sqrt{2})\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
 $$
 
-Yes, with $\lambda = 2 - \sqrt{2}$ (the middle entry $2\sqrt{2} - 2$ is $(2-\sqrt{2})\sqrt{2}$). With $h = L/4$, $\varepsilon = 8\hbar^2/mL^2$ and $E_1 = 4.69\,\hbar^2/mL^2$, close to the exact $4.93$.
+Yes, with $\lambda = 2 - \sqrt{2}$ (the middle entry $2\sqrt{2} - 2$ is $(2-\sqrt{2})\sqrt{2}$). With $\Delta x = L/4$, $\varepsilon = 8\hbar^2/mL^2$ and $E_1 = 4.69\,\hbar^2/mL^2$, close to the exact $4.93$.
 :::
 
 ## More points, better answers
@@ -209,8 +222,8 @@ Yes, with $\lambda = 2 - \sqrt{2}$ (the middle entry $2\sqrt{2} - 2$ is $(2-\sqr
 
 ::: {style="font-size: 1.3em"}
 ```python
-x = np.linspace(-8, 8, 400); h = x[1] - x[0]
-D2 = (np.eye(400, k=1) - 2*np.eye(400) + np.eye(400, k=-1)) / h**2
+x = np.linspace(-8, 8, 400); dx = x[1] - x[0]
+D2 = (np.eye(400, k=1) - 2*np.eye(400) + np.eye(400, k=-1)) / dx**2
 H = -0.5 * D2 + np.diag(0.5 * x**2)      # spring: hbar = m = omega = 1
 E, psi = np.linalg.eigh(H)
 E[:4]                                    # 0.4999  1.4997  2.4993  3.4987
@@ -225,7 +238,7 @@ E[:4]                                    # 0.4999  1.4997  2.4993  3.4987
 - **Ket** $\lvert\psi\rangle$: the column of samples. **Bra** $\langle\psi\rvert$: the same numbers as a row, **conjugated**
 - A bra meeting a ket is an **inner product**, a single number:
 
-$$\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\;\longrightarrow\;\; \int \phi^*\,\psi\,dx$$
+$$\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,\Delta x \;\;\longrightarrow\;\; \int \phi^*\,\psi\,dx$$
 
 ::: {.worked}
 Why conjugate? Take $\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}$ and find $\langle\psi\vert\psi\rangle$.
@@ -249,6 +262,13 @@ For $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$, $\mathbf{e}_1 = (1, 0)$ 
 ::: {.soln .fragment}
 $A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: sandwiching unit vectors picks out **one entry** of the matrix.
 :::
+
+## Count the shapes
+
+![](../../ch03/images/dirac_shapes.png){.nostretch width="96%" fig-align="center"}
+
+- Bra = **row**, operator = **square**, ket = **column**
+- Inner sizes must **match**; the outer sizes give the **result**: a number, or a new ket
 
 ## Same matrix, new axes
 
@@ -281,11 +301,11 @@ Check one by row times column: $\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 
 
 | | integral | Dirac | matrices (numpy) |
 |:-----|:-----|:-----|:-----------|
-| inner product | $\int\phi^*\psi\,dx$ | $\langle\phi\vert\psi\rangle$ | `np.vdot(phi, psi) * h` |
+| inner product | $\int\phi^*\psi\,dx$ | $\langle\phi\vert\psi\rangle$ | `np.vdot(phi, psi) * dx` |
 | operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
-| matrix element | $\int\phi^*\hat{A}\psi\,dx$ | $\langle\phi\vert\hat{A}\vert\psi\rangle$ | `np.vdot(phi, A @ psi) * h` |
+| matrix element | $\int\phi^*\hat{A}\psi\,dx$ | $\langle\phi\vert\hat{A}\vert\psi\rangle$ | `np.vdot(phi, A @ psi) * dx` |
 | eigenproblem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
-| new axes | $\int\phi_m^*\hat{A}\phi_n\,dx$ | $\langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * h` |
+| new axes | $\int\phi_m^*\hat{A}\phi_n\,dx$ | $\langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * dx` |
 
 - The same objects in three dialects: integrals for functions, brackets on paper, matrices on a computer
 

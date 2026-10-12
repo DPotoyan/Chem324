@@ -153,18 +153,18 @@ $$\langle a\phi \vert \psi \rangle = \int (a\phi)^*\,\psi\,dx = a^*\!\int \phi^*
 ## Example: the derivative on two points
 
 ::: {.worked}
-On two grid points $\dfrac{d}{dx} \to D_1 = \dfrac{1}{2h}\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. Find the eigenvalues of $D_1$ and of $P = -i\hbar D_1$.
+On two grid points $\dfrac{d}{dx} \to D_1 = \dfrac{1}{2\Delta x}\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. Find the eigenvalues of $D_1$ and of $P = -i\hbar D_1$.
 :::
 
 ::: {.soln .fragment}
 $$
 \begin{aligned}
-\det(D_1 - \lambda I) &= \lambda^2 + \frac{1}{4h^2} = 0 &&\Rightarrow\quad \lambda = \pm\frac{i}{2h} \\
-P = -i\hbar D_1 &= \frac{\hbar}{2h}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} &&\Rightarrow\quad p = \pm\frac{\hbar}{2h}
+\det(D_1 - \lambda I) &= \lambda^2 + \frac{1}{4\Delta x^2} = 0 &&\Rightarrow\quad \lambda = \pm\frac{i}{2\Delta x} \\
+P = -i\hbar D_1 &= \frac{\hbar}{2\Delta x}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} &&\Rightarrow\quad p = \pm\frac{\hbar}{2\Delta x}
 \end{aligned}
 $$
 
-$D_1$ is the rotation of the last figure: **imaginary** eigenvalues. Times $-i\hbar$ they turn **real**; $P$ is $\tfrac{\hbar}{2h}$ times matrix $D$ above.
+$D_1$ is the rotation of the last figure: **imaginary** eigenvalues. Times $-i\hbar$ they turn **real**; $P$ is $\tfrac{\hbar}{2\Delta x}$ times matrix $D$ above.
 :::
 
 
@@ -247,11 +247,11 @@ $$\left[x,\frac{d}{dx}\right] = -1 \qquad\xrightarrow{\ \times\,(-i\hbar)\ }\qqu
 ## Example: $XP - PX$ on three points
 
 ::: {.worked}
-Three grid points spaced $h$ apart: $X = \operatorname{diag}(x_1, x_2, x_3)$, and $P = -i\hbar D_1$ has $P_{j,j\pm 1} = \mp\dfrac{i\hbar}{2h}$. Find $XP - PX$.
+Three grid points spaced $\Delta x$ apart: $X = \operatorname{diag}(x_1, x_2, x_3)$, and $P = -i\hbar D_1$ has $P_{j,j\pm 1} = \mp\dfrac{i\hbar}{2\Delta x}$. Find $XP - PX$.
 :::
 
 ::: {.soln .fragment}
-Entry by entry, $(XP - PX)_{jk} = (x_j - x_k)\,P_{jk}$ with $x_j - x_{j\pm 1} = \mp h$:
+Entry by entry, $(XP - PX)_{jk} = (x_j - x_k)\,P_{jk}$ with $x_j - x_{j\pm 1} = \mp\Delta x$:
 
 $$XP - PX = \frac{i\hbar}{2}\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \qquad \text{averages the neighbors: } \approx i\hbar\,\psi$$
 

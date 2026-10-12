@@ -1882,10 +1882,152 @@ def barrier_setup():
 
 
 # ============================================================ deck 3.5 "Operators 1: Matrices and Dirac Notation"
-# Page ch03/04 syncs function_vector, difference_stencils, box_grid_states and grid_operators (the first three build
-# the matrix picture step by step before any numpy); page ch03/05 syncs hermitian_dial. basis_turn is deck-only: the
-# page turns the axes live with the JS widget widgets/matrix_arrows.mjs (mode "axes") instead. order_matters is
-# unused since commutator_steps replaced it.
+# Page ch03/04 syncs grid_roadmap, arrow_to_bars, function_vector, difference_stencils, box_grid_states, dirac_shapes
+# and grid_operators (the grid figures build the matrix picture step by step before any numpy); page ch03/05 syncs
+# hermitian_dial. basis_turn is deck-only: the page turns the axes live with the JS widget widgets/matrix_arrows.mjs
+# (mode "axes") instead. order_matters is unused since commutator_steps replaced it.
+
+# ------------------------------------------------------------ the four steps of the section: calculus on top, the grid below (still)
+@register
+def grid_roadmap():
+    from matplotlib.patches import Rectangle, FancyBboxPatch
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    W, Ht = 9.6, 3.75                                           # draw in inches: one data unit = one inch
+    fig = plt.figure(figsize=(W, Ht))
+    ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+    look = {"": ("white", "#ced4da", 1), "C": ("#fbeaec", CARDINAL, 2), "P": ("#f1ecf7", PURPLE, 2), "O": ("#fdf0e0", ORANGE, 2)}
+    s, n = 0.16, 5                                              # icon cell size and matrix size
+    xs, ytop, yic = [1.45, 3.3, 5.15, 7.0], 2.95, 1.2           # step columns, calculus row, grid row
+
+    def block(xc, rows, cols, kind):                            # rows x cols cells centred on (xc, yic); kind(r, c) picks the colour
+        for r in range(rows):
+            for c in range(cols):
+                fc, ec, z = look[kind(r, c)]
+                ax.add_patch(Rectangle((xc + (c - cols / 2) * s, yic + (rows / 2 - 1 - r) * s), s, s, fc=fc, ec=ec, lw=1, zorder=z))
+
+    tops = [r"$\psi(x)$", r"$x,\ \ V(x)$", r"$\dfrac{d}{dx},\ \ \dfrac{d^2}{dx^2}$", r"$\hat{H}\psi = E\,\psi$"]
+    verbs = ["sample", "multiply\npoint by point", "compare\nneighbors", "assemble"]
+    lows = [r"column of samples $\psi_j$", "diagonal matrix", "rows that link\nneighbors: $D_1$, $D_2$",
+            "matrix $H$:\n$H\\mathbf{v} = E\\mathbf{v}$"]
+    kinds = [None, lambda r, c: "P" if r == c else "", lambda r, c: "O" if abs(r - c) <= 1 else "",
+             lambda r, c: "P" if r == c else ("O" if abs(r - c) == 1 else "")]
+    ax.plot([0.55, W - 0.1], [2.4, 2.4], color=GRAY, lw=0.8, ls=(0, (4, 4)), alpha=0.6)
+    ax.text(0.3, ytop, "calculus", rotation=90, ha="center", va="center", fontsize=13, color=TEAL, style="italic")
+    ax.text(0.3, yic, "on a grid", rotation=90, ha="center", va="center", fontsize=13, color=CARDINAL, style="italic")
+    for k, (x, top, verb, low, kind) in enumerate(zip(xs, tops, verbs, lows, kinds), start=1):
+        ax.text(x, ytop + 0.5, f"Step {k}", ha="center", va="center", fontsize=12.5, color=GRAY)
+        ax.add_patch(FancyBboxPatch((x - 0.75, ytop - 0.31), 1.5, 0.62, boxstyle="round,pad=0,rounding_size=0.12",
+                                    fc="#e3f1f5", ec=TEAL, lw=1.4))
+        ax.text(x, ytop, top, ha="center", va="center", fontsize=15)
+        ax.annotate("", xy=(x, yic + 0.52), xytext=(x, ytop - 0.36),
+                    arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6, mutation_scale=16, shrinkA=0, shrinkB=0))
+        ax.text(x + 0.1, 2.03, verb, ha="left", va="center", fontsize=12, color=GRAY, linespacing=1.15)
+        if kind is None:
+            block(x, n, 1, lambda r, c: "C")
+        else:
+            block(x, n, n, kind)
+        ax.text(x, yic - n * s / 2 - 0.13, low, ha="center", va="top", fontsize=12.5, linespacing=1.25)
+    xr = 8.75                                                   # the payoff: eigh turns H into energies and states
+    ax.annotate("", xy=(xr - 0.42, yic), xytext=(xs[3] + n * s / 2 + 0.12, yic),
+                arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6, mutation_scale=16, shrinkA=0, shrinkB=0))
+    ax.text((xr - 0.42 + xs[3] + n * s / 2 + 0.12) / 2, yic + 0.12, "eigh", ha="center", va="bottom", fontsize=13.5,
+            family="monospace", color="k")
+    for k in range(4):
+        ax.plot([xr - 0.3, xr + 0.3], [yic - 0.36 + 0.24 * k] * 2, color="k", lw=2.4, solid_capstyle="butt")
+    ax.text(xr, yic - n * s / 2 - 0.13, "energies $E_n$,\nstates $\\mathbf{v}_n$", ha="center", va="top", fontsize=12.5,
+            linespacing=1.25)
+    fig.savefig(f"{OUT}/grid_roadmap.png", dpi=200)
+    print("wrote", f"{OUT}/grid_roadmap.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ one vector, two pictures: an arrow, its numbers as bars, many bars (still)
+@register
+def arrow_to_bars():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    f = lambda x: np.sin(np.pi * x) + 0.45 * np.sin(2 * np.pi * x)       # the function of function_vector
+    fig = plt.figure(figsize=(9.6, 3.2))
+    gs = fig.add_gridspec(1, 7, width_ratios=[1.15, 0.2, 0.8, 0.2, 1.0, 0.2, 1.15], wspace=0.04)
+    a, s1, b, s2, c, s3, d = (fig.add_subplot(gs[0, j]) for j in range(7))
+    for sp in (s1, s2, s3):                                                  # connectors between the pictures
+        sp.axis("off")
+        sp.annotate("", xy=(0.95, 0.45), xytext=(0.05, 0.45), xycoords="axes fraction",
+                    arrowprops=dict(arrowstyle="simple,head_length=0.7,head_width=0.7,tail_width=0.25", color=PURPLE, alpha=0.8))
+    a.plot([-0.25, 2.45], [0, 0], color=GRAY, lw=0.8); a.plot([0, 0], [-0.25, 1.45], color=GRAY, lw=0.8)
+    a.plot([2, 2], [0, 1], color=GRAY, lw=1, ls=":"); a.plot([0, 2], [1, 1], color=GRAY, lw=1, ls=":")
+    a.plot([0, 2], [0, 0], color=CARDINAL, lw=6, solid_capstyle="butt", zorder=3)   # the two components
+    a.plot([0, 0], [0, 1], color=CARDINAL, lw=6, solid_capstyle="butt", zorder=3)
+    a.annotate("", xy=(2, 1), xytext=(0, 0), zorder=4, arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.6,
+               mutation_scale=20, shrinkA=0, shrinkB=0))
+    a.text(1.0, -0.1, "2", color=CARDINAL, fontsize=14, ha="center", va="top")
+    a.text(-0.1, 0.5, "1", color=CARDINAL, fontsize=14, ha="right", va="center")
+    a.text(2.0, 1.1, r"$(2, 1)$", color=TEAL, fontsize=14, ha="center", va="bottom")
+    a.set_xlim(-0.4, 2.5); a.set_ylim(-0.5, 1.6); a.set_aspect("equal"); a.axis("off")
+    b.bar([1, 2], [2, 1], width=0.62, color=CARDINAL, alpha=0.85)
+    for j, v in ((1, 2), (2, 1)):
+        b.text(j, v + 0.08, f"{v}", color=CARDINAL, fontsize=14, ha="center", va="bottom")
+    b.set_xlim(0.4, 2.6); b.set_ylim(0, 2.55)
+    b.set_xticks([1, 2]); b.set_xticklabels([r"$v_1$", r"$v_2$"], fontsize=13)
+    c.bar(np.arange(1, 8), f(np.arange(1, 8) / 8), width=0.62, color=CARDINAL, alpha=0.85)
+    c.set_xlim(0.3, 7.7); c.set_ylim(0, 1.5)
+    c.set_xticks(range(1, 8)); c.set_xticklabels([str(j) for j in range(1, 8)], fontsize=11.5)
+    M = 40; xm = np.arange(1, M + 1) / (M + 1); xs = np.linspace(0, 1, 300)
+    d.bar(xm, f(xm), width=0.7 / (M + 1), color=CARDINAL, alpha=0.55)
+    d.plot(xs, f(xs), color=TEAL, lw=2.4)
+    d.text(0.66, 0.95, r"$\psi(x)$", color=TEAL, fontsize=14, ha="left")
+    d.set_xlim(-0.02, 1.02); d.set_ylim(0, 1.5); d.set_xticks([]); d.set_xlabel(r"$x$", fontsize=13)
+    for ax in (b, c, d):
+        ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.tick_params(length=0)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.84, bottom=0.14)
+    for ax, title in ((a, "2 numbers as an arrow"), (b, "2 numbers as bars"), (c, "7 numbers as bars"),
+                      (d, "many numbers: a function")):
+        p = ax.get_position()
+        fig.text(p.x0 + p.width / 2, 0.96, title, ha="center", va="top", fontsize=12.5)
+    fig.savefig(f"{OUT}/arrow_to_bars.png", dpi=200)
+    print("wrote", f"{OUT}/arrow_to_bars.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ count the shapes: a bra is a row, an operator a square, a ket a column (still)
+@register
+def dirac_shapes():
+    from matplotlib.patches import Rectangle
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    W, Ht = 9.6, 2.6                                            # draw in inches: one data unit = one inch
+    fig = plt.figure(figsize=(W, Ht))
+    ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+    s, n, ym = 0.19, 4, 1.33                                    # cell size, N, middle line of the shapes
+    look = {"bra": ("#fdf0e0", ORANGE), "op": ("#f1ecf7", PURPLE), "ket": ("#e3f1f5", TEAL), "num": ("#fbeaec", CARDINAL)}
+
+    def shape(x0, rows, cols, kind, below, size):               # rows x cols cells, left edge x0, centred on the line ym
+        fc, ec = look[kind]
+        for r in range(rows):
+            for c in range(cols):
+                ax.add_patch(Rectangle((x0 + c * s, ym + (rows / 2 - 1 - r) * s), s, s, fc=fc, ec=ec, lw=1.2))
+        ax.text(x0 + cols * s / 2, ym - n * s / 2 - 0.34, below, ha="center", va="baseline", fontsize=14, color=ec)
+        ax.text(x0 + cols * s / 2, ym + n * s / 2 + 0.1, size, ha="center", va="bottom", fontsize=11.5, color=GRAY)
+
+    eq = lambda x: ax.text(x, ym, "=", ha="center", va="center", fontsize=18)
+    panels = [(1.35, "inner product", "a number"), (4.15, "an operator acts", "a new ket"), (7.45, "a matrix element", "a number")]
+    for xc, title, note in panels:
+        ax.text(xc, 2.33, title, ha="center", va="center", fontsize=13)
+        ax.text(xc, 0.27, note, ha="center", va="center", fontsize=12.5, color=GRAY)
+    for xv in (2.75, 5.55):
+        ax.plot([xv, xv], [0.15, 2.45], color="#dee2e6", lw=1)
+    shape(0.4, 1, n, "bra", r"$\langle\phi|$", r"$1\times 4$")                       # row times column: a number
+    shape(1.33, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+    eq(1.8); shape(2.0, 1, 1, "num", r"$\langle\phi|\psi\rangle$", r"$1\times 1$")
+    shape(3.2, n, n, "op", r"$\hat{A}$", r"$4\times 4$")                              # matrix times column: a column
+    shape(4.13, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+    eq(4.6); shape(4.8, n, 1, "ket", r"$\hat{A}|\psi\rangle$", r"$4\times 1$")
+    shape(6.0, 1, n, "bra", r"$\langle\phi|$", r"$1\times 4$")                       # row, matrix, column: a number
+    shape(6.93, n, n, "op", r"$\hat{A}$", r"$4\times 4$")
+    shape(7.86, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+    eq(8.33); shape(8.53, 1, 1, "num", r"$\langle\phi|\hat{A}|\psi\rangle$", r"$1\times 1$")
+    fig.savefig(f"{OUT}/dirac_shapes.png", dpi=200)
+    print("wrote", f"{OUT}/dirac_shapes.png")
+    return fig, None
+
 
 # ------------------------------------------------------------ sample a function at N points: it becomes a vector (still)
 @register
@@ -1893,8 +2035,8 @@ def function_vector():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     xs = np.linspace(0, 1, 400)
     f = lambda x: np.sin(np.pi * x) + 0.45 * np.sin(2 * np.pi * x)
-    N, h = 7, 1 / 8
-    xj = h * np.arange(1, N + 1); fj = f(xj)
+    N, dx = 7, 1 / 8
+    xj = dx * np.arange(1, N + 1); fj = f(xj)
     fig = plt.figure(figsize=(9, 3.7))
     gs = fig.add_gridspec(1, 3, width_ratios=[2.6, 0.5, 0.9], wspace=0.05)
     ax, axa, axv = (fig.add_subplot(gs[0, j]) for j in range(3))
@@ -1906,12 +2048,12 @@ def function_vector():
     ax.plot([0, 0], [0, 1.55], color="k", lw=2.6); ax.plot([1, 1], [0, 1.55], color="k", lw=2.6)
     ax.axhline(0, color=GRAY, lw=0.8)
     ax.annotate("", xy=(xj[3], -0.14), xytext=(xj[2], -0.14), arrowprops=dict(arrowstyle="<->", color="k", lw=1.2))
-    ax.text((xj[2] + xj[3]) / 2, -0.2, r"$h$", ha="center", va="top", fontsize=13)
+    ax.text((xj[2] + xj[3]) / 2, -0.2, r"$\Delta x$", ha="center", va="top", fontsize=13)
     ax.set_xlim(-0.03, 1.03); ax.set_ylim(-0.42, 1.6)
     ax.set_xticks(list(xj)); ax.set_xticklabels([rf"$x_{j}$" for j in range(1, N + 1)], fontsize=12)
     ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
     ax.tick_params(length=0)
-    ax.set_title(r"a function, sampled at $N$ points spaced $h$ apart", loc="left", fontsize=12.5)
+    ax.set_title(r"a function, sampled at $N$ points spaced $\Delta x$ apart", loc="left", fontsize=12.5)
     axa.axis("off")
     axa.annotate("", xy=(0.95, 0.5), xytext=(0.05, 0.5), xycoords="axes fraction",
                  arrowprops=dict(arrowstyle="simple,head_length=0.8,head_width=0.8,tail_width=0.3", color=PURPLE, alpha=0.8))
@@ -1937,8 +2079,8 @@ def difference_stencils():
     f = lambda x: 0.75 + 0.42 * np.sin(1.7 * x - 0.6) + 0.06 * x
     df = lambda x: 0.42 * 1.7 * np.cos(1.7 * x - 0.6) + 0.06
     xs = np.linspace(-0.2, 2.6, 300)
-    x0, h = 1.15, 0.55
-    pts = np.array([x0 - h, x0, x0 + h]); fp = f(pts)
+    x0, dx = 1.15, 0.55
+    pts = np.array([x0 - dx, x0, x0 + dx]); fp = f(pts)
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.4, 4.0), gridspec_kw={"wspace": 0.1})
     for ax in (a1, a2):
         ax.plot(xs, f(xs), color=GRAY, lw=2.2, alpha=0.8)
@@ -1948,15 +2090,15 @@ def difference_stencils():
         ax.set_xlim(-0.2, 2.6); ax.set_ylim(-0.62, 1.42)
     t = np.array([x0 - 0.62, x0 + 0.62])
     a1.plot(t, fp[1] + df(x0) * (t - x0), color="k", lw=1.6, ls="--", label=r"tangent at $x_j$: slope $\psi'(x_j)$")
-    sl = (fp[2] - fp[0]) / (2 * h)
-    a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2h$")
+    sl = (fp[2] - fp[0]) / (2 * dx)
+    a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2\Delta x$")
     a1.plot([pts[0], pts[2]], [fp[0], fp[2]], color=PURPLE, lw=1.4, ls=":")
     a1.legend(loc="lower center", frameon=False, fontsize=11.5)
     a1.set_title("first derivative: the slope of the chord", loc="left", fontsize=12.5)
-    a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/h$")
-    a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/h$")
+    a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/\Delta x$")
+    a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/\Delta x$")
     a2.legend(loc="lower left", frameon=False, fontsize=11.5, bbox_to_anchor=(0.0, 0.13))
-    a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{h} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}$",
+    a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{\Delta x} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{\Delta x^2}$",
             transform=a2.transAxes, ha="left", va="bottom", fontsize=12.5)
     a2.set_title("second derivative: how much the slope changes", loc="left", fontsize=12.5)
     fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.09)
@@ -1972,14 +2114,14 @@ def box_grid_states():
     xs = np.linspace(0, 1, 300)                                 # hbar = m = L = 1
     fig = plt.figure(figsize=(9.4, 4.0))
     gs = fig.add_gridspec(3, 3, width_ratios=[1.15, 0.42, 1], hspace=0.25, wspace=0.12)
-    N, h = 3, 0.25
+    N, dx = 3, 0.25
     xg = np.array([0, 0.25, 0.5, 0.75, 1.0])
-    H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h**2)
+    H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx**2)
     Eg, V = np.linalg.eigh(H)
     for r in range(3):
         ax = fig.add_subplot(gs[r, 0])
         n = r + 1
-        v = V[:, r] / np.sqrt(h); v = v * np.sign(v[0])          # normalized as a function, first point positive
+        v = V[:, r] / np.sqrt(dx); v = v * np.sign(v[0])         # normalized as a function, first point positive
         ax.plot(xs, np.sqrt(2) * np.sin(n * np.pi * xs), color=GRAY, lw=1.8, alpha=0.7)
         ax.plot(xg, np.concatenate([[0], v, [0]]), "-o", color=CARDINAL, lw=1.6, ms=7)
         ax.axhline(0, color=GRAY, lw=0.6)
@@ -1993,8 +2135,8 @@ def box_grid_states():
     axl = fig.add_subplot(gs[:, 2])
     cols = [(3, CARDINAL), (10, PURPLE), (30, TEAL)]
     for k, (Ng, col) in enumerate(cols):
-        hh = 1 / (Ng + 1)
-        En = (1 - np.cos(np.arange(1, min(Ng, 4) + 1) * np.pi * hh)) / hh**2
+        dxg = 1 / (Ng + 1)
+        En = (1 - np.cos(np.arange(1, min(Ng, 4) + 1) * np.pi * dxg)) / dxg**2
         axl.hlines(En, k - 0.32, k + 0.32, color=col, lw=3)
     Ex = (np.arange(1, 5) * np.pi)**2 / 2
     axl.hlines(Ex, 3 - 0.32, 3 + 0.32, color="k", lw=3)
@@ -2078,13 +2220,13 @@ def grid_operators():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     div = LinearSegmentedColormap.from_list("div", [TEAL, "white", CARDINAL])
     N = 8                                                       # hbar = m = 1, V = x^2/2 on 8 points
-    x = np.linspace(-2, 2, N); h = x[1] - x[0]
+    x = np.linspace(-2, 2, N); dx = x[1] - x[0]
     up, dn = np.eye(N, k=1), np.eye(N, k=-1)
     X = np.diag(x)
-    P = -1j * (up - dn) / (2 * h)                               # p = -i d/dx as a centered difference
-    H = -0.5 * (up - 2 * np.eye(N) + dn) / h**2 + np.diag(0.5 * x**2)
+    P = -1j * (up - dn) / (2 * dx)                              # p = -i d/dx as a centered difference
+    H = -0.5 * (up - 2 * np.eye(N) + dn) / dx**2 + np.diag(0.5 * x**2)
     panels = [(X, r"$\hat{x}$", "grid positions on the diagonal\nreal, symmetric"),
-              (P.imag, r"$\hat{p}$  (imaginary part)", r"$\mp i\hbar/2h$ next to the diagonal" + "\nimaginary, antisymmetric"),
+              (P.imag, r"$\hat{p}$  (imaginary part)", r"$\mp i\hbar/2\Delta x$ next to the diagonal" + "\nimaginary, antisymmetric"),
               (H, r"$\hat{H}$", "$V$ on the diagonal, neighbors linked\nreal, symmetric")]
     fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.8))
     for ax, (M, title, note) in zip(axs, panels):
@@ -2155,12 +2297,12 @@ def hermitian_dial():
 @register
 def order_matters():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]          # hbar = 1; psi real, so x p psi and p x psi are imaginary
+    x = np.linspace(-4.5, 4.5, 900); dx = x[1] - x[0]         # hbar = 1; psi real, so x p psi and p x psi are imaginary
     funcs = [np.exp(-x**2 / 2) * (1 + 0.5 * x),
              np.exp(-x**2 / 5) * np.cos(2.2 * x) + 0.3 * np.exp(-(x - 1.5)**2)]
     fig, axs = plt.subplots(1, 2, figsize=(9, 3.6))
     for k, (ax, psi) in enumerate(zip(axs, funcs)):
-        d = np.gradient(psi, h)
+        d = np.gradient(psi, dx)
         xp, px = -x * d, -(psi + x * d)                         # (x p psi)/(i hbar) and (p x psi)/(i hbar)
         ax.plot(x, xp, color=TEAL, lw=2.2, label=r"$\hat{x}\hat{p}\,\psi\ /\ i\hbar$")
         ax.plot(x, px, color=ORANGE, lw=2.2, ls="--", label=r"$\hat{p}\hat{x}\,\psi\ /\ i\hbar$")
@@ -2337,9 +2479,9 @@ def flip_swap():
 @register
 def commutator_steps():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]
+    x = np.linspace(-4.5, 4.5, 900); dx = x[1] - x[0]
     f = np.exp(-x**2 / 2) * (1 + 0.5 * x)                       # any smooth test function
-    fp = np.gradient(f, h)
+    fp = np.gradient(f, dx)
     xfp, dxf = x * fp, f + x * fp                                # x f'  and  (x f)' = f + x f'
     fig, axs = plt.subplots(1, 3, figsize=(10.5, 3.5), sharey=True)
     for ax in axs:
@@ -2758,9 +2900,9 @@ def free_spread():
 @register
 def ehrenfest_wells():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    x = np.linspace(-6, 6, 600); h = x[1] - x[0]               # hbar = m = 1, both packets start at rest at x0
+    x = np.linspace(-6, 6, 600); dx = x[1] - x[0]              # hbar = m = 1, both packets start at rest at x0
     x0 = -2.5
-    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
+    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / dx**2
     psi0 = np.exp(-(x - x0)**2 / 2) / np.pi**0.25
     nf, tmax = 44, 9.4
     ts = np.linspace(0, tmax, nf)
@@ -2768,10 +2910,10 @@ def ehrenfest_wells():
              (0.1 * x**4, lambda y: 0.4 * y**3, lambda y: 0.1 * y**4, r"quartic, $V = 0.1\,x^4$", ORANGE)]
     data = []
     for V, dV, Vf, title, col in wells:
-        E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(h)
-        c = U.T @ psi0 * h
+        E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(dx)
+        c = U.T @ psi0 * dx
         dens = np.array([np.abs(U @ (c * np.exp(-1j * E * t)))**2 for t in ts])
-        xq = dens @ x * h
+        xq = dens @ x * dx
         dt = 1e-3; xc = np.empty(int(tmax / dt) + 2); xv, vv = x0, 0.0  # velocity Verlet for the classical ball
         for j in range(xc.size):
             xc[j] = xv; a1 = -dV(xv); xv = xv + vv * dt + 0.5 * a1 * dt**2; vv = vv + 0.5 * (a1 - dV(xv)) * dt
@@ -2884,14 +3026,14 @@ def box_revival():
 def morse_revival():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     D = 10.0; a = 1 / np.sqrt(2 * D)                            # hbar = m = 1, harmonic frequency 1 at the bottom
-    x = np.linspace(-4, 20, 900); h = x[1] - x[0]
+    x = np.linspace(-4, 20, 900); dx = x[1] - x[0]
     V = D * (1 - np.exp(-a * x))**2
-    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / h**2
-    E, U = np.linalg.eigh(T + np.diag(np.minimum(V, 80))); U = U / np.sqrt(h)
+    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / dx**2
+    E, U = np.linalg.eigh(T + np.diag(np.minimum(V, 80))); U = U / np.sqrt(dx)
     psi0 = np.exp(-(x + 1.2)**2 / 2) / np.pi**0.25              # ground-state-shaped packet on the compressed side
-    c = U.T @ psi0 * h
+    c = U.T @ psi0 * dx
     keep = np.argsort(-c**2)[:30]; cc, UU, EE = c[keep], U[:, keep], E[keep]
-    X = UU.T @ (x[:, None] * UU) * h
+    X = UU.T @ (x[:, None] * UU) * dx
     tl = np.linspace(0, 2 * np.pi * 44, 6000)
     A = cc * np.exp(-1j * np.outer(tl, EE))
     xm = np.real(np.einsum("ti,ij,tj->t", np.conj(A), X, A))

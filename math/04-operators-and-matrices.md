@@ -22,7 +22,7 @@ Under the calculus of quantum mechanics lies a simpler and more powerful truth: 
 
 Take any function and evaluate it at $N$ points $x = (x_1, x_2, \ldots, x_N)$. The list of values is a vector with $N$ components. For example $f(x) = x^2$ sampled at $x = (0,1,2,3,4)$ becomes the vector $(0,1,4,9,16)$.
 
-Now let the grid get finer, $N\to\infty$ with spacing $h\to 0$. The vector gains a component for **every** point $x$, and in that limit the function *is* an infinite-dimensional vector. The value $\psi(x)$ plays the role of "the component at $x$," exactly as $v_i$ is the component of $\mathbf{v}$ along basis direction $i$. The left panel below shows a smooth function and the vector of samples that stands in for it on a grid.
+Now let the grid get finer, $N\to\infty$ with spacing $\Delta x\to 0$. The vector gains a component for **every** point $x$, and in that limit the function *is* an infinite-dimensional vector. The value $\psi(x)$ plays the role of "the component at $x$," exactly as $v_i$ is the component of $\mathbf{v}$ along basis direction $i$. The left panel below shows a smooth function and the vector of samples that stands in for it on a grid.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -61,11 +61,11 @@ plt.show()
 
 ### The inner product becomes an integral
 
-This is the link that makes the analogy precise. The dot product of two vectors sums the products of matching components. For function-vectors, that sum over grid points, weighted by the spacing $h$, is a Riemann sum, and in the fine-grid limit it becomes an **integral**:
+This is the link that makes the analogy precise. The dot product of two vectors sums the products of matching components. For function-vectors, that sum over grid points, weighted by the spacing $\Delta x$, is a Riemann sum, and in the fine-grid limit it becomes an **integral**:
 
 $$
-\langle f \mid g \rangle = \sum_i f^*(x_i)\,g(x_i)\,h
-\;\xrightarrow[h\to 0]{}\;
+\langle f \mid g \rangle = \sum_i f^*(x_i)\,g(x_i)\,\Delta x
+\;\xrightarrow[\Delta x\to 0]{}\;
 \int f^*(x)\,g(x)\,dx.
 $$
 
@@ -99,13 +99,13 @@ Under the hood, quantum mechanics is linear algebra in an infinite-dimensional s
 The recipe for turning a derivative into a matrix is the **stencil**: a small pattern of weights applied to each grid point and its neighbors. The first derivative uses a **centered difference**, the slope between the neighbor on the left and the neighbor on the right:
 
 $$
-\frac{d\psi}{dx}\bigg|_{x_i} \approx \frac{\psi(x_{i+1}) - \psi(x_{i-1})}{2h}.
+\frac{d\psi}{dx}\bigg|_{x_i} \approx \frac{\psi(x_{i+1}) - \psi(x_{i-1})}{2\Delta x}.
 $$
 
 Written as a matrix acting on the sampled vector (with one-sided formulas at the two boundaries), this is
 
 $$
-D_1 = \frac{1}{2h}
+D_1 = \frac{1}{2\Delta x}
 \begin{pmatrix}
 -3 & 4 & -1 & 0 & 0 \\
 -1 & 0 & 1 & 0 & 0 \\
@@ -120,10 +120,10 @@ import numpy as np
 
 n = 5
 x = np.linspace(0, 4, n)
-h = x[1] - x[0]
+dx = x[1] - x[0]
 psi = x**2
 
-D1 = (1 / (2 * h)) * np.array([
+D1 = (1 / (2 * dx)) * np.array([
     [-3, 4, -1, 0, 0],
     [-1, 0, 1, 0, 0],
     [0, -1, 0, 1, 0],
@@ -135,7 +135,7 @@ print("finite-difference derivative of x^2:", D1 @ psi)
 print("exact derivative 2x               :", 2 * x)
 ```
 
-The **second derivative** uses the three-point stencil $\psi_{i+1} - 2\psi_i + \psi_{i-1}$ over $h^2$, the $(1,-2,1)$ pattern sketched in Fig.1b. Because each point couples only to its two neighbors, the matrix is **banded** (tridiagonal): almost all entries are zero. The left panel below shows that sparsity pattern; the right panel confirms the matrix works by turning $\sin x$ into $-\sin x$, since $\frac{d^2}{dx^2}\sin x = -\sin x$.
+The **second derivative** uses the three-point stencil $\psi_{i+1} - 2\psi_i + \psi_{i-1}$ over $\Delta x^2$, the $(1,-2,1)$ pattern sketched in Fig.1b. Because each point couples only to its two neighbors, the matrix is **banded** (tridiagonal): almost all entries are zero. The left panel below shows that sparsity pattern; the right panel confirms the matrix works by turning $\sin x$ into $-\sin x$, since $\frac{d^2}{dx^2}\sin x = -\sin x$.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -144,12 +144,12 @@ import matplotlib.pyplot as plt
 
 N = 200
 x = np.linspace(0, 2 * np.pi, N)
-h = x[1] - x[0]
+dx = x[1] - x[0]
 
-# Second-derivative matrix, tridiagonal (1, -2, 1) / h^2
+# Second-derivative matrix, tridiagonal (1, -2, 1) / dx^2
 D2 = (np.diag(np.ones(N - 1), 1)
       - 2 * np.diag(np.ones(N))
-      + np.diag(np.ones(N - 1), -1)) / h**2
+      + np.diag(np.ones(N - 1), -1)) / dx**2
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
 
@@ -324,7 +324,7 @@ Hermitian and unitary matrices are two sides of one coin: if $\hat H$ is Hermiti
 
 ### Problem 1: Read off a derivative matrix
 
-Using the first-derivative matrix $D_1$ above with $h=1$, apply it to the constant vector $\psi = (5,5,5,5,5)$. What do you expect, and why?
+Using the first-derivative matrix $D_1$ above with $\Delta x = 1$, apply it to the constant vector $\psi = (5,5,5,5,5)$. What do you expect, and why?
 
 :::{admonition} **Solution**
 :class: dropdown solution
