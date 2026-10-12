@@ -245,7 +245,7 @@ Why conjugate? Take $\lvert\psi\rangle = \begin{pmatrix} 1 \\ i \end{pmatrix}$ a
 :::
 
 ::: {.soln .fragment}
-$\langle\psi\rvert = (1,\ -i)$, so $\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2$: a real, positive **length squared**. Without the conjugate, $1 + i^2 = 0$: a nonzero vector of length zero.
+$\langle\psi\rvert = (1,\ -i)$, so $\langle\psi\vert\psi\rangle = 1\cdot 1 + (-i)(i) = 2$: a real, positive **length squared**. Without the conjugate, $1 + i^2 = 0$: a nonzero vector of length zero. So a constant leaves a bra **conjugated**: $\langle c\,\phi \vert \psi \rangle = c^*\langle \phi \vert \psi \rangle$.
 :::
 
 ## Sandwiches: matrix elements
@@ -270,32 +270,17 @@ $A\,\mathbf{e}_2 = (1,\ 2)$, then $\mathbf{e}_1 \cdot (1,\ 2) = 1 = A_{12}$: san
 - Bra = **row**, operator = **square**, ket = **column**
 - Inner sizes must **match**; the outer sizes give the **result**: a number, or a new ket
 
-## Same matrix, new axes
+## Diagonalizing a Hamiltonian
 
-![](../../ch03/images/basis_turn.gif){.nostretch width="78%" fig-align="center"}
+- The entries of a matrix depend on the **axes**; the operator does not. In perpendicular unit axes $\mathbf{u}_1, \mathbf{u}_2, \dots$ each entry is a sandwich, $A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$
 
-- Each entry is a sandwich, $A'_{mn} = \langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle$: **purple** along its own axis, **orange** off it
-- The entries change; **trace** 4 and **determinant** 3 never do, so neither do the **eigenvalues**
-
-## Example: diagonal in its own eigenbasis
-
-::: {.worked}
-Write $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in its eigenvector axes, $\mathbf{u}_{1,2} = \tfrac{1}{\sqrt{2}}(1,\ \pm 1)$.
+::: {.keyeq}
+$$\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\delta_{mn} \qquad \text{when } A\mathbf{u}_n = \lambda_n\mathbf{u}_n$$
 :::
 
-::: {.soln .fragment}
-Each $\mathbf{u}_n$ only stretches, $A\mathbf{u}_n = \lambda_n\mathbf{u}_n$, so a sandwich is an eigenvalue times an overlap:
-
-$$
-\langle \mathbf{u}_m \vert A \vert \mathbf{u}_n \rangle = \lambda_n\,\langle \mathbf{u}_m \vert \mathbf{u}_n \rangle
-\quad\Longrightarrow\quad
-A' = \begin{pmatrix} 3\cdot 1 & 1\cdot 0 \\ 3\cdot 0 & 1\cdot 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}
-$$
-
-Check one by row times column: $\langle \mathbf{u}_2 \vert A \vert \mathbf{u}_1 \rangle = \tfrac{1}{2}(1,\ -1)\cdot(3,\ 3) = 0$
-:::
-
-- **Diagonalizing** $H$ means finding these axes: `eigh` returns them as the **columns** of `psi`
+- In the axes of its **eigenvectors** a matrix is **diagonal**: eigenvalues on the diagonal, zeros elsewhere
+- **Diagonalizing** $H$ means finding these axes; the diagonal lists the energies, ${2 - \sqrt{2}},\ 2,\ {2 + \sqrt{2}}$ for the three-point box
+- `E, U = np.linalg.eigh(H)`: the axes are the columns of `U`, and `U.T @ H @ U` is diagonal
 
 ## Dirac notation: one language, three dialects
 
