@@ -1885,7 +1885,8 @@ def barrier_setup():
 # Page ch03/04 syncs grid_roadmap, arrow_to_bars, function_vector, difference_stencils, box_grid_states, dirac_shapes
 # and grid_operators (the grid figures build the matrix picture step by step before any numpy); page ch03/05 syncs
 # hermitian_dial. basis_turn is deck-only: the page turns the axes live with the JS widget widgets/matrix_arrows.mjs
-# (mode "axes") instead. order_matters is unused since commutator_steps replaced it.
+# (mode "axes") instead. order_matters is unused since commutator_steps replaced it. flip_swap_anim (deck 05b) is
+# deck-only too: page ch03/05 keeps the flip_swap still and lets students apply the mirrors in widgets/flip_swap.mjs.
 
 # ------------------------------------------------------------ the four steps of the section: calculus on top, the grid below (still)
 @register
@@ -2474,6 +2475,70 @@ def flip_swap():
     print("wrote", f"{OUT}/flip_swap.png")
     return fig, None
 
+
+# ------------------------------------------------------------ flip and swap in both orders, mirror by mirror (deck GIF; the page has widgets/flip_swap.mjs)
+@register
+def flip_swap_anim():
+    from matplotlib.patches import FancyArrowPatch
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    F = np.array([[1.0, 0.0], [0.0, -1.0]]); dF = np.array([1.0, 0.0])               # flip: mirror in the x axis
+    S = np.array([[0.0, 1.0], [1.0, 0.0]]); dS = np.array([1.0, 1.0]) / np.sqrt(2)   # swap: mirror in the line y = x
+    strokes = [np.array([[0.25, 0.2], [0.25, 1.0]]), np.array([[0.25, 1.0], [0.8, 1.0]]),
+               np.array([[0.25, 0.6], [0.65, 0.6]])]          # the letter F, as in flip_swap
+    partial = lambda d, c: (1 - c) * np.outer(d, d) + c * np.eye(2)    # part way through a mirror: across-part scales by c
+    ease = lambda s: 0.5 - 0.5 * np.cos(np.pi * s)
+    n0, ns, n1, nf = 10, 16, 8, 26                              # hold, step, hold, step, hold the result
+    frames = ([("start", 0.0)] * n0 + [("one", ease((k + 1) / ns)) for k in range(ns)] + [("mid", 1.0)] * n1
+              + [("two", ease((k + 1) / ns)) for k in range(ns)] + [("end", 1.0)] * nf)
+    fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.7))
+    mline = lambda ax, d, **kw: ax.plot(*(np.outer([-1.5, 1.5], d / np.abs(d).max()).T), color=PURPLE, lw=1.6,
+                                        ls=(0, (5, 4)), **kw)[0]
+    for ax, title in zip(axs, ["start: two mirrors", r"swap, then flip:  $F\,S$", r"flip, then swap:  $S\,F$"]):
+        ax.axhline(0, color=GRAY, lw=0.8); ax.axvline(0, color=GRAY, lw=0.8)
+        ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, fontsize=14.5)
+    for s in strokes:                                           # the start panel: the letter and both mirror lines
+        axs[0].plot(*s.T, color=TEAL, lw=7, solid_capstyle="round")
+    mline(axs[0], dF, alpha=0.7); mline(axs[0], dS, alpha=0.7)
+    axs[0].text(1.45, 0.1, "F", color=PURPLE, fontsize=15, fontweight="bold", ha="right", va="bottom")
+    axs[0].text(1.05, 1.32, "S", color=PURPLE, fontsize=15, fontweight="bold", ha="right", va="center")
+    axs[0].text(0.5, -0.02, "F flips, S swaps x and y", transform=axs[0].transAxes, fontsize=13, ha="center", va="top", color=GRAY)
+    orders = [(axs[1], S, dS, F, dF, ("1. swap: mirror in y = x", "2. flip: mirror in the x axis", "turned 90° clockwise"), (78, -12)),
+              (axs[2], F, dF, S, dS, ("1. flip: mirror in the x axis", "2. swap: mirror in y = x", "turned 90° counterclockwise"), (72, 162))]
+    art = []
+    for ax, M1, d1, M2, d2, notes, (a0, a1) in orders:
+        for s in strokes:
+            ax.plot(*s.T, color=TEAL, lw=7, alpha=0.3, solid_capstyle="round")   # where the letter started
+        ghost = [ax.plot([], [], color=GRAY, lw=3.5, ls=(0, (1.5, 2.5)), alpha=0.8)[0] for _ in strokes]
+        moving = [ax.plot([], [], color=CARDINAL, lw=7, solid_capstyle="round", zorder=4)[0] for _ in strokes]
+        mirror = ax.plot([], [], color=PURPLE, lw=2.2, ls=(0, (5, 4)), zorder=3)[0]
+        note = ax.text(0.5, -0.02, "", transform=ax.transAxes, fontsize=13, ha="center", va="top")
+        arc = np.radians(np.linspace(a0, a1, 60))
+        arcline = ax.plot(1.38 * np.cos(arc), 1.38 * np.sin(arc), color=CARDINAL, lw=1.6, visible=False)[0]
+        head = FancyArrowPatch((1.38 * np.cos(arc[-4]), 1.38 * np.sin(arc[-4])), (1.38 * np.cos(arc[-1]), 1.38 * np.sin(arc[-1])),
+                               arrowstyle="-|>", mutation_scale=18, color=CARDINAL, lw=1.6, visible=False)
+        ax.add_patch(head)
+        art.append((M1, d1, M2, d2, notes, ghost, moving, mirror, note, arcline, head))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.12, wspace=0.08)
+
+    def update(i):
+        phase, s = frames[i]
+        for M1, d1, M2, d2, notes, ghost, moving, mirror, note, arcline, head in art:
+            T = {"start": np.eye(2), "one": partial(d1, np.cos(np.pi * s)), "mid": M1,
+                 "two": partial(d2, np.cos(np.pi * s)) @ M1, "end": M2 @ M1}[phase]
+            for line, st in zip(moving, strokes):
+                line.set_data(*(T @ st.T))
+            for line, st in zip(ghost, strokes):                # after the first mirror, a dotted copy stays behind
+                line.set_data(*(M1 @ st.T) if phase in ("two", "end") else ([], []))
+            d = {"one": d1, "two": d2}.get(phase)
+            mirror.set_data(*(np.outer([-1.5, 1.5], d / np.abs(d).max()).T) if d is not None else ([], []))
+            note.set_text({"start": "", "one": notes[0], "mid": notes[0], "two": notes[1], "end": notes[2]}[phase])
+            note.set_color(CARDINAL if phase == "end" else GRAY)
+            arcline.set_visible(phase == "end"); head.set_visible(phase == "end")
+
+    update(0)
+    ani = FuncAnimation(fig, update, frames=len(frames), interval=1000 / 15, blit=False)
+    return fig, ani
 
 # ------------------------------------------------------------ [x, d/dx] in three steps: f, the two orders, their difference (still)
 @register
