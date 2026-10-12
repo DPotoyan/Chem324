@@ -125,9 +125,124 @@ For $\lambda = 3$, the first row of $(A - 3I)\mathbf{v} = 0$ reads $-v_1 + v_2 =
 
 A computer cannot store a function, only a list of numbers. Turning functions into lists and operators into tables of numbers is how every quantum chemistry program works, and it makes the abstract properties of operators, Hermitian or commuting, concrete enough to check by eye. We build the dictionary in four steps. [Operators as Matrices](../math/04-operators-and-matrices.md) in Appendix A has more on each.
 
+```{code-cell} python
+:tags: [hide-input]
+# synced: grid_roadmap
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import Rectangle, FancyBboxPatch
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+W, Ht = 9.6, 3.75                                           # draw in inches: one data unit = one inch
+fig = plt.figure(figsize=(W, Ht))
+ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+look = {"": ("white", "#ced4da", 1), "C": ("#fbeaec", CARDINAL, 2), "P": ("#f1ecf7", PURPLE, 2), "O": ("#fdf0e0", ORANGE, 2)}
+s, n = 0.16, 5                                              # icon cell size and matrix size
+xs, ytop, yic = [1.45, 3.3, 5.15, 7.0], 2.95, 1.2           # step columns, calculus row, grid row
+
+def block(xc, rows, cols, kind):                            # rows x cols cells centred on (xc, yic); kind(r, c) picks the colour
+    for r in range(rows):
+        for c in range(cols):
+            fc, ec, z = look[kind(r, c)]
+            ax.add_patch(Rectangle((xc + (c - cols / 2) * s, yic + (rows / 2 - 1 - r) * s), s, s, fc=fc, ec=ec, lw=1, zorder=z))
+
+tops = [r"$\psi(x)$", r"$x,\ \ V(x)$", r"$\dfrac{d}{dx},\ \ \dfrac{d^2}{dx^2}$", r"$\hat{H}\psi = E\,\psi$"]
+verbs = ["sample", "multiply\npoint by point", "compare\nneighbors", "assemble"]
+lows = [r"column of samples $\psi_j$", "diagonal matrix", "rows that link\nneighbors: $D_1$, $D_2$",
+        "matrix $H$:\n$H\\mathbf{v} = E\\mathbf{v}$"]
+kinds = [None, lambda r, c: "P" if r == c else "", lambda r, c: "O" if abs(r - c) <= 1 else "",
+         lambda r, c: "P" if r == c else ("O" if abs(r - c) == 1 else "")]
+ax.plot([0.55, W - 0.1], [2.4, 2.4], color=GRAY, lw=0.8, ls=(0, (4, 4)), alpha=0.6)
+ax.text(0.3, ytop, "calculus", rotation=90, ha="center", va="center", fontsize=13, color=TEAL, style="italic")
+ax.text(0.3, yic, "on a grid", rotation=90, ha="center", va="center", fontsize=13, color=CARDINAL, style="italic")
+for k, (x, top, verb, low, kind) in enumerate(zip(xs, tops, verbs, lows, kinds), start=1):
+    ax.text(x, ytop + 0.5, f"Step {k}", ha="center", va="center", fontsize=12.5, color=GRAY)
+    ax.add_patch(FancyBboxPatch((x - 0.75, ytop - 0.31), 1.5, 0.62, boxstyle="round,pad=0,rounding_size=0.12",
+                                fc="#e3f1f5", ec=TEAL, lw=1.4))
+    ax.text(x, ytop, top, ha="center", va="center", fontsize=15)
+    ax.annotate("", xy=(x, yic + 0.52), xytext=(x, ytop - 0.36),
+                arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6, mutation_scale=16, shrinkA=0, shrinkB=0))
+    ax.text(x + 0.1, 2.03, verb, ha="left", va="center", fontsize=12, color=GRAY, linespacing=1.15)
+    if kind is None:
+        block(x, n, 1, lambda r, c: "C")
+    else:
+        block(x, n, n, kind)
+    ax.text(x, yic - n * s / 2 - 0.13, low, ha="center", va="top", fontsize=12.5, linespacing=1.25)
+xr = 8.75                                                   # the payoff: eigh turns H into energies and states
+ax.annotate("", xy=(xr - 0.42, yic), xytext=(xs[3] + n * s / 2 + 0.12, yic),
+            arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6, mutation_scale=16, shrinkA=0, shrinkB=0))
+ax.text((xr - 0.42 + xs[3] + n * s / 2 + 0.12) / 2, yic + 0.12, "eigh", ha="center", va="bottom", fontsize=13.5,
+        family="monospace", color="k")
+for k in range(4):
+    ax.plot([xr - 0.3, xr + 0.3], [yic - 0.36 + 0.24 * k] * 2, color="k", lw=2.4, solid_capstyle="butt")
+ax.text(xr, yic - n * s / 2 - 0.13, "energies $E_n$,\nstates $\\mathbf{v}_n$", ha="center", va="top", fontsize=12.5,
+        linespacing=1.25)
+plt.show()
+```
+
+Fig. The four steps of this section. Each one trades something from calculus (top row) for something a computer can store (bottom row): the function for a column of samples, multiplication for a diagonal matrix, derivatives for rows that link neighbors, and the Schrödinger equation for a matrix whose eigenvalues `eigh` finds.
+
 #### Step 1: a function becomes a vector
 
-- Pick $N$ grid points $x_1, x_2, \dots, x_N$ spaced $h$ apart and record the value of the function at each one, $\psi_j = \psi(x_j)$. The function becomes a column of $N$ numbers.
+- A vector is a list of numbers, its components. The arrow $(2, 1)$ is the list $2, 1$, and the same two numbers can be drawn as two bars. An arrow can show two or three components; bars can show any number.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: arrow_to_bars
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+f = lambda x: np.sin(np.pi * x) + 0.45 * np.sin(2 * np.pi * x)       # the function of function_vector
+fig = plt.figure(figsize=(9.6, 3.2))
+gs = fig.add_gridspec(1, 7, width_ratios=[1.15, 0.2, 0.8, 0.2, 1.0, 0.2, 1.15], wspace=0.04)
+a, s1, b, s2, c, s3, d = (fig.add_subplot(gs[0, j]) for j in range(7))
+for sp in (s1, s2, s3):                                                  # connectors between the pictures
+    sp.axis("off")
+    sp.annotate("", xy=(0.95, 0.45), xytext=(0.05, 0.45), xycoords="axes fraction",
+                arrowprops=dict(arrowstyle="simple,head_length=0.7,head_width=0.7,tail_width=0.25", color=PURPLE, alpha=0.8))
+a.plot([-0.25, 2.45], [0, 0], color=GRAY, lw=0.8); a.plot([0, 0], [-0.25, 1.45], color=GRAY, lw=0.8)
+a.plot([2, 2], [0, 1], color=GRAY, lw=1, ls=":"); a.plot([0, 2], [1, 1], color=GRAY, lw=1, ls=":")
+a.plot([0, 2], [0, 0], color=CARDINAL, lw=6, solid_capstyle="butt", zorder=3)   # the two components
+a.plot([0, 0], [0, 1], color=CARDINAL, lw=6, solid_capstyle="butt", zorder=3)
+a.annotate("", xy=(2, 1), xytext=(0, 0), zorder=4, arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.6,
+           mutation_scale=20, shrinkA=0, shrinkB=0))
+a.text(1.0, -0.1, "2", color=CARDINAL, fontsize=14, ha="center", va="top")
+a.text(-0.1, 0.5, "1", color=CARDINAL, fontsize=14, ha="right", va="center")
+a.text(2.0, 1.1, r"$(2, 1)$", color=TEAL, fontsize=14, ha="center", va="bottom")
+a.set_xlim(-0.4, 2.5); a.set_ylim(-0.5, 1.6); a.set_aspect("equal"); a.axis("off")
+b.bar([1, 2], [2, 1], width=0.62, color=CARDINAL, alpha=0.85)
+for j, v in ((1, 2), (2, 1)):
+    b.text(j, v + 0.08, f"{v}", color=CARDINAL, fontsize=14, ha="center", va="bottom")
+b.set_xlim(0.4, 2.6); b.set_ylim(0, 2.55)
+b.set_xticks([1, 2]); b.set_xticklabels([r"$v_1$", r"$v_2$"], fontsize=13)
+c.bar(np.arange(1, 8), f(np.arange(1, 8) / 8), width=0.62, color=CARDINAL, alpha=0.85)
+c.set_xlim(0.3, 7.7); c.set_ylim(0, 1.5)
+c.set_xticks(range(1, 8)); c.set_xticklabels([str(j) for j in range(1, 8)], fontsize=11.5)
+M = 40; xm = np.arange(1, M + 1) / (M + 1); xs = np.linspace(0, 1, 300)
+d.bar(xm, f(xm), width=0.7 / (M + 1), color=CARDINAL, alpha=0.55)
+d.plot(xs, f(xs), color=TEAL, lw=2.4)
+d.text(0.66, 0.95, r"$\psi(x)$", color=TEAL, fontsize=14, ha="left")
+d.set_xlim(-0.02, 1.02); d.set_ylim(0, 1.5); d.set_xticks([]); d.set_xlabel(r"$x$", fontsize=13)
+for ax in (b, c, d):
+    ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.tick_params(length=0)
+fig.subplots_adjust(left=0.01, right=0.99, top=0.84, bottom=0.14)
+for ax, title in ((a, "2 numbers as an arrow"), (b, "2 numbers as bars"), (c, "7 numbers as bars"),
+                  (d, "many numbers: a function")):
+    p = ax.get_position()
+    fig.text(p.x0 + p.width / 2, 0.96, title, ha="center", va="top", fontsize=12.5)
+plt.show()
+```
+
+Fig. One vector, two pictures. The arrow $(2, 1)$ and its two components (red), then the same two numbers as bars. No arrow can show seven components, but seven bars can, and with many bars the tops trace a function.
+
+- So a function is a vector too, with one component per point. Pick $N$ grid points $x_1, x_2, \dots, x_N$ spaced $\Delta x$ apart and record the value of the function at each one, $\psi_j = \psi(x_j)$. The function becomes a column of $N$ numbers.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -141,8 +256,8 @@ TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 xs = np.linspace(0, 1, 400)
 f = lambda x: np.sin(np.pi * x) + 0.45 * np.sin(2 * np.pi * x)
-N, h = 7, 1 / 8
-xj = h * np.arange(1, N + 1); fj = f(xj)
+N, dx = 7, 1 / 8
+xj = dx * np.arange(1, N + 1); fj = f(xj)
 fig = plt.figure(figsize=(9, 3.7))
 gs = fig.add_gridspec(1, 3, width_ratios=[2.6, 0.5, 0.9], wspace=0.05)
 ax, axa, axv = (fig.add_subplot(gs[0, j]) for j in range(3))
@@ -154,12 +269,12 @@ for j, (xv, fv) in enumerate(zip(xj, fj), start=1):
 ax.plot([0, 0], [0, 1.55], color="k", lw=2.6); ax.plot([1, 1], [0, 1.55], color="k", lw=2.6)
 ax.axhline(0, color=GRAY, lw=0.8)
 ax.annotate("", xy=(xj[3], -0.14), xytext=(xj[2], -0.14), arrowprops=dict(arrowstyle="<->", color="k", lw=1.2))
-ax.text((xj[2] + xj[3]) / 2, -0.2, r"$h$", ha="center", va="top", fontsize=13)
+ax.text((xj[2] + xj[3]) / 2, -0.2, r"$\Delta x$", ha="center", va="top", fontsize=13)
 ax.set_xlim(-0.03, 1.03); ax.set_ylim(-0.42, 1.6)
 ax.set_xticks(list(xj)); ax.set_xticklabels([rf"$x_{j}$" for j in range(1, N + 1)], fontsize=12)
 ax.set_yticks([]); ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
 ax.tick_params(length=0)
-ax.set_title(r"a function, sampled at $N$ points spaced $h$ apart", loc="left", fontsize=12.5)
+ax.set_title(r"a function, sampled at $N$ points spaced $\Delta x$ apart", loc="left", fontsize=12.5)
 axa.axis("off")
 axa.annotate("", xy=(0.95, 0.5), xytext=(0.05, 0.5), xycoords="axes fraction",
              arrowprops=dict(arrowstyle="simple,head_length=0.8,head_width=0.8,tail_width=0.3", color=PURPLE, alpha=0.8))
@@ -178,11 +293,25 @@ plt.show()
 
 Fig. A wavefunction in a box sampled at seven interior points. The walls, where $\psi = 0$, carry no unknowns. The seven samples, stacked in a column, are the vector that stands in for the function.
 
-- Integrals become sums. The inner product of two functions becomes the dot product of their vectors, times the spacing:
+- The letter $\psi$ now names three different things: the function, one sample of it, and the whole column of samples. Here they are with the grid symbols, in one place:
+
+| symbol | what it is |
+| :-- | :-- |
+| $\psi(x)$ | the function: a value at every $x$ |
+| $N$ | the number of grid points |
+| $x_j$ | grid point number $j$, for $j = 1, \dots, N$ |
+| $\Delta x$ | the spacing between neighboring grid points |
+| $\psi_j = \psi(x_j)$ | one number: the value of the function at $x_j$ |
+| $\lvert\psi\rangle$ | all $N$ samples stacked in a column: the vector (Dirac notation, below) |
+| $\langle\psi\rvert$ | the same numbers written as a row, each one conjugated |
+
+- Integrals become sums. As in a [Riemann sum](../math/01-calculus.md#the-integral-as-accumulated-area), each sample stands for a strip of width $\Delta x$, so the $dx$ of the integral becomes $\Delta x$. The inner product of two functions becomes the dot product of their vectors, times $\Delta x$:
 
 $$
-\int \phi^*\,\psi\,dx \;\approx\; \sum_{j} \phi_j^*\,\psi_j\,h, \qquad \int \lvert\psi\rvert^2\,dx = 1 \;\longrightarrow\; \sum_j \lvert\psi_j\rvert^2\,h = 1
+\int \phi^*\,\psi\,dx \;\approx\; \sum_{j} \phi_j^*\,\psi_j\,\Delta x, \qquad \int \lvert\psi\rvert^2\,dx = 1 \;\longrightarrow\; \sum_j \lvert\psi_j\rvert^2\,\Delta x = 1
 $$
+
+- The $\Delta x$ cannot be dropped: without it the sum grows with the number of points. For the box ground state $\sqrt{2/L}\,\sin(\pi x/L)$ sampled at $N$ interior points, $\sum_j \lvert\psi_j\rvert^2 = (N + 1)/L$. Times $\Delta x = L/(N + 1)$ it is exactly 1, on any grid.
 
 #### Step 2: multiplying by $x$ is a diagonal matrix
 
@@ -200,11 +329,11 @@ $$
 
 #### Step 3: derivatives compare neighbors
 
-- A derivative is a slope, and a slope needs two points. The **centered difference** uses the two neighbors of $x_j$. For the second derivative, take the change between the slopes on either side, $s_+ = (\psi_{j+1} - \psi_j)/h$ and $s_- = (\psi_j - \psi_{j-1})/h$, per unit length:
+- A derivative is a slope, and a slope needs two points. The **centered difference** uses the two neighbors of $x_j$. For the second derivative, take the change between the slopes on either side, $s_+ = (\psi_{j+1} - \psi_j)/\Delta x$ and $s_- = (\psi_j - \psi_{j-1})/\Delta x$, per unit length:
 
 $$
-\psi'(x_j) \approx \frac{\psi_{j+1} - \psi_{j-1}}{2h}, \qquad
-\psi''(x_j) \approx \frac{s_+ - s_-}{h} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}
+\psi'(x_j) \approx \frac{\psi_{j+1} - \psi_{j-1}}{2\Delta x}, \qquad
+\psi''(x_j) \approx \frac{s_+ - s_-}{\Delta x} = \frac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{\Delta x^2}
 $$
 
 ```{code-cell} python
@@ -220,8 +349,8 @@ plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 f = lambda x: 0.75 + 0.42 * np.sin(1.7 * x - 0.6) + 0.06 * x
 df = lambda x: 0.42 * 1.7 * np.cos(1.7 * x - 0.6) + 0.06
 xs = np.linspace(-0.2, 2.6, 300)
-x0, h = 1.15, 0.55
-pts = np.array([x0 - h, x0, x0 + h]); fp = f(pts)
+x0, dx = 1.15, 0.55
+pts = np.array([x0 - dx, x0, x0 + dx]); fp = f(pts)
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.4, 4.0), gridspec_kw={"wspace": 0.1})
 for ax in (a1, a2):
     ax.plot(xs, f(xs), color=GRAY, lw=2.2, alpha=0.8)
@@ -231,15 +360,15 @@ for ax in (a1, a2):
     ax.set_xlim(-0.2, 2.6); ax.set_ylim(-0.62, 1.42)
 t = np.array([x0 - 0.62, x0 + 0.62])
 a1.plot(t, fp[1] + df(x0) * (t - x0), color="k", lw=1.6, ls="--", label=r"tangent at $x_j$: slope $\psi'(x_j)$")
-sl = (fp[2] - fp[0]) / (2 * h)
-a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2h$")
+sl = (fp[2] - fp[0]) / (2 * dx)
+a1.plot(t, fp[1] + sl * (t - x0), color=PURPLE, lw=2.4, label=r"slope of the chord: $(\psi_{j+1} - \psi_{j-1})/2\Delta x$")
 a1.plot([pts[0], pts[2]], [fp[0], fp[2]], color=PURPLE, lw=1.4, ls=":")
 a1.legend(loc="lower center", frameon=False, fontsize=11.5)
 a1.set_title("first derivative: the slope of the chord", loc="left", fontsize=12.5)
-a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/h$")
-a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/h$")
+a2.plot(pts[:2], fp[:2], color=ORANGE, lw=2.6, label=r"$s_- = (\psi_j - \psi_{j-1})/\Delta x$")
+a2.plot(pts[1:], fp[1:], color=TEAL, lw=2.6, label=r"$s_+ = (\psi_{j+1} - \psi_j)/\Delta x$")
 a2.legend(loc="lower left", frameon=False, fontsize=11.5, bbox_to_anchor=(0.0, 0.13))
-a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{h} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{h^2}$",
+a2.text(0.01, 0.02, r"$\psi''(x_j) \approx \dfrac{s_+ - s_-}{\Delta x} = \dfrac{\psi_{j+1} - 2\psi_j + \psi_{j-1}}{\Delta x^2}$",
         transform=a2.transAxes, ha="left", va="bottom", fontsize=12.5)
 a2.set_title("second derivative: how much the slope changes", loc="left", fontsize=12.5)
 fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.09)
@@ -248,22 +377,22 @@ plt.show()
 
 Fig. Derivatives from neighboring samples. Left: the chord through the two neighbors of $x_j$ is almost parallel to the tangent at $x_j$, so its slope estimates $\psi'(x_j)$. Right: the slope drops from $s_-$ to $s_+$ across $x_j$; the drop per unit length estimates $\psi''(x_j)$, the curvature.
 
-- Each formula multiplies the samples at three neighboring points by fixed numbers: $-1, 0, 1$ (over $2h$) for the slope and $1, -2, 1$ (over $h^2$) for the curvature. Written as a row times a column, the curvature at point 2 is
+- Each formula multiplies the samples at three neighboring points by fixed numbers: $-1, 0, 1$ (over $2\Delta x$) for the slope and $1, -2, 1$ (over $\Delta x^2$) for the curvature. Written as a row times a column, the curvature at point 2 is
 
 $$
-\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{h^2} = \frac{1}{h^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
+\psi''(x_2) \approx \frac{1\cdot\psi_1 - 2\,\psi_2 + 1\cdot\psi_3}{\Delta x^2} = \frac{1}{\Delta x^2}\begin{pmatrix} 1 & -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}
 $$
 
 - So the numbers of the formula **are a row of a matrix**. At point 3 the same numbers move one place to the right, $(0, 1, -2, 1)$. Stacking one row per point, with $\psi = 0$ beyond the ends:
 
 $$
-\frac{d}{dx} \;\longrightarrow\; D_1 = \frac{1}{2h}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix},
+\frac{d}{dx} \;\longrightarrow\; D_1 = \frac{1}{2\Delta x}\begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix},
 \qquad
-\frac{d^2}{dx^2} \;\longrightarrow\; D_2 = \frac{1}{h^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
+\frac{d^2}{dx^2} \;\longrightarrow\; D_2 = \frac{1}{\Delta x^2}\begin{pmatrix} -2 & 1 & 0 & 0 \\ 1 & -2 & 1 & 0 \\ 0 & 1 & -2 & 1 \\ 0 & 0 & 1 & -2 \end{pmatrix}
 $$
 
-- Multiply the first row of $D_2$ into the vector: $(-2\psi_1 + \psi_2)/h^2$. That is the curvature formula with $\psi_0 = 0$, the value at the wall, so the boundary condition is built into the matrix.
-- Momentum is $\hat{p} = -i\hbar\,D_1$: entries $-i\hbar/2h$ above the diagonal and $+i\hbar/2h$ below.
+- Multiply the first row of $D_2$ into the vector: $(-2\psi_1 + \psi_2)/\Delta x^2$. That is the curvature formula with $\psi_0 = 0$, the value at the wall, so the boundary condition is built into the matrix.
+- Momentum is $\hat{p} = -i\hbar\,D_1$: entries $-i\hbar/2\Delta x$ above the diagonal and $+i\hbar/2\Delta x$ below.
 
 :::{note} **Example: the grid derivative of a plane wave**
 :class: dropdown
@@ -271,19 +400,19 @@ $$
 Apply the centered difference to the samples of a plane wave, $\psi_j = e^{ikx_j}$:
 
 $$
-\frac{\psi_{j+1} - \psi_{j-1}}{2h} = \frac{e^{ik(x_j + h)} - e^{ik(x_j - h)}}{2h} = \frac{e^{ikh} - e^{-ikh}}{2h}\,e^{ikx_j} = \frac{i\sin kh}{h}\,\psi_j
+\frac{\psi_{j+1} - \psi_{j-1}}{2\Delta x} = \frac{e^{ik(x_j + \Delta x)} - e^{ik(x_j - \Delta x)}}{2\Delta x} = \frac{e^{ik\Delta x} - e^{-ik\Delta x}}{2\Delta x}\,e^{ikx_j} = \frac{i\sin(k\Delta x)}{\Delta x}\,\psi_j
 $$
 
-The sampled plane wave is an **eigenvector** of the derivative matrix, just as $e^{ikx}$ is an eigenfunction of $d/dx$ (away from the ends of the grid). The eigenvalue $i\sin(kh)/h$ approaches the exact $ik$ when the grid is fine, $kh \ll 1$. Multiplied by $-i\hbar$, the momentum matrix returns $\hbar\sin(kh)/h \approx \hbar k$, the de Broglie momentum. The grid works when it has many points per wavelength.
+The sampled plane wave is an **eigenvector** of the derivative matrix, just as $e^{ikx}$ is an eigenfunction of $d/dx$ (away from the ends of the grid). The eigenvalue $i\sin(k\Delta x)/\Delta x$ approaches the exact $ik$ when the grid is fine, $k\Delta x \ll 1$. Multiplied by $-i\hbar$, the momentum matrix returns $\hbar\sin(k\Delta x)/\Delta x \approx \hbar k$, the de Broglie momentum. The grid works when it has many points per wavelength.
 
 :::
 
 #### Step 4: the Hamiltonian is a matrix
 
-- Put the pieces together: $\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)$ becomes $H = -\frac{\hbar^2}{2m}D_2 + V$. The constants in front of $D_2$ collect into one symbol, $\varepsilon = \hbar^2/2mh^2$, which is only a unit of energy:
+- Put the pieces together: $\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)$ becomes $H = -\frac{\hbar^2}{2m}D_2 + V$. The constants in front of $D_2$ collect into one symbol, $\varepsilon = \hbar^2/2m\Delta x^2$, which is only a unit of energy:
 
 $$
-H = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2}
+H = \begin{pmatrix} 2\varepsilon + V_1 & -\varepsilon & 0 & 0 \\ -\varepsilon & 2\varepsilon + V_2 & -\varepsilon & 0 \\ 0 & -\varepsilon & 2\varepsilon + V_3 & -\varepsilon \\ 0 & 0 & -\varepsilon & 2\varepsilon + V_4 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2m\,\Delta x^2}
 $$
 
 - Read it as a picture: the potential energy sits on the diagonal, one value per point, and the kinetic energy couples each point to its neighbors through $-\varepsilon$. This is the same structure as the Hückel matrix that chemists use for $\pi$ electrons hopping between carbon atoms (Problem 6).
@@ -301,10 +430,10 @@ The allowed energies are the eigenvalues of the matrix $H$, and the stationary s
 :::{note} **Example: a particle in a box with three grid points**
 :class: dropdown
 
-Divide a box of length $L$ into four intervals, $h = L/4$. The wavefunction vanishes at the two walls, which leaves three interior points, $x = L/4$, $L/2$ and $3L/4$. With $V = 0$ inside,
+Divide a box of length $L$ into four intervals, $\Delta x = L/4$. The wavefunction vanishes at the two walls, which leaves three interior points, $x = L/4$, $L/2$ and $3L/4$. With $V = 0$ inside,
 
 $$
-H = \varepsilon\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2mh^2} = \frac{8\hbar^2}{mL^2}
+H = \varepsilon\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}, \qquad \varepsilon = \frac{\hbar^2}{2m\,\Delta x^2} = \frac{8\hbar^2}{mL^2}
 $$
 
 Write $E = \lambda\varepsilon$ and solve $\det(H/\varepsilon - \lambda I) = 0$. Go along the first row: each entry times the $2\times 2$ determinant that is left when its row and column are crossed out, with the signs $+\,-\,+$:
@@ -338,14 +467,14 @@ plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 xs = np.linspace(0, 1, 300)                                 # hbar = m = L = 1
 fig = plt.figure(figsize=(9.4, 4.0))
 gs = fig.add_gridspec(3, 3, width_ratios=[1.15, 0.42, 1], hspace=0.25, wspace=0.12)
-N, h = 3, 0.25
+N, dx = 3, 0.25
 xg = np.array([0, 0.25, 0.5, 0.75, 1.0])
-H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h**2)
+H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx**2)
 Eg, V = np.linalg.eigh(H)
 for r in range(3):
     ax = fig.add_subplot(gs[r, 0])
     n = r + 1
-    v = V[:, r] / np.sqrt(h); v = v * np.sign(v[0])          # normalized as a function, first point positive
+    v = V[:, r] / np.sqrt(dx); v = v * np.sign(v[0])         # normalized as a function, first point positive
     ax.plot(xs, np.sqrt(2) * np.sin(n * np.pi * xs), color=GRAY, lw=1.8, alpha=0.7)
     ax.plot(xg, np.concatenate([[0], v, [0]]), "-o", color=CARDINAL, lw=1.6, ms=7)
     ax.axhline(0, color=GRAY, lw=0.6)
@@ -359,8 +488,8 @@ for r in range(3):
 axl = fig.add_subplot(gs[:, 2])
 cols = [(3, CARDINAL), (10, PURPLE), (30, TEAL)]
 for k, (Ng, col) in enumerate(cols):
-    hh = 1 / (Ng + 1)
-    En = (1 - np.cos(np.arange(1, min(Ng, 4) + 1) * np.pi * hh)) / hh**2
+    dxg = 1 / (Ng + 1)
+    En = (1 - np.cos(np.arange(1, min(Ng, 4) + 1) * np.pi * dxg)) / dxg**2
     axl.hlines(En, k - 0.32, k + 0.32, color=col, lw=3)
 Ex = (np.arange(1, 5) * np.pi)**2 / 2
 axl.hlines(Ex, 3 - 0.32, 3 + 0.32, color="k", lw=3)
@@ -388,8 +517,8 @@ With 400 points instead of 3, the eigenvalue problem is too big for a determinan
 import numpy as np
 
 N = 400                                       # grid points
-x = np.linspace(-8, 8, N); h = x[1] - x[0]
-D2 = (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / h**2    # second derivative
+x = np.linspace(-8, 8, N); dx = x[1] - x[0]
+D2 = (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / dx**2   # second derivative
 H = -0.5 * D2 + np.diag(0.5 * x**2)           # kinetic + potential energy
 
 E, psi = np.linalg.eigh(H)                    # eigenvalues and eigenvectors of a Hermitian matrix
@@ -414,10 +543,10 @@ $$
 \langle\psi\rvert = \begin{pmatrix} \psi_1^* & \psi_2^* & \cdots \end{pmatrix}
 $$
 
-- A bra next to a ket is row times column: multiply matching entries and add, times the grid spacing $h$. The result is a single number, the **inner product**:
+- A bra next to a ket is row times column: multiply matching entries and add. The result is a single number, the **inner product**. For sampled functions the sum also carries the $\Delta x$ of Step 1, because it stands for an integral; ordinary vectors, like the two-component examples below, have no $\Delta x$:
 
 $$
-\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,h \;\longrightarrow\; \int \phi^*\,\psi\,dx
+\langle \phi \vert \psi \rangle = \sum_j \phi_j^*\,\psi_j\,\Delta x \;\longrightarrow\; \int \phi^*\,\psi\,dx
 $$
 
 :::{note} **Example: why the bra is conjugated**
@@ -449,6 +578,55 @@ $$
 $$
 \langle\phi\vert\hat{A}\vert\psi\rangle = \int\phi^*\,\hat{A}\psi\,dx
 $$
+
+- Count the shapes to see what any product gives. A bra is a row, an operator a square, a ket a column. In a product the inner sizes must match, and the outer sizes give the size of the result.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: dirac_shapes
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import Rectangle
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+W, Ht = 9.6, 2.6                                            # draw in inches: one data unit = one inch
+fig = plt.figure(figsize=(W, Ht))
+ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+s, n, ym = 0.19, 4, 1.33                                    # cell size, N, middle line of the shapes
+look = {"bra": ("#fdf0e0", ORANGE), "op": ("#f1ecf7", PURPLE), "ket": ("#e3f1f5", TEAL), "num": ("#fbeaec", CARDINAL)}
+
+def shape(x0, rows, cols, kind, below, size):               # rows x cols cells, left edge x0, centred on the line ym
+    fc, ec = look[kind]
+    for r in range(rows):
+        for c in range(cols):
+            ax.add_patch(Rectangle((x0 + c * s, ym + (rows / 2 - 1 - r) * s), s, s, fc=fc, ec=ec, lw=1.2))
+    ax.text(x0 + cols * s / 2, ym - n * s / 2 - 0.34, below, ha="center", va="baseline", fontsize=14, color=ec)
+    ax.text(x0 + cols * s / 2, ym + n * s / 2 + 0.1, size, ha="center", va="bottom", fontsize=11.5, color=GRAY)
+
+eq = lambda x: ax.text(x, ym, "=", ha="center", va="center", fontsize=18)
+panels = [(1.35, "inner product", "a number"), (4.15, "an operator acts", "a new ket"), (7.45, "a matrix element", "a number")]
+for xc, title, note in panels:
+    ax.text(xc, 2.33, title, ha="center", va="center", fontsize=13)
+    ax.text(xc, 0.27, note, ha="center", va="center", fontsize=12.5, color=GRAY)
+for xv in (2.75, 5.55):
+    ax.plot([xv, xv], [0.15, 2.45], color="#dee2e6", lw=1)
+shape(0.4, 1, n, "bra", r"$\langle\phi|$", r"$1\times 4$")                       # row times column: a number
+shape(1.33, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+eq(1.8); shape(2.0, 1, 1, "num", r"$\langle\phi|\psi\rangle$", r"$1\times 1$")
+shape(3.2, n, n, "op", r"$\hat{A}$", r"$4\times 4$")                              # matrix times column: a column
+shape(4.13, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+eq(4.6); shape(4.8, n, 1, "ket", r"$\hat{A}|\psi\rangle$", r"$4\times 1$")
+shape(6.0, 1, n, "bra", r"$\langle\phi|$", r"$1\times 4$")                       # row, matrix, column: a number
+shape(6.93, n, n, "op", r"$\hat{A}$", r"$4\times 4$")
+shape(7.86, n, 1, "ket", r"$|\psi\rangle$", r"$4\times 1$")
+eq(8.33); shape(8.53, 1, 1, "num", r"$\langle\phi|\hat{A}|\psi\rangle$", r"$1\times 1$")
+plt.show()
+```
+
+Fig. Count the shapes. A bra is a $1\times N$ row, an operator an $N\times N$ square, a ket an $N\times 1$ column (here $N = 4$). Row times column is a single number; a matrix times a column is a new column, a ket; row times matrix times column is again a single number, the matrix element.
 
 - The name is literal: the matrix is the filling between a bra and a ket. Put the unit vectors $\mathbf{e}_1 = (1, 0)$ and $\mathbf{e}_2 = (0, 1)$ on the outside and the sandwich picks out a single entry.
 - Take $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ and do it in two steps, the ket first and then the bra:
@@ -488,14 +666,14 @@ when the $\mathbf{u}_n$ are perpendicular unit eigenvectors, $A\mathbf{u}_n = \l
 
 | | integral | Dirac | numpy on a grid |
 | :-- | :-- | :-- | :-- |
-| inner product | $\int \phi^*\psi\,dx$ | $\langle \phi \vert \psi \rangle$ | `np.vdot(phi, psi) * h` |
-| normalization | $\int \lvert\psi\rvert^2 dx = 1$ | $\langle \psi \vert \psi \rangle = 1$ | `np.vdot(psi, psi) * h` |
+| inner product | $\int \phi^*\psi\,dx$ | $\langle \phi \vert \psi \rangle$ | `np.vdot(phi, psi) * dx` |
+| normalization | $\int \lvert\psi\rvert^2 dx = 1$ | $\langle \psi \vert \psi \rangle = 1$ | `np.vdot(psi, psi) * dx` |
 | operator acts | $\hat{A}\psi(x)$ | $\hat{A}\lvert\psi\rangle$ | `A @ psi` |
-| matrix element | $\int \phi^*\hat{A}\psi\,dx$ | $\langle \phi \vert \hat{A} \vert \psi \rangle$ | `np.vdot(phi, A @ psi) * h` |
+| matrix element | $\int \phi^*\hat{A}\psi\,dx$ | $\langle \phi \vert \hat{A} \vert \psi \rangle$ | `np.vdot(phi, A @ psi) * dx` |
 | eigenvalue problem | $\hat{A}\phi_n = a_n\phi_n$ | $\hat{A}\lvert n\rangle = a_n\lvert n\rangle$ | `a, phi = np.linalg.eigh(A)` |
-| matrix in new axes | $A'_{mn} = \int \phi_m^*\hat{A}\phi_n\,dx$ | $A'_{mn} = \langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * h` (columns of `U`: the $\phi_n$) |
+| matrix in new axes | $A'_{mn} = \int \phi_m^*\hat{A}\phi_n\,dx$ | $A'_{mn} = \langle \phi_m \vert \hat{A} \vert \phi_n \rangle$ | `U.conj().T @ A @ U * dx` (columns of `U`: the $\phi_n$) |
 
-- `np.vdot` conjugates its first argument, which is exactly what the bra does. The factor `h` turns the sum over grid points into the integral.
+- `np.vdot` conjugates its first argument, which is exactly what the bra does. The factor `dx` is the grid spacing $\Delta x$: it turns the sum over grid points into the integral.
 - The table grows in the next three lectures: adjoints and commutators in [Operators 2](05-hermitian-operators-and-commutators.md), expansion coefficients in [Measurement](06-eigenvalues-and-expectation.md), time evolution in [Time Dependence](07-time-dependence.md).
 
 ### Two matrix properties to watch
@@ -515,13 +693,13 @@ from matplotlib.colors import LinearSegmentedColormap
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 div = LinearSegmentedColormap.from_list("div", [TEAL, "white", CARDINAL])
 N = 8                                                       # hbar = m = 1, V = x^2/2 on 8 points
-x = np.linspace(-2, 2, N); h = x[1] - x[0]
+x = np.linspace(-2, 2, N); dx = x[1] - x[0]
 up, dn = np.eye(N, k=1), np.eye(N, k=-1)
 X = np.diag(x)
-P = -1j * (up - dn) / (2 * h)                               # p = -i d/dx as a centered difference
-H = -0.5 * (up - 2 * np.eye(N) + dn) / h**2 + np.diag(0.5 * x**2)
+P = -1j * (up - dn) / (2 * dx)                              # p = -i d/dx as a centered difference
+H = -0.5 * (up - 2 * np.eye(N) + dn) / dx**2 + np.diag(0.5 * x**2)
 panels = [(X, r"$\hat{x}$", "grid positions on the diagonal\nreal, symmetric"),
-          (P.imag, r"$\hat{p}$  (imaginary part)", r"$\mp i\hbar/2h$ next to the diagonal" + "\nimaginary, antisymmetric"),
+          (P.imag, r"$\hat{p}$  (imaginary part)", r"$\mp i\hbar/2\Delta x$ next to the diagonal" + "\nimaginary, antisymmetric"),
           (H, r"$\hat{H}$", "$V$ on the diagonal, neighbors linked\nreal, symmetric")]
 fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.8))
 for ax, (M, title, note) in zip(axs, panels):
@@ -596,9 +774,9 @@ Use the box states $\psi_n = \sqrt{2/L}\,\sin(n\pi x/L)$ as a basis and build th
 ```python
 import numpy as np
 L = 1.0
-x = np.linspace(0, L, 2001); h = x[1] - x[0]
+x = np.linspace(0, L, 2001); dx = x[1] - x[0]
 psi = np.array([np.sqrt(2 / L) * np.sin(n * np.pi * x / L) for n in (1, 2, 3)])
-X = np.array([[np.sum(psi[m] * x * psi[n]) * h for n in range(3)] for m in range(3)])
+X = np.array([[np.sum(psi[m] * x * psi[n]) * dx for n in range(3)] for m in range(3)])
 print(np.round(X, 4))   # [[ 0.5 -0.1801 0. ] [-0.1801 0.5 -0.1945] [ 0. -0.1945 0.5]]
 ```
 
@@ -622,7 +800,7 @@ where $\alpha$ is the energy of an electron on one carbon and $\beta < 0$ couple
 
 #### Problem 7: Brackets on a grid
 
-Sample the box states $\psi_1$ and $\psi_2$ ($L = 1$) on $N$ interior grid points and compute $\langle \psi_1 \vert \psi_1 \rangle$, $\langle \psi_2 \vert \psi_2 \rangle$ and $\langle \psi_1 \vert \psi_2 \rangle$ with `np.vdot(...) * h`. How close are they to 1, 1 and 0 for $N = 5$, $20$ and $100$? Then multiply $\psi_2$ by $c = 2i$ and confirm that $\langle c\,\psi_2 \vert \psi_2 \rangle = c^*\langle \psi_2 \vert \psi_2 \rangle$ while $\langle \psi_2 \vert c\,\psi_2 \rangle = c\,\langle \psi_2 \vert \psi_2 \rangle$.
+Sample the box states $\psi_1$ and $\psi_2$ ($L = 1$) on $N$ interior grid points and compute $\langle \psi_1 \vert \psi_1 \rangle$, $\langle \psi_2 \vert \psi_2 \rangle$ and $\langle \psi_1 \vert \psi_2 \rangle$ with `np.vdot(...) * dx`. How close are they to 1, 1 and 0 for $N = 5$, $20$ and $100$? Then multiply $\psi_2$ by $c = 2i$ and confirm that $\langle c\,\psi_2 \vert \psi_2 \rangle = c^*\langle \psi_2 \vert \psi_2 \rangle$ while $\langle \psi_2 \vert c\,\psi_2 \rangle = c\,\langle \psi_2 \vert \psi_2 \rangle$.
 
 #### Problem 8: How many points per wavelength?
 

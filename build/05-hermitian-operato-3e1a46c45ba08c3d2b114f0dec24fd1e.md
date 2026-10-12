@@ -287,19 +287,19 @@ Fig. A Hermitian matrix $H$ ($s = 0$) has real eigenvalues (left, all on the rea
 
 :::{note} **Example: the derivative on two points**
 
-On two grid points, with $\psi = 0$ beyond the ends, the derivative matrix is $D_1 = \frac{1}{2h}\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. It turns every arrow by 90°, like the rotation in the figure above, so no direction survives and its eigenvalues are imaginary:
+On two grid points, with $\psi = 0$ beyond the ends, the derivative matrix is $D_1 = \frac{1}{2\Delta x}\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. It turns every arrow by 90°, like the rotation in the figure above, so no direction survives and its eigenvalues are imaginary:
 
 $$
-\det(D_1 - \lambda I) = \lambda^2 + \frac{1}{4h^2} = 0 \quad\Longrightarrow\quad \lambda = \pm\frac{i}{2h}
+\det(D_1 - \lambda I) = \lambda^2 + \frac{1}{4\Delta x^2} = 0 \quad\Longrightarrow\quad \lambda = \pm\frac{i}{2\Delta x}
 $$
 
 Multiplying by $-i\hbar$ gives the momentum matrix and real eigenvalues:
 
 $$
-P = -i\hbar D_1 = \frac{\hbar}{2h}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad p = \pm\frac{\hbar}{2h}
+P = -i\hbar D_1 = \frac{\hbar}{2\Delta x}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad p = \pm\frac{\hbar}{2\Delta x}
 $$
 
-$P$ is $\tfrac{\hbar}{2h}$ times the Hermitian matrix $D$ of the example above. The factor $-i$ in $\hat{p} = -i\hbar\,d/dx$ turns the imaginary eigenvalues of the derivative into real momenta. The grid derivative of a plane wave in [Operators 1](04-operators.md) showed the same on a large grid: eigenvalue $i\sin(kh)/h$, made real by $-i\hbar$.
+$P$ is $\tfrac{\hbar}{2\Delta x}$ times the Hermitian matrix $D$ of the example above. The factor $-i$ in $\hat{p} = -i\hbar\,d/dx$ turns the imaginary eigenvalues of the derivative into real momenta. The grid derivative of a plane wave in [Operators 1](04-operators.md) showed the same on a large grid: eigenvalue $i\sin(k\Delta x)/\Delta x$, made real by $-i\hbar$.
 
 :::
 
@@ -324,8 +324,8 @@ The same check on the grid, where the derivative matrix is real and antisymmetri
 ```{code-cell} python
 import numpy as np
 
-N = 400; x = np.linspace(-8, 8, N); h = x[1] - x[0]
-D1 = (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h)    # first derivative, centered difference
+N = 400; x = np.linspace(-8, 8, N); dx = x[1] - x[0]
+D1 = (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx)   # first derivative, centered difference
 P = -1j * D1                                         # momentum, hbar = 1
 
 print("d/dx is anti-Hermitian:", np.allclose(D1.conj().T, -D1))
@@ -439,9 +439,9 @@ from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-x = np.linspace(-4.5, 4.5, 900); h = x[1] - x[0]
+x = np.linspace(-4.5, 4.5, 900); dx = x[1] - x[0]
 f = np.exp(-x**2 / 2) * (1 + 0.5 * x)                       # any smooth test function
-fp = np.gradient(f, h)
+fp = np.gradient(f, dx)
 xfp, dxf = x * fp, f + x * fp                                # x f'  and  (x f)' = f + x f'
 fig, axs = plt.subplots(1, 3, figsize=(10.5, 3.5), sharey=True)
 for ax in axs:
@@ -477,13 +477,13 @@ $$
 
 :::{note} **Example: $XP - PX$ on three grid points**
 
-On three points spaced $h$ apart, $X = \operatorname{diag}(x_1, x_2, x_3)$, and the momentum matrix $P = -i\hbar D_1$ has $-i\hbar/2h$ just above the diagonal and $+i\hbar/2h$ just below it. Entry by entry, $(XP)_{jk} = x_j P_{jk}$ and $(PX)_{jk} = P_{jk}\,x_k$, so
+On three points spaced $\Delta x$ apart, $X = \operatorname{diag}(x_1, x_2, x_3)$, and the momentum matrix $P = -i\hbar D_1$ has $-i\hbar/2\Delta x$ just above the diagonal and $+i\hbar/2\Delta x$ just below it. Entry by entry, $(XP)_{jk} = x_j P_{jk}$ and $(PX)_{jk} = P_{jk}\,x_k$, so
 
 $$
 (XP - PX)_{jk} = (x_j - x_k)\,P_{jk}
 $$
 
-Only neighbors survive, and they differ by $x_j - x_{j\pm 1} = \mp h$, which cancels the $1/2h$ in $P$:
+Only neighbors survive, and they differ by $x_j - x_{j\pm 1} = \mp\Delta x$, which cancels the $1/2\Delta x$ in $P$:
 
 $$
 XP - PX = \frac{i\hbar}{2}\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}
@@ -498,9 +498,9 @@ Acting on a vector, this matrix replaces each value by $i\hbar$ times the averag
 ```{code-cell} python
 import numpy as np
 
-N = 400; x = np.linspace(-8, 8, N); h = x[1] - x[0]
+N = 400; x = np.linspace(-8, 8, N); dx = x[1] - x[0]
 X = np.diag(x)
-P = -1j * (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h)      # hbar = 1
+P = -1j * (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx)     # hbar = 1
 C = X @ P - P @ X
 
 psi = np.exp(-x**2 / 2) * (1 + 0.3 * x)                     # any smooth function
@@ -628,29 +628,29 @@ $$
 
 #### Problem 3: Momentum on a four-point grid
 
-Build the $4\times4$ momentum matrix on a periodic grid of four points with spacing $h$, using the centered difference and $\hbar = 1$ (on a periodic grid the neighbors of point 1 are points 4 and 2). Show that it is Hermitian and find its eigenvalues.
+Build the $4\times4$ momentum matrix on a periodic grid of four points with spacing $\Delta x$, using the centered difference and $\hbar = 1$ (on a periodic grid the neighbors of point 1 are points 4 and 2). Show that it is Hermitian and find its eigenvalues.
 
 :::{admonition} **Solution**
 :class: dropdown solution
 
-Row $j$ of the derivative matrix holds $+1/2h$ for the right neighbor and $-1/2h$ for the left one, wrapping around at the ends. Multiplying by $-i$:
+Row $j$ of the derivative matrix holds $+1/2\Delta x$ for the right neighbor and $-1/2\Delta x$ for the left one, wrapping around at the ends. Multiplying by $-i$:
 
 $$
-P = \frac{-i}{2h}\begin{pmatrix} 0 & 1 & 0 & -1 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 1 & 0 & -1 & 0 \end{pmatrix}
+P = \frac{-i}{2\Delta x}\begin{pmatrix} 0 & 1 & 0 & -1 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 1 & 0 & -1 & 0 \end{pmatrix}
 $$
 
-The real matrix in parentheses is antisymmetric ($d/dx$ is anti-Hermitian). For $P$, compare $P_{12} = -i/2h$ with $P_{21}^* = (+i/2h)^* = -i/2h$: equal, and likewise for every pair, with zeros on the diagonal. $P$ is **Hermitian**.
+The real matrix in parentheses is antisymmetric ($d/dx$ is anti-Hermitian). For $P$, compare $P_{12} = -i/2\Delta x$ with $P_{21}^* = (+i/2\Delta x)^* = -i/2\Delta x$: equal, and likewise for every pair, with zeros on the diagonal. $P$ is **Hermitian**.
 
 ```python
 import numpy as np
-h = 1.0
+dx = 1.0
 M = np.array([[0, 1, 0, -1], [-1, 0, 1, 0], [0, -1, 0, 1], [1, 0, -1, 0]])
-P = -1j * M / (2 * h)
+P = -1j * M / (2 * dx)
 print(np.allclose(P, P.conj().T))           # True
 print(np.round(np.linalg.eigvalsh(P), 6))   # [-1.  0.  0.  1.]
 ```
 
-The eigenvalues $-1/h, 0, 0, +1/h$ are real, and the eigenvectors are discrete plane waves $e^{ikx_j}$: the grid version of the momentum eigenfunctions.
+The eigenvalues $-1/\Delta x, 0, 0, +1/\Delta x$ are real, and the eigenvectors are discrete plane waves $e^{ikx_j}$: the grid version of the momentum eigenfunctions.
 
 :::
 
@@ -681,7 +681,7 @@ Show that $[\hat{p}, V(x)] = -i\hbar\,\dfrac{dV}{dx}$ by acting on a test functi
 
 #### Problem 7: Why centered differences?
 
-Instead of the centered difference, approximate the derivative by the forward difference $\psi'(x_j) \approx (\psi_{j+1} - \psi_j)/h$. Write the $3\times 3$ forward-difference matrix $D_f$ for three points with $\psi = 0$ beyond the ends, and the momentum matrix $P_f = -i\hbar D_f$. Is $P_f$ Hermitian? Find its eigenvalues (the matrix is triangular). What would a measurement of this "momentum" return, and what does that say about the choice of the centered difference?
+Instead of the centered difference, approximate the derivative by the forward difference $\psi'(x_j) \approx (\psi_{j+1} - \psi_j)/\Delta x$. Write the $3\times 3$ forward-difference matrix $D_f$ for three points with $\psi = 0$ beyond the ends, and the momentum matrix $P_f = -i\hbar D_f$. Is $P_f$ Hermitian? Find its eigenvalues (the matrix is triangular). What would a measurement of this "momentum" return, and what does that say about the choice of the centered difference?
 
 #### Problem 8: Building a shared eigenfunction
 

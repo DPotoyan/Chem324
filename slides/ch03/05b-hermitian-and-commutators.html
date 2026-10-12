@@ -330,16 +330,16 @@ D = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}
 <section id="example-the-derivative-on-two-points" class="slide level2">
 <h2>Example: the derivative on two points</h2>
 <div class="worked">
-<p>On two grid points <span class="math inline">\dfrac{d}{dx} \to D_1 = \dfrac{1}{2h}\begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}</span>. Find the eigenvalues of <span class="math inline">D_1</span> and of <span class="math inline">P = -i\hbar D_1</span>.</p>
+<p>On two grid points <span class="math inline">\dfrac{d}{dx} \to D_1 = \dfrac{1}{2\Delta x}\begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}</span>. Find the eigenvalues of <span class="math inline">D_1</span> and of <span class="math inline">P = -i\hbar D_1</span>.</p>
 </div>
 <div class="soln fragment">
 <p><span class="math display">
 \begin{aligned}
-\det(D_1 - \lambda I) &amp;= \lambda^2 + \frac{1}{4h^2} = 0 &amp;&amp;\Rightarrow\quad \lambda = \pm\frac{i}{2h} \\
-P = -i\hbar D_1 &amp;= \frac{\hbar}{2h}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} &amp;&amp;\Rightarrow\quad p = \pm\frac{\hbar}{2h}
+\det(D_1 - \lambda I) &amp;= \lambda^2 + \frac{1}{4\Delta x^2} = 0 &amp;&amp;\Rightarrow\quad \lambda = \pm\frac{i}{2\Delta x} \\
+P = -i\hbar D_1 &amp;= \frac{\hbar}{2\Delta x}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} &amp;&amp;\Rightarrow\quad p = \pm\frac{\hbar}{2\Delta x}
 \end{aligned}
 </span></p>
-<p><span class="math inline">D_1</span> is the rotation of the last figure: <strong>imaginary</strong> eigenvalues. Times <span class="math inline">-i\hbar</span> they turn <strong>real</strong>; <span class="math inline">P</span> is <span class="math inline">\tfrac{\hbar}{2h}</span> times matrix <span class="math inline">D</span> above.</p>
+<p><span class="math inline">D_1</span> is the rotation of the last figure: <strong>imaginary</strong> eigenvalues. Times <span class="math inline">-i\hbar</span> they turn <strong>real</strong>; <span class="math inline">P</span> is <span class="math inline">\tfrac{\hbar}{2\Delta x}</span> times matrix <span class="math inline">D</span> above.</p>
 </div>
 </section>
 <section id="example-is-momentum-hermitian" class="slide level2">
@@ -428,10 +428,10 @@ P = -i\hbar D_1 &amp;= \frac{\hbar}{2h}\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \
 <section id="example-xp---px-on-three-points" class="slide level2">
 <h2>Example: <span class="math inline">XP - PX</span> on three points</h2>
 <div class="worked">
-<p>Three grid points spaced <span class="math inline">h</span> apart: <span class="math inline">X = \operatorname{diag}(x_1, x_2, x_3)</span>, and <span class="math inline">P = -i\hbar D_1</span> has <span class="math inline">P_{j,j\pm 1} = \mp\dfrac{i\hbar}{2h}</span>. Find <span class="math inline">XP - PX</span>.</p>
+<p>Three grid points spaced <span class="math inline">\Delta x</span> apart: <span class="math inline">X = \operatorname{diag}(x_1, x_2, x_3)</span>, and <span class="math inline">P = -i\hbar D_1</span> has <span class="math inline">P_{j,j\pm 1} = \mp\dfrac{i\hbar}{2\Delta x}</span>. Find <span class="math inline">XP - PX</span>.</p>
 </div>
 <div class="soln fragment">
-<p>Entry by entry, <span class="math inline">(XP - PX)_{jk} = (x_j - x_k)\,P_{jk}</span> with <span class="math inline">x_j - x_{j\pm 1} = \mp h</span>:</p>
+<p>Entry by entry, <span class="math inline">(XP - PX)_{jk} = (x_j - x_k)\,P_{jk}</span> with <span class="math inline">x_j - x_{j\pm 1} = \mp\Delta x</span>:</p>
 <p><span class="math display">XP - PX = \frac{i\hbar}{2}\begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{pmatrix} \qquad \text{averages the neighbors: } \approx i\hbar\,\psi</span></p>
 <p>Its trace is <span class="math inline">0</span>, not <span class="math inline">3i\hbar</span>: no finite grid gives exactly <span class="math inline">i\hbar I</span>.</p>
 </div>

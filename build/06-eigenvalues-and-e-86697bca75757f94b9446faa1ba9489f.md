@@ -230,20 +230,20 @@ The average, $5.75\,E_1$, is not one of the possible readings. No single measure
 import numpy as np
 
 N = 1000                                          # interior points of a box with L = 1
-x = np.linspace(0, 1, N + 2)[1:-1]; h = x[1] - x[0]
-H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * h**2)    # hbar = m = 1, V = 0
+x = np.linspace(0, 1, N + 2)[1:-1]; dx = x[1] - x[0]
+H = (2 * np.eye(N) - np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx**2)   # hbar = m = 1, V = 0
 E, phi = np.linalg.eigh(H)
-phi = phi / np.sqrt(h)                            # columns normalized as functions
+phi = phi / np.sqrt(dx)                           # columns normalized as functions
 E1 = np.pi**2 / 2                                 # exact ground-state energy
 
 psi = np.sqrt(30) * x * (1 - x)                   # the parabola of the example
-c = phi.T @ psi * h                               # c_n = <phi_n|psi>
+c = phi.T @ psi * dx                              # c_n = <phi_n|psi>
 p = c**2
 
 print("p_1, p_2, p_3:", np.round(p[:3], 5))
 print("sum of p_n:", round(p.sum(), 6))
 print("<E> = sum p_n E_n:", round(p @ E / E1, 4), "E1")
-print("<E> = <psi|H|psi>:", round(psi @ H @ psi * h / E1, 4), "E1   (exact: 10/pi^2 =", round(10 / np.pi**2, 4), "E1)")
+print("<E> = <psi|H|psi>:", round(psi @ H @ psi * dx / E1, 4), "E1   (exact: 10/pi^2 =", round(10 / np.pi**2, 4), "E1)")
 ```
 
 - The grid agrees with the exact coefficients of the example, and both routes give $\langle E \rangle = 10E_1/\pi^2 = 1.013\,E_1$: the parabola costs only 1.3 percent more energy than the ground state.
@@ -251,7 +251,7 @@ print("<E> = <psi|H|psi>:", round(psi @ H @ psi * h / E1, 4), "E1   (exact: 10/p
 
 | | integral | Dirac | numpy on a grid |
 | :-- | :-- | :-- | :-- |
-| expansion coefficient | $c_n = \int \phi_n^*\,\psi\,dx$ | $c_n = \langle \phi_n \vert \psi \rangle$ | `c = phi.conj().T @ psi * h` |
+| expansion coefficient | $c_n = \int \phi_n^*\,\psi\,dx$ | $c_n = \langle \phi_n \vert \psi \rangle$ | `c = phi.conj().T @ psi * dx` |
 | probability of $a_n$ | $\lvert c_n\rvert^2$ | $\lvert\langle \phi_n \vert \psi \rangle\rvert^2$ | `p = np.abs(c)**2` |
 | average | $\sum_n \lvert c_n\rvert^2 a_n$ | $\langle \psi \vert \hat{A} \vert \psi \rangle$ | `p @ a` |
 
