@@ -20,26 +20,89 @@ kernelspec:
 
 ### Eigenfunctions are a coordinate system
 
-- A vector in a plane is a sum of its components along two perpendicular unit vectors, $\mathbf{v} = c_1\hat{e}_1 + c_2\hat{e}_2$, and each component is a projection, $c_1 = \hat{e}_1\cdot\mathbf{v}$.
-- The eigenfunctions $\phi_n$ of a Hermitian operator play the role of the unit vectors. They are orthonormal, $\langle \phi_m \vert \phi_n \rangle = \delta_{mn}$, and complete, so every state is a sum of them.
+The eigenfunctions of a Hermitian operator work like the perpendicular axes of a plane. We start with a vector in a plane, then take the same two steps with a function, in the same Dirac notation: the structure is identical.
 
-:::{important} **Expansion in eigenfunctions**
+#### A vector: build it, then project
 
-$$
-\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx
-$$
-
-:::
-
-- To find a coefficient, multiply the sum by $\phi_m^*$ and integrate. Orthonormality keeps one term:
+- Take two perpendicular unit vectors $\lvert u_1\rangle$ and $\lvert u_2\rangle$: $\langle u_1 \vert u_1\rangle = \langle u_2 \vert u_2\rangle = 1$ and $\langle u_1 \vert u_2\rangle = 0$. Every vector in their plane is a **linear combination** of them:
 
 $$
-\int \phi_m^*\,\psi\,dx = \sum_n c_n \int \phi_m^*\,\phi_n\,dx = \sum_n c_n\,\delta_{mn} = c_m
+\lvert v\rangle = c_1\lvert u_1\rangle + c_2\lvert u_2\rangle
+$$
+
+- To find $c_1$, put the bra $\langle u_1\rvert$ in front of both sides. Orthonormality keeps one term, and the bra $\langle u_2\rvert$ gives $c_2$ the same way:
+
+$$
+\langle u_1 \vert v\rangle = c_1\,\underbrace{\langle u_1 \vert u_1\rangle}_{1} + c_2\,\underbrace{\langle u_1 \vert u_2\rangle}_{0} = c_1
 $$
 
 ```{code-cell} python
 :tags: [hide-input]
-# synced: projection
+# synced: vector_projection
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+a = np.radians(30)
+u1, u2 = np.array([np.cos(a), np.sin(a)]), np.array([-np.sin(a), np.cos(a)])   # tilted perpendicular unit vectors
+c1, c2 = 3.0, 1.5
+v = c1 * u1 + c2 * u2
+arrow = lambda ax, tail, tip, col, lw, ms, z: ax.annotate("", xy=tip, xytext=tail, zorder=z, arrowprops=dict(
+    arrowstyle="-|>", color=col, lw=lw, mutation_scale=ms, shrinkA=0, shrinkB=0))
+fig, axs = plt.subplots(1, 2, figsize=(9.6, 4.3), gridspec_kw={"wspace": 0.06})
+for ax in axs:
+    for u in (u1, u2):                                      # the two axes, faint
+        ax.plot(*np.outer([-0.75, 3.9], u).T, color=GRAY, lw=0.9, alpha=0.45, zorder=1)
+    arrow(ax, (0, 0), u1, "k", 2.2, 14, 5); arrow(ax, (0, 0), u2, "k", 2.2, 14, 5)
+    ax.text(*(u1 + np.array([0.0, -0.36])), r"$|u_1\rangle$", fontsize=14, ha="center")
+    ax.text(*(u2 + np.array([0.14, -0.06])), r"$|u_2\rangle$", fontsize=14, ha="left")
+    arrow(ax, (0, 0), v, TEAL, 3, 20, 4)
+    ax.text(*(v + np.array([0.1, 0.08])), r"$|v\rangle$", color=TEAL, fontsize=17)
+    ax.set_xlim(-2.5, 3.45); ax.set_ylim(-0.75, 3.3); ax.set_aspect("equal"); ax.axis("off")
+b = axs[0]                                                  # build: tip to tail
+arrow(b, (0, 0), c1 * u1, PURPLE, 2.8, 18, 3)
+arrow(b, c1 * u1, v, ORANGE, 2.8, 18, 3)
+b.text(*(0.62 * c1 * u1 + np.array([0.28, -0.42])), r"$c_1|u_1\rangle$", color=PURPLE, fontsize=15, ha="center")
+b.text(*(c1 * u1 + 0.55 * c2 * u2 + np.array([0.2, 0.0])), r"$c_2|u_2\rangle$", color=ORANGE, fontsize=15, ha="left")
+b.set_title(r"build:  $|v\rangle = c_1|u_1\rangle + c_2|u_2\rangle$", loc="left", fontsize=14)
+q = axs[1]                                                  # project: drop perpendiculars onto each axis
+p1, p2 = c1 * u1, c2 * u2
+q.plot(*np.array([v, p1]).T, color=PURPLE, ls="--", lw=1.5, zorder=2)
+q.plot(*np.array([v, p2]).T, color=ORANGE, ls="--", lw=1.5, zorder=2)
+q.plot(*np.array([[0, 0], p1]).T, color=PURPLE, lw=7, alpha=0.5, solid_capstyle="butt", zorder=2)
+q.plot(*np.array([[0, 0], p2]).T, color=ORANGE, lw=7, alpha=0.5, solid_capstyle="butt", zorder=2)
+for foot, along, up in ((p1, u1, u2), (p2, u2, u1)):        # right-angle marks at the feet
+    sq = np.array([foot - 0.17 * along, foot - 0.17 * along + 0.17 * up, foot + 0.17 * up])
+    q.plot(*sq.T, color=GRAY, lw=1.1, zorder=2)
+q.text(*(0.45 * p1 + 0.55 * (-u2)), r"$c_1 = \langle u_1|v\rangle = 3$", color=PURPLE, fontsize=15, ha="left", va="center")
+q.text(*(0.75 * p2 + 0.3 * (-u1)), r"$c_2 = \langle u_2|v\rangle$" + "\n" + r"$= 1.5$", color=ORANGE, fontsize=15, ha="right", va="center")
+q.set_title(r"project:  $c_k = \langle u_k|v\rangle$, the shadow on axis $k$", loc="left", fontsize=14)
+fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.02)
+plt.show()
+```
+
+Fig. Left: the vector $\lvert v\rangle$ built from $c_1\lvert u_1\rangle$ and $c_2\lvert u_2\rangle$, tip to tail. Right: the same coefficients found by projection; each $c_k = \langle u_k \vert v\rangle$ is the shadow of $\lvert v\rangle$ on its own axis. Here $c_1 = 3$ and $c_2 = 1.5$.
+
+#### A function: the same two steps
+
+- A wavefunction in a box is built the same way, with the box states $\lvert\psi_n\rangle$, $\psi_n = \sqrt{2/L}\,\sin(n\pi x/L)$, in place of the unit vectors. They are orthonormal, $\langle \psi_m \vert \psi_n\rangle = \delta_{mn}$, and there are enough of them to build any state in the box:
+
+$$
+\lvert\psi\rangle = c_1\lvert\psi_1\rangle + c_2\lvert\psi_2\rangle + c_3\lvert\psi_3\rangle + \cdots
+$$
+
+- The bra $\langle \psi_m\rvert$ picks out one coefficient, exactly as for the vector. The only new step is how to compute a bracket of two functions: multiply them point by point and integrate.
+
+$$
+\langle \psi_m \vert \psi\rangle = \sum_n c_n\,\underbrace{\langle \psi_m \vert \psi_n\rangle}_{\delta_{mn}} = c_m, \qquad \langle \psi_m \vert \psi\rangle = \int_0^L \psi_m^*\,\psi\,dx
+$$
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: function_projection
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -49,19 +112,8 @@ TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 x = np.linspace(0, 1, 400)
 psi = np.sqrt(30) * x * (1 - x)                             # the state of the worked example, L = 1
-fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.3), gridspec_kw={"width_ratios": [0.85, 1, 1], "wspace": 0.28})
-ax = axs[0]
-for e, lab, ofs in (((1, 0), r"$\hat{e}_1$", (0.5, -0.32)), ((0, 1), r"$\hat{e}_2$", (-0.42, 0.45))):
-    ax.annotate("", xy=e, xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=2))
-    ax.text(*ofs, lab, color=GRAY, fontsize=13)
-ax.annotate("", xy=(3, 2), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=TEAL, lw=2.6, mutation_scale=18))
-ax.text(3.08, 2.08, r"$\mathbf{v}$", color=TEAL, fontsize=15)
-ax.plot([3, 3], [0, 2], color=PURPLE, ls="--", lw=1.4); ax.plot([0, 3], [2, 2], color=PURPLE, ls="--", lw=1.4)
-ax.text(3, -0.22, r"$c_1 = \langle \hat{e}_1|\mathbf{v}\rangle = 3$", color=PURPLE, fontsize=12, ha="center", va="top")
-ax.text(-0.15, 2, r"$c_2 = 2$", color=PURPLE, fontsize=12, ha="right", va="center")
-ax.set_xlim(-1.3, 3.8); ax.set_ylim(-0.95, 2.6); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("a vector: project onto the axes", loc="left", fontsize=12)
-for ax, n in ((axs[1], 1), (axs[2], 2)):
+fig, axs = plt.subplots(1, 2, figsize=(9.6, 3.5), gridspec_kw={"wspace": 0.1})
+for ax, n in zip(axs, (1, 2)):
     phi = np.sqrt(2) * np.sin(n * np.pi * x)
     prod = phi * psi
     c = np.trapezoid(prod, x)
@@ -69,19 +121,39 @@ for ax, n in ((axs[1], 1), (axs[2], 2)):
     ax.fill_between(x, prod, where=prod < 0, color=ORANGE, alpha=0.3, lw=0, interpolate=True)
     ax.plot(x, psi, color=TEAL, lw=2.4, label=r"the state $\psi$")
     ax.plot(x, phi, color=GRAY, lw=1.6, ls="--", label=r"box state $\psi_n$")
-    ax.plot(x, prod, color=PURPLE, lw=1.2, label=r"product $\psi_n\psi$")
+    ax.plot(x, prod, color=PURPLE, lw=1.2, label=r"product $\psi_n\,\psi$")
     ax.axhline(0, color=GRAY, lw=0.6)
     ax.set_xlim(0, 1); ax.set_ylim(-1.75, 2.35); ax.set_yticks([])
     ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=11)
     ax.spines["left"].set_visible(False)
-    ax.set_title(rf"$c_{n} = \int \psi_{n}\,\psi\,dx = {abs(c):.3f}$" if n == 1 else r"$c_2 = 0$: the two lobes cancel",
-                 loc="left", fontsize=12)
-axs[2].legend(loc="lower left", frameon=False, fontsize=10.5, handlelength=1.6, borderaxespad=0.1)
+    ax.set_title(rf"$c_1 = \langle\psi_1|\psi\rangle = \int\psi_1\,\psi\,dx = {abs(c):.3f}$" if n == 1
+                 else r"$c_2 = \langle\psi_2|\psi\rangle = 0$: the lobes cancel", loc="left", fontsize=13)
+axs[1].legend(loc="lower left", frameon=False, fontsize=11, handlelength=1.6, borderaxespad=0.1)
 fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.1)
 plt.show()
 ```
 
-Fig. A coefficient is a projection. Left: the components of a vector along two perpendicular axes. Middle and right: the state $\psi = \sqrt{30}\,x(1-x)$ in a box with $L = 1$, projected onto the first two box states. The coefficient is the area under the product $\psi_n\psi$. For $n = 2$ the positive and negative lobes cancel exactly, so $c_2 = 0$.
+Fig. The state $\psi = \sqrt{30}\,x(1-x)$ in a box with $L = 1$, projected onto the first two box states. Each coefficient $c_n = \langle \psi_n \vert \psi\rangle$ is the area under the product $\psi_n\psi$: almost 1 for $n = 1$, and exactly 0 for $n = 2$, where the positive and negative lobes cancel.
+
+- Side by side, the vector and the function follow one structure. Only the last row, how a bracket is computed, differs:
+
+| | a vector in a plane | a function |
+| :-- | :-- | :-- |
+| axes | $\lvert u_1\rangle, \lvert u_2\rangle$ | eigenfunctions $\lvert\phi_1\rangle, \lvert\phi_2\rangle, \dots$ |
+| orthonormal | $\langle u_j \vert u_k\rangle = \delta_{jk}$ | $\langle \phi_m \vert \phi_n\rangle = \delta_{mn}$ |
+| build | $\lvert v\rangle = \sum_k c_k\lvert u_k\rangle$ | $\lvert\psi\rangle = \sum_n c_n\lvert\phi_n\rangle$ |
+| project | $c_k = \langle u_k \vert v\rangle$ | $c_n = \langle \phi_n \vert \psi\rangle$ |
+| the bracket | multiply matching components, add | multiply point by point, integrate |
+
+- The box states are one set of axes. The eigenfunctions $\phi_n$ of any Hermitian operator are orthonormal and complete ([Operators 2](05-hermitian-operators-and-commutators.md)), so every state can be expanded in them:
+
+:::{important} **Expansion in eigenfunctions**
+
+$$
+\lvert\psi\rangle = \sum_n c_n\,\lvert\phi_n\rangle, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx
+$$
+
+:::
 
 :::{note} **Example: how much ground state is in a parabola?**
 
@@ -101,7 +173,7 @@ $$
 \lvert c_1\rvert^2 = \frac{960}{\pi^6} = 0.9986, \qquad \lvert c_3\rvert^2 = \frac{960}{729\,\pi^6} = 0.0014, \qquad \lvert c_5\rvert^2 = 0.0001
 $$
 
-The parabola is 99.86 percent ground state: the two curves in the middle panel above are almost indistinguishable.
+The parabola is 99.86 percent ground state: the state and the box state in the left panel of the figure above are almost indistinguishable.
 
 :::
 

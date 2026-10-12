@@ -21,33 +21,39 @@ resources:
   - ../../ch03/images
 ---
 
-## Warm-up: components of a vector
+## A vector: build it, then project
+
+![](../../ch03/images/vector_projection.png){.nostretch width="76%" fig-align="center"}
+
+$$\langle u_1 \vert v\rangle = c_1\,\underbrace{\langle u_1 \vert u_1\rangle}_{1} + c_2\,\underbrace{\langle u_1 \vert u_2\rangle}_{0} = c_1$$
+
+## Example: components of a vector
 
 ::: {.worked}
-Write $\mathbf{v} = (3, 4)$ in the tilted axes $\mathbf{u}_1 = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\mathbf{u}_2 = \tfrac{1}{\sqrt{2}}(1, -1)$.
+Write $\lvert v\rangle = (3, 4)$ in the tilted axes $\lvert u_1\rangle = \tfrac{1}{\sqrt{2}}(1, 1)$ and $\lvert u_2\rangle = \tfrac{1}{\sqrt{2}}(1, -1)$.
 :::
 
 ::: {.soln .fragment}
-Each component is a **projection** (a dot product):
+Each coefficient is a **projection**:
 
-$$c_1 = \mathbf{u}_1\cdot\mathbf{v} = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \mathbf{u}_2\cdot\mathbf{v} = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}$$
+$$c_1 = \langle u_1 \vert v\rangle = \tfrac{3 + 4}{\sqrt{2}} = \tfrac{7}{\sqrt{2}}, \qquad c_2 = \langle u_2 \vert v\rangle = \tfrac{3 - 4}{\sqrt{2}} = -\tfrac{1}{\sqrt{2}}$$
 
-$$\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \lvert\mathbf{v}\rvert^2$$
+$$\lvert v\rangle = c_1\lvert u_1\rangle + c_2\lvert u_2\rangle, \qquad c_1^2 + c_2^2 = \tfrac{49 + 1}{2} = 25 = \langle v \vert v\rangle$$
 :::
 
-- Perpendicular unit axes: components are **projections**, and their squares add up to the **length** squared
+- Perpendicular unit axes: coefficients are **projections**, and their squares add up to the **length** squared
 
-## Same recipe for functions
+## A function: the same two steps
 
-| | a vector | a function |
-|:--------------|:------------------------|:------------------------|
-| its numbers | components $v_1, v_2$ | values $\psi(x)$ at every $x$ |
-| dot product | $\mathbf{u}\cdot\mathbf{v} = \sum_j u_j\,v_j$ | $\int \phi^*\,\psi\,dx$ |
-| in words | multiply matching entries, add | multiply point by point, add up |
-| unit axes | $\mathbf{u}_1, \mathbf{u}_2$: perpendicular, length 1 | box states $\psi_1, \psi_2, \dots$: orthonormal |
-| a component | $c_k = \mathbf{u}_k\cdot\mathbf{v}$ | $c_n = \int \psi_n^*\,\psi\,dx$ |
+- **Build:** the box states $\lvert\psi_n\rangle$ are the axes, orthonormal, $\langle \psi_m \vert \psi_n\rangle = \delta_{mn}$
 
-- Lecture 3.5's grid made this literal: the integral **is** the dot product of the sampled values, times $\Delta x$
+$$\lvert\psi\rangle = c_1\lvert\psi_1\rangle + c_2\lvert\psi_2\rangle + c_3\lvert\psi_3\rangle + \cdots$$
+
+- **Project:** the bra $\langle \psi_m\rvert$ picks out one coefficient, exactly as for the vector
+
+$$\langle \psi_m \vert \psi\rangle = \sum_n c_n\,\underbrace{\langle \psi_m \vert \psi_n\rangle}_{\delta_{mn}} = c_m$$
+
+- The only new step: a bracket of two functions is an **integral**, $\langle \psi_m \vert \psi\rangle = \int \psi_m^*\,\psi\,dx$
 
 ## One component, step by step
 
@@ -62,10 +68,22 @@ $$\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2, \qquad c_1^2 + c_2^2 = \tfrac{
 - $\psi$ is symmetric about $L/2$, $\psi_2$ is antisymmetric: the two halves of the product cancel, so $c_2 = 0$
 - The same happens for every even $n$: the parabola has **no** even components
 
+## One structure, two settings
+
+| | a vector in a plane | a function |
+|:--------------|:------------------------|:------------------------|
+| axes | $\lvert u_1\rangle, \lvert u_2\rangle$ | eigenfunctions $\lvert\phi_1\rangle, \lvert\phi_2\rangle, \dots$ |
+| orthonormal | $\langle u_j \vert u_k\rangle = \delta_{jk}$ | $\langle \phi_m \vert \phi_n\rangle = \delta_{mn}$ |
+| build | $\lvert v\rangle = \sum_k c_k\lvert u_k\rangle$ | $\lvert\psi\rangle = \sum_n c_n\lvert\phi_n\rangle$ |
+| project | $c_k = \langle u_k \vert v\rangle$ | $c_n = \langle \phi_n \vert \psi\rangle$ |
+| the bracket | multiply matching components, add | multiply point by point, integrate |
+
+- Lecture 3.5's grid made this literal: the integral **is** the dot product of the sampled values, times $\Delta x$
+
 ## Eigenfunctions are coordinates
 
 ::: {.keyeq}
-$$\psi = \sum_n c_n\,\phi_n, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx$$
+$$\lvert\psi\rangle = \sum_n c_n\,\lvert\phi_n\rangle, \qquad c_n = \langle \phi_n \vert \psi \rangle = \int \phi_n^*\,\psi\,dx$$
 :::
 
 - The eigenfunctions $\phi_n$ of an observable are the **axes**; $c_n$ says how far $\psi$ reaches along axis $n$
