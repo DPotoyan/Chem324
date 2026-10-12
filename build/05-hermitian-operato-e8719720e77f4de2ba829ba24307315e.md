@@ -75,18 +75,24 @@ Fig. Left: conjugation mirrors a complex number in the real axis, and a real num
 
 #### The adjoint of an operator
 
-- For an operator, the adjoint is whatever you get by moving it from the ket to the bra of an inner product. An operator that can move across unchanged is **Hermitian**.
-
-:::{important} **Adjoint and Hermitian operator**
+- For an operator, the **adjoint** $\hat{A}^\dagger$ is whatever you get by moving $\hat{A}$ from the ket to the bra of an inner product:
 
 $$
 \langle \phi \vert \hat{A}\psi \rangle = \langle \hat{A}^\dagger\phi \vert \psi \rangle
 $$
 
-$\hat{A}$ is **Hermitian** (self-adjoint) when $\hat{A}^\dagger = \hat{A}$:
+- For a matrix this is the rule above: swap rows and columns, then conjugate, $(A^\dagger)_{jk} = A_{kj}^*$. An operator that moves across unchanged is **Hermitian**, or self-adjoint.
+
+:::{important} **Hermitian operator**
+
+$\hat{A}$ is **Hermitian** when $\hat{A}^\dagger = \hat{A}$: it moves between the ket and the bra unchanged.
 
 $$
-\int \phi^*\,\big(\hat{A}\psi\big)\,dx = \int \big(\hat{A}\phi\big)^*\,\psi\,dx, \qquad \text{for a matrix: } A_{jk} = A_{kj}^*
+\begin{aligned}
+&\text{integral:}\qquad & \int \phi^*\,\big(\hat{A}\psi\big)\,dx &= \int \big(\hat{A}\phi\big)^*\,\psi\,dx \\[4pt]
+&\text{Dirac:} & \langle \phi \vert \hat{A}\psi \rangle &= \langle \hat{A}\phi \vert \psi \rangle \\[4pt]
+&\text{matrix:} & A_{jk} &= A_{kj}^*
+\end{aligned}
 $$
 
 :::
@@ -128,6 +134,7 @@ $$
 :::
 
 :::{note} **Example: real eigenvalues from the quadratic formula**
+:class: dropdown
 
 Every Hermitian $2\times 2$ matrix has the form $\begin{pmatrix} a & b \\ b^* & d \end{pmatrix}$ with $a$ and $d$ real. Its eigenvalues solve
 
@@ -286,7 +293,7 @@ Fig. A Hermitian matrix $H$ ($s = 0$) has real eigenvalues (left, all on the rea
 #### Momentum and its $i$
 
 :::{note} **Example: the derivative on two points**
-
+:class: dropdown
 On two grid points, with $\psi = 0$ beyond the ends, the derivative matrix is $D_1 = \frac{1}{2\Delta x}\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. It turns every arrow by 90°, like the rotation in the figure above, so no direction survives and its eigenvalues are imaginary:
 
 $$
@@ -319,18 +326,7 @@ Without the $i$ it fails. The same steps give $\int\phi^*\psi'\,dx = -\int(\phi'
 
 :::
 
-The same check on the grid, where the derivative matrix is real and antisymmetric:
 
-```{code-cell} python
-import numpy as np
-
-N = 400; x = np.linspace(-8, 8, N); dx = x[1] - x[0]
-D1 = (np.eye(N, k=1) - np.eye(N, k=-1)) / (2 * dx)   # first derivative, centered difference
-P = -1j * D1                                         # momentum, hbar = 1
-
-print("d/dx is anti-Hermitian:", np.allclose(D1.conj().T, -D1))
-print("p    is Hermitian:     ", np.allclose(P.conj().T, P))
-```
 
 ### Commutators: the order of operations
 
@@ -407,6 +403,12 @@ $$
 FS = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \qquad SF = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}, \qquad [F, S] = \begin{pmatrix} 0 & 2 \\ -2 & 0 \end{pmatrix} \neq 0
 $$
 
+Try it: press **F** and **S** in either order and watch the letter turn over each mirror. The panel keeps the product of the matrices, written right to left like operators. Play both orders to see the two results side by side, then try F twice, or F S twice.
+
+```{anywidget} ../widgets/flip_swap.mjs
+{}
+```
+
 - Both matrices are Hermitian, so both could stand for observables, yet they do not commute, and they share no eigenvector: $F$ keeps $(1, 0)$ and $(0, 1)$, while $S$ keeps $(1, \pm 1)$. These two matrices measure the spin of an electron along $z$ and along $x$ ([Spin](../ch05/03-spin.md)); [Operators as Matrices](../math/04-operators-and-matrices.md) works the same product in its Problem 3.
 
 #### Position and momentum
@@ -429,42 +431,6 @@ The product rule leaves one extra term, and it does not depend on what $f$ is.
 
 - The recipe for any commutator of differential operators: act on a test function $f$, use the product rule, and drop $f$ at the end.
 
-```{code-cell} python
-:tags: [hide-input]
-# synced: commutator_steps
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-x = np.linspace(-4.5, 4.5, 900); dx = x[1] - x[0]
-f = np.exp(-x**2 / 2) * (1 + 0.5 * x)                       # any smooth test function
-fp = np.gradient(f, dx)
-xfp, dxf = x * fp, f + x * fp                                # x f'  and  (x f)' = f + x f'
-fig, axs = plt.subplots(1, 3, figsize=(10.5, 3.5), sharey=True)
-for ax in axs:
-    ax.axhline(0, color=GRAY, lw=0.7)
-    ax.set_xlim(-4, 4); ax.set_ylim(-1.35, 1.45); ax.set_xticks([]); ax.set_yticks([])
-    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
-axs[0].plot(x, f, color="k", lw=2.6)
-axs[0].text(1.3, 1.05, r"$f$", fontsize=16)
-axs[0].set_title("1.  a test function", loc="left", fontsize=14)
-axs[1].plot(x, xfp, color=TEAL, lw=2.6, label=r"$x\,f'$:  differentiate, then multiply by $x$")
-axs[1].plot(x, dxf, color=ORANGE, lw=2.6, ls="--", label=r"$(x f)'$:  multiply by $x$, then differentiate")
-axs[1].set_title("2.  the two orders differ", loc="left", fontsize=14)
-axs[1].legend(loc="lower center", frameon=False, fontsize=11.5, bbox_to_anchor=(0.5, -0.32))
-axs[2].plot(x, xfp - dxf, color=CARDINAL, lw=7, alpha=0.45, label=r"$x f' - (x f)'$")
-axs[2].plot(x, -f, color="k", lw=1.8, ls=":", label=r"$-f$")
-axs[2].set_title(r"3.  their difference is $-f$", loc="left", fontsize=14)
-axs[2].legend(loc="lower center", frameon=False, fontsize=12, ncol=2, bbox_to_anchor=(0.5, -0.24))
-fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.2, wspace=0.08)
-plt.show()
-```
-
-Fig. The commutator of $x$ and $d/dx$ in three steps, for one test function $f$. The two orders give different curves, but their difference is exactly $-f$, whatever $f$ is.
-
 - Multiply by $-i\hbar$ and the example becomes the most important commutator in quantum mechanics:
 
 :::{important} **Canonical commutator**
@@ -476,7 +442,7 @@ $$
 :::
 
 :::{note} **Example: $XP - PX$ on three grid points**
-
+:class: dropdown
 On three points spaced $\Delta x$ apart, $X = \operatorname{diag}(x_1, x_2, x_3)$, and the momentum matrix $P = -i\hbar D_1$ has $-i\hbar/2\Delta x$ just above the diagonal and $+i\hbar/2\Delta x$ just below it. Entry by entry, $(XP)_{jk} = x_j P_{jk}$ and $(PX)_{jk} = P_{jk}\,x_k$, so
 
 $$
