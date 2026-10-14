@@ -2,10 +2,11 @@
 //
 // Every reading measures a freshly prepared copy of the same state psi = sum_n c_n psi_n and returns
 // E_n = n^2 E_1 with probability |c_n|^2. The histogram of readings converges to |c_n|^2 and their
-// running mean to <E> = sum_n |c_n|^2 E_n. A single reading leaves the measured copy in psi_n.
+// running mean to <E> = sum_n |c_n|^2 E_n. A single reading leaves the measured box in psi_n, and
+// "measure it again" re-reads that same box (always E_n, kept out of the tally of fresh boxes).
 //
 // anywidget shape, export default { render({ model, el }) }, reading only model.get, so the same file
-// runs in MyST's {anywidget} directive (ch03/05), in a reveal.js deck through a module-script loader
+// runs in MyST's {anywidget} directive (ch03/06), in a reveal.js deck through a module-script loader
 // (slides/ch03/06), and in Jupyter or Colab through the anywidget package. No dependencies.
 // Model keys, all optional: state ("example", "ground", "pair", "parabola", "packet", "custom"),
 // fontSize (CSS size of the controls and readout; the SVG text scales with the widget width) and
@@ -73,7 +74,8 @@ const CSS = `
 .mw-svg .mw-muted { fill: var(--mw-muted); }
 .mw-readout { font-variant-numeric: tabular-nums; margin-top: 0.35em; }
 .mw-readout b { font-weight: 600; }
-.mw-last { color: var(--mw-muted); min-height: 1.4em; }
+.mw-last { color: var(--mw-muted); min-height: 1.6em; }
+.mw-last .mw-btn { margin-left: 0.5em; padding: 0 0.7em; }
 `;
 
 function svg(tag, attrs, parent) {
@@ -130,9 +132,9 @@ function render({ model, el }) {
   if (get("showMean", true) === false) meanSvg.style.display = "none";
 
   const rowGo = html("div", "mw-row", root);
-  html("span", "mw-label", rowGo, "measure:");
+  html("span", "mw-label", rowGo, "prepare and measure:");
   for (const k of [1, 10, 100, 1000]) {
-    const b = html("button", "mw-btn mw-go", rowGo, k === 1 ? "1 copy" : `${k} copies`);
+    const b = html("button", "mw-btn mw-go", rowGo, k === 1 ? "+1 box" : `+${k} boxes`);
     b.type = "button";
     b.addEventListener("click", () => queue(k));
   }
@@ -141,10 +143,14 @@ function render({ model, el }) {
   reset.addEventListener("click", () => setState());
   const readout = html("div", "mw-readout", root);
   const last = html("div", "mw-last", root);
+  const lastText = html("span", null, last);
+  const again = html("button", "mw-btn", last, "measure it again");
+  again.type = "button";
+  again.addEventListener("click", () => { repeats++; draw(); });
 
   // ---------------------------------------------------------------- state and statistics
   let amps, probs, energies, nb, Eavg, sigma, cum;
-  let counts, N, sum, sumsq, hist, lastN, pending, chunk, timer;
+  let counts, N, sum, sumsq, hist, lastN, repeats, pending, chunk, timer;
   const X = Array.from({ length: 241 }, (_, j) => j / 240);
 
   function setState() {
@@ -163,7 +169,7 @@ function render({ model, el }) {
     Eavg = probs.reduce((a, q, i) => a + q * energies[i], 0);
     sigma = Math.sqrt(Math.max(0, probs.reduce((a, q, i) => a + q * energies[i] ** 2, 0) - Eavg ** 2));
     cum = []; probs.reduce((a, q) => (cum.push(a + q), a + q), 0);
-    counts = new Array(nb).fill(0); N = 0; sum = 0; sumsq = 0; hist = []; lastN = 0; pending = 0; chunk = 0;
+    counts = new Array(nb).fill(0); N = 0; sum = 0; sumsq = 0; hist = []; lastN = 0; repeats = 0; pending = 0; chunk = 0;
     presetBtns.forEach((b, i) => b.classList.toggle("mw-on", PRESETS[i].key === presetKey));
     custom.classList.toggle("mw-show", presetKey === "custom");
     sliders.forEach((s, i) => { s.out.textContent = presetKey === "custom" ? probs[i].toFixed(2) : ""; });
@@ -184,6 +190,7 @@ function render({ model, el }) {
       if (N <= 50 || j === k - 1) hist.push([N, sum / N]);
       lastN = i + 1;
     }
+    repeats = 0;
   }
 
   function queue(k) {
@@ -303,10 +310,14 @@ function render({ model, el }) {
     readout.innerHTML = N
       ? `mean of ${N.toLocaleString()} reading${N === 1 ? "" : "s"} <b>${fmt(mean)} E₁</b> (predicted ⟨E⟩ = ${fmt(Eavg)} E₁) · ` +
         `spread <b>${fmt(spread)} E₁</b> (predicted σ<sub>E</sub> = ${fmt(sigma)} E₁)`
-      : `predicted ⟨E⟩ = ${fmt(Eavg)} E₁ and σ<sub>E</sub> = ${fmt(sigma)} E₁. Measure a few copies.`;
-    last.textContent = lastN
-      ? `Last reading: ${energies[lastN - 1]} E₁. That copy is now in ψ${sub(lastN)}: measure it again and you get ${energies[lastN - 1]} E₁ every time.`
-      : N ? "Each reading used a fresh copy of the prepared state." : "";
+      : `predicted ⟨E⟩ = ${fmt(Eavg)} E₁ and σ<sub>E</sub> = ${fmt(sigma)} E₁. Prepare and measure a few boxes.`;
+    const En = lastN ? energies[lastN - 1] : 0;
+    lastText.textContent = !lastN
+      ? (N ? "Each reading came from its own freshly prepared box." : "")
+      : repeats
+        ? `Same box, ${repeats + 1} readings: ${En} E₁ every time. It stays in ψ${sub(lastN)}.`
+        : `Last reading: ${En} E₁. That box is now in ψ${sub(lastN)}.`;
+    again.style.display = lastN ? "" : "none";
   }
 
   // ---------------------------------------------------------------- dark mode follows the page

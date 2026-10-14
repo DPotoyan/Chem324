@@ -113,7 +113,7 @@ plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 x = np.linspace(0, 1, 400)
 psi = np.sqrt(30) * x * (1 - x)                             # the state of the worked example, L = 1
 fig, axs = plt.subplots(1, 2, figsize=(9.6, 3.5), gridspec_kw={"wspace": 0.1})
-for ax, n in zip(axs, (1, 2)):
+for ax, n in zip(axs, (1, 3)):                              # n = 2 is zero by symmetry (see the Example)
     phi = np.sqrt(2) * np.sin(n * np.pi * x)
     prod = phi * psi
     c = np.trapezoid(prod, x)
@@ -123,17 +123,19 @@ for ax, n in zip(axs, (1, 2)):
     ax.plot(x, phi, color=GRAY, lw=1.6, ls="--", label=r"box state $\psi_n$")
     ax.plot(x, prod, color=PURPLE, lw=1.2, label=r"product $\psi_n\,\psi$")
     ax.axhline(0, color=GRAY, lw=0.6)
-    ax.set_xlim(0, 1); ax.set_ylim(-1.75, 2.35); ax.set_yticks([])
+    ax.set_xlim(0, 1); ax.set_ylim(-2.2, 2.35); ax.set_yticks([])
     ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=11)
     ax.spines["left"].set_visible(False)
-    ax.set_title(rf"$c_1 = \langle\psi_1|\psi\rangle = \int\psi_1\,\psi\,dx = {abs(c):.3f}$" if n == 1
-                 else r"$c_2 = \langle\psi_2|\psi\rangle = 0$: the lobes cancel", loc="left", fontsize=13)
+    ax.set_title(rf"$c_1 = \langle\psi_1|\psi\rangle = \int\psi_1\,\psi\,dx = {c:.3f}$" if n == 1
+                 else rf"$c_3 = \langle\psi_3|\psi\rangle = {c:.3f}$: the lobes nearly cancel", loc="left", fontsize=13)
 axs[1].legend(loc="lower left", frameon=False, fontsize=11, handlelength=1.6, borderaxespad=0.1)
 fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.1)
 plt.show()
 ```
 
-Fig. The state $\psi = \sqrt{30}\,x(1-x)$ in a box with $L = 1$, projected onto the first two box states. Each coefficient $c_n = \langle \psi_n \vert \psi\rangle$ is the area under the product $\psi_n\psi$: almost 1 for $n = 1$, and exactly 0 for $n = 2$, where the positive and negative lobes cancel.
+Fig. The state $\psi = \sqrt{30}\,x(1-x)$ in a box with $L = 1$, projected onto two box states. Each coefficient $c_n = \langle \psi_n \vert \psi\rangle$ is the area under the product $\psi_n\psi$, purple where it is positive and orange where it is negative. Left: $\psi$ and $\psi_1$ nearly coincide, and $c_1 = 0.999$. Right: the three lobes of $\psi_3\psi$ almost cancel, leaving $c_3 = 0.037$.
+
+- How large is 0.999? Squared components add up to the length squared, for the arrow ($c_1^2 + c_2^2 = 3^2 + 1.5^2 = \langle v \vert v\rangle$) and for the function ($\sum_n \lvert c_n\rvert^2 = \langle \psi \vert \psi\rangle$, shown below). A normalized state has length 1, so no coefficient can exceed 1 in size, and $c_1 = 1$ would mean $\psi = \psi_1$. Here $\lvert c_1\rvert^2 = 0.9986$ leaves only $0.0014$ for all the other box states together: the parabola is almost exactly the ground state, which is why the two curves in the left panel nearly coincide.
 
 - Side by side, the vector and the function follow one structure. Only the last row, how a bracket is computed, differs:
 
@@ -173,7 +175,7 @@ $$
 \lvert c_1\rvert^2 = \frac{960}{\pi^6} = 0.9986, \qquad \lvert c_3\rvert^2 = \frac{960}{729\,\pi^6} = 0.0014, \qquad \lvert c_5\rvert^2 = 0.0001
 $$
 
-The parabola is 99.86 percent ground state: the state and the box state in the left panel of the figure above are almost indistinguishable.
+The parabola is 99.86 percent ground state, and $c_3 = 8\sqrt{15}/(3\pi)^3 = 0.037$ is the small coefficient in the right panel of the figure above.
 
 :::
 
@@ -247,9 +249,9 @@ $$
 $$
 
 - Only the size of each coefficient matters for these probabilities. The coefficients $c_n$ and $c_n e^{i\theta}$ give the same $p_n$; the phases come back in [Time Dependence](07-time-dependence.md).
-- A measurement does not reveal $\psi$. It returns one number, and it changes the state (below). The probabilities show up only in the statistics of many **identically prepared copies**, just as $\lvert\psi(x)\rvert^2$ showed up in the pattern of many single detections in [The Schrödinger Equation](01-schrodinger-equation.md).
+- A measurement does not reveal $\psi$. It returns one number, and it changes the state (below). The probabilities show up only in the statistics of many **identically prepared copies**: many boxes, each holding one particle prepared in the same state $\psi$, each measured once. Measuring one particle over and over does not work, because the first reading changes its state. It is the same story as the single detections that built up the pattern $\lvert\psi(x)\rvert^2$ in [The Schrödinger Equation](01-schrodinger-equation.md). Chemistry gets its copies for free: a spectrum is recorded on a sample of something like $10^{20}$ molecules, and each molecule contributes its own reading.
 
-Try it: pick a state, measure one copy at a time, then a thousand. Every reading is one of the energies $E_n = n^2E_1$ of the box, never anything in between. The bars approach $\lvert c_n\rvert^2$ and the running mean approaches a value we compute next.
+Try it: pick a state and press **+1 box** a few times. Each press prepares a fresh box in that state and measures its energy once; after a single reading, **measure it again** reads the same box a second time. Then add a thousand boxes. Every reading is one of the energies $E_n = n^2E_1$ of the box, never anything in between. The bars approach $\lvert c_n\rvert^2$ and the running mean approaches a value we compute next.
 
 ```{anywidget} ../widgets/measure_energy.mjs
 {"state": "example"}
@@ -388,7 +390,7 @@ Fig. One energy measurement on the superposition of the example. Before: three p
 ### Compatible and incompatible observables
 
 - If $[\hat{A},\hat{B}] = 0$, the two operators share eigenfunctions ([Operators 2](05-hermitian-operators-and-commutators.md)). A reading of $a_n$ leaves the system in a shared eigenfunction, so $B$ is sharp too, and measuring $B$ does not disturb the value of $A$. Such observables are **compatible**: energy and momentum of a free particle, or $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ for hydrogen.
-- If they do not commute, a state with a sharp value of one has a spread in the other. The box states have sharp energies; their momenta are not sharp:
+- If they do not commute, a state with a sharp value of one has a spread in the other. In a box, $\hat{H}$ and $\hat{p}$ share no eigenfunctions: the eigenfunctions $e^{ipx/\hbar}$ of $\hat{p}$ do not vanish at the walls. Compare two states, each with its energy and momentum readings. A box state has a sharp energy; a Gaussian packet has a definite direction of motion:
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -401,25 +403,47 @@ from IPython.display import HTML
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 x = np.linspace(0, 1, 2000)                                 # L = hbar = 1: p in units of pi hbar / L
-p = np.linspace(-8, 8, 800)
+p = np.linspace(-10, 10, 1000)
 kern = np.exp(-1j * np.outer(p * np.pi, x)) / np.sqrt(2 * np.pi)
-fig, axs = plt.subplots(3, 1, figsize=(8, 4.6), sharex=True, gridspec_kw={"hspace": 0.45})
-for ax, n, col in zip(axs, (1, 2, 5), (TEAL, PURPLE, CARDINAL)):
-    amp = np.trapezoid(kern * np.sqrt(2) * np.sin(n * np.pi * x), x, axis=1)
-    dens = np.abs(amp)**2 * np.pi                           # density per unit of p / (pi hbar / L)
-    ax.fill_between(p, dens, color=col, alpha=0.2, lw=0); ax.plot(p, dens, color=col, lw=2.2)
-    for s in (-n, n):
-        ax.axvline(s, color=GRAY, lw=1, ls="--")
-    ax.set_yticks([]); ax.spines["left"].set_visible(False)
-    ax.set_ylim(0, 1.15 * dens.max())
-    ax.set_title(rf"$n = {n}$:  dashed lines at $p = \pm\sqrt{{2mE_{n}}} = \pm {n}\,\pi\hbar/L$", loc="left", fontsize=12)
-axs[-1].set_xlabel(r"momentum $p$  (units of $\pi\hbar/L$)", fontsize=12)
-axs[-1].tick_params(labelsize=11)
-fig.subplots_adjust(left=0.03, right=0.98, top=0.93, bottom=0.12)
+ns = np.arange(1, 11)
+phis = np.sqrt(2) * np.sin(np.outer(ns, np.pi * x))
+packet = np.exp(-(x - 0.5)**2 / (4 * 0.1**2)) * np.exp(1j * 5 * np.pi * x)   # |psi|^2 of width 0.1 L, p0 = 5 pi hbar / L
+packet = packet / np.sqrt(np.trapezoid(np.abs(packet)**2, x))
+rows = [(phis[4].astype(complex), r"box state $\psi_5$", r"energy: one value, sharp", "momentum: two humps, not sharp"),
+        (packet, "Gaussian packet, moving right", "energy: many values, spread", "momentum: one hump, moving right")]
+fig, axs = plt.subplots(2, 3, figsize=(10, 4.9), gridspec_kw={"width_ratios": [1, 0.85, 1.1], "hspace": 0.62, "wspace": 0.22})
+for r, (psi, name, e_note, p_note) in enumerate(rows):
+    axs_, axe, axp = axs[r]
+    dens = np.abs(psi)**2
+    axs_.fill_between(x, dens, color=CARDINAL, alpha=0.16, lw=0); axs_.plot(x, dens, color=CARDINAL, lw=1.4)
+    axs_.plot(x, psi.real, color=TEAL, lw=2.2, label=r"Re $\psi$")
+    axs_.axhline(0, color=GRAY, lw=0.6)
+    axs_.set_xlim(0, 1); axs_.set_ylim(-2.3, 4.4); axs_.set_yticks([]); axs_.spines["left"].set_visible(False)
+    axs_.set_xticks([0, 0.5, 1]); axs_.set_xticklabels(["0", "L/2", "L"], fontsize=11)
+    axs_.set_title(name, loc="left", fontsize=12.5)
+    c2 = np.abs(np.trapezoid(phis * psi, x, axis=1))**2
+    axe.bar(ns, c2, color=PURPLE, width=0.7)
+    axe.set_xlim(0.3, 10.7); axe.set_ylim(0, 1.12); axe.set_yticks([0, 0.5, 1]); axe.tick_params(labelsize=10.5)
+    axe.set_xticks([1, 5, 10])
+    axe.set_title(e_note, loc="left", fontsize=12.5)
+    amp = np.trapezoid(kern * psi, x, axis=1)
+    pd = np.abs(amp)**2 * np.pi                             # density per unit of p / (pi hbar / L)
+    axp.fill_between(p, pd, color=ORANGE, alpha=0.25, lw=0); axp.plot(p, pd, color=ORANGE, lw=2.2)
+    for sgn in (-5, 5):
+        axp.axvline(sgn, color=GRAY, lw=1, ls="--")
+    axp.set_xlim(-10, 10); axp.set_ylim(0, 1.25 * pd.max()); axp.set_yticks([]); axp.spines["left"].set_visible(False)
+    axp.set_xticks([-10, -5, 0, 5, 10]); axp.tick_params(labelsize=10.5)
+    axp.set_title(p_note, loc="left", fontsize=12.5)
+axs[1, 0].plot([], [], color=CARDINAL, lw=1.4, label=r"$|\psi|^2$")
+axs[1, 0].legend(loc="upper left", frameon=False, fontsize=11, handlelength=1.4, borderaxespad=0.1)
+axs[1, 0].set_xlabel(r"position $x$", fontsize=11.5)
+axs[1, 1].set_xlabel(r"level $n$  ($E_n = n^2E_1$)", fontsize=11.5)
+axs[1, 2].set_xlabel(r"momentum $p$  (units of $\pi\hbar/L$)", fontsize=11.5)
+fig.subplots_adjust(left=0.02, right=0.99, top=0.93, bottom=0.11)
 plt.show()
 ```
 
-Fig. Momentum distributions of three particle-in-a-box states. The sine is half a wave moving right and half moving left, $\sin kx = (e^{ikx} - e^{-ikx})/2i$, so the distribution has humps near $p = \pm n\pi\hbar/L = \pm\sqrt{2mE_n}$. The walls cut the wave off after a length $L$, which broadens each hump by about $h/L$. For $n = 1$ the two humps merge into one.
+Fig. Two states in a box, each with its energy and momentum readings. Top: the box state $\psi_5$ gives one energy, $25E_1$, every time. Its momentum readings fall in two humps near $p = \pm\sqrt{2mE_5} = \pm 5\pi\hbar/L$ (dashed), because the sine is half a wave moving right and half moving left, $\sin kx = (e^{ikx} - e^{-ikx})/2i$; the walls cut the wave off after a length $L$, which broadens each hump by about $h/L$. Bottom: a Gaussian packet moving right at about the same speed. Its momentum readings form one hump on the positive side, but its energy readings spread over several levels. Neither state is sharp in both.
 
 - How much spread the commutator forces is the **uncertainty principle**, the general form of the relation met in [Chapter 1](../ch01/04-wave-particle-duality.md):
 
@@ -460,11 +484,11 @@ dx = np.geomspace(0.08, 3, 200)
 axu.fill_between(dx, 0.04, 0.5 / dx, color=GRAY, alpha=0.25, lw=0)
 axu.plot(dx, 0.5 / dx, color="k", lw=1.6)
 axu.plot(dx, 0.568 / dx, color=PURPLE, lw=1.4, ls="--")
-axu.text(0.1, 0.35, "forbidden:\n" + r"$\Delta x\,\Delta p < \hbar/2$", fontsize=11, color=GRAY, va="bottom")
-(gdot,) = axu.plot([], [], "o", color=TEAL, ms=10, zorder=5, label=r"Gaussian: $\Delta x\Delta p = 0.50\,\hbar$")
+axu.text(0.1, 0.35, "forbidden:\n" + r"$\sigma_x\sigma_p < \hbar/2$", fontsize=11, color=GRAY, va="bottom")
+(gdot,) = axu.plot([], [], "o", color=TEAL, ms=10, zorder=5, label=r"Gaussian: $\sigma_x\sigma_p = 0.50\,\hbar$")
 (bdot,) = axu.plot([], [], "s", color=PURPLE, ms=9, zorder=5, label=r"box ground state: $0.57\,\hbar$")
 axu.set_xscale("log"); axu.set_yscale("log"); axu.set_xlim(0.08, 3); axu.set_ylim(0.04, 12)
-axu.set_xlabel(r"$\Delta x$", fontsize=12); axu.set_ylabel(r"$\Delta p$", fontsize=12); axu.tick_params(labelsize=10)
+axu.set_xlabel(r"$\sigma_x$", fontsize=12); axu.set_ylabel(r"$\sigma_p$", fontsize=12); axu.tick_params(labelsize=10)
 axu.legend(loc="upper right", frameon=False, fontsize=10.5, handletextpad=0.3, borderaxespad=0.1)
 fig.subplots_adjust(left=0.02, right=0.98, top=0.86, bottom=0.17)
 
@@ -474,10 +498,10 @@ def update(i):
     rp = np.exp(-x**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
     lx.set_data(x, rx); bx[0].remove(); bx[0] = axx.fill_between(x, rx, color=TEAL, alpha=0.2, lw=0)
     lp.set_data(x, rp); bp[0].remove(); bp[0] = axp.fill_between(x, rp, color=CARDINAL, alpha=0.2, lw=0)
-    axx.set_title(rf"$|\psi(x)|^2$:  $\Delta x = {s:.2f}$", loc="left", fontsize=12.5)
-    axp.set_title(rf"$|\phi(p)|^2$:  $\Delta p = {sp:.2f}$", loc="left", fontsize=12.5)
+    axx.set_title(rf"$|\psi(x)|^2$:  $\sigma_x = {s:.2f}$", loc="left", fontsize=12.5)
+    axp.set_title(rf"$|\phi(p)|^2$:  $\sigma_p = {sp:.2f}$", loc="left", fontsize=12.5)
     gdot.set_data([s], [sp]); bdot.set_data([s], [0.568 / s])
-    axu.set_title(rf"$\Delta x\,\Delta p = {s * sp:.2f}\,\hbar$", loc="left", fontsize=12.5)
+    axu.set_title(rf"$\sigma_x\sigma_p = {s * sp:.2f}\,\hbar$", loc="left", fontsize=12.5)
 
 ani = FuncAnimation(fig, update, frames=nf, interval=120, blit=False)
 plt.close(fig)
