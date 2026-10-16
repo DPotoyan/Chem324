@@ -2571,9 +2571,10 @@ def commutator_steps():
 
 
 # ============================================================ deck 3.6 "Measurement: eigenvalues and expectation values"
-# Page ch03/06 syncs postulate_map, vector_projection, function_projection, sine_series, collapse, fourier_packet,
+# Page ch03/06 syncs postulate_map, vector_projection, function_projection, sine_series, collapse, two_bases,
 # box_momentum and uncertainty_tradeoff (postulate_map also closes page ch03/07); component_steps and
-# component_cancel are deck-only (the deck's step-by-step opener). measure_energy is
+# component_cancel are no longer used by deck 06 (kept); series_build (the sine series beside the overlap matrix
+# <psi_m|psi_n>) is deck-only, and two_bases is synced on page 06 and shown in deck 06. measure_energy is
 # deck-only: the page measures with the JS widget widgets/measure_energy.mjs instead (same state, same story).
 
 # ------------------------------------------------------------ how the postulates connect: operator -> Hermitian -> readings and axes -> Born rule (still)
@@ -2770,6 +2771,73 @@ def component_cancel():
 
 # ------------------------------------------------------------ a narrow packet needs many box states: partial sums and |c_n|^2
 @register
+def series_build():
+    from matplotlib.patches import Rectangle
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(0, 1, 600)                                  # deck 3.6: sine_series plus the overlap matrix (deck-only)
+    psi = np.exp(-(x - 0.3)**2 / (4 * 0.045**2))
+    psi = psi / np.sqrt(np.trapezoid(psi**2, x))
+    ns = np.arange(1, 25)
+    phis = np.sqrt(2) * np.sin(np.outer(ns, np.pi * x))
+    c = np.trapezoid(phis * psi, x, axis=1)
+    M = 8
+    S = np.trapezoid(phis[:M, None, :] * phis[None, :M, :], x, axis=2)   # <psi_m|psi_n>, computed
+    ks = [1] * 3 + [2] * 3 + [3] * 3 + [4] * 2 + [5] * 2 + [6] * 2 + list(range(7, 25)) + [24] * 8
+    fig = plt.figure(figsize=(10, 4.6))
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.75, 1], height_ratios=[1.5, 1], hspace=0.55, wspace=0.12)
+    ax = fig.add_subplot(gs[0, 0]); axb = fig.add_subplot(gs[1, 0]); axm = fig.add_subplot(gs[:, 1])
+    ax.plot(x, psi, color="k", lw=1.4, ls=":", label=r"the state $\psi$")
+    (part,) = ax.plot([], [], color=TEAL, lw=2.4, label=r"sum of the first $k$ terms")
+    (new,) = ax.plot([], [], color=ORANGE, lw=1.6, label=r"the newest term $c_k\psi_k$")
+    band = [ax.fill_between(x, 0 * x, color=TEAL, alpha=0.15, lw=0)]
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(0, 1); ax.set_ylim(-1.6, 3.6); ax.set_yticks([])
+    ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "L/2", "L"], fontsize=12)
+    ax.spines["left"].set_visible(False)
+    ax.legend(loc="upper right", frameon=False, fontsize=11.5)
+    bars = axb.bar(ns, c**2, color="#d9dde1", width=0.75)
+    axb.set_xlim(0.3, 24.7); axb.set_ylim(0, 1.15 * (c**2).max())
+    axb.set_xlabel(r"$n$", fontsize=12); axb.set_ylabel(r"$|c_n|^2$", fontsize=12)
+    axb.set_yticks([0, 0.1]); axb.tick_params(labelsize=11)
+    for m in range(M):
+        for n in range(M):
+            on = m == n
+            axm.add_patch(Rectangle((n, m), 1, 1, fc="#f1ecf7" if on else "white", ec="#dee2e6", lw=0.8))
+            axm.text(n + 0.5, m + 0.52, f"{abs(S[m, n]):.0f}", ha="center", va="center", fontsize=12,
+                     color=PURPLE if on else GRAY, weight="bold" if on else "normal")
+    hl = [axm.add_patch(Rectangle((0, 0), 1, 1, fc="none", ec=TEAL, lw=2.6, zorder=5)) for _ in range(2)]
+    axm.set_xlim(0, M); axm.set_ylim(M, 0); axm.set_aspect("equal")
+    axm.set_xticks(np.arange(M) + 0.5); axm.set_xticklabels(range(1, M + 1), fontsize=11)
+    axm.set_yticks(np.arange(M) + 0.5); axm.set_yticklabels(range(1, M + 1), fontsize=11)
+    axm.tick_params(length=0); axm.xaxis.tick_top()
+    for side in ("left", "bottom", "top", "right"):
+        axm.spines[side].set_visible(False)
+    axm.set_xlabel(r"$n$", fontsize=12); axm.set_ylabel(r"$m$", fontsize=12, rotation=0, labelpad=14)
+    axm.set_title(r"the axes: $\langle\psi_m|\psi_n\rangle = \int\psi_m\psi_n\,dx$", fontsize=12.5, pad=24)
+    fig.subplots_adjust(left=0.07, right=0.98, top=0.88, bottom=0.12)
+
+    def update(i):
+        k = ks[i]
+        s = c[:k] @ phis[:k]
+        part.set_data(x, s); new.set_data(x, c[k - 1] * phis[k - 1])
+        band[0].remove(); band[0] = ax.fill_between(x, s, color=TEAL, alpha=0.15, lw=0)
+        for j, b in enumerate(bars):
+            b.set_color(TEAL if j < k else "#d9dde1")
+        ax.set_title(rf"$k = {k}$ box states", loc="left", fontsize=13)
+        axb.set_title(f"the first {k} states hold probability {np.sum(c[:k]**2):.3f}", loc="left", fontsize=12.5)
+        vis = k <= M
+        hl[0].set_bounds(0, k - 1, M, 1); hl[1].set_bounds(k - 1, 0, 1, M)
+        for h in hl:
+            h.set_visible(vis)
+
+    ani = FuncAnimation(fig, update, frames=len(ks), interval=110, blit=False)
+    return fig, ani
+
+
+series_build.fps = 9                                            # slow start: the first terms repeat for 2 to 3 frames
+
+
+@register
 def sine_series():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     x = np.linspace(0, 1, 600)
@@ -2931,66 +2999,41 @@ def box_momentum():
     return fig, None
 
 
-# ------------------------------------------------------------ a Gaussian is a sum of plane waves: wide, it is almost one plane wave; narrow, almost a spike
+# ------------------------------------------------------------ a spike is many plane waves, a plane wave is many spikes (still)
 @register
-def fourier_packet():
+def two_bases():
     from matplotlib.colors import to_rgb
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    nf = 28
-    sx = np.exp(np.log(3.5) + (np.log(0.2) - np.log(3.5)) * 0.5 * (1 - np.cos(2 * np.pi * np.arange(nf) / nf)))
-    x = np.linspace(-8, 8, 900)                                 # hbar = 1, packet centered at x = 0 with momentum p0
-    p = np.linspace(-6, 12, 500)
-    p0 = 3.0
-    u = np.linspace(-2.4, 2.4, 7)                               # seven of the plane waves, at p0 + u sigma_p
-    cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 7)]
-    gap = 2.3
-    fig = plt.figure(figsize=(8.4, 4.4))
-    gs = fig.add_gridspec(2, 2, width_ratios=[1.55, 1], height_ratios=[1.55, 1], hspace=0.42, wspace=0.12)
-    axw = fig.add_subplot(gs[0, 0]); axs = fig.add_subplot(gs[1, 0]); axp = fig.add_subplot(gs[:, 1])
-    waves = [axw.plot([], [], color=col, lw=1.5)[0] for col in cols]
-    axw.axvline(0, color=GRAY, lw=0.9, ls=":")
-    axw.text(0.15, gap * 6 + 1.2, r"all in step at $x = 0$", fontsize=11, color=GRAY, va="bottom")
-    axw.set_xlim(-8, 8); axw.set_ylim(-1.3, gap * 6 + 2.4); axw.axis("off")
-    axw.set_title(r"seven of the plane waves, Re $e^{ipx/\hbar}$, sized by weight", loc="left", fontsize=12)
-    (env,) = axs.plot([], [], color=GRAY, lw=1, ls="--"); (env2,) = axs.plot([], [], color=GRAY, lw=1, ls="--")
-    (re,) = axs.plot([], [], color=TEAL, lw=2.2)
-    axs.axhline(0, color=GRAY, lw=0.6)
-    axs.set_xlim(-8, 8); axs.set_ylim(-1.05, 1.05); axs.set_yticks([]); axs.spines["left"].set_visible(False)
-    axs.set_xlabel(r"position $x$", fontsize=12); axs.tick_params(labelsize=10.5)
-    (lp,) = axp.plot([], [], color=ORANGE, lw=2.2); bp = [axp.fill_between(p, 0 * p, color=ORANGE, alpha=0.2, lw=0)]
-    stems = [axp.plot([], [], color=col, lw=3, solid_capstyle="butt")[0] for col in cols]
-    axp.set_xlim(-6, 12); axp.set_ylim(0, 3.0); axp.set_yticks([]); axp.spines["left"].set_visible(False)
-    axp.set_xticks([0, 3, 6, 9]); axp.set_xticklabels(["0", r"$p_0$", "6", "9"]); axp.tick_params(labelsize=10.5)
-    axp.set_xlabel(r"momentum $p$", fontsize=12)
-    note = fig.text(0.5, 0.965, "", ha="center", va="center", fontsize=13, weight="bold")
-    fig.subplots_adjust(left=0.02, right=0.99, top=0.86, bottom=0.11)
-
-    def update(i):
-        s = sx[i]; sp = 0.5 / s
-        a = np.exp(-u**2 / 4)                                   # amplitude of each plane wave, proportional to phi(p)
-        for k, (w, st) in enumerate(zip(waves, stems)):
-            pk = p0 + u[k] * sp
-            w.set_data(x, gap * k + a[k] * np.cos(pk * x))
-            st.set_data([pk, pk], [0, np.exp(-u[k]**2 / 2) / np.sqrt(2 * np.pi * sp**2)])
-        envelope = np.exp(-x**2 / (4 * s**2))
-        env.set_data(x, envelope); env2.set_data(x, -envelope)
-        re.set_data(x, envelope * np.cos(p0 * x))
-        axs.set_title(rf"sum over all $p$: the Gaussian, Re $\psi(x)$,  $\sigma_x = {s:.2f}$", loc="left", fontsize=12)
-        rp = np.exp(-(p - p0)**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
-        lp.set_data(p, rp); bp[0].remove(); bp[0] = axp.fill_between(p, rp, color=ORANGE, alpha=0.2, lw=0)
-        axp.set_title(rf"weights $|\phi(p)|^2$,  $\sigma_p = {sp:.2f}$", loc="left", fontsize=12)
-        if s > 2.0:
-            note.set_text(r"wide: nearly ONE plane wave, an eigenfunction of $\hat{p}$"); note.set_color(ORANGE)
-        elif s < 0.4:
-            note.set_text(r"narrow: nearly a spike, an eigenfunction of $\hat{x}$, made of MANY momenta"); note.set_color(TEAL)
-        else:
-            note.set_text("in between: a wave packet"); note.set_color(GRAY)
-
-    ani = FuncAnimation(fig, update, frames=nf, interval=150, blit=False)
-    return fig, ani
-
-
-fourier_packet.fps = 10                                         # deck GIF: 28 frames at 10 fps, a calmer sweep
+    x = np.linspace(-6, 6, 1200)                                # hbar = 1
+    cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 6)]
+    K, dp = 30, 0.25                                            # momenta -K dp ... K dp, equal weights
+    spike = sum(np.cos(k * dp * x) for k in range(-K, K + 1)) / (2 * K + 1)
+    p0, xj = 2.0, np.arange(-6, 6.01, 0.25)                     # the plane wave e^{i p0 x}, sampled on a grid
+    fig, axs = plt.subplots(2, 2, figsize=(10, 4.4), gridspec_kw={"hspace": 0.7, "wspace": 0.12})
+    for k, col in enumerate(cols):
+        axs[0, 0].plot(x, np.cos(0.6 * k * x), color=col, lw=1.3, alpha=0.9)
+    axs[0, 0].set_title(r"a few of the plane waves $e^{ipx/\hbar}$, all of equal weight", loc="left", fontsize=12.5)
+    axs[1, 0].fill_between(x, spike, color=TEAL, alpha=0.18, lw=0); axs[1, 0].plot(x, spike, color=TEAL, lw=2.4)
+    axs[1, 0].set_title(r"their sum: a spike, an eigenfunction of $\hat{x}$", loc="left", fontsize=12.5)
+    axs[0, 1].vlines(xj, 0, np.cos(p0 * xj), color=TEAL, lw=2.2)
+    axs[0, 1].plot(xj, np.cos(p0 * xj), "o", color=TEAL, ms=3.5)
+    axs[0, 1].set_title(r"spikes at every $x_j$, each weighted by $e^{ip_0x_j/\hbar}$", loc="left", fontsize=12.5)
+    axs[1, 1].plot(x, np.cos(p0 * x), color=ORANGE, lw=2.4)
+    axs[1, 1].set_title(r"their sum: a plane wave, an eigenfunction of $\hat{p}$", loc="left", fontsize=12.5)
+    for ax in axs.flat:
+        ax.axhline(0, color=GRAY, lw=0.6)
+        ax.set_xlim(-6, 6); ax.set_ylim(-1.15, 1.15); ax.set_yticks([]); ax.spines["left"].set_visible(False)
+        ax.set_xticks([-6, -3, 0, 3, 6]); ax.tick_params(labelsize=10.5)
+    for ax in axs[1]:
+        ax.set_xlabel(r"position $x$", fontsize=12)
+    for j, (head, col) in enumerate(((r"a spike = many momenta", TEAL), (r"a plane wave = many positions", ORANGE))):
+        fig.text(0.27 + 0.485 * j, 0.965, head, ha="center", va="center", fontsize=14, weight="bold", color=col)
+        fig.text(0.27 + 0.485 * j, 0.5, "add them up", ha="center", va="center", fontsize=11, color=GRAY, style="italic")
+        fig.text(0.27 + 0.485 * j, 0.465, "\u2193", ha="center", va="center", fontsize=15, color=GRAY)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.84, bottom=0.12)
+    fig.savefig(f"{OUT}/two_bases.png", dpi=200)
+    print("wrote", f"{OUT}/two_bases.png")
+    return fig, None
 
 
 # ------------------------------------------------------------ squeeze a Gaussian: x narrows, p widens, the product stays at hbar/2

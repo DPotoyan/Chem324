@@ -61,19 +61,12 @@ $$\langle \psi_m \vert \psi\rangle = \sum_n c_n\,\underbrace{\langle \psi_m \ver
 
 - The only new step: a bracket of two functions is an **integral**, $\langle \psi_m \vert \psi\rangle = \int \psi_m^*\,\psi\,dx$
 
-## One component, step by step
+## Build a function from box states
 
-![](../../ch03/images/component_steps.png){.nostretch width="86%" fig-align="center"}
+![](../../ch03/images/series_build.gif){.nostretch width="76%" fig-align="center"}
 
-- The parabola $\psi = \sqrt{30/L^5}\;x(L-x)$ looks almost like $\psi_1$, so its component along $\psi_1$ is almost 1: $\ c_1 = 0.999$
-- Both are **normalized**, so no component can exceed 1, and $c_1 = 1$ only if $\psi = \psi_1$
-
-## A component that vanishes
-
-![](../../ch03/images/component_cancel.png){.nostretch width="78%" fig-align="center"}
-
-- $\psi$ is symmetric about $L/2$, $\psi_2$ is antisymmetric: the two halves of the product cancel, so $c_2 = 0$
-- The same happens for every even $n$: the parabola has **no** even components
+- Each box state is **perpendicular** to all the others (right): each $c_n$ is found **on its own**
+- A narrow state needs **many**: short wavelengths, high $n$
 
 ## One structure, two settings
 
@@ -125,12 +118,6 @@ $$\lvert c_1\rvert^2 = \frac{960}{\pi^6} = 0.9986, \qquad \lvert c_3\rvert^2 = 0
 :::
 
 - A smooth, spread-out state is **almost all ground state**
-
-## A narrow state needs many eigenstates
-
-![](../../ch03/images/sine_series.gif){.nostretch width="66%" fig-align="center"}
-
-- Sharp features need **short wavelengths**, high $n$: about ten states for a packet $0.045\,L$ wide
 
 ## A measurement returns an eigenvalue
 
@@ -195,15 +182,22 @@ $$\sigma_E = \sqrt{44.75 - 5.75^2}\;E_1 = 3.42\,E_1$$
 - $[\hat{x},\hat{p}] = i\hbar$: **no shared** eigenfunctions. Each eigenfunction of one is a sum of **many** eigenfunctions of the other
 - On a grid the spikes are the columns with a single 1: the eigenvectors of the diagonal $X$
 
-## A state in plane waves
+## Each is a sum of the other
+
+![](../../ch03/images/two_bases.png){.nostretch width="68%" fig-align="center"}
+
+$$\psi(x) = \underbrace{\sum_k c_k\,e^{ip_kx/\hbar}}_{\text{many momenta}} \qquad\qquad \psi(x) = \underbrace{\sum_j \psi(x_j)\,\big[\text{spike at } x_j\big]}_{\text{many positions}}$$
+
+## From the sum to the Fourier transform
+
+- Momentum takes **any** value: the sum over $k$ becomes an **integral**, and $c_k$ becomes a function $\phi(p)$
 
 ::: {.keyeq}
 $$\psi(x) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad \phi(p) = \langle p \vert \psi \rangle = \int_{-\infty}^{\infty} \frac{e^{-ipx/\hbar}}{\sqrt{2\pi\hbar}}\,\psi(x)\,dx$$
 :::
 
-- The projection $c_n = \langle \psi_n \vert \psi \rangle$ again, with an integral over $p$ for the sum over $n$: the **Fourier transform**
+- $\phi(p)$ is a **projection**, like $c_n = \langle \psi_n \vert \psi \rangle$: the **momentum wavefunction**
 - $\lvert\phi(p)\rvert^2\,dp$: the probability of a momentum reading between $p$ and $p + dp$
-- In spikes the components are just the values, $\psi(x_0) = \langle x_0 \vert \psi \rangle$: the wavefunction we always drew
 
 ## Example: a Gaussian in momentum
 
@@ -219,12 +213,18 @@ $$\phi(p) \propto e^{-(p - p_0)^2/4\sigma_p^2}, \qquad \sigma_p = \frac{\hbar}{2
 A Gaussian again, centered at $p_0$: narrow in $x$ means wide in $p$, and $\sigma_x\sigma_p = \hbar/2$.
 :::
 
-## Squeeze it, widen it
+## Live: squeeze it, widen it
 
-![](../../ch03/images/fourier_packet.gif){.nostretch width="64%" fig-align="center"}
+```{=html}
+<div id="fp-live" style="width: 1060px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/fourier_packet.mjs";
+  const opts = { waves: false, toggle: false, fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("fp-live") });
+</script>
+```
 
 - **Squeeze**: a spike, from **every** momentum. **Widen**: one plane wave, over **every** position
-- In between: a **wave packet**, plane waves that add up at the center and cancel elsewhere
 
 ## Sharp energy or one-way momentum
 

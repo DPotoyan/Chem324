@@ -465,7 +465,53 @@ Fig. One energy measurement on the superposition of the example. Before: three p
 | $\hat{x}$ | spikes $\delta(x - x_0)$ | position $x_0$ | every momentum |
 | $\hat{p}$ | plane waves $e^{ipx/\hbar}$ | momentum $p$ | every position |
 
-- Both sets are coordinate systems for states. Write $\lvert x_0 \rangle$ for the spike at $x_0$ and $\lvert p \rangle$ for the plane wave $e^{ipx/\hbar}/\sqrt{2\pi\hbar}$. In the spikes, the components of $\psi$ are simply its values, $\psi(x_0) = \langle x_0 \vert \psi \rangle$: the wavefunction we have drawn all along **is** the expansion in position eigenfunctions, just as the column of samples was on the grid. In the plane waves, the components are a new function $\phi(p)$. The projection is the same as for the box states, $c_n = \langle \psi_n \vert \psi \rangle$, except that the label $p$ is continuous, so the sum over $n$ becomes an integral over $p$. This is the **Fourier transform**:
+- Each set is built from the other. A spike is a sum of plane waves of every momentum, all with the same weight, which add up at one point and cancel everywhere else. A plane wave is a sum of spikes at every position, all of the same size:
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: two_bases
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.colors import to_rgb
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(-6, 6, 1200)                                # hbar = 1
+cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 6)]
+K, dp = 30, 0.25                                            # momenta -K dp ... K dp, equal weights
+spike = sum(np.cos(k * dp * x) for k in range(-K, K + 1)) / (2 * K + 1)
+p0, xj = 2.0, np.arange(-6, 6.01, 0.25)                     # the plane wave e^{i p0 x}, sampled on a grid
+fig, axs = plt.subplots(2, 2, figsize=(10, 4.4), gridspec_kw={"hspace": 0.7, "wspace": 0.12})
+for k, col in enumerate(cols):
+    axs[0, 0].plot(x, np.cos(0.6 * k * x), color=col, lw=1.3, alpha=0.9)
+axs[0, 0].set_title(r"a few of the plane waves $e^{ipx/\hbar}$, all of equal weight", loc="left", fontsize=12.5)
+axs[1, 0].fill_between(x, spike, color=TEAL, alpha=0.18, lw=0); axs[1, 0].plot(x, spike, color=TEAL, lw=2.4)
+axs[1, 0].set_title(r"their sum: a spike, an eigenfunction of $\hat{x}$", loc="left", fontsize=12.5)
+axs[0, 1].vlines(xj, 0, np.cos(p0 * xj), color=TEAL, lw=2.2)
+axs[0, 1].plot(xj, np.cos(p0 * xj), "o", color=TEAL, ms=3.5)
+axs[0, 1].set_title(r"spikes at every $x_j$, each weighted by $e^{ip_0x_j/\hbar}$", loc="left", fontsize=12.5)
+axs[1, 1].plot(x, np.cos(p0 * x), color=ORANGE, lw=2.4)
+axs[1, 1].set_title(r"their sum: a plane wave, an eigenfunction of $\hat{p}$", loc="left", fontsize=12.5)
+for ax in axs.flat:
+    ax.axhline(0, color=GRAY, lw=0.6)
+    ax.set_xlim(-6, 6); ax.set_ylim(-1.15, 1.15); ax.set_yticks([]); ax.spines["left"].set_visible(False)
+    ax.set_xticks([-6, -3, 0, 3, 6]); ax.tick_params(labelsize=10.5)
+for ax in axs[1]:
+    ax.set_xlabel(r"position $x$", fontsize=12)
+for j, (head, col) in enumerate(((r"a spike = many momenta", TEAL), (r"a plane wave = many positions", ORANGE))):
+    fig.text(0.27 + 0.485 * j, 0.965, head, ha="center", va="center", fontsize=14, weight="bold", color=col)
+    fig.text(0.27 + 0.485 * j, 0.5, "add them up", ha="center", va="center", fontsize=11, color=GRAY, style="italic")
+    fig.text(0.27 + 0.485 * j, 0.465, "\u2193", ha="center", va="center", fontsize=15, color=GRAY)
+fig.subplots_adjust(left=0.02, right=0.99, top=0.84, bottom=0.12)
+plt.show()
+```
+
+Fig. Each kind of eigenfunction is a sum of the other kind (real parts drawn). Left: plane waves of many momenta with equal weights add up to a spike, a sharp position. Right: spikes at every grid point, each weighted by the value of $e^{ip_0x/\hbar}$ there, add up to a plane wave, a sharp momentum.
+
+- So any state can be written either way. Write $\lvert x_0 \rangle$ for the spike at $x_0$ and $\lvert p \rangle$ for the plane wave $e^{ipx/\hbar}/\sqrt{2\pi\hbar}$. In the spikes, the components of $\psi$ are simply its values, $\psi(x_0) = \langle x_0 \vert \psi \rangle$: the wavefunction we have drawn all along **is** the expansion in position eigenfunctions, just as the column of samples was on the grid.
+- In the plane waves, $\psi$ is a sum of many momenta, $\psi(x) = \sum_k c_k\,e^{ip_kx/\hbar}$. Momentum can take any value, not just a list of them, so the sum becomes an integral over $p$ and the coefficients $c_k$ become a function $\phi(p)$. Each coefficient is still a projection, as for the box states, $c_n = \langle \psi_n \vert \psi \rangle$. This pair of integrals is the **Fourier transform**:
 
 :::{important} **Expansion in momentum eigenfunctions**
 
@@ -508,73 +554,11 @@ The shifted Gaussian integrates to $\int e^{-(x - a)^2/4\sigma_x^2}\,dx = 2\sigm
 
 - Now squeeze and widen the Gaussian, and watch which plane waves it is made of:
 
-```{code-cell} python
-:tags: [hide-input]
-# synced: fourier_packet
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-from matplotlib.colors import to_rgb
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-nf = 28
-sx = np.exp(np.log(3.5) + (np.log(0.2) - np.log(3.5)) * 0.5 * (1 - np.cos(2 * np.pi * np.arange(nf) / nf)))
-x = np.linspace(-8, 8, 900)                                 # hbar = 1, packet centered at x = 0 with momentum p0
-p = np.linspace(-6, 12, 500)
-p0 = 3.0
-u = np.linspace(-2.4, 2.4, 7)                               # seven of the plane waves, at p0 + u sigma_p
-cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 7)]
-gap = 2.3
-fig = plt.figure(figsize=(8.4, 4.4))
-gs = fig.add_gridspec(2, 2, width_ratios=[1.55, 1], height_ratios=[1.55, 1], hspace=0.42, wspace=0.12)
-axw = fig.add_subplot(gs[0, 0]); axs = fig.add_subplot(gs[1, 0]); axp = fig.add_subplot(gs[:, 1])
-waves = [axw.plot([], [], color=col, lw=1.5)[0] for col in cols]
-axw.axvline(0, color=GRAY, lw=0.9, ls=":")
-axw.text(0.15, gap * 6 + 1.2, r"all in step at $x = 0$", fontsize=11, color=GRAY, va="bottom")
-axw.set_xlim(-8, 8); axw.set_ylim(-1.3, gap * 6 + 2.4); axw.axis("off")
-axw.set_title(r"seven of the plane waves, Re $e^{ipx/\hbar}$, sized by weight", loc="left", fontsize=12)
-(env,) = axs.plot([], [], color=GRAY, lw=1, ls="--"); (env2,) = axs.plot([], [], color=GRAY, lw=1, ls="--")
-(re,) = axs.plot([], [], color=TEAL, lw=2.2)
-axs.axhline(0, color=GRAY, lw=0.6)
-axs.set_xlim(-8, 8); axs.set_ylim(-1.05, 1.05); axs.set_yticks([]); axs.spines["left"].set_visible(False)
-axs.set_xlabel(r"position $x$", fontsize=12); axs.tick_params(labelsize=10.5)
-(lp,) = axp.plot([], [], color=ORANGE, lw=2.2); bp = [axp.fill_between(p, 0 * p, color=ORANGE, alpha=0.2, lw=0)]
-stems = [axp.plot([], [], color=col, lw=3, solid_capstyle="butt")[0] for col in cols]
-axp.set_xlim(-6, 12); axp.set_ylim(0, 3.0); axp.set_yticks([]); axp.spines["left"].set_visible(False)
-axp.set_xticks([0, 3, 6, 9]); axp.set_xticklabels(["0", r"$p_0$", "6", "9"]); axp.tick_params(labelsize=10.5)
-axp.set_xlabel(r"momentum $p$", fontsize=12)
-note = fig.text(0.5, 0.965, "", ha="center", va="center", fontsize=13, weight="bold")
-fig.subplots_adjust(left=0.02, right=0.99, top=0.86, bottom=0.11)
-
-def update(i):
-    s = sx[i]; sp = 0.5 / s
-    a = np.exp(-u**2 / 4)                                   # amplitude of each plane wave, proportional to phi(p)
-    for k, (w, st) in enumerate(zip(waves, stems)):
-        pk = p0 + u[k] * sp
-        w.set_data(x, gap * k + a[k] * np.cos(pk * x))
-        st.set_data([pk, pk], [0, np.exp(-u[k]**2 / 2) / np.sqrt(2 * np.pi * sp**2)])
-    envelope = np.exp(-x**2 / (4 * s**2))
-    env.set_data(x, envelope); env2.set_data(x, -envelope)
-    re.set_data(x, envelope * np.cos(p0 * x))
-    axs.set_title(rf"sum over all $p$: the Gaussian, Re $\psi(x)$,  $\sigma_x = {s:.2f}$", loc="left", fontsize=12)
-    rp = np.exp(-(p - p0)**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
-    lp.set_data(p, rp); bp[0].remove(); bp[0] = axp.fill_between(p, rp, color=ORANGE, alpha=0.2, lw=0)
-    axp.set_title(rf"weights $|\phi(p)|^2$,  $\sigma_p = {sp:.2f}$", loc="left", fontsize=12)
-    if s > 2.0:
-        note.set_text(r"wide: nearly ONE plane wave, an eigenfunction of $\hat{p}$"); note.set_color(ORANGE)
-    elif s < 0.4:
-        note.set_text(r"narrow: nearly a spike, an eigenfunction of $\hat{x}$, made of MANY momenta"); note.set_color(TEAL)
-    else:
-        note.set_text("in between: a wave packet"); note.set_color(GRAY)
-
-ani = FuncAnimation(fig, update, frames=nf, interval=150, blit=False)
-plt.close(fig)
-HTML(ani.to_jshtml())
+```{anywidget} ../widgets/fourier_packet.mjs
+{"waves": true}
 ```
 
-Fig. A Gaussian built from plane waves. Top left: seven of the plane waves, each drawn with its weight; all of them crest together at $x = 0$. Bottom left: the sum over all momenta, the Gaussian itself. Right: the weights $\lvert\phi(p)\rvert^2$, with the seven waves marked in matching colours. Wide in position, the packet holds a narrow band of momenta and is nearly one plane wave. Squeezed, it needs a wide band: waves of very different wavelength agree only near $x = 0$ and cancel everywhere else.
+Fig. A Gaussian built from plane waves. Drag the slider to squeeze or widen it. Top left: seven of the plane waves, each drawn with its weight; all of them crest together at $x = 0$. Below them: the sum over all momenta, the Gaussian itself. Right: the weights $\lvert\phi(p)\rvert^2$, with the seven waves marked in matching colours. Wide in position, the packet holds a narrow band of momenta and is nearly one plane wave. Squeezed, it needs a wide band: waves of very different wavelength agree only near $x = 0$ and cancel everywhere else.
 
 - **Squeeze** the Gaussian, $\sigma_x \to 0$: it becomes a spike, an eigenfunction of $\hat{x}$, and $\phi(p)$ flattens. A sharp position holds **every momentum**, with equal weight.
 - **Widen** it, $\sigma_x \to \infty$: it becomes the plane wave $e^{ip_0x/\hbar}$, an eigenfunction of $\hat{p}$, and $\phi(p)$ collapses onto $p_0$. A sharp momentum is spread over **every position**.
