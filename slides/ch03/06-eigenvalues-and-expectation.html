@@ -211,28 +211,16 @@ Davit Potoyan
 <li>The only new step: a bracket of two functions is an <strong>integral</strong>, <span class="math inline">\langle \psi_m \vert \psi\rangle = \int \psi_m^*\,\psi\,dx</span></li>
 </ul>
 </section>
-<section id="one-component-step-by-step" class="slide level2">
-<h2>One component, step by step</h2>
+<section id="build-a-function-from-box-states" class="slide level2">
+<h2>Build a function from box states</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch03/images/component_steps.png" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+<p><img data-src="../../ch03/images/series_build.gif" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
 </figure>
 </div>
 <ul>
-<li>The parabola <span class="math inline">\psi = \sqrt{30/L^5}\;x(L-x)</span> looks almost like <span class="math inline">\psi_1</span>, so its component along <span class="math inline">\psi_1</span> is almost 1: <span class="math inline">\ c_1 = 0.999</span></li>
-<li>Both are <strong>normalized</strong>, so no component can exceed 1, and <span class="math inline">c_1 = 1</span> only if <span class="math inline">\psi = \psi_1</span></li>
-</ul>
-</section>
-<section id="a-component-that-vanishes" class="slide level2">
-<h2>A component that vanishes</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/component_cancel.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
-</figure>
-</div>
-<ul>
-<li><span class="math inline">\psi</span> is symmetric about <span class="math inline">L/2</span>, <span class="math inline">\psi_2</span> is antisymmetric: the two halves of the product cancel, so <span class="math inline">c_2 = 0</span></li>
-<li>The same happens for every even <span class="math inline">n</span>: the parabola has <strong>no</strong> even components</li>
+<li>Each box state is <strong>perpendicular</strong> to all the others (right): each <span class="math inline">c_n</span> is found <strong>on its own</strong></li>
+<li>A narrow state needs <strong>many</strong>: short wavelengths, high <span class="math inline">n</span></li>
 </ul>
 </section>
 <section id="one-structure-two-settings" class="slide level2">
@@ -318,17 +306,6 @@ Davit Potoyan
 </div>
 <ul>
 <li>A smooth, spread-out state is <strong>almost all ground state</strong></li>
-</ul>
-</section>
-<section id="a-narrow-state-needs-many-eigenstates" class="slide level2">
-<h2>A narrow state needs many eigenstates</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/sine_series.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
-</figure>
-</div>
-<ul>
-<li>Sharp features need <strong>short wavelengths</strong>, high <span class="math inline">n</span>: about ten states for a packet <span class="math inline">0.045\,L</span> wide</li>
 </ul>
 </section>
 <section id="a-measurement-returns-an-eigenvalue" class="slide level2">
@@ -423,15 +400,26 @@ Davit Potoyan
 <li>On a grid the spikes are the columns with a single 1: the eigenvectors of the diagonal <span class="math inline">X</span></li>
 </ul>
 </section>
-<section id="a-state-in-plane-waves" class="slide level2">
-<h2>A state in plane waves</h2>
+<section id="each-is-a-sum-of-the-other" class="slide level2">
+<h2>Each is a sum of the other</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/two_bases.png" class="quarto-figure quarto-figure-center" style="width:68.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\psi(x) = \underbrace{\sum_k c_k\,e^{ip_kx/\hbar}}_{\text{many momenta}} \qquad\qquad \psi(x) = \underbrace{\sum_j \psi(x_j)\,\big[\text{spike at } x_j\big]}_{\text{many positions}}</span></p>
+</section>
+<section id="from-the-sum-to-the-fourier-transform" class="slide level2">
+<h2>From the sum to the Fourier transform</h2>
+<ul>
+<li>Momentum takes <strong>any</strong> value: the sum over <span class="math inline">k</span> becomes an <strong>integral</strong>, and <span class="math inline">c_k</span> becomes a function <span class="math inline">\phi(p)</span></li>
+</ul>
 <div class="keyeq">
 <p><span class="math display">\psi(x) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad \phi(p) = \langle p \vert \psi \rangle = \int_{-\infty}^{\infty} \frac{e^{-ipx/\hbar}}{\sqrt{2\pi\hbar}}\,\psi(x)\,dx</span></p>
 </div>
 <ul>
-<li>The projection <span class="math inline">c_n = \langle \psi_n \vert \psi \rangle</span> again, with an integral over <span class="math inline">p</span> for the sum over <span class="math inline">n</span>: the <strong>Fourier transform</strong></li>
+<li><span class="math inline">\phi(p)</span> is a <strong>projection</strong>, like <span class="math inline">c_n = \langle \psi_n \vert \psi \rangle</span>: the <strong>momentum wavefunction</strong></li>
 <li><span class="math inline">\lvert\phi(p)\rvert^2\,dp</span>: the probability of a momentum reading between <span class="math inline">p</span> and <span class="math inline">p + dp</span></li>
-<li>In spikes the components are just the values, <span class="math inline">\psi(x_0) = \langle x_0 \vert \psi \rangle</span>: the wavefunction we always drew</li>
 </ul>
 </section>
 <section id="example-a-gaussian-in-momentum" class="slide level2">
@@ -445,16 +433,16 @@ Davit Potoyan
 <p>A Gaussian again, centered at <span class="math inline">p_0</span>: narrow in <span class="math inline">x</span> means wide in <span class="math inline">p</span>, and <span class="math inline">\sigma_x\sigma_p = \hbar/2</span>.</p>
 </div>
 </section>
-<section id="squeeze-it-widen-it" class="slide level2">
-<h2>Squeeze it, widen it</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch03/images/fourier_packet.gif" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
-</figure>
-</div>
+<section id="live-squeeze-it-widen-it" class="slide level2">
+<h2>Live: squeeze it, widen it</h2>
+<div id="fp-live" style="width: 1060px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/fourier_packet.mjs";
+  const opts = { waves: false, toggle: false, fontSize: "22px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("fp-live") });
+</script>
 <ul>
 <li><strong>Squeeze</strong>: a spike, from <strong>every</strong> momentum. <strong>Widen</strong>: one plane wave, over <strong>every</strong> position</li>
-<li>In between: a <strong>wave packet</strong>, plane waves that add up at the center and cancel elsewhere</li>
 </ul>
 </section>
 <section id="sharp-energy-or-one-way-momentum" class="slide level2">
