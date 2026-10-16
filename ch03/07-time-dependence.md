@@ -490,7 +490,72 @@ Fig. A ground-state-shaped packet released on the compressed side of a Morse wel
 
 ### The postulates, all together
 
-This lecture completes the rules started in [Operators 1](04-operators.md):
+This lecture completes the rules started in [Operators 1](04-operators.md) and fills in the last box of the map from [Measurement](06-eigenvalues-and-expectation.md):
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: postulate_map
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import FancyBboxPatch, Circle
+W, Ht = 9.6, 4.5                                            # draw in inches: one data unit = one inch
+fig = plt.figure(figsize=(W, Ht))
+ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+yt, ym, yb = 3.5, 2.22, 0.94                                # readings track, middle, states track
+tint = {GRAY: "#f1f3f5", PURPLE: "#f1ecf7", TEAL: "#e3f1f5", CARDINAL: "#fbeaec", ORANGE: "#fdf0e0"}
+boxes = {}
+
+def box(key, x, y, w, title, lines, col, chips=()):
+    h = 0.5 + 0.28 * len(lines)
+    ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.1",
+                                fc=tint[col], ec=col, lw=1.6, zorder=2))
+    ax.text(x, y + h / 2 - 0.1, title, ha="center", va="top", fontsize=12.5, color=col, weight="bold", zorder=3)
+    for k, line in enumerate(lines):
+        ax.text(x, y + h / 2 - 0.43 - 0.28 * k, line, ha="center", va="top", fontsize=12.5, zorder=3)
+    for k, c in enumerate(chips):                           # the postulate numbers of the table
+        cx, cy = x + w / 2 - 0.05 - 0.27 * k, y + h / 2 + 0.06
+        ax.add_patch(Circle((cx, cy), 0.12, fc="white", ec=GRAY, lw=1, zorder=4))
+        ax.text(cx, cy - 0.005, str(c), ha="center", va="center", fontsize=9.5, color=GRAY, zorder=5)
+    boxes[key] = {"l": (x - w / 2, y), "r": (x + w / 2, y), "t": (x, y + h / 2), "b": (x, y - h / 2)}
+
+# anchor on a box side, slid along that side (a lambda: the page sync drops every line that starts with return)
+edge = lambda key, side, shift=0.0: (boxes[key][side][0] + (shift if side in "tb" else 0),
+                                     boxes[key][side][1] + (shift if side in "lr" else 0))
+
+def arrow(a, b):
+    ax.annotate("", xy=b, xytext=a, zorder=1, arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.5,
+                mutation_scale=15, shrinkA=2, shrinkB=2))
+
+box("op", 0.95, ym, 1.7, r"operator $\hat{A}$", [r"acts on $\psi(x)$", "on a grid: a matrix"], GRAY)
+box("herm", 2.75, ym, 1.35, "Hermitian", [r"$\hat{A} = \hat{A}^\dagger$"], GRAY, chips=(2,))
+box("val", 4.72, yt, 1.95, r"eigenvalues $a_n$", ["real numbers:", "possible readings"], PURPLE)
+box("vec", 4.72, yb, 1.95, r"eigenfunctions $\phi_n$", ["orthogonal axes", "for any state"], TEAL)
+box("born", 6.8, yt, 1.55, r"measure $A$", [r"reading $a_n$", r"$p_n = |c_n|^2$"], CARDINAL, chips=(4, 3))
+box("sup", 6.8, yb, 1.55, "superposition", [r"$\psi = \sum c_n\,\phi_n$", r"$c_n = \langle\phi_n|\psi\rangle$"], TEAL, chips=(1,))
+box("avg", 8.72, yt, 1.6, "many readings", [r"$\langle A\rangle = \sum p_n a_n$"], PURPLE)
+box("col", 8.72, ym, 1.6, "after a reading", [r"$\psi \to \phi_n$"], TEAL)
+box("time", 8.72, yb, 1.6, "time evolution", [r"$\phi_n$ of $\hat{H}$:", r"$c_n \to c_n\,e^{-iE_nt/\hbar}$"], ORANGE, chips=(5,))
+
+arrow(edge("op", "r"), edge("herm", "l"))
+arrow(edge("herm", "r", 0.12), edge("val", "l"))
+arrow(edge("herm", "r", -0.12), edge("vec", "l"))
+arrow(edge("val", "r"), edge("born", "l"))
+arrow(edge("vec", "r"), edge("sup", "l"))
+arrow(edge("sup", "t"), edge("born", "b"))
+ax.text(6.86, (yt + yb) / 2, "how often", ha="left", va="center", fontsize=11, color=GRAY, style="italic")
+arrow(edge("born", "r"), edge("avg", "l"))
+arrow(edge("born", "r", -0.2), edge("col", "l", 0.12))
+arrow(edge("sup", "r"), edge("time", "l"))
+plt.show()
+```
+
+Fig. How the postulates connect. A Hermitian operator brings real eigenvalues, the possible readings (top), and orthogonal eigenfunctions, axes for any state (bottom). A measurement joins the two tracks; time evolution attaches a phase to each coefficient in the eigenfunctions of $\hat{H}$. Circled numbers are the postulates in the table below.
+
+The same five rules in equations:
 
 | | postulate | in equations |
 | :-- | :-- | :-- |

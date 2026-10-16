@@ -21,6 +21,12 @@ resources:
   - ../../ch03/images
 ---
 
+## How the postulates connect
+
+![](../../ch03/images/postulate_map.png){.nostretch width="84%" fig-align="center"}
+
+- Hermitian gives **readings** (top) and **axes** (bottom): a measurement joins them
+
 ## A vector: build it, then project
 
 ![](../../ch03/images/vector_projection.png){.nostretch width="76%" fig-align="center"}
@@ -179,6 +185,47 @@ $$\sigma_E = \sqrt{44.75 - 5.75^2}\;E_1 = 3.42\,E_1$$
 - A reading of $a_n$ leaves the state $\phi_n$ (**collapse**): measure again, get $a_n$ every time
 - The probabilities live in **many identically prepared copies**, not in one particle
 
+## Spikes and plane waves
+
+| operator | eigenfunctions | sharp | spread over |
+|:--|:--|:--|:--|
+| $\hat{x}$ | spikes $\delta(x - x_0)$ | position $x_0$ | **every** momentum |
+| $\hat{p}$ | plane waves $e^{ipx/\hbar}$ | momentum $p$ | **every** position |
+
+- $[\hat{x},\hat{p}] = i\hbar$: **no shared** eigenfunctions. Each eigenfunction of one is a sum of **many** eigenfunctions of the other
+- On a grid the spikes are the columns with a single 1: the eigenvectors of the diagonal $X$
+
+## A state in plane waves
+
+::: {.keyeq}
+$$\psi(x) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad \phi(p) = \langle p \vert \psi \rangle = \int_{-\infty}^{\infty} \frac{e^{-ipx/\hbar}}{\sqrt{2\pi\hbar}}\,\psi(x)\,dx$$
+:::
+
+- The projection $c_n = \langle \psi_n \vert \psi \rangle$ again, with an integral over $p$ for the sum over $n$: the **Fourier transform**
+- $\lvert\phi(p)\rvert^2\,dp$: the probability of a momentum reading between $p$ and $p + dp$
+- In spikes the components are just the values, $\psi(x_0) = \langle x_0 \vert \psi \rangle$: the wavefunction we always drew
+
+## Example: a Gaussian in momentum
+
+::: {.worked}
+Which momenta make up $\psi(x) \propto e^{-x^2/4\sigma_x^2}\,e^{ip_0x/\hbar}$?
+:::
+
+::: {.soln .fragment}
+Put it into $\phi(p)$ and complete the square in the exponent:
+
+$$\phi(p) \propto e^{-(p - p_0)^2/4\sigma_p^2}, \qquad \sigma_p = \frac{\hbar}{2\sigma_x}$$
+
+A Gaussian again, centered at $p_0$: narrow in $x$ means wide in $p$, and $\sigma_x\sigma_p = \hbar/2$.
+:::
+
+## Squeeze it, widen it
+
+![](../../ch03/images/fourier_packet.gif){.nostretch width="64%" fig-align="center"}
+
+- **Squeeze**: a spike, from **every** momentum. **Widen**: one plane wave, over **every** position
+- In between: a **wave packet**, plane waves that add up at the center and cancel elsewhere
+
 ## Sharp energy or one-way momentum
 
 ![](../../ch03/images/box_momentum.png){.nostretch width="66%" fig-align="center"}
@@ -212,4 +259,4 @@ $$\sigma_x\,\sigma_p = 0.181\,\pi\,\hbar = 0.568\,\hbar \;\geq\; 0.5\,\hbar$$
 
 # Takeaway {.center}
 
-> Expand the state in the eigenfunctions of the observable: the coefficients are projections, $c_n = \langle \phi_n \vert \psi \rangle$. A measurement returns one eigenvalue $a_n$, with probability $\lvert c_n\rvert^2$, and leaves the system in $\phi_n$. Averages are weighted sums, $\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n$, sharp only in eigenstates; and observables that do not commute cannot be sharp together, $\sigma_x\sigma_p \geq \hbar/2$.
+> Expand the state in the eigenfunctions of the observable: the coefficients are projections, $c_n = \langle \phi_n \vert \psi \rangle$. A measurement returns one eigenvalue $a_n$, with probability $\lvert c_n\rvert^2$, and leaves the system in $\phi_n$. Averages are weighted sums, $\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n$, sharp only in eigenstates; and observables that do not commute cannot be sharp together: a spike in position is a sum of every plane wave, and $\sigma_x\sigma_p \geq \hbar/2$.

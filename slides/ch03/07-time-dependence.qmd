@@ -69,33 +69,47 @@ Term by term, using $\hat{H}\psi_n = E_n\psi_n$. At $t = 0$ every phase is 1.
 
 ## Three lines of numpy
 
-::: {style="font-size: 1.25em"}
+::: {style="font-size: 1.2em"}
 ```python
-x = np.linspace(-10, 10, 600); dx = x[1] - x[0]
-H = -0.5 * D2 + np.diag(0.5 * x**2)             # spring: hbar = m = omega = 1
-E, phi = np.linalg.eigh(H); phi /= np.sqrt(dx)  # 1. diagonalize once
-c = phi.T @ psi0 * dx                           # 2. expand a packet released at x = 3
-psi_t = phi @ (c * np.exp(-1j * E * t))         # 3. attach the phases, add up
+# the grid and D2 of Lecture 3.5; spring with hbar = m = omega = 1; a packet pulled to x = 3
+H = -0.5 * D2 + np.diag(0.5 * x**2)
+psi0 = np.exp(-(x - 3)**2 / 2) / np.pi**0.25
+
+E, phi = np.linalg.eigh(H); phi /= np.sqrt(dx)  # 1. diagonalize once: E_n and psi_n
+c = phi.T @ psi0 * dx                           # 2. expand: c_n = <psi_n|Psi(0)>
+psi_t = phi @ (c * np.exp(-1j * E * t))         # 3. attach the phases, add up: Psi(x, t)
 ```
 :::
 
-- $\langle x\rangle = +3.000,\ +0.004,\ -3.000$ at $t = 0,\ \pi/2,\ \pi$: exactly $3\cos t$, a classical spring
-- The **norm** stays $1.000000$ at every $t$
+- Line **1** finds the clocks, $E_n$ and $\psi_n$: the slow step, done **once**
+- Lines **2** and **3** are the recipe: cheap for **any** starting state and **any** $t$
+
+## What the three lines give
+
+![](../../ch03/images/spring_numpy.png){.nostretch width="74%" fig-align="center"}
+
+- $\langle x\rangle = 3\cos t$: a **classical spring** released from $x = 3$. Why? Ehrenfest, coming up
+- The **norm** stays $1.000000$ at every $t$. Why? Next slide
 
 ## What never changes
 
-$$\lvert c_n\,e^{-iE_nt/\hbar}\rvert^2 = \lvert c_n\rvert^2 \qquad\Longrightarrow\qquad \text{energy probabilities, } \langle E\rangle,\ \sigma_E \text{ frozen}$$
+**1. The weights.** Each $c_n$ turns like a clock hand; its length stays:
 
-$$\langle \Psi(t) \vert \Psi(t) \rangle = \sum_m\sum_n c_m^*\,c_n\,e^{i(E_m - E_n)t/\hbar}\,\delta_{mn} = \sum_n \lvert c_n\rvert^2 = 1$$
+$$\lvert c_n\,e^{-iE_nt/\hbar}\rvert^2 = \lvert c_n\rvert^2$$
 
-- $e^{-i\hat{H}t/\hbar}$ is **unitary**: it rotates the state vector, never stretches it
-- Only the **relative phases** change, and all motion comes from them
+- So the **energy probabilities** are frozen, and with them $\langle E\rangle$ and $\sigma_E$
+
+**2. The normalization.** The cross terms die by orthogonality, $\langle \psi_m \vert \psi_n \rangle = \delta_{mn}$:
+
+$$\langle \Psi(t) \vert \Psi(t) \rangle = \sum_m\sum_n c_m^*\,c_n\,e^{i(E_m - E_n)t/\hbar}\,\langle \psi_m \vert \psi_n \rangle = \sum_n \lvert c_n\rvert^2 = 1$$
+
+- The particle is **always somewhere**: evolution rotates the state, never stretches it
 
 ## How an average changes
 
-Product rule, then $\partial_t\lvert\Psi\rangle = \hat{H}\lvert\Psi\rangle/i\hbar$ and $\partial_t\langle\Psi\rvert = -\langle\Psi\rvert\hat{H}/i\hbar$:
+Take the time derivative of $\langle A\rangle = \langle\Psi\vert\hat{A}\vert\Psi\rangle$, and plug in the Schrödinger equation for the ket and the bra:
 
-$$\frac{d}{dt}\langle\Psi\vert\hat{A}\vert\Psi\rangle = -\frac{1}{i\hbar}\langle\Psi\vert\hat{H}\hat{A}\vert\Psi\rangle + \frac{1}{i\hbar}\langle\Psi\vert\hat{A}\hat{H}\vert\Psi\rangle$$
+$$\partial_t\lvert\Psi\rangle = \frac{1}{i\hbar}\,\hat{H}\lvert\Psi\rangle \qquad\qquad \partial_t\langle\Psi\rvert = -\frac{1}{i\hbar}\,\langle\Psi\rvert\hat{H}$$
 
 ::: {.keyeq}
 $$\frac{d}{dt}\langle A\rangle = \frac{i}{\hbar}\,\big\langle[\hat{H},\hat{A}]\big\rangle \qquad (\hat{A} \text{ not explicitly time dependent})$$
@@ -105,11 +119,12 @@ $$\frac{d}{dt}\langle A\rangle = \frac{i}{\hbar}\,\big\langle[\hat{H},\hat{A}]\b
 
 ## Constants of motion
 
-| observable | $[\hat{H}, \cdot\,]$ with $\hat{H} = \hat{p}^2/2m + V$ | conserved when |
+$$\hat{H} = \frac{\hat{p}^2}{2m} + V(x)$$
+
+| observable | $[\hat{H}, \cdot\,]$ | conserved when |
 |:--|:--|:--|
 | energy $\hat{H}$ | $0$ | always |
 | momentum $\hat{p}$ | $i\hbar\,dV/dx$ | no force |
-| parity $\hat{\Pi}$ | $0$ if $V(-x) = V(x)$ | symmetric potential |
 | position $\hat{x}$ | $-i\hbar\,\hat{p}/m$ | only while $\langle p\rangle = 0$ |
 
 - The commutators of Lecture 3.5b now say **what moves** and **what stays**
@@ -126,23 +141,9 @@ $$\frac{d}{dt}\langle A\rangle = \frac{i}{\hbar}\,\big\langle[\hat{H},\hat{A}]\b
 $$\frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m} \qquad\qquad \frac{d\langle p\rangle}{dt} = -\Big\langle\frac{dV}{dx}\Big\rangle$$
 :::
 
-- The force is **averaged over the packet**: the same as at its center only if it is **linear** in $x$
+![](../../ch03/images/ehrenfest_harmonic.gif){.nostretch width="64%" fig-align="center"}
 
-![](../../ch03/images/ehrenfest_wells.gif){.nostretch width="46%" fig-align="center"}
-
-## Example: a packet in a uniform field
-
-::: {.worked}
-For $V = mgx$, find $\langle x\rangle(t)$ for a packet released at rest from $x_0$.
-:::
-
-::: {.soln .fragment}
-$$-\frac{dV}{dx} = -mg \ \text{everywhere} \quad\Longrightarrow\quad \frac{d\langle p\rangle}{dt} = -mg, \qquad \frac{d\langle x\rangle}{dt} = \frac{\langle p\rangle}{m}$$
-
-$$\langle x\rangle(t) = x_0 - \tfrac{1}{2}\,g\,t^2$$
-
-The center falls like a stone, whatever the shape. The width still spreads, as for a free packet.
-:::
+- **Linear** force: $\langle -kx\rangle = -k\langle x\rangle$, so the center rides the ball **exactly**
 
 ## Motion holds only energy differences
 
@@ -194,6 +195,12 @@ Twice the box, four times slower: $T_{\text{rev}} \propto L^2$.
 
 - A laser pulse makes a **packet** of vibrational states: the bond swings. **Femtochemistry**, Zewail, Nobel 1999. I₂: about 300 fs
 - **Anharmonic** levels: the clocks drift apart (**dephasing**), then realign (**revival**)
+
+## How the postulates connect
+
+![](../../ch03/images/postulate_map.png){.nostretch width="84%" fig-align="center"}
+
+- Today filled in the last box: **time evolution** attaches a phase to each $c_n$
 
 ## The postulates, all together
 

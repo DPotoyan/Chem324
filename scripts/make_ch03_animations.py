@@ -2571,9 +2571,67 @@ def commutator_steps():
 
 
 # ============================================================ deck 3.6 "Measurement: eigenvalues and expectation values"
-# Page ch03/05 syncs projection, sine_series, collapse, box_momentum and uncertainty_tradeoff; component_steps and
+# Page ch03/06 syncs postulate_map, vector_projection, function_projection, sine_series, collapse, fourier_packet,
+# box_momentum and uncertainty_tradeoff (postulate_map also closes page ch03/07); component_steps and
 # component_cancel are deck-only (the deck's step-by-step opener). measure_energy is
 # deck-only: the page measures with the JS widget widgets/measure_energy.mjs instead (same state, same story).
+
+# ------------------------------------------------------------ how the postulates connect: operator -> Hermitian -> readings and axes -> Born rule (still)
+@register
+def postulate_map():
+    from matplotlib.patches import FancyBboxPatch, Circle
+    W, Ht = 9.6, 4.5                                            # draw in inches: one data unit = one inch
+    fig = plt.figure(figsize=(W, Ht))
+    ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+    yt, ym, yb = 3.5, 2.22, 0.94                                # readings track, middle, states track
+    tint = {GRAY: "#f1f3f5", PURPLE: "#f1ecf7", TEAL: "#e3f1f5", CARDINAL: "#fbeaec", ORANGE: "#fdf0e0"}
+    boxes = {}
+
+    def box(key, x, y, w, title, lines, col, chips=()):
+        h = 0.5 + 0.28 * len(lines)
+        ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.1",
+                                    fc=tint[col], ec=col, lw=1.6, zorder=2))
+        ax.text(x, y + h / 2 - 0.1, title, ha="center", va="top", fontsize=12.5, color=col, weight="bold", zorder=3)
+        for k, line in enumerate(lines):
+            ax.text(x, y + h / 2 - 0.43 - 0.28 * k, line, ha="center", va="top", fontsize=12.5, zorder=3)
+        for k, c in enumerate(chips):                           # the postulate numbers of the table
+            cx, cy = x + w / 2 - 0.05 - 0.27 * k, y + h / 2 + 0.06
+            ax.add_patch(Circle((cx, cy), 0.12, fc="white", ec=GRAY, lw=1, zorder=4))
+            ax.text(cx, cy - 0.005, str(c), ha="center", va="center", fontsize=9.5, color=GRAY, zorder=5)
+        boxes[key] = {"l": (x - w / 2, y), "r": (x + w / 2, y), "t": (x, y + h / 2), "b": (x, y - h / 2)}
+
+    # anchor on a box side, slid along that side (a lambda: the page sync drops every line that starts with return)
+    edge = lambda key, side, shift=0.0: (boxes[key][side][0] + (shift if side in "tb" else 0),
+                                         boxes[key][side][1] + (shift if side in "lr" else 0))
+
+    def arrow(a, b):
+        ax.annotate("", xy=b, xytext=a, zorder=1, arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.5,
+                    mutation_scale=15, shrinkA=2, shrinkB=2))
+
+    box("op", 0.95, ym, 1.7, r"operator $\hat{A}$", [r"acts on $\psi(x)$", "on a grid: a matrix"], GRAY)
+    box("herm", 2.75, ym, 1.35, "Hermitian", [r"$\hat{A} = \hat{A}^\dagger$"], GRAY, chips=(2,))
+    box("val", 4.72, yt, 1.95, r"eigenvalues $a_n$", ["real numbers:", "possible readings"], PURPLE)
+    box("vec", 4.72, yb, 1.95, r"eigenfunctions $\phi_n$", ["orthogonal axes", "for any state"], TEAL)
+    box("born", 6.8, yt, 1.55, r"measure $A$", [r"reading $a_n$", r"$p_n = |c_n|^2$"], CARDINAL, chips=(4, 3))
+    box("sup", 6.8, yb, 1.55, "superposition", [r"$\psi = \sum c_n\,\phi_n$", r"$c_n = \langle\phi_n|\psi\rangle$"], TEAL, chips=(1,))
+    box("avg", 8.72, yt, 1.6, "many readings", [r"$\langle A\rangle = \sum p_n a_n$"], PURPLE)
+    box("col", 8.72, ym, 1.6, "after a reading", [r"$\psi \to \phi_n$"], TEAL)
+    box("time", 8.72, yb, 1.6, "time evolution", [r"$\phi_n$ of $\hat{H}$:", r"$c_n \to c_n\,e^{-iE_nt/\hbar}$"], ORANGE, chips=(5,))
+
+    arrow(edge("op", "r"), edge("herm", "l"))
+    arrow(edge("herm", "r", 0.12), edge("val", "l"))
+    arrow(edge("herm", "r", -0.12), edge("vec", "l"))
+    arrow(edge("val", "r"), edge("born", "l"))
+    arrow(edge("vec", "r"), edge("sup", "l"))
+    arrow(edge("sup", "t"), edge("born", "b"))
+    ax.text(6.86, (yt + yb) / 2, "how often", ha="left", va="center", fontsize=11, color=GRAY, style="italic")
+    arrow(edge("born", "r"), edge("avg", "l"))
+    arrow(edge("born", "r", -0.2), edge("col", "l", 0.12))
+    arrow(edge("sup", "r"), edge("time", "l"))
+    fig.savefig(f"{OUT}/postulate_map.png", dpi=200)
+    print("wrote", f"{OUT}/postulate_map.png")
+    return fig, None
+
 
 # ------------------------------------------------------------ a vector: build it from c_k |u_k>, then find c_k = <u_k|v> by projection (still)
 @register
@@ -2873,6 +2931,68 @@ def box_momentum():
     return fig, None
 
 
+# ------------------------------------------------------------ a Gaussian is a sum of plane waves: wide, it is almost one plane wave; narrow, almost a spike
+@register
+def fourier_packet():
+    from matplotlib.colors import to_rgb
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nf = 28
+    sx = np.exp(np.log(3.5) + (np.log(0.2) - np.log(3.5)) * 0.5 * (1 - np.cos(2 * np.pi * np.arange(nf) / nf)))
+    x = np.linspace(-8, 8, 900)                                 # hbar = 1, packet centered at x = 0 with momentum p0
+    p = np.linspace(-6, 12, 500)
+    p0 = 3.0
+    u = np.linspace(-2.4, 2.4, 7)                               # seven of the plane waves, at p0 + u sigma_p
+    cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 7)]
+    gap = 2.3
+    fig = plt.figure(figsize=(8.4, 4.4))
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.55, 1], height_ratios=[1.55, 1], hspace=0.42, wspace=0.12)
+    axw = fig.add_subplot(gs[0, 0]); axs = fig.add_subplot(gs[1, 0]); axp = fig.add_subplot(gs[:, 1])
+    waves = [axw.plot([], [], color=col, lw=1.5)[0] for col in cols]
+    axw.axvline(0, color=GRAY, lw=0.9, ls=":")
+    axw.text(0.15, gap * 6 + 1.2, r"all in step at $x = 0$", fontsize=11, color=GRAY, va="bottom")
+    axw.set_xlim(-8, 8); axw.set_ylim(-1.3, gap * 6 + 2.4); axw.axis("off")
+    axw.set_title(r"seven of the plane waves, Re $e^{ipx/\hbar}$, sized by weight", loc="left", fontsize=12)
+    (env,) = axs.plot([], [], color=GRAY, lw=1, ls="--"); (env2,) = axs.plot([], [], color=GRAY, lw=1, ls="--")
+    (re,) = axs.plot([], [], color=TEAL, lw=2.2)
+    axs.axhline(0, color=GRAY, lw=0.6)
+    axs.set_xlim(-8, 8); axs.set_ylim(-1.05, 1.05); axs.set_yticks([]); axs.spines["left"].set_visible(False)
+    axs.set_xlabel(r"position $x$", fontsize=12); axs.tick_params(labelsize=10.5)
+    (lp,) = axp.plot([], [], color=ORANGE, lw=2.2); bp = [axp.fill_between(p, 0 * p, color=ORANGE, alpha=0.2, lw=0)]
+    stems = [axp.plot([], [], color=col, lw=3, solid_capstyle="butt")[0] for col in cols]
+    axp.set_xlim(-6, 12); axp.set_ylim(0, 3.0); axp.set_yticks([]); axp.spines["left"].set_visible(False)
+    axp.set_xticks([0, 3, 6, 9]); axp.set_xticklabels(["0", r"$p_0$", "6", "9"]); axp.tick_params(labelsize=10.5)
+    axp.set_xlabel(r"momentum $p$", fontsize=12)
+    note = fig.text(0.5, 0.965, "", ha="center", va="center", fontsize=13, weight="bold")
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.86, bottom=0.11)
+
+    def update(i):
+        s = sx[i]; sp = 0.5 / s
+        a = np.exp(-u**2 / 4)                                   # amplitude of each plane wave, proportional to phi(p)
+        for k, (w, st) in enumerate(zip(waves, stems)):
+            pk = p0 + u[k] * sp
+            w.set_data(x, gap * k + a[k] * np.cos(pk * x))
+            st.set_data([pk, pk], [0, np.exp(-u[k]**2 / 2) / np.sqrt(2 * np.pi * sp**2)])
+        envelope = np.exp(-x**2 / (4 * s**2))
+        env.set_data(x, envelope); env2.set_data(x, -envelope)
+        re.set_data(x, envelope * np.cos(p0 * x))
+        axs.set_title(rf"sum over all $p$: the Gaussian, Re $\psi(x)$,  $\sigma_x = {s:.2f}$", loc="left", fontsize=12)
+        rp = np.exp(-(p - p0)**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
+        lp.set_data(p, rp); bp[0].remove(); bp[0] = axp.fill_between(p, rp, color=ORANGE, alpha=0.2, lw=0)
+        axp.set_title(rf"weights $|\phi(p)|^2$,  $\sigma_p = {sp:.2f}$", loc="left", fontsize=12)
+        if s > 2.0:
+            note.set_text(r"wide: nearly ONE plane wave, an eigenfunction of $\hat{p}$"); note.set_color(ORANGE)
+        elif s < 0.4:
+            note.set_text(r"narrow: nearly a spike, an eigenfunction of $\hat{x}$, made of MANY momenta"); note.set_color(TEAL)
+        else:
+            note.set_text("in between: a wave packet"); note.set_color(GRAY)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=150, blit=False)
+    return fig, ani
+
+
+fourier_packet.fps = 10                                         # deck GIF: 28 frames at 10 fps, a calmer sweep
+
+
 # ------------------------------------------------------------ squeeze a Gaussian: x narrows, p widens, the product stays at hbar/2
 @register
 def uncertainty_tradeoff():
@@ -2916,7 +3036,9 @@ def uncertainty_tradeoff():
 
 
 # ============================================================ deck 3.7 "Time dependence"
-# Page ch03/06 syncs evolve_recipe, free_spread, ehrenfest_wells, bohr_spectrum, box_revival and morse_revival.
+# Page ch03/07 syncs evolve_recipe, free_spread, ehrenfest_wells, bohr_spectrum, box_revival and morse_revival.
+# spring_numpy (the three numpy lines run at five times) and ehrenfest_harmonic (the same packet in the harmonic
+# well only) are deck-only: the page prints the numbers and shows both wells.
 # Stationary states (phase_clock), the two-state slosh (box_slosh) and ammonia (ammonia_flip) are shown in
 # 3.1, 3.2 and 3.4; the page links back to them instead of animating them again.
 
@@ -2976,6 +3098,43 @@ def evolve_recipe():
 
     ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
     return fig, ani
+
+
+# ------------------------------------------------------------ deck 3.7: the three lines of numpy run at five times, the packet swings (deck-only still)
+@register
+def spring_numpy():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    N = 600                                                     # the page's grid and packet, hbar = m = omega = 1
+    x = np.linspace(-10, 10, N); dx = x[1] - x[0]
+    H = -0.5 * (np.eye(N, k=1) - 2 * np.eye(N) + np.eye(N, k=-1)) / dx**2 + np.diag(0.5 * x**2)
+    E, phi = np.linalg.eigh(H); phi = phi / np.sqrt(dx)
+    psi0 = np.exp(-(x - 3)**2 / 2) / np.pi**0.25
+    c = phi.T @ psi0 * dx
+    labs = ["0", r"\pi/4", r"\pi/2", r"3\pi/4", r"\pi"]
+    gap = 0.9
+    fig, ax = plt.subplots(figsize=(10, 4.4))
+    tt = np.linspace(0, np.pi, 200)
+    ax.plot(3 * np.cos(tt), gap * 4 * tt / np.pi, color=PURPLE, lw=1.5, ls="--", zorder=1, label=r"classical spring, $x = 3\cos t$")
+    for k, lab in enumerate(labs):
+        rho = np.abs(phi @ (c * np.exp(-1j * E * k * np.pi / 4)))**2
+        y0 = k * gap
+        ax.plot([-5.5, 5.5], [y0, y0], color=GRAY, lw=0.6)
+        m = np.abs(x) <= 5.5
+        ax.fill_between(x[m], y0, y0 + rho[m], color=TEAL, alpha=0.2, lw=0); ax.plot(x[m], y0 + rho[m], color=TEAL, lw=2.2)
+        xm, nrm = np.sum(x * rho) * dx, np.sum(rho) * dx
+        ax.plot([xm], [y0], marker="^", color=PURPLE, ms=11, ls="none", zorder=5, label=r"$\langle x\rangle$ from the code" if k == 0 else None)
+        ax.text(6.2, y0 + 0.08, rf"$t = {lab}$:   $\langle x\rangle = {xm:+.3f}$   norm $= {nrm:.6f}$", fontsize=12.5, va="bottom")
+    ax.annotate("", xy=(-6.3, 4 * gap + 0.4), xytext=(-6.3, 0), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.4))
+    ax.text(-6.6, 2 * gap, "time", rotation=90, ha="right", va="center", fontsize=12, color=GRAY)
+    ax.set_xlim(-7.2, 15.2); ax.set_ylim(-0.2, 4 * gap + 1.15)
+    ax.set_xticks([-3, 0, 3]); ax.set_yticks([]); ax.spines["left"].set_visible(False)
+    ax.spines["bottom"].set_bounds(-5.5, 5.5); ax.tick_params(labelsize=12)
+    ax.set_xlabel(r"position $x$", fontsize=12.5); ax.xaxis.set_label_coords(0.385, -0.09)
+    ax.legend(loc="upper left", bbox_to_anchor=(0.06, 1.0), frameon=False, fontsize=12.5, ncol=2)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.12)
+    fig.savefig(f"{OUT}/spring_numpy.png", dpi=200)
+    print("wrote", f"{OUT}/spring_numpy.png")
+    return fig, None
 
 
 # ------------------------------------------------------------ a free packet spreads in x while its momentum distribution never changes
@@ -3066,6 +3225,53 @@ def ehrenfest_wells():
             ball.set_data([xcl[i]], [Vf(xcl[i])])
             qm.set_data([xq[i]], [Eav - 0.25])
             tq.set_data(ts[:i + 1], xq[:i + 1])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ deck 3.7 Ehrenfest: the numpy packet in the harmonic well rides on the ball (deck-only GIF)
+@register
+def ehrenfest_harmonic():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-7, 7, 600); dx = x[1] - x[0]              # hbar = m = omega = 1, released at rest from x = 3
+    T = -0.5 * (np.eye(x.size, k=1) - 2 * np.eye(x.size) + np.eye(x.size, k=-1)) / dx**2
+    V = 0.5 * x**2
+    E, U = np.linalg.eigh(T + np.diag(V)); U = U / np.sqrt(dx)
+    psi0 = np.exp(-(x - 3)**2 / 2) / np.pi**0.25
+    c = U.T @ psi0 * dx
+    nf = 60
+    ts = np.linspace(0, 4 * np.pi, nf, endpoint=False)          # two periods, so the GIF loops seamlessly
+    dens = np.array([np.abs(U @ (c * np.exp(-1j * E * t)))**2 for t in ts])
+    xq = dens @ x * dx
+    Eav = np.sum(c**2 * E)
+    tt = np.linspace(0, 4 * np.pi, 400)
+    fig, (ax, axt) = plt.subplots(1, 2, figsize=(9.6, 3.6), gridspec_kw={"width_ratios": [1, 1.25], "wspace": 0.16})
+    ax.plot(x, V, color=GRAY, lw=1.8)
+    (pk,) = ax.plot([], [], color=TEAL, lw=2.4)
+    band = [ax.fill_between(x, Eav + 0 * x, color=TEAL, alpha=0.2, lw=0)]
+    (ball,) = ax.plot([], [], "o", color=PURPLE, ms=12, zorder=6, ls="none", label="classical ball")
+    (qm,) = ax.plot([], [], marker="^", color=TEAL, ms=13, ls="none", zorder=6, label=r"$\langle x\rangle$ of the packet")
+    ax.set_xlim(-4.6, 4.6); ax.set_ylim(0, 9.6); ax.set_xticks([-3, 0, 3]); ax.set_yticks([])
+    ax.spines["left"].set_visible(False); ax.tick_params(labelsize=11.5)
+    ax.set_title(r"harmonic well, $V = \frac{1}{2}x^2$", loc="left", fontsize=13)
+    ax.legend(loc="upper center", frameon=False, fontsize=11.5, ncol=1, bbox_to_anchor=(0.5, 1.0))
+    axt.plot(tt, 3 * np.cos(tt), color=PURPLE, lw=1.6, ls="--")
+    (tq,) = axt.plot([], [], color=TEAL, lw=2.6)
+    (dot,) = axt.plot([], [], "o", color=TEAL, ms=7)
+    axt.set_xlim(0, 4 * np.pi); axt.set_ylim(-3.7, 3.7); axt.set_yticks([-3, 0, 3])
+    axt.set_xticks(np.pi * np.arange(5)); axt.set_xticklabels(["0", "T/2", "T", "3T/2", "2T"])
+    axt.tick_params(labelsize=11.5); axt.set_xlabel("time", fontsize=12)
+    axt.set_title(r"$\langle x\rangle$ (solid) rides on the ball (dashed)", loc="left", fontsize=13)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.9, bottom=0.15)
+
+    def update(i):
+        d = Eav + 1.8 * dens[i]
+        pk.set_data(x, d); band[0].remove(); band[0] = ax.fill_between(x, Eav, d, color=TEAL, alpha=0.2, lw=0)
+        xb = 3 * np.cos(ts[i])
+        ball.set_data([xb], [0.5 * xb**2])
+        qm.set_data([xq[i]], [Eav - 0.3])
+        tq.set_data(ts[:i + 1], xq[:i + 1]); dot.set_data([ts[i]], [xq[i]])
 
     ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
     return fig, ani
@@ -3187,6 +3393,6 @@ if __name__ == "__main__":
         fig, ani = REGISTRY[name]()
         if ani is not None:
             path = f"{OUT}/{name}.gif"
-            ani.save(path, writer=PillowWriter(fps=15), dpi=GIF_DPI)
+            ani.save(path, writer=PillowWriter(fps=getattr(REGISTRY[name], "fps", 15)), dpi=GIF_DPI)
             print("wrote", path)
         plt.close(fig)
