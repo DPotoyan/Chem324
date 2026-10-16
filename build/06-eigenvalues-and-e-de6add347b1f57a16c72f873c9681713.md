@@ -1,6 +1,5 @@
 ---
 kernelspec:
-  name: python3
   display_name: Python 3
 ---
 
@@ -12,11 +11,75 @@ kernelspec:
 - A measurement of $A$ returns one of the eigenvalues $a_n$, never anything in between, with probability $p_n = \lvert c_n\rvert^2$. Normalization makes the probabilities add up to one.
 - The average of many readings is $\langle A \rangle = \sum_n p_n a_n = \langle \psi \vert \hat{A} \vert \psi \rangle$. The spread $\sigma_A$ vanishes only when the state is an eigenfunction.
 - Right after a reading of $a_n$ the system is in $\phi_n$ (the state **collapses**), so an immediate second measurement gives $a_n$ again.
+- Position eigenfunctions are spikes and momentum eigenfunctions are plane waves; each is a superposition of all the others. A state's momentum components are its Fourier transform, $\phi(p) = \langle p \vert \psi \rangle$, and a **wave packet** is a bundle of plane waves with nearby momenta.
 - Observables whose operators do not commute cannot both be sharp: $\sigma_A\,\sigma_B \geq \tfrac{1}{2}\lvert\langle[\hat{A},\hat{B}]\rangle\rvert$, which for position and momentum is $\sigma_x\,\sigma_p \geq \hbar/2$.
 
 :::
 
-[Operators 2](05-hermitian-operators-and-commutators.md) showed that observables are Hermitian operators, with real eigenvalues and orthonormal eigenfunctions. This lecture is about what happens when we use one: postulates 3 and 4, what a measurement returns and how often.
+[Operators 2](05-hermitian-operators-and-commutators.md) showed that observables are Hermitian operators, with real eigenvalues and orthonormal eigenfunctions. This lecture is about what happens when we use one: postulates 3 and 4, what a measurement returns and how often. The map shows how the pieces connect.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: postulate_map
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import FancyBboxPatch, Circle
+W, Ht = 9.6, 4.5                                            # draw in inches: one data unit = one inch
+fig = plt.figure(figsize=(W, Ht))
+ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+yt, ym, yb = 3.5, 2.22, 0.94                                # readings track, middle, states track
+tint = {GRAY: "#f1f3f5", PURPLE: "#f1ecf7", TEAL: "#e3f1f5", CARDINAL: "#fbeaec", ORANGE: "#fdf0e0"}
+boxes = {}
+
+def box(key, x, y, w, title, lines, col, chips=()):
+    h = 0.5 + 0.28 * len(lines)
+    ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.1",
+                                fc=tint[col], ec=col, lw=1.6, zorder=2))
+    ax.text(x, y + h / 2 - 0.1, title, ha="center", va="top", fontsize=12.5, color=col, weight="bold", zorder=3)
+    for k, line in enumerate(lines):
+        ax.text(x, y + h / 2 - 0.43 - 0.28 * k, line, ha="center", va="top", fontsize=12.5, zorder=3)
+    for k, c in enumerate(chips):                           # the postulate numbers of the table
+        cx, cy = x + w / 2 - 0.05 - 0.27 * k, y + h / 2 + 0.06
+        ax.add_patch(Circle((cx, cy), 0.12, fc="white", ec=GRAY, lw=1, zorder=4))
+        ax.text(cx, cy - 0.005, str(c), ha="center", va="center", fontsize=9.5, color=GRAY, zorder=5)
+    boxes[key] = {"l": (x - w / 2, y), "r": (x + w / 2, y), "t": (x, y + h / 2), "b": (x, y - h / 2)}
+
+# anchor on a box side, slid along that side (a lambda: the page sync drops every line that starts with return)
+edge = lambda key, side, shift=0.0: (boxes[key][side][0] + (shift if side in "tb" else 0),
+                                     boxes[key][side][1] + (shift if side in "lr" else 0))
+
+def arrow(a, b):
+    ax.annotate("", xy=b, xytext=a, zorder=1, arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.5,
+                mutation_scale=15, shrinkA=2, shrinkB=2))
+
+box("op", 0.95, ym, 1.7, r"operator $\hat{A}$", [r"acts on $\psi(x)$", "on a grid: a matrix"], GRAY)
+box("herm", 2.75, ym, 1.35, "Hermitian", [r"$\hat{A} = \hat{A}^\dagger$"], GRAY, chips=(2,))
+box("val", 4.72, yt, 1.95, r"eigenvalues $a_n$", ["real numbers:", "possible readings"], PURPLE)
+box("vec", 4.72, yb, 1.95, r"eigenfunctions $\phi_n$", ["orthogonal axes", "for any state"], TEAL)
+box("born", 6.8, yt, 1.55, r"measure $A$", [r"reading $a_n$", r"$p_n = |c_n|^2$"], CARDINAL, chips=(4, 3))
+box("sup", 6.8, yb, 1.55, "superposition", [r"$\psi = \sum c_n\,\phi_n$", r"$c_n = \langle\phi_n|\psi\rangle$"], TEAL, chips=(1,))
+box("avg", 8.72, yt, 1.6, "many readings", [r"$\langle A\rangle = \sum p_n a_n$"], PURPLE)
+box("col", 8.72, ym, 1.6, "after a reading", [r"$\psi \to \phi_n$"], TEAL)
+box("time", 8.72, yb, 1.6, "time evolution", [r"$\phi_n$ of $\hat{H}$:", r"$c_n \to c_n\,e^{-iE_nt/\hbar}$"], ORANGE, chips=(5,))
+
+arrow(edge("op", "r"), edge("herm", "l"))
+arrow(edge("herm", "r", 0.12), edge("val", "l"))
+arrow(edge("herm", "r", -0.12), edge("vec", "l"))
+arrow(edge("val", "r"), edge("born", "l"))
+arrow(edge("vec", "r"), edge("sup", "l"))
+arrow(edge("sup", "t"), edge("born", "b"))
+ax.text(6.86, (yt + yb) / 2, "how often", ha="left", va="center", fontsize=11, color=GRAY, style="italic")
+arrow(edge("born", "r"), edge("avg", "l"))
+arrow(edge("born", "r", -0.2), edge("col", "l", 0.12))
+arrow(edge("sup", "r"), edge("time", "l"))
+plt.show()
+```
+
+Fig. How the postulates connect. A Hermitian operator brings two things: real eigenvalues, the possible readings (top), and orthogonal eigenfunctions, axes for any state (bottom). The two tracks meet in a measurement: the eigenvalues say which readings can occur, the projections $c_n = \langle \phi_n \vert \psi\rangle$ say how often. Circled numbers are the postulates in the table of [Operators 1](04-operators.md). This lecture follows the tracks from the eigenfunctions to the right column; time evolution (5) is the subject of [Time Dependence](07-time-dependence.md).
 
 ### Eigenfunctions are a coordinate system
 
@@ -390,7 +453,136 @@ Fig. One energy measurement on the superposition of the example. Before: three p
 ### Compatible and incompatible observables
 
 - If $[\hat{A},\hat{B}] = 0$, the two operators share eigenfunctions ([Operators 2](05-hermitian-operators-and-commutators.md)). A reading of $a_n$ leaves the system in a shared eigenfunction, so $B$ is sharp too, and measuring $B$ does not disturb the value of $A$. Such observables are **compatible**: energy and momentum of a free particle, or $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ for hydrogen.
-- If they do not commute, a state with a sharp value of one has a spread in the other. In a box, $\hat{H}$ and $\hat{p}$ share no eigenfunctions: the eigenfunctions $e^{ipx/\hbar}$ of $\hat{p}$ do not vanish at the walls. Compare two states, each with its energy and momentum readings. A box state has a sharp energy; a Gaussian packet has a definite direction of motion:
+- If they do not commute, they have no complete set of eigenfunctions in common. Then an eigenfunction of one is a **superposition of many eigenfunctions of the other**, and a state with a sharp value of one has a spread in the other. Position and momentum, with $[\hat{x},\hat{p}] = i\hbar$, are the cleanest case.
+
+#### Position and momentum: spikes and plane waves
+
+- The eigenfunctions of momentum are the **plane waves** of [Operators 2](05-hermitian-operators-and-commutators.md), $\hat{p}\,e^{ipx/\hbar} = p\,e^{ipx/\hbar}$. Each has one momentum, and $\lvert e^{ipx/\hbar}\rvert^2 = 1$ is the same everywhere: a plane wave is spread evenly over all positions.
+- The eigenfunctions of position are **spikes**. A function that vanishes everywhere except at $x_0$ satisfies $x\,\psi(x) = x_0\,\psi(x)$, because the factor $x$ only matters where $\psi$ is nonzero. The ideal spike, infinitely narrow with area 1, is the delta function $\delta(x - x_0)$ of [Appendix A.6](../math/06-fourier-transforms.md). On a grid it is easier: $\hat{x}$ is the diagonal matrix of [Operators 1](04-operators.md), and its eigenvectors are the columns with a single 1, one grid point each.
+
+| operator | eigenfunctions | sharp value | spread over |
+| :-- | :-- | :-- | :-- |
+| $\hat{x}$ | spikes $\delta(x - x_0)$ | position $x_0$ | every momentum |
+| $\hat{p}$ | plane waves $e^{ipx/\hbar}$ | momentum $p$ | every position |
+
+- Both sets are coordinate systems for states. Write $\lvert x_0 \rangle$ for the spike at $x_0$ and $\lvert p \rangle$ for the plane wave $e^{ipx/\hbar}/\sqrt{2\pi\hbar}$. In the spikes, the components of $\psi$ are simply its values, $\psi(x_0) = \langle x_0 \vert \psi \rangle$: the wavefunction we have drawn all along **is** the expansion in position eigenfunctions, just as the column of samples was on the grid. In the plane waves, the components are a new function $\phi(p)$. The projection is the same as for the box states, $c_n = \langle \psi_n \vert \psi \rangle$, except that the label $p$ is continuous, so the sum over $n$ becomes an integral over $p$. This is the **Fourier transform**:
+
+:::{important} **Expansion in momentum eigenfunctions**
+
+$$
+\psi(x) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad \phi(p) = \langle p \vert \psi \rangle = \int_{-\infty}^{\infty} \frac{e^{-ipx/\hbar}}{\sqrt{2\pi\hbar}}\,\psi(x)\,dx
+$$
+
+A momentum reading falls between $p$ and $p + dp$ with probability $\lvert\phi(p)\rvert^2\,dp$.
+
+:::
+
+- $\phi(p)$ is the **momentum wavefunction**: the same state, written in the other coordinate system. The factor $1/\sqrt{2\pi\hbar}$ makes $\int\lvert\phi\rvert^2\,dp = \int\lvert\psi\rvert^2\,dx = 1$.
+
+:::{note} **Example: a Gaussian in both pictures**
+
+Take a Gaussian centered at $x = 0$, with average momentum $p_0$ and position spread $\sigma_x$:
+
+$$
+\psi(x) = \frac{1}{(2\pi\sigma_x^2)^{1/4}}\,e^{-x^2/4\sigma_x^2}\,e^{ip_0x/\hbar}
+\qquad\Longrightarrow\qquad
+\phi(p) = \frac{1}{(2\pi\sigma_p^2)^{1/4}}\,e^{-(p - p_0)^2/4\sigma_p^2}, \qquad \sigma_p = \frac{\hbar}{2\sigma_x}
+$$
+
+The momentum wavefunction is again a Gaussian, centered at $p_0$. Its width is inversely proportional to the position width: a packet narrow in $x$ is wide in $p$, and $\sigma_x\sigma_p = \hbar/2$ whatever $\sigma_x$ is.
+
+:::
+
+:::{tip} **Derivation: complete the square**
+:class: dropdown
+
+Put $\psi$ into the integral for $\phi(p)$ and combine the exponents. With $q = (p_0 - p)/\hbar$,
+
+$$
+-\frac{x^2}{4\sigma_x^2} + iqx = -\frac{\big(x - 2i\sigma_x^2q\big)^2}{4\sigma_x^2} - \sigma_x^2q^2
+$$
+
+The shifted Gaussian integrates to $\int e^{-(x - a)^2/4\sigma_x^2}\,dx = 2\sigma_x\sqrt{\pi}$, so $\phi(p) \propto e^{-\sigma_x^2(p - p_0)^2/\hbar^2}$. That is the Gaussian above with $1/4\sigma_p^2 = \sigma_x^2/\hbar^2$, and the constants in front work out to its normalization.
+
+:::
+
+- Now squeeze and widen the Gaussian, and watch which plane waves it is made of:
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: fourier_packet
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.colors import to_rgb
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+nf = 28
+sx = np.exp(np.log(3.5) + (np.log(0.2) - np.log(3.5)) * 0.5 * (1 - np.cos(2 * np.pi * np.arange(nf) / nf)))
+x = np.linspace(-8, 8, 900)                                 # hbar = 1, packet centered at x = 0 with momentum p0
+p = np.linspace(-6, 12, 500)
+p0 = 3.0
+u = np.linspace(-2.4, 2.4, 7)                               # seven of the plane waves, at p0 + u sigma_p
+cols = [tuple((1 - f) * np.array(to_rgb(PURPLE)) + f * np.array(to_rgb(ORANGE))) for f in np.linspace(0, 1, 7)]
+gap = 2.3
+fig = plt.figure(figsize=(8.4, 4.4))
+gs = fig.add_gridspec(2, 2, width_ratios=[1.55, 1], height_ratios=[1.55, 1], hspace=0.42, wspace=0.12)
+axw = fig.add_subplot(gs[0, 0]); axs = fig.add_subplot(gs[1, 0]); axp = fig.add_subplot(gs[:, 1])
+waves = [axw.plot([], [], color=col, lw=1.5)[0] for col in cols]
+axw.axvline(0, color=GRAY, lw=0.9, ls=":")
+axw.text(0.15, gap * 6 + 1.2, r"all in step at $x = 0$", fontsize=11, color=GRAY, va="bottom")
+axw.set_xlim(-8, 8); axw.set_ylim(-1.3, gap * 6 + 2.4); axw.axis("off")
+axw.set_title(r"seven of the plane waves, Re $e^{ipx/\hbar}$, sized by weight", loc="left", fontsize=12)
+(env,) = axs.plot([], [], color=GRAY, lw=1, ls="--"); (env2,) = axs.plot([], [], color=GRAY, lw=1, ls="--")
+(re,) = axs.plot([], [], color=TEAL, lw=2.2)
+axs.axhline(0, color=GRAY, lw=0.6)
+axs.set_xlim(-8, 8); axs.set_ylim(-1.05, 1.05); axs.set_yticks([]); axs.spines["left"].set_visible(False)
+axs.set_xlabel(r"position $x$", fontsize=12); axs.tick_params(labelsize=10.5)
+(lp,) = axp.plot([], [], color=ORANGE, lw=2.2); bp = [axp.fill_between(p, 0 * p, color=ORANGE, alpha=0.2, lw=0)]
+stems = [axp.plot([], [], color=col, lw=3, solid_capstyle="butt")[0] for col in cols]
+axp.set_xlim(-6, 12); axp.set_ylim(0, 3.0); axp.set_yticks([]); axp.spines["left"].set_visible(False)
+axp.set_xticks([0, 3, 6, 9]); axp.set_xticklabels(["0", r"$p_0$", "6", "9"]); axp.tick_params(labelsize=10.5)
+axp.set_xlabel(r"momentum $p$", fontsize=12)
+note = fig.text(0.5, 0.965, "", ha="center", va="center", fontsize=13, weight="bold")
+fig.subplots_adjust(left=0.02, right=0.99, top=0.86, bottom=0.11)
+
+def update(i):
+    s = sx[i]; sp = 0.5 / s
+    a = np.exp(-u**2 / 4)                                   # amplitude of each plane wave, proportional to phi(p)
+    for k, (w, st) in enumerate(zip(waves, stems)):
+        pk = p0 + u[k] * sp
+        w.set_data(x, gap * k + a[k] * np.cos(pk * x))
+        st.set_data([pk, pk], [0, np.exp(-u[k]**2 / 2) / np.sqrt(2 * np.pi * sp**2)])
+    envelope = np.exp(-x**2 / (4 * s**2))
+    env.set_data(x, envelope); env2.set_data(x, -envelope)
+    re.set_data(x, envelope * np.cos(p0 * x))
+    axs.set_title(rf"sum over all $p$: the Gaussian, Re $\psi(x)$,  $\sigma_x = {s:.2f}$", loc="left", fontsize=12)
+    rp = np.exp(-(p - p0)**2 / (2 * sp**2)) / np.sqrt(2 * np.pi * sp**2)
+    lp.set_data(p, rp); bp[0].remove(); bp[0] = axp.fill_between(p, rp, color=ORANGE, alpha=0.2, lw=0)
+    axp.set_title(rf"weights $|\phi(p)|^2$,  $\sigma_p = {sp:.2f}$", loc="left", fontsize=12)
+    if s > 2.0:
+        note.set_text(r"wide: nearly ONE plane wave, an eigenfunction of $\hat{p}$"); note.set_color(ORANGE)
+    elif s < 0.4:
+        note.set_text(r"narrow: nearly a spike, an eigenfunction of $\hat{x}$, made of MANY momenta"); note.set_color(TEAL)
+    else:
+        note.set_text("in between: a wave packet"); note.set_color(GRAY)
+
+ani = FuncAnimation(fig, update, frames=nf, interval=150, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. A Gaussian built from plane waves. Top left: seven of the plane waves, each drawn with its weight; all of them crest together at $x = 0$. Bottom left: the sum over all momenta, the Gaussian itself. Right: the weights $\lvert\phi(p)\rvert^2$, with the seven waves marked in matching colours. Wide in position, the packet holds a narrow band of momenta and is nearly one plane wave. Squeezed, it needs a wide band: waves of very different wavelength agree only near $x = 0$ and cancel everywhere else.
+
+- **Squeeze** the Gaussian, $\sigma_x \to 0$: it becomes a spike, an eigenfunction of $\hat{x}$, and $\phi(p)$ flattens. A sharp position holds **every momentum**, with equal weight.
+- **Widen** it, $\sigma_x \to \infty$: it becomes the plane wave $e^{ip_0x/\hbar}$, an eigenfunction of $\hat{p}$, and $\phi(p)$ collapses onto $p_0$. A sharp momentum is spread over **every position**.
+- Neither limit is a normalizable state: a plane wave never ends, and a spike is infinitely tall. A real particle is always in between, a **wave packet**: a bundle of plane waves with momenta near $p_0$ that add up near the center and cancel elsewhere. This is the packet promised in [Waves](../ch02/01-waves.md), and the one that tunnels through barriers in [Tunneling](03-tunneling-and-finite-square-well.md) and spreads as it flies in [Time Dependence](07-time-dependence.md). Its $\lvert\phi(p)\rvert^2$ gives the momentum readings, and its center moves at $p_0/m$.
+
+#### Energy and momentum in a box
+
+- In a box, $\hat{H}$ and $\hat{p}$ share no eigenfunctions either: the plane waves $e^{ipx/\hbar}$ do not vanish at the walls. Compare two states, each with its energy and momentum readings. A box state has a sharp energy; a Gaussian packet has a definite direction of motion:
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -444,6 +636,8 @@ plt.show()
 ```
 
 Fig. Two states in a box, each with its energy and momentum readings. Top: the box state $\psi_5$ gives one energy, $25E_1$, every time. Its momentum readings fall in two humps near $p = \pm\sqrt{2mE_5} = \pm 5\pi\hbar/L$ (dashed), because the sine is half a wave moving right and half moving left, $\sin kx = (e^{ikx} - e^{-ikx})/2i$; the walls cut the wave off after a length $L$, which broadens each hump by about $h/L$. Bottom: a Gaussian packet moving right at about the same speed. Its momentum readings form one hump on the positive side, but its energy readings spread over several levels. Neither state is sharp in both.
+
+#### The uncertainty principle
 
 - How much spread the commutator forces is the **uncertainty principle**, the general form of the relation met in [Chapter 1](../ch01/04-wave-particle-duality.md):
 

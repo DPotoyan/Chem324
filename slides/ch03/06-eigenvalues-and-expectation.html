@@ -163,6 +163,17 @@ Davit Potoyan
 </div>
 
 </section>
+<section id="how-the-postulates-connect" class="slide level2">
+<h2>How the postulates connect</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/postulate_map.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Hermitian gives <strong>readings</strong> (top) and <strong>axes</strong> (bottom): a measurement joins them</li>
+</ul>
+</section>
 <section id="a-vector-build-it-then-project" class="slide level2">
 <h2>A vector: build it, then project</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -375,6 +386,77 @@ Davit Potoyan
 <li>The probabilities live in <strong>many identically prepared copies</strong>, not in one particle</li>
 </ul>
 </section>
+<section id="spikes-and-plane-waves" class="slide level2">
+<h2>Spikes and plane waves</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">eigenfunctions</th>
+<th style="text-align: left;">sharp</th>
+<th style="text-align: left;">spread over</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\hat{x}</span></td>
+<td style="text-align: left;">spikes <span class="math inline">\delta(x - x_0)</span></td>
+<td style="text-align: left;">position <span class="math inline">x_0</span></td>
+<td style="text-align: left;"><strong>every</strong> momentum</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\hat{p}</span></td>
+<td style="text-align: left;">plane waves <span class="math inline">e^{ipx/\hbar}</span></td>
+<td style="text-align: left;">momentum <span class="math inline">p</span></td>
+<td style="text-align: left;"><strong>every</strong> position</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">[\hat{x},\hat{p}] = i\hbar</span>: <strong>no shared</strong> eigenfunctions. Each eigenfunction of one is a sum of <strong>many</strong> eigenfunctions of the other</li>
+<li>On a grid the spikes are the columns with a single 1: the eigenvectors of the diagonal <span class="math inline">X</span></li>
+</ul>
+</section>
+<section id="a-state-in-plane-waves" class="slide level2">
+<h2>A state in plane waves</h2>
+<div class="keyeq">
+<p><span class="math display">\psi(x) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad \phi(p) = \langle p \vert \psi \rangle = \int_{-\infty}^{\infty} \frac{e^{-ipx/\hbar}}{\sqrt{2\pi\hbar}}\,\psi(x)\,dx</span></p>
+</div>
+<ul>
+<li>The projection <span class="math inline">c_n = \langle \psi_n \vert \psi \rangle</span> again, with an integral over <span class="math inline">p</span> for the sum over <span class="math inline">n</span>: the <strong>Fourier transform</strong></li>
+<li><span class="math inline">\lvert\phi(p)\rvert^2\,dp</span>: the probability of a momentum reading between <span class="math inline">p</span> and <span class="math inline">p + dp</span></li>
+<li>In spikes the components are just the values, <span class="math inline">\psi(x_0) = \langle x_0 \vert \psi \rangle</span>: the wavefunction we always drew</li>
+</ul>
+</section>
+<section id="example-a-gaussian-in-momentum" class="slide level2">
+<h2>Example: a Gaussian in momentum</h2>
+<div class="worked">
+<p>Which momenta make up <span class="math inline">\psi(x) \propto e^{-x^2/4\sigma_x^2}\,e^{ip_0x/\hbar}</span>?</p>
+</div>
+<div class="soln fragment">
+<p>Put it into <span class="math inline">\phi(p)</span> and complete the square in the exponent:</p>
+<p><span class="math display">\phi(p) \propto e^{-(p - p_0)^2/4\sigma_p^2}, \qquad \sigma_p = \frac{\hbar}{2\sigma_x}</span></p>
+<p>A Gaussian again, centered at <span class="math inline">p_0</span>: narrow in <span class="math inline">x</span> means wide in <span class="math inline">p</span>, and <span class="math inline">\sigma_x\sigma_p = \hbar/2</span>.</p>
+</div>
+</section>
+<section id="squeeze-it-widen-it" class="slide level2">
+<h2>Squeeze it, widen it</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch03/images/fourier_packet.gif" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Squeeze</strong>: a spike, from <strong>every</strong> momentum. <strong>Widen</strong>: one plane wave, over <strong>every</strong> position</li>
+<li>In between: a <strong>wave packet</strong>, plane waves that add up at the center and cancel elsewhere</li>
+</ul>
+</section>
 <section id="sharp-energy-or-one-way-momentum" class="slide level2">
 <h2>Sharp energy or one-way momentum</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -415,7 +497,7 @@ Davit Potoyan
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Expand the state in the eigenfunctions of the observable: the coefficients are projections, <span class="math inline">c_n = \langle \phi_n \vert \psi \rangle</span>. A measurement returns one eigenvalue <span class="math inline">a_n</span>, with probability <span class="math inline">\lvert c_n\rvert^2</span>, and leaves the system in <span class="math inline">\phi_n</span>. Averages are weighted sums, <span class="math inline">\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n</span>, sharp only in eigenstates; and observables that do not commute cannot be sharp together, <span class="math inline">\sigma_x\sigma_p \geq \hbar/2</span>.</p>
+<p>Expand the state in the eigenfunctions of the observable: the coefficients are projections, <span class="math inline">c_n = \langle \phi_n \vert \psi \rangle</span>. A measurement returns one eigenvalue <span class="math inline">a_n</span>, with probability <span class="math inline">\lvert c_n\rvert^2</span>, and leaves the system in <span class="math inline">\phi_n</span>. Averages are weighted sums, <span class="math inline">\langle A\rangle = \sum_n \lvert c_n\rvert^2 a_n</span>, sharp only in eigenstates; and observables that do not commute cannot be sharp together: a spike in position is a sum of every plane wave, and <span class="math inline">\sigma_x\sigma_p \geq \hbar/2</span>.</p>
 </blockquote>
 
 </section>
