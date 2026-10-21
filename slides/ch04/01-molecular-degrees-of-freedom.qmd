@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,145 +16,233 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch04/images
 ---
 
-## A molecule is four motions at once
+## A molecule moves in four ways
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch04/images/mol-DOF.jpg){width="95%"}
-:::
-::: {.column width="50%"}
-- **Translation**: the molecule flies
-- **Rotation**: it tumbles
-- **Vibration**: bonds stretch and bend
-- **Electronic**: electrons rearrange
-:::
-::::
+![](../../ch04/images/dof_motions.gif){.nostretch width="94%" fig-align="center"}
 
-## Each motion has its own energy ladder
+- **Translation**, **rotation**, **vibration**, and the **electrons** rearranging (Chapters 5 to 8)
+- In a gas they all happen at once: the real motion is their **sum**
 
-:::: {.columns}
-::: {.column width="45%"}
-![](../../ch04/images/Levels1.gif){width="95%"}
-:::
-::: {.column width="55%"}
-$$E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}$$
+## Each motion has its own ladder
 
-- Level spacings differ by **orders of magnitude**
-- That is why **different spectroscopies** exist: microwave for rotation, infrared for vibration, UV-Vis for electrons
-:::
-::::
+$$E = E_{\text{trans}} + E_{\text{rot}} + E_{\text{vib}} + E_{\text{elec}}$$
 
-## Separating the Hamiltonian
+![](../../ch04/images/level_zoom.png){.nostretch width="86%" fig-align="center"}
 
-- Born-Oppenheimer separates nuclei from electrons, leaving
+## One kind of light per ladder
 
-$$\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}$$
+Light is absorbed when a photon $h\nu$ **matches a gap**:
 
-- Separation means the wavefunction **factorizes**:
+| motion | lowest gap in HCl | wavelength | spectroscopy |
+|:--|:--|:--|:--|
+| electronic | about 65 000 cm$^{-1}$ | about 150 nm | **ultraviolet** |
+| vibrational | 2886 cm$^{-1}$ | 3.5 μm | **infrared** |
+| rotational | 21 cm$^{-1}$ | 0.5 mm | **microwave** |
+| translational | $10^{-15}$ cm$^{-1}$ | none | none: a **continuum** |
 
-::: {.fragment}
-$$\psi = \psi_{tr}\,\psi_{rot}\,\psi_{vib}$$
+- Twenty orders of magnitude: each motion answers to its **own part of the spectrum**
+
+## Example: which motions does heat reach?
+
+::: {.worked}
+At 300 K, $k_BT = 208$ cm$^{-1}$. Relative to the lowest state, how populated are $v = 1$ and $J = 1$ of HCl?
 :::
 
-- One hard problem becomes **three toy models**: particle in a box, rigid rotor, harmonic oscillator
+::: {.soln .fragment}
+$$\text{vibration: } e^{-2886/208} = e^{-13.9} \approx 10^{-6}$$
 
-## Counting the coordinates
+$$\text{rotation: } e^{-21.2/208} = e^{-0.10} = 0.90$$
 
-- $N$ nuclei carry $3N$ coordinates
-- **Translation** always takes 3
-- **Rotation** takes 3, or only 2 for a **linear** molecule
-- **Vibrations** get the rest: $3N-6$ (nonlinear) or $3N-5$ (linear)
-
-::: {.fragment}
-| molecule | $3N$ | trans | rot | vib |
-|---|---|---|---|---|
-| H$_2$O | 9 | 3 | 3 | **3** |
-| CO$_2$ | 9 | 3 | 2 | **4** |
-| benzene | 36 | 3 | 3 | **30** |
+Molecules **fly and tumble** freely, but nearly every bond sits in $v = 0$. Electrons: $e^{-65\,000/208} \approx 10^{-136}$.
 :::
 
-## The classical harmonic oscillator
+- Boltzmann: a state $\Delta E$ up is populated by $e^{-\Delta E/k_BT}$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch04/images/harm-osc1.png){width="95%"}
-:::
-::: {.column width="50%"}
-- Bead on a spring: displacement $x$ meets a **restoring force**
+## Born-Oppenheimer: nuclei move on $E(R)$
 
-$$F=-kx$$
+- Electrons are **light and fast**: for each frozen geometry they settle into an energy $E(\mathbf{R}_1, \dots, \mathbf{R}_N)$
+- The nuclei then move on that **potential energy surface**:
 
-- **Hooke's law**; $k$ is the spring stiffness
-:::
-::::
+$$\hat{H}_{\text{nuc}} = \sum_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_i^2 + E(\mathbf{R}_1, \dots, \mathbf{R}_N)$$
 
-## Solving the motion {auto-animate=true}
+- With no field, $E$ depends only on the **shape**: not on where the molecule is, not on which way it points
+- The full story: Chapter 8
 
-$$m \ddot x+kx = 0$$
+## Separate the motions
 
-## Solving the motion {auto-animate=true}
+$$\hat{H} = \hat{H}_{\text{trans}} + \hat{H}_{\text{rot}} + \hat{H}_{\text{vib}}$$
 
-$$m \ddot x+kx = 0 \quad\Longrightarrow\quad \ddot{x}+\omega^2 x =0, \qquad \omega=\sqrt{\frac{k}{m}}$$
-
-::: {.nonincremental}
-- Stiffer spring: **faster** oscillation; heavier mass: **slower**
+::: {.keyeq}
+$$\hat{H} = \hat{H}_a + \hat{H}_b \quad\Longrightarrow\quad \psi = \psi_a\,\psi_b, \qquad E = E_a + E_b$$
 :::
 
-::: {.fragment}
-$$x(t)= A \sin(\omega t+\phi)$$
+- For a molecule: $\psi = \psi_{\text{trans}}\,\psi_{\text{rot}}\,\psi_{\text{vib}}$ and the energies **add**
+- Seen before: the 3D box, $\psi = X(x)\,Y(y)\,Z(z)$, $E = E_x + E_y + E_z$
+- Approximate: spinning stretches bonds; a small correction (Lecture 4.5)
+
+## Example: why a sum gives a product
+
+::: {.worked}
+$\hat{H}_a$ acts only on the coordinates of $\psi_a$, $\hat{H}_b$ only on those of $\psi_b$. Show that $\psi_a\psi_b$ is an eigenfunction of $\hat{H}_a + \hat{H}_b$.
 :::
 
-::: {.fragment}
-Amplitude $A$ and phase $\phi$ come from **initial conditions**
+::: {.soln .fragment}
+$$(\hat{H}_a + \hat{H}_b)\,\psi_a\psi_b = (\hat{H}_a\psi_a)\,\psi_b + \psi_a\,(\hat{H}_b\psi_b)$$
+
+$$= E_a\,\psi_a\psi_b + E_b\,\psi_a\psi_b = (E_a + E_b)\,\psi_a\psi_b \quad\checkmark$$
+
+Each operator treats the other factor as a **constant**.
 :::
 
-## Energy sloshes but is conserved
+## Counting coordinates
 
-:::: {.columns}
-::: {.column width="40%"}
-![](../../ch04/images/ext_shm_graphs.gif){width="90%"}
+$N$ nuclei carry $3N$ coordinates:
+
+| motion | what changes | nonlinear | linear |
+|:--|:--|:-:|:-:|
+| translation | center of mass | 3 | 3 |
+| rotation | orientation | 3 | **2** |
+| vibration | shape | $3N - 6$ | $3N - 5$ |
+
+- H$_2$O: $9 = 3 + 3 + \mathbf{3}$ $\qquad$ CO$_2$: $9 = 3 + 2 + \mathbf{4}$ $\qquad$ benzene: $36 = 3 + 3 + \mathbf{30}$
+
+## Why linear molecules lose a rotation
+
+![](../../ch04/images/linear_rotations.png){.nostretch width="64%" fig-align="center"}
+
+- Atoms **on the axis**: a turn about it moves nothing. The spare coordinate **vibrates**
+
+## Water: three vibrations
+
+![](../../ch04/images/water_modes.gif){.nostretch width="92%" fig-align="center"}
+
+- $3N - 6 = 3$ **normal modes**: every atom swings at one frequency, in step
+- Near equilibrium each mode is **its own spring**: a molecule is $3N - 6$ independent oscillators
+
+## Example: count the vibrations
+
+::: {.worked}
+How many vibrations do NH$_3$ (pyramidal), C$_2$H$_2$ (linear) and HCN (linear) have?
 :::
-::: {.column width="60%"}
-$$V(x) = \frac{kx^2}{2}, \qquad E=\frac{p^2}{2m} + \frac{kx^2}{2}$$
 
-- Kinetic and potential energy **interconvert** at frequency $\omega$
-- This total energy becomes the quantum **Hamiltonian** next lecture
+::: {.soln .fragment}
+NH$_3$: $N = 4$, nonlinear: $3N - 6 = 6$
+
+C$_2$H$_2$: $N = 4$, linear: $3N - 5 = 7$
+
+HCN: $N = 3$, linear: $3N - 5 = 4$ (two stretches, and a bend in two perpendicular planes)
 :::
-::::
 
-## A diatomic is one bead in disguise
+## Three motions, three model systems
 
-:::: {.columns}
-::: {.column width="40%"}
-![](../../ch04/images/osc-2.jpeg){width="90%"}
+![](../../ch04/images/model_map.png){.nostretch width="88%" fig-align="center"}
+
+## The models, side by side
+
+| motion | classical energy | model system | levels |
+|:--|:--|:--|:--|
+| translation | $\dfrac{P^2}{2M}$ | particle in a box (3.2) | $\dfrac{h^2n^2}{8ML^2}$ |
+| rotation | $\dfrac{L^2}{2I}$ | rigid rotor (4.4, 4.5) | $\dfrac{\hbar^2}{2I}J(J+1)$ |
+| vibration | $\dfrac{p^2}{2\mu} + \dfrac{1}{2}kx^2$ | harmonic oscillator (4.2, 4.3) | $\hbar\omega\left(v + \tfrac{1}{2}\right)$ |
+
+- The Chapter 3 recipe: classical energy $\to$ operator $\to$ solve $\hat{H}\psi = E\psi$
+- Only vibration has a **potential**: the rest of today builds the classical **spring**
+
+## Why every bond is a spring
+
+![](../../ch04/images/bond_parabola.png){.nostretch width="84%" fig-align="center"}
+
+- The real well is not a parabola, but its **bottom** is, and the lowest levels live there
+
+## Taylor says: a parabola
+
+$$U(R) = U(R_e) + U'(R_e)\,x + \tfrac{1}{2}U''(R_e)\,x^2 + \tfrac{1}{6}U'''(R_e)\,x^3 + \dots, \qquad x = R - R_e$$
+
+- Energy from the bottom: $U(R_e) = 0$. At a minimum the slope vanishes: $U'(R_e) = 0$
+
+::: {.keyeq}
+$$U(R) \approx \frac{1}{2}k\,(R - R_e)^2, \qquad k = \left.\frac{d^2U}{dR^2}\right|_{R_e}$$
 :::
-::: {.column width="60%"}
-- Two masses, one spring: the center of mass **moves freely**
-- Relative coordinate obeys the one-bead equation with the **reduced mass**
 
-$$\mu=\frac{m_1 m_2}{m_1+m_2}, \qquad \omega = \sqrt{\frac{k}{\mu}}$$
+- **Force constant** = curvature at the minimum. Cubic and higher terms: **anharmonicity** (Lecture 4.3)
+
+## Example: $k$ from the Morse potential
+
+::: {.worked}
+$U(x) = D\left(1 - e^{-ax}\right)^2$: find $k$. For HCl, $D = 4.62$ eV and $a = 1.87$ Å$^{-1}$.
 :::
-::::
 
-## Why harmonic? Taylor says so
+::: {.soln .fragment}
+$$e^{-ax} \approx 1 - ax + \tfrac{1}{2}a^2x^2 \quad\Longrightarrow\quad U \approx D\left(a^2x^2 - a^3x^3\right) \quad\Longrightarrow\quad k = 2Da^2$$
 
-:::: {.columns}
-::: {.column width="45%"}
-![](../../ch04/images/harm_approx.png){width="95%"}
+$$k = 2\,(7.40\times10^{-19}\ \text{J})\,(1.87\times10^{10}\ \text{m}^{-1})^2 = 518\ \text{N/m}$$
 :::
-::: {.column width="55%"}
-$$U(x) = \frac{1}{2}k(x-x_0)^2+\frac{\gamma}{3!}(x-x_0)^3+...$$
 
-- Near any minimum the **quadratic term dominates**
-- $k = U''(x_0)$: curvature of the true potential
-- Higher terms are the **anharmonicity**
+- The cubic term is negative: the real well is **softer** on the side where the bond breaks
+
+## Hooke and Newton
+
+$$m\ddot{x} = -kx \quad\Longrightarrow\quad x(t) = A\cos(\omega t + \phi), \qquad \omega = \sqrt{\frac{k}{m}}$$
+
+![](../../ch04/images/spring_masses.gif){.nostretch width="58%" fig-align="center"}
+
+- **Stiffer** spring: faster. **Heavier** mass: slower. $A$ and $\phi$ come from the start
+
+## Energy sloshes, the total stays
+
+::: {.keyeq}
+$$x(t) = A\cos(\omega t + \phi), \qquad \omega = \sqrt{\frac{k}{m}}, \qquad E = \frac{p^2}{2m} + \frac{1}{2}kx^2 = \frac{1}{2}kA^2$$
 :::
-::::
+
+![](../../ch04/images/energy_slosh.gif){.nostretch width="50%" fig-align="center"}
+
+- **Turning points** $\pm A$: all potential, momentarily at rest. Classically, never beyond
+
+## Where is a classical spring found?
+
+![](../../ch04/images/spring_histogram.gif){.nostretch width="58%" fig-align="center"}
+
+$$P(x) = \frac{1}{\pi\sqrt{A^2 - x^2}}$$
+
+- Caught most where it is **slowest**. The quantum ground state: the **opposite**
+
+## A diatomic is one bead
+
+![](../../ch04/images/two_body.gif){.nostretch width="50%" fig-align="center"}
+
+::: {.keyeq}
+$$\mu = \frac{m_1m_2}{m_1 + m_2}, \qquad \mu\ddot{x} = -kx, \qquad \omega = \sqrt{\frac{k}{\mu}}$$
+:::
+
+- One heavy atom: $\mu \approx$ the light mass. HCl: $\mu = 0.98$ u, **H does the moving**
+
+## Example: the HCl stretch
+
+::: {.worked}
+For H$^{35}$Cl, $k = 516$ N/m. Find $\mu$, $\omega$ and the wavenumber $\tilde{\nu} = \omega/2\pi c$.
+:::
+
+::: {.soln .fragment}
+$$\mu = \frac{(1.008)(34.97)}{35.98}\ \text{u} = 0.980\ \text{u} = 1.627\times10^{-27}\ \text{kg}$$
+
+$$\omega = \sqrt{\frac{516}{1.627\times10^{-27}}}\ \text{s}^{-1} = 5.63\times10^{14}\ \text{s}^{-1}, \qquad \tilde{\nu} = \frac{\omega}{2\pi c} = 2990\ \text{cm}^{-1}$$
+
+Measured: 2886 cm$^{-1}$. The gap is anharmonicity (Lecture 4.3).
+:::
+
+## Preview: the quantum spring
+
+$$\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2$$
+
+![](../../ch04/images/ho_preview.png){.nostretch width="60%" fig-align="center"}
+
+- Met in 3.1 and 3.5. **Next lecture: why the steps are exactly $\hbar\omega$**
 
 # Takeaway {.center}
 
-> Molecular motion separates into translation, rotation, vibration, and electronic parts, with $3N-6$ (or $3N-5$) vibrations. Each vibration is classically a harmonic oscillator: $\ddot{x} = -\omega^2 x$, $\omega = \sqrt{k/\mu}$, $E = \frac{p^2}{2\mu} + \frac{kx^2}{2}$, valid because every smooth potential is a parabola near its minimum.
+> A molecule translates, rotates, vibrates and rearranges its electrons. The Hamiltonian separates, so energies add and wavefunctions multiply; the ladders differ by orders of magnitude, so each motion has its own spectroscopy. Of the $3N$ coordinates, 3 translate, 3 (or 2) rotate and $3N - 6$ (or $3N - 5$) vibrate. Near its minimum every bond is a spring: $x(t) = A\cos(\omega t + \phi)$ with $\omega = \sqrt{k/\mu}$ and $E = \frac{1}{2}kA^2$.
