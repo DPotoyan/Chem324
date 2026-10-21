@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="01-molecular-degrees-of-freedom_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,170 +163,357 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="a-molecule-is-four-motions-at-once" class="slide level2">
-<h2>A molecule is four motions at once</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/mol-DOF.jpg" style="width:95.0%"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment"><strong>Translation</strong>: the molecule flies</li>
-<li class="fragment"><strong>Rotation</strong>: it tumbles</li>
-<li class="fragment"><strong>Vibration</strong>: bonds stretch and bend</li>
-<li class="fragment"><strong>Electronic</strong>: electrons rearrange</li>
-</ul>
-</div></div>
-</section>
-<section id="each-motion-has-its-own-energy-ladder" class="slide level2">
-<h2>Each motion has its own energy ladder</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/Levels1.gif" style="width:95.0%"></p>
-</div><div class="column" style="width:55%;">
-<p><span class="math display">\[E= \epsilon_{trans}+ \epsilon_{rot}+ \epsilon_{vib}+\epsilon_{elec}\]</span></p>
-<ul>
-<li class="fragment">Level spacings differ by <strong>orders of magnitude</strong></li>
-<li class="fragment">That is why <strong>different spectroscopies</strong> exist: microwave for rotation, infrared for vibration, UV-Vis for electrons</li>
-</ul>
-</div></div>
-</section>
-<section id="separating-the-hamiltonian" class="slide level2">
-<h2>Separating the Hamiltonian</h2>
-<ul>
-<li class="fragment">Born-Oppenheimer separates nuclei from electrons, leaving</li>
-</ul>
-<p><span class="math display">\[\hat{H} = \hat{H}_{tr} + \hat{H}_{rot} + \hat{H}_{vib}\]</span></p>
-<ul>
-<li class="fragment">Separation means the wavefunction <strong>factorizes</strong>:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\psi = \psi_{tr}\,\psi_{rot}\,\psi_{vib}\]</span></p>
+<section id="a-molecule-moves-in-four-ways" class="slide level2">
+<h2>A molecule moves in four ways</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/dof_motions.gif" class="quarto-figure quarto-figure-center" style="width:94.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">One hard problem becomes <strong>three toy models</strong>: particle in a box, rigid rotor, harmonic oscillator</li>
+<li><strong>Translation</strong>, <strong>rotation</strong>, <strong>vibration</strong>, and the <strong>electrons</strong> rearranging (Chapters 5 to 8)</li>
+<li>In a gas they all happen at once: the real motion is their <strong>sum</strong></li>
 </ul>
 </section>
-<section id="counting-the-coordinates" class="slide level2">
-<h2>Counting the coordinates</h2>
-<ul>
-<li class="fragment"><span class="math inline">\(N\)</span> nuclei carry <span class="math inline">\(3N\)</span> coordinates</li>
-<li class="fragment"><strong>Translation</strong> always takes 3</li>
-<li class="fragment"><strong>Rotation</strong> takes 3, or only 2 for a <strong>linear</strong> molecule</li>
-<li class="fragment"><strong>Vibrations</strong> get the rest: <span class="math inline">\(3N-6\)</span> (nonlinear) or <span class="math inline">\(3N-5\)</span> (linear)</li>
-</ul>
-<div class="fragment">
+<section id="each-motion-has-its-own-ladder" class="slide level2">
+<h2>Each motion has its own ladder</h2>
+<p><span class="math display">E = E_{\text{trans}} + E_{\text{rot}} + E_{\text{vib}} + E_{\text{elec}}</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/level_zoom.png" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+</figure>
+</div>
+</section>
+<section id="one-kind-of-light-per-ladder" class="slide level2">
+<h2>One kind of light per ladder</h2>
+<p>Light is absorbed when a photon <span class="math inline">h\nu</span> <strong>matches a gap</strong>:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>molecule</th>
-<th><span class="math inline">\(3N\)</span></th>
-<th>trans</th>
-<th>rot</th>
-<th>vib</th>
+<th style="text-align: left;">motion</th>
+<th style="text-align: left;">lowest gap in HCl</th>
+<th style="text-align: left;">wavelength</th>
+<th style="text-align: left;">spectroscopy</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>H<span class="math inline">\(_2\)</span>O</td>
-<td>9</td>
-<td>3</td>
-<td>3</td>
-<td><strong>3</strong></td>
+<td style="text-align: left;">electronic</td>
+<td style="text-align: left;">about 65 000 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">about 150 nm</td>
+<td style="text-align: left;"><strong>ultraviolet</strong></td>
 </tr>
 <tr class="even">
-<td>CO<span class="math inline">\(_2\)</span></td>
-<td>9</td>
-<td>3</td>
-<td>2</td>
-<td><strong>4</strong></td>
+<td style="text-align: left;">vibrational</td>
+<td style="text-align: left;">2886 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">3.5 μm</td>
+<td style="text-align: left;"><strong>infrared</strong></td>
 </tr>
 <tr class="odd">
-<td>benzene</td>
-<td>36</td>
-<td>3</td>
-<td>3</td>
-<td><strong>30</strong></td>
+<td style="text-align: left;">rotational</td>
+<td style="text-align: left;">21 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">0.5 mm</td>
+<td style="text-align: left;"><strong>microwave</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">translational</td>
+<td style="text-align: left;"><span class="math inline">10^{-15}</span> cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">none: a <strong>continuum</strong></td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>Twenty orders of magnitude: each motion answers to its <strong>own part of the spectrum</strong></li>
+</ul>
+</section>
+<section id="example-which-motions-does-heat-reach" class="slide level2">
+<h2>Example: which motions does heat reach?</h2>
+<div class="worked">
+<p>At 300 K, <span class="math inline">k_BT = 208</span> cm<span class="math inline">^{-1}</span>. Relative to the lowest state, how populated are <span class="math inline">v = 1</span> and <span class="math inline">J = 1</span> of HCl?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\text{vibration: } e^{-2886/208} = e^{-13.9} \approx 10^{-6}</span></p>
+<p><span class="math display">\text{rotation: } e^{-21.2/208} = e^{-0.10} = 0.90</span></p>
+<p>Molecules <strong>fly and tumble</strong> freely, but nearly every bond sits in <span class="math inline">v = 0</span>. Electrons: <span class="math inline">e^{-65\,000/208} \approx 10^{-136}</span>.</p>
+</div>
+<ul>
+<li>Boltzmann: a state <span class="math inline">\Delta E</span> up is populated by <span class="math inline">e^{-\Delta E/k_BT}</span></li>
+</ul>
+</section>
+<section id="born-oppenheimer-nuclei-move-on-er" class="slide level2">
+<h2>Born-Oppenheimer: nuclei move on <span class="math inline">E(R)</span></h2>
+<ul>
+<li>Electrons are <strong>light and fast</strong>: for each frozen geometry they settle into an energy <span class="math inline">E(\mathbf{R}_1, \dots, \mathbf{R}_N)</span></li>
+<li>The nuclei then move on that <strong>potential energy surface</strong>:</li>
+</ul>
+<p><span class="math display">\hat{H}_{\text{nuc}} = \sum_{i=1}^{N} -\frac{\hbar^2}{2m_i}\nabla_i^2 + E(\mathbf{R}_1, \dots, \mathbf{R}_N)</span></p>
+<ul>
+<li>With no field, <span class="math inline">E</span> depends only on the <strong>shape</strong>: not on where the molecule is, not on which way it points</li>
+<li>The full story: Chapter 8</li>
+</ul>
+</section>
+<section id="separate-the-motions" class="slide level2">
+<h2>Separate the motions</h2>
+<p><span class="math display">\hat{H} = \hat{H}_{\text{trans}} + \hat{H}_{\text{rot}} + \hat{H}_{\text{vib}}</span></p>
+<div class="keyeq">
+<p><span class="math display">\hat{H} = \hat{H}_a + \hat{H}_b \quad\Longrightarrow\quad \psi = \psi_a\,\psi_b, \qquad E = E_a + E_b</span></p>
+</div>
+<ul>
+<li>For a molecule: <span class="math inline">\psi = \psi_{\text{trans}}\,\psi_{\text{rot}}\,\psi_{\text{vib}}</span> and the energies <strong>add</strong></li>
+<li>Seen before: the 3D box, <span class="math inline">\psi = X(x)\,Y(y)\,Z(z)</span>, <span class="math inline">E = E_x + E_y + E_z</span></li>
+<li>Approximate: spinning stretches bonds; a small correction (Lecture 4.5)</li>
+</ul>
+</section>
+<section id="example-why-a-sum-gives-a-product" class="slide level2">
+<h2>Example: why a sum gives a product</h2>
+<div class="worked">
+<p><span class="math inline">\hat{H}_a</span> acts only on the coordinates of <span class="math inline">\psi_a</span>, <span class="math inline">\hat{H}_b</span> only on those of <span class="math inline">\psi_b</span>. Show that <span class="math inline">\psi_a\psi_b</span> is an eigenfunction of <span class="math inline">\hat{H}_a + \hat{H}_b</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">(\hat{H}_a + \hat{H}_b)\,\psi_a\psi_b = (\hat{H}_a\psi_a)\,\psi_b + \psi_a\,(\hat{H}_b\psi_b)</span></p>
+<p><span class="math display">= E_a\,\psi_a\psi_b + E_b\,\psi_a\psi_b = (E_a + E_b)\,\psi_a\psi_b \quad\checkmark</span></p>
+<p>Each operator treats the other factor as a <strong>constant</strong>.</p>
 </div>
 </section>
-<section id="the-classical-harmonic-oscillator" class="slide level2">
-<h2>The classical harmonic oscillator</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/harm-osc1.png" style="width:95.0%"></p>
-</div><div class="column" style="width:50%;">
+<section id="counting-coordinates" class="slide level2">
+<h2>Counting coordinates</h2>
+<p><span class="math inline">N</span> nuclei carry <span class="math inline">3N</span> coordinates:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">motion</th>
+<th style="text-align: left;">what changes</th>
+<th style="text-align: center;">nonlinear</th>
+<th style="text-align: center;">linear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">translation</td>
+<td style="text-align: left;">center of mass</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rotation</td>
+<td style="text-align: left;">orientation</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><strong>2</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vibration</td>
+<td style="text-align: left;">shape</td>
+<td style="text-align: center;"><span class="math inline">3N - 6</span></td>
+<td style="text-align: center;"><span class="math inline">3N - 5</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">Bead on a spring: displacement <span class="math inline">\(x\)</span> meets a <strong>restoring force</strong></li>
+<li>H<span class="math inline">_2</span>O: <span class="math inline">9 = 3 + 3 + \mathbf{3}</span> <span class="math inline">\qquad</span> CO<span class="math inline">_2</span>: <span class="math inline">9 = 3 + 2 + \mathbf{4}</span> <span class="math inline">\qquad</span> benzene: <span class="math inline">36 = 3 + 3 + \mathbf{30}</span></li>
 </ul>
-<p><span class="math display">\[F=-kx\]</span></p>
-<ul>
-<li class="fragment"><strong>Hooke’s law</strong>; <span class="math inline">\(k\)</span> is the spring stiffness</li>
-</ul>
-</div></div>
 </section>
-<section id="solving-the-motion" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Solving the motion</h2>
-<p><span class="math display">\[m \ddot x+kx = 0\]</span></p>
-</section>
-<section id="solving-the-motion-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Solving the motion</h2>
-<p><span class="math display">\[m \ddot x+kx = 0 \quad\Longrightarrow\quad \ddot{x}+\omega^2 x =0, \qquad \omega=\sqrt{\frac{k}{m}}\]</span></p>
-<ul>
-<li>Stiffer spring: <strong>faster</strong> oscillation; heavier mass: <strong>slower</strong></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[x(t)= A \sin(\omega t+\phi)\]</span></p>
+<section id="why-linear-molecules-lose-a-rotation" class="slide level2">
+<h2>Why linear molecules lose a rotation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/linear_rotations.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
 </div>
-<div class="fragment">
-<p>Amplitude <span class="math inline">\(A\)</span> and phase <span class="math inline">\(\phi\)</span> come from <strong>initial conditions</strong></p>
+<ul>
+<li>Atoms <strong>on the axis</strong>: a turn about it moves nothing. The spare coordinate <strong>vibrates</strong></li>
+</ul>
+</section>
+<section id="water-three-vibrations" class="slide level2">
+<h2>Water: three vibrations</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/water_modes.gif" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">3N - 6 = 3</span> <strong>normal modes</strong>: every atom swings at one frequency, in step</li>
+<li>Near equilibrium each mode is <strong>its own spring</strong>: a molecule is <span class="math inline">3N - 6</span> independent oscillators</li>
+</ul>
+</section>
+<section id="example-count-the-vibrations" class="slide level2">
+<h2>Example: count the vibrations</h2>
+<div class="worked">
+<p>How many vibrations do NH<span class="math inline">_3</span> (pyramidal), C<span class="math inline">_2</span>H<span class="math inline">_2</span> (linear) and HCN (linear) have?</p>
+</div>
+<div class="soln fragment">
+<p>NH<span class="math inline">_3</span>: <span class="math inline">N = 4</span>, nonlinear: <span class="math inline">3N - 6 = 6</span></p>
+<p>C<span class="math inline">_2</span>H<span class="math inline">_2</span>: <span class="math inline">N = 4</span>, linear: <span class="math inline">3N - 5 = 7</span></p>
+<p>HCN: <span class="math inline">N = 3</span>, linear: <span class="math inline">3N - 5 = 4</span> (two stretches, and a bend in two perpendicular planes)</p>
 </div>
 </section>
-<section id="energy-sloshes-but-is-conserved" class="slide level2">
-<h2>Energy sloshes but is conserved</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="../../ch04/images/ext_shm_graphs.gif" style="width:90.0%"></p>
-</div><div class="column" style="width:60%;">
-<p><span class="math display">\[V(x) = \frac{kx^2}{2}, \qquad E=\frac{p^2}{2m} + \frac{kx^2}{2}\]</span></p>
-<ul>
-<li class="fragment">Kinetic and potential energy <strong>interconvert</strong> at frequency <span class="math inline">\(\omega\)</span></li>
-<li class="fragment">This total energy becomes the quantum <strong>Hamiltonian</strong> next lecture</li>
-</ul>
-</div></div>
+<section id="three-motions-three-model-systems" class="slide level2">
+<h2>Three motions, three model systems</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/model_map.png" class="quarto-figure quarto-figure-center" style="width:88.0%"></p>
+</figure>
+</div>
 </section>
-<section id="a-diatomic-is-one-bead-in-disguise" class="slide level2">
-<h2>A diatomic is one bead in disguise</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="../../ch04/images/osc-2.jpeg" style="width:90.0%"></p>
-</div><div class="column" style="width:60%;">
+<section id="the-models-side-by-side" class="slide level2">
+<h2>The models, side by side</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">motion</th>
+<th style="text-align: left;">classical energy</th>
+<th style="text-align: left;">model system</th>
+<th style="text-align: left;">levels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">translation</td>
+<td style="text-align: left;"><span class="math inline">\dfrac{P^2}{2M}</span></td>
+<td style="text-align: left;">particle in a box (3.2)</td>
+<td style="text-align: left;"><span class="math inline">\dfrac{h^2n^2}{8ML^2}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rotation</td>
+<td style="text-align: left;"><span class="math inline">\dfrac{L^2}{2I}</span></td>
+<td style="text-align: left;">rigid rotor (4.4, 4.5)</td>
+<td style="text-align: left;"><span class="math inline">\dfrac{\hbar^2}{2I}J(J+1)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vibration</td>
+<td style="text-align: left;"><span class="math inline">\dfrac{p^2}{2\mu} + \dfrac{1}{2}kx^2</span></td>
+<td style="text-align: left;">harmonic oscillator (4.2, 4.3)</td>
+<td style="text-align: left;"><span class="math inline">\hbar\omega\left(v + \tfrac{1}{2}\right)</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">Two masses, one spring: the center of mass <strong>moves freely</strong></li>
-<li class="fragment">Relative coordinate obeys the one-bead equation with the <strong>reduced mass</strong></li>
+<li>The Chapter 3 recipe: classical energy <span class="math inline">\to</span> operator <span class="math inline">\to</span> solve <span class="math inline">\hat{H}\psi = E\psi</span></li>
+<li>Only vibration has a <strong>potential</strong>: the rest of today builds the classical <strong>spring</strong></li>
 </ul>
-<p><span class="math display">\[\mu=\frac{m_1 m_2}{m_1+m_2}, \qquad \omega = \sqrt{\frac{k}{\mu}}\]</span></p>
-</div></div>
 </section>
-<section id="why-harmonic-taylor-says-so" class="slide level2">
-<h2>Why harmonic? Taylor says so</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/harm_approx.png" style="width:95.0%"></p>
-</div><div class="column" style="width:55%;">
-<p><span class="math display">\[U(x) = \frac{1}{2}k(x-x_0)^2+\frac{\gamma}{3!}(x-x_0)^3+...\]</span></p>
+<section id="why-every-bond-is-a-spring" class="slide level2">
+<h2>Why every bond is a spring</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/bond_parabola.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment">Near any minimum the <strong>quadratic term dominates</strong></li>
-<li class="fragment"><span class="math inline">\(k = U''(x_0)\)</span>: curvature of the true potential</li>
-<li class="fragment">Higher terms are the <strong>anharmonicity</strong></li>
+<li>The real well is not a parabola, but its <strong>bottom</strong> is, and the lowest levels live there</li>
 </ul>
-</div></div>
+</section>
+<section id="taylor-says-a-parabola" class="slide level2">
+<h2>Taylor says: a parabola</h2>
+<p><span class="math display">U(R) = U(R_e) + U'(R_e)\,x + \tfrac{1}{2}U''(R_e)\,x^2 + \tfrac{1}{6}U'''(R_e)\,x^3 + \dots, \qquad x = R - R_e</span></p>
+<ul>
+<li>Energy from the bottom: <span class="math inline">U(R_e) = 0</span>. At a minimum the slope vanishes: <span class="math inline">U'(R_e) = 0</span></li>
+</ul>
+<div class="keyeq">
+<p><span class="math display">U(R) \approx \frac{1}{2}k\,(R - R_e)^2, \qquad k = \left.\frac{d^2U}{dR^2}\right|_{R_e}</span></p>
+</div>
+<ul>
+<li><strong>Force constant</strong> = curvature at the minimum. Cubic and higher terms: <strong>anharmonicity</strong> (Lecture 4.3)</li>
+</ul>
+</section>
+<section id="example-k-from-the-morse-potential" class="slide level2">
+<h2>Example: <span class="math inline">k</span> from the Morse potential</h2>
+<div class="worked">
+<p><span class="math inline">U(x) = D\left(1 - e^{-ax}\right)^2</span>: find <span class="math inline">k</span>. For HCl, <span class="math inline">D = 4.62</span> eV and <span class="math inline">a = 1.87</span> Å<span class="math inline">^{-1}</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">e^{-ax} \approx 1 - ax + \tfrac{1}{2}a^2x^2 \quad\Longrightarrow\quad U \approx D\left(a^2x^2 - a^3x^3\right) \quad\Longrightarrow\quad k = 2Da^2</span></p>
+<p><span class="math display">k = 2\,(7.40\times10^{-19}\ \text{J})\,(1.87\times10^{10}\ \text{m}^{-1})^2 = 518\ \text{N/m}</span></p>
+</div>
+<ul>
+<li>The cubic term is negative: the real well is <strong>softer</strong> on the side where the bond breaks</li>
+</ul>
+</section>
+<section id="hooke-and-newton" class="slide level2">
+<h2>Hooke and Newton</h2>
+<p><span class="math display">m\ddot{x} = -kx \quad\Longrightarrow\quad x(t) = A\cos(\omega t + \phi), \qquad \omega = \sqrt{\frac{k}{m}}</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/spring_masses.gif" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Stiffer</strong> spring: faster. <strong>Heavier</strong> mass: slower. <span class="math inline">A</span> and <span class="math inline">\phi</span> come from the start</li>
+</ul>
+</section>
+<section id="energy-sloshes-the-total-stays" class="slide level2">
+<h2>Energy sloshes, the total stays</h2>
+<div class="keyeq">
+<p><span class="math display">x(t) = A\cos(\omega t + \phi), \qquad \omega = \sqrt{\frac{k}{m}}, \qquad E = \frac{p^2}{2m} + \frac{1}{2}kx^2 = \frac{1}{2}kA^2</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/energy_slosh.gif" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Turning points</strong> <span class="math inline">\pm A</span>: all potential, momentarily at rest. Classically, never beyond</li>
+</ul>
+</section>
+<section id="where-is-a-classical-spring-found" class="slide level2">
+<h2>Where is a classical spring found?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/spring_histogram.gif" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<p><span class="math display">P(x) = \frac{1}{\pi\sqrt{A^2 - x^2}}</span></p>
+<ul>
+<li>Caught most where it is <strong>slowest</strong>. The quantum ground state: the <strong>opposite</strong></li>
+</ul>
+</section>
+<section id="a-diatomic-is-one-bead" class="slide level2">
+<h2>A diatomic is one bead</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/two_body.gif" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="keyeq">
+<p><span class="math display">\mu = \frac{m_1m_2}{m_1 + m_2}, \qquad \mu\ddot{x} = -kx, \qquad \omega = \sqrt{\frac{k}{\mu}}</span></p>
+</div>
+<ul>
+<li>One heavy atom: <span class="math inline">\mu \approx</span> the light mass. HCl: <span class="math inline">\mu = 0.98</span> u, <strong>H does the moving</strong></li>
+</ul>
+</section>
+<section id="example-the-hcl-stretch" class="slide level2">
+<h2>Example: the HCl stretch</h2>
+<div class="worked">
+<p>For H<span class="math inline">^{35}</span>Cl, <span class="math inline">k = 516</span> N/m. Find <span class="math inline">\mu</span>, <span class="math inline">\omega</span> and the wavenumber <span class="math inline">\tilde{\nu} = \omega/2\pi c</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\mu = \frac{(1.008)(34.97)}{35.98}\ \text{u} = 0.980\ \text{u} = 1.627\times10^{-27}\ \text{kg}</span></p>
+<p><span class="math display">\omega = \sqrt{\frac{516}{1.627\times10^{-27}}}\ \text{s}^{-1} = 5.63\times10^{14}\ \text{s}^{-1}, \qquad \tilde{\nu} = \frac{\omega}{2\pi c} = 2990\ \text{cm}^{-1}</span></p>
+<p>Measured: 2886 cm<span class="math inline">^{-1}</span>. The gap is anharmonicity (Lecture 4.3).</p>
+</div>
+</section>
+<section id="preview-the-quantum-spring" class="slide level2">
+<h2>Preview: the quantum spring</h2>
+<p><span class="math display">\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/ho_preview.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Met in 3.1 and 3.5. <strong>Next lecture: why the steps are exactly <span class="math inline">\hbar\omega</span></strong></li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Molecular motion separates into translation, rotation, vibration, and electronic parts, with <span class="math inline">\(3N-6\)</span> (or <span class="math inline">\(3N-5\)</span>) vibrations. Each vibration is classically a harmonic oscillator: <span class="math inline">\(\ddot{x} = -\omega^2 x\)</span>, <span class="math inline">\(\omega = \sqrt{k/\mu}\)</span>, <span class="math inline">\(E = \frac{p^2}{2\mu} + \frac{kx^2}{2}\)</span>, valid because every smooth potential is a parabola near its minimum.</p>
+<p>A molecule translates, rotates, vibrates and rearranges its electrons. The Hamiltonian separates, so energies add and wavefunctions multiply; the ladders differ by orders of magnitude, so each motion has its own spectroscopy. Of the <span class="math inline">3N</span> coordinates, 3 translate, 3 (or 2) rotate and <span class="math inline">3N - 6</span> (or <span class="math inline">3N - 5</span>) vibrate. Near its minimum every bond is a spring: <span class="math inline">x(t) = A\cos(\omega t + \phi)</span> with <span class="math inline">\omega = \sqrt{k/\mu}</span> and <span class="math inline">E = \frac{1}{2}kA^2</span>.</p>
 </blockquote>
 
 </section>
@@ -335,7 +538,6 @@ Davit Potoyan
   <script src="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-molecular-degrees-of-freedom_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -504,27 +706,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
