@@ -181,7 +181,33 @@ $$
 | parity $\hat{\Pi}$ | $[\hat{H},\hat{\Pi}] = 0$ if $V(-x) = V(x)$ | the potential is symmetric |
 | position $\hat{x}$ | $[\hat{H},\hat{x}] = -i\hbar\,\hat{p}/m$ | only while $\langle p\rangle$ stays zero |
 
-- The free particle shows the difference at a glance. Its momentum commutes with $\hat{H}$; its position does not:
+- The free particle shows the difference at a glance. Its momentum commutes with $\hat{H}$; its position does not. Commuting operators share eigenfunctions, and here they are the plane waves:
+
+:::{note} **Example: plane waves are eigenfunctions of $\hat{p}$ and $\hat{H}$, not of $\hat{x}$**
+
+With $V = 0$ the Hamiltonian is $\hat{H} = \hat{p}^2/2m$. Apply each operator to $e^{ipx/\hbar}$:
+
+$$
+\hat{p}\,e^{ipx/\hbar} = -i\hbar\,\frac{d}{dx}\,e^{ipx/\hbar} = p\,e^{ipx/\hbar}, \qquad
+\hat{H}\,e^{ipx/\hbar} = \frac{1}{2m}\,\hat{p}\,\big(p\,e^{ipx/\hbar}\big) = \frac{p^2}{2m}\,e^{ipx/\hbar}
+$$
+
+Both give a number times the same wave: eigenvalues $p$ and $E_p = p^2/2m$. Position does not:
+
+$$
+\hat{x}\,e^{ipx/\hbar} = x\,e^{ipx/\hbar}
+$$
+
+is the wave times a function of $x$, not times a number, so a plane wave has no definite position.
+:::
+
+- A packet is a superposition of plane waves, the momentum expansion of [Measurement](06-eigenvalues-and-expectation.md). Since the plane waves are the energy eigenstates, the recipe of this lecture applies with an integral in place of the sum:
+
+$$
+\Psi(x,t) = \int_{-\infty}^{\infty} \phi(p)\,\frac{e^{i(px - E_pt)/\hbar}}{\sqrt{2\pi\hbar}}\,dp, \qquad E_p = \frac{p^2}{2m}
+$$
+
+- Each $\phi(p)$ only turns its phase, so the momentum distribution $\lvert\phi(p)\rvert^2$ never changes. The components travel at different speeds $p/m$, though, so the position distribution spreads:
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -228,7 +254,7 @@ plt.close(fig)
 HTML(ani.to_jshtml())
 ```
 
-Fig. A free Gaussian packet. Top: the position density moves at the classical speed (dot) and spreads, because its momentum components travel at different speeds. Bottom: the momentum distribution is the same at every instant, because $[\hat{p},\hat{H}] = 0$: every $\lvert c_p\rvert^2$ is frozen, exactly like the $\lvert c_n\rvert^2$ of a bound state.
+Fig. A free Gaussian packet. Top: the position density moves at the classical speed (dot) and spreads, because its momentum components travel at different speeds. Bottom: the momentum distribution is the same at every instant, because $[\hat{p},\hat{H}] = 0$: every $\lvert\phi(p)\rvert^2$ is frozen, exactly like the $\lvert c_n\rvert^2$ of a bound state.
 
 ### Ehrenfest's theorem: averages obey Newton
 
@@ -502,58 +528,63 @@ from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 from matplotlib.patches import FancyBboxPatch, Circle
-W, Ht = 9.6, 4.5                                            # draw in inches: one data unit = one inch
+W, Ht = 11.5, 3.3                                           # draw in inches: one data unit = one inch
 fig = plt.figure(figsize=(W, Ht))
 ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
-yt, ym, yb = 3.5, 2.22, 0.94                                # readings track, middle, states track
+rend = fig.canvas.get_renderer()
 tint = {GRAY: "#f1f3f5", PURPLE: "#f1ecf7", TEAL: "#e3f1f5", CARDINAL: "#fbeaec", ORANGE: "#fdf0e0"}
-boxes = {}
-
-def box(key, x, y, w, title, lines, col, chips=()):
-    h = 0.5 + 0.28 * len(lines)
-    ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.1",
+ym, lh, gap = 1.95, 0.29, 0.26                              # middle of the row, line height, gap between boxes
+# (width, title, colour, lines); a line is (text, colour) or (text, colour, postulate number); None is a divider
+steps = [(2.2, "state, observable", GRAY,
+          [(r"a state $\psi$", GRAY, 1), (r"$\langle\psi|\psi\rangle = 1$", "k"),
+           (r"an observable $\hat{A}$", GRAY, 2), (r"Hermitian: $\hat{A} = \hat{A}^\dagger$", "k")]),
+         (1.85, "eigenvalues", PURPLE,
+          [(r"$\hat{A}\,\phi_n = a_n\,\phi_n$", "k"), (r"$a_n$ real: the readings", PURPLE),
+           (r"$\phi_n$ orthogonal: axes", TEAL)]),
+         (1.85, "superposition", TEAL,
+          [(r"$\psi = c_1\phi_1 + c_2\phi_2 + \cdots$", "k"), (r"$c_n = \langle\phi_n|\psi\rangle$", "k")]),
+         (2.05, r"measure $A$", CARDINAL,
+          [("one copy", GRAY, 3), (r"a reading $a_n$", "k"), (r"then $\psi \to \phi_n$", "k"), None,
+           ("many copies", GRAY, 4), (r"fraction $p_n = |c_n|^2$", "k"), (r"$\langle A\rangle = p_1a_1 + p_2a_2 + \cdots$", "k")]),
+         (2.4, "time evolution", ORANGE,
+          [(r"in the eigenstates of $\hat{H}$", GRAY, 5), (r"$c_n \to c_n\,e^{-iE_nt/\hbar}$", "k"),
+           (r"each $|c_n|^2$ stays fixed", "k")])]
+x = (W - sum(w for w, *_ in steps) - gap * (len(steps) - 1)) / 2
+edges = []
+for w, title, col, lines in steps:
+    h = 0.62 + lh * sum(1 for l in lines if l) + 0.12 * sum(1 for l in lines if l is None)
+    top = ym + h / 2
+    ax.add_patch(FancyBboxPatch((x, ym - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.1",
                                 fc=tint[col], ec=col, lw=1.6, zorder=2))
-    ax.text(x, y + h / 2 - 0.1, title, ha="center", va="top", fontsize=12.5, color=col, weight="bold", zorder=3)
-    for k, line in enumerate(lines):
-        ax.text(x, y + h / 2 - 0.43 - 0.28 * k, line, ha="center", va="top", fontsize=12.5, zorder=3)
-    for k, c in enumerate(chips):                           # the postulate numbers of the table
-        cx, cy = x + w / 2 - 0.05 - 0.27 * k, y + h / 2 + 0.06
-        ax.add_patch(Circle((cx, cy), 0.12, fc="white", ec=GRAY, lw=1, zorder=4))
-        ax.text(cx, cy - 0.005, str(c), ha="center", va="center", fontsize=9.5, color=GRAY, zorder=5)
-    boxes[key] = {"l": (x - w / 2, y), "r": (x + w / 2, y), "t": (x, y + h / 2), "b": (x, y - h / 2)}
-
-# anchor on a box side, slid along that side (a lambda: the page sync drops every line that starts with return)
-edge = lambda key, side, shift=0.0: (boxes[key][side][0] + (shift if side in "tb" else 0),
-                                     boxes[key][side][1] + (shift if side in "lr" else 0))
-
-def arrow(a, b):
-    ax.annotate("", xy=b, xytext=a, zorder=1, arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.5,
-                mutation_scale=15, shrinkA=2, shrinkB=2))
-
-box("op", 0.95, ym, 1.7, r"operator $\hat{A}$", [r"acts on $\psi(x)$", "on a grid: a matrix"], GRAY)
-box("herm", 2.75, ym, 1.35, "Hermitian", [r"$\hat{A} = \hat{A}^\dagger$"], GRAY, chips=(2,))
-box("val", 4.72, yt, 1.95, r"eigenvalues $a_n$", ["real numbers:", "possible readings"], PURPLE)
-box("vec", 4.72, yb, 1.95, r"eigenfunctions $\phi_n$", ["orthogonal axes", "for any state"], TEAL)
-box("born", 6.8, yt, 1.55, r"measure $A$", [r"reading $a_n$", r"$p_n = |c_n|^2$"], CARDINAL, chips=(4, 3))
-box("sup", 6.8, yb, 1.55, "superposition", [r"$\psi = \sum c_n\,\phi_n$", r"$c_n = \langle\phi_n|\psi\rangle$"], TEAL, chips=(1,))
-box("avg", 8.72, yt, 1.6, "many readings", [r"$\langle A\rangle = \sum p_n a_n$"], PURPLE)
-box("col", 8.72, ym, 1.6, "after a reading", [r"$\psi \to \phi_n$"], TEAL)
-box("time", 8.72, yb, 1.6, "time evolution", [r"$\phi_n$ of $\hat{H}$:", r"$c_n \to c_n\,e^{-iE_nt/\hbar}$"], ORANGE, chips=(5,))
-
-arrow(edge("op", "r"), edge("herm", "l"))
-arrow(edge("herm", "r", 0.12), edge("val", "l"))
-arrow(edge("herm", "r", -0.12), edge("vec", "l"))
-arrow(edge("val", "r"), edge("born", "l"))
-arrow(edge("vec", "r"), edge("sup", "l"))
-arrow(edge("sup", "t"), edge("born", "b"))
-ax.text(6.86, (yt + yb) / 2, "how often", ha="left", va="center", fontsize=11, color=GRAY, style="italic")
-arrow(edge("born", "r"), edge("avg", "l"))
-arrow(edge("born", "r", -0.2), edge("col", "l", 0.12))
-arrow(edge("sup", "r"), edge("time", "l"))
+    ax.text(x + w / 2, top - 0.1, title, ha="center", va="top", fontsize=12.5, color=col, weight="bold", zorder=3)
+    y = top - 0.5
+    for line in lines:
+        if line is None:                                    # divider between one copy and many copies
+            ax.plot([x + 0.15, x + w - 0.15], [y + 0.1, y + 0.1], color=col, lw=0.9, ls=":", zorder=3)
+            y -= 0.12
+            continue
+        t = ax.text(x + w / 2, y, line[0], ha="center", va="center", fontsize=12, color=line[1], zorder=3,
+                    style="italic" if line[1] == GRAY else "normal")
+        if len(line) == 3:                                  # circled postulate number, just left of its line
+            bb = t.get_window_extent(rend).transformed(ax.transData.inverted())
+            cx = bb.x0 - 0.16
+            ax.add_patch(Circle((cx, y), 0.115, fc="white", ec=GRAY, lw=1, zorder=4))
+            ax.text(cx, y - 0.005, str(line[2]), ha="center", va="center", fontsize=9.5, color=GRAY, zorder=5)
+        y -= lh
+    edges.append((x, x + w))
+    x += w + gap
+for (a0, a1), (b0, b1) in zip(edges[:-1], edges[1:]):
+    ax.annotate("", xy=(b0, ym), xytext=(a1, ym), zorder=1,
+                arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6, mutation_scale=16, shrinkA=1, shrinkB=1))
+for i, j, lab in ((0, 1, "Lectures 3.5, 3.5b: operators"), (2, 3, "Lecture 3.6: measurement"),
+                  (4, 4, "Lecture 3.7: time")):           # which lecture covers which boxes
+    x0, x1 = edges[i][0] + 0.05, edges[j][1] - 0.05
+    ax.plot([x0, x0, x1, x1], [0.42, 0.34, 0.34, 0.42], color=GRAY, lw=1)
+    ax.text((x0 + x1) / 2, 0.24, lab, ha="center", va="top", fontsize=11, color=GRAY, style="italic")
 plt.show()
 ```
 
-Fig. How the postulates connect. A Hermitian operator brings real eigenvalues, the possible readings (top), and orthogonal eigenfunctions, axes for any state (bottom). A measurement joins the two tracks; time evolution attaches a phase to each coefficient in the eigenfunctions of $\hat{H}$. Circled numbers are the postulates in the table below.
+Fig. How the postulates connect, in the order of the last four lectures. A state and a Hermitian observable give the possible readings (eigenvalues) and the axes (eigenfunctions), and any state is a superposition along those axes. One measurement returns one reading and leaves the state in its eigenfunction; many copies give the probabilities $p_n = \lvert c_n\rvert^2$ and the average $\langle A\rangle$. Time evolution, the last box and the subject of this lecture, attaches a phase to each coefficient in the eigenstates of $\hat{H}$. Circled numbers are the postulates in the table below.
 
 The same five rules in equations:
 

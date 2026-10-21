@@ -129,11 +129,30 @@ $$\hat{H} = \frac{\hat{p}^2}{2m} + V(x)$$
 
 - The commutators of Lecture 3.5b now say **what moves** and **what stays**
 
+## Example: plane waves
+
+::: {.worked}
+With $V = 0$, $\hat{H} = \hat{p}^2/2m$. Is $e^{ipx/\hbar}$ an eigenfunction of $\hat{p}$? Of $\hat{H}$? Of $\hat{x}$?
+:::
+
+::: {.soln .fragment}
+$$\hat{p}\,e^{ipx/\hbar} = -i\hbar\,\frac{d}{dx}\,e^{ipx/\hbar} = p\,e^{ipx/\hbar} \qquad \text{yes: eigenvalue } p$$
+
+$$\hat{H}\,e^{ipx/\hbar} = \frac{\hat{p}^2}{2m}\,e^{ipx/\hbar} = \frac{p^2}{2m}\,e^{ipx/\hbar} \qquad \text{yes: eigenvalue } E_p = \frac{p^2}{2m}$$
+
+$$\hat{x}\,e^{ipx/\hbar} = x\,e^{ipx/\hbar} \qquad \text{no: } x \text{ is a function, not a number}$$
+:::
+
+- $\hat{p}$ and $\hat{H}$ **commute**, so they share eigenfunctions: the plane waves
+
 ## Free particle: $x$ spreads, $p$ stays
 
-![](../../ch03/images/free_spread.gif){.nostretch width="66%" fig-align="center"}
+$$\Psi(x,t) = \int \phi(p)\,\frac{e^{i(px - E_pt)/\hbar}}{\sqrt{2\pi\hbar}}\,dp$$
 
-- $[\hat{p},\hat{H}] = 0$: every momentum probability is frozen, while the position spreads
+![](../../ch03/images/free_spread.gif){.nostretch width="42%" fig-align="center"}
+
+- Each $\phi(p)$ only turns its phase: $\lvert\phi(p)\rvert^2$ **frozen**
+- The components run at different speeds $p/m$: $x$ **spreads**
 
 ## Ehrenfest: averages obey Newton
 
@@ -198,7 +217,7 @@ Twice the box, four times slower: $T_{\text{rev}} \propto L^2$.
 
 ## How the postulates connect
 
-![](../../ch03/images/postulate_map.png){.nostretch width="84%" fig-align="center"}
+![](../../ch03/images/postulate_map.png){.nostretch width="94%" fig-align="center"}
 
 - Today filled in the last box: **time evolution** attaches a phase to each $c_n$
 
