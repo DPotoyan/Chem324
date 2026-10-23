@@ -33,7 +33,7 @@ $$
 
 Before solving anything, ask what sizes to expect. The Hamiltonian contains only three constants, $\hbar$, $\mu$ and $k$, and there is only one way to combine them into an energy and one way into a length. Every result below is a number times these two scales.
 
-- **Energy.** $\omega = \sqrt{k/\mu}$ is a rate (s$^{-1}$) and $\hbar$ is an action (J s), so $\hbar\omega$ is an energy. It will turn out to be the gap between neighboring levels.
+- **Energy.** $\omega = \sqrt{k/\mu}$ is a rate (s$^{-1}$) and $\hbar$ is an action (J s), so $\hbar\omega$ is an energy. Since $\omega = 2\pi\nu$, it is $h\nu$: the energy of a photon at the frequency of the classical spring ([the photoelectric effect](../ch01/03-photoelectric-effect.md)). The solution below shows that it is also the gap between neighboring levels.
 - **Length.** Confining a quantum particle to a region of size $L$ costs kinetic energy of order $\hbar^2/\mu L^2$, as in the box of [Lecture 3.2](../ch03/02-particle-in-a-box.md), where $E \propto 1/L^2$. The spring stores potential energy of order $kL^2$ at a stretch $L$. Squeezing the state raises the first, letting it spread raises the second, and the two are equal when $\hbar^2/\mu L^2 = kL^2$:
 
 $$
@@ -48,7 +48,7 @@ With $k = 516$ N/m and $\mu = 1.627\times10^{-27}$ kg ([Lecture 4.1](01-molecula
 
 | scale | formula | what it sets | H$^{35}$Cl |
 |:--|:--|:--|:--|
-| energy | $\hbar\omega$ | the gap between neighboring levels | $5.94\times10^{-20}$ J $= 0.371$ eV $=$ 2990 cm$^{-1}$: an infrared photon |
+| energy | $\hbar\omega = h\nu$ | a photon at the vibration frequency | $5.94\times10^{-20}$ J $= 0.371$ eV $=$ 2990 cm$^{-1}$: an infrared photon |
 | length | $1/\sqrt{\alpha} = \sqrt{\hbar/\mu\omega}$ | how far the bond quivers in its lowest states | 10.7 pm: 8% of the 127.5 pm bond |
 
 A bond is a well-defined length that quivers by about ten picometers, not a smeared cloud, and its vibrations absorb infrared light.
