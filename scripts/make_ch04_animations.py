@@ -583,69 +583,42 @@ def ho_preview():
 # The normalized states come from the recursion y psi_v = sqrt((v+1)/2) psi_{v+1} + sqrt(v/2) psi_{v-1},
 # filled into an array in place (synced cells cannot use helper functions that `return`).
 
-# ------------------------------------------------------------ guess a Gaussian: H psi / psi is the same number everywhere only at the right width (still)
-@register
-def gaussian_width():
-    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    x = np.linspace(-2.6, 2.6, 400)
-    cases = [(0.35, "too wide", GRAY, "rises: not an eigenfunction"),
-             (1.0, r"just right: $\alpha = \mu\omega/\hbar$", TEAL, r"flat at $\frac{1}{2}\hbar\omega$: an eigenfunction"),
-             (2.8, "too narrow", GRAY, "falls: not an eigenfunction")]
-    fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.9), sharex=True,
-                             gridspec_kw={"height_ratios": [1.1, 1], "hspace": 0.22, "wspace": 0.1})
-    for c, (a, name, col, verdict) in enumerate(cases):
-        top, bot = axes[0, c], axes[1, c]
-        top.plot(x, 0.5 * x**2, color="k", lw=2)
-        top.fill_between(x, 0, 1.5 * np.exp(-a * x**2 / 2), color=col, alpha=0.2, lw=0)
-        top.plot(x, 1.5 * np.exp(-a * x**2 / 2), color=col, lw=2.4)
-        top.set_ylim(0, 3.3); top.set_yticks([])
-        top.set_title(name, color=col, fontsize=12.5, weight="bold")
-        el = a / 2 + 0.5 * (1 - a * a) * x**2                   # H psi / psi for psi = exp(-a x^2 / 2)
-        bot.axhline(0.5, color=CARDINAL, lw=1, ls="--")
-        bot.plot(x, el, color=col, lw=2.6)
-        bot.set_ylim(-1.2, 2.4); bot.set_yticks([0, 0.5, 1, 2]); bot.set_yticklabels(["0", r"$\frac{1}{2}$", "1", "2"])
-        bot.set_xticks([]); bot.spines["bottom"].set_visible(False)
-        bot.set_xlabel(verdict, fontsize=11.5, color=col)
-        if c:
-            bot.set_yticklabels([])
-    axes[0, 0].set_ylabel(r"$V(x)$ and trial $\psi$", fontsize=11)
-    axes[1, 0].set_ylabel(r"$\hat{H}\psi\,/\,\psi$  ($\hbar\omega$)", fontsize=11)
-    fig.subplots_adjust(left=0.08, right=0.99, top=0.93, bottom=0.08)
-    fig.savefig(f"{OUT}/gaussian_width.png", dpi=200)
-    print("wrote", f"{OUT}/gaussian_width.png")
-    return fig, None
-
-
-# ------------------------------------------------------------ zero-point energy: squeezing raises the kinetic energy, spreading the potential (still)
+# ------------------------------------------------------------ zero-point energy: Gaussian trial states of three widths, and the average energy of every width (still)
 @register
 def zpe_tradeoff():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-    s = np.linspace(0.16, 1.75, 400)                            # sigma_x of a Gaussian with sigma_x sigma_p = hbar / 2
-    K, V = 1 / (8 * s**2), 0.5 * s**2
-    fig = plt.figure(figsize=(9.6, 4.1))
-    ax = fig.add_axes([0.08, 0.17, 0.6, 0.8])
-    ax.plot(s, K, color=ORANGE, lw=2.4, label=r"kinetic: $\sigma_p^2/2\mu = \hbar^2/8\mu\sigma_x^2$")
-    ax.plot(s, V, color=TEAL, lw=2.4, label=r"potential: $\frac{1}{2}k\sigma_x^2$")
-    ax.plot(s, K + V, color="k", lw=2.8, label="total")
-    s0 = np.sqrt(0.5)
-    ax.plot([s0], [0.5], "o", color=CARDINAL, ms=10, zorder=5)
-    ax.annotate(r"lowest: $E_0 = \frac{1}{2}\hbar\omega$" + "\n" + r"at $\sigma_x = 1/\sqrt{2\alpha}$", xy=(s0, 0.5),
-                xytext=(1.0, 0.13), fontsize=12.5, color=CARDINAL,
-                arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.4, mutation_scale=14, shrinkB=6))
-    ax.set_xlim(0.15, 1.75); ax.set_ylim(0, 2.2)
-    ax.set_xticks([s0, 1, 1.5]); ax.set_xticklabels([r"$\frac{1}{\sqrt{2\alpha}}$", r"$\frac{1}{\sqrt{\alpha}}$", r"$\frac{1.5}{\sqrt{\alpha}}$"], fontsize=12)
+    xs = np.linspace(-3, 3, 400)
+    trials = [("a", 0.3, "squeezed", GRAY), ("b", np.sqrt(0.5), "the ground state", CARDINAL), ("c", 1.4, "spread out", GRAY)]
+    fig = plt.figure(figsize=(9.6, 5.6))
+    for j, (tag, sig, name, col) in enumerate(trials):
+        ax = fig.add_axes([0.07 + 0.31 * j, 0.6, 0.27, 0.33])
+        rho = np.exp(-xs**2 / (2 * sig**2)) / (sig * np.sqrt(2 * np.pi))   # |psi|^2 of a Gaussian of width sigma_x
+        ax.plot(xs, 0.5 * xs**2, color="k", lw=1.6)
+        ax.fill_between(xs, 0, 1.4 * rho, color=TEAL, alpha=0.3, lw=0)
+        ax.plot(xs, 1.4 * rho, color=TEAL, lw=2)
+        h = 1.4 * rho.max() * np.exp(-0.5)
+        ax.annotate("", xy=(sig, h), xytext=(0, h), arrowprops=dict(arrowstyle="<->", color="k", lw=1.2, shrinkA=0, shrinkB=0))
+        ax.set_xlim(-3, 3); ax.set_ylim(0, 2.1); ax.axis("off")
+        ax.set_title(f"({tag}) {name}: " + rf"$\sigma_x = {sig:.2f}$", fontsize=12, color=col)
+        K, V = 1 / (8 * sig**2), 0.5 * sig**2
+        ax.text(-2.9, -0.2, f"kinetic {K:.2f}", color=ORANGE, fontsize=11.5, va="top")
+        ax.text(0.15, -0.2, f"potential {V:.2f}", color=TEAL, fontsize=11.5, va="top")
+    ax = fig.add_axes([0.08, 0.1, 0.9, 0.38])
+    s = np.linspace(0.2, 1.75, 400)
+    ax.plot(s, 1 / (8 * s**2), color=ORANGE, lw=2.4, label=r"kinetic $\sigma_p^2/2\mu$, with $\sigma_p = \hbar/2\sigma_x$")
+    ax.plot(s, 0.5 * s**2, color=TEAL, lw=2.4, label=r"potential $\frac{1}{2}k\sigma_x^2$")
+    ax.plot(s, 1 / (8 * s**2) + 0.5 * s**2, color="k", lw=2.8, label=r"total $\langle E\rangle$")
+    for tag, sig, name, col in trials:
+        E = 1 / (8 * sig**2) + 0.5 * sig**2
+        ax.plot([sig], [E], "o", color=col, ms=9, zorder=5)
+        ax.text(sig + 0.03, E + 0.1, f"({tag})", fontsize=12, color=col)
+    ax.annotate(r"lowest: $\frac{1}{2}\hbar\omega$, the ground state", xy=(np.sqrt(0.5), 0.5), xytext=(0.98, 0.2), fontsize=12,
+                color=CARDINAL, arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.2, mutation_scale=12, shrinkB=6))
+    ax.set_xlim(0.2, 1.75); ax.set_ylim(0, 2.2)
     ax.set_yticks([0, 0.5, 1, 1.5, 2]); ax.set_yticklabels(["0", r"$\frac{1}{2}$", "1", r"$\frac{3}{2}$", "2"])
-    ax.set_xlabel(r"width of the state, $\sigma_x$", fontsize=12); ax.set_ylabel(r"average energy ($\hbar\omega$)", fontsize=12)
-    ax.legend(loc="upper center", frameon=False, fontsize=11.5, bbox_to_anchor=(0.55, 1.0))
-    xi = np.linspace(-2.8, 2.8, 300)
-    for y0, sig, txt in ((0.6, 0.3, "squeezed: steep sides,\nhigh kinetic energy"),
-                         (0.14, 1.4, "spread out: far up the walls,\nhigh potential energy")):
-        ins = fig.add_axes([0.73, y0, 0.25, 0.27])
-        ins.plot(xi, 0.5 * xi**2, color="k", lw=1.4)
-        ins.fill_between(xi, 0, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, alpha=0.3, lw=0)
-        ins.plot(xi, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, lw=1.6)
-        ins.set_ylim(0, 3.2); ins.axis("off")
-        ins.set_title(txt, fontsize=10.5, color=GRAY)
+    ax.set_xlabel(r"width $\sigma_x$ of the Gaussian (units of $1/\sqrt{\alpha}$)", fontsize=11.5)
+    ax.set_ylabel(r"average energy ($\hbar\omega$)", fontsize=11.5)
+    ax.legend(loc="upper center", frameon=False, fontsize=11, ncol=3, bbox_to_anchor=(0.5, 1.12))
     fig.savefig(f"{OUT}/zpe_tradeoff.png", dpi=200)
     print("wrote", f"{OUT}/zpe_tradeoff.png")
     return fig, None

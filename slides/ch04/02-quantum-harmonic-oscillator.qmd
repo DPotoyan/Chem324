@@ -26,59 +26,120 @@ resources:
 $$\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2, \qquad \hat{H}\psi_v = E_v\,\psi_v$$
 
 - $x = R - R_e$: the **stretch**. $\mu$: reduced mass. $k$: force constant
-- Lecture 4.1: numpy found $0.5,\ 1.5,\ 2.5, \dots$ in units of $\hbar\omega$. **Today: why**
+- The Chapter 3 recipe: classical energy $\to$ operator $\to$ solve $\hat{H}\psi = E\psi$
 - $v = 0, 1, 2, \dots$ is the **vibrational quantum number** (vee), not the frequency $\nu$ (nu)
 
 ## One energy, one length
 
-$$\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}, \qquad \frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}}, \qquad \alpha = \frac{\mu\omega}{\hbar}$$
+$\hat{H}$ contains only $\hbar$, $\mu$ and $k$: they build **one energy** and **one length**
 
-| HCl | value |
-|:--|:--|
-| $\hbar\omega$ | 0.371 eV, or 2990 cm$^{-1}$ |
-| $1/\sqrt{\alpha}$ | **10.7 pm**, against a bond of 127.5 pm |
+**Energy**: the gap between neighboring levels
 
-- In $y = \sqrt{\alpha}\,x$ the constants drop out: every oscillator is **one problem**
+$$\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}$$
 
-$$\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$$
+**Length**: where squeezing costs as much as stretching, $\hbar^2/\mu L^2 = kL^2$
 
-## Guess a Gaussian
+$$L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}$$
 
-The lowest state is a bell with no nodes. Try $\psi = e^{-\alpha x^2/2}$, width $\alpha$ unknown:
+- Every energy is a number times $\hbar\omega$, every length a number times $1/\sqrt{\alpha}$
 
-$$\psi' = -\alpha x\,\psi, \qquad \psi'' = \left(\alpha^2x^2 - \alpha\right)\psi$$
-
-$$\hat{H}\psi = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi$$
-
-- An eigenfunction needs the bracket to be **the same number at every $x$**
-
-## Example: the width that works
+## Example: the two scales for HCl
 
 ::: {.worked}
-For which $\alpha$ is the bracket a constant, and what is the energy?
+For HCl, $k = 516$ N/m and $\mu = 1.627\times10^{-27}$ kg. Find $\hbar\omega$ and $1/\sqrt{\alpha}$, and compare with the 127.5 pm bond.
 :::
 
 ::: {.soln .fragment}
-The $x^2$ term must vanish:
+$$\omega = \sqrt{k/\mu} = 5.63\times10^{14}\ \text{s}^{-1}, \qquad \hbar\omega = 0.371\ \text{eV} = 2990\ \text{cm}^{-1}$$
 
-$$\frac{\hbar^2\alpha^2}{2\mu} = \frac{k}{2} \quad\Longrightarrow\quad \alpha = \frac{\sqrt{\mu k}}{\hbar} = \frac{\mu\omega}{\hbar}$$
+$$\frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}} = 10.7\ \text{pm}, \quad \text{8\% of the bond}$$
+:::
 
-What is left is the energy:
+- Level gaps are **infrared** photons; the bond **quivers by picometers**, it is not a smeared cloud
+
+## The solution
+
+::: {.keyeq}
+$$E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots$$
+
+$$\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}, \qquad \alpha = \frac{\mu\omega}{\hbar}$$
+:::
+
+- $H_v$: Hermite polynomial of degree $v$. $N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}$ normalizes
+- **Evenly spaced** by $\hbar\omega$, starting $\frac{1}{2}\hbar\omega$ above the bottom of the well
+- Every Bohr frequency is a multiple of $\omega$: any packet returns after **one period** (Lecture 3.7)
+
+## Hermite polynomials
+
+In $y = \sqrt{\alpha}\,x$ the constants drop out: every oscillator is **one problem**
+
+$$\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$$
+
+| $v$ | $H_v(y)$ | $E_v$ | nodes |
+|:-:|:--|:-:|:-:|
+| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 |
+| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 |
+| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 |
+| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 |
+
+- Every state: a **polynomial times the same Gaussian**, one more node per rung
+
+## Example: check the ground state
+
+::: {.worked}
+Show that $\psi_0 = e^{-\alpha x^2/2}$ solves $\hat{H}\psi_0 = E_0\psi_0$ only for $\alpha = \mu\omega/\hbar$, and find $E_0$.
+:::
+
+::: {.soln .fragment}
+$$\psi_0'' = \left(\alpha^2x^2 - \alpha\right)\psi_0 \quad\Longrightarrow\quad \hat{H}\psi_0 = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi_0$$
+
+The $x^2$ term must vanish: $\hbar^2\alpha^2/\mu = k$, so $\alpha = \mu\omega/\hbar$, and what is left is
 
 $$E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{1}{2}\hbar\omega$$
 :::
 
-## Only one width is an eigenfunction
+## The states on their levels
 
-![](../../ch04/images/gaussian_width.png){.nostretch width="66%" fig-align="center"}
+![](../../ch04/images/ho_ladder.png){.nostretch width="70%" fig-align="center"}
 
-- Too wide: curves too little for the walls. Too narrow: overshoots. Just right: **flat**, the same energy everywhere
+- $\psi_v$ has **$v$ nodes**; even and odd in turn. **Orange**: beyond the classical turning points
 
-## Zero-point energy: the uncertainty trade-off
+## Even and odd
 
-$$\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2 \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2$$
+$$\psi_v(-x) = (-1)^v\,\psi_v(x)$$
 
-![](../../ch04/images/zpe_tradeoff.png){.nostretch width="72%" fig-align="center"}
+- An **odd** integrand over $(-\infty, \infty)$ gives **zero**
+- A derivative **flips** the symmetry: the slope of $x^2$ is $2x$
+
+$$\langle x\rangle = \int\psi_v\,x\,\psi_v\,dx = 0, \qquad \langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0$$
+
+- But $\langle x^2\rangle,\ \langle p^2\rangle \neq 0$: the spreads carry the zero-point motion
+
+## Orthogonal: by symmetry or by cancellation
+
+![](../../ch04/images/ho_orthogonality.png){.nostretch width="86%" fig-align="center"}
+
+$$\langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}\,\psi_v\,dx = \delta_{v'v}$$
+
+## Energy from the spreads
+
+The ladder starts at $\frac{1}{2}\hbar\omega$. Why can't a bond sit still at $E = 0$?
+
+**1. Average of $\hat{H}$**: kinetic plus potential
+
+$$\langle E\rangle = \frac{\langle p^2\rangle}{2\mu} + \frac{1}{2}k\langle x^2\rangle$$
+
+**2. Centered state** ($\langle x\rangle = \langle p\rangle = 0$): $\langle x^2\rangle = \sigma_x^2$ and $\langle p^2\rangle = \sigma_p^2$
+
+**3. Uncertainty**: $\sigma_p \geq \hbar/2\sigma_x$, with equality for a Gaussian
+
+$$\langle E\rangle \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2$$
+
+## Try Gaussians of every width
+
+![](../../ch04/images/zpe_tradeoff.png){.nostretch width="65%" fig-align="center"}
+
+- Squeezed pays in kinetic, spread out in potential: the best width (b) **is** $\psi_0$
 
 ## The ground state
 
@@ -104,54 +165,6 @@ $$D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)
 
 - Heavier isotope, smaller $\omega$, **lower** zero-point energy: C-D bonds break more slowly than C-H
 
-## One more node, one more $\hbar\omega$
-
-Try $\psi = x\,e^{-\alpha x^2/2}$: $\quad\psi'' = \left(\alpha^2x^2 - 3\alpha\right)\psi \quad\Longrightarrow\quad \hat{H}\psi = \frac{3}{2}\hbar\omega\,\psi$
-
-| $v$ | Hermite $H_v(y)$ | $E_v$ | nodes |
-|:-:|:--|:-:|:-:|
-| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 |
-| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 |
-| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 |
-| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 |
-
-- Every state: a **polynomial times the same Gaussian**, one more node per rung
-
-## The whole ladder
-
-::: {.keyeq}
-$$E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots$$
-
-$$\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}$$
-:::
-
-- $N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}$ normalizes, and $\alpha = \mu\omega/\hbar$
-- **Evenly spaced** by $\hbar\omega$, starting $\frac{1}{2}\hbar\omega$ above the bottom
-- Every Bohr frequency is a multiple of $\omega$: any packet returns after **one period** (Lecture 3.7)
-
-## The states on their levels
-
-![](../../ch04/images/ho_ladder.png){.nostretch width="70%" fig-align="center"}
-
-- $\psi_v$ has **$v$ nodes**; even and odd in turn. **Orange**: beyond the classical turning points
-
-## Even and odd
-
-$$\psi_v(-x) = (-1)^v\,\psi_v(x)$$
-
-- An **odd** integrand over $(-\infty, \infty)$ gives **zero**
-- A derivative **flips** the symmetry: the slope of $x^2$ is $2x$
-
-$$\langle x\rangle = \int\psi_v\,x\,\psi_v\,dx = 0, \qquad \langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0$$
-
-- But $\langle x^2\rangle,\ \langle p^2\rangle \neq 0$: the spreads carry the zero-point motion
-
-## Orthogonal: by symmetry or by cancellation
-
-![](../../ch04/images/ho_orthogonality.png){.nostretch width="86%" fig-align="center"}
-
-$$\langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}\,\psi_v\,dx = \delta_{v'v}$$
-
 ## Example: beyond the turning points
 
 ::: {.worked}
@@ -175,15 +188,15 @@ About **one time in six**: stretched where a classical spring could never reach.
 
 ## Factor the Hamiltonian
 
-Numbers: $u^2 + w^2 = (u - iw)(u + iw)$. Try it on $\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)$:
+$$\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)$$
+
+Numbers factor a sum of squares, $u^2 + w^2 = (u - iw)(u + iw)$. Try the same with
 
 $$\hat{a} = \frac{1}{\sqrt{2}}\left(y + \frac{d}{dy}\right), \qquad \hat{a}^\dagger = \frac{1}{\sqrt{2}}\left(y - \frac{d}{dy}\right)$$
 
-Act on a test function $f$:
+Multiplying out gives the Hamiltonian back, plus one leftover term:
 
-$$\hat{a}^\dagger\hat{a}f = \frac{1}{2}\left(y - \frac{d}{dy}\right)\left(yf + f'\right) = \frac{1}{2}\left(y^2f - f''\right) - \frac{1}{2}f$$
-
-- The $-\frac{1}{2}f$ comes from the product rule, $\frac{d}{dy}(yf) = f + yf'$
+$$\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right)$$
 
 ## The $\frac{1}{2}\hbar\omega$ is a commutator
 
@@ -191,8 +204,8 @@ $$\hat{a}^\dagger\hat{a}f = \frac{1}{2}\left(y - \frac{d}{dy}\right)\left(yf + f
 $$\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right), \qquad [\hat{a}, \hat{a}^\dagger] = 1$$
 :::
 
-- The other order gives $+\frac{1}{2}$: the two differ by **exactly 1**
-- If $y$ and $d/dy$ commuted, the lowest energy would be **zero**, like a classical spring
+- The leftover $\frac{1}{2}$ appears because $y$ and $d/dy$ **do not commute**: the two orders differ by exactly 1
+- If they commuted, the lowest energy would be **zero**, like a classical spring
 - The zero-point energy is the **price of not commuting**
 
 ## Climbing the ladder
