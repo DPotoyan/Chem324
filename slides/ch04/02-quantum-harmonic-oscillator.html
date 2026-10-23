@@ -168,109 +168,55 @@ Davit Potoyan
 <p><span class="math display">\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2, \qquad \hat{H}\psi_v = E_v\,\psi_v</span></p>
 <ul>
 <li><span class="math inline">x = R - R_e</span>: the <strong>stretch</strong>. <span class="math inline">\mu</span>: reduced mass. <span class="math inline">k</span>: force constant</li>
-<li>Lecture 4.1: numpy found <span class="math inline">0.5,\ 1.5,\ 2.5, \dots</span> in units of <span class="math inline">\hbar\omega</span>. <strong>Today: why</strong></li>
+<li>The Chapter 3 recipe: classical energy <span class="math inline">\to</span> operator <span class="math inline">\to</span> solve <span class="math inline">\hat{H}\psi = E\psi</span></li>
 <li><span class="math inline">v = 0, 1, 2, \dots</span> is the <strong>vibrational quantum number</strong> (vee), not the frequency <span class="math inline">\nu</span> (nu)</li>
 </ul>
 </section>
 <section id="one-energy-one-length" class="slide level2">
 <h2>One energy, one length</h2>
-<p><span class="math display">\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}, \qquad \frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}}, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">HCl</th>
-<th style="text-align: left;">value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\hbar\omega</span></td>
-<td style="text-align: left;">0.371 eV, or 2990 cm<span class="math inline">^{-1}</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">1/\sqrt{\alpha}</span></td>
-<td style="text-align: left;"><strong>10.7 pm</strong>, against a bond of 127.5 pm</td>
-</tr>
-</tbody>
-</table>
+<p><span class="math inline">\hat{H}</span> contains only <span class="math inline">\hbar</span>, <span class="math inline">\mu</span> and <span class="math inline">k</span>: they build <strong>one energy</strong> and <strong>one length</strong></p>
+<p><strong>Energy</strong>: the gap between neighboring levels</p>
+<p><span class="math display">\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}</span></p>
+<p><strong>Length</strong>: where squeezing costs as much as stretching, <span class="math inline">\hbar^2/\mu L^2 = kL^2</span></p>
+<p><span class="math display">L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}</span></p>
 <ul>
-<li>In <span class="math inline">y = \sqrt{\alpha}\,x</span> the constants drop out: every oscillator is <strong>one problem</strong></li>
-</ul>
-<p><span class="math display">\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)</span></p>
-</section>
-<section id="guess-a-gaussian" class="slide level2">
-<h2>Guess a Gaussian</h2>
-<p>The lowest state is a bell with no nodes. Try <span class="math inline">\psi = e^{-\alpha x^2/2}</span>, width <span class="math inline">\alpha</span> unknown:</p>
-<p><span class="math display">\psi' = -\alpha x\,\psi, \qquad \psi'' = \left(\alpha^2x^2 - \alpha\right)\psi</span></p>
-<p><span class="math display">\hat{H}\psi = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi</span></p>
-<ul>
-<li>An eigenfunction needs the bracket to be <strong>the same number at every <span class="math inline">x</span></strong></li>
+<li>Every energy is a number times <span class="math inline">\hbar\omega</span>, every length a number times <span class="math inline">1/\sqrt{\alpha}</span></li>
 </ul>
 </section>
-<section id="example-the-width-that-works" class="slide level2">
-<h2>Example: the width that works</h2>
+<section id="example-the-two-scales-for-hcl" class="slide level2">
+<h2>Example: the two scales for HCl</h2>
 <div class="worked">
-<p>For which <span class="math inline">\alpha</span> is the bracket a constant, and what is the energy?</p>
+<p>For HCl, <span class="math inline">k = 516</span> N/m and <span class="math inline">\mu = 1.627\times10^{-27}</span> kg. Find <span class="math inline">\hbar\omega</span> and <span class="math inline">1/\sqrt{\alpha}</span>, and compare with the 127.5 pm bond.</p>
 </div>
 <div class="soln fragment">
-<p>The <span class="math inline">x^2</span> term must vanish:</p>
-<p><span class="math display">\frac{\hbar^2\alpha^2}{2\mu} = \frac{k}{2} \quad\Longrightarrow\quad \alpha = \frac{\sqrt{\mu k}}{\hbar} = \frac{\mu\omega}{\hbar}</span></p>
-<p>What is left is the energy:</p>
-<p><span class="math display">E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{1}{2}\hbar\omega</span></p>
-</div>
-</section>
-<section id="only-one-width-is-an-eigenfunction" class="slide level2">
-<h2>Only one width is an eigenfunction</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch04/images/gaussian_width.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
-</figure>
+<p><span class="math display">\omega = \sqrt{k/\mu} = 5.63\times10^{14}\ \text{s}^{-1}, \qquad \hbar\omega = 0.371\ \text{eV} = 2990\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}} = 10.7\ \text{pm}, \quad \text{8\% of the bond}</span></p>
 </div>
 <ul>
-<li>Too wide: curves too little for the walls. Too narrow: overshoots. Just right: <strong>flat</strong>, the same energy everywhere</li>
+<li>Level gaps are <strong>infrared</strong> photons; the bond <strong>quivers by picometers</strong>, it is not a smeared cloud</li>
 </ul>
 </section>
-<section id="zero-point-energy-the-uncertainty-trade-off" class="slide level2">
-<h2>Zero-point energy: the uncertainty trade-off</h2>
-<p><span class="math display">\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2 \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch04/images/zpe_tradeoff.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
-</figure>
-</div>
-</section>
-<section id="the-ground-state" class="slide level2">
-<h2>The ground state</h2>
+<section id="the-solution" class="slide level2">
+<h2>The solution</h2>
 <div class="keyeq">
-<p><span class="math display">\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
+<p><span class="math display">E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots</span></p>
+<p><span class="math display">\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
 </div>
 <ul>
-<li>A bond <strong>cannot sit still</strong>: it keeps <span class="math inline">\frac{1}{2}\hbar\omega</span> even at absolute zero</li>
-<li><strong>Minimum uncertainty</strong>: <span class="math inline">\sigma_x\sigma_p = \hbar/2</span> exactly, width <span class="math inline">\sigma_x = 1/\sqrt{2\alpha}</span></li>
-<li>The energy splits evenly: <span class="math inline">\frac{1}{4}\hbar\omega</span> kinetic, <span class="math inline">\frac{1}{4}\hbar\omega</span> potential</li>
+<li><span class="math inline">H_v</span>: Hermite polynomial of degree <span class="math inline">v</span>. <span class="math inline">N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}</span> normalizes</li>
+<li><strong>Evenly spaced</strong> by <span class="math inline">\hbar\omega</span>, starting <span class="math inline">\frac{1}{2}\hbar\omega</span> above the bottom of the well</li>
+<li>Every Bohr frequency is a multiple of <span class="math inline">\omega</span>: any packet returns after <strong>one period</strong> (Lecture 3.7)</li>
 </ul>
 </section>
-<section id="example-hcl-at-absolute-zero" class="slide level2">
-<h2>Example: HCl at absolute zero</h2>
-<div class="worked">
-<p>For HCl, <span class="math inline">\hbar\omega</span> is 2990 cm<span class="math inline">^{-1}</span> (0.371 eV) and the bond well is <span class="math inline">D_e = 4.62</span> eV deep. Find <span class="math inline">E_0</span>, and the energy needed to break the bond from <span class="math inline">v = 0</span>.</p>
-</div>
-<div class="soln fragment">
-<p><span class="math display">E_0 = \tfrac{1}{2}\hbar\omega = 1495\ \text{cm}^{-1} = 0.185\ \text{eV}</span></p>
-<p><span class="math display">D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)}</span></p>
-</div>
-<ul>
-<li>Heavier isotope, smaller <span class="math inline">\omega</span>, <strong>lower</strong> zero-point energy: C-D bonds break more slowly than C-H</li>
-</ul>
-</section>
-<section id="one-more-node-one-more-hbaromega" class="slide level2">
-<h2>One more node, one more <span class="math inline">\hbar\omega</span></h2>
-<p>Try <span class="math inline">\psi = x\,e^{-\alpha x^2/2}</span>: <span class="math inline">\quad\psi'' = \left(\alpha^2x^2 - 3\alpha\right)\psi \quad\Longrightarrow\quad \hat{H}\psi = \frac{3}{2}\hbar\omega\,\psi</span></p>
+<section id="hermite-polynomials" class="slide level2">
+<h2>Hermite polynomials</h2>
+<p>In <span class="math inline">y = \sqrt{\alpha}\,x</span> the constants drop out: every oscillator is <strong>one problem</strong></p>
+<p><span class="math display">\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">v</span></th>
-<th style="text-align: left;">Hermite <span class="math inline">H_v(y)</span></th>
+<th style="text-align: left;"><span class="math inline">H_v(y)</span></th>
 <th style="text-align: center;"><span class="math inline">E_v</span></th>
 <th style="text-align: center;">nodes</th>
 </tr>
@@ -306,17 +252,16 @@ Davit Potoyan
 <li>Every state: a <strong>polynomial times the same Gaussian</strong>, one more node per rung</li>
 </ul>
 </section>
-<section id="the-whole-ladder" class="slide level2">
-<h2>The whole ladder</h2>
-<div class="keyeq">
-<p><span class="math display">E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots</span></p>
-<p><span class="math display">\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}</span></p>
+<section id="example-check-the-ground-state" class="slide level2">
+<h2>Example: check the ground state</h2>
+<div class="worked">
+<p>Show that <span class="math inline">\psi_0 = e^{-\alpha x^2/2}</span> solves <span class="math inline">\hat{H}\psi_0 = E_0\psi_0</span> only for <span class="math inline">\alpha = \mu\omega/\hbar</span>, and find <span class="math inline">E_0</span>.</p>
 </div>
-<ul>
-<li><span class="math inline">N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}</span> normalizes, and <span class="math inline">\alpha = \mu\omega/\hbar</span></li>
-<li><strong>Evenly spaced</strong> by <span class="math inline">\hbar\omega</span>, starting <span class="math inline">\frac{1}{2}\hbar\omega</span> above the bottom</li>
-<li>Every Bohr frequency is a multiple of <span class="math inline">\omega</span>: any packet returns after <strong>one period</strong> (Lecture 3.7)</li>
-</ul>
+<div class="soln fragment">
+<p><span class="math display">\psi_0'' = \left(\alpha^2x^2 - \alpha\right)\psi_0 \quad\Longrightarrow\quad \hat{H}\psi_0 = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi_0</span></p>
+<p>The <span class="math inline">x^2</span> term must vanish: <span class="math inline">\hbar^2\alpha^2/\mu = k</span>, so <span class="math inline">\alpha = \mu\omega/\hbar</span>, and what is left is</p>
+<p><span class="math display">E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{1}{2}\hbar\omega</span></p>
+</div>
 </section>
 <section id="the-states-on-their-levels" class="slide level2">
 <h2>The states on their levels</h2>
@@ -350,6 +295,50 @@ Davit Potoyan
 </div>
 <p><span class="math display">\langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}\,\psi_v\,dx = \delta_{v'v}</span></p>
 </section>
+<section id="energy-from-the-spreads" class="slide level2">
+<h2>Energy from the spreads</h2>
+<p>The ladder starts at <span class="math inline">\frac{1}{2}\hbar\omega</span>. Why can’t a bond sit still at <span class="math inline">E = 0</span>?</p>
+<p><strong>1. Average of <span class="math inline">\hat{H}</span></strong>: kinetic plus potential</p>
+<p><span class="math display">\langle E\rangle = \frac{\langle p^2\rangle}{2\mu} + \frac{1}{2}k\langle x^2\rangle</span></p>
+<p><strong>2. Centered state</strong> (<span class="math inline">\langle x\rangle = \langle p\rangle = 0</span>): <span class="math inline">\langle x^2\rangle = \sigma_x^2</span> and <span class="math inline">\langle p^2\rangle = \sigma_p^2</span></p>
+<p><strong>3. Uncertainty</strong>: <span class="math inline">\sigma_p \geq \hbar/2\sigma_x</span>, with equality for a Gaussian</p>
+<p><span class="math display">\langle E\rangle \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2</span></p>
+</section>
+<section id="try-gaussians-of-every-width" class="slide level2">
+<h2>Try Gaussians of every width</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/zpe_tradeoff.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Squeezed pays in kinetic, spread out in potential: the best width (b) <strong>is</strong> <span class="math inline">\psi_0</span></li>
+</ul>
+</section>
+<section id="the-ground-state" class="slide level2">
+<h2>The ground state</h2>
+<div class="keyeq">
+<p><span class="math display">\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
+</div>
+<ul>
+<li>A bond <strong>cannot sit still</strong>: it keeps <span class="math inline">\frac{1}{2}\hbar\omega</span> even at absolute zero</li>
+<li><strong>Minimum uncertainty</strong>: <span class="math inline">\sigma_x\sigma_p = \hbar/2</span> exactly, width <span class="math inline">\sigma_x = 1/\sqrt{2\alpha}</span></li>
+<li>The energy splits evenly: <span class="math inline">\frac{1}{4}\hbar\omega</span> kinetic, <span class="math inline">\frac{1}{4}\hbar\omega</span> potential</li>
+</ul>
+</section>
+<section id="example-hcl-at-absolute-zero" class="slide level2">
+<h2>Example: HCl at absolute zero</h2>
+<div class="worked">
+<p>For HCl, <span class="math inline">\hbar\omega</span> is 2990 cm<span class="math inline">^{-1}</span> (0.371 eV) and the bond well is <span class="math inline">D_e = 4.62</span> eV deep. Find <span class="math inline">E_0</span>, and the energy needed to break the bond from <span class="math inline">v = 0</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">E_0 = \tfrac{1}{2}\hbar\omega = 1495\ \text{cm}^{-1} = 0.185\ \text{eV}</span></p>
+<p><span class="math display">D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)}</span></p>
+</div>
+<ul>
+<li>Heavier isotope, smaller <span class="math inline">\omega</span>, <strong>lower</strong> zero-point energy: C-D bonds break more slowly than C-H</li>
+</ul>
+</section>
 <section id="example-beyond-the-turning-points" class="slide level2">
 <h2>Example: beyond the turning points</h2>
 <div class="worked">
@@ -375,13 +364,11 @@ Davit Potoyan
 </section>
 <section id="factor-the-hamiltonian" class="slide level2">
 <h2>Factor the Hamiltonian</h2>
-<p>Numbers: <span class="math inline">u^2 + w^2 = (u - iw)(u + iw)</span>. Try it on <span class="math inline">\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)</span>:</p>
+<p><span class="math display">\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)</span></p>
+<p>Numbers factor a sum of squares, <span class="math inline">u^2 + w^2 = (u - iw)(u + iw)</span>. Try the same with</p>
 <p><span class="math display">\hat{a} = \frac{1}{\sqrt{2}}\left(y + \frac{d}{dy}\right), \qquad \hat{a}^\dagger = \frac{1}{\sqrt{2}}\left(y - \frac{d}{dy}\right)</span></p>
-<p>Act on a test function <span class="math inline">f</span>:</p>
-<p><span class="math display">\hat{a}^\dagger\hat{a}f = \frac{1}{2}\left(y - \frac{d}{dy}\right)\left(yf + f'\right) = \frac{1}{2}\left(y^2f - f''\right) - \frac{1}{2}f</span></p>
-<ul>
-<li>The <span class="math inline">-\frac{1}{2}f</span> comes from the product rule, <span class="math inline">\frac{d}{dy}(yf) = f + yf'</span></li>
-</ul>
+<p>Multiplying out gives the Hamiltonian back, plus one leftover term:</p>
+<p><span class="math display">\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right)</span></p>
 </section>
 <section id="the-frac12hbaromega-is-a-commutator" class="slide level2">
 <h2>The <span class="math inline">\frac{1}{2}\hbar\omega</span> is a commutator</h2>
@@ -389,8 +376,8 @@ Davit Potoyan
 <p><span class="math display">\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right), \qquad [\hat{a}, \hat{a}^\dagger] = 1</span></p>
 </div>
 <ul>
-<li>The other order gives <span class="math inline">+\frac{1}{2}</span>: the two differ by <strong>exactly 1</strong></li>
-<li>If <span class="math inline">y</span> and <span class="math inline">d/dy</span> commuted, the lowest energy would be <strong>zero</strong>, like a classical spring</li>
+<li>The leftover <span class="math inline">\frac{1}{2}</span> appears because <span class="math inline">y</span> and <span class="math inline">d/dy</span> <strong>do not commute</strong>: the two orders differ by exactly 1</li>
+<li>If they commuted, the lowest energy would be <strong>zero</strong>, like a classical spring</li>
 <li>The zero-point energy is the <strong>price of not commuting</strong></li>
 </ul>
 </section>

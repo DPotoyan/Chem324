@@ -8,9 +8,9 @@ kernelspec:
 
 :::{note} **What you need to know**
 
-- The vibrating bond of [Lecture 4.1](01-molecular-degrees-of-freedom.md) becomes the operator $\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2$. It has one natural energy, $\hbar\omega$ with $\omega = \sqrt{k/\mu}$, and one natural length, $1/\sqrt{\alpha} = \sqrt{\hbar/\mu\omega}$: about 11 pm for HCl, under a tenth of the bond length.
-- The ground state is a Gaussian, $\psi_0 \propto e^{-\alpha x^2/2}$, with energy $E_0 = \frac{1}{2}\hbar\omega$. This **zero-point energy** is the price of the uncertainty principle: squeezing the bond raises its kinetic energy, letting it spread raises its potential energy, and the Gaussian is the best compromise.
-- The levels are evenly spaced, $E_v = \hbar\omega\left(v + \frac{1}{2}\right)$. Each state is a Hermite polynomial times the Gaussian; $\psi_v$ has $v$ nodes and is even or odd as $v$ is, so $\langle x\rangle = \langle p\rangle = 0$ in every level.
+- The vibrating bond of [Lecture 4.1](01-molecular-degrees-of-freedom.md) becomes the operator $\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2$. It has one natural energy, $\hbar\omega$ with $\omega = \sqrt{k/\mu}$, the spacing of its levels, and one natural length, $1/\sqrt{\alpha} = \sqrt{\hbar/\mu\omega}$, the size of its lowest states: 10.7 pm for HCl, under a tenth of the bond length.
+- The levels are evenly spaced, $E_v = \hbar\omega\left(v + \frac{1}{2}\right)$. Each state is a Hermite polynomial times a Gaussian; $\psi_v$ has $v$ nodes and is even or odd as $v$ is, so $\langle x\rangle = \langle p\rangle = 0$ in every level.
+- The lowest level, a Gaussian with $E_0 = \frac{1}{2}\hbar\omega$, does not sit at the bottom of the well. This **zero-point energy** is the price of the uncertainty principle: squeezing the bond raises its kinetic energy, letting it spread raises its potential energy, and the Gaussian is the best compromise.
 - The quantum oscillator is found beyond its classical turning points (16% of the time in $v = 0$), and at high $v$ its probability density approaches that of a classical spring.
 - **Raising and lowering operators** explain the equal steps: $\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right)$, $\hat{a}^\dagger$ climbs one rung, $\hat{a}$ steps down one, and the $\frac{1}{2}$ left over is a commutator. Position is $\hat{x} = (\hat{a} + \hat{a}^\dagger)/\sqrt{2\alpha}$, so it connects only neighboring levels: the root of the infrared selection rule $\Delta v = \pm 1$.
 
@@ -18,7 +18,7 @@ kernelspec:
 
 ### From the classical spring to the quantum one
 
-[Lecture 4.1](01-molecular-degrees-of-freedom.md) ended with a vibrating diatomic as one bead of reduced mass $\mu$ on a spring of force constant $k$, and with five lines of numpy that found its levels: $0.5, 1.5, 2.5, \dots$ in units of $\hbar\omega$. This lecture derives that ladder by hand, finds the wavefunctions, and explains why the steps are exactly equal.
+[Lecture 4.1](01-molecular-degrees-of-freedom.md) ended with a vibrating diatomic: one bead of reduced mass $\mu$ on a spring of force constant $k$, oscillating at $\omega = \sqrt{k/\mu}$. This lecture quantizes it. We write the Hamiltonian, solve $\hat{H}\psi = E\psi$, examine the states, and then explain why the levels come out evenly spaced.
 
 Replace the momentum by $\hat{p} = -i\hbar\,d/dx$ in the classical energy:
 
@@ -31,215 +31,40 @@ $$
 
 #### One energy and one length
 
-The Hamiltonian contains only $\hbar$, $\mu$ and $k$. From these there is one way to build an energy and one way to build a length:
+Before solving anything, ask what sizes to expect. The Hamiltonian contains only three constants, $\hbar$, $\mu$ and $k$, and there is only one way to combine them into an energy and one way into a length. Every result below is a number times these two scales.
+
+- **Energy.** $\omega = \sqrt{k/\mu}$ is a rate (s$^{-1}$) and $\hbar$ is an action (J s), so $\hbar\omega$ is an energy. It will turn out to be the gap between neighboring levels.
+- **Length.** Confining a quantum particle to a region of size $L$ costs kinetic energy of order $\hbar^2/\mu L^2$, as in the box of [Lecture 3.2](../ch03/02-particle-in-a-box.md), where $E \propto 1/L^2$. The spring stores potential energy of order $kL^2$ at a stretch $L$. Squeezing the state raises the first, letting it spread raises the second, and the two are equal when $\hbar^2/\mu L^2 = kL^2$:
 
 $$
-\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}, \qquad \frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}}, \qquad \text{with} \quad \alpha = \frac{\mu\omega}{\hbar} = \frac{\sqrt{\mu k}}{\hbar}
+L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}, \qquad \alpha = \frac{\mu\omega}{\hbar}
 $$
 
-Every energy of the oscillator is a number times $\hbar\omega$, and every length a number times $1/\sqrt{\alpha}$. For H$^{35}$Cl, with $k = 516$ N/m and $\mu = 1.627\times10^{-27}$ kg ([Lecture 4.1](01-molecular-degrees-of-freedom.md), Problem 2):
+This is the size of the lowest vibrational states: how far the bond quivers. The section on zero-point energy makes this balance exact.
 
-| quantity | value for HCl |
-|:--|:--|
-| $\omega = \sqrt{k/\mu}$ | $5.63\times10^{14}$ s$^{-1}$ |
-| $\hbar\omega$ | $5.94\times10^{-20}$ J $= 0.371$ eV, or 2990 cm$^{-1}$ |
-| $1/\sqrt{\alpha} = \sqrt{\hbar/\mu\omega}$ | 10.7 pm, against a bond length of 127.5 pm |
+:::{note} **Example: the two scales for HCl**
 
-- The quantum scale of the motion is about ten picometers, a few percent of the bond. A bond is a well-defined length that quivers slightly, not a smeared cloud.
-- In the dimensionless position $y = \sqrt{\alpha}\,x$ the constants drop out. Since $d/dx = \sqrt{\alpha}\,d/dy$, the kinetic term becomes $-\frac{\hbar^2\alpha}{2\mu}\frac{d^2}{dy^2}$ and the potential $\frac{k}{2\alpha}y^2$. Both prefactors equal $\frac{1}{2}\hbar\omega$ (check: $\hbar^2\alpha/\mu = \hbar\omega$ and $k/\alpha = \hbar\omega$), so
+With $k = 516$ N/m and $\mu = 1.627\times10^{-27}$ kg ([Lecture 4.1](01-molecular-degrees-of-freedom.md), Problem 2), the classical frequency is $\omega = \sqrt{k/\mu} = 5.63\times10^{14}$ s$^{-1}$, and
+
+| scale | formula | what it sets | H$^{35}$Cl |
+|:--|:--|:--|:--|
+| energy | $\hbar\omega$ | the gap between neighboring levels | $5.94\times10^{-20}$ J $= 0.371$ eV $=$ 2990 cm$^{-1}$: an infrared photon |
+| length | $1/\sqrt{\alpha} = \sqrt{\hbar/\mu\omega}$ | how far the bond quivers in its lowest states | 10.7 pm: 8% of the 127.5 pm bond |
+
+A bond is a well-defined length that quivers by about ten picometers, not a smeared cloud, and its vibrations absorb infrared light.
+:::
+
+- Measure position in this unit, $y = \sqrt{\alpha}\,x$, and the constants drop out. Since $d/dx = \sqrt{\alpha}\,d/dy$, the kinetic term becomes $-\frac{\hbar^2\alpha}{2\mu}\frac{d^2}{dy^2}$ and the potential $\frac{k}{2\alpha}y^2$. Both prefactors equal $\frac{1}{2}\hbar\omega$ (check: $\hbar^2\alpha/\mu = \hbar\omega$ and $k/\alpha = \hbar\omega$), so
 
 $$
 \hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)
 $$
 
-- Every harmonic oscillator, an H-Cl bond or an I-I bond, is this one problem; only $\hbar\omega$ and $1/\sqrt{\alpha}$ change. The figures below use the numpy units of Lecture 4.1, $\hbar = \mu = \omega = 1$, in which $\alpha = 1$ and $y = x$.
+- Every harmonic oscillator, an H-Cl bond or an I-I bond, is this one problem; only $\hbar\omega$ and $1/\sqrt{\alpha}$ change. The figures below use units with $\hbar = \mu = \omega = 1$, in which $\alpha = 1$ and $y = x$.
 
-### The ground state: guess a Gaussian
+### Solving the oscillator
 
-The trial-energy slider of [Lecture 3.1](../ch03/01-schrodinger-equation.md) and the numpy ladder of Lecture 4.1 both showed a lowest state shaped like a bell: no nodes, largest at the bottom of the well, dying away on both sides. The simplest bell is a Gaussian. Try
-
-$$
-\psi(x) = e^{-\alpha x^2/2}
-$$
-
-with the width parameter $\alpha$ still unknown. (It will turn out to be the $\alpha$ above, hence the name.)
-
-**Step 1: two derivatives.** By the chain rule,
-
-$$
-\psi' = -\alpha x\,e^{-\alpha x^2/2}, \qquad \psi'' = \left(\alpha^2x^2 - \alpha\right)e^{-\alpha x^2/2}
-$$
-
-**Step 2: apply $\hat{H}$.**
-
-$$
-\hat{H}\psi = -\frac{\hbar^2}{2\mu}\left(\alpha^2x^2 - \alpha\right)\psi + \frac{1}{2}kx^2\psi = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi
-$$
-
-**Step 3: demand an eigenfunction.** $\hat{H}\psi = E\psi$ requires the bracket to be the same number $E$ at every $x$, so the $x^2$ term must vanish:
-
-$$
-\frac{\hbar^2\alpha^2}{2\mu} = \frac{k}{2} \quad\Longrightarrow\quad \alpha = \frac{\sqrt{\mu k}}{\hbar} = \frac{\mu\omega}{\hbar}
-$$
-
-What is left is the energy:
-
-$$
-E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{\hbar^2}{2\mu}\cdot\frac{\mu\omega}{\hbar} = \frac{1}{2}\hbar\omega
-$$
-
-The kinetic energy (set by the curvature of the bell) and the potential energy (set by the walls) both change from place to place, and only one width makes their sum the same everywhere. The figure tests three widths by plotting $\hat{H}\psi/\psi$, which for an eigenfunction must be a flat line, the eigenfunction test of [Lecture 3.1](../ch03/01-schrodinger-equation.md):
-
-```{code-cell} python
-:tags: [hide-input]
-# synced: gaussian_width
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-x = np.linspace(-2.6, 2.6, 400)
-cases = [(0.35, "too wide", GRAY, "rises: not an eigenfunction"),
-         (1.0, r"just right: $\alpha = \mu\omega/\hbar$", TEAL, r"flat at $\frac{1}{2}\hbar\omega$: an eigenfunction"),
-         (2.8, "too narrow", GRAY, "falls: not an eigenfunction")]
-fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.9), sharex=True,
-                         gridspec_kw={"height_ratios": [1.1, 1], "hspace": 0.22, "wspace": 0.1})
-for c, (a, name, col, verdict) in enumerate(cases):
-    top, bot = axes[0, c], axes[1, c]
-    top.plot(x, 0.5 * x**2, color="k", lw=2)
-    top.fill_between(x, 0, 1.5 * np.exp(-a * x**2 / 2), color=col, alpha=0.2, lw=0)
-    top.plot(x, 1.5 * np.exp(-a * x**2 / 2), color=col, lw=2.4)
-    top.set_ylim(0, 3.3); top.set_yticks([])
-    top.set_title(name, color=col, fontsize=12.5, weight="bold")
-    el = a / 2 + 0.5 * (1 - a * a) * x**2                   # H psi / psi for psi = exp(-a x^2 / 2)
-    bot.axhline(0.5, color=CARDINAL, lw=1, ls="--")
-    bot.plot(x, el, color=col, lw=2.6)
-    bot.set_ylim(-1.2, 2.4); bot.set_yticks([0, 0.5, 1, 2]); bot.set_yticklabels(["0", r"$\frac{1}{2}$", "1", "2"])
-    bot.set_xticks([]); bot.spines["bottom"].set_visible(False)
-    bot.set_xlabel(verdict, fontsize=11.5, color=col)
-    if c:
-        bot.set_yticklabels([])
-axes[0, 0].set_ylabel(r"$V(x)$ and trial $\psi$", fontsize=11)
-axes[1, 0].set_ylabel(r"$\hat{H}\psi\,/\,\psi$  ($\hbar\omega$)", fontsize=11)
-fig.subplots_adjust(left=0.08, right=0.99, top=0.93, bottom=0.08)
-plt.show()
-```
-
-Fig. Three trial Gaussians in the well $V = \frac{1}{2}kx^2$ (top) and the ratio $\hat{H}\psi/\psi$ for each (bottom), in units with $\hbar = \mu = \omega = 1$. A Gaussian that is too wide curves too little to balance the walls, and the ratio grows with $|x|$; one that is too narrow overshoots. Only $\alpha = \mu\omega/\hbar$ gives the same value, $\frac{1}{2}\hbar\omega$, at every $x$.
-
-- Normalize with the Gaussian integral $\int_{-\infty}^{\infty} e^{-\alpha x^2}dx = \sqrt{\pi/\alpha}$: the prefactor is $(\alpha/\pi)^{1/4}$.
-- The bell changes from bending down to bending up at $x = \pm 1/\sqrt{\alpha}$ (its inflection points, [Appendix A.1](../math/01-calculus.md)). These are exactly the classical turning points of the energy $\frac{1}{2}\hbar\omega$, where $\frac{1}{2}kx^2 = \frac{1}{2}\hbar\omega$. It is the curvature rule of [the finite well](../ch03/03-tunneling-and-finite-square-well.md): $\psi$ bends toward the axis where $E > V$ and away from it where $E < V$.
-
-### Zero-point energy
-
-The lowest energy is not at the bottom of the well. Even at absolute zero a bond keeps $\frac{1}{2}\hbar\omega$ of vibrational energy, its **zero-point energy**. A classical spring can sit still at $x = 0$ with $E = 0$. Why can't the quantum one?
-
-- Sitting still at $x = 0$ means a definite position and a definite momentum, zero. The uncertainty principle of [Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md) forbids that: $\sigma_x\sigma_p \geq \hbar/2$.
-- Make it quantitative. For a state centered at the bottom, $\langle x\rangle = \langle p\rangle = 0$, so $\langle x^2\rangle = \sigma_x^2$ and $\langle p^2\rangle = \sigma_p^2$. With $\sigma_p \geq \hbar/2\sigma_x$, the average energy is at least
-
-$$
-\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2 \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2
-$$
-
-- Squeezing the state (small $\sigma_x$) raises the first term; letting it spread raises the second.
-
-```{code-cell} python
-:tags: [hide-input]
-# synced: zpe_tradeoff
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML
-
-TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
-s = np.linspace(0.16, 1.75, 400)                            # sigma_x of a Gaussian with sigma_x sigma_p = hbar / 2
-K, V = 1 / (8 * s**2), 0.5 * s**2
-fig = plt.figure(figsize=(9.6, 4.1))
-ax = fig.add_axes([0.08, 0.17, 0.6, 0.8])
-ax.plot(s, K, color=ORANGE, lw=2.4, label=r"kinetic: $\sigma_p^2/2\mu = \hbar^2/8\mu\sigma_x^2$")
-ax.plot(s, V, color=TEAL, lw=2.4, label=r"potential: $\frac{1}{2}k\sigma_x^2$")
-ax.plot(s, K + V, color="k", lw=2.8, label="total")
-s0 = np.sqrt(0.5)
-ax.plot([s0], [0.5], "o", color=CARDINAL, ms=10, zorder=5)
-ax.annotate(r"lowest: $E_0 = \frac{1}{2}\hbar\omega$" + "\n" + r"at $\sigma_x = 1/\sqrt{2\alpha}$", xy=(s0, 0.5),
-            xytext=(1.0, 0.13), fontsize=12.5, color=CARDINAL,
-            arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.4, mutation_scale=14, shrinkB=6))
-ax.set_xlim(0.15, 1.75); ax.set_ylim(0, 2.2)
-ax.set_xticks([s0, 1, 1.5]); ax.set_xticklabels([r"$\frac{1}{\sqrt{2\alpha}}$", r"$\frac{1}{\sqrt{\alpha}}$", r"$\frac{1.5}{\sqrt{\alpha}}$"], fontsize=12)
-ax.set_yticks([0, 0.5, 1, 1.5, 2]); ax.set_yticklabels(["0", r"$\frac{1}{2}$", "1", r"$\frac{3}{2}$", "2"])
-ax.set_xlabel(r"width of the state, $\sigma_x$", fontsize=12); ax.set_ylabel(r"average energy ($\hbar\omega$)", fontsize=12)
-ax.legend(loc="upper center", frameon=False, fontsize=11.5, bbox_to_anchor=(0.55, 1.0))
-xi = np.linspace(-2.8, 2.8, 300)
-for y0, sig, txt in ((0.6, 0.3, "squeezed: steep sides,\nhigh kinetic energy"),
-                     (0.14, 1.4, "spread out: far up the walls,\nhigh potential energy")):
-    ins = fig.add_axes([0.73, y0, 0.25, 0.27])
-    ins.plot(xi, 0.5 * xi**2, color="k", lw=1.4)
-    ins.fill_between(xi, 0, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, alpha=0.3, lw=0)
-    ins.plot(xi, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, lw=1.6)
-    ins.set_ylim(0, 3.2); ins.axis("off")
-    ins.set_title(txt, fontsize=10.5, color=GRAY)
-plt.show()
-```
-
-Fig. The smallest average energy a state of width $\sigma_x$ can have, in units of $\hbar\omega$: the kinetic energy forced by the uncertainty principle (orange), the potential energy (teal), and their sum (black). The sum is lowest, $\frac{1}{2}\hbar\omega$, at $\sigma_x = 1/\sqrt{2\alpha}$.
-
-- Find the minimum: the derivative with respect to $\sigma_x$ is $-\frac{\hbar^2}{4\mu\sigma_x^3} + k\sigma_x = 0$, so $\sigma_x^2 = \frac{\hbar}{2\sqrt{\mu k}} = \frac{1}{2\alpha}$. Each term is then $\frac{1}{4}\hbar\omega$, and the sum is $\frac{1}{2}\hbar\omega$.
-- No state can do better, and the Gaussian ground state reaches the bound. It is a **minimum-uncertainty state**, $\sigma_x\sigma_p = \hbar/2$ exactly (Problem 1), with its energy split evenly between kinetic and potential.
-
-:::{important} **Zero-point energy**
-
-$$
-\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}
-$$
-
-The lowest state is a Gaussian of width $\sigma_x = 1/\sqrt{2\alpha}$. Its energy $\frac{1}{2}\hbar\omega$ is the least the uncertainty principle allows, and a bond keeps it even at absolute zero.
-:::
-
-:::{note} **Example: the zero-point energy of HCl**
-
-For HCl, $\hbar\omega$ corresponds to 2990 cm$^{-1}$ (0.371 eV).
-
-- **Zero-point energy**: $E_0 = \frac{1}{2}\hbar\omega = 1495$ cm$^{-1}$ $= 0.185$ eV, seven times $k_BT$ at room temperature (208 cm$^{-1}$).
-- **Spread of the bond length** in $v = 0$: $\sigma_x = 1/\sqrt{2\alpha} = 10.7/\sqrt{2}$ pm $= 7.6$ pm, 6% of $R_e = 127.5$ pm.
-- **Bond energy**: the Morse well of Lecture 4.1 is $D_e = 4.62$ eV deep, but the molecule starts $E_0$ above its bottom, so breaking the bond costs only $D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43$ eV, the measured value. Tables of bond energies list $D_0$: zero-point energy is part of every bond energy and every reaction energy.
-:::
-
-- Heavier isotopes sit lower. $E_0 = \frac{1}{2}\hbar\sqrt{k/\mu}$ falls as $\mu$ grows, while $k$, set by the electrons, stays the same. A C-D bond has less zero-point energy than a C-H bond, so it takes more energy to break, and a reaction that breaks it runs slower: the **kinetic isotope effect** (Problem 4).
-
-### The whole ladder
-
-#### The next state: one node
-
-The first excited state should have one node, at the center. Try $x$ times the same Gaussian, $\psi = x\,e^{-\alpha x^2/2}$. The product rule gives
-
-$$
-\psi' = \left(1 - \alpha x^2\right)e^{-\alpha x^2/2}, \qquad \psi'' = \left(\alpha^2x^3 - 3\alpha x\right)e^{-\alpha x^2/2} = \left(\alpha^2x^2 - 3\alpha\right)\psi
-$$
-
-so, with the same $\alpha$ as before,
-
-$$
-\hat{H}\psi = \left[\frac{3\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi = \frac{3}{2}\hbar\omega\,\psi
-$$
-
-One more node, one more $\hbar\omega$.
-
-#### The pattern: Hermite polynomials
-
-Every state is a polynomial times the same Gaussian. The polynomials are the **Hermite polynomials** $H_v$, written in the dimensionless position $y = \sqrt{\alpha}\,x$:
-
-| $v$ | $H_v(y)$ | $E_v$ | nodes | symmetry |
-|:-:|:--|:-:|:-:|:-:|
-| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 | even |
-| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 | odd |
-| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 | even |
-| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 | odd |
-| 4 | $16y^4 - 48y^2 + 12$ | $\frac{9}{2}\hbar\omega$ | 4 | even |
-
-- Each polynomial follows from the two before it by the **recursion** $H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)$. Check: $H_2 = 2y(2y) - 2(1)(1) = 4y^2 - 2$.
+As with the trial-energy slider of [Lecture 3.1](../ch03/01-schrodinger-equation.md), solutions that stay finite far from the well exist only at special energies. Solving the equation (by a power series, or by the operator method at the end of this lecture) gives a ladder of evenly spaced levels, each state a polynomial times a Gaussian:
 
 :::{important} **Energies and wavefunctions of the harmonic oscillator**
 
@@ -250,6 +75,48 @@ $$
 - $\omega = \sqrt{k/\mu}$ and $\alpha = \mu\omega/\hbar$
 - $H_v$ is the Hermite polynomial of degree $v$, and $N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}$ normalizes $\psi_v$
 - The levels are evenly spaced by $\hbar\omega$, and the lowest sits $\frac{1}{2}\hbar\omega$ above the bottom of the well
+:::
+
+The polynomials are the **Hermite polynomials** $H_v$, written in the dimensionless position $y = \sqrt{\alpha}\,x$:
+
+| $v$ | $H_v(y)$ | $E_v$ | nodes | symmetry |
+|:-:|:--|:-:|:-:|:-:|
+| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 | even |
+| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 | odd |
+| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 | even |
+| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 | odd |
+| 4 | $16y^4 - 48y^2 + 12$ | $\frac{9}{2}\hbar\omega$ | 4 | even |
+
+- Each polynomial follows from the two before it by the **recursion** $H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)$. Check: $H_2 = 2y(2y) - 2(1)(1) = 4y^2 - 2$.
+- The two lowest states, normalized:
+
+$$
+\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad \psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4}x\,e^{-\alpha x^2/2}
+$$
+
+:::{note} **Example: check the ground state**
+
+Show that $\psi_0 = e^{-\alpha x^2/2}$ solves $\hat{H}\psi_0 = E_0\psi_0$ only for $\alpha = \mu\omega/\hbar$, and find $E_0$.
+
+**Two derivatives**, by the chain rule:
+
+$$
+\psi_0' = -\alpha x\,\psi_0, \qquad \psi_0'' = \left(\alpha^2x^2 - \alpha\right)\psi_0
+$$
+
+**Apply $\hat{H}$**:
+
+$$
+\hat{H}\psi_0 = -\frac{\hbar^2}{2\mu}\left(\alpha^2x^2 - \alpha\right)\psi_0 + \frac{1}{2}kx^2\psi_0 = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi_0
+$$
+
+**Demand an eigenfunction**: the bracket must be the same number at every $x$, so the $x^2$ term must vanish, $\hbar^2\alpha^2/\mu = k$, which gives $\alpha = \sqrt{\mu k}/\hbar = \mu\omega/\hbar$. What is left is the energy:
+
+$$
+E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{\hbar^2}{2\mu}\cdot\frac{\mu\omega}{\hbar} = \frac{1}{2}\hbar\omega
+$$
+
+The same check on $\psi_1 \propto x\,e^{-\alpha x^2/2}$ gives $\psi_1'' = \left(\alpha^2x^2 - 3\alpha\right)\psi_1$, and the constant left over is $3\hbar^2\alpha/2\mu = \frac{3}{2}\hbar\omega$: one more node, one more $\hbar\omega$.
 :::
 
 ```{code-cell} python
@@ -300,7 +167,7 @@ Fig. The first six states of the harmonic oscillator, each drawn on its energy l
 - **Equal steps**: in a box the gaps grow as $n^2$. Here the well widens as the energy rises, giving each new node more room, and the two effects balance exactly. The rough argument at the end of Lecture 4.1 got $E \propto n$; the raising operator below gets exactly $\hbar\omega$.
 - **One frequency**: every gap is a multiple of $\hbar\omega$, so every Bohr frequency $(E_m - E_n)/\hbar$ of [Lecture 3.7](../ch03/07-time-dependence.md) is a multiple of $\omega$. Any state in the well therefore returns to its starting shape after one classical period $2\pi/\omega$. That is why the packet of Lecture 3.7 swung exactly like a mass on a spring.
 
-The formula and the numpy ladder of Lecture 4.1 agree. In units with $\hbar = \mu = \omega = 1$ (so $\alpha = 1$ and $y = x$):
+numpy confirms the formula: the grid Hamiltonian of Lecture 4.1 gives the same levels and states. In units with $\hbar = \mu = \omega = 1$ (so $\alpha = 1$ and $y = x$):
 
 ```{code-cell} python
 import numpy as np
@@ -384,6 +251,104 @@ $$
 \langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}(x)\,\psi_v(x)\,dx = \delta_{v'v}
 $$
 
+### Zero-point energy
+
+The ladder starts at $E_0 = \frac{1}{2}\hbar\omega$, not at the bottom of the well. Even at absolute zero a bond keeps this much vibrational energy, its **zero-point energy**. A classical spring can sit still at $x = 0$ with $E = 0$. Why can't the quantum one?
+
+Sitting still at $x = 0$ would mean a definite position and a definite momentum (zero), which the uncertainty principle of [Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md) forbids: $\sigma_x\sigma_p \geq \hbar/2$. To see how much energy that costs, write the average energy in terms of the two spreads, in three steps.
+
+1. **The average energy is kinetic plus potential.** Averaging $\hat{H} = \hat{p}^2/2\mu + \frac{1}{2}kx^2$ over any state gives
+
+$$
+\langle E\rangle = \frac{\langle p^2\rangle}{2\mu} + \frac{1}{2}k\langle x^2\rangle
+$$
+
+2. **For a centered state the averages are the spreads.** Every oscillator level has $\langle x\rangle = \langle p\rangle = 0$ (previous section). Since $\sigma_x^2 = \langle x^2\rangle - \langle x\rangle^2$, this means $\langle x^2\rangle = \sigma_x^2$, and likewise $\langle p^2\rangle = \sigma_p^2$:
+
+$$
+\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2
+$$
+
+The kinetic energy is set by how spread out the momentum is, the potential energy by how spread out the position is.
+
+3. **The uncertainty principle ties the two spreads together.** $\sigma_p \geq \hbar/2\sigma_x$, with equality for a Gaussian ([Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md)). So a state of width $\sigma_x$ has an average energy of at least
+
+$$
+\langle E\rangle \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2
+$$
+
+Now vary the width. Take Gaussians centered at the bottom of the well, a narrow one, a wide one and every width in between. For each of them $\sigma_p = \hbar/2\sigma_x$ exactly, so the right-hand side is its actual average energy. The figure shows three of these trial states and the average energy of every width:
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: zpe_tradeoff
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+xs = np.linspace(-3, 3, 400)
+trials = [("a", 0.3, "squeezed", GRAY), ("b", np.sqrt(0.5), "the ground state", CARDINAL), ("c", 1.4, "spread out", GRAY)]
+fig = plt.figure(figsize=(9.6, 5.6))
+for j, (tag, sig, name, col) in enumerate(trials):
+    ax = fig.add_axes([0.07 + 0.31 * j, 0.6, 0.27, 0.33])
+    rho = np.exp(-xs**2 / (2 * sig**2)) / (sig * np.sqrt(2 * np.pi))   # |psi|^2 of a Gaussian of width sigma_x
+    ax.plot(xs, 0.5 * xs**2, color="k", lw=1.6)
+    ax.fill_between(xs, 0, 1.4 * rho, color=TEAL, alpha=0.3, lw=0)
+    ax.plot(xs, 1.4 * rho, color=TEAL, lw=2)
+    h = 1.4 * rho.max() * np.exp(-0.5)
+    ax.annotate("", xy=(sig, h), xytext=(0, h), arrowprops=dict(arrowstyle="<->", color="k", lw=1.2, shrinkA=0, shrinkB=0))
+    ax.set_xlim(-3, 3); ax.set_ylim(0, 2.1); ax.axis("off")
+    ax.set_title(f"({tag}) {name}: " + rf"$\sigma_x = {sig:.2f}$", fontsize=12, color=col)
+    K, V = 1 / (8 * sig**2), 0.5 * sig**2
+    ax.text(-2.9, -0.2, f"kinetic {K:.2f}", color=ORANGE, fontsize=11.5, va="top")
+    ax.text(0.15, -0.2, f"potential {V:.2f}", color=TEAL, fontsize=11.5, va="top")
+ax = fig.add_axes([0.08, 0.1, 0.9, 0.38])
+s = np.linspace(0.2, 1.75, 400)
+ax.plot(s, 1 / (8 * s**2), color=ORANGE, lw=2.4, label=r"kinetic $\sigma_p^2/2\mu$, with $\sigma_p = \hbar/2\sigma_x$")
+ax.plot(s, 0.5 * s**2, color=TEAL, lw=2.4, label=r"potential $\frac{1}{2}k\sigma_x^2$")
+ax.plot(s, 1 / (8 * s**2) + 0.5 * s**2, color="k", lw=2.8, label=r"total $\langle E\rangle$")
+for tag, sig, name, col in trials:
+    E = 1 / (8 * sig**2) + 0.5 * sig**2
+    ax.plot([sig], [E], "o", color=col, ms=9, zorder=5)
+    ax.text(sig + 0.03, E + 0.1, f"({tag})", fontsize=12, color=col)
+ax.annotate(r"lowest: $\frac{1}{2}\hbar\omega$, the ground state", xy=(np.sqrt(0.5), 0.5), xytext=(0.98, 0.2), fontsize=12,
+            color=CARDINAL, arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.2, mutation_scale=12, shrinkB=6))
+ax.set_xlim(0.2, 1.75); ax.set_ylim(0, 2.2)
+ax.set_yticks([0, 0.5, 1, 1.5, 2]); ax.set_yticklabels(["0", r"$\frac{1}{2}$", "1", r"$\frac{3}{2}$", "2"])
+ax.set_xlabel(r"width $\sigma_x$ of the Gaussian (units of $1/\sqrt{\alpha}$)", fontsize=11.5)
+ax.set_ylabel(r"average energy ($\hbar\omega$)", fontsize=11.5)
+ax.legend(loc="upper center", frameon=False, fontsize=11, ncol=3, bbox_to_anchor=(0.5, 1.12))
+plt.show()
+```
+
+Fig. Top: three Gaussian trial states, drawn as $\lvert\psi\rvert^2$ in the well, with widths $\sigma_x = 0.30$, $0.71$ and $1.40$ in units of $1/\sqrt{\alpha}$ (arrows mark $\sigma_x$), and their average kinetic and potential energies in units of $\hbar\omega$. Bottom: the average energy of a centered Gaussian of every width, split into kinetic (orange) and potential (teal), with the total in black and the three states above marked. The squeezed state (a) pays in kinetic energy, the spread-out state (c) in potential energy, and the total is lowest at (b).
+
+- Find the minimum: the derivative with respect to $\sigma_x$ is $-\frac{\hbar^2}{4\mu\sigma_x^3} + k\sigma_x = 0$, so $\sigma_x^2 = \frac{\hbar}{2\sqrt{\mu k}} = \frac{1}{2\alpha}$. Each term is then $\frac{1}{4}\hbar\omega$, and the sum is $\frac{1}{2}\hbar\omega$.
+- The best width, (b), is exactly the ground state of the solution box: $\psi_0^2 \propto e^{-\alpha x^2}$ is a Gaussian with $\sigma_x^2 = 1/2\alpha$. No state of any shape can do better, because the bound of step 3 holds for every state, and $\psi_0$ reaches it. It is a **minimum-uncertainty state**, $\sigma_x\sigma_p = \hbar/2$ exactly (Problem 1), with its energy split evenly between kinetic and potential.
+
+:::{important} **Zero-point energy**
+
+$$
+\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}
+$$
+
+The lowest state is a Gaussian of width $\sigma_x = 1/\sqrt{2\alpha}$. Its energy $\frac{1}{2}\hbar\omega$ is the least the uncertainty principle allows, and a bond keeps it even at absolute zero.
+:::
+
+:::{note} **Example: the zero-point energy of HCl**
+
+For HCl, $\hbar\omega$ corresponds to 2990 cm$^{-1}$ (0.371 eV).
+
+- **Zero-point energy**: $E_0 = \frac{1}{2}\hbar\omega = 1495$ cm$^{-1}$ $= 0.185$ eV, seven times $k_BT$ at room temperature (208 cm$^{-1}$).
+- **Spread of the bond length** in $v = 0$: $\sigma_x = 1/\sqrt{2\alpha} = 10.7/\sqrt{2}$ pm $= 7.6$ pm, 6% of $R_e = 127.5$ pm.
+- **Bond energy**: the Morse well of Lecture 4.1 is $D_e = 4.62$ eV deep, but the molecule starts $E_0$ above its bottom, so breaking the bond costs only $D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43$ eV, the measured value. Tables of bond energies list $D_0$: zero-point energy is part of every bond energy and every reaction energy.
+:::
+
+- Heavier isotopes sit lower. $E_0 = \frac{1}{2}\hbar\sqrt{k/\mu}$ falls as $\mu$ grows, while $k$, set by the electrons, stays the same. A C-D bond has less zero-point energy than a C-H bond, so it takes more energy to break, and a reaction that breaks it runs slower: the **kinetic isotope effect** (Problem 4).
+
 ### Beyond the turning points, and back to the classical spring
 
 A classical oscillator of energy $E$ turns around where $\frac{1}{2}kx^2 = E$. For $E_v = \hbar\omega\left(v + \frac{1}{2}\right)$, using $\hbar\omega/k = 1/\alpha$, the turning points are
@@ -393,6 +358,8 @@ x = \pm\sqrt{\frac{2v + 1}{\alpha}}
 $$
 
 Every state in the ladder figure leaks past them (orange). The oscillator is found where its kinetic energy would be negative, like the particle in [the finite well](../ch03/03-tunneling-and-finite-square-well.md).
+
+- For $v = 0$ the turning points $\pm 1/\sqrt{\alpha}$ are exactly where the Gaussian changes from bending down to bending up (its inflection points, [Appendix A.1](../math/01-calculus.md)). This is the curvature rule of the finite well: $\psi$ bends toward the axis where $E > V$ and away from it where $E < V$.
 
 :::{note} **Example: how often is the ground state beyond its turning points?**
 
