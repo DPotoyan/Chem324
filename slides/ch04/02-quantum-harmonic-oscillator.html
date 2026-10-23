@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="02-quantum-harmonic-oscillator_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,154 +163,309 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="why-the-harmonic-oscillator" class="slide level2">
-<h2>Why the Harmonic Oscillator?</h2>
+<section id="from-the-spring-to-the-schrödinger-equation" class="slide level2">
+<h2>From the spring to the Schrödinger equation</h2>
+<p><span class="math display">\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2, \qquad \hat{H}\psi_v = E_v\,\psi_v</span></p>
 <ul>
-<li class="fragment">Near equilibrium, <strong>any</strong> bond is a spring.</li>
-</ul>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:55%;">
-<ul>
-<li class="fragment">Molecular <strong>vibrations</strong> are quantized.</li>
-<li class="fragment">Foundation for <strong>IR and Raman</strong> spectroscopy.</li>
-<li class="fragment">First place we meet <strong>zero-point energy</strong> and <strong>tunneling</strong>.</li>
-</ul>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/harm_approx.png"></p>
-</div></div>
-</div>
-</section>
-<section id="the-schrodinger-equation" class="slide level2">
-<h2>The Schrodinger Equation</h2>
-<ul>
-<li class="fragment">Classical Hamiltonian: kinetic plus a quadratic well.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}\psi_v(x) = E_v\,\psi_v(x)\]</span></p>
-</div>
-<ul>
-<li class="fragment"><strong>Spring constant</strong> <span class="math inline">\(k\)</span>, <strong>angular frequency</strong> <span class="math inline">\(\omega = \sqrt{k/\mu}\)</span>.</li>
+<li><span class="math inline">x = R - R_e</span>: the <strong>stretch</strong>. <span class="math inline">\mu</span>: reduced mass. <span class="math inline">k</span>: force constant</li>
+<li>Lecture 4.1: numpy found <span class="math inline">0.5,\ 1.5,\ 2.5, \dots</span> in units of <span class="math inline">\hbar\omega</span>. <strong>Today: why</strong></li>
+<li><span class="math inline">v = 0, 1, 2, \dots</span> is the <strong>vibrational quantum number</strong> (vee), not the frequency <span class="math inline">\nu</span> (nu)</li>
 </ul>
 </section>
-<section id="quantized-energies" class="slide level2">
-<h2>Quantized Energies</h2>
-<div class="fragment">
-<p><span class="math display">\[E_v = \left(v + \tfrac{1}{2}\right)\hbar\omega, \qquad v = 0,1,2,\dots\]</span></p>
-</div>
-<ul>
-<li class="fragment">Levels are <strong>evenly spaced</strong> by <span class="math inline">\(\hbar\omega\)</span>.</li>
-<li class="fragment">The integer <span class="math inline">\(v\)</span> is the <strong>vibrational quantum number</strong>.</li>
-<li class="fragment">Energy never goes to zero, even in the lowest state.</li>
-</ul>
-</section>
-<section id="zero-point-energy" class="slide level2">
-<h2>Zero-Point Energy</h2>
-<div class="fragment">
-<p><span class="math display">\[E_0 = \tfrac{1}{2}\hbar\omega \neq 0\]</span></p>
-</div>
-<ul>
-<li class="fragment">The oscillator <strong>cannot sit still</strong> at the bottom of the well.</li>
-<li class="fragment">A consequence of the <strong>uncertainty principle</strong>: pinning <span class="math inline">\(x\)</span> would blow up <span class="math inline">\(p\)</span>.</li>
-<li class="fragment">Atoms keep moving even at <strong>absolute zero</strong>.</li>
-</ul>
-</section>
-<section id="the-wavefunctions" class="slide level2">
-<h2>The Wavefunctions</h2>
-<div class="fragment">
-<p><span class="math display">\[\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}\]</span></p>
-</div>
-<ul>
-<li class="fragment"><strong>Hermite polynomial</strong> <span class="math inline">\(H_v\)</span> times a <strong>Gaussian</strong> envelope.</li>
-<li class="fragment">Scaling <span class="math inline">\(\alpha = \sqrt{k\mu/\hbar^2}\)</span>, normalization <span class="math inline">\(N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}\)</span>.</li>
-</ul>
-</section>
-<section id="the-gaussian-ground-state" class="slide level2">
-<h2>The Gaussian Ground State</h2>
-<div class="fragment">
-<p><span class="math display">\[\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4} e^{-\alpha x^2/2}\]</span></p>
-</div>
-<ul>
-<li class="fragment"><strong>No nodes</strong>, a single peak at the bottom of the well.</li>
-<li class="fragment">A pure <strong>Gaussian</strong>: the minimum-uncertainty state.</li>
-<li class="fragment">First excited state gains one node: <span class="math inline">\(\psi_1(x) \propto x\,e^{-\alpha x^2/2}\)</span>.</li>
-</ul>
-</section>
-<section id="hermite-polynomials" class="slide level2">
-<h2>Hermite Polynomials</h2>
+<section id="one-energy-one-length" class="slide level2">
+<h2>One energy, one length</h2>
+<p><span class="math display">\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}, \qquad \frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}}, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th><span class="math inline">\(v\)</span></th>
-<th><span class="math inline">\(H_v(y)\)</span></th>
+<th style="text-align: left;">HCl</th>
+<th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0</td>
-<td><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\hbar\omega</span></td>
+<td style="text-align: left;">0.371 eV, or 2990 cm<span class="math inline">^{-1}</span></td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td><span class="math inline">\(2y\)</span></td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td><span class="math inline">\(4y^2 - 2\)</span></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td><span class="math inline">\(8y^3 - 12y\)</span></td>
+<td style="text-align: left;"><span class="math inline">1/\sqrt{\alpha}</span></td>
+<td style="text-align: left;"><strong>10.7 pm</strong>, against a bond of 127.5 pm</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li class="fragment">Each added quantum number adds <strong>one node</strong>.</li>
-<li class="fragment">They are <strong>orthogonal</strong> with weight <span class="math inline">\(e^{-y^2}\)</span>.</li>
+<li>In <span class="math inline">y = \sqrt{\alpha}\,x</span> the constants drop out: every oscillator is <strong>one problem</strong></li>
+</ul>
+<p><span class="math display">\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)</span></p>
+</section>
+<section id="guess-a-gaussian" class="slide level2">
+<h2>Guess a Gaussian</h2>
+<p>The lowest state is a bell with no nodes. Try <span class="math inline">\psi = e^{-\alpha x^2/2}</span>, width <span class="math inline">\alpha</span> unknown:</p>
+<p><span class="math display">\psi' = -\alpha x\,\psi, \qquad \psi'' = \left(\alpha^2x^2 - \alpha\right)\psi</span></p>
+<p><span class="math display">\hat{H}\psi = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi</span></p>
+<ul>
+<li>An eigenfunction needs the bracket to be <strong>the same number at every <span class="math inline">x</span></strong></li>
 </ul>
 </section>
-<section id="even-odd-parity" class="slide level2">
-<h2>Even / Odd Parity</h2>
-<ul>
-<li class="fragment">Even <span class="math inline">\(v = 0,2,4,\dots\)</span>: <span class="math inline">\(\psi_v(-x) = \psi_v(x)\)</span>.</li>
-<li class="fragment">Odd <span class="math inline">\(v = 1,3,5,\dots\)</span>: <span class="math inline">\(\psi_v(-x) = -\psi_v(x)\)</span>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\langle x \rangle = 0, \qquad \langle p \rangle = 0\]</span></p>
+<section id="example-the-width-that-works" class="slide level2">
+<h2>Example: the width that works</h2>
+<div class="worked">
+<p>For which <span class="math inline">\alpha</span> is the bracket a constant, and what is the energy?</p>
+</div>
+<div class="soln fragment">
+<p>The <span class="math inline">x^2</span> term must vanish:</p>
+<p><span class="math display">\frac{\hbar^2\alpha^2}{2\mu} = \frac{k}{2} \quad\Longrightarrow\quad \alpha = \frac{\sqrt{\mu k}}{\hbar} = \frac{\mu\omega}{\hbar}</span></p>
+<p>What is left is the energy:</p>
+<p><span class="math display">E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{1}{2}\hbar\omega</span></p>
+</div>
+</section>
+<section id="only-one-width-is-an-eigenfunction" class="slide level2">
+<h2>Only one width is an eigenfunction</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/gaussian_width.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">Symmetry <strong>kills</strong> odd integrals, so spreads survive: <span class="math inline">\(\langle x^2\rangle, \langle p^2\rangle \neq 0\)</span>.</li>
+<li>Too wide: curves too little for the walls. Too narrow: overshoots. Just right: <strong>flat</strong>, the same energy everywhere</li>
 </ul>
 </section>
-<section id="tunneling" class="slide level2">
-<h2>Tunneling</h2>
+<section id="zero-point-energy-the-uncertainty-trade-off" class="slide level2">
+<h2>Zero-point energy: the uncertainty trade-off</h2>
+<p><span class="math display">\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2 \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/zpe_tradeoff.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+</section>
+<section id="the-ground-state" class="slide level2">
+<h2>The ground state</h2>
+<div class="keyeq">
+<p><span class="math display">\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}</span></p>
+</div>
 <ul>
-<li class="fragment"><p>Wavefunction tails <strong>leak past</strong> the classical turning points.</p></li>
-<li class="fragment"><p>Finite probability in the <strong>classically forbidden region</strong> where <span class="math inline">\(E &lt; V\)</span>.</p></li>
-<li class="fragment"><p>Strictly impossible in classical mechanics.</p></li>
-<li class="fragment"><p>At <strong>high</strong> <span class="math inline">\(v\)</span>, probability piles up near the edges, approaching the classical result.</p></li>
+<li>A bond <strong>cannot sit still</strong>: it keeps <span class="math inline">\frac{1}{2}\hbar\omega</span> even at absolute zero</li>
+<li><strong>Minimum uncertainty</strong>: <span class="math inline">\sigma_x\sigma_p = \hbar/2</span> exactly, width <span class="math inline">\sigma_x = 1/\sqrt{2\alpha}</span></li>
+<li>The energy splits evenly: <span class="math inline">\frac{1}{4}\hbar\omega</span> kinetic, <span class="math inline">\frac{1}{4}\hbar\omega</span> potential</li>
 </ul>
 </section>
-<section id="beyond-harmonic-anharmonicity" class="slide level2">
-<h2>Beyond Harmonic: Anharmonicity</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/unharm.png"></p>
-</div><div class="column" style="width:50%;">
+<section id="example-hcl-at-absolute-zero" class="slide level2">
+<h2>Example: HCl at absolute zero</h2>
+<div class="worked">
+<p>For HCl, <span class="math inline">\hbar\omega</span> is 2990 cm<span class="math inline">^{-1}</span> (0.371 eV) and the bond well is <span class="math inline">D_e = 4.62</span> eV deep. Find <span class="math inline">E_0</span>, and the energy needed to break the bond from <span class="math inline">v = 0</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">E_0 = \tfrac{1}{2}\hbar\omega = 1495\ \text{cm}^{-1} = 0.185\ \text{eV}</span></p>
+<p><span class="math display">D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)}</span></p>
+</div>
 <ul>
-<li class="fragment">Real bonds <strong>dissociate</strong>, the well is not a perfect parabola.</li>
-<li class="fragment">Levels <strong>bunch up</strong> toward <span class="math inline">\(D_e\)</span>.</li>
-<li class="fragment">Harmonic model is only the <strong>near-equilibrium</strong> limit.</li>
+<li>Heavier isotope, smaller <span class="math inline">\omega</span>, <strong>lower</strong> zero-point energy: C-D bonds break more slowly than C-H</li>
 </ul>
-</div></div>
+</section>
+<section id="one-more-node-one-more-hbaromega" class="slide level2">
+<h2>One more node, one more <span class="math inline">\hbar\omega</span></h2>
+<p>Try <span class="math inline">\psi = x\,e^{-\alpha x^2/2}</span>: <span class="math inline">\quad\psi'' = \left(\alpha^2x^2 - 3\alpha\right)\psi \quad\Longrightarrow\quad \hat{H}\psi = \frac{3}{2}\hbar\omega\,\psi</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">v</span></th>
+<th style="text-align: left;">Hermite <span class="math inline">H_v(y)</span></th>
+<th style="text-align: center;"><span class="math inline">E_v</span></th>
+<th style="text-align: center;">nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{2}\hbar\omega</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span class="math inline">2y</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{2}\hbar\omega</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><span class="math inline">4y^2 - 2</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{5}{2}\hbar\omega</span></td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><span class="math inline">8y^3 - 12y</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{7}{2}\hbar\omega</span></td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Every state: a <strong>polynomial times the same Gaussian</strong>, one more node per rung</li>
+</ul>
+</section>
+<section id="the-whole-ladder" class="slide level2">
+<h2>The whole ladder</h2>
+<div class="keyeq">
+<p><span class="math display">E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots</span></p>
+<p><span class="math display">\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}</span></p>
+</div>
+<ul>
+<li><span class="math inline">N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}</span> normalizes, and <span class="math inline">\alpha = \mu\omega/\hbar</span></li>
+<li><strong>Evenly spaced</strong> by <span class="math inline">\hbar\omega</span>, starting <span class="math inline">\frac{1}{2}\hbar\omega</span> above the bottom</li>
+<li>Every Bohr frequency is a multiple of <span class="math inline">\omega</span>: any packet returns after <strong>one period</strong> (Lecture 3.7)</li>
+</ul>
+</section>
+<section id="the-states-on-their-levels" class="slide level2">
+<h2>The states on their levels</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/ho_ladder.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\psi_v</span> has <strong><span class="math inline">v</span> nodes</strong>; even and odd in turn. <strong>Orange</strong>: beyond the classical turning points</li>
+</ul>
+</section>
+<section id="even-and-odd" class="slide level2">
+<h2>Even and odd</h2>
+<p><span class="math display">\psi_v(-x) = (-1)^v\,\psi_v(x)</span></p>
+<ul>
+<li>An <strong>odd</strong> integrand over <span class="math inline">(-\infty, \infty)</span> gives <strong>zero</strong></li>
+<li>A derivative <strong>flips</strong> the symmetry: the slope of <span class="math inline">x^2</span> is <span class="math inline">2x</span></li>
+</ul>
+<p><span class="math display">\langle x\rangle = \int\psi_v\,x\,\psi_v\,dx = 0, \qquad \langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0</span></p>
+<ul>
+<li>But <span class="math inline">\langle x^2\rangle,\ \langle p^2\rangle \neq 0</span>: the spreads carry the zero-point motion</li>
+</ul>
+</section>
+<section id="orthogonal-by-symmetry-or-by-cancellation" class="slide level2">
+<h2>Orthogonal: by symmetry or by cancellation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/ho_orthogonality.png" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}\,\psi_v\,dx = \delta_{v'v}</span></p>
+</section>
+<section id="example-beyond-the-turning-points" class="slide level2">
+<h2>Example: beyond the turning points</h2>
+<div class="worked">
+<p>The <span class="math inline">v = 0</span> turning points are at <span class="math inline">x = \pm 1/\sqrt{\alpha}</span>, that is <span class="math inline">y = \pm 1</span>. How often is the oscillator found beyond them?</p>
+</div>
+<div class="soln fragment">
+<p>With <span class="math inline">\lvert\psi_0\rvert^2dx = \pi^{-1/2}e^{-y^2}dy</span>:</p>
+<p><span class="math display">P(\text{beyond}) = 1 - \frac{1}{\sqrt{\pi}}\int_{-1}^{1} e^{-y^2}\,dy = 0.157</span></p>
+<p>About <strong>one time in six</strong>: stretched where a classical spring could never reach.</p>
+</div>
+</section>
+<section id="toward-the-classical-spring" class="slide level2">
+<h2>Toward the classical spring</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/classical_limit.gif" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ul>
+<li>High <span class="math inline">v</span>: piles up at the turning points, averages to the <strong>classical curve</strong></li>
+<li>Molecules sit in <span class="math inline">v = 0</span>, the <strong>most quantum</strong> state</li>
+</ul>
+</section>
+<section id="factor-the-hamiltonian" class="slide level2">
+<h2>Factor the Hamiltonian</h2>
+<p>Numbers: <span class="math inline">u^2 + w^2 = (u - iw)(u + iw)</span>. Try it on <span class="math inline">\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)</span>:</p>
+<p><span class="math display">\hat{a} = \frac{1}{\sqrt{2}}\left(y + \frac{d}{dy}\right), \qquad \hat{a}^\dagger = \frac{1}{\sqrt{2}}\left(y - \frac{d}{dy}\right)</span></p>
+<p>Act on a test function <span class="math inline">f</span>:</p>
+<p><span class="math display">\hat{a}^\dagger\hat{a}f = \frac{1}{2}\left(y - \frac{d}{dy}\right)\left(yf + f'\right) = \frac{1}{2}\left(y^2f - f''\right) - \frac{1}{2}f</span></p>
+<ul>
+<li>The <span class="math inline">-\frac{1}{2}f</span> comes from the product rule, <span class="math inline">\frac{d}{dy}(yf) = f + yf'</span></li>
+</ul>
+</section>
+<section id="the-frac12hbaromega-is-a-commutator" class="slide level2">
+<h2>The <span class="math inline">\frac{1}{2}\hbar\omega</span> is a commutator</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right), \qquad [\hat{a}, \hat{a}^\dagger] = 1</span></p>
+</div>
+<ul>
+<li>The other order gives <span class="math inline">+\frac{1}{2}</span>: the two differ by <strong>exactly 1</strong></li>
+<li>If <span class="math inline">y</span> and <span class="math inline">d/dy</span> commuted, the lowest energy would be <strong>zero</strong>, like a classical spring</li>
+<li>The zero-point energy is the <strong>price of not commuting</strong></li>
+</ul>
+</section>
+<section id="climbing-the-ladder" class="slide level2">
+<h2>Climbing the ladder</h2>
+<p>Use <span class="math inline">\hat{a}\hat{a}^\dagger = \hat{a}^\dagger\hat{a} + 1</span>:</p>
+<p><span class="math display">\hat{H}\hat{a}^\dagger = \hbar\omega\left(\hat{a}^\dagger\hat{a}\hat{a}^\dagger + \tfrac{1}{2}\hat{a}^\dagger\right) = \hat{a}^\dagger\left(\hat{H} + \hbar\omega\right)</span></p>
+<p><span class="math display">\hat{H}\psi = E\psi \quad\Longrightarrow\quad \hat{H}\left(\hat{a}^\dagger\psi\right) = \left(E + \hbar\omega\right)\left(\hat{a}^\dagger\psi\right)</span></p>
+<ul>
+<li><span class="math inline">\hat{a}^\dagger</span> <strong>raises</strong> by exactly <span class="math inline">\hbar\omega</span>; the same steps show <span class="math inline">\hat{a}</span> <strong>lowers</strong> by <span class="math inline">\hbar\omega</span></li>
+</ul>
+</section>
+<section id="the-ladder-has-a-bottom" class="slide level2">
+<h2>The ladder has a bottom</h2>
+<p><span class="math display">\hat{a}\psi_0 = 0 \quad\Longrightarrow\quad \frac{d\psi_0}{dy} = -y\,\psi_0 \quad\Longrightarrow\quad \psi_0 \propto e^{-y^2/2}</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/ladder_climb.png" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Energy is never negative, so stepping down must <strong>stop</strong>: at the Gaussian</li>
+</ul>
+</section>
+<section id="raising-and-lowering-operators" class="slide level2">
+<h2>Raising and lowering operators</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{a}^\dagger\psi_v = \sqrt{v + 1}\,\psi_{v+1}, \qquad \hat{a}\,\psi_v = \sqrt{v}\,\psi_{v-1}, \qquad \hat{a}\,\psi_0 = 0</span></p>
+</div>
+<ul>
+<li>The square roots keep each state <strong>normalized</strong></li>
+<li><span class="math inline">\hat{a}^\dagger\hat{a}\,\psi_v = v\,\psi_v</span>: the <strong>number operator</strong> counts the rungs</li>
+<li>Climbing from <span class="math inline">\frac{1}{2}\hbar\omega</span> in steps of <span class="math inline">\hbar\omega</span> gives <strong>every</strong> level, and nothing else</li>
+</ul>
+</section>
+<section id="position-connects-neighbors" class="slide level2">
+<h2>Position connects neighbors</h2>
+<p><span class="math display">\hat{x} = \frac{\hat{a} + \hat{a}^\dagger}{\sqrt{2\alpha}}, \qquad \hat{x}\,\psi_v = \frac{1}{\sqrt{2\alpha}}\left(\sqrt{v + 1}\,\psi_{v+1} + \sqrt{v}\,\psi_{v-1}\right)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/x_matrix.png" class="quarto-figure quarto-figure-center" style="width:58.0%"></p>
+</figure>
+</div>
+<ul>
+<li>In its own eigenbasis <span class="math inline">\hat{H}</span> is <strong>diagonal</strong>; <span class="math inline">\hat{x}</span> sits <strong>next to</strong> the diagonal</li>
+</ul>
+</section>
+<section id="the-infrared-selection-rule" class="slide level2">
+<h2>The infrared selection rule</h2>
+<div class="keyeq">
+<p><span class="math display">\langle v'|\hat{x}|v\rangle = 0 \quad\text{unless}\quad v' = v \pm 1</span></p>
+</div>
+<ul>
+<li>Light couples through the <strong>dipole</strong>, which changes in proportion to the stretch <span class="math inline">x</span></li>
+<li>So light moves a harmonic bond <strong>one rung at a time</strong>: <span class="math inline">\Delta v = \pm 1</span>, all at the same <span class="math inline">\hbar\omega</span></li>
+<li>One strong infrared line per vibration. Overtones and anharmonicity: <strong>Lecture 4.3</strong></li>
+</ul>
+</section>
+<section id="example-the-kinetic-isotope-effect" class="slide level2">
+<h2>Example: the kinetic isotope effect</h2>
+<div class="worked">
+<p>C-H stretch: 2900 cm<span class="math inline">^{-1}</span>. C-D: same <span class="math inline">k</span>, <span class="math inline">\mu</span> from 0.930 to 1.725 u. A reaction breaks this bond: how much slower is C-D at 300 K (<span class="math inline">k_BT = 208</span> cm<span class="math inline">^{-1}</span>)?</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\tilde{\nu}_{\text{CD}} = 2900\sqrt{\frac{0.930}{1.725}} = 2130\ \text{cm}^{-1}, \qquad \Delta E_0 = \tfrac{1}{2}(2900 - 2130) = 385\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\frac{k_{\text{H}}}{k_{\text{D}}} \approx e^{385/208} \approx 6</span></p>
+</div>
+<ul>
+<li>C-D starts <strong>lower in the same well</strong>, so it needs more energy to reach the same barrier top</li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>The quantum oscillator has <strong>evenly spaced</strong> levels <span class="math inline">\(E_v = \hbar\omega(v+\tfrac{1}{2})\)</span> with an irreducible <strong>zero-point energy</strong> <span class="math inline">\(\tfrac{1}{2}\hbar\omega\)</span>. Its states are <strong>Hermite polynomials times a Gaussian</strong>, with definite <strong>parity</strong> and tails that <strong>tunnel</strong> into the forbidden region.</p>
+<p>A vibrating bond is a quantum spring with <strong>evenly spaced</strong> levels <span class="math inline">E_v = \hbar\omega\left(v + \frac{1}{2}\right)</span>. The ground state is a <strong>Gaussian</strong> with zero-point energy <span class="math inline">\frac{1}{2}\hbar\omega</span>, the least the uncertainty principle allows. The states are Hermite polynomials times that Gaussian, with <span class="math inline">v</span> nodes and alternating parity. <strong>Raising and lowering operators</strong> explain the equal steps, and <span class="math inline">\hat{x} = (\hat{a} + \hat{a}^\dagger)/\sqrt{2\alpha}</span> connects only neighboring levels: the infrared selection rule <span class="math inline">\Delta v = \pm 1</span>.</p>
 </blockquote>
 
 </section>
@@ -319,7 +490,6 @@ Davit Potoyan
   <script src="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="02-quantum-harmonic-oscillator_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -488,27 +658,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
