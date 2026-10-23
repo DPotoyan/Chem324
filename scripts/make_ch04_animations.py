@@ -578,6 +578,276 @@ def ho_preview():
     return fig, None
 
 
+# ============================================================ lecture 4.2: the quantum harmonic oscillator
+# Units hbar = mu = omega = 1, so alpha = mu omega / hbar = 1: lengths in 1/sqrt(alpha), energies in hbar omega.
+# The normalized states come from the recursion y psi_v = sqrt((v+1)/2) psi_{v+1} + sqrt(v/2) psi_{v-1},
+# filled into an array in place (synced cells cannot use helper functions that `return`).
+
+# ------------------------------------------------------------ guess a Gaussian: H psi / psi is the same number everywhere only at the right width (still)
+@register
+def gaussian_width():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-2.6, 2.6, 400)
+    cases = [(0.35, "too wide", GRAY, "rises: not an eigenfunction"),
+             (1.0, r"just right: $\alpha = \mu\omega/\hbar$", TEAL, r"flat at $\frac{1}{2}\hbar\omega$: an eigenfunction"),
+             (2.8, "too narrow", GRAY, "falls: not an eigenfunction")]
+    fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.9), sharex=True,
+                             gridspec_kw={"height_ratios": [1.1, 1], "hspace": 0.22, "wspace": 0.1})
+    for c, (a, name, col, verdict) in enumerate(cases):
+        top, bot = axes[0, c], axes[1, c]
+        top.plot(x, 0.5 * x**2, color="k", lw=2)
+        top.fill_between(x, 0, 1.5 * np.exp(-a * x**2 / 2), color=col, alpha=0.2, lw=0)
+        top.plot(x, 1.5 * np.exp(-a * x**2 / 2), color=col, lw=2.4)
+        top.set_ylim(0, 3.3); top.set_yticks([])
+        top.set_title(name, color=col, fontsize=12.5, weight="bold")
+        el = a / 2 + 0.5 * (1 - a * a) * x**2                   # H psi / psi for psi = exp(-a x^2 / 2)
+        bot.axhline(0.5, color=CARDINAL, lw=1, ls="--")
+        bot.plot(x, el, color=col, lw=2.6)
+        bot.set_ylim(-1.2, 2.4); bot.set_yticks([0, 0.5, 1, 2]); bot.set_yticklabels(["0", r"$\frac{1}{2}$", "1", "2"])
+        bot.set_xticks([]); bot.spines["bottom"].set_visible(False)
+        bot.set_xlabel(verdict, fontsize=11.5, color=col)
+        if c:
+            bot.set_yticklabels([])
+    axes[0, 0].set_ylabel(r"$V(x)$ and trial $\psi$", fontsize=11)
+    axes[1, 0].set_ylabel(r"$\hat{H}\psi\,/\,\psi$  ($\hbar\omega$)", fontsize=11)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.93, bottom=0.08)
+    fig.savefig(f"{OUT}/gaussian_width.png", dpi=200)
+    print("wrote", f"{OUT}/gaussian_width.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ zero-point energy: squeezing raises the kinetic energy, spreading the potential (still)
+@register
+def zpe_tradeoff():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    s = np.linspace(0.16, 1.75, 400)                            # sigma_x of a Gaussian with sigma_x sigma_p = hbar / 2
+    K, V = 1 / (8 * s**2), 0.5 * s**2
+    fig = plt.figure(figsize=(9.6, 4.1))
+    ax = fig.add_axes([0.08, 0.17, 0.6, 0.8])
+    ax.plot(s, K, color=ORANGE, lw=2.4, label=r"kinetic: $\sigma_p^2/2\mu = \hbar^2/8\mu\sigma_x^2$")
+    ax.plot(s, V, color=TEAL, lw=2.4, label=r"potential: $\frac{1}{2}k\sigma_x^2$")
+    ax.plot(s, K + V, color="k", lw=2.8, label="total")
+    s0 = np.sqrt(0.5)
+    ax.plot([s0], [0.5], "o", color=CARDINAL, ms=10, zorder=5)
+    ax.annotate(r"lowest: $E_0 = \frac{1}{2}\hbar\omega$" + "\n" + r"at $\sigma_x = 1/\sqrt{2\alpha}$", xy=(s0, 0.5),
+                xytext=(1.0, 0.13), fontsize=12.5, color=CARDINAL,
+                arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.4, mutation_scale=14, shrinkB=6))
+    ax.set_xlim(0.15, 1.75); ax.set_ylim(0, 2.2)
+    ax.set_xticks([s0, 1, 1.5]); ax.set_xticklabels([r"$\frac{1}{\sqrt{2\alpha}}$", r"$\frac{1}{\sqrt{\alpha}}$", r"$\frac{1.5}{\sqrt{\alpha}}$"], fontsize=12)
+    ax.set_yticks([0, 0.5, 1, 1.5, 2]); ax.set_yticklabels(["0", r"$\frac{1}{2}$", "1", r"$\frac{3}{2}$", "2"])
+    ax.set_xlabel(r"width of the state, $\sigma_x$", fontsize=12); ax.set_ylabel(r"average energy ($\hbar\omega$)", fontsize=12)
+    ax.legend(loc="upper center", frameon=False, fontsize=11.5, bbox_to_anchor=(0.55, 1.0))
+    xi = np.linspace(-2.8, 2.8, 300)
+    for y0, sig, txt in ((0.6, 0.3, "squeezed: steep sides,\nhigh kinetic energy"),
+                         (0.14, 1.4, "spread out: far up the walls,\nhigh potential energy")):
+        ins = fig.add_axes([0.73, y0, 0.25, 0.27])
+        ins.plot(xi, 0.5 * xi**2, color="k", lw=1.4)
+        ins.fill_between(xi, 0, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, alpha=0.3, lw=0)
+        ins.plot(xi, 2.2 * np.exp(-xi**2 / (4 * sig**2)), color=TEAL, lw=1.6)
+        ins.set_ylim(0, 3.2); ins.axis("off")
+        ins.set_title(txt, fontsize=10.5, color=GRAY)
+    fig.savefig(f"{OUT}/zpe_tradeoff.png", dpi=200)
+    print("wrote", f"{OUT}/zpe_tradeoff.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the ladder: psi_v and |psi_v|^2 on their levels, tails beyond the turning points in orange (still)
+@register
+def ho_ladder():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    vmax = 5
+    y = np.linspace(-4.6, 4.6, 900)
+    phi = np.zeros((vmax + 1, y.size))
+    phi[0] = np.pi**-0.25 * np.exp(-y**2 / 2)
+    phi[1] = np.sqrt(2) * y * phi[0]
+    for v in range(1, vmax):
+        phi[v + 1] = np.sqrt(2 / (v + 1)) * y * phi[v] - np.sqrt(v / (v + 1)) * phi[v - 1]
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.6, 4.7), sharey=True, gridspec_kw={"wspace": 0.05})
+    for ax, sq in ((a1, False), (a2, True)):
+        ax.plot(y, 0.5 * y**2, color="k", lw=2.2)
+        for v in range(vmax + 1):
+            E = v + 0.5
+            yt = np.sqrt(2 * E)                                 # classical turning points
+            f = 1.25 * phi[v]**2 if sq else 0.5 * phi[v]
+            ax.hlines(E, -yt, yt, color=GRAY, lw=0.8, ls="--")
+            ax.fill_between(y, E, E + f, where=np.abs(y) >= yt, color=ORANGE, alpha=0.6, lw=0)
+            ax.plot(y, E + f, color=TEAL, lw=2)
+            ax.plot([-yt, yt], [E, E], "o", color="k", ms=3)
+        ax.set_xlim(-4.6, 4.6); ax.set_ylim(0, 6.5); ax.set_xticks([])
+        ax.spines["bottom"].set_visible(False)
+    for v in range(vmax + 1):
+        a2.text(4.7, v + 0.5, rf"$v = {v}$", va="center", fontsize=11.5)
+    a1.set_yticks([v + 0.5 for v in range(vmax + 1)])
+    a1.set_yticklabels([r"$\frac{1}{2}$", r"$\frac{3}{2}$", r"$\frac{5}{2}$", r"$\frac{7}{2}$", r"$\frac{9}{2}$", r"$\frac{11}{2}$"], fontsize=12.5)
+    a1.set_ylabel(r"energy ($\hbar\omega$)", fontsize=12)
+    a1.set_title(r"$\psi_v(x)$: $v$ nodes, even and odd in turn", loc="left", fontsize=12.5)
+    a2.set_title(r"$|\psi_v(x)|^2$: orange lies beyond the turning points", loc="left", fontsize=12.5)
+    a2.spines["left"].set_visible(False); a2.tick_params(left=False)
+    fig.subplots_adjust(left=0.07, right=0.93, top=0.92, bottom=0.03)
+    fig.savefig(f"{OUT}/ho_ladder.png", dpi=200)
+    print("wrote", f"{OUT}/ho_ladder.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ orthogonality: odd products cancel by symmetry, even ones by their lobes (still)
+@register
+def ho_orthogonality():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    y = np.linspace(-4.5, 4.5, 1201); dy = y[1] - y[0]
+    phi = np.zeros((3, y.size))
+    phi[0] = np.pi**-0.25 * np.exp(-y**2 / 2)
+    phi[1] = np.sqrt(2) * y * phi[0]
+    phi[2] = y * phi[1] - np.sqrt(0.5) * phi[0]
+    cases = [(0, 1, "odd product:\ncancels by symmetry"), (0, 2, "even product:\nthe lobes cancel"), (1, 1, "a state with itself:\nall positive")]
+    fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.3), sharey=True, gridspec_kw={"wspace": 0.08})
+    for ax, (m, n, note) in zip(axes, cases):
+        f = phi[m] * phi[n]
+        ax.fill_between(y, f, 0, where=f > 0, color=PURPLE, alpha=0.45, lw=0)
+        ax.fill_between(y, f, 0, where=f < 0, color=ORANGE, alpha=0.55, lw=0)
+        ax.plot(y, f, color="k", lw=1.6)
+        ax.axhline(0, color=GRAY, lw=0.8)
+        ax.set_title(rf"$\psi_{m}\,\psi_{n}$", fontsize=14)
+        area = np.sum(f) * dy
+        ax.set_xlabel(note + "\n" + rf"area $= {abs(area):.2f}$", fontsize=11.5)
+        ax.set_xticks([]); ax.spines["bottom"].set_visible(False)
+        ax.set_ylim(-0.42, 0.62); ax.set_xlim(-4.5, 4.5)
+    axes[0].set_yticks([0])
+    for ax in axes[1:]:
+        ax.spines["left"].set_visible(False); ax.tick_params(left=False)
+    fig.subplots_adjust(left=0.04, right=0.99, top=0.89, bottom=0.23)
+    fig.savefig(f"{OUT}/ho_orthogonality.png", dpi=200)
+    print("wrote", f"{OUT}/ho_orthogonality.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ toward the classical spring: |psi_v|^2 against P(x) as v climbs, x in units of the turning point
+@register
+def classical_limit():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    vmax = 24
+    yg = np.linspace(-12, 12, 6001)
+    phi = np.zeros((vmax + 1, yg.size))
+    phi[0] = np.pi**-0.25 * np.exp(-yg**2 / 2)
+    phi[1] = np.sqrt(2) * yg * phi[0]
+    for v in range(1, vmax):
+        phi[v + 1] = np.sqrt(2 / (v + 1)) * yg * phi[v] - np.sqrt(v / (v + 1)) * phi[v - 1]
+    vs = [0, 0, 0] + list(range(1, vmax + 1)) + [vmax] * 4  # hold the first and last frames
+    u = np.linspace(-1.55, 1.55, 900)                           # position in units of the turning point
+    uc = np.linspace(-0.995, 0.995, 400)
+    fig, ax = plt.subplots(figsize=(8.6, 4.0))
+    ax.axvspan(-1.55, -1, color=GRAY, alpha=0.12, lw=0); ax.axvspan(1, 1.55, color=GRAY, alpha=0.12, lw=0)
+    ax.axvline(-1, color=GRAY, lw=1, ls=":"); ax.axvline(1, color=GRAY, lw=1, ls=":")
+    ax.plot(uc, 1 / (np.pi * np.sqrt(1 - uc**2)), color=CARDINAL, lw=2.4, label="classical spring, same energy")
+    fill = [ax.fill_between(u, 0, 0 * u, color=TEAL, alpha=0.3, lw=0)]
+    (line,) = ax.plot([], [], color=TEAL, lw=2.2, label=r"quantum $|\psi_v|^2$")
+    ax.set_xlim(-1.55, 1.55); ax.set_ylim(0, 1.8)
+    ax.set_xticks([-1, 0, 1]); ax.set_xticklabels(["left turning point", "0", "right turning point"], fontsize=11)
+    ax.set_yticks([]); ax.set_ylabel("probability density", fontsize=11.5)
+    ax.legend(loc="lower center", frameon=False, fontsize=11.5, ncol=2, bbox_to_anchor=(0.5, 1.0))
+    ax.text(-1.52, 1.5, "classically\nforbidden", fontsize=10.5, color=GRAY)
+    ax.text(1.52, 1.5, "classically\nforbidden", fontsize=10.5, color=GRAY, ha="right")
+    lab = ax.text(0, 1.3, "", ha="center", fontsize=13)
+    fig.subplots_adjust(left=0.06, right=0.98, top=0.89, bottom=0.11)
+
+    def update(i):
+        v = vs[i]
+        yt = np.sqrt(2 * v + 1)
+        dens = np.interp(u * yt, yg, phi[v]**2) * yt            # density per unit of u = x / x_turn
+        line.set_data(u, dens)
+        fill[0].remove()
+        fill[0] = ax.fill_between(u, 0, dens, color=TEAL, alpha=0.3, lw=0)
+        yi = np.linspace(-yt, yt, 4001)
+        out = 1 - np.trapezoid(np.interp(yi, yg, phi[v]**2), yi)
+        lab.set_text(rf"$v = {v}$:  {100 * out:.1f}% beyond the turning points")
+
+    ani = FuncAnimation(fig, update, frames=len(vs), interval=330, blit=False)
+    return fig, ani
+
+
+classical_limit.fps = 3
+
+
+# ------------------------------------------------------------ raising and lowering: a-dagger climbs one rung, a steps down, and the ladder has a bottom (still)
+@register
+def ladder_climb():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    y = np.linspace(-3.6, 3.6, 500)
+    phi = np.zeros((3, y.size))
+    phi[0] = np.pi**-0.25 * np.exp(-y**2 / 2)
+    phi[1] = np.sqrt(2) * y * phi[0]
+    phi[2] = y * phi[1] - np.sqrt(0.5) * phi[0]
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.6), gridspec_kw={"width_ratios": [1.15, 1], "wspace": 0.08})
+    yy = np.linspace(-3.03, 3.03, 300)
+    ax.plot(yy, 0.5 * yy**2, color="k", lw=2.2)
+    for v in range(5):
+        E = v + 0.5
+        ax.hlines(E, -np.sqrt(2 * E), np.sqrt(2 * E), color=TEAL, lw=2.4)
+        ax.text(np.sqrt(2 * E) + 0.12, E, rf"$\psi_{v}$", va="center", fontsize=12, color=TEAL)
+    for v in range(4):
+        ax.annotate("", xy=(-0.55, v + 1.45), xytext=(-0.55, v + 0.55),
+                    arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=2, mutation_scale=16, shrinkA=0, shrinkB=0))
+        ax.annotate("", xy=(0.55, v + 0.55), xytext=(0.55, v + 1.45),
+                    arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2, mutation_scale=16, shrinkA=0, shrinkB=0))
+    ax.text(-3.3, 5.0, r"$\hat{a}^\dagger$: up one rung, $+\hbar\omega$", ha="left", fontsize=12, color=ORANGE)
+    ax.text(0.45, 5.0, r"$\hat{a}$: down one rung, $-\hbar\omega$", ha="left", fontsize=12, color=PURPLE)
+    ax.annotate("", xy=(0.55, 0.06), xytext=(0.55, 0.45),
+                arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.6, ls="--", mutation_scale=13, shrinkA=0, shrinkB=0))
+    ax.plot([0.55], [0.22], "x", color=CARDINAL, ms=12, mew=2.6)
+    ax.text(0.8, 0.12, r"$\hat{a}\psi_0 = 0$: the ladder has a bottom", fontsize=11.5, color=CARDINAL, va="center")
+    ax.set_xlim(-3.4, 3.9); ax.set_ylim(0, 5.4); ax.axis("off")
+    ax.set_title(r"rungs $\hbar\omega$ apart, starting at $\frac{1}{2}\hbar\omega$", loc="left", fontsize=12.5)
+    names = [r"$\psi_0 \propto e^{-y^2/2}$", r"$\hat{a}^\dagger\psi_0 \propto y\,e^{-y^2/2} \propto \psi_1$",
+             r"$\hat{a}^\dagger\psi_1 \propto (2y^2 - 1)\,e^{-y^2/2} \propto \psi_2$"]
+    for v in range(3):
+        off = 1.9 * v
+        bx.axhline(off, color="#dee2e6", lw=0.8)
+        bx.plot(y, off + 0.95 * phi[v], color=TEAL, lw=2.2)
+        bx.text(-3.6, off + 0.98, names[v], fontsize=12, va="center")
+    for v in range(2):
+        bx.annotate("", xy=(3.25, 1.9 * v + 1.6), xytext=(3.25, 1.9 * v + 0.35),
+                    arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=2, mutation_scale=16, shrinkA=0, shrinkB=0))
+        bx.text(3.4, 1.9 * v + 0.95, r"$\hat{a}^\dagger$", color=ORANGE, fontsize=13, va="center")
+    bx.set_xlim(-3.7, 3.9); bx.set_ylim(-0.75, 5.3); bx.axis("off")
+    bx.set_title(r"each step up adds one node", loc="left", fontsize=12.5)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.92, bottom=0.02)
+    fig.savefig(f"{OUT}/ladder_climb.png", dpi=200)
+    print("wrote", f"{OUT}/ladder_climb.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ H and x as matrices in the oscillator's own eigenbasis: diagonal and nearest-neighbour (still)
+@register
+def x_matrix():
+    from matplotlib.patches import Rectangle
+    n = 7
+    Hm = np.diag(np.arange(n) + 0.5)
+    Xm = np.diag(np.sqrt(np.arange(1, n) / 2), 1)
+    Xm = Xm + Xm.T                                              # <v'|x|v> in units of 1/sqrt(alpha)
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.5), gridspec_kw={"wspace": 0.16})
+    titles = [r"$\langle v'|\hat{H}|v\rangle$ in units of $\hbar\omega$", r"$\langle v'|\hat{x}|v\rangle$ in units of $1/\sqrt{\alpha}$"]
+    for ax, M, title in zip(axes, (Hm, Xm), titles):
+        for i in range(n):
+            for j in range(n):
+                val = M[i, j]
+                fc, tc = ("white", "#adb5bd") if val == 0 else (("#ebe3f4", PURPLE) if i == j else ("#fde9d2", ORANGE))
+                ax.add_patch(Rectangle((j, n - 1 - i), 1, 1, fc=fc, ec="#ced4da", lw=0.8))
+                ax.text(j + 0.5, n - 0.5 - i, "0" if val == 0 else f"{val:.2f}", ha="center", va="center",
+                        fontsize=10.5, color=tc, weight="normal" if val == 0 else "bold")
+        ax.set_xlim(0, n); ax.set_ylim(0, n); ax.set_aspect("equal")
+        ax.set_xticks(np.arange(n) + 0.5); ax.set_xticklabels(range(n)); ax.xaxis.tick_top()
+        ax.set_yticks(np.arange(n) + 0.5); ax.set_yticklabels(range(n - 1, -1, -1))
+        ax.tick_params(length=0, labelsize=11)
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+        ax.set_xlabel(title, fontsize=12.5, labelpad=8)
+        ax.text(-0.75, n / 2, r"$v'$", fontsize=13, ha="center", va="center")
+        ax.text(n / 2, n + 0.85, r"$v$", fontsize=13, ha="center", va="center")
+    fig.subplots_adjust(left=0.05, right=0.99, top=0.88, bottom=0.1)
+    fig.savefig(f"{OUT}/x_matrix.png", dpi=200)
+    print("wrote", f"{OUT}/x_matrix.png")
+    return fig, None
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:

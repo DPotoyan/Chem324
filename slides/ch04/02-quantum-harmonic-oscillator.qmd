@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,125 +16,245 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch04/images
 ---
 
-## Why the Harmonic Oscillator?
+## From the spring to the Schrödinger equation
 
-- Near equilibrium, **any** bond is a spring.
+$$\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2, \qquad \hat{H}\psi_v = E_v\,\psi_v$$
 
-::: {.fragment}
-:::: {.columns}
-::: {.column width="55%"}
-- Molecular **vibrations** are quantized.
-- Foundation for **IR and Raman** spectroscopy.
-- First place we meet **zero-point energy** and **tunneling**.
-:::
-::: {.column width="45%"}
-![](../../ch04/images/harm_approx.png)
-:::
-::::
-:::
+- $x = R - R_e$: the **stretch**. $\mu$: reduced mass. $k$: force constant
+- Lecture 4.1: numpy found $0.5,\ 1.5,\ 2.5, \dots$ in units of $\hbar\omega$. **Today: why**
+- $v = 0, 1, 2, \dots$ is the **vibrational quantum number** (vee), not the frequency $\nu$ (nu)
 
-## The Schrodinger Equation
+## One energy, one length
 
-- Classical Hamiltonian: kinetic plus a quadratic well.
+$$\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}, \qquad \frac{1}{\sqrt{\alpha}} = \sqrt{\frac{\hbar}{\mu\omega}}, \qquad \alpha = \frac{\mu\omega}{\hbar}$$
 
-::: {.fragment}
-$$\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2$$
-:::
+| HCl | value |
+|:--|:--|
+| $\hbar\omega$ | 0.371 eV, or 2990 cm$^{-1}$ |
+| $1/\sqrt{\alpha}$ | **10.7 pm**, against a bond of 127.5 pm |
 
-::: {.fragment}
-$$\hat{H}\psi_v(x) = E_v\,\psi_v(x)$$
-:::
+- In $y = \sqrt{\alpha}\,x$ the constants drop out: every oscillator is **one problem**
 
-- **Spring constant** $k$, **angular frequency** $\omega = \sqrt{k/\mu}$.
+$$\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$$
 
-## Quantized Energies
+## Guess a Gaussian
 
-::: {.fragment}
-$$E_v = \left(v + \tfrac{1}{2}\right)\hbar\omega, \qquad v = 0,1,2,\dots$$
-:::
+The lowest state is a bell with no nodes. Try $\psi = e^{-\alpha x^2/2}$, width $\alpha$ unknown:
 
-- Levels are **evenly spaced** by $\hbar\omega$.
-- The integer $v$ is the **vibrational quantum number**.
-- Energy never goes to zero, even in the lowest state.
+$$\psi' = -\alpha x\,\psi, \qquad \psi'' = \left(\alpha^2x^2 - \alpha\right)\psi$$
 
-## Zero-Point Energy
+$$\hat{H}\psi = \left[\frac{\hbar^2\alpha}{2\mu} + \left(\frac{k}{2} - \frac{\hbar^2\alpha^2}{2\mu}\right)x^2\right]\psi$$
 
-::: {.fragment}
-$$E_0 = \tfrac{1}{2}\hbar\omega \neq 0$$
+- An eigenfunction needs the bracket to be **the same number at every $x$**
+
+## Example: the width that works
+
+::: {.worked}
+For which $\alpha$ is the bracket a constant, and what is the energy?
 :::
 
-- The oscillator **cannot sit still** at the bottom of the well.
-- A consequence of the **uncertainty principle**: pinning $x$ would blow up $p$.
-- Atoms keep moving even at **absolute zero**.
+::: {.soln .fragment}
+The $x^2$ term must vanish:
 
-## The Wavefunctions
+$$\frac{\hbar^2\alpha^2}{2\mu} = \frac{k}{2} \quad\Longrightarrow\quad \alpha = \frac{\sqrt{\mu k}}{\hbar} = \frac{\mu\omega}{\hbar}$$
 
-::: {.fragment}
+What is left is the energy:
+
+$$E_0 = \frac{\hbar^2\alpha}{2\mu} = \frac{1}{2}\hbar\omega$$
+:::
+
+## Only one width is an eigenfunction
+
+![](../../ch04/images/gaussian_width.png){.nostretch width="66%" fig-align="center"}
+
+- Too wide: curves too little for the walls. Too narrow: overshoots. Just right: **flat**, the same energy everywhere
+
+## Zero-point energy: the uncertainty trade-off
+
+$$\langle E\rangle = \frac{\sigma_p^2}{2\mu} + \frac{1}{2}k\sigma_x^2 \;\geq\; \frac{\hbar^2}{8\mu\sigma_x^2} + \frac{1}{2}k\sigma_x^2$$
+
+![](../../ch04/images/zpe_tradeoff.png){.nostretch width="72%" fig-align="center"}
+
+## The ground state
+
+::: {.keyeq}
+$$\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad E_0 = \frac{1}{2}\hbar\omega, \qquad \alpha = \frac{\mu\omega}{\hbar}$$
+:::
+
+- A bond **cannot sit still**: it keeps $\frac{1}{2}\hbar\omega$ even at absolute zero
+- **Minimum uncertainty**: $\sigma_x\sigma_p = \hbar/2$ exactly, width $\sigma_x = 1/\sqrt{2\alpha}$
+- The energy splits evenly: $\frac{1}{4}\hbar\omega$ kinetic, $\frac{1}{4}\hbar\omega$ potential
+
+## Example: HCl at absolute zero
+
+::: {.worked}
+For HCl, $\hbar\omega$ is 2990 cm$^{-1}$ (0.371 eV) and the bond well is $D_e = 4.62$ eV deep. Find $E_0$, and the energy needed to break the bond from $v = 0$.
+:::
+
+::: {.soln .fragment}
+$$E_0 = \tfrac{1}{2}\hbar\omega = 1495\ \text{cm}^{-1} = 0.185\ \text{eV}$$
+
+$$D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)}$$
+:::
+
+- Heavier isotope, smaller $\omega$, **lower** zero-point energy: C-D bonds break more slowly than C-H
+
+## One more node, one more $\hbar\omega$
+
+Try $\psi = x\,e^{-\alpha x^2/2}$: $\quad\psi'' = \left(\alpha^2x^2 - 3\alpha\right)\psi \quad\Longrightarrow\quad \hat{H}\psi = \frac{3}{2}\hbar\omega\,\psi$
+
+| $v$ | Hermite $H_v(y)$ | $E_v$ | nodes |
+|:-:|:--|:-:|:-:|
+| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 |
+| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 |
+| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 |
+| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 |
+
+- Every state: a **polynomial times the same Gaussian**, one more node per rung
+
+## The whole ladder
+
+::: {.keyeq}
+$$E_v = \hbar\omega\left(v + \frac{1}{2}\right), \qquad v = 0, 1, 2, \dots$$
+
 $$\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}$$
 :::
 
-- **Hermite polynomial** $H_v$ times a **Gaussian** envelope.
-- Scaling $\alpha = \sqrt{k\mu/\hbar^2}$, normalization $N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}$.
+- $N_v = \dfrac{1}{\sqrt{2^v v!}}\left(\dfrac{\alpha}{\pi}\right)^{1/4}$ normalizes, and $\alpha = \mu\omega/\hbar$
+- **Evenly spaced** by $\hbar\omega$, starting $\frac{1}{2}\hbar\omega$ above the bottom
+- Every Bohr frequency is a multiple of $\omega$: any packet returns after **one period** (Lecture 3.7)
 
-## The Gaussian Ground State
+## The states on their levels
 
-::: {.fragment}
-$$\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4} e^{-\alpha x^2/2}$$
+![](../../ch04/images/ho_ladder.png){.nostretch width="70%" fig-align="center"}
+
+- $\psi_v$ has **$v$ nodes**; even and odd in turn. **Orange**: beyond the classical turning points
+
+## Even and odd
+
+$$\psi_v(-x) = (-1)^v\,\psi_v(x)$$
+
+- An **odd** integrand over $(-\infty, \infty)$ gives **zero**
+- A derivative **flips** the symmetry: the slope of $x^2$ is $2x$
+
+$$\langle x\rangle = \int\psi_v\,x\,\psi_v\,dx = 0, \qquad \langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0$$
+
+- But $\langle x^2\rangle,\ \langle p^2\rangle \neq 0$: the spreads carry the zero-point motion
+
+## Orthogonal: by symmetry or by cancellation
+
+![](../../ch04/images/ho_orthogonality.png){.nostretch width="86%" fig-align="center"}
+
+$$\langle v'|v\rangle = \int_{-\infty}^{\infty}\psi_{v'}\,\psi_v\,dx = \delta_{v'v}$$
+
+## Example: beyond the turning points
+
+::: {.worked}
+The $v = 0$ turning points are at $x = \pm 1/\sqrt{\alpha}$, that is $y = \pm 1$. How often is the oscillator found beyond them?
 :::
 
-- **No nodes**, a single peak at the bottom of the well.
-- A pure **Gaussian**: the minimum-uncertainty state.
-- First excited state gains one node: $\psi_1(x) \propto x\,e^{-\alpha x^2/2}$.
+::: {.soln .fragment}
+With $\lvert\psi_0\rvert^2dx = \pi^{-1/2}e^{-y^2}dy$:
 
-## Hermite Polynomials
+$$P(\text{beyond}) = 1 - \frac{1}{\sqrt{\pi}}\int_{-1}^{1} e^{-y^2}\,dy = 0.157$$
 
-| $v$ | $H_v(y)$ |
-|---|---|
-| 0 | $1$ |
-| 1 | $2y$ |
-| 2 | $4y^2 - 2$ |
-| 3 | $8y^3 - 12y$ |
-
-- Each added quantum number adds **one node**.
-- They are **orthogonal** with weight $e^{-y^2}$.
-
-## Even / Odd Parity
-
-- Even $v = 0,2,4,\dots$: $\psi_v(-x) = \psi_v(x)$.
-- Odd $v = 1,3,5,\dots$: $\psi_v(-x) = -\psi_v(x)$.
-
-::: {.fragment}
-$$\langle x \rangle = 0, \qquad \langle p \rangle = 0$$
+About **one time in six**: stretched where a classical spring could never reach.
 :::
 
-- Symmetry **kills** odd integrals, so spreads survive: $\langle x^2\rangle, \langle p^2\rangle \neq 0$.
+## Toward the classical spring
 
-## Tunneling
+![](../../ch04/images/classical_limit.gif){.nostretch width="66%" fig-align="center"}
 
-- Wavefunction tails **leak past** the classical turning points.
+- High $v$: piles up at the turning points, averages to the **classical curve**
+- Molecules sit in $v = 0$, the **most quantum** state
 
-- Finite probability in the **classically forbidden region** where $E < V$.
-- Strictly impossible in classical mechanics.
+## Factor the Hamiltonian
 
-- At **high** $v$, probability piles up near the edges, approaching the classical result.
+Numbers: $u^2 + w^2 = (u - iw)(u + iw)$. Try it on $\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)$:
 
-## Beyond Harmonic: Anharmonicity
+$$\hat{a} = \frac{1}{\sqrt{2}}\left(y + \frac{d}{dy}\right), \qquad \hat{a}^\dagger = \frac{1}{\sqrt{2}}\left(y - \frac{d}{dy}\right)$$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch04/images/unharm.png)
+Act on a test function $f$:
+
+$$\hat{a}^\dagger\hat{a}f = \frac{1}{2}\left(y - \frac{d}{dy}\right)\left(yf + f'\right) = \frac{1}{2}\left(y^2f - f''\right) - \frac{1}{2}f$$
+
+- The $-\frac{1}{2}f$ comes from the product rule, $\frac{d}{dy}(yf) = f + yf'$
+
+## The $\frac{1}{2}\hbar\omega$ is a commutator
+
+::: {.keyeq}
+$$\hat{H} = \hbar\omega\left(\hat{a}^\dagger\hat{a} + \frac{1}{2}\right), \qquad [\hat{a}, \hat{a}^\dagger] = 1$$
 :::
-::: {.column width="50%"}
-- Real bonds **dissociate**, the well is not a perfect parabola.
-- Levels **bunch up** toward $D_e$.
-- Harmonic model is only the **near-equilibrium** limit.
+
+- The other order gives $+\frac{1}{2}$: the two differ by **exactly 1**
+- If $y$ and $d/dy$ commuted, the lowest energy would be **zero**, like a classical spring
+- The zero-point energy is the **price of not commuting**
+
+## Climbing the ladder
+
+Use $\hat{a}\hat{a}^\dagger = \hat{a}^\dagger\hat{a} + 1$:
+
+$$\hat{H}\hat{a}^\dagger = \hbar\omega\left(\hat{a}^\dagger\hat{a}\hat{a}^\dagger + \tfrac{1}{2}\hat{a}^\dagger\right) = \hat{a}^\dagger\left(\hat{H} + \hbar\omega\right)$$
+
+$$\hat{H}\psi = E\psi \quad\Longrightarrow\quad \hat{H}\left(\hat{a}^\dagger\psi\right) = \left(E + \hbar\omega\right)\left(\hat{a}^\dagger\psi\right)$$
+
+- $\hat{a}^\dagger$ **raises** by exactly $\hbar\omega$; the same steps show $\hat{a}$ **lowers** by $\hbar\omega$
+
+## The ladder has a bottom
+
+$$\hat{a}\psi_0 = 0 \quad\Longrightarrow\quad \frac{d\psi_0}{dy} = -y\,\psi_0 \quad\Longrightarrow\quad \psi_0 \propto e^{-y^2/2}$$
+
+![](../../ch04/images/ladder_climb.png){.nostretch width="58%" fig-align="center"}
+
+- Energy is never negative, so stepping down must **stop**: at the Gaussian
+
+## Raising and lowering operators
+
+::: {.keyeq}
+$$\hat{a}^\dagger\psi_v = \sqrt{v + 1}\,\psi_{v+1}, \qquad \hat{a}\,\psi_v = \sqrt{v}\,\psi_{v-1}, \qquad \hat{a}\,\psi_0 = 0$$
 :::
-::::
+
+- The square roots keep each state **normalized**
+- $\hat{a}^\dagger\hat{a}\,\psi_v = v\,\psi_v$: the **number operator** counts the rungs
+- Climbing from $\frac{1}{2}\hbar\omega$ in steps of $\hbar\omega$ gives **every** level, and nothing else
+
+## Position connects neighbors
+
+$$\hat{x} = \frac{\hat{a} + \hat{a}^\dagger}{\sqrt{2\alpha}}, \qquad \hat{x}\,\psi_v = \frac{1}{\sqrt{2\alpha}}\left(\sqrt{v + 1}\,\psi_{v+1} + \sqrt{v}\,\psi_{v-1}\right)$$
+
+![](../../ch04/images/x_matrix.png){.nostretch width="58%" fig-align="center"}
+
+- In its own eigenbasis $\hat{H}$ is **diagonal**; $\hat{x}$ sits **next to** the diagonal
+
+## The infrared selection rule
+
+::: {.keyeq}
+$$\langle v'|\hat{x}|v\rangle = 0 \quad\text{unless}\quad v' = v \pm 1$$
+:::
+
+- Light couples through the **dipole**, which changes in proportion to the stretch $x$
+- So light moves a harmonic bond **one rung at a time**: $\Delta v = \pm 1$, all at the same $\hbar\omega$
+- One strong infrared line per vibration. Overtones and anharmonicity: **Lecture 4.3**
+
+## Example: the kinetic isotope effect
+
+::: {.worked}
+C-H stretch: 2900 cm$^{-1}$. C-D: same $k$, $\mu$ from 0.930 to 1.725 u. A reaction breaks this bond: how much slower is C-D at 300 K ($k_BT = 208$ cm$^{-1}$)?
+:::
+
+::: {.soln .fragment}
+$$\tilde{\nu}_{\text{CD}} = 2900\sqrt{\frac{0.930}{1.725}} = 2130\ \text{cm}^{-1}, \qquad \Delta E_0 = \tfrac{1}{2}(2900 - 2130) = 385\ \text{cm}^{-1}$$
+
+$$\frac{k_{\text{H}}}{k_{\text{D}}} \approx e^{385/208} \approx 6$$
+:::
+
+- C-D starts **lower in the same well**, so it needs more energy to reach the same barrier top
 
 # Takeaway {.center}
 
-> The quantum oscillator has **evenly spaced** levels $E_v = \hbar\omega(v+\tfrac{1}{2})$ with an irreducible **zero-point energy** $\tfrac{1}{2}\hbar\omega$. Its states are **Hermite polynomials times a Gaussian**, with definite **parity** and tails that **tunnel** into the forbidden region.
+> A vibrating bond is a quantum spring with **evenly spaced** levels $E_v = \hbar\omega\left(v + \frac{1}{2}\right)$. The ground state is a **Gaussian** with zero-point energy $\frac{1}{2}\hbar\omega$, the least the uncertainty principle allows. The states are Hermite polynomials times that Gaussian, with $v$ nodes and alternating parity. **Raising and lowering operators** explain the equal steps, and $\hat{x} = (\hat{a} + \hat{a}^\dagger)/\sqrt{2\alpha}$ connects only neighboring levels: the infrared selection rule $\Delta v = \pm 1$.
