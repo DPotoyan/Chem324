@@ -33,15 +33,15 @@ $$\hat{H} = -\frac{\hbar^2}{2\mu}\frac{d^2}{dx^2} + \frac{1}{2}kx^2, \qquad \hat
 
 $\hat{H}$ contains only $\hbar$, $\mu$ and $k$: they build **one energy** and **one length**
 
-**Energy**: a photon at the spring's frequency, $E = h\nu$ from Chapter 1
+**Energy**: a photon at the spring's frequency ($E = h\nu$, Chapter 1): $\quad\hbar\omega = \hbar\sqrt{k/\mu}$
 
-$$\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}$$
+**Length**: where squeezing costs as much kinetic energy as stretching costs potential
 
-**Length**: where squeezing costs as much as stretching, $\hbar^2/\mu L^2 = kL^2$
+$$\frac{\hbar^2}{\mu L^2} = kL^2 \quad\Longrightarrow\quad L^4 = \frac{\hbar^2}{\mu k} = \frac{\hbar^2}{\mu\cdot\mu\omega^2} = \left(\frac{\hbar}{\mu\omega}\right)^2$$
 
-$$L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}$$
+With $k = \mu\omega^2$ the right side is a **square**, and the fourth root of a square is a square root:
 
-- Every energy is a number times $\hbar\omega$, every length a number times $1/\sqrt{\alpha}$
+$$L = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}$$
 
 ## Example: the two scales for HCl
 
@@ -71,18 +71,39 @@ $$\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}, \qquad \
 
 ## Hermite polynomials
 
-In $y = \sqrt{\alpha}\,x$ the constants drop out: every oscillator is **one problem**
+In $y = \sqrt{\alpha}\,x$ the constants drop out, $\;\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$: every oscillator is **one problem**
 
-$$\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$$
-
-| $v$ | $H_v(y)$ | $E_v$ | nodes |
+| $v$ | $H_v(y)$ | nodes | parity |
 |:-:|:--|:-:|:-:|
-| 0 | $1$ | $\frac{1}{2}\hbar\omega$ | 0 |
-| 1 | $2y$ | $\frac{3}{2}\hbar\omega$ | 1 |
-| 2 | $4y^2 - 2$ | $\frac{5}{2}\hbar\omega$ | 2 |
-| 3 | $8y^3 - 12y$ | $\frac{7}{2}\hbar\omega$ | 3 |
+| 0 | $1$ | 0 | even |
+| 1 | $2y$ | 1 | odd |
+| 2 | $4y^2 - 2$ | 2 | even |
+| 3 | $8y^3 - 12y$ | 3 | odd |
+| 4 | $16y^4 - 48y^2 + 12$ | 4 | even |
 
-- Every state: a **polynomial times the same Gaussian**, one more node per rung
+Each one from the two before it:
+
+$$H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)$$
+
+## The first five states, written out
+
+$$\psi_v(x) = \left(\frac{\alpha}{\pi}\right)^{1/4} \times \frac{H_v(y)}{\sqrt{2^v v!}} \times e^{-y^2/2}, \qquad y = \sqrt{\alpha}\,x$$
+
+| $v$ | polynomial $H_v(y)/\sqrt{2^v v!}$ | $E_v$ |
+|:-:|:--|:-:|
+| 0 | $1$ | $\frac{1}{2}\hbar\omega$ |
+| 1 | $\sqrt{2}\,y$ | $\frac{3}{2}\hbar\omega$ |
+| 2 | $\frac{1}{\sqrt{2}}\left(2y^2 - 1\right)$ | $\frac{5}{2}\hbar\omega$ |
+| 3 | $\frac{1}{\sqrt{3}}\left(2y^3 - 3y\right)$ | $\frac{7}{2}\hbar\omega$ |
+| 4 | $\frac{1}{2\sqrt{6}}\left(4y^4 - 12y^2 + 3\right)$ | $\frac{9}{2}\hbar\omega$ |
+
+- Degree $v$ means $v$ nodes; only even or only odd powers, so the states are even and odd in turn
+
+## Polynomial times Gaussian
+
+![](../../ch04/images/hermite_build.png){.nostretch width="82%" fig-align="center"}
+
+- The polynomial sets the **nodes** (its roots); the Gaussian makes the state **die away**
 
 ## Example: check the ground state
 

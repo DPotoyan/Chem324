@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,164 +16,266 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch04/images
 ---
 
-## Bonds as Springs
+## From the ladder to a spectrum
 
-A vibrating bond is a **quantized harmonic oscillator**.
+A photon is absorbed when $h\nu$ **matches a gap**. Spectroscopists measure light in wavenumbers, $\tilde{\nu} = 1/\lambda$:
 
-::: {.fragment}
-- Energy levels are **evenly spaced**:
-$$\tilde{E}_v = \tilde{\nu}\left(v + \frac{1}{2}\right), \qquad v = 0,1,2,\dots$$
+$$E = h\nu = \frac{hc}{\lambda} = hc\,\tilde{\nu}$$
+
+::: {.keyeq}
+$$G(v) = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right), \qquad \tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}$$
 :::
 
-::: {.fragment}
-- A single transition energy, the **fundamental**:
-$$\Delta \tilde{E}_v = \tilde{E}_{v+1} - \tilde{E}_{v} = \tilde{\nu}$$
+- Lifting $v \to v + 1$ takes a photon of wavenumber $\tilde{\nu}$: the bond's **own** vibration
+
+## What one wavenumber is worth
+
+| quantity | value | what it tells you |
+|:--|:--|:--|
+| 1 cm$^{-1}$ | $1.24\times10^{-4}$ eV $= 0.0120$ kJ/mol | the conversion factor $hc$ |
+| 1 eV | 8066 cm$^{-1}$ | chemical bonds: a few eV |
+| $k_BT$ at 300 K | 208 cm$^{-1}$ | below this, levels are warm |
+| bond vibrations | 200 to 4400 cm$^{-1}$ | 2.3 to 50 μm: the **infrared** |
+
+- Italic $v$: the quantum number. $\tilde{\nu}$ ("nu tilde"): the wavenumber
+
+## Example: the HCl line
+
+::: {.worked}
+HCl absorbs at 2886 cm$^{-1}$. Find the wavelength, frequency and photon energy, and compare with $k_BT = 208$ cm$^{-1}$.
 :::
 
-::: {.fragment}
-> Vibrations are **quantized**: this underlies infrared and Raman spectroscopy.
+::: {.soln .fragment}
+$$\lambda = \frac{1}{\tilde{\nu}} = 3.47\ \mu\text{m}, \qquad \nu = c\tilde{\nu} = 8.65\times10^{13}\ \text{Hz}$$
+
+$$E = hc\tilde{\nu} = 0.358\ \text{eV} = 34.5\ \text{kJ/mol} \approx 14\,k_BT$$
 :::
 
-## Frequency, Mass, and Bond Strength
+- The line sits below the harmonic 2990 cm$^{-1}$ of Lecture 4.2: **anharmonicity**, later today
 
-$$\tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}$$
+## Light pushes on the dipole
 
-- **Force constant** $k$: stiffness of the bond
-- **Reduced mass** $\mu$ of the diatomic
+Light's electric field pushes $+$ and $-$ charges apart: it couples to the **dipole moment** $M$ (here $\mu$ is the reduced mass)
 
-- Typical range **500 to 4000 cm$^{-1}$**
-- **Strong, stiff bonds** vibrate at higher frequency
-- **Heavy atoms** vibrate at lower frequency
+$$M(x) = M_e + M'x + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}$$
 
-## Harmonic Approximation
+$$\langle v'|\hat{M}|v\rangle = M_e\,\langle v'|v\rangle + M'\,\langle v'|\hat{x}|v\rangle + \dots$$
 
-:::: {.columns}
-::: {.column width="48%"}
-![](../../ch04/images/De.png){width="90%"}
-:::
-::: {.column width="52%"}
-A parabola near the **equilibrium** bond length $R_e$:
+- First term: **zero** by orthogonality. A permanent dipole alone does nothing
+- Everything rests on $M'$: the dipole must **change** as the bond stretches
 
-$$E(R) = \frac{1}{2}k(R - R_e)^2$$
+## The dipole must change
 
-- It is the **Taylor expansion** of the true curve truncated at second order
+![](../../ch04/images/dipole_antenna.gif){.nostretch width="76%" fig-align="center"}
 
-- Good near the bottom of the well, but it **never dissociates**
-:::
-::::
+- A vibrating dipole is a tiny **antenna**. N$_2$ and O$_2$ (99% of air): no dipole, **no infrared spectrum**
 
-## The Morse Potential
+## Selection rules
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch04/images/unharm.png){width="95%"}
-:::
-::: {.column width="50%"}
-A realistic curve that **dissociates**:
-
-$$V(R)=D_e\left(1-e^{-a(R-R_e)}\right)^2$$
-
-- $D_e$: well depth from the **minimum**
-- $D_0 = D_e - \tfrac{1}{2}h\nu$: from the **ground level**
-
-- Levels **converge** as $v$ grows
-:::
-::::
-
-## Anharmonic Energy Levels
-
-Add higher-order terms so levels are **no longer evenly spaced**:
-
-$$\tilde{E}_v = \tilde{\nu}_e\left(v + \tfrac{1}{2}\right) - \tilde{\nu}_e x_e\left(v + \tfrac{1}{2}\right)^2 + \dots$$
-
-- $\tilde{\nu}_e$: vibrational wavenumber, $x_e$: **anharmonicity constant**
-
-::: {.fragment}
-- Transition energies **shrink** with $v$:
-$$\tilde{\nu}_{v\rightarrow v+1} = \tilde{\nu}_e\left[1 - 2x_e(v+1)\right]$$
+::: {.keyeq}
+$$\langle v'|\hat{M}|v\rangle \approx M'\,\langle v'|\hat{x}|v\rangle, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}$$
 :::
 
-## Normal Modes
+1. **The dipole must change**: $M' \neq 0$. Homonuclear diatomics do not absorb
+2. **One rung at a time** (Lecture 4.2): $\langle v'|\hat{x}|v\rangle = 0$ unless $\Delta v = \pm 1$
 
-:::: {.columns}
-::: {.column width="48%"}
-![](../../ch04/images/CO2_modes.jpg){width="95%"}
-:::
-::: {.column width="52%"}
-A polyatomic molecule's motion resolves into **independent normal modes**.
+- At 300 K nearly every molecule starts in $v = 0$: one strong line per vibration, the **fundamental**
 
-::: {.fragment}
-- **Linear** molecules:
-$$N_{modes} = 3N - 5$$
-- **Nonlinear** molecules:
-$$N_{modes} = 3N - 6$$
-:::
+## Stiffness and mass set the wavenumber
 
-- Subtract translations and rotations from $3N$
-:::
-::::
+![](../../ch04/images/diatomic_ruler.png){.nostretch width="82%" fig-align="center"}
 
-## IR Selection Rule
+- $\tilde{\nu} \propto \sqrt{k/\mu}$. Halides: same $\mu$, weaker bonds down the group. Bond order: N$\equiv$N > O=O > Cl$-$Cl
 
-A transition is **allowed** only if the **dipole changes** with bond length:
+## Example: a carbon-13 label
 
-$$\left( \frac{\partial \mu}{\partial x} \right)_{R_e} \neq 0$$
-
-::: {.fragment}
-- And the quantum number changes by one:
-$$\Delta v = \pm 1$$
+::: {.worked}
+$^{12}$C$^{16}$O absorbs at 2143 cm$^{-1}$. Where does $^{13}$C$^{16}$O absorb? (Same $k$: the electrons do not change.)
 :::
 
-::: {.fragment}
-> The transition probability $P_{v\rightarrow v'} \sim \langle v | x | v' \rangle$ vanishes unless both conditions hold.
+::: {.soln .fragment}
+$$\mu(^{12}\text{C}^{16}\text{O}) = 6.856\ \text{u}, \qquad \mu(^{13}\text{C}^{16}\text{O}) = 7.172\ \text{u}$$
+
+$$\tilde{\nu} = 2143\ \text{cm}^{-1}\times\sqrt{\frac{6.856}{7.172}} = 2095\ \text{cm}^{-1} \quad\text{(measured: 2096)}$$
 :::
 
-## IR-Active vs Inactive
+- A 48 cm$^{-1}$ shift: isotope labels **tag one bond** in a big molecule
 
-:::: {.columns}
-::: {.column width="48%"}
-![](../../ch04/images/selection_rule.jpg){width="95%"}
+## Real bonds are anharmonic
+
+![](../../ch04/images/morse_ladder.png){.nostretch width="72%" fig-align="center"}
+
+- The real well flattens toward dissociation: the steps **shrink**, and the ladder **ends**
+
+## The anharmonic oscillator
+
+::: {.keyeq}
+$$G(v) = \tilde{\nu}_e\left(v + \frac{1}{2}\right) - \tilde{\nu}_ex_e\left(v + \frac{1}{2}\right)^2$$
+
+$$\tilde{\nu}_{0\to v} = v\,\tilde{\nu}_e - v(v + 1)\,\tilde{\nu}_ex_e$$
 :::
-::: {.column width="52%"}
-- **Heteronuclear** (HCl, CO): dipole changes, **IR-active**
 
-- **Homonuclear** (H$_2$, O$_2$, N$_2$): zero dipole, **IR-inactive**
-
-- IR-inactive stretches can still appear in the **Raman** spectrum
-:::
-::::
+- $\tilde{\nu}_e$: the harmonic wavenumber. $x_e$: the anharmonicity, about 0.005 to 0.02
+- The gaps shrink by $2\tilde{\nu}_ex_e$ per rung
+- Breaking the bond from $v = 0$ costs $D_0 = D_e - G(0)$
 
 ## Overtones
 
-- Anharmonicity makes **weak overtones** appear: $\Delta v = \pm 2, \pm 3, \dots$
+![](../../ch04/images/hcl_overtones.png){.nostretch width="74%" fig-align="center"}
 
-::: {.fragment}
-$$\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot v - \tilde{\nu}_e x_e \cdot v(v+1)$$
+- Anharmonicity makes $\Delta v = 2, 3$ **weakly allowed**, each tens of times fainter
+- **Hot bands** start from $v = 1$: faint at 300 K, stronger in a hot gas
+
+## Example: HCl constants from two lines
+
+::: {.worked}
+HCl: fundamental 2886 cm$^{-1}$, first overtone 5668 cm$^{-1}$. Find $\tilde{\nu}_e$ and $\tilde{\nu}_ex_e$; predict the second overtone.
 :::
 
-- Intensities **fall off rapidly** with each higher overtone
+::: {.soln .fragment}
+$$\tilde{\nu}_e - 2\tilde{\nu}_ex_e = 2886, \qquad 2\tilde{\nu}_e - 6\tilde{\nu}_ex_e = 5668$$
 
-- At room temperature almost all molecules sit in $v=0$, so only the **fundamental** dominates the spectrum
+$$\tilde{\nu}_ex_e = 52\ \text{cm}^{-1}, \qquad \tilde{\nu}_e = 2990\ \text{cm}^{-1}$$
 
-## Reading an IR Spectrum
+$$\tilde{\nu}_{0\to3} = 3(2990) - 12(52) = 8346\ \text{cm}^{-1}$$
 
-:::: {.columns}
-::: {.column width="55%"}
-![](../../ch04/images/IR-sp.png){width="100%"}
+Measured: 8347 cm$^{-1}$. And 2990 is the $\hbar\omega$ of Lecture 4.2.
 :::
-::: {.column width="45%"}
-- Each bond type absorbs in a **characteristic region**
 
-- Stiff bonds and light atoms sit at **high wavenumber**
+## One oscillator per normal mode
 
-- A spectrum is a **fingerprint** of functional groups
+::: {.keyeq}
+$$G(v_1, v_2, \dots) = \sum_i \tilde{\nu}_i\left(v_i + \frac{1}{2}\right)$$
 :::
-::::
+
+- $3N - 6$ modes ($3N - 5$ linear), each an **independent** oscillator: the energies add
+- A mode absorbs only if **its own motion** changes the dipole
+- Silent modes show up in **Raman** spectra, which sense the polarizability instead
+
+## CO$_2$: which modes absorb?
+
+![](../../ch04/images/co2_modes.gif){.nostretch width="84%" fig-align="center"}
+
+- Symmetric stretch: the two halves **cancel** at every instant. Antisymmetric stretch and bend: the dipole **swings**
+
+## Example: why CO$_2$ is a greenhouse gas
+
+::: {.worked}
+The Earth (288 K) radiates most strongly near 10 μm. N$_2$, O$_2$ and CO$_2$: which can absorb it?
+:::
+
+::: {.soln .fragment}
+N$_2$ and O$_2$: no dipole at any length, **transparent**.
+
+CO$_2$ bend: $1/(667\ \text{cm}^{-1}) = 15.0\ \mu\text{m}$, right inside the Earth's emission. Antisymmetric stretch: 4.26 μm. Symmetric stretch: **silent**.
+:::
+
+- 0.04% of the air, absorbing where the other 99% cannot
+
+## Reading an infrared spectrum
+
+![](../../ch04/images/group_frequencies.png){.nostretch width="78%" fig-align="center"}
+
+- **Bonds to H** absorb highest: the light H atom, not a stiffer bond. Then triple, double, single
+
+## Proteins: the amide I band
+
+![](../../ch04/images/amide_modes.png){.nostretch width="60%" fig-align="center"}
+
+- The backbone C=O stretch near 1650 cm$^{-1}$ shifts with **helix or sheet**: infrared reads protein structure
+
+## Where the force-constant matrix comes from
+
+One bond (Lecture 4.1): $V \approx \frac{1}{2}kx^2$ with $k = V''$. Many atoms: Taylor in **every** displacement; at the minimum all slopes vanish:
+
+$$V \approx \frac{1}{2}\sum_{i,j} K_{ij}\,x_ix_j, \qquad K_{ij} = \frac{\partial^2 V}{\partial x_i\,\partial x_j}\ \ \text{(the Hessian)}$$
+
+CO$_2$ with one spring per bond:
+
+$$V = \tfrac{1}{2}k(x_2 - x_1)^2 + \tfrac{1}{2}k(x_3 - x_2)^2 \quad\Longrightarrow\quad K = k\begin{pmatrix} 1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1 \end{pmatrix}$$
+
+Newton: $\;m_i\ddot{x}_i = -\sum_j K_{ij}x_j$. Off-diagonal entries **couple** the atoms
+
+## Look for a mode: an eigenvalue problem
+
+Weight by mass, $q_i = \sqrt{m_i}\,x_i$: $\quad\ddot{\mathbf{q}} = -F\mathbf{q}$, $\quad F_{ij} = K_{ij}/\sqrt{m_im_j}$ is **symmetric**
+
+**Guess** a normal mode: every atom in step, at one frequency, in fixed proportions $\mathbf{u}$
+
+$$\mathbf{q}(t) = \mathbf{u}\cos\omega t \quad\Longrightarrow\quad -\omega^2\,\mathbf{u}\cos\omega t = -F\mathbf{u}\cos\omega t$$
+
+::: {.keyeq}
+$$F\,\mathbf{u}_k = \omega_k^2\,\mathbf{u}_k$$
+:::
+
+- Eigenvectors: the mode **shapes**. Eigenvalues: $\omega_k^2$. Six (five) zeros: translations, rotations
+- $F$ symmetric: the eigenvectors are **perpendicular**, $\mathbf{u}_k\cdot\mathbf{u}_l = \delta_{kl}$
+
+## Three symbols
+
+| symbol | what it is | in time | CO$_2$ example |
+|:--|:--|:-:|:--|
+| $\mathbf{q}(t)$ | the **configuration**: every mass-weighted displacement | changes | $(\sqrt{m_O}\,x_1,\ \sqrt{m_C}\,x_2,\ \sqrt{m_O}\,x_3)$ |
+| $\mathbf{u}_k$ | mode $k$: a fixed **shape**, an eigenvector of $F$ | fixed | $\mathbf{u}_{\text{sym}} = (-1, 0, 1)/\sqrt{2}$ |
+| $Q_k(t)$ | **how much** of mode $k$ is present, $Q_k = \mathbf{u}_k\cdot\mathbf{q}$ | changes | $Q_{\text{sym}} = A\cos\omega_{\text{sym}}t$ |
+
+$$\mathbf{q}(t) = \sum_k Q_k(t)\,\mathbf{u}_k \qquad\text{like}\qquad \psi = \sum_n c_n\,\psi_n$$
+
+- Configuration $=$ (how much) $\times$ (shape). The guess of the last slide: one $Q_k = \cos\omega t$, the rest zero
+
+## Project onto the modes: they come apart
+
+Start from $\mathbf{q} = \sum_k Q_k\,\mathbf{u}_k$ and project Newton's equation onto one axis $\mathbf{u}_k$:
+
+$$\begin{aligned}
+\ddot{Q}_k &= \mathbf{u}_k\cdot\ddot{\mathbf{q}} = -\mathbf{u}_k\cdot(F\mathbf{q}) && \text{Newton} \\
+&= -(F\mathbf{u}_k)\cdot\mathbf{q} && F \text{ symmetric} \\
+&= -\omega_k^2\,\mathbf{u}_k\cdot\mathbf{q} && \text{eigenvector}
+\end{aligned}$$
+
+::: {.keyeq}
+$$\ddot{Q}_k = -\omega_k^2\,Q_k$$
+:::
+
+- Only $Q_k$ on the right: each mode is its **own spring**, whatever the others do
+
+## The Hamiltonian becomes a sum
+
+Mass-weighted: kinetic $\frac{1}{2}\dot{\mathbf{q}}\cdot\dot{\mathbf{q}}$, potential $\frac{1}{2}\mathbf{q}\cdot F\mathbf{q}$. Insert $\mathbf{q} = \sum_k Q_k\mathbf{u}_k$:
+
+$$\dot{\mathbf{q}}\cdot\dot{\mathbf{q}} = \sum_{k,l}\dot{Q}_k\dot{Q}_l\,\mathbf{u}_k\cdot\mathbf{u}_l = \sum_k\dot{Q}_k^2, \qquad \mathbf{q}\cdot F\mathbf{q} = \sum_{k,l}Q_kQ_l\,\omega_l^2\,\mathbf{u}_k\cdot\mathbf{u}_l = \sum_k\omega_k^2Q_k^2$$
+
+::: {.keyeq}
+$$H = \sum_k\left(\frac{1}{2}\dot{Q}_k^2 + \frac{1}{2}\omega_k^2Q_k^2\right) = \sum_k H_k$$
+:::
+
+- $\mathbf{u}_k\cdot\mathbf{u}_l = \delta_{kl}$ kills **every cross term**, like the $-kx_1x_2$ that passes energy between atoms
+- Quantum: $\hat{H} = \sum_k\hat{H}_k$, so energies add, $G = \sum_k\tilde{\nu}_k(v_k + \frac{1}{2})$ (Lecture 4.1)
+
+## CO$_2$: coupled atoms, independent modes
+
+![](../../ch04/images/co2_decoupling.png){.nostretch width="54%" fig-align="center"}
+
+$$\omega_{\text{sym}}^2 = \frac{k}{m_O}, \qquad \omega_{\text{anti}}^2 = \frac{k}{m_O}\left(1 + \frac{2m_O}{m_C}\right)$$
+
+- Modes $(-1, 0, 1)$ and $(1, -2.7, 1)$; frequency ratio 1.91 (measured 1.69)
+
+## Live: energy in atoms and in modes
+
+```{=html}
+<div id="nm-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/normal_modes.mjs";
+  const opts = { fontSize: "18px", status: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("nm-live") });
+</script>
+```
 
 # Takeaway {.center}
 
-> Bonds vibrate as quantized harmonic oscillators with $\tilde{E}_v = \tilde{\nu}(v+\tfrac{1}{2})$; polyatomics split into $3N-6$ (or $3N-5$) normal modes; a mode is IR-active only if the dipole changes, with $\Delta v = \pm 1$; and the Morse potential captures the anharmonicity that lets molecules dissociate.
+> An infrared spectrum reads the vibrational ladder in wavenumbers, $G(v) = \tilde{\nu}(v + \frac{1}{2})$ with $\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}$. Light pushes on the **dipole**, so only vibrations that change it absorb, one rung at a time. Real bonds are **anharmonic**: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of $F\mathbf{u} = \omega^2\mathbf{u}$; CO$_2$'s bend absorbs the Earth's infrared, N$_2$ and O$_2$ cannot.

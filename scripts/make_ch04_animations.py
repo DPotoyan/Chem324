@@ -624,6 +624,45 @@ def zpe_tradeoff():
     return fig, None
 
 
+# ------------------------------------------------------------ polynomial times Gaussian: the roots of H_v become the nodes of psi_v (still)
+@register
+def hermite_build():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    y = np.linspace(-4.2, 4.2, 700)
+    Hs = [np.ones_like(y), 2 * y, 4 * y**2 - 2, 8 * y**3 - 12 * y]
+    names = [r"$H_0 = 1$", r"$H_1 = 2y$", r"$H_2 = 4y^2 - 2$", r"$H_3 = 8y^3 - 12y$"]
+    roots = [[], [0.0], [-np.sqrt(0.5), np.sqrt(0.5)], [-np.sqrt(1.5), 0.0, np.sqrt(1.5)]]
+    nodes = ["no node", "1 node", "2 nodes", "3 nodes"]
+    fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.5), gridspec_kw={"hspace": 0.62, "wspace": 0.1})
+    for v in range(4):
+        top, bot = axes[0, v], axes[1, v]
+        H = Hs[v]
+        s = np.abs(H[np.abs(y) <= 1.9]).max()                   # each panel on its own scale, set by the roots
+        top.axhline(0, color=GRAY, lw=0.8)
+        top.plot(y, H, color="k", lw=2.2)
+        top.plot(roots[v], [0] * len(roots[v]), "o", color=CARDINAL, ms=7, zorder=5)
+        top.set_ylim(-1.2 * s, 1.2 * s)
+        top.set_title(names[v], fontsize=12.5)
+        psi = H * np.exp(-y**2 / 2)
+        m = np.abs(psi).max()
+        bot.axhline(0, color=GRAY, lw=0.8)
+        bot.plot(y, psi, color=TEAL, lw=2.4)
+        bot.plot(roots[v], [0] * len(roots[v]), "o", color=CARDINAL, ms=7, zorder=5)
+        bot.set_ylim(-1.25 * m, 1.25 * m)
+        bot.set_title(rf"$\psi_{v}$: " + nodes[v], fontsize=12.5, color=TEAL)
+        for ax in (top, bot):
+            ax.set_xlim(-4.2, 4.2); ax.set_yticks([]); ax.set_xticks([-3, 0, 3])
+            ax.spines["left"].set_visible(False); ax.tick_params(labelsize=10)
+    axes[0, 0].set_ylabel("polynomial", fontsize=11.5)
+    axes[1, 0].set_ylabel("state", fontsize=11.5, color=TEAL)
+    fig.text(0.5, 0.505, r"multiply by the Gaussian $e^{-y^2/2}$: the growth dies away, the roots (red) stay and become the nodes",
+             ha="center", va="center", fontsize=11.5, color=GRAY)
+    fig.subplots_adjust(left=0.04, right=0.99, top=0.92, bottom=0.07)
+    fig.savefig(f"{OUT}/hermite_build.png", dpi=200)
+    print("wrote", f"{OUT}/hermite_build.png")
+    return fig, None
+
+
 # ------------------------------------------------------------ the ladder: psi_v and |psi_v|^2 on their levels, tails beyond the turning points in orange (still)
 @register
 def ho_ladder():
@@ -818,6 +857,298 @@ def x_matrix():
     fig.subplots_adjust(left=0.05, right=0.99, top=0.88, bottom=0.1)
     fig.savefig(f"{OUT}/x_matrix.png", dpi=200)
     print("wrote", f"{OUT}/x_matrix.png")
+    return fig, None
+
+
+# ============================================================ lecture 4.3: molecular vibrations
+# Wavenumbers in cm^-1. HCl uses the Morse well of Lecture 4.1 (D = 4.62 eV, a = 1.87 1/A) for shapes and the
+# measured lines (2886, 5668, 8347 cm^-1; nu_e = 2990, nu_e x_e = 52) for positions.
+
+# ------------------------------------------------------------ light pushes on a dipole: HCl's dipole swings with the stretch, N2 has none
+@register
+def dipole_antenna():
+    from matplotlib.patches import Circle
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nf = 32
+    ts = np.arange(nf) / nf                                     # one loop of the animation = two vibrations
+    GREEN, BLUE = "#2f9e44", "#1c7ed6"
+    rows = [(("H", "Cl"), ("white", GREEN), (0.15, 0.29), (1.0, 35.0), True,
+             "HCl: the dipole swings with the bond", r"$M(t) = M_e + M'x(t)$: the swing couples to light"),
+            (("N", "N"), (BLUE, BLUE), (0.24, 0.24), (14.0, 14.0), False,
+             r"N$_2$: symmetric, no dipole at any length", r"$M = 0$ always: light has nothing to push on")]
+    fig, axes = plt.subplots(2, 2, figsize=(9.6, 4.6), gridspec_kw={"width_ratios": [1, 1.2], "hspace": 0.65, "wspace": 0.12})
+    tt = np.linspace(0, 1, 300)
+    parts = []
+    for (ax, bx), (labels, cols, rads, masses, polar, t1, t2) in zip(axes, rows):
+        ax.set_xlim(-1.5, 1.5); ax.set_ylim(-0.6, 1.0); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(t1, loc="left", fontsize=12)
+        (bond,) = ax.plot([], [], color="#adb5bd", lw=6, solid_capstyle="round", zorder=2)
+        c1 = Circle((0, 0), rads[0], fc=cols[0], ec="k", lw=1, zorder=3); ax.add_patch(c1)
+        c2 = Circle((0, 0), rads[1], fc=cols[1], ec="k", lw=1, zorder=3); ax.add_patch(c2)
+        l1 = ax.text(0, 0, labels[0], ha="center", va="center", fontsize=10, weight="bold", zorder=4,
+                     color="k" if cols[0] == "white" else "white")
+        l2 = ax.text(0, 0, labels[1], ha="center", va="center", fontsize=10, weight="bold", zorder=4, color="white")
+        (bar,) = ax.plot([], [], color=ORANGE, lw=6, solid_capstyle="butt")
+        if polar:
+            ax.text(-0.62, -0.5, r"$\delta+$", ha="center", fontsize=11, color=CARDINAL)
+            ax.text(0.62, -0.5, r"$\delta-$", ha="center", fontsize=11, color=BLUE)
+            ax.text(-1.45, 0.72, "dipole", fontsize=11, color=ORANGE, va="center")
+        else:
+            ax.text(-1.45, 0.72, r"dipole: $M = 0$", fontsize=11, color=ORANGE, va="center")
+        bx.axhline(0, color=GRAY, lw=0.8)
+        if polar:
+            bx.axhline(1, color=GRAY, lw=1, ls=":")
+            bx.text(1.0, 1.08, r"$M_e$", ha="right", fontsize=11, color=GRAY)
+        bx.plot(tt, (1 + 0.45 * np.sin(4 * np.pi * tt)) if polar else 0 * tt, color="#dee2e6", lw=1.8)
+        (trace,) = bx.plot([], [], color=ORANGE, lw=2.4)
+        (dot,) = bx.plot([], [], "o", color=ORANGE, ms=7)
+        bx.set_xlim(0, 1); bx.set_ylim(-0.25, 1.75); bx.set_yticks([]); bx.set_xticks([])
+        bx.spines["bottom"].set_visible(False)
+        bx.set_xlabel("time", fontsize=11); bx.set_ylabel(r"dipole $M(t)$", fontsize=11.5)
+        bx.set_title(t2, loc="left", fontsize=12)
+        parts.append((masses, polar, bond, c1, c2, l1, l2, bar, trace, dot))
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.9, bottom=0.08)
+
+    def update(i):
+        s = 0.2 * np.sin(4 * np.pi * ts[i])                     # the stretch, exaggerated
+        for (m1, m2), polar, bond, c1, c2, l1, l2, bar, trace, dot in parts:
+            p1, p2 = -0.6 - s * m2 / (m1 + m2), 0.6 + s * m1 / (m1 + m2)
+            bond.set_data([p1, p2], [0, 0])
+            c1.center, c2.center = (p1, 0), (p2, 0)
+            l1.set_position((p1, 0)); l2.set_position((p2, 0))
+            mu = 1 + 2.25 * s if polar else 0.0
+            bar.set_data([-0.62, -0.62 + 0.9 * mu], [0.72, 0.72])
+            sel = tt <= ts[i] + 1e-9
+            trace.set_data(tt[sel], (1 + 0.45 * np.sin(4 * np.pi * tt[sel])) if polar else 0 * tt[sel])
+            dot.set_data([ts[i]], [mu])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ where diatomic molecules absorb: hydrides high, heavy pairs low; hollow = IR inactive (still)
+@register
+def diatomic_ruler():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False, "axes.spines.left": False})
+    hyd = [("HF", 4138, 1, 1), ("HCl", 2991, 1, 1), ("HBr", 2649, 1, -1), ("HI", 2309, 1, 1), ("H$_2$", 4401, 0, -1)]
+    heavy = [("N$_2$", 2359, 0, 1), ("CO", 2170, 1, -1), ("NO", 1904, 1, 1), ("O$_2$", 1580, 0, -1),
+             ("Cl$_2$", 560, 0, 1), ("I$_2$", 215, 0, -1)]
+    fig, ax = plt.subplots(figsize=(9.6, 3.7))
+    for y, group in ((1.0, hyd), (0.0, heavy)):
+        ax.axhline(y, color="#dee2e6", lw=1, zorder=1)
+        for name, w, act, side in group:
+            ax.plot([w], [y], "o", ms=12, mfc=TEAL if act else "white", mec=TEAL, mew=2.2, zorder=3)
+            ax.text(w, y + 0.2 * side, name, ha="center", va="center", fontsize=12.5)
+    ax.text(4580, 1.0, "one H atom\n" + r"$\mu \approx 1$ u", ha="right", va="center", fontsize=11, color=GRAY)
+    ax.text(4580, 0.0, "two heavy atoms\n" + r"$\mu$ = 7 to 63 u", ha="right", va="center", fontsize=11, color=GRAY)
+    ax.annotate("", xy=(2309, 1.42), xytext=(4138, 1.42),
+                arrowprops=dict(arrowstyle="-|>", color=CARDINAL, lw=1.4, mutation_scale=14))
+    ax.text(3220, 1.52, "down the halogen group: weaker bond, lower wavenumber", ha="center", fontsize=11, color=CARDINAL)
+    ax.annotate("", xy=(560, -0.45), xytext=(2359, -0.45),
+                arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=1.4, mutation_scale=14))
+    ax.text(1460, -0.62, r"N$\equiv$N, O=O, Cl$-$Cl: bond order 3, 2, 1", ha="center", fontsize=11, color=PURPLE)
+    ax.plot([], [], "o", ms=10, mfc=TEAL, mec=TEAL, label="IR active: the dipole changes")
+    ax.plot([], [], "o", ms=10, mfc="white", mec=TEAL, mew=2, label="IR inactive: no dipole at any length")
+    ax.legend(loc="upper right", frameon=False, fontsize=11, bbox_to_anchor=(1.0, 1.18), ncol=2)
+    ax.set_xlim(4600, 0); ax.set_ylim(-0.8, 1.7); ax.set_yticks([])
+    ax.set_xlabel(r"harmonic wavenumber $\tilde{\nu}$ (cm$^{-1}$)", fontsize=11.5)
+    fig.subplots_adjust(left=0.17, right=0.99, top=0.88, bottom=0.16)
+    fig.savefig(f"{OUT}/diatomic_ruler.png", dpi=200)
+    print("wrote", f"{OUT}/diatomic_ruler.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ harmonic vs Morse ladder for HCl: equal steps forever vs shrinking steps and a last level (still)
+@register
+def morse_ladder():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    D, a, re, hw = 4.62, 1.87, 1.275, 0.3708                   # HCl: eV, 1/A, A, hbar omega in eV
+    xe = hw**2 / (4 * D)                                        # Morse anharmonicity (eV)
+    k = 2 * D * a * a
+    G = lambda v: hw * (v + 0.5) - xe * (v + 0.5)**2
+    turn = lambda E: (re - np.log(1 + np.sqrt(E / D)) / a, re - np.log(1 - np.sqrt(E / D)) / a)
+    r = np.linspace(0.8, 3.8, 700)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.6, 4.5), sharey=True, gridspec_kw={"wspace": 0.06})
+    ax1.plot(r, 0.5 * k * (r - re)**2, color=ORANGE, lw=2.4)
+    for v in range(15):
+        E = hw * (v + 0.5)
+        h = np.sqrt(2 * E / k)
+        ax1.hlines(E, re - h, re + h, color=TEAL if v < 3 else "#adb5bd", lw=1.6 if v < 3 else 1.0)
+    ax1.set_title("harmonic: equal steps forever,\nthe bond never comes apart", loc="left", fontsize=12, color=ORANGE)
+    ax2.plot(r, D * (1 - np.exp(-a * (r - re)))**2, color="k", lw=2.4)
+    vmax = int(hw / (2 * xe) - 0.5)                         # last level below the dissociation limit
+    for v in range(vmax + 1):
+        r1, r2 = turn(G(v))
+        ax2.hlines(G(v), r1, r2, color=TEAL if v < 3 else "#adb5bd", lw=1.6 if v < 3 else 1.0)
+    ax2.axhline(D, color=GRAY, lw=1, ls="--")
+    ax2.text(3.75, D + 0.08, "atoms apart", ha="right", va="bottom", fontsize=11, color=GRAY)
+    ax2.annotate("", xy=(3.15, D), xytext=(3.15, 0), arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.4, shrinkA=0, shrinkB=0))
+    ax2.text(3.2, D / 2, r"$D_e$", fontsize=13, color=CARDINAL, va="center")
+    ax2.annotate("", xy=(2.75, D), xytext=(2.75, G(0)), arrowprops=dict(arrowstyle="<->", color=PURPLE, lw=1.4, shrinkA=0, shrinkB=0))
+    ax2.text(2.8, D / 2 + 0.3, r"$D_0$", fontsize=13, color=PURPLE, va="center")
+    ax2.set_title("Morse: the steps shrink, a last level,\nthen dissociation", loc="left", fontsize=12)
+    for ax in (ax1, ax2):
+        ax.set_xlim(0.8, 3.8); ax.set_ylim(0, 5.3)
+        ax.set_xlabel(r"bond length $R$ ($\AA$)", fontsize=11.5)
+    ax1.set_ylabel("energy (eV)", fontsize=11.5)
+    fig.subplots_adjust(left=0.07, right=0.99, top=0.86, bottom=0.13)
+    fig.savefig(f"{OUT}/morse_ladder.png", dpi=200)
+    print("wrote", f"{OUT}/morse_ladder.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ HCl overtones: arrows on the anharmonic ladder and the lines they make (still)
+@register
+def hcl_overtones():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    we, wexe = 2990.0, 52.0                                     # cm^-1, from the fundamental and first overtone
+    G = lambda v: we * (v + 0.5) - wexe * (v + 0.5)**2
+    D, a, re = 37260.0, 1.87, 1.275                             # Morse well in cm^-1 for the drawing
+    turn = lambda E: (re - np.log(1 + np.sqrt(E / D)) / a, re - np.log(1 - np.sqrt(E / D)) / a)
+    lines = [(1, TEAL, "fundamental"), (2, ORANGE, "first overtone"), (3, PURPLE, "second overtone")]
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.4), gridspec_kw={"width_ratios": [1, 1.25], "wspace": 0.18})
+    r = np.linspace(0.95, 2.1, 400)
+    ax.plot(r, D * (1 - np.exp(-a * (r - re)))**2, color="k", lw=2.2)
+    for v in range(4):
+        r1, r2 = turn(G(v))
+        ax.hlines(G(v), r1, r2, color=GRAY, lw=1.4)
+        ax.text(r2 + 0.03, G(v), rf"$v = {v}$", va="center", fontsize=11)
+    for j, (v, col, name) in enumerate(lines):
+        x = 1.17 + 0.09 * j
+        ax.annotate("", xy=(x, G(v)), xytext=(x, G(0)),
+                    arrowprops=dict(arrowstyle="-|>", color=col, lw=2.2, mutation_scale=15, shrinkA=0, shrinkB=0))
+    ax.set_xlim(0.95, 2.1); ax.set_ylim(0, 11500); ax.set_xticks([])
+    ax.set_ylabel(r"energy (cm$^{-1}$)", fontsize=11.5)
+    ax.set_title("absorption from $v = 0$", loc="left", fontsize=12)
+    inten = [1.0, 2.5e-2, 6e-4]                                 # schematic: each overtone tens of times weaker
+    for (v, col, name), I in zip(lines, inten):
+        w = G(v) - G(0)
+        bx.vlines(w, 1e-4, I, color=col, lw=3.2)
+        bx.text(w, I * 1.6, f"{name}\n{w:.0f} cm$^{{-1}}$", ha="center", va="bottom", fontsize=11, color=col)
+    bx.set_yscale("log"); bx.set_ylim(1e-4, 20); bx.set_yticks([]); bx.minorticks_off()
+    bx.set_xlim(2000, 9400)
+    bx.set_xlabel(r"photon wavenumber (cm$^{-1}$)", fontsize=11.5)
+    bx.set_ylabel("absorption (log scale)", fontsize=11.5)
+    bx.set_title(r"not equally spaced: $2 \times 2886 = 5772$, not 5668", loc="left", fontsize=12)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.13)
+    fig.savefig(f"{OUT}/hcl_overtones.png", dpi=200)
+    print("wrote", f"{OUT}/hcl_overtones.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ CO2: the symmetric stretch keeps the dipole at zero; the other two modes make it swing
+@register
+def co2_modes():
+    from matplotlib.patches import Circle
+    nf = 36
+    ts = np.arange(nf) / nf
+    re, d = 1.0, 0.13                                           # bond (drawing units) and the oxygen amplitude
+    f = 2 * 16.0 / 12.0                                         # carbon moves this much more, to keep the center of mass
+    # displacements (x, y) of O1, C, O2 per unit amplitude; charges O -1, C +2
+    modes = [("symmetric stretch", 1388, 2, [(-1, 0), (0, 0), (1, 0)], False),
+             ("antisymmetric stretch", 2349, 3, [(1, 0), (-f, 0), (1, 0)], True),
+             ("bend (two of them)", 667, 1, [(0, -1), (0, f), (0, -1)], True)]
+    q = np.array([-1.0, 2.0, -1.0])
+    x0 = np.array([[-re, 0.0], [0.0, 0.0], [re, 0.0]])
+    fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.6))
+    parts = []
+    for ax, (name, wn, cyc, disp, active) in zip(axes, modes):
+        ax.set_xlim(-1.6, 1.6); ax.set_ylim(-1.0, 1.2); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(f"{name}\n{wn} cm$^{{-1}}$", fontsize=12.5, color=TEAL)
+        ax.text(0, -0.98, "dipole swings: IR active" if active else "dipole stays 0: IR inactive",
+                ha="center", va="bottom", fontsize=11.5, color=ORANGE if active else GRAY, weight="bold")
+        (b1,) = ax.plot([], [], color="#adb5bd", lw=5, zorder=2, solid_capstyle="round")
+        (b2,) = ax.plot([], [], color="#adb5bd", lw=5, zorder=2, solid_capstyle="round")
+        atoms = [Circle((0, 0), r, fc=c, ec="k", lw=1, zorder=3) for r, c in ((0.25, CARDINAL), (0.22, "#495057"), (0.25, CARDINAL))]
+        for c in atoms:
+            ax.add_patch(c)
+        arr = ax.annotate("", xy=(0, 0.62), xytext=(0, 0.62),
+                          arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=2.6, mutation_scale=16, shrinkA=0, shrinkB=0))
+        parts.append((np.array(disp, float), cyc, b1, b2, atoms, arr))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.84, bottom=0.02, wspace=0.05)
+
+    def update(i):
+        for disp, cyc, b1, b2, atoms, arr in parts:
+            pos = x0 + d * np.sin(2 * np.pi * cyc * ts[i]) * disp
+            for c, p in zip(atoms, pos):
+                c.center = tuple(p)
+            b1.set_data(pos[:2, 0], pos[:2, 1]); b2.set_data(pos[1:, 0], pos[1:, 1])
+            mu = (q[:, None] * pos).sum(axis=0) * 0.5           # the dipole, scaled for the drawing
+            base = np.array([0.0, 0.62])                        # drawn from a point above the carbon
+            arr.xy = tuple(base + mu); arr.set_position(tuple(base))
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=80, blit=False)
+    return fig, ani
+
+
+# ------------------------------------------------------------ group frequencies: where common bonds absorb (still)
+@register
+def group_frequencies():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False, "axes.spines.left": False})
+    bands = [("O-H", 3200, 3600, TEAL), ("N-H", 3300, 3500, TEAL), ("C-H", 2850, 3100, TEAL),
+             (r"C$\equiv$N", 2210, 2260, PURPLE), (r"C$\equiv$C", 2100, 2260, PURPLE),
+             ("C=O", 1650, 1780, ORANGE), ("C=C", 1620, 1680, ORANGE), ("C-O", 1000, 1300, GRAY)]
+    groups = [(0, 2, "stretches of a bond to H:\nthe light H atom", TEAL), (3, 4, "triple bonds:\nthe stiffest", PURPLE),
+              (5, 6, "double bonds", ORANGE), (7, 7, "single bonds", GRAY)]
+    fig, ax = plt.subplots(figsize=(9.6, 4.2))
+    ax.axvspan(1500, 400, color=GRAY, alpha=0.1, lw=0)
+    ax.text(950, -0.75, "fingerprint region:\nsingle bonds and bends,\nunique to each molecule", ha="center", va="top",
+            fontsize=10.5, color=GRAY)
+    n = len(bands)
+    for j, (name, lo, hi, col) in enumerate(bands):
+        y = n - 1 - j
+        ax.barh(y, hi - lo, left=lo, height=0.62, color=col, alpha=0.85)
+        ax.text(lo - 40, y, name, va="center", ha="left", fontsize=12, color="k")
+    for j0, j1, txt, col in groups:
+        ax.text(4520, n - 1 - (j0 + j1) / 2, txt, ha="left", va="center", fontsize=10.5, color=col)
+    ax.set_xlim(4550, 400); ax.set_ylim(-2.9, n - 0.4); ax.set_yticks([])
+    ax.set_xticks([4000, 3500, 3000, 2500, 2000, 1500, 1000, 500])
+    ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=11.5)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.97, bottom=0.13)
+    fig.savefig(f"{OUT}/group_frequencies.png", dpi=200)
+    print("wrote", f"{OUT}/group_frequencies.png")
+    return fig, None
+
+
+
+# ------------------------------------------------------------ coupled atoms, independent modes: CO2 stretches atom by atom vs mode by mode (still)
+@register
+def co2_decoupling():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    mO, mC, k = 16.0, 12.0, 1.0
+    m = np.array([mO, mC, mO])
+    K = k * np.array([[1, -1, 0], [-1, 2, -1], [0, -1, 1]])
+    w2, u = np.linalg.eigh(K / np.sqrt(np.outer(m, m)))
+    w = np.sqrt(np.clip(w2, 0, None))
+    u = u * np.sign(u[2])                                        # right oxygen moves +1 in every mode
+    x0 = np.array([-0.3, 0.0, 0.0])                             # pull the left oxygen outward and let go
+    q0 = np.sqrt(m) * x0
+    Q0 = u.T @ q0
+    Q0[0] = 0.0                                                 # drop the translation: the center of mass stays put
+    t = np.linspace(0, 4, 800)                                  # time in periods of the symmetric stretch
+    ph = 2 * np.pi * t * w[None, 1:].T / w[1]                   # phases of the two vibrations
+    Q = Q0[1:, None] * np.cos(ph)                               # each normal coordinate: one cosine
+    x = (u[:, 1:] @ Q) / np.sqrt(m)[:, None]                    # back to atom displacements
+    fig, (ax, bx) = plt.subplots(2, 1, figsize=(9.6, 4.8), sharex=True, gridspec_kw={"hspace": 0.45})
+    for xi, lab, col, ls in ((x[0], "left O", CARDINAL, "-"), (x[1], "C", "#495057", "-"), (x[2], "right O", CARDINAL, "--")):
+        ax.plot(t, xi, color=col, lw=2, ls=ls, label=lab)
+    ax.set_title("atom by atom: every displacement mixes two frequencies, and energy flows between the atoms",
+                 loc="left", fontsize=12)
+    ax.legend(loc="upper right", frameon=False, fontsize=11, ncol=3, bbox_to_anchor=(1.0, 1.02))
+    ax.set_ylabel("displacement", fontsize=11.5)
+    bx.plot(t, Q[0], color=TEAL, lw=2.4, label=r"$Q_{\mathrm{sym}}$: symmetric stretch")
+    bx.plot(t, Q[1], color=ORANGE, lw=2.4, label=r"$Q_{\mathrm{anti}}$: antisymmetric stretch")
+    bx.set_title(r"mode by mode, $Q_k = \mathbf{u}_k\cdot\mathbf{q}$: each is a single cosine, $\ddot{Q}_k = -\omega_k^2 Q_k$",
+                 loc="left", fontsize=12)
+    bx.legend(loc="upper right", frameon=False, fontsize=11, ncol=2, bbox_to_anchor=(1.0, 1.02))
+    bx.set_ylabel("normal coordinate", fontsize=11.5)
+    bx.set_xlabel("time (periods of the symmetric stretch)", fontsize=11.5)
+    for a in (ax, bx):
+        a.axhline(0, color=GRAY, lw=0.8); a.set_yticks([]); a.set_xlim(0, 4)
+        lo, hi = a.get_ylim(); a.set_ylim(lo, hi + 0.35 * (hi - lo))
+    fig.subplots_adjust(left=0.06, right=0.99, top=0.93, bottom=0.11)
+    fig.savefig(f"{OUT}/co2_decoupling.png", dpi=200)
+    print("wrote", f"{OUT}/co2_decoupling.png")
     return fig, None
 
 

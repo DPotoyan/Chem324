@@ -14,7 +14,7 @@ standard import header; animations end with `HTML(ani.to_jshtml())`, stills with
 """
 import importlib.util, inspect, re, sys, textwrap
 
-PAGES = ["ch04/01-molecular-degrees-of-freedom.md", "ch04/02-quantum-harmonic-oscillator.md"]
+PAGES = ["ch04/01-molecular-degrees-of-freedom.md", "ch04/02-quantum-harmonic-oscillator.md", "ch04/03-molecular-vibrations.md"]
 HEADER = (
     "import numpy as np\n"
     "import matplotlib.pyplot as plt\n"
