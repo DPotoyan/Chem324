@@ -175,13 +175,11 @@ Davit Potoyan
 <section id="one-energy-one-length" class="slide level2">
 <h2>One energy, one length</h2>
 <p><span class="math inline">\hat{H}</span> contains only <span class="math inline">\hbar</span>, <span class="math inline">\mu</span> and <span class="math inline">k</span>: they build <strong>one energy</strong> and <strong>one length</strong></p>
-<p><strong>Energy</strong>: a photon at the spring’s frequency, <span class="math inline">E = h\nu</span> from Chapter 1</p>
-<p><span class="math display">\hbar\omega = \hbar\sqrt{\frac{k}{\mu}}</span></p>
-<p><strong>Length</strong>: where squeezing costs as much as stretching, <span class="math inline">\hbar^2/\mu L^2 = kL^2</span></p>
-<p><span class="math display">L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}</span></p>
-<ul>
-<li>Every energy is a number times <span class="math inline">\hbar\omega</span>, every length a number times <span class="math inline">1/\sqrt{\alpha}</span></li>
-</ul>
+<p><strong>Energy</strong>: a photon at the spring’s frequency (<span class="math inline">E = h\nu</span>, Chapter 1): <span class="math inline">\quad\hbar\omega = \hbar\sqrt{k/\mu}</span></p>
+<p><strong>Length</strong>: where squeezing costs as much kinetic energy as stretching costs potential</p>
+<p><span class="math display">\frac{\hbar^2}{\mu L^2} = kL^2 \quad\Longrightarrow\quad L^4 = \frac{\hbar^2}{\mu k} = \frac{\hbar^2}{\mu\cdot\mu\omega^2} = \left(\frac{\hbar}{\mu\omega}\right)^2</span></p>
+<p>With <span class="math inline">k = \mu\omega^2</span> the right side is a <strong>square</strong>, and the fourth root of a square is a square root:</p>
+<p><span class="math display">L = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}</span></p>
 </section>
 <section id="example-the-two-scales-for-hcl" class="slide level2">
 <h2>Example: the two scales for HCl</h2>
@@ -210,15 +208,66 @@ Davit Potoyan
 </section>
 <section id="hermite-polynomials" class="slide level2">
 <h2>Hermite polynomials</h2>
-<p>In <span class="math inline">y = \sqrt{\alpha}\,x</span> the constants drop out: every oscillator is <strong>one problem</strong></p>
-<p><span class="math display">\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)</span></p>
+<p>In <span class="math inline">y = \sqrt{\alpha}\,x</span> the constants drop out, <span class="math inline">\;\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)</span>: every oscillator is <strong>one problem</strong></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">v</span></th>
 <th style="text-align: left;"><span class="math inline">H_v(y)</span></th>
-<th style="text-align: center;"><span class="math inline">E_v</span></th>
 <th style="text-align: center;">nodes</th>
+<th style="text-align: center;">parity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><span class="math inline">1</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">even</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span class="math inline">2y</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">odd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><span class="math inline">4y^2 - 2</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">even</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><span class="math inline">8y^3 - 12y</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">odd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><span class="math inline">16y^4 - 48y^2 + 12</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">even</td>
+</tr>
+</tbody>
+</table>
+<p>Each one from the two before it:</p>
+<p><span class="math display">H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)</span></p>
+</section>
+<section id="the-first-five-states-written-out" class="slide level2">
+<h2>The first five states, written out</h2>
+<p><span class="math display">\psi_v(x) = \left(\frac{\alpha}{\pi}\right)^{1/4} \times \frac{H_v(y)}{\sqrt{2^v v!}} \times e^{-y^2/2}, \qquad y = \sqrt{\alpha}\,x</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">v</span></th>
+<th style="text-align: left;">polynomial <span class="math inline">H_v(y)/\sqrt{2^v v!}</span></th>
+<th style="text-align: center;"><span class="math inline">E_v</span></th>
 </tr>
 </thead>
 <tbody>
@@ -226,30 +275,42 @@ Davit Potoyan
 <td style="text-align: center;">0</td>
 <td style="text-align: left;"><span class="math inline">1</span></td>
 <td style="text-align: center;"><span class="math inline">\frac{1}{2}\hbar\omega</span></td>
-<td style="text-align: center;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">1</td>
-<td style="text-align: left;"><span class="math inline">2y</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{2}\,y</span></td>
 <td style="text-align: center;"><span class="math inline">\frac{3}{2}\hbar\omega</span></td>
-<td style="text-align: center;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">2</td>
-<td style="text-align: left;"><span class="math inline">4y^2 - 2</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{\sqrt{2}}\left(2y^2 - 1\right)</span></td>
 <td style="text-align: center;"><span class="math inline">\frac{5}{2}\hbar\omega</span></td>
-<td style="text-align: center;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">3</td>
-<td style="text-align: left;"><span class="math inline">8y^3 - 12y</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{\sqrt{3}}\left(2y^3 - 3y\right)</span></td>
 <td style="text-align: center;"><span class="math inline">\frac{7}{2}\hbar\omega</span></td>
-<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{2\sqrt{6}}\left(4y^4 - 12y^2 + 3\right)</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{9}{2}\hbar\omega</span></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Every state: a <strong>polynomial times the same Gaussian</strong>, one more node per rung</li>
+<li>Degree <span class="math inline">v</span> means <span class="math inline">v</span> nodes; only even or only odd powers, so the states are even and odd in turn</li>
+</ul>
+</section>
+<section id="polynomial-times-gaussian" class="slide level2">
+<h2>Polynomial times Gaussian</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/hermite_build.png" class="quarto-figure quarto-figure-center" style="width:82.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The polynomial sets the <strong>nodes</strong> (its roots); the Gaussian makes the state <strong>die away</strong></li>
 </ul>
 </section>
 <section id="example-check-the-ground-state" class="slide level2">

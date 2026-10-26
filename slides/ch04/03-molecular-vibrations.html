@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="03-molecular-vibrations_files/libs/revealjs/dist/theme/quarto-a3fab78efecdd0f2a95cb3bafce70aed.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="03-molecular-vibrations_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="03-molecular-vibrations_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="03-molecular-vibrations_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,154 +163,350 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="bonds-as-springs" class="slide level2">
-<h2>Bonds as Springs</h2>
-<p>A vibrating bond is a <strong>quantized harmonic oscillator</strong>.</p>
-<div class="fragment">
-<ul>
-<li class="fragment">Energy levels are <strong>evenly spaced</strong>: <span class="math display">\[\tilde{E}_v = \tilde{\nu}\left(v + \frac{1}{2}\right), \qquad v = 0,1,2,\dots\]</span></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">A single transition energy, the <strong>fundamental</strong>: <span class="math display">\[\Delta \tilde{E}_v = \tilde{E}_{v+1} - \tilde{E}_{v} = \tilde{\nu}\]</span></li>
-</ul>
-</div>
-<div class="fragment">
-<blockquote>
-<p>Vibrations are <strong>quantized</strong>: this underlies infrared and Raman spectroscopy.</p>
-</blockquote>
-</div>
-</section>
-<section id="frequency-mass-and-bond-strength" class="slide level2">
-<h2>Frequency, Mass, and Bond Strength</h2>
-<p><span class="math display">\[\tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}\]</span></p>
-<ul>
-<li class="fragment"><p><strong>Force constant</strong> <span class="math inline">\(k\)</span>: stiffness of the bond</p></li>
-<li class="fragment"><p><strong>Reduced mass</strong> <span class="math inline">\(\mu\)</span> of the diatomic</p></li>
-<li class="fragment"><p>Typical range <strong>500 to 4000 cm<span class="math inline">\(^{-1}\)</span></strong></p></li>
-<li class="fragment"><p><strong>Strong, stiff bonds</strong> vibrate at higher frequency</p></li>
-<li class="fragment"><p><strong>Heavy atoms</strong> vibrate at lower frequency</p></li>
-</ul>
-</section>
-<section id="harmonic-approximation" class="slide level2">
-<h2>Harmonic Approximation</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<p><img data-src="../../ch04/images/De.png" style="width:90.0%"></p>
-</div><div class="column" style="width:52%;">
-<p>A parabola near the <strong>equilibrium</strong> bond length <span class="math inline">\(R_e\)</span>:</p>
-<p><span class="math display">\[E(R) = \frac{1}{2}k(R - R_e)^2\]</span></p>
-<ul>
-<li class="fragment"><p>It is the <strong>Taylor expansion</strong> of the true curve truncated at second order</p></li>
-<li class="fragment"><p>Good near the bottom of the well, but it <strong>never dissociates</strong></p></li>
-</ul>
-</div></div>
-</section>
-<section id="the-morse-potential" class="slide level2">
-<h2>The Morse Potential</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/unharm.png" style="width:95.0%"></p>
-</div><div class="column" style="width:50%;">
-<p>A realistic curve that <strong>dissociates</strong>:</p>
-<p><span class="math display">\[V(R)=D_e\left(1-e^{-a(R-R_e)}\right)^2\]</span></p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(D_e\)</span>: well depth from the <strong>minimum</strong></p></li>
-<li class="fragment"><p><span class="math inline">\(D_0 = D_e - \tfrac{1}{2}h\nu\)</span>: from the <strong>ground level</strong></p></li>
-<li class="fragment"><p>Levels <strong>converge</strong> as <span class="math inline">\(v\)</span> grows</p></li>
-</ul>
-</div></div>
-</section>
-<section id="anharmonic-energy-levels" class="slide level2">
-<h2>Anharmonic Energy Levels</h2>
-<p>Add higher-order terms so levels are <strong>no longer evenly spaced</strong>:</p>
-<p><span class="math display">\[\tilde{E}_v = \tilde{\nu}_e\left(v + \tfrac{1}{2}\right) - \tilde{\nu}_e x_e\left(v + \tfrac{1}{2}\right)^2 + \dots\]</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\tilde{\nu}_e\)</span>: vibrational wavenumber, <span class="math inline">\(x_e\)</span>: <strong>anharmonicity constant</strong></li>
-</ul>
-<div class="fragment">
-<ul>
-<li class="fragment">Transition energies <strong>shrink</strong> with <span class="math inline">\(v\)</span>: <span class="math display">\[\tilde{\nu}_{v\rightarrow v+1} = \tilde{\nu}_e\left[1 - 2x_e(v+1)\right]\]</span></li>
-</ul>
-</div>
-</section>
-<section id="normal-modes" class="slide level2">
-<h2>Normal Modes</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<p><img data-src="../../ch04/images/CO2_modes.jpg" style="width:95.0%"></p>
-</div><div class="column" style="width:52%;">
-<p>A polyatomic molecule’s motion resolves into <strong>independent normal modes</strong>.</p>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Linear</strong> molecules: <span class="math display">\[N_{modes} = 3N - 5\]</span></li>
-<li class="fragment"><strong>Nonlinear</strong> molecules: <span class="math display">\[N_{modes} = 3N - 6\]</span></li>
-</ul>
+<section id="from-the-ladder-to-a-spectrum" class="slide level2">
+<h2>From the ladder to a spectrum</h2>
+<p>A photon is absorbed when <span class="math inline">h\nu</span> <strong>matches a gap</strong>. Spectroscopists measure light in wavenumbers, <span class="math inline">\tilde{\nu} = 1/\lambda</span>:</p>
+<p><span class="math display">E = h\nu = \frac{hc}{\lambda} = hc\,\tilde{\nu}</span></p>
+<div class="keyeq">
+<p><span class="math display">G(v) = \frac{E_v}{hc} = \tilde{\nu}\left(v + \frac{1}{2}\right), \qquad \tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}</span></p>
 </div>
 <ul>
-<li class="fragment">Subtract translations and rotations from <span class="math inline">\(3N\)</span></li>
+<li>Lifting <span class="math inline">v \to v + 1</span> takes a photon of wavenumber <span class="math inline">\tilde{\nu}</span>: the bond’s <strong>own</strong> vibration</li>
 </ul>
-</div></div>
 </section>
-<section id="ir-selection-rule" class="slide level2">
-<h2>IR Selection Rule</h2>
-<p>A transition is <strong>allowed</strong> only if the <strong>dipole changes</strong> with bond length:</p>
-<p><span class="math display">\[\left( \frac{\partial \mu}{\partial x} \right)_{R_e} \neq 0\]</span></p>
-<div class="fragment">
+<section id="what-one-wavenumber-is-worth" class="slide level2">
+<h2>What one wavenumber is worth</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">quantity</th>
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">what it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;"><span class="math inline">1.24\times10^{-4}</span> eV <span class="math inline">= 0.0120</span> kJ/mol</td>
+<td style="text-align: left;">the conversion factor <span class="math inline">hc</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1 eV</td>
+<td style="text-align: left;">8066 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">chemical bonds: a few eV</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">k_BT</span> at 300 K</td>
+<td style="text-align: left;">208 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">below this, levels are warm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bond vibrations</td>
+<td style="text-align: left;">200 to 4400 cm<span class="math inline">^{-1}</span></td>
+<td style="text-align: left;">2.3 to 50 μm: the <strong>infrared</strong></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">And the quantum number changes by one: <span class="math display">\[\Delta v = \pm 1\]</span></li>
+<li>Italic <span class="math inline">v</span>: the quantum number. <span class="math inline">\tilde{\nu}</span> (“nu tilde”): the wavenumber</li>
 </ul>
-</div>
-<div class="fragment">
-<blockquote>
-<p>The transition probability <span class="math inline">\(P_{v\rightarrow v'} \sim \langle v | x | v' \rangle\)</span> vanishes unless both conditions hold.</p>
-</blockquote>
-</div>
 </section>
-<section id="ir-active-vs-inactive" class="slide level2">
-<h2>IR-Active vs Inactive</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<p><img data-src="../../ch04/images/selection_rule.jpg" style="width:95.0%"></p>
-</div><div class="column" style="width:52%;">
+<section id="example-the-hcl-line" class="slide level2">
+<h2>Example: the HCl line</h2>
+<div class="worked">
+<p>HCl absorbs at 2886 cm<span class="math inline">^{-1}</span>. Find the wavelength, frequency and photon energy, and compare with <span class="math inline">k_BT = 208</span> cm<span class="math inline">^{-1}</span>.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\lambda = \frac{1}{\tilde{\nu}} = 3.47\ \mu\text{m}, \qquad \nu = c\tilde{\nu} = 8.65\times10^{13}\ \text{Hz}</span></p>
+<p><span class="math display">E = hc\tilde{\nu} = 0.358\ \text{eV} = 34.5\ \text{kJ/mol} \approx 14\,k_BT</span></p>
+</div>
 <ul>
-<li class="fragment"><p><strong>Heteronuclear</strong> (HCl, CO): dipole changes, <strong>IR-active</strong></p></li>
-<li class="fragment"><p><strong>Homonuclear</strong> (H<span class="math inline">\(_2\)</span>, O<span class="math inline">\(_2\)</span>, N<span class="math inline">\(_2\)</span>): zero dipole, <strong>IR-inactive</strong></p></li>
-<li class="fragment"><p>IR-inactive stretches can still appear in the <strong>Raman</strong> spectrum</p></li>
+<li>The line sits below the harmonic 2990 cm<span class="math inline">^{-1}</span> of Lecture 4.2: <strong>anharmonicity</strong>, later today</li>
 </ul>
-</div></div>
+</section>
+<section id="light-pushes-on-the-dipole" class="slide level2">
+<h2>Light pushes on the dipole</h2>
+<p>Light’s electric field pushes <span class="math inline">+</span> and <span class="math inline">-</span> charges apart: it couples to the <strong>dipole moment</strong> <span class="math inline">M</span> (here <span class="math inline">\mu</span> is the reduced mass)</p>
+<p><span class="math display">M(x) = M_e + M'x + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}</span></p>
+<p><span class="math display">\langle v'|\hat{M}|v\rangle = M_e\,\langle v'|v\rangle + M'\,\langle v'|\hat{x}|v\rangle + \dots</span></p>
+<ul>
+<li>First term: <strong>zero</strong> by orthogonality. A permanent dipole alone does nothing</li>
+<li>Everything rests on <span class="math inline">M'</span>: the dipole must <strong>change</strong> as the bond stretches</li>
+</ul>
+</section>
+<section id="the-dipole-must-change" class="slide level2">
+<h2>The dipole must change</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/dipole_antenna.gif" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<ul>
+<li>A vibrating dipole is a tiny <strong>antenna</strong>. N<span class="math inline">_2</span> and O<span class="math inline">_2</span> (99% of air): no dipole, <strong>no infrared spectrum</strong></li>
+</ul>
+</section>
+<section id="selection-rules" class="slide level2">
+<h2>Selection rules</h2>
+<div class="keyeq">
+<p><span class="math display">\langle v'|\hat{M}|v\rangle \approx M'\,\langle v'|\hat{x}|v\rangle, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}</span></p>
+</div>
+<ol type="1">
+<li><strong>The dipole must change</strong>: <span class="math inline">M' \neq 0</span>. Homonuclear diatomics do not absorb</li>
+<li><strong>One rung at a time</strong> (Lecture 4.2): <span class="math inline">\langle v'|\hat{x}|v\rangle = 0</span> unless <span class="math inline">\Delta v = \pm 1</span></li>
+</ol>
+<ul>
+<li>At 300 K nearly every molecule starts in <span class="math inline">v = 0</span>: one strong line per vibration, the <strong>fundamental</strong></li>
+</ul>
+</section>
+<section id="stiffness-and-mass-set-the-wavenumber" class="slide level2">
+<h2>Stiffness and mass set the wavenumber</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/diatomic_ruler.png" class="quarto-figure quarto-figure-center" style="width:82.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\tilde{\nu} \propto \sqrt{k/\mu}</span>. Halides: same <span class="math inline">\mu</span>, weaker bonds down the group. Bond order: N<span class="math inline">\equiv</span>N &gt; O=O &gt; Cl<span class="math inline">-</span>Cl</li>
+</ul>
+</section>
+<section id="example-a-carbon-13-label" class="slide level2">
+<h2>Example: a carbon-13 label</h2>
+<div class="worked">
+<p><span class="math inline">^{12}</span>C<span class="math inline">^{16}</span>O absorbs at 2143 cm<span class="math inline">^{-1}</span>. Where does <span class="math inline">^{13}</span>C<span class="math inline">^{16}</span>O absorb? (Same <span class="math inline">k</span>: the electrons do not change.)</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\mu(^{12}\text{C}^{16}\text{O}) = 6.856\ \text{u}, \qquad \mu(^{13}\text{C}^{16}\text{O}) = 7.172\ \text{u}</span></p>
+<p><span class="math display">\tilde{\nu} = 2143\ \text{cm}^{-1}\times\sqrt{\frac{6.856}{7.172}} = 2095\ \text{cm}^{-1} \quad\text{(measured: 2096)}</span></p>
+</div>
+<ul>
+<li>A 48 cm<span class="math inline">^{-1}</span> shift: isotope labels <strong>tag one bond</strong> in a big molecule</li>
+</ul>
+</section>
+<section id="real-bonds-are-anharmonic" class="slide level2">
+<h2>Real bonds are anharmonic</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/morse_ladder.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The real well flattens toward dissociation: the steps <strong>shrink</strong>, and the ladder <strong>ends</strong></li>
+</ul>
+</section>
+<section id="the-anharmonic-oscillator" class="slide level2">
+<h2>The anharmonic oscillator</h2>
+<div class="keyeq">
+<p><span class="math display">G(v) = \tilde{\nu}_e\left(v + \frac{1}{2}\right) - \tilde{\nu}_ex_e\left(v + \frac{1}{2}\right)^2</span></p>
+<p><span class="math display">\tilde{\nu}_{0\to v} = v\,\tilde{\nu}_e - v(v + 1)\,\tilde{\nu}_ex_e</span></p>
+</div>
+<ul>
+<li><span class="math inline">\tilde{\nu}_e</span>: the harmonic wavenumber. <span class="math inline">x_e</span>: the anharmonicity, about 0.005 to 0.02</li>
+<li>The gaps shrink by <span class="math inline">2\tilde{\nu}_ex_e</span> per rung</li>
+<li>Breaking the bond from <span class="math inline">v = 0</span> costs <span class="math inline">D_0 = D_e - G(0)</span></li>
+</ul>
 </section>
 <section id="overtones" class="slide level2">
 <h2>Overtones</h2>
-<ul>
-<li class="fragment">Anharmonicity makes <strong>weak overtones</strong> appear: <span class="math inline">\(\Delta v = \pm 2, \pm 3, \dots\)</span></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\tilde{\nu}_{0\rightarrow v} = \tilde{\nu}_e \cdot v - \tilde{\nu}_e x_e \cdot v(v+1)\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/hcl_overtones.png" class="quarto-figure quarto-figure-center" style="width:74.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><p>Intensities <strong>fall off rapidly</strong> with each higher overtone</p></li>
-<li class="fragment"><p>At room temperature almost all molecules sit in <span class="math inline">\(v=0\)</span>, so only the <strong>fundamental</strong> dominates the spectrum</p></li>
+<li>Anharmonicity makes <span class="math inline">\Delta v = 2, 3</span> <strong>weakly allowed</strong>, each tens of times fainter</li>
+<li><strong>Hot bands</strong> start from <span class="math inline">v = 1</span>: faint at 300 K, stronger in a hot gas</li>
 </ul>
 </section>
-<section id="reading-an-ir-spectrum" class="slide level2">
-<h2>Reading an IR Spectrum</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../../ch04/images/IR-sp.png" style="width:100.0%"></p>
-</div><div class="column" style="width:45%;">
+<section id="example-hcl-constants-from-two-lines" class="slide level2">
+<h2>Example: HCl constants from two lines</h2>
+<div class="worked">
+<p>HCl: fundamental 2886 cm<span class="math inline">^{-1}</span>, first overtone 5668 cm<span class="math inline">^{-1}</span>. Find <span class="math inline">\tilde{\nu}_e</span> and <span class="math inline">\tilde{\nu}_ex_e</span>; predict the second overtone.</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\tilde{\nu}_e - 2\tilde{\nu}_ex_e = 2886, \qquad 2\tilde{\nu}_e - 6\tilde{\nu}_ex_e = 5668</span></p>
+<p><span class="math display">\tilde{\nu}_ex_e = 52\ \text{cm}^{-1}, \qquad \tilde{\nu}_e = 2990\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\tilde{\nu}_{0\to3} = 3(2990) - 12(52) = 8346\ \text{cm}^{-1}</span></p>
+<p>Measured: 8347 cm<span class="math inline">^{-1}</span>. And 2990 is the <span class="math inline">\hbar\omega</span> of Lecture 4.2.</p>
+</div>
+</section>
+<section id="one-oscillator-per-normal-mode" class="slide level2">
+<h2>One oscillator per normal mode</h2>
+<div class="keyeq">
+<p><span class="math display">G(v_1, v_2, \dots) = \sum_i \tilde{\nu}_i\left(v_i + \frac{1}{2}\right)</span></p>
+</div>
 <ul>
-<li class="fragment"><p>Each bond type absorbs in a <strong>characteristic region</strong></p></li>
-<li class="fragment"><p>Stiff bonds and light atoms sit at <strong>high wavenumber</strong></p></li>
-<li class="fragment"><p>A spectrum is a <strong>fingerprint</strong> of functional groups</p></li>
+<li><span class="math inline">3N - 6</span> modes (<span class="math inline">3N - 5</span> linear), each an <strong>independent</strong> oscillator: the energies add</li>
+<li>A mode absorbs only if <strong>its own motion</strong> changes the dipole</li>
+<li>Silent modes show up in <strong>Raman</strong> spectra, which sense the polarizability instead</li>
 </ul>
-</div></div>
+</section>
+<section id="co_2-which-modes-absorb" class="slide level2">
+<h2>CO<span class="math inline">_2</span>: which modes absorb?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/co2_modes.gif" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Symmetric stretch: the two halves <strong>cancel</strong> at every instant. Antisymmetric stretch and bend: the dipole <strong>swings</strong></li>
+</ul>
+</section>
+<section id="example-why-co_2-is-a-greenhouse-gas" class="slide level2">
+<h2>Example: why CO<span class="math inline">_2</span> is a greenhouse gas</h2>
+<div class="worked">
+<p>The Earth (288 K) radiates most strongly near 10 μm. N<span class="math inline">_2</span>, O<span class="math inline">_2</span> and CO<span class="math inline">_2</span>: which can absorb it?</p>
+</div>
+<div class="soln fragment">
+<p>N<span class="math inline">_2</span> and O<span class="math inline">_2</span>: no dipole at any length, <strong>transparent</strong>.</p>
+<p>CO<span class="math inline">_2</span> bend: <span class="math inline">1/(667\ \text{cm}^{-1}) = 15.0\ \mu\text{m}</span>, right inside the Earth’s emission. Antisymmetric stretch: 4.26 μm. Symmetric stretch: <strong>silent</strong>.</p>
+</div>
+<ul>
+<li>0.04% of the air, absorbing where the other 99% cannot</li>
+</ul>
+</section>
+<section id="reading-an-infrared-spectrum" class="slide level2">
+<h2>Reading an infrared spectrum</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/group_frequencies.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Bonds to H</strong> absorb highest: the light H atom, not a stiffer bond. Then triple, double, single</li>
+</ul>
+</section>
+<section id="proteins-the-amide-i-band" class="slide level2">
+<h2>Proteins: the amide I band</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/amide_modes.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The backbone C=O stretch near 1650 cm<span class="math inline">^{-1}</span> shifts with <strong>helix or sheet</strong>: infrared reads protein structure</li>
+</ul>
+</section>
+<section id="where-the-force-constant-matrix-comes-from" class="slide level2">
+<h2>Where the force-constant matrix comes from</h2>
+<p>One bond (Lecture 4.1): <span class="math inline">V \approx \frac{1}{2}kx^2</span> with <span class="math inline">k = V''</span>. Many atoms: Taylor in <strong>every</strong> displacement; at the minimum all slopes vanish:</p>
+<p><span class="math display">V \approx \frac{1}{2}\sum_{i,j} K_{ij}\,x_ix_j, \qquad K_{ij} = \frac{\partial^2 V}{\partial x_i\,\partial x_j}\ \ \text{(the Hessian)}</span></p>
+<p>CO<span class="math inline">_2</span> with one spring per bond:</p>
+<p><span class="math display">V = \tfrac{1}{2}k(x_2 - x_1)^2 + \tfrac{1}{2}k(x_3 - x_2)^2 \quad\Longrightarrow\quad K = k\begin{pmatrix} 1 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 1 \end{pmatrix}</span></p>
+<p>Newton: <span class="math inline">\;m_i\ddot{x}_i = -\sum_j K_{ij}x_j</span>. Off-diagonal entries <strong>couple</strong> the atoms</p>
+</section>
+<section id="look-for-a-mode-an-eigenvalue-problem" class="slide level2">
+<h2>Look for a mode: an eigenvalue problem</h2>
+<p>Weight by mass, <span class="math inline">q_i = \sqrt{m_i}\,x_i</span>: <span class="math inline">\quad\ddot{\mathbf{q}} = -F\mathbf{q}</span>, <span class="math inline">\quad F_{ij} = K_{ij}/\sqrt{m_im_j}</span> is <strong>symmetric</strong></p>
+<p><strong>Guess</strong> a normal mode: every atom in step, at one frequency, in fixed proportions <span class="math inline">\mathbf{u}</span></p>
+<p><span class="math display">\mathbf{q}(t) = \mathbf{u}\cos\omega t \quad\Longrightarrow\quad -\omega^2\,\mathbf{u}\cos\omega t = -F\mathbf{u}\cos\omega t</span></p>
+<div class="keyeq">
+<p><span class="math display">F\,\mathbf{u}_k = \omega_k^2\,\mathbf{u}_k</span></p>
+</div>
+<ul>
+<li>Eigenvectors: the mode <strong>shapes</strong>. Eigenvalues: <span class="math inline">\omega_k^2</span>. Six (five) zeros: translations, rotations</li>
+<li><span class="math inline">F</span> symmetric: the eigenvectors are <strong>perpendicular</strong>, <span class="math inline">\mathbf{u}_k\cdot\mathbf{u}_l = \delta_{kl}</span></li>
+</ul>
+</section>
+<section id="three-symbols" class="slide level2">
+<h2>Three symbols</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">what it is</th>
+<th style="text-align: center;">in time</th>
+<th style="text-align: left;">CO<span class="math inline">_2</span> example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\mathbf{q}(t)</span></td>
+<td style="text-align: left;">the <strong>configuration</strong>: every mass-weighted displacement</td>
+<td style="text-align: center;">changes</td>
+<td style="text-align: left;"><span class="math inline">(\sqrt{m_O}\,x_1,\ \sqrt{m_C}\,x_2,\ \sqrt{m_O}\,x_3)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\mathbf{u}_k</span></td>
+<td style="text-align: left;">mode <span class="math inline">k</span>: a fixed <strong>shape</strong>, an eigenvector of <span class="math inline">F</span></td>
+<td style="text-align: center;">fixed</td>
+<td style="text-align: left;"><span class="math inline">\mathbf{u}_{\text{sym}} = (-1, 0, 1)/\sqrt{2}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">Q_k(t)</span></td>
+<td style="text-align: left;"><strong>how much</strong> of mode <span class="math inline">k</span> is present, <span class="math inline">Q_k = \mathbf{u}_k\cdot\mathbf{q}</span></td>
+<td style="text-align: center;">changes</td>
+<td style="text-align: left;"><span class="math inline">Q_{\text{sym}} = A\cos\omega_{\text{sym}}t</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\mathbf{q}(t) = \sum_k Q_k(t)\,\mathbf{u}_k \qquad\text{like}\qquad \psi = \sum_n c_n\,\psi_n</span></p>
+<ul>
+<li>Configuration <span class="math inline">=</span> (how much) <span class="math inline">\times</span> (shape). The guess of the last slide: one <span class="math inline">Q_k = \cos\omega t</span>, the rest zero</li>
+</ul>
+</section>
+<section id="project-onto-the-modes-they-come-apart" class="slide level2">
+<h2>Project onto the modes: they come apart</h2>
+<p>Start from <span class="math inline">\mathbf{q} = \sum_k Q_k\,\mathbf{u}_k</span> and project Newton’s equation onto one axis <span class="math inline">\mathbf{u}_k</span>:</p>
+<p><span class="math display">\begin{aligned}
+\ddot{Q}_k &amp;= \mathbf{u}_k\cdot\ddot{\mathbf{q}} = -\mathbf{u}_k\cdot(F\mathbf{q}) &amp;&amp; \text{Newton} \\
+&amp;= -(F\mathbf{u}_k)\cdot\mathbf{q} &amp;&amp; F \text{ symmetric} \\
+&amp;= -\omega_k^2\,\mathbf{u}_k\cdot\mathbf{q} &amp;&amp; \text{eigenvector}
+\end{aligned}</span></p>
+<div class="keyeq">
+<p><span class="math display">\ddot{Q}_k = -\omega_k^2\,Q_k</span></p>
+</div>
+<ul>
+<li>Only <span class="math inline">Q_k</span> on the right: each mode is its <strong>own spring</strong>, whatever the others do</li>
+</ul>
+</section>
+<section id="the-hamiltonian-becomes-a-sum" class="slide level2">
+<h2>The Hamiltonian becomes a sum</h2>
+<p>Mass-weighted: kinetic <span class="math inline">\frac{1}{2}\dot{\mathbf{q}}\cdot\dot{\mathbf{q}}</span>, potential <span class="math inline">\frac{1}{2}\mathbf{q}\cdot F\mathbf{q}</span>. Insert <span class="math inline">\mathbf{q} = \sum_k Q_k\mathbf{u}_k</span>:</p>
+<p><span class="math display">\dot{\mathbf{q}}\cdot\dot{\mathbf{q}} = \sum_{k,l}\dot{Q}_k\dot{Q}_l\,\mathbf{u}_k\cdot\mathbf{u}_l = \sum_k\dot{Q}_k^2, \qquad \mathbf{q}\cdot F\mathbf{q} = \sum_{k,l}Q_kQ_l\,\omega_l^2\,\mathbf{u}_k\cdot\mathbf{u}_l = \sum_k\omega_k^2Q_k^2</span></p>
+<div class="keyeq">
+<p><span class="math display">H = \sum_k\left(\frac{1}{2}\dot{Q}_k^2 + \frac{1}{2}\omega_k^2Q_k^2\right) = \sum_k H_k</span></p>
+</div>
+<ul>
+<li><span class="math inline">\mathbf{u}_k\cdot\mathbf{u}_l = \delta_{kl}</span> kills <strong>every cross term</strong>, like the <span class="math inline">-kx_1x_2</span> that passes energy between atoms</li>
+<li>Quantum: <span class="math inline">\hat{H} = \sum_k\hat{H}_k</span>, so energies add, <span class="math inline">G = \sum_k\tilde{\nu}_k(v_k + \frac{1}{2})</span> (Lecture 4.1)</li>
+</ul>
+</section>
+<section id="co_2-coupled-atoms-independent-modes" class="slide level2">
+<h2>CO<span class="math inline">_2</span>: coupled atoms, independent modes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/co2_decoupling.png" class="quarto-figure quarto-figure-center" style="width:54.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\omega_{\text{sym}}^2 = \frac{k}{m_O}, \qquad \omega_{\text{anti}}^2 = \frac{k}{m_O}\left(1 + \frac{2m_O}{m_C}\right)</span></p>
+<ul>
+<li>Modes <span class="math inline">(-1, 0, 1)</span> and <span class="math inline">(1, -2.7, 1)</span>; frequency ratio 1.91 (measured 1.69)</li>
+</ul>
+</section>
+<section id="live-energy-in-atoms-and-in-modes" class="slide level2">
+<h2>Live: energy in atoms and in modes</h2>
+<div id="nm-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/normal_modes.mjs";
+  const opts = { fontSize: "18px", status: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("nm-live") });
+</script>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Bonds vibrate as quantized harmonic oscillators with <span class="math inline">\(\tilde{E}_v = \tilde{\nu}(v+\tfrac{1}{2})\)</span>; polyatomics split into <span class="math inline">\(3N-6\)</span> (or <span class="math inline">\(3N-5\)</span>) normal modes; a mode is IR-active only if the dipole changes, with <span class="math inline">\(\Delta v = \pm 1\)</span>; and the Morse potential captures the anharmonicity that lets molecules dissociate.</p>
+<p>An infrared spectrum reads the vibrational ladder in wavenumbers, <span class="math inline">G(v) = \tilde{\nu}(v + \frac{1}{2})</span> with <span class="math inline">\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}</span>. Light pushes on the <strong>dipole</strong>, so only vibrations that change it absorb, one rung at a time. Real bonds are <strong>anharmonic</strong>: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of <span class="math inline">F\mathbf{u} = \omega^2\mathbf{u}</span>; CO<span class="math inline">_2</span>’s bend absorbs the Earth’s infrared, N<span class="math inline">_2</span> and O<span class="math inline">_2</span> cannot.</p>
 </blockquote>
 
 </section>
@@ -319,7 +531,6 @@ Davit Potoyan
   <script src="03-molecular-vibrations_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="03-molecular-vibrations_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="03-molecular-vibrations_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03-molecular-vibrations_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -488,27 +699,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

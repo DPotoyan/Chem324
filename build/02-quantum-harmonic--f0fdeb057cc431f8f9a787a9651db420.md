@@ -34,10 +34,18 @@ $$
 Before solving anything, ask what sizes to expect. The Hamiltonian contains only three constants, $\hbar$, $\mu$ and $k$, and there is only one way to combine them into an energy and one way into a length. Every result below is a number times these two scales.
 
 - **Energy.** $\omega = \sqrt{k/\mu}$ is a rate (s$^{-1}$) and $\hbar$ is an action (J s), so $\hbar\omega$ is an energy. Since $\omega = 2\pi\nu$, it is $h\nu$: the energy of a photon at the frequency of the classical spring ([the photoelectric effect](../ch01/03-photoelectric-effect.md)). The solution below shows that it is also the gap between neighboring levels.
-- **Length.** Confining a quantum particle to a region of size $L$ costs kinetic energy of order $\hbar^2/\mu L^2$, as in the box of [Lecture 3.2](../ch03/02-particle-in-a-box.md), where $E \propto 1/L^2$. The spring stores potential energy of order $kL^2$ at a stretch $L$. Squeezing the state raises the first, letting it spread raises the second, and the two are equal when $\hbar^2/\mu L^2 = kL^2$:
+- **Length.** Confining a quantum particle to a region of size $L$ costs kinetic energy of order $\hbar^2/\mu L^2$, as in the box of [Lecture 3.2](../ch03/02-particle-in-a-box.md), where $E \propto 1/L^2$. The spring stores potential energy of order $kL^2$ at a stretch $L$. Squeezing the state raises the first, letting it spread raises the second. Set them equal and solve for $L$ in two steps.
+
+**Step 1: collect the powers of $L$.** Multiply both sides by $L^2$ and divide by $k$:
 
 $$
-L = \left(\frac{\hbar^2}{\mu k}\right)^{1/4} = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}, \qquad \alpha = \frac{\mu\omega}{\hbar}
+\frac{\hbar^2}{\mu L^2} = kL^2 \quad\Longrightarrow\quad L^4 = \frac{\hbar^2}{\mu k}
+$$
+
+**Step 2: take the fourth root.** It looks odd until you write $k = \mu\omega^2$ (the classical frequency $\omega = \sqrt{k/\mu}$). Then the right side is a perfect square, and the fourth root of a square is a square root:
+
+$$
+L^4 = \frac{\hbar^2}{\mu\cdot\mu\omega^2} = \left(\frac{\hbar}{\mu\omega}\right)^2 \quad\Longrightarrow\quad L = \sqrt{\frac{\hbar}{\mu\omega}} \equiv \frac{1}{\sqrt{\alpha}}, \qquad \alpha = \frac{\mu\omega}{\hbar}
 $$
 
 This is the size of the lowest vibrational states: how far the bond quivers. The section on zero-point energy makes this balance exact.
@@ -88,11 +96,64 @@ The polynomials are the **Hermite polynomials** $H_v$, written in the dimensionl
 | 4 | $16y^4 - 48y^2 + 12$ | $\frac{9}{2}\hbar\omega$ | 4 | even |
 
 - Each polynomial follows from the two before it by the **recursion** $H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)$. Check: $H_2 = 2y(2y) - 2(1)(1) = 4y^2 - 2$.
-- The two lowest states, normalized:
+- The polynomial and the Gaussian have separate jobs. The polynomial carries the shape: its $v$ roots become the $v$ nodes of $\psi_v$. The Gaussian makes the state die away far from the well, however fast the polynomial grows:
 
-$$
-\psi_0(x) = \left(\frac{\alpha}{\pi}\right)^{1/4}e^{-\alpha x^2/2}, \qquad \psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4}x\,e^{-\alpha x^2/2}
-$$
+```{code-cell} python
+:tags: [hide-input]
+# synced: hermite_build
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+y = np.linspace(-4.2, 4.2, 700)
+Hs = [np.ones_like(y), 2 * y, 4 * y**2 - 2, 8 * y**3 - 12 * y]
+names = [r"$H_0 = 1$", r"$H_1 = 2y$", r"$H_2 = 4y^2 - 2$", r"$H_3 = 8y^3 - 12y$"]
+roots = [[], [0.0], [-np.sqrt(0.5), np.sqrt(0.5)], [-np.sqrt(1.5), 0.0, np.sqrt(1.5)]]
+nodes = ["no node", "1 node", "2 nodes", "3 nodes"]
+fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.5), gridspec_kw={"hspace": 0.62, "wspace": 0.1})
+for v in range(4):
+    top, bot = axes[0, v], axes[1, v]
+    H = Hs[v]
+    s = np.abs(H[np.abs(y) <= 1.9]).max()                   # each panel on its own scale, set by the roots
+    top.axhline(0, color=GRAY, lw=0.8)
+    top.plot(y, H, color="k", lw=2.2)
+    top.plot(roots[v], [0] * len(roots[v]), "o", color=CARDINAL, ms=7, zorder=5)
+    top.set_ylim(-1.2 * s, 1.2 * s)
+    top.set_title(names[v], fontsize=12.5)
+    psi = H * np.exp(-y**2 / 2)
+    m = np.abs(psi).max()
+    bot.axhline(0, color=GRAY, lw=0.8)
+    bot.plot(y, psi, color=TEAL, lw=2.4)
+    bot.plot(roots[v], [0] * len(roots[v]), "o", color=CARDINAL, ms=7, zorder=5)
+    bot.set_ylim(-1.25 * m, 1.25 * m)
+    bot.set_title(rf"$\psi_{v}$: " + nodes[v], fontsize=12.5, color=TEAL)
+    for ax in (top, bot):
+        ax.set_xlim(-4.2, 4.2); ax.set_yticks([]); ax.set_xticks([-3, 0, 3])
+        ax.spines["left"].set_visible(False); ax.tick_params(labelsize=10)
+axes[0, 0].set_ylabel("polynomial", fontsize=11.5)
+axes[1, 0].set_ylabel("state", fontsize=11.5, color=TEAL)
+fig.text(0.5, 0.505, r"multiply by the Gaussian $e^{-y^2/2}$: the growth dies away, the roots (red) stay and become the nodes",
+         ha="center", va="center", fontsize=11.5, color=GRAY)
+fig.subplots_adjust(left=0.04, right=0.99, top=0.92, bottom=0.07)
+plt.show()
+```
+
+Fig. Top: the first four Hermite polynomials, each on its own vertical scale, with their roots in red. Bottom: the states $\psi_v \propto H_v(y)\,e^{-y^2/2}$. The Gaussian kills the growth of the polynomial at large $\lvert y\rvert$ and keeps its roots, which become the nodes of the state.
+
+- The first five states, written out. Each is the same Gaussian factor $(\alpha/\pi)^{1/4}e^{-y^2/2}$ times a polynomial, $H_v(y)/\sqrt{2^v v!}$, with $y = \sqrt{\alpha}\,x$:
+
+| $v$ | $\psi_v(x)$ | $E_v$ |
+|:-:|:--|:-:|
+| 0 | $\left(\frac{\alpha}{\pi}\right)^{1/4} e^{-y^2/2}$ | $\frac{1}{2}\hbar\omega$ |
+| 1 | $\left(\frac{\alpha}{\pi}\right)^{1/4} \sqrt{2}\,y\,e^{-y^2/2}$ | $\frac{3}{2}\hbar\omega$ |
+| 2 | $\left(\frac{\alpha}{\pi}\right)^{1/4} \frac{1}{\sqrt{2}}\left(2y^2 - 1\right)e^{-y^2/2}$ | $\frac{5}{2}\hbar\omega$ |
+| 3 | $\left(\frac{\alpha}{\pi}\right)^{1/4} \frac{1}{\sqrt{3}}\left(2y^3 - 3y\right)e^{-y^2/2}$ | $\frac{7}{2}\hbar\omega$ |
+| 4 | $\left(\frac{\alpha}{\pi}\right)^{1/4} \frac{1}{2\sqrt{6}}\left(4y^4 - 12y^2 + 3\right)e^{-y^2/2}$ | $\frac{9}{2}\hbar\omega$ |
+
+- Back in $x$, for example, $\psi_1(x) = \left(\frac{4\alpha^3}{\pi}\right)^{1/4}x\,e^{-\alpha x^2/2}$. Each polynomial has degree $v$, hence $v$ roots and $v$ nodes, and contains only even or only odd powers of $y$.
 
 :::{note} **Example: check the ground state**
 
