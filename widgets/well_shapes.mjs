@@ -219,7 +219,7 @@ function render({ model, el }) {
   const psiG = svg("g", {}, g);
   const curve = svg("path", { fill: "none", stroke: "var(--ws-fg)", "stroke-width": 2.6, "stroke-linejoin": "round" }, g);
   const dissocLab = svg("text", { "text-anchor": "end", "font-size": 14, style: "fill: var(--ws-red)" }, plot);
-  const key = svg("text", { x: PL + 12, y: PT + 18, "font-size": 14 }, plot);
+  const key = svg("text", { x: PL, y: PT - 12, "font-size": 14 }, plot);
 
   // ladder panel
   const head = (x, s, c) => { const t = svg("text", { x, y: PT - 12, "text-anchor": "middle", "font-size": 15, style: `fill: ${c}` }, plot); t.textContent = s; };
