@@ -71,39 +71,23 @@ $$\psi_v(x) = N_v\,H_v\!\left(\sqrt{\alpha}\,x\right)e^{-\alpha x^2/2}, \qquad \
 
 ## Hermite polynomials
 
-In $y = \sqrt{\alpha}\,x$ the constants drop out, $\;\hat{H} = \frac{\hbar\omega}{2}\left(-\frac{d^2}{dy^2} + y^2\right)$: every oscillator is **one problem**
-
-| $v$ | $H_v(y)$ | nodes | parity |
-|:-:|:--|:-:|:-:|
-| 0 | $1$ | 0 | even |
-| 1 | $2y$ | 1 | odd |
-| 2 | $4y^2 - 2$ | 2 | even |
-| 3 | $8y^3 - 12y$ | 3 | odd |
-| 4 | $16y^4 - 48y^2 + 12$ | 4 | even |
-
-Each one from the two before it:
-
-$$H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y)$$
-
-## The first five states, written out
-
 $$\psi_v(x) = \left(\frac{\alpha}{\pi}\right)^{1/4} \times \frac{H_v(y)}{\sqrt{2^v v!}} \times e^{-y^2/2}, \qquad y = \sqrt{\alpha}\,x$$
 
-| $v$ | polynomial $H_v(y)/\sqrt{2^v v!}$ | $E_v$ |
-|:-:|:--|:-:|
-| 0 | $1$ | $\frac{1}{2}\hbar\omega$ |
-| 1 | $\sqrt{2}\,y$ | $\frac{3}{2}\hbar\omega$ |
-| 2 | $\frac{1}{\sqrt{2}}\left(2y^2 - 1\right)$ | $\frac{5}{2}\hbar\omega$ |
-| 3 | $\frac{1}{\sqrt{3}}\left(2y^3 - 3y\right)$ | $\frac{7}{2}\hbar\omega$ |
-| 4 | $\frac{1}{2\sqrt{6}}\left(4y^4 - 12y^2 + 3\right)$ | $\frac{9}{2}\hbar\omega$ |
+| $v$ | $H_v(y)$ | normalized: $H_v(y)/\sqrt{2^v v!}$ |
+|:-:|:--|:--|
+| 0 | $1$ | $1$ |
+| 1 | $2y$ | $\sqrt{2}\,y$ |
+| 2 | $4y^2 - 2$ | $\frac{1}{\sqrt{2}}\left(2y^2 - 1\right)$ |
+| 3 | $8y^3 - 12y$ | $\frac{1}{\sqrt{3}}\left(2y^3 - 3y\right)$ |
+| 4 | $16y^4 - 48y^2 + 12$ | $\frac{1}{2\sqrt{6}}\left(4y^4 - 12y^2 + 3\right)$ |
 
-- Degree $v$ means $v$ nodes; only even or only odd powers, so the states are even and odd in turn
+$$H_{v+1}(y) = 2y\,H_v(y) - 2v\,H_{v-1}(y) \qquad \text{(each one from the two before it)}$$
 
 ## Polynomial times Gaussian
 
 ![](../../ch04/images/hermite_build.png){.nostretch width="82%" fig-align="center"}
 
-- The polynomial sets the **nodes** (its roots); the Gaussian makes the state **die away**
+- Multiply by the Gaussian: the growth **dies away**, the roots (red) stay and become the **nodes**
 
 ## Example: check the ground state
 
@@ -135,6 +119,22 @@ $$\psi_v(-x) = (-1)^v\,\psi_v(x)$$
 $$\langle x\rangle = \int\psi_v\,x\,\psi_v\,dx = 0, \qquad \langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0$$
 
 - But $\langle x^2\rangle,\ \langle p^2\rangle \neq 0$: the spreads carry the zero-point motion
+
+## Symmetry settles integrals
+
+The integrand of $\langle v'\vert\hat{A}\vert v\rangle$ has three factors: its parity is **bra $\times$ operator $\times$ ket**
+
+**Odd** operators flip a state's parity: $\hat{x}$, $\hat{p}$. **Even** operators keep it: $\hat{x}^2$, $\hat{p}^2$, $\hat{H}$
+
+| sandwich | integrand | integral | example |
+|:--|:-:|:-:|:--|
+| $\langle\text{even}\vert\,\text{odd}\,\vert\text{even}\rangle$ | odd | $0$ | $\langle 2\vert\hat{x}\vert 4\rangle = 0$ |
+| $\langle\text{odd}\vert\,\text{odd}\,\vert\text{odd}\rangle$ | odd | $0$ | $\langle 1\vert\hat{p}\vert 3\rangle = 0$ |
+| $\langle\text{even}\vert\,\text{even}\,\vert\text{odd}\rangle$ | odd | $0$ | $\langle 0\vert\hat{x}^2\vert 1\rangle = 0$ |
+| $\langle\text{even}\vert\,\text{odd}\,\vert\text{odd}\rangle$ | even | can survive | $\langle 2\vert\hat{x}\vert 3\rangle \neq 0$ |
+| $\langle\text{odd}\vert\,\text{even}\,\vert\text{odd}\rangle$ | even | can survive | $\langle 1\vert\hat{x}^2\vert 1\rangle \neq 0$ |
+
+- An **odd number of odd factors**: zero, no integral needed. So $\hat{x}$ links only states of **opposite parity**
 
 ## Orthogonal: by symmetry or by cancellation
 
@@ -184,7 +184,21 @@ $$E_0 = \tfrac{1}{2}\hbar\omega = 1495\ \text{cm}^{-1} = 0.185\ \text{eV}$$
 $$D_0 = D_e - E_0 = 4.62 - 0.19 = 4.43\ \text{eV} \quad\text{(measured: 4.43 eV)}$$
 :::
 
-- Heavier isotope, smaller $\omega$, **lower** zero-point energy: C-D bonds break more slowly than C-H
+- Bond-energy tables list $D_0$: zero-point energy is part of **every** bond and reaction energy
+
+## Example: the kinetic isotope effect
+
+::: {.worked}
+C-H stretch: 2900 cm$^{-1}$. C-D: same force constant, $\mu$ from 0.930 to 1.725 u. A reaction breaks this bond: how much slower is C-D at 300 K ($k_BT = 208$ cm$^{-1}$)?
+:::
+
+::: {.soln .fragment}
+$$\tilde{\nu}_{\text{CD}} = 2900\sqrt{\frac{0.930}{1.725}} = 2130\ \text{cm}^{-1}, \qquad \Delta E_0 = \tfrac{1}{2}(2900 - 2130) = 385\ \text{cm}^{-1}$$
+
+$$\frac{k_{\text{H}}}{k_{\text{D}}} \approx e^{385/208} \approx 6$$
+:::
+
+- C-D starts **lower in the same well**, so it needs more energy to reach the same barrier top
 
 ## Example: beyond the turning points
 
@@ -208,6 +222,8 @@ About **one time in six**: stretched where a classical spring could never reach.
 - Molecules sit in $v = 0$, the **most quantum** state
 
 ## Factor the Hamiltonian
+
+In $y = \sqrt{\alpha}\,x$ the constants drop out, and every oscillator is **one problem**:
 
 $$\hat{H} = \frac{\hbar\omega}{2}\left(y^2 - \frac{d^2}{dy^2}\right)$$
 
@@ -275,19 +291,16 @@ $$\langle v'|\hat{x}|v\rangle = 0 \quad\text{unless}\quad v' = v \pm 1$$
 - So light moves a harmonic bond **one rung at a time**: $\Delta v = \pm 1$, all at the same $\hbar\omega$
 - One strong infrared line per vibration. Overtones and anharmonicity: **Lecture 4.3**
 
-## Example: the kinetic isotope effect
+## Live: every well starts as a parabola
 
-::: {.worked}
-C-H stretch: 2900 cm$^{-1}$. C-D: same $k$, $\mu$ from 0.930 to 1.725 u. A reaction breaks this bond: how much slower is C-D at 300 K ($k_BT = 208$ cm$^{-1}$)?
-:::
-
-::: {.soln .fragment}
-$$\tilde{\nu}_{\text{CD}} = 2900\sqrt{\frac{0.930}{1.725}} = 2130\ \text{cm}^{-1}, \qquad \Delta E_0 = \tfrac{1}{2}(2900 - 2130) = 385\ \text{cm}^{-1}$$
-
-$$\frac{k_{\text{H}}}{k_{\text{D}}} \approx e^{385/208} \approx 6$$
-:::
-
-- C-D starts **lower in the same well**, so it needs more energy to reach the same barrier top
+```{=html}
+<div id="ws-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/well_shapes.mjs";
+  const opts = { fontSize: "18px", well: "double" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("ws-live") });
+</script>
+```
 
 # Takeaway {.center}
 

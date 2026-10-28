@@ -113,7 +113,7 @@ Hs = [np.ones_like(y), 2 * y, 4 * y**2 - 2, 8 * y**3 - 12 * y]
 names = [r"$H_0 = 1$", r"$H_1 = 2y$", r"$H_2 = 4y^2 - 2$", r"$H_3 = 8y^3 - 12y$"]
 roots = [[], [0.0], [-np.sqrt(0.5), np.sqrt(0.5)], [-np.sqrt(1.5), 0.0, np.sqrt(1.5)]]
 nodes = ["no node", "1 node", "2 nodes", "3 nodes"]
-fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.5), gridspec_kw={"hspace": 0.62, "wspace": 0.1})
+fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.2), gridspec_kw={"hspace": 0.45, "wspace": 0.1})
 for v in range(4):
     top, bot = axes[0, v], axes[1, v]
     H = Hs[v]
@@ -135,8 +135,6 @@ for v in range(4):
         ax.spines["left"].set_visible(False); ax.tick_params(labelsize=10)
 axes[0, 0].set_ylabel("polynomial", fontsize=11.5)
 axes[1, 0].set_ylabel("state", fontsize=11.5, color=TEAL)
-fig.text(0.5, 0.505, r"multiply by the Gaussian $e^{-y^2/2}$: the growth dies away, the roots (red) stay and become the nodes",
-         ha="center", va="center", fontsize=11.5, color=GRAY)
 fig.subplots_adjust(left=0.04, right=0.99, top=0.92, bottom=0.07)
 plt.show()
 ```
@@ -268,6 +266,20 @@ In every state $\psi_v$:
 - $\langle x\rangle = \int \psi_v\,x\,\psi_v\,dx = 0$, because $\lvert\psi_v\rvert^2$ is even and $x$ is odd. The oscillator is centered at the bottom of the well.
 - $\langle p\rangle = -i\hbar\int\psi_v\,\psi_v'\,dx = 0$, because $\psi_v'$ has the opposite symmetry to $\psi_v$, so the integrand is odd. Moving left and moving right are equally likely.
 - $\langle x^2\rangle$ and $\langle p^2\rangle$ are not zero: they are averages of quantities that are never negative. The spreads $\sigma_x$ and $\sigma_p$ carry the zero-point motion.
+
+The same rules settle matrix elements between two different states, $\langle v'|\hat{A}|v\rangle = \int\psi_{v'}\,\hat{A}\,\psi_v\,dx$. The integrand has three factors, bra, operator and ket, and its parity is the product of theirs. An **odd** operator flips the parity of the state it acts on: $\hat{x}$ multiplies by an odd function, and $\hat{p} = -i\hbar\,d/dx$ flips it by rule 3. An **even** operator keeps it: $\hat{x}^2$, $\hat{p}^2$ and $\hat{H}$.
+
+| sandwich | integrand | integral | example |
+|:--|:-:|:-:|:--|
+| $\langle\text{even}\vert\,\text{odd}\,\vert\text{even}\rangle$ | odd | $0$ | $\langle 2\vert\hat{x}\vert 4\rangle = 0$ |
+| $\langle\text{odd}\vert\,\text{odd}\,\vert\text{odd}\rangle$ | odd | $0$ | $\langle 1\vert\hat{p}\vert 3\rangle = 0$ |
+| $\langle\text{even}\vert\,\text{even}\,\vert\text{odd}\rangle$ | odd | $0$ | $\langle 0\vert\hat{x}^2\vert 1\rangle = 0$ |
+| $\langle\text{even}\vert\,\text{odd}\,\vert\text{odd}\rangle$ | even | can survive | $\langle 2\vert\hat{x}\vert 3\rangle \neq 0$ |
+| $\langle\text{odd}\vert\,\text{even}\,\vert\text{odd}\rangle$ | even | can survive | $\langle 1\vert\hat{x}^2\vert 1\rangle \neq 0$ |
+
+- An odd number of odd factors makes the integrand odd, and the integral is zero without computing anything.
+- An even integrand only *can* survive. $\langle 1|\hat{H}|3\rangle = E_3\langle 1|3\rangle$ has an even integrand and is still zero, by orthogonality: the lobes cancel, as in the figure below.
+- In particular $\hat{x}$ links only states of **opposite parity**, so in the harmonic oscillator light can change $v$ only by an odd number. The ladder operators at the end of this lecture narrow that to $\Delta v = \pm 1$.
 
 Eigenfunctions of a Hermitian operator with different eigenvalues are orthogonal ([Operators 2](../ch03/05-hermitian-operators-and-commutators.md)). Symmetry shows half of this at a glance:
 

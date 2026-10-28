@@ -633,7 +633,7 @@ def hermite_build():
     names = [r"$H_0 = 1$", r"$H_1 = 2y$", r"$H_2 = 4y^2 - 2$", r"$H_3 = 8y^3 - 12y$"]
     roots = [[], [0.0], [-np.sqrt(0.5), np.sqrt(0.5)], [-np.sqrt(1.5), 0.0, np.sqrt(1.5)]]
     nodes = ["no node", "1 node", "2 nodes", "3 nodes"]
-    fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.5), gridspec_kw={"hspace": 0.62, "wspace": 0.1})
+    fig, axes = plt.subplots(2, 4, figsize=(9.6, 4.2), gridspec_kw={"hspace": 0.45, "wspace": 0.1})
     for v in range(4):
         top, bot = axes[0, v], axes[1, v]
         H = Hs[v]
@@ -655,8 +655,6 @@ def hermite_build():
             ax.spines["left"].set_visible(False); ax.tick_params(labelsize=10)
     axes[0, 0].set_ylabel("polynomial", fontsize=11.5)
     axes[1, 0].set_ylabel("state", fontsize=11.5, color=TEAL)
-    fig.text(0.5, 0.505, r"multiply by the Gaussian $e^{-y^2/2}$: the growth dies away, the roots (red) stay and become the nodes",
-             ha="center", va="center", fontsize=11.5, color=GRAY)
     fig.subplots_adjust(left=0.04, right=0.99, top=0.92, bottom=0.07)
     fig.savefig(f"{OUT}/hermite_build.png", dpi=200)
     print("wrote", f"{OUT}/hermite_build.png")
