@@ -6,8 +6,8 @@
 <script src="03-molecular-vibrations_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="03-molecular-vibrations_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="03-molecular-vibrations_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03-molecular-vibrations_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.19">
+<link href="03-molecular-vibrations_files/libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.20">
 
   <meta name="author" content="Davit Potoyan">
   <title>Molecular Vibrations</title>
@@ -229,25 +229,71 @@ Davit Potoyan
 <li>The line sits below the harmonic 2990 cm<span class="math inline">^{-1}</span> of Lecture 4.2: <strong>anharmonicity</strong>, later today</li>
 </ul>
 </section>
-<section id="light-pushes-on-the-dipole" class="slide level2">
-<h2>Light pushes on the dipole</h2>
-<p>Light’s electric field pushes <span class="math inline">+</span> and <span class="math inline">-</span> charges apart: it couples to the <strong>dipole moment</strong> <span class="math inline">M</span> (here <span class="math inline">\mu</span> is the reduced mass)</p>
-<p><span class="math display">M(x) = M_e + M'x + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}</span></p>
-<p><span class="math display">\langle v'|\hat{M}|v\rangle = M_e\,\langle v'|v\rangle + M'\,\langle v'|\hat{x}|v\rangle + \dots</span></p>
-<ul>
-<li>First term: <strong>zero</strong> by orthogonality. A permanent dipole alone does nothing</li>
-<li>Everything rests on <span class="math inline">M'</span>: the dipole must <strong>change</strong> as the bond stretches</li>
-</ul>
-</section>
-<section id="the-dipole-must-change" class="slide level2">
-<h2>The dipole must change</h2>
+<section id="same-gap-opposite-fate" class="slide level2">
+<h2>Same gap, opposite fate</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch04/images/dipole_antenna.gif" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+<p><img data-src="../../ch04/images/dipole_antenna.gif" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 <ul>
-<li>A vibrating dipole is a tiny <strong>antenna</strong>. N<span class="math inline">_2</span> and O<span class="math inline">_2</span> (99% of air): no dipole, <strong>no infrared spectrum</strong></li>
+<li>N<span class="math inline">_2</span> (2330 cm<span class="math inline">^{-1}</span>) and HCl (2886 cm<span class="math inline">^{-1}</span>): both mid-infrared. Air is transparent, HCl <strong>absorbs</strong></li>
+<li>Matching <span class="math inline">h\nu</span> to a gap is the <strong>tuning</strong>. The swinging dipole is the <strong>antenna</strong></li>
+</ul>
+</section>
+<section id="light-pushes-on-the-dipole" class="slide level2">
+<h2>Light pushes on the dipole</h2>
+<p>The field is uniform across the molecule (<span class="math inline">\lambda \approx 3</span> μm, bond <span class="math inline">\approx 0.1</span> nm). It pushes <span class="math inline">+</span> and <span class="math inline">-</span> apart, so it couples to the <strong>dipole</strong> <span class="math inline">M</span> (here <span class="math inline">\mu</span> is the reduced mass):</p>
+<p><span class="math display">U = -M(x)\,\mathcal{E}, \qquad F = -\frac{dU}{dx} = M'(x)\,\mathcal{E}</span></p>
+<ul>
+<li>The handle on the bond is the <strong>slope</strong> <span class="math inline">M'</span>, not <span class="math inline">M</span> itself</li>
+<li>N<span class="math inline">_2</span>, O<span class="math inline">_2</span> (99% of air): <span class="math inline">M = 0</span> at every length, so <span class="math inline">M' = 0</span>. <strong>No handle</strong></li>
+</ul>
+</section>
+<section id="a-stationary-state-is-not-an-antenna" class="slide level2">
+<h2>A stationary state is not an antenna</h2>
+<p>An eigenstate’s density never moves. Mix two levels (real <span class="math inline">c</span>’s and <span class="math inline">\psi</span>’s):</p>
+<p><span class="math display">|\Psi|^2 = c_v^2\psi_v^2 + c_{v'}^2\psi_{v'}^2 + 2c_vc_{v'}\,\psi_v\psi_{v'}\cos\omega_{v'v}t</span></p>
+<div class="keyeq">
+<p><span class="math display">\begin{aligned}\langle M\rangle(t) = c_v^2\,\langle v|\hat{M}|v\rangle &amp;+ c_{v'}^2\,\langle v'|\hat{M}|v'\rangle \\ &amp;+ 2c_vc_{v'}\,\langle v'|\hat{M}|v\rangle\cos\omega_{v'v}t\end{aligned}</span></p>
+</div>
+<ul>
+<li>Only the cross term swings, at the <strong>gap</strong> frequency. Its amplitude is the <strong>transition dipole</strong></li>
+</ul>
+</section>
+<section id="two-readings-of-langle-vhatmvrangle" class="slide level2">
+<h2>Two readings of <span class="math inline">\langle v'|\hat{M}|v\rangle</span></h2>
+<ol type="1">
+<li><strong>The size of the antenna</strong>: zero means no swing, and light cannot drive <span class="math inline">v \to v'</span></li>
+<li><strong>A projection</strong> (Lecture 3.6): the field multiplies <span class="math inline">\psi_v</span> by <span class="math inline">M(x)</span>, and <span class="math inline">\langle v'|\hat{M}|v\rangle</span> is how much <span class="math inline">\psi_{v'}</span> the kicked function holds</li>
+</ol>
+<p><span class="math display">\text{absorption rate} \;\propto\; |\langle v'|\hat{M}|v\rangle|^2</span></p>
+<ul>
+<li>Derived in Chapter 6. Lecture 3.7 met it in a box: parity removed <span class="math inline">\omega_{31}</span></li>
+</ul>
+</section>
+<section id="each-term-of-the-dipole-has-one-job" class="slide level2">
+<h2>Each term of the dipole has one job</h2>
+<p><span class="math display">M(x) = M_e + M'x + \tfrac{1}{2}M''x^2 + \dots</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/dipole_kick.png" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">M_e</span>: orthogonality, nothing. <span class="math inline">M'x</span>: one rung. <span class="math inline">\frac{1}{2}M''x^2</span>: two rungs, <strong>weak</strong></li>
+</ul>
+</section>
+<section id="slosh-or-breathe" class="slide level2">
+<h2>Slosh or breathe</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/dipole_slosh.gif" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\psi_0 + \psi_1</span> <strong>sloshes</strong> at <span class="math inline">\omega</span>: <span class="math inline">\langle x\rangle</span> swings, so <span class="math inline">M'x</span> has a handle</li>
+<li><span class="math inline">\psi_0 + \psi_2</span> <strong>breathes</strong> at <span class="math inline">2\omega</span>: only <span class="math inline">M''</span> feels it. A weak <strong>overtone</strong></li>
 </ul>
 </section>
 <section id="selection-rules" class="slide level2">
@@ -506,7 +552,7 @@ Davit Potoyan
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>An infrared spectrum reads the vibrational ladder in wavenumbers, <span class="math inline">G(v) = \tilde{\nu}(v + \frac{1}{2})</span> with <span class="math inline">\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}</span>. Light pushes on the <strong>dipole</strong>, so only vibrations that change it absorb, one rung at a time. Real bonds are <strong>anharmonic</strong>: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of <span class="math inline">F\mathbf{u} = \omega^2\mathbf{u}</span>; CO<span class="math inline">_2</span>’s bend absorbs the Earth’s infrared, N<span class="math inline">_2</span> and O<span class="math inline">_2</span> cannot.</p>
+<p>An infrared spectrum reads the vibrational ladder in wavenumbers, <span class="math inline">G(v) = \tilde{\nu}(v + \frac{1}{2})</span> with <span class="math inline">\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}</span>. Light pushes on the <strong>dipole</strong>: a superposition of two levels swings at the gap frequency with amplitude <span class="math inline">\langle v'|\hat{M}|v\rangle</span>, so only vibrations that change the dipole absorb, one rung at a time. Real bonds are <strong>anharmonic</strong>: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of <span class="math inline">F\mathbf{u} = \omega^2\mathbf{u}</span>; CO<span class="math inline">_2</span>’s bend absorbs the Earth’s infrared, N<span class="math inline">_2</span> and O<span class="math inline">_2</span> cannot.</p>
 </blockquote>
 
 </section>
