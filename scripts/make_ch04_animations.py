@@ -861,6 +861,8 @@ def x_matrix():
 # ============================================================ lecture 4.3: molecular vibrations
 # Wavenumbers in cm^-1. HCl uses the Morse well of Lecture 4.1 (D = 4.62 eV, a = 1.87 1/A) for shapes and the
 # measured lines (2886, 5668, 8347 cm^-1; nu_e = 2990, nu_e x_e = 52) for positions.
+# dipole_slosh is deck-only: page ch04/03 shows the same slosh-or-breathe idea live with widgets/transition_dipole.mjs.
+# dipole_kick and dipole_slosh use units hbar = mu = omega = 1, x in units of 1/sqrt(alpha).
 
 # ------------------------------------------------------------ light pushes on a dipole: HCl's dipole swings with the stretch, N2 has none
 @register
@@ -922,6 +924,128 @@ def dipole_antenna():
 
     ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
     return fig, ani
+
+
+# ------------------------------------------------------------ what each term of the dipole does to psi_0: the kicked function and its components (still)
+@register
+def dipole_kick():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 1201)                            # units of 1/sqrt(alpha)
+    dx = x[1] - x[0]
+    nv = 5
+    psi = np.zeros((nv, x.size))                                # normalized oscillator states, filled by the recursion
+    psi[0] = np.pi ** -0.25 * np.exp(-x ** 2 / 2)
+    psi[1] = np.sqrt(2) * x * psi[0]
+    for v in range(1, nv - 1):
+        psi[v + 1] = np.sqrt(2 / (v + 1)) * x * psi[v] - np.sqrt(v / (v + 1)) * psi[v - 1]
+    cols = [(np.ones_like(x), r"constant term $M_e$", r"$1\cdot\psi_0 = \psi_0$", None,
+             r"$\langle v'|1|0\rangle$: no transition"),
+            (x, r"linear term $M'x$", r"$x\,\psi_0 = \frac{1}{\sqrt{2}}\,\psi_1$", (1, r"$\frac{1}{\sqrt{2}}\psi_1$"),
+             r"$\langle v'|x|0\rangle$: only $0 \to 1$"),
+            (x ** 2, r"quadratic term $\frac{1}{2}M''x^2$", r"$x^2\psi_0 = \frac{1}{2}\psi_0 + \frac{1}{\sqrt{2}}\,\psi_2$",
+             (2, r"$\frac{1}{\sqrt{2}}\psi_2$"), r"$\langle v'|x^2|0\rangle$: $0 \to 2$ too")]
+    fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.1), gridspec_kw={"height_ratios": [1.2, 1], "hspace": 0.78, "wspace": 0.2})
+    for j, (f, head, ident, part, verdict) in enumerate(cols):
+        ax, bx = axes[0, j], axes[1, j]
+        kick = f * psi[0]
+        comp = psi @ kick * dx                                  # <v'| f |0> for v' = 0..4
+        ax.axhline(0, color=GRAY, lw=0.8)
+        ax.plot(x, psi[0], color=GRAY, lw=1.6, ls="--")
+        ax.plot(x, kick, color=ORANGE, lw=2.6)
+        if part is not None:
+            ax.plot(x, comp[part[0]] * psi[part[0]], color=TEAL, lw=2.2, ls=(0, (1.5, 1.8)))
+            ax.text(1.9, 0.5, part[1], color=TEAL, fontsize=13)
+        ax.set_xlim(-4, 4); ax.set_ylim(-0.5, 0.8); ax.set_yticks([]); ax.set_xticks([])
+        ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+        ax.set_title(head + "\n" + ident, loc="left", fontsize=13, linespacing=1.6)
+        bx.bar(np.arange(nv), comp, width=0.6, color=[PURPLE] + [ORANGE] * (nv - 1))
+        for v in range(nv):
+            if abs(comp[v]) > 0.005:
+                bx.text(v, comp[v] + 0.05, f"{comp[v]:.2f}", ha="center", va="bottom", fontsize=12,
+                        color=PURPLE if v == 0 else ORANGE)
+        bx.axhline(0, color=GRAY, lw=0.8)
+        bx.set_ylim(0, 1.3); bx.set_yticks([]); bx.spines["left"].set_visible(False)
+        bx.set_xticks(range(nv)); bx.tick_params(labelsize=12)
+        bx.set_xlabel(r"$v'$", fontsize=13, labelpad=0)
+        bx.set_title(verdict, loc="left", fontsize=13)
+    axes[0, 1].text(-1.9, 0.66, r"$\psi_0$", color=GRAY, fontsize=13)
+    axes[0, 0].text(1.35, 0.52, "after the kick", color=ORANGE, fontsize=12.5)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.84, bottom=0.11)
+    fig.savefig(f"{OUT}/dipole_kick.png", dpi=200)
+    print("wrote", f"{OUT}/dipole_kick.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the absorbing superposition: psi_0 + psi_1 sloshes at omega, psi_0 + psi_2 breathes at 2 omega
+@register
+def dipole_slosh():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 901)                             # units of 1/sqrt(alpha); omega = 1
+    dx = x[1] - x[0]
+    psi0 = np.pi ** -0.25 * np.exp(-x ** 2 / 2)
+    psi1 = np.sqrt(2) * x * psi0
+    psi2 = (2 * x ** 2 - 1) / np.sqrt(2) * psi0
+    nf = 36
+    ts = 2 * np.pi * np.arange(nf) / nf                         # one loop = one period of the vibration
+    tt = np.linspace(0, 2 * np.pi, 400)
+    cases = [(psi1, 1, r"$\psi_0 + \psi_1$: the density sloshes at $\omega$",
+              r"$\langle x\rangle$ swings at $\omega$: a dipole $M'x$ follows"),
+             (psi2, 2, r"$\psi_0 + \psi_2$: the density breathes at $2\omega$",
+              r"$\langle x\rangle$ stays put; the width swings at $2\omega$")]
+    fig, axes = plt.subplots(2, 2, figsize=(9.6, 4.6), gridspec_kw={"height_ratios": [1.3, 1], "hspace": 0.55, "wspace": 0.14})
+    parts = []
+    for (ax, bx), (pv, n, t1, t2) in zip(axes.T, cases):
+        dens = lambda t, pv=pv, n=n: 0.5 * (psi0 ** 2 + pv ** 2) + psi0 * pv * np.cos(n * t)
+        a1 = np.sum(x * psi0 * pv) * dx                         # <v'|x|0>: amplitude of <x>(t)
+        a2 = np.sum(x ** 2 * psi0 * pv) * dx                    # <v'|x^2|0>: amplitude of the width's swing
+        ax.plot(x, psi0 ** 2, color=GRAY, lw=1.2, ls=":")
+        ax.axhline(0, color=GRAY, lw=0.8)
+        (line,) = ax.plot([], [], color=TEAL, lw=2.2)
+        (mark,) = ax.plot([], [], color=ORANGE, lw=2.4)
+        (dot,) = ax.plot([], [], "o", color=ORANGE, ms=7, clip_on=False)
+        ax.set_xlim(-4, 4); ax.set_ylim(0, 0.95); ax.set_yticks([]); ax.set_xticks([])
+        ax.spines["left"].set_visible(False)
+        ax.set_xlabel(r"stretch $x$", fontsize=11.5)
+        ax.set_title(t1, loc="left", fontsize=12.5)
+        bx.axhline(0, color=GRAY, lw=0.8)
+        bx.plot(tt / (2 * np.pi), a1 * np.cos(n * tt), color="#f3d9b8", lw=1.8)
+        bx.plot(tt / (2 * np.pi), a2 * np.cos(n * tt), color="#ddd0ea", lw=1.8, ls="--")
+        (tr1,) = bx.plot([], [], color=ORANGE, lw=2.4, label=r"$\langle x\rangle$")
+        (tr2,) = bx.plot([], [], color=PURPLE, lw=2.2, ls="--", label=r"$\langle x^2\rangle$ about its mean")
+        (d1,) = bx.plot([], [], "o", color=ORANGE, ms=6)
+        (d2,) = bx.plot([], [], "o", color=PURPLE, ms=6)
+        bx.set_xlim(0, 1); bx.set_ylim(-0.95, 0.95); bx.set_yticks([]); bx.set_xticks([])
+        bx.spines["bottom"].set_visible(False)
+        bx.set_xlabel("time, one vibration period", fontsize=11.5)
+        bx.set_title(t2, loc="left", fontsize=12.5)
+        parts.append(dict(ax=ax, dens=dens, n=n, a1=a1, a2=a2, line=line, mark=mark, dot=dot,
+                          tr1=tr1, tr2=tr2, d1=d1, d2=d2, poly=None))
+    axes[1, 0].legend(loc="upper center", frameon=False, fontsize=10.5, ncol=2)
+    axes[0, 0].text(-3.9, 0.6, "ground state", color=GRAY, fontsize=10.5)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.92, bottom=0.08)
+
+    def update(i):
+        t = ts[i]
+        sel = tt <= t + 1e-9
+        for p in parts:
+            d = p["dens"](t)
+            if p["poly"] is not None:
+                p["poly"].remove()
+            p["poly"] = p["ax"].fill_between(x, 0, d, color=TEAL, alpha=0.25, lw=0)
+            p["line"].set_data(x, d)
+            xm = p["a1"] * np.cos(p["n"] * t)                   # <x>(t)
+            p["mark"].set_data([xm, xm], [0, 0.85])
+            p["dot"].set_data([xm], [0])
+            p["tr1"].set_data(tt[sel] / (2 * np.pi), p["a1"] * np.cos(p["n"] * tt[sel]))
+            p["tr2"].set_data(tt[sel] / (2 * np.pi), p["a2"] * np.cos(p["n"] * tt[sel]))
+            p["d1"].set_data([t / (2 * np.pi)], [xm])
+            p["d2"].set_data([t / (2 * np.pi)], [p["a2"] * np.cos(p["n"] * t)])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+dipole_slosh.fps = 12
 
 
 # ------------------------------------------------------------ where diatomic molecules absorb: hydrides high, heavy pairs low; hollow = IR inactive (still)

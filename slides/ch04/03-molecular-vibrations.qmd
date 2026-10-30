@@ -58,22 +58,57 @@ $$E = hc\tilde{\nu} = 0.358\ \text{eV} = 34.5\ \text{kJ/mol} \approx 14\,k_BT$$
 
 - The line sits below the harmonic 2990 cm$^{-1}$ of Lecture 4.2: **anharmonicity**, later today
 
+## Same gap, opposite fate
+
+![](../../ch04/images/dipole_antenna.gif){.nostretch width="70%" fig-align="center"}
+
+- N$_2$ (2330 cm$^{-1}$) and HCl (2886 cm$^{-1}$): both mid-infrared. Air is transparent, HCl **absorbs**
+- Matching $h\nu$ to a gap is the **tuning**. The swinging dipole is the **antenna**
+
 ## Light pushes on the dipole
 
-Light's electric field pushes $+$ and $-$ charges apart: it couples to the **dipole moment** $M$ (here $\mu$ is the reduced mass)
+The field is uniform across the molecule ($\lambda \approx 3$ μm, bond $\approx 0.1$ nm). It pushes $+$ and $-$ apart, so it couples to the **dipole** $M$ (here $\mu$ is the reduced mass):
 
-$$M(x) = M_e + M'x + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}$$
+$$U = -M(x)\,\mathcal{E}, \qquad F = -\frac{dU}{dx} = M'(x)\,\mathcal{E}$$
 
-$$\langle v'|\hat{M}|v\rangle = M_e\,\langle v'|v\rangle + M'\,\langle v'|\hat{x}|v\rangle + \dots$$
+- The handle on the bond is the **slope** $M'$, not $M$ itself
+- N$_2$, O$_2$ (99% of air): $M = 0$ at every length, so $M' = 0$. **No handle**
 
-- First term: **zero** by orthogonality. A permanent dipole alone does nothing
-- Everything rests on $M'$: the dipole must **change** as the bond stretches
+## A stationary state is not an antenna
 
-## The dipole must change
+An eigenstate's density never moves. Mix two levels (real $c$'s and $\psi$'s):
 
-![](../../ch04/images/dipole_antenna.gif){.nostretch width="76%" fig-align="center"}
+$$|\Psi|^2 = c_v^2\psi_v^2 + c_{v'}^2\psi_{v'}^2 + 2c_vc_{v'}\,\psi_v\psi_{v'}\cos\omega_{v'v}t$$
 
-- A vibrating dipole is a tiny **antenna**. N$_2$ and O$_2$ (99% of air): no dipole, **no infrared spectrum**
+::: {.keyeq}
+$$\begin{aligned}\langle M\rangle(t) = c_v^2\,\langle v|\hat{M}|v\rangle &+ c_{v'}^2\,\langle v'|\hat{M}|v'\rangle \\ &+ 2c_vc_{v'}\,\langle v'|\hat{M}|v\rangle\cos\omega_{v'v}t\end{aligned}$$
+:::
+
+- Only the cross term swings, at the **gap** frequency. Its amplitude is the **transition dipole**
+
+## Two readings of $\langle v'|\hat{M}|v\rangle$
+
+1. **The size of the antenna**: zero means no swing, and light cannot drive $v \to v'$
+2. **A projection** (Lecture 3.6): the field multiplies $\psi_v$ by $M(x)$, and $\langle v'|\hat{M}|v\rangle$ is how much $\psi_{v'}$ the kicked function holds
+
+$$\text{absorption rate} \;\propto\; |\langle v'|\hat{M}|v\rangle|^2$$
+
+- Derived in Chapter 6. Lecture 3.7 met it in a box: parity removed $\omega_{31}$
+
+## Each term of the dipole has one job
+
+$$M(x) = M_e + M'x + \tfrac{1}{2}M''x^2 + \dots$$
+
+![](../../ch04/images/dipole_kick.png){.nostretch width="76%" fig-align="center"}
+
+- $M_e$: orthogonality, nothing. $M'x$: one rung. $\frac{1}{2}M''x^2$: two rungs, **weak**
+
+## Slosh or breathe
+
+![](../../ch04/images/dipole_slosh.gif){.nostretch width="70%" fig-align="center"}
+
+- $\psi_0 + \psi_1$ **sloshes** at $\omega$: $\langle x\rangle$ swings, so $M'x$ has a handle
+- $\psi_0 + \psi_2$ **breathes** at $2\omega$: only $M''$ feels it. A weak **overtone**
 
 ## Selection rules
 
@@ -278,4 +313,4 @@ $$\omega_{\text{sym}}^2 = \frac{k}{m_O}, \qquad \omega_{\text{anti}}^2 = \frac{k
 
 # Takeaway {.center}
 
-> An infrared spectrum reads the vibrational ladder in wavenumbers, $G(v) = \tilde{\nu}(v + \frac{1}{2})$ with $\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}$. Light pushes on the **dipole**, so only vibrations that change it absorb, one rung at a time. Real bonds are **anharmonic**: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of $F\mathbf{u} = \omega^2\mathbf{u}$; CO$_2$'s bend absorbs the Earth's infrared, N$_2$ and O$_2$ cannot.
+> An infrared spectrum reads the vibrational ladder in wavenumbers, $G(v) = \tilde{\nu}(v + \frac{1}{2})$ with $\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}$. Light pushes on the **dipole**: a superposition of two levels swings at the gap frequency with amplitude $\langle v'|\hat{M}|v\rangle$, so only vibrations that change the dipole absorb, one rung at a time. Real bonds are **anharmonic**: the steps shrink, the bond can break, and weak overtones appear. A polyatomic molecule is a set of independent oscillators, one per normal mode, found as the eigenvectors of $F\mathbf{u} = \omega^2\mathbf{u}$; CO$_2$'s bend absorbs the Earth's infrared, N$_2$ and O$_2$ cannot.

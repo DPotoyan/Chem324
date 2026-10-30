@@ -9,7 +9,7 @@ kernelspec:
 :::{note} **What you need to know**
 
 - An infrared spectrum measures the vibrational ladder of [Lecture 4.2](02-quantum-harmonic-oscillator.md). Spectroscopists write energies as wavenumbers, $G(v) = E_v/hc = \tilde{\nu}\left(v + \frac{1}{2}\right)$ with $\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}$, and a photon is absorbed when its wavenumber matches a gap.
-- Light pushes on charges, so a vibration absorbs only if it changes the dipole moment: N$_2$ and O$_2$ are invisible in the infrared. In the harmonic approximation it climbs one rung at a time, $\Delta v = \pm 1$. At room temperature nearly every molecule starts in $v = 0$, so each vibration gives one strong line, the **fundamental**.
+- Light pushes on charges, so a vibration absorbs only if it changes the dipole moment: N$_2$ and O$_2$ are invisible in the infrared. A molecule absorbs through a superposition of two levels, whose dipole swings at the gap frequency with amplitude $\langle v'|\hat{M}|v\rangle$, the **transition dipole**. In the harmonic approximation that is nonzero only one rung at a time, $\Delta v = \pm 1$. At room temperature nearly every molecule starts in $v = 0$, so each vibration gives one strong line, the **fundamental**.
 - The wavenumber reports stiffness and mass: bonds to hydrogen and triple bonds absorb high, heavy atoms and single bonds low. An isotope keeps $k$ and shifts the line by the square root of the mass ratio.
 - Real bonds are anharmonic: $G(v) = \tilde{\nu}_e\left(v + \frac{1}{2}\right) - \tilde{\nu}_ex_e\left(v + \frac{1}{2}\right)^2$. The steps shrink, the bond can dissociate, and weak **overtones** ($\Delta v = 2, 3$) appear. Two measured lines are enough to find $\tilde{\nu}_e$ and $x_e$.
 - A polyatomic molecule is a set of independent oscillators, one per normal mode. A mode absorbs only if its motion changes the dipole: the symmetric stretch of CO$_2$ is silent, its bend and antisymmetric stretch absorb, and that makes CO$_2$ a greenhouse gas. The modes themselves are the eigenvectors of the mass-weighted force-constant matrix, $F\mathbf{u} = \omega^2\mathbf{u}$.
@@ -63,24 +63,19 @@ The line sits a little below the harmonic wavenumber of HCl, 2990 cm$^{-1}$ ($\h
 
 ### Which transitions light can drive
 
+Start with a puzzle. N$_2$ vibrates at 2330 cm$^{-1}$ and HCl at 2886 cm$^{-1}$. Both lie in the middle of the infrared, and both ladders have rungs spaced to match an infrared photon. Yet the air, mostly N$_2$, is transparent to that light, while HCl gas absorbs it strongly. Matching the photon to a gap is only the tuning. Something else decides whether the molecule can take the photon at all.
+
 #### Light pushes on the dipole
 
-Light is an oscillating electric field. It acts on a molecule by pushing its positive and negative charges in opposite directions, and for a molecule much smaller than the wavelength that push couples to the **dipole moment** $M$. (Chemistry texts often write the dipole moment as $\mu$, but here $\mu$ is the reduced mass, and a lowercase $d$ would look like a differential.)
+Light is an oscillating electric field, written $\mathcal{E}$ here because $E$ is an energy. Its wavelength, a few micrometers, is about $3\times10^4$ times the length of the HCl bond. So the field is uniform across the molecule, and it does the one thing a uniform field can do: push positive charges one way and negative charges the other. It therefore couples to the **dipole moment** $M$, with energy $-M\mathcal{E}$. (Chemistry texts often write the dipole moment as $\mu$, but here $\mu$ is the reduced mass, and a lowercase $d$ would look like a differential.)
 
-The strength of a transition $v \to v'$ is proportional to the square of the **transition dipole** $\langle v'|\hat{M}|v\rangle$. The dipole depends on the bond length, so expand it about $R_e$ in the stretch $x = R - R_e$:
-
-$$
-M(x) = M_e + M'x + \frac{1}{2}M''x^2 + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}
-$$
-
-Sandwich it between two vibrational states:
+The dipole depends on the bond length: $M(x)$, with $x = R - R_e$ the stretch. The force the field exerts on the stretch is
 
 $$
-\langle v'|\hat{M}|v\rangle = M_e\langle v'|v\rangle + M'\langle v'|\hat{x}|v\rangle + \dots
+F = -\frac{d}{dx}\Big(-M(x)\,\mathcal{E}\Big) = M'(x)\,\mathcal{E}
 $$
 
-- The first term is zero for $v' \neq v$: the states are orthogonal. A permanent dipole alone cannot drive a vibrational transition.
-- Everything rests on the second term. The dipole must **change** as the bond stretches, $M' \neq 0$. A vibrating dipole is a tiny antenna: it oscillates at the vibration frequency and couples to light at that frequency.
+The field's handle on the bond is the **slope** of the dipole, not the dipole itself. A vibrating bond with $M' \neq 0$ is a tiny antenna: its dipole oscillates at the vibration frequency and couples to light at that frequency.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -153,12 +148,132 @@ HTML(ani.to_jshtml())
 
 Fig. Top: HCl vibrating, with the partial charges $\delta+$ on H and $\delta-$ on Cl. Its dipole (orange bar) grows and shrinks with the bond length, so $M(t)$ oscillates about its equilibrium value $M_e$; that oscillation couples to light. Bottom: N$_2$ has no dipole at any bond length, so there is nothing for the light to push on. The stretch is exaggerated.
 
-- A **homonuclear** diatomic (H$_2$, N$_2$, O$_2$) is symmetric at every bond length, so $M = 0$ always and $M' = 0$. It has no infrared spectrum. N$_2$ and O$_2$, 99% of the air, are transparent to infrared light.
+- A **homonuclear** diatomic (H$_2$, N$_2$, O$_2$) is symmetric at every bond length, so $M = 0$ always and $M' = 0$: the field has no handle on the bond. N$_2$ and O$_2$, 99% of the air, are transparent to infrared light. That settles the puzzle. Raman spectra, later in this lecture, still see them: they sense the polarizability, which does change as N$_2$ stretches.
 - A **heteronuclear** diatomic (HCl, CO, NO) always has some $M' \neq 0$, and absorbs.
+
+#### A stationary state is not an antenna
+
+The classical picture says what to look for: a dipole that oscillates. An energy eigenstate cannot supply one. Its density $|\psi_v|^2$ never changes in time ([Lecture 3.7](../ch03/07-time-dependence.md)), so its average dipole is constant. A molecule that absorbs a photon passes through a superposition of the two levels, and Lecture 3.7 showed that a superposition moves at the Bohr frequencies. Apply that result to the dipole. Take real coefficients and the real oscillator states:
+
+$$
+\Psi(x, t) = c_v\,\psi_v\,e^{-iE_vt/\hbar} + c_{v'}\,\psi_{v'}\,e^{-iE_{v'}t/\hbar}
+$$
+
+The density has two constant parts and one cross term, whose two phases combine into a cosine ($e^{i\theta} + e^{-i\theta} = 2\cos\theta$):
+
+$$
+|\Psi|^2 = c_v^2\,\psi_v^2 + c_{v'}^2\,\psi_{v'}^2 + 2c_vc_{v'}\,\psi_v\psi_{v'}\cos\omega_{v'v}t, \qquad \omega_{v'v} = \frac{E_{v'} - E_v}{\hbar}
+$$
+
+Weight it by the dipole and integrate, $\langle M\rangle = \int M(x)\,|\Psi|^2\,dx$:
+
+:::{important} **Absorption needs a swinging dipole**
+
+$$
+\langle M\rangle(t) = c_v^2\,\langle v|\hat{M}|v\rangle + c_{v'}^2\,\langle v'|\hat{M}|v'\rangle + 2c_vc_{v'}\,\langle v'|\hat{M}|v\rangle\cos\omega_{v'v}t
+$$
+
+- The first two terms are the constant dipoles of the two levels. Only the cross term oscillates, at exactly the frequency that matches the gap.
+- Its amplitude is the **transition dipole** $\langle v'|\hat{M}|v\rangle = \int \psi_{v'}\,M(x)\,\psi_v\,dx$. The rate of absorption is proportional to its square ([Chapter 6](../ch06/03-time-dependent-perturbation-and-selection-rules.md)).
+:::
+
+Two readings of the same integral are worth keeping:
+
+- **The size of the antenna.** If $\langle v'|\hat{M}|v\rangle = 0$, the dipole of the mixed state never swings. Light at $\omega_{v'v}$ has nothing to push on, and it can never move a molecule from $v$ to $v'$.
+- **A projection.** The field enters the energy as $-\mathcal{E}\hat{M}$, so it acts on a state by multiplying $\psi_v$ by $M(x)$. Expand the result in oscillator states as in [Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md): the coefficient of $\psi_{v'}$ is $\langle v'|\hat{M}|v\rangle$. The light can feed only the states that this kicked function contains.
+
+The same integral decided which lines an electron in a box can emit in Lecture 3.7, where parity removed the frequency $\omega_{31}$. Here it decides which rungs light can climb.
+
+#### Each term of the dipole has one job
+
+Expand the dipole about $R_e$:
+
+$$
+M(x) = M_e + M'x + \frac{1}{2}M''x^2 + \dots, \qquad M' = \left(\frac{\partial M}{\partial x}\right)_{R_e}
+$$
+
+Sandwich it between two vibrational states:
+
+$$
+\langle v'|\hat{M}|v\rangle = M_e\,\langle v'|v\rangle + M'\,\langle v'|\hat{x}|v\rangle + \frac{1}{2}M''\,\langle v'|\hat{x}^2|v\rangle + \dots
+$$
+
+- **The permanent dipole** $M_e$ gives $\langle v'|v\rangle = 0$ for $v' \neq v$, by orthogonality. Multiplying by a constant leaves the state where it was, so a permanent dipole alone cannot drive a vibrational transition.
+- **The slope** $M'$ is the force term of the classical picture. By Lecture 4.2, $\hat{x} = (\hat{a} + \hat{a}^\dagger)/\sqrt{2\alpha}$ moves one rung up or down, so this term drives only $v \to v \pm 1$. From the ground state, $x\psi_0$ is $\psi_1$ itself, times $1/\sqrt{2\alpha}$.
+- **The curvature** $M''$ multiplies $x^2$, which moves up to two rungs. It allows $0 \to 2$, but $M''$ is small, so the line is weak. Together with the anharmonic states later in this lecture, it produces the overtones.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: dipole_kick
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(-4.5, 4.5, 1201)                            # units of 1/sqrt(alpha)
+dx = x[1] - x[0]
+nv = 5
+psi = np.zeros((nv, x.size))                                # normalized oscillator states, filled by the recursion
+psi[0] = np.pi ** -0.25 * np.exp(-x ** 2 / 2)
+psi[1] = np.sqrt(2) * x * psi[0]
+for v in range(1, nv - 1):
+    psi[v + 1] = np.sqrt(2 / (v + 1)) * x * psi[v] - np.sqrt(v / (v + 1)) * psi[v - 1]
+cols = [(np.ones_like(x), r"constant term $M_e$", r"$1\cdot\psi_0 = \psi_0$", None,
+         r"$\langle v'|1|0\rangle$: no transition"),
+        (x, r"linear term $M'x$", r"$x\,\psi_0 = \frac{1}{\sqrt{2}}\,\psi_1$", (1, r"$\frac{1}{\sqrt{2}}\psi_1$"),
+         r"$\langle v'|x|0\rangle$: only $0 \to 1$"),
+        (x ** 2, r"quadratic term $\frac{1}{2}M''x^2$", r"$x^2\psi_0 = \frac{1}{2}\psi_0 + \frac{1}{\sqrt{2}}\,\psi_2$",
+         (2, r"$\frac{1}{\sqrt{2}}\psi_2$"), r"$\langle v'|x^2|0\rangle$: $0 \to 2$ too")]
+fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.1), gridspec_kw={"height_ratios": [1.2, 1], "hspace": 0.78, "wspace": 0.2})
+for j, (f, head, ident, part, verdict) in enumerate(cols):
+    ax, bx = axes[0, j], axes[1, j]
+    kick = f * psi[0]
+    comp = psi @ kick * dx                                  # <v'| f |0> for v' = 0..4
+    ax.axhline(0, color=GRAY, lw=0.8)
+    ax.plot(x, psi[0], color=GRAY, lw=1.6, ls="--")
+    ax.plot(x, kick, color=ORANGE, lw=2.6)
+    if part is not None:
+        ax.plot(x, comp[part[0]] * psi[part[0]], color=TEAL, lw=2.2, ls=(0, (1.5, 1.8)))
+        ax.text(1.9, 0.5, part[1], color=TEAL, fontsize=13)
+    ax.set_xlim(-4, 4); ax.set_ylim(-0.5, 0.8); ax.set_yticks([]); ax.set_xticks([])
+    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False)
+    ax.set_title(head + "\n" + ident, loc="left", fontsize=13, linespacing=1.6)
+    bx.bar(np.arange(nv), comp, width=0.6, color=[PURPLE] + [ORANGE] * (nv - 1))
+    for v in range(nv):
+        if abs(comp[v]) > 0.005:
+            bx.text(v, comp[v] + 0.05, f"{comp[v]:.2f}", ha="center", va="bottom", fontsize=12,
+                    color=PURPLE if v == 0 else ORANGE)
+    bx.axhline(0, color=GRAY, lw=0.8)
+    bx.set_ylim(0, 1.3); bx.set_yticks([]); bx.spines["left"].set_visible(False)
+    bx.set_xticks(range(nv)); bx.tick_params(labelsize=12)
+    bx.set_xlabel(r"$v'$", fontsize=13, labelpad=0)
+    bx.set_title(verdict, loc="left", fontsize=13)
+axes[0, 1].text(-1.9, 0.66, r"$\psi_0$", color=GRAY, fontsize=13)
+axes[0, 0].text(1.35, 0.52, "after the kick", color=ORANGE, fontsize=12.5)
+fig.subplots_adjust(left=0.02, right=0.99, top=0.84, bottom=0.11)
+plt.show()
+```
+
+Fig. What each term of the dipole does to the ground state, in units with $\alpha = 1$. Top: multiplying $\psi_0$ (gray dashed) by 1, $x$ or $x^2$ gives the orange function. $x\psi_0$ lies exactly on $\psi_1/\sqrt{2}$ (teal dotted), and $x^2\psi_0$ is $\frac{1}{2}\psi_0$ plus $\psi_2/\sqrt{2}$. Bottom: the components $\langle v'|\cdot|0\rangle$ of each result. The purple bar ($v' = 0$) leaves the molecule where it was; the orange bars are transitions.
+
+#### Slosh or breathe
+
+The widget shows the antenna at work. It mixes $v = 0$ with a higher level $v'$ and draws the density, the dipole function $M(x)$, and the swing of $\langle M\rangle(t)$. Switch the terms of $M(x)$ on and off and watch which lines light up.
+
+```{anywidget} ../widgets/transition_dipole.mjs
+{}
+```
+
+- $\psi_0 + \psi_1$ **sloshes** from side to side at $\omega$. Only a tilted $M(x)$ turns the slosh into a swinging dipole: the fundamental needs $M' \neq 0$.
+- $\psi_0 + \psi_2$ **breathes**. Its width swings at $2\omega$ while its center stays put, so a straight $M(x)$ has nothing to grab. Only the curvature $M''$ feels the width, and the overtone is weak because $M''$ is small.
+- $\psi_0 + \psi_3$ moves too, but neither $x$ nor $x^2$ reaches three rungs. In a real bond, $0 \to 3$ comes from the anharmonic states and is weaker still.
+- The quantum frequencies are the classical ones. The fundamental is the bond's own vibration frequency $\omega$. The overtone at $2\omega$ is the second harmonic that a classical spring would radiate if its dipole had a curvature, since $x^2 = A^2\cos^2\omega t = \frac{1}{2}A^2(1 + \cos 2\omega t)$.
 
 #### One rung at a time
 
-Lecture 4.2 showed that position connects only neighboring levels: $\langle v'|\hat{x}|v\rangle = 0$ unless $v' = v \pm 1$. So the second term allows only one-rung jumps, and in a harmonic bond every allowed jump absorbs the same wavenumber $\tilde{\nu}$.
+The slope term is by far the largest, so keep it alone. Position connects only neighboring levels, $\langle v'|\hat{x}|v\rangle = 0$ unless $v' = v \pm 1$, so in a harmonic bond light climbs one rung at a time, and every allowed jump absorbs the same wavenumber $\tilde{\nu}$.
 
 :::{important} **Selection rules for vibrational absorption**
 
