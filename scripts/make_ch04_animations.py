@@ -861,7 +861,9 @@ def x_matrix():
 # ============================================================ lecture 4.3: molecular vibrations
 # Wavenumbers in cm^-1. HCl uses the Morse well of Lecture 4.1 (D = 4.62 eV, a = 1.87 1/A) for shapes and the
 # measured lines (2886, 5668, 8347 cm^-1; nu_e = 2990, nu_e x_e = 52) for positions.
-# dipole_slosh is deck-only: page ch04/03 shows the same slosh-or-breathe idea live with widgets/transition_dipole.mjs.
+# dipole_area and rung_area are deck-only (deck 4.3 "Light needs a transition dipole" and "Selection rules": the
+# transition dipole as the area under psi_v' M psi_0). dipole_slosh is unused since 2026-11-01 (kept); the page shows
+# that idea live with widgets/transition_dipole.mjs.
 # dipole_kick and dipole_slosh use units hbar = mu = omega = 1, x in units of 1/sqrt(alpha).
 
 # ------------------------------------------------------------ light pushes on a dipole: HCl's dipole swings with the stretch, N2 has none
@@ -1046,6 +1048,92 @@ def dipole_slosh():
 
 
 dipole_slosh.fps = 12
+
+
+# ------------------------------------------------------------ deck: why the transition dipole must be nonzero; HCl vs N2 as the area under psi_1 M psi_0 (still)
+@register
+def dipole_area():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 1201)                            # units of 1/sqrt(alpha)
+    dx = x[1] - x[0]
+    psi0 = np.pi ** -0.25 * np.exp(-x ** 2 / 2)
+    psi1 = np.sqrt(2) * x * psi0
+    cases = [("HCl: the dipole changes", 1.0 + 0.6 * x, r"$M(x)$", "absorbed"),
+             (r"N$_2$: no dipole at all", 0.0 * x, r"$M = 0$", "not absorbed")]
+    fig, axes = plt.subplots(2, 2, figsize=(9.6, 4.4), gridspec_kw={"height_ratios": [1, 1.1], "hspace": 0.62, "wspace": 0.12})
+    for (ax, bx), (title, M, mlab, verdict) in zip(axes.T, cases):
+        sel = np.abs(x) <= 3.2
+        ax.axhline(0, color=GRAY, lw=0.8)
+        ax.plot(x, psi0, color=GRAY, lw=1.8, ls="--")
+        ax.plot(x, psi1, color=TEAL, lw=2.2)
+        ax.plot(x[sel], 0.18 * M[sel], color=CARDINAL, lw=2.6)
+        ax.text(-2.15, 0.6, r"$\psi_0$", color=GRAY, fontsize=16)
+        ax.text(1.65, 0.66, r"$\psi_1$", color=TEAL, fontsize=16)
+        ax.text(3.3, 0.18 * M[sel][-1] + (0.04 if M.any() else -0.06), mlab, color=CARDINAL, fontsize=16,
+                va="bottom" if M.any() else "top", ha="right")
+        ax.set_title(title, loc="left", fontsize=16)
+        f = psi1 * M * psi0
+        area = np.sum(f) * dx
+        bx.fill_between(x, f, 0, where=f > 0, color=PURPLE, alpha=0.45, lw=0)
+        bx.fill_between(x, f, 0, where=f < 0, color=ORANGE, alpha=0.55, lw=0)
+        bx.plot(x, f, color="k", lw=1.6)
+        bx.axhline(0, color=GRAY, lw=0.8)
+        bx.set_title(r"multiply: $\psi_1\,M\,\psi_0$", loc="left", fontsize=16)
+        bx.set_xlabel(("area = 0" if abs(area) < 1e-3 else f"area = {abs(area):.2f}") + f": {verdict}", fontsize=16,
+                      color=PURPLE if abs(area) > 1e-3 else GRAY, weight="bold")
+        for a in (ax, bx):
+            a.set_xlim(-4, 4); a.set_xticks([]); a.set_yticks([]); a.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_visible(False)
+        ax.set_ylim(-0.7, 0.85); bx.set_ylim(-0.46, 0.55)
+        bx.spines["bottom"].set_visible(False)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.91, bottom=0.12)
+    fig.savefig(f"{OUT}/dipole_area.png", dpi=200)
+    print("wrote", f"{OUT}/dipole_area.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ deck: one rung at a time; for HCl, 0 -> 1 leaves an area, 0 -> 2 cancels (still)
+@register
+def rung_area():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x = np.linspace(-4.5, 4.5, 1201)                            # units of 1/sqrt(alpha)
+    dx = x[1] - x[0]
+    psi0 = np.pi ** -0.25 * np.exp(-x ** 2 / 2)
+    psi1 = np.sqrt(2) * x * psi0
+    psi2 = (2 * x ** 2 - 1) / np.sqrt(2) * psi0
+    M = 1.0 + 0.6 * x                                           # HCl-like: permanent dipole plus a slope
+    cases = [(r"$v = 0 \to 1$: one rung", psi1, 1, "allowed"),
+             (r"$v = 0 \to 2$: two rungs", psi2, 2, "lobes cancel, forbidden")]
+    fig, axes = plt.subplots(2, 2, figsize=(9.6, 3.7), gridspec_kw={"height_ratios": [0.85, 1], "hspace": 0.68, "wspace": 0.12})
+    for (ax, bx), (title, pv, n, verdict) in zip(axes.T, cases):
+        sel = np.abs(x) <= 3.2
+        ax.axhline(0, color=GRAY, lw=0.8)
+        ax.plot(x, psi0, color=GRAY, lw=1.8, ls="--")
+        ax.plot(x, pv, color=TEAL, lw=2.2)
+        ax.plot(x[sel], 0.18 * M[sel], color=CARDINAL, lw=2.6)
+        if n == 1:                                              # the 0 -> 2 panel reuses the same gray dashed psi_0
+            ax.text(-2.15, 0.6, r"$\psi_0$", color=GRAY, fontsize=16)
+        ax.text(1.65 if n == 1 else -2.95, 0.66 if n == 1 else 0.5, rf"$\psi_{n}$", color=TEAL, fontsize=16)
+        ax.text(3.3, 0.18 * M[sel][-1] + 0.04, r"$M(x)$", color=CARDINAL, fontsize=16, va="bottom", ha="right")
+        ax.set_title(title, loc="left", fontsize=16)
+        f = pv * M * psi0
+        area = np.sum(f) * dx
+        bx.fill_between(x, f, 0, where=f > 0, color=PURPLE, alpha=0.45, lw=0)
+        bx.fill_between(x, f, 0, where=f < 0, color=ORANGE, alpha=0.55, lw=0)
+        bx.plot(x, f, color="k", lw=1.6)
+        bx.axhline(0, color=GRAY, lw=0.8)
+        bx.set_title(rf"multiply: $\psi_{n}\,M\,\psi_0$", loc="left", fontsize=16)
+        bx.set_xlabel(("area = 0" if abs(area) < 1e-3 else f"area = {abs(area):.2f}") + f": {verdict}", fontsize=16,
+                      color=PURPLE if abs(area) > 1e-3 else GRAY, weight="bold")
+        for a in (ax, bx):
+            a.set_xlim(-4, 4); a.set_xticks([]); a.set_yticks([]); a.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_visible(False)
+        ax.set_ylim(-0.7, 0.85); bx.set_ylim(-0.46, 0.55)
+        bx.spines["bottom"].set_visible(False)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.9, bottom=0.13)
+    fig.savefig(f"{OUT}/rung_area.png", dpi=200)
+    print("wrote", f"{OUT}/rung_area.png")
+    return fig, None
 
 
 # ------------------------------------------------------------ where diatomic molecules absorb: hydrides high, heavy pairs low; hollow = IR inactive (still)
