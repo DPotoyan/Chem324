@@ -1811,6 +1811,170 @@ def m_ladders():
     return fig, None
 
 
+# ============================================================ lecture 4.5: the rigid rotor
+# Lecture 4.5 (page ch04/05, deck slides/ch04/05) uses every figure in this section; deck 4.5 also reuses 4.4's
+# dumbbell_reduce. Rotational levels PURPLE (the chapter's rotation colour), transitions ORANGE, P branch TEAL.
+
+# ------------------------------------------------------------ the rigid rotor ladder: levels B J(J+1), each made of 2J+1 states (still)
+@register
+def rotor_levels():
+    fig, ax = plt.subplots(figsize=(5.6, 4.4))
+    w, g = 0.3, 0.1                                             # width of one state's bar, gap between bars
+    for J in range(6):
+        E = J * (J + 1)
+        n = 2 * J + 1
+        x0 = -0.5 * (n * w + (n - 1) * g)
+        for k in range(n):
+            ax.plot([x0 + k * (w + g), x0 + k * (w + g) + w], [E, E], color=PURPLE, lw=3, solid_capstyle="butt")
+        ax.text(-2.6, E, rf"$J = {J}$", ha="right", va="center", fontsize=19)
+        ax.text(2.6, E, "0" if J == 0 else rf"${E}\tilde{{B}}$", ha="left", va="center", fontsize=19, color=PURPLE)
+    ax.set_xlim(-4.6, 4.3); ax.set_ylim(-1.5, 32); ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
+    fig.savefig(f"{OUT}/rotor_levels.png", dpi=200)
+    print("wrote", f"{OUT}/rotor_levels.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ why J changes by one: the dipole points along the axis, cos(theta) Y_0 lands only on J = 1 (still)
+@register
+def rotor_selection():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    th = np.linspace(0, np.pi, 801)
+    dth = th[1] - th[0]
+    Y0 = np.full_like(th, 1 / np.sqrt(4 * np.pi))
+    Y1 = np.sqrt(3 / (4 * np.pi)) * np.cos(th)
+    Y2 = np.sqrt(5 / (16 * np.pi)) * (3 * np.cos(th) ** 2 - 1)
+    cases = [(r"$J = 0 \to 1$", Y1, 1, "allowed"), (r"$J = 0 \to 2$", Y2, 2, "lobes cancel, forbidden")]
+    fig, axes = plt.subplots(2, 2, figsize=(9.6, 3.7), gridspec_kw={"height_ratios": [0.85, 1], "hspace": 0.62, "wspace": 0.12})
+    for (ax, bx), (title, Yj, n, verdict) in zip(axes.T, cases):
+        ax.axhline(0, color=GRAY, lw=0.8)
+        ax.plot(th, Y0, color=GRAY, lw=1.8, ls="--")
+        ax.plot(th, Yj, color=TEAL, lw=2.2)
+        ax.plot(th, 0.3 * np.cos(th), color=CARDINAL, lw=2.6)
+        for xk, lab, col in ((1.0, r"$Y_0^0$", GRAY), (1.55, r"$\cos\theta$", CARDINAL), (2.15, rf"$Y_{n}^0$", TEAL)):
+            ax.text(xk, 0.5, lab, color=col, fontsize=15, ha="center", va="center")
+        ax.set_title(title, loc="left", fontsize=16)
+        f = 2 * np.pi * Yj * np.cos(th) * Y0 * np.sin(th)       # the phi integral gives 2 pi
+        area = np.sum(f) * dth
+        bx.fill_between(th, f, 0, where=f > 0, color=PURPLE, alpha=0.45, lw=0)
+        bx.fill_between(th, f, 0, where=f < 0, color=ORANGE, alpha=0.55, lw=0)
+        bx.plot(th, f, color="k", lw=1.6)
+        bx.axhline(0, color=GRAY, lw=0.8)
+        bx.set_title(rf"multiply: $Y_{n}^0\,\cos\theta\;Y_0^0\,\sin\theta$", loc="left", fontsize=15)
+        bx.set_xlabel(("area = 0" if abs(area) < 1e-3 else f"area = {abs(area):.2f}") + f": {verdict}", fontsize=15,
+                      color=PURPLE if abs(area) > 1e-3 else GRAY, weight="bold")
+        for a in (ax, bx):
+            a.set_xlim(0, np.pi); a.set_yticks([]); a.spines["left"].set_visible(False)
+        ax.set_xticks([]); ax.spines["bottom"].set_visible(False)
+        bx.set_xticks([0, np.pi / 2, np.pi]); bx.set_xticklabels(["0", r"$\pi/2$", r"$\pi$"]); bx.tick_params(labelsize=12)
+        ax.set_ylim(-0.62, 0.62); bx.set_ylim(-0.75, 0.75)
+    fig.subplots_adjust(left=0.02, right=0.99, top=0.9, bottom=0.16)
+    fig.savefig(f"{OUT}/rotor_selection.png", dpi=200)
+    print("wrote", f"{OUT}/rotor_selection.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the microwave spectrum: one rung at a time, gaps 2B, 4B, 6B, ..., lines evenly spaced (still)
+@register
+def microwave_lines():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.0), gridspec_kw={"width_ratios": [0.85, 1.3], "wspace": 0.22})
+    for J in range(6):
+        E = J * (J + 1)
+        ax.hlines(E, 0, 6.2, color=PURPLE, lw=2.6)
+        ax.text(-0.15, E, rf"$J = {J}$", ha="right", va="center", fontsize=12.5)
+    for J in range(5):
+        x = 0.9 + 1.05 * J
+        ax.annotate("", xy=(x, (J + 1) * (J + 2)), xytext=(x, J * (J + 1)),
+                    arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=2.2, mutation_scale=15, shrinkA=0, shrinkB=0))
+        ax.text(x + 0.14, 0.5 * (J * (J + 1) + (J + 1) * (J + 2)), rf"${2 * (J + 1)}\tilde{{B}}$", fontsize=12,
+                color=ORANGE, va="center", bbox=dict(fc="white", ec="none", pad=0.5))
+    ax.set_xlim(-1.6, 6.4); ax.set_ylim(-1.5, 32); ax.axis("off")
+    for J in range(5):
+        bx.vlines(2 * (J + 1), 0, 1, color=ORANGE, lw=3)
+        bx.text(2 * (J + 1), 1.05, rf"${J}\to{J + 1}$", ha="center", va="bottom", fontsize=12, color=ORANGE)
+    bx.annotate("", xy=(6, 0.5), xytext=(4, 0.5), arrowprops=dict(arrowstyle="<->", color=GRAY, lw=1.4, shrinkA=2, shrinkB=2))
+    bx.text(5, 0.55, r"$2\tilde{B}$", ha="center", va="bottom", fontsize=14, color=GRAY)
+    bx.set_xlim(0, 11.5); bx.set_ylim(0, 1.35); bx.set_yticks([])
+    bx.spines["left"].set_visible(False)
+    bx.set_xticks([0, 2, 4, 6, 8, 10]); bx.set_xticklabels(["0", r"$2\tilde{B}$", r"$4\tilde{B}$", r"$6\tilde{B}$",
+                                                            r"$8\tilde{B}$", r"$10\tilde{B}$"])
+    bx.tick_params(labelsize=12.5)
+    bx.set_xlabel(r"wavenumber $\tilde{\nu}$", fontsize=13)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.14)
+    fig.savefig(f"{OUT}/microwave_lines.png", dpi=200)
+    print("wrote", f"{OUT}/microwave_lines.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ who sits where: rotational populations of HCl and CO at 300 K (still)
+@register
+def rotor_populations():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    hck, T = 1.438777, 300.0                                   # hc/k_B in cm K
+    LIGHT = "#cdb9e3"
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.6), gridspec_kw={"width_ratios": [1, 1.6], "wspace": 0.12})
+    for ax, (name, B, Jn) in zip(axes, (("HCl", 10.44, 16), ("CO", 1.9225, 31))):
+        J = np.arange(Jn)
+        allJ = np.arange(400)
+        q = np.sum((2 * allJ + 1) * np.exp(-hck * B * allJ * (allJ + 1) / T))
+        f = (2 * J + 1) * np.exp(-hck * B * J * (J + 1) / T) / q
+        top = int(np.argmax(f))
+        ax.bar(J, f, width=0.75, color=[PURPLE if j == top else LIGHT for j in J])
+        ax.text(top, f[top] + 0.004, rf"$J = {top}$", ha="center", va="bottom", fontsize=13, color=PURPLE)
+        ax.set_title(name, fontsize=15, loc="left")
+        ax.set_xlabel("$J$", fontsize=13)
+        ax.set_ylim(0, f.max() * 1.22); ax.tick_params(labelsize=11.5)
+        ax.set_xlim(-0.8, Jn - 0.2)
+    axes[0].set_ylabel("fraction of molecules", fontsize=12.5)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.9, bottom=0.15)
+    fig.savefig(f"{OUT}/rotor_populations.png", dpi=200)
+    print("wrote", f"{OUT}/rotor_populations.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ rotation rides on vibration: P and R transitions on two ladders, lined up above the band they make (still)
+@register
+def rovib_branches():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    B, nu0, hck, T = 10.59, 2886.0, 1.438777, 300.0             # HCl as a rigid rotor and harmonic oscillator
+    Jn = 5
+    s = 0.5                                                     # drawing units per cm^-1 of rotational energy
+    y1 = 185.0                                                  # where the v = 1 ladder starts (energy axis broken)
+    lines = [("R", J, nu0 + 2 * B * (J + 1)) for J in range(Jn - 1)] + [("P", J, nu0 - 2 * B * J) for J in range(1, Jn)]
+    fig, (ax, bx) = plt.subplots(2, 1, figsize=(9.6, 5.8), sharex=True, gridspec_kw={"height_ratios": [2.6, 1], "hspace": 0.04})
+    x0, x1 = 2780, 2990
+    for J in range(Jn):
+        E = B * J * (J + 1) * s
+        ax.hlines(E, x0, x1, color=PURPLE, lw=1.8)
+        ax.hlines(y1 + E, x0, x1, color=PURPLE, lw=1.8)
+        ax.text(x1 + 2, E, rf"$J = {J}$", va="center", fontsize=11)
+        ax.text(x1 + 2, y1 + E, rf"$J = {J}$", va="center", fontsize=11)
+    ax.text(x0 - 3, 0.5 * B * 12 * s, "$v = 0$", ha="right", va="center", fontsize=14, color=TEAL)
+    ax.text(x0 - 3, y1 + 0.5 * B * 12 * s, "$v = 1$", ha="right", va="center", fontsize=14, color=TEAL)
+    for br, J, nu in lines:
+        J2 = J + 1 if br == "R" else J - 1
+        ax.annotate("", xy=(nu, y1 + B * J2 * (J2 + 1) * s), xytext=(nu, B * J * (J + 1) * s),
+                    arrowprops=dict(arrowstyle="-|>", color=ORANGE if br == "R" else TEAL, lw=1.8, mutation_scale=12,
+                                    shrinkA=0, shrinkB=0))
+    ax.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+    ax.set_xlim(x0 - 40, x1 + 25); ax.set_ylim(-6, y1 + B * 20 * s + 6); ax.axis("off")
+    for br, J, nu in lines:
+        S = J + 1 if br == "R" else J
+        I = S * np.exp(-hck * B * J * (J + 1) / T)
+        bx.vlines(nu, 0, I, color=ORANGE if br == "R" else TEAL, lw=3)
+        bx.text(nu, I + 0.12, f"{br}({J})", ha="center", va="bottom", fontsize=11.5, color=ORANGE if br == "R" else TEAL)
+    bx.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+    bx.text(nu0 + 3, 3.2, r"$\tilde{\nu}_0$", ha="left", va="bottom", fontsize=13, color=GRAY)
+    bx.set_ylim(0, 4.0); bx.set_yticks([]); bx.spines["left"].set_visible(False)
+    bx.tick_params(labelsize=11.5)
+    bx.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=12.5)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.1)
+    fig.savefig(f"{OUT}/rovib_branches.png", dpi=200)
+    print("wrote", f"{OUT}/rovib_branches.png")
+    return fig, None
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:
