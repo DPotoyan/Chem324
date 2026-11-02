@@ -1362,6 +1362,455 @@ def co2_decoupling():
     return fig, None
 
 
+# ============================================================ lecture 4.4: angular momentum
+# Lecture 4.4 (page ch04/04, deck slides/ch04/04) uses every figure in this section. Rotation keeps the chapter's
+# PURPLE (angular momentum vectors, ring levels); a wavefunction is TEAL where positive and ORANGE where negative.
+
+# ------------------------------------------------------------ the model system: a rigid dumbbell (CO) turning about its center of mass = one bead mu on a circle (still)
+@register
+def dumbbell_reduce():
+    from matplotlib.patches import Circle, FancyArrowPatch
+    mC, mO, R = 12.0, 16.0, 1.9
+    rC, rO = mO / (mC + mO) * R, mC / (mC + mO) * R            # distances from the center of mass, m_C r_C = m_O r_O
+    t = np.linspace(0, 2 * np.pi, 300)
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.0))
+    for a_ in (ax, bx):
+        a_.set_xlim(-2.5, 2.5); a_.set_ylim(-2.3, 2.4); a_.set_aspect("equal"); a_.axis("off")
+        a_.add_patch(FancyArrowPatch((2.2 * np.cos(np.radians(25)), 2.2 * np.sin(np.radians(25))),
+                                     (2.2 * np.cos(np.radians(70)), 2.2 * np.sin(np.radians(70))),
+                                     connectionstyle="arc3,rad=0.2", arrowstyle="-|>", mutation_scale=16, color=PURPLE, lw=1.8))
+        a_.text(1.9, 1.78, r"$\omega$", fontsize=15, color=PURPLE)
+    ax.plot(rC * np.cos(t), rC * np.sin(t), color="#495057", lw=1, ls=":")
+    ax.plot(rO * np.cos(t), rO * np.sin(t), color=CARDINAL, lw=1, ls=":")
+    ax.plot([-rC, rO], [0, 0], color="#adb5bd", lw=6, solid_capstyle="round", zorder=2)
+    ax.add_patch(Circle((-rC, 0), 0.27, fc="#495057", ec="k", lw=1, zorder=3))
+    ax.add_patch(Circle((rO, 0), 0.31, fc=CARDINAL, ec="k", lw=1, zorder=3))
+    ax.text(-rC, 0, "C", color="white", ha="center", va="center", fontsize=12, weight="bold", zorder=4)
+    ax.text(rO, 0, "O", color="white", ha="center", va="center", fontsize=12, weight="bold", zorder=4)
+    ax.plot([0], [0], "+", color="k", ms=13, mew=2.2, zorder=5)
+    ax.annotate("", xy=(-rC, -0.5), xytext=(0, -0.5), arrowprops=dict(arrowstyle="<->", color="#495057", lw=1.2))
+    ax.annotate("", xy=(rO, -0.5), xytext=(0, -0.5), arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.2))
+    ax.text(-rC / 2, -0.62, "$r_C$", ha="center", va="top", fontsize=13, color="#495057")
+    ax.text(rO / 2, -0.62, "$r_O$", ha="center", va="top", fontsize=13, color=CARDINAL)
+    ax.text(0, -2.1, r"$I = m_C r_C^2 + m_O r_O^2$", ha="center", fontsize=14)
+    bx.plot(R * np.cos(t), R * np.sin(t), color=PURPLE, lw=1.2, ls=":")
+    bx.plot([0, R * np.cos(np.radians(30))], [0, R * np.sin(np.radians(30))], color="k", lw=1.6)
+    bx.add_patch(Circle((R * np.cos(np.radians(30)), R * np.sin(np.radians(30))), 0.27, fc=PURPLE, ec="k", lw=1, zorder=3))
+    bx.text(R * np.cos(np.radians(30)), R * np.sin(np.radians(30)), r"$\mu$", color="white", ha="center", va="center",
+            fontsize=14, zorder=4)
+    bx.plot([0], [0], "+", color="k", ms=13, mew=2.2)
+    bx.text(0.55 * np.cos(np.radians(30)) - 0.05, 0.55 * np.sin(np.radians(30)) + 0.12, "$r$", fontsize=14,
+            ha="right", va="bottom")
+    bx.text(0, -2.1, r"$I = \mu r^2$ with $\mu = m_Cm_O/(m_C + m_O)$, $r = r_C + r_O$", ha="center", fontsize=13.5)
+    fig.text(0.5, 0.53, "=", ha="center", va="center", fontsize=30, color=GRAY)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.02, wspace=0.1)
+    fig.savefig(f"{OUT}/dumbbell_reduce.png", dpi=200)
+    print("wrote", f"{OUT}/dumbbell_reduce.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ angular momentum is a vector product: r and p in the plane, L = r x p along the axis (still)
+@register
+def angular_momentum_vector():
+    from matplotlib.patches import Circle, FancyArrowPatch
+    fig, ax = plt.subplots(figsize=(6.0, 4.4))
+    k = 0.32                                                    # the circle seen from above at an angle: an ellipse
+    t = np.linspace(0, 2 * np.pi, 300)
+    ax.plot(np.cos(t), k * np.sin(t), color=GRAY, lw=1.2, ls=":")
+    tp = np.radians(-38)
+    P = np.array([np.cos(tp), k * np.sin(tp)])
+    d = np.array([-np.sin(tp), k * np.cos(tp)]); d /= np.linalg.norm(d)
+    ax.add_patch(FancyArrowPatch((0, 0), P, arrowstyle="-|>", mutation_scale=16, color="k", lw=2, zorder=4))
+    ax.text(0.45 * P[0] + 0.02, 0.45 * P[1] - 0.1, r"$\vec{r}$", fontsize=18, va="top")
+    ax.add_patch(FancyArrowPatch(P, P + 0.6 * d, arrowstyle="-|>", mutation_scale=18, color=ORANGE, lw=2.6, zorder=4))
+    ax.text(*(P + 0.62 * d + np.array([0.04, -0.02])), r"$\vec{p} = \mu\vec{v}$", fontsize=17, color=ORANGE, va="center")
+    ax.add_patch(Circle(P, 0.06, fc=PURPLE, ec="k", lw=1, zorder=5))
+    ax.add_patch(FancyArrowPatch((0, 0), (0, 1.45), arrowstyle="-|>", mutation_scale=22, color=PURPLE, lw=3.4, zorder=4))
+    ax.text(0.09, 1.38, r"$\vec{L} = \vec{r}\times\vec{p}$", fontsize=18, color=PURPLE, va="center")
+    u = np.linspace(np.radians(200), np.radians(500), 120)     # the right-hand curl, counterclockwise seen from above
+    ax.plot(0.26 * np.cos(u), 0.95 + 0.08 * np.sin(u), color=GRAY, lw=1.5)
+    ax.add_patch(FancyArrowPatch((0.26 * np.cos(u[-6]), 0.95 + 0.08 * np.sin(u[-6])), (0.26 * np.cos(u[-1]), 0.95 + 0.08 * np.sin(u[-1])),
+                                 arrowstyle="-|>", mutation_scale=12, color=GRAY, lw=1.5))
+    ax.text(-0.33, 0.95, "right\nhand", fontsize=12, color=GRAY, ha="right", va="center")
+    ax.set_xlim(-1.15, 2.0); ax.set_ylim(-0.48, 1.58); ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
+    fig.savefig(f"{OUT}/angular_momentum_vector.png", dpi=200)
+    print("wrote", f"{OUT}/angular_momentum_vector.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the spinning skater: pull the masses in, I drops, omega rises, L = I omega stays
+@register
+def skater_spin():
+    from matplotlib.patches import Circle
+    nf = 44
+    I0, mm, rout, rin = 0.12, 0.5, 1.0, 0.36                  # the body, each hand weight, arm lengths out and in
+    s = 0.5 - 0.5 * np.cos(2 * np.pi * np.arange(nf) / nf)    # 0 -> 1 -> 0: arms out, in, out again
+    r = rout + (rin - rout) * s
+    I = I0 + 2 * mm * r ** 2
+    Lc = I[0] * 0.17                                           # fixed angular momentum; arms out turn 0.17 rad per frame
+    w = Lc / I                                                 # rad per frame
+    ang = np.cumsum(w) - w[0]
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"width_ratios": [1, 1.15], "wspace": 0.1})
+    ax.set_xlim(-1.3, 1.3); ax.set_ylim(-1.3, 1.3); ax.set_aspect("equal"); ax.axis("off")
+    ax.add_patch(Circle((0, 0), 0.22, fc="#adb5bd", ec="k", lw=1, zorder=3))
+    (arms,) = ax.plot([], [], color="#495057", lw=5, solid_capstyle="round", zorder=2)
+    hands = [ax.add_patch(Circle((0, 0), 0.11, fc=CARDINAL, ec="k", lw=1, zorder=4)) for _ in range(2)]
+    trails = [ax.plot([], [], color=CARDINAL, lw=4, alpha=0.3, solid_capstyle="round")[0] for _ in range(2)]
+    names = ["moment of inertia $I$", r"angular velocity $\omega$", r"angular momentum $L = I\omega$"]
+    cols = [ORANGE, TEAL, PURPLE]
+    vals = [I / I[0], w / w[0], I * w / (I[0] * w[0])]
+    bars = bx.barh(range(3)[::-1], [v[0] for v in vals], color=cols, height=0.42)
+    texts = [bx.text(0, 2 - j, "", va="center", fontsize=12.5, color=cols[j]) for j in range(3)]
+    for j, nm in enumerate(names):
+        bx.text(0.02, 2 - j + 0.36, nm, ha="left", va="bottom", fontsize=13, color=cols[j])
+    bx.axvline(1, color=GRAY, lw=0.8, ls=":")
+    bx.set_xlim(0, 5.6); bx.set_ylim(-0.45, 2.95); bx.set_yticks([]); bx.set_xticks([0, 1, 2, 3, 4, 5])
+    for sp in ("top", "right", "left"):
+        bx.spines[sp].set_visible(False)
+    bx.set_xlabel("relative to the arms-out value", fontsize=11.5)
+    fig.subplots_adjust(left=0.01, right=0.98, top=0.98, bottom=0.14)
+
+    def update(i):
+        c, sn = np.cos(ang[i]), np.sin(ang[i])
+        arms.set_data([-r[i] * c, r[i] * c], [-r[i] * sn, r[i] * sn])
+        for k_, sg in enumerate((1, -1)):
+            hands[k_].center = (sg * r[i] * c, sg * r[i] * sn)
+            sweep = np.linspace(ang[i] - 1.6 * w[i], ang[i], 30)   # the angle swept just before: a streak as long as the speed
+            trails[k_].set_data(sg * r[i] * np.cos(sweep), sg * r[i] * np.sin(sweep))
+        for j, (bar, v) in enumerate(zip(bars, vals)):
+            bar.set_width(v[i])
+            texts[j].set_position((v[i] + 0.08, 2 - j)); texts[j].set_text(f"{v[i]:.2f}")
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=110, blit=False)
+    return fig, ani
+
+
+skater_spin.fps = 10
+
+
+# ------------------------------------------------------------ a wave on a ring must join up: e^{im phi} for whole m, and a misfit (still)
+@register
+def ring_waves():
+    phi = np.linspace(0, 2 * np.pi, 721)
+    cases = [(0, "constant"), (1, "one wavelength"), (2, "two wavelengths"), (3, "three wavelengths"),
+             (2.5, "the ends miss")]
+    fig, axes = plt.subplots(1, 5, figsize=(9.6, 2.35))
+    for ax, (m, note) in zip(axes, cases):
+        col = TEAL if float(m).is_integer() else CARDINAL
+        ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=1.2, ls=":")
+        r = 1 + 0.3 * np.cos(m * phi)                           # the real part of e^{im phi}, drawn out from the ring
+        ax.plot(r * np.cos(phi), r * np.sin(phi), color=col, lw=2.6)
+        ax.plot([r[0]], [0], "o", color=col, ms=6.5, zorder=4)  # the start, phi = 0
+        if col == CARDINAL:                                     # after one turn the wave is back at phi = 0, but at r = 0.7
+            ax.plot([r[-1]], [0], "o", color=CARDINAL, ms=6.5, mfc="white", mew=2, zorder=4)
+            ax.annotate("", xy=(r[0] - 0.03, -0.32), xytext=(r[-1] + 0.03, -0.32),
+                        arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.4, shrinkA=0, shrinkB=0))
+        ax.set_xlim(-1.42, 1.42); ax.set_ylim(-1.42, 1.42); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(rf"$m = {m:g}$", fontsize=14, color=col)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.01, wspace=0.06)
+    fig.savefig(f"{OUT}/ring_waves.png", dpi=200)
+    print("wrote", f"{OUT}/ring_waves.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ glue the ends of a box: a ring of radius R and the box of length 2 pi R (still)
+@register
+def ring_ladder():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, ax = plt.subplots(figsize=(9.6, 4.3))
+    b0, b1 = 0.6, 2.9                                           # box column
+    r0, r1 = 6.3, 9.0                                           # ring column: +m on the left half, -m on the right
+    rc = 0.5 * (r0 + r1)
+    for n in range(1, 5):                                       # box: E_n = n^2/4 in units of hbar^2/2I
+        E, even = n * n / 4, n % 2 == 0
+        ax.hlines(E, b0, b1, color=GRAY, lw=2.6 if even else 1.6, ls="-" if even else (0, (4, 3)),
+                  alpha=1 if even else 0.65)
+        ax.text(b0 - 0.12, E, rf"$n = {n}$", ha="right", va="center", fontsize=12, color=GRAY)
+        if even:                                                # the same wavelength fits around the ring
+            ax.plot([b1 + 0.1, r0 - 0.1], [E, E], color=PURPLE, lw=1.1, ls=":", alpha=0.7)
+    for m in range(3):                                          # ring: E_m = m^2 in units of hbar^2/2I
+        E = m * m
+        if m == 0:
+            ax.hlines(E, r0, r1, color=PURPLE, lw=2.8)
+            ax.text(r1 + 0.12, E, r"$m = 0$", va="center", fontsize=12, color=PURPLE)
+        else:
+            ax.hlines(E, r0, rc - 0.1, color=PURPLE, lw=2.8)
+            ax.hlines(E, rc + 0.1, r1, color=PURPLE, lw=2.8)
+            ax.text(r1 + 0.12, E, rf"$m = \pm {m}$", va="center", fontsize=12, color=PURPLE)
+            ax.text(0.5 * (r0 + rc), E + 0.11, rf"$+{m}$ ↺", ha="center", va="bottom", fontsize=11.5, color=PURPLE)
+            ax.text(0.5 * (rc + r1), E + 0.11, rf"$-{m}$ ↻", ha="center", va="bottom", fontsize=11.5, color=PURPLE)
+    ax.text(0.5 * (b0 + b1), 4.65, r"box of length $2\pi r$", ha="center", fontsize=13, color=GRAY, weight="bold")
+    ax.text(0.5 * (r0 + r1), 4.65, r"ring of radius $r$", ha="center", fontsize=13, color=PURPLE, weight="bold")
+    ax.set_xlim(-0.6, 10.4); ax.set_ylim(-0.2, 5.0)
+    ax.set_xticks([]); ax.spines["bottom"].set_visible(False)
+    ax.set_yticks([0, 0.25, 1, 2.25, 4]); ax.set_yticklabels(["0", "1/4", "1", "9/4", "4"]); ax.tick_params(labelsize=11)
+    ax.spines["left"].set_bounds(0, 4.25)
+    ax.set_ylabel(r"energy (units of $\hbar^2/2I$)", fontsize=12)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.98, bottom=0.03)
+    fig.savefig(f"{OUT}/ring_ladder.png", dpi=200)
+    print("wrote", f"{OUT}/ring_ladder.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ sharp L_z runs around the ring with an even density; the +m, -m mix stands still
+@register
+def ring_flow():
+    from matplotlib.patches import FancyArrowPatch, Patch
+    from matplotlib.lines import Line2D
+    nf = 36
+    phi = np.linspace(0, 2 * np.pi, 361)
+    cases = [(2, r"$e^{+2i\phi}$"), (-2, r"$e^{-2i\phi}$"), (0, r"$2\cos 2\phi$")]
+    fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.4), gridspec_kw={"wspace": 0.32})
+    parts = []
+    for ax, (m, title) in zip(axes, cases):
+        ax.set_xlim(-1.62, 1.62); ax.set_ylim(-1.62, 1.62); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, fontsize=17)
+        dens = np.ones_like(phi) if m else 2 * np.cos(2 * phi) ** 2     # |Psi|^2 in units of its average
+        band = 0.1 * dens
+        ax.fill(np.r_[(1 + band) * np.cos(phi), ((1 - band) * np.cos(phi))[::-1]],
+                np.r_[(1 + band) * np.sin(phi), ((1 - band) * np.sin(phi))[::-1]], color=TEAL, alpha=0.25, lw=0)
+        ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=0.8, ls=":")
+        (wave,) = ax.plot([], [], color=TEAL, lw=2.4)
+        if m:
+            a0, a1 = np.radians(55), np.radians(125)
+            if m < 0:
+                a0, a1 = a1, a0
+            ax.add_patch(FancyArrowPatch((1.45 * np.cos(a0), 1.45 * np.sin(a0)), (1.45 * np.cos(a1), 1.45 * np.sin(a1)),
+                                         connectionstyle=f"arc3,rad={0.22 if m > 0 else -0.22}", arrowstyle="-|>",
+                                         mutation_scale=18, color=PURPLE, lw=2))
+        parts.append((m, wave))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.88, bottom=0.13)
+    fig.legend(handles=[Line2D([0], [0], color=TEAL, lw=2.4, label=r"real part of $\Psi$"),
+                        Patch(facecolor=TEAL, alpha=0.25, label=r"probability density $|\Psi|^2$")],
+               loc="lower center", ncol=2, frameon=False, fontsize=13, bbox_to_anchor=(0.5, 0.0), columnspacing=3)
+    for k, sign in ((0, "+"), (1, "=")):                        # running + running = standing
+        x = 0.5 * (axes[k].get_position().x1 + axes[k + 1].get_position().x0)
+        fig.text(x, 0.45, sign, ha="center", va="center", fontsize=34, color=GRAY)
+
+    def update(i):
+        wt = 2 * np.pi * i / nf                                 # E t / hbar over one period of the phase
+        for m, wave in parts:
+            if m:                                               # the real part of e^{i(m phi - w t)}
+                re, amp = np.cos(m * phi - wt), 0.25
+            else:                                               # the sum of the two running waves
+                re, amp = np.cos(2 * phi - wt) + np.cos(-2 * phi - wt), 0.25
+            r = 1 + amp * re
+            wave.set_data(r * np.cos(phi), r * np.sin(phi))
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=90, blit=False)
+    return fig, ani
+
+
+ring_flow.fps = 12
+
+
+# ------------------------------------------------------------ turns about x and y do not commute: one book, two orders, two different ends
+@register
+def rotation_order():
+    from matplotlib.patches import Polygon
+    from matplotlib.colors import to_rgb
+    nf = 42
+    el, az = np.radians(24), np.radians(35)
+    cam = np.array([np.cos(el) * np.cos(az), np.cos(el) * np.sin(az), np.sin(el)])     # unit vector toward the viewer
+    ex = np.array([-np.sin(az), np.cos(az), 0.0])                                     # screen right
+    ey = np.cross(cam, ex)                                                            # screen up
+    to2d = lambda p: np.c_[p @ ex, p @ ey]
+    Rx = lambda a: np.array([[1, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
+    Ry = lambda a: np.array([[np.cos(a), 0, np.sin(a)], [0, 1, 0], [-np.sin(a), 0, np.cos(a)]])
+    a, b, c = 0.5, 0.72, 0.13                                   # half sizes of the book: width, height, thickness
+    corners = np.array([[sx * a, sy * b, sz * c] for sx in (-1, 1) for sy in (-1, 1) for sz in (-1, 1)])
+    PAGES = "#f3ead8"
+    faces = [((0, 0, 1), [1, 5, 7, 3], TEAL), ((0, 0, -1), [0, 2, 6, 4], "#adb5bd"), ((-1, 0, 0), [0, 1, 3, 2], PURPLE),
+             ((1, 0, 0), [4, 6, 7, 5], PAGES), ((0, 1, 0), [2, 3, 7, 6], PAGES), ((0, -1, 0), [0, 4, 5, 1], PAGES)]
+    arrow = np.array([[-0.07, -0.45], [0.07, -0.45], [0.07, 0.16], [0.2, 0.16], [0, 0.5], [-0.2, 0.16], [-0.07, 0.16]])
+    arrow = np.c_[arrow, np.full(len(arrow), c + 0.004)]        # an arrow printed on the cover, pointing to the top edge
+    ease = lambda s: np.clip(s, 0, 1) ** 2 * (3 - 2 * np.clip(s, 0, 1))
+    s1 = lambda k: ease((k - 3) / 12)                           # first quarter turn over frames 4 to 15
+    s2 = lambda k: ease((k - 19) / 12)                          # second quarter turn over frames 20 to 31
+    orders = [("x", "y", lambda k: Ry(np.pi / 2 * s2(k)) @ Rx(-np.pi / 2 * s1(k))),
+              ("y", "x", lambda k: Rx(-np.pi / 2 * s2(k)) @ Ry(np.pi / 2 * s1(k)))]
+    unit = {"x": np.array([1.0, 0, 0]), "y": np.array([0, 1.0, 0]), "z": np.array([0, 0, 1.0])}
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.1))
+    parts = []
+    for ax, (first, second, R) in zip(axes, orders):
+        ax.set_xlim(-1.3, 1.3); ax.set_ylim(-1.18, 1.12); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(rf"turn about ${first}$, then about ${second}$", fontsize=14)
+        polys = [ax.add_patch(Polygon(np.zeros((4, 2)), closed=True, fc=col, ec="#495057", lw=1.2, zorder=2))
+                 for _, _, col in faces]
+        mark = ax.add_patch(Polygon(np.zeros((7, 2)), closed=True, fc="white", ec="none", alpha=0.95, zorder=3))
+        (axis_line,) = ax.plot([], [], color=CARDINAL, lw=1.8, ls=(0, (5, 3)), zorder=4)
+        axis_lab = ax.text(0, 0, "", color=CARDINAL, fontsize=15, weight="bold", ha="center", va="center", zorder=4)
+        o = np.array([-1.05, -0.95])                            # a fixed triad of axes in the corner
+        triad = {}
+        for name, v in unit.items():
+            d = 0.28 * to2d(v[None])[0]
+            ln = ax.annotate("", xy=o + d, xytext=o, arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=1.6,
+                                                                     mutation_scale=12, shrinkA=0, shrinkB=0))
+            tx = ax.text(*(o + 1.38 * d), name, color=GRAY, fontsize=12, ha="center", va="center")
+            triad[name] = (ln, tx)
+        step = None
+        parts.append((first, second, R, polys, mark, axis_line, axis_lab, triad, step))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.91, bottom=0.01, wspace=0.04)
+
+    def update(k):
+        for first, second, R, polys, mark, axis_line, axis_lab, triad, step in parts:
+            M = R(k)
+            pts = corners @ M.T
+            for poly, (n, idx, col) in zip(polys, faces):
+                nv = M @ np.array(n, float)
+                poly.set_visible(nv @ cam > 1e-6)              # a convex box: draw only the faces turned to us
+                poly.set_xy(to2d(pts[idx]))
+                if poly.get_visible():
+                    rgb = np.array(to_rgb(col))
+                    poly.set_facecolor(rgb * (0.78 + 0.22 * (nv @ cam)))
+            cover = M @ np.array([0, 0, 1.0])
+            mark.set_visible(cover @ cam > 1e-6)
+            mark.set_xy(to2d(arrow @ M.T))
+            now = None if k >= 32 else (first if k < 18 else second)
+            for name, (ln, tx) in triad.items():
+                on = name == now
+                ln.arrow_patch.set_color(CARDINAL if on else GRAY)
+                tx.set_color(CARDINAL if on else GRAY); tx.set_fontweight("bold" if on else "normal")
+            if now is None:
+                axis_line.set_data([], []); axis_lab.set_text("")
+            else:
+                ends = to2d(np.array([-1.08, 1.08])[:, None] * unit[now])
+                axis_line.set_data(ends[:, 0], ends[:, 1])
+                axis_lab.set_position(1.12 * ends[1]); axis_lab.set_text(now)
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=85, blit=False)
+    return fig, ani
+
+
+rotation_order.fps = 12
+
+
+# ------------------------------------------------------------ the vector model: fixed length sqrt(l(l+1)), 2l+1 heights m, the direction around z unknown (still)
+@register
+def vector_cones():
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.7), gridspec_kw={"width_ratios": [1, 1.32], "wspace": 0.02})
+    t = np.linspace(0, 2 * np.pi, 300)
+    LIGHT = "#cdb9e3"
+    lz = {-2: r"-2\hbar", -1: r"-\hbar", 0: "0", 1: r"+\hbar", 2: r"+2\hbar"}
+    for ax, l in zip(axes, (1, 2)):
+        R = np.sqrt(l * (l + 1))                                # |L| in units of hbar
+        ax.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
+        ax.annotate("", xy=(0, R + 0.62), xytext=(0, -R - 0.35),
+                    arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14, shrinkA=0, shrinkB=0))
+        ax.text(0.14, R + 0.55, "$z$", fontsize=14, va="center")
+        for m in range(-l, l + 1):
+            rm = np.sqrt(R * R - m * m)                         # radius of the cone's rim: the part of L off the z axis
+            ax.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=LIGHT, lw=1.6)
+            ax.plot([-rm, 0, rm], [m, 0, m], color=LIGHT, lw=1.2)
+            tip = (rm * np.cos(np.radians(-42)), m + 0.2 * rm * np.sin(np.radians(-42)))
+            ax.annotate("", xy=tip, xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2.2,
+                                                                  mutation_scale=15, shrinkA=0, shrinkB=0))
+            ax.plot([0], [m], "o", color=PURPLE, ms=5, zorder=5)
+            ax.plot([0.05, R + 0.25], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
+            ax.text(R + 0.32, m, rf"$m = {m:+d}$: $L_z = {lz[m]}$" if m else r"$m = 0$: $L_z = 0$", va="center",
+                    fontsize=12, color=PURPLE)
+        root = "2" if l == 1 else "6"
+        ax.set_title(rf"$l = {l}$", fontsize=15)
+        ax.set_xlim(-R - 0.25, R + 2.75 if l == 2 else R + 2.55); ax.set_ylim(-R - 0.5, R + 0.75)
+        ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0.0, right=0.99, top=0.92, bottom=0.01)
+    fig.savefig(f"{OUT}/vector_cones.png", dpi=200)
+    print("wrote", f"{OUT}/vector_cones.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ spherical harmonics on the globe: sign of the real part and the l nodal lines (still)
+@register
+def harmonic_globes():
+    from scipy.special import sph_harm_y
+    from matplotlib.colors import to_rgb
+    S = 261
+    u = np.linspace(-1, 1, S)
+    U, V = np.meshgrid(u, u[::-1])                              # screen coordinates, V upward
+    inside = U ** 2 + V ** 2 < 1
+    W = np.sqrt(np.clip(1 - U ** 2 - V ** 2, 0, None))          # toward the viewer
+    el, az = np.radians(22), np.radians(-55)                    # the north pole tipped 22 degrees toward us
+    cam = np.array([np.cos(el) * np.cos(az), np.cos(el) * np.sin(az), np.sin(el)])
+    ex = np.array([-np.sin(az), np.cos(az), 0.0])
+    ey = np.cross(cam, ex)
+    P = U[..., None] * ex + V[..., None] * ey + W[..., None] * cam      # the point of the sphere behind each pixel
+    TH, PH = np.arccos(np.clip(P[..., 2], -1, 1)), np.arctan2(P[..., 1], P[..., 0])
+    light = np.array([-0.45, 0.55, 0.7]) / np.linalg.norm([-0.45, 0.55, 0.7])
+    shade = 0.5 + 0.5 * np.clip(U * light[0] + V * light[1] + W * light[2], 0, 1)
+    white, pos, neg = np.ones(3), np.array(to_rgb(TEAL)), np.array(to_rgb(ORANGE))
+    th1 = np.linspace(0, np.pi, 721)
+    fig, axes = plt.subplots(4, 4, figsize=(9.6, 7.5))
+    for l in range(4):
+        for m in range(4):
+            ax = axes[l, m]
+            ax.set_xlim(-1.25, 1.25); ax.set_ylim(-1.15, 1.35); ax.set_aspect("equal"); ax.axis("off")
+            if m > l:
+                continue
+            top = np.abs(sph_harm_y(l, m, th1, 0 * th1).real).max()          # the largest |Re Y| on the sphere
+            s = sph_harm_y(l, m, TH, PH).real / top                          # -1 .. 1
+            rgb = np.where(s[..., None] > 0, white + s[..., None] * (pos - white), white - s[..., None] * (neg - white))
+            rgb = np.clip(rgb, 0, 1)
+            img = np.dstack([rgb * shade[..., None], inside.astype(float)])
+            ax.imshow(img, extent=(-1, 1, -1, 1), interpolation="bilinear", zorder=1)
+            if l > 0:
+                ax.contour(U, V, np.ma.masked_where(U ** 2 + V ** 2 > 0.985, s), levels=[0], colors="#212529",
+                           linewidths=1.4, zorder=2)
+            ax.add_patch(plt.Circle((0, 0), 1, fill=False, ec="#868e96", lw=0.8, zorder=3))
+            ax.plot([0, 0], [ey[2], ey[2] + 0.3], color="#495057", lw=1.4, zorder=3)     # the z axis leaving the north pole
+            ax.text(0.08, ey[2] + 0.28, "$z$", fontsize=10, color="#495057", va="center")
+            ax.text(0, -1.12, f"{l - m} + {m} = {l}", ha="center", va="top", fontsize=10.5, color=GRAY)
+    for l in range(4):
+        axes[l, 0].text(-1.45, 0.1, rf"$l = {l}$", ha="right", va="center", fontsize=14)
+    for m in range(4):
+        axes[0, m].set_title(rf"$m = {m}$", fontsize=14)
+    fig.subplots_adjust(left=0.07, right=0.995, top=0.955, bottom=0.035, wspace=0.0, hspace=0.12)
+    fig.savefig(f"{OUT}/harmonic_globes.png", dpi=200)
+    print("wrote", f"{OUT}/harmonic_globes.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ every ladder the commutators allow: 2l + 1 rungs; whole l for rotation, half-integer for spin (still)
+@register
+def m_ladders():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, ax = plt.subplots(figsize=(9.6, 4.6))
+    ladders = [(0, 0.0), (1, 1.5), (2, 3.15), (0.5, 6.7), (1.5, 8.15)]
+    names = {0: "0", 1: "1", 2: "2", 0.5: "1/2", 1.5: "3/2"}
+    for l, x in ladders:
+        whole = float(l).is_integer()
+        ms = np.arange(-l, l + 0.01, 1.0)
+        ax.hlines(ms, x - 0.42, x + 0.42, color="k" if whole else GRAY, lw=2.8, ls="-" if whole else (0, (3, 2)))
+        ax.text(x, -2.75, rf"$l = {names[l]}$", ha="center", va="top", fontsize=13)
+        ax.text(x, -3.2, f"{len(ms)} rung" + ("s" if len(ms) > 1 else ""), ha="center", va="top", fontsize=11, color=GRAY)
+    x2 = 3.15
+    for m in range(-2, 2):
+        ax.annotate("", xy=(x2 + 0.6, m + 0.92), xytext=(x2 + 0.6, m + 0.08),
+                    arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=2, mutation_scale=15, shrinkA=0, shrinkB=0))
+        ax.annotate("", xy=(x2 + 0.95, m + 0.08), xytext=(x2 + 0.95, m + 0.92),
+                    arrowprops=dict(arrowstyle="-|>", color=PURPLE, lw=2, mutation_scale=15, shrinkA=0, shrinkB=0))
+    ax.text(-0.8, 2.45, r"$\hat{L}_+$: up one rung", ha="left", va="center", fontsize=12, color=ORANGE)
+    ax.text(-0.8, 1.95, r"$\hat{L}_-$: down one rung", ha="left", va="center", fontsize=12, color=PURPLE)
+    ax.plot([x2 + 0.6], [2.38], "x", color=CARDINAL, ms=10, mew=2.4)
+    ax.plot([x2 + 0.95], [-2.38], "x", color=CARDINAL, ms=10, mew=2.4)
+    ax.text(x2 + 0.8, 2.38, r"$\hat{L}_+Y_2^2 = 0$", ha="left", va="center", fontsize=11.5, color=CARDINAL)
+    ax.text(x2 + 1.15, -2.38, r"$\hat{L}_-Y_2^{-2} = 0$", ha="left", va="center", fontsize=11.5, color=CARDINAL)
+    ax.axvline(5.55, color=GRAY, lw=1, ls=":")
+    ax.text(1.55, 3.15, "whole $l$: rotation in space", ha="center", fontsize=13, color=PURPLE)
+    ax.text(7.45, 3.15, "half-integer $l$: spin", ha="center", fontsize=13, color=ORANGE)
+    ax.set_xlim(-0.9, 9.0); ax.set_ylim(-3.6, 3.55)
+    ax.set_yticks(np.arange(-2, 2.01, 0.5))
+    ax.set_yticklabels(["$-2$", "$-3/2$", "$-1$", "$-1/2$", "$0$", "$1/2$", "$1$", "$3/2$", "$2$"])
+    ax.tick_params(labelsize=11.5)
+    ax.set_ylabel(r"$m$ ($L_z$ in units of $\hbar$)", fontsize=12.5)
+    ax.spines["left"].set_bounds(-2, 2)
+    ax.set_xticks([]); ax.spines["bottom"].set_visible(False)
+    fig.subplots_adjust(left=0.1, right=0.99, top=0.98, bottom=0.02)
+    fig.savefig(f"{OUT}/m_ladders.png", dpi=200)
+    print("wrote", f"{OUT}/m_ladders.png")
+    return fig, None
+
+
 if __name__ == "__main__":
     names = sys.argv[1:] or list(REGISTRY)
     for name in names:
