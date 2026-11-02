@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="05-rigid-rotor_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="05-rigid-rotor_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="05-rigid-rotor_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="05-rigid-rotor_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,137 +163,219 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="the-model" class="slide level2">
-<h2>The model</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
+<section id="a-rotating-molecule-is-a-particle-on-a-sphere" class="slide level2">
+<h2>A rotating molecule is a particle on a sphere</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/dumbbell_reduce.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\hat{H} = \frac{\hat{L}^2}{2I}, \qquad I = \mu R_e^2</span></p>
 <ul>
-<li class="fragment">A mass <span class="math inline">\(\mu\)</span> rotating at <strong>fixed radius</strong> <span class="math inline">\(r\)</span></li>
-<li class="fragment">No potential: pure rotational <strong>kinetic energy</strong></li>
-<li class="fragment">Use <strong>spherical coordinates</strong> to exploit the symmetry ::: {.fragment}</li>
-<li class="fragment">Hamiltonian becomes angular momentum: <span class="math display">\[\hat{H}=\frac{\hat{L}^2}{2I}\]</span></li>
+<li>Fixed bond length, no potential: all the energy is rotation. Lecture 4.4 already solved it</li>
+</ul>
+</section>
+<section id="the-rigid-rotor" class="slide level2">
+<h2>The rigid rotor</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../ch04/images/rotor_levels.png" style="width:100.0%"></p>
+</div><div class="column" style="width:60%;">
+<div class="keyeq">
+<p><span class="math display">\hat{H}\,Y_J^{M_J} = E_J\,Y_J^{M_J}</span></p>
+<p><span class="math display">E_J = \frac{\hbar^2}{2I}\,J(J+1)</span></p>
+<p><span class="math display">J = 0, 1, 2, \dots \qquad M_J = -J, \dots, J</span></p>
+</div>
+<ul>
+<li><span class="math inline">2J + 1</span> states per level, one for each <span class="math inline">M_J</span></li>
+<li>Gaps of <span class="math inline">2, 4, 6, \dots</span> times <span class="math inline">\hbar^2/2I</span>: they <strong>grow</strong></li>
+<li><span class="math inline">J = 0</span> has <span class="math inline">E = 0</span>: <strong>no zero-point rotation</strong></li>
+<li><span class="math inline">J</span> and <span class="math inline">M_J</span> are the <span class="math inline">l</span> and <span class="math inline">m</span> of Lecture 4.4</li>
 </ul>
 </div></div>
-<div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/sphhar.gif"></p>
-</div><p>::::</p>
 </section>
-<section id="two-angles-two-quantum-numbers" class="slide level2">
-<h2>Two angles, two quantum numbers</h2>
-<div class="fragment">
-<p>Eigenfunctions are the <strong>spherical harmonics</strong> <span class="math inline">\(Y(\theta,\phi)\)</span>: <span class="math display">\[\hat{H}\,Y(\theta,\phi)=E_{J,m}\,Y(\theta,\phi)\]</span></p>
+<section id="the-rotational-constant" class="slide level2">
+<h2>The rotational constant</h2>
+<div class="keyeq">
+<p><span class="math display">F(J) = \frac{E_J}{hc} = \tilde{B}\,J(J+1), \qquad \tilde{B} = \frac{h}{8\pi^2cI}</span></p>
 </div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">molecule</th>
+<th style="text-align: right;"><span class="math inline">\tilde{B}</span> (cm<span class="math inline">^{-1}</span>)</th>
+<th style="text-align: right;">vibration <span class="math inline">\tilde{\nu}</span> (cm<span class="math inline">^{-1}</span>)</th>
+<th style="text-align: right;"><span class="math inline">k_BT/hc\tilde{B}</span> at 300 K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">H<span class="math inline">_2</span></td>
+<td style="text-align: right;">60.9</td>
+<td style="text-align: right;">4161</td>
+<td style="text-align: right;">3.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HCl</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">2886</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CO</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">2143</td>
+<td style="text-align: right;">108</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I<span class="math inline">_2</span></td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: right;">5600</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment"><span class="math inline">\(J\)</span> quantizes total angular momentum</li>
-<li class="fragment"><span class="math inline">\(M_J\)</span> quantizes its projection</li>
-<li class="fragment">Quantization comes from the <strong>cyclic boundary condition</strong> <span class="math inline">\(\Phi(0)=\Phi(2\pi)\)</span></li>
+<li>Rotation is <strong>cheap</strong>: <span class="math inline">\tilde{B} \ll k_BT = 208</span> cm<span class="math inline">^{-1}</span>, so many <span class="math inline">J</span> levels are occupied</li>
 </ul>
 </section>
-<section id="rotational-energy-levels" class="slide level2">
-<h2>Rotational energy levels</h2>
-<div class="fragment">
-<p><span class="math display">\[E_J = \frac{\hbar^2}{2I}J(J+1) = B\,J(J+1)\]</span></p>
+<section id="example-the-rotational-constant-of-hcl" class="slide level2">
+<h2>Example: the rotational constant of HCl</h2>
+<div class="worked">
+<p>H<span class="math inline">^{35}</span>Cl: <span class="math inline">R_e = 127.5</span> pm, <span class="math inline">\mu = 0.9796</span> u. Find <span class="math inline">I</span>, <span class="math inline">\tilde{B}</span> and the energy of <span class="math inline">J = 1</span>.</p>
 </div>
-<div class="fragment">
-<p><strong>Rotational constant</strong> (units of energy): <span class="math display">\[B = \frac{h^2}{8\pi^2 I}\]</span></p>
+<div class="soln fragment">
+<p><span class="math display">I = \mu R_e^2 = (1.6266\times10^{-27}\ \text{kg})(127.5\times10^{-12}\ \text{m})^2 = 2.644\times10^{-47}\ \text{kg m}^2</span></p>
+<p><span class="math display">\tilde{B} = \frac{h}{8\pi^2cI} = 10.59\ \text{cm}^{-1}, \qquad F(1) = 2\tilde{B} = 21.2\ \text{cm}^{-1}</span></p>
 </div>
 <ul>
-<li class="fragment">Energy depends <strong>only on <span class="math inline">\(J\)</span></strong></li>
-<li class="fragment"><strong>No zero-point energy</strong>: <span class="math inline">\(J=0\)</span> is allowed</li>
+<li>In <span class="math inline">J = 1</span>: <span class="math inline">L = \sqrt{2}\,\hbar</span>, and <span class="math inline">L_z</span> is <span class="math inline">-\hbar</span>, <span class="math inline">0</span> or <span class="math inline">+\hbar</span></li>
 </ul>
 </section>
-<section id="degeneracy-and-the-moment-of-inertia" class="slide level2">
-<h2>Degeneracy and the moment of inertia</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment">
-<p>Each level is <strong><span class="math inline">\((2J+1)\)</span>-fold degenerate</strong> (the allowed <span class="math inline">\(M_J\)</span>)</p>
-</div>
-<div class="fragment">
-<p>For a diatomic: <span class="math display">\[I = \mu r^2\]</span></p>
-</div>
+<section id="a-rotating-dipole-is-an-antenna" class="slide level2">
+<h2>A rotating dipole is an antenna</h2>
+<p><span class="math display">\langle J'M_J'|\hat{M}_z|JM_J\rangle = M_e\int Y_{J'}^{M_J'*}\,\cos\theta\;Y_J^{M_J}\,\sin\theta\,d\theta\,d\phi</span></p>
 <ul>
-<li class="fragment">Bigger <span class="math inline">\(I\)</span> <span class="math inline">\(\Rightarrow\)</span> smaller <span class="math inline">\(B\)</span> <span class="math inline">\(\Rightarrow\)</span> closer levels</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/Levels1.gif"></p>
-</div></div>
-</section>
-<section id="selection-rules" class="slide level2">
-<h2>Selection rules</h2>
-<div class="fragment">
-<p>The molecule must have a <strong>permanent dipole moment</strong>: <span class="math display">\[\langle J' | \mu | J'' \rangle \neq 0\]</span></p>
-</div>
-<div class="fragment">
-<p>Only adjacent levels connect: <span class="math display">\[\boxed{\Delta J = \pm 1}\]</span></p>
-</div>
-<ul>
-<li class="fragment">Derived from the <strong>recursion relations</strong> of spherical harmonics</li>
+<li>The dipole <span class="math inline">M_e</span> points along the bond: as the molecule turns, the dipole <strong>turns with it</strong></li>
+<li>No dipole, no microwave spectrum: H<span class="math inline">_2</span>, N<span class="math inline">_2</span>, O<span class="math inline">_2</span>, CO<span class="math inline">_2</span>, CH<span class="math inline">_4</span> are <strong>silent</strong>; HCl, CO, H<span class="math inline">_2</span>O absorb</li>
 </ul>
 </section>
-<section id="evenly-spaced-lines" class="slide level2">
-<h2>Evenly spaced lines</h2>
-<div class="fragment">
-<p>Line positions (<span class="math inline">\(\Delta J = +1\)</span>): <span class="math display">\[\tilde{\nu}_J = 2\tilde{B}(J+1)\]</span></p>
+<section id="one-rung-at-a-time" class="slide level2">
+<h2>One rung at a time</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/rotor_selection.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
 </div>
-<div class="fragment">
-<p>Take one more difference: <span class="math display">\[\tilde{\nu}_{J+1} - \tilde{\nu}_J = 2\tilde{B}\]</span></p>
+<div class="keyeq">
+<p><span class="math display">M_e \neq 0, \qquad \Delta J = \pm 1, \qquad \Delta M_J = 0, \pm 1</span></p>
 </div>
 <ul>
-<li class="fragment">Successive lines at <span class="math inline">\(2\tilde{B},\,4\tilde{B},\,6\tilde{B},\dots\)</span></li>
-<li class="fragment"><strong>Equal spacing</strong> is the fingerprint of the rigid rotor</li>
+<li><span class="math inline">\cos\theta\,Y_J^{M_J}</span> mixes only <span class="math inline">Y_{J\pm1}^{M_J}</span>. The photon carries <strong>one unit</strong> <span class="math inline">\hbar</span> of angular momentum</li>
 </ul>
 </section>
-<section id="reading-the-spacing" class="slide level2">
-<h2>Reading the spacing</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
+<section id="the-microwave-spectrum" class="slide level2">
+<h2>The microwave spectrum</h2>
+<p><span class="math display">\tilde{\nu}_J = F(J+1) - F(J) = \tilde{B}\,\big[(J+1)(J+2) - J(J+1)\big]</span></p>
+<div class="keyeq">
+<p><span class="math display">\tilde{\nu}_J = 2\tilde{B}\,(J+1), \qquad \tilde{\nu}_{J+1} - \tilde{\nu}_J = 2\tilde{B}</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/microwave_lines.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="example-the-bond-length-of-co" class="slide level2">
+<h2>Example: the bond length of CO</h2>
+<div class="worked">
+<p>CO absorbs at 3.845, 7.690 and 11.535 cm<span class="math inline">^{-1}</span> (115, 231, 346 GHz). Find its bond length (<span class="math inline">\mu = 6.856</span> u).</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">2\tilde{B} = 3.845\ \text{cm}^{-1} \;\Longrightarrow\; \tilde{B} = 1.9225\ \text{cm}^{-1}</span></p>
+<p><span class="math display">I = \frac{h}{8\pi^2c\tilde{B}} = 1.456\times10^{-46}\ \text{kg m}^2</span></p>
+<p><span class="math display">R = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456\times10^{-46}}{1.1385\times10^{-26}}}\ \text{m} = 113.1\ \text{pm}</span></p>
+</div>
 <ul>
-<li class="fragment">Measure line spacing <span class="math inline">\(\Rightarrow\)</span> get <span class="math inline">\(\tilde{B}\)</span></li>
-<li class="fragment"><span class="math inline">\(\tilde{B}\Rightarrow I\Rightarrow\)</span> <strong>bond length</strong> <span class="math inline">\(r\)</span></li>
-<li class="fragment">Different <strong>isotopes</strong> shift the lines</li>
-<li class="fragment">Intensities follow the <strong>Boltzmann</strong> populations <span class="math inline">\(g_J\,e^{-E_J/k_BT}\)</span></li>
+<li>Radio astronomers map the cold gas between the stars with CO’s 115 GHz line</li>
 </ul>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../../ch04/images/co_micr.png"></p>
-</div></div>
+</section>
+<section id="populations" class="slide level2">
+<h2>Populations</h2>
+<div class="keyeq">
+<p><span class="math display">\frac{N_J}{N_0} = (2J+1)\,e^{-hc\tilde{B}J(J+1)/k_BT}</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/rotor_populations.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Degeneracy <strong>rises</strong>, Boltzmann <strong>falls</strong>: HCl peaks at <span class="math inline">J = 3</span>, CO at <span class="math inline">J = 7</span></li>
+</ul>
 </section>
 <section id="rotation-rides-on-vibration" class="slide level2">
 <h2>Rotation rides on vibration</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment">
-<p>Combine rotor and oscillator: <span class="math display">\[\tilde{E}_{v,J} = \tilde{\omega}(v+\tfrac12) + \tilde{B}J(J+1)\]</span></p>
+<p><span class="math display">\tilde{E}(v, J) = \tilde{\nu}\left(v + \tfrac{1}{2}\right) + \tilde{B}\,J(J+1), \qquad \Delta v = +1, \quad \Delta J = \pm 1</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch04/images/rovib_branches.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
 </div>
-<ul>
-<li class="fragment"><strong>R branch</strong> (<span class="math inline">\(\Delta J=+1\)</span>): high side of <span class="math inline">\(\tilde{\omega}\)</span></li>
-<li class="fragment"><strong>P branch</strong> (<span class="math inline">\(\Delta J=-1\)</span>): low side</li>
-<li class="fragment"><strong>Q branch</strong> (<span class="math inline">\(\Delta J=0\)</span>) is <strong>forbidden</strong></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../../ch04/images/P_Q_R_branch.png"></p>
-</div></div>
 </section>
-<section id="where-the-model-breaks" class="slide level2">
-<h2>Where the model breaks</h2>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Rovibrational coupling</strong>: <span class="math inline">\(B\)</span> shrinks with <span class="math inline">\(v\)</span> <span class="math display">\[B_v = B_e - \alpha_e(v+\tfrac12)\]</span></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Centrifugal distortion</strong>: fast rotation stretches the bond <span class="math display">\[\tilde{E}_r(J) = \tilde{B}J(J+1) - \tilde{D}J^2(J+1)^2\]</span></li>
-</ul>
+<section id="the-p-and-r-branches" class="slide level2">
+<h2>The P and R branches</h2>
+<div class="keyeq">
+<p><span class="math display">\tilde{\nu}_R(J) = \tilde{\nu}_0 + 2\tilde{B}\,(J+1), \qquad \tilde{\nu}_P(J) = \tilde{\nu}_0 - 2\tilde{B}\,J</span></p>
 </div>
 <ul>
-<li class="fragment">Both crowd the levels at large <span class="math inline">\(J\)</span></li>
+<li><strong>R</strong> (<span class="math inline">\Delta J = +1</span>) above the band origin <span class="math inline">\tilde{\nu}_0</span>, <strong>P</strong> (<span class="math inline">\Delta J = -1</span>) below</li>
+<li>No line at <span class="math inline">\tilde{\nu}_0</span>: <span class="math inline">\Delta J = 0</span> is forbidden, so R(0) and P(1) are <span class="math inline">4\tilde{B}</span> apart</li>
+<li>Each branch rises and falls with the populations of its starting levels</li>
 </ul>
+</section>
+<section id="example-reading-the-hcl-band" class="slide level2">
+<h2>Example: reading the HCl band</h2>
+<div class="worked">
+<p>The lines next to the gap are R(0) = 2906.25 and P(1) = 2865.10 cm<span class="math inline">^{-1}</span>. Find <span class="math inline">\tilde{\nu}_0</span> and <span class="math inline">\tilde{B}</span> (rigid rotor).</p>
+</div>
+<div class="soln fragment">
+<p><span class="math display">\tilde{\nu}_0 = \frac{2906.25 + 2865.10}{2} = 2885.68\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\tilde{B} = \frac{2906.25 - 2865.10}{4} = 10.29\ \text{cm}^{-1}</span></p>
+</div>
+<ul>
+<li>The microwave value is <span class="math inline">\tilde{B}_0 = 10.44</span> cm<span class="math inline">^{-1}</span>: the bond is a little longer in <span class="math inline">v = 1</span></li>
+</ul>
+</section>
+<section id="beyond-the-rigid-rotor" class="slide level2">
+<h2>Beyond the rigid rotor</h2>
+<p><strong>The bond is longer in <span class="math inline">v = 1</span></strong></p>
+<p><span class="math display">\tilde{B}_v = \tilde{B}_e - \alpha_e\left(v + \tfrac{1}{2}\right) \qquad \text{HCl: } \tilde{B}_0 = 10.44,\ \tilde{B}_1 = 10.14\ \text{cm}^{-1}</span></p>
+<p><strong>Fast rotation stretches the bond</strong></p>
+<p><span class="math display">F(J) = \tilde{B}\,J(J+1) - \tilde{D}\,J^2(J+1)^2, \qquad \tilde{D} \approx \frac{4\tilde{B}^3}{\tilde{\nu}^2}</span></p>
+<ul>
+<li>R lines crowd, P lines spread, high-<span class="math inline">J</span> levels fall slightly. Both are small at low <span class="math inline">J</span></li>
+</ul>
+</section>
+<section id="live-temperature-and-the-spectrum" class="slide level2">
+<h2>Live: temperature and the spectrum</h2>
+<div id="rs-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/rotor_spectrum.mjs";
+  const opts = { fontSize: "19px" };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("rs-live") });
+</script>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Rotational energies <span class="math inline">\(E_J = B\,J(J+1)\)</span> are <span class="math inline">\((2J+1)\)</span>-fold degenerate. With <span class="math inline">\(\Delta J=\pm 1\)</span> this gives <strong>evenly spaced microwave lines</strong> separated by <span class="math inline">\(2\tilde{B}\)</span>, and the spacing reveals the bond length through <span class="math inline">\(I=\mu r^2\)</span>.</p>
+<p>A diatomic with a fixed bond length is a particle on a sphere: <span class="math inline">E_J = \hbar^2J(J+1)/2I</span>, with <span class="math inline">2J+1</span> states per level and no zero-point rotation. In wavenumbers <span class="math inline">F(J) = \tilde{B}J(J+1)</span> with <span class="math inline">\tilde{B} = h/8\pi^2cI</span>. A permanent dipole and <span class="math inline">\Delta J = \pm 1</span> give microwave lines evenly spaced by <span class="math inline">2\tilde{B}</span>, which measure bond lengths, with heights that follow the populations <span class="math inline">(2J+1)e^{-hcF(J)/k_BT}</span>. In the infrared, rotation rides on vibration: P and R branches around a gap at the band origin.</p>
 </blockquote>
 
 </section>
@@ -302,7 +400,6 @@ Davit Potoyan
   <script src="05-rigid-rotor_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="05-rigid-rotor_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="05-rigid-rotor_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="05-rigid-rotor_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -471,27 +568,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
