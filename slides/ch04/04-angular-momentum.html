@@ -174,10 +174,12 @@ Davit Potoyan
   widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("cv-live") });
 </script>
 </div><div class="column" style="width:36%;">
-<p><span class="math display">s = r\phi</span></p>
-<p><span class="math display">\omega = \frac{d\phi}{dt}</span></p>
-<p><span class="math display">\vec{v} = \vec{\omega}\times\vec{r}</span></p>
-<p><span class="math display">v = r\omega</span></p>
+<p><strong>On the circle</strong>, <span class="math inline">\vec{r}\perp\vec{\omega}</span>:</p>
+<p><span class="math display">s = r\phi, \qquad \omega = \frac{d\phi}{dt}</span></p>
+<p><span class="math display">v = \frac{ds}{dt} = r\,\frac{d\phi}{dt} = r\omega</span></p>
+<p><strong>In general</strong>, a vector product:</p>
+<p><span class="math display">\vec{v} = \vec{\omega}\times\vec{r}, \qquad v = \omega r\sin\alpha</span></p>
+<p>with <span class="math inline">\alpha</span> the angle between them</p>
 </div></div>
 </section>
 <section id="angular-momentum-is-a-vector-product" class="slide level2">
@@ -188,8 +190,8 @@ Davit Potoyan
 <p><img data-src="../../ch04/images/angular_momentum_vector.png" style="width:100.0%"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="math display">\begin{aligned}
-L &amp;= rp\sin\alpha &amp;&amp; \text{length of } \vec{r}\times\vec{p} \\
-&amp;= r\,\mu v &amp;&amp; \text{circle: } \alpha = 90^\circ \\
+L = |\vec{r}\times\vec{p}| &amp;= rp &amp;&amp; 90^\circ\text{ again} \\
+&amp;= r\,\mu v &amp;&amp; p = \mu v \\
 &amp;= \mu r^2\omega &amp;&amp; v = r\omega \\
 &amp;= I\omega &amp;&amp; I = \mu r^2
 \end{aligned}</span></p>
@@ -296,13 +298,15 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <div class="worked">
 <p>1 turn per second with the arms out, <span class="math inline">I = 4.0</span> kg m<span class="math inline">^2</span>. Arms in: <span class="math inline">I' = 1.6</span> kg m<span class="math inline">^2</span>. New spin rate?</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">L = I\omega = (4.0)(2\pi) = 25.1\ \text{kg m}^2\,\text{s}^{-1}</span></p>
 <p><span class="math display">\omega' = \frac{L}{I'} = \frac{25.1}{1.6} = 15.7\ \text{s}^{-1} = 2.5\ \text{turns per second}</span></p>
 </div>
 <ul>
 <li>Faster by <span class="math inline">I/I' = 2.5</span>, with the <strong>same</strong> <span class="math inline">L</span>. Also: a diver’s tuck, a pulsar, a tumbling molecule</li>
 </ul>
+</div>
 </section>
 <section id="conservation-from-symmetry" class="slide level2">
 <h2>Conservation from symmetry</h2>
@@ -358,11 +362,11 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <p><span class="math display">\Phi(\phi + 2\pi) = \Phi(\phi) \quad\Longrightarrow\quad e^{2\pi iL_z/\hbar} = 1 \quad\Longrightarrow\quad \frac{L_z}{\hbar} = m = 0, \pm 1, \pm 2, \dots</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch04/images/ring_waves.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+<p><img data-src="../../ch04/images/ring_waves.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
 </figure>
 </div>
 <ul>
-<li><span class="math inline">m = 2.5</span>: the ends <strong>miss</strong>, not allowed. The ring <strong>closing on itself</strong> quantizes <span class="math inline">m</span></li>
+<li>Dotted: the ring itself. <span class="math inline">\cos m\phi</span> goes <strong>out</strong> where positive, <strong>in</strong> where negative</li>
 </ul>
 </section>
 <section id="particle-on-a-ring" class="slide level2">
@@ -406,7 +410,8 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <div class="worked">
 <p>Six π electrons on a ring of radius 139 pm. Where should benzene absorb?</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">\frac{\hbar^2}{2m_e r^2} = \frac{(1.055\times10^{-34}\ \text{J s})^2}{2\,(9.109\times10^{-31}\ \text{kg})(1.39\times10^{-10}\ \text{m})^2} = 1.97\ \text{eV}</span></p>
 <p>Two electrons per state: <span class="math inline">m = 0</span> (2) and <span class="math inline">m = \pm 1</span> (4). Lowest empty level: <span class="math inline">\lvert m\rvert = 2</span>.</p>
 <p><span class="math display">\Delta E = (2^2 - 1^2)(1.97\ \text{eV}) = 5.9\ \text{eV}, \qquad \lambda = \frac{1240\ \text{eV nm}}{5.9\ \text{eV}} = 210\ \text{nm}</span></p>
@@ -414,6 +419,7 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <ul>
 <li>Benzene absorbs between 180 and 260 nm: colorless, as the model says</li>
 </ul>
+</div>
 </section>
 <section id="classical-and-quantum-side-by-side" class="slide level2">
 <h2>Classical and quantum, side by side</h2>
@@ -462,6 +468,21 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <li>Heavy or large rotors: steps far too small to see. A spinning wheel has <span class="math inline">m \approx 10^{31}</span></li>
 </ul>
 </section>
+<section id="spherical-coordinates" class="slide level2">
+<h2>Spherical coordinates</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../ch04/images/spherical_coord.png" style="width:100.0%"></p>
+</div><div class="column" style="width:60%;">
+<p><span class="math inline">\theta</span>: down from the <span class="math inline">z</span> axis. <span class="math inline">\phi</span>: around it, as on the ring</p>
+<p><span class="math display">x = r\sin\theta\cos\phi</span></p>
+<p><span class="math display">y = r\sin\theta\sin\phi</span></p>
+<p><span class="math display">z = r\cos\theta</span></p>
+<ul>
+<li>A patch of the sphere has area <span class="math inline">r^2\sin\theta\,d\theta\,d\phi</span>: the <span class="math inline">\sin\theta</span> in every integral over angles</li>
+</ul>
+</div></div>
+</section>
 <section id="three-components-three-operators" class="slide level2">
 <h2>Three components, three operators</h2>
 <div class="keyeq">
@@ -502,14 +523,16 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <div class="worked">
 <p>Apply <span class="math inline">\hat{L}_z = -i\hbar\,(x\,\partial_y - y\,\partial_x)</span> to <span class="math inline">x</span>, <span class="math inline">y</span> and <span class="math inline">z</span>. Which combinations are eigenfunctions?</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">\hat{L}_z\,x = i\hbar\,y, \qquad \hat{L}_z\,y = -i\hbar\,x, \qquad \hat{L}_z\,z = 0</span></p>
 <p><span class="math display">\hat{L}_z\,(x \pm iy) = i\hbar\,y \pm i\,(-i\hbar\,x) = \pm\hbar\,(x \pm iy)</span></p>
-<p><span class="math display">x \pm iy = r\sin\theta\,e^{\pm i\phi}\ \ (m = \pm 1), \qquad z = r\cos\theta\ \ (m = 0)</span></p>
+<p><span class="math display">x \pm iy = r\sin\theta\,(\cos\phi \pm i\sin\phi) = r\sin\theta\,e^{\pm i\phi}\ \ (m = \pm 1)</span></p>
 </div>
 <ul>
 <li>A turn about <span class="math inline">z</span> <strong>mixes</strong> <span class="math inline">x</span> and <span class="math inline">y</span>; the mixtures <span class="math inline">x \pm iy</span> are the ring’s <span class="math inline">e^{\pm i\phi}</span> again</li>
 </ul>
+</div>
 </section>
 <section id="only-one-component-at-a-time" class="slide level2">
 <h2>Only one component at a time</h2>
@@ -650,13 +673,15 @@ E &amp;= \tfrac{1}{2}\mu v^2 &amp;&amp; \text{kinetic energy} \\
 <div class="worked">
 <p>Find the smallest angle between <span class="math inline">\vec{L}</span> and <span class="math inline">z</span> for <span class="math inline">l = 1</span>, <span class="math inline">2</span> and <span class="math inline">10</span>, and for a spinning top with <span class="math inline">l \approx 10^{31}</span>.</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">\cos\theta_{\min} = \frac{l}{\sqrt{l(l+1)}}</span></p>
 <p><span class="math inline">l = 1</span>: 45°. <span class="math inline">\ l = 2</span>: 35.3°. <span class="math inline">\ l = 10</span>: 17.5°. Large <span class="math inline">l</span>: <span class="math inline">\theta_{\min} \approx 1/\sqrt{l} \approx 3\times10^{-16}</span> rad for the top.</p>
 </div>
 <ul>
 <li>Large angular momentum looks <strong>classical</strong>: the correspondence principle again</li>
 </ul>
+</div>
 </section>
 <section id="toward-the-rigid-rotor" class="slide level2">
 <h2>Toward the rigid rotor</h2>

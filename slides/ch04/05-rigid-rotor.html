@@ -167,12 +167,13 @@ Davit Potoyan
 <h2>A rotating molecule is a particle on a sphere</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch04/images/dumbbell_reduce.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+<p><img data-src="../../ch04/images/rotor_sphere.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
 </figure>
 </div>
 <p><span class="math display">\hat{H} = \frac{\hat{L}^2}{2I}, \qquad I = \mu R_e^2</span></p>
 <ul>
-<li>Fixed bond length, no potential: all the energy is rotation. Lecture 4.4 already solved it</li>
+<li>Two atoms turn like <strong>one particle</strong> of reduced mass <span class="math inline">\mu</span> at distance <span class="math inline">R_e</span>, the bond length</li>
+<li>No potential energy as it turns: all of it is rotation, and Lecture 4.4 already solved it</li>
 </ul>
 </section>
 <section id="the-rigid-rotor" class="slide level2">
@@ -250,35 +251,47 @@ Davit Potoyan
 <div class="worked">
 <p>H<span class="math inline">^{35}</span>Cl: <span class="math inline">R_e = 127.5</span> pm, <span class="math inline">\mu = 0.9796</span> u. Find <span class="math inline">I</span>, <span class="math inline">\tilde{B}</span> and the energy of <span class="math inline">J = 1</span>.</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">I = \mu R_e^2 = (1.6266\times10^{-27}\ \text{kg})(127.5\times10^{-12}\ \text{m})^2 = 2.644\times10^{-47}\ \text{kg m}^2</span></p>
 <p><span class="math display">\tilde{B} = \frac{h}{8\pi^2cI} = 10.59\ \text{cm}^{-1}, \qquad F(1) = 2\tilde{B} = 21.2\ \text{cm}^{-1}</span></p>
 </div>
 <ul>
 <li>In <span class="math inline">J = 1</span>: <span class="math inline">L = \sqrt{2}\,\hbar</span>, and <span class="math inline">L_z</span> is <span class="math inline">-\hbar</span>, <span class="math inline">0</span> or <span class="math inline">+\hbar</span></li>
 </ul>
+</div>
 </section>
 <section id="a-rotating-dipole-is-an-antenna" class="slide level2">
 <h2>A rotating dipole is an antenna</h2>
-<p><span class="math display">\langle J'M_J'|\hat{M}_z|JM_J\rangle = M_e\int Y_{J'}^{M_J'*}\,\cos\theta\;Y_J^{M_J}\,\sin\theta\,d\theta\,d\phi</span></p>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch04/images/rotor_antenna.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
+<p><strong>Permanent dipole</strong> <span class="math inline">M_e</span>: the dipole at the bond length <span class="math inline">R_e</span>, along the bond (HCl: 1.1 D)</p>
+<p><strong>Its <span class="math inline">z</span> part</strong>, along the light’s field:</p>
+<p><span class="math display">M_z = M_e\cos\theta</span></p>
 <ul>
-<li>The dipole <span class="math inline">M_e</span> points along the bond: as the molecule turns, the dipole <strong>turns with it</strong></li>
-<li>No dipole, no microwave spectrum: H<span class="math inline">_2</span>, N<span class="math inline">_2</span>, O<span class="math inline">_2</span>, CO<span class="math inline">_2</span>, CH<span class="math inline">_4</span> are <strong>silent</strong>; HCl, CO, H<span class="math inline">_2</span>O absorb</li>
+<li>It <strong>swings</strong> as the molecule turns: light can push on it</li>
+<li>No dipole, no spectrum: H<span class="math inline">_2</span>, N<span class="math inline">_2</span>, O<span class="math inline">_2</span>, CO<span class="math inline">_2</span>, CH<span class="math inline">_4</span> are <strong>silent</strong></li>
 </ul>
+</div></div>
 </section>
 <section id="one-rung-at-a-time" class="slide level2">
 <h2>One rung at a time</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../ch04/images/rotor_selection.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
-</figure>
-</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<p><img data-src="../../ch04/images/rotor_rungs.png" style="width:100.0%"></p>
+</div><div class="column" style="width:56%;">
+<p><strong>Transition dipole</strong>, field along <span class="math inline">z</span>:</p>
+<p><span class="math display">\langle J'|\hat{M}_z|J\rangle = M_e\,\langle J'|\cos\theta|J\rangle</span></p>
+<p><span class="math display">\cos\theta\;Y_0^0 = \tfrac{1}{\sqrt{3}}\,Y_1^0 \qquad \text{(pure } J = 1\text{)}</span></p>
+<ul>
+<li>The photon carries <strong>one</strong> <span class="math inline">\hbar</span> of angular momentum</li>
+</ul>
+</div></div>
 <div class="keyeq">
 <p><span class="math display">M_e \neq 0, \qquad \Delta J = \pm 1, \qquad \Delta M_J = 0, \pm 1</span></p>
 </div>
-<ul>
-<li><span class="math inline">\cos\theta\,Y_J^{M_J}</span> mixes only <span class="math inline">Y_{J\pm1}^{M_J}</span>. The photon carries <strong>one unit</strong> <span class="math inline">\hbar</span> of angular momentum</li>
-</ul>
 </section>
 <section id="the-microwave-spectrum" class="slide level2">
 <h2>The microwave spectrum</h2>
@@ -297,7 +310,8 @@ Davit Potoyan
 <div class="worked">
 <p>CO absorbs at 3.845, 7.690 and 11.535 cm<span class="math inline">^{-1}</span> (115, 231, 346 GHz). Find its bond length (<span class="math inline">\mu = 6.856</span> u).</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">2\tilde{B} = 3.845\ \text{cm}^{-1} \;\Longrightarrow\; \tilde{B} = 1.9225\ \text{cm}^{-1}</span></p>
 <p><span class="math display">I = \frac{h}{8\pi^2c\tilde{B}} = 1.456\times10^{-46}\ \text{kg m}^2</span></p>
 <p><span class="math display">R = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456\times10^{-46}}{1.1385\times10^{-26}}}\ \text{m} = 113.1\ \text{pm}</span></p>
@@ -305,6 +319,7 @@ Davit Potoyan
 <ul>
 <li>Radio astronomers map the cold gas between the stars with CO’s 115 GHz line</li>
 </ul>
+</div>
 </section>
 <section id="populations" class="slide level2">
 <h2>Populations</h2>
@@ -345,13 +360,15 @@ Davit Potoyan
 <div class="worked">
 <p>The lines next to the gap are R(0) = 2906.25 and P(1) = 2865.10 cm<span class="math inline">^{-1}</span>. Find <span class="math inline">\tilde{\nu}_0</span> and <span class="math inline">\tilde{B}</span> (rigid rotor).</p>
 </div>
-<div class="soln fragment">
+<div class="fragment">
+<div class="soln">
 <p><span class="math display">\tilde{\nu}_0 = \frac{2906.25 + 2865.10}{2} = 2885.68\ \text{cm}^{-1}</span></p>
 <p><span class="math display">\tilde{B} = \frac{2906.25 - 2865.10}{4} = 10.29\ \text{cm}^{-1}</span></p>
 </div>
 <ul>
 <li>The microwave value is <span class="math inline">\tilde{B}_0 = 10.44</span> cm<span class="math inline">^{-1}</span>: the bond is a little longer in <span class="math inline">v = 1</span></li>
 </ul>
+</div>
 </section>
 <section id="beyond-the-rigid-rotor" class="slide level2">
 <h2>Beyond the rigid rotor</h2>

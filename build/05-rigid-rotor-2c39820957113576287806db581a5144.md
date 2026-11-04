@@ -24,6 +24,63 @@ $$
 \hat{H} = \frac{\hat{L}^2}{2I}, \qquad I = \mu R_e^2
 $$
 
+```{code-cell} python
+:tags: [hide-input]
+# synced: rotor_sphere
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import Circle, FancyArrowPatch
+from matplotlib.colors import to_rgb
+mC, mO, R = 12.0, 16.0, 1.9
+rC, rO = mO / (mC + mO) * R, mC / (mC + mO) * R            # distances from the center of mass, m_C r_C = m_O r_O
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9))
+for a_ in (ax, bx):
+    a_.set_xlim(-2.4, 2.4); a_.set_ylim(-2.0, 2.0); a_.set_aspect("equal"); a_.axis("off")
+ax.plot([-rC, rO], [0, 0], color="#adb5bd", lw=6, solid_capstyle="round", zorder=2)
+ax.add_patch(Circle((-rC, 0), 0.27, fc="#495057", ec="k", lw=1, zorder=3))
+ax.add_patch(Circle((rO, 0), 0.31, fc=CARDINAL, ec="k", lw=1, zorder=3))
+ax.text(-rC, 0, "C", color="white", ha="center", va="center", fontsize=13, weight="bold", zorder=4)
+ax.text(rO, 0, "O", color="white", ha="center", va="center", fontsize=13, weight="bold", zorder=4)
+ax.plot([0], [0], "+", color="k", ms=13, mew=2.2, zorder=5)
+ax.annotate("", xy=(-rC, -0.62), xytext=(rO, -0.62), arrowprops=dict(arrowstyle="<->", color="k", lw=1.4,
+                                                                  shrinkA=0, shrinkB=0))
+ax.text(0.5 * (rO - rC), -0.78, "$R_e$", ha="center", va="top", fontsize=18)
+ax.add_patch(FancyArrowPatch((1.55 * np.cos(np.radians(15)), 1.55 * np.sin(np.radians(15))),
+                             (1.55 * np.cos(np.radians(65)), 1.55 * np.sin(np.radians(65))),
+                             connectionstyle="arc3,rad=0.25", arrowstyle="-|>", mutation_scale=16, color=PURPLE, lw=1.8))
+S = 301                                                     # the sphere: shaded pale purple, lit from the upper left
+u = np.linspace(-1, 1, S)
+U, V = np.meshgrid(u, u[::-1])
+W = np.sqrt(np.clip(1 - U ** 2 - V ** 2, 0, None))
+lit = np.clip(-0.45 * U + 0.55 * V + 0.7 * W, 0, None) / np.linalg.norm([-0.45, 0.55, 0.7])
+rgb = 1 - (0.06 + 0.16 * (1 - lit))[..., None] * (1 - np.array(to_rgb(PURPLE)))
+bx.imshow(np.dstack([rgb, (U ** 2 + V ** 2 < 1).astype(float)]), extent=(-R, R, -R, R), interpolation="bilinear",
+          zorder=1)
+bx.add_patch(Circle((0, 0), R, fill=False, ec=PURPLE, lw=1.3, zorder=2))
+el = np.radians(20)                                         # the view looks 20 degrees down on the equator
+ps = np.linspace(-np.pi / 2, np.pi / 2, 200)
+bx.plot(R * np.sin(ps), -R * np.sin(el) * np.cos(ps), color=PURPLE, lw=1.1, alpha=0.8, zorder=2)          # front
+bx.plot(-R * np.sin(ps), R * np.sin(el) * np.cos(ps), color=PURPLE, lw=1.0, ls=(0, (3, 3)), alpha=0.55, zorder=2)
+th, ps0 = np.radians(50), np.radians(50)                    # where the bead sits on the near side
+bead = (R * np.sin(th) * np.sin(ps0), R * (-np.sin(el) * np.sin(th) * np.cos(ps0) + np.cos(el) * np.cos(th)))
+bx.plot([0, bead[0]], [0, bead[1]], color="k", lw=1.6, zorder=3)
+bx.add_patch(Circle(bead, 0.27, fc=PURPLE, ec="k", lw=1, zorder=4))
+bx.text(bead[0], bead[1], r"$\mu$", color="white", ha="center", va="center", fontsize=15, zorder=5)
+bx.plot([0], [0], "+", color="k", ms=13, mew=2.2, zorder=5)
+ang = np.arctan2(bead[1], bead[0])
+bx.text(0.55 * bead[0] + 0.27 * np.sin(ang), 0.55 * bead[1] - 0.27 * np.cos(ang), "$R_e$", fontsize=18,
+        ha="center", va="center", zorder=5)
+fig.text(0.5, 0.5, "=", ha="center", va="center", fontsize=30, color=GRAY)
+fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, wspace=0.1)
+plt.show()
+```
+
+Fig. Two atoms a bond length $R_e$ apart, turning about their center of mass (+), move like one particle of reduced mass $\mu$ on a sphere of radius $R_e$.
+
 Lecture 4.4 already found the eigenfunctions of $\hat{L}^2$, the spherical harmonics, so the problem is solved. For rotating molecules, spectroscopists write $J$ and $M_J$ in place of $l$ and $m$:
 
 :::{important} **The rigid rotor**
@@ -110,7 +167,99 @@ $$
 
 #### A rotating dipole is an antenna
 
-Light pushes on the dipole moment $M$ of a molecule ([Lecture 4.3](03-molecular-vibrations.md)). A polar diatomic such as HCl or CO carries a permanent dipole $M_e$ along its axis. As the molecule turns, the dipole turns with it: seen along any fixed direction it oscillates at the rotation frequency, and it can exchange energy with light at that frequency. A nonpolar molecule (H$_2$, N$_2$, O$_2$, CO$_2$, CH$_4$) has no permanent dipole, so its rotation is invisible in absorption. (Raman spectroscopy still sees it, through the polarizability.)
+Light pushes on the dipole moment $M$ of a molecule ([Lecture 4.3](03-molecular-vibrations.md)). A polar diatomic such as HCl or CO carries a **permanent dipole** $M_e$: its dipole at the bond length $R_e$, the first term of Lecture 4.3's $M(x) = M_e + M'x + \dots$ It points along the molecular axis, and it is about 1.1 D for HCl and 0.11 D for CO. As the molecule turns, the dipole turns with it. Seen along a fixed direction $z$, its component $M_z = M_e\cos\theta$ oscillates at the rotation frequency, so it can exchange energy with light at that frequency.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: rotor_antenna
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import Circle, FancyArrowPatch
+nf = 40
+ts = np.arange(nf) / nf                                     # one loop of the animation = two turns
+GREEN, BLUE = "#2f9e44", "#1c7ed6"
+T0, T1 = 1.65, 5.25                                         # where the trace starts and ends (time 0 to 1)
+tt = np.linspace(0, 1, 300)
+ring = np.linspace(0, 2 * np.pi, 200)
+# per row: atom labels, colours, radii, distances of the two atoms from the center of mass, polar?
+rows = [(("H", "Cl"), ("white", GREEN), (0.15, 0.27), (0.62, 0.62 / 35), True),
+        (("N", "N"), (BLUE, BLUE), (0.22, 0.22), (0.37, 0.37), False)]
+fig, axes = plt.subplots(2, 1, figsize=(7.2, 5.3))
+parts = []
+for ax, (labels, cols, rads, (p1, p2), polar) in zip(axes, rows):
+    ax.set_xlim(-1.3, T1 + 1.1); ax.set_ylim(-1.32, 1.4); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([0, 0], [-1.22, 1.22], color=GRAY, lw=1, ls=(0, (4, 3)), zorder=1)        # the field direction z
+    ax.text(0.1, 1.26, "$z$", fontsize=19, color=GRAY, va="center")
+    ax.plot([T0, T0], [-1.15, 1.15], color=GRAY, lw=0.9)
+    ax.annotate("", xy=(T1 + 0.35, 0), xytext=(T0, 0), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=0.9,
+                                                                     mutation_scale=12, shrinkA=0, shrinkB=0))
+    ax.text(T1 + 0.42, -0.1, "$t$", fontsize=19, color=GRAY, va="top")
+    ax.text(T0, 1.28, "$M_z$", fontsize=19, ha="center", va="center", color=ORANGE)
+    if polar:
+        ax.plot(np.cos(ring), np.sin(ring), color=ORANGE, lw=0.9, ls=":", alpha=0.7, zorder=1)  # where the tip runs
+        for yv, lab in ((1, "$+M_e$"), (-1, "$-M_e$")):
+            ax.plot([T0, T1], [yv, yv], color=GRAY, lw=0.9, ls=":")
+            ax.text(T1 + 0.08, yv, lab, fontsize=18, color=GRAY, va="center")
+        ax.plot(T0 + (T1 - T0) * tt, np.cos(4 * np.pi * tt), color="#dee2e6", lw=1.8, zorder=1)
+    else:
+        ax.text(-1.25, -1.1, "$M_e = 0$", fontsize=19, color=ORANGE, va="center")
+    (bond,) = ax.plot([], [], color="#adb5bd", lw=6, solid_capstyle="round", zorder=3)
+    c1 = Circle((0, 0), rads[0], fc=cols[0], ec="k", lw=1, zorder=4); ax.add_patch(c1)
+    c2 = Circle((0, 0), rads[1], fc=cols[1], ec="k", lw=1, zorder=4); ax.add_patch(c2)
+    l1 = ax.text(0, 0, labels[0], ha="center", va="center", fontsize=11, weight="bold", zorder=5,
+                 color="k" if cols[0] == "white" else "white")
+    l2 = ax.text(0, 0, labels[1], ha="center", va="center", fontsize=11, weight="bold", zorder=5, color="white")
+    arrow = FancyArrowPatch((0, 0), (0, 1), arrowstyle="-|>", mutation_scale=19, color=ORANGE, lw=3.0,
+                            shrinkA=0, shrinkB=0, zorder=3.5)                 # over the bond, under the atoms
+    if polar:
+        ax.add_patch(arrow)
+    (arc,) = ax.plot([], [], color="k", lw=1.2, zorder=6)
+    th_lab = ax.text(0, 0, r"$\theta$", fontsize=19, ha="center", va="center", zorder=6)
+    (link,) = ax.plot([], [], color=ORANGE, lw=1.1, ls=":", zorder=2)
+    (trace,) = ax.plot([], [], color=ORANGE, lw=2.4, zorder=3)
+    (dot,) = ax.plot([], [], "o", color=ORANGE, ms=7, zorder=4)
+    parts.append((p1, p2, polar, bond, c1, c2, l1, l2, arrow, arc, th_lab, link, trace, dot))
+fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, hspace=0.06)
+
+def update(i):
+    a = 4 * np.pi * ts[i]                                   # the angle turned so far
+    d = np.array([-np.sin(a), np.cos(a)])                   # unit vector along the bond, toward H: the dipole
+    th = np.arccos(np.clip(d[1], -1, 1))                    # the polar angle from z, 0 to pi
+    side = 1.0 if d[0] <= 0 else -1.0                       # the arc runs from z toward the dipole, the short way
+    arcs = np.pi / 2 + side * np.linspace(0, th, 40)
+    x_now = T0 + (T1 - T0) * ts[i]
+    sel = tt <= ts[i] + 1e-9
+    for p1, p2, polar, bond, c1, c2, l1, l2, arrow, arc, th_lab, link, trace, dot in parts:
+        P1, P2 = p1 * d, -p2 * d
+        bond.set_data([P2[0], P1[0]], [P2[1], P1[1]])
+        c1.center, c2.center = (P1[0], P1[1]), (P2[0], P2[1])
+        l1.set_position((P1[0], P1[1])); l2.set_position((P2[0], P2[1]))
+        if polar:
+            arrow.set_positions((0, 0), (d[0], d[1]))
+            arc.set_data(0.37 * np.cos(arcs), 0.37 * np.sin(arcs))
+            mid = np.pi / 2 + side * th / 2
+            th_lab.set_position((0.58 * np.cos(mid), 0.58 * np.sin(mid)))
+            th_lab.set_visible(th > np.radians(40))
+            link.set_data([d[0], x_now], [d[1], d[1]])
+            trace.set_data(T0 + (T1 - T0) * tt[sel], np.cos(4 * np.pi * tt[sel]))
+            dot.set_data([x_now], [d[1]])
+        else:
+            th_lab.set_visible(False)
+            trace.set_data(T0 + (T1 - T0) * tt[sel], 0 * tt[sel])
+            dot.set_data([x_now], [0])
+
+ani = FuncAnimation(fig, update, frames=nf, interval=85, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+Fig. HCl (top) and N$_2$ (bottom) turning. HCl's dipole (orange arrow, pointing from the negative Cl end to the positive H end) turns with the bond. Its height along $z$, $M_z = M_e\cos\theta$, is traced at the right: it swings between $+M_e$ and $-M_e$ at the rotation frequency. N$_2$ has no dipole, so its trace stays at zero.
+
+A nonpolar molecule (H$_2$, N$_2$, O$_2$, CO$_2$, CH$_4$) has no permanent dipole, so its rotation is invisible in absorption. (Raman spectroscopy still sees it, through the polarizability.)
 
 #### One rung at a time: $\Delta J = \pm 1$
 

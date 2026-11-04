@@ -36,7 +36,7 @@ The particle goes counterclockwise around a circle of radius $r$. The angle $\ph
 - The **angular velocity** $\omega = d\phi/dt$ says how fast the angle grows. It is the same for every point of a rigid body.
 - The speed along the circle is $v = ds/dt = r\,d\phi/dt = r\omega$: at the same $\omega$, points farther from the axis move faster.
 
-As vectors, the angular velocity $\vec{\omega}$ points along the rotation axis, with length $\omega$ and direction set by the right-hand rule (fingers curl with the motion, the thumb gives $\vec{\omega}$). The velocity is then a **vector product**, $\vec{v} = \vec{\omega}\times\vec{r}$: perpendicular to both $\vec{\omega}$ and $\vec{r}$, so tangent to the circle, with length $\omega r$.
+As vectors, the angular velocity $\vec{\omega}$ points along the rotation axis, with length $\omega$ and direction set by the right-hand rule (fingers curl with the motion, the thumb gives $\vec{\omega}$). The velocity is then a **vector product**, $\vec{v} = \vec{\omega}\times\vec{r}$: perpendicular to both $\vec{\omega}$ and $\vec{r}$, so tangent to the circle. Its length is $\omega r\sin\alpha$, with $\alpha$ the angle between $\vec{\omega}$ and $\vec{r}$. Measured from the center of the circle, $\vec{r}$ is perpendicular to the axis, $\alpha = 90^\circ$, and $v = \omega r$ as above. Measured from any other point on the axis, $\alpha$ is smaller, but $r\sin\alpha$ is still the radius of the circle.
 
 #### Angular momentum is a vector product
 
@@ -330,7 +330,7 @@ $$
 \Phi(\phi + 2\pi) = \Phi(\phi) \quad\Longrightarrow\quad e^{2\pi iL_z/\hbar} = 1 \quad\Longrightarrow\quad \frac{L_z}{\hbar} = m = 0, \pm 1, \pm 2, \dots
 $$
 
-By Euler's formula ([Appendix A.2](../math/02-trigonometry-and-complex-numbers.md)), $e^{2\pi im} = \cos 2\pi m + i\sin 2\pi m$ equals 1 exactly when $m$ is a whole number.
+By Euler's formula ([Appendix A.2](../math/02-trigonometry-and-complex-numbers.md)), $e^{2\pi im} = \cos 2\pi m + i\sin 2\pi m$ equals 1 exactly when $m$ is a whole number. A value such as $m = 2.5$ fails: after one turn the wave returns with $e^{5\pi i} = -1$, the opposite sign, so the function would have two values at one point.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -342,26 +342,24 @@ from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
 phi = np.linspace(0, 2 * np.pi, 721)
-cases = [(0, "constant"), (1, "one wavelength"), (2, "two wavelengths"), (3, "three wavelengths"),
-         (2.5, "the ends miss")]
-fig, axes = plt.subplots(1, 5, figsize=(9.6, 2.35))
-for ax, (m, note) in zip(axes, cases):
-    col = TEAL if float(m).is_integer() else CARDINAL
-    ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=1.2, ls=":")
-    r = 1 + 0.3 * np.cos(m * phi)                           # the real part of e^{im phi}, drawn out from the ring
-    ax.plot(r * np.cos(phi), r * np.sin(phi), color=col, lw=2.6)
-    ax.plot([r[0]], [0], "o", color=col, ms=6.5, zorder=4)  # the start, phi = 0
-    if col == CARDINAL:                                     # after one turn the wave is back at phi = 0, but at r = 0.7
-        ax.plot([r[-1]], [0], "o", color=CARDINAL, ms=6.5, mfc="white", mew=2, zorder=4)
-        ax.annotate("", xy=(r[0] - 0.03, -0.32), xytext=(r[-1] + 0.03, -0.32),
-                    arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.4, shrinkA=0, shrinkB=0))
+fig, axes = plt.subplots(1, 4, figsize=(9.6, 2.75))
+for ax, m in zip(axes, range(4)):
+    w = 0.34 * np.cos(m * phi)                              # the real part of e^{im phi}, drawn out from the ring
+    r = 1 + w
+    for sgn, col in ((1, TEAL), (-1, ORANGE)):              # shaded between wave and ring: positive out, negative in
+        rr = np.where(sgn * w > 0, r, 1.0)
+        ax.fill(np.concatenate([rr * np.cos(phi), np.cos(phi[::-1])]),
+                np.concatenate([rr * np.sin(phi), np.sin(phi[::-1])]), color=col, alpha=0.3, lw=0)
+        rs = np.where(sgn * w >= 0, r, np.nan)
+        ax.plot(rs * np.cos(phi), rs * np.sin(phi), color=col, lw=2.6)
+    ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=1.3, ls=":")          # the ring itself: the zero line
     ax.set_xlim(-1.42, 1.42); ax.set_ylim(-1.42, 1.42); ax.set_aspect("equal"); ax.axis("off")
-    ax.set_title(rf"$m = {m:g}$", fontsize=14, color=col)
+    ax.set_title(rf"$m = {m}$", fontsize=16)
 fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.01, wspace=0.06)
 plt.show()
 ```
 
-Fig. The real part of $e^{im\phi}$ drawn around the ring (dotted). For $m = 0, 1, 2, 3$ a whole number of wavelengths fits, and the wave joins itself at the dot where it started. For $m = 2.5$ the wave comes back to $\phi = 0$ at the open circle, away from its start: the function would have two values at one point, so $m = 2.5$ is not allowed.
+Fig. The real part of $e^{im\phi}$, $\cos m\phi$, drawn around the ring (dotted): outward where it is positive (teal), inward where it is negative (orange). For $m = 0, 1, 2, 3$ a whole number of wavelengths fits, so the wave joins itself after one turn. For $m = 1$ one positive and one negative lobe make the curve look like the ring pushed sideways.
 
 The quantization comes from no wall and no potential, only from the ring closing on itself. Normalizing on the ring, $\int_0^{2\pi}\lvert\Phi\rvert^2\,d\phi = 1$, gives the factor $1/\sqrt{2\pi}$. Each $\Phi_m$ is an eigenfunction of $\hat{H}$ as well:
 
