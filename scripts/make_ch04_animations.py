@@ -1489,25 +1489,23 @@ def skater_spin():
 skater_spin.fps = 10
 
 
-# ------------------------------------------------------------ a wave on a ring must join up: e^{im phi} for whole m, and a misfit (still)
+# ------------------------------------------------------------ a wave on a ring must join up: cos(m phi) around the ring for whole m, + out (teal), - in (orange) (still)
 @register
 def ring_waves():
     phi = np.linspace(0, 2 * np.pi, 721)
-    cases = [(0, "constant"), (1, "one wavelength"), (2, "two wavelengths"), (3, "three wavelengths"),
-             (2.5, "the ends miss")]
-    fig, axes = plt.subplots(1, 5, figsize=(9.6, 2.35))
-    for ax, (m, note) in zip(axes, cases):
-        col = TEAL if float(m).is_integer() else CARDINAL
-        ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=1.2, ls=":")
-        r = 1 + 0.3 * np.cos(m * phi)                           # the real part of e^{im phi}, drawn out from the ring
-        ax.plot(r * np.cos(phi), r * np.sin(phi), color=col, lw=2.6)
-        ax.plot([r[0]], [0], "o", color=col, ms=6.5, zorder=4)  # the start, phi = 0
-        if col == CARDINAL:                                     # after one turn the wave is back at phi = 0, but at r = 0.7
-            ax.plot([r[-1]], [0], "o", color=CARDINAL, ms=6.5, mfc="white", mew=2, zorder=4)
-            ax.annotate("", xy=(r[0] - 0.03, -0.32), xytext=(r[-1] + 0.03, -0.32),
-                        arrowprops=dict(arrowstyle="<->", color=CARDINAL, lw=1.4, shrinkA=0, shrinkB=0))
+    fig, axes = plt.subplots(1, 4, figsize=(9.6, 2.75))
+    for ax, m in zip(axes, range(4)):
+        w = 0.34 * np.cos(m * phi)                              # the real part of e^{im phi}, drawn out from the ring
+        r = 1 + w
+        for sgn, col in ((1, TEAL), (-1, ORANGE)):              # shaded between wave and ring: positive out, negative in
+            rr = np.where(sgn * w > 0, r, 1.0)
+            ax.fill(np.concatenate([rr * np.cos(phi), np.cos(phi[::-1])]),
+                    np.concatenate([rr * np.sin(phi), np.sin(phi[::-1])]), color=col, alpha=0.3, lw=0)
+            rs = np.where(sgn * w >= 0, r, np.nan)
+            ax.plot(rs * np.cos(phi), rs * np.sin(phi), color=col, lw=2.6)
+        ax.plot(np.cos(phi), np.sin(phi), color=GRAY, lw=1.3, ls=":")          # the ring itself: the zero line
         ax.set_xlim(-1.42, 1.42); ax.set_ylim(-1.42, 1.42); ax.set_aspect("equal"); ax.axis("off")
-        ax.set_title(rf"$m = {m:g}$", fontsize=14, color=col)
+        ax.set_title(rf"$m = {m}$", fontsize=16)
     fig.subplots_adjust(left=0.01, right=0.99, top=0.86, bottom=0.01, wspace=0.06)
     fig.savefig(f"{OUT}/ring_waves.png", dpi=200)
     print("wrote", f"{OUT}/ring_waves.png")
@@ -1812,8 +1810,61 @@ def m_ladders():
 
 
 # ============================================================ lecture 4.5: the rigid rotor
-# Lecture 4.5 (page ch04/05, deck slides/ch04/05) uses every figure in this section; deck 4.5 also reuses 4.4's
-# dumbbell_reduce. Rotational levels PURPLE (the chapter's rotation colour), transitions ORANGE, P branch TEAL.
+# Lecture 4.5 (page ch04/05, deck slides/ch04/05) uses every figure in this section, with two exceptions (2026-11-04):
+# rotor_rungs is deck-only (deck "One rung at a time": a schematic of allowed and forbidden rungs) and rotor_selection
+# is page-only (the integrand whose lobes cancel). Rotational levels PURPLE (the chapter's rotation colour),
+# transitions ORANGE, P branch TEAL, the dipole ORANGE as in 4.3's dipole_antenna.
+
+# ------------------------------------------------------------ the model: two atoms a bond length R_e apart turn like one bead mu on a sphere of radius R_e (still)
+@register
+def rotor_sphere():
+    from matplotlib.patches import Circle, FancyArrowPatch
+    from matplotlib.colors import to_rgb
+    mC, mO, R = 12.0, 16.0, 1.9
+    rC, rO = mO / (mC + mO) * R, mC / (mC + mO) * R            # distances from the center of mass, m_C r_C = m_O r_O
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9))
+    for a_ in (ax, bx):
+        a_.set_xlim(-2.4, 2.4); a_.set_ylim(-2.0, 2.0); a_.set_aspect("equal"); a_.axis("off")
+    ax.plot([-rC, rO], [0, 0], color="#adb5bd", lw=6, solid_capstyle="round", zorder=2)
+    ax.add_patch(Circle((-rC, 0), 0.27, fc="#495057", ec="k", lw=1, zorder=3))
+    ax.add_patch(Circle((rO, 0), 0.31, fc=CARDINAL, ec="k", lw=1, zorder=3))
+    ax.text(-rC, 0, "C", color="white", ha="center", va="center", fontsize=13, weight="bold", zorder=4)
+    ax.text(rO, 0, "O", color="white", ha="center", va="center", fontsize=13, weight="bold", zorder=4)
+    ax.plot([0], [0], "+", color="k", ms=13, mew=2.2, zorder=5)
+    ax.annotate("", xy=(-rC, -0.62), xytext=(rO, -0.62), arrowprops=dict(arrowstyle="<->", color="k", lw=1.4,
+                                                                      shrinkA=0, shrinkB=0))
+    ax.text(0.5 * (rO - rC), -0.78, "$R_e$", ha="center", va="top", fontsize=18)
+    ax.add_patch(FancyArrowPatch((1.55 * np.cos(np.radians(15)), 1.55 * np.sin(np.radians(15))),
+                                 (1.55 * np.cos(np.radians(65)), 1.55 * np.sin(np.radians(65))),
+                                 connectionstyle="arc3,rad=0.25", arrowstyle="-|>", mutation_scale=16, color=PURPLE, lw=1.8))
+    S = 301                                                     # the sphere: shaded pale purple, lit from the upper left
+    u = np.linspace(-1, 1, S)
+    U, V = np.meshgrid(u, u[::-1])
+    W = np.sqrt(np.clip(1 - U ** 2 - V ** 2, 0, None))
+    lit = np.clip(-0.45 * U + 0.55 * V + 0.7 * W, 0, None) / np.linalg.norm([-0.45, 0.55, 0.7])
+    rgb = 1 - (0.06 + 0.16 * (1 - lit))[..., None] * (1 - np.array(to_rgb(PURPLE)))
+    bx.imshow(np.dstack([rgb, (U ** 2 + V ** 2 < 1).astype(float)]), extent=(-R, R, -R, R), interpolation="bilinear",
+              zorder=1)
+    bx.add_patch(Circle((0, 0), R, fill=False, ec=PURPLE, lw=1.3, zorder=2))
+    el = np.radians(20)                                         # the view looks 20 degrees down on the equator
+    ps = np.linspace(-np.pi / 2, np.pi / 2, 200)
+    bx.plot(R * np.sin(ps), -R * np.sin(el) * np.cos(ps), color=PURPLE, lw=1.1, alpha=0.8, zorder=2)          # front
+    bx.plot(-R * np.sin(ps), R * np.sin(el) * np.cos(ps), color=PURPLE, lw=1.0, ls=(0, (3, 3)), alpha=0.55, zorder=2)
+    th, ps0 = np.radians(50), np.radians(50)                    # where the bead sits on the near side
+    bead = (R * np.sin(th) * np.sin(ps0), R * (-np.sin(el) * np.sin(th) * np.cos(ps0) + np.cos(el) * np.cos(th)))
+    bx.plot([0, bead[0]], [0, bead[1]], color="k", lw=1.6, zorder=3)
+    bx.add_patch(Circle(bead, 0.27, fc=PURPLE, ec="k", lw=1, zorder=4))
+    bx.text(bead[0], bead[1], r"$\mu$", color="white", ha="center", va="center", fontsize=15, zorder=5)
+    bx.plot([0], [0], "+", color="k", ms=13, mew=2.2, zorder=5)
+    ang = np.arctan2(bead[1], bead[0])
+    bx.text(0.55 * bead[0] + 0.27 * np.sin(ang), 0.55 * bead[1] - 0.27 * np.cos(ang), "$R_e$", fontsize=18,
+            ha="center", va="center", zorder=5)
+    fig.text(0.5, 0.5, "=", ha="center", va="center", fontsize=30, color=GRAY)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, wspace=0.1)
+    fig.savefig(f"{OUT}/rotor_sphere.png", dpi=200)
+    print("wrote", f"{OUT}/rotor_sphere.png")
+    return fig, None
+
 
 # ------------------------------------------------------------ the rigid rotor ladder: levels B J(J+1), each made of 2J+1 states (still)
 @register
@@ -1833,6 +1884,90 @@ def rotor_levels():
     fig.savefig(f"{OUT}/rotor_levels.png", dpi=200)
     print("wrote", f"{OUT}/rotor_levels.png")
     return fig, None
+
+
+# ------------------------------------------------------------ a turning dipole is an antenna: HCl's dipole turns with the bond, its z part swings; N2 has none
+@register
+def rotor_antenna():
+    from matplotlib.patches import Circle, FancyArrowPatch
+    nf = 40
+    ts = np.arange(nf) / nf                                     # one loop of the animation = two turns
+    GREEN, BLUE = "#2f9e44", "#1c7ed6"
+    T0, T1 = 1.65, 5.25                                         # where the trace starts and ends (time 0 to 1)
+    tt = np.linspace(0, 1, 300)
+    ring = np.linspace(0, 2 * np.pi, 200)
+    # per row: atom labels, colours, radii, distances of the two atoms from the center of mass, polar?
+    rows = [(("H", "Cl"), ("white", GREEN), (0.15, 0.27), (0.62, 0.62 / 35), True),
+            (("N", "N"), (BLUE, BLUE), (0.22, 0.22), (0.37, 0.37), False)]
+    fig, axes = plt.subplots(2, 1, figsize=(7.2, 5.3))
+    parts = []
+    for ax, (labels, cols, rads, (p1, p2), polar) in zip(axes, rows):
+        ax.set_xlim(-1.3, T1 + 1.1); ax.set_ylim(-1.32, 1.4); ax.set_aspect("equal"); ax.axis("off")
+        ax.plot([0, 0], [-1.22, 1.22], color=GRAY, lw=1, ls=(0, (4, 3)), zorder=1)        # the field direction z
+        ax.text(0.1, 1.26, "$z$", fontsize=19, color=GRAY, va="center")
+        ax.plot([T0, T0], [-1.15, 1.15], color=GRAY, lw=0.9)
+        ax.annotate("", xy=(T1 + 0.35, 0), xytext=(T0, 0), arrowprops=dict(arrowstyle="-|>", color=GRAY, lw=0.9,
+                                                                         mutation_scale=12, shrinkA=0, shrinkB=0))
+        ax.text(T1 + 0.42, -0.1, "$t$", fontsize=19, color=GRAY, va="top")
+        ax.text(T0, 1.28, "$M_z$", fontsize=19, ha="center", va="center", color=ORANGE)
+        if polar:
+            ax.plot(np.cos(ring), np.sin(ring), color=ORANGE, lw=0.9, ls=":", alpha=0.7, zorder=1)  # where the tip runs
+            for yv, lab in ((1, "$+M_e$"), (-1, "$-M_e$")):
+                ax.plot([T0, T1], [yv, yv], color=GRAY, lw=0.9, ls=":")
+                ax.text(T1 + 0.08, yv, lab, fontsize=18, color=GRAY, va="center")
+            ax.plot(T0 + (T1 - T0) * tt, np.cos(4 * np.pi * tt), color="#dee2e6", lw=1.8, zorder=1)
+        else:
+            ax.text(-1.25, -1.1, "$M_e = 0$", fontsize=19, color=ORANGE, va="center")
+        (bond,) = ax.plot([], [], color="#adb5bd", lw=6, solid_capstyle="round", zorder=3)
+        c1 = Circle((0, 0), rads[0], fc=cols[0], ec="k", lw=1, zorder=4); ax.add_patch(c1)
+        c2 = Circle((0, 0), rads[1], fc=cols[1], ec="k", lw=1, zorder=4); ax.add_patch(c2)
+        l1 = ax.text(0, 0, labels[0], ha="center", va="center", fontsize=11, weight="bold", zorder=5,
+                     color="k" if cols[0] == "white" else "white")
+        l2 = ax.text(0, 0, labels[1], ha="center", va="center", fontsize=11, weight="bold", zorder=5, color="white")
+        arrow = FancyArrowPatch((0, 0), (0, 1), arrowstyle="-|>", mutation_scale=19, color=ORANGE, lw=3.0,
+                                shrinkA=0, shrinkB=0, zorder=3.5)                 # over the bond, under the atoms
+        if polar:
+            ax.add_patch(arrow)
+        (arc,) = ax.plot([], [], color="k", lw=1.2, zorder=6)
+        th_lab = ax.text(0, 0, r"$\theta$", fontsize=19, ha="center", va="center", zorder=6)
+        (link,) = ax.plot([], [], color=ORANGE, lw=1.1, ls=":", zorder=2)
+        (trace,) = ax.plot([], [], color=ORANGE, lw=2.4, zorder=3)
+        (dot,) = ax.plot([], [], "o", color=ORANGE, ms=7, zorder=4)
+        parts.append((p1, p2, polar, bond, c1, c2, l1, l2, arrow, arc, th_lab, link, trace, dot))
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, hspace=0.06)
+
+    def update(i):
+        a = 4 * np.pi * ts[i]                                   # the angle turned so far
+        d = np.array([-np.sin(a), np.cos(a)])                   # unit vector along the bond, toward H: the dipole
+        th = np.arccos(np.clip(d[1], -1, 1))                    # the polar angle from z, 0 to pi
+        side = 1.0 if d[0] <= 0 else -1.0                       # the arc runs from z toward the dipole, the short way
+        arcs = np.pi / 2 + side * np.linspace(0, th, 40)
+        x_now = T0 + (T1 - T0) * ts[i]
+        sel = tt <= ts[i] + 1e-9
+        for p1, p2, polar, bond, c1, c2, l1, l2, arrow, arc, th_lab, link, trace, dot in parts:
+            P1, P2 = p1 * d, -p2 * d
+            bond.set_data([P2[0], P1[0]], [P2[1], P1[1]])
+            c1.center, c2.center = (P1[0], P1[1]), (P2[0], P2[1])
+            l1.set_position((P1[0], P1[1])); l2.set_position((P2[0], P2[1]))
+            if polar:
+                arrow.set_positions((0, 0), (d[0], d[1]))
+                arc.set_data(0.37 * np.cos(arcs), 0.37 * np.sin(arcs))
+                mid = np.pi / 2 + side * th / 2
+                th_lab.set_position((0.58 * np.cos(mid), 0.58 * np.sin(mid)))
+                th_lab.set_visible(th > np.radians(40))
+                link.set_data([d[0], x_now], [d[1], d[1]])
+                trace.set_data(T0 + (T1 - T0) * tt[sel], np.cos(4 * np.pi * tt[sel]))
+                dot.set_data([x_now], [d[1]])
+            else:
+                th_lab.set_visible(False)
+                trace.set_data(T0 + (T1 - T0) * tt[sel], 0 * tt[sel])
+                dot.set_data([x_now], [0])
+
+    ani = FuncAnimation(fig, update, frames=nf, interval=85, blit=False)
+    return fig, ani
+
+
+rotor_antenna.fps = 12
 
 
 # ------------------------------------------------------------ why J changes by one: the dipole points along the axis, cos(theta) Y_0 lands only on J = 1 (still)
@@ -1871,6 +2006,34 @@ def rotor_selection():
     fig.subplots_adjust(left=0.02, right=0.99, top=0.9, bottom=0.16)
     fig.savefig(f"{OUT}/rotor_selection.png", dpi=200)
     print("wrote", f"{OUT}/rotor_selection.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ deck: one rung at a time; from J = 0 the field reaches J = 1 and never J = 2 (still)
+@register
+def rotor_rungs():
+    fig, ax = plt.subplots(figsize=(6.4, 3.9))
+    E = [0, 2, 6]                                               # J(J+1) for J = 0, 1, 2
+    xs = (1.1, 4.3)                                             # the two ladders: 0 -> 1 and 0 -> 2
+    for xc in xs:
+        for e in E:
+            ax.plot([xc - 1.1, xc + 1.1], [e, e], color=PURPLE, lw=3, solid_capstyle="butt")
+    for J, e in enumerate(E):
+        ax.text(-0.2, e, rf"$J = {J}$", ha="right", va="center", fontsize=20)
+    ax.annotate("", xy=(xs[0], E[1]), xytext=(xs[0], E[0]), arrowprops=dict(arrowstyle="-|>", color=ORANGE, lw=3.2,
+                                                                         mutation_scale=24, shrinkA=0, shrinkB=0))
+    ax.plot([xs[1], xs[1]], [E[0], E[2] - 0.55], color=GRAY, lw=2.4, ls=(0, (4, 3)))
+    ax.plot([xs[1]], [E[2] - 0.35], marker="^", ms=13, color=GRAY)
+    for s in (1, -1):                                           # crossed out
+        ax.plot([xs[1] - 0.3, xs[1] + 0.3], [3.0 - s * 0.42, 3.0 + s * 0.42], color=CARDINAL, lw=3.4, solid_capstyle="round")
+    ax.text(xs[0], -0.75, r"$\langle 1|\cos\theta|0\rangle \neq 0$", ha="center", va="top", fontsize=20, color=ORANGE)
+    ax.text(xs[1], -0.75, r"$\langle 2|\cos\theta|0\rangle = 0$", ha="center", va="top", fontsize=20, color=GRAY)
+    ax.text(xs[0], -2.15, "allowed", ha="center", va="top", fontsize=20, color=ORANGE, weight="bold")
+    ax.text(xs[1], -2.15, "forbidden", ha="center", va="top", fontsize=20, color=CARDINAL, weight="bold")
+    ax.set_xlim(-1.95, 5.75); ax.set_ylim(-3.3, 6.5); ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
+    fig.savefig(f"{OUT}/rotor_rungs.png", dpi=200)
+    print("wrote", f"{OUT}/rotor_rungs.png")
     return fig, None
 
 

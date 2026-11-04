@@ -23,11 +23,12 @@ resources:
 
 ## A rotating molecule is a particle on a sphere
 
-![](../../ch04/images/dumbbell_reduce.png){.nostretch width="64%" fig-align="center"}
+![](../../ch04/images/rotor_sphere.png){.nostretch width="62%" fig-align="center"}
 
 $$\hat{H} = \frac{\hat{L}^2}{2I}, \qquad I = \mu R_e^2$$
 
-- Fixed bond length, no potential: all the energy is rotation. Lecture 4.4 already solved it
+- Two atoms turn like **one particle** of reduced mass $\mu$ at distance $R_e$, the bond length
+- No potential energy as it turns: all of it is rotation, and Lecture 4.4 already solved it
 
 ## The rigid rotor
 
@@ -75,7 +76,9 @@ $$F(J) = \frac{E_J}{hc} = \tilde{B}\,J(J+1), \qquad \tilde{B} = \frac{h}{8\pi^2c
 H$^{35}$Cl: $R_e = 127.5$ pm, $\mu = 0.9796$ u. Find $I$, $\tilde{B}$ and the energy of $J = 1$.
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$I = \mu R_e^2 = (1.6266\times10^{-27}\ \text{kg})(127.5\times10^{-12}\ \text{m})^2 = 2.644\times10^{-47}\ \text{kg m}^2$$
 
 $$\tilde{B} = \frac{h}{8\pi^2cI} = 10.59\ \text{cm}^{-1}, \qquad F(1) = 2\tilde{B} = 21.2\ \text{cm}^{-1}$$
@@ -83,22 +86,52 @@ $$\tilde{B} = \frac{h}{8\pi^2cI} = 10.59\ \text{cm}^{-1}, \qquad F(1) = 2\tilde{
 
 - In $J = 1$: $L = \sqrt{2}\,\hbar$, and $L_z$ is $-\hbar$, $0$ or $+\hbar$
 
+::::
+
 ## A rotating dipole is an antenna
 
-$$\langle J'M_J'|\hat{M}_z|JM_J\rangle = M_e\int Y_{J'}^{M_J'*}\,\cos\theta\;Y_J^{M_J}\,\sin\theta\,d\theta\,d\phi$$
+:::: {.columns}
 
-- The dipole $M_e$ points along the bond: as the molecule turns, the dipole **turns with it**
-- No dipole, no microwave spectrum: H$_2$, N$_2$, O$_2$, CO$_2$, CH$_4$ are **silent**; HCl, CO, H$_2$O absorb
+::: {.column width="58%"}
+![](../../ch04/images/rotor_antenna.gif){width="100%"}
+:::
+
+::: {.column width="42%"}
+**Permanent dipole** $M_e$: the dipole at the bond length $R_e$, along the bond (HCl: 1.1 D)
+
+**Its $z$ part**, along the light's field:
+
+$$M_z = M_e\cos\theta$$
+
+- It **swings** as the molecule turns: light can push on it
+- No dipole, no spectrum: H$_2$, N$_2$, O$_2$, CO$_2$, CH$_4$ are **silent**
+:::
+
+::::
 
 ## One rung at a time
 
-![](../../ch04/images/rotor_selection.png){.nostretch width="62%" fig-align="center"}
+:::: {.columns}
+
+::: {.column width="44%"}
+![](../../ch04/images/rotor_rungs.png){width="100%"}
+:::
+
+::: {.column width="56%"}
+**Transition dipole**, field along $z$:
+
+$$\langle J'|\hat{M}_z|J\rangle = M_e\,\langle J'|\cos\theta|J\rangle$$
+
+$$\cos\theta\;Y_0^0 = \tfrac{1}{\sqrt{3}}\,Y_1^0 \qquad \text{(pure } J = 1\text{)}$$
+
+- The photon carries **one** $\hbar$ of angular momentum
+:::
+
+::::
 
 ::: {.keyeq}
 $$M_e \neq 0, \qquad \Delta J = \pm 1, \qquad \Delta M_J = 0, \pm 1$$
 :::
-
-- $\cos\theta\,Y_J^{M_J}$ mixes only $Y_{J\pm1}^{M_J}$. The photon carries **one unit** $\hbar$ of angular momentum
 
 ## The microwave spectrum
 
@@ -116,7 +149,9 @@ $$\tilde{\nu}_J = 2\tilde{B}\,(J+1), \qquad \tilde{\nu}_{J+1} - \tilde{\nu}_J = 
 CO absorbs at 3.845, 7.690 and 11.535 cm$^{-1}$ (115, 231, 346 GHz). Find its bond length ($\mu = 6.856$ u).
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$2\tilde{B} = 3.845\ \text{cm}^{-1} \;\Longrightarrow\; \tilde{B} = 1.9225\ \text{cm}^{-1}$$
 
 $$I = \frac{h}{8\pi^2c\tilde{B}} = 1.456\times10^{-46}\ \text{kg m}^2$$
@@ -125,6 +160,8 @@ $$R = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456\times10^{-46}}{1.1385\times10^{-2
 :::
 
 - Radio astronomers map the cold gas between the stars with CO's 115 GHz line
+
+::::
 
 ## Populations
 
@@ -158,13 +195,17 @@ $$\tilde{\nu}_R(J) = \tilde{\nu}_0 + 2\tilde{B}\,(J+1), \qquad \tilde{\nu}_P(J) 
 The lines next to the gap are R(0) = 2906.25 and P(1) = 2865.10 cm$^{-1}$. Find $\tilde{\nu}_0$ and $\tilde{B}$ (rigid rotor).
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$\tilde{\nu}_0 = \frac{2906.25 + 2865.10}{2} = 2885.68\ \text{cm}^{-1}$$
 
 $$\tilde{B} = \frac{2906.25 - 2865.10}{4} = 10.29\ \text{cm}^{-1}$$
 :::
 
 - The microwave value is $\tilde{B}_0 = 10.44$ cm$^{-1}$: the bond is a little longer in $v = 1$
+
+::::
 
 ## Beyond the rigid rotor
 

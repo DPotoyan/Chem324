@@ -37,13 +37,17 @@ resources:
 :::
 
 ::: {.column width="36%"}
-$$s = r\phi$$
+**On the circle**, $\vec{r}\perp\vec{\omega}$:
 
-$$\omega = \frac{d\phi}{dt}$$
+$$s = r\phi, \qquad \omega = \frac{d\phi}{dt}$$
 
-$$\vec{v} = \vec{\omega}\times\vec{r}$$
+$$v = \frac{ds}{dt} = r\,\frac{d\phi}{dt} = r\omega$$
 
-$$v = r\omega$$
+**In general**, a vector product:
+
+$$\vec{v} = \vec{\omega}\times\vec{r}, \qquad v = \omega r\sin\alpha$$
+
+with $\alpha$ the angle between them
 :::
 
 ::::
@@ -60,8 +64,8 @@ $$\vec{L} = \vec{r}\times\vec{p} = \begin{vmatrix} \hat{\imath} & \hat{\jmath} &
 
 ::: {.column width="50%"}
 $$\begin{aligned}
-L &= rp\sin\alpha && \text{length of } \vec{r}\times\vec{p} \\
-&= r\,\mu v && \text{circle: } \alpha = 90^\circ \\
+L = |\vec{r}\times\vec{p}| &= rp && 90^\circ\text{ again} \\
+&= r\,\mu v && p = \mu v \\
 &= \mu r^2\omega && v = r\omega \\
 &= I\omega && I = \mu r^2
 \end{aligned}$$
@@ -119,13 +123,17 @@ $$\frac{d\vec{L}}{dt} = \underbrace{\vec{v}\times\mu\vec{v}}_{0} + \vec{r}\times
 1 turn per second with the arms out, $I = 4.0$ kg m$^2$. Arms in: $I' = 1.6$ kg m$^2$. New spin rate?
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$L = I\omega = (4.0)(2\pi) = 25.1\ \text{kg m}^2\,\text{s}^{-1}$$
 
 $$\omega' = \frac{L}{I'} = \frac{25.1}{1.6} = 15.7\ \text{s}^{-1} = 2.5\ \text{turns per second}$$
 :::
 
 - Faster by $I/I' = 2.5$, with the **same** $L$. Also: a diver's tuck, a pulsar, a tumbling molecule
+
+::::
 
 ## Conservation from symmetry
 
@@ -164,9 +172,9 @@ $$-i\hbar\,\frac{d\Phi}{d\phi} = L_z\Phi \quad\Longrightarrow\quad \Phi = e^{iL_
 
 $$\Phi(\phi + 2\pi) = \Phi(\phi) \quad\Longrightarrow\quad e^{2\pi iL_z/\hbar} = 1 \quad\Longrightarrow\quad \frac{L_z}{\hbar} = m = 0, \pm 1, \pm 2, \dots$$
 
-![](../../ch04/images/ring_waves.png){.nostretch width="78%" fig-align="center"}
+![](../../ch04/images/ring_waves.png){.nostretch width="66%" fig-align="center"}
 
-- $m = 2.5$: the ends **miss**, not allowed. The ring **closing on itself** quantizes $m$
+- Dotted: the ring itself. $\cos m\phi$ goes **out** where positive, **in** where negative
 
 ## Particle on a ring
 
@@ -201,7 +209,9 @@ $$\Psi = \frac{1}{\sqrt{2}}\big(\Phi_{+2} + \Phi_{-2}\big) = \frac{\cos 2\phi}{\
 Six π electrons on a ring of radius 139 pm. Where should benzene absorb?
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$\frac{\hbar^2}{2m_e r^2} = \frac{(1.055\times10^{-34}\ \text{J s})^2}{2\,(9.109\times10^{-31}\ \text{kg})(1.39\times10^{-10}\ \text{m})^2} = 1.97\ \text{eV}$$
 
 Two electrons per state: $m = 0$ (2) and $m = \pm 1$ (4). Lowest empty level: $\lvert m\rvert = 2$.
@@ -210,6 +220,8 @@ $$\Delta E = (2^2 - 1^2)(1.97\ \text{eV}) = 5.9\ \text{eV}, \qquad \lambda = \fr
 :::
 
 - Benzene absorbs between 180 and 260 nm: colorless, as the model says
+
+::::
 
 ## Classical and quantum, side by side
 
@@ -222,6 +234,28 @@ $$\Delta E = (2^2 - 1^2)(1.97\ \text{eV}) = 5.9\ \text{eV}, \qquad \lambda = \fr
 | two directions | same energy | the pair $\pm m$ |
 
 - Heavy or large rotors: steps far too small to see. A spinning wheel has $m \approx 10^{31}$
+
+## Spherical coordinates
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](../../ch04/images/spherical_coord.png){width="100%"}
+:::
+
+::: {.column width="60%"}
+$\theta$: down from the $z$ axis. $\phi$: around it, as on the ring
+
+$$x = r\sin\theta\cos\phi$$
+
+$$y = r\sin\theta\sin\phi$$
+
+$$z = r\cos\theta$$
+
+- A patch of the sphere has area $r^2\sin\theta\,d\theta\,d\phi$: the $\sin\theta$ in every integral over angles
+:::
+
+::::
 
 ## Three components, three operators
 
@@ -263,15 +297,19 @@ $$[\hat{L}^2, \hat{L}_x] = [\hat{L}^2, \hat{L}_y] = [\hat{L}^2, \hat{L}_z] = 0$$
 Apply $\hat{L}_z = -i\hbar\,(x\,\partial_y - y\,\partial_x)$ to $x$, $y$ and $z$. Which combinations are eigenfunctions?
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$\hat{L}_z\,x = i\hbar\,y, \qquad \hat{L}_z\,y = -i\hbar\,x, \qquad \hat{L}_z\,z = 0$$
 
 $$\hat{L}_z\,(x \pm iy) = i\hbar\,y \pm i\,(-i\hbar\,x) = \pm\hbar\,(x \pm iy)$$
 
-$$x \pm iy = r\sin\theta\,e^{\pm i\phi}\ \ (m = \pm 1), \qquad z = r\cos\theta\ \ (m = 0)$$
+$$x \pm iy = r\sin\theta\,(\cos\phi \pm i\sin\phi) = r\sin\theta\,e^{\pm i\phi}\ \ (m = \pm 1)$$
 :::
 
 - A turn about $z$ **mixes** $x$ and $y$; the mixtures $x \pm iy$ are the ring's $e^{\pm i\phi}$ again
+
+::::
 
 ## Only one component at a time
 
@@ -360,13 +398,17 @@ $$\hat{L}^2\cos\theta = 2\hbar^2\cos\theta = \hbar^2\,l(l+1)\cos\theta, \qquad l
 Find the smallest angle between $\vec{L}$ and $z$ for $l = 1$, $2$ and $10$, and for a spinning top with $l \approx 10^{31}$.
 :::
 
-::: {.soln .fragment}
+:::: {.fragment}
+
+::: {.soln}
 $$\cos\theta_{\min} = \frac{l}{\sqrt{l(l+1)}}$$
 
 $l = 1$: 45°. $\ l = 2$: 35.3°. $\ l = 10$: 17.5°. Large $l$: $\theta_{\min} \approx 1/\sqrt{l} \approx 3\times10^{-16}$ rad for the top.
 :::
 
 - Large angular momentum looks **classical**: the correspondence principle again
+
+::::
 
 ## Toward the rigid rotor
 
