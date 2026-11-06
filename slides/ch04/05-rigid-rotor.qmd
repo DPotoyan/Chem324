@@ -189,6 +189,14 @@ $$\tilde{\nu}_R(J) = \tilde{\nu}_0 + 2\tilde{B}\,(J+1), \qquad \tilde{\nu}_P(J) 
 - No line at $\tilde{\nu}_0$: $\Delta J = 0$ is forbidden, so R(0) and P(1) are $4\tilde{B}$ apart
 - Each branch rises and falls with the populations of its starting levels
 
+## A real spectrum: HCl gas
+
+![[Data: J. Gutow, University of Wisconsin-Oshkosh]{.caption}](../../ch04/images/hcl_measured.png){.nostretch width="82%" fig-align="center"}
+
+$$A = \log_{10}\frac{I_0}{I} \qquad I_0\text{: light in,} \quad I\text{: light out,} \quad A = 1\text{: 90\% absorbed}$$
+
+- Tallest lines **P(3)** and **R(2)** start near the most populated level, $J = 3$
+
 ## Example: reading the HCl band
 
 ::: {.worked}
@@ -207,6 +215,36 @@ $$\tilde{B} = \frac{2906.25 - 2865.10}{4} = 10.29\ \text{cm}^{-1}$$
 
 ::::
 
+## Example: why every line is double
+
+:::: {.columns}
+
+::: {.column width="44%"}
+![[Data: J. Gutow, University of Wisconsin-Oshkosh]{.caption}](../../ch04/images/hcl_doublet.png){width="100%"}
+:::
+
+::: {.column width="56%"}
+::: {.worked}
+Chlorine is 76% $^{35}$Cl, 24% $^{37}$Cl, so $\mu = 0.97959$ or $0.98108$ u. With $\tilde{\nu} \propto 1/\sqrt{\mu}$, how far below $\text{H}^{35}\text{Cl}$ is $\text{H}^{37}\text{Cl}$?
+:::
+
+:::: {.fragment}
+
+::: {.soln}
+$$1 - \sqrt{0.97959/0.98108} = 0.00076$$
+
+$$\Delta\tilde{\nu} = 0.00076 \times 2886 = 2.2\ \text{cm}^{-1}$$
+
+Measured: 2.1 cm$^{-1}$
+:::
+
+- Heights are 1.5 : 1, not 3 : 1: a tall line's center is nearly black, which squeezes its height
+
+::::
+:::
+
+::::
+
 ## Beyond the rigid rotor
 
 **The bond is longer in $v = 1$**
@@ -218,6 +256,44 @@ $$\tilde{B}_v = \tilde{B}_e - \alpha_e\left(v + \tfrac{1}{2}\right) \qquad \text
 $$F(J) = \tilde{B}\,J(J+1) - \tilde{D}\,J^2(J+1)^2, \qquad \tilde{D} \approx \frac{4\tilde{B}^3}{\tilde{\nu}^2}$$
 
 - R lines crowd, P lines spread, high-$J$ levels fall slightly. Both are small at low $J$
+
+## The real gaps are not even
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](../../ch04/images/hcl_gaps.png){width="100%"}
+:::
+
+::: {.column width="40%"}
+- A rigid rotor keeps every gap at $2\tilde{B}$ (dashed)
+- **R gaps shrink, P gaps grow**, on one smooth curve
+
+**Fit to the measured lines** (cm$^{-1}$):
+
+$$\tilde{\nu}_0 = 2885.95$$
+
+$$\tilde{B}_0 = 10.440, \quad \tilde{B}_1 = 10.137$$
+
+$$\tilde{D} = 5.2\times10^{-4}$$
+:::
+
+::::
+
+## CO: one band, three resolutions
+
+![[Data: POGIL-PCL meeting, UT Austin, 2018. Bottom trace: the top one, blurred numerically.]{.caption}](../../ch04/images/co_resolution.png){.nostretch width="64%" fig-align="center"}
+
+- **Resolution**: the smallest gap an instrument separates. CO's lines are only 3.8 cm$^{-1}$ apart (HCl: 21)
+- Blurred, **two humps** remain, with a dip at the missing $\Delta J = 0$ line
+
+## One gas cell: stiffness, bond length, mass
+
+![[Data: J. Gutow, University of Wisconsin-Oshkosh. Gray: CO$_2$ and water in the room air, inverted.]{.caption}](../../ch04/images/hcl_survey.png){.nostretch width="80%" fig-align="center"}
+
+- **Stiffness:** HCl's two bands give $k = 516$ N/m. A perfect spring forbids $0 \to 2$; it appears weakly, and below twice the fundamental, because the bond is anharmonic
+- **Bond length:** the line spacing gives $\tilde{B}_v$, and from it $R_e = 127.5$ pm
+- **Mass:** DCl is the same bond with a heavier atom: a lower band, closer lines
 
 ## Live: temperature and the spectrum
 
@@ -232,4 +308,4 @@ $$F(J) = \tilde{B}\,J(J+1) - \tilde{D}\,J^2(J+1)^2, \qquad \tilde{D} \approx \fr
 
 # Takeaway {.center}
 
-> A diatomic with a fixed bond length is a particle on a sphere: $E_J = \hbar^2J(J+1)/2I$, with $2J+1$ states per level and no zero-point rotation. In wavenumbers $F(J) = \tilde{B}J(J+1)$ with $\tilde{B} = h/8\pi^2cI$. A permanent dipole and $\Delta J = \pm 1$ give microwave lines evenly spaced by $2\tilde{B}$, which measure bond lengths, with heights that follow the populations $(2J+1)e^{-hcF(J)/k_BT}$. In the infrared, rotation rides on vibration: P and R branches around a gap at the band origin.
+> A diatomic with a fixed bond length is a particle on a sphere: $E_J = \hbar^2J(J+1)/2I$, with $2J+1$ states per level and no zero-point rotation. In wavenumbers $F(J) = \tilde{B}J(J+1)$ with $\tilde{B} = h/8\pi^2cI$. A permanent dipole and $\Delta J = \pm 1$ give microwave lines evenly spaced by $2\tilde{B}$, which measure bond lengths, with heights that follow the populations $(2J+1)e^{-hcF(J)/k_BT}$. In the infrared, rotation rides on vibration: P and R branches around a gap at the band origin. A real gas cell shows all of this, and more: isotope pairs, gaps that drift, and from one scan a bond length, a force constant and an anharmonicity.

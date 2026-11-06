@@ -1814,6 +1814,7 @@ def m_ladders():
 # rotor_rungs is deck-only (deck "One rung at a time": a schematic of allowed and forbidden rungs) and rotor_selection
 # is page-only (the integrand whose lobes cancel). Rotational levels PURPLE (the chapter's rotation colour),
 # transitions ORANGE, P branch TEAL, the dipole ORANGE as in 4.3's dipole_antenna.
+# hcl_measured, hcl_doublet, co_resolution and hcl_survey plot MEASURED spectra from ch04/data (see its README.md).
 
 # ------------------------------------------------------------ the model: two atoms a bond length R_e apart turn like one bead mu on a sphere of radius R_e (still)
 @register
@@ -2135,6 +2136,154 @@ def rovib_branches():
     fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.1)
     fig.savefig(f"{OUT}/rovib_branches.png", dpi=200)
     print("wrote", f"{OUT}/rovib_branches.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the sticks of rovib_branches as a real gas cell records them: measured HCl band (still)
+# ch04/data is read relative to the page (ch04/) or the repo root, so the same body runs in both places; see ch04/data/README.md
+@register
+def hcl_measured():
+    import os
+    DATA = "data" if os.path.isdir("data") else "ch04/data"
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nu, A = np.loadtxt(f"{DATA}/hcl_band.csv", delimiter=",", unpack=True)
+    nu0 = 2885.95
+    Pl = {1: 2865.10, 2: 2843.62, 3: 2821.56, 4: 2798.94, 5: 2775.76, 6: 2752.03, 7: 2727.77, 8: 2703.00, 9: 2677.74}
+    Rl = {0: 2906.25, 1: 2925.89, 2: 2944.90, 3: 2963.28, 4: 2980.99, 5: 2998.04, 6: 3014.40, 7: 3030.09, 8: 3045.05}
+    fig, ax = plt.subplots(figsize=(11, 3.7))
+    ax.plot(nu[nu < nu0], A[nu < nu0], color=TEAL, lw=1.2)
+    ax.plot(nu[nu > nu0], A[nu > nu0], color=ORANGE, lw=1.2)
+    for br, table, col in (("P", Pl, TEAL), ("R", Rl, ORANGE)):
+        for J, c in table.items():
+            ax.text(c, A[np.abs(nu - c) < 0.4].max() + 0.025, f"{br}({J})", ha="center", va="bottom", fontsize=12.5, color=col)
+    ax.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+    ax.text(nu0, 1.03, r"$\tilde{\nu}_0$", ha="center", va="bottom", fontsize=15, color=GRAY)
+    ax.set_xlim(2640, 3085); ax.set_ylim(0, 1.03)
+    ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+    ax.tick_params(labelsize=12.5)
+    fig.subplots_adjust(left=0.065, right=0.99, top=0.92, bottom=0.17)
+    fig.savefig(f"{OUT}/hcl_measured.png", dpi=200)
+    print("wrote", f"{OUT}/hcl_measured.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ every HCl line is a pair: two doublets magnified, H37Cl in the lighter shade as in the rotor_spectrum widget (still)
+@register
+def hcl_doublet():
+    import os
+    DATA = "data" if os.path.isdir("data") else "ch04/data"
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nu, A = np.loadtxt(f"{DATA}/hcl_zoom.csv", delimiter=",", unpack=True)
+    LIGHT = "#f0b266"
+    heavy = (np.abs(nu - 2942.72) < 0.9) | (np.abs(nu - 2961.06) < 0.9)   # the H37Cl peak of each pair
+    fig, ax = plt.subplots(figsize=(7.4, 4.2))
+    ax.plot(nu, np.where(heavy, np.nan, A), color=ORANGE, lw=1.8)
+    ax.plot(nu, np.where(heavy, A, np.nan), color=LIGHT, lw=1.8)
+    ax.text(2942.72, 0.59, r"H$^{37}$Cl", ha="center", va="bottom", fontsize=15, color="#c98a2e")
+    ax.text(2944.90, 0.90, r"H$^{35}$Cl", ha="center", va="bottom", fontsize=15, color=ORANGE)
+    ax.text(2961.06, 0.57, r"H$^{37}$Cl", ha="center", va="bottom", fontsize=15, color="#c98a2e")
+    ax.text(2963.28, 0.87, r"H$^{35}$Cl", ha="center", va="bottom", fontsize=15, color=ORANGE)
+    ax.text(2943.8, 1.04, "R(2)", ha="center", va="bottom", fontsize=15, color="k")
+    ax.text(2962.2, 1.04, "R(3)", ha="center", va="bottom", fontsize=15, color="k")
+    ax.set_xlim(2937, 2969); ax.set_ylim(0, 1.13)
+    ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+    ax.tick_params(labelsize=12.5)
+    fig.subplots_adjust(left=0.11, right=0.98, top=0.98, bottom=0.15)
+    fig.savefig(f"{OUT}/hcl_doublet.png", dpi=200)
+    print("wrote", f"{OUT}/hcl_doublet.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the real gaps are not even: measured spacing of neighbouring H35Cl lines against the rigid rotor's flat line (still)
+@register
+def hcl_gaps():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    m = np.array([-13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    nu = np.array([2571.87, 2599.02, 2625.73, 2651.96, 2677.74, 2703.00, 2727.77, 2752.03, 2775.76, 2798.94, 2821.56,
+                   2843.62, 2865.10, 2906.25, 2925.89, 2944.90, 2963.28, 2980.99, 2998.04, 3014.40, 3030.09, 3045.05,
+                   3059.32, 3072.85, 3085.64])                  # measured H35Cl lines; m = J + 1 for R(J), m = -J for P(J)
+    c = np.polyfit(m, nu, 3)
+    next_ = m[1:] - m[:-1] == 1                                 # neighbors only: R(0) and P(1) straddle the gap
+    gap, mid, side = (nu[1:] - nu[:-1])[next_], ((nu[1:] + nu[:-1]) / 2)[next_], m[:-1][next_]
+    ms = np.linspace(-13, 11, 200)
+    fig, ax = plt.subplots(figsize=(8.2, 4.1))
+    ax.plot((np.polyval(c, ms) + np.polyval(c, ms + 1)) / 2, np.polyval(c, ms + 1) - np.polyval(c, ms), color=GRAY, lw=1.4, zorder=1)
+    ax.axhline(2 * 10.29, color=GRAY, lw=1.2, ls=(0, (4, 3)), zorder=1)
+    ax.scatter(mid[side < 0], gap[side < 0], s=52, color=TEAL, zorder=3)
+    ax.scatter(mid[side > 0], gap[side > 0], s=52, color=ORANGE, zorder=3)
+    ax.text(3098, 2 * 10.29 + 0.35, r"rigid rotor, $2\tilde{B}$", ha="right", va="bottom", fontsize=14, color=GRAY)
+    ax.text(2672, 28.0, "P branch", ha="left", va="center", fontsize=15, color=TEAL)
+    ax.text(2905, 14.6, "R branch", ha="left", va="center", fontsize=15, color=ORANGE)
+    ax.set_xlim(2570, 3100); ax.set_ylim(11, 29.5); ax.set_yticks([12, 16, 20, 24, 28])
+    ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14)
+    ax.set_ylabel(r"gap to the next line (cm$^{-1}$)", fontsize=14)
+    ax.tick_params(labelsize=12.5)
+    fig.subplots_adjust(left=0.1, right=0.965, top=0.98, bottom=0.15)
+    fig.savefig(f"{OUT}/hcl_gaps.png", dpi=200)
+    print("wrote", f"{OUT}/hcl_gaps.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the same CO band on a fine and a coarse spectrometer, then blurred: the lines merge into two humps (still)
+@register
+def co_resolution():
+    import os
+    DATA = "data" if os.path.isdir("data") else "ch04/data"
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    x1, y1 = np.loadtxt(f"{DATA}/co_fine.csv", delimiter=",", unpack=True)
+    x2, y2 = np.loadtxt(f"{DATA}/co_coarse.csv", delimiter=",", unpack=True)
+    nu0 = 2143.24
+    y1 = y1 - np.median(y1[x1 > 2262]); y2 = y2 - np.median(y2[x2 > 2262])
+    xg = np.arange(x1[0], x1[-1], 0.03)                         # blur the fine trace with a Gaussian of 8 cm^-1 FWHM
+    s = 8 / 2.3548
+    t = np.arange(-4 * s, 4 * s, 0.03)
+    k = np.exp(-(t / s) ** 2 / 2)
+    y3 = np.convolve(np.interp(xg, x1, y1), k / k.sum(), mode="same")
+    traces = ((x1, y1, 0.7, "0.25 cm$^{-1}$"), (x2, y2, 1.1, "2 cm$^{-1}$"), (xg, y3, 2.2, "blurred to\n8 cm$^{-1}$"))
+    fig, axes = plt.subplots(3, 1, figsize=(10, 4.2), sharex=True, gridspec_kw={"hspace": 0.1})
+    for ax, (x, y, w, lab) in zip(axes, traces):
+        ax.plot(x[x < nu0], y[x < nu0] / y.max(), color=TEAL, lw=w)
+        ax.plot(x[x > nu0], y[x > nu0] / y.max(), color=ORANGE, lw=w)
+        ax.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+        ax.text(2262, 0.62, lab, ha="right", va="center", fontsize=16, color="k")
+        ax.set_ylim(-0.03, 1.05); ax.set_yticks([]); ax.set_xlim(2020, 2265); ax.spines["left"].set_visible(False)
+    for ax in axes[:-1]:
+        ax.spines["bottom"].set_visible(False); ax.tick_params(bottom=False)
+    axes[0].text(nu0, 1.07, r"$\tilde{\nu}_0$", ha="center", va="bottom", fontsize=15, color=GRAY)
+    axes[-1].set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); axes[-1].tick_params(labelsize=12.5)
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.92, bottom=0.16)
+    fig.savefig(f"{OUT}/co_resolution.png", dpi=200)
+    print("wrote", f"{OUT}/co_resolution.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ one gas cell: DCl, HCl and the HCl overtone on one measured trace, giving stiffness, bond length and the mass effect (still)
+@register
+def hcl_survey():
+    import os
+    DATA = "data" if os.path.isdir("data") else "ch04/data"
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    nu, A = np.loadtxt(f"{DATA}/hcl_survey.csv", delimiter=",", unpack=True)
+    dcl, hcl, co2, over = (nu > 1880) & (nu < 2260), (nu > 2560) & (nu < 3110), (nu > 2290) & (nu < 2390), (nu > 5400) & (nu < 5900)
+    rest = ~(dcl | hcl | co2 | over)
+    fig, ax = plt.subplots(figsize=(11, 3.5))
+    ax.plot(nu, np.where(rest, A, np.nan), color="#adb5bd", lw=0.7)
+    ax.plot(nu, np.where(co2, A, np.nan), color=GRAY, lw=0.9)
+    ax.plot(nu, np.where(dcl, A, np.nan), color=PURPLE, lw=0.9)
+    ax.plot(nu, np.where(hcl, A, np.nan), color=TEAL, lw=0.9)
+    ax.plot(nu, np.where(over, 5 * A, np.nan), color=ORANGE, lw=0.9)
+    ax.text(2070, 0.34, "DCl\n" + r"$v = 0\to 1$", ha="center", va="bottom", fontsize=14, color=PURPLE)
+    ax.text(3160, 0.70, "HCl\n" + r"$v = 0\to 1$", ha="left", va="center", fontsize=14, color=TEAL)
+    ax.text(5650, 0.60, "HCl\n" + r"$v = 0\to 2$ ($\times 5$)", ha="center", va="bottom", fontsize=14, color=ORANGE)
+    ax.text(2360, -0.135, r"CO$_2$", ha="left", va="center", fontsize=13, color=GRAY)
+    ax.text(3750, -0.11, r"H$_2$O", ha="center", va="center", fontsize=13, color=GRAY)
+    ax.axhline(0, color="#dee2e6", lw=0.8, zorder=0)
+    ax.set_xlim(1850, 6050); ax.set_ylim(-0.2, 1.0)
+    ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+    ax.tick_params(labelsize=12.5)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.97, bottom=0.18)
+    fig.savefig(f"{OUT}/hcl_survey.png", dpi=200)
+    print("wrote", f"{OUT}/hcl_survey.png")
     return fig, None
 
 

@@ -13,6 +13,7 @@ kernelspec:
 - A molecule absorbs microwaves only if it has a permanent dipole, and only one rung at a time, $\Delta J = \pm 1$: the dipole points along the molecular axis, and the photon carries one unit of angular momentum. The lines fall at $2\tilde{B}(J+1)$, evenly spaced by $2\tilde{B}$, and the spacing gives the bond length.
 - Line intensities follow the populations $(2J+1)\,e^{-hcF(J)/k_BT}$, which rise with the degeneracy and then fall with the Boltzmann factor.
 - In the infrared, rotation rides on vibration. $\Delta v = +1$ with $\Delta J = \pm 1$ gives an R branch above and a P branch below the band origin $\tilde{\nu}_0$, with a gap where $\Delta J = 0$ would be. Real molecules add two small corrections: $\tilde{B}$ shrinks in higher vibrational levels, and fast rotation stretches the bond.
+- A measured spectrum shows all of this, and more: every HCl line is a pair from chlorine's two isotopes, the lines drift from even spacing, and an instrument's resolution decides whether lines or only humps appear.
 
 :::
 
@@ -544,9 +545,56 @@ Fig. Top: the rotational ladders of $v = 0$ and $v = 1$ (the gap between them is
 - **The gap.** R(0) and P(1) are $4\tilde{B}$ apart, twice the usual spacing: the missing line at $\tilde{\nu}_0$ would need $\Delta J = 0$. Molecules with extra angular momentum about the axis, such as NO or the bend of CO$_2$, do show a central Q branch.
 - **The envelopes.** The heights follow the populations of the starting levels, so each branch rises and falls like the curve of the last section.
 
+#### A real spectrum
+
+Every spectrum so far has been sticks computed from a formula. Here is what an instrument records: HCl gas at 20 Torr in a 10 cm cell, in a Fourier-transform infrared (FTIR) spectrometer. The vertical axis is the **absorbance**,
+
+$$
+A = \log_{10}\frac{I_0}{I}
+$$
+
+where $I_0$ is the light entering the cell and $I$ the light leaving it. At $A = 0$ nothing is absorbed, and at $A = 1$ the gas removes 90% of the light.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: hcl_measured
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+import os
+DATA = "data" if os.path.isdir("data") else "ch04/data"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+nu, A = np.loadtxt(f"{DATA}/hcl_band.csv", delimiter=",", unpack=True)
+nu0 = 2885.95
+Pl = {1: 2865.10, 2: 2843.62, 3: 2821.56, 4: 2798.94, 5: 2775.76, 6: 2752.03, 7: 2727.77, 8: 2703.00, 9: 2677.74}
+Rl = {0: 2906.25, 1: 2925.89, 2: 2944.90, 3: 2963.28, 4: 2980.99, 5: 2998.04, 6: 3014.40, 7: 3030.09, 8: 3045.05}
+fig, ax = plt.subplots(figsize=(11, 3.7))
+ax.plot(nu[nu < nu0], A[nu < nu0], color=TEAL, lw=1.2)
+ax.plot(nu[nu > nu0], A[nu > nu0], color=ORANGE, lw=1.2)
+for br, table, col in (("P", Pl, TEAL), ("R", Rl, ORANGE)):
+    for J, c in table.items():
+        ax.text(c, A[np.abs(nu - c) < 0.4].max() + 0.025, f"{br}({J})", ha="center", va="bottom", fontsize=12.5, color=col)
+ax.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+ax.text(nu0, 1.03, r"$\tilde{\nu}_0$", ha="center", va="bottom", fontsize=15, color=GRAY)
+ax.set_xlim(2640, 3085); ax.set_ylim(0, 1.03)
+ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+ax.tick_params(labelsize=12.5)
+fig.subplots_adjust(left=0.065, right=0.99, top=0.92, bottom=0.17)
+plt.show()
+```
+
+Fig. The measured infrared band of HCl gas at room temperature. P lines teal, R lines orange, dashed line at the band origin. Each label marks the taller line of its pair. Data: J. Gutow, University of Wisconsin-Oshkosh [@gutow2025hcl].
+
+- **The comb and the gap are there.** Neighboring lines are about 21 cm$^{-1}$ apart, and the gap at the band origin is twice that.
+- **The tallest lines are P(3) and R(2).** They start from the most populated levels, near $J = 3$.
+- **Every line has a smaller partner.** A rigid rotor does not explain that; the next subsection does.
+
 :::{note} **Example: reading the HCl band**
 
-The HCl band has its lines nearest the gap at R(0) = 2906.25 and P(1) = 2865.10 cm$^{-1}$. Find the band origin and $\tilde{B}$, treating HCl as a rigid rotor.
+In the figure above, the lines nearest the gap are R(0) = 2906.25 and P(1) = 2865.10 cm$^{-1}$. Find the band origin and $\tilde{B}$, treating HCl as a rigid rotor.
 
 The two lines sit symmetrically about the gap, $\tilde{\nu}_0 \pm 2\tilde{B}$:
 
@@ -556,6 +604,57 @@ $$
 
 The band origin is 2885.98 cm$^{-1}$, and the microwave value of $\tilde{B}$ is 10.44 cm$^{-1}$. The small differences come from the bond being slightly longer in $v = 1$ (next section).
 :::
+
+#### Why every line is double
+
+Natural chlorine is 76% $^{35}$Cl and 24% $^{37}$Cl, so the cell holds two molecules with slightly different reduced masses, and each makes its own band.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: hcl_doublet
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+import os
+DATA = "data" if os.path.isdir("data") else "ch04/data"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+nu, A = np.loadtxt(f"{DATA}/hcl_zoom.csv", delimiter=",", unpack=True)
+LIGHT = "#f0b266"
+heavy = (np.abs(nu - 2942.72) < 0.9) | (np.abs(nu - 2961.06) < 0.9)   # the H37Cl peak of each pair
+fig, ax = plt.subplots(figsize=(7.4, 4.2))
+ax.plot(nu, np.where(heavy, np.nan, A), color=ORANGE, lw=1.8)
+ax.plot(nu, np.where(heavy, A, np.nan), color=LIGHT, lw=1.8)
+ax.text(2942.72, 0.59, r"H$^{37}$Cl", ha="center", va="bottom", fontsize=15, color="#c98a2e")
+ax.text(2944.90, 0.90, r"H$^{35}$Cl", ha="center", va="bottom", fontsize=15, color=ORANGE)
+ax.text(2961.06, 0.57, r"H$^{37}$Cl", ha="center", va="bottom", fontsize=15, color="#c98a2e")
+ax.text(2963.28, 0.87, r"H$^{35}$Cl", ha="center", va="bottom", fontsize=15, color=ORANGE)
+ax.text(2943.8, 1.04, "R(2)", ha="center", va="bottom", fontsize=15, color="k")
+ax.text(2962.2, 1.04, "R(3)", ha="center", va="bottom", fontsize=15, color="k")
+ax.set_xlim(2937, 2969); ax.set_ylim(0, 1.13)
+ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+ax.tick_params(labelsize=12.5)
+fig.subplots_adjust(left=0.11, right=0.98, top=0.98, bottom=0.15)
+plt.show()
+```
+
+Fig. Two lines of the same spectrum, magnified. The heavier H$^{37}$Cl (light orange) sits just below H$^{35}$Cl (orange) at every line.
+
+:::{note} **Example: the size of the isotope split**
+
+A vibrational wavenumber scales as $1/\sqrt{\mu}$ ([Lecture 4.3](03-molecular-vibrations.md)). With $\mu(\text{H}^{35}\text{Cl}) = 0.97959$ u and $\mu(\text{H}^{37}\text{Cl}) = 0.98108$ u, estimate how far below the H$^{35}$Cl band (2886 cm$^{-1}$) the H$^{37}$Cl band should sit.
+
+$$
+\Delta\tilde{\nu} = 2886\left(1 - \sqrt{\frac{0.97959}{0.98108}}\right) = 2.2\ \text{cm}^{-1}
+$$
+
+The two measured band origins are 2885.95 and 2883.85 cm$^{-1}$, about 2.1 apart. Scaling $\tilde{\nu}_e$ and $\tilde{\nu}_ex_e$ separately, as in Problem 5, gives 2.11. A 0.15% change in the reduced mass is easy to see.
+:::
+
+- **Why the heights are not 3 : 1.** The abundances are 3.1 : 1, but the tallest pairs measure only about 1.5 : 1. Each line is much narrower (roughly 0.01 cm$^{-1}$) than the instrument can resolve, and the gas absorbs nearly all the light at its center. A line that is already black at its center cannot get much deeper with three times the molecules, so tall peaks are squeezed. Weaker lines come closer to the true ratio: about 2 : 1 at the faint ends of this band, and up to 2.8 : 1 in the much weaker overtone.
+- **The same squeeze flattens the envelope.** P(3)/P(1) measures 1.3 here, against 1.8 for the sticks. Positions are unaffected, and the widget below shows the true strengths.
 
 Try it: pick a molecule and change the temperature. Heat spreads the molecules over higher $J$, so the branches widen; the "real molecule" setting adds the corrections of the next section.
 
@@ -586,6 +685,44 @@ $$
 - Since $\tilde{B}_1 < \tilde{B}_0$, the R lines crowd together at high $J$ and the P lines spread apart.
 - Pairs of lines that share an upper or a lower level give $\tilde{B}_1$ and $\tilde{B}_0$ separately (combination differences).
 
+The measured band shows the crowding directly:
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: hcl_gaps
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+m = np.array([-13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+nu = np.array([2571.87, 2599.02, 2625.73, 2651.96, 2677.74, 2703.00, 2727.77, 2752.03, 2775.76, 2798.94, 2821.56,
+               2843.62, 2865.10, 2906.25, 2925.89, 2944.90, 2963.28, 2980.99, 2998.04, 3014.40, 3030.09, 3045.05,
+               3059.32, 3072.85, 3085.64])                  # measured H35Cl lines; m = J + 1 for R(J), m = -J for P(J)
+c = np.polyfit(m, nu, 3)
+next_ = m[1:] - m[:-1] == 1                                 # neighbors only: R(0) and P(1) straddle the gap
+gap, mid, side = (nu[1:] - nu[:-1])[next_], ((nu[1:] + nu[:-1]) / 2)[next_], m[:-1][next_]
+ms = np.linspace(-13, 11, 200)
+fig, ax = plt.subplots(figsize=(8.2, 4.1))
+ax.plot((np.polyval(c, ms) + np.polyval(c, ms + 1)) / 2, np.polyval(c, ms + 1) - np.polyval(c, ms), color=GRAY, lw=1.4, zorder=1)
+ax.axhline(2 * 10.29, color=GRAY, lw=1.2, ls=(0, (4, 3)), zorder=1)
+ax.scatter(mid[side < 0], gap[side < 0], s=52, color=TEAL, zorder=3)
+ax.scatter(mid[side > 0], gap[side > 0], s=52, color=ORANGE, zorder=3)
+ax.text(3098, 2 * 10.29 + 0.35, r"rigid rotor, $2\tilde{B}$", ha="right", va="bottom", fontsize=14, color=GRAY)
+ax.text(2672, 28.0, "P branch", ha="left", va="center", fontsize=15, color=TEAL)
+ax.text(2905, 14.6, "R branch", ha="left", va="center", fontsize=15, color=ORANGE)
+ax.set_xlim(2570, 3100); ax.set_ylim(11, 29.5); ax.set_yticks([12, 16, 20, 24, 28])
+ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14)
+ax.set_ylabel(r"gap to the next line (cm$^{-1}$)", fontsize=14)
+ax.tick_params(labelsize=12.5)
+fig.subplots_adjust(left=0.1, right=0.965, top=0.98, bottom=0.15)
+plt.show()
+```
+
+Fig. Measured gaps between neighboring H$^{35}$Cl lines of the band above (dots), with a fit through them (gray). A rigid rotor would put every gap on the dashed line, at the $2\tilde{B}$ found in the example above.
+
 #### Fast rotation stretches the bond
 
 A rapidly spinning molecule stretches, like a mass on a spring swung in a circle. Its moment of inertia grows and its levels fall slightly below $\tilde{B}J(J+1)$:
@@ -601,10 +738,137 @@ The **centrifugal distortion constant** $\tilde{D}$ is tiny, about $4\tilde{B}^3
 | $\tilde{B}_v$ depends on $v$ | the bond is longer on average in higher $v$ | vibrational level $v$ | R lines crowd, P lines spread |
 | centrifugal distortion | fast rotation stretches the bond | rotational level $J$ | levels and lines fall slightly at high $J$ |
 
+#### Fitting the real band
+
+Both branches are one formula if we count lines with $m$, where $m = J + 1$ for R($J$) and $m = -J$ for P($J$). With the distortion term,
+
+$$
+\tilde{\nu}(m) = \tilde{\nu}_0 + (\tilde{B}_1 + \tilde{B}_0)\,m + (\tilde{B}_1 - \tilde{B}_0)\,m^2 - 4\tilde{D}\,m^3
+$$
+
+This is a cubic in $m$, so a polynomial fit to the measured H$^{35}$Cl lines returns the constants:
+
+```{code-cell} python
+import numpy as np
+
+m = np.array([-13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+nu = np.array([2571.87, 2599.02, 2625.73, 2651.96, 2677.74, 2703.00, 2727.77, 2752.03, 2775.76, 2798.94, 2821.56,
+               2843.62, 2865.10, 2906.25, 2925.89, 2944.90, 2963.28, 2980.99, 2998.04, 3014.40, 3030.09, 3045.05,
+               3059.32, 3072.85, 3085.64])      # measured line positions, cm^-1
+
+c3, c2, c1, c0 = np.polyfit(m, nu, 3)
+print(f"band origin = {c0:.2f}")
+print(f"B0 = {(c1 - c2) / 2:.3f},  B1 = {(c1 + c2) / 2:.3f}")
+print(f"D  = {-c3 / 4:.1e}")
+```
+
+These are the constants this lecture has been quoting: 2885.98, 10.44, 10.14 and $5.3\times10^{-4}$ cm$^{-1}$.
+
 #### Bigger molecules
 
 - Linear molecules (OCS, HCN, CO$_2$) rotate like diatomics, with one moment of inertia and the same $J(J+1)$ ladder. CO$_2$ has no dipole, so it has no microwave spectrum.
 - Nonlinear molecules turn about three axes ([Lecture 4.1](01-molecular-degrees-of-freedom.md)), with three moments of inertia. In symmetric tops such as NH$_3$ two of them are equal, and the levels need a second quantum number. Water, with three different moments, has a famously irregular spectrum. These are beyond this course.
+
+### What a real instrument shows
+
+#### Resolution: why CO can look like two humps
+
+HCl's lines are about 21 cm$^{-1}$ apart. CO's are only $2\tilde{B} = 3.8$ cm$^{-1}$ apart, because its moment of inertia is so much larger. An instrument's **resolution** is the smallest gap it can separate, so CO asks for a finer instrument than HCl does.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: co_resolution
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+import os
+DATA = "data" if os.path.isdir("data") else "ch04/data"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x1, y1 = np.loadtxt(f"{DATA}/co_fine.csv", delimiter=",", unpack=True)
+x2, y2 = np.loadtxt(f"{DATA}/co_coarse.csv", delimiter=",", unpack=True)
+nu0 = 2143.24
+y1 = y1 - np.median(y1[x1 > 2262]); y2 = y2 - np.median(y2[x2 > 2262])
+xg = np.arange(x1[0], x1[-1], 0.03)                         # blur the fine trace with a Gaussian of 8 cm^-1 FWHM
+s = 8 / 2.3548
+t = np.arange(-4 * s, 4 * s, 0.03)
+k = np.exp(-(t / s) ** 2 / 2)
+y3 = np.convolve(np.interp(xg, x1, y1), k / k.sum(), mode="same")
+traces = ((x1, y1, 0.7, "0.25 cm$^{-1}$"), (x2, y2, 1.1, "2 cm$^{-1}$"), (xg, y3, 2.2, "blurred to\n8 cm$^{-1}$"))
+fig, axes = plt.subplots(3, 1, figsize=(10, 4.2), sharex=True, gridspec_kw={"hspace": 0.1})
+for ax, (x, y, w, lab) in zip(axes, traces):
+    ax.plot(x[x < nu0], y[x < nu0] / y.max(), color=TEAL, lw=w)
+    ax.plot(x[x > nu0], y[x > nu0] / y.max(), color=ORANGE, lw=w)
+    ax.axvline(nu0, color=GRAY, lw=1, ls=(0, (4, 3)))
+    ax.text(2262, 0.62, lab, ha="right", va="center", fontsize=16, color="k")
+    ax.set_ylim(-0.03, 1.05); ax.set_yticks([]); ax.set_xlim(2020, 2265); ax.spines["left"].set_visible(False)
+for ax in axes[:-1]:
+    ax.spines["bottom"].set_visible(False); ax.tick_params(bottom=False)
+axes[0].text(nu0, 1.07, r"$\tilde{\nu}_0$", ha="center", va="bottom", fontsize=15, color=GRAY)
+axes[-1].set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); axes[-1].tick_params(labelsize=12.5)
+fig.subplots_adjust(left=0.02, right=0.98, top=0.92, bottom=0.16)
+plt.show()
+```
+
+Fig. The CO band three ways, each scaled to its tallest point. Top: measured at 0.25 cm$^{-1}$ resolution. Middle: measured at 2 cm$^{-1}$. Bottom: the top trace blurred numerically to about 8 cm$^{-1}$, which resembles a real low-resolution scan. Data: POGIL-PCL meeting, UT Austin [@pogil2018co].
+
+- **Two humps.** With the lines blurred away, only the P and R envelopes remain, with a dip at the band origin where the $\Delta J = 0$ line is missing. Routine scans of gases often look like this.
+- **What sets the resolution.** An FTIR spectrometer records the interference of two beams as a mirror moves, and a Fourier transform turns that record into a spectrum. The longest path difference $\Delta d$ sets the resolution, about $1/\Delta d$: 8 cm of path for 0.125 cm$^{-1}$, about 1 mm for 8 cm$^{-1}$. This is the Fourier trade-off of [Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md): a longer record makes a sharper spectrum.
+- **The tiny lines.** Most of the small peaks between the big ones in the top trace are $^{13}$C$^{16}$O, about 1% of natural carbon monoxide, with its own band origin at 2096 cm$^{-1}$. It is the isotope of Problem 1.
+- **Check the axis.** Instruments often plot wavenumber decreasing from left to right, and transmittance $I/I_0$ instead of absorbance, so that lines point down. Whatever the plot, the R branch is always on the high-wavenumber side of the band origin.
+
+#### One gas cell: stiffness, bond length, mass
+
+Zoomed out, the HCl scan holds more: the cell also contains DCl, and the scan reaches the first overtone of HCl. That $v = 0 \to 2$ band is forbidden for a perfect spring and weakly allowed in a real bond ([Lecture 4.3](03-molecular-vibrations.md)), which is why it is drawn five times larger.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: hcl_survey
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+import os
+DATA = "data" if os.path.isdir("data") else "ch04/data"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+nu, A = np.loadtxt(f"{DATA}/hcl_survey.csv", delimiter=",", unpack=True)
+dcl, hcl, co2, over = (nu > 1880) & (nu < 2260), (nu > 2560) & (nu < 3110), (nu > 2290) & (nu < 2390), (nu > 5400) & (nu < 5900)
+rest = ~(dcl | hcl | co2 | over)
+fig, ax = plt.subplots(figsize=(11, 3.5))
+ax.plot(nu, np.where(rest, A, np.nan), color="#adb5bd", lw=0.7)
+ax.plot(nu, np.where(co2, A, np.nan), color=GRAY, lw=0.9)
+ax.plot(nu, np.where(dcl, A, np.nan), color=PURPLE, lw=0.9)
+ax.plot(nu, np.where(hcl, A, np.nan), color=TEAL, lw=0.9)
+ax.plot(nu, np.where(over, 5 * A, np.nan), color=ORANGE, lw=0.9)
+ax.text(2070, 0.34, "DCl\n" + r"$v = 0\to 1$", ha="center", va="bottom", fontsize=14, color=PURPLE)
+ax.text(3160, 0.70, "HCl\n" + r"$v = 0\to 1$", ha="left", va="center", fontsize=14, color=TEAL)
+ax.text(5650, 0.60, "HCl\n" + r"$v = 0\to 2$ ($\times 5$)", ha="center", va="bottom", fontsize=14, color=ORANGE)
+ax.text(2360, -0.135, r"CO$_2$", ha="left", va="center", fontsize=13, color=GRAY)
+ax.text(3750, -0.11, r"H$_2$O", ha="center", va="center", fontsize=13, color=GRAY)
+ax.axhline(0, color="#dee2e6", lw=0.8, zorder=0)
+ax.set_xlim(1850, 6050); ax.set_ylim(-0.2, 1.0)
+ax.set_xlabel(r"wavenumber (cm$^{-1}$)", fontsize=14); ax.set_ylabel("absorbance", fontsize=14)
+ax.tick_params(labelsize=12.5)
+fig.subplots_adjust(left=0.08, right=0.99, top=0.97, bottom=0.18)
+plt.show()
+```
+
+Fig. The whole measured scan. DCl $v = 0 \to 1$ (purple), HCl $v = 0 \to 1$ (teal), and HCl $v = 0 \to 2$ drawn five times larger (orange). The small downward features (gray) are CO$_2$ and water in the room air: the reference scan happened to see a little more of them than the sample scan did.
+
+Fitting each band as above gives:
+
+| from this one scan | what it gives | |
+| :-- | :-- | :-- |
+| HCl band origins 2885.95 ($v = 0 \to 1$) and 5667.96 ($v = 0 \to 2$) | $\tilde{\nu}_e = 2989.9$ and $\tilde{\nu}_ex_e = 51.97$ cm$^{-1}$, so $k = 516$ N/m | [Lecture 4.3](03-molecular-vibrations.md) |
+| $\tilde{B}_0, \tilde{B}_1, \tilde{B}_2 = 10.440, 10.137, 9.834$ cm$^{-1}$ | evenly spaced, so $\alpha_e = 0.303$, $\tilde{B}_e = 10.59$ cm$^{-1}$ and $R_e = 127.5$ pm | this lecture |
+| DCl band origin 2091.05, $\tilde{B}_0 = 5.392$ cm$^{-1}$ | the same bond with a heavier mass (Problem 5) | [Lecture 4.3](03-molecular-vibrations.md), this lecture |
+| line pairs about 2.1 cm$^{-1}$ apart | chlorine's two isotopes | this lecture |
+
+One gas cell and one scan measure a bond length to a part in a thousand, the stiffness of the bond and how far it departs from a parabola.
 
 ### Problems
 
