@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="01-hydrogenlike-atoms_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="01-hydrogenlike-atoms_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01-hydrogenlike-atoms_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01-hydrogenlike-atoms_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,133 +163,344 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="the-simplest-atom-we-can-solve" class="slide level2">
-<h2>The Simplest Atom We Can Solve</h2>
-<ul>
-<li class="fragment"><p>One electron, one nucleus of charge <span class="math inline">\(Ze\)</span>: <strong>H</strong>, <span class="math inline">\(\text{He}^+\)</span>, <span class="math inline">\(\text{Li}^{2+}\)</span>.</p></li>
-<li class="fragment"><p>The <strong>only</strong> atom solved <strong>exactly</strong>: add even one electron and electron-electron repulsion breaks it.</p></li>
-<li class="fragment"><p>The Coulomb pull is <strong>isotropic</strong>: it depends only on distance <span class="math inline">\(r\)</span>.</p></li>
-<li class="fragment"><p>That <strong>symmetry</strong> is the source of the <strong>degeneracies</strong> we will find.</p></li>
-</ul>
-</section>
-<section id="the-schrodinger-equation" class="slide level2">
-<h2>The Schrodinger Equation</h2>
-<ul>
-<li class="fragment">Kinetic energy plus one <strong>Coulomb</strong> attraction term.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\left[ -\frac{\hbar^2}{2m_e}\nabla^2 - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)\]</span></p>
+<section id="a-third-model-well" class="slide level2">
+<h2>A third model well</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/three_wells.png" class="quarto-figure quarto-figure-center" style="width:76.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">Since the potential depends <strong>only on <span class="math inline">\(r\)</span></strong>, work in <strong>spherical coordinates</strong>.</li>
-<li class="fragment">Electron mass <span class="math inline">\(m_e\)</span> replaces the reduced mass (the nucleus is far heavier).</li>
+<li>Box: gaps <strong>grow</strong>. Spring: gaps <strong>equal</strong>. Coulomb, <span class="math inline">-Ze^2/4\pi\varepsilon_0 r</span>: gaps <strong>shrink</strong> toward <span class="math inline">E = 0</span></li>
+<li>Above zero the electron is <strong>free</strong>. Below zero: the <strong>atom</strong>, the last well solved exactly</li>
 </ul>
 </section>
-<section id="separation-of-variables" class="slide level2">
-<h2>Separation of Variables</h2>
-<ul>
-<li class="fragment">The Laplacian splits into a <strong>radial</strong> and an <strong>angular</strong> piece via <span class="math inline">\(\hat{L}^2\)</span>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\psi_{n,l,m}(r,\theta,\phi) = R_{nl}(r)\,Y_l^m(\theta,\phi)\]</span></p>
+<section id="one-electron-one-nucleus" class="slide level2">
+<h2>One electron, one nucleus</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{H} = -\frac{\hbar^2}{2\mu}\nabla^2 - \frac{Ze^2}{4\pi\varepsilon_0 r}, \qquad \hat{H}\,\psi(r, \theta, \phi) = E\,\psi(r, \theta, \phi)</span></p>
 </div>
 <ul>
-<li class="fragment"><strong>Angular part</strong> is already solved: spherical harmonics <span class="math inline">\(Y_l^m\)</span>.</li>
-<li class="fragment"><strong>Radial part</strong> <span class="math inline">\(R_{nl}(r)\)</span> is the new piece to find.</li>
+<li><span class="math inline">Z = 1</span>: H. <span class="math inline">\ Z = 2</span>: He<span class="math inline">^+</span>. <span class="math inline">\ Z = 3</span>: Li<span class="math inline">^{2+}</span>. One electron, one nucleus of charge <span class="math inline">Ze</span></li>
+<li>Two bodies, one <strong>reduced mass</strong> <span class="math inline">\mu = m_em_N/(m_e + m_N)</span>, as for a diatomic (4.1): <span class="math inline">\mu = 0.99946\,m_e</span> for hydrogen</li>
+<li>No walls, no spring: the well falls without limit at the nucleus and fades to zero far away</li>
+<li>Helium adds <span class="math inline">e^2/4\pi\varepsilon_0 r_{12}</span> between its electrons, and the exact solution is gone (Chapter 7)</li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{L}^2 Y_l^m = \hbar^2 l(l+1)\, Y_l^m\]</span></p>
+</section>
+<section id="a-central-force-angular-momentum-is-conserved" class="slide level2">
+<h2>A central force: angular momentum is conserved</h2>
+<p><span class="math inline">V</span> depends on <span class="math inline">r</span> <strong>alone</strong>. Turn the atom about the nucleus: nothing changes (Noether, Lecture 4.4)</p>
+<p><span class="math display">[\hat{H}, \hat{L}^2] = 0, \qquad [\hat{H}, \hat{L}_z] = 0</span></p>
+<p><span class="math display">\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) - \frac{\hat{L}^2}{\hbar^2r^2}
+\quad\Longrightarrow\quad
+\hat{H} = -\frac{\hbar^2}{2\mu}\,\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{\hat{L}^2}{2\mu r^2} - \frac{Ze^2}{4\pi\varepsilon_0 r}</span></p>
+<ul>
+<li>Commuting operators share eigenfunctions (Operators 2): the states carry sharp <span class="math inline">L^2 = \hbar^2l(l+1)</span> and <span class="math inline">L_z = m\hbar</span></li>
+<li>The middle term is the rigid rotor’s <span class="math inline">L^2/2I</span> with <span class="math inline">I = \mu r^2</span>: rotation at a radius that can change</li>
+</ul>
+</section>
+<section id="separate-the-angles-are-already-solved" class="slide level2">
+<h2>Separate: the angles are already solved</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/hatom_roadmap.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\psi(r, \theta, \phi) = R(r)\,Y_l^m(\theta, \phi), \qquad \hat{L}^2\,Y_l^m = \hbar^2l(l+1)\,Y_l^m</span></p>
+</section>
+<section id="the-radial-equation" class="slide level2">
+<h2>The radial equation</h2>
+<p>Insert <span class="math inline">R\,Y_l^m</span>, let <span class="math inline">\hat{L}^2</span> act, divide by <span class="math inline">Y_l^m</span>:</p>
+<p><span class="math display">-\frac{\hbar^2}{2\mu}\,\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) + \left[\frac{\hbar^2l(l+1)}{2\mu r^2} - \frac{Ze^2}{4\pi\varepsilon_0 r}\right]R = E\,R</span></p>
+<p>Then <span class="math inline">R = u/r</span> makes the radial term <span class="math inline">-(\hbar^2/2\mu)\,u''/r</span>; multiply by <span class="math inline">r</span>. A <strong>wall at the nucleus</strong>: <span class="math inline">u(0) = 0</span></p>
+<div class="keyeq">
+<p><span class="math display">-\frac{\hbar^2}{2\mu}\,\frac{d^2u}{dr^2} + V_{\mathrm{eff}}(r)\,u = E\,u, \qquad u(0) = 0</span></p>
+<p><span class="math display">V_{\mathrm{eff}}(r) = -\frac{Ze^2}{4\pi\varepsilon_0 r} + \frac{\hbar^2l(l+1)}{2\mu r^2}</span></p>
 </div>
 </section>
-<section id="the-effective-radial-potential" class="slide level2">
-<h2>The Effective Radial Potential</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/centrifug.png"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[V_{eff} = -\frac{Ze^2}{4\pi\epsilon_0 r} + \frac{l(l+1)\hbar^2}{2m_e r^2}\]</span></p>
-<ul>
-<li class="fragment"><p>Coulomb <strong>attraction</strong> plus a <strong>centrifugal</strong> barrier.</p></li>
-<li class="fragment"><p>For <span class="math inline">\(l &gt; 0\)</span> the barrier pushes the electron <strong>farther</strong> from the nucleus.</p></li>
-</ul>
-</div></div>
-</section>
-<section id="radial-wavefunctions" class="slide level2">
-<h2>Radial Wavefunctions</h2>
-<div class="fragment">
-<p><span class="math display">\[R_{nl}(r) = \rho^l\, e^{-\rho/2}\, L_{n-l-1}^{2l+1}(\rho)\]</span></p>
+<section id="the-effective-potential" class="slide level2">
+<h2>The effective potential</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/effective_potential.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><p><strong>Laguerre polynomial</strong> times a decaying exponential.</p></li>
-<li class="fragment"><p>Bohr radius sets the length scale: <span class="math inline">\(a_0 = \dfrac{4\pi\epsilon_0\hbar^2}{m_e e^2}\)</span>.</p></li>
-<li class="fragment"><p>Scaled distance: <span class="math inline">\(\rho = \dfrac{2Zr}{n a_0}\)</span>.</p></li>
-<li class="fragment"><p>Example, the <strong>1s</strong> orbital: <span class="math inline">\(R_{10}(r) = 2\left(\dfrac{Z}{a_0}\right)^{3/2} e^{-\rho/2}\)</span>.</p></li>
+<li><span class="math inline">l = 0</span>: the bare Coulomb well. <span class="math inline">l &gt; 0</span>: the <strong>centrifugal</strong> term <span class="math inline">L^2/2\mu r^2</span> wins at small <span class="math inline">r</span>: a bowl with its bottom at <span class="math inline">r = l(l+1)\,a_0</span></li>
+<li>The <span class="math inline">l = 1</span> bowl bottoms out above <span class="math inline">E_1</span>: no <span class="math inline">l = 1</span> state can be the ground state</li>
 </ul>
 </section>
-<section id="the-full-solution" class="slide level2">
-<h2>The Full Solution</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/Henergies.png"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[\psi_{n,l,m_l} = N_{nl}\,R_{nl}(r)\,Y_{l,m_l}(\theta,\phi)\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[E_n = -\frac{m_e e^4}{8\varepsilon_0^2 h^2}\cdot\frac{1}{n^2}\]</span></p>
+<section id="one-length-one-energy" class="slide level2">
+<h2>One length, one energy</h2>
+<p><span class="math inline">\hat{H}</span> contains only <span class="math inline">\hbar</span>, <span class="math inline">\mu</span> and <span class="math inline">e^2/4\pi\varepsilon_0</span>: they build <strong>one length</strong> and <strong>one energy</strong></p>
+<p><strong>Length</strong>: where confining the electron costs as much kinetic energy as the attraction pays</p>
+<p><span class="math display">\frac{\hbar^2}{\mu a^2} = \frac{e^2}{4\pi\varepsilon_0 a} \quad\Longrightarrow\quad a_0 = \frac{4\pi\varepsilon_0\hbar^2}{\mu e^2} = 52.9\ \text{pm}</span></p>
+<p><strong>Energy</strong>: the Coulomb energy at that distance</p>
+<p><span class="math display">E_h = \frac{e^2}{4\pi\varepsilon_0a_0} = \frac{\hbar^2}{\mu a_0^2} = 27.2\ \text{eV}</span></p>
+<ul>
+<li>The Bohr radius with no orbit assumed. Half a hartree, 13.6 eV, binds the ground state. For a nucleus <span class="math inline">Ze</span>: <span class="math inline">a_0/Z</span>, <span class="math inline">Z^2E_h</span></li>
+</ul>
+</section>
+<section id="why-the-atom-does-not-collapse" class="slide level2">
+<h2>Why the atom does not collapse</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/coulomb_energy.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\langle E\rangle = \frac{\hbar^2}{2\mu a^2} - \frac{e^2}{4\pi\varepsilon_0 a} \quad\text{is lowest at } a = a_0: \quad \langle E\rangle = -\frac{E_h}{2} = -13.6\ \text{eV}</span></p>
+<ul>
+<li>Squeeze the state <span class="math inline">e^{-r/a}</span>: kinetic energy wins. Spread it out: the attraction is lost</li>
+</ul>
+</section>
+<section id="the-solution" class="slide level2">
+<h2>The solution</h2>
+<div class="keyeq">
+<p><span class="math display">E_n = -\frac{Z^2}{n^2}\,\frac{E_h}{2} = -13.6\ \text{eV}\,\frac{Z^2}{n^2}, \qquad \psi_{nlm}(r, \theta, \phi) = R_{nl}(r)\,Y_l^m(\theta, \phi)</span></p>
+<p><span class="math display">n = 1, 2, 3, \dots \qquad l = 0, 1, \dots, n - 1 \qquad m = -l, \dots, l</span></p>
 </div>
 <ul>
-<li class="fragment">Three quantum numbers in <span class="math inline">\(\psi\)</span>, but <strong>energy depends only on <span class="math inline">\(n\)</span></strong>.</li>
-</ul>
-</div></div>
-</section>
-<section id="degeneracy-from-symmetry" class="slide level2">
-<h2>Degeneracy from Symmetry</h2>
-<ul>
-<li class="fragment"><p>All states of a given <span class="math inline">\(n\)</span> share the <strong>same energy</strong>.</p></li>
-<li class="fragment"><p>For <span class="math inline">\(n = 2\)</span>: the <span class="math inline">\(2s\)</span> and the three <span class="math inline">\(2p\)</span> states are <strong>degenerate</strong>.</p></li>
-<li class="fragment"><p>Counting spin, the total degeneracy of level <span class="math inline">\(n\)</span> is <span class="math inline">\(2n^2\)</span>.</p></li>
-<li class="fragment"><p>This <strong>accidental degeneracy</strong> is special to the <span class="math inline">\(1/r\)</span> Coulomb potential.</p></li>
+<li>The series for <span class="math inline">u</span> must <strong>stop</strong>, as Hermite’s did (4.2): only for <span class="math inline">\kappa a_0 = Z/n</span> with whole <span class="math inline">n &gt; l</span></li>
+<li><span class="math inline">n</span> sets the energy and the size <span class="math inline">n^2a_0/Z</span>. The energy depends on <strong>neither <span class="math inline">l</span> nor <span class="math inline">m</span></strong></li>
+<li><span class="math inline">l</span> and <span class="math inline">m</span> are the angular momentum quantum numbers of 4.4: s, p, d, f for <span class="math inline">l = 0, 1, 2, 3</span></li>
 </ul>
 </section>
-<section id="quantum-numbers" class="slide level2">
-<h2>Quantum Numbers</h2>
+<section id="example-check-the-ground-state" class="slide level2">
+<h2>Example: check the ground state</h2>
+<div class="worked">
+<p>Show that <span class="math inline">u = re^{-r/a}</span> solves the radial equation with <span class="math inline">l = 0</span>. Find <span class="math inline">a</span> and <span class="math inline">E</span>.</p>
+</div>
 <div class="fragment">
-<p><span class="math display">\[n = 1, 2, 3, \dots\]</span> <span class="math display">\[l = 0, 1, 2, \dots, n-1\]</span> <span class="math display">\[m = 0, \pm 1, \pm 2, \dots, \pm l\]</span> <span class="math display">\[m_s = \pm 1/2\]</span></p>
+<div class="soln">
+<p><span class="math display">u'' = \left(\frac{r}{a^2} - \frac{2}{a}\right)e^{-r/a} \quad\Longrightarrow\quad -\frac{\hbar^2}{2\mu}\left(\frac{r}{a^2} - \frac{2}{a}\right) - \frac{Ze^2}{4\pi\varepsilon_0} = E\,r \quad\text{for every } r</span></p>
+<p><span class="math display">\text{no } r: \ \frac{\hbar^2}{\mu a} = \frac{Ze^2}{4\pi\varepsilon_0} \Rightarrow a = \frac{a_0}{Z} \qquad\qquad \text{with } r: \ E = -\frac{\hbar^2}{2\mu a^2} = -\frac{Z^2E_h}{2}</span></p>
 </div>
 <ul>
-<li class="fragment"><span class="math inline">\(n\)</span> sets the <strong>energy</strong>, <span class="math inline">\(l\)</span> the <strong>shape</strong>, <span class="math inline">\(m\)</span> the <strong>orientation</strong>.</li>
-<li class="fragment">Letters for <span class="math inline">\(l\)</span>: <span class="math inline">\(s, p, d, f, \dots\)</span> for <span class="math inline">\(l = 0, 1, 2, 3, \dots\)</span></li>
+<li><span class="math inline">R_{10} \propto e^{-Zr/a_0}</span>: the size the trade-off chose, no node, and <span class="math inline">l = 0</span>: <strong>no angular momentum at all</strong></li>
+</ul>
+</div>
+</section>
+<section id="the-radial-functions" class="slide level2">
+<h2>The radial functions</h2>
+<p>Polynomial of degree <span class="math inline">n - 1</span> times <span class="math inline">e^{-\rho/n}</span>, with <span class="math inline">\rho = Zr/a_0</span> and a common factor <span class="math inline">(Z/a_0)^{3/2}</span>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 58%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">orbital</th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;"><span class="math inline">l</span></th>
+<th style="text-align: left;"><span class="math inline">R_{nl}\,/\,(Z/a_0)^{3/2}</span></th>
+<th style="text-align: center;">radial nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1s</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><span class="math inline">2\,e^{-\rho}</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2s</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{2\sqrt{2}}\,(2 - \rho)\,e^{-\rho/2}</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2p</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{2\sqrt{6}}\,\rho\,e^{-\rho/2}</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><span class="math inline">\frac{2}{81\sqrt{3}}\,(27 - 18\rho + 2\rho^2)\,e^{-\rho/3}</span></td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3p</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span class="math inline">\frac{4}{81\sqrt{6}}\,(6 - \rho)\,\rho\,e^{-\rho/3}</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3d</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><span class="math inline">\frac{4}{81\sqrt{30}}\,\rho^2\,e^{-\rho/3}</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">n - l - 1</span> radial nodes, plus the <span class="math inline">l</span> angular nodes of <span class="math inline">Y_l^m</span>: <span class="math inline">n - 1</span> in all, like the box</li>
 </ul>
 </section>
-<section id="the-hydrogen-spectrum" class="slide level2">
-<h2>The Hydrogen Spectrum</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/Balmer.png"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[\Delta\tilde{v} = R_H Z^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)\]</span></p>
-<ul>
-<li class="fragment"><p><strong>Lyman</strong> (<span class="math inline">\(n_1 = 1\)</span>), <strong>Balmer</strong> (<span class="math inline">\(n_1 = 2\)</span>), <strong>Paschen</strong> (<span class="math inline">\(n_1 = 3\)</span>).</p></li>
-<li class="fragment"><p>Balmer lines are the <strong>visible</strong> emission of hydrogen.</p></li>
-</ul>
-</div></div>
-</section>
-<section id="ionization-energy" class="slide level2">
-<h2>Ionization Energy</h2>
-<ul>
-<li class="fragment">Removing the ground-state electron means <span class="math inline">\(n_1 = 1\)</span>, <span class="math inline">\(n_2 \to \infty\)</span>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[E_i = R_H Z^2\left(\frac{1}{1^2} - \frac{1}{\infty}\right)\]</span></p>
+<section id="polynomial-times-exponential" class="slide level2">
+<h2>Polynomial times exponential</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/radial_functions.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><p>For hydrogen: <span class="math inline">\(109678~\text{cm}^{-1} = 13.6057~\text{eV}\)</span>.</p></li>
-<li class="fragment"><p>Larger nuclear charge <span class="math inline">\(Z\)</span> means <strong>tighter binding</strong>.</p></li>
+<li><span class="math inline">r^l</span> at the nucleus: only <strong>s</strong> functions are nonzero there. The tail <span class="math inline">e^{-Zr/na_0}</span> reaches out to about <span class="math inline">n^2a_0/Z</span></li>
+</ul>
+</section>
+<section id="live-the-radial-functions" class="slide level2">
+<h2>Live: the radial functions</h2>
+<div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/radial_explorer.mjs";
+  const opts = { fontSize: "19px", n: 2, l: 0 };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
+</script>
+</section>
+<section id="live-the-s-orbitals-in-3d" class="slide level2">
+<h2>Live: the s orbitals in 3D</h2>
+<div id="oc-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/orbital_cloud.mjs";
+  const opts = { fontSize: "19px", orbital: "2s", height: 450 };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("oc-live") });
+</script>
+</section>
+<section id="one-level-n2-states" class="slide level2">
+<h2>One level, <span class="math inline">n^2</span> states</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/hydrogen_ladder.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\sum_{l=0}^{n-1}(2l+1) = n^2</span>, and <span class="math inline">2n^2</span> with spin: 2, 8, 18, 32, the rows of the periodic table</li>
+<li><span class="math inline">m</span>: rotational symmetry, split by a field (5.3). <span class="math inline">l</span>: special to <span class="math inline">1/r</span>, lifted by screening (Ch. 7)</li>
+</ul>
+</section>
+<section id="example-the-states-with-n-3" class="slide level2">
+<h2>Example: the states with <span class="math inline">n = 3</span></h2>
+<div class="worked">
+<p>List the states of hydrogen with <span class="math inline">n = 3</span> and what measurements of <span class="math inline">E</span>, <span class="math inline">L^2</span> and <span class="math inline">L_z</span> give.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">3s\ (m = 0), \qquad 3p\ (m = -1, 0, 1), \qquad 3d\ (m = -2, \dots, 2)</span></p>
+<p><span class="math display">1 + 3 + 5 = 9 = 3^2 \ \text{states, all with } E_3 = -\frac{13.6\ \text{eV}}{9} = -1.51\ \text{eV}</span></p>
+<p><span class="math display">L^2 = 0,\ 2\hbar^2,\ 6\hbar^2 \ \text{for s, p, d}, \qquad L_z = m\hbar</span></p>
+</div>
+<ul>
+<li>Each has <span class="math inline">n - 1 = 2</span> nodes: 3s two radial, 3p one radial and one angular, 3d two angular</li>
+</ul>
+</div>
+</section>
+<section id="example-he-and-li2" class="slide level2">
+<h2>Example: He<span class="math inline">^+</span> and Li<span class="math inline">^{2+}</span></h2>
+<div class="worked">
+<p>Ionization energy, size of the ground state, and the <span class="math inline">2 \to 1</span> line for He<span class="math inline">^+</span> and Li<span class="math inline">^{2+}</span>.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">-E_1 = 13.6\,Z^2\ \text{eV}: \quad 54.4\ \text{eV (He}^+), \quad 122.4\ \text{eV (Li}^{2+})</span></p>
+<p><span class="math display">a_0/Z: \quad 26.5\ \text{pm (He}^+), \quad 17.6\ \text{pm (Li}^{2+})</span></p>
+<p><span class="math display">2 \to 1 \text{ photon, } \tfrac{3}{4}\times13.6\,Z^2\ \text{eV}: \quad 40.8\ \text{eV},\ 30.4\ \text{nm (He}^+)</span></p>
+<p><span class="math display">\phantom{2 \to 1 \text{ photon, } \tfrac{3}{4}\times13.6\,Z^2\ \text{eV}:} \quad 91.8\ \text{eV},\ 13.5\ \text{nm (Li}^{2+})</span></p>
+</div>
+<ul>
+<li>Everything scales: lengths by <span class="math inline">1/Z</span>, energies by <span class="math inline">Z^2</span>. Hydrogen’s line is at 121.6 nm</li>
+</ul>
+</div>
+</section>
+<section id="the-spectrum-derived" class="slide level2">
+<h2>The spectrum, derived</h2>
+<div class="keyeq">
+<p><span class="math display">\tilde{\nu} = R\,Z^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad R_\infty = \frac{E_h}{2hc} = 109\,737\ \text{cm}^{-1}</span></p>
+<p><span class="math display">R_M = \frac{R_\infty}{1 + m_e/m_N} \quad \text{for a nucleus of mass } m_N</span></p>
+</div>
+<ul>
+<li>Rydberg’s formula of Lecture 1.5, its constant now <strong>built from</strong> <span class="math inline">m_e</span>, <span class="math inline">e</span>, <span class="math inline">\varepsilon_0</span>, <span class="math inline">h</span>, <span class="math inline">c</span></li>
+<li>Lyman (<span class="math inline">n_1 = 1</span>, ultraviolet), Balmer (<span class="math inline">n_1 = 2</span>, visible), Paschen (<span class="math inline">n_1 = 3</span>, infrared); each series ends at a <strong>limit</strong></li>
+<li>The nucleus moves too: <span class="math inline">R_H = 109\,678</span> cm<span class="math inline">^{-1}</span>, a little below <span class="math inline">R_\infty</span></li>
+</ul>
+</section>
+<section id="the-balmer-lines" class="slide level2">
+<h2>The Balmer lines</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/balmer_lines.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Lines crowd toward the limit at 364.7 nm. At H<span class="math inline">\alpha</span>, deuterium sits 0.18 nm to the blue: a heavier nucleus, a larger <span class="math inline">\mu</span></li>
+</ul>
+</section>
+<section id="example-deuterium" class="slide level2">
+<h2>Example: deuterium</h2>
+<div class="worked">
+<p>H<span class="math inline">\alpha</span> of hydrogen is at 656.47 nm in vacuum. Where is deuterium’s? (<span class="math inline">m_p = 1836.15\,m_e</span>, <span class="math inline">m_d = 3670.48\,m_e</span>)</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">\frac{\mu_H}{m_e} = \frac{1}{1 + 1/1836.15} = 0.999456, \qquad \frac{\mu_D}{m_e} = \frac{1}{1 + 1/3670.48} = 0.999728</span></p>
+<p><span class="math display">\lambda_D = \lambda_H\,\frac{\mu_H}{\mu_D} = 656.47\ \text{nm}\times\frac{0.999456}{0.999728} = 656.29\ \text{nm}</span></p>
+</div>
+<ul>
+<li>A 0.18 nm satellite on every Balmer line: Urey’s discovery of deuterium, 1931</li>
+</ul>
+</div>
+</section>
+<section id="what-the-solution-gives-and-what-it-leaves" class="slide level2">
+<h2>What the solution gives, and what it leaves</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">the hydrogen atom gives</th>
+<th style="text-align: left;">what comes next</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">every level <span class="math inline">E_n</span> and every state <span class="math inline">R_{nl}Y_l^m</span></td>
+<td style="text-align: left;">shapes, sizes, real orbitals <span class="math inline">p_x</span>, <span class="math inline">d_{xy}</span>: <strong>Lecture 5.2</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">n^2</span> states per level</td>
+<td style="text-align: left;">spin doubles it; fields and spin-orbit coupling split it: <strong>Lecture 5.3</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">the <span class="math inline">l</span> degeneracy of <span class="math inline">1/r</span></td>
+<td style="text-align: left;">screening lifts it: 2s below 2p, the aufbau order: <strong>Chapter 7</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rydberg’s constant from <span class="math inline">m_e</span>, <span class="math inline">e</span>, <span class="math inline">\varepsilon_0</span>, <span class="math inline">h</span>, <span class="math inline">c</span></td>
+<td style="text-align: left;">what Bohr’s model could not reach: helium, intensities, fine structure</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Bohr’s orbit is gone: the ground state has <span class="math inline">l = 0</span> and is a standing wave densest <strong>at</strong> the nucleus</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>The hydrogenlike atom separates into a <strong>radial</strong> function <span class="math inline">\(R_{nl}\)</span> and a <strong>spherical harmonic</strong> <span class="math inline">\(Y_l^m\)</span>. Its energy <span class="math inline">\(E_n \propto -Z^2/n^2\)</span> depends <strong>only on <span class="math inline">\(n\)</span></strong>, so each level carries a <span class="math inline">\(2n^2\)</span>-fold <strong>degeneracy</strong> that traces directly to the <strong>spherical symmetry</strong> of the Coulomb potential.</p>
+<p>One electron and a nucleus <span class="math inline">Ze</span>: a central Coulomb force, so angular momentum is conserved and <span class="math inline">\psi = R_{nl}(r)\,Y_l^m(\theta, \phi)</span> with the angles already solved. The radial function obeys a one-dimensional equation in <span class="math inline">V_{\mathrm{eff}} = -Ze^2/4\pi\varepsilon_0 r + \hbar^2l(l+1)/2\mu r^2</span>. The constants build one length, <span class="math inline">a_0 = 52.9</span> pm, and one energy, <span class="math inline">E_h = 27.2</span> eV; the balance of confinement against attraction keeps the atom from collapsing. The radial function must die at large <span class="math inline">r</span>, and that gives <span class="math inline">E_n = -Z^2E_h/2n^2</span> with <span class="math inline">l &lt; n</span>: <span class="math inline">n^2</span> states per level, a degeneracy special to <span class="math inline">1/r</span>. The level differences are Rydberg’s formula, now derived, down to the isotope shift of deuterium.</p>
 </blockquote>
 
 </section>
@@ -298,7 +525,6 @@ Davit Potoyan
   <script src="01-hydrogenlike-atoms_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="01-hydrogenlike-atoms_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="01-hydrogenlike-atoms_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-hydrogenlike-atoms_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -467,27 +693,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

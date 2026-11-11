@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="02-atomic-orbitals_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="02-atomic-orbitals_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02-atomic-orbitals_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02-atomic-orbitals_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,127 +163,430 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="what-is-an-orbital" class="slide level2">
-<h2>What Is an Orbital?</h2>
+<section id="an-orbital-is-a-one-electron-wavefunction" class="slide level2">
+<h2>An orbital is a one-electron wavefunction</h2>
+<p><span class="math display">\psi_{nlm} = R_{nl}(r)\,Y_l^m(\theta, \phi), \qquad n = 1, 2, \dots \qquad l &lt; n \qquad \lvert m\rvert \leq l</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;"><span class="math inline">l</span></th>
+<th style="text-align: left;">orbitals</th>
+<th style="text-align: center;">how many</th>
+<th style="text-align: center;">energy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">1s</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">-E_h/2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0, 1</td>
+<td style="text-align: left;">2s, 2p</td>
+<td style="text-align: center;"><span class="math inline">1 + 3 = 4</span></td>
+<td style="text-align: center;"><span class="math inline">-E_h/8</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0, 1, 2</td>
+<td style="text-align: left;">3s, 3p, 3d</td>
+<td style="text-align: center;"><span class="math inline">1 + 3 + 5 = 9</span></td>
+<td style="text-align: center;"><span class="math inline">-E_h/18</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">A <strong>one-electron wavefunction</strong> is called an <strong>orbital</strong>.</li>
-<li class="fragment">For the hydrogen atom it is an <strong>atomic orbital (AO)</strong>, exact for H-like atoms.</li>
+<li><strong>Orbital</strong> = one electron’s wavefunction, named by <span class="math inline">n</span> and the letter of <span class="math inline">l</span>. Nothing orbits</li>
+<li>Lecture 5.1 solved for them. Today: <strong>where</strong> the electron is, what <strong>shape</strong>, where <span class="math inline">\psi</span> <strong>vanishes</strong>, and what a picture shows</li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[\psi_{n\ell m_\ell}(r,\theta,\phi) = R_{n\ell}(r)\,Y_{\ell m_\ell}(\theta,\phi)\]</span></p>
+</section>
+<section id="three-ways-to-ask-where-the-electron-is" class="slide level2">
+<h2>Three ways to ask where the electron is</h2>
+<div class="keyeq">
+<p><span class="math display">\lvert\psi_{nlm}\rvert^2\,dV = \underbrace{R_{nl}^2(r)\,r^2\,dr}_{\text{distance}}\;\times\;\underbrace{\lvert Y_l^m\rvert^2\,\sin\theta\,d\theta\,d\phi}_{\text{direction}}</span></p>
+<p><span class="math display">P(r) = r^2R_{nl}^2(r), \quad \int_0^\infty P\,dr = 1 \qquad\qquad \lvert Y_l^m\rvert^2, \quad \int\lvert Y_l^m\rvert^2\,d\Omega = 1</span></p>
 </div>
 <ul>
-<li class="fragment">Splits cleanly into a <strong>radial</strong> part and an <strong>angular</strong> part.</li>
+<li><span class="math inline">\lvert\psi\rvert^2\,dV</span>: probability in a small <strong>volume</strong></li>
+<li><span class="math inline">P(r)\,dr</span>: probability at <strong>distance</strong> <span class="math inline">r</span> to <span class="math inline">r + dr</span>, any direction: the <strong>radial distribution</strong></li>
+<li><span class="math inline">\lvert Y_l^m\rvert^2\,d\Omega</span>: probability in a <strong>direction</strong>, any distance: the <strong>angular distribution</strong></li>
 </ul>
 </section>
-<section id="three-quantum-numbers" class="slide level2">
-<h2>Three Quantum Numbers</h2>
-<ul>
-<li class="fragment"><p><strong>Principal:</strong> <span class="math inline">\(n = 1, 2, 3, \ldots\)</span></p></li>
-<li class="fragment"><p><strong>Orbital angular momentum:</strong> <span class="math inline">\(\ell = 0, 1, 2, \ldots, n-1\)</span></p></li>
-<li class="fragment"><p><strong>Magnetic:</strong> <span class="math inline">\(m_\ell = -\ell, -\ell+1, \ldots, \ell\)</span></p></li>
-<li class="fragment"><p>Each valid triple labels <strong>one</strong> orbital.</p></li>
-</ul>
-</section>
-<section id="where-is-the-electron" class="slide level2">
-<h2>Where Is the Electron?</h2>
-<ul>
-<li class="fragment">Probability over the full 3D volume:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[|\psi|^2 dV = \big|R_{n\ell}(r)\big|^2 \cdot \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2 \cdot r^2\sin\theta \, dr \, d\theta \, d\phi\]</span></p>
+<section id="why-r2-the-area-of-a-shell" class="slide level2">
+<h2>Why <span class="math inline">r^2</span>: the area of a shell</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/shell_volume.png" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">The <span class="math inline">\(r^2\)</span> factor reshapes the radial picture.</li>
+<li>The 1s <strong>density</strong> is largest at the nucleus; the shell at distance <span class="math inline">r</span> has area <span class="math inline">4\pi r^2</span>, zero at the nucleus</li>
+<li>Their product <span class="math inline">P(r) = 4\pi r^2\lvert\psi_{1s}\rvert^2</span> peaks in between, at <span class="math inline">a_0</span>. <span class="math inline">P(0) = 0</span> for <strong>every</strong> state</li>
 </ul>
 </section>
-<section id="radial-probability" class="slide level2">
-<h2>Radial Probability</h2>
+<section id="example-the-most-probable-distance-in-1s" class="slide level2">
+<h2>Example: the most probable distance in 1s</h2>
+<div class="worked">
+<p>Where is <span class="math inline">P(r) = 4r^2e^{-2r}</span> largest (<span class="math inline">r</span> in <span class="math inline">a_0</span>)?</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">\frac{dP}{dr} = 8r\,e^{-2r} - 8r^2e^{-2r} = 8r\,(1 - r)\,e^{-2r} = 0 \quad\Longrightarrow\quad r_{\mathrm{mp}} = a_0</span></p>
+</div>
+<ul>
+<li>Bohr’s orbit is gone (<span class="math inline">l = 0</span>, no angular momentum), but its <strong>radius survives</strong> as the peak of <span class="math inline">P(r)</span></li>
+</ul>
+</div>
+</section>
+<section id="example-inside-the-bohr-radius" class="slide level2">
+<h2>Example: inside the Bohr radius</h2>
+<div class="worked">
+<p>How often is the 1s electron closer than <span class="math inline">a_0</span>? What is its average distance?</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">P(r &lt; x) = \int_0^x 4r^2e^{-2r}\,dr = 1 - e^{-2x}(2x^2 + 2x + 1)</span></p>
+<p><span class="math display">P(r &lt; a_0) = 1 - 5e^{-2} = 0.32, \qquad\qquad P(r &lt; 2.66\,a_0) = 0.90</span></p>
+<p><span class="math display">\langle r\rangle = 4\int_0^\infty r^3e^{-2r}\,dr = 4\cdot\frac{3!}{2^4} = \frac{3}{2}\,a_0</span></p>
+</div>
+<ul>
+<li>Three lengths for one state: most probable <span class="math inline">a_0</span>, average <span class="math inline">1.5\,a_0</span>, <strong>90% inside</strong> <span class="math inline">2.66\,a_0</span></li>
+</ul>
+</div>
+</section>
+<section id="radial-distributions-for-n-leq-3" class="slide level2">
+<h2>Radial distributions for <span class="math inline">n \leq 3</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/radial_distributions.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">l = n - 1</span>: <strong>one hump</strong>, at Bohr’s <span class="math inline">n^2a_0</span>. Smaller <span class="math inline">l</span>: <span class="math inline">n - l</span> humps, the outer one largest</li>
+<li>The inner humps of 2s and 3s <strong>penetrate</strong> to the nucleus: why 2s drops below 2p once other electrons screen (Chapter 7)</li>
+</ul>
+</section>
+<section id="three-ways-to-say-how-big" class="slide level2">
+<h2>Three ways to say how big</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">orbital</th>
+<th style="text-align: center;">most probable <span class="math inline">r</span></th>
+<th style="text-align: center;">average <span class="math inline">\langle r\rangle</span></th>
+<th style="text-align: center;">90% inside</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1s</td>
+<td style="text-align: center;"><span class="math inline">a_0</span></td>
+<td style="text-align: center;"><span class="math inline">1.5\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">2.66\,a_0</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2s</td>
+<td style="text-align: center;"><span class="math inline">5.24\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">6\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">9.12\,a_0</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2p</td>
+<td style="text-align: center;"><span class="math inline">4\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">5\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">7.99\,a_0</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;"><span class="math inline">13.07\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">13.5\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">19.44\,a_0</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3p</td>
+<td style="text-align: center;"><span class="math inline">12\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">12.5\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">18.39\,a_0</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3d</td>
+<td style="text-align: center;"><span class="math inline">9\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">10.5\,a_0</span></td>
+<td style="text-align: center;"><span class="math inline">15.80\,a_0</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\langle r\rangle_{nl} = \frac{n^2a_0}{Z}\left[1 + \frac{1}{2}\left(1 - \frac{l(l+1)}{n^2}\right)\right] \qquad\qquad \text{every length} \propto \frac{n^2}{Z}</span></p>
+</section>
+<section id="live-how-much-lies-inside-r" class="slide level2">
+<h2>Live: how much lies inside <span class="math inline">r</span></h2>
+<div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/radial_explorer.mjs";
+  const opts = { fontSize: "19px", n: 1, l: 0, probe: true };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
+</script>
+</section>
+<section id="the-boundary-surface" class="slide level2">
+<h2>The boundary surface</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/probability_inside.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<ul>
+<li>No edge: <span class="math inline">P(r)</span> never reaches zero. Chemists draw the surface that holds <strong>90%</strong></li>
+<li>1s: <span class="math inline">2.66\,a_0 = 141</span> pm (the H<span class="math inline">_2</span> bond is 74 pm). Grows as <span class="math inline">n^2</span>, shrinks as <span class="math inline">1/Z</span></li>
+</ul>
+</section>
+<section id="the-l_z-eigenstates-are-rings" class="slide level2">
+<h2>The <span class="math inline">L_z</span> eigenstates are rings</h2>
+<p><span class="math display">\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \ \text{(dumbbell along } z) \qquad\qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \ \text{(ring around } z)</span></p>
+<ul>
+<li><span class="math inline">Y_l^m \propto e^{im\phi}</span>, so <span class="math inline">\lvert Y_l^m\rvert^2</span> <strong>does not depend on</strong> <span class="math inline">\phi</span>: every <span class="math inline">L_z</span> eigenstate is symmetric about <span class="math inline">z</span></li>
+<li><span class="math inline">m = +1</span> and <span class="math inline">m = -1</span> share one density; a magnetic field along <span class="math inline">z</span> tells them apart (Lecture 5.3)</li>
+<li>A molecule has <strong>bonds along directions</strong>, not a <span class="math inline">z</span> axis. Chemists want orbitals that point along axes</li>
+</ul>
+</section>
+<section id="a-degenerate-level-is-a-space-pick-new-axes" class="slide level2">
+<h2>A degenerate level is a space: pick new axes</h2>
+<p><span class="math display">\hat{H}\psi_a = E\psi_a, \ \hat{H}\psi_b = E\psi_b \quad\Longrightarrow\quad \hat{H}\,(c_a\psi_a + c_b\psi_b) = E\,(c_a\psi_a + c_b\psi_b)</span></p>
+<ul>
+<li>The <span class="math inline">2l + 1</span> states of one <span class="math inline">n</span>, <span class="math inline">l</span> share <span class="math inline">E_n</span> and <span class="math inline">L^2</span>: <strong>any combination</strong> is again a stationary state</li>
+<li><span class="math inline">Y_l^{-l}, \dots, Y_l^{l}</span> are one set of axes in that space; we may turn them (Lecture 3.5, Appendix A.3)</li>
+<li>The price: the new functions are <strong>not</strong> <span class="math inline">\hat{L}_z</span> eigenfunctions</li>
+</ul>
+</section>
+<section id="the-real-p-orbitals" class="slide level2">
+<h2>The real <span class="math inline">p</span> orbitals</h2>
+<div class="keyeq">
+<p><span class="math display">p_z = Y_1^0 = \sqrt{\frac{3}{4\pi}}\,\frac{z}{r}</span></p>
+<p><span class="math display">p_x = \frac{Y_1^{-1} - Y_1^{+1}}{\sqrt{2}} = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r} \qquad\qquad p_y = \frac{i\,(Y_1^{-1} + Y_1^{+1})}{\sqrt{2}} = \sqrt{\frac{3}{4\pi}}\,\frac{y}{r}</span></p>
+</div>
+<ul>
+<li>Times <span class="math inline">R_{n1}(r)</span>: the orbitals <span class="math inline">np_x</span>, <span class="math inline">np_y</span>, <span class="math inline">np_z</span>. Same <span class="math inline">n</span>, same <span class="math inline">l = 1</span>, same <span class="math inline">E_n</span>, same <span class="math inline">L^2 = 2\hbar^2</span></li>
+<li>Real, normalized, orthogonal: <strong>one shape, three axes</strong></li>
+<li><span class="math inline">p_x</span> has no definite <span class="math inline">L_z</span>: a measurement gives <span class="math inline">+\hbar</span> or <span class="math inline">-\hbar</span>, each half the time</li>
+</ul>
+</section>
+<section id="example-build-p_x" class="slide level2">
+<h2>Example: build <span class="math inline">p_x</span></h2>
+<div class="worked">
+<p>From <span class="math inline">Y_1^{\pm1} = \mp\sqrt{3/8\pi}\,\sin\theta\,e^{\pm i\phi}</span>, form <span class="math inline">(Y_1^{-1} - Y_1^{+1})/\sqrt{2}</span>.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">Y_1^{-1} - Y_1^{+1} = \sqrt{\frac{3}{8\pi}}\sin\theta\left(e^{-i\phi} + e^{+i\phi}\right) = \sqrt{\frac{3}{8\pi}}\sin\theta\,(2\cos\phi)</span></p>
+<p><span class="math display">p_x = \frac{1}{\sqrt{2}}\cdot2\sqrt{\frac{3}{8\pi}}\sin\theta\cos\phi = \sqrt{\frac{3}{4\pi}}\sin\theta\cos\phi = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r}</span></p>
+</div>
+<ul>
+<li>Normalized for free: <span class="math inline">\lvert c_{-1}\rvert^2 + \lvert c_{+1}\rvert^2 = \tfrac{1}{2} + \tfrac{1}{2} = 1</span>, the two <span class="math inline">L_z</span> probabilities</li>
+</ul>
+</div>
+</section>
+<section id="rings-or-lobes-two-bases-for-l-1" class="slide level2">
+<h2>Rings or lobes: two bases for <span class="math inline">l = 1</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/complex_to_real.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Two rings become two dumbbells: <span class="math inline">p_x</span>, <span class="math inline">p_y</span> span the same space as <span class="math inline">Y_1^{\pm1}</span></li>
+<li>Each real <span class="math inline">p</span> has <strong>one nodal plane</strong>. Angular part only: 2p and 3p share these shapes</li>
+</ul>
+</section>
+<section id="running-or-standing" class="slide level2">
+<h2>Running or standing</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/AO_0.png" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[P_r(r) = r^2\big|R_{n\ell}(r)\big|^2\]</span></p>
+<div class="column" style="width:46%;">
+<p><img data-src="../../ch05/images/p_running.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:54%;">
+<p><span class="math display">Y_1^{+1}e^{-iEt/\hbar} \propto \sin\theta\,e^{i(\phi - Et/\hbar)}</span></p>
+<p><span class="math display">p_x\,e^{-iEt/\hbar} \propto \sin\theta\cos\phi\,e^{-iEt/\hbar}</span></p>
 <ul>
-<li class="fragment"><p>Peaks mark the <strong>most probable distance</strong> from the nucleus.</p></li>
-<li class="fragment"><p>For the <span class="math inline">\(1s\)</span> orbital the peak sits at the <strong>Bohr radius</strong> <span class="math inline">\(a_0\)</span>.</p></li>
+<li><span class="math inline">m = +1</span> <strong>runs</strong> around <span class="math inline">z</span> (the ring state of 4.4 on a sphere): its density is a ring</li>
+<li><span class="math inline">p_x</span> <strong>stands</strong> and pulses along <span class="math inline">x</span>: its density is two lobes</li>
+<li>Both stationary, same energy. A field along <span class="math inline">z</span> picks the first; a neighbour along <span class="math inline">x</span> picks the second</li>
 </ul>
 </div></div>
 </section>
-<section id="how-far-out" class="slide level2">
-<h2>How Far Out?</h2>
+<section id="the-five-real-d-orbitals" class="slide level2">
+<h2>The five real <span class="math inline">d</span> orbitals</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">orbital</th>
+<th style="text-align: left;">combination</th>
+<th style="text-align: left;">angular function</th>
+<th style="text-align: left;">lobes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">d_{z^2}</span></td>
+<td style="text-align: left;"><span class="math inline">Y_2^0</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{5/16\pi}\,(3z^2 - r^2)/r^2</span></td>
+<td style="text-align: left;">two along <span class="math inline">z</span> plus a ring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">d_{xz}</span></td>
+<td style="text-align: left;"><span class="math inline">(Y_2^{-1} - Y_2^{+1})/\sqrt{2}</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{15/4\pi}\,xz/r^2</span></td>
+<td style="text-align: left;">four, between <span class="math inline">x</span> and <span class="math inline">z</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">d_{yz}</span></td>
+<td style="text-align: left;"><span class="math inline">i\,(Y_2^{-1} + Y_2^{+1})/\sqrt{2}</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{15/4\pi}\,yz/r^2</span></td>
+<td style="text-align: left;">four, between <span class="math inline">y</span> and <span class="math inline">z</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">d_{x^2-y^2}</span></td>
+<td style="text-align: left;"><span class="math inline">(Y_2^{+2} + Y_2^{-2})/\sqrt{2}</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{15/16\pi}\,(x^2 - y^2)/r^2</span></td>
+<td style="text-align: left;">four, along <span class="math inline">x</span> and <span class="math inline">y</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">d_{xy}</span></td>
+<td style="text-align: left;"><span class="math inline">(Y_2^{+2} - Y_2^{-2})/(i\sqrt{2})</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt{15/4\pi}\,xy/r^2</span></td>
+<td style="text-align: left;">four, between <span class="math inline">x</span> and <span class="math inline">y</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">Average distance grows with <span class="math inline">\(n\)</span>:</li>
+<li>The names are the polynomials <span class="math inline">r^2Y</span>: <span class="math inline">xy</span>, <span class="math inline">yz</span>, <span class="math inline">xz</span>, <span class="math inline">x^2 - y^2</span>, <span class="math inline">3z^2 - r^2</span>. Each has <strong>two</strong> nodal surfaces</li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[\langle r\rangle_{nl} = \frac{n^2 a_0}{Z}\left\{ 1 + \frac{1}{2}\left[ 1 - \frac{l(l+1)}{n^2}\right]\right\}\]</span></p>
+</section>
+<section id="shapes-for-l-leq-2" class="slide level2">
+<h2>Shapes for <span class="math inline">l \leq 2</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/orbital_shapes.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><p>Larger <span class="math inline">\(n\)</span>: electron <strong>moves outward</strong>.</p></li>
-<li class="fragment"><p>Larger <span class="math inline">\(Z\)</span>: electron <strong>pulled inward</strong>.</p></li>
-<li class="fragment"><p>Expectation value <span class="math inline">\(\langle r\rangle\)</span> is <strong>not</strong> the most probable <span class="math inline">\(r\)</span>.</p></li>
+<li>Four clovers turned in space; <span class="math inline">d_{z^2}</span> is two lobes and a ring (<span class="math inline">m = 0</span> has no partner)</li>
+<li>Colour is the <strong>sign</strong> of <span class="math inline">\psi</span>: invisible in the density, decisive for bonding</li>
 </ul>
 </section>
-<section id="counting-nodes" class="slide level2">
-<h2>Counting Nodes</h2>
-<ul>
-<li class="fragment"><p><strong>Radial</strong> nodes: <span class="math inline">\(n - \ell - 1\)</span></p></li>
-<li class="fragment"><p><strong>Angular</strong> nodes: <span class="math inline">\(\ell\)</span></p></li>
-<li class="fragment"><p><strong>Total</strong> nodes: <span class="math inline">\(n - 1\)</span></p></li>
-<li class="fragment"><p>More nodes mean more <strong>curvature</strong> and higher energy.</p></li>
-</ul>
-</section>
-<section id="angular-shapes" class="slide level2">
-<h2>Angular Shapes</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/AO.png" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[P_\Omega(\theta,\phi) = \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2\]</span></p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(s\)</span> orbitals (<span class="math inline">\(\ell = 0\)</span>) are <strong>isotropic</strong>: <span class="math inline">\(P_\Omega = \tfrac{1}{4\pi}\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(p, d, \ldots\)</span> have <strong>angular nodes</strong> that carve the lobes.</p></li>
-</ul>
-</div></div>
-</section>
-<section id="real-vs-complex-orbitals" class="slide level2">
-<h2>Real vs Complex Orbitals</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/Orbital_p1-px_animation.gif" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Degenerate <span class="math inline">\(\ell &gt; 0\)</span> states allow <strong>free recombination</strong>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[p_x \propto \sin\theta\cos\phi \propto x\]</span> <span class="math display">\[p_y \propto \sin\theta\sin\phi \propto y\]</span> <span class="math display">\[p_z = p_0\]</span></p>
+<section id="nodes-spheres-planes-and-cones" class="slide level2">
+<h2>Nodes: spheres, planes and cones</h2>
+<div class="keyeq">
+<p><span class="math display">\underbrace{n - l - 1}_{\text{spheres: } R_{nl} = 0} \;+\; \underbrace{l}_{\text{planes or cones: } Y = 0} \;=\; n - 1 \ \text{nodal surfaces}</span></p>
 </div>
 <ul>
-<li class="fragment">Same density, <strong>different frame</strong>.</li>
+<li>A <strong>sphere</strong>: never at that distance, in any direction. A <strong>plane or cone</strong>: never in that direction, at any distance</li>
+<li><span class="math inline">n - 1</span> in all, like the box (<span class="math inline">n - 1</span>) and the oscillator (<span class="math inline">v</span>): more nodes, more bending, higher <span class="math inline">E_n</span></li>
 </ul>
-</div></div>
 </section>
-<section id="pointing-the-lobes" class="slide level2">
-<h2>Pointing the Lobes</h2>
+<section id="cross-sections-through-the-nucleus" class="slide level2">
+<h2>Cross-sections through the nucleus</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/orbital_slices.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
 <ul>
-<li class="fragment">Combining <span class="math inline">\(p_x, p_y, p_z\)</span> aims a lobe in <strong>any direction</strong>.</li>
-<li class="fragment">Five degenerate <span class="math inline">\(d\)</span> orbitals follow the same recipe:</li>
+<li>Spheres from <span class="math inline">R</span> (2s, 3s, 3p); planes from <span class="math inline">Y</span> (<span class="math inline">p_z</span>, <span class="math inline">d_{xz}</span>, <span class="math inline">d_{x^2-y^2}</span>); the cones of <span class="math inline">d_{z^2}</span> at <span class="math inline">54.7^\circ</span></li>
 </ul>
+</section>
+<section id="example-count-the-nodes-of-3p_z-and-3d_z2" class="slide level2">
+<h2>Example: count the nodes of 3p<span class="math inline">_z</span> and 3d<span class="math inline">_{z^2}</span></h2>
+<div class="worked">
+<p>Where does each vanish, and how many surfaces is that?</p>
+</div>
 <div class="fragment">
-<p><span class="math display">\[d_{x^2 - y^2} = \tfrac{1}{\sqrt{2}}\left(d_{+2} + d_{-2}\right), \quad d_{xy} = -\tfrac{i}{\sqrt{2}}\left( d_{+2} - d_{-2}\right)\]</span> <span class="math display">\[d_{xz} = -\tfrac{1}{\sqrt{2}}\left( d_{+1} - d_{-1}\right), \quad d_{yz} = \tfrac{i}{\sqrt{2}}\left( d_{+1} + d_{-1}\right)\]</span> <span class="math display">\[d_{z^2} = d_0\]</span></p>
+<div class="soln">
+<p><span class="math display">3p_z:\quad R_{31} = 0 \text{ at } \rho = 6 \ \text{(a sphere)}, \qquad \cos\theta = 0 \ \text{(the plane } z = 0)</span></p>
+<p><span class="math display">3d_{z^2}:\quad R_{32} \neq 0 \text{ for } \rho &gt; 0, \qquad 3\cos^2\theta = 1 \text{ at } 54.7^\circ, 125.3^\circ \ \text{(two cones)}</span></p>
+<p><span class="math display">1 + 1 = 2 \qquad\qquad\qquad 0 + 2 = 2</span></p>
+</div>
+<ul>
+<li>The total <span class="math inline">n - 1</span> is fixed by <span class="math inline">n</span>; <span class="math inline">l</span> decides how many are spheres and how many are planes or cones</li>
+</ul>
 </div>
 </section>
-<section id="putting-it-together" class="slide level2">
-<h2>Putting It Together</h2>
-
-<img data-src="../../ch05/images/hydrogen_probability_densities.png" style="width:78.0%" class="r-stretch"><ul>
-<li class="fragment">Cross sections of <span class="math inline">\(|\psi_{n\ell m}|^2\)</span>: <strong>radial reach</strong> times <strong>angular shape</strong>.</li>
+<section id="live-the-orbitals-in-3d" class="slide level2">
+<h2>Live: the orbitals in 3D</h2>
+<div id="oc-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/orbital_cloud.mjs";
+  const opts = { fontSize: "19px", height: 440, orbital: "2pz",
+    orbitals: ["1s", "2s", "2px", "2py", "2pz", "3s", "3px", "3py", "3pz", "3dxy", "3dyz", "3dxz", "3dx2y2", "3dz2"] };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("oc-live") });
+</script>
+</section>
+<section id="what-a-picture-shows-and-what-it-hides" class="slide level2">
+<h2>What a picture shows, and what it hides</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">picture</th>
+<th style="text-align: left;">shows</th>
+<th style="text-align: left;">hides</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">radial distribution <span class="math inline">P(r)</span></td>
+<td style="text-align: left;">distance, radial nodes, size</td>
+<td style="text-align: left;">the shape</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">angular surface <span class="math inline">\lvert Y\rvert^2</span></td>
+<td style="text-align: left;">shape, angular nodes</td>
+<td style="text-align: left;">the size</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\psi</span> on a plane</td>
+<td style="text-align: left;">sign, every node, size</td>
+<td style="text-align: left;">two dimensions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">90% boundary surface</td>
+<td style="text-align: left;">size and shape together</td>
+<td style="text-align: left;">the inside, the tail</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">point cloud</td>
+<td style="text-align: left;">the density itself</td>
+<td style="text-align: left;">the sign, unless coloured</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>No picture <strong>is</strong> the orbital. Real or complex is a choice of axes; the sign is physics, not decoration</li>
+<li>Next: <strong>spin</strong>, which doubles every orbital and separates the <span class="math inline">m</span> states in a field (Lecture 5.3)</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>An atomic orbital factors as <span class="math inline">\(\psi = R_{n\ell}(r)\,Y_{\ell m_\ell}(\theta,\phi)\)</span>, labeled by <span class="math inline">\(n\)</span>, <span class="math inline">\(\ell\)</span>, <span class="math inline">\(m_\ell\)</span>. The radial part sets <strong>how far</strong> (<span class="math inline">\(n - \ell - 1\)</span> nodes) and the angular part sets the <strong>shape</strong> (<span class="math inline">\(\ell\)</span> nodes), for <span class="math inline">\(n - 1\)</span> nodes in all.</p>
+<p>An orbital is one electron’s wavefunction, <span class="math inline">R_{nl}Y_l^m</span>. Its probability factors into a radial distribution <span class="math inline">P(r) = r^2R_{nl}^2</span>, which peaks at Bohr’s radius for 1s and grows as <span class="math inline">n^2a_0/Z</span>, and an angular distribution <span class="math inline">\lvert Y_l^m\rvert^2</span>. Because the <span class="math inline">2l + 1</span> states of a level are degenerate, their real combinations <span class="math inline">p_x</span>, <span class="math inline">p_y</span>, <span class="math inline">p_z</span> and the five <span class="math inline">d</span> are stationary states too, pointing along axes at the cost of a definite <span class="math inline">L_z</span>. Every orbital has <span class="math inline">n - l - 1</span> spherical nodes and <span class="math inline">l</span> planes or cones, <span class="math inline">n - 1</span> in all, and the textbook drawing is the surface that holds 90% of the electron.</p>
 </blockquote>
 
 </section>
@@ -292,7 +611,6 @@ Davit Potoyan
   <script src="02-atomic-orbitals_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="02-atomic-orbitals_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="02-atomic-orbitals_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="02-atomic-orbitals_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -461,27 +779,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
