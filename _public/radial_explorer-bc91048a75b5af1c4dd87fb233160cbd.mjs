@@ -9,7 +9,9 @@
 //
 // anywidget shape, export default { render({ model, el }) }, reading only model.get, so the same file runs in
 // MyST's {anywidget} directive (ch05/01), in a reveal.js deck through a module-script loader, and in Jupyter or
-// Colab through the anywidget package. No dependencies. Model keys, optional: fontSize (CSS size), n (1 to 5),
+// Colab through the anywidget package. No dependencies. The l buttons are plain numbers and the orbital's name (2s,
+// 3p, ...) is a tag in the l colour at the top right of the P(r) panel (the user found "0 (s)" buttons confusing,
+// 2026-11-11). Model keys, optional: fontSize (CSS size), n (1 to 5),
 // l (0 to n - 1), Z (1 to 3), status (false hides the verdict line), probe (true adds a slider "inside r": the
 // area of P(r) up to that r is shaded darker, the verdict reports the probability inside it and the radius that
 // holds 90%; page ch05/02 and deck 02 use it, page ch05/01 and deck 01 do not).
@@ -127,7 +129,7 @@ function render({ model, el }) {
   const lgroup = html("div", "re-group", controls); html("span", "re-lab", lgroup, "l =");
   const lbtns = [];
   for (let l = 0; l < NMAX; l++) {
-    const b = html("button", "re-btn", lgroup, `${l} (${LETTER[l]})`); b.type = "button";
+    const b = html("button", "re-btn", lgroup, String(l)); b.type = "button";
     b.addEventListener("click", () => { b.blur(); setState(curN, l, curZ); });
     lbtns.push(b);
   }
@@ -188,6 +190,7 @@ function render({ model, el }) {
   const avLine = svg("line", { y1: PT, y2: PB, stroke: "var(--re-fg)", "stroke-width": 1.2, "stroke-dasharray": "6 4" }, gB);
   const avLab = svg("text", { y: PT + 16, "font-size": 13 }, plot);
   const eTag = svg("text", { x: AR - 6, y: PT + 20, "text-anchor": "end", "font-size": 15, "font-weight": 600 }, plot);
+  const nameTag = svg("text", { x: BR - 6, y: PT + 24, "text-anchor": "end", "font-size": 22, "font-weight": 700 }, plot);
 
   const status = html("div", "re-status", root);
   if (get("status", true) === false) status.style.display = "none";
@@ -299,7 +302,8 @@ function render({ model, el }) {
 
     // labels and verdict
     const name = `${n}${LETTER[l]}`;
-    rich(headA, [[`R`, ""], [`${n}${l}`, "sub"], [`(r): the ${name} radial function`, "back-sub"]]);
+    rich(headA, [[`R`, ""], [`${n}${l}`, "sub"], [`(r): the radial function`, "back-sub"]]);
+    nameTag.textContent = name; nameTag.setAttribute("style", `fill: ${col}`);
     const E = -EH_EV * Z * Z / (n * n);
     rich(eTag, [[`E`, ""], [`${n}`, "sub"], [` = −${fmt(Math.abs(E), 2)} eV`, "back-sub"]]);
     eTag.setAttribute("style", `fill: ${col}`);

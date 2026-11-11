@@ -259,16 +259,40 @@ Davit Potoyan
 </ul>
 </div>
 </section>
-<section id="radial-distributions-for-n-leq-3" class="slide level2">
-<h2>Radial distributions for <span class="math inline">n \leq 3</span></h2>
+<section id="the-s-states-farther-out-one-more-peak" class="slide level2">
+<h2>The s states: farther out, one more peak</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../ch05/images/radial_distributions.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+<p><img data-src="../../ch05/images/radial_s_series.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
 </figure>
 </div>
 <ul>
-<li><span class="math inline">l = n - 1</span>: <strong>one hump</strong>, at Bohr’s <span class="math inline">n^2a_0</span>. Smaller <span class="math inline">l</span>: <span class="math inline">n - l</span> humps, the outer one largest</li>
-<li>The inner humps of 2s and 3s <strong>penetrate</strong> to the nucleus: why 2s drops below 2p once other electrons screen (Chapter 7)</li>
+<li>Each step in <span class="math inline">n</span> pushes the outer peak out: maxima at <span class="math inline">1</span>, <span class="math inline">5.2</span>, <span class="math inline">13\,a_0</span>, close to <span class="math inline">n^2a_0</span></li>
+<li>Each step adds a peak: 1s one, 2s two, 3s three. The outermost peak carries most of the probability</li>
+</ul>
+</section>
+<section id="same-n-different-l" class="slide level2">
+<h2>Same <span class="math inline">n</span>, different <span class="math inline">l</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/radial_distributions.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Raising <span class="math inline">l</span> removes the inner peaks: 3s three, 3p two, 3d one</li>
+<li><span class="math inline">l = n - 1</span>: a single peak, at Bohr’s <span class="math inline">n^2a_0</span>. The s state <strong>penetrates</strong> closest to the nucleus (Chapter 7)</li>
+</ul>
+</section>
+<section id="count-the-peaks-the-radial-nodes" class="slide level2">
+<h2>Count the peaks: the radial nodes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/radial_nodes.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\text{peaks of } P(r) = n - l, \qquad\qquad \text{radial nodes} = n - l - 1</span></p>
+<ul>
+<li>A radial node: a sphere where the electron is never found. The <span class="math inline">l</span> angular nodes of <span class="math inline">Y_l^m</span> complete the count to <span class="math inline">n - 1</span></li>
 </ul>
 </section>
 <section id="three-ways-to-say-how-big" class="slide level2">
@@ -329,12 +353,12 @@ Davit Potoyan
 </table>
 <p><span class="math display">\langle r\rangle_{nl} = \frac{n^2a_0}{Z}\left[1 + \frac{1}{2}\left(1 - \frac{l(l+1)}{n^2}\right)\right] \qquad\qquad \text{every length} \propto \frac{n^2}{Z}</span></p>
 </section>
-<section id="live-how-much-lies-inside-r" class="slide level2">
-<h2>Live: how much lies inside <span class="math inline">r</span></h2>
+<section id="live-pick-an-orbital" class="slide level2">
+<h2>Live: pick an orbital</h2>
 <div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
 <script type="module">
   import widget from "../../widgets/radial_explorer.mjs";
-  const opts = { fontSize: "19px", n: 1, l: 0, probe: true };
+  const opts = { fontSize: "19px", n: 2, l: 0 };
   widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
 </script>
 </section>
@@ -350,13 +374,13 @@ Davit Potoyan
 <li>1s: <span class="math inline">2.66\,a_0 = 141</span> pm (the H<span class="math inline">_2</span> bond is 74 pm). Grows as <span class="math inline">n^2</span>, shrinks as <span class="math inline">1/Z</span></li>
 </ul>
 </section>
-<section id="the-l_z-eigenstates-are-rings" class="slide level2">
-<h2>The <span class="math inline">L_z</span> eigenstates are rings</h2>
+<section id="the-m-states-are-symmetric-about-z.-but-which-z" class="slide level2">
+<h2>The <span class="math inline">m</span> states are symmetric about <span class="math inline">z</span>. But which <span class="math inline">z</span>?</h2>
 <p><span class="math display">\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \ \text{(dumbbell along } z) \qquad\qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \ \text{(ring around } z)</span></p>
 <ul>
-<li><span class="math inline">Y_l^m \propto e^{im\phi}</span>, so <span class="math inline">\lvert Y_l^m\rvert^2</span> <strong>does not depend on</strong> <span class="math inline">\phi</span>: every <span class="math inline">L_z</span> eigenstate is symmetric about <span class="math inline">z</span></li>
-<li><span class="math inline">m = +1</span> and <span class="math inline">m = -1</span> share one density; a magnetic field along <span class="math inline">z</span> tells them apart (Lecture 5.3)</li>
-<li>A molecule has <strong>bonds along directions</strong>, not a <span class="math inline">z</span> axis. Chemists want orbitals that point along axes</li>
+<li><span class="math inline">Y_l^m \propto e^{im\phi}</span>: a state of <strong>definite <span class="math inline">m</span></strong> is symmetric about the axis it was quantized along</li>
+<li>For a free atom nothing picks <span class="math inline">z</span>. Quantize along <span class="math inline">x</span> instead: the <span class="math inline">m_x = 0</span> state is <span class="math inline">\sqrt{3/4\pi}\,x/r</span>, which is <span class="math inline">p_x</span></li>
+<li>A field along <span class="math inline">z</span> selects the <span class="math inline">m</span> states; a bond along <span class="math inline">x</span> selects <span class="math inline">p_x</span>. Both sets describe <strong>the same level</strong></li>
 </ul>
 </section>
 <section id="a-degenerate-level-is-a-space-pick-new-axes" class="slide level2">
@@ -377,7 +401,7 @@ Davit Potoyan
 <ul>
 <li>Times <span class="math inline">R_{n1}(r)</span>: the orbitals <span class="math inline">np_x</span>, <span class="math inline">np_y</span>, <span class="math inline">np_z</span>. Same <span class="math inline">n</span>, same <span class="math inline">l = 1</span>, same <span class="math inline">E_n</span>, same <span class="math inline">L^2 = 2\hbar^2</span></li>
 <li>Real, normalized, orthogonal: <strong>one shape, three axes</strong></li>
-<li><span class="math inline">p_x</span> has no definite <span class="math inline">L_z</span>: a measurement gives <span class="math inline">+\hbar</span> or <span class="math inline">-\hbar</span>, each half the time</li>
+<li><span class="math inline">p_x</span>: no definite <span class="math inline">L_z</span> (<span class="math inline">\pm\hbar</span>, half each), but <span class="math inline">L_x = 0</span>: the <span class="math inline">m = 0</span> state about <span class="math inline">x</span></li>
 </ul>
 </section>
 <section id="example-build-p_x" class="slide level2">
@@ -403,8 +427,8 @@ Davit Potoyan
 </figure>
 </div>
 <ul>
-<li>Two rings become two dumbbells: <span class="math inline">p_x</span>, <span class="math inline">p_y</span> span the same space as <span class="math inline">Y_1^{\pm1}</span></li>
-<li>Each real <span class="math inline">p</span> has <strong>one nodal plane</strong>. Angular part only: 2p and 3p share these shapes</li>
+<li>Two rings become two dumbbells; each real <span class="math inline">p</span> has <strong>one nodal plane</strong></li>
+<li>Either set adds to <span class="math inline">3/4\pi</span> in every direction: a full <span class="math inline">p</span> shell is a <strong>sphere</strong> (Unsöld)</li>
 </ul>
 </section>
 <section id="running-or-standing" class="slide level2">
