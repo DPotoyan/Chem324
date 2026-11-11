@@ -90,12 +90,27 @@ $$\langle r\rangle = 4\int_0^\infty r^3e^{-2r}\,dr = 4\cdot\frac{3!}{2^4} = \fra
 
 ::::
 
-## Radial distributions for $n \leq 3$
+## The s states: farther out, one more peak
 
-![](../../ch05/images/radial_distributions.png){.nostretch width="90%" fig-align="center"}
+![](../../ch05/images/radial_s_series.png){.nostretch width="84%" fig-align="center"}
 
-- $l = n - 1$: **one hump**, at Bohr's $n^2a_0$. Smaller $l$: $n - l$ humps, the outer one largest
-- The inner humps of 2s and 3s **penetrate** to the nucleus: why 2s drops below 2p once other electrons screen (Chapter 7)
+- Each step in $n$ pushes the outer peak out: maxima at $1$, $5.2$, $13\,a_0$, close to $n^2a_0$
+- Each step adds a peak: 1s one, 2s two, 3s three. The outermost peak carries most of the probability
+
+## Same $n$, different $l$
+
+![](../../ch05/images/radial_distributions.png){.nostretch width="84%" fig-align="center"}
+
+- Raising $l$ removes the inner peaks: 3s three, 3p two, 3d one
+- $l = n - 1$: a single peak, at Bohr's $n^2a_0$. The s state **penetrates** closest to the nucleus (Chapter 7)
+
+## Count the peaks: the radial nodes
+
+![](../../ch05/images/radial_nodes.png){.nostretch width="64%" fig-align="center"}
+
+$$\text{peaks of } P(r) = n - l, \qquad\qquad \text{radial nodes} = n - l - 1$$
+
+- A radial node: a sphere where the electron is never found. The $l$ angular nodes of $Y_l^m$ complete the count to $n - 1$
 
 ## Three ways to say how big
 
@@ -110,13 +125,13 @@ $$\langle r\rangle = 4\int_0^\infty r^3e^{-2r}\,dr = 4\cdot\frac{3!}{2^4} = \fra
 
 $$\langle r\rangle_{nl} = \frac{n^2a_0}{Z}\left[1 + \frac{1}{2}\left(1 - \frac{l(l+1)}{n^2}\right)\right] \qquad\qquad \text{every length} \propto \frac{n^2}{Z}$$
 
-## Live: how much lies inside $r$
+## Live: pick an orbital
 
 ```{=html}
 <div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
 <script type="module">
   import widget from "../../widgets/radial_explorer.mjs";
-  const opts = { fontSize: "19px", n: 1, l: 0, probe: true };
+  const opts = { fontSize: "19px", n: 2, l: 0 };
   widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
 </script>
 ```
@@ -128,13 +143,13 @@ $$\langle r\rangle_{nl} = \frac{n^2a_0}{Z}\left[1 + \frac{1}{2}\left(1 - \frac{l
 - No edge: $P(r)$ never reaches zero. Chemists draw the surface that holds **90%**
 - 1s: $2.66\,a_0 = 141$ pm (the H$_2$ bond is 74 pm). Grows as $n^2$, shrinks as $1/Z$
 
-## The $L_z$ eigenstates are rings
+## The $m$ states are symmetric about $z$. But which $z$?
 
 $$\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \ \text{(dumbbell along } z) \qquad\qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \ \text{(ring around } z)$$
 
-- $Y_l^m \propto e^{im\phi}$, so $\lvert Y_l^m\rvert^2$ **does not depend on** $\phi$: every $L_z$ eigenstate is symmetric about $z$
-- $m = +1$ and $m = -1$ share one density; a magnetic field along $z$ tells them apart (Lecture 5.3)
-- A molecule has **bonds along directions**, not a $z$ axis. Chemists want orbitals that point along axes
+- $Y_l^m \propto e^{im\phi}$: a state of **definite $m$** is symmetric about the axis it was quantized along
+- For a free atom nothing picks $z$. Quantize along $x$ instead: the $m_x = 0$ state is $\sqrt{3/4\pi}\,x/r$, which is $p_x$
+- A field along $z$ selects the $m$ states; a bond along $x$ selects $p_x$. Both sets describe **the same level**
 
 ## A degenerate level is a space: pick new axes
 
@@ -154,7 +169,7 @@ $$p_x = \frac{Y_1^{-1} - Y_1^{+1}}{\sqrt{2}} = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r
 
 - Times $R_{n1}(r)$: the orbitals $np_x$, $np_y$, $np_z$. Same $n$, same $l = 1$, same $E_n$, same $L^2 = 2\hbar^2$
 - Real, normalized, orthogonal: **one shape, three axes**
-- $p_x$ has no definite $L_z$: a measurement gives $+\hbar$ or $-\hbar$, each half the time
+- $p_x$: no definite $L_z$ ($\pm\hbar$, half each), but $L_x = 0$: the $m = 0$ state about $x$
 
 ## Example: build $p_x$
 
@@ -178,8 +193,8 @@ $$p_x = \frac{1}{\sqrt{2}}\cdot2\sqrt{\frac{3}{8\pi}}\sin\theta\cos\phi = \sqrt{
 
 ![](../../ch05/images/complex_to_real.png){.nostretch width="56%" fig-align="center"}
 
-- Two rings become two dumbbells: $p_x$, $p_y$ span the same space as $Y_1^{\pm1}$
-- Each real $p$ has **one nodal plane**. Angular part only: 2p and 3p share these shapes
+- Two rings become two dumbbells; each real $p$ has **one nodal plane**
+- Either set adds to $3/4\pi$ in every direction: a full $p$ shell is a **sphere** (Unsöld)
 
 ## Running or standing
 

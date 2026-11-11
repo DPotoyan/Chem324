@@ -474,9 +474,66 @@ def shell_volume():
     return fig, None
 
 
-# ------------------------------------------------------------ the radial distributions P(r) = r^2 R^2 for n <= 3, one panel per shell (still)
+# ------------------------------------------------------------ the s states 1s, 2s, 3s on one axis: farther out and one more peak each step (still)
+@register
+def radial_s_series():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    R = {1: lambda p: 2 * np.exp(-p),
+         2: lambda p: (2 - p) * np.exp(-p / 2) / (2 * np.sqrt(2)),
+         3: lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3))}
+    shades = {1: "#0a4a5c", 2: TEAL, 3: "#63b4c8"}                 # one family (s): three shades of teal
+    fig, ax = plt.subplots(figsize=(9.6, 3.4))
+    r = np.linspace(0, 26, 1300)
+    for n in (1, 2, 3):
+        P = r**2 * R[n](r)**2
+        ax.plot(r, P, color=shades[n], lw=2.6)
+        k = np.argmax(P)
+        ax.text(r[k], P[k] + 0.018, f"{n}s", fontsize=13, color=shades[n], weight="bold", ha="center", va="bottom")
+    ax.set_xlim(0, 26); ax.set_ylim(0, 0.6)
+    ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
+    ax.set_ylabel(r"$P(r) = r^2R_{n0}^2$  (per $a_0$)", fontsize=11.5)
+    ax.tick_params(labelsize=10)
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.96, bottom=0.18)
+    fig.savefig(f"{OUT}/radial_s_series.png", dpi=200)
+    print("wrote", f"{OUT}/radial_s_series.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ same n, different l: the radial distributions of the n = 2 and n = 3 shells (still)
 @register
 def radial_distributions():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    R = {(2, 0): lambda p: (2 - p) * np.exp(-p / 2) / (2 * np.sqrt(2)),
+         (2, 1): lambda p: p * np.exp(-p / 2) / (2 * np.sqrt(6)),
+         (3, 0): lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3)),
+         (3, 1): lambda p: 4 * (6 - p) * p * np.exp(-p / 3) / (81 * np.sqrt(6)),
+         (3, 2): lambda p: 4 * p**2 * np.exp(-p / 3) / (81 * np.sqrt(30))}
+    cols = {0: TEAL, 1: PURPLE, 2: ORANGE}
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.4), gridspec_kw={"wspace": 0.18, "width_ratios": [1, 1.3]})
+    for ax, n, xm in zip(axes, (2, 3), (16, 30)):
+        r = np.linspace(0, xm, 600)
+        for l in range(n):
+            ax.plot(r, r**2 * R[(n, l)](r)**2, color=cols[l], lw=2.4, label=f"{n}{'spd'[l]}")
+        ax.axvline(n * n, color=GRAY, lw=1.1, ls=":")
+        ax.text(n * n + 0.02 * xm, 0.22, f"${n * n}a_0$", fontsize=11, color=GRAY)
+        ax.set_xlim(0, xm); ax.set_ylim(0, 0.24)
+        ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
+        ax.set_title(f"$n = {n}$", fontsize=13)
+        ax.tick_params(labelsize=10)
+        leg = ax.legend(loc="upper right", frameon=False, fontsize=12, handlelength=1.2, borderaxespad=0.2)
+        for t, h in zip(leg.get_texts(), leg.legend_handles):
+            t.set_color(h.get_color()); t.set_weight("bold")
+    axes[0].set_ylabel(r"$P(r) = r^2R_{nl}^2$  (per $a_0$)", fontsize=11.5)
+    axes[1].set_yticklabels([])
+    fig.subplots_adjust(left=0.08, right=0.99, top=0.88, bottom=0.18)
+    fig.savefig(f"{OUT}/radial_distributions.png", dpi=200)
+    print("wrote", f"{OUT}/radial_distributions.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ count the peaks: P(r) for every state with n <= 3, radial nodes as red dots (still)
+@register
+def radial_nodes():
     plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
     R = {(1, 0): lambda p: 2 * np.exp(-p),
          (2, 0): lambda p: (2 - p) * np.exp(-p / 2) / (2 * np.sqrt(2)),
@@ -484,28 +541,27 @@ def radial_distributions():
          (3, 0): lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3)),
          (3, 1): lambda p: 4 * (6 - p) * p * np.exp(-p / 3) / (81 * np.sqrt(6)),
          (3, 2): lambda p: 4 * p**2 * np.exp(-p / 3) / (81 * np.sqrt(30))}
+    nodes = {(1, 0): [], (2, 0): [2.0], (2, 1): [], (3, 0): [1.902, 7.098], (3, 1): [6.0], (3, 2): []}
     cols = {0: TEAL, 1: PURPLE, 2: ORANGE}
-    fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.3), gridspec_kw={"wspace": 0.28, "width_ratios": [0.8, 1, 1.2]})
-    for ax, n, xm in zip(axes, (1, 2, 3), (6, 16, 30)):
+    fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.3), gridspec_kw={"hspace": 0.55, "wspace": 0.12})
+    for ax, key in zip(axes.flat, [(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)]):
+        n, l = key
+        xm = {1: 6, 2: 16, 3: 30}[n]
         r = np.linspace(0, xm, 600)
-        for l in range(n):
-            P = r**2 * R[(n, l)](r)**2
-            ax.plot(r, P, color=cols[l], lw=2.4, label=f"{n}{'spd'[l]}")
-        ax.axvline(n * n, color=GRAY, lw=1.1, ls=":")
-        ax.text(n * n + 0.02 * xm, 0.56, f"${n * n if n > 1 else ''}a_0$", fontsize=11, color=GRAY)
-        leg = ax.legend(loc="upper right", frameon=False, fontsize=12, handlelength=1.2, borderaxespad=0.2)
-        for t, h in zip(leg.get_texts(), leg.legend_handles):
-            t.set_color(h.get_color()); t.set_weight("bold")
-        ax.set_xlim(0, xm); ax.set_ylim(0, 0.6)
+        P = r**2 * R[key](r)**2
+        ax.plot(r, P, color=cols[l], lw=2.4)
+        ax.fill_between(r, P, color=cols[l], alpha=0.12, lw=0)
+        ax.plot(nodes[key], [0] * len(nodes[key]), "o", color=CARDINAL, ms=7.5, zorder=5, clip_on=False)
+        ax.set_xlim(0, xm); ax.set_ylim(0, 1.15 * P.max())
+        ax.set_yticks([]); ax.tick_params(labelsize=10)
+        ax.set_title(f"{n}{'spd'[l]}", fontsize=13.5, color=cols[l], weight="bold")
+    for ax in axes[1]:
         ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
-        ax.set_title(f"$n = {n}$", fontsize=13)
-        ax.tick_params(labelsize=10)
-    axes[0].set_ylabel(r"$P(r) = r^2R_{nl}^2$  (per $a_0$)", fontsize=11.5)
-    for ax in axes[1:]:
-        ax.set_yticklabels([])
-    fig.subplots_adjust(left=0.08, right=0.99, top=0.88, bottom=0.18)
-    fig.savefig(f"{OUT}/radial_distributions.png", dpi=200)
-    print("wrote", f"{OUT}/radial_distributions.png")
+    for ax in axes[:, 0]:
+        ax.set_ylabel(r"$P(r)$", fontsize=11.5)
+    fig.subplots_adjust(left=0.05, right=0.99, top=0.92, bottom=0.13)
+    fig.savefig(f"{OUT}/radial_nodes.png", dpi=200)
+    print("wrote", f"{OUT}/radial_nodes.png")
     return fig, None
 
 
@@ -541,12 +597,13 @@ def probability_inside():
         bx.plot(rr, c, color=cols[l], lw=2.2, ls={1: "-", 2: "-", 3: "-"}[n])
         k = np.searchsorted(c, 0.9)
         bx.plot(rr[k], 0.9, "o", color=cols[l], ms=5.5, zorder=5)
-        dx_, dy_, ha_ = {(1, 0): (0.0, 0.95, "center"), (2, 1): (-0.5, 0.82, "right"), (2, 0): (0.5, 0.82, "left"),
-                         (3, 2): (0.0, 0.68, "center"), (3, 1): (-0.5, 0.82, "right"), (3, 0): (0.5, 0.82, "left")}[(n, l)]
-        bx.text(rr[k] + dx_, dy_, f"{n}{'spd'[l]}", fontsize=11, color=cols[l], weight="bold", ha=ha_)
+        yl = 1.2 if l == 0 and n > 1 else 1.08                      # labels above the curves, in two rows
+        bx.plot([rr[k], rr[k]], [0.92, yl - 0.03], color=cols[l], lw=0.9, ls=":")
+        bx.text(rr[k], yl, f"{n}{'spd'[l]}", fontsize=11.5, color=cols[l], weight="bold", ha="center", va="center")
     bx.axhline(0.9, color=GRAY, lw=1, ls=":")
     bx.text(31.5, 0.905, "90%", ha="right", va="bottom", fontsize=11, color=GRAY)
-    bx.set_xlim(0, 32); bx.set_ylim(0, 1.04)
+    bx.set_xlim(0, 32); bx.set_ylim(0, 1.27); bx.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
+    bx.spines["left"].set_bounds(0, 1.0)
     bx.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5); bx.set_ylabel("probability inside $r$", fontsize=11.5)
     bx.tick_params(labelsize=10)
     fig.subplots_adjust(left=0.07, right=0.99, top=0.95, bottom=0.17)

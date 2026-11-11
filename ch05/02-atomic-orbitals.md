@@ -11,7 +11,7 @@ kernelspec:
 - An **atomic orbital** is one stationary state of a one-electron atom, $\psi_{nlm} = R_{nl}(r)\,Y_l^m(\theta, \phi)$, named by $n$ and the letter of $l$: 1s, 2p, 3d. [Lecture 5.1](01-hydrogenlike-atoms.md) solved for them. This lecture draws them, and learns to read the drawings.
 - "Where is the electron?" has three answers. $\lvert\psi\rvert^2\,dV$ is the probability of finding it in a small volume; the **radial distribution** $P(r) = r^2R_{nl}^2$ is the probability per unit length of finding it at distance $r$, at any angle (the $r^2$ is the area of the shell); $\lvert Y_l^m\rvert^2$ is the probability per unit solid angle of finding it in a direction. The 1s density is largest at the nucleus, but $P(r)$ peaks at $a_0$: the **most probable distance**. The average distance is $\tfrac{3}{2}a_0$, and 90% of the electron lies inside $2.66\,a_0$.
 - Sizes grow as $n^2a_0/Z$. For $l = n - 1$ the most probable distance is exactly Bohr's $n^2a_0/Z$; s states keep small inner lobes close to the nucleus, which is why 2s lies below 2p once there are other electrons ([Chapter 7](../ch07/02-multi-electron-atoms.md)).
-- The $Y_l^m$ with $m \neq 0$ are complex and their densities are rings around $z$. Because the $2l + 1$ states of one $n$ and $l$ have the same energy, any combination of them is again a stationary state, and the combinations $(Y_l^{-m} \mp Y_l^{m})/\sqrt{2}$ are **real orbitals** that point along axes: $p_x$, $p_y$, $p_z$ and the five $d$. They keep $E$ and $L^2$ but have no definite $L_z$.
+- The $Y_l^m$ with $m \neq 0$ are complex and their densities are rings around $z$. Because the $2l + 1$ states of one $n$ and $l$ have the same energy, any combination of them is again a stationary state, and the combinations $(Y_l^{-m} \mp Y_l^{m})/\sqrt{2}$ are **real orbitals** that point along axes: $p_x$, $p_y$, $p_z$ and the five $d$. They keep $E$ and $L^2$; $p_x$ has no definite $L_z$ but is the $m = 0$ state about the $x$ axis. Which set an atom is in depends on what picks a direction: a field along $z$ selects the $m$ states, a bond along $x$ selects $p_x$.
 - **Nodes:** $n - l - 1$ radial nodes (spheres) plus $l$ angular nodes (planes or cones), $n - 1$ in all. A **boundary surface** encloses 90% of the probability; it is what the textbook drawings show.
 
 :::
@@ -132,11 +132,96 @@ $$
 The average lies beyond the peak, as it does for every lopsided distribution. Three different lengths describe one state: the most probable distance $a_0$, the average $1.5\,a_0$, and the radius inside which 90% of the probability lies, $2.66\,a_0$ (solve $P(r < x) = 0.9$ numerically).
 :::
 
-#### Radial distributions for $n \leq 3$
+#### The s states: farther out, one more peak
+
+Fix $l = 0$ and raise $n$:
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: radial_s_series
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+R = {1: lambda p: 2 * np.exp(-p),
+     2: lambda p: (2 - p) * np.exp(-p / 2) / (2 * np.sqrt(2)),
+     3: lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3))}
+shades = {1: "#0a4a5c", 2: TEAL, 3: "#63b4c8"}                 # one family (s): three shades of teal
+fig, ax = plt.subplots(figsize=(9.6, 3.4))
+r = np.linspace(0, 26, 1300)
+for n in (1, 2, 3):
+    P = r**2 * R[n](r)**2
+    ax.plot(r, P, color=shades[n], lw=2.6)
+    k = np.argmax(P)
+    ax.text(r[k], P[k] + 0.018, f"{n}s", fontsize=13, color=shades[n], weight="bold", ha="center", va="bottom")
+ax.set_xlim(0, 26); ax.set_ylim(0, 0.6)
+ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
+ax.set_ylabel(r"$P(r) = r^2R_{n0}^2$  (per $a_0$)", fontsize=11.5)
+ax.tick_params(labelsize=10)
+fig.subplots_adjust(left=0.08, right=0.99, top=0.96, bottom=0.18)
+plt.show()
+```
+
+Fig. The radial distributions of 1s, 2s and 3s on one axis.
+
+- **Farther out.** Each step in $n$ pushes the outer peak out: the maxima sit at $1$, $5.2$ and $13\,a_0$, close to $n^2a_0$.
+- **One more peak.** 1s has one maximum, 2s two, 3s three. Between the peaks $P(r) = 0$: a radial node of $R_{nl}$, as in Lecture 5.1.
+- **The outermost peak carries most of the probability.** The inner peaks are small, but they lie close to the nucleus.
+
+#### Same $n$, different $l$
+
+Now fix $n$ and raise $l$:
 
 ```{code-cell} python
 :tags: [hide-input]
 # synced: radial_distributions
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+R = {(2, 0): lambda p: (2 - p) * np.exp(-p / 2) / (2 * np.sqrt(2)),
+     (2, 1): lambda p: p * np.exp(-p / 2) / (2 * np.sqrt(6)),
+     (3, 0): lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3)),
+     (3, 1): lambda p: 4 * (6 - p) * p * np.exp(-p / 3) / (81 * np.sqrt(6)),
+     (3, 2): lambda p: 4 * p**2 * np.exp(-p / 3) / (81 * np.sqrt(30))}
+cols = {0: TEAL, 1: PURPLE, 2: ORANGE}
+fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.4), gridspec_kw={"wspace": 0.18, "width_ratios": [1, 1.3]})
+for ax, n, xm in zip(axes, (2, 3), (16, 30)):
+    r = np.linspace(0, xm, 600)
+    for l in range(n):
+        ax.plot(r, r**2 * R[(n, l)](r)**2, color=cols[l], lw=2.4, label=f"{n}{'spd'[l]}")
+    ax.axvline(n * n, color=GRAY, lw=1.1, ls=":")
+    ax.text(n * n + 0.02 * xm, 0.22, f"${n * n}a_0$", fontsize=11, color=GRAY)
+    ax.set_xlim(0, xm); ax.set_ylim(0, 0.24)
+    ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
+    ax.set_title(f"$n = {n}$", fontsize=13)
+    ax.tick_params(labelsize=10)
+    leg = ax.legend(loc="upper right", frameon=False, fontsize=12, handlelength=1.2, borderaxespad=0.2)
+    for t, h in zip(leg.get_texts(), leg.legend_handles):
+        t.set_color(h.get_color()); t.set_weight("bold")
+axes[0].set_ylabel(r"$P(r) = r^2R_{nl}^2$  (per $a_0$)", fontsize=11.5)
+axes[1].set_yticklabels([])
+fig.subplots_adjust(left=0.08, right=0.99, top=0.88, bottom=0.18)
+plt.show()
+```
+
+Fig. The radial distributions of the $n = 2$ and $n = 3$ shells. The dotted line marks Bohr's radius $n^2a_0$.
+
+- **Raising $l$ removes the inner peaks.** At $n = 3$: 3s has three maxima, 3p two, 3d one.
+- **$l = n - 1$ is a single peak at Bohr's radius.** $P \propto r^{2n}e^{-2Zr/na_0}$ peaks at $r = n^2a_0/Z$: $4a_0$ for 2p, $9a_0$ for 3d (Problem 1).
+- **The s state penetrates.** Its innermost peak lies closest to the nucleus. In hydrogen that changes no energy, since every state of one $n$ shares $E_n$. In every other atom the inner electrons screen the nucleus, a penetrating 2s electron feels more nuclear charge than 2p, and 2s drops below 2p: the aufbau order of [Chapter 7](../ch07/02-multi-electron-atoms.md).
+
+#### Count the peaks: the radial nodes
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: radial_nodes
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -150,35 +235,39 @@ R = {(1, 0): lambda p: 2 * np.exp(-p),
      (3, 0): lambda p: 2 * (27 - 18 * p + 2 * p**2) * np.exp(-p / 3) / (81 * np.sqrt(3)),
      (3, 1): lambda p: 4 * (6 - p) * p * np.exp(-p / 3) / (81 * np.sqrt(6)),
      (3, 2): lambda p: 4 * p**2 * np.exp(-p / 3) / (81 * np.sqrt(30))}
+nodes = {(1, 0): [], (2, 0): [2.0], (2, 1): [], (3, 0): [1.902, 7.098], (3, 1): [6.0], (3, 2): []}
 cols = {0: TEAL, 1: PURPLE, 2: ORANGE}
-fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.3), gridspec_kw={"wspace": 0.28, "width_ratios": [0.8, 1, 1.2]})
-for ax, n, xm in zip(axes, (1, 2, 3), (6, 16, 30)):
+fig, axes = plt.subplots(2, 3, figsize=(9.6, 4.3), gridspec_kw={"hspace": 0.55, "wspace": 0.12})
+for ax, key in zip(axes.flat, [(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)]):
+    n, l = key
+    xm = {1: 6, 2: 16, 3: 30}[n]
     r = np.linspace(0, xm, 600)
-    for l in range(n):
-        P = r**2 * R[(n, l)](r)**2
-        ax.plot(r, P, color=cols[l], lw=2.4, label=f"{n}{'spd'[l]}")
-    ax.axvline(n * n, color=GRAY, lw=1.1, ls=":")
-    ax.text(n * n + 0.02 * xm, 0.56, f"${n * n if n > 1 else ''}a_0$", fontsize=11, color=GRAY)
-    leg = ax.legend(loc="upper right", frameon=False, fontsize=12, handlelength=1.2, borderaxespad=0.2)
-    for t, h in zip(leg.get_texts(), leg.legend_handles):
-        t.set_color(h.get_color()); t.set_weight("bold")
-    ax.set_xlim(0, xm); ax.set_ylim(0, 0.6)
+    P = r**2 * R[key](r)**2
+    ax.plot(r, P, color=cols[l], lw=2.4)
+    ax.fill_between(r, P, color=cols[l], alpha=0.12, lw=0)
+    ax.plot(nodes[key], [0] * len(nodes[key]), "o", color=CARDINAL, ms=7.5, zorder=5, clip_on=False)
+    ax.set_xlim(0, xm); ax.set_ylim(0, 1.15 * P.max())
+    ax.set_yticks([]); ax.tick_params(labelsize=10)
+    ax.set_title(f"{n}{'spd'[l]}", fontsize=13.5, color=cols[l], weight="bold")
+for ax in axes[1]:
     ax.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5)
-    ax.set_title(f"$n = {n}$", fontsize=13)
-    ax.tick_params(labelsize=10)
-axes[0].set_ylabel(r"$P(r) = r^2R_{nl}^2$  (per $a_0$)", fontsize=11.5)
-for ax in axes[1:]:
-    ax.set_yticklabels([])
-fig.subplots_adjust(left=0.08, right=0.99, top=0.88, bottom=0.18)
+for ax in axes[:, 0]:
+    ax.set_ylabel(r"$P(r)$", fontsize=11.5)
+fig.subplots_adjust(left=0.05, right=0.99, top=0.92, bottom=0.13)
 plt.show()
 ```
 
-Fig. The radial distributions $P(r) = r^2R_{nl}^2$ for $n = 1$, 2 and 3, each shell on its own range of $r$. The dotted line marks $n^2a_0$, Bohr's radius for orbit $n$.
+Fig. $P(r)$ for every state with $n \leq 3$. A red dot marks each radial node, a distance at which $P(r) = 0$.
 
-- **One hump for $l = n - 1$, at Bohr's radius.** For 1s, 2p and 3d the polynomial is a single power, $P \propto r^{2n}e^{-2Zr/na_0}$, and $dP/dr = 0$ gives $r = n^2a_0/Z$: the radii of Bohr's orbits, $a_0$, $4a_0$, $9a_0$, reappear as most probable distances (Problem 1).
-- **More humps for smaller $l$.** $R_{nl}$ has $n - l - 1$ nodes, so $P(r)$ has $n - l$ humps, and the outermost always carries most of the probability. The inner humps of 2s and 3s sit close to the nucleus: an s electron **penetrates** to small $r$ where a p or d electron of the same $n$ does not. In hydrogen that changes nothing, since all states of one $n$ share one energy. In every other atom the inner electrons screen the nucleus, penetration lets 2s feel more of the nuclear charge than 2p, and 2s drops below 2p: the origin of the aufbau order of [Chapter 7](../ch07/02-multi-electron-atoms.md).
-- **The average distance** is the formula of the radial averages dropdown of Lecture 5.1, $\langle r\rangle_{nl} = \dfrac{n^2a_0}{Z}\left[1 + \dfrac{1}{2}\left(1 - \dfrac{l(l+1)}{n^2}\right)\right]$: $1.5\,a_0$ for 1s, $6\,a_0$ for 2s, $5\,a_0$ for 2p. For a given $n$ the s state reaches out farthest on average, even though its outer hump peaks beyond the p hump by only a little.
-- **Everything scales.** $P(r)$ for a nucleus $Ze$ is the hydrogen curve squeezed by $1/Z$: every length in the table below divides by $Z$.
+$$
+\text{peaks of } P(r) = n - l, \qquad\qquad \text{radial nodes} = n - l - 1
+$$
+
+- A radial node is a sphere on which the electron is never found: $R_{nl}$ changes sign there and $P(r)$ touches zero.
+- 1s, 2p and 3d have none; 2s and 3p have one; 3s has two. The polynomial in $R_{nl}$ has degree $n - l - 1$, and each of its roots is a node.
+- The $l$ angular nodes of $Y_l^m$ complete the count to $n - 1$ (the section on nodes below).
+
+The average distance has a closed form (the radial averages dropdown of Lecture 5.1), $\langle r\rangle_{nl} = \dfrac{n^2a_0}{Z}\left[1 + \dfrac{1}{2}\left(1 - \dfrac{l(l+1)}{n^2}\right)\right]$: $1.5\,a_0$ for 1s, $6\,a_0$ for 2s, $5\,a_0$ for 2p. For a nucleus $Ze$ every curve is squeezed by $1/Z$, and every length below divides by $Z$.
 
 Three lengths for the six states, computed by numpy from the radial functions of the last lecture (all in $a_0$, $Z = 1$):
 
@@ -207,7 +296,7 @@ for name, Rn in R.items():
 | 3p | $12\,a_0$ | $12.5\,a_0$ | $18.39\,a_0$ |
 | 3d | $9\,a_0$ | $10.5\,a_0$ | $15.80\,a_0$ |
 
-Pick a state, then drag the slider: the darker area is the probability of finding the electron inside the chosen radius. Find the radius that holds half of the 1s electron, and watch how far out 90% of a 3s electron reaches.
+Pick an orbital, then drag the slider: the darker area is the probability of finding the electron inside the chosen radius. Find the radius that holds half of the 1s electron, and watch how far out 90% of a 3s electron reaches.
 
 ```{anywidget} ../widgets/radial_explorer.mjs
 {"probe": true}
@@ -255,12 +344,13 @@ for (n, l), f in R.items():
     bx.plot(rr, c, color=cols[l], lw=2.2, ls={1: "-", 2: "-", 3: "-"}[n])
     k = np.searchsorted(c, 0.9)
     bx.plot(rr[k], 0.9, "o", color=cols[l], ms=5.5, zorder=5)
-    dx_, dy_, ha_ = {(1, 0): (0.0, 0.95, "center"), (2, 1): (-0.5, 0.82, "right"), (2, 0): (0.5, 0.82, "left"),
-                     (3, 2): (0.0, 0.68, "center"), (3, 1): (-0.5, 0.82, "right"), (3, 0): (0.5, 0.82, "left")}[(n, l)]
-    bx.text(rr[k] + dx_, dy_, f"{n}{'spd'[l]}", fontsize=11, color=cols[l], weight="bold", ha=ha_)
+    yl = 1.2 if l == 0 and n > 1 else 1.08                      # labels above the curves, in two rows
+    bx.plot([rr[k], rr[k]], [0.92, yl - 0.03], color=cols[l], lw=0.9, ls=":")
+    bx.text(rr[k], yl, f"{n}{'spd'[l]}", fontsize=11.5, color=cols[l], weight="bold", ha="center", va="center")
 bx.axhline(0.9, color=GRAY, lw=1, ls=":")
 bx.text(31.5, 0.905, "90%", ha="right", va="bottom", fontsize=11, color=GRAY)
-bx.set_xlim(0, 32); bx.set_ylim(0, 1.04)
+bx.set_xlim(0, 32); bx.set_ylim(0, 1.27); bx.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
+bx.spines["left"].set_bounds(0, 1.0)
 bx.set_xlabel(r"$r$ ($a_0$)", fontsize=11.5); bx.set_ylabel("probability inside $r$", fontsize=11.5)
 bx.tick_params(labelsize=10)
 fig.subplots_adjust(left=0.07, right=0.99, top=0.95, bottom=0.17)
@@ -275,15 +365,17 @@ Fig. Left: the 1s radial distribution, with 32% of the probability inside $a_0$ 
 
 ### The shape: the angular part
 
-#### The $L_z$ eigenstates are rings
+#### The $m$ states are symmetric about $z$. But which $z$?
 
-The angular factor of $\psi_{nlm}$ is the spherical harmonic $Y_l^m$ of Lecture 4.4, and its density $\lvert Y_l^m\rvert^2$ does not depend on $\phi$, because $Y_l^m \propto e^{im\phi}$ and $\lvert e^{im\phi}\rvert = 1$. So every state with a definite $L_z$ is symmetric about the $z$ axis. For $l = 1$:
+The angular factor of $\psi_{nlm}$ is the spherical harmonic $Y_l^m$ of Lecture 4.4, and its density $\lvert Y_l^m\rvert^2$ does not depend on $\phi$, because $Y_l^m \propto e^{im\phi}$ and $\lvert e^{im\phi}\rvert = 1$. So a state with a definite $m$ is symmetric about the axis it was quantized along. For $l = 1$:
 
 $$
 \lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \quad\text{(a dumbbell along } z\text{)}, \qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \quad\text{(a ring around } z\text{)}
 $$
 
-The $m = +1$ and $m = -1$ states have the same density, a ring in the $xy$ plane; they differ only in the sense in which their phase runs around $z$. These are the states a magnetic field along $z$ singles out ([Spin](03-spin.md)). But chemists rarely draw them. A molecule has no $z$ axis built in; it has bonds along definite directions, and the orbital pictures chemists use point along axes. Those pictures are the **real orbitals**, and they come from a simple freedom.
+The $m = +1$ and $m = -1$ states have the same density, a ring in the $xy$ plane; they differ only in the sense in which their phase runs around $z$.
+
+But which axis is $z$? For an isolated atom nothing singles out a direction. The $z$ axis is the one we chose to quantize along, and the choice becomes physical only when something picks it: a magnetic field along $z$ separates the three $m$ states ([Spin](03-spin.md)). Quantize along $x$ instead and the $m_x = 0$ state is $\sqrt{3/4\pi}\,x/r$, the dumbbell function with $x$ in place of $z$. That function is $p_x$. So the **real orbitals** of the next sections are not an arbitrary mixture: $p_x$, $p_y$ and $p_z$ are the $m = 0$ states for the $x$, $y$ and $z$ axes, one shape pointed three ways, and a molecule with a bond along $x$ selects $p_x$ exactly as a field along $z$ selects the $m$ states. Both sets describe the same level. The freedom to pass from one to the other comes from degeneracy.
 
 #### A degenerate level is a space: any combination is again a stationary state
 
@@ -312,7 +404,7 @@ $$
 
 - Multiplied by $R_{n1}(r)$ they are the orbitals $np_x$, $np_y$, $np_z$: same $n$, same $l = 1$, same energy $E_n$, same $L^2 = 2\hbar^2$
 - They are real, normalized and orthogonal, and each is the same shape pointed along a different axis: $x/r$, $y/r$, $z/r$
-- $p_x$ and $p_y$ have no definite $L_z$: a measurement of $L_z$ on $p_x$ gives $+\hbar$ or $-\hbar$, each half the time
+- $p_x$ and $p_y$ have no definite $L_z$: a measurement of $L_z$ on $p_x$ gives $+\hbar$ or $-\hbar$, each half the time. But $p_x$ has a definite $L_x = 0$ (and $p_y$ a definite $L_y = 0$): each real $p$ orbital is the $m = 0$ state about its own axis
 :::
 
 :::{note} **Example: build $p_x$**
@@ -370,6 +462,7 @@ Fig. Top: the angular densities $\lvert Y_1^m\rvert^2$ of the three $L_z$ eigens
 - The two rings become two dumbbells. Nothing was added or lost: $p_x$ and $p_y$ span the same two-dimensional space as $Y_1^{+1}$ and $Y_1^{-1}$.
 - Each real $p$ orbital has one **nodal plane**, where $x$, $y$ or $z$ is zero, and changes sign across it. The sign is not visible in the density, but it matters whenever two orbitals overlap: bonding in [Chapter 8](../ch08/01-born-oppenheimer-approximation.md) is built on it.
 - These surfaces show the angular part only. They say nothing about size; the radial factor $R_{n1}$ does that, and 2p and 3p have the same three shapes.
+- Add the three densities of either row and the direction drops out: $\lvert p_x\rvert^2 + \lvert p_y\rvert^2 + \lvert p_z\rvert^2 = \frac{3}{4\pi}\,\frac{x^2 + y^2 + z^2}{r^2} = \frac{3}{4\pi}$, and $\sum_m\lvert Y_1^m\rvert^2$ gives the same constant. A filled $p$ shell is spherical whichever set is used (Unsöld's theorem), which is why a closed-shell atom has no preferred direction.
 
 #### Running and standing waves
 
@@ -624,7 +717,7 @@ $$
 which is the general formula $\langle r\rangle_{nl}$ with $l = n - 1$. For 1s: $r_{\mathrm{mp}} = a_0$, $\langle r\rangle = 1.5\,a_0$; for 3d: $9a_0$ and $10.5\,a_0$. The most probable distance is Bohr's radius exactly, for every $n$; the average is always a little larger because the distribution has a longer tail outward than inward.
 :::
 
-#### Problem 2: The two humps of 2s
+#### Problem 2: The two peaks of 2s
 
 With $r$ in $a_0$, the 2s radial distribution is $P(r) = \tfrac{1}{8}r^2(2 - r)^2e^{-r}$. (a) Find the radial node and the two maxima of $P(r)$ (one is the root of a quadratic). (b) By numerical integration, find the fraction of the probability inside the node. (c) Sketch $P(r)$ for 2s and 2p on one axis and explain, in one sentence, why a 2s electron would lie lower than a 2p electron in an atom whose inner electrons screen the nucleus.
 
