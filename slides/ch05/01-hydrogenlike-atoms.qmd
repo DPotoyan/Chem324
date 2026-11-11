@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,139 +16,261 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch05/images
+  - ../../ch04/images
 ---
 
-## The Simplest Atom We Can Solve
+## A third model well
 
-- One electron, one nucleus of charge $Ze$: **H**, $\text{He}^+$, $\text{Li}^{2+}$.
+![](../../ch05/images/three_wells.png){.nostretch width="76%" fig-align="center"}
 
-- The **only** atom solved **exactly**: add even one electron and electron-electron repulsion breaks it.
+- Box: gaps **grow**. Spring: gaps **equal**. Coulomb, $-Ze^2/4\pi\varepsilon_0 r$: gaps **shrink** toward $E = 0$
+- Above zero the electron is **free**. Below zero: the **atom**, the last well solved exactly
 
-- The Coulomb pull is **isotropic**: it depends only on distance $r$.
+## One electron, one nucleus
 
-- That **symmetry** is the source of the **degeneracies** we will find.
-
-## The Schrodinger Equation
-
-- Kinetic energy plus one **Coulomb** attraction term.
-
-::: {.fragment}
-$$\left[ -\frac{\hbar^2}{2m_e}\nabla^2 - \frac{Ze^2}{4\pi\epsilon_0 r}\right]\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)$$
+::: {.keyeq}
+$$\hat{H} = -\frac{\hbar^2}{2\mu}\nabla^2 - \frac{Ze^2}{4\pi\varepsilon_0 r}, \qquad \hat{H}\,\psi(r, \theta, \phi) = E\,\psi(r, \theta, \phi)$$
 :::
 
-- Since the potential depends **only on $r$**, work in **spherical coordinates**.
-- Electron mass $m_e$ replaces the reduced mass (the nucleus is far heavier).
+- $Z = 1$: H. $\ Z = 2$: He$^+$. $\ Z = 3$: Li$^{2+}$. One electron, one nucleus of charge $Ze$
+- Two bodies, one **reduced mass** $\mu = m_em_N/(m_e + m_N)$, as for a diatomic (4.1): $\mu = 0.99946\,m_e$ for hydrogen
+- No walls, no spring: the well falls without limit at the nucleus and fades to zero far away
+- Helium adds $e^2/4\pi\varepsilon_0 r_{12}$ between its electrons, and the exact solution is gone (Chapter 7)
 
-## Separation of Variables
+## A central force: angular momentum is conserved
 
-- The Laplacian splits into a **radial** and an **angular** piece via $\hat{L}^2$.
+$V$ depends on $r$ **alone**. Turn the atom about the nucleus: nothing changes (Noether, Lecture 4.4)
 
-::: {.fragment}
-$$\psi_{n,l,m}(r,\theta,\phi) = R_{nl}(r)\,Y_l^m(\theta,\phi)$$
+$$[\hat{H}, \hat{L}^2] = 0, \qquad [\hat{H}, \hat{L}_z] = 0$$
+
+$$\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) - \frac{\hat{L}^2}{\hbar^2r^2}
+\quad\Longrightarrow\quad
+\hat{H} = -\frac{\hbar^2}{2\mu}\,\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{\hat{L}^2}{2\mu r^2} - \frac{Ze^2}{4\pi\varepsilon_0 r}$$
+
+- Commuting operators share eigenfunctions (Operators 2): the states carry sharp $L^2 = \hbar^2l(l+1)$ and $L_z = m\hbar$
+- The middle term is the rigid rotor's $L^2/2I$ with $I = \mu r^2$: rotation at a radius that can change
+
+## Separate: the angles are already solved
+
+![](../../ch05/images/hatom_roadmap.png){.nostretch width="84%" fig-align="center"}
+
+$$\psi(r, \theta, \phi) = R(r)\,Y_l^m(\theta, \phi), \qquad \hat{L}^2\,Y_l^m = \hbar^2l(l+1)\,Y_l^m$$
+
+## The radial equation
+
+Insert $R\,Y_l^m$, let $\hat{L}^2$ act, divide by $Y_l^m$:
+
+$$-\frac{\hbar^2}{2\mu}\,\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) + \left[\frac{\hbar^2l(l+1)}{2\mu r^2} - \frac{Ze^2}{4\pi\varepsilon_0 r}\right]R = E\,R$$
+
+Then $R = u/r$ makes the radial term $-(\hbar^2/2\mu)\,u''/r$; multiply by $r$. A **wall at the nucleus**: $u(0) = 0$
+
+::: {.keyeq}
+$$-\frac{\hbar^2}{2\mu}\,\frac{d^2u}{dr^2} + V_{\mathrm{eff}}(r)\,u = E\,u, \qquad u(0) = 0$$
+
+$$V_{\mathrm{eff}}(r) = -\frac{Ze^2}{4\pi\varepsilon_0 r} + \frac{\hbar^2l(l+1)}{2\mu r^2}$$
 :::
 
-- **Angular part** is already solved: spherical harmonics $Y_l^m$.
-- **Radial part** $R_{nl}(r)$ is the new piece to find.
+## The effective potential
 
-::: {.fragment}
-$$\hat{L}^2 Y_l^m = \hbar^2 l(l+1)\, Y_l^m$$
+![](../../ch05/images/effective_potential.png){.nostretch width="56%" fig-align="center"}
+
+- $l = 0$: the bare Coulomb well. $l > 0$: the **centrifugal** term $L^2/2\mu r^2$ wins at small $r$: a bowl with its bottom at $r = l(l+1)\,a_0$
+- The $l = 1$ bowl bottoms out above $E_1$: no $l = 1$ state can be the ground state
+
+## One length, one energy
+
+$\hat{H}$ contains only $\hbar$, $\mu$ and $e^2/4\pi\varepsilon_0$: they build **one length** and **one energy**
+
+**Length**: where confining the electron costs as much kinetic energy as the attraction pays
+
+$$\frac{\hbar^2}{\mu a^2} = \frac{e^2}{4\pi\varepsilon_0 a} \quad\Longrightarrow\quad a_0 = \frac{4\pi\varepsilon_0\hbar^2}{\mu e^2} = 52.9\ \text{pm}$$
+
+**Energy**: the Coulomb energy at that distance
+
+$$E_h = \frac{e^2}{4\pi\varepsilon_0a_0} = \frac{\hbar^2}{\mu a_0^2} = 27.2\ \text{eV}$$
+
+- The Bohr radius with no orbit assumed. Half a hartree, 13.6 eV, binds the ground state. For a nucleus $Ze$: $a_0/Z$, $Z^2E_h$
+
+## Why the atom does not collapse
+
+![](../../ch05/images/coulomb_energy.png){.nostretch width="66%" fig-align="center"}
+
+$$\langle E\rangle = \frac{\hbar^2}{2\mu a^2} - \frac{e^2}{4\pi\varepsilon_0 a} \quad\text{is lowest at } a = a_0: \quad \langle E\rangle = -\frac{E_h}{2} = -13.6\ \text{eV}$$
+
+- Squeeze the state $e^{-r/a}$: kinetic energy wins. Spread it out: the attraction is lost
+
+## The solution
+
+::: {.keyeq}
+$$E_n = -\frac{Z^2}{n^2}\,\frac{E_h}{2} = -13.6\ \text{eV}\,\frac{Z^2}{n^2}, \qquad \psi_{nlm}(r, \theta, \phi) = R_{nl}(r)\,Y_l^m(\theta, \phi)$$
+
+$$n = 1, 2, 3, \dots \qquad l = 0, 1, \dots, n - 1 \qquad m = -l, \dots, l$$
 :::
 
-## The Effective Radial Potential
+- The series for $u$ must **stop**, as Hermite's did (4.2): only for $\kappa a_0 = Z/n$ with whole $n > l$
+- $n$ sets the energy and the size $n^2a_0/Z$. The energy depends on **neither $l$ nor $m$**
+- $l$ and $m$ are the angular momentum quantum numbers of 4.4: s, p, d, f for $l = 0, 1, 2, 3$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/centrifug.png)
+## Example: check the ground state
+
+::: {.worked}
+Show that $u = re^{-r/a}$ solves the radial equation with $l = 0$. Find $a$ and $E$.
 :::
-::: {.column width="50%"}
-$$V_{eff} = -\frac{Ze^2}{4\pi\epsilon_0 r} + \frac{l(l+1)\hbar^2}{2m_e r^2}$$
 
-- Coulomb **attraction** plus a **centrifugal** barrier.
+:::: {.fragment}
 
-- For $l > 0$ the barrier pushes the electron **farther** from the nucleus.
+::: {.soln}
+$$u'' = \left(\frac{r}{a^2} - \frac{2}{a}\right)e^{-r/a} \quad\Longrightarrow\quad -\frac{\hbar^2}{2\mu}\left(\frac{r}{a^2} - \frac{2}{a}\right) - \frac{Ze^2}{4\pi\varepsilon_0} = E\,r \quad\text{for every } r$$
+
+$$\text{no } r: \ \frac{\hbar^2}{\mu a} = \frac{Ze^2}{4\pi\varepsilon_0} \Rightarrow a = \frac{a_0}{Z} \qquad\qquad \text{with } r: \ E = -\frac{\hbar^2}{2\mu a^2} = -\frac{Z^2E_h}{2}$$
 :::
+
+- $R_{10} \propto e^{-Zr/a_0}$: the size the trade-off chose, no node, and $l = 0$: **no angular momentum at all**
+
 ::::
 
-## Radial Wavefunctions
+## The radial functions
 
-::: {.fragment}
-$$R_{nl}(r) = \rho^l\, e^{-\rho/2}\, L_{n-l-1}^{2l+1}(\rho)$$
+Polynomial of degree $n - 1$ times $e^{-\rho/n}$, with $\rho = Zr/a_0$ and a common factor $(Z/a_0)^{3/2}$:
+
+| orbital | $n$ | $l$ | $R_{nl}\,/\,(Z/a_0)^{3/2}$ | radial nodes |
+|:-----:|:---:|:---:|:--------------------------------------|:---------:|
+| 1s | 1 | 0 | $2\,e^{-\rho}$ | 0 |
+| 2s | 2 | 0 | $\frac{1}{2\sqrt{2}}\,(2 - \rho)\,e^{-\rho/2}$ | 1 |
+| 2p | 2 | 1 | $\frac{1}{2\sqrt{6}}\,\rho\,e^{-\rho/2}$ | 0 |
+| 3s | 3 | 0 | $\frac{2}{81\sqrt{3}}\,(27 - 18\rho + 2\rho^2)\,e^{-\rho/3}$ | 2 |
+| 3p | 3 | 1 | $\frac{4}{81\sqrt{6}}\,(6 - \rho)\,\rho\,e^{-\rho/3}$ | 1 |
+| 3d | 3 | 2 | $\frac{4}{81\sqrt{30}}\,\rho^2\,e^{-\rho/3}$ | 0 |
+
+- $n - l - 1$ radial nodes, plus the $l$ angular nodes of $Y_l^m$: $n - 1$ in all, like the box
+
+## Polynomial times exponential
+
+![](../../ch05/images/radial_functions.png){.nostretch width="72%" fig-align="center"}
+
+- $r^l$ at the nucleus: only **s** functions are nonzero there. The tail $e^{-Zr/na_0}$ reaches out to about $n^2a_0/Z$
+
+## Live: the radial functions
+
+```{=html}
+<div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/radial_explorer.mjs";
+  const opts = { fontSize: "19px", n: 2, l: 0 };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
+</script>
+```
+
+## Live: the s orbitals in 3D
+
+```{=html}
+<div id="oc-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/orbital_cloud.mjs";
+  const opts = { fontSize: "19px", orbital: "2s", height: 450 };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("oc-live") });
+</script>
+```
+
+## One level, $n^2$ states
+
+![](../../ch05/images/hydrogen_ladder.png){.nostretch width="56%" fig-align="center"}
+
+- $\sum_{l=0}^{n-1}(2l+1) = n^2$, and $2n^2$ with spin: 2, 8, 18, 32, the rows of the periodic table
+- $m$: rotational symmetry, split by a field (5.3). $l$: special to $1/r$, lifted by screening (Ch. 7)
+
+## Example: the states with $n = 3$
+
+::: {.worked}
+List the states of hydrogen with $n = 3$ and what measurements of $E$, $L^2$ and $L_z$ give.
 :::
 
-- **Laguerre polynomial** times a decaying exponential.
-- Bohr radius sets the length scale: $a_0 = \dfrac{4\pi\epsilon_0\hbar^2}{m_e e^2}$.
-- Scaled distance: $\rho = \dfrac{2Zr}{n a_0}$.
+:::: {.fragment}
 
-- Example, the **1s** orbital: $R_{10}(r) = 2\left(\dfrac{Z}{a_0}\right)^{3/2} e^{-\rho/2}$.
+::: {.soln}
+$$3s\ (m = 0), \qquad 3p\ (m = -1, 0, 1), \qquad 3d\ (m = -2, \dots, 2)$$
 
-## The Full Solution
+$$1 + 3 + 5 = 9 = 3^2 \ \text{states, all with } E_3 = -\frac{13.6\ \text{eV}}{9} = -1.51\ \text{eV}$$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/Henergies.png)
-:::
-::: {.column width="50%"}
-$$\psi_{n,l,m_l} = N_{nl}\,R_{nl}(r)\,Y_{l,m_l}(\theta,\phi)$$
-
-::: {.fragment}
-$$E_n = -\frac{m_e e^4}{8\varepsilon_0^2 h^2}\cdot\frac{1}{n^2}$$
+$$L^2 = 0,\ 2\hbar^2,\ 6\hbar^2 \ \text{for s, p, d}, \qquad L_z = m\hbar$$
 :::
 
-- Three quantum numbers in $\psi$, but **energy depends only on $n$**.
-:::
+- Each has $n - 1 = 2$ nodes: 3s two radial, 3p one radial and one angular, 3d two angular
+
 ::::
 
-## Degeneracy from Symmetry
+## Example: He$^+$ and Li$^{2+}$
 
-- All states of a given $n$ share the **same energy**.
-
-- For $n = 2$: the $2s$ and the three $2p$ states are **degenerate**.
-
-- Counting spin, the total degeneracy of level $n$ is $2n^2$.
-
-- This **accidental degeneracy** is special to the $1/r$ Coulomb potential.
-
-## Quantum Numbers
-
-::: {.fragment}
-$$n = 1, 2, 3, \dots$$
-$$l = 0, 1, 2, \dots, n-1$$
-$$m = 0, \pm 1, \pm 2, \dots, \pm l$$
-$$m_s = \pm 1/2$$
+::: {.worked}
+Ionization energy, size of the ground state, and the $2 \to 1$ line for He$^+$ and Li$^{2+}$.
 :::
 
-- $n$ sets the **energy**, $l$ the **shape**, $m$ the **orientation**.
-- Letters for $l$: $s, p, d, f, \dots$ for $l = 0, 1, 2, 3, \dots$
+:::: {.fragment}
 
-## The Hydrogen Spectrum
+::: {.soln}
+$$-E_1 = 13.6\,Z^2\ \text{eV}: \quad 54.4\ \text{eV (He}^+), \quad 122.4\ \text{eV (Li}^{2+})$$
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/Balmer.png)
+$$a_0/Z: \quad 26.5\ \text{pm (He}^+), \quad 17.6\ \text{pm (Li}^{2+})$$
+
+$$2 \to 1 \text{ photon, } \tfrac{3}{4}\times13.6\,Z^2\ \text{eV}: \quad 40.8\ \text{eV},\ 30.4\ \text{nm (He}^+)$$
+
+$$\phantom{2 \to 1 \text{ photon, } \tfrac{3}{4}\times13.6\,Z^2\ \text{eV}:} \quad 91.8\ \text{eV},\ 13.5\ \text{nm (Li}^{2+})$$
 :::
-::: {.column width="50%"}
-$$\Delta\tilde{v} = R_H Z^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right)$$
 
-- **Lyman** ($n_1 = 1$), **Balmer** ($n_1 = 2$), **Paschen** ($n_1 = 3$).
+- Everything scales: lengths by $1/Z$, energies by $Z^2$. Hydrogen's line is at 121.6 nm
 
-- Balmer lines are the **visible** emission of hydrogen.
-:::
 ::::
 
-## Ionization Energy
+## The spectrum, derived
 
-- Removing the ground-state electron means $n_1 = 1$, $n_2 \to \infty$.
+::: {.keyeq}
+$$\tilde{\nu} = R\,Z^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad R_\infty = \frac{E_h}{2hc} = 109\,737\ \text{cm}^{-1}$$
 
-::: {.fragment}
-$$E_i = R_H Z^2\left(\frac{1}{1^2} - \frac{1}{\infty}\right)$$
+$$R_M = \frac{R_\infty}{1 + m_e/m_N} \quad \text{for a nucleus of mass } m_N$$
 :::
 
-- For hydrogen: $109678~\text{cm}^{-1} = 13.6057~\text{eV}$.
+- Rydberg's formula of Lecture 1.5, its constant now **built from** $m_e$, $e$, $\varepsilon_0$, $h$, $c$
+- Lyman ($n_1 = 1$, ultraviolet), Balmer ($n_1 = 2$, visible), Paschen ($n_1 = 3$, infrared); each series ends at a **limit**
+- The nucleus moves too: $R_H = 109\,678$ cm$^{-1}$, a little below $R_\infty$
 
-- Larger nuclear charge $Z$ means **tighter binding**.
+## The Balmer lines
+
+![](../../ch05/images/balmer_lines.png){.nostretch width="72%" fig-align="center"}
+
+- Lines crowd toward the limit at 364.7 nm. At H$\alpha$, deuterium sits 0.18 nm to the blue: a heavier nucleus, a larger $\mu$
+
+## Example: deuterium
+
+::: {.worked}
+H$\alpha$ of hydrogen is at 656.47 nm in vacuum. Where is deuterium's? ($m_p = 1836.15\,m_e$, $m_d = 3670.48\,m_e$)
+:::
+
+:::: {.fragment}
+
+::: {.soln}
+$$\frac{\mu_H}{m_e} = \frac{1}{1 + 1/1836.15} = 0.999456, \qquad \frac{\mu_D}{m_e} = \frac{1}{1 + 1/3670.48} = 0.999728$$
+
+$$\lambda_D = \lambda_H\,\frac{\mu_H}{\mu_D} = 656.47\ \text{nm}\times\frac{0.999456}{0.999728} = 656.29\ \text{nm}$$
+:::
+
+- A 0.18 nm satellite on every Balmer line: Urey's discovery of deuterium, 1931
+
+::::
+
+## What the solution gives, and what it leaves
+
+| the hydrogen atom gives | what comes next |
+|:--|:--|
+| every level $E_n$ and every state $R_{nl}Y_l^m$ | shapes, sizes, real orbitals $p_x$, $d_{xy}$: **Lecture 5.2** |
+| $n^2$ states per level | spin doubles it; fields and spin-orbit coupling split it: **Lecture 5.3** |
+| the $l$ degeneracy of $1/r$ | screening lifts it: 2s below 2p, the aufbau order: **Chapter 7** |
+| Rydberg's constant from $m_e$, $e$, $\varepsilon_0$, $h$, $c$ | what Bohr's model could not reach: helium, intensities, fine structure |
+
+- Bohr's orbit is gone: the ground state has $l = 0$ and is a standing wave densest **at** the nucleus
 
 # Takeaway {.center}
 
-> The hydrogenlike atom separates into a **radial** function $R_{nl}$ and a **spherical harmonic** $Y_l^m$. Its energy $E_n \propto -Z^2/n^2$ depends **only on $n$**, so each level carries a $2n^2$-fold **degeneracy** that traces directly to the **spherical symmetry** of the Coulomb potential.
+> One electron and a nucleus $Ze$: a central Coulomb force, so angular momentum is conserved and $\psi = R_{nl}(r)\,Y_l^m(\theta, \phi)$ with the angles already solved. The radial function obeys a one-dimensional equation in $V_{\mathrm{eff}} = -Ze^2/4\pi\varepsilon_0 r + \hbar^2l(l+1)/2\mu r^2$. The constants build one length, $a_0 = 52.9$ pm, and one energy, $E_h = 27.2$ eV; the balance of confinement against attraction keeps the atom from collapsing. The radial function must die at large $r$, and that gives $E_n = -Z^2E_h/2n^2$ with $l < n$: $n^2$ states per level, a degeneracy special to $1/r$. The level differences are Rydberg's formula, now derived, down to the isotope shift of deuterium.

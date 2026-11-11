@@ -6,7 +6,7 @@ format:
   revealjs:
     theme: [default, ../theme.scss]
     slide-number: c/t
-    incremental: true
+    incremental: false
     width: 1280
     height: 720
     transition: fade
@@ -16,130 +16,267 @@ format:
       buttons: true
     preview-links: auto
     footer: "Chem 3240 · Quantum Mechanics"
+    html-math-method: katex
 resources:
   - ../../ch05/images
+  - ../../ch04/images
 ---
 
-## What Is an Orbital?
+## An orbital is a one-electron wavefunction
 
-- A **one-electron wavefunction** is called an **orbital**.
-- For the hydrogen atom it is an **atomic orbital (AO)**, exact for H-like atoms.
+$$\psi_{nlm} = R_{nl}(r)\,Y_l^m(\theta, \phi), \qquad n = 1, 2, \dots \qquad l < n \qquad \lvert m\rvert \leq l$$
 
-::: {.fragment}
-$$\psi_{n\ell m_\ell}(r,\theta,\phi) = R_{n\ell}(r)\,Y_{\ell m_\ell}(\theta,\phi)$$
+| $n$ | $l$ | orbitals | how many | energy |
+|:---:|:---:|:--------|:--------:|:------:|
+| 1 | 0 | 1s | 1 | $-E_h/2$ |
+| 2 | 0, 1 | 2s, 2p | $1 + 3 = 4$ | $-E_h/8$ |
+| 3 | 0, 1, 2 | 3s, 3p, 3d | $1 + 3 + 5 = 9$ | $-E_h/18$ |
+
+- **Orbital** = one electron's wavefunction, named by $n$ and the letter of $l$. Nothing orbits
+- Lecture 5.1 solved for them. Today: **where** the electron is, what **shape**, where $\psi$ **vanishes**, and what a picture shows
+
+## Three ways to ask where the electron is
+
+::: {.keyeq}
+$$\lvert\psi_{nlm}\rvert^2\,dV = \underbrace{R_{nl}^2(r)\,r^2\,dr}_{\text{distance}}\;\times\;\underbrace{\lvert Y_l^m\rvert^2\,\sin\theta\,d\theta\,d\phi}_{\text{direction}}$$
+
+$$P(r) = r^2R_{nl}^2(r), \quad \int_0^\infty P\,dr = 1 \qquad\qquad \lvert Y_l^m\rvert^2, \quad \int\lvert Y_l^m\rvert^2\,d\Omega = 1$$
 :::
 
-- Splits cleanly into a **radial** part and an **angular** part.
+- $\lvert\psi\rvert^2\,dV$: probability in a small **volume**
+- $P(r)\,dr$: probability at **distance** $r$ to $r + dr$, any direction: the **radial distribution**
+- $\lvert Y_l^m\rvert^2\,d\Omega$: probability in a **direction**, any distance: the **angular distribution**
 
-## Three Quantum Numbers
+## Why $r^2$: the area of a shell
 
-- **Principal:** $n = 1, 2, 3, \ldots$
+![](../../ch05/images/shell_volume.png){.nostretch width="92%" fig-align="center"}
 
-- **Orbital angular momentum:** $\ell = 0, 1, 2, \ldots, n-1$
+- The 1s **density** is largest at the nucleus; the shell at distance $r$ has area $4\pi r^2$, zero at the nucleus
+- Their product $P(r) = 4\pi r^2\lvert\psi_{1s}\rvert^2$ peaks in between, at $a_0$. $P(0) = 0$ for **every** state
 
-- **Magnetic:** $m_\ell = -\ell, -\ell+1, \ldots, \ell$
+## Example: the most probable distance in 1s
 
-- Each valid triple labels **one** orbital.
-
-## Where Is the Electron?
-
-- Probability over the full 3D volume:
-
-::: {.fragment}
-$$|\psi|^2 dV = \big|R_{n\ell}(r)\big|^2 \cdot \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2 \cdot r^2\sin\theta \, dr \, d\theta \, d\phi$$
+::: {.worked}
+Where is $P(r) = 4r^2e^{-2r}$ largest ($r$ in $a_0$)?
 :::
 
-- The $r^2$ factor reshapes the radial picture.
+:::: {.fragment}
 
-## Radial Probability
+::: {.soln}
+$$\frac{dP}{dr} = 8r\,e^{-2r} - 8r^2e^{-2r} = 8r\,(1 - r)\,e^{-2r} = 0 \quad\Longrightarrow\quad r_{\mathrm{mp}} = a_0$$
+:::
+
+- Bohr's orbit is gone ($l = 0$, no angular momentum), but its **radius survives** as the peak of $P(r)$
+
+::::
+
+## Example: inside the Bohr radius
+
+::: {.worked}
+How often is the 1s electron closer than $a_0$? What is its average distance?
+:::
+
+:::: {.fragment}
+
+::: {.soln}
+$$P(r < x) = \int_0^x 4r^2e^{-2r}\,dr = 1 - e^{-2x}(2x^2 + 2x + 1)$$
+
+$$P(r < a_0) = 1 - 5e^{-2} = 0.32, \qquad\qquad P(r < 2.66\,a_0) = 0.90$$
+
+$$\langle r\rangle = 4\int_0^\infty r^3e^{-2r}\,dr = 4\cdot\frac{3!}{2^4} = \frac{3}{2}\,a_0$$
+:::
+
+- Three lengths for one state: most probable $a_0$, average $1.5\,a_0$, **90% inside** $2.66\,a_0$
+
+::::
+
+## Radial distributions for $n \leq 3$
+
+![](../../ch05/images/radial_distributions.png){.nostretch width="90%" fig-align="center"}
+
+- $l = n - 1$: **one hump**, at Bohr's $n^2a_0$. Smaller $l$: $n - l$ humps, the outer one largest
+- The inner humps of 2s and 3s **penetrate** to the nucleus: why 2s drops below 2p once other electrons screen (Chapter 7)
+
+## Three ways to say how big
+
+| orbital | most probable $r$ | average $\langle r\rangle$ | 90% inside |
+|:---:|:---:|:---:|:---:|
+| 1s | $a_0$ | $1.5\,a_0$ | $2.66\,a_0$ |
+| 2s | $5.24\,a_0$ | $6\,a_0$ | $9.12\,a_0$ |
+| 2p | $4\,a_0$ | $5\,a_0$ | $7.99\,a_0$ |
+| 3s | $13.07\,a_0$ | $13.5\,a_0$ | $19.44\,a_0$ |
+| 3p | $12\,a_0$ | $12.5\,a_0$ | $18.39\,a_0$ |
+| 3d | $9\,a_0$ | $10.5\,a_0$ | $15.80\,a_0$ |
+
+$$\langle r\rangle_{nl} = \frac{n^2a_0}{Z}\left[1 + \frac{1}{2}\left(1 - \frac{l(l+1)}{n^2}\right)\right] \qquad\qquad \text{every length} \propto \frac{n^2}{Z}$$
+
+## Live: how much lies inside $r$
+
+```{=html}
+<div id="re-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/radial_explorer.mjs";
+  const opts = { fontSize: "19px", n: 1, l: 0, probe: true };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("re-live") });
+</script>
+```
+
+## The boundary surface
+
+![](../../ch05/images/probability_inside.png){.nostretch width="78%" fig-align="center"}
+
+- No edge: $P(r)$ never reaches zero. Chemists draw the surface that holds **90%**
+- 1s: $2.66\,a_0 = 141$ pm (the H$_2$ bond is 74 pm). Grows as $n^2$, shrinks as $1/Z$
+
+## The $L_z$ eigenstates are rings
+
+$$\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \ \text{(dumbbell along } z) \qquad\qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \ \text{(ring around } z)$$
+
+- $Y_l^m \propto e^{im\phi}$, so $\lvert Y_l^m\rvert^2$ **does not depend on** $\phi$: every $L_z$ eigenstate is symmetric about $z$
+- $m = +1$ and $m = -1$ share one density; a magnetic field along $z$ tells them apart (Lecture 5.3)
+- A molecule has **bonds along directions**, not a $z$ axis. Chemists want orbitals that point along axes
+
+## A degenerate level is a space: pick new axes
+
+$$\hat{H}\psi_a = E\psi_a, \ \hat{H}\psi_b = E\psi_b \quad\Longrightarrow\quad \hat{H}\,(c_a\psi_a + c_b\psi_b) = E\,(c_a\psi_a + c_b\psi_b)$$
+
+- The $2l + 1$ states of one $n$, $l$ share $E_n$ and $L^2$: **any combination** is again a stationary state
+- $Y_l^{-l}, \dots, Y_l^{l}$ are one set of axes in that space; we may turn them (Lecture 3.5, Appendix A.3)
+- The price: the new functions are **not** $\hat{L}_z$ eigenfunctions
+
+## The real $p$ orbitals
+
+::: {.keyeq}
+$$p_z = Y_1^0 = \sqrt{\frac{3}{4\pi}}\,\frac{z}{r}$$
+
+$$p_x = \frac{Y_1^{-1} - Y_1^{+1}}{\sqrt{2}} = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r} \qquad\qquad p_y = \frac{i\,(Y_1^{-1} + Y_1^{+1})}{\sqrt{2}} = \sqrt{\frac{3}{4\pi}}\,\frac{y}{r}$$
+:::
+
+- Times $R_{n1}(r)$: the orbitals $np_x$, $np_y$, $np_z$. Same $n$, same $l = 1$, same $E_n$, same $L^2 = 2\hbar^2$
+- Real, normalized, orthogonal: **one shape, three axes**
+- $p_x$ has no definite $L_z$: a measurement gives $+\hbar$ or $-\hbar$, each half the time
+
+## Example: build $p_x$
+
+::: {.worked}
+From $Y_1^{\pm1} = \mp\sqrt{3/8\pi}\,\sin\theta\,e^{\pm i\phi}$, form $(Y_1^{-1} - Y_1^{+1})/\sqrt{2}$.
+:::
+
+:::: {.fragment}
+
+::: {.soln}
+$$Y_1^{-1} - Y_1^{+1} = \sqrt{\frac{3}{8\pi}}\sin\theta\left(e^{-i\phi} + e^{+i\phi}\right) = \sqrt{\frac{3}{8\pi}}\sin\theta\,(2\cos\phi)$$
+
+$$p_x = \frac{1}{\sqrt{2}}\cdot2\sqrt{\frac{3}{8\pi}}\sin\theta\cos\phi = \sqrt{\frac{3}{4\pi}}\sin\theta\cos\phi = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r}$$
+:::
+
+- Normalized for free: $\lvert c_{-1}\rvert^2 + \lvert c_{+1}\rvert^2 = \tfrac{1}{2} + \tfrac{1}{2} = 1$, the two $L_z$ probabilities
+
+::::
+
+## Rings or lobes: two bases for $l = 1$
+
+![](../../ch05/images/complex_to_real.png){.nostretch width="56%" fig-align="center"}
+
+- Two rings become two dumbbells: $p_x$, $p_y$ span the same space as $Y_1^{\pm1}$
+- Each real $p$ has **one nodal plane**. Angular part only: 2p and 3p share these shapes
+
+## Running or standing
 
 :::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/AO_0.png){width="100%"}
+::: {.column width="46%"}
+![](../../ch05/images/p_running.gif){width="100%"}
 :::
-::: {.column width="50%"}
-$$P_r(r) = r^2\big|R_{n\ell}(r)\big|^2$$
+::: {.column width="54%"}
+$$Y_1^{+1}e^{-iEt/\hbar} \propto \sin\theta\,e^{i(\phi - Et/\hbar)}$$
 
-- Peaks mark the **most probable distance** from the nucleus.
+$$p_x\,e^{-iEt/\hbar} \propto \sin\theta\cos\phi\,e^{-iEt/\hbar}$$
 
-- For the $1s$ orbital the peak sits at the **Bohr radius** $a_0$.
+- $m = +1$ **runs** around $z$ (the ring state of 4.4 on a sphere): its density is a ring
+- $p_x$ **stands** and pulses along $x$: its density is two lobes
+- Both stationary, same energy. A field along $z$ picks the first; a neighbour along $x$ picks the second
 :::
 ::::
 
-## How Far Out?
+## The five real $d$ orbitals
 
-- Average distance grows with $n$:
+| orbital | combination | angular function | lobes |
+|:--|:--|:--|:--|
+| $d_{z^2}$ | $Y_2^0$ | $\sqrt{5/16\pi}\,(3z^2 - r^2)/r^2$ | two along $z$ plus a ring |
+| $d_{xz}$ | $(Y_2^{-1} - Y_2^{+1})/\sqrt{2}$ | $\sqrt{15/4\pi}\,xz/r^2$ | four, between $x$ and $z$ |
+| $d_{yz}$ | $i\,(Y_2^{-1} + Y_2^{+1})/\sqrt{2}$ | $\sqrt{15/4\pi}\,yz/r^2$ | four, between $y$ and $z$ |
+| $d_{x^2-y^2}$ | $(Y_2^{+2} + Y_2^{-2})/\sqrt{2}$ | $\sqrt{15/16\pi}\,(x^2 - y^2)/r^2$ | four, along $x$ and $y$ |
+| $d_{xy}$ | $(Y_2^{+2} - Y_2^{-2})/(i\sqrt{2})$ | $\sqrt{15/4\pi}\,xy/r^2$ | four, between $x$ and $y$ |
 
-::: {.fragment}
-$$\langle r\rangle_{nl} = \frac{n^2 a_0}{Z}\left\{ 1 + \frac{1}{2}\left[ 1 - \frac{l(l+1)}{n^2}\right]\right\}$$
+- The names are the polynomials $r^2Y$: $xy$, $yz$, $xz$, $x^2 - y^2$, $3z^2 - r^2$. Each has **two** nodal surfaces
+
+## Shapes for $l \leq 2$
+
+![](../../ch05/images/orbital_shapes.png){.nostretch width="62%" fig-align="center"}
+
+- Four clovers turned in space; $d_{z^2}$ is two lobes and a ring ($m = 0$ has no partner)
+- Colour is the **sign** of $\psi$: invisible in the density, decisive for bonding
+
+## Nodes: spheres, planes and cones
+
+::: {.keyeq}
+$$\underbrace{n - l - 1}_{\text{spheres: } R_{nl} = 0} \;+\; \underbrace{l}_{\text{planes or cones: } Y = 0} \;=\; n - 1 \ \text{nodal surfaces}$$
 :::
 
-- Larger $n$: electron **moves outward**.
-- Larger $Z$: electron **pulled inward**.
+- A **sphere**: never at that distance, in any direction. A **plane or cone**: never in that direction, at any distance
+- $n - 1$ in all, like the box ($n - 1$) and the oscillator ($v$): more nodes, more bending, higher $E_n$
 
-- Expectation value $\langle r\rangle$ is **not** the most probable $r$.
+## Cross-sections through the nucleus
 
-## Counting Nodes
+![](../../ch05/images/orbital_slices.png){.nostretch width="70%" fig-align="center"}
 
-- **Radial** nodes: $n - \ell - 1$
+- Spheres from $R$ (2s, 3s, 3p); planes from $Y$ ($p_z$, $d_{xz}$, $d_{x^2-y^2}$); the cones of $d_{z^2}$ at $54.7^\circ$
 
-- **Angular** nodes: $\ell$
+## Example: count the nodes of 3p$_z$ and 3d$_{z^2}$
 
-- **Total** nodes: $n - 1$
-
-- More nodes mean more **curvature** and higher energy.
-
-## Angular Shapes
-
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/AO.png){width="100%"}
+::: {.worked}
+Where does each vanish, and how many surfaces is that?
 :::
-::: {.column width="50%"}
-$$P_\Omega(\theta,\phi) = \big|Y_{\ell m_\ell}(\theta,\phi)\big|^2$$
 
-- $s$ orbitals ($\ell = 0$) are **isotropic**: $P_\Omega = \tfrac{1}{4\pi}$.
+:::: {.fragment}
 
-- $p, d, \ldots$ have **angular nodes** that carve the lobes.
+::: {.soln}
+$$3p_z:\quad R_{31} = 0 \text{ at } \rho = 6 \ \text{(a sphere)}, \qquad \cos\theta = 0 \ \text{(the plane } z = 0)$$
+
+$$3d_{z^2}:\quad R_{32} \neq 0 \text{ for } \rho > 0, \qquad 3\cos^2\theta = 1 \text{ at } 54.7^\circ, 125.3^\circ \ \text{(two cones)}$$
+
+$$1 + 1 = 2 \qquad\qquad\qquad 0 + 2 = 2$$
 :::
+
+- The total $n - 1$ is fixed by $n$; $l$ decides how many are spheres and how many are planes or cones
+
 ::::
 
-## Real vs Complex Orbitals
+## Live: the orbitals in 3D
 
-:::: {.columns}
-::: {.column width="50%"}
-![](../../ch05/images/Orbital_p1-px_animation.gif){width="100%"}
-:::
-::: {.column width="50%"}
-- Degenerate $\ell > 0$ states allow **free recombination**.
+```{=html}
+<div id="oc-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/orbital_cloud.mjs";
+  const opts = { fontSize: "19px", height: 440, orbital: "2pz",
+    orbitals: ["1s", "2s", "2px", "2py", "2pz", "3s", "3px", "3py", "3pz", "3dxy", "3dyz", "3dxz", "3dx2y2", "3dz2"] };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("oc-live") });
+</script>
+```
 
-::: {.fragment}
-$$p_x \propto \sin\theta\cos\phi \propto x$$
-$$p_y \propto \sin\theta\sin\phi \propto y$$
-$$p_z = p_0$$
-:::
+## What a picture shows, and what it hides
 
-- Same density, **different frame**.
-:::
-::::
+| picture | shows | hides |
+|:--|:--|:--|
+| radial distribution $P(r)$ | distance, radial nodes, size | the shape |
+| angular surface $\lvert Y\rvert^2$ | shape, angular nodes | the size |
+| $\psi$ on a plane | sign, every node, size | two dimensions |
+| 90% boundary surface | size and shape together | the inside, the tail |
+| point cloud | the density itself | the sign, unless coloured |
 
-## Pointing the Lobes
-
-- Combining $p_x, p_y, p_z$ aims a lobe in **any direction**.
-- Five degenerate $d$ orbitals follow the same recipe:
-
-::: {.fragment}
-$$d_{x^2 - y^2} = \tfrac{1}{\sqrt{2}}\left(d_{+2} + d_{-2}\right), \quad d_{xy} = -\tfrac{i}{\sqrt{2}}\left( d_{+2} - d_{-2}\right)$$
-$$d_{xz} = -\tfrac{1}{\sqrt{2}}\left( d_{+1} - d_{-1}\right), \quad d_{yz} = \tfrac{i}{\sqrt{2}}\left( d_{+1} + d_{-1}\right)$$
-$$d_{z^2} = d_0$$
-:::
-
-## Putting It Together
-
-![](../../ch05/images/hydrogen_probability_densities.png){width="78%"}
-
-- Cross sections of $|\psi_{n\ell m}|^2$: **radial reach** times **angular shape**.
+- No picture **is** the orbital. Real or complex is a choice of axes; the sign is physics, not decoration
+- Next: **spin**, which doubles every orbital and separates the $m$ states in a field (Lecture 5.3)
 
 # Takeaway {.center}
 
-> An atomic orbital factors as $\psi = R_{n\ell}(r)\,Y_{\ell m_\ell}(\theta,\phi)$, labeled by $n$, $\ell$, $m_\ell$. The radial part sets **how far** ($n - \ell - 1$ nodes) and the angular part sets the **shape** ($\ell$ nodes), for $n - 1$ nodes in all.
+> An orbital is one electron's wavefunction, $R_{nl}Y_l^m$. Its probability factors into a radial distribution $P(r) = r^2R_{nl}^2$, which peaks at Bohr's radius for 1s and grows as $n^2a_0/Z$, and an angular distribution $\lvert Y_l^m\rvert^2$. Because the $2l + 1$ states of a level are degenerate, their real combinations $p_x$, $p_y$, $p_z$ and the five $d$ are stationary states too, pointing along axes at the cost of a definite $L_z$. Every orbital has $n - l - 1$ spherical nodes and $l$ planes or cones, $n - 1$ in all, and the textbook drawing is the surface that holds 90% of the electron.
