@@ -17,7 +17,8 @@ Sync strips every line starting with `return`, so inner helpers must not use it 
 lambda, or fill an array in place) and `update` must not return artists (use blit=False).
 
 Lecture 5.1 (page ch05/01, deck slides/ch05/01) uses the figures in the "lecture 5.1" section; Lecture 5.2
-(page ch05/02, deck slides/ch05/02) those in "lecture 5.2".
+(page ch05/02, deck slides/ch05/02) those in "lecture 5.2"; Lecture 5.3 (page ch05/03, deck slides/ch05/03) those
+in "lecture 5.3".
 Units in every figure: lengths in the Bohr radius a0, energies in the hartree E_h (Z = 1).
 Colours of the angular momentum, kept the same in every figure: s TEAL, p PURPLE, d ORANGE,
 f GRAY; nodes CARDINAL. The Coulomb well is ORANGE (electrons, as in 4.1's model_map).
@@ -612,6 +613,77 @@ def probability_inside():
     return fig, None
 
 
+# ------------------------------------------------------------ the l = 1 states of definite m as 2D cuts: a dumbbell along z, and a ring around z seen from the side and from above (still)
+@register
+def m_states_cuts():
+    t = np.linspace(0, 2 * np.pi, 721)
+    DARK = "#495057"
+    fig, axes = plt.subplots(1, 3, figsize=(8.0, 3.1))
+    # (density in the direction at angle t, measured from the vertical axis; horizontal and vertical axis names; title)
+    panels = [(np.cos(t)**2, "x", "z", r"$|Y_1^{0}|^2 \propto \cos^2\theta$"),
+              (np.sin(t)**2, "x", "z", r"$|Y_1^{\pm1}|^2 \propto \sin^2\theta$"),
+              (np.ones_like(t), "x", "y", r"$|Y_1^{\pm1}|^2$ from above")]
+    for ax, (rho, hl, vl, lab) in zip(axes, panels):
+        ax.plot([-1.3, 1.3], [0, 0], color="#adb5bd", lw=1.1, zorder=1)
+        ax.plot([0, 0], [-1.3, 1.3], color="#adb5bd", lw=1.1, zorder=1)
+        ax.text(1.36, 0, f"${hl}$", fontsize=15, color=DARK, ha="left", va="center")
+        ax.text(0, 1.36, f"${vl}$", fontsize=15, color=DARK, ha="center", va="bottom")
+        ax.fill(rho * np.sin(t), rho * np.cos(t), color=PURPLE, alpha=0.16, zorder=2)
+        ax.plot(rho * np.sin(t), rho * np.cos(t), color=PURPLE, lw=2.6, zorder=3)
+        ax.set_xlim(-1.62, 1.62); ax.set_ylim(-1.5, 1.74); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(lab, fontsize=15.5, pad=6)
+        if vl == "z":       # a turn about z changes nothing: the curved arrow around the axis
+            a = np.radians(np.linspace(115, 425, 80))
+            ax.plot(0.2 * np.cos(a), 1.17 + 0.065 * np.sin(a), color=DARK, lw=1.5, zorder=4)
+            ax.annotate("", xy=(0.2 * np.cos(a[-1]), 1.17 + 0.065 * np.sin(a[-1])), xytext=(0.2 * np.cos(a[-4]), 1.17 + 0.065 * np.sin(a[-4])),
+                        arrowprops=dict(arrowstyle="-|>", color=DARK, lw=1.5, mutation_scale=13), zorder=4)
+        else:               # seen from above, z points at the viewer: a dot in a circle
+            ax.plot(0, 0, "o", ms=11, mfc="white", mec=DARK, mew=1.4, zorder=4)
+            ax.plot(0, 0, "o", ms=3.4, color=DARK, zorder=5)
+            ax.text(0.14, -0.2, "$z$", fontsize=15, color=DARK, ha="left", va="center")
+    fig.subplots_adjust(left=0.0, right=1.0, top=0.9, bottom=0.0, wspace=0.0)
+    fig.savefig(f"{OUT}/m_states_cuts.png", dpi=200)
+    print("wrote", f"{OUT}/m_states_cuts.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ z is the axis we measured theta from: the same point, the same dumbbell, with the polar axis along z or along x (still)
+@register
+def axis_choice():
+    t = np.linspace(0, 2 * np.pi, 721)
+    DARK = "#495057"
+    beta = np.radians(52)                                  # the sample point, 52 degrees above the x axis
+    P = 1.22 * np.array([np.cos(beta), np.sin(beta)])
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.45))
+    # (polar axis, angle of that axis in the drawing, arc from, arc to, name of the angle and where it sits, title)
+    panels = [("z", np.pi / 2, beta, np.pi / 2, r"$\theta$", (0.21, 0.64), r"$\cos\theta = z/r$"),
+              ("x", 0.0, 0.0, beta, r"$\theta_x$", (0.63, 0.19), r"$\cos\theta_x = x/r$")]
+    for ax, (pol, a0, a1, a2, name, at, lab) in zip(axes, panels):
+        for nm, d in (("x", np.array([1.0, 0.0])), ("z", np.array([0.0, 1.0]))):
+            bold = nm == pol
+            ax.plot([-1.4 * d[0], 1.4 * d[0]], [-1.4 * d[1], 1.4 * d[1]], color=DARK if bold else "#adb5bd", lw=2.6 if bold else 1.1, zorder=4 if bold else 1, solid_capstyle="butt")
+            if bold:
+                ax.annotate("", xy=1.58 * d, xytext=1.36 * d, arrowprops=dict(arrowstyle="-|>", color=DARK, lw=2.6, mutation_scale=20), zorder=4)
+            ax.text(1.7 * d[0], 1.7 * d[1], f"${nm}$", fontsize=17, color=DARK if bold else GRAY, weight="bold" if bold else "normal", ha="center", va="center")
+        f = np.cos(t - a0)                                 # the wavefunction: cosine of the angle from the polar axis
+        rho = f**2
+        for sgn, col in ((1, TEAL), (-1, ORANGE)):
+            keep = np.where(sgn * f >= 0, rho, 0.0)
+            ax.fill(keep * np.cos(t), keep * np.sin(t), color=col, alpha=0.3, lw=0, zorder=2)
+            ax.plot(np.where(sgn * f >= 0, rho * np.cos(t), np.nan), np.where(sgn * f >= 0, rho * np.sin(t), np.nan), color=col, lw=2.6, zorder=3)
+        ax.plot([0, P[0]], [0, P[1]], color=CARDINAL, lw=1.6, zorder=5)
+        ax.plot(P[0], P[1], "o", ms=7.5, color=CARDINAL, zorder=6)
+        arc = np.linspace(a1, a2, 40)
+        ax.plot(0.46 * np.cos(arc), 0.46 * np.sin(arc), color=CARDINAL, lw=1.6, zorder=5)
+        ax.text(at[0], at[1], name, fontsize=17, color=CARDINAL, ha="center", va="center", zorder=6)
+        ax.set_xlim(-1.85, 1.85); ax.set_ylim(-1.55, 1.85); ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(lab, fontsize=17, pad=4)
+    fig.subplots_adjust(left=0.0, right=1.0, top=0.91, bottom=0.0, wspace=0.0)
+    fig.savefig(f"{OUT}/axis_choice.png", dpi=200)
+    print("wrote", f"{OUT}/axis_choice.png")
+    return fig, None
+
+
 # ------------------------------------------------------------ the m = +1 state runs around z while p_x stands: real parts in time, and the two densities (animation, 30 frames)
 @register
 def p_running():
@@ -768,6 +840,520 @@ def orbital_slices():
     fig.subplots_adjust(left=0.06, right=0.99, top=0.94, bottom=0.08)
     fig.savefig(f"{OUT}/orbital_slices.png", dpi=200)
     print("wrote", f"{OUT}/orbital_slices.png")
+    return fig, None
+
+# ============================================================ lecture 5.3: electron spin
+# Colours in this section: m_s = +1/2 TEAL and m_s = -1/2 ORANGE (the sign colours of 5.2), orbital angular
+# momentum and p levels PURPLE (j = 3/2 PURPLE, j = 1/2 a lighter purple), magnetic moments CARDINAL, fields and
+# apparatus GRAY. The letter mu is a magnetic moment in this lecture (the reduced mass does not appear).
+
+# ------------------------------------------------------------ an orbiting electron is a loop of current: L up, magnetic moment down, the loop's field lines behind (still)
+@register
+def current_loop():
+    from scipy.special import ellipk, ellipe
+    fig, ax = plt.subplots(figsize=(5.6, 4.7))
+    a, b = 1.5, 0.46                                             # the orbit: a circle of radius a seen at a tilt
+    # field lines of a circular current loop in the plane of the page: contours of the flux rho * A_phi
+    g = np.linspace(-3.6, 3.6, 361)
+    X, Z = np.meshgrid(g, np.linspace(-3.0, 3.0, 301))
+    rho = np.abs(X) + 1e-6
+    k2 = 4 * a * rho / ((a + rho)**2 + Z**2)
+    flux = np.sqrt(a * rho) * ((2 - k2) * ellipk(k2) - 2 * ellipe(k2)) / np.sqrt(k2)
+    ax.contour(X, Z, flux, levels=[0.12, 0.3, 0.6, 1.05, 1.7], colors="#ced4da", linewidths=1.1, zorder=0)
+    t = np.linspace(0, 2 * np.pi, 400)
+    ax.fill(a * np.cos(t), b * np.sin(t), color=PURPLE, alpha=0.07, lw=0, zorder=1)
+    ax.plot(a * np.cos(t), b * np.sin(t), color="#343a40", lw=2.0, zorder=2)
+    arrow = lambda p0, p1, col, lw, ms: ax.annotate("", xy=p1, xytext=p0, zorder=6, arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=ms, shrinkA=0, shrinkB=0))
+    arrow((0, 0), (0, 2.05), PURPLE, 3.0, 20)                    # angular momentum, up for counterclockwise motion
+    arrow((0, 0), (0, -2.05), CARDINAL, 3.0, 20)                 # magnetic moment, opposite: the charge is negative
+    ax.text(0.18, 1.95, r"$\vec{L}$", fontsize=19, color=PURPLE, va="center")
+    ax.text(0.18, -1.95, r"$\vec{\mu}$", fontsize=19, color=CARDINAL, va="center")
+    f = np.radians(-58)                                          # the electron, on the near side of the orbit
+    pe = np.array([a * np.cos(f), b * np.sin(f)])
+    ax.plot([0, pe[0]], [0, pe[1]], color=GRAY, lw=1.3, ls=(0, (4, 3)), zorder=3)
+    ax.text(0.5, -0.07, r"$r$", fontsize=16, color=GRAY, ha="center", va="center")
+    tv = np.array([-a * np.sin(f), b * np.cos(f)]); tv = tv / np.hypot(*tv)
+    arrow(pe, pe + 1.0 * tv, TEAL, 2.4, 17)
+    ax.text(*(pe + 1.0 * tv + np.array([0.2, 0.05])), r"$\vec{v}$", fontsize=17, color=TEAL, va="center")
+    ax.plot(*pe, "o", color=TEAL, ms=12, zorder=7)
+    ax.text(pe[0] - 0.05, pe[1] - 0.36, r"$-e$", fontsize=16, color=TEAL, ha="center", va="center")
+    f2 = np.radians(118)                                         # the current runs against the electron
+    pc = np.array([a * np.cos(f2), b * np.sin(f2)])
+    tc = np.array([a * np.sin(f2), -b * np.cos(f2)]); tc = tc / np.hypot(*tc)
+    arrow(pc - 0.01 * tc, pc + 0.3 * tc, "#343a40", 2.0, 20)
+    ax.text(pc[0] - 0.12, pc[1] + 0.3, r"$I$", fontsize=17, color="#343a40", ha="center", va="center")
+    ax.set_xlim(-3.3, 3.3); ax.set_ylim(-2.75, 2.75); ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    fig.savefig(f"{OUT}/current_loop.png", dpi=200)
+    print("wrote", f"{OUT}/current_loop.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ a magnet in a uniform field feels no net force; between a wedge and a groove it is pulled or pushed (still)
+@register
+def gradient_force():
+    from matplotlib.patches import Polygon, Rectangle
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"wspace": 0.04})
+    arrow = lambda a_, p0, p1, col, lw, ms: a_.annotate("", xy=p1, xytext=p0, zorder=6, arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=ms, shrinkA=0, shrinkB=0))
+    # a small bar magnet centred at (x0, 0): its moment (red arrow, S to N), the forces on its two poles, the net force.
+    # The field pushes the N pole along B (up) and the S pole against it (down), harder where B is stronger.
+    magnets = [(ax, 0.0, 1, 0.85, 0.85), (bx, -1.05, 1, 0.55, 1.15), (bx, 1.05, -1, 0.55, 1.15)]
+    for a_, x0, up, f_top, f_bot in magnets:
+        a_.add_patch(Rectangle((x0 - 0.2, -0.62), 0.4, 1.24, fc="white", ec="#343a40", lw=1.6, zorder=4))
+        arrow(a_, (x0, -0.48 * up), (x0, 0.5 * up), CARDINAL, 3.0, 17)
+        a_.text(x0 - 0.38, 0.42 * up, "N", fontsize=14, ha="center", va="center", weight="bold", color="#343a40")
+        a_.text(x0 - 0.38, -0.42 * up, "S", fontsize=14, ha="center", va="center", weight="bold", color="#343a40")
+        for end, f in ((1, f_top), (-1, f_bot)):                 # end = +1 the top pole, -1 the bottom pole
+            ends = [(x0, end * 0.68), (x0, end * (0.68 + f))]    # from the pole outward
+            if up < 0:                                           # N below, S above: both forces point into the magnet, draw them pushing
+                ends = ends[::-1]
+            arrow(a_, ends[0], ends[1], GRAY, 2.0, 14)
+        net = up * (f_top - f_bot)
+        if abs(net) > 0.01:
+            arrow(a_, (x0 + 0.6, -0.5 * np.sign(net)), (x0 + 0.6, 0.7 * np.sign(net)), "#212529", 4.2, 24)
+            a_.text(x0 + 0.82, 0.1 * np.sign(net), r"$\vec{F}$", fontsize=18, va="center", color="#212529")
+    # left: a uniform field
+    for x in np.linspace(-2.4, 2.4, 9):
+        ax.plot([x, x], [-2.3, 2.3], color="#ced4da", lw=1.2, zorder=0)
+        arrow(ax, (x, 1.9), (x, 2.3), "#ced4da", 1.2, 11)
+    ax.text(2.62, 2.05, r"$\vec{B}$", fontsize=17, color=GRAY, va="center")
+    ax.set_title("uniform field", fontsize=14)
+    # right: the Stern-Gerlach magnet in cross-section, a sharp edge below and a groove above; B is strongest at the edge
+    bx.add_patch(Polygon([[-2.6, -2.9], [2.6, -2.9], [2.6, -2.45], [0, -1.75], [-2.6, -2.45]], fc="#dee2e6", ec=GRAY, lw=1.3, zorder=2))
+    th = np.linspace(np.pi, 2 * np.pi, 80)
+    top = [[-2.6, 2.9], [-2.6, 2.0]] + [[1.5 * np.cos(q), 2.0 - 0.62 * np.sin(q)] for q in th] + [[2.6, 2.0], [2.6, 2.9]]
+    bx.add_patch(Polygon(top, fc="#dee2e6", ec=GRAY, lw=1.3, zorder=2))
+    for xt in np.linspace(-1.35, 1.35, 9):                       # field lines fan out from the edge to the groove
+        zz = np.linspace(0, 1, 60)
+        zt = 2.0 + 0.62 * np.sqrt(max(0.0, 1 - (xt / 1.5)**2))
+        xs = xt * (0.06 + 0.94 * zz**1.25)
+        zs = (-1.75 + 0.33 * abs(xt)) + (zt - (-1.75 + 0.33 * abs(xt))) * zz
+        bx.plot(xs, zs, color="#ced4da", lw=1.2, zorder=0)
+        arrow(bx, (xs[-9], zs[-9]), (xs[-1], zs[-1]), "#ced4da", 1.2, 11)
+    bx.text(2.05, 1.55, r"$\vec{B}$", fontsize=17, color=GRAY, va="center")
+    bx.set_title("non-uniform field", fontsize=14)
+    for a_ in (ax, bx):
+        a_.set_xlim(-3.0, 3.0); a_.set_ylim(-3.0, 3.0); a_.set_aspect("equal"); a_.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.92, bottom=0.01)
+    fig.savefig(f"{OUT}/gradient_force.png", dpi=200)
+    print("wrote", f"{OUT}/gradient_force.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the orbital Zeeman effect: 2p fans into three levels, one line becomes three (still)
+@register
+def zeeman_orbital():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9), gridspec_kw={"width_ratios": [1.2, 1], "wspace": 0.1})
+    B = np.linspace(0, 1, 50)
+    E2, E1, s = 3.2, 0.0, 0.85                                   # schematic: the real 2p - 1s gap is 10^5 splittings
+    for m in (1, 0, -1):
+        ax.plot(B, E2 + s * m * B, color=PURPLE, lw=2.6)
+        ax.text(1.04, E2 + s * m, rf"$m_l = {m:+d}$" if m else r"$m_l = 0$", va="center", fontsize=13, color=PURPLE)
+    ax.plot(B, E1 + 0 * B, color=TEAL, lw=2.6)
+    ax.text(1.04, E1, r"$m_l = 0$", va="center", fontsize=13, color=TEAL)
+    ax.text(-0.05, E2, "2p", ha="right", va="center", fontsize=15, color=PURPLE, weight="bold")
+    ax.text(-0.05, E1, "1s", ha="right", va="center", fontsize=15, color=TEAL, weight="bold")
+    for k, m in enumerate((-1, 0, 1)):                           # the three lines: Delta m_l = -1, 0, +1
+        x = 0.66 + 0.11 * k
+        ax.annotate("", xy=(x, E2 + s * m * x), xytext=(x, E1), arrowprops=dict(arrowstyle="-|>", color="#495057", lw=1.8,
+                                                                              mutation_scale=14, shrinkA=0, shrinkB=0))
+    ax.set_xlim(-0.25, 1.42); ax.set_ylim(-0.5, 4.5)
+    ax.set_xticks([0]); ax.set_xticklabels(["0"], fontsize=11); ax.set_yticks([])
+    ax.set_xlabel(r"magnetic field $B$", fontsize=12.5); ax.set_ylabel("energy", fontsize=12.5)
+    ax.spines["bottom"].set_bounds(0, 1)
+    # the spectrum: one line without the field, three with it
+    for y0, lines in ((1.25, (0,)), (0.0, (-1, 0, 1))):
+        bx.add_patch(plt.Rectangle((-2.2, y0), 4.4, 0.8, fc="#f1f3f5", ec="#ced4da", lw=1))
+        for d in lines:
+            bx.plot([d, d], [y0, y0 + 0.8], color="#495057", lw=3.2, solid_capstyle="butt")
+    bx.text(-2.35, 1.65, r"$B = 0$", ha="right", va="center", fontsize=13.5)
+    bx.text(-2.35, 0.4, r"$B > 0$", ha="right", va="center", fontsize=13.5)
+    bx.set_xlim(-3.6, 2.3); bx.set_ylim(-0.25, 2.3)
+    bx.set_xticks([-1, 0, 1]); bx.set_xticklabels([r"$\nu_0 - \mu_BB/h$", r"$\nu_0$", r"$\nu_0 + \mu_BB/h$"], fontsize=11.5)
+    bx.set_yticks([]); bx.spines["left"].set_visible(False); bx.spines["bottom"].set_bounds(-2.2, 2.2)
+    bx.set_xlabel("frequency", fontsize=12.5, labelpad=6)
+    fig.subplots_adjust(left=0.05, right=0.99, top=0.97, bottom=0.2)
+    fig.savefig(f"{OUT}/zeeman_orbital.png", dpi=200)
+    print("wrote", f"{OUT}/zeeman_orbital.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ Stern and Gerlach: a beam of atoms splits in two in a non-uniform field (animation, 36 frames)
+@register
+def stern_gerlach():
+    from matplotlib.patches import Rectangle
+    rng = np.random.default_rng(5)
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.2, 3.5), gridspec_kw={"width_ratios": [4.3, 1], "wspace": 0.03})
+    xm0, xm1, xp, kk = 2.5, 5.5, 8.7, 0.043                     # magnet from xm0 to xm1, plate at xp; z = +-kk (x - xm0)^2 inside
+    n_fr, per, dx = 36, 3, 0.36                                  # frames, atoms launched per frame, distance per frame
+    N = n_fr * per
+    sgn = rng.choice([1, -1], N)                                 # which way each atom goes: decided only at the magnet
+    z0 = rng.normal(0, 0.03, N)
+    zland = rng.normal(0, 0.09, N)
+    yland = rng.uniform(-0.8, 0.8, N)
+    frac = rng.uniform(0, 1, N)
+    bend = lambda x: np.where(x < xm0, 0.0, np.where(x < xm1, (x - xm0)**2, (xm1 - xm0)**2 + 2 * (xm1 - xm0) * (x - xm1)))
+    zend = kk * float(bend(np.array(xp)))
+    ax.add_patch(Rectangle((0.0, -0.6), 1.05, 1.2, fc="#dee2e6", ec=GRAY, lw=1.3))
+    ax.text(0.52, -0.85, "oven", ha="center", va="top", fontsize=12.5, color=GRAY)
+    for s in (1, -1):
+        ax.plot([1.75, 1.75], [s * 0.2, s * 0.8], color=GRAY, lw=3.5, solid_capstyle="butt")
+        ax.add_patch(Rectangle((xm0, 0.62 if s > 0 else -1.62), xm1 - xm0, 1.0, fc="#dee2e6", ec=GRAY, lw=1.3))
+    ax.text(0.5 * (xm0 + xm1), 1.12, "magnet", ha="center", va="center", fontsize=12.5, color=GRAY)
+    ax.plot([xp, xp], [-2.0, 2.0], color="#343a40", lw=4, solid_capstyle="butt")
+    ax.text(xp, -2.2, "plate", ha="center", va="top", fontsize=12.5, color=GRAY)
+    xs = np.linspace(1.05, xp, 200)
+    for s, col in ((1, TEAL), (-1, ORANGE)):
+        ax.plot(xs, s * kk * bend(xs), color=col, lw=1.0, alpha=0.35, zorder=1)
+    fly = ax.scatter([], [], s=26, zorder=5)
+    ax.set_xlim(-0.2, 9.1); ax.set_ylim(-2.6, 2.3); ax.axis("off")
+    bx.add_patch(Rectangle((-1.05, -2.0), 2.1, 4.0, fc="#f1f3f5", ec="#343a40", lw=1.6))
+    hits = bx.scatter([], [], s=20, zorder=5)
+    bx.text(0, -2.2, "plate, face on", ha="center", va="top", fontsize=12.5, color=GRAY)
+    bx.set_xlim(-1.5, 1.5); bx.set_ylim(-2.6, 2.3); bx.axis("off")
+    dark, cols = np.array([0.29, 0.31, 0.34, 1.0]), {1: np.array([0.063, 0.471, 0.584, 1.0]), -1: np.array([0.878, 0.482, 0.0, 1.0])}
+
+    def update(f):
+        x = 1.05 + (f - np.arange(N) // per + frac) * dx          # how far each atom has flown by frame f
+        on = (x >= 1.05) & (x < xp)
+        z = z0 * (x < 1.75) + sgn * kk * bend(x)
+        c = np.array([dark if xi < xm0 else cols[si] for xi, si in zip(x[on], sgn[on])]).reshape(-1, 4)
+        fly.set_offsets(np.c_[x[on], z[on]]); fly.set_facecolors(c)
+        done = x >= xp
+        hits.set_offsets(np.c_[yland[done], sgn[done] * zend + zland[done]])
+        hits.set_facecolors(np.array([cols[si] for si in sgn[done]]).reshape(-1, 4))
+
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.02)
+    ani = FuncAnimation(fig, update, frames=n_fr, interval=100, blit=False)
+    return fig, ani
+
+
+stern_gerlach.fps = 10
+
+
+# ------------------------------------------------------------ what the plate should show (classical smear, one spot for l = 0, three for l = 1) and what it showed (still)
+@register
+def sg_screens():
+    from matplotlib.patches import Rectangle
+    rng = np.random.default_rng(11)
+    fig, axes = plt.subplots(1, 4, figsize=(9.6, 3.7), gridspec_kw={"wspace": 0.12})
+    n = 360
+    cases = [("classical magnet", rng.uniform(-1.25, 1.25, n), "#343a40"),
+             (r"$l = 0$", np.zeros(n), "#343a40"),
+             (r"$l = 1$", rng.choice([-1.25, 0, 1.25], n), "#343a40"),
+             ("silver, observed", rng.choice([-1.25, 1.25], n), CARDINAL)]
+    for ax, (name, z, col) in zip(axes, cases):
+        ax.add_patch(Rectangle((-1.05, -2.0), 2.1, 4.0, fc="#f1f3f5", ec="#343a40", lw=1.6))
+        ax.scatter(rng.uniform(-0.8, 0.8, n), z + rng.normal(0, 0.1, n), s=11, color="#495057", alpha=0.55, lw=0)
+        ax.set_title(name, fontsize=14.5, color=col)
+        ax.set_xlim(-1.3, 1.3); ax.set_ylim(-2.15, 2.15); ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.9, bottom=0.01)
+    fig.savefig(f"{OUT}/sg_screens.png", dpi=200)
+    print("wrote", f"{OUT}/sg_screens.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the vector model for s = 1/2: two cones, length sqrt(3)/2, heights +-1/2, 54.7 degrees from z (still)
+@register
+def spin_cones():
+    from matplotlib.patches import Arc
+    fig, ax = plt.subplots(figsize=(5.8, 4.7))
+    t = np.linspace(0, 2 * np.pi, 300)
+    R = np.sqrt(3) / 2                                           # |S| in units of hbar
+    ax.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
+    ax.annotate("", xy=(0, R + 0.3), xytext=(0, -R - 0.16), arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14,
+                                                                          shrinkA=0, shrinkB=0))
+    ax.text(0.07, R + 0.26, "$z$", fontsize=16, va="center")
+    for m, col, sg in ((0.5, TEAL, "+"), (-0.5, ORANGE, "-")):
+        rm = np.sqrt(R * R - m * m)                              # radius of the cone's rim: the part of S off the z axis
+        ax.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=col, lw=1.6, alpha=0.45)
+        ax.plot([-rm, 0, rm], [m, 0, m], color=col, lw=1.3, alpha=0.45)
+        ax.annotate("", xy=(rm, m), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=col, lw=2.8, mutation_scale=18,
+                                                                  shrinkA=0, shrinkB=0))
+        ax.plot([0], [m], "o", color=col, ms=5.5, zorder=5)
+        ax.plot([rm + 0.04, R + 0.12], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
+        ax.text(R + 0.17, m + 0.085, rf"$m_s = {sg}\frac{{1}}{{2}}$", va="center", fontsize=17, color=col)
+        ax.text(R + 0.17, m - 0.1, rf"$S_z = {sg}\frac{{1}}{{2}}\hbar$", va="center", fontsize=17, color=col)
+    ax.add_patch(Arc((0, 0), 0.44, 0.44, theta1=np.degrees(np.arctan2(0.5, 1 / np.sqrt(2))), theta2=90, color="#343a40", lw=1.3))
+    ax.text(0.055, 0.292, r"$54.7°$", fontsize=12.5, color="#343a40", ha="left", va="center")
+    ax.text(-0.64, 0.76, r"$|\vec{S}| = \frac{\sqrt{3}}{2}\hbar$", fontsize=17, color=GRAY, ha="right", va="center")
+    ax.set_xlim(-1.5, 1.82); ax.set_ylim(-R - 0.22, R + 0.4)
+    ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    fig.savefig(f"{OUT}/spin_cones.png", dpi=200)
+    print("wrote", f"{OUT}/spin_cones.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ one magnet after another: z then z, z then x, z then x then z (still)
+@register
+def sg_sequence():
+    from matplotlib.patches import Rectangle, FancyBboxPatch
+    fig, ax = plt.subplots(figsize=(9.6, 4.4))
+    w, hgt, gap = 1.25, 0.9, 2.55                                 # analyser width and height, spacing
+    rows = [("(a)", 2.5, ["z", "z"], [("+z", "100%"), ("-z", "0")]),
+            ("(b)", 0.0, ["z", "x"], [("+x", "50%"), ("-x", "50%")]),
+            ("(c)", -2.5, ["z", "x", "z"], [("+z", "50%"), ("-z", "50%")])]
+    for tag, y, axes_, outs in rows:
+        ax.text(-0.75, y, tag, fontsize=14.5, ha="center", va="center", color="#343a40")
+        ax.add_patch(Rectangle((-0.3, y - 0.3), 0.75, 0.6, fc="#dee2e6", ec=GRAY, lw=1.2))
+        if tag == "(a)":
+            ax.text(0.08, y - 0.42, "oven", fontsize=12, ha="center", va="top", color=GRAY)
+        ax.plot([0.45, 1.6], [y, y], color="#495057", lw=2.2)
+        for i, name in enumerate(axes_):
+            x0 = 1.6 + gap * i
+            ax.add_patch(FancyBboxPatch((x0, y - hgt / 2), w, hgt, boxstyle="round,pad=0,rounding_size=0.12", fc="white", ec="#343a40", lw=1.8, zorder=3))
+            ax.text(x0 + w / 2, y, f"${name}$", fontsize=20, ha="center", va="center", zorder=4)
+            last = i == len(axes_) - 1
+            if not last:                                         # keep the + beam, block the - beam
+                ax.plot([x0 + w, x0 + w + 0.45, x0 + gap], [y + 0.25, y + 0.25, y], color=TEAL, lw=2.4, zorder=2)
+                ax.plot([x0 + w, x0 + w + 0.5], [y - 0.25, y - 0.25], color=ORANGE, lw=2.4, zorder=2)
+                ax.plot([x0 + w + 0.5, x0 + w + 0.5], [y - 0.5, y - 0.02], color="#343a40", lw=4.5, solid_capstyle="butt", zorder=3)
+            else:
+                for (lab, pct), sgn, col in zip(outs, (1, -1), (TEAL, ORANGE)):
+                    none = pct == "0"
+                    ax.annotate("", xy=(x0 + w + 1.0, y + sgn * 0.25), xytext=(x0 + w, y + sgn * 0.25), zorder=2,
+                                arrowprops=dict(arrowstyle="-|>", color="#ced4da" if none else col, lw=2.4, mutation_scale=16,
+                                                shrinkA=0, shrinkB=0, ls=(0, (3, 2)) if none else "-"))
+                    ax.text(x0 + w + 1.15, y + sgn * 0.3, f"${lab}$", fontsize=15, va="center", color=GRAY if none else col)
+                    ax.text(x0 + w + 1.85, y + sgn * 0.3, pct, fontsize=15, va="center", weight="bold", color=GRAY if none else col)
+    ax.set_xlim(-1.1, 10.6); ax.set_ylim(-3.3, 3.3); ax.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    fig.savefig(f"{OUT}/sg_sequence.png", dpi=200)
+    print("wrote", f"{OUT}/sg_sequence.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ a spin 1/2 in a field has two levels: the electron (GHz, EPR) and the proton (MHz, NMR) (still)
+@register
+def spin_resonance():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9), gridspec_kw={"wspace": 0.72})
+    # (panel, slope of the splitting in frequency per tesla, largest field, field of the arrow, its label, m label, which state is lower)
+    panels = [(ax, 2.0023 * 13.996, 0.5, 0.34, "9.5 GHz", "m_s", -1), (bx, 42.577, 12.0, 9.4, "400 MHz", "m_I", 1)]
+    for a_, slope, Bmax, B0, lab, mname, low in panels:
+        B = np.linspace(0, Bmax, 50)
+        for m, col, name in ((0.5, TEAL, r"\alpha"), (-0.5, ORANGE, r"\beta")):
+            a_.plot(B, -low * m * slope * B, color=col, lw=2.6)
+            a_.text(1.02 * Bmax, -low * m * slope * Bmax, rf"${name}$, ${mname} = {'+' if m > 0 else '-'}\frac{{1}}{{2}}$", color=col,
+                    fontsize=13, va="center")
+        a_.annotate("", xy=(B0, 0.5 * slope * B0), xytext=(B0, -0.5 * slope * B0), arrowprops=dict(arrowstyle="<|-|>", color="#343a40",
+                                                                                         lw=1.8, mutation_scale=14, shrinkA=0, shrinkB=0))
+        a_.text(B0 - 0.03 * Bmax, 0, lab, fontsize=13.5, ha="right", va="center", color="#343a40",
+                bbox=dict(fc="white", ec="none", pad=1.5))
+        a_.set_xlim(0, Bmax); a_.set_ylim(-0.6 * slope * Bmax, 0.6 * slope * Bmax)
+        a_.set_xlabel(r"magnetic field $B$ (T)", fontsize=12); a_.tick_params(labelsize=10.5)
+    ax.set_ylabel(r"energy / $h$ (GHz)", fontsize=12); bx.set_ylabel(r"energy / $h$ (MHz)", fontsize=12)
+    ax.set_title("electron", fontsize=14); bx.set_title("proton", fontsize=14)
+    fig.subplots_adjust(left=0.075, right=0.855, top=0.9, bottom=0.17)
+    fig.savefig(f"{OUT}/spin_resonance.png", dpi=200)
+    print("wrote", f"{OUT}/spin_resonance.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ spin-orbit coupling: seen from the electron, the nucleus circles it and makes a field at the spin (still)
+@register
+def spin_orbit_frames():
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9), gridspec_kw={"wspace": 0.02})
+    a, b = 1.6, 0.5
+    t = np.linspace(0, 2 * np.pi, 400)
+    arrow = lambda a_, p0, p1, col, lw, ms: a_.annotate("", xy=p1, xytext=p0, zorder=6, arrowprops=dict(
+        arrowstyle="-|>", color=col, lw=lw, mutation_scale=ms, shrinkA=0, shrinkB=0))
+    f = np.radians(-52)
+    pe = np.array([a * np.cos(f), b * np.sin(f)])
+    tv = np.array([-a * np.sin(f), b * np.cos(f)]); tv = tv / np.hypot(*tv)
+    for a_ in (ax, bx):
+        a_.fill(a * np.cos(t), b * np.sin(t), color=PURPLE, alpha=0.06, lw=0, zorder=1)
+        a_.plot(a * np.cos(t), b * np.sin(t), color="#868e96", lw=1.6, zorder=2)
+        a_.set_xlim(-2.6, 2.6); a_.set_ylim(-1.75, 2.2); a_.set_aspect("equal"); a_.axis("off")
+    # left: the nucleus at rest, the electron circles it
+    ax.plot(0, 0, "o", color="#343a40", ms=13, zorder=7)
+    ax.text(-0.12, -0.36, r"$+Ze$", fontsize=14.5, color="#343a40", ha="center", va="center")
+    ax.plot(*pe, "o", color=TEAL, ms=9, zorder=7)
+    ax.text(pe[0] + 0.02, pe[1] - 0.33, r"$-e$", fontsize=14.5, color=TEAL, ha="center", va="center")
+    arrow(ax, pe, pe + 0.85 * tv, TEAL, 2.2, 15)
+    arrow(ax, (0, 0), (0, 1.75), PURPLE, 3.0, 19)
+    ax.text(0.16, 1.62, r"$\vec{L}$", fontsize=18, color=PURPLE, va="center")
+    ax.set_title("nucleus at rest", fontsize=14)
+    # right: the electron at rest; the nucleus circles it the same way, a loop of positive current whose field is along L
+    f2 = np.radians(-128)
+    pn = np.array([a * np.cos(f2), b * np.sin(f2)])
+    tn = np.array([-a * np.sin(f2), b * np.cos(f2)]); tn = tn / np.hypot(*tn)
+    bx.plot(*pn, "o", color="#343a40", ms=13, zorder=7)
+    bx.text(pn[0] - 0.1, pn[1] - 0.38, r"$+Ze$", fontsize=14.5, color="#343a40", ha="center", va="center")
+    arrow(bx, pn, pn + 0.85 * tn, "#343a40", 2.2, 15)
+    arrow(bx, (-0.62, -0.1), (-0.62, 1.75), GRAY, 3.0, 19)
+    bx.text(-0.78, 1.62, r"$\vec{B}$", fontsize=18, color=GRAY, va="center", ha="right")
+    bx.plot(0, 0, "o", color=TEAL, ms=9, zorder=7)
+    arrow(bx, (0, 0), (0, 1.2), TEAL, 2.8, 17)
+    bx.text(0.16, 1.1, r"$\vec{S}$", fontsize=18, color=TEAL, va="center")
+    arrow(bx, (0, 0), (0, -1.2), CARDINAL, 2.8, 17)
+    bx.text(0.16, -1.12, r"$\vec{\mu}_s$", fontsize=18, color=CARDINAL, va="center")
+    bx.text(0.2, -0.02, r"$-e$", fontsize=14.5, color=TEAL, ha="left", va="center")
+    bx.set_title("electron at rest", fontsize=14)
+    fig.subplots_adjust(left=0.0, right=1.0, top=0.92, bottom=0.0)
+    fig.savefig(f"{OUT}/spin_orbit_frames.png", dpi=200)
+    print("wrote", f"{OUT}/spin_orbit_frames.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ adding l = 1 and s = 1/2: six states sorted by m_j = m_l + m_s make a ladder of four and a ladder of two (still)
+@register
+def adding_momenta():
+    from matplotlib.patches import Rectangle, Polygon
+    LIGHT = "#b9a3dc"
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.9), gridspec_kw={"width_ratios": [1.25, 1], "wspace": 0.05})
+    frac = lambda k: (r"+" if k > 0 else r"-") + rf"\frac{{{abs(k)}}}{{2}}"          # k halves, as a signed fraction
+    cw, ch = 1.3, 1.0
+    for i, ml in enumerate((1, 0, -1)):
+        ax.text(i * cw + cw / 2, 2 * ch + 0.28, rf"$m_l = {ml:+d}$" if ml else r"$m_l = 0$", ha="center", va="center", fontsize=14, color=PURPLE)
+        for j, ms2 in enumerate((1, -1)):                        # ms2 = 2 m_s
+            x0, y0 = i * cw, (1 - j) * ch
+            mj2 = 2 * ml + ms2                                   # 2 m_j
+            if abs(mj2) == 3:                                    # m_j = +-3/2 occurs once: it belongs to j = 3/2
+                ax.add_patch(Rectangle((x0, y0), cw, ch, fc=PURPLE, alpha=0.75, lw=0))
+            else:                                                # m_j = +-1/2 occurs twice: shared between j = 3/2 and j = 1/2
+                ax.add_patch(Polygon([[x0, y0], [x0 + cw, y0 + ch], [x0, y0 + ch]], fc=PURPLE, alpha=0.75, lw=0))
+                ax.add_patch(Polygon([[x0, y0], [x0 + cw, y0], [x0 + cw, y0 + ch]], fc=LIGHT, alpha=0.9, lw=0))
+            ax.add_patch(Rectangle((x0, y0), cw, ch, fill=False, ec="white", lw=3))
+            ax.text(x0 + cw / 2, y0 + ch / 2, rf"${frac(mj2)}$", ha="center", va="center", fontsize=19, color="white", weight="bold")
+    for j, (ms2, col) in enumerate(((1, TEAL), (-1, ORANGE))):
+        ax.text(-0.15, (1 - j) * ch + ch / 2, rf"$m_s = {frac(ms2)}$", ha="right", va="center", fontsize=14, color=col)
+    ax.text(1.5 * cw, -0.32, r"$m_j = m_l + m_s$", ha="center", va="center", fontsize=14, color="#343a40")
+    ax.set_xlim(-1.75, 3 * cw + 0.2); ax.set_ylim(-0.75, 2.75); ax.axis("off")
+    # the same six states as two ladders
+    for xc, j2, col in ((0.0, 3, PURPLE), (1.9, 1, LIGHT)):
+        for mj2 in range(-j2, j2 + 1, 2):
+            bx.plot([xc - 0.6, xc + 0.6], [mj2 / 2, mj2 / 2], color=col, lw=5, solid_capstyle="butt")
+        bx.text(xc, 2.05, rf"$j = \frac{{{j2}}}{{2}}$", ha="center", va="center", fontsize=16, color=PURPLE if j2 == 3 else "#8566c2")
+    for mj2 in (3, 1, -1, -3):
+        bx.text(-0.85, mj2 / 2, rf"${frac(mj2)}$", ha="right", va="center", fontsize=14.5, color="#343a40")
+    bx.text(-1.05, 2.05, r"$m_j$", ha="right", va="center", fontsize=15, color="#343a40")
+    bx.set_xlim(-2.2, 2.9); bx.set_ylim(-2.25, 2.55); bx.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    fig.savefig(f"{OUT}/adding_momenta.png", dpi=200)
+    print("wrote", f"{OUT}/adding_momenta.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ fine structure: spin-orbit coupling splits a p level into j = 3/2 and j = 1/2; the sodium D doublet (still)
+@register
+def fine_structure():
+    LIGHT = "#b9a3dc"
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 3.3), gridspec_kw={"width_ratios": [1.15, 1], "wspace": 0.12})
+    w, g = 0.2, 0.06                                             # one bar per state, as in the hydrogen ladder of 5.1
+    bars = lambda xc, E, k, col: [ax.plot([xc - 0.5 * (k * w + (k - 1) * g) + i * (w + g), xc - 0.5 * (k * w + (k - 1) * g) + i * (w + g) + w],
+                                          [E, E], color=col, lw=5, solid_capstyle="butt") for i in range(k)]
+    bars(1.0, 0.0, 6, PURPLE)
+    bars(3.6, 0.5, 4, PURPLE)
+    bars(3.6, -1.0, 2, LIGHT)
+    for E in (0.5, -1.0):
+        ax.plot([1.85, 2.9], [0, E], color="#adb5bd", lw=1.1, ls=(0, (4, 3)))
+    ax.text(1.0, 0.24, r"$n$p", ha="center", va="bottom", fontsize=15, color=PURPLE)
+    ax.text(4.25, 0.5, r"$^2$P$_{3/2}$", ha="left", va="center", fontsize=15, color=PURPLE)
+    ax.text(4.25, -1.0, r"$^2$P$_{1/2}$", ha="left", va="center", fontsize=15, color="#8566c2")
+    ax.text(5.35, 0.5, r"$+\frac{1}{2}A$", ha="left", va="center", fontsize=15, color="#343a40")
+    ax.text(5.35, -1.0, r"$-A$", ha="left", va="center", fontsize=15, color="#343a40")
+    ax.annotate("", xy=(3.6, 0.42), xytext=(3.6, -0.92), arrowprops=dict(arrowstyle="<|-|>", color=GRAY, lw=1.3, mutation_scale=12, shrinkA=0, shrinkB=0))
+    ax.text(3.72, -0.25, r"$\frac{3}{2}A$", ha="left", va="center", fontsize=15, color=GRAY)
+    ax.text(1.0, 1.25, "no coupling", ha="center", va="center", fontsize=13, color=GRAY)
+    ax.text(3.9, 1.25, "spin-orbit coupling", ha="center", va="center", fontsize=13, color=GRAY)
+    ax.set_xlim(0.0, 6.4); ax.set_ylim(-1.6, 1.55); ax.axis("off")
+    # the sodium D lines, as in a spectroscope (wavelengths in air)
+    bx.set_facecolor("#111111"); bx.set_yticks([])
+    for sp in bx.spines.values():
+        sp.set_color("#444444")
+    D2, D1 = 588.995, 589.592
+    for x, name in ((D2, r"D$_2$"), (D1, r"D$_1$")):
+        bx.vlines(x, 0, 1, color="#ffd43b", lw=3.2, zorder=2)
+        bx.text(x, 1.06, name, ha="center", va="bottom", fontsize=14)
+    bx.annotate("", xy=(D1, 0.5), xytext=(D2, 0.5), arrowprops=dict(arrowstyle="<->", color="white", lw=1.2, shrinkA=3, shrinkB=3))
+    bx.text(0.5 * (D1 + D2), 0.57, f"{D1 - D2:.2f} nm", ha="center", va="bottom", fontsize=12.5, color="white")
+    bx.set_xlim(588.5, 590.1); bx.set_ylim(0, 1)
+    bx.set_xticks([588.6, 589.0, 589.4, 589.8]); bx.tick_params(labelsize=11)
+    bx.set_xlabel("wavelength (nm), sodium", fontsize=12)
+    fig.subplots_adjust(left=0.0, right=0.98, top=0.88, bottom=0.17)
+    bx.set_position([0.57, 0.27, 0.4, 0.5])
+    fig.savefig(f"{OUT}/fine_structure.png", dpi=200)
+    print("wrote", f"{OUT}/fine_structure.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ the six states of a p level against the field: weak field (j, m_j) to strong field (m_l + 2 m_s) (still)
+@register
+def zeeman_crossover():
+    plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+    LIGHT = "#b9a3dc"
+    Lz = np.diag([1.0, 0.0, -1.0])                               # l = 1 in the basis m_l = +1, 0, -1
+    Lp = np.sqrt(2) * np.diag([1.0, 1.0], 1)                     # L+ raises m_l
+    Sz = np.diag([0.5, -0.5])                                    # s = 1/2 in the basis alpha, beta
+    Sp = np.diag([1.0], 1)                                       # S+ turns beta into alpha
+    LS = np.kron(Lz, Sz) + 0.5 * (np.kron(Lp, Sp.T) + np.kron(Lp.T, Sp))   # L.S = Lz Sz + (L+ S- + L- S+)/2, units of hbar^2
+    Zm = np.kron(Lz, np.eye(2)) + 2 * np.kron(np.eye(3), Sz)     # Lz + 2 Sz
+    mj2 = np.rint(2 * np.diag(np.kron(Lz, np.eye(2)) + np.kron(np.eye(3), Sz))).astype(int)
+    b = np.linspace(0, 3, 301)                                   # mu_B B / A
+    fig, ax = plt.subplots(figsize=(8.6, 4.6))
+    ax.axvspan(0, 0.35, color="#f1f3f5", lw=0, zorder=0)
+    for k in (3, 1, -1, -3):                                     # m_j stays sharp at every field: diagonalize block by block
+        idx = np.where(mj2 == k)[0]
+        E = np.array([np.linalg.eigvalsh((LS + x * Zm)[np.ix_(idx, idx)]) for x in b])
+        for c in range(len(idx)):
+            upper = len(idx) == 1 or c == 1                      # the branch that starts in j = 3/2
+            ax.plot(b, E[:, c], color=PURPLE if upper else LIGHT, lw=2.6)
+    for y, lab, col in ((0.5, r"$^2$P$_{3/2}$", PURPLE), (-1.0, r"$^2$P$_{1/2}$", "#8566c2")):
+        ax.text(-0.07, y, lab, ha="right", va="center", fontsize=17, color=col)
+    ends = [(6.5, "+2"), (3.14, "+1"), (-0.47, r"0, 0"), (-3.19, "-1"), (-5.5, "-2")]
+    for y, lab in ends:
+        ax.text(3.07, y, rf"${lab}$", ha="left", va="center", fontsize=17, color="#343a40")
+    ax.text(3.07, 7.6, r"$m_l + 2m_s$", ha="left", va="center", fontsize=16.5, color="#343a40")
+    ax.text(0.175, 7.6, "weak", ha="center", va="center", fontsize=15, color=GRAY)
+    ax.text(2.4, 7.6, "strong field", ha="center", va="center", fontsize=15, color=GRAY)
+    ax.set_xlim(0, 3); ax.set_ylim(-6.3, 8.2)
+    ax.set_xlabel(r"magnetic field, $\mu_BB/A$", fontsize=14.5); ax.set_ylabel(r"energy / $A$", fontsize=14.5)
+    ax.set_yticks([-4, -2, 0, 2, 4, 6]); ax.tick_params(labelsize=12.5)
+    ax.spines["left"].set_position(("outward", 74)); ax.spines["left"].set_bounds(-6, 6.5)
+    fig.subplots_adjust(left=0.2, right=0.85, top=0.98, bottom=0.15)
+    fig.savefig(f"{OUT}/zeeman_crossover.png", dpi=200)
+    print("wrote", f"{OUT}/zeeman_crossover.png")
+    return fig, None
+
+
+# ------------------------------------------------------------ which lines hydrogen has: levels sorted by l, allowed lines join neighbouring columns (still)
+@register
+def hydrogen_grotrian():
+    fig, ax = plt.subplots(figsize=(8.0, 4.6))
+    cols = {0: TEAL, 1: PURPLE, 2: ORANGE}
+    xc = {0: 0.0, 1: 2.0, 2: 4.0}
+    lev = {1: -13.6, 2: -6.0, 3: -2.0}                           # schematic heights
+    w = 0.5
+    for n in range(1, 4):
+        for l in range(n):
+            ax.plot([xc[l] - w, xc[l] + w], [lev[n], lev[n]], color=cols[l], lw=3.6, solid_capstyle="butt", zorder=3)
+            ax.text(xc[l] + w + 0.08, lev[n], f"{n}{'spd'[l]}", va="center", fontsize=16, color=cols[l])
+        ax.text(-1.0, lev[n], rf"$n = {n}$", ha="right", va="center", fontsize=16, color="#343a40")
+    # allowed lines: (upper n, l, where on its bar) to (lower n, l, where on its bar); every one joins neighbouring columns
+    allowed = [((2, 1, -0.4), (1, 0, 0.2)), ((3, 1, -0.1), (1, 0, 0.45)),
+               ((3, 0, 0.3), (2, 1, -0.15)), ((3, 1, -0.35), (2, 0, 0.3)), ((3, 2, -0.3), (2, 1, 0.3))]
+    for (n1, l1, d1), (n2, l2, d2) in allowed:
+        ax.annotate("", xy=(xc[l2] + d2, lev[n2]), xytext=(xc[l1] + d1, lev[n1]), zorder=2,
+                    arrowprops=dict(arrowstyle="-|>", color="#495057", lw=1.7, mutation_scale=13, shrinkA=0, shrinkB=1))
+    # forbidden: 2s to 1s (l does not change) and 3d to 1s (l changes by two)
+    for (n1, l1, d1), (n2, l2, d2), where in (((2, 0, -0.3), (1, 0, -0.3), 0.5), ((3, 2, 0.45), (1, 0, 0.5), 0.62)):
+        p1, p2 = np.array([xc[l1] + d1, lev[n1]]), np.array([xc[l2] + d2, lev[n2]])
+        ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color="#adb5bd", lw=1.6, ls=(0, (4, 3)), zorder=1)
+        pm = p1 + where * (p2 - p1)
+        for sg in (1, -1):
+            ax.plot([pm[0] - 0.13, pm[0] + 0.13], [pm[1] - sg * 0.48, pm[1] + sg * 0.48], color=CARDINAL, lw=2.8, solid_capstyle="round", zorder=4)
+    for l in range(3):
+        ax.text(xc[l], 1.3, "spd"[l], ha="center", va="center", fontsize=19, color=cols[l], weight="bold")
+        ax.text(xc[l], 0.2, rf"$l = {l}$", ha="center", va="center", fontsize=15, color=cols[l])
+    ax.set_xlim(-2.0, 5.3); ax.set_ylim(-14.5, 2.0); ax.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    fig.savefig(f"{OUT}/hydrogen_grotrian.png", dpi=200)
+    print("wrote", f"{OUT}/hydrogen_grotrian.png")
     return fig, None
 
 

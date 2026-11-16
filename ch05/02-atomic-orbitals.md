@@ -11,7 +11,7 @@ kernelspec:
 - An **atomic orbital** is one stationary state of a one-electron atom, $\psi_{nlm} = R_{nl}(r)\,Y_l^m(\theta, \phi)$, named by $n$ and the letter of $l$: 1s, 2p, 3d. [Lecture 5.1](01-hydrogenlike-atoms.md) solved for them. This lecture draws them, and learns to read the drawings.
 - "Where is the electron?" has three answers. $\lvert\psi\rvert^2\,dV$ is the probability of finding it in a small volume; the **radial distribution** $P(r) = r^2R_{nl}^2$ is the probability per unit length of finding it at distance $r$, at any angle (the $r^2$ is the area of the shell); $\lvert Y_l^m\rvert^2$ is the probability per unit solid angle of finding it in a direction. The 1s density is largest at the nucleus, but $P(r)$ peaks at $a_0$: the **most probable distance**. The average distance is $\tfrac{3}{2}a_0$, and 90% of the electron lies inside $2.66\,a_0$.
 - Sizes grow as $n^2a_0/Z$. For $l = n - 1$ the most probable distance is exactly Bohr's $n^2a_0/Z$; s states keep small inner lobes close to the nucleus, which is why 2s lies below 2p once there are other electrons ([Chapter 7](../ch07/02-multi-electron-atoms.md)).
-- The $Y_l^m$ with $m \neq 0$ are complex and their densities are rings around $z$. Because the $2l + 1$ states of one $n$ and $l$ have the same energy, any combination of them is again a stationary state, and the combinations $(Y_l^{-m} \mp Y_l^{m})/\sqrt{2}$ are **real orbitals** that point along axes: $p_x$, $p_y$, $p_z$ and the five $d$. They keep $E$ and $L^2$; $p_x$ has no definite $L_z$ but is the $m = 0$ state about the $x$ axis. Which set an atom is in depends on what picks a direction: a field along $z$ selects the $m$ states, a bond along $x$ selects $p_x$.
+- The $Y_l^m$ with $m \neq 0$ are complex and their densities are rings around $z$. Because the $2l + 1$ states of one $n$ and $l$ have the same energy, any combination of them is again a stationary state, and the combinations $(Y_l^{-m} \mp Y_l^{m})/\sqrt{2}$ are **real orbitals** that point along axes: $p_x$, $p_y$, $p_z$ and the five $d$. They keep $E$ and $L^2$; $p_x$ has no definite $L_z$ but is the $m = 0$ state about the $x$ axis. The atom is round, so $z$ is only the axis we measured $\theta$ from: $p_x$ is the same dumbbell as $p_z$, turned to $x$. Use the $m$ states when a magnetic field makes $z$ special, and $p_x$ when a neighbouring atom sits along $x$.
 - **Nodes:** $n - l - 1$ radial nodes (spheres) plus $l$ angular nodes (planes or cones), $n - 1$ in all. A **boundary surface** encloses 90% of the probability; it is what the textbook drawings show.
 
 :::
@@ -365,27 +365,141 @@ Fig. Left: the 1s radial distribution, with 32% of the probability inside $a_0$ 
 
 ### The shape: the angular part
 
-#### The $m$ states are symmetric about $z$. But which $z$?
+#### The $m$ states: a dumbbell and a ring around $z$
 
-The angular factor of $\psi_{nlm}$ is the spherical harmonic $Y_l^m$ of Lecture 4.4, and its density $\lvert Y_l^m\rvert^2$ does not depend on $\phi$, because $Y_l^m \propto e^{im\phi}$ and $\lvert e^{im\phi}\rvert = 1$. So a state with a definite $m$ is symmetric about the axis it was quantized along. For $l = 1$:
+The angular factor of $\psi_{nlm}$ is the spherical harmonic $Y_l^m$ of [Lecture 4.4](../ch04/04-angular-momentum.md). Its density $\lvert Y_l^m\rvert^2$ does not depend on $\phi$, because $Y_l^m \propto e^{im\phi}$ and $\lvert e^{im\phi}\rvert = 1$. For $l = 1$:
 
 $$
-\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta \quad\text{(a dumbbell along } z\text{)}, \qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta \quad\text{(a ring around } z\text{)}
+\lvert Y_1^{0}\rvert^2 = \frac{3}{4\pi}\cos^2\theta, \qquad \lvert Y_1^{\pm1}\rvert^2 = \frac{3}{8\pi}\sin^2\theta
 $$
 
-The $m = +1$ and $m = -1$ states have the same density, a ring in the $xy$ plane; they differ only in the sense in which their phase runs around $z$.
+Draw each density as a curve whose distance from the center, in every direction, is the density in that direction:
 
-But which axis is $z$? For an isolated atom nothing singles out a direction. The $z$ axis is the one we chose to quantize along, and the choice becomes physical only when something picks it: a magnetic field along $z$ separates the three $m$ states ([Spin](03-spin.md)). Quantize along $x$ instead and the $m_x = 0$ state is $\sqrt{3/4\pi}\,x/r$, the dumbbell function with $x$ in place of $z$. That function is $p_x$. So the **real orbitals** of the next sections are not an arbitrary mixture: $p_x$, $p_y$ and $p_z$ are the $m = 0$ states for the $x$, $y$ and $z$ axes, one shape pointed three ways, and a molecule with a bond along $x$ selects $p_x$ exactly as a field along $z$ selects the $m$ states. Both sets describe the same level. The freedom to pass from one to the other comes from degeneracy.
+```{code-cell} python
+:tags: [hide-input]
+# synced: m_states_cuts
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-#### A degenerate level is a space: any combination is again a stationary state
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+t = np.linspace(0, 2 * np.pi, 721)
+DARK = "#495057"
+fig, axes = plt.subplots(1, 3, figsize=(8.0, 3.1))
+# (density in the direction at angle t, measured from the vertical axis; horizontal and vertical axis names; title)
+panels = [(np.cos(t)**2, "x", "z", r"$|Y_1^{0}|^2 \propto \cos^2\theta$"),
+          (np.sin(t)**2, "x", "z", r"$|Y_1^{\pm1}|^2 \propto \sin^2\theta$"),
+          (np.ones_like(t), "x", "y", r"$|Y_1^{\pm1}|^2$ from above")]
+for ax, (rho, hl, vl, lab) in zip(axes, panels):
+    ax.plot([-1.3, 1.3], [0, 0], color="#adb5bd", lw=1.1, zorder=1)
+    ax.plot([0, 0], [-1.3, 1.3], color="#adb5bd", lw=1.1, zorder=1)
+    ax.text(1.36, 0, f"${hl}$", fontsize=15, color=DARK, ha="left", va="center")
+    ax.text(0, 1.36, f"${vl}$", fontsize=15, color=DARK, ha="center", va="bottom")
+    ax.fill(rho * np.sin(t), rho * np.cos(t), color=PURPLE, alpha=0.16, zorder=2)
+    ax.plot(rho * np.sin(t), rho * np.cos(t), color=PURPLE, lw=2.6, zorder=3)
+    ax.set_xlim(-1.62, 1.62); ax.set_ylim(-1.5, 1.74); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_title(lab, fontsize=15.5, pad=6)
+    if vl == "z":       # a turn about z changes nothing: the curved arrow around the axis
+        a = np.radians(np.linspace(115, 425, 80))
+        ax.plot(0.2 * np.cos(a), 1.17 + 0.065 * np.sin(a), color=DARK, lw=1.5, zorder=4)
+        ax.annotate("", xy=(0.2 * np.cos(a[-1]), 1.17 + 0.065 * np.sin(a[-1])), xytext=(0.2 * np.cos(a[-4]), 1.17 + 0.065 * np.sin(a[-4])),
+                    arrowprops=dict(arrowstyle="-|>", color=DARK, lw=1.5, mutation_scale=13), zorder=4)
+    else:               # seen from above, z points at the viewer: a dot in a circle
+        ax.plot(0, 0, "o", ms=11, mfc="white", mec=DARK, mew=1.4, zorder=4)
+        ax.plot(0, 0, "o", ms=3.4, color=DARK, zorder=5)
+        ax.text(0.14, -0.2, "$z$", fontsize=15, color=DARK, ha="left", va="center")
+fig.subplots_adjust(left=0.0, right=1.0, top=0.9, bottom=0.0, wspace=0.0)
+plt.show()
+```
 
-If two functions solve the Schrödinger equation with the same energy, $\hat{H}\psi_a = E\psi_a$ and $\hat{H}\psi_b = E\psi_b$, then so does every combination:
+Fig. The angular densities of the $l = 1$ states of definite $m$, each on its own scale. Left and middle: cuts through the $xz$ plane; the curved arrow marks a turn about $z$. Right: the $m = \pm1$ density in the $xy$ plane, seen from above.
+
+- $m = 0$: the density is largest along $+z$ and $-z$ and zero in the $xy$ plane. Turn the curve about $z$ and it sweeps out a **dumbbell along $z$**.
+- $m = \pm1$: the density is zero along $z$ and largest in the $xy$ plane. Turn the two lobes about $z$ and they sweep out a **ring around $z$**, the shape of a doughnut. Seen from above it is a circle.
+- $m = +1$ and $m = -1$ have the same density. They differ only in the phase $e^{\pm i\phi}$, which runs around the ring one way or the other, as it did for the particle on a ring in Lecture 4.4.
+- No $\phi$ appears in either formula, so a turn about $z$ changes nothing: every state of definite $m$ is symmetric about the $z$ axis.
+
+#### The atom is round: $z$ was our choice
+
+Here is a puzzle. The potential energy of the electron depends only on its distance from the nucleus, so the atom looks the same from every direction. Yet all three states above are built around one axis. What makes $z$ special?
+
+Nothing in the atom does. The $z$ axis is the **polar axis** of our spherical coordinates: the line we chose to measure $\theta$ from before we solved anything (books call it the quantization axis). Suppose someone else measures the polar angle from the $x$ axis instead, and calls it $\theta_x$. They solve the identical equation and find the identical functions, written in their own angles. Their $m = 0$ state is
+
+$$
+\sqrt{\frac{3}{4\pi}}\cos\theta_x = \sqrt{\frac{3}{4\pi}}\,\frac{x}{r}
+$$
+
+the same dumbbell as ours, lying along $x$.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: axis_choice
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+t = np.linspace(0, 2 * np.pi, 721)
+DARK = "#495057"
+beta = np.radians(52)                                  # the sample point, 52 degrees above the x axis
+P = 1.22 * np.array([np.cos(beta), np.sin(beta)])
+fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.45))
+# (polar axis, angle of that axis in the drawing, arc from, arc to, name of the angle and where it sits, title)
+panels = [("z", np.pi / 2, beta, np.pi / 2, r"$\theta$", (0.21, 0.64), r"$\cos\theta = z/r$"),
+          ("x", 0.0, 0.0, beta, r"$\theta_x$", (0.63, 0.19), r"$\cos\theta_x = x/r$")]
+for ax, (pol, a0, a1, a2, name, at, lab) in zip(axes, panels):
+    for nm, d in (("x", np.array([1.0, 0.0])), ("z", np.array([0.0, 1.0]))):
+        bold = nm == pol
+        ax.plot([-1.4 * d[0], 1.4 * d[0]], [-1.4 * d[1], 1.4 * d[1]], color=DARK if bold else "#adb5bd", lw=2.6 if bold else 1.1, zorder=4 if bold else 1, solid_capstyle="butt")
+        if bold:
+            ax.annotate("", xy=1.58 * d, xytext=1.36 * d, arrowprops=dict(arrowstyle="-|>", color=DARK, lw=2.6, mutation_scale=20), zorder=4)
+        ax.text(1.7 * d[0], 1.7 * d[1], f"${nm}$", fontsize=17, color=DARK if bold else GRAY, weight="bold" if bold else "normal", ha="center", va="center")
+    f = np.cos(t - a0)                                 # the wavefunction: cosine of the angle from the polar axis
+    rho = f**2
+    for sgn, col in ((1, TEAL), (-1, ORANGE)):
+        keep = np.where(sgn * f >= 0, rho, 0.0)
+        ax.fill(keep * np.cos(t), keep * np.sin(t), color=col, alpha=0.3, lw=0, zorder=2)
+        ax.plot(np.where(sgn * f >= 0, rho * np.cos(t), np.nan), np.where(sgn * f >= 0, rho * np.sin(t), np.nan), color=col, lw=2.6, zorder=3)
+    ax.plot([0, P[0]], [0, P[1]], color=CARDINAL, lw=1.6, zorder=5)
+    ax.plot(P[0], P[1], "o", ms=7.5, color=CARDINAL, zorder=6)
+    arc = np.linspace(a1, a2, 40)
+    ax.plot(0.46 * np.cos(arc), 0.46 * np.sin(arc), color=CARDINAL, lw=1.6, zorder=5)
+    ax.text(at[0], at[1], name, fontsize=17, color=CARDINAL, ha="center", va="center", zorder=6)
+    ax.set_xlim(-1.85, 1.85); ax.set_ylim(-1.55, 1.85); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_title(lab, fontsize=17, pad=4)
+fig.subplots_adjust(left=0.0, right=1.0, top=0.91, bottom=0.0, wspace=0.0)
+plt.show()
+```
+
+Fig. The same point (red) and the same function, the cosine of the angle from the polar axis (teal positive, orange negative). Left: the polar axis is $z$. Right: the polar axis is $x$.
+
+- The atom cannot tell which axis we drew. So the dumbbell along $x$ is a solution of the same Schrödinger equation, with the same energy $E_n$ and the same $l = 1$, and so is a dumbbell along $y$ or along any other direction.
+- The dumbbell along $z$ is $Y_1^0$, and its orbital is called $p_z$. The dumbbells along $x$ and $y$ are called $p_x$ and $p_y$.
+- A direction becomes special only when something outside the atom marks it. A magnetic field along $z$ gives the three $m$ states three different energies ([Spin](03-spin.md)); then they are no longer one level, and the $m$ states are the ones to use. A neighbouring atom on the $x$ axis marks $x$; then $p_x$, which points at the neighbour, is the natural one ([Chapter 8](../ch08/01-born-oppenheimer-approximation.md)).
+
+One thing does not add up yet. A level with $l = 1$ holds three independent angular functions, and we already have three: $Y_1^{+1}$, $Y_1^{0}$, $Y_1^{-1}$. The dumbbell along $x$ cannot be a fourth. It must be made of the three we have.
+
+#### Same energy: any combination is again a stationary state
+
+If two functions solve the Schrödinger equation with the same energy, $\hat{H}\psi_a = E\psi_a$ and $\hat{H}\psi_b = E\psi_b$, then so does every combination of them:
 
 $$
 \hat{H}\,(c_a\psi_a + c_b\psi_b) = c_aE\psi_a + c_bE\psi_b = E\,(c_a\psi_a + c_b\psi_b)
 $$
 
-The $2l + 1$ states of one $n$ and $l$ share the energy $E_n$ (and the eigenvalue $\hbar^2l(l+1)$ of $\hat{L}^2$, which commutes with $\hat{H}$), so any combination of them is a stationary state with the same $n$ and $l$. The degenerate level is a $(2l+1)$-dimensional space, and $Y_l^{-l}, \dots, Y_l^{l}$ are one choice of axes in it. We may turn the axes, as Lecture 3.5 turned the axes of a matrix ([Appendix A.3](../math/03-linear-algebra.md)). The combinations are no longer eigenfunctions of $\hat{L}_z$ (that operator does not care about $n$ but does care about $m$), and that is the price of pointing them along $x$ or $y$.
+- **Why combining is allowed.** The $2l + 1$ states of one $n$ and $l$ share the energy $E_n$ (and the eigenvalue $\hbar^2l(l+1)$ of $\hat{L}^2$, which commutes with $\hat{H}$), so any combination of them is a stationary state with the same $n$ and $l$.
+- **It works only inside one level.** The last step needs the same $E$ in both terms. Mix 1s with 2p$_z$ and no single $E$ factors out: that state is not stationary, and its density sloshes back and forth at the Bohr frequency ([Lecture 3.7](../ch03/07-time-dependence.md)).
+- **The price.** A combination of different $m$ is no longer an eigenfunction of $\hat{L}_z$. It keeps $E$ and $L^2$ and gives up a definite $L_z$.
+
+Now write the dumbbell along $x$ in our own angles. With $x = r\sin\theta\cos\phi$ and $\cos\phi = (e^{i\phi} + e^{-i\phi})/2$:
+
+$$
+\frac{x}{r} = \sin\theta\cos\phi = \tfrac{1}{2}\sin\theta\,e^{+i\phi} + \tfrac{1}{2}\sin\theta\,e^{-i\phi}
+$$
+
+The two terms are the $m = +1$ and $m = -1$ functions, in equal parts. So the combinations of the next section are **not arbitrary**: they are the dumbbell turned to point along $x$ and along $y$, the functions we would have found first had we drawn the polar axis there. No new state appears. The degenerate level is a $(2l+1)$-dimensional space, $Y_l^{-l}, \dots, Y_l^{l}$ are one choice of axes in it, and the real orbitals are another, as Lecture 3.5 turned the axes of a matrix ([Appendix A.3](../math/03-vectors-and-linear-algebra.md)). Any other combination is a stationary state too (Problem 8 points a dumbbell along a diagonal); $p_x$, $p_y$, $p_z$ are the convenient set, real and at right angles, and nothing measurable depends on the choice.
 
 #### The real $p$ orbitals
 
@@ -526,7 +640,7 @@ Fig. Left column: the real part of $\psi(t)$ for the $m = +1$ state (top) and fo
 
 - $Y_1^{+1}e^{-iEt/\hbar} \propto \sin\theta\,e^{i(\phi - Et/\hbar)}$ is a wave **running** around the $z$ axis, the ring state of Lecture 4.4 wrapped on a sphere. Its real part turns; its density is the time average of a turning lobe pair, a ring.
 - $p_x\,e^{-iEt/\hbar} \propto \sin\theta\cos\phi\,e^{-iEt/\hbar}$ is a **standing** wave: the lobes stay put along $x$ and pulse between teal and orange. Its density is the two fixed lobes.
-- Both are stationary states of the same energy. The atom does not prefer one set; the question asked of it does. A magnetic field along $z$ asks for $L_z$ and picks the running waves; a neighbouring atom along $x$ asks for direction and picks $p_x$.
+- Both are stationary states of the same energy. The atom does not prefer one set; its surroundings decide which is useful. In a magnetic field along $z$ the running waves are the stationary states, because the field gives each $m$ its own energy. Next to a neighbouring atom on the $x$ axis, $p_x$ is the one that points at the neighbour.
 
 #### The real $d$ orbitals
 
