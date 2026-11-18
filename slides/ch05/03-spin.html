@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="03-spin_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="03-spin_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="03-spin_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="03-spin_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,155 +163,458 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="moving-charge-makes-a-magnet" class="slide level2">
-<h2>Moving Charge Makes a Magnet</h2>
-<ul>
-<li class="fragment">A charge circulating around the nucleus generates a <strong>magnetic moment</strong>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\vec{\mu} = \gamma_e \vec{L}, \qquad \mu_z = -\mu_B m_l\]</span></p>
-</div>
-<ul>
-<li class="fragment"><strong>Bohr magneton</strong> <span class="math inline">\(\mu_B = \dfrac{e\hbar}{2m_e}\)</span> sets the scale.</li>
-<li class="fragment">Only electrons with <span class="math inline">\(l &gt; 0\)</span> carry an orbital magnetic moment.</li>
-</ul>
-</section>
-<section id="atoms-in-a-magnetic-field" class="slide level2">
-<h2>Atoms in a Magnetic Field</h2>
-<ul>
-<li class="fragment">Add the field-interaction term to the Hamiltonian:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H} = \hat{H}_0 + \frac{eB}{2m_e}\hat{L}_z\]</span></p>
-</div>
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{L}_z\)</span> <strong>commutes</strong> with <span class="math inline">\(\hat{H}_0\)</span>, so they share eigenstates.</li>
-<li class="fragment">The field only <strong>shifts</strong> each level by its <span class="math inline">\(m_l\)</span>.</li>
-</ul>
-</section>
-<section id="the-orbital-zeeman-effect" class="slide level2">
-<h2>The Orbital Zeeman Effect</h2>
+<section id="a-moving-charge-is-a-magnet" class="slide level2">
+<h2>A moving charge is a magnet</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/zeeman2.png" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[E_{nlm} = E_n + \mu_B m_l B\]</span></p>
+<div class="column" style="width:44%;">
+<p><img data-src="../../ch05/images/current_loop.png" style="width:100.0%"></p>
+</div><div class="column" style="width:56%;">
+<p><span class="math display">I = \frac{q}{T} = \frac{qv}{2\pi r}</span></p>
+<p><span class="math display">\mu = I\cdot\pi r^2 = \frac{qvr}{2} = \frac{q}{2m}\,L</span></p>
+<p><span class="math display">\vec{\mu} = -\frac{e}{2m_e}\,\vec{L} \qquad \text{electron, } q = -e</span></p>
 <ul>
-<li class="fragment">Field <strong>splits</strong> the <span class="math inline">\((2l+1)\)</span> degenerate levels.</li>
-<li class="fragment">The <span class="math inline">\(2p\)</span> level fans into <strong>three</strong> lines: <span class="math inline">\(-\mu_B B,\ 0,\ +\mu_B B\)</span>.</li>
+<li>A charge <span class="math inline">q</span> of mass <span class="math inline">m</span> on a circle (speed <span class="math inline">v</span>, radius <span class="math inline">r</span>, period <span class="math inline">T</span>) is a <strong>loop of current</strong> <span class="math inline">I</span></li>
+<li>Current times area is its <strong>magnetic moment</strong> <span class="math inline">\mu</span>. Negative charge: <span class="math inline">\vec{\mu}</span> points <strong>against</strong> <span class="math inline">\vec{L}</span></li>
 </ul>
 </div></div>
 </section>
-<section id="a-surprise-spin" class="slide level2">
-<h2>A Surprise: Spin</h2>
+<section id="a-magnet-in-a-field-twist-or-push" class="slide level2">
+<h2>A magnet in a field: twist or push</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/gradient_force.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+<p><span class="math display">E = -\vec{\mu}\cdot\vec{B} = -\mu_zB \qquad\qquad\qquad F_z = -\frac{\partial E}{\partial z} = \mu_z\,\frac{\partial B}{\partial z}</span></p>
 <ul>
-<li class="fragment"><p>Stern-Gerlach split a beam into <strong>two</strong> spots, not an odd number.</p></li>
-<li class="fragment"><p>Electrons carry an <strong>intrinsic</strong> angular momentum: <strong>spin</strong>.</p></li>
-<li class="fragment"><p>Not literal spinning, an intrinsic property like <strong>mass</strong> and <strong>charge</strong>.</p></li>
-<li class="fragment"><p>The Schrodinger equation misses it; spin comes from the <strong>Dirac equation</strong>.</p></li>
+<li><strong>Uniform</strong> field <span class="math inline">\vec{B}</span>: the forces on the two poles cancel. A twist, no push</li>
+<li><strong>Non-uniform</strong> field: a net force proportional to <span class="math inline">\mu_z</span>. It <strong>sorts</strong> magnets by <span class="math inline">\mu_z</span></li>
 </ul>
 </section>
-<section id="spin-as-a-tiny-magnet" class="slide level2">
-<h2>Spin as a Tiny Magnet</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/Spin1.jpg" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
+<section id="the-orbital-magnetic-moment" class="slide level2">
+<h2>The orbital magnetic moment</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{\vec{\mu}} = -\frac{e}{2m_e}\,\hat{\vec{L}}, \qquad\qquad \mu_z = -\mu_B\,m_l, \qquad\qquad \mu_B = \frac{e\hbar}{2m_e}</span></p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">the <strong>Bohr magneton</strong> <span class="math inline">\mu_B</span> as</th>
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">what it sets</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">in SI units</td>
+<td style="text-align: left;"><span class="math inline">9.274\times10^{-24}</span> J/T</td>
+<td style="text-align: left;">the unit of an electron’s magnetism</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">energy per tesla</td>
+<td style="text-align: left;"><span class="math inline">5.79\times10^{-5}</span> eV/T</td>
+<td style="text-align: left;">the shift of a level</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">wavenumber per tesla</td>
+<td style="text-align: left;">0.467 cm<span class="math inline">^{-1}</span>/T</td>
+<td style="text-align: left;">the shift of a spectral line</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">frequency per tesla</td>
+<td style="text-align: left;">14.0 GHz/T</td>
+<td style="text-align: left;">the photon between two magnetic levels</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment"><p>Every particle carries a <strong>permanent magnetic moment</strong>.</p></li>
-<li class="fragment"><p>Add spin as a new quantum number <span class="math inline">\(s\)</span>, like <span class="math inline">\(l\)</span>.</p></li>
-<li class="fragment"><p>Allowed projections: <span class="math inline">\(2s + 1\)</span>.</p></li>
-<li class="fragment"><p>Experiment shows only <strong>two</strong>, so <span class="math inline">\(s = \tfrac{1}{2}\)</span>.</p></li>
+<li><span class="math inline">\hat{L}_z</span> gives <span class="math inline">m_l\hbar</span> (the <span class="math inline">m</span> of 4.4 to 5.2, now <span class="math inline">m_l</span>): <span class="math inline">2l + 1</span> values of <span class="math inline">\mu_z</span>. An s electron has <strong>none</strong></li>
+</ul>
+</section>
+<section id="an-atom-in-a-magnetic-field" class="slide level2">
+<h2>An atom in a magnetic field</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{H} = \hat{H}_0 + \frac{\mu_BB}{\hbar}\,\hat{L}_z, \qquad E_{nm_l} = E_n + \mu_BB\,m_l</span></p>
+</div>
+<ul>
+<li>A field <span class="math inline">B</span> along <span class="math inline">z</span> adds <span class="math inline">-\hat{\mu}_zB</span> to the hydrogen Hamiltonian <span class="math inline">\hat{H}_0</span> of 5.1</li>
+<li><span class="math inline">\hat{L}_z</span> commutes with <span class="math inline">\hat{H}_0</span>: the states <span class="math inline">\psi_{nlm_l}</span> <strong>do not change</strong>, each shifts by its <span class="math inline">m_l</span>, the <strong>magnetic</strong> quantum number</li>
+<li>A level <span class="math inline">l</span> splits into <span class="math inline">2l + 1</span> levels, <span class="math inline">\mu_BB</span> apart. Each <span class="math inline">m_l</span> now has its own energy: use the <span class="math inline">m_l</span> states, not <span class="math inline">p_x</span>, <span class="math inline">p_y</span></li>
+</ul>
+</section>
+<section id="the-zeeman-effect-one-line-becomes-three" class="slide level2">
+<h2>The Zeeman effect: one line becomes three</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/zeeman_orbital.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Light changes <span class="math inline">m_l</span> by 0 or <span class="math inline">\pm1</span>: three lines, whatever <span class="math inline">l</span>. The <strong>normal</strong> Zeeman effect</li>
+<li>Most lines split into more: the <strong>anomalous</strong> Zeeman effect. Something is missing</li>
+</ul>
+</section>
+<section id="example-how-far-apart-are-the-zeeman-lines" class="slide level2">
+<h2>Example: how far apart are the Zeeman lines?</h2>
+<div class="worked">
+<p>Cadmium’s red line at 643.85 nm shows the triplet. How far from the center are the outer lines at 1.0 T?</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">\Delta\tilde{\nu} = \frac{\mu_BB}{hc} = 0.467\ \text{cm}^{-1} \qquad\text{against}\qquad \tilde{\nu}_0 = \frac{1}{\lambda} = 15\,532\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\lvert\Delta\lambda\rvert = \lambda^2\,\Delta\tilde{\nu} = (643.85\times10^{-7}\ \text{cm})^2\times0.467\ \text{cm}^{-1} = 0.019\ \text{nm}</span></p>
+</div>
+<ul>
+<li>Three parts in <span class="math inline">10^5</span>: ten times finer than the H and D pair of 5.1</li>
+</ul>
+</div>
+</section>
+<section id="the-stern-gerlach-experiment-1922" class="slide level2">
+<h2>The Stern-Gerlach experiment (1922)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/stern_gerlach.gif" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Silver atoms from an oven, a <strong>non-uniform</strong> field, a glass plate</li>
+<li>The push is proportional to <span class="math inline">\mu_z</span>: the magnet turns <span class="math inline">\mu_z</span> into a <strong>position</strong>, one atom at a time</li>
+</ul>
+</section>
+<section id="what-the-plate-should-show-and-what-it-showed" class="slide level2">
+<h2>What the plate should show, and what it showed</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/sg_screens.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Classical magnets: a <strong>band</strong>. Orbital moments: <span class="math inline">2l + 1</span> spots, an <strong>odd</strong> number</li>
+<li>Silver’s outer electron is 5s, <span class="math inline">l = 0</span>: <strong>one</strong> spot expected</li>
+<li>Found: <strong>two</strong>. <span class="math inline">2l + 1 = 2</span> would need <span class="math inline">l = \frac{1}{2}</span>, which no orbital motion has</li>
+</ul>
+</section>
+<section id="spin-a-new-angular-momentum" class="slide level2">
+<h2>Spin: a new angular momentum</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{S}^2\alpha = \tfrac{3}{4}\hbar^2\,\alpha, \quad \hat{S}_z\alpha = +\tfrac{1}{2}\hbar\,\alpha \qquad\qquad \hat{S}^2\beta = \tfrac{3}{4}\hbar^2\,\beta, \quad \hat{S}_z\beta = -\tfrac{1}{2}\hbar\,\beta</span></p>
+<p><span class="math display">\langle\alpha|\alpha\rangle = \langle\beta|\beta\rangle = 1, \qquad \langle\alpha|\beta\rangle = 0</span></p>
+</div>
+<ul>
+<li>Two spots: <span class="math inline">2s + 1 = 2</span>, so <span class="math inline">s = \frac{1}{2}</span>. Two states: <span class="math inline">\alpha</span> (<strong>spin up</strong>, <span class="math inline">m_s = +\frac{1}{2}</span>) and <span class="math inline">\beta</span> (<strong>spin down</strong>, <span class="math inline">m_s = -\frac{1}{2}</span>)</li>
+<li><span class="math inline">\hat{S}_x</span>, <span class="math inline">\hat{S}_y</span>, <span class="math inline">\hat{S}_z</span> obey the commutators of <span class="math inline">\hat{\vec{L}}</span> (4.4), so <span class="math inline">\hat{S}^2</span> gives <span class="math inline">s(s+1)\hbar^2</span> and <span class="math inline">\hat{S}_z</span> gives <span class="math inline">m_s\hbar</span></li>
+<li><strong>Intrinsic</strong>, like charge and mass. <strong>Not a motion in space</strong>, and not in the Schrödinger equation</li>
+</ul>
+</section>
+<section id="the-vector-model-for-spin" class="slide level2">
+<h2>The vector model for spin</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p><img data-src="../../ch05/images/spin_cones.png" style="width:100.0%"></p>
+</div><div class="column" style="width:48%;">
+<p><span class="math display">\lvert\vec{S}\rvert = \sqrt{s(s+1)}\,\hbar = \tfrac{\sqrt{3}}{2}\hbar</span></p>
+<p><span class="math display">\cos\theta = \frac{1/2}{\sqrt{3}/2} = \frac{1}{\sqrt{3}} \quad\Longrightarrow\quad \theta = 54.7°</span></p>
+<ul>
+<li>Length and one component are sharp. <span class="math inline">S_x</span> and <span class="math inline">S_y</span> are not: the cone</li>
+<li>“Spin up” is <strong>54.7°</strong> from straight up, the magic angle of 4.4 and 5.2</li>
 </ul>
 </div></div>
 </section>
-<section id="the-two-spin-states" class="slide level2">
-<h2>The Two Spin States</h2>
-<div class="fragment">
-<p><span class="math display">\[S = \frac{\sqrt{3}}{2}\hbar, \qquad S_z = \pm\frac{1}{2}\hbar\]</span></p>
-</div>
-<ul>
-<li class="fragment"><span class="math inline">\(m_s = +\tfrac{1}{2}\)</span> is <span class="math inline">\(\alpha\)</span> (<strong>spin-up</strong>), <span class="math inline">\(m_s = -\tfrac{1}{2}\)</span> is <span class="math inline">\(\beta\)</span> (<strong>spin-down</strong>).</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{S}^2|\alpha\rangle = \tfrac{3}{4}\hbar^2|\alpha\rangle, \qquad \hat{S}_z|\alpha\rangle = +\tfrac{1}{2}\hbar|\alpha\rangle\]</span></p>
-</div>
-</section>
-<section id="spin-joins-the-wavefunction" class="slide level2">
-<h2>Spin Joins the Wavefunction</h2>
-<ul>
-<li class="fragment">States <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are <strong>orthonormal</strong>:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\langle\alpha|\alpha\rangle = \langle\beta|\beta\rangle = 1, \qquad \langle\alpha|\beta\rangle = 0\]</span></p>
+<section id="example-is-the-electron-a-spinning-ball" class="slide level2">
+<h2>Example: is the electron a spinning ball?</h2>
+<div class="worked">
+<p>A solid ball of radius <span class="math inline">r = 2.8\times10^{-15}</span> m turns with angular momentum <span class="math inline">\frac{1}{2}\hbar</span>. How fast does its equator move?</p>
 </div>
 <div class="fragment">
+<div class="soln">
+<p><span class="math display">L = I\omega = \tfrac{2}{5}m_er^2\,\omega = \tfrac{2}{5}m_er\,v \qquad\Longrightarrow\qquad v = \frac{5L}{2m_er} = \frac{5\hbar}{4m_er}</span></p>
+<p><span class="math display">v = \frac{5\times1.055\times10^{-34}}{4\times9.11\times10^{-31}\times2.8\times10^{-15}}\ \frac{\text{m}}{\text{s}} = 5.2\times10^{10}\ \frac{\text{m}}{\text{s}} \approx 170\,c</span></p>
+</div>
 <ul>
-<li class="fragment">The full state is <strong>spatial</strong> times <strong>spin</strong>: <span class="math display">\[|n,l,m_l,m_s\rangle = \psi_{n,l,m_l}\,\sigma, \quad \sigma = \alpha \text{ or } \beta\]</span></li>
+<li>Nothing is rotating. Spin is angular momentum <strong>without</strong> rotation</li>
 </ul>
 </div>
 </section>
-<section id="magnetic-moment-of-spin" class="slide level2">
-<h2>Magnetic Moment of Spin</h2>
+<section id="spin-states-are-two-component-vectors" class="slide level2">
+<h2>Spin states are two-component vectors</h2>
+<p><span class="math display">\chi = c_\alpha\,\alpha + c_\beta\,\beta = \begin{pmatrix}c_\alpha\\ c_\beta\end{pmatrix} \qquad\qquad \alpha = \begin{pmatrix}1\\ 0\end{pmatrix} \qquad \beta = \begin{pmatrix}0\\ 1\end{pmatrix}</span></p>
+<p><span class="math display">\hat{S}_x = \frac{\hbar}{2}\begin{pmatrix}0 &amp; 1\\ 1 &amp; 0\end{pmatrix} \qquad \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix}0 &amp; -i\\ i &amp; 0\end{pmatrix} \qquad \hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 &amp; 0\\ 0 &amp; -1\end{pmatrix}</span></p>
+<ul>
+<li>The smallest quantum system: Lectures 3.5 and 3.6 with <span class="math inline">2\times2</span> matrices. A bracket is a dot product</li>
+<li>Born rule: <span class="math inline">S_z = +\frac{1}{2}\hbar</span> with probability <span class="math inline">\lvert c_\alpha\rvert^2</span>, and <span class="math inline">-\frac{1}{2}\hbar</span> with probability <span class="math inline">\lvert c_\beta\rvert^2</span></li>
+<li><span class="math inline">\hat{S}_z</span> is diagonal: <span class="math inline">\alpha</span>, <span class="math inline">\beta</span> are its eigenvectors. <span class="math inline">\hat{S}_x</span> <strong>flips</strong> the spin, so <span class="math inline">\alpha</span> is not its eigenvector</li>
+</ul>
+</section>
+<section id="example-measure-s_x-on-a-spin-up-electron" class="slide level2">
+<h2>Example: measure <span class="math inline">S_x</span> on a spin-up electron</h2>
+<div class="worked">
+<p>The electron is in <span class="math inline">\alpha</span>. What can a measurement of <span class="math inline">S_x</span> give, and how often?</p>
+</div>
 <div class="fragment">
-<p><span class="math display">\[\hat{\mu}_z = -\frac{g_e e}{2m_e}\hat{S}_z, \qquad g_e \approx 2\]</span></p>
+<div class="soln">
+<p><span class="math display">\det\big(\hat{S}_x - \lambda\big) = \lambda^2 - \tfrac{1}{4}\hbar^2 = 0 \;\Longrightarrow\; \lambda = \pm\tfrac{1}{2}\hbar, \qquad \chi_{\pm x} = \frac{\alpha \pm \beta}{\sqrt{2}}</span></p>
+<p><span class="math display">P\left(\pm\tfrac{1}{2}\hbar\right) = \lvert\langle\chi_{\pm x}|\alpha\rangle\rvert^2 = \left(\tfrac{1}{\sqrt{2}}\right)^2 = \tfrac{1}{2}</span></p>
 </div>
 <ul>
-<li class="fragment">The <strong><span class="math inline">\(g\)</span>-factor</strong> <span class="math inline">\(g_e = 2.0023\)</span> comes from relativistic theory.</li>
-<li class="fragment">Energy in a field: <span class="math inline">\(E = g_e \mu_B m_s B\)</span>.</li>
+<li>Certain along <span class="math inline">z</span>, a <strong>coin toss</strong> along <span class="math inline">x</span>. After the reading the state is <span class="math inline">\chi_{\pm x}</span>: the certainty about <span class="math inline">S_z</span> is gone</li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H} = \hat{H}_0 + \frac{eB}{2m_e}\left(\hat{L}_z + g_e\hat{S}_z\right)\]</span></p>
 </div>
 </section>
-<section id="spin-orbit-coupling" class="slide level2">
-<h2>Spin-Orbit Coupling</h2>
+<section id="one-magnet-after-another" class="slide level2">
+<h2>One magnet after another</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/sg_sequence.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Each box measures the spin along its axis; the lower beam is blocked. <strong>(a)</strong> Same axis twice, same answer: the <strong>collapse</strong> of 3.6</li>
+<li><strong>(b)</strong> A sharp <span class="math inline">S_z</span> is an undecided <span class="math inline">S_x</span>: the two do not commute (3.5b)</li>
+<li><strong>(c)</strong> Measuring <span class="math inline">S_x</span> <strong>erases</strong> the <span class="math inline">z</span> result</li>
+</ul>
+</section>
+<section id="live-one-magnet-after-another" class="slide level2">
+<h2>Live: one magnet after another</h2>
+<div id="sg-live" style="width: 1100px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/stern_gerlach.mjs";
+  const opts = { fontSize: "19px", angle: 90 };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("sg-live") });
+</script>
+</section>
+<section id="the-spin-magnetic-moment" class="slide level2">
+<h2>The spin magnetic moment</h2>
+<div class="keyeq">
+<p><span class="math display">\hat{\vec{\mu}}_s = -g_e\,\frac{e}{2m_e}\,\hat{\vec{S}}, \qquad \mu_z = -g_e\,\mu_B\,m_s \approx \mp\mu_B, \qquad g_e = 2.0023</span></p>
+<p><span class="math display">E = -\mu_zB = g_e\,\mu_BB\,m_s = \pm\tfrac{1}{2}\,g_e\,\mu_BB</span></p>
+</div>
+<ul>
+<li><span class="math inline">g_e</span>: the electron’s <strong>g factor</strong>. Orbital motion has <span class="math inline">g = 1</span>, so spin is <strong>twice as magnetic</strong></li>
+<li>Silver’s 5s electron has only this moment: <span class="math inline">\mu_z = \pm\mu_B</span>, the <strong>two spots</strong></li>
+<li>In a field, <span class="math inline">\beta</span> (moment along <span class="math inline">\vec{B}</span>) lies below <span class="math inline">\alpha</span>, and they are <span class="math inline">g_e\mu_BB</span> apart</li>
+</ul>
+</section>
+<section id="two-levels-in-a-field-epr-and-nmr" class="slide level2">
+<h2>Two levels in a field: EPR and NMR</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/spin_resonance.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+<p><span class="math display">h\nu = g_e\,\mu_BB \quad \text{electron, 28 GHz/T} \qquad\qquad h\nu = g_p\,\mu_NB \quad \text{proton, 42.6 MHz/T}</span></p>
+<ul>
+<li><strong>EPR</strong> sees unpaired electrons. <strong>NMR</strong> sees nuclei: the proton also has spin <span class="math inline">\frac{1}{2}</span> (written <span class="math inline">I</span>)</li>
+<li><strong>Nuclear magneton</strong> <span class="math inline">\mu_N = e\hbar/2m_p = \mu_B/1836</span>, and <span class="math inline">g_p = 5.586</span>: 660 times lower in frequency</li>
+</ul>
+</section>
+<section id="four-quantum-numbers" class="slide level2">
+<h2>Four quantum numbers</h2>
+<p><span class="math display">\psi_{nlm_lm_s} = R_{nl}(r)\,Y_l^{m_l}(\theta, \phi)\times\big(\alpha \text{ or } \beta\big) = |n, l, m_l, m_s\rangle</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">operator</th>
+<th style="text-align: center;">eigenvalue</th>
+<th style="text-align: left;">quantum number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\hat{H}_0</span></td>
+<td style="text-align: center;"><span class="math inline">-Z^2E_h/2n^2</span></td>
+<td style="text-align: left;"><span class="math inline">n = 1, 2, 3, \dots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\hat{L}^2</span></td>
+<td style="text-align: center;"><span class="math inline">l(l+1)\,\hbar^2</span></td>
+<td style="text-align: left;"><span class="math inline">l = 0, \dots, n - 1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\hat{L}_z</span></td>
+<td style="text-align: center;"><span class="math inline">m_l\,\hbar</span></td>
+<td style="text-align: left;"><span class="math inline">m_l = -l, \dots, l</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\hat{S}^2</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{4}\hbar^2</span></td>
+<td style="text-align: left;"><span class="math inline">s = \frac{1}{2}</span>, always</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\hat{S}_z</span></td>
+<td style="text-align: center;"><span class="math inline">m_s\,\hbar</span></td>
+<td style="text-align: left;"><span class="math inline">m_s = +\frac{1}{2}, -\frac{1}{2}</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A <strong>spin orbital</strong>: where the electron is, times how its spin points. <span class="math inline">2n^2</span> states in level <span class="math inline">n</span>: 2, 8, 18, 32</li>
+</ul>
+</section>
+<section id="spin-orbit-coupling-the-electron-sees-a-moving-nucleus" class="slide level2">
+<h2>Spin-orbit coupling: the electron sees a moving nucleus</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/spin_orbit_frames.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\hat{H}_{\text{so}} = \frac{A}{\hbar^2}\;\hat{\vec{L}}\cdot\hat{\vec{S}}</span></p>
+<ul>
+<li>Seen from the electron, the nucleus is a <strong>current loop</strong>: its field <span class="math inline">\vec{B}</span>, along <span class="math inline">\vec{L}</span>, acts on <span class="math inline">\vec{\mu}_s</span></li>
+<li>No outside field. <span class="math inline">A</span>, the <strong>spin-orbit coupling constant</strong>, is an energy; zero for s electrons</li>
+</ul>
+</section>
+<section id="only-the-total-angular-momentum-is-conserved" class="slide level2">
+<h2>Only the total angular momentum is conserved</h2>
+<p><span class="math display">\hat{J}^2 = \hat{L}^2 + \hat{S}^2 + 2\,\hat{\vec{L}}\cdot\hat{\vec{S}} \qquad\Longrightarrow\qquad \hat{\vec{L}}\cdot\hat{\vec{S}} = \tfrac{1}{2}\left(\hat{J}^2 - \hat{L}^2 - \hat{S}^2\right)</span></p>
+<div class="keyeq">
+<p><span class="math display">\hat{\vec{J}} = \hat{\vec{L}} + \hat{\vec{S}}, \qquad j = l + \tfrac{1}{2} \ \text{ or } \ l - \tfrac{1}{2}, \qquad m_j = -j, \dots, j</span></p>
+<p><span class="math display">E_{\text{so}} = \frac{A}{2}\Big[j(j+1) - l(l+1) - s(s+1)\Big]</span></p>
+</div>
+<ul>
+<li>The coupling twists <span class="math inline">\vec{L}</span> and <span class="math inline">\vec{S}</span>: <span class="math inline">m_l</span> and <span class="math inline">m_s</span> are no longer sharp. Nothing twists the whole atom, so <span class="math inline">\vec{J}</span> is conserved</li>
+<li><span class="math inline">\hat{J}^2</span> gives <span class="math inline">j(j+1)\hbar^2</span>, <span class="math inline">\hat{J}_z</span> gives <span class="math inline">m_j\hbar</span>, and <span class="math inline">m_j = m_l + m_s</span>. New labels: <span class="math inline">n</span>, <span class="math inline">l</span>, <span class="math inline">j</span>, <span class="math inline">m_j</span></li>
+</ul>
+</section>
+<section id="adding-l-1-and-s-frac12-count-the-states" class="slide level2">
+<h2>Adding <span class="math inline">l = 1</span> and <span class="math inline">s = \frac{1}{2}</span>: count the states</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/adding_momenta.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<ul>
+<li>The largest <span class="math inline">m_j</span> is <span class="math inline">\frac{3}{2}</span>, once: a ladder <span class="math inline">j = \frac{3}{2}</span> takes one state at each of <span class="math inline">\frac{3}{2}, \frac{1}{2}, -\frac{1}{2}, -\frac{3}{2}</span></li>
+<li>Left over: one state at <span class="math inline">+\frac{1}{2}</span> and one at <span class="math inline">-\frac{1}{2}</span>, a ladder <span class="math inline">j = \frac{1}{2}</span>. Six states, <span class="math inline">4 + 2</span></li>
+</ul>
+</section>
+<section id="fine-structure-and-term-symbols" class="slide level2">
+<h2>Fine structure and term symbols</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch05/images/fine_structure.png" class="quarto-figure quarto-figure-center" style="width:68.0%"></p>
+</figure>
+</div>
+<p><span class="math display">^{2s+1}L_j \qquad\qquad ^2S_{1/2} \qquad\quad ^2P_{1/2},\ ^2P_{3/2} \qquad\quad ^2D_{3/2},\ ^2D_{5/2}</span></p>
+<ul>
+<li><strong>Term symbol</strong>: capital letter of <span class="math inline">l</span>, superscript <span class="math inline">2s + 1 = 2</span> (“doublet”), subscript <span class="math inline">j</span></li>
+<li>A level holds <span class="math inline">2j + 1</span> states. Sodium’s yellow line, 3p to 3s, is a doublet: 3p is split, 3s is not</li>
+</ul>
+</section>
+<section id="example-the-sodium-d-lines" class="slide level2">
+<h2>Example: the sodium D lines</h2>
+<div class="worked">
+<p>The D lines are at 588.995 and 589.592 nm. Find the splitting of sodium’s 3p level and its coupling constant <span class="math inline">A</span>.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">\tilde{\nu}_2 - \tilde{\nu}_1 = \frac{10^7}{588.995} - \frac{10^7}{589.592} = 16\,978.1 - 16\,960.9 = 17.2\ \text{cm}^{-1}</span></p>
+<p><span class="math display">\tfrac{3}{2}A = 17.2\ \text{cm}^{-1} \qquad\Longrightarrow\qquad A = 11.5\ \text{cm}^{-1} = 1.4\ \text{meV}</span></p>
+</div>
+<ul>
+<li>Hydrogen’s 2p splits by 0.365 cm<span class="math inline">^{-1}</span>, caesium’s 6p by 554 cm<span class="math inline">^{-1}</span>: the coupling grows steeply with <span class="math inline">Z</span></li>
+</ul>
+</div>
+</section>
+<section id="weak-field-or-strong-field" class="slide level2">
+<h2>Weak field or strong field</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch05/images/spin-orbit2.png" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch05/images/zeeman_crossover.png" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
 <ul>
-<li class="fragment">Two internal magnets, orbital and spin, <strong>interact</strong>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H} = \hat{H}_0 + \frac{A}{r^3}\,\hat{L}\cdot\hat{S}\]</span></p>
-</div>
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{L}\)</span> and <span class="math inline">\(\hat{S}\)</span> no longer commute with <span class="math inline">\(\hat{H}\)</span>.</li>
-<li class="fragment">Need the <strong>total</strong> <span class="math inline">\(\vec{J} = \vec{L} + \vec{S}\)</span>.</li>
+<li><strong>Weak</strong>, <span class="math inline">\mu_BB \ll A</span>: <span class="math inline">\vec{L}</span> and <span class="math inline">\vec{S}</span> stay locked in <span class="math inline">\vec{J}</span>. Levels split by <span class="math inline">m_j</span>, four and two: the <strong>anomalous</strong> Zeeman effect</li>
+<li><strong>Strong</strong>, <span class="math inline">\mu_BB \gg A</span>: each lines up alone, <span class="math inline">m_l</span> and <span class="math inline">m_s</span> are sharp again, five levels, the triplet returns</li>
+<li>1 T is strong for hydrogen, weak for sodium</li>
 </ul>
 </div></div>
 </section>
-<section id="total-angular-momentum-and-terms" class="slide level2">
-<h2>Total Angular Momentum and Terms</h2>
-<div class="fragment">
-<p><span class="math display">\[j = |l - s|, \dots, l + s = l \pm \tfrac{1}{2}\]</span></p>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Label each level by a <strong>term symbol</strong>: <span class="math display">\[^{2S+1}L_J\]</span></li>
-</ul>
+<section id="which-transitions-light-can-drive" class="slide level2">
+<h2>Which transitions light can drive</h2>
+<div class="keyeq">
+<p><span class="math display">\Delta l = \pm1, \qquad \Delta m_l = 0, \pm1, \qquad \Delta m_s = 0, \qquad \Delta n \ \text{anything}</span></p>
+<p><span class="math display">\text{with spin-orbit coupling:} \qquad \Delta j = 0, \pm1, \qquad \Delta m_j = 0, \pm1</span></p>
 </div>
 <ul>
-<li class="fragment">A <span class="math inline">\(2p\)</span> electron splits into <span class="math inline">\(^2P_{3/2}\)</span> and <span class="math inline">\(^2P_{1/2}\)</span> (<strong>fine structure</strong>).</li>
+<li>Allowed when the transition dipole <span class="math inline">\langle\psi_f|\,\vec{r}\,|\psi_i\rangle</span> is not zero, as in 4.3 and 4.5</li>
+<li><span class="math inline">\Delta l = \pm1</span>: a photon carries <strong>one unit</strong> of angular momentum</li>
+<li><span class="math inline">\Delta m_s = 0</span>: the electric field of light acts on where the electron is, not on its spin</li>
 </ul>
 </section>
-<section id="selection-rules" class="slide level2">
-<h2>Selection Rules</h2>
+<section id="hydrogens-lines-sorted-by-l" class="slide level2">
+<h2>Hydrogen’s lines, sorted by <span class="math inline">l</span></h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="../../ch05/images/hydrogen_grotrian.png" style="width:100.0%"></p>
+</div><div class="column" style="width:42%;">
 <ul>
-<li class="fragment">Transitions are allowed only when:</li>
+<li>Every allowed line moves <strong>one column</strong></li>
+<li>H<span class="math inline">\alpha</span> is three lines at once: 3s to 2p, 3p to 2s, 3d to 2p</li>
+<li>Dashed: <strong>forbidden</strong>. 2s to 1s has <span class="math inline">\Delta l = 0</span>, 3d to 1s has <span class="math inline">\Delta l = 2</span></li>
+<li>2s is <strong>metastable</strong>: 0.12 s, against 1.6 ns for 2p</li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[\Delta L = \pm 1\]</span> <span class="math display">\[\Delta S = 0\]</span> <span class="math display">\[\Delta J = 0, \pm 1 \quad (0 \rightarrow 0 \text{ forbidden})\]</span></p>
-</div>
+</div></div>
+</section>
+<section id="orbital-and-spin-side-by-side" class="slide level2">
+<h2>Orbital and spin, side by side</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">orbital</th>
+<th style="text-align: left;">spin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">quantum numbers</td>
+<td style="text-align: left;"><span class="math inline">l = 0, \dots, n - 1</span>; <span class="math inline">\ m_l = -l, \dots, l</span></td>
+<td style="text-align: left;"><span class="math inline">s = \frac{1}{2}</span> always; <span class="math inline">\ m_s = \pm\frac{1}{2}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">states</td>
+<td style="text-align: left;"><span class="math inline">Y_l^{m_l}(\theta, \phi)</span>, functions</td>
+<td style="text-align: left;"><span class="math inline">\alpha</span>, <span class="math inline">\beta</span>: two-component vectors</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">length</td>
+<td style="text-align: left;"><span class="math inline">\sqrt{l(l+1)}\,\hbar</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{\sqrt{3}}{2}\hbar</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">z</span> component</td>
+<td style="text-align: left;"><span class="math inline">m_l\hbar</span></td>
+<td style="text-align: left;"><span class="math inline">\pm\frac{1}{2}\hbar</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">magnetic moment</td>
+<td style="text-align: left;"><span class="math inline">\mu_z = -\mu_Bm_l</span></td>
+<td style="text-align: left;"><span class="math inline">\mu_z = -g_e\mu_Bm_s \approx \mp\mu_B</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">origin</td>
+<td style="text-align: left;">motion in space</td>
+<td style="text-align: left;">intrinsic (Dirac’s equation)</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li class="fragment">These rules govern which spectral lines actually appear.</li>
+<li>Together: <span class="math inline">\hat{\vec{J}} = \hat{\vec{L}} + \hat{\vec{S}}</span>, <span class="math inline">\ j = l \pm \frac{1}{2}</span>. Next: two electrons and the Pauli principle (Chapters 6 and 7)</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Electrons carry an <strong>intrinsic spin</strong> with <span class="math inline">\(s = \tfrac{1}{2}\)</span> and two states <span class="math inline">\(\alpha, \beta\)</span> at <span class="math inline">\(S_z = \pm\tfrac{1}{2}\hbar\)</span>. Its magnetic moment (<span class="math inline">\(g_e \approx 2\)</span>) drives the <strong>anomalous Zeeman effect</strong>, while <strong>spin-orbit coupling</strong> binds <span class="math inline">\(\vec{L}\)</span> and <span class="math inline">\(\vec{S}\)</span> into the total <span class="math inline">\(\vec{J}\)</span> that labels states as <span class="math inline">\(^{2S+1}L_J\)</span>.</p>
+<p>An orbiting electron is a magnet, <span class="math inline">\mu_z = -\mu_Bm_l</span>, and a field splits a level into <span class="math inline">2l + 1</span>. Stern and Gerlach found two spots where one was expected: the electron has an angular momentum of its own, spin, with <span class="math inline">s = \frac{1}{2}</span>, two states <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>, and a moment twice as large as orbital motion would give. Spin states are two-component vectors, and magnets in a row show collapse and incompatible observables directly. Inside the atom spin and orbit couple: only <span class="math inline">\vec{J} = \vec{L} + \vec{S}</span> is conserved, <span class="math inline">j = l \pm \frac{1}{2}</span>, and the levels with <span class="math inline">l &gt; 0</span> split into the fine structure named by term symbols.</p>
 </blockquote>
 
 </section>
@@ -320,7 +639,6 @@ Davit Potoyan
   <script src="03-spin_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="03-spin_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="03-spin_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03-spin_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -489,27 +807,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
