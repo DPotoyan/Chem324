@@ -116,31 +116,23 @@ $$\lvert\Delta\lambda\rvert = \lambda^2\,\Delta\tilde{\nu} = (643.85\times10^{-7
 
 ## Spin: a new angular momentum
 
-::: {.keyeq}
-$$\hat{S}^2\alpha = \tfrac{3}{4}\hbar^2\,\alpha, \quad \hat{S}_z\alpha = +\tfrac{1}{2}\hbar\,\alpha \qquad\qquad \hat{S}^2\beta = \tfrac{3}{4}\hbar^2\,\beta, \quad \hat{S}_z\beta = -\tfrac{1}{2}\hbar\,\beta$$
+$$\text{two spots} \;\;\Longrightarrow\;\; \text{two values of } \mu_z \;\;\Longrightarrow\;\; \text{two values of an angular momentum, } S_z$$
 
-$$\langle\alpha|\alpha\rangle = \langle\beta|\beta\rangle = 1, \qquad \langle\alpha|\beta\rangle = 0$$
+::: {.keyeq}
+$$\hat{S}_z\,\alpha = +\tfrac{1}{2}\hbar\,\alpha \qquad\qquad\qquad \hat{S}_z\,\beta = -\tfrac{1}{2}\hbar\,\beta$$
 :::
 
-- Two spots: $2s + 1 = 2$, so $s = \frac{1}{2}$. Two states: $\alpha$ (**spin up**, $m_s = +\frac{1}{2}$) and $\beta$ (**spin down**, $m_s = -\frac{1}{2}$)
-- $\hat{S}_x$, $\hat{S}_y$, $\hat{S}_z$ obey the commutators of $\hat{\vec{L}}$ (4.4), so $\hat{S}^2$ gives $s(s+1)\hbar^2$ and $\hat{S}_z$ gives $m_s\hbar$
+- A magnetic moment goes with an angular momentum. The electron has one of its own: **spin**, $\hat{\vec{S}}$
+- Its $z$ component has **two eigenvalues** and **two eigenfunctions**: $\alpha$ (**spin up**) and $\beta$ (**spin down**)
 - **Intrinsic**, like charge and mass. **Not a motion in space**, and not in the Schrödinger equation
 
-## The vector model for spin
+## The vector model: spin beside $\vec{L}$
 
-:::: {.columns}
-::: {.column width="52%"}
-![](../../ch05/images/spin_cones.png){width="100%"}
-:::
-::: {.column width="48%"}
-$$\lvert\vec{S}\rvert = \sqrt{s(s+1)}\,\hbar = \tfrac{\sqrt{3}}{2}\hbar$$
+![](../../ch05/images/spin_cones.png){.nostretch width="74%" fig-align="center"}
 
-$$\cos\theta = \frac{1/2}{\sqrt{3}/2} = \frac{1}{\sqrt{3}} \quad\Longrightarrow\quad \theta = 54.7°$$
+$$\lvert\vec{L}\rvert = \sqrt{l(l+1)}\,\hbar, \quad L_z = m_l\hbar \qquad\qquad\qquad \lvert\vec{S}\rvert = \sqrt{s(s+1)}\,\hbar, \quad S_z = m_s\hbar$$
 
-- Length and one component are sharp. $S_x$ and $S_y$ are not: the cone
-- "Spin up" is **54.7°** from straight up, the magic angle of 4.4 and 5.2
-:::
-::::
+- Two values of $m_s$: $2s + 1 = 2$, so $s = \frac{1}{2}$
 
 ## Example: is the electron a spinning ball?
 
@@ -162,13 +154,46 @@ $$v = \frac{5\times1.055\times10^{-34}}{4\times9.11\times10^{-31}\times2.8\times
 
 ## Spin states are two-component vectors
 
-$$\chi = c_\alpha\,\alpha + c_\beta\,\beta = \begin{pmatrix}c_\alpha\\ c_\beta\end{pmatrix} \qquad\qquad \alpha = \begin{pmatrix}1\\ 0\end{pmatrix} \qquad \beta = \begin{pmatrix}0\\ 1\end{pmatrix}$$
+1. $S_z$ has two readings, so two eigenstates: $\alpha$ and $\beta$
+2. Any spin state is a **superposition** of the two (Lecture 3.6)
+3. Two numbers, $c_\alpha$ and $c_\beta$, say it all: stack them in a **column**
 
-$$\hat{S}_x = \frac{\hbar}{2}\begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix} \qquad \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix}0 & -i\\ i & 0\end{pmatrix} \qquad \hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}$$
+$$\chi = c_\alpha\,\alpha + c_\beta\,\beta = \begin{pmatrix}c_\alpha\\ c_\beta\end{pmatrix} \qquad\Longrightarrow\qquad \alpha = \begin{pmatrix}1\\ 0\end{pmatrix}, \qquad \beta = \begin{pmatrix}0\\ 1\end{pmatrix}$$
 
-- The smallest quantum system: Lectures 3.5 and 3.6 with $2\times2$ matrices. A bracket is a dot product
+$$\langle\alpha|\beta\rangle = 1\cdot0 + 0\cdot1 = 0 \qquad\qquad\qquad \lvert c_\alpha\rvert^2 + \lvert c_\beta\rvert^2 = 1$$
+
+- No coordinate, no integral: a bracket is a **dot product**, as for the grid columns of 3.5
 - Born rule: $S_z = +\frac{1}{2}\hbar$ with probability $\lvert c_\alpha\rvert^2$, and $-\frac{1}{2}\hbar$ with probability $\lvert c_\beta\rvert^2$
-- $\hat{S}_z$ is diagonal: $\alpha$, $\beta$ are its eigenvectors. $\hat{S}_x$ **flips** the spin, so $\alpha$ is not its eigenvector
+
+## Spin operators are $2\times2$ matrices
+
+- A state is a column of two numbers, so an operator is a $2\times2$ **matrix** (Lecture 3.5)
+
+$$\hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}$$
+
+- $\hat{S}_z$ is **diagonal**: $\alpha$ and $\beta$ are its eigenvectors, and its eigenvalues $\pm\frac{1}{2}\hbar$ sit on the diagonal
+
+$$\hat{S}_x = \frac{\hbar}{2}\begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix} \qquad\qquad\qquad \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix}0 & -i\\ i & 0\end{pmatrix}$$
+
+- The other two are **not** diagonal: $\alpha$ and $\beta$ are not their eigenvectors. All three are Hermitian
+
+## Example: $\hat{S}_z$ acting on $\alpha$ and $\beta$
+
+::: {.worked}
+Multiply the matrix of $\hat{S}_z$ into the columns $\alpha$ and $\beta$, row times column.
+:::
+
+:::: {.fragment}
+
+::: {.soln}
+$$\hat{S}_z\,\alpha = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}\begin{pmatrix}1\\ 0\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}1\cdot1 + 0\cdot0\\ 0\cdot1 - 1\cdot0\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}1\\ 0\end{pmatrix} = +\tfrac{1}{2}\hbar\,\alpha$$
+
+$$\hat{S}_z\,\beta = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}\begin{pmatrix}0\\ 1\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}1\cdot0 + 0\cdot1\\ 0\cdot0 - 1\cdot1\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}0\\ -1\end{pmatrix} = -\tfrac{1}{2}\hbar\,\beta$$
+:::
+
+- The matrix gives back the two eigenvalue equations we started from. But $\hat{S}_x\,\alpha = \frac{1}{2}\hbar\,\beta$: not a multiple of $\alpha$
+
+::::
 
 ## Example: measure $S_x$ on a spin-up electron
 
@@ -180,8 +205,6 @@ The electron is in $\alpha$. What can a measurement of $S_x$ give, and how often
 
 ::: {.soln}
 $$\det\big(\hat{S}_x - \lambda\big) = \lambda^2 - \tfrac{1}{4}\hbar^2 = 0 \;\Longrightarrow\; \lambda = \pm\tfrac{1}{2}\hbar, \qquad \chi_{\pm x} = \frac{\alpha \pm \beta}{\sqrt{2}}$$
-
-$$P\left(\pm\tfrac{1}{2}\hbar\right) = \lvert\langle\chi_{\pm x}|\alpha\rangle\rvert^2 = \left(\tfrac{1}{\sqrt{2}}\right)^2 = \tfrac{1}{2}$$
 :::
 
 - Certain along $z$, a **coin toss** along $x$. After the reading the state is $\chi_{\pm x}$: the certainty about $S_z$ is gone

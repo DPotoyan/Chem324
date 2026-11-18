@@ -473,6 +473,8 @@ $$
 
 #### The vector model
 
+Spin follows the rules that Lecture 4.4 found for $\vec{L}$, with $s$ in place of $l$ and $m_s$ in place of $m_l$. Draw the two side by side:
+
 ```{code-cell} python
 :tags: [hide-input]
 # synced: spin_cones
@@ -482,34 +484,47 @@ from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 
 TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
-from matplotlib.patches import Arc
-fig, ax = plt.subplots(figsize=(5.8, 4.7))
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.1), gridspec_kw={"wspace": 0.0})
 t = np.linspace(0, 2 * np.pi, 300)
-R = np.sqrt(3) / 2                                           # |S| in units of hbar
-ax.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
-ax.annotate("", xy=(0, R + 0.3), xytext=(0, -R - 0.16), arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14,
-                                                                      shrinkA=0, shrinkB=0))
-ax.text(0.07, R + 0.26, "$z$", fontsize=16, va="center")
-for m, col, sg in ((0.5, TEAL, "+"), (-0.5, ORANGE, "-")):
-    rm = np.sqrt(R * R - m * m)                              # radius of the cone's rim: the part of S off the z axis
-    ax.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=col, lw=1.6, alpha=0.45)
-    ax.plot([-rm, 0, rm], [m, 0, m], color=col, lw=1.3, alpha=0.45)
-    ax.annotate("", xy=(rm, m), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=col, lw=2.8, mutation_scale=18,
-                                                              shrinkA=0, shrinkB=0))
-    ax.plot([0], [m], "o", color=col, ms=5.5, zorder=5)
-    ax.plot([rm + 0.04, R + 0.12], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
-    ax.text(R + 0.17, m + 0.085, rf"$m_s = {sg}\frac{{1}}{{2}}$", va="center", fontsize=17, color=col)
-    ax.text(R + 0.17, m - 0.1, rf"$S_z = {sg}\frac{{1}}{{2}}\hbar$", va="center", fontsize=17, color=col)
-ax.add_patch(Arc((0, 0), 0.44, 0.44, theta1=np.degrees(np.arctan2(0.5, 1 / np.sqrt(2))), theta2=90, color="#343a40", lw=1.3))
-ax.text(0.055, 0.292, r"$54.7°$", fontsize=12.5, color="#343a40", ha="left", va="center")
-ax.text(-0.64, 0.76, r"$|\vec{S}| = \frac{\sqrt{3}}{2}\hbar$", fontsize=17, color=GRAY, ha="right", va="center")
-ax.set_xlim(-1.5, 1.82); ax.set_ylim(-R - 0.22, R + 0.4)
-ax.set_aspect("equal"); ax.axis("off")
-fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+LIGHT = "#cdb9e3"
+half = lambda k: ("+" if k > 0 else "-") + r"\frac{1}{2}"
+# (panel, length in hbar, [(height m, arrow colour, cone colour, two label lines)], title, length label)
+panels = [(ax, np.sqrt(2), [(1, PURPLE, LIGHT, (r"$m_l = +1$", r"$L_z = +\hbar$")), (0, PURPLE, LIGHT, (r"$m_l = 0$", r"$L_z = 0$")),
+                            (-1, PURPLE, LIGHT, (r"$m_l = -1$", r"$L_z = -\hbar$"))],
+           r"orbital, $l = 1$", r"$|\vec{L}| = \sqrt{2}\,\hbar$"),
+          (bx, np.sqrt(3) / 2, [(0.5, TEAL, TEAL, (rf"$m_s = {half(1)}$", rf"$S_z = {half(1)}\hbar$")),
+                                (-0.5, ORANGE, ORANGE, (rf"$m_s = {half(-1)}$", rf"$S_z = {half(-1)}\hbar$"))],
+           r"spin, $s = \frac{1}{2}$", r"$|\vec{S}| = \frac{\sqrt{3}}{2}\hbar$")]
+for a_, R, states, title, lenlab in panels:
+    a_.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
+    a_.annotate("", xy=(0, 1.9), xytext=(0, -1.7), arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14,
+                                                                    shrinkA=0, shrinkB=0))
+    a_.text(0.09, 1.84, "$z$", fontsize=17, va="center")
+    for m, col, cone, (l1, l2) in states:
+        rm = np.sqrt(R * R - m * m)                          # radius of the cone's rim: the part of the vector off the z axis
+        alpha = 1.0 if cone == LIGHT else 0.45
+        a_.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=cone, lw=1.6, alpha=alpha)
+        a_.plot([-rm, 0, rm], [m, 0, m], color=cone, lw=1.3, alpha=alpha)
+        a_.annotate("", xy=(rm, m), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=col, lw=2.8, mutation_scale=18,
+                                                                   shrinkA=0, shrinkB=0))
+        a_.plot([0], [m], "o", color=col, ms=5.5, zorder=5)
+        a_.plot([rm + 0.05, 1.5], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
+        a_.text(1.58, m + 0.17, l1, va="center", fontsize=18, color=col)
+        a_.text(1.58, m - 0.19, l2, va="center", fontsize=18, color=col)
+    a_.text(-0.2, -1.52, lenlab, fontsize=18, color=GRAY, ha="right", va="center")
+    a_.set_title(title, fontsize=18)
+    a_.set_xlim(-1.72, 2.85); a_.set_ylim(-1.78, 1.98)
+    a_.set_aspect("equal"); a_.axis("off")
+fig.subplots_adjust(left=0.0, right=1.0, top=0.91, bottom=0.0)
 plt.show()
 ```
 
-Fig. The vector model for $s = \frac{1}{2}$. The spin has length $\frac{\sqrt{3}}{2}\hbar$ and its height along $z$ is $+\frac{1}{2}\hbar$ or $-\frac{1}{2}\hbar$: two cones.
+Fig. The vector model for orbital angular momentum with $l = 1$ (left, three cones) and for spin (right, two cones), drawn on the same scale. Each arrow has a sharp length and a sharp height along $z$.
+
+| | length | height along $z$ | how many states |
+| :-- | :-- | :-- | :-: |
+| orbital, $l = 1$ | $\sqrt{l(l+1)}\,\hbar = \sqrt{2}\,\hbar$ | $m_l\hbar = +\hbar,\ 0,\ -\hbar$ | $2l + 1 = 3$ |
+| spin, $s = \frac{1}{2}$ | $\sqrt{s(s+1)}\,\hbar = \frac{\sqrt{3}}{2}\hbar$ | $m_s\hbar = +\frac{1}{2}\hbar,\ -\frac{1}{2}\hbar$ | $2s + 1 = 2$ |
 
 - **Two things are sharp, as for $\vec{L}$:** the length and one component. Where the arrow sits on its cone is not defined, because $\hat{S}_x$ and $\hat{S}_y$ do not commute with $\hat{S}_z$.
 - **"Spin up" is far from straight up.** The angle from the $z$ axis has $\cos\theta = \frac{1}{2}\big/\frac{\sqrt{3}}{2} = 1/\sqrt{3}$, so $\theta = 54.7°$: the magic angle of Problem 6 of Lecture 4.4, and of the nodal cones of $d_{z^2}$ in Lecture 5.2.
@@ -534,24 +549,59 @@ Faster than light, 170 times over. Scattering experiments show that the electron
 
 #### Spin states are two-component vectors
 
-With only two states, spin is the simplest quantum system there is. Lectures [3.5](../ch03/04-operators.md) and [3.6](../ch03/06-eigenvalues-and-expectation.md) apply to it in full, with nothing larger than a $2\times2$ matrix. Any spin state is a superposition of $\alpha$ and $\beta$, a vector with two components:
+How should a spin state be written down? An orbital is a function of $r$, $\theta$, $\phi$, but spin has no coordinate to plot against. Three steps lead to the answer:
+
+1. **Two readings, two eigenstates.** A measurement of $S_z$ has two outcomes, so $\hat{S}_z$ has two eigenstates, $\alpha$ and $\beta$, and they are orthonormal (the box above).
+2. **Every spin state is a superposition of the two.** The eigenstates of an observable are a complete set of axes ([Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md)), so any spin state is $\chi = c_\alpha\,\alpha + c_\beta\,\beta$, with $c_\alpha = \langle\alpha|\chi\rangle$ and $c_\beta = \langle\beta|\chi\rangle$.
+3. **Two numbers make a column.** In [Lecture 3.5](../ch03/04-operators.md) a wavefunction became a long column of its values on a grid. A spin state needs two entries, $c_\alpha$ on top and $c_\beta$ below. The state $\alpha$ itself has $c_\alpha = 1$ and $c_\beta = 0$:
 
 $$
-\alpha = \begin{pmatrix}1\\ 0\end{pmatrix}, \qquad \beta = \begin{pmatrix}0\\ 1\end{pmatrix}, \qquad \chi = c_\alpha\,\alpha + c_\beta\,\beta = \begin{pmatrix}c_\alpha\\ c_\beta\end{pmatrix}
+\chi = c_\alpha\,\alpha + c_\beta\,\beta = \begin{pmatrix}c_\alpha\\ c_\beta\end{pmatrix} \qquad\Longrightarrow\qquad \alpha = \begin{pmatrix}1\\ 0\end{pmatrix}, \qquad \beta = \begin{pmatrix}0\\ 1\end{pmatrix}
 $$
 
 $$
 \lvert c_\alpha\rvert^2 + \lvert c_\beta\rvert^2 = 1
 $$
 
+With only two components, spin is the simplest quantum system there is, and Lectures 3.5 and 3.6 apply to it in full with nothing larger than a $2\times2$ matrix.
+
 - **The bracket is a dot product,** row times column with the bra's components conjugated: $\langle\alpha|\beta\rangle = 1\cdot0 + 0\cdot1 = 0$. There is no integral, because there is no coordinate. (Some books write a formal integral over a "spin variable", and the states as $\psi_{+1/2}$ and $\psi_{-1/2}$. They mean this two-term sum.)
 - **The Born rule** of Lecture 3.6: a measurement of $S_z$ gives $+\frac{1}{2}\hbar$ with probability $\lvert c_\alpha\rvert^2$ and $-\frac{1}{2}\hbar$ with probability $\lvert c_\beta\rvert^2$.
 
-The operators are $2\times2$ Hermitian matrices, $\frac{1}{2}\hbar$ times the three **Pauli matrices**:
+#### Spin operators are $2\times2$ matrices
+
+If a state is a column of two numbers, an operator that turns one state into another is a $2\times2$ matrix (Lecture 3.5). The matrix of $\hat{S}_z$ needs no calculation: $\alpha$ and $\beta$ are its eigenvectors, and a matrix written in the basis of its own eigenvectors is diagonal, with the eigenvalues on the diagonal:
+
+$$
+\hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}
+$$
+
+The other two components are not diagonal in this basis. Together the three are $\frac{1}{2}\hbar$ times the **Pauli matrices**:
 
 $$
 \hat{S}_x = \frac{\hbar}{2}\begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix}, \qquad \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix}0 & -i\\ i & 0\end{pmatrix}, \qquad \hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}
 $$
+
+:::{note} **Example: $\hat{S}_z$ and $\hat{S}_x$ acting on $\alpha$ and $\beta$**
+
+Multiply each matrix into the columns, row times column.
+
+$$
+\hat{S}_z\,\alpha = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}\begin{pmatrix}1\\ 0\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}1\cdot1 + 0\cdot0\\ 0\cdot1 - 1\cdot0\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}1\\ 0\end{pmatrix} = +\tfrac{1}{2}\hbar\,\alpha
+$$
+
+$$
+\hat{S}_z\,\beta = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}\begin{pmatrix}0\\ 1\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}0\\ -1\end{pmatrix} = -\tfrac{1}{2}\hbar\,\beta
+$$
+
+The matrix gives back the two eigenvalue equations the lecture started from. Now the same with $\hat{S}_x$:
+
+$$
+\hat{S}_x\,\alpha = \frac{\hbar}{2}\begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix}\begin{pmatrix}1\\ 0\end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}0\\ 1\end{pmatrix} = \tfrac{1}{2}\hbar\,\beta
+$$
+
+Not a multiple of $\alpha$: $\hat{S}_x$ turns spin up into spin down, so $\alpha$ is not an eigenvector of $\hat{S}_x$.
+:::
 
 - **$\hat{S}_z$ is diagonal** because $\alpha$ and $\beta$, its own eigenvectors, are the basis. Its eigenvalues $\pm\frac{1}{2}\hbar$ sit on the diagonal (Lecture 3.5).
 - **$\hat{S}_x$ flips the spin.** Row times column gives $\hat{S}_x\alpha = \frac{1}{2}\hbar\,\beta$ and $\hat{S}_x\beta = \frac{1}{2}\hbar\,\alpha$. So $\alpha$ is not an eigenvector of $\hat{S}_x$: when $S_z$ is sharp, $S_x$ is not.

@@ -1056,33 +1056,41 @@ def sg_screens():
     return fig, None
 
 
-# ------------------------------------------------------------ the vector model for s = 1/2: two cones, length sqrt(3)/2, heights +-1/2, 54.7 degrees from z (still)
+# ------------------------------------------------------------ the vector model, orbital l = 1 beside spin s = 1/2 on one scale: three cones and two, no angle marks (still)
 @register
 def spin_cones():
-    from matplotlib.patches import Arc
-    fig, ax = plt.subplots(figsize=(5.8, 4.7))
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.1), gridspec_kw={"wspace": 0.0})
     t = np.linspace(0, 2 * np.pi, 300)
-    R = np.sqrt(3) / 2                                           # |S| in units of hbar
-    ax.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
-    ax.annotate("", xy=(0, R + 0.3), xytext=(0, -R - 0.16), arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14,
-                                                                          shrinkA=0, shrinkB=0))
-    ax.text(0.07, R + 0.26, "$z$", fontsize=16, va="center")
-    for m, col, sg in ((0.5, TEAL, "+"), (-0.5, ORANGE, "-")):
-        rm = np.sqrt(R * R - m * m)                              # radius of the cone's rim: the part of S off the z axis
-        ax.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=col, lw=1.6, alpha=0.45)
-        ax.plot([-rm, 0, rm], [m, 0, m], color=col, lw=1.3, alpha=0.45)
-        ax.annotate("", xy=(rm, m), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=col, lw=2.8, mutation_scale=18,
-                                                                  shrinkA=0, shrinkB=0))
-        ax.plot([0], [m], "o", color=col, ms=5.5, zorder=5)
-        ax.plot([rm + 0.04, R + 0.12], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
-        ax.text(R + 0.17, m + 0.085, rf"$m_s = {sg}\frac{{1}}{{2}}$", va="center", fontsize=17, color=col)
-        ax.text(R + 0.17, m - 0.1, rf"$S_z = {sg}\frac{{1}}{{2}}\hbar$", va="center", fontsize=17, color=col)
-    ax.add_patch(Arc((0, 0), 0.44, 0.44, theta1=np.degrees(np.arctan2(0.5, 1 / np.sqrt(2))), theta2=90, color="#343a40", lw=1.3))
-    ax.text(0.055, 0.292, r"$54.7°$", fontsize=12.5, color="#343a40", ha="left", va="center")
-    ax.text(-0.64, 0.76, r"$|\vec{S}| = \frac{\sqrt{3}}{2}\hbar$", fontsize=17, color=GRAY, ha="right", va="center")
-    ax.set_xlim(-1.5, 1.82); ax.set_ylim(-R - 0.22, R + 0.4)
-    ax.set_aspect("equal"); ax.axis("off")
-    fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
+    LIGHT = "#cdb9e3"
+    half = lambda k: ("+" if k > 0 else "-") + r"\frac{1}{2}"
+    # (panel, length in hbar, [(height m, arrow colour, cone colour, two label lines)], title, length label)
+    panels = [(ax, np.sqrt(2), [(1, PURPLE, LIGHT, (r"$m_l = +1$", r"$L_z = +\hbar$")), (0, PURPLE, LIGHT, (r"$m_l = 0$", r"$L_z = 0$")),
+                                (-1, PURPLE, LIGHT, (r"$m_l = -1$", r"$L_z = -\hbar$"))],
+               r"orbital, $l = 1$", r"$|\vec{L}| = \sqrt{2}\,\hbar$"),
+              (bx, np.sqrt(3) / 2, [(0.5, TEAL, TEAL, (rf"$m_s = {half(1)}$", rf"$S_z = {half(1)}\hbar$")),
+                                    (-0.5, ORANGE, ORANGE, (rf"$m_s = {half(-1)}$", rf"$S_z = {half(-1)}\hbar$"))],
+               r"spin, $s = \frac{1}{2}$", r"$|\vec{S}| = \frac{\sqrt{3}}{2}\hbar$")]
+    for a_, R, states, title, lenlab in panels:
+        a_.plot(R * np.cos(t), R * np.sin(t), color=GRAY, lw=1, ls=":")
+        a_.annotate("", xy=(0, 1.9), xytext=(0, -1.7), arrowprops=dict(arrowstyle="-|>", color="k", lw=1.4, mutation_scale=14,
+                                                                        shrinkA=0, shrinkB=0))
+        a_.text(0.09, 1.84, "$z$", fontsize=17, va="center")
+        for m, col, cone, (l1, l2) in states:
+            rm = np.sqrt(R * R - m * m)                          # radius of the cone's rim: the part of the vector off the z axis
+            alpha = 1.0 if cone == LIGHT else 0.45
+            a_.plot(rm * np.cos(t), m + 0.2 * rm * np.sin(t), color=cone, lw=1.6, alpha=alpha)
+            a_.plot([-rm, 0, rm], [m, 0, m], color=cone, lw=1.3, alpha=alpha)
+            a_.annotate("", xy=(rm, m), xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=col, lw=2.8, mutation_scale=18,
+                                                                       shrinkA=0, shrinkB=0))
+            a_.plot([0], [m], "o", color=col, ms=5.5, zorder=5)
+            a_.plot([rm + 0.05, 1.5], [m, m], color=GRAY, lw=0.8, ls=(0, (2, 3)))
+            a_.text(1.58, m + 0.17, l1, va="center", fontsize=18, color=col)
+            a_.text(1.58, m - 0.19, l2, va="center", fontsize=18, color=col)
+        a_.text(-0.2, -1.52, lenlab, fontsize=18, color=GRAY, ha="right", va="center")
+        a_.set_title(title, fontsize=18)
+        a_.set_xlim(-1.72, 2.85); a_.set_ylim(-1.78, 1.98)
+        a_.set_aspect("equal"); a_.axis("off")
+    fig.subplots_adjust(left=0.0, right=1.0, top=0.91, bottom=0.0)
     fig.savefig(f"{OUT}/spin_cones.png", dpi=200)
     print("wrote", f"{OUT}/spin_cones.png")
     return fig, None
