@@ -16,7 +16,17 @@ For the following hamiltonians, identify the exactly solvable and the perturbati
 
 ### Question-2
 
-Complete the proof of perturbation theory following **8-43 Problem in the book**
+*Transitions driven by light*
+
+An electron in a one-dimensional box of length $L = 1.0$ nm is a simple model of a $\pi$ electron in a conjugated dye. Light polarized along the box acts on it through the dipole $\hat{M} = -ex$.
+
+- Which of the transitions $n = 1 \to 4$, $2 \to 3$, $2 \to 4$ and $3 \to 5$ are allowed? Decide each one from the symmetry of the integrand of $\langle f \mid x \mid i\rangle$ about the middle of the box, without computing any integral.
+
+- Compute the transition dipole $\langle 3 \mid -ex \mid 2\rangle$ by integration. Give it in units of $eL$ and in debye.
+
+- At what wavelength does the $2 \to 3$ transition absorb?
+
+- On resonance, the first-order probability of the transition is $P = (\mid M_{fi}\mid \mathcal{E}\, t/2\hbar)^2$. For light with a field amplitude $\mathcal{E} = 1.0\times10^{5}$ V/m, how long does it take for the probability to reach 1%? Why can the same formula not be trusted after ten times that long?
 
 ### Question-3
 
@@ -28,13 +38,6 @@ $$
 
 
 ### Question-4
-
-- Prove variational theorem following the hints from **Problem 8-1 in the  book**. 
-- Complete the derivation of secular determinant outlined in the **Problem 8-22 from the book**
-
-
-
-### Question-5
 
 *Application of variational method: Linear combinations of trial functions*
 
@@ -64,7 +67,7 @@ $$
 
 
 
-### <span style="background-color:lightyellow">Solution key to Question-5  </span>
+### <span style="background-color:lightyellow">Solution key to Question-4  </span>
 
 - The piecewise function $V(x)$ is symmetric with respect to L/2 on a [0,L] interval. Note the nice analogy when we compare L/2 shifted integration limits $[-L/2, +L/2]$ with harmonic oscillator eigenfunctions on $[-\infty, +\infty]$! We will take advantage of this fact below to set integrals of odd functions to zero!
 

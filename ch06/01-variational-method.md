@@ -4,383 +4,841 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Variational Method
+# The Variational Method
 
-:::{note} **What you will learn**
+:::{note} **What you need to know**
 
-- **Why we need approximations:** The Schrodinger equation can be solved analytically only for a handful of simple systems. The hydrogen atom is the most complex atomic case with a closed-form solution; helium and any multi-electron system are intractable.
-- **The variational theorem:** For any trial wavefunction, the computed energy is always greater than or equal to the true ground-state energy. This gives a rigorous upper bound and a way to rank approximations.
-- **Trial functions and parameters:** Start from an educated guess for the wavefunction, then tune its parameters to minimize the energy and approach the exact value.
-- **Worked examples:** Particle in a box, the hydrogen atom with Gaussian trial functions, and the helium atom with an effective nuclear charge.
-- **The linear variational method:** Expanding the trial function in a basis set turns a hard differential-equation problem into a tractable linear algebra problem, where we solve for eigenvalues and eigenvectors of a matrix. This idea underlies electronic-structure methods such as Hartree-Fock.
+- The Schrödinger equation is solved exactly for the box, the spring, the rotor and the hydrogen atom, and for almost nothing else. Helium already has a term, the repulsion $e^2/4\pi\varepsilon_0 r_{12}$ between its two electrons, that no formula handles. Chemistry runs on two approximation methods: the **variational method** of this lecture and **perturbation theory** of the next two.
+- **The variational theorem.** Take any function $\phi$ that obeys the boundary conditions and compute its average energy. The result can never lie below the true ground-state energy: $\langle\phi|\hat{H}|\phi\rangle/\langle\phi|\phi\rangle \geq E_0$. Every guess gives an **upper bound**, so of two guesses the one with the lower energy is the better one.
+- **The recipe.** Put adjustable parameters in the guess, compute the energy as a function of them, and minimize. A Gaussian for hydrogen gives $-0.424\,E_h$ against the exact $-0.5$; a screened nuclear charge for helium gives $\zeta = 27/16$ and $-77.5$ eV against $-79.0$ eV.
+- **The linear variational method.** Write the guess as a sum of fixed **basis functions**, $\phi = \sum_n c_nf_n$, and vary only the coefficients. Minimizing turns the Schrödinger equation into the matrix problem $\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$, solved by the **secular determinant** $\det(\mathbf{H} - E\,\mathbf{S}) = 0$ or by one line of numpy. Adding basis functions can only lower the energy.
+- Two functions that mix give two levels pushed apart, $E_\pm$: one below both starting energies and one above. This **two-level problem** returns as perturbation theory in Lecture 6.2, as absorption of light in Lecture 6.3 and as the chemical bond in Chapter 8. Every electronic-structure program solves the same equation with thousands of basis functions.
+
 :::
 
-## Why approximations are needed
+### Where exact solutions stop
 
-- The Schrodinger equation can be solved analytically only for simple systems.
-- For atomic systems, the hydrogen atom represents the most complex case with an analytical solution.
-- For systems with multiple interacting electrons, such as the helium atom or other multi-electron systems, analytical solutions become intractable.
-- Approximation methods are therefore essential for finding solutions to complex quantum systems. These methods let us estimate solutions and evaluate how close the approximate results are to the true values.
+Four model systems have carried the course so far, and each was solved exactly:
 
-The variational method provides a systematic approach for making approximations and a quantitative way to assess the convergence of predictions toward exact values. Its core idea is simple:
+| system | potential | solved in |
+| :-- | :-- | :-- |
+| particle in a box | walls | [Lecture 3.2](../ch03/02-particle-in-a-box.md) |
+| harmonic oscillator | $\frac{1}{2}kx^2$ | [Lecture 4.2](../ch04/02-quantum-harmonic-oscillator.md) |
+| rigid rotor | none, fixed distance | [Lecture 4.5](../ch04/05-rigid-rotor.md) |
+| hydrogenlike atom | $-Ze^2/4\pi\varepsilon_0 r$ | [Lecture 5.1](../ch05/01-hydrogenlike-atoms.md) |
 
-- Begin with an educated guess by selecting a trial function to represent the wavefunction of the system.
-- Adjust the parameters of the trial function to minimize the energy, bringing the solution closer to the exact value.
-
-## Variational theorem
-
-- The variational method states that for any trial (approximate) function $|\phi\rangle$, the computed energy always comes out greater than or equal to the exact (true) ground-state energy.
-
-:::{important} **Variational Theorem of Quantum Mechanics**
+The list ends there. Add one electron to hydrogen and the Hamiltonian of helium, written in the atomic units of Lecture 5.1 ($\hbar = m_e = e = 4\pi\varepsilon_0 = 1$), is
 
 $$
-E_{\phi}=\frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle} \geq E_0
+\hat{H} = \underbrace{-\tfrac{1}{2}\nabla_1^2 - \frac{2}{r_1}}_{\text{electron 1}}\;\;\underbrace{-\,\tfrac{1}{2}\nabla_2^2 - \frac{2}{r_2}}_{\text{electron 2}}\;+\;\underbrace{\frac{1}{r_{12}}}_{\text{repulsion}}
 $$
 
-- $\hat{H}$ is the Hamiltonian of the problem we want to solve.
-- $|\phi\rangle$ is a trial wavefunction with unknown parameters we want to determine.
-- $E_0$ is the true ground-state energy, which is generally not known to us.
+The first two pieces are hydrogenlike atoms with $Z = 2$, which Lecture 5.1 solved. The last piece, the repulsion between the electrons a distance $r_{12}$ apart, ties the coordinates of one electron to those of the other. The equation no longer separates, and no one has found a formula for its solutions. The same term appears between every pair of electrons in every atom and molecule.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: approx_roadmap
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from matplotlib.patches import FancyBboxPatch
+W, Ht = 10.1, 4.1
+fig = plt.figure(figsize=(W, Ht))
+ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, Ht); ax.axis("off")
+tint = {GRAY: "#f1f3f5", PURPLE: "#f1ecf7", TEAL: "#e3f1f5", ORANGE: "#fdf0e0", "k": "#f8f9fa"}
+
+def box(x, y, w, h, lines, col, sizes=(13, 11.5)):
+    ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.12",
+                                fc=tint[col], ec=col, lw=1.6, zorder=2))
+    n = len(lines)
+    for k, line in enumerate(lines):
+        dy = (n - 1) / 2 - k
+        ax.text(x, y + 0.31 * dy, line, ha="center", va="center", fontsize=sizes[0] if k == 0 else sizes[1],
+                color=col if k == 0 else "k", weight="bold" if k == 0 else None, zorder=3)
+
+arrow = lambda p, q, col=GRAY: ax.annotate("", xy=q, xytext=p, zorder=1, arrowprops=dict(
+    arrowstyle="-|>", color=col, lw=1.5, mutation_scale=15, shrinkA=2, shrinkB=2))
+x1, x2, x3, x4 = 1.15, 3.45, 6.15, 8.9
+yt, yb, ym = 3.1, 1.0, 2.05
+box(x1, ym, 1.9, 1.3, ["solved exactly", "box, spring, rotor", "hydrogen atom"], GRAY)
+box(x2, ym, 2.0, 1.3, ["everything else", "helium, atoms,", "molecules"], "k")
+box(x3, yt, 2.75, 1.25, ["variational method", r"guess $\phi$, minimize $\langle E\rangle$",
+                         r"$\langle E\rangle \geq E_0$: Lecture 6.1"], TEAL)
+box(x3, yb, 2.75, 1.25, ["perturbation theory", r"$\hat{H} = \hat{H}^{(0)} + \hat{H}^{(1)}$",
+                         "correct in steps: 6.2, 6.3"], PURPLE)
+box(x4, ym, 2.0, 1.3, ["chemistry", "orbitals, bonds, spectra", "Chapters 7 and 8"], ORANGE)
+arrow((x1 + 0.95, ym), (x2 - 1.0, ym))
+arrow((x2 + 1.0, ym + 0.25), (x3 - 1.38, yt - 0.1), TEAL)
+arrow((x2 + 1.0, ym - 0.25), (x3 - 1.38, yb + 0.1), PURPLE)
+arrow((x3 + 1.38, yt - 0.1), (x4 - 1.0, ym + 0.25), TEAL)
+arrow((x3 + 1.38, yb + 0.1), (x4 - 1.0, ym - 0.25), PURPLE)
+plt.show()
+```
+
+Fig. The plan of the chapter. Beyond the exactly solved models there are two ways forward: guess the wavefunction and improve the guess (the variational method), or start from a solved problem and correct it step by step (perturbation theory). Both lead to the atoms and molecules of Chapters 7 and 8.
+
+- **The variational method** asks for a guess of the wavefunction. It returns an energy that is guaranteed to be too high, so guesses can be ranked and improved.
+- **Perturbation theory** asks for a solved problem close to the real one. It returns corrections to the energies and states, order by order ([Lecture 6.2](02-perturbation-theory.md)), and with a perturbation that changes in time it explains how light moves molecules between levels ([Lecture 6.3](03-time-dependent-perturbation-and-selection-rules.md)).
+
+### An idea already used twice
+
+Two earlier lectures found a ground-state energy by trying a family of states and keeping the one of lowest energy.
+
+- **The spring** ([Lecture 4.2](../ch04/02-quantum-harmonic-oscillator.md)). Gaussians of every width $\sigma_x$, centered in the well, have the average energy $\hbar^2/8\mu\sigma_x^2 + \frac{1}{2}k\sigma_x^2$. The lowest value is $\frac{1}{2}\hbar\omega$, the zero-point energy.
+- **The hydrogen atom** ([Lecture 5.1](../ch05/01-hydrogenlike-atoms.md)). Exponentials $e^{-r/a}$ of every size $a$ have the average energy $\hbar^2/2\mu a^2 - e^2/4\pi\varepsilon_0 a$. The lowest value is $-\frac{1}{2}E_h = -13.6$ eV, at $a = a_0$.
+
+Both answers were exact, because in each case the family happened to contain the true ground state. This lecture asks what the minimum means when it does not. The answer is the variational theorem: the minimum is then too high, and never too low.
+
+### The variational theorem
+
+#### Any state is a mixture of the exact states
+
+Let $\phi$ be any normalized function that obeys the boundary conditions of the problem: a guess, called a **trial function**. Its average energy is $\langle E\rangle = \langle\phi|\hat{H}|\phi\rangle$. Three steps bound it from below.
+
+1. **Expand the guess in the exact states.** The eigenfunctions of $\hat{H}$ form a complete set ([Lecture 3.6](../ch03/06-eigenvalues-and-expectation.md)), whether or not anyone can write them down:
+
+$$
+\phi = \sum_n c_n\,\psi_n, \qquad \hat{H}\psi_n = E_n\psi_n, \qquad E_0 \leq E_1 \leq E_2 \leq \dots
+$$
+
+Since $\phi$ is normalized, $\sum_n|c_n|^2 = 1$.
+
+
+2. **The average energy is a weighted average of the levels.** A measurement of the energy returns $E_n$ with probability $|c_n|^2$ (the Born rule of Lecture 3.6), so
+
+$$
+\langle E\rangle = \langle\phi|\hat{H}|\phi\rangle = \sum_n|c_n|^2\,E_n
+$$
+
+3. **An average cannot lie below its smallest entry.** Every $E_n$ is at least $E_0$, so
+
+$$
+\langle E\rangle = \sum_n|c_n|^2\,E_n \;\geq\; E_0\sum_n|c_n|^2 = E_0
+$$
+
+Here $E_0$ stands for the lowest level, whatever its quantum number is called: $n = 1$ for the box and for hydrogen, $v = 0$ for the spring.
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: weights_ladder
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 2001)
+phi = x**3 * (1 - x)                                            # a trial state in the box, pushed to the right
+phi = phi / np.sqrt(np.trapezoid(phi**2, x))
+psi = lambda n: np.sqrt(2) * np.sin(n * np.pi * x)
+c2 = np.array([np.trapezoid(phi * psi(n), x) ** 2 for n in range(1, 5)])
+Eavg = 0.5 * np.trapezoid(np.gradient(phi, x) ** 2, x) / (np.pi**2 / 2)   # average energy in units of E_1
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"width_ratios": [1, 1.15], "wspace": 0.32})
+ax.plot([0, 0], [0, 2.5], color="k", lw=2.4); ax.plot([1, 1], [0, 2.5], color="k", lw=2.4)
+ax.plot([0, 1], [0, 0], color="k", lw=2.4)
+ax.plot(x, psi(1), color=GRAY, lw=2.2, ls=(0, (4, 3)))
+ax.fill_between(x, 0, phi, color=TEAL, alpha=0.25, lw=0)
+ax.plot(x, phi, color=TEAL, lw=2.6)
+ax.text(0.28, 1.36, r"$\psi_1$", color=GRAY, fontsize=14, ha="center")
+ax.text(0.9, 2.05, r"$\phi$", color=TEAL, fontsize=15, ha="center")
+ax.set_xlim(-0.06, 1.06); ax.set_ylim(-0.05, 2.5)
+ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "$L$"]); ax.set_yticks([])
+ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False); ax.tick_params(labelsize=12, length=0)
+for n in range(1, 5):
+    E = n * n
+    bx.hlines(E, 0, 1.0, color="#ced4da", lw=1.2, zorder=1)
+    bx.plot([0, c2[n - 1]], [E, E], color=PURPLE, lw=9, solid_capstyle="butt", zorder=3)
+    bx.text(c2[n - 1] + 0.025, E, f"{c2[n - 1]:.2f}" if c2[n - 1] > 0.006 else f"{c2[n - 1]:.3f}", va="center",
+            fontsize=12, color=PURPLE)
+bx.axhline(Eavg, color=CARDINAL, lw=1.8, ls=(0, (5, 3)), zorder=2)
+bx.text(1.0, Eavg + 0.35, rf"$\langle E\rangle = {Eavg:.2f}\,E_1$", color=CARDINAL, fontsize=13, ha="right", va="bottom")
+bx.set_xlim(0, 1.0); bx.set_ylim(0, 17.5)
+bx.set_yticks([1, 4, 9, 16]); bx.set_yticklabels(["$E_1$", "$E_2$", "$E_3$", "$E_4$"], fontsize=13)
+bx.set_xticks([0, 0.5, 1]); bx.tick_params(axis="x", labelsize=11)
+bx.set_xlabel(r"weight $|c_n|^2$", fontsize=12.5)
+fig.subplots_adjust(left=0.04, right=0.97, top=0.96, bottom=0.14)
+plt.show()
+```
+
+Fig. Left: a trial state $\phi$ in a box (teal), pushed toward the right wall, beside the true ground state $\psi_1$ (dashed). Right: the weights $|c_n|^2$ of $\phi$ on the exact levels. An energy measurement returns $E_1$ in 68% of trials, $E_2$ in 29%, higher levels in the rest. The average, $2.19\,E_1$, lies above $E_1$ because every single reading does.
+
+:::{important} **The variational theorem**
+
+$$
+E_\phi = \frac{\langle\phi|\hat{H}|\phi\rangle}{\langle\phi|\phi\rangle} \;\geq\; E_0
+$$
+
+- $\phi$ is any trial function that obeys the boundary conditions, and $E_0$ is the true ground-state energy
+- The denominator normalizes the guess; it is 1 if $\phi$ is already normalized
+- Equality holds only when $\phi$ is the true ground state $\psi_0$
 :::
 
-- When the trial wavefunction is not normalized, we divide by $\langle \phi \mid \phi\rangle$. The expression simplifies when the trial function is normalized beforehand, so that $\langle \phi \mid \phi\rangle=1$.
-- If the true ground-state wavefunction $\psi_0$ is inserted in place of the trial function, the equality is reached. For all other (trial) wavefunctions the energy expectation value on the left side will always be larger. The ratio is also called the Rayleigh ratio.
+- **Every guess gives an upper bound.** The true energy is never above the computed one. No knowledge of the exact solution is needed to say so.
+- **Lower is better.** Of two trial functions, the one with the lower $E_\phi$ is closer to the truth in energy. That turns guessing into a method: change the guess, keep the change if the energy drops.
+- **The energy forgives a poor guess.** Let the guess be the true ground state plus a small error, $\phi = \psi_0 + \epsilon\,\chi$, with $\chi$ normalized and orthogonal to $\psi_0$. Then
 
-### Consequences of the variational theorem
+$$
+E_\phi = \frac{E_0 + \epsilon^2\,\langle\chi|\hat{H}|\chi\rangle}{1 + \epsilon^2} \approx E_0 + \epsilon^2\left(\langle\chi|\hat{H}|\chi\rangle - E_0\right)
+$$
 
-1. **Ground-state energy is the lowest possible energy for the system.**
-2. **By minimizing the energy functional we obtain the most accurate prediction for a given trial function.**
-3. **More parameters give us more handles to vary, and hence more accurate solutions.**
+  An error of size $\epsilon$ in the function costs only $\epsilon^2$ in the energy. A guess that is 10% wrong can give an energy good to about 1%. The reverse also holds: a good energy does not certify the wavefunction, and other properties computed from it are less accurate.
+- **The theorem is about the ground state.** For an excited state the same argument works only if the trial function is orthogonal to every state below it. Symmetry can arrange that: an odd trial function in a symmetric well bounds the lowest odd state (Problem 7).
 
-## Worked examples
+### The recipe: guess, compute, minimize
 
-:::{note} **Example: Particle in a box**
+1. **Guess.** Choose a trial function $\phi$ with the right boundary conditions and a sensible shape: no more nodes than a ground state should have, large where the potential is low. Put adjustable parameters in it.
+2. **Compute.** Evaluate $E_\phi = \langle\phi|\hat{H}|\phi\rangle/\langle\phi|\phi\rangle$ as a function of the parameters.
+3. **Minimize.** Set the derivative with respect to each parameter to zero. The minimum is the best energy that family of functions can give, and it is still an upper bound.
 
-Consider the one-dimensional particle in a box (boundaries at $0$ and $a$). Use the variational theorem to obtain an upper bound for the ground-state energy using the following normalized trial wavefunction:
+One formula saves work in step 2. Integrating by parts, with $\phi$ vanishing at the ends of the range,
 
-$$\psi_t(x) = \frac{\sqrt{30}}{a^{5/2}}x(a - x)$$
+$$
+\langle\phi|\hat{T}|\phi\rangle = -\frac{\hbar^2}{2m}\int\phi\,\phi''\,dx = \frac{\hbar^2}{2m}\int\left(\phi'\right)^2dx
+$$
+
+so the kinetic energy needs only the first derivative: it is large wherever the function is steep.
+
+#### No parameter: a parabola in a box
+
+:::{note} **Example: guess the ground state of a box**
+
+A particle in a box of length $L$ has the ground state $\sqrt{2/L}\,\sin(\pi x/L)$ with $E_1 = \pi^2\hbar^2/2mL^2$. Pretend not to know it, and guess the simplest function that vanishes at both walls, $\phi = x(L - x)$. What energy does the guess give?
+
+Inside the box $\hat{H} = -(\hbar^2/2m)\,d^2/dx^2$, and $\phi'' = -2$, so $\hat{H}\phi = \hbar^2/m$, a constant. The two integrals are
+
+$$
+\langle\phi|\hat{H}|\phi\rangle = \frac{\hbar^2}{m}\int_0^L x(L - x)\,dx = \frac{\hbar^2L^3}{6m}
+$$
+
+$$
+\langle\phi|\phi\rangle = \int_0^L x^2(L - x)^2\,dx = \frac{L^5}{30}
+$$
+
+$$
+E_\phi = \frac{\hbar^2L^3/6m}{L^5/30} = \frac{5\hbar^2}{mL^2} = \frac{10}{\pi^2}\,E_1 = 1.013\,E_1
+$$
+
+The guess is 1.3% too high. It is above $E_1$, as the theorem requires, and close to it because a parabola looks like half a sine wave.
 :::
 
-:::{admonition} **Solution:**
-:class: dropdown solution
+```{code-cell} python
+:tags: [hide-input]
+# synced: box_trials
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-Clearly this is not the correct ground-state wavefunction. First we check that it satisfies the boundary conditions: $\psi_t(0) = 0$ and $\psi_t(a) = 0$ (OK). The Hamiltonian for this problem is:
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+x = np.linspace(0, 1, 1001)
+exact = np.sqrt(2) * np.sin(np.pi * x)
+unit = lambda f: f / np.sqrt(np.trapezoid(f**2, x))
+trials = [("(a) tent", unit(np.minimum(x, 1 - x)), 12 / np.pi**2),
+          ("(b) parabola", unit(x * (1 - x)), 10 / np.pi**2),
+          ("(c) two terms", unit(x * (1 - x) + 1.13314 * x**2 * (1 - x) ** 2), 4.93487481 / (np.pi**2 / 2))]
+fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.5), gridspec_kw={"wspace": 0.12})
+for ax, (name, f, E) in zip(axes, trials):
+    ax.plot([0, 0], [0, 1.95], color="k", lw=2.2); ax.plot([1, 1], [0, 1.95], color="k", lw=2.2)
+    ax.plot([0, 1], [0, 0], color="k", lw=2.2)
+    ax.fill_between(x, exact, f, color=CARDINAL, alpha=0.35, lw=0)
+    ax.plot(x, exact, color=GRAY, lw=4.5, alpha=0.55)
+    ax.plot(x, f, color=TEAL, lw=2.2)
+    ax.set_title(name, fontsize=13.5, color=TEAL, weight="bold")
+    err = 100 * (E - 1)
+    ax.text(0.5, 0.42, rf"$\langle E\rangle = {E:.3f}\,E_1$" if err > 0.05 else rf"$\langle E\rangle = {E:.5f}\,E_1$",
+            ha="center", fontsize=13)
+    ax.text(0.5, 0.14, f"{err:.1f}% high" if err > 0.05 else f"{err:.4f}% high", ha="center", fontsize=12, color=CARDINAL)
+    ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.04, 1.95)
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["0", "$L$"]); ax.set_yticks([])
+    ax.spines["left"].set_visible(False); ax.spines["bottom"].set_visible(False); ax.tick_params(labelsize=12, length=0)
+fig.subplots_adjust(left=0.02, right=0.98, top=0.9, bottom=0.09)
+plt.show()
+```
 
-$$\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}, \quad 0\le x\le a$$
+Fig. Three guesses (teal) for the ground state of a box, drawn over the exact one (gray), with the area between them in red. (a) A tent, with a kink in the middle. (b) The parabola of the example. (c) The parabola plus a second term, built below. Each energy lies above $E_1$, and the closer the shape, the lower the energy.
 
-Plugging both the Hamiltonian and $\psi_t$ into the energy expression gives:
+- **The theorem ranks the guesses.** The tent (Problem 1) is 21.6% high, the parabola 1.3%, the two-term function 0.0015%. No comparison with the exact answer was needed to put them in that order.
+- **Shape decides.** The tent overlaps the true state almost as well as the parabola does, but its kink is steep, and steepness is kinetic energy.
 
-$$\int_0^a\psi_t^*\hat{H}\psi_t \, d\tau = -\frac{30\hbar^2}{2a^5m}\int_0^a\left( ax - x^2\right)\frac{d^2}{dx^2}\left( ax - x^2\right)dx$$
+#### One parameter: hydrogen with a Gaussian
 
-$$= \frac{30\hbar^2}{a^5m}\int_0^a\left( ax-x^2\right) dx = \frac{5\hbar^2}{a^2m}\ge E_1$$
+The ground state of hydrogen is $e^{-r/a_0}$, with $E_1 = -\frac{1}{2}E_h$. Suppose the guess is a Gaussian instead, $\phi = e^{-\alpha r^2}$, with the exponent $\alpha$ free. In atomic units $\hat{H} = -\frac{1}{2}\nabla^2 - 1/r$, and the recipe runs as follows.
 
-As indicated, this gives an upper limit for the ground-state energy $E_1$.
-:::
-
-:::{note} **Example: Hydrogen atom with a Gaussian trial function**
-
-- The exact solution for the ground state is $\psi(r)=\frac{1}{(\pi a^3_0)^{1/2}}e^{-r/a_0}$ with $E_1 = -0.5 \, h$ (in Hartree atomic units).
-- Use a trial function $\phi=e^{-\alpha r^2}$ to predict the ground-state energy.
-:::
-
-:::{admonition} **Solution:**
-:class: dropdown solution
-
-Plug the trial function into the energy expression, computing the energy as a function of the parameter $\alpha$:
-
-$$
-E_{trial} = \frac{\langle \phi \mid \hat{H}  \mid \phi\rangle}{\langle \phi \mid \phi\rangle}
-$$
-
-$$
-E_{trial}(\alpha) = \frac{4\pi \int^{\infty}_0  e^{-\alpha r^2}\left[-\frac{\hbar^2}{2\mu}\nabla_r^2 -\frac{e^2}{4\pi \epsilon_0 r}\right] e^{-\alpha r^2} \, r^2 dr }{4\pi \int^{\infty}_0 e^{-2\alpha r^2} r^2 dr}
-$$
-
-$$
-E_{trial}(\alpha)=\frac{3\hbar^2 \alpha}{2m_e}-\frac{e^2 \alpha^{1/2}}{\sqrt{2}\epsilon_0 \pi^{3/2}}
-$$
-
-Minimization with respect to the parameter $\alpha$ gives the best value of the energy:
-
-$$
-\frac{\partial E_{trial}(\alpha)}{\partial \alpha} = 0
-$$
-
-$$
-\alpha_{min} = \frac{m_e e^4}{18 \pi^3 \epsilon^2_0 \hbar^4}
-$$
-
-Finally, we plug this parameter back into the energy function to obtain the energy minimized with respect to $\alpha$, that is $E(\alpha_{min})$:
+1. **Normalize.** $\langle\phi|\phi\rangle = \int_0^\infty e^{-2\alpha r^2}\,4\pi r^2\,dr = (\pi/2\alpha)^{3/2}$.
+2. **Compute the two parts of the energy.** The integrals are in the dropdown below; divided by the normalization they give
 
 $$
-E_0 = -0.5 \, h, \qquad E_{trial}(\alpha_{min}) = -0.424
+\langle T\rangle = \frac{3\alpha}{2}, \qquad \langle V\rangle = -2\sqrt{\frac{2\alpha}{\pi}}, \qquad E(\alpha) = \frac{3\alpha}{2} - 2\sqrt{\frac{2\alpha}{\pi}}
 $$
 
-This is about 15% error. Not too bad for a start. Adding more parameters and functions will reduce the error.
-:::
-
-## The helium atom is tough
-
-- The Schrodinger equation for the helium atom is already extremely complicated mathematically. No analytic solution to this equation has been found. However, with certain approximations, useful results can be obtained. The Hamiltonian for the He atom can be written as:
-
-$${\hat{H} = \underbrace{-\frac{\hbar^2}{2m_e}\left(\Delta_1 + \Delta_2\right)}_{\textnormal{Kinetic energy}}
-\underbrace{- \frac{1}{4\pi\epsilon_0}\left(\frac{Ze^2}{r_1} + \frac{Ze^2}{r_2} \overbrace{- \frac{e^2}{r_{12}}}^{\textnormal{Tough!}}\right)}_{\textnormal{Potential energy}}}$$
-
-- Here $\Delta_1$ is the Laplacian for the coordinates of electron 1 and $\Delta_2$ for electron 2; $r_1$ is the distance of electron 1 from the nucleus, $r_2$ the distance of electron 2 from the nucleus, and $r_{12}$ the distance between electrons 1 and 2. For the He atom $Z = 2$.
-
-### Independent-electron approximation
-
-- Ignore the tough term containing $r_{12}$. In this case the Hamiltonian becomes a sum of two hydrogen-like atoms:
-
-$${\hat{H} = \hat{H}_1 + \hat{H}_2}$$
-
-$${\hat{H}_1 = -\frac{\hbar^2}{2m_e}\Delta_1 - \frac{Ze^2}{4\pi\epsilon_0r_1}}$$
-
-$${\hat{H}_2 = -\frac{\hbar^2}{2m_e}\Delta_2 - \frac{Ze^2}{4\pi\epsilon_0r_2}}$$
-
-- Because the Hamiltonian is a sum of two independent parts, the Schrodinger equation separates into two (each a hydrogen-like atom equation):
-
-$${\hat{H}_1\psi(r_1) = E_1\psi(r_1)}$$
-$${\hat{H}_2\psi(r_2) = E_2\psi(r_2)}$$
-
-The total energy is a sum of $E_1$ and $E_2$, and the total wavefunction is a product of $\psi(r_1)$ and $\psi(r_2)$. Based on our previous wavefunction table for hydrogen-like atoms:
-
-$${E = E_1 + E_2 = -RZ^2\left(\frac{1}{n_1^2} + \frac{1}{n_2^2}\right)}$$
-
-$${\psi(r_1)\psi(r_2) = \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}e^{-Zr_1/a_0}\frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{3/2}e^{-Zr_2/a_0}
-=\frac{1}{\pi}\left(\frac{Z}{a_0}\right)^3e^{-Z(r_1 + r_2)/a_0}}$$
-
-### Consequences of the independent-electron approximation
-
-- For a ground-state He atom both electrons reside in the lowest-energy orbital, so the total wavefunction is $\psi(r_1,r_2) = \psi(r_1)\psi(r_2) = \psi(1)\psi(2) = 1s(1)1s(2)$. The energy from this approximation is not sufficiently accurate (it misses electron-electron repulsion), but the wavefunction is useful for qualitative analysis. The variational principle gives a systematic way to assess how good our approximation is.
-- The exact ground-state energy has been found (by very extensive analytic and numerical calculations) to be $-79.0$ eV. Using the approximate wavefunction, we can calculate the expectation value of the energy. This yields $-74.8$ eV, so the error in energy for this wavefunction is $5.2$ eV. Note that the approximate value is, in accordance with the variational principle, higher than the true energy.
-
-### A better approximation
-
-- We take the wavefunction from the previous step and use the nuclear charge $Z$ as a variational parameter. The variational principle states that minimizing the energy expectation value with respect to $Z$ should approach the true value from above (but will not reach it).
-- The obtained value of $Z$ is less than the true $Z$ (= 2). This can be understood in terms of electrons shielding the nucleus from each other, giving a reduced effective nuclear charge.
-
-$${E = \langle\psi |\hat{H}|\psi\rangle = ... = \left[ Z^2 - \frac{27Z}{8}\right]\frac{e^2}{4\pi\epsilon_0a_0}}$$
-
-- To minimize this expression we differentiate with respect to $Z$ and set it to zero (the extremum here is clearly a minimum):
-
-$${\frac{dE}{dZ} = \left(2Z - \frac{27}{8}\right)\frac{e^2}{4\pi\epsilon_0a_0} = 0}$$
-
-- This gives $Z = 27/16 \approx 1.7$ and $E \approx -77.5$ eV (compared with $-74.8$ eV before and $-79.0$ eV exact). This result could be improved by adding more terms and variables to the trial wavefunction. For example, higher hydrogen-like orbitals with appropriate variational coefficients would yield a much better result.
-
-## The linear variational method
-
-- How does the variational method scale to harder problems in practice? If we cannot solve for $\psi$ exactly, we can expand the wavefunction in a convenient **basis set** $f_n$ (a set of functions indexed by $n$, like a Fourier series) and tune the expansion to get as close as possible to the true energy and wavefunction.
-
-$$\phi(r) = \sum_n^N c_nf_n(r)$$
-
-- With an infinite number of basis functions we could in principle approximate any function and obtain a nearly exact numerical solution. Computationally this is not feasible, so we truncate the expansion to a finite number $N$ of basis functions and minimize the energy with respect to the coefficients $c_n$.
-- Using a linear combination of trial functions transforms a difficult quantum-mechanics problem into a more tractable linear algebra task: instead of solving differential equations for eigenfunctions and eigenvalues, we solve for the eigenvalues and eigenvectors of a matrix.
-
-### A two-function example
-
-- We illustrate the idea and the general matrix construction with a simple example of two basis functions ($N=2$):
-
-$$\phi = c_1f_1 + c_2f_2$$
-
-- There is no need to define these functions explicitly yet, so we leave them as generic functions $f_1$ and $f_2$. The energy is:
-
-$$E_\phi = \frac{\langle\phi|\hat{H}|\phi\rangle}{\langle\phi|\phi\rangle} = \frac{\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle}{\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle}$$
-
-- Expanding the brackets, the numerator and denominator are built from two kinds of matrix elements, the **Hamiltonian matrix** elements $H_{ij}$ and the **overlap matrix** elements $S_{ij}$:
-
-$$H_{ij} = \langle f_i|\hat{H}|f_j\rangle, \qquad S_{ij} = \langle f_i|f_j\rangle$$
-
-so that
-
-$$E_\phi = \frac{c_1^2 H_{11} + 2 c_1 c_2 H_{12} + c_2^2 H_{22}}{c_1^2 S_{11} + 2 c_1 c_2 S_{12} + c_2^2 S_{22}}$$
-
-### Minimization leads to a generalized eigenvalue problem
-
-- Since $E_\phi \geq E_0$ for any trial function $\phi$, we minimize $E_\phi$ by varying the parameters $c_1$ and $c_2$.
-- Minimizing with respect to $c_1$ means differentiating $E_\phi$ with respect to $c_1$ and setting the derivative to zero:
-
-$$\frac{\partial E_\phi}{\partial c_1} = 0 = c_1(H_{11} - ES_{11}) + c_2(H_{12} - ES_{12})$$
-
-- Minimizing with respect to $c_2$ gives:
-
-$$\frac{\partial E_\phi}{\partial c_2} = 0 = c_1(H_{12} - ES_{12}) + c_2(H_{22} - ES_{22})$$
-
-- These two coupled linear equations can be written compactly as a matrix equation:
-
-:::{important} **Linear variational (generalized eigenvalue) problem**
+3. **Minimize.** A large $\alpha$ is a tight Gaussian: the kinetic energy grows in proportion to $\alpha$, the attraction only as $\sqrt{\alpha}$. Setting $dE/d\alpha = 0$:
 
 $$
-\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}
+\frac{3}{2} - \sqrt{\frac{2}{\pi\alpha}} = 0 \quad\Longrightarrow\quad \alpha = \frac{8}{9\pi} = 0.283\ a_0^{-2}
 $$
 
 $$
-\begin{bmatrix} H_{11} & H_{12} \\ H_{12} & H_{22} \end{bmatrix}
-\begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
-= E
-\begin{bmatrix} S_{11} & S_{12} \\ S_{12} & S_{22} \end{bmatrix}
-\begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
+E = -\frac{4}{3\pi}\,E_h = -0.424\,E_h = -11.5\ \text{eV}
 $$
 
-- $\mathbf{H}$ is the Hamiltonian matrix with elements $H_{ij} = \langle f_i|\hat{H}|f_j\rangle$.
-- $\mathbf{S}$ is the overlap matrix with elements $S_{ij} = \langle f_i|f_j\rangle$.
-- The lowest eigenvalue $E$ is the variational estimate of the ground-state energy; the corresponding eigenvector $\mathbf{c}$ gives the best coefficients.
-:::
+```{code-cell} python
+:tags: [hide-input]
+# synced: gaussian_hydrogen
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-- A nontrivial solution exists only when the secular determinant vanishes, $\det(\mathbf{H} - E\,\mathbf{S}) = 0$. Solving this determinant gives the variational energies. For an orthonormal basis ($\mathbf{S} = \mathbf{I}$) this reduces to the ordinary eigenvalue problem $\mathbf{H}\mathbf{c} = E\mathbf{c}$.
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"width_ratios": [1.15, 1], "wspace": 0.3})
+a = np.linspace(0.01, 1.0, 400)
+T, V = 1.5 * a, -2 * np.sqrt(2 * a / np.pi)                     # hartree, for the trial state exp(-alpha r^2)
+ax.axhline(0, color=GRAY, lw=0.8, ls=":")
+ax.plot(a, T, color=ORANGE, lw=2.4); ax.plot(a, V, color=TEAL, lw=2.4); ax.plot(a, T + V, color="k", lw=2.8)
+ax.axhline(-0.5, color=GRAY, lw=1.6, ls=(0, (5, 3)))
+a0 = 8 / (9 * np.pi)
+ax.plot([a0], [-4 / (3 * np.pi)], "o", color=CARDINAL, ms=9, zorder=5)
+ax.text(a0, -0.36, r"$-0.424$", color=CARDINAL, fontsize=13, ha="center", va="bottom")
+ax.text(0.99, -0.56, r"exact $-\frac{1}{2}$", color=GRAY, fontsize=13, ha="right", va="top")
+ax.text(0.72, 1.16, "kinetic", color=ORANGE, fontsize=13, ha="right")
+ax.text(0.3, -1.3, "potential", color=TEAL, fontsize=13, ha="left", va="top")
+ax.text(0.98, 0.0, "total", color="k", fontsize=13, ha="right", va="bottom")
+ax.set_xlim(0, 1.0); ax.set_ylim(-1.7, 1.6)
+ax.set_xlabel(r"exponent $\alpha$ ($a_0^{-2}$)", fontsize=12.5); ax.set_ylabel(r"average energy ($E_h$)", fontsize=12.5)
+ax.set_yticks([-1.5, -1, -0.5, 0, 0.5, 1, 1.5]); ax.tick_params(labelsize=10.5)
+r = np.linspace(0, 5, 500)
+bx.plot(r, np.exp(-r) / np.sqrt(np.pi), color=GRAY, lw=4.5, alpha=0.55)
+bx.plot(r, (2 * a0 / np.pi) ** 0.75 * np.exp(-a0 * r**2), color=TEAL, lw=2.4)
+bx.text(0.42, 0.47, r"exact $e^{-r/a_0}$", color=GRAY, fontsize=13)
+bx.text(1.75, 0.16, r"best Gaussian", color=TEAL, fontsize=13)
+bx.set_xlim(0, 5); bx.set_ylim(0, 0.6)
+bx.set_xlabel(r"$r$ ($a_0$)", fontsize=12.5); bx.set_ylabel(r"$\psi(r)$", fontsize=12.5); bx.tick_params(labelsize=10.5)
+fig.subplots_adjust(left=0.085, right=0.98, top=0.96, bottom=0.14)
+plt.show()
+```
 
-:::{tip} **Worked example: particle in a box by linear variation**
+Fig. Hydrogen with the trial function $e^{-\alpha r^2}$. Left: the average kinetic, potential and total energy for every exponent $\alpha$. The total has its minimum, $-0.424\,E_h$, at $\alpha = 0.283\,a_0^{-2}$ and stays above the exact $-\frac{1}{2}E_h$ (dashed) everywhere. Right: the best Gaussian against the exact $e^{-r/a_0}$, both normalized.
+
+- **15% too high, and above the exact value for every $\alpha$.** No Gaussian reaches $-\frac{1}{2}E_h$, because no Gaussian is the true state.
+- **What the Gaussian gets wrong.** The true function has a cusp at the nucleus and a long tail $e^{-r}$. The Gaussian is flat at the nucleus and its tail $e^{-\alpha r^2}$ dies too fast.
+- **Why chemists use Gaussians anyway.** Integrals over products of Gaussians centered on different atoms have simple formulas, and exponentials do not. The cure for the poor shape is to add several Gaussians together, which is the linear method below.
+
+:::{tip} **Going further: the integrals behind $E(\alpha)$**
 :class: dropdown
 
-Consider a free particle in 1D bound to $0\leq x\leq a$, with Hamiltonian $\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$. Although we can solve this analytically, it is instructive to see the variational solution. We approximate $\psi(x)$ as an expansion in two basis functions $f_1=x(a-x)$ and $f_2=x^2(a-x)^2$:
+Three standard integrals do all the work, with $b = 2\alpha$:
 
-$$\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2$$
+$$
+\int_0^\infty r\,e^{-br^2}dr = \frac{1}{2b}, \qquad \int_0^\infty r^2e^{-br^2}dr = \frac{\sqrt{\pi}}{4b^{3/2}}
+$$
 
-Computing the matrix elements (by integrating each $\langle f_i|\hat{H}|f_j\rangle$ and $\langle f_i|f_j\rangle$ over $0\le x\le a$) gives:
+$$
+\int_0^\infty r^4e^{-br^2}dr = \frac{3\sqrt{\pi}}{8b^{5/2}}
+$$
 
-$$\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} & \frac{a^2}{30}\\ \frac{a^2}{30} & \frac{a^4}{105} \end{bmatrix}, \qquad
-\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} & \frac{a^2}{14}\\ \frac{a^2}{14} & \frac{a^4}{63} \end{bmatrix}$$
+For a function of $r$ alone, $\nabla^2\phi = \phi'' + 2\phi'/r$, which for the Gaussian is $(4\alpha^2r^2 - 6\alpha)\,e^{-\alpha r^2}$. Then
 
-Solving the generalized eigenvalue problem (with $a = \hbar = m = 1$) gives a lowest energy of
+$$
+\langle\phi|\hat{T}|\phi\rangle = -\frac{1}{2}\int_0^\infty\left(4\alpha^2r^2 - 6\alpha\right)e^{-2\alpha r^2}\,4\pi r^2\,dr = \frac{3\alpha}{2}\left(\frac{\pi}{2\alpha}\right)^{3/2}
+$$
 
-$$E_\phi = 4.9349 \, \frac{\hbar^2}{m}$$
+$$
+\langle\phi|\hat{V}|\phi\rangle = -\int_0^\infty\frac{1}{r}\,e^{-2\alpha r^2}\,4\pi r^2\,dr = -\frac{\pi}{\alpha}
+$$
 
-which is essentially the exact analytic value $E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \, \frac{\hbar^2}{m}$. The variational solution captures both the energy and the shape of the ground-state wavefunction. See the demo notebooks at the end of this chapter for the full calculation and plots.
+Dividing each by $\langle\phi|\phi\rangle = (\pi/2\alpha)^{3/2}$ gives $\langle T\rangle = 3\alpha/2$ and $\langle V\rangle = -2\sqrt{2\alpha/\pi}$.
 :::
 
-## Problems
+The recipe does not need a formula for the exact answer. Pick a well and tune the width of a Gaussian trial function; the dashed level is the exact ground state, solved numerically for comparison.
 
-#### Problem 1
+```{anywidget} ../widgets/variational_tuner.mjs
+{}
+```
 
-::::{admonition} **Problem 1: Hydrogen atom by variation**
-:class: note
+- In the **spring** the family contains the exact state, and the teal level touches the dashed one at one width: the bound becomes an equality.
+- In the **V-shaped well** no Gaussian is exact. The best one stops 0.5% above the dashed level.
+- The **Morse well** is lopsided, and a Gaussian centered at the minimum cannot follow it. Move the center as well: a second parameter lowers the bound further.
 
-Use the variational principle to obtain the lowest-energy solution to the hydrogen atom Schrodinger equation in spherical coordinates using the following trial wavefunctions:
+#### Helium: a charge that is not 2
 
-- (a) $\psi_{trial} = e^{-kr}$ with $k$ as a variational parameter.
-- (b) $\psi_{trial} = e^{-kr^2}$ with $k$ as a variational parameter.
-- (c) Which trial function gives the better (lower) energy?
+Helium is where the exact solutions stopped. Drop the repulsion $1/r_{12}$ from its Hamiltonian, and what is left is a sum of two He$^+$ Hamiltonians, one for each electron. A Hamiltonian that is a sum separates: the energies add and the wavefunctions multiply. Both electrons then sit in the 1s orbital of He$^+$, $e^{-2r}$ in atomic units, and the state of the atom is the product
 
-Both trial functions depend only on $r$, so the angular terms drop out of the Laplacian. You may find the following integrals useful:
+$$
+\phi(r_1, r_2) = \psi_{1s}(r_1)\,\psi_{1s}(r_2) \propto e^{-2r_1}\,e^{-2r_2}
+$$
 
-$$\int_0^\infty x^ne^{-ax}dx = \frac{n!}{a^{n+1}}, \qquad \int_0^\infty x^me^{-ax^2}dx = \frac{\Gamma[(m + 1)/2]}{2a^{(m + 1) / 2}}$$
+This **independent-electron** product is not an eigenfunction of the true Hamiltonian, which still contains the repulsion. It is a guess, and the variational method can improve it.
 
-$$\Gamma[n + 1] = n!, \qquad \Gamma[n + 1] = n\Gamma[n], \qquad \Gamma\left[\frac{1}{2}\right] = \sqrt{\pi}$$
+:::{note} **Example: the effective nuclear charge of helium**
 
-:::{admonition} **Solution:**
+Keep the product of two 1s orbitals, but let the charge in the exponent be a parameter $\zeta$ in place of 2:
+
+$$
+\phi(r_1, r_2) = \frac{\zeta^3}{\pi}\,e^{-\zeta r_1}\,e^{-\zeta r_2} \qquad\text{(atomic units)}
+$$
+
+The Hamiltonian keeps the true nuclear charge $Z = 2$. The average energy has three parts:
+
+- kinetic energy, $\zeta^2/2$ for each electron: $\zeta^2$ in all
+- attraction to the nucleus, $-Z\zeta$ for each electron, since $\langle 1/r\rangle = \zeta$ in this orbital: $-2Z\zeta$ in all
+- repulsion between the two clouds, $\langle 1/r_{12}\rangle = \frac{5}{8}\zeta$ (a standard integral; the dropdown below shows where it comes from)
+
+$$
+E(\zeta) = \zeta^2 - 2Z\zeta + \tfrac{5}{8}\zeta = \zeta^2 - \tfrac{27}{8}\zeta \quad (Z = 2)
+$$
+
+$$
+\frac{dE}{d\zeta} = 2\zeta - \tfrac{27}{8} = 0 \quad\Longrightarrow\quad \zeta = \frac{27}{16} = 1.69
+$$
+
+$$
+E = -\left(\frac{27}{16}\right)^2E_h = -2.848\,E_h = -77.5\ \text{eV}
+$$
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: helium_screening
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+Eh = 27.2114
+z = np.linspace(1.15, 2.35, 300)
+fig, ax = plt.subplots(figsize=(8.0, 4.2))
+ax.plot(z, (z**2 - 27 * z / 8) * Eh, color="k", lw=2.8)
+ax.axhline(-79.01, color=GRAY, lw=1.6, ls=(0, (5, 3)))
+ax.text(2.34, -79.25, "exact $-79.0$ eV", color=GRAY, fontsize=13, ha="right", va="top")
+ax.plot([2], [-2.75 * Eh], "o", color=GRAY, ms=9, zorder=5)
+ax.text(2.03, -2.75 * Eh - 0.1, r"$\zeta = 2$:  $-74.8$ eV", color=GRAY, fontsize=13, ha="left", va="top")
+zb = 27 / 16
+ax.plot([zb], [-zb**2 * Eh], "o", color=CARDINAL, ms=9, zorder=5)
+ax.text(zb, -zb**2 * Eh + 0.45, r"$\zeta = \frac{27}{16}$:  $-77.5$ eV", color=CARDINAL, fontsize=13, ha="center", va="bottom")
+ax.set_xlim(1.15, 2.35); ax.set_ylim(-80.6, -68)
+ax.set_xlabel(r"effective nuclear charge $\zeta$", fontsize=12.5); ax.set_ylabel(r"average energy (eV)", fontsize=12.5)
+ax.tick_params(labelsize=10.5)
+fig.subplots_adjust(left=0.11, right=0.97, top=0.96, bottom=0.14)
+plt.show()
+```
+
+Fig. The average energy of helium for the trial function $e^{-\zeta(r_1 + r_2)}$. The bare nuclear charge, $\zeta = 2$, gives $-74.8$ eV. The minimum is at $\zeta = 27/16$, with $-77.5$ eV. The exact energy, $-79.0$ eV, lies below both.
+
+| trial function | energy ($E_h$) | energy (eV) | above the exact value |
+| :-- | :-: | :-: | :-: |
+| $e^{-\zeta(r_1 + r_2)}$ with $\zeta = 2$ | $-2.750$ | $-74.8$ | 4.2 eV |
+| the same with $\zeta = 27/16$ | $-2.848$ | $-77.5$ | 1.5 eV |
+| Hylleraas, three parameters (1929) | $-2.9024$ | $-78.98$ | 0.04 eV |
+| exact | $-2.9037$ | $-79.01$ | |
+
+- **Screening.** The best charge is less than 2. Each electron spends part of its time between the other electron and the nucleus, so each sees a nucleus of charge about 1.69. The **effective nuclear charge** of general chemistry is a variational parameter.
+- **More parameters, lower energy.** Hylleraas added terms that depend on $r_{12}$ itself, which lets the electrons avoid each other, and came within 0.04 eV. Every row is above the exact value.
+- **Orbitals for many electrons.** A product of one-electron functions with adjusted charges is the **orbital approximation**, the starting point for every atom in [Chapter 7](../ch07/01-multi-electron-atoms.md).
+
+:::{tip} **Going further: where $\frac{5}{8}\zeta$ comes from**
+:class: dropdown
+
+Each electron in the orbital $e^{-\zeta r}$ is a round cloud of charge with the density $\rho(r) = (\zeta^3/\pi)\,e^{-2\zeta r}$. Electrostatics gives the potential that such a cloud creates at a distance $r$ from its center:
+
+$$
+\varphi(r) = \frac{1}{r} - \left(\zeta + \frac{1}{r}\right)e^{-2\zeta r}
+$$
+
+Far away it is $1/r$, the potential of a point charge; inside the cloud it is weaker, and at the center it levels off at $\zeta$. The repulsion energy is the potential of one cloud averaged over the density of the other:
+
+$$
+\left\langle\frac{1}{r_{12}}\right\rangle = \int_0^\infty\varphi(r)\,\rho(r)\,4\pi r^2\,dr
+$$
+
+$$
+= 4\zeta^3\int_0^\infty\left[r\,e^{-2\zeta r} - \left(\zeta r^2 + r\right)e^{-4\zeta r}\right]dr
+$$
+
+$$
+= 4\zeta^3\left[\frac{1}{4\zeta^2} - \frac{1}{32\zeta^2} - \frac{1}{16\zeta^2}\right] = \frac{5}{8}\,\zeta
+$$
+:::
+
+### Linear combinations: the method chemists use
+
+#### Mix fixed functions
+
+Nonlinear parameters such as $\alpha$ and $\zeta$ sit inside exponentials, and each new one makes the minimization harder. A second kind of trial function avoids that. Choose a set of fixed functions $f_1, f_2, \dots, f_N$, the **basis functions**, and let only the mixing coefficients vary:
+
+$$
+\phi = c_1f_1 + c_2f_2 + \dots + c_Nf_N
+$$
+
+Minimizing the energy with respect to the coefficients needs no searching. It leads to a matrix eigenvalue problem, the kind [Lecture 3.5](../ch03/04-operators.md) solved with `eigh`.
+
+#### Two functions, step by step
+
+Take $N = 2$ and real functions and coefficients.
+
+1. **Write the energy.** Insert $\phi = c_1f_1 + c_2f_2$ into $E = \langle\phi|\hat{H}|\phi\rangle/\langle\phi|\phi\rangle$ and multiply out:
+
+$$
+E = \frac{c_1^2H_{11} + 2c_1c_2H_{12} + c_2^2H_{22}}{c_1^2S_{11} + 2c_1c_2S_{12} + c_2^2S_{22}}
+$$
+
+$$
+H_{ij} = \langle f_i|\hat{H}|f_j\rangle, \qquad S_{ij} = \langle f_i|f_j\rangle
+$$
+
+  The $H_{ij}$ are the **matrix elements** of the Hamiltonian, the sandwiches of Lecture 3.5. The $S_{ij}$ are **overlaps**: the basis functions need not be orthogonal or normalized. $\hat{H}$ is Hermitian, so $H_{12} = H_{21}$.
+
+2. **Minimize.** Clear the fraction, $E\times(\text{denominator}) = \text{numerator}$, and differentiate both sides with respect to $c_1$. At the minimum $\partial E/\partial c_1 = 0$, which leaves
+
+$$
+E\left(2c_1S_{11} + 2c_2S_{12}\right) = 2c_1H_{11} + 2c_2H_{12}
+$$
+
+  Collect the terms, and do the same for $c_2$:
+
+$$
+\begin{aligned}
+c_1\left(H_{11} - ES_{11}\right) + c_2\left(H_{12} - ES_{12}\right) &= 0\\
+c_1\left(H_{12} - ES_{12}\right) + c_2\left(H_{22} - ES_{22}\right) &= 0
+\end{aligned}
+$$
+
+3. **Solve.** These are two linear equations for $c_1$ and $c_2$. They always have the useless solution $c_1 = c_2 = 0$. Another solution exists only if the determinant of the coefficients vanishes, and that condition fixes $E$.
+
+:::{important} **The linear variational method**
+
+$$
+\phi = \sum_{n=1}^N c_n f_n \qquad\Longrightarrow\qquad \mathbf{H}\,\mathbf{c} = E\,\mathbf{S}\,\mathbf{c}, \qquad \det\left(\mathbf{H} - E\,\mathbf{S}\right) = 0
+$$
+
+$$
+H_{ij} = \langle f_i|\hat{H}|f_j\rangle, \qquad S_{ij} = \langle f_i|f_j\rangle
+$$
+
+- $N$ basis functions give $N\times N$ matrices and $N$ roots. The lowest root is the best energy this basis can give, an upper bound to $E_0$, and its eigenvector $\mathbf{c}$ holds the best coefficients
+- $\det(\mathbf{H} - E\,\mathbf{S}) = 0$ is the **secular determinant**
+- For an orthonormal basis $\mathbf{S}$ is the identity, and the problem is the ordinary eigenvalue problem $\mathbf{H}\mathbf{c} = E\mathbf{c}$
+:::
+
+- **numpy solves it in one line.** `eigh(H)` handles an orthonormal basis, as in Lecture 3.5, and `scipy.linalg.eigh(H, S)` handles overlaps.
+- **Adding a basis function never raises the lowest root.** The old answer is still available, with the new coefficient set to zero, so the new minimum can only be equal or lower.
+- **The higher roots are bounds too.** Each is an upper bound to the corresponding excited level, the second root to the second level and so on.
+
+#### The two-level problem
+
+The smallest case, two orthonormal basis functions, is worth solving once and keeping: it returns in every remaining lecture of this chapter. Call the energies of the two functions $E_1 = H_{11}$ and $E_2 = H_{22}$, with $E_1 \leq E_2$, and the matrix element that connects them $v = H_{12}$. The secular determinant is the quadratic equation $(E_1 - E)(E_2 - E) - v^2 = 0$.
+
+:::{important} **The two-level problem**
+
+$$
+\mathbf{H} = \begin{pmatrix} E_1 & v\\ v & E_2\end{pmatrix}, \qquad \Delta = E_2 - E_1
+$$
+
+$$
+E_\pm = \frac{E_1 + E_2}{2} \pm \sqrt{\left(\frac{\Delta}{2}\right)^2 + v^2}
+$$
+
+- $E_1$, $E_2$: the energies of the two states before they mix. $\Delta$: the **gap** between them. $v$: the **coupling**
+- **Equal levels** ($\Delta = 0$): $E_\pm = E_1 \pm |v|$, and the states mix half and half, $(f_1 \pm f_2)/\sqrt{2}$
+- **Distant levels** ($|v| \ll \Delta$): $E_- \approx E_1 - v^2/\Delta$ and $E_+ \approx E_2 + v^2/\Delta$, and the states barely mix
+:::
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: mixing_angle
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+H11, H22, H12 = 0.0, 1.0, -0.6
+mean, half = 0.5 * (H11 + H22), np.sqrt(0.25 * (H11 - H22) ** 2 + H12**2)
+Em, Ep = mean - half, mean + half
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"width_ratios": [1, 1.5], "wspace": 0.12})
+# left: the two diagonal elements, and the two roots they turn into
+for y, lab in ((H11, "$E_1$"), (H22, "$E_2$")):
+    ax.hlines(y, 0.0, 0.9, color=GRAY, lw=3.2)
+    ax.text(-0.08, y, lab, ha="right", va="center", fontsize=14, color=GRAY)
+for y, lab, col in ((Em, "$E_-$", TEAL), (Ep, "$E_+$", ORANGE)):
+    ax.hlines(y, 1.9, 2.8, color=col, lw=3.2)
+    ax.text(2.88, y, lab, ha="left", va="center", fontsize=14, color=col)
+for y0, y1 in ((H11, Em), (H22, Ep)):
+    ax.plot([0.9, 1.9], [y0, y1], color=GRAY, lw=1, ls=":")
+ax.set_xlim(-0.75, 3.5); ax.set_ylim(-0.55, 1.55); ax.axis("off")
+# right: the energy of cos(theta) f1 + sin(theta) f2
+th = np.linspace(-90, 90, 721); t = np.radians(th)
+E = H11 * np.cos(t) ** 2 + H22 * np.sin(t) ** 2 + H12 * np.sin(2 * t)
+for y, col in ((H11, GRAY), (H22, GRAY), (Em, TEAL), (Ep, ORANGE)):
+    bx.axhline(y, color=col, lw=1, ls=":")
+bx.plot(th, E, color="k", lw=2.8)
+tp = np.degrees(0.5 * np.arctan2(2 * H12, H11 - H22))            # the angle of the highest mixture
+tm = tp + 90 if tp < 0 else tp - 90                              # the lowest one is perpendicular to it
+bx.plot([tm], [Em], "o", color=TEAL, ms=10, zorder=5); bx.plot([tp], [Ep], "o", color=ORANGE, ms=10, zorder=5)
+bx.plot([0], [H11], "o", color=GRAY, ms=8, zorder=5); bx.plot([-90, 90], [H22, H22], "o", color=GRAY, ms=8, zorder=5, clip_on=False)
+bx.text(tm, Em - 0.09, r"lowest", color=TEAL, fontsize=13, ha="center", va="top")
+bx.text(tp, Ep + 0.07, r"highest", color=ORANGE, fontsize=13, ha="center", va="bottom")
+bx.text(5, H11 + 0.05, r"$f_1$ alone", color=GRAY, fontsize=12.5, ha="left", va="bottom")
+bx.text(86, H22 + 0.06, r"$f_2$ alone", color=GRAY, fontsize=12.5, ha="right", va="bottom")
+bx.set_xlim(-90, 90); bx.set_ylim(-0.55, 1.55)
+bx.set_xticks([-90, -45, 0, 45, 90]); bx.set_xticklabels(["-90°", "-45°", "0°", "45°", "90°"])
+bx.set_yticks([]); bx.spines["left"].set_visible(False); bx.tick_params(labelsize=11.5)
+bx.set_xlabel(r"mixing angle $\theta$ in $\phi = \cos\theta\,f_1 + \sin\theta\,f_2$", fontsize=12.5)
+fig.subplots_adjust(left=0.02, right=0.97, top=0.96, bottom=0.15)
+plt.show()
+```
+
+Fig. The two-level problem. Left: the levels $E_1$ and $E_2$ before mixing, and the roots $E_-$ and $E_+$ after. Right: the energy of every normalized mixture $\cos\theta\,f_1 + \sin\theta\,f_2$. Its lowest and highest points are the two roots; $f_1$ alone and $f_2$ alone lie in between.
+
+- **Mixing pushes the levels apart.** $E_-$ lies below both starting levels and $E_+$ above both. The lower state gains exactly what the upper one loses.
+- **The roots are the extremes of the energy.** The curve on the right is the variational energy of every possible mixture. Finding its minimum and solving the eigenvalue problem are the same task.
+- **Equal levels make the chemical bond.** Two identical atomic orbitals on neighboring atoms have $\Delta = 0$. Chemists write their energy $\alpha$ and their coupling $\beta$, so the two levels are $\alpha \pm \beta$, and the lower mixture is the bond ([Chapter 8](../ch08/02-hydrogen-molecule-ion.md)).
+- **Distant levels give perturbation theory.** The small push $v^2/\Delta$, coupling squared over gap, is the second-order shift of [Lecture 6.2](02-perturbation-theory.md). [Lecture 6.3](03-time-dependent-perturbation-and-selection-rules.md) then drives the same two levels with light.
+
+#### The box again, with two polynomials
+
+:::{note} **Example: improve the parabola**
+
+Add a second function to the parabola of the first example: $f_1 = x(L - x)$ and $f_2 = x^2(L - x)^2$. Find the best energy of $\phi = c_1f_1 + c_2f_2$.
+
+With $L = 1$ and energies in units of $\hbar^2/mL^2$, the matrix elements are integrals of polynomials. Using $H_{ij} = \frac{1}{2}\int f_i'f_j'\,dx$:
+
+$$
+\mathbf{H} = \begin{pmatrix} \frac{1}{6} & \frac{1}{30}\\[2pt] \frac{1}{30} & \frac{1}{105}\end{pmatrix}, \qquad \mathbf{S} = \begin{pmatrix} \frac{1}{30} & \frac{1}{140}\\[2pt] \frac{1}{140} & \frac{1}{630}\end{pmatrix}
+$$
+
+The functions overlap ($S_{12} \neq 0$), so the problem is $\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$:
+:::
+
+```{code-cell} python
+import numpy as np
+from scipy.linalg import eigh
+
+# f1 = x(1 - x) and f2 = x^2 (1 - x)^2, energies in units of hbar^2 / m L^2
+H = np.array([[1/6, 1/30], [1/30, 1/105]])        # <f_i|H|f_j>
+S = np.array([[1/30, 1/140], [1/140, 1/630]])     # overlaps <f_i|f_j>
+E, C = eigh(H, S)                                 # solves H c = E S c
+print("roots        :", np.round(E, 5))
+print("exact E1, E3 :", np.round([np.pi**2 / 2, 9 * np.pi**2 / 2], 5))
+print("c2 / c1      :", round(C[1, 0] / C[0, 0], 4))
+```
+
+- **The lowest root is 4.93487**, against the exact $\pi^2/2 = 4.93480$: 0.0015% too high. One extra function cut the error of the parabola by a factor of about 900. This is panel (c) of the figure above.
+- **The second root, 51.07, is an upper bound to $E_3 = 44.41$**, not to $E_2$. Both basis functions are symmetric about the middle of the box, so they can build only symmetric states, and the next symmetric state after $\psi_1$ is $\psi_3$.
+
+#### Hydrogen from several Gaussians
+
+One Gaussian gave hydrogen 85% of its binding energy. A sum of Gaussians with different exponents does better, and the coefficients come from the same matrix equation. For s-type Gaussians $e^{-ar^2}$ and $e^{-br^2}$ the matrix elements are known formulas (atomic units):
+
+$$
+S_{ab} = \left(\frac{\pi}{a + b}\right)^{3/2}, \qquad H_{ab} = \frac{3ab}{a + b}\,S_{ab} - \frac{2\pi}{a + b}
+$$
+
+```{code-cell} python
+alpha = np.array([0.15137, 0.68128, 4.5004])      # three exponents, in 1/a0^2
+a, b = np.meshgrid(alpha, alpha)
+S = (np.pi / (a + b))**1.5                        # overlaps
+# kinetic energy plus Coulomb attraction, in hartree
+H = 3 * a * b / (a + b) * S - 2 * np.pi / (a + b)
+E, C = eigh(H, S)
+print("lowest root:", round(E[0], 5), "hartree   (exact: -0.5)")
+```
+
+```{code-cell} python
+:tags: [hide-input]
+# synced: gaussian_basis
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+TEAL, CARDINAL, GRAY, PURPLE, ORANGE = "#107895", "#C8102E", "#6c757d", "#6a3d9a", "#e07b00"
+from scipy.linalg import eigh
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
+sets = {1: [0.28294], 2: [0.20153, 1.3325], 3: [0.15137, 0.68128, 4.5004],     # best exponents for N Gaussians
+        4: [0.12195, 0.44454, 1.9623, 13.011], 5: [0.10307, 0.32723, 1.1647, 5.1236, 34.061]}
+r = np.linspace(0, 3.2, 600)
+Es, curves = {}, {}
+for N, al in sets.items():
+    a, b = np.meshgrid(al, al)
+    S = (np.pi / (a + b)) ** 1.5                                # overlap of exp(-a r^2) and exp(-b r^2)
+    H = 3 * a * b / (a + b) * S - 2 * np.pi / (a + b)           # kinetic plus Coulomb, hartree
+    E, C = eigh(H, S)
+    Es[N] = E[0]
+    curves[N] = abs(sum(c * np.exp(-e * r**2) for c, e in zip(C[:, 0], al)))
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(9.6, 4.2), gridspec_kw={"width_ratios": [1, 1.05], "wspace": 0.3})
+ax.axhline(-0.5, color=GRAY, lw=1.6, ls=(0, (5, 3)))
+ax.text(5.45, -0.5035, r"exact $-\frac{1}{2}$", color=GRAY, fontsize=13, ha="right", va="top")
+for N, E in Es.items():
+    ax.hlines(E, N - 0.32, N + 0.32, color=TEAL, lw=3.4)
+    ax.text(N, E + 0.004, rf"${E:.4f}$", ha="center", va="bottom", fontsize=11.5, color=TEAL)
+ax.set_xlim(0.45, 5.55); ax.set_ylim(-0.512, -0.41)
+ax.set_xticks([1, 2, 3, 4, 5]); ax.set_yticks([-0.5, -0.48, -0.46, -0.44, -0.42]); ax.tick_params(labelsize=10.5)
+ax.set_xlabel("number of Gaussians", fontsize=12.5); ax.set_ylabel(r"lowest root ($E_h$)", fontsize=12.5)
+bx.plot(r, np.exp(-r) / np.sqrt(np.pi), color=GRAY, lw=4.5, alpha=0.55)
+for N, ls in ((1, (0, (1, 1.5))), (2, (0, (4, 2))), (3, "-")):
+    bx.plot(r, curves[N], color=TEAL, lw=2.2, ls=ls)
+bx.text(0.2, 0.55, "exact", color=GRAY, fontsize=13, ha="left")
+for N, (xx, yy) in ((1, (0.05, 0.245)), (2, (0.05, 0.385)), (3, (0.3, 0.475))):
+    bx.text(xx, yy, f"{N}", color=TEAL, fontsize=13, ha="left", va="center")
+bx.set_xlim(0, 3.2); bx.set_ylim(0, 0.6)
+bx.set_xlabel(r"$r$ ($a_0$)", fontsize=12.5); bx.set_ylabel(r"$\psi(r)$", fontsize=12.5); bx.tick_params(labelsize=10.5)
+fig.subplots_adjust(left=0.105, right=0.98, top=0.96, bottom=0.14)
+plt.show()
+```
+
+Fig. Hydrogen from one to five Gaussians, each set with its best exponents. Left: the lowest root steps down toward the exact $-\frac{1}{2}E_h$ and never passes it. Right: the sums of one, two and three Gaussians against the exact $e^{-r/a_0}$. Tight Gaussians build up the cusp at the nucleus.
+
+- **Three Gaussians recover 99.4% of the energy**, $-0.4970$ of $-0.5$ hartree, and five recover 99.96%.
+- **This is a basis set.** The name STO-3G on a quantum chemistry program's menu means three Gaussians standing in for each exponential orbital, exactly as here.
+- **Every electronic-structure program solves $\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$.** The basis functions are Gaussians on each atom, the matrices have thousands of rows, and the eigenvectors are the molecular orbitals ([Hartree-Fock](../ch07/02-hartree-fock.md), [Chapter 8](../ch08/02-hydrogen-molecule-ion.md)).
+
+The variational method needs a guess and returns a bound, with no estimate of how far above the truth the bound lies. When the problem is a small change to one that is already solved, no guess is needed: [perturbation theory](02-perturbation-theory.md) corrects the known answer directly.
+
+:::{seealso} Computational lab
+[Linear variational method](../demos/08-demo-linear-variational.md) builds $\mathbf{H}$ and $\mathbf{S}$ numerically for any well and any basis, in a Colab notebook.
+:::
+
+### Problems
+
+#### Problem 1: A tent in a box
+
+Use the tent function, $\phi = x$ for $0 \leq x \leq L/2$ and $\phi = L - x$ for $L/2 \leq x \leq L$, as a trial function for the ground state of a particle in a box. Find $E_\phi$ and compare it with $E_1$ and with the parabola of the first example.
+
+:::{admonition} **Solution**
 :class: dropdown solution
 
-Use the variational principle and employ spherical coordinates in the integrations:
+The tent has a kink, so $\phi''$ is zero everywhere except at one point. Use the first-derivative form of the kinetic energy, $\langle\phi|\hat{H}|\phi\rangle = (\hbar^2/2m)\int(\phi')^2dx$. The slope is $+1$ on the left half and $-1$ on the right, so $(\phi')^2 = 1$ throughout:
 
-$$E = \frac{\int\psi^*_{trial}H\psi_{trial}d\tau}{\int\psi^*_{trial}\psi_{trial}d\tau}$$
+$$
+\langle\phi|\hat{H}|\phi\rangle = \frac{\hbar^2}{2m}\,L, \qquad \langle\phi|\phi\rangle = 2\int_0^{L/2}x^2\,dx = \frac{L^3}{12}
+$$
 
-**(a)** Normalization integral:
+$$
+E_\phi = \frac{\hbar^2L/2m}{L^3/12} = \frac{6\hbar^2}{mL^2} = \frac{12}{\pi^2}\,E_1 = 1.216\,E_1
+$$
 
-$$\int\psi^*_{trial}\psi_{trial}d\tau = \int_0^\infty e^{-2kr}
-\underbrace{4\pi r^2dr}_{d\tau} = 4\pi\int_0^\infty r^2e^{-2kr}dr
-= \frac{\pi}{k^3}$$
-
-Energy numerator:
-
-$$\int\psi_{trial}^*H\psi_{trial}d\tau = \int\left( e^{-kr}\right)
-\left( -\frac{\hbar^2}{2m_e}\Delta - \frac{e^2}{4\pi\epsilon_0r}\right)
-\left( e^{-kr}\right)d\tau$$
-
-$$= -\frac{4\pi\hbar^2}{2m_e}\int_0^\infty e^{-2kr}(r^2k^2 - 2kr)dr
-- \frac{e^2}{\epsilon_0}\int_0^\infty re^{-2kr}dr$$
-
-$$= -\frac{\pi\hbar^2}{2m_ek} + \frac{\pi\hbar^2}{m_ek}
-- \frac{e^2}{4k^2\epsilon_0}$$
-
-Dividing numerator by denominator:
-
-$$E = \frac{\hbar^2k^2}{2m_e} - \frac{e^2k}{4\pi\epsilon_0}$$
-
-Minimize with respect to $k$:
-
-$$\frac{dE}{dk} = \frac{\hbar^2k}{m_e} - \frac{e^2}{4\pi\epsilon_0} = 0
-\Rightarrow k = \frac{m_ee^2}{4\pi\epsilon_0\hbar^2} \Rightarrow
-E = -\frac{1}{2}\frac{m_ee^4}{(4\epsilon_0)^2\hbar^2} = -hcR$$
-
-where $R$ is the Rydberg constant. This trial function recovers the exact ground-state energy because it has the correct functional form.
-
-**(b)** The logic is identical. The normalization integral is
-
-$$\int\psi^*_{trial}\psi_{trial}d\tau = \frac{4\pi\Gamma[3/2]}{2(2k)^{3/2}}
-= \frac{\pi^{3/2}}{(2k)^{3/2}}$$
-
-The Laplacian of the Gaussian is
-
-$$\Delta\psi_{trial} = \left( 4k^2r^2 - 6k\right) e^{-kr^2}$$
-
-Carrying out the integrals gives the energy
-
-$$E = \frac{3\hbar^2k}{2m_e} - \frac{e^2\sqrt{k}}{\sqrt{2}\pi^{3/2}\epsilon_0}$$
-
-Minimizing,
-
-$$\frac{\partial E}{\partial k} = \frac{3\hbar^2}{2m_e} - \frac{e^2}{2\sqrt{2}\pi^{3/2}\epsilon_0\sqrt{k}} = 0
-\Rightarrow k = \frac{m_e^2e^4}{18\pi^3\epsilon_0^2\hbar^4}$$
-
-and the total energy at this point is
-
-$$E = -\frac{m_ee^4}{12\pi^3\epsilon_0^2\hbar^2} = -\frac{8}{3\pi}hcR \approx -0.85\,hcR$$
-
-**(c)** The function in (a) gives the lower energy ($-1.0\,hcR$ versus $-0.85\,hcR$) and is therefore the better trial function. The exponential has the correct cusp at the origin, while the Gaussian does not.
+The tent is 21.6% too high, against 1.3% for the parabola. Both obey the boundary conditions and both have one maximum in the middle, but the tent stays steep all the way to its peak, and $\int(\phi')^2dx$ counts steepness. The theorem ranks the parabola as the better guess without any reference to the exact solution.
 :::
-::::
 
-#### Problem 2
+#### Problem 2: A Lorentzian in a spring
 
-::::{admonition} **Problem 2: Why is the bound always from above?**
-:class: note
+Use $\phi = 1/(x^2 + b^2)$, with $b$ as the parameter, as a trial function for the ground state of the harmonic oscillator, $\hat{H} = -(\hbar^2/2\mu)\,d^2/dx^2 + \frac{1}{2}kx^2$. Show that $E(b) = \hbar^2/4\mu b^2 + \frac{1}{2}kb^2$, minimize it, and compare the result with $\frac{1}{2}\hbar\omega$. Why does this trial function do so much worse than a Gaussian? Useful integrals over all $x$:
 
-Expand an arbitrary normalized trial function in the exact eigenbasis of $\hat{H}$, $|\phi\rangle = \sum_n a_n |\psi_n\rangle$ with $\hat{H}|\psi_n\rangle = E_n|\psi_n\rangle$ and $E_0 \le E_1 \le E_2 \le \dots$. Show that $\langle \phi|\hat{H}|\phi\rangle = \sum_n |a_n|^2 E_n \ge E_0$, and state the condition under which equality holds.
+$$
+\int\frac{dx}{(x^2 + b^2)^2} = \frac{\pi}{2b^3}, \qquad \int\frac{x^2\,dx}{(x^2 + b^2)^2} = \frac{\pi}{2b}
+$$
 
-:::{admonition} **Solution:**
+$$
+\int\frac{x^2\,dx}{(x^2 + b^2)^4} = \frac{\pi}{16b^5}
+$$
+
+#### Problem 3: Where the 1.3% comes from
+
+The normalized parabola $\phi = \sqrt{30/L^5}\,x(L - x)$ has the expansion coefficients $c_n = \langle\psi_n|\phi\rangle = 8\sqrt{15}/n^3\pi^3$ for odd $n$ and zero for even $n$ in the states of the box. (a) Find the probabilities of measuring $E_1$, $E_3$ and $E_5$. (b) Compute the average energy from $\sum_n|c_n|^2E_n$ and check it against the example. (c) How large is the error in the wavefunction, and how large is the error in the energy?
+
+:::{admonition} **Solution**
 :class: dropdown solution
 
-Because the $|\psi_n\rangle$ are orthonormal,
+(a) $|c_n|^2 = 960/n^6\pi^6$ for odd $n$:
 
-$$\langle \phi|\hat{H}|\phi\rangle = \sum_{n,m} a_m^* a_n \langle \psi_m|\hat{H}|\psi_n\rangle = \sum_{n,m} a_m^* a_n E_n \delta_{mn} = \sum_n |a_n|^2 E_n.$$
+$$
+|c_1|^2 = \frac{960}{\pi^6} = 0.99856, \qquad |c_3|^2 = \frac{|c_1|^2}{729} = 0.00137
+$$
 
-Normalization gives $\sum_n |a_n|^2 = 1$. Since every $E_n \ge E_0$,
+$$
+|c_5|^2 = \frac{|c_1|^2}{15625} = 0.00006
+$$
 
-$$\sum_n |a_n|^2 E_n \ge \sum_n |a_n|^2 E_0 = E_0.$$
+The even states are missing because the parabola is symmetric about the middle of the box and they are antisymmetric.
 
-Equality holds only when all the weight is on the ground state, $|a_0|^2 = 1$ and $a_{n\neq 0} = 0$, that is when the trial function equals the exact ground-state wavefunction.
+(b) With $E_n = n^2E_1$,
+
+$$
+\langle E\rangle = \sum_{n\ \text{odd}}\frac{960}{n^6\pi^6}\,n^2E_1 = \frac{960}{\pi^6}\,E_1\sum_{n\ \text{odd}}\frac{1}{n^4}
+$$
+
+$$
+= \frac{960}{\pi^6}\cdot\frac{\pi^4}{96}\,E_1 = \frac{10}{\pi^2}\,E_1 = 1.013\,E_1
+$$
+
+the value found directly in the example. The first two terms alone give $0.99856 + 9\times0.00137 = 1.0109$.
+
+(c) The guess is 99.86% ground state. The part that is wrong has weight $\epsilon^2 = 0.0014$, an amplitude $\epsilon = 0.038$: the wavefunction is off by about 4%. The energy is off by 1.3%, which is $\epsilon^2$ times the cost of the admixed states, mostly $\psi_3$ at $8E_1$ above the ground state: $0.00137\times8 = 0.011$. The error in the energy is second order in the error of the function.
 :::
-::::
 
-#### Problem 3
+#### Problem 4: A V-shaped well
 
-::::{admonition} **Problem 3: Effective nuclear charge of helium**
-:class: note
+A particle moves in the well $V(x) = F|x|$. Use the Gaussian $\phi = e^{-ax^2}$ as a trial function. With $\langle T\rangle = \hbar^2a/2m$ and $\langle|x|\rangle = 1/\sqrt{2\pi a}$ for this function, write $E(a)$, minimize it, and show that the best energy is $\frac{3}{2}\left(\hbar^2F^2/2\pi m\right)^{1/3} = 0.813\,(\hbar^2F^2/m)^{1/3}$. The exact ground-state energy is $0.809\,(\hbar^2F^2/m)^{1/3}$. How close is the bound, and which way is it off? Check your value against the widget above, which uses $\hbar = m = F = 1$.
 
-Using the helium trial energy $E(Z) = \left[ Z^2 - \frac{27Z}{8}\right]\frac{e^2}{4\pi\epsilon_0a_0}$, confirm that the optimal effective nuclear charge is $Z = 27/16$ and explain physically why $Z < 2$.
+#### Problem 5: Two orbitals that overlap
 
-:::{admonition} **Solution:**
+Two identical basis functions on neighboring atoms have $H_{11} = H_{22} = \alpha$, $H_{12} = \beta$ and an overlap $S_{12} = S$, with $S_{11} = S_{22} = 1$. Solve the secular determinant and find the two energies and their coefficients. Which level moves farther from $\alpha$?
+
+:::{admonition} **Solution**
 :class: dropdown solution
 
-Set the derivative to zero:
+The secular determinant is
 
-$$\frac{dE}{dZ} = \left(2Z - \frac{27}{8}\right)\frac{e^2}{4\pi\epsilon_0a_0} = 0 \Rightarrow Z = \frac{27}{16} \approx 1.69.$$
+$$
+\begin{vmatrix}\alpha - E & \beta - ES\\ \beta - ES & \alpha - E\end{vmatrix} = (\alpha - E)^2 - (\beta - ES)^2 = 0
+$$
 
-The effective charge is less than the true $Z = 2$ because each electron partially screens the nucleus from the other. From the viewpoint of one electron, the nuclear charge appears reduced by the average presence of the second electron, so the optimal variational charge is smaller than the bare value.
+$$
+\alpha - E = \pm(\beta - ES)
+$$
+
+$$
+E_+ = \frac{\alpha + \beta}{1 + S}, \qquad E_- = \frac{\alpha - \beta}{1 - S}
+$$
+
+Insert each root into the first equation, $c_1(\alpha - E) + c_2(\beta - ES) = 0$. For $E_+$, $\alpha - E = -(\beta - ES)$ and so $c_1 = c_2$: the mixture $f_1 + f_2$. For $E_-$, $c_1 = -c_2$: the mixture $f_1 - f_2$.
+
+With $S = 0$ the levels are $\alpha \pm \beta$, split evenly. With an overlap, measure both from $\alpha$:
+
+$$
+E_+ - \alpha = \frac{\beta - \alpha S}{1 + S}, \qquad E_- - \alpha = -\frac{\beta - \alpha S}{1 - S}
+$$
+
+The two shifts have the same numerator and opposite signs, but the second is divided by the smaller number $1 - S$. For a bond, $\beta - \alpha S$ is negative: $f_1 + f_2$ is the bonding orbital, lowered by $|\beta - \alpha S|/(1 + S)$, and $f_1 - f_2$ is the antibonding orbital, raised by the larger amount $|\beta - \alpha S|/(1 - S)$. That asymmetry is why filling both orbitals, as in He$_2$, gives no bond ([Chapter 8](../ch08/03-hydrogen-molecule.md)).
 :::
-::::
 
-#### Problem 4
+#### Problem 6: Two-electron ions
 
-::::{admonition} **Problem 4: Linear variation with an orthonormal basis**
-:class: note
+The helium example gives $E(\zeta) = \zeta^2 - 2Z\zeta + \frac{5}{8}\zeta$ hartree for any nucleus of charge $Z$ with two electrons. (a) Show that the best exponent is $\zeta = Z - \frac{5}{16}$ and the best energy $-(Z - \frac{5}{16})^2$. (b) Evaluate it for H$^-$ ($Z = 1$) and Li$^+$ ($Z = 3$) and compare with the exact energies, $-0.5278$ and $-7.2799$ hartree. (c) A hydrogen atom plus a free electron at rest has the energy $-0.5$ hartree. Does this trial function predict that H$^-$ is stable? It is, in fact. What does that tell you about the difference between a bound and an estimate?
 
-In the linear variational method, the trial energy satisfies $\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$. Show that if the basis functions are orthonormal ($\mathbf{S} = \mathbf{I}$), this reduces to an ordinary eigenvalue problem, and explain what the eigenvalues and eigenvectors represent.
-::::
+#### Problem 7: A bound for an excited state
 
-#### Problem 5
+The first excited state of the box, $\psi_2$, is antisymmetric about the middle. Use the antisymmetric trial function $\phi = x(L - x)(L/2 - x)$ to bound $E_2$. Why is the result an upper bound to $E_2$ and not merely to $E_1$?
 
-::::{admonition} **Problem 5: Secular determinant for two states**
-:class: note
+:::{admonition} **Solution**
+:class: dropdown solution
 
-For a two-function basis with $H_{11} = \alpha$, $H_{22} = \alpha$, $H_{12} = \beta$, and an orthonormal basis ($S_{11} = S_{22} = 1$, $S_{12} = 0$), solve the secular determinant $\det(\mathbf{H} - E\mathbf{I}) = 0$ and show that the two variational energies are $E_\pm = \alpha \pm \beta$. (This is the bonding and antibonding splitting of two identical atomic orbitals.)
-::::
+Set $L = 1$ and use units of $\hbar^2/mL^2$. Then $\phi \propto x(1 - x)(1 - 2x) = x - 3x^2 + 2x^3$ and $\phi' = 1 - 6x + 6x^2$:
+
+$$
+\int_0^1(\phi')^2dx = 1 - 6 + 16 - 18 + \frac{36}{5} = \frac{1}{5}
+$$
+
+$$
+\int_0^1\phi^2\,dx = \frac{1}{3} - \frac{3}{2} + \frac{13}{5} - 2 + \frac{4}{7} = \frac{1}{210}
+$$
+
+$$
+E_\phi = \frac{\frac{1}{2}\cdot\frac{1}{5}}{\frac{1}{210}} = 21\,\frac{\hbar^2}{mL^2}, \qquad E_2 = \frac{4\pi^2}{2}\,\frac{\hbar^2}{mL^2} = 19.74\,\frac{\hbar^2}{mL^2}
+$$
+
+The bound is 6.4% high. It bounds $E_2$ because $\phi$ is antisymmetric about the middle of the box, and every symmetric state, $\psi_1$ included, is orthogonal to it. In the expansion $\phi = \sum c_n\psi_n$ only the antisymmetric states $n = 2, 4, 6, \dots$ appear, and the lowest of them is $\psi_2$. The proof of the theorem then runs as before, with $E_2$ in the role of the lowest level.
+:::
+
+#### Problem 8: One more Gaussian
+
+(a) Explain in two sentences why adding a basis function to a linear variational calculation can never raise the lowest root. (b) Test it. In the three-Gaussian cell above, add a fourth exponent of your choice and rerun; then try several values between 0.05 and 50. Does the energy ever rise above $-0.49698$? (c) Which values of the fourth exponent help most, very small ones, very large ones, or ones between those already present? Relate your answer to the two things a Gaussian gets wrong about the hydrogen atom.

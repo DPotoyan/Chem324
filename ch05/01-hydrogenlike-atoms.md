@@ -102,7 +102,7 @@ $$
 $$
 
 - $Z = 1$ for H, 2 for He$^+$, 3 for Li$^{2+}$: one electron and one nucleus. $\varepsilon_0$ is the vacuum permittivity and $e = 1.602\times10^{-19}$ C
-- Helium, with two electrons, adds a repulsion $e^2/4\pi\varepsilon_0 r_{12}$ between them, and the equation can no longer be solved exactly ([Chapter 7](../ch07/01-helium-atom.md))
+- Helium, with two electrons, adds a repulsion $e^2/4\pi\varepsilon_0 r_{12}$ between them, and the equation can no longer be solved exactly ([Chapter 6](../ch06/01-variational-method.md))
 :::
 
 ### A central force
@@ -548,7 +548,7 @@ Fig. The levels of hydrogen up to $n = 4$, one bar for each state $(l, m)$. All 
 
 - **$n^2$ states per level.** For each $l$ from 0 to $n - 1$ there are $2l + 1$ values of $m$, and $\sum_{l=0}^{n-1}(2l+1) = n^2$. The electron's spin ([Lecture 5.3](03-spin.md)) doubles it: $2n^2$, the lengths of the rows of the periodic table, 2, 8, 18, 32.
 - **The $m$ degeneracy is rotational symmetry.** States that differ only in $m$ are the same state pointed in different directions, as for the rigid rotor. A magnetic field, which picks out a direction, splits them (Lecture 5.3).
-- **The $l$ degeneracy is special to $1/r$.** Nothing about rotational symmetry requires 2s and 2p to share an energy; they do in hydrogen because of a further symmetry of the Coulomb potential alone, the same one that keeps planetary orbits from precessing. In atoms with more than one electron the inner electrons screen the nucleus, the potential is no longer $1/r$, and 2s drops below 2p, 3s below 3p below 3d ([Chapter 7](../ch07/02-multi-electron-atoms.md)). The effective potential shows why: s electrons penetrate to the nucleus, where the screening is weakest.
+- **The $l$ degeneracy is special to $1/r$.** Nothing about rotational symmetry requires 2s and 2p to share an energy; they do in hydrogen because of a further symmetry of the Coulomb potential alone, the same one that keeps planetary orbits from precessing. In atoms with more than one electron the inner electrons screen the nucleus, the potential is no longer $1/r$, and 2s drops below 2p, 3s below 3p below 3d ([Chapter 7](../ch07/01-multi-electron-atoms.md)). The effective potential shows why: s electrons penetrate to the nucleus, where the screening is weakest.
 
 :::{note} **Example: the states with $n = 3$**
 
@@ -685,7 +685,7 @@ The hydrogen atom is solved: every level, every state. Three lectures build on i
 
 - **Shapes and sizes.** $|\psi_{nlm}|^2$ and the radial distribution $r^2R_{nl}^2$, the real orbitals $p_x$, $p_y$, $d_{xy}$, most probable and average distances: [Atomic Orbitals](02-atomic-orbitals.md).
 - **Spin.** The electron carries its own angular momentum, $s = \frac{1}{2}$, which the Schrödinger equation does not contain. It doubles every level, couples to the orbital motion (fine structure, a $10^{-4}$ eV splitting of the levels) and responds to magnetic fields: [Lecture 5.3](03-spin.md).
-- **More electrons.** Helium's two electrons repel each other and the exact solution is gone, but the hydrogen orbitals remain the language: [Chapter 7](../ch07/01-helium-atom.md) builds atoms from them, with the $l$ degeneracy lifted by screening, and [Chapter 8](../ch08/01-born-oppenheimer-approximation.md) builds molecules.
+- **More electrons.** Helium's two electrons repel each other and the exact solution is gone, but the hydrogen orbitals remain the language: [Chapter 7](../ch07/01-multi-electron-atoms.md) builds atoms from them, with the $l$ degeneracy lifted by screening, and [Chapter 8](../ch08/01-born-oppenheimer-approximation.md) builds molecules.
 
 ### Problems
 
@@ -762,7 +762,7 @@ A hydrogen atom in its ground state absorbs a photon of 15.0 eV. What happens, a
 
 #### Problem 7: Screening on the grid
 
-Modify the numpy cell above. (a) Set $Z = 2$ (replace $-1/r$ by $-2/r$) and verify that every energy scales by $Z^2$. (b) Replace $-1/r$ by a screened potential, $-\left(1 + e^{-2r}\right)/r$: a nucleus of charge 2 surrounded by one electron in a 1s cloud, which cancels one unit of charge at large $r$ but not at small $r$. Compare the lowest $l = 0$ and $l = 1$ energies. Which lies lower, 2s or 2p, and how does the effective potential explain it? This is the beginning of [Chapter 7](../ch07/02-multi-electron-atoms.md).
+Modify the numpy cell above. (a) Set $Z = 2$ (replace $-1/r$ by $-2/r$) and verify that every energy scales by $Z^2$. (b) Replace $-1/r$ by a screened potential, $-\left(1 + e^{-2r}\right)/r$: a nucleus of charge 2 surrounded by one electron in a 1s cloud, which cancels one unit of charge at large $r$ but not at small $r$. Compare the lowest $l = 0$ and $l = 1$ energies. Which lies lower, 2s or 2p, and how does the effective potential explain it? This is the beginning of [Chapter 7](../ch07/01-multi-electron-atoms.md).
 
 #### Problem 8: Bohr's orbit and the real ground state
 

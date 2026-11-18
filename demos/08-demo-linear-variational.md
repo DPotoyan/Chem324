@@ -8,333 +8,140 @@ kernelspec:
 
 [![Open in Colab](../assets/colab-badge.svg)](https://colab.research.google.com/github/DPotoyan/Chem324/blob/master/notebooks/appendix-demo-linear-variational.ipynb)
 
-
-
 ```{code-cell} python
 :tags: [hide-input]
 
 import numpy as np
-from scipy.linalg import eig, inv, eigh
+from scipy.linalg import eigh, eigh_tridiagonal
 import matplotlib.pyplot as plt
 plt.rcParams["figure.dpi"] = 150
-from scipy import integrate
 ```
 
+:::{note} **What this lab does**
 
-:::{admonition} **What You Need to Know**
-:class: note
-
-- The variational method is a powerful tool for estimating upper bounds and approximations for ground-state energies in a wide range of quantum mechanical problems.  
-- It plays a key role in electronic structure theories, such as Hartree-Fock.  
-- The **linear variational method** seeks solutions to the Schrödinger equation by representing trial wavefunctions as linear combinations of simple, computationally efficient functions, such as Gaussians or exponentials.  
-- By applying the linear variational method, the Schrödinger equation is transformed into a linear algebra problem, where the goal is to find eigenvalues (representing energies) and eigenvectors (providing coefficients for the linear combination).  
-
-:::
-
-### Linearizing the problem
-
-**Basis sets and coefficients**
-
-- How does linearization help us in practice? If we can not exactly solve and have an expression for $\psi$ then we can expand the wavefunction in some convenient **basis set** $f_n$ (e.g bunch of functions indexed by n, like fourier series)  and attempt to make it get as closer to realistic energies and wavefunction as possible. 
-
-$$\phi(r) = \sum_n^N c_nf_n(r)$$
-
-- If we have infinite number of basis functions in pricniple that should approximate any funciton and we can get nearly exact numerical solution. However computationally this is not feasible.
-- Truncating this expansion at any finite $n$ leads to an approximate solution. The idea is to keep just the optimal number of basis functions. 
-
-- The variational principle tells us is that we can minimize the energy with respect to variational paramters ${c_n}$ and still have $E_\phi \geq E_0$.  
-
-**Gaussians are commonly used as basis sets**
-
-- Gaussian-type orbitals (GTOs) are a standard example because they make integrals analytically tractable. Consider a simple 1s-like primitive Gaussian:
-
-$$
-f(r) = e^{-\alpha r^2}
-$$
-
-- To represent a more flexible radial shape, we expand the true orbital as a **linear combination of Gaussians**:
-
-$$
-\phi(r) = \sum_{n=1}^N c_n e^{-\alpha_n r^2}
-$$
-
-- Even though a hydrogenic 1s orbital behaves as $e^{-r/a_0}$, which is *not* Gaussian, we can approximate its shape remarkably well using only 3 to 6 Gaussians. This is the idea behind the STO-nG basis sets.
-
-### Smallest example
-
-- We will illustrate this idea and the general matrix construction with a simple example of two basis functions ($N=2$)
-
-$$\phi = c_1f_1 + c_2f_2$$
-
-- There is currently no need to define these functions explicitly so we will leave them as generic functions $f_1$ and $f_2$.  We now solve for the energy
-
-$$E_\phi = \frac{\langle\phi|\hat{H}|\phi\rangle}{\langle\phi|\phi\rangle} = \frac{\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle}{\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle}$$
-
-:::{admonition} **Express problem in terms of coefficients and matrix elements**
-:class: dropdown
-
-- Let's investigate the numerator and denomenator separately.  We start with the numerator
-
-$$\langle c_1f_1 + c_2f_2|\hat{H}|c_1f_1 + c_2f_2 \rangle = \langle c_1f_1|\hat{H}|c_1f_1\rangle + \langle c_1f_1|\hat{H}|c_2f_2\rangle +\langle c_2f_2|\hat{H}|c_1f_1\rangle + \langle c_2f_2|\hat{H}|c_2f_2\rangle$$
-
-$$ = c_1^*c_1\langle f_1|\hat{H}|f_1\rangle + c_1^*c_2\langle f_1|\hat{H}|f_2\rangle +c_2^*c_1\langle f_2|\hat{H}|f_1\rangle + c_2^*c_2\langle f_2|\hat{H}|f_2\rangle$$
-
-- We note that $c_i$ are real and thus $c_1^*c_1=c_1^2$ and $c_1c_2=c_2c_1$ thus
-
-$$Numerator = c_1^2 \langle f_1|\hat{H}|f_1\rangle + c_1c_2\langle f_1|\hat{H}|f_2\rangle +c_2c_1\langle f_2|\hat{H}|f_1\rangle + c_2^2\langle f_2|\hat{H}|f_2\rangle$$
-
-- Finally we recognize that since $\hat{H}$ is Hermitian, we have $\langle f_2|\hat{H}|f_1\rangle = \langle f_1|\hat{H}|f_2\rangle$ yielding 
-
-$$Numerator = c_1^2 \langle f_1|\hat{H}|f_1\rangle + 2c_1c_2\langle f_1|\hat{H}|f_2\rangle + c_2^2\langle f_2|\hat{H}|f_2\rangle$$
-
-- We will refer to the integrals above as *matrix elements* with, generically, $H_{ij} = \langle f_i|\hat{H}|f_j\rangle$. We now consider the denominator of the energy equation above and we utilize similar algebra for the numerator to get
-
-$$\langle c_1f_1 + c_2f_2|c_1f_1 + c_2f_2 \rangle = c_1^2S_{11} + 2c_1c_2S_{12} + c_2^2S_{22}$$
-
-$$S_{ij} = \langle f_i|f_j\rangle$$
-
-where $S_{ij}$ is another matrix element but this time referred to as the basis function overlap. Now we have that the energy of the trial wavefunction is
-
-$$E_\phi = \frac{c_1^2 H_{11} + 2c_1c_2H_{12} + c_2^2H_{22}}{c_1^2S_{11} + 2c_1c_2S_{12} + c_2^2S_{22}}$$
-
-- $H_{ij} = \langle f_i |\hat{H}|f_j\rangle$  **Hamiltonian matrix element expressed in basis of $f$**
-- $S_{ij} = \langle f_i|f_j\rangle$   **S matrix element or overlap integral expressed in basis of $f$**. This one measures how similiar $f_i$ is to $f_j$. 
-:::
-
-### Eigenvalue Problem
-
-- Since $E_\phi \geq E_0$ for any trial function $\phi$, we can minimize the energy $E_\phi$ by varying the parameters $c_1$ and $c_2$.  
-
-- To minimize with respect to $c_1$, we differentiate $E_\phi$ with respect to $c_1$ and set the derivative equal to zero:
-
-  $$\frac{\partial E_\phi}{\partial c_1} = 0 = c_1(H_{11} - ES_{11}) + c_2(H_{12} - ES_{12})$$
-
-- Similarly, minimizing with respect to $c_2$ gives:
-
-  $$\frac{\partial E_\phi}{\partial c_2} = 0 = c_1(H_{12} - ES_{12}) + c_2(H_{22} - ES_{22})$$
-
-- These two coupled linear equations can be expressed compactly as a matrix equation:
-
-  $$\begin{bmatrix} H_{11} - ES_{11} & H_{12} - ES_{12} \\ H_{12} - ES_{12} & H_{22} - ES_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0$$
-
-- The matrix on the left can be rewritten as the difference between two matrices:
-
-  $$\left(\begin{bmatrix} H_{11} & H_{12} \\ H_{12} & H_{22} \end{bmatrix} - E \begin{bmatrix} S_{11} & S_{12} \\ S_{12} & S_{22} \end{bmatrix} \right) \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = 0$$
-
-- Rearranging, we can write:
-
-  $$
-  \begin{bmatrix} H_{11} & H_{12} \\ H_{12} & H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = E \begin{bmatrix} S_{11} & S_{12} \\ S_{12} & S_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
-  $$
-
-- Moving S matrix to left hand side we end up with eigenvector eigenvalue problem:
-
-$$
-\begin{bmatrix} S_{11} & S_{12} \\ S_{12} & S_{22} \end{bmatrix}^{-1}\begin{bmatrix} H_{11} & H_{12} \\ H_{12} & H_{22} \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = E \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
-$$
-
-:::{admonition} **Reducing QM to a matrix eigenvalue eigenvector problem**
-:class: important
-
-  $$\mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c}$$
-
-- By left-multiplying both sides by $\mathbf{S}^{-1}$, we transform this into a standard eigenvalue problem:
-
-  $$\mathbf{S}^{-1}\mathbf{H}\cdot \mathbf{c} = E\mathbf{I} \cdot \mathbf{c}$$
-
-- Therefore, the minimum energies correspond to the eigenvalues of $\mathbf{S}^{-1}\mathbf{H}$, and the variational parameters that minimize the energies are the eigenvectors of $\mathbf{S}^{-1}\mathbf{H}$. 
-
-- $\mathbf{H}$ N by N matrix of hamiltonian elements $\langle f_i |\hat{H}|f_j\rangle$
-- $S$ an N by N matrix of overlap integrals $\langle f_i|f_j\rangle$
-- $\mathbf{c} = (c_1, c_2, ...)$ vector of N length.
-- $E$ eigenvalues that can saitsfy this equation. For symmetric matrices one expects to get N possible values!
+- [Lecture 6.1](../ch06/01-variational-method.md) showed that a trial function built from fixed basis functions, $\phi = \sum_n c_nf_n$, has its best energies at the roots of $\mathbf{H}\mathbf{c} = E\,\mathbf{S}\mathbf{c}$, with $H_{ij} = \langle f_i|\hat{H}|f_j\rangle$ and $S_{ij} = \langle f_i|f_j\rangle$.
+- Here that equation becomes one short function that works for **any one-dimensional well and any basis**: the matrix elements are computed by numerical integration on a grid.
+- **Experiment 1**: a spring, with Gaussians of the wrong widths. The lowest root steps down toward the exact energy and never passes it.
+- **Experiment 2**: a double well, with one Gaussian in each well. This is the two-level problem of Lecture 6.1 and a first look at the chemical bond.
+- **Your turn**: five short tasks at the end.
 
 :::
 
-:::{admonition} **Solving a matrix eigenvalue eigenvector problem**
-:class: tip dropdown
+## The method as one function
 
-In the equation 
-
-$$
-\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}
-$$  
-
-**$\mathbf{I}$** represents the identity matrix. Its role in this context is essential to express the equation as a **standard eigenvalue problem**.
-
-1. **Eigenvalue Problem Form**:  
-
-   In linear algebra, a standard eigenvalue problem is written as:  
-
-   $$
-   \mathbf{A}\mathbf{v} = \lambda \mathbf{I}\mathbf{v}
-   $$  
-
-   where:  
-   - $\mathbf{A}$ is a square matrix,  
-   - $\lambda$ is a scalar eigenvalue,  
-   - $\mathbf{I}$ is the identity matrix, and  
-   - $\mathbf{v}$ is the corresponding eigenvector.
-
-   The identity matrix $\mathbf{I}$ ensures that $\lambda$ scales the eigenvector $\mathbf{v}$ without altering its direction. The eigenvalue problem is about finding the values of $\lambda$ and their associated $\mathbf{v}$.
-
-2. **Connecting to $\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}$**:  
-
-   Here, $\mathbf{S}^{-1}\mathbf{H}$ acts as the operator $\mathbf{A}$ in the standard eigenvalue problem.  
-   - $\mathbf{S}^{-1}\mathbf{H}$ is a matrix resulting from left-multiplying $\mathbf{H}$ by the inverse of $\mathbf{S}$.  
-   - $\mathbf{c}$ represents the eigenvector.  
-   - $E$ is the eigenvalue (corresponding to the energy in the quantum mechanical system).  
-
-   The identity matrix $\mathbf{I}$ is explicitly included to highlight that $E$ is a scalar multiplying the vector $\mathbf{c}$. This ensures that the left-hand side (a matrix operation) matches the right-hand side (a scaled vector).  
-
-3. **Why $\mathbf{S}^{-1}$ Appears**:  
-
-   Initially, we had:  
-   
-   $$
-   \mathbf{H}\mathbf{c} = E\mathbf{S}\mathbf{c}
-   $$  
-   
-   which cannot directly be interpreted as an eigenvalue problem because of the presence of $\mathbf{S}$ (the overlap matrix). To transform this into a standard form, we pre-multiply both sides by $\mathbf{S}^{-1}$:  
-   
-   $$
-   \mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{S}^{-1}\mathbf{S}\mathbf{c}
-   $$  
-   
-   Since $\mathbf{S}^{-1}\mathbf{S} = \mathbf{I}$, this simplifies to:  
-   
-   $$
-   \mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}
-   $$
-
-4. **How to Interpret This as an Eigenvalue Problem**:  
-   The equation now has the form of a standard eigenvalue problem:  
-
-   $$
-   \mathbf{A}\mathbf{v} = \lambda \mathbf{I}\mathbf{v}
-   $$  
-
-   where:  
-   - $\mathbf{A} = \mathbf{S}^{-1}\mathbf{H}$ is the effective matrix to diagonalize,  
-   - $\lambda = E$ are the eigenvalues, corresponding to the energy levels,  
-   - $\mathbf{v} = \mathbf{c}$ are the eigenvectors, containing the coefficients of the trial wavefunctions.
-
-5. **Physical Interpretation**:  
-   Solving the eigenvalue problem $\mathbf{S}^{-1}\mathbf{H}\mathbf{c} = E\mathbf{I}\mathbf{c}$ gives the approximate energies ($E$) of the quantum system as eigenvalues and the corresponding variational parameters ($\mathbf{c}$) as eigenvectors. The identity matrix $\mathbf{I}$ is crucial for preserving the standard form of the eigenvalue problem, ensuring proper mathematical and physical interpretation.
-:::
-
-## Example: Particle in a Box
-
-- Let's consider a free particle in 1D bounded to $0\leq x\leq a$.  The Hamiltonian for such a system is simply the kinetic energy operator
-
-$$\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$$
-
-- While we can have solved this problem analytically, it will be instructive to see how the variational solution works.  We start by approximating $\psi(x)$ as an expansion in two basis functions $f_1=x(a-x)$ and $f_2=x^2(a-x)^2$
-
-$$\psi(x) \approx c_1x(a-x) + c_2x^2(a-x)^2$$
-
-- The $c_1$ and $c_2$ are the variational parameters to find them we first construct the Hamiltonian matrix, $\mathbf{H}$, and the basis function overlap matrix, $\mathbf{S}$.  
-
-$$H_{ij} = \langle f_i|\hat{H}|f_j\rangle$$
-
-$$S_{ij} = \langle f_i|f_j\rangle $$
-
-- We will then compute and diagonlize the $\mathbf{S}^{-1}\mathbf{H}$ matrix.  
-
-:::{admonition} **Computing the matrix elements**
-:class: tip dropdown
-
-In this problem, we have two basis functions
-
-$$f_1(x) = x(a-x)$$
-
-and 
-
-$$f_2(x) = x^2(a-x)^2$$
-
-now the task of computing matrix elements comes down to forming integrals with these two and carrying out integration
-
-$$H_{11} = \langle x(a-x)|\hat{H}|x(a-x)\rangle$$
-
-$$= \langle ax|\hat{H}|ax\rangle -\langle ax|\hat{H}|x^2\rangle - \langle x^2|\hat{H}|ax\rangle + \langle x^2|\hat{H}|x^2\rangle$$
-
-$$ = -a\langle x|\hat{H}|x^2\rangle + \langle x^2|\hat{H}|x^2\rangle$$
-
-where the last equality holds because the second derivative of $x$ with respect to x is zero. Let's now investigate each of these integrals
-
-$$\langle x|\hat{H}|x^2\rangle = \int_0^ax \frac{-\hbar^2}{2m}\frac{d^2}{dx^2} x^2dx \\ = \frac{-\hbar^2}{m}\int_0^axdx = \frac{-\hbar^2a^2}{2m}$$
-
-Similarly we should get
-
-$$\langle x^2|\hat{H}|x^2\rangle =\frac{-\hbar^2a^3}{3m}$$
-
-Thus
-
-$$H_{11} = -a\frac{-\hbar^2a^2}{2m} + \frac{-\hbar^2a^3}{3m} = \frac{\hbar^2a^3}{6m}$$
-
-$$H_{22} = \langle x^2(a-x)^2|\hat{H}|x^2(a-x)^2\rangle$$
-
-$$ = \langle a^2x^2|\hat{H}|a^2x^2\rangle -2\langle a^2x^2|\hat{H}|2ax^3\rangle + \langle a^2x^2|\hat{H}|x^4\rangle -2\langle ax^3|\hat{H}|a^2x^2\rangle + 4\langle ax^3|\hat{H}|ax^3\rangle -2\langle ax^3|\hat{H}|x^4\rangle + \langle x^4|\hat{H}|a^2x^2\rangle - 2\langle x^4|\hat{H}|ax^3\rangle + \langle x^4|\hat{H}|x^4\rangle$$
-
-$$ = \frac{-\hbar^2a^7}{3m} +\frac{3\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{5m} +\frac{\hbar^2 a^7}{2m} - \frac{12\hbar^2 a^7}{5m} +\frac{2\hbar^2 a^7}{m} - \frac{\hbar^2 a^7}{5m} + \frac{\hbar^2 a^7}{m} - \frac{6\hbar^2 a^7}{7m}$$
-
-$$ = \frac{\hbar^2a^7}{105m} $$
-
-$$H_{12} = H_{21} = \frac{\hbar^2a^5}{30m}$$
-
-We can now complete the Hamiltonian matrix, $\mathbf{H}$,
-
-$$\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} & \frac{a^2}{30}\\ \frac{a^2}{30} & \frac{a^4}{105} \end{bmatrix}$$
-
-Similarily one could carry out all the integrals for $\mathbf{S}$
-
-$$\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} & \frac{a^2}{14}\\ \frac{a^2}{14} & \frac{a^4}{63} \end{bmatrix}$$
-
-:::
-
-- We have obtaind all matrix elements in previous section and are now ready to obtain eigenvalues
-
-$$\mathbf{H} = \frac{\hbar^2a^3}{m} \begin{bmatrix} \frac{1}{6} & \frac{a^2}{30}\\ \frac{a^2}{30} & \frac{a^4}{105} \end{bmatrix}$$
-
-$$\mathbf{S} = \frac{a^5}{10} \begin{bmatrix} \frac{1}{3} & \frac{a^2}{14}\\ \frac{a^2}{14} & \frac{a^4}{63} \end{bmatrix}$$
+Units: $\hbar = m = 1$. The matrix elements are integrals over the grid `x`. The kinetic energy uses the slopes, $\langle f_i|\hat{T}|f_j\rangle = \frac{1}{2}\int f_i'f_j'\,dx$, as in Lecture 6.1.
 
 ```{code-cell} python
-# Lets adopt simpler units
-a = 1.0
-hbar = 1.0
-m = 1.0
+x = np.linspace(-12, 12, 4001)                    # the grid for every integral
 
-S = np.array([[1.0/30.0, 1.0/140.0],[1.0/140.0,1.0/630.0]])
-H = np.array([[1.0/6.0,1.0/30.0],[1.0/30.0,1.0/105.0]])
-
-e, v = eig(inv(S) @ H) #e, v = eigh(H, S) #Same values eigh is for hermitian matrices
-
-print("Eigenvalues:", e)
-print("First eigenvector:", v[:,0])
+def variational(basis, V):
+    """Best energies and coefficients for a list of basis functions in the well V(x)."""
+    f = np.array(basis)                           # one basis function per row
+    df = np.gradient(f, x, axis=1)                # their slopes
+    # every pair (i, j) at once: overlaps, kinetic energy, potential energy
+    S = np.trapezoid(f[:, None, :] * f[None, :, :], x)
+    T = 0.5 * np.trapezoid(df[:, None, :] * df[None, :, :], x)
+    U = np.trapezoid(f[:, None, :] * V(x) * f[None, :, :], x)
+    return eigh(T + U, S)                         # solves H c = E S c
 ```
 
-So we see that the smallest energy in this basis is 
+`eigh(H, S)` returns the roots in ascending order and the coefficients as columns: `C[:, 0]` belongs to the lowest root.
 
-$$E_\phi = 4.9349 \frac{\hbar^2}{m}$$
+## Experiment 1: a spring, with the wrong Gaussians
 
-How does this compare to the analytic solution?  Plugging in for the ground state, $n=1$, and $a=1$ we get
-
-$$E_1 = \frac{\pi^2\hbar^2}{2} \approx 4.9348 \frac{\hbar^2}{m} $$
-
-So we can see that our variational solution worked out well for the energy.  Now how about the wavefunction?
+For $V = \frac{1}{2}x^2$ the exact ground state is $e^{-x^2/2}$ with $E_0 = \frac{1}{2}$. Pretend not to know it, and build the trial function from Gaussians $e^{-ax^2}$ whose exponents all miss the right value, $a = \frac{1}{2}$:
 
 ```{code-cell} python
-# plot wavefunction
-# x values
-x = np.arange(0,1,0.01)
-# exact wavefunction
-psi1Exact = np.sqrt(2)*np.sin(np.pi*x) 
-plt.plot(x,psi1Exact,'k-',label="Exact",lw=3)
-# variational basis function wavefunction
-psi1Var = v[0,0]*x*(1-x) + v[1,0]*x**2*(1-x)**2
-norm = np.sqrt(integrate.simpson(np.power(psi1Var,2),x))
-plt.plot(x,-psi1Var/norm,'r--', label="Variational")
-plt.xlabel('x')
-plt.ylabel('$P(x)$')
-plt.legend()
+spring = lambda x: 0.5 * x**2
+exponents = [0.1, 0.2, 0.4, 0.8, 1.6]
+
+for N in range(1, 6):
+    basis = [np.exp(-a * x**2) for a in exponents[:N]]
+    E, C = variational(basis, spring)
+    print(f"{N} Gaussians: lowest root {E[0]:.5f}    (exact 0.50000)")
 ```
+
+```{code-cell} python
+fig, ax = plt.subplots(figsize=(6, 3.4))
+exact = np.pi**-0.25 * np.exp(-0.5 * x**2)
+ax.plot(x, exact, color="gray", lw=5, alpha=0.5, label="exact")
+for N, style in ((1, ":"), (2, "--"), (5, "-")):
+    basis = np.array([np.exp(-a * x**2) for a in exponents[:N]])
+    E, C = variational(basis, spring)
+    phi = C[:, 0] @ basis                         # the best mixture
+    phi = phi / np.sqrt(np.trapezoid(phi**2, x)) * np.sign(phi[len(x) // 2])
+    ax.plot(x, phi, style, color="teal", label=f"{N} Gaussian" + ("s" if N > 1 else ""))
+ax.set_xlim(-5, 5); ax.set_xlabel("x"); ax.set_ylabel("trial function"); ax.legend(frameon=False)
+plt.show()
+```
+
+- **Every added function lowers the root**, and no root is below $\frac{1}{2}$: the variational theorem at work.
+- **One poor Gaussian gives 1.3; five give 0.50003.** None of the five has the right width. Their mixture does.
+- **The higher roots are bounds too.** All these basis functions are even, so the second root approaches the next even level, $E_2 = 2.5$.
+
+## Experiment 2: a double well and the two-level problem
+
+Put two parabolas side by side, with minima at $x = \pm a$ and a barrier between them:
+
+$$
+V(x) = \tfrac{1}{2}\left(|x| - a\right)^2
+$$
+
+Each well alone would hold the state $e^{-(x \mp a)^2/2}$ with energy $\frac{1}{2}$. Use those two functions as the basis: one "orbital" on each "atom".
+
+```{code-cell} python
+a = 1.5
+double = lambda x: 0.5 * (np.abs(x) - a)**2       # two wells at -a and +a, barrier a^2/2
+left = np.exp(-0.5 * (x + a)**2)                  # the ground state of the left well alone
+right = np.exp(-0.5 * (x - a)**2)                 # and of the right well
+
+E, C = variational([left, right], double)
+print("roots:", np.round(E, 4))
+print("mixtures (columns):")
+print(np.round(C / C[0], 3))                      # each column scaled so its first entry is 1
+```
+
+The two basis functions have the same energy, so they mix half and half: the lower root belongs to `left + right` and the upper one to `left - right`. Compare with the levels of this well solved on a grid, as in [the numerical Schrödinger lab](07-demo-numerical-schrodinger.md):
+
+```{code-cell} python
+dx = x[1] - x[0]
+grid = eigh_tridiagonal(1 / dx**2 + double(x), -np.ones(len(x) - 1) / (2 * dx**2),
+                        select="i", select_range=(0, 1))[0]
+print("two Gaussians :", np.round(E, 4))
+print("grid, exact   :", np.round(grid, 4))
+```
+
+```{code-cell} python
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(x, double(x), color="k", lw=2)
+for k, color in ((0, "teal"), (1, "darkorange")):
+    phi = C[:, k] @ np.array([left, right])
+    phi = phi / np.sqrt(np.trapezoid(phi**2, x))
+    ax.axhline(E[k], color=color, lw=0.8, ls=":")
+    phi = phi * np.sign(phi[np.argmax(np.abs(phi) * (x < 0))])   # left lobe drawn upward
+    ax.plot(x, E[k] + 0.35 * phi, color=color, label=f"root {k + 1}: E = {E[k]:.3f}")
+ax.set_xlim(-5, 5); ax.set_ylim(0, 1.4); ax.set_xlabel("x"); ax.set_ylabel("energy")
+ax.legend(frameon=False)
+plt.show()
+```
+
+- **Two equal levels split in two.** Alone, each well has the energy 0.5. Together they give one level below and one above: the two-level problem of Lecture 6.1 with $\Delta = 0$.
+- **The lower state has no node between the wells**; the upper one changes sign there. Replace the wells by two protons and the Gaussians by 1s orbitals, and these are the bonding and antibonding orbitals of H$_2^+$ ([Chapter 8](../ch08/02-hydrogen-molecule-ion.md)).
+- **Two functions already come close** to the exact levels. More functions close the rest of the gap:
+
+```{code-cell} python
+centers, widths = (-a, -a / 2, 0, a / 2, a), (0.25, 1.0)
+extra = [np.exp(-w * (x - c)**2) for c in centers for w in widths]
+E12, C12 = variational([left, right] + extra, double)
+print(" 2 functions:", np.round(E, 4))
+print("12 functions:", np.round(E12[:2], 4))
+print("grid, exact :", np.round(grid, 4))
+```
+
+## Your turn
+
+1. In Experiment 1, replace the list of exponents by `[0.5]`. What root do you get with a single function, and why?
+2. Change the well of Experiment 1 to the V-shaped well, `lambda x: np.abs(x)`. One Gaussian can do no better than 0.813 (Lecture 6.1, Problem 4), and the exact energy is 0.809. How many Gaussians do you need to reach 0.809?
+3. In Experiment 2, raise the barrier by setting `a = 2.0` and then `a = 2.5`. What happens to the gap between the two roots? Relate it to tunneling ([Lecture 3.4](../ch03/03-tunneling-and-finite-square-well.md)) and to the overlap of the two basis functions.
+4. Read $\alpha = H_{11}/S_{11}$, $\beta = H_{12}/S_{11}$ and $S = S_{12}/S_{11}$ off the matrices of Experiment 2 (print them inside `variational`), and check the roots against $(\alpha \pm \beta)/(1 \pm S)$ from Problem 5 of Lecture 6.1.
+5. Make the two wells unequal by adding a slope, `lambda x: 0.5 * (np.abs(x) - a)**2 + 0.1 * x`. Do the two basis functions still mix half and half? Which well does the lower state prefer, and why?

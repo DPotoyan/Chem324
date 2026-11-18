@@ -44,16 +44,15 @@ One reveal.js deck per lecture, distilled from the corresponding lecture page. P
 
 ## Chapter 6
 
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch06/01-variational-method.html">Variational Method</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch06/01-variational-method.html">The Variational Method</a>
 - <a href="https://dpotoyan.github.io/Chem324/slides/ch06/02-perturbation-theory.html">Perturbation Theory</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch06/03-time-dependent-perturbation-and-selection-rules.html">Time Dependent Perturbation and Selection Rules</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch06/03-time-dependent-perturbation-and-selection-rules.html">Time-Dependent Perturbations and Selection Rules</a>
 
 ## Chapter 7
 
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/01-helium-atom.html">Helium Atom</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/02-multi-electron-atoms.html">Multi Electron Atoms</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/03-hartree-fock.html">Hartree Fock</a>
-- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/04-angular-momentum-and-term-symbols.html">Angular Momentum and Term Symbols</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/01-multi-electron-atoms.html">Multi Electron Atoms</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/02-hartree-fock.html">Hartree Fock</a>
+- <a href="https://dpotoyan.github.io/Chem324/slides/ch07/03-angular-momentum-and-term-symbols.html">Angular Momentum and Term Symbols</a>
 
 ## Chapter 8
 

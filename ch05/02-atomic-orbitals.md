@@ -10,7 +10,7 @@ kernelspec:
 
 - An **atomic orbital** is one stationary state of a one-electron atom, $\psi_{nlm} = R_{nl}(r)\,Y_l^m(\theta, \phi)$, named by $n$ and the letter of $l$: 1s, 2p, 3d. [Lecture 5.1](01-hydrogenlike-atoms.md) solved for them. This lecture draws them, and learns to read the drawings.
 - "Where is the electron?" has three answers. $\lvert\psi\rvert^2\,dV$ is the probability of finding it in a small volume; the **radial distribution** $P(r) = r^2R_{nl}^2$ is the probability per unit length of finding it at distance $r$, at any angle (the $r^2$ is the area of the shell); $\lvert Y_l^m\rvert^2$ is the probability per unit solid angle of finding it in a direction. The 1s density is largest at the nucleus, but $P(r)$ peaks at $a_0$: the **most probable distance**. The average distance is $\tfrac{3}{2}a_0$, and 90% of the electron lies inside $2.66\,a_0$.
-- Sizes grow as $n^2a_0/Z$. For $l = n - 1$ the most probable distance is exactly Bohr's $n^2a_0/Z$; s states keep small inner lobes close to the nucleus, which is why 2s lies below 2p once there are other electrons ([Chapter 7](../ch07/02-multi-electron-atoms.md)).
+- Sizes grow as $n^2a_0/Z$. For $l = n - 1$ the most probable distance is exactly Bohr's $n^2a_0/Z$; s states keep small inner lobes close to the nucleus, which is why 2s lies below 2p once there are other electrons ([Chapter 7](../ch07/01-multi-electron-atoms.md)).
 - The $Y_l^m$ with $m \neq 0$ are complex and their densities are rings around $z$. Because the $2l + 1$ states of one $n$ and $l$ have the same energy, any combination of them is again a stationary state, and the combinations $(Y_l^{-m} \mp Y_l^{m})/\sqrt{2}$ are **real orbitals** that point along axes: $p_x$, $p_y$, $p_z$ and the five $d$. They keep $E$ and $L^2$; $p_x$ has no definite $L_z$ but is the $m = 0$ state about the $x$ axis. The atom is round, so $z$ is only the axis we measured $\theta$ from: $p_x$ is the same dumbbell as $p_z$, turned to $x$. Use the $m$ states when a magnetic field makes $z$ special, and $p_x$ when a neighbouring atom sits along $x$.
 - **Nodes:** $n - l - 1$ radial nodes (spheres) plus $l$ angular nodes (planes or cones), $n - 1$ in all. A **boundary surface** encloses 90% of the probability; it is what the textbook drawings show.
 
@@ -26,7 +26,7 @@ kernelspec:
 | 2 | 0, 1 | 2s, 2p | $1 + 3 = 4$ | $-E_h/8$ |
 | 3 | 0, 1, 2 | 3s, 3p, 3d | $1 + 3 + 5 = 9$ | $-E_h/18$ |
 
-The word deserves care. An orbital is a **wavefunction of one electron**, not a path: nothing orbits. For hydrogen the orbitals are exact; for every other atom the word is kept for the one-electron functions out of which the many-electron state is built, an approximation that [Chapter 7](../ch07/01-helium-atom.md) makes precise. Everything a chemist draws about atoms, from the periodic table to a $\pi$ bond, is drawn in the language of these functions, so this lecture is about drawing them well: where the electron is, what shape the orbital has, where it vanishes, and what a picture of it does and does not show.
+The word deserves care. An orbital is a **wavefunction of one electron**, not a path: nothing orbits. For hydrogen the orbitals are exact; for every other atom the word is kept for the one-electron functions out of which the many-electron state is built, an approximation that [Chapter 7](../ch07/01-multi-electron-atoms.md) makes precise. Everything a chemist draws about atoms, from the periodic table to a $\pi$ bond, is drawn in the language of these functions, so this lecture is about drawing them well: where the electron is, what shape the orbital has, where it vanishes, and what a picture of it does and does not show.
 
 ### Where is the electron?
 
@@ -215,7 +215,7 @@ Fig. The radial distributions of the $n = 2$ and $n = 3$ shells. The dotted line
 
 - **Raising $l$ removes the inner peaks.** At $n = 3$: 3s has three maxima, 3p two, 3d one.
 - **$l = n - 1$ is a single peak at Bohr's radius.** $P \propto r^{2n}e^{-2Zr/na_0}$ peaks at $r = n^2a_0/Z$: $4a_0$ for 2p, $9a_0$ for 3d (Problem 1).
-- **The s state penetrates.** Its innermost peak lies closest to the nucleus. In hydrogen that changes no energy, since every state of one $n$ shares $E_n$. In every other atom the inner electrons screen the nucleus, a penetrating 2s electron feels more nuclear charge than 2p, and 2s drops below 2p: the aufbau order of [Chapter 7](../ch07/02-multi-electron-atoms.md).
+- **The s state penetrates.** Its innermost peak lies closest to the nucleus. In hydrogen that changes no energy, since every state of one $n$ shares $E_n$. In every other atom the inner electrons screen the nucleus, a penetrating 2s electron feels more nuclear charge than 2p, and 2s drops below 2p: the aufbau order of [Chapter 7](../ch07/01-multi-electron-atoms.md).
 
 #### Count the peaks: the radial nodes
 

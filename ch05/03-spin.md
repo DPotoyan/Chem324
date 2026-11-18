@@ -393,7 +393,7 @@ Fig. What the plate would show for classical magnets, for atoms with $l = 0$ and
 
 - **Classical magnets** leave the oven pointing in every direction. $\mu_z$ takes every value from $-\mu$ to $+\mu$, and the beam smears into a band.
 - **Orbital angular momentum** gives $\mu_z = -\mu_Bm_l$ with $2l + 1$ values, an **odd** number of spots: one for $l = 0$, three for $l = 1$.
-- **Silver** has one electron outside closed shells, in the 5s orbital, and closed shells carry no angular momentum ([Chapter 7](../ch07/02-multi-electron-atoms.md)). So $l = 0$, and the prediction is a single spot in the middle.
+- **Silver** has one electron outside closed shells, in the 5s orbital, and closed shells carry no angular momentum ([Chapter 7](../ch07/01-multi-electron-atoms.md)). So $l = 0$, and the prediction is a single spot in the middle.
 - **Observed: two spots, and nothing in the middle.** Two means $2l + 1 = 2$, that is $l = \frac{1}{2}$, which no orbital motion can have: $l$ is a whole number because $e^{im\phi}$ must join up around the circle (Lecture 4.4). The moment that splits the beam is not orbital. Hydrogen atoms in their 1s ground state split in two as well (Phipps and Taylor, 1927).
 
 :::{note} **Example: how far apart are the two spots?**
@@ -469,7 +469,7 @@ $$
 - **Spin is intrinsic.** Every electron has $s = \frac{1}{2}$, as every electron has the charge $-e$ and the mass $m_e$. The orbital quantum number $l$ depends on the state the electron is in; $s$ cannot be changed. Only the orientation $m_s$ can.
 - **Spin is not a motion in space.** $\alpha$ and $\beta$ are not functions of $x$, $y$, $z$ or of the angles. There is no $Y_{1/2}^{m}(\theta, \phi)$: a function of $\phi$ with $m = \frac{1}{2}$ would change sign after one full turn. The name is historical.
 - **The Schrödinger equation does not contain it.** Our Hamiltonians were built by taking a classical energy and replacing $x$ and $p$ by operators, and spin has no classical energy to start from. It comes out on its own from Dirac's relativistic equation for the electron (1928). Here it is added by hand, as a new degree of freedom with the properties in the box.
-- **Other particles have spin too.** Protons and neutrons have $s = \frac{1}{2}$, the photon has $s = 1$, and nuclei have spins $0, \frac{1}{2}, 1, \frac{3}{2}, \dots$ Particles with half-integer spin are **fermions** and those with whole spin are **bosons**. That distinction is behind the Pauli principle and the periodic table ([Chapter 7](../ch07/02-multi-electron-atoms.md)).
+- **Other particles have spin too.** Protons and neutrons have $s = \frac{1}{2}$, the photon has $s = 1$, and nuclei have spins $0, \frac{1}{2}, 1, \frac{3}{2}, \dots$ Particles with half-integer spin are **fermions** and those with whole spin are **bosons**. That distinction is behind the Pauli principle and the periodic table ([Chapter 7](../ch07/01-multi-electron-atoms.md)).
 
 #### The vector model
 
@@ -806,7 +806,7 @@ $$
 
 - **Four quantum numbers.** The five operators commute with one another (the spin operators act on $\alpha$ and $\beta$ only, the others on $r$, $\theta$, $\phi$ only), so one state carries all five values. Four numbers label it, since $s$ never changes.
 - **Orthonormal.** The bracket of two spin orbitals is the integral over space times the dot product of the spin parts. Two states with the same orbital and opposite spins are orthogonal because $\langle\alpha|\beta\rangle = 0$.
-- **$2n^2$ states in level $n$:** 2, 8, 18, 32. With the Pauli principle these become the lengths of the rows of the periodic table ([Chapter 7](../ch07/02-multi-electron-atoms.md)).
+- **$2n^2$ states in level $n$:** 2, 8, 18, 32. With the Pauli principle these become the lengths of the rows of the periodic table ([Chapter 7](../ch07/01-multi-electron-atoms.md)).
 - **In a magnetic field** both moments contribute: $\hat{H} = \hat{H}_0 + \dfrac{\mu_BB}{\hbar}\left(\hat{L}_z + g_e\hat{S}_z\right)$, with energies $E_n + \mu_BB\,(m_l + g_e m_s)$. This is right as long as the two magnets inside the atom ignore each other. They do not quite.
 
 ### Spin-orbit coupling
@@ -998,7 +998,7 @@ where $L$ is the capital letter of $l$ (S, P, D, F for $l = 0, 1, 2, 3$), the su
 | d | 2 | $^2D_{3/2}$, $^2D_{5/2}$ | 4, 6 | $-\frac{3}{2}A$, $+A$ |
 | f | 3 | $^2F_{5/2}$, $^2F_{7/2}$ | 6, 8 | $-2A$, $+\frac{3}{2}A$ |
 
-For atoms with several electrons the same symbol is built from the total spin and total orbital angular momentum ([Lecture 7.4](../ch07/04-angular-momentum-and-term-symbols.md)).
+For atoms with several electrons the same symbol is built from the total spin and total orbital angular momentum ([Lecture 7.3](../ch07/03-angular-momentum-and-term-symbols.md)).
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -1286,7 +1286,7 @@ The atom is stuck. The 2s state is **metastable**: left alone it lasts 0.12 s, a
 | together | $\hat{\vec{J}} = \hat{\vec{L}} + \hat{\vec{S}}$, $\ j = l \pm \frac{1}{2}$, $\ m_j = m_l + m_s$ | |
 
 - **Spin doubles every orbital** and gives the electron a second magnetic moment. A field separates the $m_l$ and $m_s$ states; inside the atom the two moments couple into $\vec{J}$ and split the levels with $l > 0$.
-- **Two electrons** bring something new: their spins combine into singlets and triplets, and the Pauli principle limits which combinations exist. [Chapter 7](../ch07/01-helium-atom.md) starts there, after [Chapter 6](../ch06/01-variational-method.md) supplies the approximation methods that atoms with more than one electron need.
+- **Two electrons** bring something new: their spins combine into singlets and triplets, and the Pauli principle limits which combinations exist. [Chapter 7](../ch07/01-multi-electron-atoms.md) starts there, after [Chapter 6](../ch06/01-variational-method.md) supplies the approximation methods that atoms with more than one electron need.
 
 ### Problems
 
