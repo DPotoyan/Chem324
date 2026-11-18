@@ -17,7 +17,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # mystmd is installed unpinned below, and since 1.13.0 (2026-11-12) it exits at
+          # startup unless Node is >= 22: with Node 20 the "Build HTML" step failed in 2 s.
+          node-version: 24
 
       - name: Install MyST
         run: npm install -g mystmd
