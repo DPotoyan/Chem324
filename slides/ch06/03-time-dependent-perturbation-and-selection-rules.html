@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.11.9">
 
   <meta name="author" content="Davit Potoyan">
-  <title>Time-Dependent Perturbation Theory and Selection Rules</title>
+  <title>Time-Dependent Perturbations and Selection Rules</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -135,7 +151,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Time-Dependent Perturbation Theory and Selection Rules</h1>
+  <h1 class="title">Time-Dependent Perturbations and Selection Rules</h1>
   <p class="subtitle">Chem 3240 · Lecture 6.3</p>
 
 <div class="quarto-title-authors">
@@ -147,121 +163,219 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="why-time-dependent-perturbations" class="slide level2">
-<h2>Why Time-Dependent Perturbations?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch06/images/perturb1.png" style="width:100.0%"></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment"><p>A <strong>time-dependent</strong> field can drive <strong>transitions</strong> between stationary states.</p></li>
-<li class="fragment"><p>Light is an <strong>oscillating</strong> electromagnetic field.</p></li>
-<li class="fragment"><p>This is the origin of <strong>spectroscopy</strong> and <strong>selection rules</strong>.</p></li>
-</ul>
-</div></div>
+<section id="what-the-earlier-lectures-left-open" class="slide level2">
+<h2>What the earlier lectures left open</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/transition_map.png" class="quarto-figure quarto-figure-center" style="width:66.0%"></p>
+</figure>
+</div>
+<ol type="1">
+<li>How does light take a molecule <strong>out of</strong> a stationary state (3.7)?</li>
+<li>Why only when <span class="math inline">h\nu</span> matches a gap?</li>
+<li>Why is the rate set by <span class="math inline">|\langle f|\hat{M}|i\rangle|^2</span>, as 4.3 and 5.3 assumed?</li>
+</ol>
 </section>
-<section id="the-setup" class="slide level2">
-<h2>The Setup</h2>
-<ul>
-<li class="fragment">Split the Hamiltonian into a solvable part plus a weak, time-dependent kick.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}(t) = \hat{H}_0 + \hat{V}(t), \qquad \hat{H}_0|n\rangle = E_n|n\rangle\]</span></p>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Expand the state in the <strong>stationary basis</strong>: <span class="math display">\[|\Psi(t)\rangle = \sum_n c_n(t)\, e^{-iE_n t/\hbar}|n\rangle\]</span></li>
-</ul>
+<section id="light-as-a-perturbation" class="slide level2">
+<h2>Light as a perturbation</h2>
+<p>A dipole <span class="math inline">M</span> in a field <span class="math inline">\mathcal{E}</span> has the energy <span class="math inline">-M\mathcal{E}</span> (4.3). In light the field oscillates:</p>
+<p><span class="math display">\hat{H}(t) = \hat{H}^{(0)} + \hat{V}(t), \qquad \hat{V}(t) = -\hat{M}\,\mathcal{E}\cos\omega t</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/dipole_approximation.png" class="quarto-figure quarto-figure-center" style="width:46.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">The coefficients <span class="math inline">\(c_n(t)\)</span> carry <strong>all the dynamics</strong>.</li>
+<li><span class="math inline">\mathcal{E}</span>: field amplitude. <span class="math inline">\ \omega = 2\pi\nu</span>. <span class="math inline">\ \hat{M}</span>: the dipole along the field, <span class="math inline">-ex</span> for an electron</li>
+<li>The wave is a thousand times longer than the molecule: the field is <strong>uniform</strong> across it</li>
 </ul>
 </section>
-<section id="equation-of-motion-for-the-coefficients" class="slide level2">
-<h2>Equation of Motion for the Coefficients</h2>
+<section id="the-coefficients-move" class="slide level2">
+<h2>The coefficients move</h2>
+<p>With a fixed Hamiltonian (3.7), each stationary state keeps its coefficient and turns its phase:</p>
+<p><span class="math display">\Psi(t) = \sum_n c_n\,e^{-iE_nt/\hbar}\,\psi_n \qquad (c_n\ \text{constant})</span></p>
+<p>With <span class="math inline">\hat{V}(t)</span> on, the same expansion holds, but the coefficients <strong>depend on time</strong>:</p>
+<p><span class="math display">\Psi(t) = \sum_n c_n(t)\,e^{-iE_nt/\hbar}\,\psi_n</span></p>
 <ul>
-<li class="fragment">Insert the expansion into the time-dependent Schrodinger equation.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[i\hbar\,\dot{c}_m(t) = \sum_n c_n(t)\, V_{mn}(t)\, e^{i\omega_{mn}t}\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[V_{mn}(t) = \langle m|\hat{V}(t)|n\rangle, \qquad \omega_{mn} = \frac{E_m - E_n}{\hbar}\]</span></p>
-</div>
-</section>
-<section id="first-order-transition-amplitude" class="slide level2">
-<h2>First-Order Transition Amplitude</h2>
-<ul>
-<li class="fragment">Start in state <span class="math inline">\(|i\rangle\)</span>. The perturbation is <strong>weak</strong>, so keep <span class="math inline">\(c_n \approx \delta_{ni}\)</span>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\dot{c}_f^{(1)}(t) = -\frac{i}{\hbar}\, V_{fi}(t)\, e^{i\omega_{fi}t}\]</span></p>
-</div>
-<div class="fragment">
-<p>Integrate from <span class="math inline">\(0\)</span> to <span class="math inline">\(t\)</span>: <span class="math display">\[c_f^{(1)}(t) = -\frac{i}{\hbar}\int_0^t V_{fi}(t')\, e^{i\omega_{fi}t'}\, dt'\]</span></p>
-</div>
-</section>
-<section id="coupling-to-light-dipole-approximation" class="slide level2">
-<h2>Coupling to Light: Dipole Approximation</h2>
-<ul>
-<li class="fragment">An oscillating field couples through the <strong>electric dipole</strong>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{V}(t) = -\hat{\boldsymbol{\mu}}\cdot\mathbf{E}(t), \qquad \mathbf{E}(t) = \mathbf{E}_0\cos(\omega t)\]</span></p>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Define the <strong>dipole matrix element</strong> <span class="math inline">\(\mu_{fi} = \langle f|\hat{\boldsymbol{\mu}}\cdot\hat{\mathbf{e}}|i\rangle\)</span>: <span class="math display">\[V_{fi}(t) = -\mu_{fi}\, E_0\cos(\omega t)\]</span></li>
-</ul>
-</div>
-</section>
-<section id="resonance-and-energy-conservation" class="slide level2">
-<h2>Resonance and Energy Conservation</h2>
-<ul>
-<li class="fragment"><p>Write <span class="math inline">\(\cos(\omega t') = \tfrac{1}{2}(e^{i\omega t'} + e^{-i\omega t'})\)</span>.</p></li>
-<li class="fragment"><p>The integral holds terms <span class="math inline">\(\displaystyle\int_0^t e^{i(\omega_{fi}\pm\omega)t'}\,dt'\)</span>.</p></li>
-<li class="fragment"><p>Off-resonance these <strong>oscillate away</strong>. The amplitude is large only when <span class="math inline">\(\omega_{fi}\approx\omega\)</span>.</p></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[E_f - E_i = \pm\hbar\omega\]</span></p>
-</div>
-</section>
-<section id="transition-probability" class="slide level2">
-<h2>Transition Probability</h2>
-<div class="fragment">
-<p><span class="math display">\[P_{i\to f}(t) \approx |c_f^{(1)}(t)|^2 \propto |\mu_{fi}|^2\]</span></p>
-</div>
-<ul>
-<li class="fragment"><p>The transition rate is set by the <strong>square</strong> of the dipole matrix element.</p></li>
-<li class="fragment"><p><strong>Allowed</strong> when <span class="math inline">\(\mu_{fi} = \langle f|\hat{\boldsymbol{\mu}}\cdot\hat{\mathbf{e}}|i\rangle \neq 0\)</span>.</p></li>
-<li class="fragment"><p><strong>Forbidden</strong> (first order) when symmetry makes it <strong>exactly zero</strong>.</p></li>
+<li><span class="math inline">|c_n(t)|^2</span>: the probability of finding the system in level <span class="math inline">n</span> at time <span class="math inline">t</span></li>
+<li>A changing <span class="math inline">|c_n|^2</span> is a <strong>transition</strong></li>
 </ul>
 </section>
-<section id="where-selection-rules-come-from" class="slide level2">
-<h2>Where Selection Rules Come From</h2>
+<section id="an-equation-for-the-coefficients" class="slide level2">
+<h2>An equation for the coefficients</h2>
+<p><strong>1. Insert</strong> into <span class="math inline">i\hbar\,\partial\Psi/\partial t = (\hat{H}^{(0)} + \hat{V})\Psi</span>. <strong>2. Cancel</strong> the terms with <span class="math inline">E_n</span>:</p>
+<p><span class="math display">\sum_n i\hbar\,\dot{c}_n\,e^{-iE_nt/\hbar}\,\psi_n = \sum_n c_n\,e^{-iE_nt/\hbar}\,\hat{V}\psi_n</span></p>
+<p><strong>3. Project</strong> onto one state: multiply by <span class="math inline">\psi_m^*</span> and integrate</p>
+<p><span class="math display">i\hbar\,\frac{dc_m}{dt} = \sum_n V_{mn}(t)\,e^{i\omega_{mn}t}\,c_n</span></p>
 <ul>
-<li class="fragment"><p>A vanishing integral is dictated by <strong>symmetry</strong>, not by accident.</p></li>
-<li class="fragment"><p><strong>Wavefunctions</strong>: angular and parity symmetry of <span class="math inline">\(|i\rangle\)</span> and <span class="math inline">\(|f\rangle\)</span>.</p></li>
-<li class="fragment"><p><strong>Operator</strong>: <span class="math inline">\(\hat{\boldsymbol{\mu}}\sim\mathbf{r}\)</span> is a <strong>vector</strong> (angular-momentum-1) object.</p></li>
-<li class="fragment"><p>The parity of the state must <strong>change</strong> for a dipole transition.</p></li>
+<li><span class="math inline">V_{mn} = \langle m|\hat{V}(t)|n\rangle</span>: a <strong>matrix element</strong>. <span class="math inline">\ \omega_{mn} = (E_m - E_n)/\hbar</span>: a Bohr frequency</li>
+<li>Exact. Population flows from <span class="math inline">n</span> to <span class="math inline">m</span> only through <span class="math inline">V_{mn}</span></li>
 </ul>
 </section>
-<section id="selection-rules-for-hydrogen-like-atoms" class="slide level2">
-<h2>Selection Rules for Hydrogen-Like Atoms</h2>
+<section id="first-order-a-weak-perturbation" class="slide level2">
+<h2>First order: a weak perturbation</h2>
+<p>Start in one stationary state, <span class="math inline">i</span>: <span class="math inline">c_i(0) = 1</span>, all others zero. A weak perturbation changes the coefficients slowly, so on the right keep their starting values:</p>
+<p><span class="math display">i\hbar\,\frac{dc_f}{dt} = V_{fi}(t)\,e^{i\omega_{fi}t}</span></p>
+<div class="keyeq">
+<p><span class="math display">c_f(t) = -\frac{i}{\hbar}\int_0^t V_{fi}(t')\,e^{i\omega_{fi}t'}\,dt', \qquad P_{i \to f}(t) = |c_f(t)|^2</span></p>
+</div>
 <ul>
-<li class="fragment">States are labeled <span class="math inline">\(|n, l, m_l\rangle\)</span>; <span class="math inline">\(\mathbf{r}\)</span> transforms like <span class="math inline">\(Y_{1m}\)</span>.</li>
+<li><span class="math inline">i</span>: initial state. <span class="math inline">f</span>: final state. Valid while <span class="math inline">P_{i \to f}</span> stays small</li>
+<li>Pushes on a turning phase: they add up only if <span class="math inline">V_{fi}(t')</span> oscillates at <span class="math inline">\omega_{fi}</span></li>
 </ul>
-<div class="fragment">
-<p><strong>Orbital angular momentum:</strong> <span class="math display">\[\Delta l = l_f - l_i = \pm 1\]</span></p>
+</section>
+<section id="light-at-frequency-omega" class="slide level2">
+<h2>Light at frequency <span class="math inline">\omega</span></h2>
+<p><span class="math inline">V_{fi}(t) = -M_{fi}\,\mathcal{E}\cos\omega t</span>, with the <strong>transition dipole</strong> <span class="math inline">M_{fi} = \langle f|\hat{M}|i\rangle</span> and <span class="math inline">\cos\omega t = \frac{1}{2}\left(e^{i\omega t} + e^{-i\omega t}\right)</span>:</p>
+<p><span class="math display">c_f(t) = \frac{iM_{fi}\,\mathcal{E}}{2\hbar}\int_0^t\left[e^{i(\omega_{fi} + \omega)t'} + e^{i(\omega_{fi} - \omega)t'}\right]dt'</span></p>
+<ul>
+<li>Absorption, with the light tuned near the gap: the first term turns at about <span class="math inline">2\omega</span> and never grows</li>
+<li>The second turns slowly, at the <strong>detuning</strong> <span class="math inline">\delta = \omega_{fi} - \omega</span>. Keep it:</li>
+</ul>
+<p><span class="math display">\int_0^t e^{i\delta t'}dt' = \frac{e^{i\delta t} - 1}{i\delta}, \qquad \left|e^{i\delta t} - 1\right|^2 = 4\sin^2\frac{\delta t}{2}</span></p>
+</section>
+<section id="absorption-of-light-to-first-order" class="slide level2">
+<h2>Absorption of light, to first order</h2>
+<div class="keyeq">
+<p><span class="math display">P_{i \to f}(t) = \frac{|M_{fi}|^2\,\mathcal{E}^2}{\hbar^2}\;\frac{\sin^2\!\left[(\omega_{fi} - \omega)\,t/2\right]}{(\omega_{fi} - \omega)^2}, \qquad M_{fi} = \langle f|\hat{M}|i\rangle</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/resonance_curves.png" class="quarto-figure quarto-figure-center" style="width:52.0%"></p>
+</figure>
+</div>
+<ul>
+<li>On resonance: grows as <span class="math inline">t^2</span>. Off resonance: rises, falls back, never builds up</li>
+</ul>
+</section>
+<section id="reading-the-result" class="slide level2">
+<h2>Reading the result</h2>
+<ul>
+<li><strong>Bohr’s frequency condition, derived</strong>: <span class="math inline">\hbar\omega = E_f - E_i</span> is the condition for the pushes of the light to stay in step</li>
+<li><strong>The line has a width</strong>: the peak reaches zero at <span class="math inline">\omega_{fi} \pm 2\pi/t</span>. Light that acts for a time <span class="math inline">t</span> has a frequency defined only to about <span class="math inline">1/t</span></li>
+<li><strong>Strength</strong>: proportional to <span class="math inline">\mathcal{E}^2</span>, the intensity, and to <span class="math inline">|M_{fi}|^2</span>, the transition dipole squared</li>
+<li><strong>Stimulated emission</strong>: starting in the upper level gives the same result. Light at resonance drives a molecule <strong>down</strong> as readily as up</li>
+<li><strong>A steady rate</strong>: over a band of frequencies the area of the peak grows as <span class="math inline">t</span>, so ordinary light is absorbed at a constant rate <span class="math inline">\propto |M_{fi}|^2 \times</span> intensity</li>
+</ul>
+</section>
+<section id="watching-a-transition" class="slide level2">
+<h2>Watching a transition</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/drive_two_level.gif" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Light at resonance, followed all the way: a particle in a box goes from <span class="math inline">|\psi_1|^2</span> to <span class="math inline">|\psi_2|^2</span></li>
+<li>In between the density <strong>sloshes</strong>: the dipole <span class="math inline">\langle x\rangle</span> swings only <strong>during</strong> the transition</li>
+</ul>
+</section>
+<section id="live-drive-two-levels" class="slide level2">
+<h2>Live: drive two levels</h2>
+<div id="rd-live" style="width: 1060px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/rabi_drive.mjs";
+  const opts = { fontSize: "19px", autoplay: false, note: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("rd-live") });
+</script>
+</section>
+<section id="the-selection-rule" class="slide level2">
+<h2>The selection rule</h2>
+<p>Every result today carries the factor <span class="math inline">|M_{fi}|^2</span></p>
+<div class="keyeq">
+<p><span class="math display">\text{allowed only if}\qquad M_{fi} = \langle f|\hat{M}|i\rangle = \int\psi_f^*\,\hat{M}\,\psi_i\,d\tau \;\neq\; 0</span></p>
+</div>
+<ul>
+<li>If the integral is zero, light of any intensity and frequency leaves the transition untouched: <strong>forbidden</strong></li>
+<li><strong>Parity</strong>: <span class="math inline">\hat{M}</span> is odd, so the two states must have <strong>opposite</strong> parity</li>
+<li><strong>Angular momentum</strong>: a photon carries one unit, <span class="math inline">\hbar</span></li>
+<li>Forbidden is not never: weaker mechanisms remain (H 2s lives 0.12 s; 2p, 1.6 ns)</li>
+</ul>
+</section>
+<section id="every-selection-rule-of-the-course" class="slide level2">
+<h2>Every selection rule of the course</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/selection_ladders.png" class="quarto-figure quarto-figure-center" style="width:74.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Solid: allowed. Dashed and crossed: the transition dipole vanishes. Each rule says when the integral is zero</li>
+</ul>
+</section>
+<section id="example-an-electron-in-a-box" class="slide level2">
+<h2>Example: an electron in a box</h2>
+<div class="worked">
+<p>An electron in a box of length <span class="math inline">L</span>, with <span class="math inline">\hat{M} = -ex</span>. Transition dipoles from <span class="math inline">n = 1</span> to <span class="math inline">n = 2</span> and to <span class="math inline">n = 3</span>? From 3.7: <span class="math inline">\langle 2|x|1\rangle = -16L/9\pi^2</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Magnetic quantum number:</strong> <span class="math display">\[\Delta m_l = m_{l,f} - m_{l,i} = 0, \pm 1\]</span></p>
+<div class="soln">
+<p><span class="math display">M_{21} = -e\,\langle 2|x|1\rangle = \frac{16}{9\pi^2}\,eL = 0.18\,eL \qquad\text{allowed}</span></p>
+<p><span class="math display">M_{31} = -e\,\langle 3|x|1\rangle = 0 \qquad\text{forbidden}</span></p>
 </div>
+<ul>
+<li>States 1 and 3 are both even about the middle and <span class="math inline">x - L/2</span> is odd. For <span class="math inline">L = 1</span> nm, <span class="math inline">M_{21} = 8.7</span> D: why conjugated dyes absorb so strongly</li>
+</ul>
+</div>
+</section>
+<section id="the-chapter-in-one-table" class="slide level2">
+<h2>The chapter in one table</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">variational method</th>
+<th style="text-align: left;">perturbation theory</th>
+<th style="text-align: left;">time-dependent perturbations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">put in</td>
+<td style="text-align: left;">a trial function</td>
+<td style="text-align: left;">a solved problem and a small constant term</td>
+<td style="text-align: left;">a solved problem and a term that depends on time</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">get out</td>
+<td style="text-align: left;">an upper bound to <span class="math inline">E_0</span></td>
+<td style="text-align: left;">shifted levels, mixed states</td>
+<td style="text-align: left;">transitions between levels</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">key integral</td>
+<td style="text-align: left;"><span class="math inline">\langle\phi\vert\hat{H}\vert\phi\rangle</span></td>
+<td style="text-align: left;"><span class="math inline">\langle k\vert\hat{H}^{(1)}\vert n\rangle</span></td>
+<td style="text-align: left;"><span class="math inline">\langle f\vert\hat{M}\vert i\rangle</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">condition</td>
+<td style="text-align: left;">lower is better</td>
+<td style="text-align: left;">coupling <span class="math inline">\ll</span> gap</td>
+<td style="text-align: left;">resonance, <span class="math inline">\hbar\omega = E_f - E_i</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">two levels</td>
+<td style="text-align: left;">exact roots <span class="math inline">E_\pm</span></td>
+<td style="text-align: left;">the roots as a series</td>
+<td style="text-align: left;">driven by light</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Next: atoms with more than one electron (Chapter 7) and molecules (Chapter 8)</li>
+</ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>A weak oscillating field drives transitions with amplitude <span class="math inline">\(c_f^{(1)} = -\frac{i}{\hbar}\int_0^t V_{fi}\, e^{i\omega_{fi}t'}\,dt'\)</span>, large only at <strong>resonance</strong> <span class="math inline">\(E_f - E_i = \pm\hbar\omega\)</span>. The rate scales as <span class="math inline">\(|\mu_{fi}|^2\)</span>, and where symmetry makes this <strong>vanish</strong> the transition is forbidden: for hydrogen-like atoms <span class="math inline">\(\Delta l = \pm 1\)</span>, <span class="math inline">\(\Delta m_l = 0,\pm 1\)</span>.</p>
+<p>Light adds an oscillating term <span class="math inline">-\hat{M}\mathcal{E}\cos\omega t</span> to the Hamiltonian, and the coefficients of the stationary states begin to move. To first order the amplitude of a new state builds up only at resonance, <span class="math inline">\hbar\omega = E_f - E_i</span>, with a probability proportional to the intensity and to the square of the transition dipole <span class="math inline">\langle f|\hat{M}|i\rangle</span>. Where that integral vanishes the transition is forbidden, and every selection rule of the course is a statement about it: <span class="math inline">\Delta v = \pm1</span>, <span class="math inline">\Delta J = \pm1</span>, <span class="math inline">\Delta l = \pm1</span>.</p>
 </blockquote>
 
 </section>
@@ -286,7 +400,6 @@ Davit Potoyan
   <script src="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03-time-dependent-perturbation-and-selection-rules_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -455,27 +568,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

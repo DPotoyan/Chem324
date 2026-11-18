@@ -36,6 +36,22 @@
     }
   </style>
   <link rel="stylesheet" href="02-perturbation-theory_files/libs/revealjs/dist/theme/quarto-dc94b28e964d2c001f312a7e9aad6349.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="02-perturbation-theory_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02-perturbation-theory_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02-perturbation-theory_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,142 +163,328 @@ Davit Potoyan
 </div>
 
 </section>
-<section id="the-big-idea" class="slide level2">
-<h2>The Big Idea</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="../../ch06/images/perturb1.png"></p>
-</div><div class="column" style="width:50%;">
+<section id="a-solved-problem-plus-a-small-change" class="slide level2">
+<h2>A solved problem, plus a small change</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/perturbation_split.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<p><span class="math display">\hat{H} = \hat{H}^{(0)} + \hat{H}^{(1)}, \qquad \hat{H}^{(0)}\psi_n^{(0)} = E_n^{(0)}\psi_n^{(0)} \quad\text{solved}</span></p>
 <ul>
-<li class="fragment"><p>Most real problems are <strong>not exactly solvable</strong>.</p></li>
-<li class="fragment"><p>Split the Hamiltonian into a <strong>solvable</strong> part plus a <strong>small</strong> correction.</p></li>
-<li class="fragment"><p>Quantum analog of a <strong>Taylor expansion</strong>.</p></li>
-<li class="fragment"><p>The art is finding the <strong>small parameter</strong>.</p></li>
+<li>Today’s model: a box (solved) plus a <strong>bump</strong> on the middle fifth of its floor (the <strong>perturbation</strong>)</li>
+</ul>
+</section>
+<section id="the-symbols" class="slide level2">
+<h2>The symbols</h2>
+<p>The superscripts count <strong>orders of correction</strong>. They are not powers.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\hat{H}^{(0)}</span></td>
+<td style="text-align: left;">the solved, <strong>unperturbed</strong> Hamiltonian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\hat{H}^{(1)}</span></td>
+<td style="text-align: left;">the perturbation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">E_n^{(0)}</span>, <span class="math inline">\psi_n^{(0)}</span></td>
+<td style="text-align: left;">the known levels and states of <span class="math inline">\hat{H}^{(0)}</span>; in a bracket the state is <span class="math inline">\vert n\rangle</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">E_n^{(1)}</span>, <span class="math inline">E_n^{(2)}</span></td>
+<td style="text-align: left;">the first and second corrections to level <span class="math inline">n</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\psi_n^{(1)}</span></td>
+<td style="text-align: left;">the first correction to state <span class="math inline">n</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\langle k\vert\hat{H}^{(1)}\vert n\rangle</span></td>
+<td style="text-align: left;">a matrix element of the perturbation between unperturbed states</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-two-level-problem-expanded" class="slide level2">
+<h2>The two-level problem, expanded</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><img data-src="../../ch06/images/two_level_series.png" style="width:100.0%"></p>
+</div><div class="column" style="width:52%;">
+<p>From 6.1: two levels a gap <span class="math inline">\Delta</span> apart, with a coupling <span class="math inline">\lambda v</span> dialed on from <span class="math inline">\lambda = 0</span> to 1</p>
+<p><span class="math display">E_- = \frac{E_1^{(0)} + E_2^{(0)}}{2} - \sqrt{\left(\frac{\Delta}{2}\right)^2 + \lambda^2v^2}</span></p>
+<p><span class="math display">\phantom{E_-} = E_1^{(0)} - \lambda^2\,\frac{v^2}{\Delta} + \lambda^4\,\frac{v^4}{\Delta^3} - \dots</span></p>
+<ul>
+<li>The exact root is a <strong>power series</strong> in <span class="math inline">\lambda</span></li>
+<li>It needs coupling <strong>small compared with the gap</strong></li>
 </ul>
 </div></div>
 </section>
-<section id="splitting-the-hamiltonian" class="slide level2">
-<h2>Splitting the Hamiltonian</h2>
+<section id="the-general-expansion" class="slide level2">
+<h2>The general expansion</h2>
+<p><strong>1. Dial the perturbation on</strong>, <span class="math inline">\hat{H} = \hat{H}^{(0)} + \lambda\hat{H}^{(1)}</span>, and expand the unknown level and state in powers of <span class="math inline">\lambda</span></p>
+<p><span class="math display">E_n = E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2E_n^{(2)} + \dots, \qquad\qquad \psi_n = \psi_n^{(0)} + \lambda\psi_n^{(1)} + \dots</span></p>
+<p><strong>2. Insert into <span class="math inline">\hat{H}\psi_n = E_n\psi_n</span></strong> and sort by powers of <span class="math inline">\lambda</span>: each power gives its own equation</p>
+<p><span class="math display">\begin{aligned}
+\lambda^0:&amp;\qquad \hat{H}^{(0)}\psi_n^{(0)} = E_n^{(0)}\psi_n^{(0)}\\
+\lambda^1:&amp;\qquad \hat{H}^{(0)}\psi_n^{(1)} + \hat{H}^{(1)}\psi_n^{(0)} = E_n^{(0)}\psi_n^{(1)} + E_n^{(1)}\psi_n^{(0)}
+\end{aligned}</span></p>
 <ul>
-<li class="fragment">Start from an <strong>exactly solvable</strong> problem (box, oscillator, …):</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}^0 \mid n^0\rangle = E^0_n \mid n^0\rangle\]</span></p>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Add a <strong>small perturbation</strong> <span class="math inline">\(\hat{H}^1\)</span>, switched by <span class="math inline">\(\lambda\)</span>: <span class="math display">\[\hat{H} = \hat{H}^0 + \lambda \hat{H}^1\]</span></li>
-</ul>
-</div>
-<ul>
-<li class="fragment">“Small” means level shifts stay <strong>below the level spacing</strong>.</li>
+<li>The first is the solved problem. The second holds two unknowns, <span class="math inline">E_n^{(1)}</span> and <span class="math inline">\psi_n^{(1)}</span></li>
 </ul>
 </section>
-<section id="expand-like-a-taylor-series" class="slide level2">
-<h2>Expand Like a Taylor Series</h2>
+<section id="first-order-average-the-perturbation" class="slide level2">
+<h2>First order: average the perturbation</h2>
+<p>Project the <span class="math inline">\lambda^1</span> equation onto the unperturbed state: multiply by <span class="math inline">\psi_n^{(0)*}</span> and integrate</p>
+<p><span class="math display">\langle n|\hat{H}^{(0)}|\psi_n^{(1)}\rangle + \langle n|\hat{H}^{(1)}|n\rangle = E_n^{(0)}\langle n|\psi_n^{(1)}\rangle + E_n^{(1)}\langle n|n\rangle</span></p>
 <ul>
-<li class="fragment">Energies and states become <strong>power series</strong> in <span class="math inline">\(\lambda\)</span>:</li>
+<li><span class="math inline">\hat{H}^{(0)}</span> is Hermitian: acting to the <strong>left</strong> on <span class="math inline">\langle n|</span> it gives <span class="math inline">E_n^{(0)}</span>. The first terms on the two sides are equal and <strong>cancel</strong></li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[E_n = E^0_n + \lambda E^1_n + \lambda^2 E^2_n + \dots\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\mid n\rangle = \mid n^0\rangle + \lambda \mid n^1\rangle + \lambda^2 \mid n^2\rangle + \dots\]</span></p>
+<div class="keyeq">
+<p><span class="math display">E_n^{(1)} = \langle n|\hat{H}^{(1)}|n\rangle = \int\psi_n^{(0)*}\,\hat{H}^{(1)}\,\psi_n^{(0)}\,d\tau</span></p>
 </div>
 <ul>
-<li class="fragment">Plug into <span class="math inline">\(\hat{H}\mid n\rangle = E_n\mid n\rangle\)</span> and <strong>collect powers</strong> of <span class="math inline">\(\lambda\)</span>.</li>
-</ul>
-</section>
-<section id="order-by-order" class="slide level2">
-<h2>Order by Order</h2>
-<ul>
-<li class="fragment">Each power of <span class="math inline">\(\lambda\)</span> gives one equation:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}^0\mid n^0\rangle = E^0_n\mid n^0 \rangle\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\hat{H}^0\mid n^1\rangle + \hat{H}^1\mid n^0\rangle = E^0_n\mid n^1 \rangle + E^1_n\mid n^0 \rangle\]</span></p>
-</div>
-<ul>
-<li class="fragment"><strong>Zeroth order</strong> is just the exact solution.</li>
-<li class="fragment">The <strong>sum of superscripts</strong> sets the order.</li>
+<li>The average of the perturbation in the <strong>unperturbed</strong> state: no new wavefunction needed</li>
 </ul>
 </section>
-<section id="the-master-formula" class="slide level2">
-<h2>The Master Formula</h2>
-<div class="fragment">
-<p><span class="math display">\[E_n = E^0_n + H_{nn} + \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}\]</span></p>
+<section id="example-a-bump-in-a-box" class="slide level2">
+<h2>Example: a bump in a box</h2>
+<div class="worked">
+<p>A box of length <span class="math inline">L</span> has a bump of height <span class="math inline">V_0</span> between <span class="math inline">0.4L</span> and <span class="math inline">0.6L</span>. First-order shifts of the three lowest levels?</p>
 </div>
 <div class="fragment">
+<div class="soln">
+<p><span class="math display">E_n^{(1)} = \int_0^L\left|\psi_n^{(0)}\right|^2V^{(1)}(x)\,dx = V_0\int_{0.4L}^{0.6L}\frac{2}{L}\sin^2\frac{n\pi x}{L}\,dx</span></p>
+<p><span class="math display">E_1^{(1)} = 0.387\,V_0, \qquad E_2^{(1)} = 0.049\,V_0, \qquad E_3^{(1)} = 0.301\,V_0</span></p>
+</div>
 <ul>
-<li class="fragment">Everything is built from the <strong>solved</strong> eigenstates and eigenvalues.</li>
-<li class="fragment"><strong>Matrix elements</strong> of the perturbation: <span class="math display">\[H_{nk} = \langle n^0\mid \hat{H}^1\mid k^0\rangle\]</span></li>
+<li>The shift is <span class="math inline">V_0</span> times the <strong>probability of finding the particle on the bump</strong></li>
 </ul>
 </div>
 </section>
-<section id="first-order-a-diagonal-average" class="slide level2">
-<h2>First Order: a Diagonal Average</h2>
-<ul>
-<li class="fragment">The first-order shift is the <strong>diagonal</strong> matrix element:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[E_n^1 = \langle n^0 \mid \hat{H}^1\mid n^0 \rangle\]</span></p>
+<section id="the-shift-follows-the-density" class="slide level2">
+<h2>The shift follows the density</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/first_order_density.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment">Looks like an <strong>expectation value</strong>, but the <strong>solved</strong> states sandwich the perturbation.</li>
-<li class="fragment"><span class="math inline">\(\hat{H}^0\)</span> and <span class="math inline">\(\hat{H}^1\)</span> in general do <strong>not</strong> share eigenfunctions.</li>
+<li>States 1 and 3 have a maximum on the bump and rise strongly. State 2 has a <strong>node</strong> there and barely moves</li>
+<li>With <span class="math inline">V_0 = 2E_1^{(0)}</span>: shifts 0.77, 0.10, 0.60 (units of <span class="math inline">E_1^{(0)}</span>). Exact: 0.71, 0.09, 0.64</li>
 </ul>
 </section>
-<section id="second-order-mixing-in-other-states" class="slide level2">
-<h2>Second Order: Mixing in Other States</h2>
-<div class="fragment">
-<p><span class="math display">\[E_n^2 = \sum_{k \neq n} \frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}\]</span></p>
+<section id="the-state-changes-too" class="slide level2">
+<h2>The state changes too</h2>
+<p>Expand the correction to the state in the other unperturbed states (3.6):</p>
+<p><span class="math display">\psi_n^{(1)} = \sum_{k \neq n} c_k\,\psi_k^{(0)}</span></p>
+<p>Project the <span class="math inline">\lambda^1</span> equation onto another state, <span class="math inline">\langle k|</span> with <span class="math inline">k \neq n</span>:</p>
+<p><span class="math display">E_k^{(0)}c_k + \langle k|\hat{H}^{(1)}|n\rangle = E_n^{(0)}c_k \quad\Longrightarrow\quad c_k = \frac{\langle k|\hat{H}^{(1)}|n\rangle}{E_n^{(0)} - E_k^{(0)}}</span></p>
+<ul>
+<li>A state is mixed in strongly if the perturbation <strong>connects</strong> it to <span class="math inline">\psi_n^{(0)}</span>, and if its energy is <strong>close</strong></li>
+</ul>
+</section>
+<section id="mixing-moves-the-particle" class="slide level2">
+<h2>Mixing moves the particle</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/tilt_mixing.png" class="quarto-figure quarto-figure-center" style="width:74.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><p>Built from <strong>off-diagonal</strong> elements <span class="math inline">\(H_{nk}\)</span>.</p></li>
-<li class="fragment"><p><strong>Nearby levels</strong> dominate: small denominators <strong>amplify</strong> their terms.</p></li>
-<li class="fragment"><p>For the <strong>ground state</strong> every denominator is negative, so <span class="math inline">\(E_0^2 &lt; 0\)</span>: mixing pushes it <strong>down</strong>.</p></li>
+<li>A floor that slopes up to the right, <span class="math inline">\hat{H}^{(1)} = F(x - L/2)</span>: the ground state borrows 0.18 of <span class="math inline">\psi_2^{(0)}</span> and leans to the low side</li>
+<li>Purple: first order. Thick gray: exact. For a charge in a field this lean is an <strong>induced dipole</strong></li>
 </ul>
 </section>
-<section id="particle-in-a-box-shifted-up" class="slide level2">
-<h2>Particle in a Box, Shifted Up</h2>
-<ul>
-<li class="fragment">Add a constant potential <span class="math inline">\(V_0\)</span> across the whole box.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[E_n^1 = \langle n \mid V_0 \mid n \rangle = V_0 \cdot \frac{2}{L}\int_0^L \sin^2\frac{n\pi x}{L}\,dx = V_0\]</span></p>
+<section id="perturbation-theory-through-second-order" class="slide level2">
+<h2>Perturbation theory through second order</h2>
+<div class="keyeq">
+<p><span class="math display">E_n \approx E_n^{(0)} + \langle n|\hat{H}^{(1)}|n\rangle + \sum_{k \neq n}\frac{\left|\langle k|\hat{H}^{(1)}|n\rangle\right|^2}{E_n^{(0)} - E_k^{(0)}}</span></p>
+<p><span class="math display">\psi_n \approx \psi_n^{(0)} + \sum_{k \neq n}\frac{\langle k|\hat{H}^{(1)}|n\rangle}{E_n^{(0)} - E_k^{(0)}}\,\psi_k^{(0)}</span></p>
 </div>
 <ul>
-<li class="fragment"><strong>Every level</strong> rises by the same <span class="math inline">\(V_0\)</span>.</li>
-<li class="fragment">Spacings are <strong>unchanged</strong> to first order.</li>
+<li>First order: one <strong>diagonal</strong> matrix element. Second order: the <strong>off-diagonal</strong> ones, each over a gap</li>
+<li>Everything on the right belongs to the solved problem</li>
 </ul>
 </section>
-<section id="anharmonic-oscillator" class="slide level2">
-<h2>Anharmonic Oscillator</h2>
-<ul>
-<li class="fragment">Oscillator plus a <strong>cubic</strong> kick: <span class="math inline">\(\hat{H} = \hat{H}_0 + \gamma x^3\)</span>.</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[E_n^1 = \langle n\mid \gamma x^3 \mid n\rangle = 0\]</span></p>
+<section id="levels-repel" class="slide level2">
+<h2>Levels repel</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/level_repulsion.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
 </div>
 <ul>
-<li class="fragment"><strong>First order vanishes</strong>: <span class="math inline">\(x^3\)</span> is odd, <span class="math inline">\(|\psi_n|^2\)</span> is even.</li>
-<li class="fragment">The shift appears only at <strong>second order</strong>, from odd <span class="math inline">\(k\)</span> terms.</li>
+<li>One arrow per term. A level <strong>above</strong> pushes down, a level <strong>below</strong> pushes up, the nearest hardest</li>
+<li>The ground state always <strong>drops</strong> in second order. Valid when each coupling is small compared with its gap</li>
 </ul>
 </section>
-<section id="where-it-shows-up" class="slide level2">
-<h2>Where It Shows Up</h2>
+<section id="example-a-charged-oscillator-in-a-field" class="slide level2">
+<h2>Example: a charged oscillator in a field</h2>
+<div class="worked">
+<p>A charge <span class="math inline">q</span> on a spring (<span class="math inline">k = \mu\omega^2</span>) in a field <span class="math inline">\mathcal{E}</span>: <span class="math inline">\hat{H}^{(1)} = -q\mathcal{E}x</span>. Shift of level <span class="math inline">v</span>? From 4.2, <span class="math inline">x</span> connects only <span class="math inline">v \pm 1</span>, with <span class="math inline">|\langle v + 1|x|v\rangle|^2 = (v + 1)\hbar/2\mu\omega</span> and <span class="math inline">|\langle v - 1|x|v\rangle|^2 = v\hbar/2\mu\omega</span>.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">E_v^{(1)} = -q\mathcal{E}\,\langle v|x|v\rangle = 0 \qquad (x \text{ is odd},\ |\psi_v|^2 \text{ is even})</span></p>
+<p><span class="math display">E_v^{(2)} = q^2\mathcal{E}^2\left[\frac{(v + 1)\hbar/2\mu\omega}{-\hbar\omega} + \frac{v\hbar/2\mu\omega}{+\hbar\omega}\right] = -\frac{q^2\mathcal{E}^2}{2\mu\omega^2} = -\frac{q^2\mathcal{E}^2}{2k}</span></p>
+</div>
 <ul>
-<li class="fragment"><p><strong>Hydrogen in a magnetic field</strong>: <span class="math inline">\(\hat{H}^1 = \frac{e}{2m_e}B\,\hat{L}_z\)</span>, shift <span class="math inline">\(m_l\,\beta_B B\)</span>.</p></li>
-<li class="fragment"><p><strong>Spin-orbit coupling</strong>: <span class="math inline">\(\hat{H}^1 = A_{SO}\,\hat{L}\hat{S}\)</span>.</p></li>
-<li class="fragment"><p><strong>Anharmonic vibrations</strong>, a <strong>shifted box</strong>, and a perturbative view of <strong>bonding</strong>.</p></li>
+<li>Two terms: the level above, <span class="math inline">\hbar\omega</span> higher, and the level below. The same drop for every <span class="math inline">v</span></li>
+</ul>
+</div>
+</section>
+<section id="the-exact-answer-the-same-parabola-moved" class="slide level2">
+<h2>The exact answer: the same parabola, moved</h2>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="../../ch06/images/field_oscillator.png" style="width:100.0%"></p>
+</div><div class="column" style="width:46%;">
+<p><span class="math display">\tfrac{1}{2}kx^2 - q\mathcal{E}x = \tfrac{1}{2}k\left(x - \frac{q\mathcal{E}}{k}\right)^2 - \frac{q^2\mathcal{E}^2}{2k}</span></p>
+<ul>
+<li>Complete the square: second order is <strong>exact</strong> here</li>
+<li>The charge moves by <span class="math inline">q\mathcal{E}/k</span>: an induced dipole <span class="math inline">\alpha\,\mathcal{E}</span></li>
+<li><strong>Polarizability</strong> <span class="math inline">\alpha = q^2/k</span>, and energy <span class="math inline">-\frac{1}{2}\alpha\,\mathcal{E}^2</span>: a second-order effect</li>
+</ul>
+</div></div>
+</section>
+<section id="how-far-it-can-be-pushed" class="slide level2">
+<h2>How far it can be pushed</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/orders_vs_strength.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+<ul>
+<li>First order is the <strong>tangent</strong> at <span class="math inline">V_0 = 0</span>; second order adds the curvature</li>
+<li>Shaded: the bump exceeds the gap <span class="math inline">E_2^{(0)} - E_1^{(0)}</span>. Too large: diagonalize the matrix (6.1)</li>
+</ul>
+</section>
+<section id="live-turn-the-perturbation-on" class="slide level2">
+<h2>Live: turn the perturbation on</h2>
+<div id="pd-live" style="width: 1060px; margin: 0 auto;"></div>
+<script type="module">
+  import widget from "../../widgets/perturbation_dial.mjs";
+  const opts = { fontSize: "19px", shape: "bump", strength: 2, note: false };
+  widget.render({ model: { get: (k) => opts[k] }, el: document.getElementById("pd-live") });
+</script>
+</section>
+<section id="example-helium-order-by-order" class="slide level2">
+<h2>Example: helium, order by order</h2>
+<div class="worked">
+<p>Treat the repulsion <span class="math inline">1/r_{12}</span> of helium’s two electrons as a perturbation of two He<span class="math inline">^+</span> ions (<span class="math inline">Z = 2</span>). Energy to second order? Measured: <span class="math inline">-79.01</span> eV.</p>
+</div>
+<div class="fragment">
+<div class="soln">
+<p><span class="math display">\begin{aligned}
+E^{(0)} &amp;= 2\times\left(-\tfrac{1}{2}Z^2E_h\right) = -4E_h = -108.8\ \text{eV}\\
+E^{(1)} &amp;= \langle 1/r_{12}\rangle = \tfrac{5}{8}Z\,E_h = +34.0\ \text{eV}\\
+E^{(2)} &amp;= -0.158\,E_h = -4.3\ \text{eV}\\
+E &amp;\approx -108.8 + 34.0 - 4.3 = -79.1\ \text{eV}
+\end{aligned}</span></p>
+</div>
+<ul>
+<li>Not a small perturbation, 34 eV on a scale of 109 eV, yet two orders land within 0.1 eV</li>
+</ul>
+</div>
+</section>
+<section id="helium-above-then-below" class="slide level2">
+<h2>Helium: above, then below</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../ch06/images/helium_orders.png" class="quarto-figure quarto-figure-center" style="width:64.0%"></p>
+</figure>
+</div>
+<ul>
+<li>First order equals the <span class="math inline">\zeta = 2</span> energy of 6.1: it is <span class="math inline">\langle\phi|\hat{H}|\phi\rangle</span>, an <strong>upper bound</strong></li>
+<li>Second order lands <strong>below</strong> the exact energy: perturbation theory is not a bound</li>
+</ul>
+</section>
+<section id="perturbations-already-met" class="slide level2">
+<h2>Perturbations already met</h2>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 18%">
+<col style="width: 35%">
+<col style="width: 10%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">effect</th>
+<th style="text-align: left;">solved problem</th>
+<th style="text-align: left;">perturbation</th>
+<th style="text-align: center;">order</th>
+<th style="text-align: center;">lecture</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">anharmonic levels</td>
+<td style="text-align: left;">harmonic oscillator</td>
+<td style="text-align: left;">cubic, quartic terms of the bond</td>
+<td style="text-align: center;">1st, 2nd</td>
+<td style="text-align: center;">4.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">centrifugal distortion</td>
+<td style="text-align: left;">rigid rotor</td>
+<td style="text-align: left;">stretching by rotation</td>
+<td style="text-align: center;">2nd</td>
+<td style="text-align: center;">4.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zeeman effect</td>
+<td style="text-align: left;">hydrogen atom</td>
+<td style="text-align: left;"><span class="math inline">(\mu_BB/\hbar)\hat{L}_z</span></td>
+<td style="text-align: center;">1st, exact</td>
+<td style="text-align: center;">5.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fine structure</td>
+<td style="text-align: left;">hydrogen atom</td>
+<td style="text-align: left;">spin-orbit coupling</td>
+<td style="text-align: center;">1st</td>
+<td style="text-align: center;">5.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">polarizability</td>
+<td style="text-align: left;">atom or molecule</td>
+<td style="text-align: left;">dipole in a field</td>
+<td style="text-align: center;">2nd</td>
+<td style="text-align: center;">today</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dispersion forces, <span class="math inline">-C_6/R^6</span></td>
+<td style="text-align: left;">two separate atoms</td>
+<td style="text-align: left;">their dipoles interacting</td>
+<td style="text-align: center;">2nd</td>
+<td style="text-align: center;">today</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Second-order effects <strong>lower</strong> a ground state: polarization and dispersion are attractions</li>
+<li>Next: a perturbation that depends on <strong>time</strong> moves a system between levels (Lecture 6.3)</li>
 </ul>
 </section>
 <section id="takeaway" class="title-slide slide level1 center">
 <h1>Takeaway</h1>
 <blockquote>
-<p>Perturbation theory turns a hard problem into a <strong>solvable one plus a small correction</strong>, expanding the energy as <span class="math inline">\(E_n = E^0_n + H_{nn} + \sum_{k\neq n}\frac{\mid H_{nk}\mid^2}{E^0_n - E^0_k}\)</span>. The <strong>first-order</strong> shift is a diagonal average; the <strong>second-order</strong> shift mixes in other states, with <strong>nearby levels</strong> dominating.</p>
+<p>Split the Hamiltonian into a solved part and a small perturbation, and expand in powers of its strength. First order is the average of the perturbation in the unperturbed state: a bump raises each level by its height times the probability of finding the particle there. Second order sums the couplings to all other states, each squared and divided by a gap: levels repel, the nearest most strongly, and a ground state always drops. The method works when couplings are small compared with gaps. It gives a polarizability to every molecule, an attraction to every pair of atoms, and helium to within 0.1 eV.</p>
 </blockquote>
 
 </section>
@@ -307,7 +509,6 @@ Davit Potoyan
   <script src="02-perturbation-theory_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="02-perturbation-theory_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="02-perturbation-theory_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="02-perturbation-theory_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -476,27 +677,9 @@ Davit Potoyan
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
